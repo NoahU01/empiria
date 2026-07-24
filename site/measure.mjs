@@ -1,0 +1,30 @@
+import puppeteer from "puppeteer-core";
+const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const BASE = "http://localhost:4599/index.html";
+const browser = await puppeteer.launch({ executablePath: CHROME, headless: "new", args: ["--no-sandbox"] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+await page.goto(BASE, { waitUntil: "networkidle0" });
+await page.evaluate(async () => { if (document.fonts?.ready) await document.fonts.ready; });
+
+const data = await page.evaluate(() => {
+  const r = (el) => { const b = el.getBoundingClientRect(); return { x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height) }; };
+  const out = {};
+  const h1 = document.querySelector(".hero h1");
+  out.h1 = { ...r(h1), fs: getComputedStyle(h1).fontSize, lh: getComputedStyle(h1).lineHeight };
+  const card = document.querySelector(".lcard");
+  out.card = r(card);
+  out.cardIcon = r(card.querySelector(".lcard-icon"));
+  out.cardTitle = r(card.querySelector("h3"));
+  out.cardP = r(card.querySelector("p"));
+  const grid = document.querySelector(".leistungen-grid");
+  out.grid = r(grid);
+  out.leftHead = r(document.querySelector(".leistungen-head"));
+  out.cards2x2 = r(document.querySelector(".cards-2x2"));
+  const port = document.querySelector(".kontakt-media .portrait");
+  out.portrait = r(port);
+  out.kontaktMedia = r(document.querySelector(".kontakt-media"));
+  return out;
+});
+console.log(JSON.stringify(data, null, 2));
+await browser.close();
