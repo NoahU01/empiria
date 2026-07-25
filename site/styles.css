@@ -478,10 +478,10 @@ button { font-family: inherit; cursor: pointer; }
   }
   .mobile-menu.open { transform: none; }
   .mobile-menu a { padding: 14px 0; font-size: 1.15rem; border-bottom: 1px solid #f2f2f2; color: var(--ink); }
-  .mobile-menu .btn { margin-top: 16px; }
+  .mobile-menu .btn { margin-top: 16px; color: #fff; border: 1.5px solid var(--black); }
 
   /* Hero */
-  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 14px; }
   .hero h1 { font-size: clamp(3.4rem, 17vw, 4.6rem); }
   .hero-arrow { margin-top: -1.6rem; }
   .hero-copy { order: 2; padding-top: 0; font-size: 1rem; }
