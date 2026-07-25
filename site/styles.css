@@ -183,7 +183,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero h1 .hl::before { top: 0.07em; bottom: 0.01em; }
 .hero-arrow { margin-top: -0.9rem; color: var(--ink); text-align: right; }
 .hero-arrow svg { width: clamp(70px, 7vw, 96px); height: auto; display: inline-block; }
-.hero-copy { padding-top: 0.6rem; }
+.hero-copy { padding-top: calc(0.6rem + 10px); }
 .hero-copy p { margin: 0 0 1.4rem; }
 .hero-copy p:last-child { margin-bottom: 0; }
 .hero-cta { text-align: center; margin-top: clamp(40px, 5vw, 72px); }
@@ -297,7 +297,7 @@ button { font-family: inherit; cursor: pointer; }
   row-gap: 0.7rem;
   align-items: center;
 }
-.lcard-icon { position: relative; width: 52px; height: 52px; grid-column: 1; grid-row: 1; align-self: center; transform: translateY(-45px); }
+.lcard-icon { position: relative; width: 52px; height: 52px; grid-column: 1; grid-row: 1; align-self: center; transform: translateY(-50px); }
 .lcard-icon .ico-shadow { position: absolute; inset: 0; transform: translate(4px, 5px); color: var(--hl-solid); }
 .lcard-icon .ico-main { position: absolute; inset: 0; color: var(--ink); }
 .lcard h3 {
@@ -364,7 +364,7 @@ button { font-family: inherit; cursor: pointer; }
   width: auto;
   z-index: 1;
 }
-.kontakt-media .wm-fwd { position: absolute; right: -120px; bottom: 15px; z-index: 0; color: #e6e6e6; }
+.kontakt-media .wm-fwd { position: absolute; right: -130px; bottom: -5px; z-index: 0; color: #e6e6e6; }
 .badge {
   position: absolute;
   left: 6%; bottom: 20%;
