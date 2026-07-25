@@ -183,7 +183,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero h1 .hl::before { top: 0.07em; bottom: 0.01em; }
 .hero-arrow { margin-top: -0.9rem; color: var(--ink); text-align: right; }
 .hero-arrow svg { width: clamp(70px, 7vw, 96px); height: auto; display: inline-block; }
-.hero-copy { padding-top: calc(0.6rem + 10px); }
+.hero-copy { padding-top: calc(0.6rem + 20px); }
 .hero-copy p { margin: 0 0 1.4rem; }
 .hero-copy p:last-child { margin-bottom: 0; }
 .hero-cta { text-align: center; margin-top: clamp(40px, 5vw, 72px); }
@@ -205,7 +205,7 @@ button { font-family: inherit; cursor: pointer; }
   width: max-content;
   align-items: center;
   gap: 64px;
-  animation: marquee 42s linear infinite;
+  animation: marquee 26s linear infinite;
 }
 .marquee-track img {
   height: 42px;
