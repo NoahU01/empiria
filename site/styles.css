@@ -286,6 +286,7 @@ button { font-family: inherit; cursor: pointer; }
 .loesung-actions .link-more { font-size: 1.25rem; }
 
 /* Leistungen */
+.leistungen { overflow: visible; }
 .leistungen .container { max-width: 1340px; }
 .leistungen-grid {
   display: grid;
