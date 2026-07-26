@@ -205,13 +205,14 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   width: max-content;
   align-items: center;
-  gap: 64px;
   animation: marquee 26s linear infinite;
+  will-change: transform;
 }
 .marquee-track img {
   height: 42px;
   width: auto;
   flex: 0 0 auto;
+  margin-right: 64px;
 }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -368,15 +369,15 @@ button { font-family: inherit; cursor: pointer; }
 .kontakt-media { position: relative; align-self: stretch; min-height: 640px; }
 .kontakt-media .portrait {
   position: absolute;
-  right: -34px; bottom: 0;
+  right: -74px; bottom: 0;
   max-height: 1010px;
   width: auto;
   z-index: 1;
 }
-.kontakt-media .wm-fwd { position: absolute; right: -130px; bottom: -5px; z-index: 0; color: #e6e6e6; }
+.kontakt-media .wm-fwd { position: absolute; right: -170px; bottom: -5px; z-index: 0; color: #e6e6e6; }
 .badge {
   position: absolute;
-  left: 6%; bottom: 20%;
+  left: 13.5%; bottom: 13%;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -386,19 +387,18 @@ button { font-family: inherit; cursor: pointer; }
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   border: 1px solid rgba(255,255,255,0.1);
   color: #fff;
-  padding: 0.95rem 2.4rem 0.95rem 1rem;
+  padding: 0.95rem 3rem 0.95rem 1.2rem;
   border-radius: var(--radius-pill);
   box-shadow: 0 12px 34px rgba(0,0,0,0.28);
 }
 .badge .in {
-  width: 48px; height: 48px; border-radius: 13px;
-  background: rgba(255,255,255,0.14);
+  width: 42px; height: 42px;
   display: grid; place-items: center;
   flex: 0 0 auto;
 }
-.badge .in svg { width: 26px; height: 26px; }
-.badge a.in { transition: background .18s ease; }
-.badge a.in:hover { background: rgba(255,255,255,0.24); }
+.badge .in svg { width: 42px; height: 42px; }
+.badge a.in { transition: opacity .18s ease; }
+.badge a.in:hover { opacity: 0.65; }
 .badge .bname { font-family: var(--font-serif); font-weight: 700; font-size: 1.26rem; line-height: 1.15; white-space: nowrap; }
 .badge .brole { font-size: 0.98rem; color: #d8d7d5; }
 
@@ -466,6 +466,12 @@ button { font-family: inherit; cursor: pointer; }
 .modal-wrap { position: relative; width: 100%; max-width: 680px; }
 
 /* ============ Responsive ============ */
+/* Desktop-only refinements (mobile untouched) */
+@media (min-width: 901px) {
+  .loesung-actions .link-more { font-size: 1.125rem; font-weight: 700; }
+  .lcard .link-more { font-size: 0.94rem; font-weight: 700; }
+}
+
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .nav-toggle {
@@ -497,7 +503,7 @@ button { font-family: inherit; cursor: pointer; }
     animation: none; display: grid; grid-template-columns: repeat(3, 1fr);
     width: 100%; gap: 26px 14px; align-items: center; justify-items: center;
   }
-  .marquee-track img { height: auto; max-height: 30px; max-width: 100%; }
+  .marquee-track img { height: auto; max-height: 30px; max-width: 100%; margin-right: 0; }
   .marquee-track img:nth-child(n+18) { display: none; }
 
   /* Problem */
@@ -541,12 +547,12 @@ button { font-family: inherit; cursor: pointer; }
     position: static; left: auto; bottom: auto; transform: none; margin: 0;
     display: inline-flex; justify-content: center; gap: 0.85rem; padding: 0.4rem 1.5rem;
   }
-  .badge .in { width: 32px; height: 32px; border-radius: 8px; }
-  .badge .in svg { width: 18px; height: 18px; }
+  .badge .in { width: 34px; height: 34px; }
+  .badge .in svg { width: 34px; height: 34px; }
   .badge .btext { line-height: 1.08; }
   .badge .bname { font-size: 0.92rem; line-height: 1.08; }
   .badge .brole { font-size: 0.75rem; }
-  .kontakt-media .wm-fwd { position: absolute; top: 2%; bottom: auto; right: -22px; width: 150px; height: auto; z-index: -1; color: #ededed; }
+  .kontakt-media .wm-fwd { position: absolute; top: 2%; bottom: auto; right: -22px; width: 112px; height: auto; z-index: -1; color: #ededed; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
 }
