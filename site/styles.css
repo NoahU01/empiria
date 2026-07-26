@@ -207,6 +207,8 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   animation: marquee 26s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 .marquee-track img {
   height: 42px;
@@ -214,7 +216,10 @@ button { font-family: inherit; cursor: pointer; }
   flex: 0 0 auto;
   margin-right: 64px;
 }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
 
 /* ============ Section frame ============ */
 .section { position: relative; padding-block: clamp(72px, 9vw, 132px); overflow: hidden; }
@@ -499,16 +504,6 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
   .hero-arrow { margin-top: -1.6rem; }
   .hero-copy { order: 2; padding-top: 0; font-size: 1rem; }
 
-  /* Logo leiste -> statisches Icon-Raster */
-  .marquee { max-width: none; margin-inline: 0; padding-block: 6px 28px; }
-  .marquee-viewport { overflow: visible; -webkit-mask-image: none; mask-image: none; }
-  .marquee-track {
-    animation: none; display: grid; grid-template-columns: repeat(3, 1fr);
-    width: 100%; gap: 26px 14px; align-items: center; justify-items: center;
-  }
-  .marquee-track img { height: auto; max-height: 30px; max-width: 100%; margin-right: 0; }
-  .marquee-track img:nth-child(n+18) { display: none; }
-
   /* Problem */
   .problem-grid { grid-template-columns: 1fr; gap: 28px; }
   .problem-head { text-align: left; }
@@ -558,6 +553,19 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
   .kontakt-media .wm-fwd { position: absolute; top: calc(2% + 10px); bottom: auto; right: 8px; width: 112px; height: auto; z-index: -1; color: #ededed; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* Phones only: logo bar becomes a static icon grid.
+   Tablets/iPads (>640px) keep the smooth running marquee. */
+@media (max-width: 640px) {
+  .marquee { max-width: none; margin-inline: 0; padding-block: 6px 28px; }
+  .marquee-viewport { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track {
+    animation: none; display: grid; grid-template-columns: repeat(3, 1fr);
+    width: 100%; gap: 26px 14px; align-items: center; justify-items: center;
+  }
+  .marquee-track img { height: auto; max-height: 30px; max-width: 100%; margin-right: 0; }
+  .marquee-track img:nth-child(n+18) { display: none; }
 }
 
 @media (max-width: 560px) {
