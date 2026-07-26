@@ -55,6 +55,7 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-block;
   z-index: 0;
   color: var(--ink);
+  font-weight: 700;
 }
 .hl::before {
   content: "";
@@ -227,7 +228,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .section > .container { position: relative; z-index: 1; }
 .wm-kreis { left: -26%; top: -10%; }
-.kontakt-cta-mobile { display: none; }
+.portrait-round { display: none; }
 
 /* Problem */
 .problem-grid {
@@ -395,6 +396,8 @@ button { font-family: inherit; cursor: pointer; }
   flex: 0 0 auto;
 }
 .badge .in svg { width: 26px; height: 26px; }
+.badge a.in { transition: background .18s ease; }
+.badge a.in:hover { background: rgba(255,255,255,0.24); }
 .badge .bname { font-family: var(--font-serif); font-weight: 700; font-size: 1.26rem; line-height: 1.15; white-space: nowrap; }
 .badge .brole { font-size: 0.98rem; color: #d8d7d5; }
 
@@ -527,10 +530,11 @@ button { font-family: inherit; cursor: pointer; }
   .kontakt .kicker { font-size: 1rem; margin-bottom: 0.5rem; }
   .kontakt h2 { font-size: clamp(2.4rem, 9.5vw, 3rem); }
   .kontakt-copy { font-size: 1rem; }
-  .kontakt-cta-mobile { display: inline-flex; margin-top: 0.4rem; }
-  .kontakt-contact { gap: 0.55rem; }
-  .kontakt-media { position: static; min-height: 0; }
-  .kontakt-media .portrait, .badge { display: none; }
+  .kontakt-contact { gap: 0.55rem; margin-top: 1.8rem; }
+  .kontakt-media { position: static; min-height: 0; text-align: center; }
+  .kontakt-media .portrait { display: none; }
+  .portrait-round { display: block; width: 132px; height: 132px; margin: 30px auto 0; }
+  .badge { position: static; left: auto; bottom: auto; transform: none; display: inline-flex; margin: 18px auto 0; }
   .kontakt-media .wm-fwd { position: absolute; top: 3%; right: -24px; bottom: auto; width: 148px; height: auto; z-index: -1; color: #ededed; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
