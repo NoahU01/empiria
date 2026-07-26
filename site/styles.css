@@ -374,7 +374,7 @@ button { font-family: inherit; cursor: pointer; }
   width: auto;
   z-index: 1;
 }
-.kontakt-media .wm-fwd { position: absolute; right: -170px; bottom: -5px; z-index: 0; color: #e6e6e6; }
+.kontakt-media .wm-fwd { position: absolute; right: -185px; bottom: -5px; z-index: 0; color: #e6e6e6; }
 .badge {
   position: absolute;
   left: 13.5%; bottom: 13%;
@@ -387,19 +387,21 @@ button { font-family: inherit; cursor: pointer; }
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   border: 1px solid rgba(255,255,255,0.1);
   color: #fff;
-  padding: 0.95rem 3rem 0.95rem 1.2rem;
+  padding: 0.62rem 3rem 0.62rem 1.2rem;
   border-radius: var(--radius-pill);
   box-shadow: 0 12px 34px rgba(0,0,0,0.28);
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease;
 }
+a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
 .badge .in {
   width: 42px; height: 42px;
   display: grid; place-items: center;
   flex: 0 0 auto;
 }
 .badge .in svg { width: 42px; height: 42px; }
-.badge a.in { transition: opacity .18s ease; }
-.badge a.in:hover { opacity: 0.65; }
-.badge .bname { font-family: var(--font-serif); font-weight: 700; font-size: 1.26rem; line-height: 1.15; white-space: nowrap; }
+.badge .btext { line-height: 1.06; }
+.badge .bname { font-family: var(--font-serif); font-weight: 700; font-size: 1.26rem; line-height: 1.06; white-space: nowrap; }
 .badge .brole { font-size: 0.98rem; color: #d8d7d5; }
 
 /* Footer */
@@ -552,7 +554,7 @@ button { font-family: inherit; cursor: pointer; }
   .badge .btext { line-height: 1.08; }
   .badge .bname { font-size: 0.92rem; line-height: 1.08; }
   .badge .brole { font-size: 0.75rem; }
-  .kontakt-media .wm-fwd { position: absolute; top: 2%; bottom: auto; right: -22px; width: 112px; height: auto; z-index: -1; color: #ededed; }
+  .kontakt-media .wm-fwd { position: absolute; top: calc(2% + 10px); bottom: auto; right: 8px; width: 112px; height: auto; z-index: -1; color: #ededed; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
 }
