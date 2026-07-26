@@ -539,13 +539,14 @@ button { font-family: inherit; cursor: pointer; }
   .portrait-round { display: block; width: 92px; height: 92px; margin: 0; flex: 0 0 auto; }
   .badge {
     position: static; left: auto; bottom: auto; transform: none; margin: 0;
-    display: inline-flex; gap: 0.9rem; padding: 0.55rem 1.8rem 0.55rem 0.55rem;
+    display: inline-flex; justify-content: center; gap: 0.85rem; padding: 0.4rem 1.5rem;
   }
   .badge .in { width: 32px; height: 32px; border-radius: 8px; }
   .badge .in svg { width: 18px; height: 18px; }
-  .badge .bname { font-size: 0.92rem; }
+  .badge .btext { line-height: 1.08; }
+  .badge .bname { font-size: 0.92rem; line-height: 1.08; }
   .badge .brole { font-size: 0.75rem; }
-  .kontakt-media .wm-fwd { position: absolute; top: auto; bottom: 24px; right: -22px; width: 150px; height: auto; z-index: -1; color: #ededed; }
+  .kontakt-media .wm-fwd { position: absolute; top: 2%; bottom: auto; right: -22px; width: 150px; height: auto; z-index: -1; color: #ededed; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
 }
