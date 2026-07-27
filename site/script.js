@@ -2,24 +2,20 @@
   "use strict";
 
   /* ---------- Marquee (client logos) ---------- */
+  // Desktop marquee order = Freigabe-Ordner (01–12). Mobile grid re-orders via CSS.
   var logos = [
     ["logo-01-sv.svg", "SV SparkassenVersicherung"],
     ["logo-02-vgh.svg", "VGH"],
-    ["logo-03-swiss-life.svg", "Swiss Life"],
-    ["logo-04-sv-bav.svg", "SV bAV"],
-    ["logo-05-devk-re.svg", "DEVK Reinsurance"],
-    ["logo-06-vh.svg", "Vereinigte Hagelversicherung"],
-    ["logo-07-svi.svg", "SV Informatik"],
-    ["logo-08-gartenbau.svg", "Gartenbau-Versicherung VVaG"],
-    ["logo-09-ukv.svg", "UKV"],
-    ["logo-10-svs.svg", "SVS"],
-    ["logo-11-devk-am.svg", "DEVK Asset Management"],
-    ["logo-12-oerag.svg", "ÖRAG"],
-    ["logo-13-msk.svg", "MSK"],
-    ["logo-14-svp.svg", "SVP"],
-    ["logo-15-da.svg", "DA Direkt"],
-    ["logo-16-cominia.svg", "cominia"],
-    ["logo-17-zeitsprung.svg", "zeitsprung"]
+    ["logo-03-devk-re.svg", "DEVK RE"],
+    ["logo-04-vh.svg", "Vereinigte Hagelversicherung"],
+    ["logo-05-svs.svg", "SV SparkassenVersicherung Sachsen"],
+    ["logo-06-gartenbau.svg", "Gartenbau-Versicherung"],
+    ["logo-07-sv-bav.svg", "SV bAV Consulting GmbH"],
+    ["logo-08-devk-am.svg", "DEVK AM"],
+    ["logo-09-oerag.svg", "ÖRAG Rechtsschutz"],
+    ["logo-10-svp.svg", "SV Pensionsfonds"],
+    ["logo-11-cominia.svg", "cominia"],
+    ["logo-12-zeitsprung.svg", "zeitsprung"]
   ];
   var track = document.getElementById("marqueeTrack");
   if (track) {
