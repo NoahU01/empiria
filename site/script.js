@@ -22,8 +22,9 @@
     var html = "";
     for (var pass = 0; pass < 2; pass++) {
       for (var i = 0; i < logos.length; i++) {
+        // eager load: marquee width must be correct up-front or the -50% loop seams
         html += '<img src="assets/logos/' + logos[i][0] + '" alt="' + logos[i][1] +
-          '" loading="lazy" decoding="async">';
+          '" decoding="async">';
       }
     }
     track.innerHTML = html;
