@@ -1,8 +1,10 @@
 import puppeteer from "puppeteer-core";
+import fs from "fs";
 
-const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME = process.env.CHROME || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const BASE = process.env.BASE || "http://localhost:4599/index.html";
-const OUT = process.env.OUT || "/private/tmp/claude-501/-Users-noahu01-Downloads-Empiria-Website/6a264f48-3247-42b4-983b-ead6a06acc2c/scratchpad";
+const OUT = process.env.OUT || "./_shots";
+fs.mkdirSync(OUT, { recursive: true });
 
 const targets = [
   { name: "desktop", width: 1440, height: 900, dsf: 1, full: true },
