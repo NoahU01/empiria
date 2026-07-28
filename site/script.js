@@ -30,93 +30,101 @@
     track.innerHTML = html;
   }
 
-  /* ---------- Marquee: JS auto-scroll + cursor drag (scroll mode only) ---------- */
+  /* ---------- Marquee: native horizontal scroll + auto-advance + mouse drag ----------
+     Uses viewport.scrollLeft (repaints reliably on iOS Safari, natively swipeable on
+     touch) instead of a CSS/JS transform. Two identical logo copies => wrapping by one
+     copy width is seamless. Scroll mode only (>640px); phones keep the static grid.  */
   (function () {
     var viewport = document.querySelector(".marquee-viewport");
     if (!track || !viewport) return;
-    var GRID_BP = 640; // at/below this the logos are a static grid (no marquee)
+    var GRID_BP = 640;
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    var half = 0, offset = 0, speed = 0;        // speed in px/ms
-    var running = false, lastT = 0, raf = null;
-    var dragging = false, startX = 0, startOffset = 0;
-    var velocity = 0, lastMoveX = 0, lastMoveT = 0;
+    var half = 0, speed = 0;                 // half = one copy's width; speed in px/ms
+    var running = false, lastT = 0, paused = false, resumeTimer = null;
+    var expectedSL = -1;                      // last scrollLeft WE set (to ignore our own scroll events)
 
     function scrollMode() { return window.innerWidth > GRID_BP; }
     function measure() {
-      half = track.scrollWidth / 2;             // width of exactly one copy
-      speed = half > 0 ? half / 26000 : 0;       // ~26s per copy, matches the old CSS
+      half = track.scrollWidth / 2;
+      speed = half > 0 ? half / 26000 : 0;    // ~26s per copy
     }
-    function wrap() {
+    function setSL(v) { viewport.scrollLeft = v; expectedSL = viewport.scrollLeft; }
+    function normalize() {                    // keep scrollLeft mid-range so both dirs wrap
       if (half <= 0) return;
-      offset = ((offset % half) + half) % half - half; // keep in (-half, 0]
+      var sl = viewport.scrollLeft;
+      if (sl >= half * 1.5) setSL(sl - half);
+      else if (sl < half * 0.5) setSL(sl + half);
     }
-    function apply() { track.style.transform = "translate3d(" + offset.toFixed(2) + "px,0,0)"; }
+    function pause() { paused = true; if (resumeTimer) clearTimeout(resumeTimer); }
+    function resumeSoon(delay) {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () { paused = false; }, delay || 1200);
+    }
 
     function tick(t) {
-      if (!scrollMode()) { track.style.transform = ""; running = false; raf = null; return; }
+      if (!scrollMode()) { running = false; return; }
       if (!lastT) lastT = t;
       var dt = Math.min(t - lastT, 50); lastT = t;
-      if (dragging) {
-        // position is set in onMove
-      } else if (Math.abs(velocity) > 0.02) {
-        offset += velocity * dt;                 // inertia after a drag
-        velocity *= Math.pow(0.9, dt / 16);
-      } else if (!reduceMotion) {
-        offset -= speed * dt;                    // steady auto-scroll
+      if (!paused && !reduceMotion && half > 0) {
+        setSL(viewport.scrollLeft + speed * dt);
+        normalize();
       }
-      wrap(); apply();
-      raf = requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
     }
     function start() {
       if (running || !scrollMode()) return;
       running = true; lastT = 0;
-      track.style.animation = "none";            // JS takes over from the CSS keyframes
       measure();
-      raf = requestAnimationFrame(tick);
+      setSL(half);                            // start centered so it can wrap both ways
+      requestAnimationFrame(tick);
     }
 
-    function onDown(e) {
-      if (!scrollMode() || (e.pointerType && e.pointerType !== "mouse")) return; // drag = mouse only
-      dragging = true; velocity = 0;
-      startX = e.clientX; startOffset = offset;
-      lastMoveX = e.clientX; lastMoveT = performance.now();
-      viewport.classList.add("dragging");
-      e.preventDefault();
-    }
-    function onMove(e) {
-      if (!dragging) return;
-      offset = startOffset + (e.clientX - startX);
-      wrap(); apply();
-      var now = performance.now(), dtm = now - lastMoveT;
-      if (dtm > 0) velocity = (e.clientX - lastMoveX) / dtm; // px/ms for inertia
-      lastMoveX = e.clientX; lastMoveT = now;
-    }
-    function onUp() {
-      if (!dragging) return;
-      dragging = false;
-      viewport.classList.remove("dragging");
-    }
+    /* Pause auto while the user interacts */
+    viewport.addEventListener("wheel", function () { pause(); resumeSoon(1200); }, { passive: true });
 
-    viewport.addEventListener("pointerdown", onDown);
-    window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerup", onUp);
-    window.addEventListener("pointercancel", onUp);
+    // User scroll (touch swipe/momentum, trackpad): ignore our own programmatic scrolls
+    var settleTimer = null;
+    viewport.addEventListener("scroll", function () {
+      if (Math.abs(viewport.scrollLeft - expectedSL) < 2) return; // our own auto-advance
+      pause();
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(function () { normalize(); resumeSoon(500); }, 150);
+    }, { passive: true });
+
+    /* Desktop mouse: click-drag to scroll (incremental so it survives wrapping) */
+    var dragging = false, lastX = 0;
+    viewport.addEventListener("pointerdown", function (e) {
+      if (!scrollMode()) return;
+      pause();
+      if (e.pointerType === "mouse") {
+        dragging = true; lastX = e.clientX;
+        viewport.classList.add("dragging");
+        e.preventDefault();
+      }
+    });
+    window.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - lastX; lastX = e.clientX;
+      setSL(viewport.scrollLeft - dx);
+      normalize();
+    }, { passive: true });
+    function endDrag() {
+      if (dragging) { dragging = false; viewport.classList.remove("dragging"); }
+      resumeSoon(900);
+    }
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", endDrag);
 
     var rt;
     window.addEventListener("resize", function () {
       clearTimeout(rt);
-      rt = setTimeout(function () {
-        measure();
-        if (scrollMode()) { if (!running) start(); }
-        else { track.style.transform = ""; }
-      }, 150);
+      rt = setTimeout(function () { measure(); if (scrollMode() && !running) start(); }, 150);
     });
 
     function boot() { measure(); start(); }
     if (document.readyState === "complete") boot();
     else window.addEventListener("load", boot);
-    // safety: also try shortly after (fonts/images) in case load already fired
     setTimeout(function () { measure(); if (!running) start(); }, 400);
   })();
 
