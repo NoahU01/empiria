@@ -24,11 +24,101 @@
       for (var i = 0; i < logos.length; i++) {
         // eager load: marquee width must be correct up-front or the -50% loop seams
         html += '<img src="assets/logos/' + logos[i][0] + '" alt="' + logos[i][1] +
-          '" decoding="async">';
+          '" decoding="async" draggable="false">';
       }
     }
     track.innerHTML = html;
   }
+
+  /* ---------- Marquee: JS auto-scroll + cursor drag (scroll mode only) ---------- */
+  (function () {
+    var viewport = document.querySelector(".marquee-viewport");
+    if (!track || !viewport) return;
+    var GRID_BP = 640; // at/below this the logos are a static grid (no marquee)
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var half = 0, offset = 0, speed = 0;        // speed in px/ms
+    var running = false, lastT = 0, raf = null;
+    var dragging = false, startX = 0, startOffset = 0;
+    var velocity = 0, lastMoveX = 0, lastMoveT = 0;
+
+    function scrollMode() { return window.innerWidth > GRID_BP; }
+    function measure() {
+      half = track.scrollWidth / 2;             // width of exactly one copy
+      speed = half > 0 ? half / 26000 : 0;       // ~26s per copy, matches the old CSS
+    }
+    function wrap() {
+      if (half <= 0) return;
+      offset = ((offset % half) + half) % half - half; // keep in (-half, 0]
+    }
+    function apply() { track.style.transform = "translate3d(" + offset.toFixed(2) + "px,0,0)"; }
+
+    function tick(t) {
+      if (!scrollMode()) { track.style.transform = ""; running = false; raf = null; return; }
+      if (!lastT) lastT = t;
+      var dt = Math.min(t - lastT, 50); lastT = t;
+      if (dragging) {
+        // position is set in onMove
+      } else if (Math.abs(velocity) > 0.02) {
+        offset += velocity * dt;                 // inertia after a drag
+        velocity *= Math.pow(0.9, dt / 16);
+      } else if (!reduceMotion) {
+        offset -= speed * dt;                    // steady auto-scroll
+      }
+      wrap(); apply();
+      raf = requestAnimationFrame(tick);
+    }
+    function start() {
+      if (running || !scrollMode()) return;
+      running = true; lastT = 0;
+      track.style.animation = "none";            // JS takes over from the CSS keyframes
+      measure();
+      raf = requestAnimationFrame(tick);
+    }
+
+    function onDown(e) {
+      if (!scrollMode() || (e.pointerType && e.pointerType !== "mouse")) return; // drag = mouse only
+      dragging = true; velocity = 0;
+      startX = e.clientX; startOffset = offset;
+      lastMoveX = e.clientX; lastMoveT = performance.now();
+      viewport.classList.add("dragging");
+      e.preventDefault();
+    }
+    function onMove(e) {
+      if (!dragging) return;
+      offset = startOffset + (e.clientX - startX);
+      wrap(); apply();
+      var now = performance.now(), dtm = now - lastMoveT;
+      if (dtm > 0) velocity = (e.clientX - lastMoveX) / dtm; // px/ms for inertia
+      lastMoveX = e.clientX; lastMoveT = now;
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove("dragging");
+    }
+
+    viewport.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+
+    var rt;
+    window.addEventListener("resize", function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () {
+        measure();
+        if (scrollMode()) { if (!running) start(); }
+        else { track.style.transform = ""; }
+      }, 150);
+    });
+
+    function boot() { measure(); start(); }
+    if (document.readyState === "complete") boot();
+    else window.addEventListener("load", boot);
+    // safety: also try shortly after (fonts/images) in case load already fired
+    setTimeout(function () { measure(); if (!running) start(); }, 400);
+  })();
 
   /* ---------- Header scroll state ---------- */
   var header = document.querySelector(".site-header");
