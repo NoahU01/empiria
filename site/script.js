@@ -153,6 +153,19 @@
     });
   }
 
+  /* ---------- Logo -> back to top (sticky header makes #top unreliable) ---------- */
+  var brand = document.querySelector(".brand");
+  if (brand) {
+    brand.addEventListener("click", function (e) {
+      e.preventDefault();
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      if (menu) menu.classList.remove("open");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+      if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+    });
+  }
+
   /* ---------- Modals (Pop-up texts) ---------- */
   var P = function () { return Array.prototype.slice.call(arguments); };
   var MODALS = {
