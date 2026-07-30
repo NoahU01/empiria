@@ -634,20 +634,23 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
     width: 100%; gap: 26px 14px; align-items: center; justify-items: center;
   }
   .marquee-track img { height: auto; max-height: 30px; max-width: 100%; margin-right: 0; }
-  .marquee-track img:nth-child(n+13) { display: none; }
-  /* Mobile-Reihenfolge (laut Freigabe-WhatsApp): cominia & DEVK AM getauscht */
-  .marquee-track img:nth-child(1)  { order: 1; }
-  .marquee-track img:nth-child(2)  { order: 2; }
-  .marquee-track img:nth-child(3)  { order: 3; }
-  .marquee-track img:nth-child(4)  { order: 4; }
-  .marquee-track img:nth-child(5)  { order: 5; }
-  .marquee-track img:nth-child(6)  { order: 6; }
-  .marquee-track img:nth-child(7)  { order: 7; }
-  .marquee-track img:nth-child(8)  { order: 10; } /* DEVK AM */
-  .marquee-track img:nth-child(9)  { order: 9; }  /* ÖRAG */
-  .marquee-track img:nth-child(10) { order: 11; } /* SVP */
-  .marquee-track img:nth-child(11) { order: 8; }  /* cominia */
-  .marquee-track img:nth-child(12) { order: 12; }
+  .marquee-track img:nth-child(n+15) { display: none; }
+  /* Mobile-Reihenfolge exakt laut "Logos mobile-Ansicht.svg" (14 Logos).
+     DOM = Desktop-Reihenfolge; order = Position im Mobile-Raster. */
+  .marquee-track img:nth-child(1)  { order: 1; }  /* SV */
+  .marquee-track img:nth-child(2)  { order: 2; }  /* VGH */
+  .marquee-track img:nth-child(3)  { order: 3; }  /* DEVK RE */
+  .marquee-track img:nth-child(4)  { order: 4; }  /* VH */
+  .marquee-track img:nth-child(5)  { order: 5; }  /* SVS */
+  .marquee-track img:nth-child(6)  { order: 11; } /* MSK */
+  .marquee-track img:nth-child(7)  { order: 10; } /* VoeV */
+  .marquee-track img:nth-child(8)  { order: 6; }  /* Gartenbau */
+  .marquee-track img:nth-child(9)  { order: 7; }  /* SV bAV */
+  .marquee-track img:nth-child(10) { order: 13; } /* DEVK AM */
+  .marquee-track img:nth-child(11) { order: 9; }  /* ÖRAG */
+  .marquee-track img:nth-child(12) { order: 14; } /* SVP */
+  .marquee-track img:nth-child(13) { order: 8; }  /* cominia */
+  .marquee-track img:nth-child(14) { order: 12; } /* zeitsprung */
 }
 
 @media (max-width: 560px) {

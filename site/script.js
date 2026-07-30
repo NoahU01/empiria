@@ -2,13 +2,15 @@
   "use strict";
 
   /* ---------- Marquee (client logos) ---------- */
-  // Desktop marquee order = Freigabe-Ordner (01–12). Mobile grid re-orders via CSS.
+  // Desktop marquee order (VoeV after MSK, before Gartenbau). Mobile grid re-orders via CSS.
   var logos = [
     ["logo-01-sv.svg", "SV SparkassenVersicherung"],
     ["logo-02-vgh.svg", "VGH"],
     ["logo-03-devk-re.svg", "DEVK RE"],
     ["logo-04-vh.svg", "Vereinigte Hagelversicherung"],
     ["logo-05-svs.svg", "SV SparkassenVersicherung Sachsen"],
+    ["logo-msk.svg", "Meyerthole Siems Kohlruss"],
+    ["logo-voev.jpg", "Verband öffentlicher Versicherer"],
     ["logo-06-gartenbau.svg", "Gartenbau-Versicherung"],
     ["logo-07-sv-bav.svg", "SV bAV Consulting GmbH"],
     ["logo-08-devk-am.svg", "DEVK AM"],
@@ -46,7 +48,11 @@
 
     function scrollMode() { return window.innerWidth > GRID_BP; }
     function measure() {
-      half = track.scrollWidth / 2;
+      // One copy's width = left position of the first item of the second copy.
+      // (Robuster als scrollWidth/2 — unabhängig davon, wie der Browser den letzten
+      //  trailing-margin oder raster-Logos in scrollWidth zählt.)
+      var kids = track.children, n = kids.length;
+      half = (n >= 2) ? kids[n >> 1].offsetLeft : track.scrollWidth / 2;
       speed = half > 0 ? half / 26000 : 0;    // ~26s per copy
     }
     function setSL(v) { viewport.scrollLeft = v; expectedSL = viewport.scrollLeft; }
