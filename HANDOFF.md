@@ -112,9 +112,13 @@ Popups) → Stats („Verstehen. Strukturieren. Umsetzen.") → Kontakt → Foot
 
 ## 9. Offene Punkte / TODO
 
-1. **Impressum & Datenschutz** im Footer sind noch `href="#"` (Platzhalter) – echte
-   Seiten/Links eintragen (`site/index.html`, Zeile ~264). Rechtlich vor „richtigem"
-   Livegang nötig.
+1. **Impressum & Datenschutz** sind angelegt (`site/impressum.html`,
+   `site/datenschutz.html`, aus dem Footer verlinkt). Das Impressum enthält die
+   faktischen Angaben der empiria GmbH. Die **Datenschutzerklärung** wurde bewusst
+   an die reale Seite angepasst (Hosting **Vercel** statt Webflow, **keine
+   Cookies/kein Consent-Tool**), weil eine 1:1-Übernahme der Müller&Ströbel-Seite
+   inhaltlich falsch gewesen wäre. → Vor „richtigem" Livegang idealerweise noch
+   **juristisch prüfen** lassen und ggf. an tatsächlich genutzte Dienste anpassen.
 2. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
    – vom Kunden final bestätigen lassen.
 3. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und

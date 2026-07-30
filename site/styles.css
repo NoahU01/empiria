@@ -440,6 +440,33 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
 .footer-links { display: flex; gap: 1rem; }
 .footer-links a:hover { color: #fff; }
 
+/* ============ Legal pages (Impressum / Datenschutz) ============ */
+.legal { padding-block: clamp(44px, 6vw, 84px) clamp(60px, 8vw, 110px); }
+.legal .container { max-width: 840px; }
+.legal h1 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1;
+  letter-spacing: -0.01em; margin: 0 0 1.6rem; color: var(--ink);
+}
+.legal h2 {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem); margin: 2.4rem 0 0.6rem; color: var(--ink);
+}
+.legal h3 { font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; margin: 1.5rem 0 0.4rem; color: var(--ink); }
+.legal p, .legal li { color: var(--ink-2); line-height: 1.72; font-size: 1.0625rem; }
+.legal p { margin: 0 0 1rem; }
+.legal ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+.legal li { margin-bottom: 0.4rem; }
+.legal address { font-style: normal; margin: 0 0 1rem; line-height: 1.72; color: var(--ink-2); }
+.legal a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.legal a:hover { color: var(--grey-70); }
+.legal .lead-note {
+  background: var(--grey-bg); border-radius: 14px;
+  padding: 16px 20px; margin: 0 0 2rem; font-size: 0.98rem;
+}
+.legal .updated { color: var(--grey-50); font-size: 0.92rem; margin-top: 2.6rem; }
+.nav-back { margin-left: auto; }
+
 /* ============ Modal ============ */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 100;
