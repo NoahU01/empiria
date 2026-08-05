@@ -110,15 +110,48 @@ Popups) → Stats („Verstehen. Strukturieren. Umsetzen.") → Kontakt → Foot
 - `≤ 640px` – zusätzlich: Logo-Leiste wird statisches Raster (Phones). iPads/Tablets
   (641–900+) behalten das laufende Laufband.
 
-## 9. Offene Punkte / TODO
+## 9. Tracking, Consent & SEO
+
+Kanonische Domain ist **`https://www.empiria.de`** (Apex macht 308 → www). Alle
+absoluten URLs (Sitemap, canonical, OG, JSON-LD) müssen die www-Variante nennen.
+
+**Reihenfolge im `<head>` ist kritisch** und in allen drei HTML-Seiten identisch:
+
+1. Inline: `gtag('consent','default', …)` – **alles `denied`**, `wait_for_update: 500`
+2. Cookiebot `uc.js` (cbid `54835321-…`, `data-blockingmode="auto"`, `data-culture="de"`)
+3. Google Tag `gtag.js` (GA4 **G-3VJ6JRK18C**) + `gtag('config', …)`
+
+Der Consent-Default muss **vor** dem CMP laufen, sonst überschreibt er dessen
+Update. Die Google-Tags tragen `data-cookieconsent="ignore"` – ohne das würde
+Cookiebots Auto-Blocking `gtag.js` komplett blockieren und Consent Mode könnte
+gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
+
+- `site/tracking.js` – zentraler Event-Helper (`window.gtag` mit dataLayer-Fallback,
+  also GTM-kompatibel ohne Umbau) + Sektions-Tracking per IntersectionObserver.
+  **Event-Namen sind das Vertragsstück Richtung GA4/Ads – nie umbenennen.**
+  Katalog steht als Kommentar oben in der Datei.
+- Footer hat auf allen Seiten einen **„Cookie-Einstellungen"**-Button
+  (`[data-cookie-settings]` → `Cookiebot.renew()`), Pflicht für den Widerruf.
+- `site/robots.txt` + `site/sitemap.xml` (3 URLs). KI-Crawler sind bewusst
+  **nicht** geblockt (GPTBot, ClaudeBot, Google-Extended) – das ist der halbe
+  „von KI gefunden werden"-Hebel.
+- `site/assets/og-image.png` (1200×630) wird von `site/og.mjs` erzeugt
+  (`python3 -m http.server 4599 &` … `node og.mjs`). Nur neu rendern, wenn sich
+  Markenbild oder Claim ändern.
+
+**Localhost-Falle:** Der Cookiebot-Banner erscheint lokal **nicht**; in der
+Konsole steht ein 404 auf `…/localhost/configuration.js`. Das ist erwartet
+(`localhost` liegt nicht in der Cookiebot Domain Group) und harmlos – die
+Banner-Verifikation muss gegen die Live-Domain laufen.
+
+## 10. Offene Punkte / TODO
 
 1. **Impressum & Datenschutz** sind angelegt (`site/impressum.html`,
    `site/datenschutz.html`, aus dem Footer verlinkt). Das Impressum enthält die
-   faktischen Angaben der empiria GmbH. Die **Datenschutzerklärung** wurde bewusst
-   an die reale Seite angepasst (Hosting **Vercel** statt Webflow, **keine
-   Cookies/kein Consent-Tool**), weil eine 1:1-Übernahme der Müller&Ströbel-Seite
-   inhaltlich falsch gewesen wäre. → Vor „richtigem" Livegang idealerweise noch
-   **juristisch prüfen** lassen und ggf. an tatsächlich genutzte Dienste anpassen.
+   faktischen Angaben der empiria GmbH. Die **Datenschutzerklärung** beschreibt
+   Vercel-Hosting, Cookiebot und Google Analytics 4 (Consent Mode v2). → Vor
+   „richtigem" Livegang idealerweise noch **juristisch prüfen** lassen und bei
+   jedem neu dazukommenden Dienst nachziehen. Wir sind keine Anwälte.
 2. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
    – vom Kunden final bestätigen lassen.
 3. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
@@ -126,7 +159,13 @@ Popups) → Stats („Verstehen. Strukturieren. Umsetzen.") → Kontakt → Foot
    diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
 4. **Favicon** ist aktuell ein Inline-SVG (Forward-Icon) – bei Bedarf durch das
    echte empiria-Favicon ersetzen.
-5. Analytics/Tracking, `sitemap.xml`, echte Meta-/OG-Tags sind noch nicht gesetzt.
+5. **Cookiebot-Banner live verifizieren** (geht lokal nicht, s. o.): Domain
+   `www.empiria.de` muss in der Cookiebot Domain Group stehen und gescannt sein.
+6. **GA4-Aufbewahrungsdauer** in der Property prüfen (Verwaltung → Datenanzeige →
+   Datenaufbewahrung). Die Datenschutzerklärung nennt bewusst keine feste
+   Monatszahl, solange die Einstellung nicht bestätigt ist.
+7. **Search Console (Domain-Property) + Bing Webmaster** sind noch nicht
+   eingerichtet; Sitemap dort einreichen.
 
 ---
 

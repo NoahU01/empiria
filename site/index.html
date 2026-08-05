@@ -5,8 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>empiria – Strategie, die wirkt.</title>
 <meta name="description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<link rel="canonical" href="https://www.empiria.de/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/">
+<meta property="og:title" content="empiria – Strategie, die wirkt.">
+<meta property="og:description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2: ALLES denied, bevor irgendein Tag lädt. =====
+     data-cookieconsent="ignore" hält Cookiebots Auto-Blocking von den
+     Google-Tags fern — sonst würde gtag.js komplett blockiert und Consent
+     Mode könnte gar nicht erst greifen. -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+
+<!-- ===== Cookiebot CMP (manuell implementiert, NICHT über GTM) =====
+     Sendet das consent-update an den Google Tag automatisch. -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+
+<!-- ===== Google Tag (GA4) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  gtag('config', 'G-3VJ6JRK18C');
+</script>
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 9 L16 16 L9 23'/%3E%3Cpath d='M17 9 L24 16 L17 23'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.empiria.de/#organization",
+  "name": "empiria GmbH",
+  "alternateName": "empiria",
+  "url": "https://www.empiria.de/",
+  "logo": "https://www.empiria.de/assets/og-image.png",
+  "image": "https://www.empiria.de/assets/og-image.png",
+  "description": "empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.",
+  "email": "daniel.stroebel@empiria.de",
+  "telephone": "+49 176 31347217",
+  "vatID": "DE281217286",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kapellengasse 6",
+    "postalCode": "74564",
+    "addressLocality": "Crailsheim",
+    "addressCountry": "DE"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Daniel Ströbel",
+    "jobTitle": "Geschäftsführer",
+    "sameAs": "https://www.linkedin.com/in/daniel-stroebel/"
+  },
+  "areaServed": "DE",
+  "knowsAbout": [
+    "Strategieberatung",
+    "Versicherungswirtschaft",
+    "Strategieumsetzung",
+    "Geschäftsmodellentwicklung"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -72,7 +162,7 @@
 
 <main>
   <!-- ===== Hero ===== -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-head">
@@ -261,7 +351,7 @@
 <footer class="site-footer">
   <div class="container footer-row">
     <span>empiria GmbH 2026</span>
-    <span class="footer-links"><a href="impressum.html">Impressum</a> <span>|</span> <a href="datenschutz.html">Datenschutz</a></span>
+    <span class="footer-links"><a href="impressum.html">Impressum</a> <span>|</span> <a href="datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
   </div>
 </footer>
 
@@ -278,5 +368,6 @@
 </div>
 
 <script src="script.js"></script>
+<script src="tracking.js"></script>
 </body>
 </html>

@@ -437,8 +437,16 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
   padding-block: 28px;
   font-size: 0.95rem;
 }
-.footer-links { display: flex; gap: 1rem; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 .footer-links a:hover { color: #fff; }
+/* "Cookie-Einstellungen" ist ein <button> (ruft Cookiebot.renew()), muss aber
+   wie die Footer-Links aussehen. */
+.footer-links button {
+  appearance: none; -webkit-appearance: none;
+  background: none; border: 0; padding: 0;
+  font: inherit; color: inherit; cursor: pointer;
+}
+.footer-links button:hover { color: #fff; }
 
 /* ============ Legal pages (Impressum / Datenschutz) ============ */
 .legal { padding-block: clamp(44px, 6vw, 84px) clamp(60px, 8vw, 110px); }
@@ -621,6 +629,9 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
   .dani-btn-icon svg { width: 28px; height: 28px; }
 
   .footer-row { flex-direction: column; gap: 12px; text-align: center; }
+  /* Trenner raus: sobald die Links umbrechen, hinge sonst ein "|" am Zeilenende. */
+  .footer-links > span { display: none; }
+  .footer-links { gap: 8px 20px; }
 }
 
 /* Phones only: logo bar becomes a static icon grid.
