@@ -159,8 +159,14 @@ Banner-Verifikation muss gegen die Live-Domain laufen.
    diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
 4. **Favicon** ist aktuell ein Inline-SVG (Forward-Icon) – bei Bedarf durch das
    echte empiria-Favicon ersetzen.
-5. **Cookiebot-Banner live verifizieren** (geht lokal nicht, s. o.): Domain
-   `www.empiria.de` muss in der Cookiebot Domain Group stehen und gescannt sein.
+5. **Cookiebot: Vorauswahl „Statistiken" abschalten** (Stand 05.08.2026 aktiv).
+   Ein vorangehaktes Kästchen für nicht-notwendige Cookies ist nach EuGH
+   „Planet49" **keine wirksame Einwilligung** — wer „Auswahl erlauben" klickt,
+   erteilt GA4-Consent ohne aktive Entscheidung. Die so erhobenen Daten wären
+   rechtlich wertlos, zusätzlich abmahnfähig. Zu ändern im Cookiebot-Manager
+   (Domain Group → Banner-/Dialog-Einstellungen), **nicht im Code**.
+   Gegenprüfen: `CybotCookiebotDialogBodyLevelButtonStatistics.checked` muss
+   ohne Interaktion `false` sein.
 6. **GA4-Aufbewahrungsdauer** in der Property prüfen (Verwaltung → Datenanzeige →
    Datenaufbewahrung). Die Datenschutzerklärung nennt bewusst keine feste
    Monatszahl, solange die Einstellung nicht bestätigt ist.
