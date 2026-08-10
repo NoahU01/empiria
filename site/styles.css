@@ -450,7 +450,12 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
 
 /* ============ Legal pages (Impressum / Datenschutz) ============ */
 .legal { padding-block: clamp(44px, 6vw, 84px) clamp(60px, 8vw, 110px); }
-.legal .container { max-width: 840px; }
+/* Container auf normaler Breite lassen, damit die linke Kante mit dem Logo im
+   Header fluchtet; stattdessen die Textspalte begrenzen. Das calc reproduziert
+   exakt die vorherige Zeilenlänge (früher: 840px-Box minus beidseitiges
+   padding-inline) — nur eben linksbündig statt zentriert. */
+.legal .container { max-width: var(--container); }
+.legal .container > * { max-width: calc(840px - 2 * var(--pad-x)); }
 .legal h1 {
   font-family: var(--font-serif); font-weight: 600;
   font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1;
