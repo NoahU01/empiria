@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/impressum", "destination": "/impressum.html", "permanent": true },
+    { "source": "/impressum/", "destination": "/impressum.html", "permanent": true },
+    { "source": "/datenschutz", "destination": "/datenschutz.html", "permanent": true },
+    { "source": "/datenschutz/", "destination": "/datenschutz.html", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/site/index.html" },
     { "source": "/(.*)", "destination": "/site/$1" }
