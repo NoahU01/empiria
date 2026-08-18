@@ -1,6 +1,6 @@
 # empiria – Website · Handoff
 
-Stand: 2026-07-28
+Stand: 2026-08-18
 
 Marketing-One-Pager für **empiria** (Strategieberatung für Führungskräfte in der
 Versicherungsbranche, GF Daniel Ströbel). 1:1 nachgebaut aus dem Kunden-Mockup
@@ -14,6 +14,10 @@ Versicherungsbranche, GF Daniel Ströbel). 1:1 nachgebaut aus dem Kunden-Mockup
 - **Hosting:** Vercel (mit dem Repo verbunden → jeder Push auf `main` deployt automatisch)
 - **Root-`vercel.json`** leitet alle Requests nach `site/` um (die Website liegt im
   Unterordner). Alternativ ginge in Vercel: *Settings → Root Directory = `site`*.
+- **`main` = Produktion.** Nur was hier liegt, erscheint auf `www.empiria.de`.
+  Jeder andere Branch bekommt eine eigene Vorschau — siehe Abschnitt 10.
+- Root-`vercel.json` enthält außerdem **301-Weiterleitungen** für die Legal-URLs
+  der WordPress-Vorgängerseite (`/impressum/`, `/datenschutz/`).
 - Lokaler Projektordner ist bereits mit dem Remote verbunden (`main` trackt `origin/main`).
 
 ## 2. Tech-Stack
@@ -97,6 +101,13 @@ Popups) → Stats („Verstehen. Strukturieren. Umsetzen.") → Kontakt → Foot
   eager laden.** Unter `640px` wird die Leiste zum **statischen Icon-Raster** (3/Reihe).
 - **Logo → Startseite:** `.brand`-Klick scrollt per JS nach ganz oben. (Ein `#top`-Anker
   auf dem `position: sticky`-Header funktioniert nicht, weil das Element ohnehin oben klebt.)
+- **Legal-Seiten linksbündig zum Logo:** `.legal .container` behält die normale
+  Container-Breite (linke Kante = Logo-Kante); begrenzt wird stattdessen die
+  Textspalte über `max-width: calc(840px - 2 * var(--pad-x))`. Das `calc` ist
+  Absicht: Es reproduziert exakt die Zeilenlänge der früheren zentrierten
+  840px-Box, weil `--pad-x` fluid ist. Ein fester Wert würde die Zeilen bei
+  mittleren Breiten unbemerkt verkürzen. **Nicht durch `max-width: 840px` am
+  Container ersetzen** — dann rutscht der Text wieder ~200px nach rechts.
 - **Popups:** ein einziges Modal-Markup, Inhalt wird aus `MODALS` in `script.js` befüllt.
 - **Sektions-Overflow:** `.leistungen { overflow: visible }`, damit der Kreis ins Modul
   darüber hineinläuft; die schwarze Stats-Section darunter deckt den Überlauf ab,
@@ -119,7 +130,8 @@ absoluten URLs (Sitemap, canonical, OG, JSON-LD) müssen die www-Variante nennen
 
 1. Inline: `gtag('consent','default', …)` – **alles `denied`**, `wait_for_update: 500`
 2. Cookiebot `uc.js` (cbid `54835321-…`, `data-blockingmode="auto"`, `data-culture="de"`)
-3. Google Tag `gtag.js` (GA4 **G-3VJ6JRK18C**) + `gtag('config', …)`
+3. Google Tag `gtag.js` (GA4 **G-3VJ6JRK18C**) + `gtag('config', …)`,
+   **gekapselt in eine Hostname-Prüfung** (s. u.)
 
 Der Consent-Default muss **vor** dem CMP laufen, sonst überschreibt er dessen
 Update. Die Google-Tags tragen `data-cookieconsent="ignore"` – ohne das würde
@@ -138,40 +150,137 @@ gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
 - `site/assets/og-image.png` (1200×630) wird von `site/og.mjs` erzeugt
   (`python3 -m http.server 4599 &` … `node og.mjs`). Nur neu rendern, wenn sich
   Markenbild oder Claim ändern.
+- **Favicon-Satz** (`favicon.svg`, `favicon.ico` mit 16/32/48 px, `apple-touch-icon.png`)
+  wird von `site/favicon.mjs` erzeugt. Das Skript **liest die Pfade des Symbols
+  `ic-forward` zur Laufzeit aus `index.html`** — nie von Hand kopieren, sonst
+  laufen Icon und Seite auseinander. Es misst außerdem die echte Bounding-Box,
+  weil das Symbol in seiner viewBox nicht zentriert sitzt (y ≈ 31–201); stures
+  Übernehmen der viewBox versetzt den Pfeil sichtbar nach unten.
+  Achtung: **Google cached Favicons in den SERPs wochenlang separat** — ein
+  Wechsel schlägt dort erst mit Verzögerung durch.
+
+**GA4 feuert ausschließlich auf der Produktions-Domain:**
+
+```js
+if (/^(www\.)?empiria\.de$/.test(location.hostname)) { gtag('config', 'G-…'); }
+```
+
+Ohne diese Sperre schicken **Vercel-Preview-Deployments und lokale Tests ihre
+Klicks in dieselbe Property** und verfälschen die Zahlen — herausrechnen lässt
+sich das hinterher nicht. `gtag.js` lädt weiterhin überall (harmlos, ohne
+`config` gehen keine Hits raus); nur der `config`-Aufruf ist gebunden.
+Verifiziert: localhost/Preview 0 Treffer an `/g/collect`, Produktion trackt normal.
+
+### Indexierungs-Historie (damit niemand erschrickt)
+
+Auf `empiria.de` lag vorher ein **WordPress einer anderen Firma**. Die Search
+Console führt daher noch Alt-URLs (`/kompetenzen/`, `/zielgruppen/…`,
+`/kontaktseite/`, `/uber-uns/` …). Die liefern alle **404 — das ist das korrekte
+Signal** und löst sich von selbst; die Zahl der „indexierten Seiten" fiel seit
+dem Livegang bereits von 15 auf 12 und läuft auf 3 zu.
+
+Bewusst **nicht** umgeleitet wurden diese Altlasten: Eine Sammelumleitung
+inhaltsfremder Seiten auf die Startseite wertet Google als **Soft-404**.
+Ausnahme sind `/impressum/` und `/datenschutz/` — dort gibt es ein echtes
+1:1-Äquivalent, deshalb 301 in der `vercel.json`.
+Ebenfalls **nicht** benutzen: das „Entfernen"-Werkzeug der Search Console —
+das blendet URLs nur 6 Monate aus, statt sie zu bereinigen.
 
 **Localhost-Falle:** Der Cookiebot-Banner erscheint lokal **nicht**; in der
 Konsole steht ein 404 auf `…/localhost/configuration.js`. Das ist erwartet
 (`localhost` liegt nicht in der Cookiebot Domain Group) und harmlos – die
 Banner-Verifikation muss gegen die Live-Domain laufen.
 
-## 10. Offene Punkte / TODO
+## 10. Zusammenarbeit & Branch-Workflow
 
-1. **Impressum & Datenschutz** sind angelegt (`site/impressum.html`,
-   `site/datenschutz.html`, aus dem Footer verlinkt). Das Impressum enthält die
-   faktischen Angaben der empiria GmbH. Die **Datenschutzerklärung** beschreibt
-   Vercel-Hosting, Cookiebot und Google Analytics 4 (Consent Mode v2). → Vor
-   „richtigem" Livegang idealerweise noch **juristisch prüfen** lassen und bei
-   jedem neu dazukommenden Dienst nachziehen. Wir sind keine Anwälte.
-2. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
-   – vom Kunden final bestätigen lassen.
-3. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
-   WhatsApp-Referenz-JPEGs sind mitversioniert. Wenn das Repo schlank sein soll, können
-   diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
-4. **Favicon** ist aktuell ein Inline-SVG (Forward-Icon) – bei Bedarf durch das
-   echte empiria-Favicon ersetzen.
-5. **Cookiebot: Vorauswahl „Statistiken" abschalten** (Stand 05.08.2026 aktiv).
-   Ein vorangehaktes Kästchen für nicht-notwendige Cookies ist nach EuGH
-   „Planet49" **keine wirksame Einwilligung** — wer „Auswahl erlauben" klickt,
-   erteilt GA4-Consent ohne aktive Entscheidung. Die so erhobenen Daten wären
-   rechtlich wertlos, zusätzlich abmahnfähig. Zu ändern im Cookiebot-Manager
-   (Domain Group → Banner-/Dialog-Einstellungen), **nicht im Code**.
-   Gegenprüfen: `CybotCookiebotDialogBodyLevelButtonStatistics.checked` muss
-   ohne Interaktion `false` sein.
-6. **GA4-Aufbewahrungsdauer** in der Property prüfen (Verwaltung → Datenanzeige →
+**Grundprinzip:** Vercel baut aus *jedem* Push eine eigene, vollständige Kopie
+der Website. Welche Adresse sie bekommt, hängt allein am Branch:
+
+| Push auf | Vercel nennt es | Erreichbar unter |
+|---|---|---|
+| `main` | Production | `www.empiria.de` |
+| jeder andere Branch | Preview | eigene `*.vercel.app`-Adresse |
+
+`www.empiria.de` wird **ausschließlich** aus `main` gebaut. Arbeit auf einem
+anderen Branch kann die Live-Seite technisch nicht anfassen.
+
+- Mitarbeiter-Branch **`Daniel`** (großes D), Vorschau:
+  `https://empiria-git-daniel-empiria-gmb-h.vercel.app`
+  Die URL ist stabil und zeigt immer den neuesten Push auf diesen Branch. Sie
+  **entsteht erst mit dem ersten Push** (davor 404). Wird der Branch umbenannt
+  oder gelöscht, ändert sich die URL.
+- **Vercel Deployment Protection ist für dieses Projekt abgeschaltet** (war
+  „Standard Protection", die Previews hinter ein Vercel-Login stellt). Alle
+  Deployment-URLs sind damit öffentlich erreichbar. Vertretbar, weil statische
+  Seite ohne Secrets und `x-robots-tag: noindex` gesetzt bleibt — die URLs sind
+  also unauffindbar, aber nicht geheim.
+  Achtung: Der Toggle unter *Team → Deployment Protection → „Defaults for New
+  Projects"* betrifft **nur künftige** Projekte. Die aktive Einstellung steht in
+  der Projektzeile darunter bzw. unter *Projekt → Settings → Deployment Protection*.
+
+**Zwei Dinge sind auf Previews absichtlich anders als live** (kein Bug):
+
+1. **Kein Cookie-Banner** — die `*.vercel.app`-Domain steht nicht in der
+   Cookiebot Domain Group (gleiche Falle wie localhost).
+2. **Kein Tracking** — s. Hostname-Sperre in Abschnitt 9.
+
+Beides lässt sich nur gegen die Live-Domain testen.
+
+**Ablauf mit Pull Request:**
+
+```
+git checkout Daniel && git pull origin main   # erst main einholen
+… arbeiten …
+git push origin Daniel                        # -> Vercel baut die Preview neu
+```
+Dann auf GitHub den PR öffnen (macht, wer die Änderung gebaut hat) und den
+Reviewer eintragen. Die **Vercel-GitHub-App kommentiert die Preview-URL in den
+PR** — das ist dieselbe Integration, die Build-Status als Commit-Status meldet
+(darüber wurde seinerzeit auch ein „Deployment was blocked" diagnostiziert).
+Nach dem Merge auf `main` deployt Vercel automatisch nach Produktion.
+
+> **Kein technischer Schutz auf `main`:** Branch-Schutzregeln gibt es bei
+> privaten Repos im kostenlosen GitHub-Plan nicht. Mitarbeiter mit `write`
+> könnten auch direkt auf `main` pushen — der PR-Weg ist eine Absprache, keine
+> erzwungene Regel. Sicherheitsnetz ist `git revert`.
+
+> **Commit-Autor muss eine gültige E-Mail sein.** Vercel blockt Deployments von
+> Commits mit einer Adresse wie `user@Rechnername.local` („Deployment was
+> blocked", kein Build-Fehler). Vor dem ersten Commit:
+> `git config --global user.email "<GitHub-Adresse>"`.
+
+## 11. Offene Punkte / TODO
+
+**Erledigt seit dem Tracking-Setup:** Favicon (echtes Brand-Icon), Cookiebot-
+Vorauswahl „Statistiken" abgeschaltet (live gegengeprüft), Search Console als
+Domain-Property + Bing-Import, Sitemap eingereicht (Status „Erfolgreich",
+3 Seiten erkannt).
+
+1. **Datenschutzerklärung juristisch prüfen lassen.** Sie beschreibt aktuell
+   Vercel-Hosting, Cookiebot und GA4 mit Consent Mode v2 — inhaltlich passend zu
+   dem, was die Seite wirklich lädt. Bei jedem neuen Dienst nachziehen.
+   Wir sind keine Anwälte.
+2. **GA4-Schlüsselereignisse anlegen/bestätigen:** `kontakt_email_klick` und
+   `kontakt_telefon_klick` (Verwaltung → Ereignisse → Schlüsselereignisse, Name
+   exakt). Die Admin-Ereignisliste braucht nach dem ersten Eintreffen 24–48 h;
+   der Echtzeitbericht ist sofort da.
+3. **GA4-Aufbewahrungsdauer prüfen** (Verwaltung → Datenanzeige →
    Datenaufbewahrung). Die Datenschutzerklärung nennt bewusst keine feste
    Monatszahl, solange die Einstellung nicht bestätigt ist.
-7. **Search Console (Domain-Property) + Bing Webmaster** sind noch nicht
-   eingerichtet; Sitemap dort einreichen.
+4. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
+   – vom Kunden final bestätigen lassen.
+5. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
+   WhatsApp-Referenz-JPEGs sind mitversioniert. Wenn das Repo schlank sein soll, können
+   diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
+6. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
+   Markdown-Report (Conversions, Quellen, Modul-Scroll-Funnel aus den
+   `section_view_*`-Events, GSC-Chancen-Keywords). Referenz-Implementierung liegt
+   im AdMemory-Repo (`scripts/report.mjs`). Sinnvoll erst ab 2–4 Wochen Datenlage.
+   Fallstricke: Google blockt Dienstkonto-Schlüssel → OAuth-Desktop-Client nötig,
+   und die OAuth-App muss auf „In Produktion" veröffentlicht werden, sonst stirbt
+   der Refresh-Token nach 7 Tagen.
+7. Optional: **`llms.txt` / FAQPage-Schema** als KI-/SERP-Verstärker (ergänzt das
+   bestehende JSON-LD `Organization`).
 
 ---
 
