@@ -55,7 +55,13 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
 <script data-cookieconsent="ignore">
   gtag('js', new Date());
-  gtag('config', 'G-3VJ6JRK18C');
+  // GA4 NUR auf der Produktions-Domain konfigurieren. Ohne diese Sperre
+  // schicken Vercel-Preview-Deployments (*.vercel.app) und lokale Tests ihre
+  // Klicks in dieselbe Property und verfaelschen die Zahlen dauerhaft --
+  // herausrechnen laesst sich das hinterher nicht mehr.
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
 </script>
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
