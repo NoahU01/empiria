@@ -254,7 +254,9 @@ Nach dem Merge auf `main` deployt Vercel automatisch nach Produktion.
 **Erledigt seit dem Tracking-Setup:** Favicon (echtes Brand-Icon), Cookiebot-
 Vorauswahl „Statistiken" abgeschaltet (live gegengeprüft), Search Console als
 Domain-Property + Bing-Import, Sitemap eingereicht (Status „Erfolgreich",
-3 Seiten erkannt), **GA4-Schlüsselereignisse angelegt** (18.08.2026):
+3 Seiten erkannt), **GA4-Aufbewahrungsdauer auf 14 Monate** gesetzt (Ereignis-
+und Nutzerdaten; die Zahl steht jetzt konkret in der Datenschutzerklärung),
+**GA4-Schlüsselereignisse angelegt** (18.08.2026):
 `kontakt_email_klick` und `kontakt_telefon_klick` — und nur diese beiden.
 Bewusst *keine* Schlüsselereignisse sind `cta_kontakt`, `linkedin_klick`,
 `popup_*` und `section_view_*`: In GA4 zählen alle Schlüsselereignisse in
@@ -266,22 +268,19 @@ Ads auf Leute optimieren lassen, die nur einen Button geklickt haben.
    Vercel-Hosting, Cookiebot und GA4 mit Consent Mode v2 — inhaltlich passend zu
    dem, was die Seite wirklich lädt. Bei jedem neuen Dienst nachziehen.
    Wir sind keine Anwälte.
-2. **GA4-Aufbewahrungsdauer prüfen** (Verwaltung → Datenanzeige →
-   Datenaufbewahrung). Die Datenschutzerklärung nennt bewusst keine feste
-   Monatszahl, solange die Einstellung nicht bestätigt ist.
-3. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
+2. **LinkedIn** des Buttons/Badges zeigt auf `https://www.linkedin.com/in/daniel-stroebel/`
    – vom Kunden final bestätigen lassen.
-4. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
+3. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
    WhatsApp-Referenz-JPEGs sind mitversioniert. Wenn das Repo schlank sein soll, können
    diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
-5. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
+4. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
    Markdown-Report (Conversions, Quellen, Modul-Scroll-Funnel aus den
    `section_view_*`-Events, GSC-Chancen-Keywords). Referenz-Implementierung liegt
    im AdMemory-Repo (`scripts/report.mjs`). Sinnvoll erst ab 2–4 Wochen Datenlage.
    Fallstricke: Google blockt Dienstkonto-Schlüssel → OAuth-Desktop-Client nötig,
    und die OAuth-App muss auf „In Produktion" veröffentlicht werden, sonst stirbt
    der Refresh-Token nach 7 Tagen.
-6. Optional: **`llms.txt` / FAQPage-Schema** als KI-/SERP-Verstärker (ergänzt das
+5. Optional: **`llms.txt` / FAQPage-Schema** als KI-/SERP-Verstärker (ergänzt das
    bestehende JSON-LD `Organization`).
 
 ---
