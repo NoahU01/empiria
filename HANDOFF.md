@@ -266,21 +266,30 @@ dieselbe Conversion-Kennzahl, und dieselbe Liste wandert später nach Google
 Ads. Weiche Signale mit aufzunehmen würde die Conversion-Rate aufblähen und
 Ads auf Leute optimieren lassen, die nur einen Button geklickt haben.
 
+**Bewusst entschieden gegen „Repo verschlanken" (18.08.2026):** Von 17,4 MB
+versionierter Dateien entfallen 14,5 MB auf die zwei Quell-SVGs des
+Daniel-Porträts. Das ist für ein Git-Repo unkritisch. Falls es doch jemand
+angeht — die entscheidende Einschränkung: **`git rm --cached` verschlankt gar
+nichts.** Die Blobs bleiben in der Historie, ein frischer Clone lädt sie
+weiterhin. Echtes Verschlanken heißt Historie umschreiben (`git filter-repo`)
+und damit **Force-Push aller Branches** — jeder Mitarbeiter muss neu klonen.
+Wenn überhaupt, dann zu einem Zeitpunkt, an dem niemand unveröffentlichte
+Arbeit auf einem Branch liegen hat. Achtung: `Bild Daniel für mobile
+Version_2.0.svg` ist die dokumentierte Quelle für `assets/daniel-round.webp` —
+nicht ersatzlos löschen.
+
 1. **Datenschutzerklärung juristisch prüfen lassen.** Sie beschreibt aktuell
    Vercel-Hosting, Cookiebot und GA4 mit Consent Mode v2 — inhaltlich passend zu
    dem, was die Seite wirklich lädt. Bei jedem neuen Dienst nachziehen.
    Wir sind keine Anwälte.
-2. Optional **Repo verschlanken:** die großen Quell-SVGs (2× ~7,6 MB Daniel-SVG) und
-   WhatsApp-Referenz-JPEGs sind mitversioniert. Wenn das Repo schlank sein soll, können
-   diese aus der Versionierung genommen werden (die ausgelieferte WebP bleibt).
-3. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
+2. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
    Markdown-Report (Conversions, Quellen, Modul-Scroll-Funnel aus den
    `section_view_*`-Events, GSC-Chancen-Keywords). Referenz-Implementierung liegt
    im AdMemory-Repo (`scripts/report.mjs`). Sinnvoll erst ab 2–4 Wochen Datenlage.
    Fallstricke: Google blockt Dienstkonto-Schlüssel → OAuth-Desktop-Client nötig,
    und die OAuth-App muss auf „In Produktion" veröffentlicht werden, sonst stirbt
    der Refresh-Token nach 7 Tagen.
-4. Optional: **`llms.txt` / FAQPage-Schema** als KI-/SERP-Verstärker (ergänzt das
+3. Optional: **`llms.txt` / FAQPage-Schema** als KI-/SERP-Verstärker (ergänzt das
    bestehende JSON-LD `Organization`).
 
 ---
