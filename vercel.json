@@ -7,6 +7,10 @@
   ],
   "rewrites": [
     { "source": "/", "destination": "/site/index.html" },
+    { "source": "/leistungen/strategie", "destination": "/site/leistungen/strategie.html" },
+    { "source": "/leistungen/komplexe-themen", "destination": "/site/leistungen/komplexe-themen.html" },
+    { "source": "/leistungen/innovation", "destination": "/site/leistungen/innovation.html" },
+    { "source": "/leistungen/teams", "destination": "/site/leistungen/teams.html" },
     { "source": "/(.*)", "destination": "/site/$1" }
   ]
 }

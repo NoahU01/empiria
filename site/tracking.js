@@ -52,17 +52,19 @@
     if (!a) return;
     var href = a.getAttribute("href") || "";
 
+    // Unterseiten verlinken Anker als "/index.html#kontakt" statt "#kontakt" ->
+    // per Endswith matchen, damit dieselben CTAs seitenübergreifend getrackt werden.
     if (href.indexOf("mailto:") === 0) {
       track("kontakt_email_klick", { link_url: href });
     } else if (href.indexOf("tel:") === 0) {
       track("kontakt_telefon_klick", { link_url: href });
     } else if (href.indexOf("linkedin.com") > -1) {
       track("linkedin_klick", { link_url: href });
-    } else if (href === "#kontakt") {
+    } else if (/#kontakt$/.test(href)) {
       track("cta_kontakt", { link_text: (a.textContent || "").trim() });
-    } else if (href === "#problem" && a.classList.contains("btn")) {
+    } else if (/#problem$/.test(href) && a.classList.contains("btn")) {
       track("cta_mehr_erfahren");
-    } else if (href === "#leistungen" && a.classList.contains("btn")) {
+    } else if (/#leistungen$/.test(href) && a.classList.contains("btn")) {
       track("cta_loesungen");
     }
   }, true);
