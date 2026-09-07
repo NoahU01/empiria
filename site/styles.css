@@ -520,8 +520,10 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
    zugeschnitten (kurzer Text mit hartem <br>). Bei den Detailseiten ist die Headline
    teils einzeilig und länger -> max-content sprengt sonst die Grid-Spalte und
    überlappt Icon/Lead-Text. Hier auf normales Grid-Stretch zurücksetzen. */
-.leistung-hero .hero-head { width: auto; max-width: none; }
-.leistung-hero-icon { position: relative; width: 56px; height: 56px; margin-top: 1.2rem; transform: none; }
+.leistung-hero { padding-top: clamp(100px, 11vw, 172px); padding-bottom: clamp(64px, 7vw, 108px); }
+.leistung-hero .hero-head { width: auto; max-width: none; text-align: right; }
+.leistung-hero .kicker { font-weight: 300; }
+.leistung-hero .hero-copy { padding-top: clamp(64px, 7vw, 84px); }
 .leistung-content { position: relative; z-index: 1; max-width: 680px; }
 .leistung-content p { color: var(--ink-2); font-size: 1.0625rem; line-height: 1.72; margin: 0 0 1.15rem; }
 .leistung-content p:last-child { margin-bottom: 0; }
