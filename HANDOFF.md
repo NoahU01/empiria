@@ -1,6 +1,6 @@
 # empiria – Website · Handoff
 
-Stand: 2026-08-18
+Stand: 2026-09-11
 
 Marketing-One-Pager für **empiria** (Strategieberatung für Führungskräfte in der
 Versicherungsbranche, GF Daniel Ströbel). 1:1 nachgebaut aus dem Kunden-Mockup
@@ -142,6 +142,18 @@ gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
   also GTM-kompatibel ohne Umbau) + Sektions-Tracking per IntersectionObserver.
   **Event-Namen sind das Vertragsstück Richtung GA4/Ads – nie umbenennen.**
   Katalog steht als Kommentar oben in der Datei.
+- **Sektions-Tracking misst zwei Dinge** (seit 11.09.2026, 1:1 von admemory.de
+  `components/ui/section-tracker.tsx` übernommen):
+  `section_view_<id>` = Reichweite (einmal pro Pageload, bis wohin wird
+  gescrollt) und `section_time_<id>` = **Verweildauer je Sektion** in Sekunden
+  im `value`-Parameter. GA4 summiert `value` zur Metrik **eventValue**.
+  Ø Verweildauer = eventValue ÷ Anzahl `section_view_<id>` — **nie** durch
+  `eventCount` teilen, Zeit-Events können pro Besuch mehrfach feuern
+  (Tab-Wechsel sendet zwischendurch), `section_view` genau einmal.
+  Timer läuft nur bei sichtbarem Tab, unter 1 s wird verworfen
+  (Durchscrollen), Deckel 600 s (liegengelassene Tabs). Versand per Beacon
+  bei `visibilitychange`/`pagehide`. Sektions-IDs: `hero`, `problem`,
+  `loesung`, `leistungen`, `arbeitsweise`, `kontakt`.
 - Footer hat auf allen Seiten einen **„Cookie-Einstellungen"**-Button
   (`[data-cookie-settings]` → `Cookiebot.renew()`), Pflicht für den Widerruf.
 - `site/robots.txt` + `site/sitemap.xml` (3 URLs). KI-Crawler sind bewusst
@@ -284,7 +296,8 @@ nicht ersatzlos löschen.
    Wir sind keine Anwälte.
 2. **Nicht gebaut: Reporting-Pipeline.** GA4 Data API + Search Console → monatlicher
    Markdown-Report (Conversions, Quellen, Modul-Scroll-Funnel aus den
-   `section_view_*`-Events, GSC-Chancen-Keywords). Referenz-Implementierung liegt
+   `section_view_*`-Events, Verweildauer je Sektion aus `section_time_*`,
+   GSC-Chancen-Keywords). Referenz-Implementierung liegt
    im AdMemory-Repo (`scripts/report.mjs`). Sinnvoll erst ab 2–4 Wochen Datenlage.
    Fallstricke: Google blockt Dienstkonto-Schlüssel → OAuth-Desktop-Client nötig,
    und die OAuth-App muss auf „In Produktion" veröffentlicht werden, sonst stirbt

@@ -27,7 +27,8 @@
      cta_mehr_erfahren      – Hero-Button "mehr erfahren"
      cta_loesungen          – "konkrete Lösungen anzeigen"
      popup_<key>            – Leistungs-/Lösungs-Popup geöffnet (Interessen-Signal)
-     section_view_<id>      – Sektion wurde gesehen (Absprung-Analyse)
+     section_view_<id>      – Sektion wurde gesehen (Reichweite / Absprung-Analyse)
+     section_time_<id>      – Sekunden im Viewport, als `value` (Verweildauer je Sektion)
      cookie_einstellungen   – Cookie-Banner erneut geöffnet
   */
 
@@ -85,38 +86,108 @@
     });
   });
 
-  /* ---------- Sektions-Tracking (Phase 10: "wo springen sie ab?") ----------
+  /* ---------- Sektions-Tracking: Reichweite + Verweildauer ----------
      GA4 sieht von Haus aus nur Seiten. Bei einem One-Pager ist das wertlos –
-     deshalb feuert jede Sektion einmal pro Pageload ein eigenes Event.
+     deshalb misst jede Sektion zwei Dinge (identisch zu admemory.de,
+     components/ui/section-tracker.tsx):
+
+     1. section_view_<id>  – einmal pro Pageload, sobald die Sektion sichtbar
+        war. Das ist die Reichweite: bis wohin wird gescrollt.
+     2. section_time_<id>  – die im Viewport verbrachte Zeit in Sekunden, als
+        `value` mitgegeben. GA4 summiert das zur Metrik eventValue.
+        Ø Verweildauer = eventValue / Anzahl section_view_<id> (NICHT durch
+        eventCount teilen: Zeit-Events können pro Besuch mehrfach feuern,
+        section_view genau einmal).
+
      Die Sektion steckt im NAMEN (nicht als Parameter), damit in GA4 keine
      Custom Dimension angelegt werden muss.
 
-     Zwei Schwellen, weil eine allein nicht reicht: sehr hohe Sektionen füllen
-     den Viewport komplett, erreichen aber nie eine hohe intersectionRatio. */
+     Zwei Sichtbarkeits-Schwellen, weil eine allein nicht reicht: sehr hohe
+     Sektionen füllen den Viewport komplett, erreichen aber nie eine hohe
+     intersectionRatio.
+
+     Die Zeit läuft nur, solange der Tab sichtbar ist (visibilitychange) und
+     wird beim Verlassen (pagehide) bzw. Tab-Wechsel per Beacon gesendet. */
   (function () {
     if (!("IntersectionObserver" in window)) return;
     var sections = document.querySelectorAll("section[id]");
     if (!sections.length) return;
 
-    var seen = {};
+    var VISIBLE_RATIO = 0.15;
+    var VIEWPORT_FILL = 0.3;   // Anteil des Viewports, den eine hohe Sektion füllen muss
+    var MAX_SECONDS = 600;     // Deckel gegen Tabs, die stundenlang offen liegen
+    var MIN_SECONDS = 1;       // unter einer Sekunde ist Durchscrollen, keine Aufmerksamkeit
+
+    var seen = {};      // id -> true, section_view schon gesendet
+    var visible = {};   // id -> true, gerade im Viewport
+    var since = {};     // id -> performance.now() beim Sichtbarwerden
+    var totals = {};    // id -> aufsummierte Millisekunden, noch nicht gesendet
     var vh = window.innerHeight || document.documentElement.clientHeight;
+
+    function now() { return performance.now(); }
+
+    // Laufende Timer stoppen und aufaddieren (Tab-Wechsel, Seite verlassen).
+    function pauseAll() {
+      for (var id in since) {
+        totals[id] = (totals[id] || 0) + (now() - since[id]);
+      }
+      since = {};
+    }
+    // Timer für alles wieder starten, was gerade sichtbar ist.
+    function resumeAll() {
+      for (var id in visible) {
+        if (!(id in since)) since[id] = now();
+      }
+    }
+
+    function send() {
+      pauseAll();
+      for (var id in totals) {
+        var seconds = Math.round(totals[id] / 1000);
+        if (seconds < MIN_SECONDS) continue;
+        track("section_time_" + id, {
+          value: Math.min(seconds, MAX_SECONDS),
+          transport_type: "beacon"
+        });
+      }
+      totals = {};
+      // Sichtbares läuft weiter, falls der Nutzer zurückkommt.
+      resumeAll();
+    }
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var id = entry.target.id;
-        if (seen[id]) return;
+        if (!id) return;
 
-        var ratio = entry.intersectionRatio;
-        var fillsViewport = entry.intersectionRect.height / vh > 0.3;
-        if (!entry.isIntersecting || (ratio < 0.15 && !fillsViewport)) return;
+        var isVisible = entry.isIntersecting &&
+          (entry.intersectionRatio >= VISIBLE_RATIO ||
+           entry.intersectionRect.height / vh > VIEWPORT_FILL);
 
-        seen[id] = true;
-        track("section_view_" + id);
-        io.unobserve(entry.target);
+        if (isVisible) {
+          if (!seen[id]) {
+            seen[id] = true;
+            track("section_view_" + id);
+          }
+          visible[id] = true;
+          if (document.visibilityState === "visible" && !(id in since)) since[id] = now();
+        } else {
+          delete visible[id];
+          if (id in since) {
+            totals[id] = (totals[id] || 0) + (now() - since[id]);
+            delete since[id];
+          }
+        }
       });
-    }, { threshold: [0.15, 0.5] });
+    }, { threshold: [0, VISIBLE_RATIO, 0.5] });
 
     sections.forEach(function (s) { io.observe(s); });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") send();
+      else resumeAll();
+    });
+    window.addEventListener("pagehide", send);
     window.addEventListener("resize", function () {
       vh = window.innerHeight || document.documentElement.clientHeight;
     }, { passive: true });
