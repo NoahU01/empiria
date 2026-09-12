@@ -133,8 +133,12 @@
       }
       since = {};
     }
-    // Timer für alles wieder starten, was gerade sichtbar ist.
+    // Timer für alles wieder starten, was gerade sichtbar ist. Nur wenn der
+    // Tab vorn ist: send() ruft das auch beim Wechsel in den Hintergrund auf,
+    // und ohne diese Prüfung liefe die Uhr dort weiter und zählte beim nächsten
+    // Vordergrund die gesamte Hintergrundzeit mit.
     function resumeAll() {
+      if (document.visibilityState !== 'visible') return;
       for (var id in visible) {
         if (!(id in since)) since[id] = now();
       }
@@ -143,8 +147,10 @@
     function send() {
       pauseAll();
       for (var id in totals) {
+        // Erst gegen die Rohzeit prüfen: Math.round machte aus 0,6 s eine 1 s
+        // und ließ Durchscrollen als Verweildauer durchgehen.
+        if (totals[id] < MIN_SECONDS * 1000) continue;
         var seconds = Math.round(totals[id] / 1000);
-        if (seconds < MIN_SECONDS) continue;
         track("section_time_" + id, {
           value: Math.min(seconds, MAX_SECONDS),
           transport_type: "beacon"
