@@ -139,6 +139,40 @@
         <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
       </g>
     </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-talk" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="30" y="10" width="20" height="32" rx="10"/>
+        <path d="M20,36c0,11,9,20,20,20s20-9,20-20"/>
+        <path d="M40,56v14"/>
+        <path d="M28,70h24"/>
+      </g>
+    </symbol>
+    <symbol id="ic-visibility" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6,40c6-14,20-22,34-22s28,8,34,22c-6,14-20,22-34,22S12,54,6,40Z"/>
+        <circle cx="40" cy="40" r="10"/>
+      </g>
+    </symbol>
+    <symbol id="ic-ads" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <circle cx="40" cy="40" r="16"/>
+        <circle cx="40" cy="40" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
   </defs>
 </svg>
 
@@ -146,7 +180,7 @@
 <header class="site-header" id="top">
   <div class="container nav">
     <a class="brand" href="#top" aria-label="empiria Startseite">
-      <img src="assets/empiria-logo.svg" alt="empiria">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
       <a href="#problem">Problem</a>
@@ -155,10 +189,89 @@
         <a href="#leistungen">Leistungen</a>
         <div class="nav-dropdown">
           <div class="nav-dropdown-panel">
-            <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
-            <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
-            <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
-            <a href="/leistungen/teams">Teams befähigen, professionell zu kommunizieren</a>
+            <div class="nav-item--subdropdown">
+              <a href="#top" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/digitale-tools" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Digitale Tools</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/marketing-as-a-service">Marketing as a Service</a>
+                  <div class="nav-item--subdropdown">
+                    <a href="/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Medien, die Ergebnisse liefern</a>
+                    <div class="nav-dropdown-sub">
+                      <div class="nav-dropdown-panel">
+                      <a href="/powerpoint">PowerPoint</a>
+                      <a href="/landingpage">Landingpage</a>
+                      <a href="/rollup">Roll-up</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
+                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
+                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -174,10 +287,41 @@
     <a href="#loesung">Lösung</a>
     <a href="#leistungen">Leistungen</a>
     <div class="mobile-submenu">
-      <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
-      <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
-      <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
-      <a href="/leistungen/teams">Teams befähigen, professionell zu kommunizieren</a>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="#top">Strategiehandwerk</a>
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/digitale-tools">Digitale Tools</a>
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing</a>
+      <a href="/marketing-as-a-service" class="mobile-submenu-link">Marketing as a Service</a>
+      <a class="mobile-submenu-sublabel" href="/medien">Medien, die Ergebnisse liefern</a>
+      <a class="mobile-submenu-sublink" href="/powerpoint">PowerPoint</a>
+      <a class="mobile-submenu-sublink" href="/landingpage">Landingpage</a>
+      <a class="mobile-submenu-sublink" href="/rollup">Roll-up</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
+      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
+      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+      <div class="mobile-submenu-divider"></div>
+      <p class="mobile-submenu-label mobile-submenu-label--muted">Archiv</p>
+      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
+      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
     </div>
     <a href="#arbeitsweise">Arbeitsweise</a>
     <a class="btn btn--dark" href="#kontakt">Kontakt</a>
@@ -254,61 +398,653 @@
   <section class="section leistungen" id="leistungen">
     <svg class="watermark wm-kreis" width="820" height="820" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-kreis"/></svg>
     <div class="container">
-      <div class="leistungen-grid">
-        <div class="leistungen-head">
-          <p class="kicker">Leistungen</p>
-          <h2 class="h-serif">Was wir<br>konkret <span class="hl">lösen.</span></h2>
-          <p class="lead">Strategie ist keine Zauberei<br>sondern Handwerk – und<br>genau dieses Handwerk<br>bringen wir in Deinen Alltag.</p>
-        </div>
-        <div class="cards-2x2">
-          <article class="lcard">
-            <div class="lcard-icon">
-              <svg class="ico-shadow"><use href="#ic-forward"/></svg>
-              <svg class="ico-main"><use href="#ic-forward"/></svg>
-            </div>
-            <h3>Strategie in den<br>Alltag überführen</h3>
-            <div class="lcard-body">
-              <p>Deine Strategie ist da – aber was bedeutet sie für deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam.</p>
-              <a class="link-more" href="/leistungen/strategie">mehr erfahren</a>
-            </div>
-          </article>
-          <article class="lcard">
-            <div class="lcard-icon">
-              <svg class="ico-shadow"><use href="#ic-kreuz"/></svg>
-              <svg class="ico-main"><use href="#ic-kreuz"/></svg>
-            </div>
-            <h3>Komplexe Themen strukturieren &amp; kommunizieren</h3>
-            <div class="lcard-body">
-              <p>Ob im Vorstand, im Gremium oder beim Kunden: Wir sorgen dafür, dass dein Thema ankommt – inhaltlich und im Auftritt.</p>
-              <a class="link-more" href="/leistungen/komplexe-themen">mehr erfahren</a>
-            </div>
-          </article>
-          <article class="lcard">
-            <div class="lcard-icon">
-              <svg class="ico-shadow"><use href="#ic-kreis"/></svg>
-              <svg class="ico-main"><use href="#ic-kreis"/></svg>
-            </div>
-            <h3>Innovation &amp; Geschäftsmodell neu denken</h3>
-            <div class="lcard-body">
-              <p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p>
-              <a class="link-more" href="/leistungen/innovation">mehr erfahren</a>
-            </div>
-          </article>
-          <article class="lcard">
-            <div class="lcard-icon">
-              <svg class="ico-shadow"><use href="#ic-raute"/></svg>
-              <svg class="ico-main"><use href="#ic-raute"/></svg>
-            </div>
-            <h3>Teams befähigen, professionell zu kommunizieren</h3>
-            <div class="lcard-body">
-              <p>Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es dabei, wenn es zählt.</p>
-              <a class="link-more" href="/leistungen/teams">mehr erfahren</a>
-            </div>
-          </article>
-        </div>
+      <div class="leistungen-head leistungen-head--center">
+        <p class="kicker">Leistungen</p>
+        <h2 class="h-serif">Was wir<br>konkret <span class="hl">lösen.</span></h2>
+        <p class="lead">Strategie ist keine Zauberei, sondern Handwerk – und genau dieses Handwerk bringen wir in Deinen Alltag.</p>
+      </div>
+      <div class="cards-3col">
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-forward"/></svg>
+            <svg class="ico-main"><use href="#ic-forward"/></svg>
+          </div>
+          <h3>Strategie in den<br>Alltag überführen</h3>
+          <div class="lcard-body">
+            <p>Deine Strategie ist da – aber was bedeutet sie für deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam.</p>
+            <a class="link-more" href="/leistungen/strategie">mehr erfahren</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-kreuz"/></svg>
+            <svg class="ico-main"><use href="#ic-kreuz"/></svg>
+          </div>
+          <h3>Komplexe Themen strukturieren &amp; kommunizieren</h3>
+          <div class="lcard-body">
+            <p>Ob im Vorstand, im Gremium oder beim Kunden: Wir sorgen dafür, dass dein Thema ankommt – inhaltlich und im Auftritt.</p>
+            <a class="link-more" href="/leistungen/komplexe-themen">mehr erfahren</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-kreis"/></svg>
+            <svg class="ico-main"><use href="#ic-kreis"/></svg>
+          </div>
+          <h3>Innovation &amp; Geschäftsmodell neu denken</h3>
+          <div class="lcard-body">
+            <p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p>
+            <a class="link-more" href="/leistungen/innovation">mehr erfahren</a>
+          </div>
+        </article>
       </div>
       <div class="leistungen-cta">
         <a class="btn btn--dark" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Formate ===== -->
+  <section class="section formate" id="formate">
+    <div class="container">
+      <div class="formate-grid">
+        <div class="formate-head">
+          <p class="kicker">Formate</p>
+          <h2 class="h-serif">Projekterfahrung,<br><span class="hl">direkt einsetzbar.</span></h2>
+          <p class="lead">Uns gibt es seit 2012 – seitdem haben wir mit Versicherern in zahlreichen Projekten gearbeitet.</p>
+          <p class="lead">Diese Erfahrung haben wir in direkt einsetzbare Tools und Methoden überführt: fünf Formate, die Du ohne langen Vorlauf buchen kannst.</p>
+        </div>
+        <div class="formate-accordion">
+          <details class="formate-acc-item formate-acc--magenta" name="formate-acc">
+            <summary><span>Workshops</span></summary>
+            <div class="formate-acc-body">
+              <p>Aus über einem Jahrzehnt Projekterfahrung sind Workshop-Formate entstanden, die Dein Team genau dort abholen, wo es steht – ob bei Künstlicher Intelligenz, einer neuen Landingpage oder der Moderation eines eigenen Workshops.</p>
+              <p>Jeder Workshop ist hands-on: Ihr arbeitet an echten Tools und echten Fällen aus eurem Alltag statt an Theorie – und geht mit klaren Ergebnissen raus, mit denen sich sofort weiterarbeiten lässt.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines MacBooks mit einer stilisierten KI-Eingabemaske, überlagert von einem kleineren Smartphone mit derselben Eingabemaske">
+          <rect x="20.0" y="16.0" width="300.0" height="190.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="30.0" y="26.0" width="280.0" height="170.0" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+          <rect x="46.0" y="50.0" width="198.4" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="66.1" width="148.8" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.25)"/>
+          <rect x="46.0" y="93.7" width="248.0" height="25.3" rx="12.649999999999999" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="1.4949999999999999"/>
+          <rect x="57.5" y="104.0" width="104.2" height="4.6" rx="2.3" fill="rgba(255,255,255,.3)"/>
+          <circle cx="281.4" cy="106.3" r="8.1" fill="rgba(255,255,255,.55)"/>
+          <path d="M278.1,102.7 L285.8,106.3 L278.1,110.0 Z" fill="rgba(0,0,0,.55)"/>
+          <path d="M4.0,220.0 L336.0,220.0 L314.0,206.0 L26.0,206.0 Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.32)" stroke-width="1.4"/>
+          <rect x="146.0" y="211.0" width="48.0" height="4.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <g transform="rotate(5 304.0 198.0)">
+          <rect class="mock-phone-body" x="250.0" y="110.0" width="108.0" height="176.0" rx="20" fill="rgba(10,10,14,.92)" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/>
+          <rect x="258.0" y="118.0" width="92.0" height="160.0" rx="13" fill="rgba(255,255,255,.05)"/>
+          <rect x="266.0" y="144.0" width="60.8" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.4)"/>
+          <rect x="266.0" y="152.7" width="45.6" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.25)"/>
+          <rect x="266.0" y="167.6" width="76.0" height="13.6" rx="6.82" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="0.806"/>
+          <rect x="272.2" y="173.1" width="31.9" height="2.5" rx="1.24" fill="rgba(255,255,255,.3)"/>
+          <circle cx="335.2" cy="174.4" r="4.4" fill="rgba(255,255,255,.55)"/>
+          <path d="M333.4,172.4 L337.6,174.4 L333.4,176.3 Z" fill="rgba(0,0,0,.55)"/>
+          <rect x="288.0" y="276.0" width="32.0" height="3.4" rx="1.7" fill="rgba(255,255,255,.4)"/>
+          </g>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">KI zum Anfassen</div>
+              <p class="formate-preview-desc">Echte KI-Tools, echte Usecases aus der Versicherungsbranche.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Sprint Landingpage</div>
+              <p class="formate-preview-desc">Deine Landingpage in 48 Stunden live.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Metaplanwand auf einem Stellwand-Gestell mit angepinnten Moderationskarten in Clustern">
+          <rect x="54.0" y="14.0" width="252.0" height="178.0" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="180.0" cy="22.0" r="3.0" fill="rgba(255,255,255,.6)"/>
+          <rect x="70.0" y="28.0" width="220.0" height="26.0" rx="3" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.5)" stroke-width="1.3"/>
+          <rect x="84.0" y="38.0" width="192.0" height="6.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <circle cx="104.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="70.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="78.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="78.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="180.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="146.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="154.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="154.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="256.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="222.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="230.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="230.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="104.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="70.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="78.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="78.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="180.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="146.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="154.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="154.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="256.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="222.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="230.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="230.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <line x1="78.0" y1="192.0" x2="52.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="78.0" y1="192.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="52.0" y1="260.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="282.0" y1="192.0" x2="256.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="282.0" y1="192.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="256.0" y1="260.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="20.0" y1="268.0" x2="340.0" y2="268.0" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Moderation deines Workshops</div>
+              <p class="formate-preview-desc">Gezielte Aktivierung, Perspektivwechsel, Handlungsklarheit.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/workshops">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--violet" name="formate-acc">
+            <summary><span>Digitale Tools</span></summary>
+            <div class="formate-acc-body">
+              <p>Digitale Tools bündeln, was sonst über fünf Anwendungen verteilt nur Zeit kostet: ein zentrales Dashboard für Deine wichtigsten Kennzahlen, ein fertiges System für sofortige Sichtbarkeit und Kampagnen, die tatsächlich Anfragen bringen.</p>
+              <p>Jedes Tool ist so gebaut, dass Du es ohne langes Briefing oder wochenlange Konzeptphase direkt einsetzen kannst – klar ausgewertet statt Blackbox.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts">
+          <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="307.0" width="103.6" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="324.0" width="52.0" height="14.0" rx="7" fill="rgba(255,255,255,.5)"/>
+          <text x="290.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Landingpage</text>
+          <rect x="420.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="434.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="487.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="540.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="434.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="487.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="540.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <text x="510.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Social-Media-Kanäle</text>
+          <rect x="305.0" y="460.0" width="190.0" height="95.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="319.0" y="471.0" width="64.6" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <circle cx="481.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="469.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="457.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <line x1="305.0" y1="484.0" x2="495.0" y2="484.0" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <rect x="319.0" y="528.3" width="21.0" height="14.7" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="346.0" y="516.0" width="21.0" height="27.0" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="373.0" y="523.4" width="21.0" height="19.6" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="400.0" y="506.2" width="21.0" height="36.8" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="427.0" y="518.5" width="21.0" height="24.5" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="454.0" y="511.1" width="21.0" height="31.9" rx="2" fill="rgba(255,255,255,.26)"/>
+          <line x1="319.0" y1="543.0" x2="481.0" y2="543.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <polyline points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/>
+          <circle cx="329.5" cy="523.3" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="356.5" cy="511.0" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="383.5" cy="518.4" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="410.5" cy="501.2" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="437.5" cy="513.5" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="464.5" cy="506.1" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <text x="400.0" y="448.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Dashboard</text>
+          <line x1="304.3" y1="351.8" x2="326.6" y2="440.5" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"/>
+          <text x="288.1" y="406.8" text-anchor="end" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Daten</text>
+          <line x1="346.5" y1="458.2" x2="324.2" y2="369.5" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"/>
+          <line x1="481.1" y1="348.2" x2="458.9" y2="436.8" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"/>
+          <line x1="468.1" y1="461.8" x2="490.3" y2="373.2" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"/>
+          <text x="511.9" y="406.8" text-anchor="start" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Optimierung</text>
+          <path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"/>
+          <text x="400.0" y="75.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Konzeption &amp;</text>
+          <text x="400.0" y="93.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Umsetzung</text>
+          <text x="693.8" y="587.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Tracking &amp;</text>
+          <text x="693.8" y="605.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Analyse</text>
+          <text x="106.2" y="587.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Ableitung</text>
+          <text x="106.2" y="605.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Next Step</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">MarketingEcoSystem (MES)</div>
+              <p class="formate-preview-desc">Ein zentrales Dashboard für alle Deine Kennzahlen.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb formate-preview-thumb--icon">
+                <svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-visibility"/></svg>
+              </div>
+              <div class="formate-preview-title">sofort sichtbar</div>
+              <p class="formate-preview-desc">Postings, Landingpage und E-Mail-Funnel – fertig aufgesetzt.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb formate-preview-thumb--icon">
+                <svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-ads"/></svg>
+              </div>
+              <div class="formate-preview-title">Paid Ads</div>
+              <p class="formate-preview-desc">Kampagnen, die Anfragen bringen statt nur Reichweite.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/digitale-tools">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--cyan" name="formate-acc">
+            <summary><span>Marketing</span></summary>
+            <div class="formate-acc-body">
+              <p>Ob als komplette Marketingabteilung im Abo oder als einzelnes Medium: Wir übernehmen die digitalen Kanäle, für die Dir sonst die Zeit fehlt – von der Präsentation über die Landingpage bis zum Roll-up.</p>
+              <p>Wir sind keine typische Medienagentur, sondern Profis darin, Geschäftsmodell, Strategie und Kommunikation auf den Punkt zu bringen – übersetzt in die Sprache Deiner Zielgruppe und professionell umgesetzt, damit Du Dich um Deine digitalen Kanäle nicht mehr kümmern musst.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts">
+          <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="307.0" width="103.6" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="324.0" width="52.0" height="14.0" rx="7" fill="rgba(255,255,255,.5)"/>
+          <text x="290.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Landingpage</text>
+          <rect x="420.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="434.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="487.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="540.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="434.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="487.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="540.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <text x="510.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Social-Media-Kanäle</text>
+          <rect x="305.0" y="460.0" width="190.0" height="95.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="319.0" y="471.0" width="64.6" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <circle cx="481.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="469.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="457.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <line x1="305.0" y1="484.0" x2="495.0" y2="484.0" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <rect x="319.0" y="528.3" width="21.0" height="14.7" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="346.0" y="516.0" width="21.0" height="27.0" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="373.0" y="523.4" width="21.0" height="19.6" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="400.0" y="506.2" width="21.0" height="36.8" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="427.0" y="518.5" width="21.0" height="24.5" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="454.0" y="511.1" width="21.0" height="31.9" rx="2" fill="rgba(255,255,255,.26)"/>
+          <line x1="319.0" y1="543.0" x2="481.0" y2="543.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <polyline points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/>
+          <circle cx="329.5" cy="523.3" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="356.5" cy="511.0" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="383.5" cy="518.4" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="410.5" cy="501.2" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="437.5" cy="513.5" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="464.5" cy="506.1" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <text x="400.0" y="448.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Dashboard</text>
+          <line x1="304.3" y1="351.8" x2="326.6" y2="440.5" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"/>
+          <text x="288.1" y="406.8" text-anchor="end" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Daten</text>
+          <line x1="346.5" y1="458.2" x2="324.2" y2="369.5" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"/>
+          <line x1="481.1" y1="348.2" x2="458.9" y2="436.8" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"/>
+          <line x1="468.1" y1="461.8" x2="490.3" y2="373.2" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"/>
+          <text x="511.9" y="406.8" text-anchor="start" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Optimierung</text>
+          <path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"/>
+          <text x="400.0" y="75.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Konzeption &amp;</text>
+          <text x="400.0" y="93.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Umsetzung</text>
+          <text x="693.8" y="587.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Tracking &amp;</text>
+          <text x="693.8" y="605.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Analyse</text>
+          <text x="106.2" y="587.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Ableitung</text>
+          <text x="106.2" y="605.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Next Step</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Marketing as a Service</div>
+              <p class="formate-preview-desc">Deine Marketingabteilung für das gesamte MES.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Medien, die Ergebnisse liefern</div>
+              <p class="formate-preview-desc">PowerPoint, Landingpage und Roll-up aus einer Hand.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/marketing">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--lime" name="formate-acc">
+            <summary><span>Training &amp; Sparring</span></summary>
+            <div class="formate-acc-body">
+              <p>Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen – zugeschnitten auf die Versicherungsbranche und Deinen konkreten Alltag.</p>
+              <p>Dein Team bekommt Begleitung bei der Umsetzung statt Theorie von der Stange, Du als Führungskraft ein vertrauliches Sparring auf Augenhöhe – beides mit einer klaren eigenen Haltung statt austauschbarer Trainer-Folien.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb formate-preview-thumb--icon">
+                <svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-text"/></svg>
+              </div>
+              <div class="formate-preview-title">Teams befähigen</div>
+              <p class="formate-preview-desc">Begleitung statt Theorie von der Stange.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb formate-preview-thumb--icon">
+                <svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ic-talk"/></svg>
+              </div>
+              <div class="formate-preview-title">1:1 Sparring</div>
+              <p class="formate-preview-desc">Vertrauliches Sparring für Führungskräfte.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/training-sparring">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--emerald" name="formate-acc">
+            <summary><span>Impulsvorträge</span></summary>
+            <div class="formate-acc-body">
+              <p>Drei Vorträge aus echter Beratungserfahrung – für den Moment, in dem ein Impuls mehr bewirken soll als ein weiterer Foliensatz.</p>
+              <p>Pointiert und diskussionsstark bringen sie mit einer klaren eigenen Haltung auf den Punkt, worüber sonst niemand spricht, statt Klarheit nur zu simulieren – ideal für Kickoffs, Vertriebstagungen oder Führungskräfte-Events, bei denen es um mehr gehen soll als Frontalbeschallung.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Vortragsfolie neben einem Redepult mit Mikrofon und Spotlight-Kegel">
+          <rect x="22.0" y="34.0" width="188.0" height="168.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="40.0" y="54.0" width="118.0" height="9.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="40.0" y="82.0" width="118.6" height="7.0" rx="2" fill="rgba(255,255,255,0.34)"/>
+          <rect x="40.0" y="104.0" width="91.2" height="7.0" rx="2" fill="rgba(255,255,255,0.29)"/>
+          <rect x="40.0" y="126.0" width="103.4" height="7.0" rx="2" fill="rgba(255,255,255,0.24)"/>
+          <rect x="40.0" y="178.0" width="14.0" height="14.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="62.0" y="168.0" width="14.0" height="24.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="84.0" y="174.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="106.0" y="162.0" width="14.0" height="30.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <path d="M224.0,260.0 L284.0,260.0 L274.0,190.0 L234.0,190.0 Z" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="238.0" y="184.0" width="32.0" height="8.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <line x1="254.0" y1="184.0" x2="254.0" y2="164.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+          <rect x="246.0" y="134.0" width="16.0" height="30.0" rx="8" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+          <path d="M220.0,64.0 L244.0,134.0 L264.0,134.0 L288.0,64.0 Z" fill="rgba(255,255,255,.06)"/>
+          <line x1="10.0" y1="260.0" x2="330.0" y2="260.0" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Warum sich niemand für Dein Produkt interessiert.</div>
+              <p class="formate-preview-desc">Ein Impuls über Relevanz.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Vortragsfolie neben einem Redepult mit Mikrofon und Spotlight-Kegel">
+          <rect x="22.0" y="34.0" width="188.0" height="168.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="40.0" y="54.0" width="118.0" height="9.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="40.0" y="82.0" width="118.6" height="7.0" rx="2" fill="rgba(255,255,255,0.34)"/>
+          <rect x="40.0" y="104.0" width="91.2" height="7.0" rx="2" fill="rgba(255,255,255,0.29)"/>
+          <rect x="40.0" y="126.0" width="103.4" height="7.0" rx="2" fill="rgba(255,255,255,0.24)"/>
+          <rect x="40.0" y="178.0" width="14.0" height="14.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="62.0" y="168.0" width="14.0" height="24.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="84.0" y="174.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="106.0" y="162.0" width="14.0" height="30.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <path d="M224.0,260.0 L284.0,260.0 L274.0,190.0 L234.0,190.0 Z" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="238.0" y="184.0" width="32.0" height="8.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <line x1="254.0" y1="184.0" x2="254.0" y2="164.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+          <rect x="246.0" y="134.0" width="16.0" height="30.0" rx="8" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+          <path d="M220.0,64.0 L244.0,134.0 L264.0,134.0 L288.0,64.0 Z" fill="rgba(255,255,255,.06)"/>
+          <line x1="10.0" y1="260.0" x2="330.0" y2="260.0" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Strategie, die endlich ankommt.</div>
+              <p class="formate-preview-desc">Wie Strategie im Alltag wirkt.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Vortragsfolie neben einem Redepult mit Mikrofon und Spotlight-Kegel">
+          <rect x="22.0" y="34.0" width="188.0" height="168.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="40.0" y="54.0" width="118.0" height="9.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="40.0" y="82.0" width="118.6" height="7.0" rx="2" fill="rgba(255,255,255,0.34)"/>
+          <rect x="40.0" y="104.0" width="91.2" height="7.0" rx="2" fill="rgba(255,255,255,0.29)"/>
+          <rect x="40.0" y="126.0" width="103.4" height="7.0" rx="2" fill="rgba(255,255,255,0.24)"/>
+          <rect x="40.0" y="178.0" width="14.0" height="14.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="62.0" y="168.0" width="14.0" height="24.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="84.0" y="174.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <rect x="106.0" y="162.0" width="14.0" height="30.0" rx="2" fill="rgba(255,255,255,.35)"/>
+          <path d="M224.0,260.0 L284.0,260.0 L274.0,190.0 L234.0,190.0 Z" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="238.0" y="184.0" width="32.0" height="8.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <line x1="254.0" y1="184.0" x2="254.0" y2="164.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+          <rect x="246.0" y="134.0" width="16.0" height="30.0" rx="8" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/>
+          <path d="M220.0,64.0 L244.0,134.0 L264.0,134.0 L288.0,64.0 Z" fill="rgba(255,255,255,.06)"/>
+          <line x1="10.0" y1="260.0" x2="330.0" y2="260.0" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Gründe Deinen stärksten Konkurrenten!</div>
+              <p class="formate-preview-desc">Der Perspektivwechsel, der blinde Flecken zeigt.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/impulsvortraege">Mehr erfahren</a>
+            </div>
+          </details>
+        </div>
       </div>
     </div>
   </section>
@@ -326,47 +1062,39 @@
   </section>
 
   <!-- ===== Kontakt ===== -->
-  <section class="section kontakt" id="kontakt">
-    <div class="container">
-      <div class="kontakt-grid">
-        <div class="kontakt-head">
-          <p class="kicker">Lass uns sprechen</p>
-          <h2 class="h-serif">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>
-          <div class="kontakt-copy lead">
-            <p>Kein Pitch. Kein Angebot von der Stange. Sondern ein Gespräch – offen, konkret und auf Augenhöhe.</p>
-            <p>Und wenn wir nicht die Richtigen sind, um Dein Thema anzugehen, sagen wir das. Direkt und ehrlich.</p>
-          </div>
-          <div class="kontakt-contact">
-            <svg class="pico" width="30" height="30"><use href="#ic-phone"/></svg>
-            <div class="lines">
-              <a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a><br>
-              <a href="tel:+4917631347217">+49 176 3134 7217</a>
-            </div>
-          </div>
-
-          <!-- Mobile-only contact card -->
-          <div class="dani-card">
-            <img class="dani-photo" src="assets/daniel-round.webp" alt="Daniel Ströbel" width="256" height="256" decoding="async">
-            <p class="dani-name">Daniel Ströbel</p>
-            <p class="dani-role">Geschäftsführer</p>
-            <a class="dani-line" href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>
-            <a class="dani-line" href="tel:+4917631347217">+49 176 3134 7217</a>
-            <a class="dani-btn" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
-              <span class="dani-btn-icon"><svg width="22" height="22"><use href="#ic-in"/></svg></span>
-              auf linkedIn vernetzen
-            </a>
-          </div>
-        </div>
-        <div class="kontakt-media">
-          <svg class="wm-fwd watermark" width="380" height="380" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
-          <img class="portrait" src="assets/daniel.webp" alt="Daniel Ströbel, Geschäftsführer empiria">
-          <img class="portrait-round" src="assets/daniel-round.webp" alt="Daniel Ströbel" width="256" height="256" decoding="async">
-          <a class="badge" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener" aria-label="LinkedIn-Profil von Daniel Ströbel">
-            <span class="in"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
-            <span class="btext"><span class="bname">Daniel Ströbel</span><br><span class="brole">Geschäftsführer</span></span>
+  <section class="kontakt-standalone" id="kontakt">
+    <div class="container kontakt-standalone-top">
+      <div class="kontakt-standalone-text reveal">
+        <p class="kicker">Kontakt</p>
+        <h2 class="h-serif">Wir sind <span class="hl">für Dich</span> da!</h2>
+        <p class="lead">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
+        <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
+      </div>
+      <div class="kontakt-standalone-side reveal">
+        <div class="ks-actions">
+          <a class="ks-pill" href="mailto:daniel.stroebel@empiria.de">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-mail"/></svg></span>
+            daniel.stroebel@empiria.de
+          </a>
+          <a class="ks-pill" href="tel:+4917631347217">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-phone"/></svg></span>
+            +49 176 3134 7217
+          </a>
+          <a class="ks-pill ks-pill--ghost" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
+            Auf LinkedIn vernetzen
           </a>
         </div>
+        <div class="ks-marquee">
+          <div class="marquee-viewport">
+            <div class="marquee-track"></div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="kontakt-standalone-media reveal">
+      <svg class="ks-media-icon" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
+      <img class="ks-photo" src="assets/team-portrait.webp" alt="Das Team von empiria GmbH" width="759" height="411" loading="lazy">
     </div>
   </section>
 </main>

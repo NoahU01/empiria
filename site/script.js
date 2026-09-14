@@ -19,26 +19,40 @@
     ["logo-11-cominia.svg", "cominia"],
     ["logo-12-zeitsprung.svg", "zeitsprung"]
   ];
-  var track = document.getElementById("marqueeTrack");
-  if (track) {
-    var html = "";
-    for (var pass = 0; pass < 2; pass++) {
-      for (var i = 0; i < logos.length; i++) {
-        // eager load: marquee width must be correct up-front or the -50% loop seams
-        html += '<img src="/assets/logos/' + logos[i][0] + '" alt="' + logos[i][1] +
-          '" decoding="async" draggable="false">';
-      }
-    }
-    track.innerHTML = html;
+  // Resolve the logo folder relative to this very script's own (already-correct,
+  // depth-aware) URL instead of a hardcoded "/assets/..." path. A root-relative path
+  // breaks when the site is opened directly as a local file (file://) rather than
+  // through a web server, since "/" then resolves to the filesystem root. Deriving
+  // the base from document.currentScript.src works under file://, http(s)://, and at
+  // any folder depth (root pages and /leistungen/* subpages alike).
+  var scriptEl = document.currentScript;
+  var logoBase = "/assets/logos/";
+  if (scriptEl && scriptEl.src) {
+    logoBase = scriptEl.src.replace(/script\.js(?:\?.*)?$/, "assets/logos/");
   }
+  var logoHtml = "";
+  for (var pass = 0; pass < 2; pass++) {
+    for (var i = 0; i < logos.length; i++) {
+      // eager load: marquee width must be correct up-front or the -50% loop seams
+      logoHtml += '<img src="' + logoBase + logos[i][0] + '" alt="' + logos[i][1] +
+        '" decoding="async" draggable="false">';
+    }
+  }
+  // A page can have more than one marquee instance (e.g. the hero trust-bar and the
+  // Kontakt-section banner) — populate every one found, not just a single #id target.
+  document.querySelectorAll(".marquee-track").forEach(function (t) {
+    t.innerHTML = logoHtml;
+  });
 
   /* ---------- Marquee: native horizontal scroll + auto-advance + mouse drag ----------
      Uses viewport.scrollLeft (repaints reliably on iOS Safari, natively swipeable on
      touch) instead of a CSS/JS transform. Two identical logo copies => wrapping by one
-     copy width is seamless. Scroll mode only (>640px); phones keep the static grid.  */
-  (function () {
-    var viewport = document.querySelector(".marquee-viewport");
-    if (!track || !viewport) return;
+     copy width is seamless. Scroll mode only (>640px); phones keep the static grid.
+     Each ".marquee-viewport" on the page gets its own independent instance/state, so
+     multiple marquees (hero trust-bar + Kontakt-section banner) run without interfering. */
+  document.querySelectorAll(".marquee-viewport").forEach(function (viewport) {
+    var track = viewport.querySelector(".marquee-track");
+    if (!track) return;
     var GRID_BP = 640;
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -132,7 +146,7 @@
     if (document.readyState === "complete") boot();
     else window.addEventListener("load", boot);
     setTimeout(function () { measure(); if (!running) start(); }, 400);
-  })();
+  });
 
   /* ---------- Header scroll state ---------- */
   var header = document.querySelector(".site-header");
@@ -233,4 +247,210 @@
       if (e.key === "Escape" && overlay.classList.contains("open")) closeModal();
     });
   }
+
+  /* ---------- Leistungen-Detailseiten: Stufen-Strip (Lösung/Leistungen) ---------- */
+  (function () {
+    var strip = document.querySelector(".stufen-strip");
+    if (!strip) return;
+    var tiles = strip.querySelectorAll(".stufe-tile");
+    var panels = document.querySelectorAll(".stufe-panel-inner");
+    tiles.forEach(function (tile) {
+      tile.addEventListener("click", function () {
+        var key = tile.getAttribute("data-stufe");
+        tiles.forEach(function (t) { t.setAttribute("aria-selected", t === tile ? "true" : "false"); });
+        panels.forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== key; });
+      });
+    });
+  })();
+
+  /* ---------- Leistungen-Detailseiten: horizontale Ablauf-Timeline (Onboarding) ---------- */
+  (function () {
+    var steps = document.querySelectorAll(".onboarding-step[data-onboarding-step]");
+    var panels = document.querySelectorAll(".onboarding-detail[data-onboarding-panel]");
+    if (!steps.length || !panels.length) return;
+    steps.forEach(function (step) {
+      step.addEventListener("click", function () {
+        var key = step.getAttribute("data-onboarding-step");
+        steps.forEach(function (s) {
+          var active = s === step;
+          s.classList.toggle("is-active", active);
+          s.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-onboarding-panel") === key);
+        });
+      });
+    });
+  })();
+
+  /* ---------- Leistungen-Detailseiten: Zeitplan-Modal (horizontale Timeline) ---------- */
+  (function () {
+    var openers = document.querySelectorAll(".js-onboarding-open");
+    var overlay = document.getElementById("onboardingModalOverlay");
+    if (!openers.length || !overlay) return;
+    var closeBtn = document.getElementById("onboardingModalClose");
+    var lastFocus = null;
+    function open() {
+      lastFocus = document.activeElement;
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
+    }
+    function close() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+    openers.forEach(function (opener) { opener.addEventListener("click", open); });
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) close();
+    });
+  })();
+
+  /* ---------- Leistungen-Detailseiten: PDF-Vorschau-Modal (Stufe 1 Download) ---------- */
+  (function () {
+    var openers = document.querySelectorAll(".js-pdf-open");
+    var overlay = document.getElementById("pdfModalOverlay");
+    if (!openers.length || !overlay) return;
+    var closeBtn = document.getElementById("pdfModalClose");
+    var lastFocus = null;
+    function open() {
+      lastFocus = document.activeElement;
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
+    }
+    function close() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+    openers.forEach(function (opener) { opener.addEventListener("click", open); });
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) close();
+    });
+  })();
+
+  /* ---------- Sprint Landingpage: Kontaktformular-Modal ---------- */
+  (function () {
+    var openers = document.querySelectorAll(".js-form-open");
+    var overlay = document.getElementById("formModalOverlay");
+    if (!openers.length || !overlay) return;
+    var closeBtn = document.getElementById("formModalClose");
+    var lastFocus = null;
+    function open() {
+      lastFocus = document.activeElement;
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      var firstField = overlay.querySelector("input");
+      if (firstField) firstField.focus();
+    }
+    function close() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+    openers.forEach(function (opener) { opener.addEventListener("click", open); });
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) close();
+    });
+
+    var form = overlay.querySelector(".contact-form");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var vorname = (data.get("vorname") || "").toString().trim();
+        var name = (data.get("name") || "").toString().trim();
+        var funktion = (data.get("funktion") || "").toString().trim();
+        var firma = (data.get("firma") || "").toString().trim();
+        var tel = (data.get("tel") || "").toString().trim();
+        var termin = (data.get("termin") || "").toString().trim();
+
+        var introEl = overlay.querySelector(".form-mail-body");
+        var intro = introEl ? introEl.textContent.trim() : "";
+
+        var lines = [intro, ""];
+        lines.push("Name: " + vorname + " " + name);
+        if (funktion) lines.push("Funktion: " + funktion);
+        lines.push("Firma: " + firma);
+        if (tel) lines.push("Tel. Nr.: " + tel);
+        if (termin) lines.push("Wunschtermin für den 2-Tages-Sprint: " + termin);
+
+        var subject = "Unverbindliches Angebot: Sprint Landingpage";
+        var body = lines.join("\n");
+        var mailto =
+          "mailto:daniel.stroebel@empiria.de" +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+        window.location.href = mailto;
+      });
+    }
+  })();
+
+  /* ---------- Generische Vorschau-Modals (data-modal-target / data-generic) ----------
+     Ermöglicht mehrere unabhängige Vorschau-Modals auf einer Seite (z.B. "Medien, die
+     Ergebnisse liefern" mit je einem Modal für PowerPoint, Landingpage, Roll-up), ohne
+     die bestehenden fest verdrahteten Modals (#pdfModalOverlay etc.) zu beeinflussen. */
+  (function () {
+    document.querySelectorAll(".modal-overlay[data-generic]").forEach(function (overlay) {
+      var closeBtn = overlay.querySelector(".modal-close");
+      var lastFocus = null;
+      function open() {
+        lastFocus = document.activeElement;
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+        if (closeBtn) closeBtn.focus();
+      }
+      function close() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+        if (lastFocus) lastFocus.focus();
+      }
+      document.querySelectorAll('[data-modal-target="' + overlay.id + '"]').forEach(function (opener) {
+        opener.addEventListener("click", open);
+      });
+      if (closeBtn) closeBtn.addEventListener("click", close);
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && overlay.classList.contains("open")) close();
+      });
+    });
+  })();
+
+  /* ---------- Produktseiten: Scroll-Reveal (Fade + Slide-up via IntersectionObserver) ---------- */
+  (function () {
+    var els = document.querySelectorAll(".reveal");
+    if (!els.length || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("js-reveal-ready");
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 6, 5) * 60 + "ms";
+      io.observe(el);
+    });
+  })();
 })();

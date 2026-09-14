@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roll-up – empiria</title>
+<meta name="description" content="Auf der Messe oder im Foyer zählt der erste Blick – ein Roll-up, das deine Botschaft in Sekunden trägt.">
+<link rel="canonical" href="https://www.empiria.de/rollup">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/rollup">
+<meta property="og:title" content="Roll-up – empiria">
+<meta property="og:description" content="Auf der Messe oder im Foyer zählt der erste Blick – ein Roll-up, das deine Botschaft in Sekunden trägt.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roll-up – empiria">
+<meta name="twitter:description" content="Auf der Messe oder im Foyer zählt der erste Blick – ein Roll-up, das deine Botschaft in Sekunden trägt.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  // GA4 NUR auf der Produktions-Domain konfigurieren. Ohne diese Sperre
+  // schicken Vercel-Preview-Deployments (*.vercel.app) und lokale Tests ihre
+  // Klicks in dieselbe Property und verfaelschen die Zahlen dauerhaft --
+  // herausrechnen laesst sich das hinterher nicht mehr.
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "cyan" ===== */
+  body.produktseite-clean { background: #fff; }
+  .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
+  .produktseite-clean .produkt-hero .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-hero h1 { color: var(--ink); }
+  .produktseite-clean .produkt-hero .hl { color: #fff; }
+  .produktseite-clean .produkt-hero .hl::before { background: #0B9FBD; }
+  .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
+  .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
+  .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
+  .produktseite-clean .hero-stat-label { color: var(--grey-70); }
+  .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
+  .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
+
+  /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
+     Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
+  .produktseite-clean .sprint-structure-card {
+    background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%);
+    border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
+  }
+  .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
+  .produktseite-clean .media-box-footer,
+  .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
+  .produktseite-clean .media-box-title,
+  .produktseite-clean .sprint-structure-title { color: #fff; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #086a80; }
+
+  /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
+  .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
+  .produktseite-clean .produkt-mock-icon { background: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #0B9FBD; filter: none; }
+  .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
+
+  /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
+  .produktseite-clean .produkt-mock--dashboard,
+  .produktseite-clean .produkt-mock--tool { border-color: #e7e2df; background: var(--grey-bg); }
+  .produktseite-clean .dash-kpi { background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .dash-kpi .val { color: var(--ink); }
+  .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
+  .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #0B9FBD, #086a80); }
+  .produktseite-clean .dash-caption { color: var(--grey-50); }
+  .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
+  .produktseite-clean .tool-dash-logo { background: #0B9FBD; }
+  .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
+  .produktseite-clean .tool-dash-nav-item--active { background: #0B9FBD; }
+
+  /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
+     ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
+     macht sie auf Weiß lesbar; verstärkter Kontrast gleicht das Fehlen der Karte aus. */
+  .produktseite-clean .mock-split-half svg { filter: invert(1) contrast(1.6); }
+
+  /* Tools-Reihe (KI zum Anfassen) — die Logos werden bereits vorab eingefärbt als
+     PNG ausgeliefert (siehe _KI_TOOLS_ITEMS), daher hier nur die Beschriftung. */
+  .produktseite-clean .tools-row-label { color: var(--grey-70); }
+  .produktseite-clean .tools-row-icon img { opacity: 1; }
+
+  /* Hero: zweispaltiges Grid — Text links, Skizzen-Visualisierung rechts. Die
+     Visualisierung steht IMMER frei im Header: kein Kasten, kein Hintergrund, keine
+     Klickfläche — jede Kastenoptik einzelner Mockup-Bausteine wird hier neutralisiert. */
+  .produktseite-clean .produkt-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(36px, 6vw, 90px); align-items: center;
+  }
+  .produktseite-clean .produkt-hero-text { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual > * { margin-top: 0; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--dashboard,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--tool,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--structure {
+    background: none; border: none; box-shadow: none; padding: 0;
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock { aspect-ratio: 1/1; max-width: 440px; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-icon svg {
+    width: clamp(100px, 13vw, 168px); height: clamp(100px, 13vw, 168px);
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-bare { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch svg { width: 100%; height: auto; display: block; filter: invert(1) contrast(1.6); }
+  /* Roll-up-Skizze ist im Ausgangsformat sehr hochformatig (220x460) — deutlich
+     schmaler begrenzen, damit die Höhe im Header nicht dominiert (min. -50%). */
+  .produktseite-clean .produkt-mock-sketch--rollup { max-width: 190px; }
+
+  /* Wiederverwendete Skizzen auf farbigen Kacheln/Kästen (Übersichtsseiten-Kacheln,
+     Übersichts-Popups): dort sind sie wie das MarketingEcoSystem-Diagramm auf der
+     Marketing-as-a-Service-Seite zu behandeln — weiß gezeichnet, direkt auf dem
+     Farbverlauf, OHNE Invertierung und OHNE separaten hellen Kasten. */
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch svg,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch svg { filter: none; }
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch { max-width: none; }
+  /* iPhone-Körper der KI-zum-Anfassen-Skizze: auf farbigen Kacheln/Popups (ohne
+     Invertierung) weiß/transparent statt des dunklen Ausgangs-Fills, der nur im
+     Header (mit Invertierung) automatisch weiß wird. */
+  .produktseite-clean .media-box-thumb .mock-phone-body,
+  .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); }
+  @media (max-width: 900px) {
+    .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
+    .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
+  }
+  .produktseite-clean .produkt-hero-actions--center {
+    justify-content: center; margin-top: clamp(30px, 4vw, 46px);
+  }
+
+  /* Vorschau-Abschnitt (PowerPoint/Roll-up/Landingpage/Sprint Landingpage): die farbige,
+     anklickbare Vorschau-Karte, jetzt unterhalb des ersten CTAs statt im Header. */
+  .produktseite-clean .produkt-vorschau-card { max-width: 380px; margin: 0 auto; }
+
+  /* Sprint-Landingpage: Timeline */
+  .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
+  .produktseite-clean .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
+  .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
+  .produktseite-clean .sprint-substep-tag { color: #fff; background: #0B9FBD; border-color: #0B9FBD; }
+  .produktseite-clean .sprint-substep p { color: var(--grey-70); }
+
+  /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
+  .produktseite-clean .produkt-section-head .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
+  .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
+
+  /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
+  .produktseite-clean .vorschau-split-text .kicker { color: #0B9FBD; }
+  .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
+  .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
+  .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
+  .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
+  .produktseite-clean .vorschau-facts-list li::before { background: #0B9FBD; }
+  .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .produkt-glass h3 { color: var(--ink); }
+  .produktseite-clean .produkt-glass p { color: var(--grey-70); }
+  .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #0B9FBD; }
+  .produktseite-clean .topics-list li { color: var(--ink); }
+  .produktseite-clean .topics-list li::before { background: #0B9FBD; }
+
+  /* Preis-Hinweis-Karte (einzelner großer Preis) */
+  .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-amount { color: #fff; }
+  .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
+  .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
+  .produktseite-clean .price-note-list { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-note-list li { color: rgba(255,255,255,.9); }
+  .produktseite-clean .price-note-list li::before { background: #fff; }
+
+  /* Preis-Bundles: Karten clean, hervorgehobene Karte als Farbkarte */
+  .produktseite-clean .price-card h3, .produktseite-clean .price-amount { color: var(--ink); }
+  .produktseite-clean .price-name-sub, .produktseite-clean .price-desc,
+  .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
+  .produktseite-clean .price-features { border-top-color: #e7e2df; }
+  .produktseite-clean .price-features li { color: var(--ink); }
+  .produktseite-clean .price-features li::before { background: #0B9FBD; }
+  .produktseite-clean .price-badge { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
+  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #086a80; border-color: #fff; }
+  .produktseite-clean .pricing-footnote { color: var(--grey-50); }
+  .produktseite-clean .price-more-btn { margin-top: 20px; align-self: flex-start; }
+  .produktseite-clean .price-card--featured .btn--outline { color: #fff; border-color: rgba(255,255,255,.6); }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #086a80; }
+
+  /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
+  .produktseite-clean .modal .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+
+  /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
+     bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
+  .produktseite-clean .usp-highlight {
+    margin-top: 28px; padding: clamp(28px, 4vw, 44px);
+    border-radius: 22px; background: linear-gradient(150deg, #0B9FBD 0%, #086a80 100%);
+    color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
+  }
+  .produktseite-clean .usp-highlight-icon {
+    flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px;
+    background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
+  }
+  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #fff; }
+  .produktseite-clean .usp-highlight-body { flex: 1 1 320px; }
+  .produktseite-clean .usp-highlight-kicker {
+    font-family: var(--font-sans); font-weight: 700; font-size: .74rem; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin: 0 0 8px;
+  }
+  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #fff; }
+  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
+
+  /* Prozess-Schritte */
+  .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
+  .produktseite-clean .produkt-process-step .step-num { color: #0B9FBD; }
+  .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
+  .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
+
+  /* Vergleich-Bild (z.B. sofort sichtbar: klassische Agentur vs. sofort sichtbar) */
+  .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
+  .produktseite-clean .vergleich-tag { color: var(--ink); }
+  .produktseite-clean .vergleich-tag--highlight { color: #0B9FBD; }
+  .produktseite-clean .vergleich-zeit { color: var(--grey-50); }
+  .produktseite-clean .vergleich-step { background: #fff; border: 1px solid #e7e2df; color: var(--grey-70); }
+  .produktseite-clean .vergleich-step--launch { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+
+  /* FAQ */
+  .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
+  .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
+  .produktseite-clean .produkt-faq-item summary::after { color: #0B9FBD; }
+  .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
+
+  /* Ansprechpartner + finaler CTA */
+  .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
+  .produktseite-clean .produkt-team-cta .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
+  .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
+  .produktseite-clean .ansprechpartner-name { color: var(--ink); }
+  .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
+  .produktseite-clean .produkt-cta .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+
+  body.produktseite-clean .site-footer { background: var(--black); }
+</style>
+</head>
+<body class="produktseite produktseite-clean">
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-rollup" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="28" y="10" width="24" height="46" rx="3"/>
+        <path d="M40,56v10"/>
+        <path d="M22,72l18-8,18,8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/digitale-tools" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Digitale Tools</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/marketing-as-a-service">Marketing as a Service</a>
+                  <div class="nav-item--subdropdown">
+                    <a href="/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Medien, die Ergebnisse liefern</a>
+                    <div class="nav-dropdown-sub">
+                      <div class="nav-dropdown-panel">
+                      <a href="/powerpoint">PowerPoint</a>
+                      <a href="/landingpage">Landingpage</a>
+                      <a href="/rollup">Roll-up</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
+                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
+                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/index.html#arbeitsweise">Arbeitsweise</a>
+    </nav>
+    <a class="btn btn--dark btn--sm nav-cta" href="/index.html#kontakt">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html">Strategiehandwerk</a>
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/digitale-tools">Digitale Tools</a>
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing</a>
+      <a href="/marketing-as-a-service" class="mobile-submenu-link">Marketing as a Service</a>
+      <a class="mobile-submenu-sublabel" href="/medien">Medien, die Ergebnisse liefern</a>
+      <a class="mobile-submenu-sublink" href="/powerpoint">PowerPoint</a>
+      <a class="mobile-submenu-sublink" href="/landingpage">Landingpage</a>
+      <a class="mobile-submenu-sublink" href="/rollup">Roll-up</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
+      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
+      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+      <div class="mobile-submenu-divider"></div>
+      <p class="mobile-submenu-label mobile-submenu-label--muted">Archiv</p>
+      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
+      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
+    </div>
+    <a href="/index.html#arbeitsweise">Arbeitsweise</a>
+    <a class="btn btn--dark" href="/index.html#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="produkt-hero">
+    <div class="container">
+    <div class="produkt-hero-grid">
+      <div class="produkt-hero-text">
+        <p class="kicker">Roll-up</p>
+        <h1 class="h-serif">Dein Auftritt. <span class="hl">Ein Blick.</span> Volle Wirkung.</h1>
+        <p class="lead">Auf der Messe oder im Foyer zählt der erste Blick – ein Roll-up, das deine Botschaft in Sekunden trägt.</p>
+        
+      </div>
+      <div class="produkt-hero-visual">
+              <div class="produkt-mock-sketch reveal produkt-mock-sketch--rollup">
+        <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines Roll-ups im Hochformat mit Kicker, Headline, Bildfläche, USP-Zeilen und Call-to-Action">
+          <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
+          <line x1="110.0" y1="376.0" x2="110.0" y2="404.0" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
+          <rect x="76.0" y="404.0" width="68.0" height="8.0" rx="4" fill="rgba(255,255,255,.3)"/>
+          <rect x="30.0" y="6.0" width="160.0" height="370.0" rx="8" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.36)" stroke-width="2"/>
+          <rect x="46.0" y="24.0" width="70.0" height="8.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="48.0" width="128.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="65.0" width="87.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="98.0" width="128.0" height="148.0" rx="8" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.24)" stroke-width="1.4"/>
+          <circle cx="110.0" cy="172.0" r="20.0" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="52.0" cy="274.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="270.0" width="91.5" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <circle cx="52.0" cy="294.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="290.0" width="74.9" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="64.0" y="304.0" width="92.0" height="24.0" rx="12" fill="rgba(255,255,255,.9)"/>
+          <rect x="72.0" y="344.0" width="76.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+        </svg>
+      </div>
+      </div>
+    </div>
+    <div class="produkt-hero-actions produkt-hero-actions--center">
+      <a class="btn btn--dark" href="#naechste-sektion">Roll-up kennenlernen</a>
+      
+    </div>
+    </div>
+  </section>
+
+  <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
+  <!-- ===== Vorschau ===== -->
+  <section class="produkt-section produkt-vorschau">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Vorschau</p>
+        <h2 class="h-serif">So könnte dein Roll-up aussehen.</h2>
+        <p>Hier kommt noch ein kurzer Text hin, der beschreibt, was in der Vorschau zu sehen ist.</p>
+      </div>
+      <div class="produkt-vorschau-card reveal">
+        <div class="media-box sprint-structure-card">
+          <button type="button" class="media-box-thumb-btn" data-modal-target="rollupHeroModal" aria-label="Vorschau öffnen: Skizze eines Roll-ups im Hochformat mit Kicker, Headline, Bildfläche, USP-Zeilen und Call-to-Action">
+            <div class="media-box-thumb">
+              <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
+          <line x1="110.0" y1="376.0" x2="110.0" y2="404.0" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
+          <rect x="76.0" y="404.0" width="68.0" height="8.0" rx="4" fill="rgba(255,255,255,.3)"/>
+          <rect x="30.0" y="6.0" width="160.0" height="370.0" rx="8" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.36)" stroke-width="2"/>
+          <rect x="46.0" y="24.0" width="70.0" height="8.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="48.0" width="128.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="65.0" width="87.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="98.0" width="128.0" height="148.0" rx="8" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.24)" stroke-width="1.4"/>
+          <circle cx="110.0" cy="172.0" r="20.0" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="52.0" cy="274.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="270.0" width="91.5" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <circle cx="52.0" cy="294.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="290.0" width="74.9" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="64.0" y="304.0" width="92.0" height="24.0" rx="12" fill="rgba(255,255,255,.9)"/>
+          <rect x="72.0" y="344.0" width="76.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+              </svg>
+            </div>
+          </button>
+          <div class="media-box-footer">
+            <span class="media-box-title">Roll-up</span>
+            <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="rollupHeroModal">Vorschau ansehen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Vorteile ===== -->
+  <section class="produkt-grid">
+    <div class="container">
+      <div class="produkt-grid-cards">
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-check"/></svg></div>
+        <h3>Klar</h3><p>Eine Botschaft, groß und lesbar auf Distanz.</p>
+      </div>
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-check"/></svg></div>
+        <h3>Griffig</h3><p>Reduziert auf das, was im Vorbeigehen hängen bleibt.</p>
+      </div>
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-check"/></svg></div>
+        <h3>Wirksam</h3><p>Gebaut, um Gespräche zu eröffnen – nicht zu ersetzen.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== Ansprechpartner + CTA ===== -->
+  <section class="produkt-cta produkt-team-cta">
+    <div class="container">
+      <p class="kicker">Jetzt loslegen</p>
+      <h2>Bereit für den Auftritt, der im Raum wirkt?</h2>
+      <p class="produkt-team-cta-sub">Dein direkter Draht zu uns. Kurze Wege statt langer Abstimmungsrunden.</p>
+      <div class="ansprechpartner-grid">
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Daniel Ströbel</p>
+          <p class="ansprechpartner-role">Strategiehandwerker</p>
+        </div>
+      </div>
+      <div class="produkt-cta-actions">
+        <a class="btn btn--dark" href="/kontakt.html">Roll-up anfragen</a>
+        
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Vorschau-Modal: Skizze eines Roll-ups im Hochformat mit Kicker, Headline, Bildfläche, USP-Zeilen und Call-to-Action ===== -->
+<div class="modal-overlay" id="rollupHeroModal" data-generic>
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure">
+      <div class="modal-structure-head">
+        <h3>Roll-up</h3>
+        <p>Format und Aufbau des Messe-Roll-ups.</p>
+      </div>
+      <div class="modal-structure-frame" style="width:min(90vw, calc(66vh * 0.4783)); aspect-ratio:220/460">
+        <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines Roll-ups im Hochformat mit Kicker, Headline, Bildfläche, USP-Zeilen und Call-to-Action">
+          <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
+          <line x1="110.0" y1="376.0" x2="110.0" y2="404.0" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
+          <rect x="76.0" y="404.0" width="68.0" height="8.0" rx="4" fill="rgba(255,255,255,.3)"/>
+          <rect x="30.0" y="6.0" width="160.0" height="370.0" rx="8" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.36)" stroke-width="2"/>
+          <rect x="46.0" y="24.0" width="70.0" height="8.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="48.0" width="128.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="65.0" width="87.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="98.0" width="128.0" height="148.0" rx="8" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.24)" stroke-width="1.4"/>
+          <circle cx="110.0" cy="172.0" r="20.0" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="52.0" cy="274.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="270.0" width="91.5" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <circle cx="52.0" cy="294.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="290.0" width="74.9" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="64.0" y="304.0" width="92.0" height="24.0" rx="12" fill="rgba(255,255,255,.9)"/>
+          <rect x="72.0" y="344.0" width="76.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>

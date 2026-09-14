@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprint Landingpage – empiria</title>
+<meta name="description" content="Deine Landingpage in 48 Stunden live – für den Moment, in dem es schnell gehen muss.">
+<link rel="canonical" href="https://www.empiria.de/sprint-landingpage">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/sprint-landingpage">
+<meta property="og:title" content="Sprint Landingpage – empiria">
+<meta property="og:description" content="Deine Landingpage in 48 Stunden live – für den Moment, in dem es schnell gehen muss.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sprint Landingpage – empiria">
+<meta name="twitter:description" content="Deine Landingpage in 48 Stunden live – für den Moment, in dem es schnell gehen muss.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  // GA4 NUR auf der Produktions-Domain konfigurieren. Ohne diese Sperre
+  // schicken Vercel-Preview-Deployments (*.vercel.app) und lokale Tests ihre
+  // Klicks in dieselbe Property und verfaelschen die Zahlen dauerhaft --
+  // herausrechnen laesst sich das hinterher nicht mehr.
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "magenta" ===== */
+  body.produktseite-clean { background: #fff; }
+  .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
+  .produktseite-clean .produkt-hero .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-hero h1 { color: var(--ink); }
+  .produktseite-clean .produkt-hero .hl { color: #fff; }
+  .produktseite-clean .produkt-hero .hl::before { background: #C51F5D; }
+  .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero .btn--dark { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
+  .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
+  .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
+  .produktseite-clean .hero-stat-label { color: var(--grey-70); }
+  .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
+  .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
+
+  /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
+     Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
+  .produktseite-clean .sprint-structure-card {
+    background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%);
+    border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
+  }
+  .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
+  .produktseite-clean .media-box-footer,
+  .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
+  .produktseite-clean .media-box-title,
+  .produktseite-clean .sprint-structure-title { color: #fff; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #7a1339; }
+
+  /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
+  .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
+  .produktseite-clean .produkt-mock-icon { background: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #C51F5D; filter: none; }
+  .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
+
+  /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
+  .produktseite-clean .produkt-mock--dashboard,
+  .produktseite-clean .produkt-mock--tool { border-color: #e7e2df; background: var(--grey-bg); }
+  .produktseite-clean .dash-kpi { background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .dash-kpi .val { color: var(--ink); }
+  .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
+  .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #C51F5D, #7a1339); }
+  .produktseite-clean .dash-caption { color: var(--grey-50); }
+  .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
+  .produktseite-clean .tool-dash-logo { background: #C51F5D; }
+  .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
+  .produktseite-clean .tool-dash-nav-item--active { background: #C51F5D; }
+
+  /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
+     ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
+     macht sie auf Weiß lesbar; verstärkter Kontrast gleicht das Fehlen der Karte aus. */
+  .produktseite-clean .mock-split-half svg { filter: invert(1) contrast(1.6); }
+
+  /* Tools-Reihe (KI zum Anfassen) — die Logos werden bereits vorab eingefärbt als
+     PNG ausgeliefert (siehe _KI_TOOLS_ITEMS), daher hier nur die Beschriftung. */
+  .produktseite-clean .tools-row-label { color: var(--grey-70); }
+  .produktseite-clean .tools-row-icon img { opacity: 1; }
+
+  /* Hero: zweispaltiges Grid — Text links, Skizzen-Visualisierung rechts. Die
+     Visualisierung steht IMMER frei im Header: kein Kasten, kein Hintergrund, keine
+     Klickfläche — jede Kastenoptik einzelner Mockup-Bausteine wird hier neutralisiert. */
+  .produktseite-clean .produkt-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(36px, 6vw, 90px); align-items: center;
+  }
+  .produktseite-clean .produkt-hero-text { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual > * { margin-top: 0; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--dashboard,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--tool,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--structure {
+    background: none; border: none; box-shadow: none; padding: 0;
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock { aspect-ratio: 1/1; max-width: 440px; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-icon svg {
+    width: clamp(100px, 13vw, 168px); height: clamp(100px, 13vw, 168px);
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-bare { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch svg { width: 100%; height: auto; display: block; filter: invert(1) contrast(1.6); }
+  /* Roll-up-Skizze ist im Ausgangsformat sehr hochformatig (220x460) — deutlich
+     schmaler begrenzen, damit die Höhe im Header nicht dominiert (min. -50%). */
+  .produktseite-clean .produkt-mock-sketch--rollup { max-width: 190px; }
+
+  /* Wiederverwendete Skizzen auf farbigen Kacheln/Kästen (Übersichtsseiten-Kacheln,
+     Übersichts-Popups): dort sind sie wie das MarketingEcoSystem-Diagramm auf der
+     Marketing-as-a-Service-Seite zu behandeln — weiß gezeichnet, direkt auf dem
+     Farbverlauf, OHNE Invertierung und OHNE separaten hellen Kasten. */
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch svg,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch svg { filter: none; }
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch { max-width: none; }
+  /* iPhone-Körper der KI-zum-Anfassen-Skizze: auf farbigen Kacheln/Popups (ohne
+     Invertierung) weiß/transparent statt des dunklen Ausgangs-Fills, der nur im
+     Header (mit Invertierung) automatisch weiß wird. */
+  .produktseite-clean .media-box-thumb .mock-phone-body,
+  .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); }
+  @media (max-width: 900px) {
+    .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
+    .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
+  }
+  .produktseite-clean .produkt-hero-actions--center {
+    justify-content: center; margin-top: clamp(30px, 4vw, 46px);
+  }
+
+  /* Vorschau-Abschnitt (PowerPoint/Roll-up/Landingpage/Sprint Landingpage): die farbige,
+     anklickbare Vorschau-Karte, jetzt unterhalb des ersten CTAs statt im Header. */
+  .produktseite-clean .produkt-vorschau-card { max-width: 380px; margin: 0 auto; }
+
+  /* Sprint-Landingpage: Timeline */
+  .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
+  .produktseite-clean .sprint-step-marker { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
+  .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
+  .produktseite-clean .sprint-substep-tag { color: #fff; background: #C51F5D; border-color: #C51F5D; }
+  .produktseite-clean .sprint-substep p { color: var(--grey-70); }
+
+  /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
+  .produktseite-clean .produkt-section-head .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
+  .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
+
+  /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
+  .produktseite-clean .vorschau-split-text .kicker { color: #C51F5D; }
+  .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
+  .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
+  .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
+  .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
+  .produktseite-clean .vorschau-facts-list li::before { background: #C51F5D; }
+  .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .produkt-glass h3 { color: var(--ink); }
+  .produktseite-clean .produkt-glass p { color: var(--grey-70); }
+  .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #C51F5D; }
+  .produktseite-clean .topics-list li { color: var(--ink); }
+  .produktseite-clean .topics-list li::before { background: #C51F5D; }
+
+  /* Preis-Hinweis-Karte (einzelner großer Preis) */
+  .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-amount { color: #fff; }
+  .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
+  .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
+  .produktseite-clean .price-note-list { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-note-list li { color: rgba(255,255,255,.9); }
+  .produktseite-clean .price-note-list li::before { background: #fff; }
+
+  /* Preis-Bundles: Karten clean, hervorgehobene Karte als Farbkarte */
+  .produktseite-clean .price-card h3, .produktseite-clean .price-amount { color: var(--ink); }
+  .produktseite-clean .price-name-sub, .produktseite-clean .price-desc,
+  .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
+  .produktseite-clean .price-features { border-top-color: #e7e2df; }
+  .produktseite-clean .price-features li { color: var(--ink); }
+  .produktseite-clean .price-features li::before { background: #C51F5D; }
+  .produktseite-clean .price-badge { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
+  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #7a1339; border-color: #fff; }
+  .produktseite-clean .pricing-footnote { color: var(--grey-50); }
+  .produktseite-clean .price-more-btn { margin-top: 20px; align-self: flex-start; }
+  .produktseite-clean .price-card--featured .btn--outline { color: #fff; border-color: rgba(255,255,255,.6); }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #7a1339; }
+
+  /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
+  .produktseite-clean .modal .sprint-step-marker { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+
+  /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
+     bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
+  .produktseite-clean .usp-highlight {
+    margin-top: 28px; padding: clamp(28px, 4vw, 44px);
+    border-radius: 22px; background: linear-gradient(150deg, #C51F5D 0%, #7a1339 100%);
+    color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
+  }
+  .produktseite-clean .usp-highlight-icon {
+    flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px;
+    background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
+  }
+  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #fff; }
+  .produktseite-clean .usp-highlight-body { flex: 1 1 320px; }
+  .produktseite-clean .usp-highlight-kicker {
+    font-family: var(--font-sans); font-weight: 700; font-size: .74rem; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin: 0 0 8px;
+  }
+  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #fff; }
+  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
+
+  /* Prozess-Schritte */
+  .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
+  .produktseite-clean .produkt-process-step .step-num { color: #C51F5D; }
+  .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
+  .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
+
+  /* Vergleich-Bild (z.B. sofort sichtbar: klassische Agentur vs. sofort sichtbar) */
+  .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
+  .produktseite-clean .vergleich-tag { color: var(--ink); }
+  .produktseite-clean .vergleich-tag--highlight { color: #C51F5D; }
+  .produktseite-clean .vergleich-zeit { color: var(--grey-50); }
+  .produktseite-clean .vergleich-step { background: #fff; border: 1px solid #e7e2df; color: var(--grey-70); }
+  .produktseite-clean .vergleich-step--launch { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+
+  /* FAQ */
+  .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
+  .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
+  .produktseite-clean .produkt-faq-item summary::after { color: #C51F5D; }
+  .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
+
+  /* Ansprechpartner + finaler CTA */
+  .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
+  .produktseite-clean .produkt-team-cta .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
+  .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
+  .produktseite-clean .ansprechpartner-name { color: var(--ink); }
+  .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
+  .produktseite-clean .produkt-cta .btn--dark { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+
+  body.produktseite-clean .site-footer { background: var(--black); }
+</style>
+</head>
+<body class="produktseite produktseite-clean">
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-sprint" viewBox="0 0 80 80">
+      <path fill="currentColor" d="M42,6 L16,46 L34,46 L30,74 L62,28 L42,28 Z"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/digitale-tools" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Digitale Tools</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/marketing-as-a-service">Marketing as a Service</a>
+                  <div class="nav-item--subdropdown">
+                    <a href="/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Medien, die Ergebnisse liefern</a>
+                    <div class="nav-dropdown-sub">
+                      <div class="nav-dropdown-panel">
+                      <a href="/powerpoint">PowerPoint</a>
+                      <a href="/landingpage">Landingpage</a>
+                      <a href="/rollup">Roll-up</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
+                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
+                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/index.html#arbeitsweise">Arbeitsweise</a>
+    </nav>
+    <a class="btn btn--dark btn--sm nav-cta" href="/index.html#kontakt">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html">Strategiehandwerk</a>
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/digitale-tools">Digitale Tools</a>
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing</a>
+      <a href="/marketing-as-a-service" class="mobile-submenu-link">Marketing as a Service</a>
+      <a class="mobile-submenu-sublabel" href="/medien">Medien, die Ergebnisse liefern</a>
+      <a class="mobile-submenu-sublink" href="/powerpoint">PowerPoint</a>
+      <a class="mobile-submenu-sublink" href="/landingpage">Landingpage</a>
+      <a class="mobile-submenu-sublink" href="/rollup">Roll-up</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+      <div class="mobile-submenu-divider"></div>
+      <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
+      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
+      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+      <div class="mobile-submenu-divider"></div>
+      <p class="mobile-submenu-label mobile-submenu-label--muted">Archiv</p>
+      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
+      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
+    </div>
+    <a href="/index.html#arbeitsweise">Arbeitsweise</a>
+    <a class="btn btn--dark" href="/index.html#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="produkt-hero">
+    <div class="container">
+    <div class="produkt-hero-grid">
+      <div class="produkt-hero-text">
+        <p class="kicker">Sprint Landingpage</p>
+        <h1 class="h-serif">Live in nur 48 Stunden. Sauber gebaut, <span class="hl">volle Wirkung.</span></h1>
+        <p class="lead">Wenn es schnell gehen muss: In nur 48 Stunden entwickeln wir Deine fokussierte Landingpage – ohne Abstriche bei Qualität, Layout und Wirkung.</p>
+              <div class="produkt-pills">
+        <span class="produkt-pill reveal">Live in 48 Stunden</span>
+        <span class="produkt-pill reveal">Fixer Umfang</span>
+        <span class="produkt-pill reveal">Mobile-First</span>
+      </div>
+
+      </div>
+      <div class="produkt-hero-visual">
+              <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+        </svg>
+      </div>
+      </div>
+    </div>
+    <div class="produkt-hero-actions produkt-hero-actions--center">
+      <a class="btn btn--dark" href="#naechste-sektion">Sprint Landingpage kennenlernen</a>
+      
+    </div>
+    </div>
+  </section>
+
+  <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
+  <!-- ===== Vorschau (zweispaltig) ===== -->
+  <section class="produkt-section produkt-vorschau produkt-vorschau--split">
+    <div class="container">
+      <div class="vorschau-split-grid">
+        <div class="vorschau-split-text reveal">
+          <p class="kicker">Erfolgsfaktor</p>
+          <h2 class="h-serif">So funktioniert Deine Landingpage optimal.</h2>
+          <p>Eine Homepage ist oft ein Sammelsurium an Themen – zum Unternehmen, zum Team, zu Produkten. Besucher müssen sich zurechtfinden und selbst suchen, was sie wollen.</p>
+        <p>Eine Landingpage funktioniert anders: Sie richtet sich an eine klar definierte Zielgruppe und löst genau ein zentrales Problem dieser Zielgruppe – mit vertrieblichem Ziel. Schon im Header muss die Zielgruppe das Gefühl bekommen: Hier bin ich richtig, hier finde ich eine Lösung für mein Thema.</p>
+          <ul class="vorschau-facts-list">
+          <li>Eine Zielgruppe, ein Problem, eine Lösung – keine Ablenkung durch andere Themen</li>
+          <li>Visualisierung, Ansprache und Argumente exakt auf diese Zielgruppe zugeschnitten</li>
+          <li>Nie der Anspruch, alles zu erklären – immer der Fokus auf den nächsten Schritt</li>
+          <li>Ein klares Ziel: Kontaktdaten, Webinar-Anmeldung oder Download mit echtem Mehrwert</li>
+          </ul>
+        </div>
+        <div class="vorschau-split-card reveal">
+          <button type="button" class="sprint-structure-card js-pdf-open" aria-label="Vorschau öffnen: Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+            <div class="sprint-structure-thumb">
+              <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+              </svg>
+            </div>
+            <div class="sprint-structure-footer">
+              <span class="sprint-structure-title">Grundlegende Struktur der Landingpage</span>
+              <span class="btn btn--dark btn--sm sprint-structure-cta">Vorschau ansehen</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ablauf (Sprint Landingpage) ===== -->
+  <section class="produkt-section">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Ablauf</p>
+        <h2 class="h-serif">Drei Schritte zur fertigen Landingpage.</h2>
+        <p>So läuft der Sprint konkret ab – von der Vorbereitung bis zum Go-live.</p>
+      </div>
+      <div class="sprint-timeline reveal" style="max-width:760px;margin:0 auto;">
+        <div class="sprint-step">
+          <div class="sprint-step-marker">1</div>
+          <div class="sprint-step-body">
+            <h4>Onboarding</h4>
+            <p class="sprint-step-meta">2–3 Std. &middot; online</p>
+          </div>
+        </div>
+        <div class="sprint-step sprint-step--workshop">
+          <div class="sprint-step-marker">2</div>
+          <div class="sprint-step-body">
+            <h4>Sprint-Workshop</h4>
+            <p class="sprint-step-meta">2 Tage &middot; Präsenz</p>
+            <div class="sprint-substeps">
+              <div class="sprint-substep">
+                <span class="sprint-substep-tag">Tag 1</span>
+                <p>Sparring &amp; parallele Entwicklung der Rohversion</p>
+              </div>
+              <div class="sprint-substep">
+                <span class="sprint-substep-tag">Tag 2</span>
+                <p>Vorstellung, Feedback, Feinschliff &amp; Go-live</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sprint-step">
+          <div class="sprint-step-marker">3</div>
+          <div class="sprint-step-body">
+            <h4>Review</h4>
+            <p class="sprint-step-meta">Kurzes Fazit: Hat alles gepasst, wie war das Feedback – und wo gibt es noch gezielten Anpassungsbedarf?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Vorteile ===== -->
+  <section class="produkt-grid">
+    <div class="container">
+      <div class="produkt-grid-cards">
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-speed"/></svg></div>
+        <h3>Schneller Start</h3><p>Kein monatelanger Prozess – wir starten in den Sprint, sobald der Rahmen steht.</p>
+      </div>
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-layout"/></svg></div>
+        <h3>Fokussierter Umfang</h3><p>Ein klar begrenztes Set an Inhalten und Elementen, damit der Sprint hält, was er verspricht.</p>
+      </div>
+      <div class="produkt-glass reveal">
+        <div class="feature-icon"><svg><use href="#ic-mobile"/></svg></div>
+        <h3>Ohne Kompromisse</h3><p>Trotz Tempo: sauber gebaut, mobil optimiert und technisch startklar.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Preis-Hinweis ===== -->
+  <section class="produkt-section produkt-price-note">
+    <div class="container">
+      <div class="produkt-section-head reveal produkt-section-head--center">
+        <p class="kicker">Investition</p>
+        <h2 class="h-serif">Ein Paket, ein Preis.</h2>
+        <p>Klar kalkuliert statt versteckter Zusatzkosten: Konzeption, Umsetzung und Live-Schaltung in einem Leistungspaket.</p>
+      </div>
+      <div class="price-note-card price-note-card--feature reveal">
+        <div class="price-note-badge-wrap"><span class="price-badge price-note-badge">Investition</span></div>
+        <div class="price-note-value">
+          <span class="price-note-amount">15.850 €</span>
+          <span class="price-note-unit">Dein Leistungspaket für die Sprint-Landingpage</span>
+        </div>
+        <ul class="price-note-list">
+          <li>Konzeption, Text &amp; Design Deiner vollständigen Landingpage</li>
+          <li>Umsetzung im zweitägigen Sprint-Workshop bei Dir vor Ort</li>
+          <li>Feedbackrunde &amp; Feinschliff direkt im Workshop</li>
+          <li>Live-Schaltung Deiner Landingpage im Anschluss an den Sprint</li>
+          <li>Review im Nachgang, damit alles wie gewünscht läuft</li>
+          <li>Durchgeführt von 2 Beraterinnen und Beratern von empiria</li>
+        </ul>
+      </div>
+<p class="pricing-footnote reveal">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe sowie zzgl. Spesen (Anfahrt und zwei Übernachtungen für je zwei Personen).</p>
+    </div>
+  </section>
+
+
+  <!-- ===== FAQ ===== -->
+  <section class="produkt-section produkt-faq">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Anwendungsfälle</p>
+        <h2 class="h-serif">Typische Anwendungsfälle.</h2>
+        <p>So setzen Unternehmen den Sprint konkret ein.</p>
+      </div>
+      <div class="produkt-faq-list">
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Dynamik in den Kreativworkshop bringen</summary>
+          <p>Das Thema wird gezielt in einem Kreativworkshop eingesetzt, damit es danach direkt weitergeht – statt dass die Ergebnisse unnötig verzögert werden oder im Nachgang untergehen.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Schnell auf eine Vertriebssituation reagieren</summary>
+          <p>Eine Marktchance oder eine Marktveränderung ist aufgekommen, oder es soll kurzfristig ein Push für den Vertrieb gesetzt werden – etwa im Endjahresgeschäft.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Eine Situation retten</summary>
+          <p>Etwas wurde schlicht vergessen oder jemand im Marketing ist ausgefallen – aber ein wichtiger Termin steht an: eine große Messe, ein Event, ein Vertriebsmeeting, ein Produktlaunch.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Zum Wachrütteln</summary>
+          <p>Diskussionen im Unternehmen ziehen sich immer wieder lange hin, mit vielen Erklärungen, warum etwas nicht möglich ist. Der Sprint beweist, dass es auch schnell und professionell geht.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Als Methodiktraining im Marketing</summary>
+          <p>Der Sprint wird eingesetzt, um Einblicke in eine schlagkräftige Methodik zu gewinnen und sie als Schulung fürs eigene Marketingteam nutzbar zu machen.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Kunden &amp; Partner begeistern</summary>
+          <p>Kunden, Kooperationspartner oder Vertriebspartner werden begeistert, weil sehr schnell eine einsetzbare Lösung entsteht – etwa gegenüber großen Maklern, Bankpartnern oder Kooperationspartnern in einem neuen Ländermarkt.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ansprechpartner + CTA ===== -->
+  <section class="produkt-cta produkt-team-cta">
+    <div class="container">
+      <p class="kicker">Jetzt loslegen</p>
+      <h2>Bereit für deine Seite in 48 Stunden?</h2>
+      <p class="produkt-team-cta-sub">Dein direkter Draht zu uns. Kurze Wege statt langer Abstimmungsrunden.</p>
+      <div class="ansprechpartner-grid">
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Daniel Ströbel</p>
+          <p class="ansprechpartner-role">Strategiehandwerker</p>
+        </div>
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-noah.webp" alt="Noah Hermanns" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Noah Hermanns</p>
+          <p class="ansprechpartner-role">Experte Performance Marketing</p>
+        </div>
+      </div>
+      <div class="produkt-cta-actions">
+        <button type="button" class="btn btn--dark js-form-open">Unverbindliches Angebot anfordern</button>
+        
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Struktur-Vorschau Modal (Sprint Landingpage) ===== -->
+<div class="modal-overlay" id="pdfModalOverlay">
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" id="pdfModalClose" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure">
+      <div class="modal-structure-head">
+        <h3>Aufbau der Landingpage</h3>
+      </div>
+      <div class="modal-structure-layout">
+        <div class="modal-structure-frame">
+          <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+            <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+          </svg>
+        </div>
+        <div class="modal-structure-note-wrap">
+          <p class="modal-structure-note">Jede Landingpage folgt einem klar durchdachten Aufbau: ein eindeutiges Ziel, eine genau definierte Zielgruppe und ein thematischer Einstieg, der diese Zielgruppe so abholt, dass sie bereit ist, den nächsten Schritt zu gehen.</p>
+          <p class="modal-structure-note">Für Dein Thema passen wir diesen Aufbau gezielt an. Denn nicht jede Sektion ist bei jedem Thema zwingend notwendig oder sinnvoll.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- ===== Kontaktformular-Modal (Sprint Landingpage) ===== -->
+<div class="modal-overlay" id="formModalOverlay">
+  <div class="modal-wrap">
+    <button class="modal-close" id="formModalClose" aria-label="Schließen">&times;</button>
+    <div class="modal modal--form">
+      <p class="kicker">Unverbindliches Angebot</p>
+      <h3>Lass uns starten.</h3>
+      <p class="form-intro">Trage bitte kurz Deine Daten und Deinen Wunschtermin ein – wir melden uns zeitnah bei Dir, um alles Weitere persönlich zu besprechen.</p>
+      <p class="form-mail-body" hidden>Hallo Daniel, schick mir bitte ein unverbindliches Angebot für den Sprint – und melde Dich gern bei mir, um die nächsten Schritte persönlich zu besprechen.</p>
+      <form class="contact-form">
+        <div class="form-row">
+          <label>Vorname<input type="text" name="vorname" required autocomplete="given-name"></label>
+          <label>Name<input type="text" name="name" required autocomplete="family-name"></label>
+        </div>
+        <div class="form-row">
+          <label>Funktion<input type="text" name="funktion" autocomplete="organization-title"></label>
+          <label>Firma<input type="text" name="firma" required autocomplete="organization"></label>
+        </div>
+        <div class="form-row">
+          <label>Tel. Nr.<input type="tel" name="tel" autocomplete="tel"></label>
+          <label>Start des 2-Tages-Sprints<input type="date" name="termin"></label>
+        </div>
+        <button type="submit" class="btn btn--dark form-submit">Angebot anfordern</button>
+        <p class="form-note">Öffnet Dein E-Mail-Programm mit einer vorausgefüllten Nachricht an Daniel.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>
