@@ -155,6 +155,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .site-header.scrolled { border-color: #ededed; box-shadow: 0 6px 24px rgba(0,0,0,.04); }
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -167,7 +168,12 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 2.6rem;
-  margin-left: auto;
+  /* Mittig im Menüband verankert (unabhängig von Logo- und Kontakt-Button-
+     Breite) statt rechtsbündig vor dem Kontakt-Button - die Position des
+     Leistungen-Dropdowns selbst (siehe .nav-dropdown) bleibt davon unberührt. */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-links a {
   font-size: 0.95rem;
