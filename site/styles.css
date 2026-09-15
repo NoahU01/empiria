@@ -1396,25 +1396,41 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
     display: flex; flex-direction: column; padding: 12px var(--pad-x) 24px;
     box-shadow: 0 12px 24px rgba(0,0,0,.06);
     transform: translateY(-120%); transition: transform .3s ease;
+    max-height: calc(100vh - 68px); overflow-y: auto; -webkit-overflow-scrolling: touch;
   }
   .mobile-menu.open { transform: none; }
   .mobile-menu a { padding: 14px 0; font-size: 1.15rem; border-bottom: 1px solid #f2f2f2; color: var(--ink); }
   .mobile-menu .btn { margin-top: 16px; color: #fff; border: 1.5px solid var(--black); }
 
-  /* Leistungen-Unterpunkte im Mobile-Menü (kein Hover auf Touch -> immer sichtbar) */
+  /* Leistungen-Unterpunkte im Mobile-Menü: pro Hauptgruppe ein eigenes
+     Accordion (Pfeil tippen -> Unterpunkte auf-/zuklappen), standardmäßig
+     zu. So bleibt das Menü bei vielen Gruppen kompakt und scrollbar, statt
+     dass alle Unterpunkte aller Gruppen permanent aufgeklappt sind. */
   .mobile-submenu { display: flex; flex-direction: column; padding-left: 16px; margin-top: -6px; }
-  .mobile-submenu a {
-    padding: 10px 0; font-size: 0.95rem; font-weight: 500;
-    color: var(--grey-label); border-bottom: 1px dashed #f2f2f2;
-  }
-  .mobile-submenu a:last-child { border-bottom: 1px solid #f2f2f2; }
   .mobile-submenu-divider { height: 1px; background: #f2f2f2; margin: 6px 0; }
+  .mobile-submenu-group { display: flex; flex-direction: column; }
+  .mobile-submenu-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .mobile-submenu-row .mobile-submenu-label { padding: 10px 0; flex: 1; }
   .mobile-submenu-label {
     padding: 10px 0 2px; font-size: 0.8rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: .04em; color: var(--grey-50);
   }
   .mobile-submenu-label--link { text-decoration: none; }
   .mobile-submenu-label--link:hover { color: var(--ink); }
+  .mobile-submenu-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; margin: 4px 0; padding: 0; border: 0; background: none;
+    color: var(--grey-50); flex-shrink: 0;
+  }
+  .mobile-submenu-chevron { transition: transform .2s ease; }
+  .mobile-submenu-group.is-open .mobile-submenu-chevron { transform: rotate(180deg); }
+  .mobile-submenu-panel { display: none; flex-direction: column; padding-left: 16px; }
+  .mobile-submenu-group.is-open .mobile-submenu-panel { display: flex; }
+  .mobile-submenu-panel a {
+    padding: 10px 0; font-size: 0.95rem; font-weight: 500;
+    color: var(--grey-label); border-bottom: 1px dashed #f2f2f2;
+  }
+  .mobile-submenu-panel a:last-child { border-bottom: 1px solid #f2f2f2; }
   /* Verschachtelter Unterpunkt, der selbst noch eigene Links aufklappt (3. Ebene,
      z.B. "Medien, die Ergebnisse liefern" unter "Marketing"): wie ein normaler
      Link, nur fett, damit er sich von seinen eingerückten Kindern abhebt. */
@@ -1953,7 +1969,11 @@ body.produktseite--sofortsichtbar {
 .media-box-thumb--mock > div { max-width: 82% !important; width: 82% !important; margin: 0 auto !important; }
 .media-box-thumb--mock img { width: 100% !important; height: auto !important; }
 @media (max-width: 900px) {
-  .media-boxes-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  /* !important nötig, weil die Spaltenzahl/max-width auf dieser Klasse öfter
+     inline pro Seite gesetzt wird (je nach Kachel-Anzahl) - Inline-Styles
+     würden diese Mobile-Regel sonst immer überschreiben und die Kacheln
+     blieben nebeneinander (extrem schmal & hoch) statt untereinander. */
+  .media-boxes-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin-left: auto; margin-right: auto; }
 }
 
 /* Struktur-Vorschau-Modal (reuses .modal-overlay / .modal-wrap / .modal-close, Muster wie modal--pdf).

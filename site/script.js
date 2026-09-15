@@ -171,6 +171,14 @@
         toggle.setAttribute("aria-expanded", "false");
       });
     });
+    menu.querySelectorAll(".mobile-submenu-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var group = btn.closest(".mobile-submenu-group");
+        if (!group) return;
+        var isOpen = group.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    });
   }
 
   /* ---------- Logo -> back to top (sticky header makes #top unreliable) ----------
