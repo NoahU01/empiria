@@ -191,10 +191,14 @@ button { font-family: inherit; cursor: pointer; }
 .nav-dropdown {
   position: absolute;
   top: 100%; left: 50%;
-  /* So weit nach links verschoben, dass rechts vom 1.-Ebene-Panel immer
-     genug Platz für die nach rechts aufklappende 2. (und 3.) Ebene bleibt -
-     auch bei der schmalsten unterstützten Desktop-Breite (901px). */
-  transform: translateX(calc(-50% - 280px));
+  /* Verschiebt sich abhängig von der Fensterbreite: auf schmalen Desktop-/
+     iPad-Breiten (ab 901px) weit genug nach links, damit rechts vom
+     1.-Ebene-Panel immer genug Platz für die nach rechts aufklappende 2.
+     (und 3.) Ebene bleibt; auf breiten MacBook-/Monitor-Fenstern rutscht es
+     dank des vw-Anteils von selbst wieder näher an den Auslöser "Leistungen"
+     heran, weil dort ohnehin viel Platz rechts frei ist. Werte per Playwright
+     über mehrere Breiten (901-1920px) austariert. */
+  transform: translateX(calc(-50% + 50vw - 695px));
   padding-top: 14px; /* unsichtbare Hover-Brücke, damit der Dropdown beim
                          diagonalen Runterfahren nicht vorzeitig schließt */
   opacity: 0;
@@ -267,6 +271,17 @@ button { font-family: inherit; cursor: pointer; }
 .nav-item--subdropdown:hover > .nav-dropdown-sub,
 .nav-item--subdropdown:focus-within > .nav-dropdown-sub { opacity: 1; visibility: visible; }
 .nav-dropdown-sub .nav-dropdown-panel { min-width: 200px; width: max-content; }
+
+/* Auf schmalen Desktop-/iPad-Breiten (ab 901px bis knapp über iPad Mini
+   querformat) ist auch nach dem Linksrücken des 1.-Ebene-Panels nicht genug
+   Platz für die 2. Ebene in voller (einzeiliger) Breite. Deshalb hier
+   schmaler - lange Einträge (z.B. "Komplexe Themen strukturieren &
+   kommunizieren") brechen dafür zweizeilig um. */
+@media (min-width: 901px) and (max-width: 1099px) {
+  .nav-dropdown-sub .nav-dropdown-panel { width: 190px; min-width: 190px; }
+  .nav-dropdown-sub .nav-dropdown-panel a,
+  .nav-dropdown-sub .nav-dropdown-leaf { white-space: normal; }
+}
 
 
 /* Hauptpunkte ohne Unterpunkte (noch) — kein Flyout, nur eine Zeile direkt im
