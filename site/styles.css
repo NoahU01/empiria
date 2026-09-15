@@ -185,7 +185,10 @@ button { font-family: inherit; cursor: pointer; }
 .nav-dropdown {
   position: absolute;
   top: 100%; left: 50%;
-  transform: translateX(-50%);
+  /* So weit nach links verschoben, dass rechts vom 1.-Ebene-Panel immer
+     genug Platz für die nach rechts aufklappende 2. (und 3.) Ebene bleibt -
+     auch bei der schmalsten unterstützten Desktop-Breite (901px). */
+  transform: translateX(calc(-50% - 280px));
   padding-top: 14px; /* unsichtbare Hover-Brücke, damit der Dropdown beim
                          diagonalen Runterfahren nicht vorzeitig schließt */
   opacity: 0;
@@ -225,10 +228,11 @@ button { font-family: inherit; cursor: pointer; }
 .nav-sofort-logo { height: 0.8611em; width: auto; }
 
 /* Trennstrich + "Medien"-Untermenü innerhalb des Leistungen-Dropdowns.
-   Die 2. (und 3.) Ebene öffnet NICHT als eigenes Fenster seitlich daneben
-   (das ragt bei vielen Bildschirmbreiten über den rechten Rand hinaus),
-   sondern klappt wie im mobilen Menü als Zwischenebene nach unten auf,
-   eingerückt innerhalb desselben Panels. */
+   Die 2. (und 3.) Ebene öffnet als eigenes Fenster nach rechts daneben
+   (gewohnte Lese-/Pfeilrichtung). Damit das nicht über den rechten
+   Bildschirmrand hinausragt, ist das 1. Ebene-Panel selbst so weit
+   nach links verschoben (siehe .nav-dropdown transform), dass rechts
+   davon immer genug Platz für die 2. Ebene bleibt. */
 .nav-dropdown-divider { height: 1px; background: var(--grey-bg); margin: 8px 6px; }
 .nav-item--subdropdown { position: relative; }
 .nav-dropdown-sub-trigger {
@@ -241,26 +245,22 @@ button { font-family: inherit; cursor: pointer; }
 .nav-dropdown-sub-trigger::after {
   content: ""; width: 6px; height: 6px; margin-left: 12px; flex: 0 0 auto;
   border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg); opacity: 0.5; transition: transform .18s ease;
+  transform: rotate(-45deg); opacity: 0.5;
 }
 .nav-item--subdropdown:hover > .nav-dropdown-sub-trigger,
 .nav-item--subdropdown:focus-within > .nav-dropdown-sub-trigger { background: var(--grey-bg); }
-.nav-item--subdropdown:hover > .nav-dropdown-sub-trigger::after,
-.nav-item--subdropdown:focus-within > .nav-dropdown-sub-trigger::after { transform: rotate(225deg); }
 .nav-dropdown-sub-trigger--link { cursor: pointer; text-decoration: none; }
 .nav-dropdown-sub-trigger--link:hover { color: var(--ink); }
 .nav-dropdown-sub {
-  max-height: 0; width: 0; overflow: hidden;
-  opacity: 0;
-  transition: max-height .22s ease, opacity .18s ease;
+  position: absolute; left: 100%; top: -10px;
+  padding-left: 10px; /* unsichtbare Hover-Brücke */
+  opacity: 0; visibility: hidden;
+  transition: opacity .16s ease, visibility .16s ease;
+  z-index: 71;
 }
 .nav-item--subdropdown:hover > .nav-dropdown-sub,
-.nav-item--subdropdown:focus-within > .nav-dropdown-sub { max-height: 600px; width: auto; opacity: 1; }
-.nav-dropdown-sub .nav-dropdown-panel {
-  min-width: 0; width: auto;
-  background: none; border: 0; box-shadow: none; border-radius: 0;
-  padding: 2px 0 6px 16px;
-}
+.nav-item--subdropdown:focus-within > .nav-dropdown-sub { opacity: 1; visibility: visible; }
+.nav-dropdown-sub .nav-dropdown-panel { min-width: 200px; width: max-content; }
 
 
 /* Hauptpunkte ohne Unterpunkte (noch) — kein Flyout, nur eine Zeile direkt im
