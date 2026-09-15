@@ -78,6 +78,10 @@
   .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
   .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
 
+  /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
+     dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
+  .usp-turbo-icon { background: #0B9FBD; color: #fff; }
+
   /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
      Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
   .produktseite-clean .sprint-structure-card {
@@ -546,6 +550,41 @@
                 </div>
               </div>
             </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
+                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
+                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                  <a href="/archiv/sofort-sichtbar-problem" class="nav-dropdown-panel-link--muted">sofort sichtbar + Problem</a>
+                  <a href="/archiv/digitale-tools-1-0" class="nav-dropdown-panel-link--muted">Digitale Tools 1.0</a>
+                  <a href="/archiv/marketing-1-0" class="nav-dropdown-panel-link--muted">Marketing 1.0</a>
+                  <div class="nav-item--subdropdown">
+                    <a href="/archiv/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Medien, die Ergebnisse liefern</a>
+                    <div class="nav-dropdown-sub">
+                      <div class="nav-dropdown-panel">
+                      <a href="/archiv/powerpoint" class="nav-dropdown-panel-link--muted">PowerPoint</a>
+                      <a href="/archiv/landingpage" class="nav-dropdown-panel-link--muted">Landingpage</a>
+                      <a href="/archiv/rollup" class="nav-dropdown-panel-link--muted">Roll-up</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -614,6 +653,41 @@
         <div class="mobile-submenu-panel">
       <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
       <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Impulsvorträge anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
+      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <span class="mobile-submenu-label mobile-submenu-label--muted">Archiv</span>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Archiv anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
+      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
+      <a href="/archiv/sofort-sichtbar-problem" class="mobile-submenu-link mobile-submenu-link--muted">sofort sichtbar + Problem</a>
+      <a href="/archiv/digitale-tools-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Digitale Tools 1.0</a>
+      <a href="/archiv/marketing-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Marketing 1.0</a>
+      <a class="mobile-submenu-sublabel mobile-submenu-link--muted" href="/archiv/medien">Medien, die Ergebnisse liefern</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/powerpoint">PowerPoint</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/landingpage">Landingpage</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/rollup">Roll-up</a>
         </div>
       </div>
     </div>
@@ -793,8 +867,57 @@
         </a>
         <a class="media-box sprint-structure-card media-box--icon" href="/sofort-sichtbar" aria-label="Mehr erfahren: sofort sichtbar">
           <div class="media-box-thumb media-box-thumb--mock">
-                  <div class="produkt-mock-bare reveal">
-        <img src="/assets/produktseiten/sofort-sichtbar-mockup.webp" alt="Mockup: sofort sichtbar, eine Landingpage von empiria" loading="lazy" width="772" height="644">
+                  <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines MacBook-Bildschirms mit Website und drei gefächerten Posting-Vorschauen, daneben ein iPhone mit einer Vergleichstabelle klassische Agentur gegen sofort sichtbar – Symbol für sofortige digitale Sichtbarkeit">
+          <rect x="20.0" y="14.0" width="330.0" height="208.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="30.0" y="24.0" width="310.0" height="188.0" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+          <circle cx="44.0" cy="40.0" r="5.0" fill="rgba(255,255,255,.55)"/>
+          <rect x="56.0" y="36.0" width="46.0" height="7.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="244.0" y="37.0" width="20.0" height="5.0" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="270.0" y="37.0" width="20.0" height="5.0" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="300.0" y="34.0" width="34.0" height="12.0" rx="6" fill="rgba(255,255,255,.5)"/>
+          <rect x="115.0" y="62.0" width="140.0" height="9.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="139.0" y="78.0" width="92.0" height="9.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <g transform="rotate(-9 125.0 176.0)">
+          <rect x="89.0" y="130.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="103.0" cy="144.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="99.0" y="160.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="99.0" y="170.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g transform="rotate(0 185.0 164.0)">
+          <rect x="149.0" y="118.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="163.0" cy="132.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="159.0" y="148.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="159.0" y="158.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g transform="rotate(9 251.0 176.0)">
+          <rect x="215.0" y="130.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="229.0" cy="144.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="225.0" y="160.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="225.0" y="170.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <path d="M4.0,236.0 L366.0,236.0 L344.0,222.0 L26.0,222.0 Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.32)" stroke-width="1.4"/>
+          <rect x="161.0" y="227.0" width="48.0" height="4.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <g transform="rotate(6 331.0 209.0)">
+          <rect class="mock-phone-body" x="272.0" y="114.0" width="118.0" height="190.0" rx="20" fill="rgba(10,10,14,.92)" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/>
+          <rect x="280.0" y="122.0" width="102.0" height="174.0" rx="13" fill="rgba(255,255,255,.05)"/>
+          <rect x="288.0" y="136.0" width="86.0" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="288.0" y="148.0" width="68.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="288.0" y="172.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="181.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="172.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="181.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="288.0" y="202.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="211.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="202.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="211.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="288.0" y="232.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="241.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="232.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="241.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="315.0" y="294.0" width="32.0" height="3.4" rx="1.7" fill="rgba(255,255,255,.4)"/>
+          </g>
+        </svg>
       </div>
           </div>
           <div class="media-box-footer">

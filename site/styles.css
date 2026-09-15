@@ -552,7 +552,26 @@ a.nav-dropdown-leaf:hover { background: var(--grey-bg); color: var(--ink); }
 .formate-acc--violet .formate-preview-card { background: linear-gradient(155deg, #8613A1 0%, #5c0d70 100%); }
 .formate-acc--cyan .formate-preview-card { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); }
 .formate-acc--lime .formate-preview-card { background: linear-gradient(155deg, #A3E635 0%, #6b9422 100%); }
+/* Training & Sparring: zeigt die echten Grafiken der Unterseite (Trainingsplan-Skizze,
+   Foto) statt eines Icons — etwas höherer Kasten, aber deutlich kompakter als der erste
+   Entwurf, und die beiden Kästen selbst 20% schmaler (Luft auf beiden Seiten). */
+.formate-acc--lime .formate-preview-grid { max-width: 80%; margin-left: auto; margin-right: auto; }
+.formate-acc--lime .formate-preview-thumb { height: 108px; }
+.formate-acc--lime .formate-preview-thumb .produkt-mock-sketch svg { width: 86%; height: 86%; }
+/* 1:1 Sparring: komplettes (nicht angeschnittenes) Foto liegt als dezenter Schwarz-Weiß-
+   Hintergrund am unteren Kastenrand, etwas nach rechts gerückt mit Abstand zum rechten
+   Rand, Titel/Text liegen davor. */
+.formate-preview-card--photo { position: relative; min-height: 168px; justify-content: flex-end; }
+.formate-preview-card-photo {
+  position: absolute; right: calc(8% - 40px); bottom: 0; left: auto;
+  width: 88%; height: auto; display: block; z-index: 0; pointer-events: none;
+  filter: grayscale(1); opacity: .4;
+}
+.formate-preview-card--photo .formate-preview-title,
+.formate-preview-card--photo .formate-preview-desc { position: relative; z-index: 1; }
 .formate-acc--emerald .formate-preview-card { background: linear-gradient(155deg, #059669 0%, #037a54 100%); }
+.formate-preview-grid--2x2 { grid-template-columns: repeat(2, 1fr); max-width: 420px; }
+.formate-preview-grid--center { margin-left: auto; margin-right: auto; }
 @media (max-width: 480px) {
   .formate-preview-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1664,6 +1683,7 @@ body.produktseite--sofortsichtbar {
   max-width: 1080px; margin-top: 1.1rem;
 }
 .produkt-hero-lead-cols p.lead { margin-top: 0; max-width: none; }
+.produkt-hero-lead-cols--single { grid-template-columns: 1fr; gap: 1.1rem; max-width: 44ch; }
 @media (max-width: 760px) {
   .produkt-hero-lead-cols { grid-template-columns: 1fr; gap: 0.85rem; }
 }
@@ -1718,8 +1738,8 @@ body.produktseite--sofortsichtbar {
 .produkt-hero-split-photo { grid-area: photo; position: relative; }
 .produkt-hero-photo-img {
   position: absolute; right: 0; bottom: 0;
-  width: clamp(300px, 36vw, 494px); max-width: none; height: auto; display: block;
-  filter: grayscale(1); opacity: .6;
+  width: clamp(390px, 47vw, 642px); max-width: none; height: auto; display: block;
+  opacity: .6;
 }
 .produkt-hero-photo-pills {
   position: absolute; right: 0; bottom: 30px; max-width: 66%; z-index: 2;
@@ -1971,6 +1991,13 @@ body.produktseite--sofortsichtbar {
 .media-box-thumb--mock { overflow: hidden; }
 .media-box-thumb--mock > div { max-width: 82% !important; width: 82% !important; margin: 0 auto !important; }
 .media-box-thumb--mock img { width: 100% !important; height: auto !important; }
+/* Foto-Variante (z.B. Daniel bei 1:1 Sparring): am unteren Kachelrand ausgerichtet,
+   damit die Person quasi auf dem dunkleren Footer-Streifen der Kachel steht. */
+.media-box-thumb--photo { align-items: flex-end; justify-content: center; padding-bottom: 0; overflow: hidden; }
+.media-box-thumb--photo img {
+  width: auto; height: 110%; max-width: 100%; display: block; object-fit: contain; object-position: bottom;
+  filter: grayscale(1); opacity: .6;
+}
 @media (max-width: 900px) {
   /* !important nötig, weil die Spaltenzahl/max-width auf dieser Klasse öfter
      inline pro Seite gesetzt wird (je nach Kachel-Anzahl) - Inline-Styles
@@ -2284,6 +2311,63 @@ body.produktseite--sofortsichtbar {
   .topics-list { grid-template-columns: 1fr; }
 }
 
+/* Themen-Sektion: Vergleichsvarianten (temporär, zur Auswahl) */
+.tc-card { padding: 32px clamp(24px, 4vw, 44px); }
+.tc-option { margin-top: 44px; }
+.tc-option:first-child { margin-top: 0; }
+.tc-option-label {
+  font-family: var(--font-sans); font-weight: 700; font-size: .78rem; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--grey-70); margin: 0 0 14px;
+}
+.tc-intro { margin: 0 0 24px; color: var(--grey-70); font-size: .95rem; line-height: 1.65; max-width: 72ch; }
+.tc-occ-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px; }
+.tc-occ-card { background: var(--grey-bg); border: 1px solid #e7e2df; border-radius: 14px; padding: 16px; }
+.tc-occ-icon { color: var(--ink); margin-bottom: 10px; }
+.tc-occ-title { font-family: var(--font-sans); font-weight: 700; font-size: .85rem; margin: 0 0 4px; color: var(--ink); }
+.tc-occ-desc { font-family: var(--font-sans); font-size: .78rem; line-height: 1.4; color: var(--grey-70); margin: 0; }
+.tc-chip-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+.tc-chip {
+  display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 999px;
+  background: var(--grey-bg); border: 1px solid #e7e2df; font-family: var(--font-sans);
+  font-size: .82rem; font-weight: 600; color: var(--ink);
+}
+.tc-chip--more { font-style: italic; color: var(--grey-70); font-weight: 500; }
+.tc-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.tc-split-head {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.2rem;
+  color: var(--ink); margin: 0 0 26px;
+}
+.tc-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #ece9e5;
+  font-family: var(--font-sans); font-size: .92rem; color: var(--ink); font-weight: 600;
+}
+.tc-row:last-child { border-bottom: none; }
+.tc-row-icon { flex: 0 0 auto; color: var(--grey-70); }
+.tc-check-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.tc-check-list li { display: flex; align-items: flex-start; gap: 10px; font-family: var(--font-sans); font-size: .92rem; color: var(--ink); line-height: 1.4; }
+.tc-check-list li svg { flex: 0 0 auto; margin-top: 2px; color: var(--grey-70); }
+.tc-check-more { font-style: italic; color: var(--grey-70); }
+.tc-flow { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 28px; position: relative; }
+.tc-flow::before { content: ""; position: absolute; top: 24px; left: 6%; right: 6%; height: 1px; background: #e7e2df; z-index: 0; }
+.tc-flow-item { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; gap: 8px; }
+.tc-flow-icon {
+  width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 1px solid #e7e2df;
+  display: flex; align-items: center; justify-content: center; color: var(--ink);
+}
+.tc-flow-title { font-family: var(--font-sans); font-size: .78rem; font-weight: 600; color: var(--ink); margin: 0; max-width: 110px; }
+.tc-topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tc-grid-card { background: var(--grey-bg); border: 1px solid #e7e2df; border-radius: 12px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+.tc-grid-card svg { flex: 0 0 auto; margin-top: 2px; color: var(--grey-70); }
+.tc-grid-card p { margin: 0; font-family: var(--font-sans); font-size: .85rem; color: var(--ink); line-height: 1.4; }
+.tc-grid-card--more p { font-style: italic; color: var(--grey-70); }
+@media (max-width: 760px) {
+  .tc-occ-grid { grid-template-columns: repeat(2, 1fr); }
+  .tc-split { grid-template-columns: 1fr; gap: 28px; }
+  .tc-flow { flex-wrap: wrap; }
+  .tc-flow::before { display: none; }
+  .tc-topic-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* Section-Kopf (Kicker + Headline + Sub), wiederverwendet vor Vorteile,
    Prozess, Team und FAQ */
 /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor" auf der Sprint-Landingpage):
@@ -2343,6 +2427,35 @@ body.produktseite--sofortsichtbar {
 .produkt-section-head p { color: rgba(255,255,255,.78); max-width: 54ch; margin-top: .7rem; font-size: .95rem; line-height: 1.65; }
 
 .produkt-section { padding-block: clamp(50px, 7vw, 100px); }
+
+/* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo" auf 1:1 Sparring):
+   volle Breite, dezenter grauer Hintergrund wie die Problem-Sektion auf der
+   Startseite (.section--grey) — kein abgekasteltes Kartenmodul. */
+.usp-turbo-section { background: var(--grey-bg); }
+.usp-turbo-head {
+  display: flex; align-items: center; gap: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.usp-turbo-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.usp-turbo-head .kicker { margin: 0; }
+.usp-turbo-head h2 {
+  font-family: var(--font-serif); font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.3rem); margin: .3rem 0 0;
+}
+.usp-turbo-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px); max-width: 980px;
+}
+.usp-turbo-col p { font-size: 1rem; line-height: 1.7; }
+.usp-turbo-col p + p { margin-top: .9rem; }
+.usp-turbo-col .tc-check-list { margin-top: 1rem; }
+@media (max-width: 700px) {
+  .usp-turbo-cols { grid-template-columns: 1fr; }
+}
 
 /* Vergleich-Bild: klassische Agentur vs. sofort sichtbar (Monate werden zu Tagen).
    1:1 an die Sektion "Warum keine Agentur?" auf sofortsichtbar.de angelehnt (Struktur,

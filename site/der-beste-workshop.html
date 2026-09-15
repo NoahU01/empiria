@@ -78,6 +78,10 @@
   .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
   .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
 
+  /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
+     dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
+  .usp-turbo-icon { background: #C51F5D; color: #fff; }
+
   /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
      Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
   .produktseite-clean .sprint-structure-card {
@@ -535,6 +539,41 @@
                 </div>
               </div>
             </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
+                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
+                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                  <a href="/archiv/sofort-sichtbar-problem" class="nav-dropdown-panel-link--muted">sofort sichtbar + Problem</a>
+                  <a href="/archiv/digitale-tools-1-0" class="nav-dropdown-panel-link--muted">Digitale Tools 1.0</a>
+                  <a href="/archiv/marketing-1-0" class="nav-dropdown-panel-link--muted">Marketing 1.0</a>
+                  <div class="nav-item--subdropdown">
+                    <a href="/archiv/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Medien, die Ergebnisse liefern</a>
+                    <div class="nav-dropdown-sub">
+                      <div class="nav-dropdown-panel">
+                      <a href="/archiv/powerpoint" class="nav-dropdown-panel-link--muted">PowerPoint</a>
+                      <a href="/archiv/landingpage" class="nav-dropdown-panel-link--muted">Landingpage</a>
+                      <a href="/archiv/rollup" class="nav-dropdown-panel-link--muted">Roll-up</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -603,6 +642,41 @@
         <div class="mobile-submenu-panel">
       <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
       <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Impulsvorträge anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
+      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
+      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <span class="mobile-submenu-label mobile-submenu-label--muted">Archiv</span>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Archiv anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
+      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
+      <a href="/archiv/sofort-sichtbar-problem" class="mobile-submenu-link mobile-submenu-link--muted">sofort sichtbar + Problem</a>
+      <a href="/archiv/digitale-tools-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Digitale Tools 1.0</a>
+      <a href="/archiv/marketing-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Marketing 1.0</a>
+      <a class="mobile-submenu-sublabel mobile-submenu-link--muted" href="/archiv/medien">Medien, die Ergebnisse liefern</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/powerpoint">PowerPoint</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/landingpage">Landingpage</a>
+      <a class="mobile-submenu-sublink mobile-submenu-link--muted" href="/archiv/rollup">Roll-up</a>
         </div>
       </div>
     </div>
