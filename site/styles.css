@@ -254,6 +254,18 @@ button { font-family: inherit; cursor: pointer; }
 .nav-item--subdropdown:focus-within > .nav-dropdown-sub { opacity: 1; visibility: visible; }
 .nav-dropdown-sub .nav-dropdown-panel { min-width: 200px; width: max-content; }
 
+/* Das Leistungen-Menü sitzt weit rechts im Menüband, deshalb ragt die
+   2. Ebene (z.B. "Archiv") beim Öffnen nach rechts über den
+   Bildschirmrand hinaus und wird abgeschnitten - das betrifft nicht nur
+   Tablets, sondern nahezu jede reguläre Bildschirmbreite. Deshalb öffnet
+   die 2. Ebene grundsätzlich nach links statt nach rechts. */
+@media (min-width: 901px) {
+  .nav-dropdown-sub {
+    left: auto; right: 100%;
+    padding-left: 0; padding-right: 10px; /* Hover-Brücke auf die andere Seite */
+  }
+}
+
 /* Hauptpunkte ohne Unterpunkte (noch) — kein Flyout, nur eine Zeile direkt im
    Panel. Anklickbar (z.B. "Marketing as a Service") oder als stummes Label
    (z.B. "Archiv", hellgrau, nicht anklickbar). */
