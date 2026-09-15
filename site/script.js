@@ -69,7 +69,19 @@
       half = (n >= 2) ? kids[n >> 1].offsetLeft : track.scrollWidth / 2;
       speed = half > 0 ? half / 26000 : 0;    // ~26s per copy
     }
-    function setSL(v) { viewport.scrollLeft = v; expectedSL = viewport.scrollLeft; }
+    function setSL(v) {
+      // iOS Safari: das native Touch-Scroll-Layer eines Elements mit
+      // -webkit-overflow-scrolling:touch synct kontinuierliche
+      // scrollLeft-Zuweisungen aus rAF nicht zuverlässig, solange
+      // niemand aktiv mit dem Finger berührt - dadurch "läuft" der
+      // Marquee bei Nichtberührung nicht automatisch weiter, während
+      // manuelles Wischen (natives Scrollen) einwandfrei funktioniert.
+      // viewport.scrollTo() erzwingt bei iOS zuverlässiger ein Repaint
+      // als die reine Property-Zuweisung.
+      if (viewport.scrollTo) viewport.scrollTo({ left: v, behavior: "auto" });
+      else viewport.scrollLeft = v;
+      expectedSL = viewport.scrollLeft;
+    }
     function normalize() {                    // keep scrollLeft mid-range so both dirs wrap
       if (half <= 0) return;
       var sl = viewport.scrollLeft;
