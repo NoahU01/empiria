@@ -33,9 +33,15 @@ langfristig wartbar und deploybar bleibt.
 
 ```bash
 cd site
-python3 -m http.server 4599
+python3 dev-server.py
 # -> http://localhost:4599
 ```
+
+`dev-server.py` verhält sich wie `python3 -m http.server 4599`, kann aber
+zusätzlich "schöne" URLs ohne `.html` auflösen (z.B. `/sofort-sichtbar` oder
+`/archiv/...`) - genau das, was `vercel.json` im echten Deployment über die
+`rewrites` erledigt. Ohne das bleiben Menü-Links mit dem eingebauten
+`http.server` lokal tot, weil der nur exakte Dateinamen inkl. Endung kennt.
 
 **Screenshot-/Verifikations-Workflow** (so wurde die ganze Zeit gearbeitet: bauen →
 screenshotten → mit PDF/Referenz abgleichen → erst dann committen):
