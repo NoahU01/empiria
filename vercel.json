@@ -147,6 +147,22 @@
       "destination": "/site/archiv/marketing-1-0.html"
     },
     {
+      "source": "/archiv/medien",
+      "destination": "/site/archiv/medien.html"
+    },
+    {
+      "source": "/archiv/powerpoint",
+      "destination": "/site/archiv/powerpoint.html"
+    },
+    {
+      "source": "/archiv/landingpage",
+      "destination": "/site/archiv/landingpage.html"
+    },
+    {
+      "source": "/archiv/rollup",
+      "destination": "/site/archiv/rollup.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/site/$1"
     }

@@ -128,6 +128,11 @@
     display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
     gap: clamp(36px, 6vw, 90px); align-items: center;
   }
+  /* Modifier fuer Seiten, deren Lead-Text NICHT in der linken Spalte steht, sondern
+     darunter ueber die volle Breite (siehe lead_below_full_width): Skizze richtet
+     sich dann an der Kopfzeile aus, statt sich an einem laengeren Textblock zu
+     zentrieren — nur ueber die Zusatzklasse aktiv, betrifft keine andere Seite. */
+  .produktseite-clean .produkt-hero-grid.produkt-hero-grid--top { align-items: flex-start; }
   .produktseite-clean .produkt-hero-text { min-width: 0; }
   .produktseite-clean .produkt-hero-visual { min-width: 0; }
   .produktseite-clean .produkt-hero-visual > * { margin-top: 0; }
@@ -231,9 +236,13 @@
   .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
   .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #086a80; border-color: #fff; }
   .produktseite-clean .pricing-footnote { color: var(--grey-50); }
-  .produktseite-clean .price-more-btn { margin-top: 20px; align-self: flex-start; }
-  .produktseite-clean .price-card--featured .btn--outline { color: #fff; border-color: rgba(255,255,255,.6); }
-  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #086a80; }
+  .produktseite-clean .price-more-btn { margin-top: 30px; align-self: center; }
+  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #086a80; border-color: #fff; }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #086a80; opacity: .92; }
+  .produktseite-clean .price-ideal-band { background: var(--grey-bg); }
+  .produktseite-clean .price-ideal { color: var(--ink); }
+  .produktseite-clean .price-card--featured .price-ideal-band { background: rgba(0,0,0,.16); }
+  .produktseite-clean .price-card--featured .price-ideal { color: #fff; }
 
   /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
   .produktseite-clean .modal .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
@@ -297,8 +306,9 @@
 
   body.produktseite-clean .site-footer { background: var(--black); }
 </style>
+
 </head>
-<body class="produktseite produktseite-clean">
+<body class="produktseite produktseite-clean produktseite--medien">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -437,6 +447,14 @@
         <path d="M64,30v30"/>
       </g>
     </symbol>
+    <symbol id="ic-refresh" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,33A22,22,0,0,0,20,25"/>
+        <path d="M20,13v14h14"/>
+        <path d="M20,47A22,22,0,0,0,60,55"/>
+        <path d="M60,67v-14h-14"/>
+      </g>
+    </symbol>
     <symbol id="ic-doc" viewBox="0 0 80 80">
       <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
@@ -499,31 +517,13 @@
             </div>
             <div class="nav-dropdown-divider"></div>
             <div class="nav-item--subdropdown">
-              <a href="/digitale-tools" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Digitale Tools</a>
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
               <div class="nav-dropdown-sub">
                 <div class="nav-dropdown-panel">
                   <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
                   <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
                   <a href="/paid-ads">Paid Ads</a>
-                </div>
-              </div>
-            </div>
-            <div class="nav-dropdown-divider"></div>
-            <div class="nav-item--subdropdown">
-              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing</a>
-              <div class="nav-dropdown-sub">
-                <div class="nav-dropdown-panel">
-                  <a href="/marketing-as-a-service">Marketing as a Service</a>
-                  <div class="nav-item--subdropdown">
-                    <a href="/medien" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Medien, die Ergebnisse liefern</a>
-                    <div class="nav-dropdown-sub">
-                      <div class="nav-dropdown-panel">
-                      <a href="/powerpoint">PowerPoint</a>
-                      <a href="/landingpage">Landingpage</a>
-                      <a href="/rollup">Roll-up</a>
-                      </div>
-                    </div>
-                  </div>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
                 </div>
               </div>
             </div>
@@ -534,31 +534,6 @@
                 <div class="nav-dropdown-panel">
                   <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
                   <a href="/sparring">1:1 Sparring</a>
-                </div>
-              </div>
-            </div>
-            <div class="nav-dropdown-divider"></div>
-            <div class="nav-item--subdropdown">
-              <a href="/impulsvortraege" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link nav-dropdown-sub-trigger--muted">Impulsvorträge</a>
-              <div class="nav-dropdown-sub">
-                <div class="nav-dropdown-panel">
-                  <a href="/vortrag-1" class="nav-dropdown-panel-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
-                  <a href="/vortrag-2" class="nav-dropdown-panel-link--muted">Strategie, die endlich ankommt.</a>
-                  <a href="/vortrag-3" class="nav-dropdown-panel-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
-                </div>
-              </div>
-            </div>
-            <div class="nav-dropdown-divider"></div>
-            <div class="nav-item--subdropdown">
-              <span class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--muted">Archiv</span>
-              <div class="nav-dropdown-sub">
-                <div class="nav-dropdown-panel">
-                  <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
-                  <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
-                  <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
-                  <a href="/archiv/sofort-sichtbar-problem" class="nav-dropdown-panel-link--muted">sofort sichtbar + Problem</a>
-                  <a href="/archiv/digitale-tools-1-0" class="nav-dropdown-panel-link--muted">Digitale Tools 1.0</a>
-                  <a href="/archiv/marketing-1-0" class="nav-dropdown-panel-link--muted">Marketing 1.0</a>
                 </div>
               </div>
             </div>
@@ -607,8 +582,8 @@
       <div class="mobile-submenu-divider"></div>
       <div class="mobile-submenu-group">
         <div class="mobile-submenu-row">
-          <a class="mobile-submenu-label mobile-submenu-label--link" href="/digitale-tools">Digitale Tools</a>
-          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Digitale Tools anzeigen">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
             <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -616,22 +591,7 @@
       <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
       <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
       <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
-        </div>
-      </div>
-      <div class="mobile-submenu-divider"></div>
-      <div class="mobile-submenu-group">
-        <div class="mobile-submenu-row">
-          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing</a>
-          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing anzeigen">
-            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="mobile-submenu-panel">
-      <a href="/marketing-as-a-service" class="mobile-submenu-link">Marketing as a Service</a>
-      <a class="mobile-submenu-sublabel" href="/medien">Medien, die Ergebnisse liefern</a>
-      <a class="mobile-submenu-sublink" href="/powerpoint">PowerPoint</a>
-      <a class="mobile-submenu-sublink" href="/landingpage">Landingpage</a>
-      <a class="mobile-submenu-sublink" href="/rollup">Roll-up</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
         </div>
       </div>
       <div class="mobile-submenu-divider"></div>
@@ -645,37 +605,6 @@
         <div class="mobile-submenu-panel">
       <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
       <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
-        </div>
-      </div>
-      <div class="mobile-submenu-divider"></div>
-      <div class="mobile-submenu-group">
-        <div class="mobile-submenu-row">
-          <a class="mobile-submenu-label mobile-submenu-label--link mobile-submenu-label--muted" href="/impulsvortraege">Impulsvorträge</a>
-          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Impulsvorträge anzeigen">
-            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="mobile-submenu-panel">
-      <a href="/vortrag-1" class="mobile-submenu-link mobile-submenu-link--muted">Warum sich niemand für Dein Produkt interessiert.</a>
-      <a href="/vortrag-2" class="mobile-submenu-link mobile-submenu-link--muted">Strategie, die endlich ankommt.</a>
-      <a href="/vortrag-3" class="mobile-submenu-link mobile-submenu-link--muted">Gründe Deinen stärksten Konkurrenten!</a>
-        </div>
-      </div>
-      <div class="mobile-submenu-divider"></div>
-      <div class="mobile-submenu-group">
-        <div class="mobile-submenu-row">
-          <span class="mobile-submenu-label mobile-submenu-label--muted">Archiv</span>
-          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Archiv anzeigen">
-            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="mobile-submenu-panel">
-      <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
-      <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
-      <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
-      <a href="/archiv/sofort-sichtbar-problem" class="mobile-submenu-link mobile-submenu-link--muted">sofort sichtbar + Problem</a>
-      <a href="/archiv/digitale-tools-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Digitale Tools 1.0</a>
-      <a href="/archiv/marketing-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Marketing 1.0</a>
         </div>
       </div>
     </div>
@@ -693,8 +622,8 @@
         <p class="kicker">Medien, die Ergebnisse liefern</p>
         <h1 class="h-serif">Deine Botschaft. <span class="hl">Auf den Punkt.</span> Volle Wirkung.</h1>
         <div class="produkt-hero-lead-cols">
-        <p class="lead">Wir sind keine typische Medienagentur. Wir sind Profis darin, Geschäftsmodell, Strategie und Kommunikation zu beherrschen.</p>
-        <p class="lead">Und wir bringen Themen auf den Punkt – übersetzt in die Welt Deiner Zielgruppe. Das ist der entscheidende Erfolgsfaktor, damit Kommunikation wirklich ankommt.</p>
+        <p class="lead">Wir sind keine typische Medienagentur. Wir sind Profis in den Themen Geschäftsmodell Versicherung, Strategie und Kommunikation.</p>
+        <p class="lead">Wir bringen Themen auf den Punkt und übersetzen sie in die Welt Deiner Zielgruppe. Das ist der entscheidende Erfolgsfaktor, damit Kommunikation wirklich ankommt.</p>
       </div>
               <div class="produkt-pills">
         <span class="produkt-pill reveal">PowerPoint</span>
@@ -851,15 +780,16 @@
   <section class="produkt-section produkt-media-boxes">
     <div class="container">
       <div class="produkt-section-head reveal">
-        <p class="kicker">Unsere Medien</p>
-        <h2 class="h-serif">Drei Formate. Eine Wirkung.</h2>
-        <p>Wähle das Format – wir setzen es professionell um.</p>
+        <p class="kicker">Medien wirksam einsetzen</p>
+        <h2 class="h-serif">Es geht nicht um Medien sondern um Deine Ziele.</h2>
+        <p>Wir starten nie mit der Frage PowerPoint, Landingpage oder Roll-up, sondern damit, was Du und Dein Team benötigen, um erfolgreich zu sein. Wenn diese Taktik steht, entwickeln wir zielgerichtete Medien, die genau dieses Ergebnis liefern.</p>
       </div>
       <div class="media-boxes-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1088px; margin-left: auto; margin-right: auto;">
-        <a class="media-box sprint-structure-card" href="/powerpoint" aria-label="Mehr erfahren: PowerPoint">
-          <div class="media-box-thumb">
-            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="56.0" y="8.0" width="300.0" height="190.0" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.16)" stroke-width="1.3"/>
+        <div class="media-box sprint-structure-card">
+          <button type="button" class="media-box-thumb-btn" data-modal-target="medienModalPowerpoint" aria-label="Mehr erfahren: PowerPoint">
+            <div class="media-box-thumb">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="56.0" y="8.0" width="300.0" height="190.0" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.16)" stroke-width="1.3"/>
           <rect x="40.0" y="18.0" width="300.0" height="190.0" rx="10" fill="rgba(255,255,255,.035)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
           <rect x="22.0" y="30.0" width="300.0" height="190.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
           <rect x="22.0" y="30.0" width="300.0" height="8.0" fill="rgba(255,255,255,.55)"/>
@@ -876,17 +806,19 @@
           <rect x="242.8" y="158.0" width="14.4" height="40.0" rx="2" fill="rgba(255,255,255,.28)"/>
           <rect x="263.2" y="132.0" width="14.4" height="66.0" rx="2" fill="rgba(255,255,255,.28)"/>
           <rect x="283.6" y="142.0" width="14.4" height="56.0" rx="2" fill="rgba(255,255,255,.28)"/>
-            </svg>
-          </div>
+              </svg>
+            </div>
+          </button>
           <div class="media-box-footer">
             <span class="media-box-title">PowerPoint</span>
-            <span class="btn btn--dark btn--sm sprint-structure-cta">Mehr erfahren</span>
+            <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="medienModalPowerpoint">Mehr erfahren</button>
           </div>
-        </a>
-        <a class="media-box sprint-structure-card" href="/landingpage" aria-label="Mehr erfahren: Landingpage">
-          <div class="media-box-thumb">
-            <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+        </div>
+        <div class="media-box sprint-structure-card">
+          <button type="button" class="media-box-thumb-btn" data-modal-target="medienModalLandingpage" aria-label="Mehr erfahren: Landingpage">
+            <div class="media-box-thumb">
+              <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
           <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
           <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
           <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
@@ -989,17 +921,19 @@
           <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
           <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
           <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
-            </svg>
-          </div>
+              </svg>
+            </div>
+          </button>
           <div class="media-box-footer">
             <span class="media-box-title">Landingpage</span>
-            <span class="btn btn--dark btn--sm sprint-structure-cta">Mehr erfahren</span>
+            <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="medienModalLandingpage">Mehr erfahren</button>
           </div>
-        </a>
-        <a class="media-box sprint-structure-card" href="/rollup" aria-label="Mehr erfahren: Roll-up">
-          <div class="media-box-thumb">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
+        </div>
+        <div class="media-box sprint-structure-card">
+          <button type="button" class="media-box-thumb-btn" data-modal-target="medienModalRollup" aria-label="Mehr erfahren: Roll-up">
+            <div class="media-box-thumb">
+              <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
           <line x1="110.0" y1="376.0" x2="110.0" y2="404.0" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
           <rect x="76.0" y="404.0" width="68.0" height="8.0" rx="4" fill="rgba(255,255,255,.3)"/>
           <rect x="30.0" y="6.0" width="160.0" height="370.0" rx="8" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.36)" stroke-width="2"/>
@@ -1014,35 +948,46 @@
           <rect x="62.0" y="290.0" width="74.9" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
           <rect x="64.0" y="304.0" width="92.0" height="24.0" rx="12" fill="rgba(255,255,255,.9)"/>
           <rect x="72.0" y="344.0" width="76.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
-            </svg>
-          </div>
+              </svg>
+            </div>
+          </button>
           <div class="media-box-footer">
             <span class="media-box-title">Roll-up</span>
-            <span class="btn btn--dark btn--sm sprint-structure-cta">Mehr erfahren</span>
+            <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="medienModalRollup">Mehr erfahren</button>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
-  <!-- ===== Prozess ===== -->
-  <section class="produkt-section produkt-process">
+  <!-- ===== FAQ ===== -->
+  <section class="produkt-section produkt-faq">
     <div class="container">
       <div class="produkt-section-head reveal">
-        <p class="kicker">Vorgehen</p>
-        <h2 class="h-serif">Erst die Botschaft. Dann die Medien.</h2>
-        <p>Zwei Schritte, in dieser Reihenfolge – denn die schönsten Medien helfen nichts, wenn Schritt eins nicht sitzt.</p>
+        <p class="kicker">Beispiele</p>
+        <h2 class="h-serif">Konkrete Use Cases aus der Praxis.</h2>
+        <p>Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien in der Praxis wirken.</p>
       </div>
-      <div class="produkt-process-list">
-        <div class="produkt-process-step reveal">
-          <span class="step-num">01</span>
-          <h3>Strategie, Geschäftsmodell &amp; Botschaft</h3>
-          <p>Wir bringen Dein Thema auf den Punkt und übersetzen es in die Welt Deiner Zielgruppe – die Grundlage, damit Kommunikation wirklich gelingt.</p>
-        </div>
-        <div class="produkt-process-step reveal">
-          <span class="step-num">02</span>
-          <h3>Professionelle Medien</h3>
-          <p>Erst dann entstehen die Medien: PowerPoint, Landingpage oder Roll-up – professionell umgesetzt, damit Deine Botschaft im entscheidenden Moment trägt.</p>
-        </div>
+      <div class="produkt-faq-list">
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Der entscheidende Pitch im Konsortium</summary>
+          <p>Eine Ausschreibung bei einem Großkunden, angetreten gemeinsam mit Kooperationspartnern gegen namhafte Wettbewerber. Statt Standardfolien mit Interpretationsspielraum liefern wir Medien, die zu 100&nbsp;% zeigen: Wir haben den Kunden verstanden – und die Lösung ist maßgeschneidert. Die Story wird so erzählt, dass sie im Raum sitzt und den Ausschlag gibt.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Die Neupositionierung eines Konzernunternehmens</summary>
+          <p>Ein kleineres Konzernunternehmen mit klarem Spezialsegment – etwa Pensionskasse, Schadenmanagement oder Ventilmakler – soll professioneller am Markt auftreten.<br><br>Dies gelingt nicht mit einer Homepage hier und einer intern zusammengestellten PowerPoint dort. Es braucht eine Gesamtlogik, die Kooperationspartnern, Vertriebspartnern und Kunden gleichermaßen verständlich macht, wofür das Unternehmen steht – aus einer Hand entwickelt und strategisch wie vertrieblich durchdacht.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Produktlaunch oder Produktrelaunch</summary>
+          <p>Klassisch wird hier in gedruckten Broschüren und PowerPoints mit 150 Detailfolien gedacht – Medien, mit denen kein Vertriebspartner etwas anfangen kann. Ein Vertriebsimpuls funktioniert nur, wenn er die Zielgruppe tatsächlich erfolgreich macht.<br><br>Deshalb entscheiden wir gezielt, welche Medien wirklich wirken, und setzen dafür oft auf eine durchdachte Kombination digitaler Formate statt auf das eine überladene Dokument.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Aufsichtsrats- und Gremientermine</summary>
+          <p>Hier zählt nicht das letzte Detail, sondern der Gesamtnutzen fürs Unternehmen – professionell vorgetragen und vertrauensbildend. Ob Markteintritt, strategisches Umsteuern im Risikoportfolio oder ein neues Bestandsführungssystem: Große Themen müssen kompakt und verständlich erzählt werden. Zumal im Gremium oft fachfremde Personen ohne Versicherungshintergrund sitzen – die Übersetzung in ihre Welt entscheidet, ob die Botschaft ankommt.</p>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Gespräche mit dem Rückversicherer</summary>
+          <p>Der Rückversicherer muss verstehen, wohin sich das Geschäftsmodell des Versicherers bewegt – stringent erzählt, nicht nur in harten Zahlen. Das gilt für die jährlichen Erneuerungsgespräche genauso wie für die Vorbereitung auf Monte Carlo oder Baden-Baden: Es geht darum, die strategische Richtung so darzulegen, dass sie im Gespräch trägt.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -1059,6 +1004,16 @@
           <p class="ansprechpartner-name">Daniel Ströbel</p>
           <p class="ansprechpartner-role">Strategiehandwerker</p>
         </div>
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-kerstin.webp" alt="Kerstin Christ" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Kerstin Christ</p>
+          <p class="ansprechpartner-role">Expertin Content &amp; Sichtbarkeit</p>
+        </div>
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-noah.webp" alt="Noah Hermanns" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Noah Hermanns</p>
+          <p class="ansprechpartner-role">Experte Performance Marketing</p>
+        </div>
       </div>
       <div class="produkt-cta-actions">
         <a class="btn btn--dark" href="/kontakt.html">Medien anfragen</a>
@@ -1068,7 +1023,40 @@
   </section>
 </main>
 
-
+<!-- ===== Erklärungs-Modal: PowerPoint ===== -->
+<div class="modal-overlay" id="medienModalPowerpoint" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <h3>PowerPoint</h3>
+      <div class="modal-body">
+        <p>Eine Präsentation, die Deine Business Story trägt – klar strukturiert, professionell gestaltet und startklar für den nächsten großen Moment im Raum.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- ===== Erklärungs-Modal: Landingpage ===== -->
+<div class="modal-overlay" id="medienModalLandingpage" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <h3>Landingpage</h3>
+      <div class="modal-body">
+        <p>Eine klar auf Deine Zielgruppe zugeschnittene Seite, die genau ein zentrales Problem löst und Interessierte gezielt zum nächsten Schritt führt.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- ===== Erklärungs-Modal: Roll-up ===== -->
+<div class="modal-overlay" id="medienModalRollup" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <h3>Roll-up</h3>
+      <div class="modal-body">
+        <p>Der Gesamtzusammenhang aus Sicht Deiner Zielgruppe – in einem Bild visualisiert und dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="container footer-row">

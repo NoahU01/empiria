@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Teams befähigen, professionell zu kommunizieren – empiria</title>
 <meta name="description" content="Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es dabei, wenn es zählt.">
-<link rel="canonical" href="https://www.empiria.de/praesentationsseminar">
+<link rel="canonical" href="https://www.empiria.de/leistungen/teams">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
 <!-- OpenGraph / Twitter -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="empiria">
-<meta property="og:url" content="https://www.empiria.de/praesentationsseminar">
+<meta property="og:url" content="https://www.empiria.de/leistungen/teams">
 <meta property="og:title" content="Teams befähigen, professionell zu kommunizieren – empiria">
 <meta property="og:description" content="Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es dabei, wenn es zählt.">
 <meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
@@ -60,172 +60,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/styles.css">
-<style>
-  /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "lime" ===== */
-  body.produktseite-clean { background: #fff; }
-  .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
-  .produktseite-clean .produkt-hero .kicker { color: #4d7c0f; }
-  .produktseite-clean .produkt-hero h1 { color: var(--ink); }
-  .produktseite-clean .produkt-hero .hl { color: #1c2b0e; }
-  .produktseite-clean .produkt-hero .hl::before { background: #A3E635; }
-  .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
-  .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
-  .produktseite-clean .produkt-hero .btn--dark { background: #A3E635; border-color: #A3E635; color: #1c2b0e; }
-  .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
-  .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
-  .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
-  .produktseite-clean .hero-stat-label { color: var(--grey-70); }
-  .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
-  .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
-
-  /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
-     Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
-  .produktseite-clean .sprint-structure-card {
-    background: linear-gradient(155deg, #A3E635 0%, #6b9422 100%);
-    border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
-  }
-  .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
-  .produktseite-clean .media-box-footer,
-  .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
-  .produktseite-clean .media-box-title,
-  .produktseite-clean .sprint-structure-title { color: #fff; }
-  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #6b9422; }
-
-  /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
-  .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
-  .produktseite-clean .produkt-mock-icon { background: none; }
-  .produktseite-clean .produkt-mock-icon svg { color: #4d7c0f; filter: none; }
-  .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
-
-  /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
-  .produktseite-clean .produkt-mock--dashboard,
-  .produktseite-clean .produkt-mock--tool { border-color: #e7e2df; background: var(--grey-bg); }
-  .produktseite-clean .dash-kpi { background: #fff; border-color: #e7e2df; }
-  .produktseite-clean .dash-kpi .val { color: var(--ink); }
-  .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
-  .produktseite-clean .dash-bars { background: rgba(0,0,0,.04); }
-  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #A3E635, #6b9422); }
-  .produktseite-clean .dash-caption { color: var(--grey-50); }
-  .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
-  .produktseite-clean .tool-dash-logo { background: #A3E635; }
-  .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
-  .produktseite-clean .tool-dash-nav-item--active { background: #A3E635; }
-
-  /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze),
-     weiß gezeichnete Skizzen — Invertierung macht sie auf Weiß lesbar; eine
-     dezente Karte darunter + verstärkter Kontrast verhindern ein zu blasses
-     Ausbleichen der ursprünglich für Dunkel gezeichneten, transparenten Linien. */
-  .produktseite-clean .produkt-mock--split-bare .mock-split-half {
-    background: var(--grey-bg); border: 1px solid #e7e2df; border-radius: 18px;
-    padding: clamp(18px, 2.4vw, 26px);
-  }
-  .produktseite-clean .mock-split-half svg { filter: invert(1) contrast(1.35); }
-
-  /* Tools-Reihe (KI zum Anfassen) — die Logos werden bereits vorab eingefärbt als
-     PNG ausgeliefert (siehe _KI_TOOLS_ITEMS), daher hier nur die Beschriftung. */
-  .produktseite-clean .tools-row-label { color: var(--grey-70); }
-  .produktseite-clean .tools-row-icon img { opacity: 1; }
-
-  /* Hero: zweispaltiges Grid — Text links, Skizzen-Visualisierung rechts */
-  .produktseite-clean .produkt-hero-grid {
-    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-    gap: clamp(36px, 6vw, 90px); align-items: center;
-  }
-  .produktseite-clean .produkt-hero-text { min-width: 0; }
-  .produktseite-clean .produkt-hero-visual { min-width: 0; }
-  .produktseite-clean .produkt-hero-visual > * { margin-top: 0; }
-  .produktseite-clean .produkt-hero-visual .produkt-mock { aspect-ratio: 1/1; max-width: 440px; }
-  .produktseite-clean .produkt-hero-visual .produkt-mock-icon svg {
-    width: clamp(100px, 13vw, 168px); height: clamp(100px, 13vw, 168px);
-  }
-  .produktseite-clean .produkt-hero-visual .produkt-hero-preview,
-  .produktseite-clean .produkt-hero-visual .produkt-mock-bare { max-width: 400px; }
-  .produktseite-clean .produkt-mock-sketch { max-width: 420px; }
-  .produktseite-clean .produkt-mock-sketch svg { width: 100%; height: auto; display: block; filter: invert(1) contrast(1.6); }
-  @media (max-width: 900px) {
-    .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
-    .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
-  }
-  .produktseite-clean .produkt-hero-actions--center {
-    justify-content: center; margin-top: clamp(30px, 4vw, 46px);
-  }
-
-  /* Sprint-Landingpage: Timeline */
-  .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
-  .produktseite-clean .sprint-step-marker { background: #A3E635; border-color: #A3E635; color: #1c2b0e; }
-  .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
-  .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
-  .produktseite-clean .sprint-substep-tag { color: #1c2b0e; background: #A3E635; border-color: #A3E635; }
-  .produktseite-clean .sprint-substep p { color: var(--grey-70); }
-
-  /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
-  .produktseite-clean .produkt-section-head .kicker { color: #4d7c0f; }
-  .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
-  .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
-  .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
-  .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
-  .produktseite-clean .produkt-glass h3 { color: var(--ink); }
-  .produktseite-clean .produkt-glass p { color: var(--grey-70); }
-  .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
-  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #4d7c0f; }
-  .produktseite-clean .topics-list li { color: var(--ink); }
-
-  /* Preis-Hinweis-Karte (einzelner großer Preis) */
-  .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #A3E635 0%, #6b9422 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
-  .produktseite-clean .price-note-amount { color: #fff; }
-  .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
-  .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
-  .produktseite-clean .price-note-list { border-top-color: rgba(255,255,255,.3); }
-  .produktseite-clean .price-note-list li { color: rgba(255,255,255,.9); }
-  .produktseite-clean .price-note-list li::before { background: #fff; }
-
-  /* Preis-Bundles: Karten clean, hervorgehobene Karte als Farbkarte */
-  .produktseite-clean .price-card h3, .produktseite-clean .price-amount { color: var(--ink); }
-  .produktseite-clean .price-name-sub, .produktseite-clean .price-desc,
-  .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
-  .produktseite-clean .price-features { border-top-color: #e7e2df; }
-  .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #A3E635; }
-  .produktseite-clean .price-badge { background: #A3E635; border-color: #A3E635; color: #1c2b0e; }
-  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #A3E635 0%, #6b9422 100%); border-color: transparent; }
-  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #A3E635 0%, #6b9422 100%); border-color: transparent; }
-  .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
-  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
-  .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
-  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
-  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
-  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
-  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #6b9422; border-color: #fff; }
-  .produktseite-clean .pricing-footnote { color: var(--grey-50); }
-
-  /* Prozess-Schritte */
-  .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
-  .produktseite-clean .produkt-process-step .step-num { color: #4d7c0f; }
-  .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
-  .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
-
-  /* FAQ */
-  .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
-  .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
-  .produktseite-clean .produkt-faq-item summary::after { color: #4d7c0f; }
-  .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
-
-  /* Ansprechpartner + finaler CTA */
-  .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
-  .produktseite-clean .produkt-team-cta .kicker { color: #4d7c0f; }
-  .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
-  .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
-  .produktseite-clean .ansprechpartner-name { color: var(--ink); }
-  .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
-  .produktseite-clean .produkt-cta .btn--dark { background: #A3E635; border-color: #A3E635; color: #1c2b0e; }
-
-  body.produktseite-clean .site-footer { background: var(--black); }
-</style>
 </head>
-<body class="produktseite produktseite-clean">
+<body>
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -401,58 +237,40 @@
 
 <main>
   <!-- ===== Intro ===== -->
-  <section class="produkt-hero" id="intro">
+  <section class="hero leistung-hero" id="intro">
     <div class="container">
-      <div class="produkt-hero-grid">
-        <div class="produkt-hero-text">
-          <p class="kicker">Befähigung und Begleitung, kein Seminar</p>
-          <h1 class="h-serif">Teams befähigen, professionell zu <span class="hl">kommunizieren.</span></h1>
-          <div class="produkt-hero-lead-cols">
-            <p class="lead">Du bist Führungskraft in der Versicherungsbranche und dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?</p>
-            <p class="lead">Dann braucht Dein Team kein Seminar, sondern professionelle Begleitung bei der Umsetzung.</p>
-          </div>
-          <div class="produkt-pills" aria-label="Typische Anlässe">
-            <span class="produkt-pill">Vorstand</span>
-            <span class="produkt-pill">Aufsichtsrat</span>
-            <span class="produkt-pill">Projektlenkungsausschuss</span>
-            <span class="produkt-pill">Vertriebstagung</span>
-            <span class="produkt-pill">Betriebsrat</span>
-            <span class="produkt-pill">Kooperationspartner</span>
-            <span class="produkt-pill">Rückversicherer</span>
-            <span class="produkt-pill">Kundenpitch</span>
-          </div>
+      <div class="hero-grid">
+        <div class="hero-head">
+          <h1 class="h-serif" style="font-size:clamp(2.2rem, 4.2vw, 3.4rem)">Teams befähigen, professionell zu <span class="hl">kommunizieren.</span></h1>
+          <div class="hero-arrow"><svg><use href="#ic-raute"/></svg></div>
         </div>
-        <div class="produkt-hero-visual">
-          <div class="produkt-mock-sketch reveal">
-            <svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze zweier Präsentationsfolien mit einer Feedback-Sprechblase samt Häkchen">
-              <g transform="rotate(-4 135.0 90.0)">
-              <rect x="50.0" y="26.0" width="170.0" height="128.0" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.22)" stroke-width="1.6"/>
-              <rect x="66.0" y="42.0" width="108.0" height="8.0" rx="2" fill="rgba(255,255,255,0.28)"/>
-              <rect x="66.0" y="64.0" width="110.4" height="6.0" rx="2" fill="rgba(255,255,255,0.17)"/>
-              <rect x="66.0" y="80.0" width="85.6" height="6.0" rx="2" fill="rgba(255,255,255,0.14)"/>
-              <rect x="66.0" y="96.0" width="96.6" height="6.0" rx="2" fill="rgba(255,255,255,0.11)"/>
-              </g>
-              <g transform="rotate(3 113.0 114.0)">
-              <rect x="28.0" y="50.0" width="170.0" height="128.0" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.40)" stroke-width="1.6"/>
-              <rect x="44.0" y="66.0" width="108.0" height="8.0" rx="2" fill="rgba(255,255,255,0.50)"/>
-              <rect x="44.0" y="88.0" width="110.4" height="6.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-              <rect x="44.0" y="104.0" width="85.6" height="6.0" rx="2" fill="rgba(255,255,255,0.25)"/>
-              <rect x="44.0" y="120.0" width="96.6" height="6.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-              </g>
-              <rect x="188.0" y="186.0" width="122.0" height="76.0" rx="16" fill="rgba(255,255,255,.92)"/>
-              <path d="M210.0,262.0 l-14,20 l28,-14 Z" fill="rgba(255,255,255,.92)"/>
-              <path d="M206.0,224.0 l11,13 l24,-28" fill="none" stroke="rgba(0,0,0,.75)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="252.0" y="213.0" width="42.0" height="6.0" rx="2" fill="rgba(0,0,0,.35)"/>
-              <rect x="252.0" y="229.0" width="25.2" height="6.0" rx="2" fill="rgba(0,0,0,.24)"/>
-            </svg>
+        <div class="hero-copy lead">
+          <p>Du bist Führungskraft in der Versicherungsbranche und dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?</p>
+          <p>Dann braucht Dein Team kein Seminar, sondern professionelle Begleitung bei der Umsetzung.</p>
+          <div class="hero-anlaesse" aria-label="Typische Anlässe">
+            <span class="hero-anlass">Vorstand</span>
+            <span class="hero-anlass">Aufsichtsrat</span>
+            <span class="hero-anlass">Projektlenkungsausschuss</span>
+            <span class="hero-anlass">Vertriebstagung</span>
+            <span class="hero-anlass">Betriebsrat</span>
+            <span class="hero-anlass">Kooperationspartner</span>
+            <span class="hero-anlass">Rückversicherer</span>
+            <span class="hero-anlass">Kundenpitch</span>
           </div>
         </div>
       </div>
-      <div class="produkt-hero-actions produkt-hero-actions--center">
+      <div class="hero-cta">
         <a class="btn btn--dark" href="#problem">Begleitungskonzept kennenlernen</a>
       </div>
     </div>
   </section>
+
+  <!-- ===== Marquee ===== -->
+  <div class="marquee" aria-label="Auswahl unserer Kunden">
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </div>
 
   <!-- ===== Problem ===== -->
   <section class="section section--grey leistung-simple-section" id="problem">
@@ -461,7 +279,7 @@
       <div class="leistung-problem-grid">
         <div class="leistung-simple">
           <p class="kicker">Problem</p>
-          <h2 class="h-serif">Dein Team bereitet vor. Und trifft trotzdem nicht.</h2>
+          <h2 class="h-serif">Dein Team bereitet vor. <span class="hl">Und trifft trotzdem nicht.</span></h2>
           <p class="lead">Dein Team bereitet ein Thema für die Vorstandssitzung vor – und die Diskussion läuft trotzdem ins Leere. Oder es steht selbst im Projektlenkungsausschuss oder beim Kunden, und hinterher denkst du: Das hätte besser laufen müssen.</p>
           <p class="lead">Die Story trägt nicht, die Unterlagen überzeugen nicht und im Raum fehlt die Souveränität, auf Fragen und Gegenwind gut zu reagieren.</p>
           <p class="lead">Es wird Zeit, bisherige Denkmuster mit einfachen Logiken zu durchbrechen.</p>
@@ -483,7 +301,7 @@
     <div class="container">
       <div class="leistung-stufen-head">
         <p class="kicker">Lösung</p>
-        <h2 class="h-serif">Befähigung und Begleitung bei der Umsetzung</h2>
+        <h2 class="h-serif">Befähigung und Begleitung <span class="hl">bei der Umsetzung</span></h2>
         <p class="lead">Wir bringen deinem Team bei, wie das geht – und lassen es danach nicht allein.</p>
         <p class="lead">Wir arbeiten an echten Themen aus eurem Alltag: Dem nächsten Kundenpitch, dem nächsten Gespräch mit dem Rückversicherer, der nächsten wichtigen Abstimmungsrunde im eigenen Haus.</p>
         <p class="lead">Vor dem Termin, beim letzten Schliff, danach beim Analysieren, was gut lief und was nicht – genau dann sind wir da. So baut sich etwas auf, das ein einzelnes Seminar nie schafft.</p>
@@ -689,7 +507,7 @@
     <div class="container">
       <div class="leistung-simple">
         <p class="kicker">Ergebnis</p>
-        <h2 class="h-serif">Dein Team überzeugt ohne dich.</h2>
+        <h2 class="h-serif">Dein Team überzeugt <span class="hl">ohne dich.</span></h2>
         <p class="lead">Dein Team bereitet Themen so auf, dass sie überzeugen und tritt sicher auf, wenn es zählt. Du bekommst Ergebnisse, mit denen du wirklich arbeiten kannst.</p>
       </div>
     </div>
@@ -700,7 +518,7 @@
     <div class="container">
       <div class="leistung-simple">
         <p class="kicker">Alles auf einen Blick</p>
-        <h2 class="h-serif">Das Konzept zum Nachlesen.</h2>
+        <h2 class="h-serif">Das Konzept <span class="hl">zum Nachlesen.</span></h2>
         <p class="lead">Das ausführliche Begleitungskonzept inklusive eines möglichen Ausschreibungstextes für deinen Weiterbildungskatalog – als Download.</p>
       </div>
       <div class="leadmagnet-card">
@@ -712,21 +530,87 @@
     </div>
   </section>
 
-  <!-- ===== Ansprechpartner + CTA ===== -->
-  <section class="produkt-cta produkt-team-cta">
+  <!-- ===== Kontakt (identisch zur Startseite) ===== -->
+  <section class="section kontakt" id="kontakt">
     <div class="container">
-      <p class="kicker">Jetzt loslegen</p>
-      <h2>Bereit, dein Team überzeugend auftreten zu lassen?</h2>
-      <p class="produkt-team-cta-sub">Dein direkter Draht zu uns. Kurze Wege statt langer Abstimmungsrunden.</p>
-      <div class="ansprechpartner-grid">
-        <div class="ansprechpartner-card reveal">
-          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132" loading="lazy"></div>
-          <p class="ansprechpartner-name">Daniel Ströbel</p>
-          <p class="ansprechpartner-role">Strategiehandwerker</p>
+      <div class="kontakt-grid">
+        <div class="kontakt-head">
+          <p class="kicker">Lass uns sprechen</p>
+          <h2 class="h-serif">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>
+          <div class="kontakt-copy lead">
+            <p>Kein Pitch. Kein Angebot von der Stange. Sondern ein Gespräch – offen, konkret und auf Augenhöhe.</p>
+            <p>Und wenn wir nicht die Richtigen sind, um Dein Thema anzugehen, sagen wir das. Direkt und ehrlich.</p>
+          </div>
+          <div class="kontakt-contact">
+            <svg class="pico" width="30" height="30"><use href="#ic-phone"/></svg>
+            <div class="lines">
+              <a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a><br>
+              <a href="tel:+4917631347217">+49 176 3134 7217</a>
+            </div>
+          </div>
+
+          <!-- Mobile-only contact card -->
+          <div class="dani-card">
+            <img class="dani-photo" src="/assets/daniel-round.webp" alt="Daniel Ströbel" width="256" height="256" decoding="async">
+            <p class="dani-name">Daniel Ströbel</p>
+            <p class="dani-role">Geschäftsführer</p>
+            <a class="dani-line" href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>
+            <a class="dani-line" href="tel:+4917631347217">+49 176 3134 7217</a>
+            <a class="dani-btn" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
+              <span class="dani-btn-icon"><svg width="22" height="22"><use href="#ic-in"/></svg></span>
+              auf linkedIn vernetzen
+            </a>
+          </div>
+        </div>
+        <div class="kontakt-media">
+          <svg class="wm-fwd watermark" width="380" height="380" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-raute"/></svg>
+          <img class="portrait" src="/assets/daniel.webp" alt="Daniel Ströbel, Geschäftsführer empiria">
+          <img class="portrait-round" src="/assets/daniel-round.webp" alt="Daniel Ströbel" width="256" height="256" decoding="async">
+          <a class="badge" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener" aria-label="LinkedIn-Profil von Daniel Ströbel">
+            <span class="in"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
+            <span class="btext"><span class="bname">Daniel Ströbel</span><br><span class="brole">Geschäftsführer</span></span>
+          </a>
         </div>
       </div>
-      <div class="produkt-cta-actions">
-        <a class="btn btn--dark" href="/kontakt.html">Begleitungskonzept anfragen</a>
+    </div>
+  </section>
+
+  <!-- ===== Weitere Leistungen ===== -->
+  <section class="section section--dark leistung-related-section" id="weitere-leistungen">
+    <div class="container">
+      <p class="kicker">Weitere Leistungen</p>
+      <h2 class="h-serif">Finde weitere Themen,<br>die zu <span class="hl">Dir passen.</span></h2>
+      <div class="leistung-related-grid">
+        <a class="related-leistung" href="/leistungen/strategie">
+          <div class="related-leistung-face">
+            <div class="icon"><svg><use href="#ic-forward"/></svg></div>
+            <h3>Strategie in den Alltag überführen</h3>
+          </div>
+          <div class="related-leistung-hover">
+            <p>Deine Strategie ist da – aber was bedeutet sie für deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam.</p>
+            <span class="link-more">mehr erfahren</span>
+          </div>
+        </a>
+        <a class="related-leistung" href="/leistungen/komplexe-themen">
+          <div class="related-leistung-face">
+            <div class="icon"><svg><use href="#ic-kreuz"/></svg></div>
+            <h3>Komplexe Themen strukturieren &amp; kommunizieren</h3>
+          </div>
+          <div class="related-leistung-hover">
+            <p>Ob im Vorstand, im Gremium oder beim Kunden: Wir sorgen dafür, dass dein Thema ankommt – inhaltlich und im Auftritt.</p>
+            <span class="link-more">mehr erfahren</span>
+          </div>
+        </a>
+        <a class="related-leistung" href="/leistungen/innovation">
+          <div class="related-leistung-face">
+            <div class="icon"><svg><use href="#ic-kreis"/></svg></div>
+            <h3>Innovation &amp; Geschäftsmodell neu denken</h3>
+          </div>
+          <div class="related-leistung-hover">
+            <p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p>
+            <span class="link-more">mehr erfahren</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

@@ -1668,6 +1668,9 @@ body.produktseite--sofortsichtbar {
   .produkt-hero-lead-cols { grid-template-columns: 1fr; gap: 0.85rem; }
 }
 .produkt-hero .btn--dark { background: #fff; color: #0a0a0c; margin-top: 2rem; }
+.produkt-hero-lead-full { margin-top: clamp(28px, 4vw, 46px); }
+.produkt-hero-lead-full .produkt-hero-lead-cols { margin-top: 0; }
+.produkt-hero-lead-full .produkt-pills { justify-content: center; margin-top: clamp(22px, 3vw, 34px); }
 
 /* Hero-Variante: Bild rechts neben der Headline (oben ausgerichtet statt vertikal
    zentriert), darunter über die volle Breite zwei eigenständige Textkästen — links
@@ -1976,6 +1979,66 @@ body.produktseite--sofortsichtbar {
   .media-boxes-grid { grid-template-columns: 1fr !important; max-width: 420px !important; margin-left: auto; margin-right: auto; }
 }
 
+/* Layout-Varianten für die "Unsere Medien"-Kacheln – ausschließlich zur Auswahl auf
+   der Produktseite Marketing eingesetzt (media_boxes_variants=True), keine anderen
+   Seiten verwenden diese Klassen. */
+.media-variant-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin: 0 0 14px;
+}
+.media-boxes-grid--2x2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.media-boxes-grid--stacked {
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.media-box--wide-row {
+  flex-direction: row;
+  align-items: stretch;
+}
+.media-box--wide-row .media-box-thumb {
+  width: 38%;
+  height: auto;
+  flex-shrink: 0;
+}
+.media-box--wide-row .media-box-footer {
+  flex: 1;
+  justify-content: center;
+  border-top: none;
+  border-left: 1px solid rgba(255,255,255,.14);
+}
+.media-boxes-bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 34px);
+  max-width: 1040px;
+  margin: clamp(36px, 4.6vw, 56px) auto 0;
+  align-items: stretch;
+}
+.media-box--bento-lg {
+  grid-column: span 3;
+}
+.media-box--bento-lg .media-box-thumb {
+  height: clamp(260px, 26vw, 340px);
+}
+@media (max-width: 900px) {
+  .media-boxes-grid--2x2, .media-boxes-bento { grid-template-columns: 1fr !important; max-width: 420px !important; margin-left: auto; margin-right: auto; }
+  .media-box--wide-row { flex-direction: column; }
+  .media-box--wide-row .media-box-thumb { width: 100%; }
+  .media-box--wide-row .media-box-footer { border-left: none; border-top: 1px solid rgba(255,255,255,.14); }
+}
+
 /* Struktur-Vorschau-Modal (reuses .modal-overlay / .modal-wrap / .modal-close, Muster wie modal--pdf).
    Breite wird je nach Seitenverhältnis der jeweiligen Grafik inline gesetzt
    (width: min(90vw, calc(78vh * Breite/Höhe))) — Standardwert hier ist die
@@ -2170,7 +2233,12 @@ body.produktseite--sofortsichtbar {
 .price-value { display: flex; align-items: baseline; gap: 8px; margin: 18px 0 2px; }
 .price-amount { font-family: var(--font-serif); font-weight: 700; font-size: 2.1rem; color: #fff; }
 .price-unit { font-family: var(--font-sans); font-weight: 400; font-size: .85rem; color: rgba(255,255,255,.8); }
-.price-note { margin: 0 0 18px; font-size: .78rem; line-height: 1.6; min-height: 2.56em; font-weight: 400; color: rgba(255,255,255,.7); }
+.price-note { font-size: .78rem; line-height: 1.6; min-height: 2.56em; font-weight: 400; color: rgba(255,255,255,.7); }
+/* Höhere Spezifität als ".produkt-glass p" nötig (sonst gewinnt dessen "margin:0" und der
+   Abstand zwischen Preis-Hinweistext und der grauen Trennlinie darunter fällt weg) — deshalb
+   hier über ".price-card .price-note" statt nur ".price-note" gesetzt. Gleicher Wert wie
+   .price-features padding-top, damit der Abstand vor UND nach der Linie identisch ist. */
+.price-card .price-note { margin: 0 0 18px; }
 .price-features {
   list-style: none; margin: 0; padding: 18px 0 0; border-top: 1px solid rgba(255,255,255,.24);
   display: flex; flex-direction: column; gap: 10px; flex: 1;
@@ -2182,6 +2250,20 @@ body.produktseite--sofortsichtbar {
 .price-features li::before {
   content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px;
   border-radius: 50%; background: rgba(255,255,255,.7);
+}
+.price-more-btn { align-self: center; margin-top: 30px; }
+/* Abschluss-Satz ("ideal für...") als eigene, farblich abgesetzte Fußzeile am Kastenende —
+   bleedet bis an den Kastenrand (negative margin = Karten-Padding von .produkt-glass, 34px),
+   analog zum footer-Streifen der Medien-Kacheln. Mehr Abstand zum CTA-Button darüber, damit
+   beides klar getrennt wirkt. */
+.price-ideal-band {
+  margin: 34px -34px -34px; padding: 20px 34px;
+  border-radius: 0 0 20px 20px;
+  background: rgba(255,255,255,.06);
+}
+.price-ideal {
+  margin: 0; text-align: center; font-family: var(--font-sans);
+  font-weight: 700; font-size: .86rem; line-height: 1.5; color: #fff;
 }
 
 /* Mögliche Themen (einzelne Glass-Card mit zweispaltiger Checkliste) */
@@ -2286,6 +2368,7 @@ body.produktseite--sofortsichtbar {
   color: #fff;
 }
 .vergleich-label--brand { color: #fff; }
+.vergleich-label-logo { display: block; width: 100%; max-width: 62px; height: auto; margin: 0 auto; }
 .vergleich-timeline {
   flex: 1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   background: rgba(0,0,0,.4); border: 1px solid transparent; border-radius: 16px;
@@ -2298,6 +2381,16 @@ body.produktseite--sofortsichtbar {
   background: rgba(255,255,255,.07); border-radius: 12px;
   font-family: var(--font-sans); font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.92);
   white-space: nowrap;
+}
+/* Zeile "klassische Agentur" (ohne --outline): die 4 grauen Kästen sollen die volle
+   Kastenbreite gleichmäßig ausfüllen (statt sich nur auf ihren Text zu beschränken),
+   damit die Rakete an den rechten Rand rutscht und links/rechts gleich viel Rand bleibt.
+   Die outline-Zeile (sofort sichtbar) bleibt bewusst unverändert kompakt. Nur ab 701px,
+   damit das mobile Wrap-Layout weiter unten (2 Spalten je Zeile) unverändert bleibt. */
+@media (min-width: 701px) {
+  .vergleich-timeline:not(.vergleich-timeline--outline) .vergleich-pill {
+    flex: 1 1 0; white-space: normal;
+  }
 }
 .vergleich-rocket {
   flex: 0 0 auto; width: 58px; height: 58px; border-radius: 12px;
