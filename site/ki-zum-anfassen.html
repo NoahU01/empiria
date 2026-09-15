@@ -266,13 +266,18 @@
   .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
   .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
 
-  /* Vergleich-Bild (z.B. sofort sichtbar: klassische Agentur vs. sofort sichtbar) */
+  /* Vergleich-Bild (z.B. sofort sichtbar: klassische Agentur vs. sofort sichtbar) — auf der
+     hellen "clean"-Seite als helle Karte statt als dunkler Kasten, deshalb überall dunkle
+     statt weißer Schrift (sonst unlesbar auf hellem Grund). */
   .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
-  .produktseite-clean .vergleich-tag { color: var(--ink); }
-  .produktseite-clean .vergleich-tag--highlight { color: #C51F5D; }
-  .produktseite-clean .vergleich-zeit { color: var(--grey-50); }
-  .produktseite-clean .vergleich-step { background: #fff; border: 1px solid #e7e2df; color: var(--grey-70); }
-  .produktseite-clean .vergleich-step--launch { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .vergleich-label { color: var(--ink); }
+  .produktseite-clean .vergleich-label--brand { color: #C51F5D; }
+  .produktseite-clean .vergleich-timeline { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .vergleich-timeline--outline { border-color: #C51F5D; }
+  .produktseite-clean .vergleich-pill { background: var(--grey-bg); border: 1px solid #e7e2df; color: var(--ink); }
+  .produktseite-clean .vergleich-rocket { border-color: rgba(255,255,255,.5); }
+  .produktseite-clean .vergleich-bonus { color: var(--ink); }
+  .produktseite-clean .vergleich-bonus svg { color: #C51F5D; }
 
   /* FAQ */
   .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
@@ -338,6 +343,21 @@
         <path d="M14,52a26,26 0 1 1 52,0"/>
         <path d="M40,52l14-16"/>
         <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-rocket" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c10,8,14,20,14,32c0,8-4,16-14,22c-10-6-14-14-14-22c0-12,4-24,14-32z"/>
+        <circle cx="40" cy="34" r="6"/>
+        <path d="M26,48l-8,14"/>
+        <path d="M54,48l8,14"/>
+        <path d="M34,64c0,6,3,10,6,12c3-2,6-6,6-12"/>
+      </g>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="26"/>
+        <path d="M40,24v16l12,8"/>
       </g>
     </symbol>
     <symbol id="ic-seo" viewBox="0 0 80 80">
@@ -539,6 +559,9 @@
                   <a href="/leistungen/teams" class="nav-dropdown-panel-link--muted">Teams befähigen, professionell zu kommunizieren</a>
                   <a href="/der-beste-workshop" class="nav-dropdown-panel-link--muted">Der beste Workshop</a>
                   <a href="/archiv/startseite-v1" class="nav-dropdown-panel-link--muted">Startseite Version 1.0</a>
+                  <a href="/archiv/sofort-sichtbar-problem" class="nav-dropdown-panel-link--muted">sofort sichtbar + Problem</a>
+                  <a href="/archiv/digitale-tools-1-0" class="nav-dropdown-panel-link--muted">Digitale Tools 1.0</a>
+                  <a href="/archiv/marketing-1-0" class="nav-dropdown-panel-link--muted">Marketing 1.0</a>
                 </div>
               </div>
             </div>
@@ -653,6 +676,9 @@
       <a href="/leistungen/teams" class="mobile-submenu-link mobile-submenu-link--muted">Teams befähigen, professionell zu kommunizieren</a>
       <a href="/der-beste-workshop" class="mobile-submenu-link mobile-submenu-link--muted">Der beste Workshop</a>
       <a href="/archiv/startseite-v1" class="mobile-submenu-link mobile-submenu-link--muted">Startseite Version 1.0</a>
+      <a href="/archiv/sofort-sichtbar-problem" class="mobile-submenu-link mobile-submenu-link--muted">sofort sichtbar + Problem</a>
+      <a href="/archiv/digitale-tools-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Digitale Tools 1.0</a>
+      <a href="/archiv/marketing-1-0" class="mobile-submenu-link mobile-submenu-link--muted">Marketing 1.0</a>
         </div>
       </div>
     </div>

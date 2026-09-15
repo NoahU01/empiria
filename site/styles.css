@@ -2105,6 +2105,31 @@ body.produktseite--sofortsichtbar {
 .feature-icon svg { width: 22px; height: 22px; color: #fff; }
 .produkt-glass h3 { font-family: var(--font-serif); font-size: 1.2rem; margin: 0 0 .5rem; color: #fff; }
 .produkt-glass p { margin: 0; font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.78); }
+/* Sonderfall sofort sichtbar: echte Vorschaubilder statt Icons, Bild unten im Kasten. */
+.sofort-feature-card { display: flex; flex-direction: column; }
+.sofort-feature-img {
+  margin-top: 20px; width: 100%; height: auto; display: block;
+  border-radius: 12px;
+}
+/* "Das Problem"-Sektion (sofort sichtbar): statt Fließtext ein knapper, dunkler
+   Zitat-Kasten mit kurzen, pointierten Zeilen (gleiche Bildsprache wie der
+   "Problem"-Kasten auf der Startseite), plus der bestehende .usp-highlight-Baustein
+   für den wichtigsten Punkt (Vertriebsstrategie 1:1 in digitale Kanäle). */
+.problem-quote-card {
+  margin: 22px 0; padding: clamp(22px, 2.6vw, 32px) clamp(20px, 2.4vw, 30px);
+  background: #141216; border-radius: var(--radius-card, 20px);
+}
+.problem-quote-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.problem-quote-card li {
+  position: relative; padding-left: 26px;
+  font-family: var(--font-sans); font-size: .98rem; line-height: 1.55; color: rgba(255,255,255,.92);
+}
+.problem-quote-card li::before { content: "—"; position: absolute; left: 0; color: #c25be0; font-weight: 700; }
+.problem-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+/* Skizze frei ohne Kasten, wie in den Headern – bare_sketch übernimmt bereits die
+   Invertierung auf hellen "clean"-Seiten, hier nur zentriert und etwas größer. */
+.vorschau-split-card--sketch { display: flex; align-items: center; justify-content: center; max-width: 520px; }
+.vorschau-split-card--sketch .produkt-mock-sketch { width: 100%; }
 .produkt-cta { padding-block: clamp(60px, 8vw, 110px); text-align: center; }
 .produkt-cta h2 {
   color: #fff; font-family: var(--font-serif); font-weight: 700;
@@ -2237,36 +2262,61 @@ body.produktseite--sofortsichtbar {
 
 .produkt-section { padding-block: clamp(50px, 7vw, 100px); }
 
-/* Vergleich-Bild: klassische Agentur vs. sofort sichtbar (Monate werden zu Tagen) */
+/* Vergleich-Bild: klassische Agentur vs. sofort sichtbar (Monate werden zu Tagen).
+   1:1 an die Sektion "Warum keine Agentur?" auf sofortsichtbar.de angelehnt (Struktur,
+   Ausrichtung und Proportionen anhand der Original-DOM/CSS-Werte nachgebaut), nur
+   farblich an unser eigenes Violett angepasst statt 1:1 übernommen.
+   WICHTIG für die Ausrichtung: .vergleich-timeline UND die --outline-Variante brauchen
+   exakt dasselbe padding, sonst startet die "Auftragsklärung"-Pille in Zeile 2 (mit
+   Rahmen) weiter rechts als die in Zeile 1 (ohne Rahmen) – genau das war der Bug. Und
+   die Pillen dürfen nicht per flex:1 gestreckt werden (sonst füllt eine einzelne Pille,
+   wie "Auftragsklärung" in Zeile 2, die ganze verfügbare Breite aus) – sie sitzen im
+   Original alle nur so breit wie ihr Text plus Innenabstand. */
 .vergleich-bild {
   margin-top: clamp(28px, 4vw, 44px);
-  display: flex; flex-direction: column; gap: clamp(20px, 2.6vw, 28px);
-  padding: clamp(26px, 3.4vw, 40px);
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
-  border-radius: 22px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+  display: flex; flex-direction: column; gap: clamp(14px, 2vw, 16px);
+  padding: clamp(20px, 3vw, 32px);
+  background: #211d24; border-radius: 28px;
 }
-.vergleich-row { display: grid; grid-template-columns: clamp(150px, 18vw, 210px) 1fr; align-items: center; gap: clamp(16px, 2.4vw, 28px); }
-.vergleich-label { display: flex; flex-direction: column; gap: 4px; }
-.vergleich-tag { font-family: var(--font-sans); font-weight: 600; font-size: .92rem; color: rgba(255,255,255,.9); }
-.vergleich-tag--highlight { color: #fff; }
-.vergleich-zeit { font-family: var(--font-sans); font-size: .76rem; color: rgba(255,255,255,.55); }
-.vergleich-track { display: flex; gap: 8px; }
-.vergleich-track--kurz { max-width: 46%; }
-.vergleich-step {
-  flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 12px 10px; text-align: center;
-  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
-  border-radius: 10px; font-family: var(--font-sans); font-size: .78rem; color: rgba(255,255,255,.8);
+.vergleich-row { display: flex; align-items: center; justify-content: space-between; gap: clamp(12px, 2vw, 20px); }
+.vergleich-label {
+  flex: 0 0 clamp(84px, 11vw, 112px);
+  font-family: var(--font-sans); font-weight: 700; font-size: .82rem; line-height: 1.3; text-align: center;
+  color: #fff;
+}
+.vergleich-label--brand { color: #fff; }
+.vergleich-timeline {
+  flex: 1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  background: rgba(0,0,0,.4); border: 1px solid transparent; border-radius: 16px;
+  padding: clamp(10px, 1.6vw, 16px);
+}
+.vergleich-timeline--outline { border-color: rgba(255,255,255,.22); }
+.vergleich-pill {
+  flex: 0 1 auto; display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 56px; padding: 10px 20px;
+  background: rgba(255,255,255,.07); border-radius: 12px;
+  font-family: var(--font-sans); font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.92);
   white-space: nowrap;
 }
-.vergleich-step--launch { background: var(--hl-solid); border-color: var(--hl-solid); color: var(--ink); font-weight: 700; }
-.vergleich-step--launch svg { flex: 0 0 auto; }
+.vergleich-rocket {
+  flex: 0 0 auto; width: 58px; height: 58px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(172deg, #5c0d70, #8613A1);
+  border: 1.5px solid rgba(255,255,255,.28);
+}
+.vergleich-rocket svg { color: #fff; }
+.vergleich-bonus {
+  flex: 0 1 auto; display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 10px 16px; white-space: nowrap;
+  font-family: var(--font-sans); font-size: .82rem; font-weight: 600; color: #fff;
+}
+.vergleich-bonus svg { flex: 0 0 auto; color: rgba(255,255,255,.85); }
 @media (max-width: 700px) {
-  .vergleich-row { grid-template-columns: 1fr; }
-  .vergleich-track { flex-wrap: wrap; }
-  .vergleich-track--lang .vergleich-step { flex: 1 1 calc(50% - 8px); }
-  .vergleich-track--kurz { max-width: 100%; }
-  .vergleich-step { white-space: normal; font-size: .72rem; }
+  .vergleich-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .vergleich-timeline { width: 100%; }
+  .vergleich-pill { flex: 1 1 calc(50% - 8px); font-size: .72rem; white-space: normal; }
+  .vergleich-bonus { flex: 1 1 100%; white-space: normal; text-align: center; }
 }
 
 /* Prozess-Schritte */

@@ -1,37 +1,154 @@
 {
   "redirects": [
-    { "source": "/impressum", "destination": "/impressum.html", "permanent": true },
-    { "source": "/impressum/", "destination": "/impressum.html", "permanent": true },
-    { "source": "/datenschutz", "destination": "/datenschutz.html", "permanent": true },
-    { "source": "/datenschutz/", "destination": "/datenschutz.html", "permanent": true }
+    {
+      "source": "/impressum",
+      "destination": "/impressum.html",
+      "permanent": true
+    },
+    {
+      "source": "/impressum/",
+      "destination": "/impressum.html",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz.html",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz/",
+      "destination": "/datenschutz.html",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/site/index.html" },
-    { "source": "/leistungen/strategie", "destination": "/site/leistungen/strategie.html" },
-    { "source": "/leistungen/komplexe-themen", "destination": "/site/leistungen/komplexe-themen.html" },
-    { "source": "/leistungen/innovation", "destination": "/site/leistungen/innovation.html" },
-    { "source": "/leistungen/teams", "destination": "/site/leistungen/teams.html" },
-    { "source": "/workshops", "destination": "/site/workshops.html" },
-    { "source": "/digitale-tools", "destination": "/site/digitale-tools.html" },
-    { "source": "/marketing", "destination": "/site/marketing.html" },
-    { "source": "/training-sparring", "destination": "/site/training-sparring.html" },
-    { "source": "/impulsvortraege", "destination": "/site/impulsvortraege.html" },
-    { "source": "/ki-zum-anfassen", "destination": "/site/ki-zum-anfassen.html" },
-    { "source": "/sprint-landingpage", "destination": "/site/sprint-landingpage.html" },
-    { "source": "/workshop-moderation", "destination": "/site/workshop-moderation.html" },
-    { "source": "/dashboard-digitales-marketing", "destination": "/site/dashboard-digitales-marketing.html" },
-    { "source": "/sofort-sichtbar", "destination": "/site/sofort-sichtbar.html" },
-    { "source": "/paid-ads", "destination": "/site/paid-ads.html" },
-    { "source": "/marketing-as-a-service", "destination": "/site/marketing-as-a-service.html" },
-    { "source": "/medien", "destination": "/site/medien.html" },
-    { "source": "/powerpoint", "destination": "/site/powerpoint.html" },
-    { "source": "/landingpage", "destination": "/site/landingpage.html" },
-    { "source": "/rollup", "destination": "/site/rollup.html" },
-    { "source": "/praesentationsseminar", "destination": "/site/praesentationsseminar.html" },
-    { "source": "/sparring", "destination": "/site/sparring.html" },
-    { "source": "/vortrag-1", "destination": "/site/vortrag-1.html" },
-    { "source": "/vortrag-2", "destination": "/site/vortrag-2.html" },
-    { "source": "/vortrag-3", "destination": "/site/vortrag-3.html" },
-    { "source": "/(.*)", "destination": "/site/$1" }
+    {
+      "source": "/",
+      "destination": "/site/index.html"
+    },
+    {
+      "source": "/leistungen/strategie",
+      "destination": "/site/leistungen/strategie.html"
+    },
+    {
+      "source": "/leistungen/komplexe-themen",
+      "destination": "/site/leistungen/komplexe-themen.html"
+    },
+    {
+      "source": "/leistungen/innovation",
+      "destination": "/site/leistungen/innovation.html"
+    },
+    {
+      "source": "/leistungen/teams",
+      "destination": "/site/leistungen/teams.html"
+    },
+    {
+      "source": "/workshops",
+      "destination": "/site/workshops.html"
+    },
+    {
+      "source": "/digitale-tools",
+      "destination": "/site/digitale-tools.html"
+    },
+    {
+      "source": "/marketing",
+      "destination": "/site/marketing.html"
+    },
+    {
+      "source": "/training-sparring",
+      "destination": "/site/training-sparring.html"
+    },
+    {
+      "source": "/impulsvortraege",
+      "destination": "/site/impulsvortraege.html"
+    },
+    {
+      "source": "/ki-zum-anfassen",
+      "destination": "/site/ki-zum-anfassen.html"
+    },
+    {
+      "source": "/sprint-landingpage",
+      "destination": "/site/sprint-landingpage.html"
+    },
+    {
+      "source": "/workshop-moderation",
+      "destination": "/site/workshop-moderation.html"
+    },
+    {
+      "source": "/dashboard-digitales-marketing",
+      "destination": "/site/dashboard-digitales-marketing.html"
+    },
+    {
+      "source": "/sofort-sichtbar",
+      "destination": "/site/sofort-sichtbar.html"
+    },
+    {
+      "source": "/paid-ads",
+      "destination": "/site/paid-ads.html"
+    },
+    {
+      "source": "/marketing-as-a-service",
+      "destination": "/site/marketing-as-a-service.html"
+    },
+    {
+      "source": "/medien",
+      "destination": "/site/medien.html"
+    },
+    {
+      "source": "/powerpoint",
+      "destination": "/site/powerpoint.html"
+    },
+    {
+      "source": "/landingpage",
+      "destination": "/site/landingpage.html"
+    },
+    {
+      "source": "/rollup",
+      "destination": "/site/rollup.html"
+    },
+    {
+      "source": "/praesentationsseminar",
+      "destination": "/site/praesentationsseminar.html"
+    },
+    {
+      "source": "/sparring",
+      "destination": "/site/sparring.html"
+    },
+    {
+      "source": "/vortrag-1",
+      "destination": "/site/vortrag-1.html"
+    },
+    {
+      "source": "/vortrag-2",
+      "destination": "/site/vortrag-2.html"
+    },
+    {
+      "source": "/vortrag-3",
+      "destination": "/site/vortrag-3.html"
+    },
+    {
+      "source": "/der-beste-workshop",
+      "destination": "/site/der-beste-workshop.html"
+    },
+    {
+      "source": "/archiv/startseite-v1",
+      "destination": "/site/archiv/startseite-v1.html"
+    },
+    {
+      "source": "/archiv/sofort-sichtbar-problem",
+      "destination": "/site/archiv/sofort-sichtbar-problem.html"
+    },
+    {
+      "source": "/archiv/digitale-tools-1-0",
+      "destination": "/site/archiv/digitale-tools-1-0.html"
+    },
+    {
+      "source": "/archiv/marketing-1-0",
+      "destination": "/site/archiv/marketing-1-0.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/site/$1"
+    }
   ]
 }
