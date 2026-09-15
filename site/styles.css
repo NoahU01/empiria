@@ -1431,8 +1431,8 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
   .mobile-submenu-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .mobile-submenu-row .mobile-submenu-label { padding: 10px 0; flex: 1; }
   .mobile-submenu-label {
-    padding: 10px 0 2px; font-size: 0.8rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .04em; color: var(--grey-50);
+    padding: 10px 0 2px; font-size: 0.95rem; font-weight: 500;
+    color: var(--grey-50);
   }
   .mobile-submenu-label--link { text-decoration: none; }
   .mobile-submenu-label--link:hover { color: var(--ink); }
