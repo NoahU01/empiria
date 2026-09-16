@@ -328,7 +328,8 @@
      federt auf das neue Wort (Nachbau von RotatingPlatform, admemory.de). */
   .pa-rot-wrap { position: relative; display: inline-block; vertical-align: bottom; }
   .pa-rot-measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
-  .pa-rot-clip { display: inline-block; overflow: hidden; vertical-align: bottom; white-space: nowrap; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+  /* clip-path statt overflow:hidden: beschneidet nur seitlich, Unterlaengen (g, p) bleiben sichtbar. */
+  .pa-rot-clip { display: inline-block; clip-path: inset(-0.3em 0 -0.3em 0); vertical-align: bottom; white-space: nowrap; transition: width .45s cubic-bezier(.2,.8,.2,1); }
   .pa-rot { display: inline-block; transition: transform .3s ease-out, opacity .3s ease-out; }
   /* Kanalname in der jeweiligen Markenfarbe (wie admemory.de): Google buchstabenweise. */
   .pa-rot[data-kanal="meta"] { color: #0081FB; }
