@@ -192,13 +192,15 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   top: 100%; left: 50%;
   /* Verschiebt sich abhängig von der Fensterbreite: auf schmalen Desktop-/
-     iPad-Breiten (ab 901px) weit genug nach links, damit rechts vom
+     iPad-Breiten (901-1099px) weit genug nach links, damit rechts vom
      1.-Ebene-Panel immer genug Platz für die nach rechts aufklappende 2.
-     (und 3.) Ebene bleibt; auf breiten MacBook-/Monitor-Fenstern rutscht es
-     dank des vw-Anteils von selbst wieder näher an den Auslöser "Leistungen"
-     heran, weil dort ohnehin viel Platz rechts frei ist. Werte per Playwright
-     über mehrere Breiten (901-1920px) austariert. */
-  transform: translateX(calc(-50% + 50vw - 695px));
+     (und 3.) Ebene bleibt (unverändert, so von Daniel bestätigt). Ab
+     1100px wird der wachsende vw-Anteil bei -145px gedeckelt (min()) -
+     sonst rutscht das Panel auf breiten MacBook-/Monitor-Fenstern viel zu
+     weit nach rechts und wirkt nicht mehr zum Auslöser "Leistungen"
+     zugehörig. Werte per Playwright über mehrere Breiten (901-1920px)
+     austariert. */
+  transform: translateX(calc(-50% + min(50vw - 695px, -145px)));
   padding-top: 14px; /* unsichtbare Hover-Brücke, damit der Dropdown beim
                          diagonalen Runterfahren nicht vorzeitig schließt */
   opacity: 0;
