@@ -91,6 +91,12 @@
         <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
       </g>
     </symbol>
+      <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
   </defs>
 </svg>
 
@@ -251,71 +257,214 @@
   </div>
 
   <!-- ===== Problem ===== -->
-  <section class="section section--grey leistung-simple-section" id="problem">
+  <section class="section section--grey" id="problem">
     <svg class="watermark" width="330" height="330" viewBox="0 0 232.44 232.44" style="left:50%;top:50%;transform:translate(-50%,-50%)" aria-hidden="true"><use href="#ic-forward"/></svg>
     <div class="container">
-      <div class="leistung-problem-grid">
-        <div class="leistung-simple">
+      <div class="problem-grid">
+        <div class="problem-head">
           <p class="kicker">Problem</p>
-          <h2 class="h-serif">Strategisches Denken wird vorausgesetzt. <span class="hl">Beigebracht hat es dir keiner.</span></h2>
-          <p class="lead">Du bist Abteilungs- oder Bereichsleiter, weil du fachlich überzeugt hast. Strategisches Denken stand nie auf dem Lehrplan – trotzdem wird es ab dem ersten Tag vorausgesetzt. Was danach oft folgt, sind harte Gespräche mit dem eigenen Team. Nicht, weil die Gesprächstechnik fehlt. Weil das Fundament fehlt: die eigene Rolle, die Richtung, das Handwerkszeug für den Alltag.</p>
+          <h2 class="h-serif">Strategisches Denken wird vorausgesetzt. Dir hat es aber <span class="hl">keiner beigebracht.</span></h2>
         </div>
-        <div class="leistung-problem-video">
-          <div class="video-placeholder" role="img" aria-label="Platzhalter für Erklärvideo">
-            <span class="video-placeholder-play" aria-hidden="true">
-              <svg viewBox="0 0 80 80"><path d="M34,30l18,10-18,10V30Z" fill="currentColor"/></svg>
-            </span>
-            <span class="video-placeholder-tag">Platzhalter · Erklärvideo folgt</span>
-          </div>
+        <div class="problem-card">
+          <p>Du bist Abteilungs- oder Bereichsleiter, weil du fachlich überzeugt hast. Strategisches Denken stand nie auf dem Lehrplan – trotzdem wird es ab dem ersten Tag vorausgesetzt.</p>
+          <p>Was danach oft folgt, sind harte Gespräche mit dem eigenen Team. Hart, weil das Fundament fehlt: die klare Richtung, die eigene Rolle, das Handwerkszeug für den Alltag.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Lösung ===== -->
+  <!-- ===== Lösung (Text links, anklickbares Strategiemodell rechts) ===== -->
   <section class="section leistung-simple-section" id="loesung-baustein">
     <div class="container">
-      <div class="leistung-simple">
-        <p class="kicker">Lösung</p>
-        <h2 class="h-serif">Rolle, Richtung, Handwerkszeug <span class="hl">für deinen Bereich.</span></h2>
-        <p class="lead">Wir arbeiten an drei Dingen: Klarheit über deine Rolle als Führungskraft – was von dir erwartet wird, und was du selbst vertrittst. Die Übersetzung der Unternehmensstrategie in deinen Bereich, als Geschichte, die jeder versteht: wo ihr heute steht, wo ihr hinwollt, wie ihr dorthin kommt. Und das praktische Handwerkszeug, mit dem du und dein Team im Alltag vorankommen.</p>
+      <div class="loesung-split">
+        <div class="leistung-simple">
+          <p class="kicker">Lösung</p>
+          <h2 class="h-serif">Rolle, Richtung, Handwerkszeug <span class="hl">für deinen Bereich.</span></h2>
+          <p class="lead">Wir arbeiten an drei Dingen, die Dir als Führungskraft Handlungsklarheit verschaffen:</p>
+          <ul class="lead leistung-lead-list">
+            <li>Wofür stehe ich und mein Bereich?</li>
+            <li>Wie wollen wir wahrgenommen werden?</li>
+            <li>Wie kommen wir dort hin?</li>
+          </ul>
+          <p class="lead">Dies umfasst das praktische Handwerkszeug, mit dem Du als Führungskraft im Alltag vorankommst.</p>
+        </div>
+        <div class="loesung-modell">
+          <div class="media-box sprint-structure-card loesung-modell-card">
+            <button type="button" class="media-box-thumb-btn" data-modal-target="strategiemodellModal" aria-label="Strategiemodell groß ansehen">
+              <div class="media-box-thumb loesung-modell-thumb">
+<svg viewBox="0 0 900 1060" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="20" y="20" width="860" height="230" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<text x="450" y="50" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WOFÜR STEHEN WIR?</text>
+<text x="110" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Unternehmens-</text>
+<text x="110" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">strategie</text>
+<rect x="72" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="80" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="270" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Führungs-</text>
+<text x="270" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">verständnis</text>
+<rect x="232" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="240" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="440" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Zielgruppe:</text>
+<text x="440" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">„What's in for me?“</text>
+<rect x="402" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="410" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<circle cx="440" cy="175" r="0" fill="none"/>
+<line x1="540" y1="175" x2="610" y2="175" stroke="#fff400" stroke-width="2.2"/>
+<path d="M610,175 L598.8,179.8 L598.8,170.2Z" fill="#fff400"/>
+<circle cx="540" cy="175" r="4" fill="#fff400"/>
+<rect x="640" y="60" width="230" height="180" rx="12" fill="rgba(255,255,255,.06)"/>
+<rect x="658" y="90" width="70" height="110" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="666" y="100.0" width="54.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="115.66666666666667" width="44.3" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="131.33333333333334" width="34.6" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="147.0" width="54.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="162.66666666666666" width="44.3" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="178.33333333333331" width="34.6" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="802" y="142" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Selbst-</text>
+<text x="802" y="166" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">verständnis</text>
+<circle cx="711" cy="240" r="4" fill="#fff400"/>
+<line x1="711" y1="240" x2="711" y2="300" stroke="#fff400" stroke-width="2.2"/>
+<path d="M711,300 L706.2,288.8 L715.8,288.8Z" fill="#fff400"/>
+<rect x="20" y="310" width="540" height="730" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<rect x="580" y="310" width="300" height="730" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<text x="290" y="340" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WIE KOMMEN WIR DORTHIN?</text>
+<text x="730" y="340" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WIE WOLLEN WIR</text>
+<text x="730" y="355" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WAHRGENOMMEN WERDEN?</text>
+<circle cx="730" cy="410" r="22" fill="none" stroke="#fff400" stroke-width="2.4"/>
+<text x="730" y="416" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">2</text>
+<text x="730" y="470" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Vision</text>
+<circle cx="140" cy="530" r="22" fill="none" stroke="#fff400" stroke-width="2.4"/>
+<text x="140" y="536" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">1</text>
+<text x="140" y="590" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Ausgangssituation</text>
+<line x1="170" y1="515" x2="700" y2="402" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/>
+<path d="M700,402 L690.0,409.0 L688.0,399.6Z" fill="rgba(255,255,255,.8)"/>
+<line x1="700" y1="424" x2="425" y2="482.6" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/>
+<path d="M425,482.6 L435.0,475.6 L437.0,485.0Z" fill="rgba(255,255,255,.8)"/>
+<circle cx="390" cy="470" r="28" fill="#000"/>
+<circle cx="390" cy="470" r="22" fill="#000" stroke="#fff400" stroke-width="2.4"/>
+<text x="390" y="476" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">3</text>
+<text x="390" y="530" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Strategie</text>
+<text x="585" y="480" text-anchor="middle" font-family="var(--font-sans)" font-size="12" font-weight="700" letter-spacing="0.6" fill="rgba(255,255,255,.5)">Mission</text>
+<text x="140" y="625" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Heutiges Geschäfts- und</text>
+<text x="140" y="640" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Organisationsmodell</text>
+<text x="390" y="570" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Stoßrichtungen &</text>
+<text x="390" y="585" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Handlungsfelder</text>
+<line x1="730" y1="485" x2="730" y2="590" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="730" y="625" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Zukünftiges Geschäfts- und</text>
+<text x="730" y="640" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Organisationsmodell</text>
+<rect x="100" y="660" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="108" y="670.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="680.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="690.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="700.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="350" y="610" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="358" y="620.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="630.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="640.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="650.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="690" y="660" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="698" y="670.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="680.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="690.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="700.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<line x1="390" y1="675" x2="390" y2="715" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="390" y="735" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="rgba(255,255,255,.85)">Detaillierung der Strategie</text>
+<line x1="390" y1="748" x2="390" y2="770" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="165" y1="770" x2="415" y2="770" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="165" y1="770" x2="165" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="415" y1="770" x2="415" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="165" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Führungs- und</text>
+<text x="165" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Arbeitsalltag</text>
+<text x="415" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Strategie-</text>
+<text x="415" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">kommunikation</text>
+<line x1="730" y1="730" x2="730" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="730" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Positionierung</text>
+<text x="730" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">& Pitch</text>
+<rect x="108" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="148" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="188" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="390" y="840" width="50" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="398" y="850.0" width="34.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="860.4" width="27.9" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="870.8" width="21.8" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="881.2" width="34.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="891.6" width="27.9" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="686" y="840" width="40" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="694" y="850.0" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="860.4" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="870.8" width="15.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="881.2" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="891.6" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="734" y="840" width="40" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="742" y="850.0" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="860.4" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="870.8" width="15.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="881.2" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="891.6" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<path d="M147,930 L183,930 L165,944Z" fill="#fff400"/>
+<text x="165" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Wie sichern wir die</text>
+<text x="165" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Zielerreichung?</text>
+<path d="M397,930 L433,930 L415,944Z" fill="#fff400"/>
+<text x="415" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Wie erklären wir die</text>
+<text x="415" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Strategie intern?</text>
+<path d="M712,930 L748,930 L730,944Z" fill="#fff400"/>
+<text x="730" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Welches Problem lösen wir</text>
+<text x="730" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">– und was macht uns</text>
+<text x="730" y="1004" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">einzigartig?</text>
+</svg>
+              </div>
+            </button>
+            <div class="media-box-footer">
+              <span class="media-box-title">Unser Strategiemodell</span>
+              <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="strategiemodellModal">Modell ansehen</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Leistungen / Bausteine ===== -->
-  <section class="section leistung-bausteine-section" id="leistungsbausteine">
+  <!-- ===== Perspektivwechsel: Homepage Deiner Abteilung ===== -->
+  <section class="section perspektive pv" id="perspektive">
     <div class="container">
-      <div class="leistung-bausteine-head">
-        <p class="kicker">Leistungen</p>
-        <h2 class="h-serif">Drei Bausteine <span class="hl">für dein Fundament.</span></h2>
-        <p class="lead">Rolle, Richtung und Handwerkszeug – wenn diese drei sitzen, lösen sich die meisten schwierigen Führungssituationen von selbst.</p>
+      <div class="pv-head">
+        <p class="kicker">Perspektivwechsel</p>
+        <h2 class="h-serif">Wie sieht die Homepage <span class="hl pv-nowrap">Deiner Abteilung</span> aus?</h2>
+        <p class="lead">Ziemlich wahrscheinlich hast Du keine – die meisten haben keine. Also warum die Frage? Weil hier sofort klar wird, ob Du den Mehrwert Deines Bereichs sauber erklären kannst. Und wenn Du das nicht kannst, kann auch keiner in Deinem Team aktiv zu Deiner Strategie beitragen.</p>
       </div>
-      <div class="bausteine-grid">
-        <article class="baustein-card">
-          <div class="icon-wrap">
-            <svg class="ico-shadow"><use href="#ic-kreis"/></svg>
-            <svg class="ico-main"><use href="#ic-kreis"/></svg>
+      <div class="pv-row">
+        <div class="perspektive-browser" role="img" aria-label="Skizze einer leeren Homepage Deiner Abteilung mit fünf offenen Fragen">
+          <div class="pb-bar">
+            <span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="pb-url">www.deine-abteilung-gmbh.de<span class="pb-caret" aria-hidden="true"></span></span>
           </div>
-          <h3>Rolle</h3>
-          <p>Was von dir als Führungskraft erwartet wird, und was du selbst vertrittst – in einer Form, hinter der du stehst.</p>
-        </article>
-        <article class="baustein-card">
-          <div class="icon-wrap">
-            <svg class="ico-shadow"><use href="#ic-kreuz"/></svg>
-            <svg class="ico-main"><use href="#ic-kreuz"/></svg>
+          <div class="pb-page">
+              <ol class="pb-rows">
+                <li><span class="pb-num">01</span><span class="pb-q">Welche Zielgruppe sprechen wir an?</span><span class="pb-mark">?</span></li>
+                <li><span class="pb-num">02</span><span class="pb-q">Welches konkrete Problem lösen wir?</span><span class="pb-mark">?</span></li>
+                <li><span class="pb-num">03</span><span class="pb-q">Welcher Nutzen entsteht daraus?</span><span class="pb-mark">?</span></li>
+                <li><span class="pb-num">04</span><span class="pb-q">Was macht uns einzigartig?</span><span class="pb-mark">?</span></li>
+                <li><span class="pb-num">05</span><span class="pb-q">Wie läuft die Zusammenarbeit ab?</span><span class="pb-mark">?</span></li>
+              </ol>
           </div>
-          <h3>Richtung</h3>
-          <p>Die Unternehmensstrategie übersetzt in dein Zielbild: wo ihr heute steht, wo ihr hinwollt, wie ihr dorthin kommt.</p>
-        </article>
-        <article class="baustein-card">
-          <div class="icon-wrap">
-            <svg class="ico-shadow"><use href="#ic-raute"/></svg>
-            <svg class="ico-main"><use href="#ic-raute"/></svg>
-          </div>
-          <h3>Handwerkszeug</h3>
-          <p>Praktische Werkzeuge für den Alltag, mit denen du und dein Team Tag für Tag vorankommen.</p>
-        </article>
+        </div>
+        <div class="pv-exp-block">
+          <p class="pv-tag">Gedankenexperiment</p>
+          <p class="pv-exp">Stell Dir vor, wir gründen morgen Deine Abteilung als GmbH und verkaufen Eure Dienstleistungen an Deinen aktuellen Arbeitgeber.</p>
+          <p class="pv-q">Wie sähe die Homepage aus?</p>
+        </div>
+      </div>
+      <div class="pv-end pv-end--1">
+        <p class="lead">Auf einmal versteht jeder im Team, wofür Dein Bereich da ist und wie das Zielbild aussieht. Dann kann auch jeder aktiv dazu beitragen.</p>
+        <p class="pv-punch h-serif">Und Du bestimmst die Wahrnehmung <span class="hl">Deines Bereichs.</span></p>
       </div>
     </div>
   </section>
@@ -342,45 +491,25 @@
         </div>
         <div class="formate-accordion">
           <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Dein direkter Draht: Daniel</span></summary>
+            <summary><span>Direkter Draht, klare Worte</span></summary>
             <div class="formate-acc-body">
-              <p>Du arbeitest direkt mit mir zusammen. Bei Bedarf binde ich gezielt einzelne Teammitglieder ein – die Verantwortung für dein Projekt bleibt aber durchgehend bei mir. Ich bin dein Hauptansprechpartner und begleite das komplette Projekt persönlich.</p>
+              <p>Du arbeitest direkt mit mir – Daniel – zusammen. Bei Bedarf binde ich gezielt einzelne Teammitglieder ein, die Verantwortung für Dein Projekt bleibt aber durchgehend bei mir.</p>
+              <p>Dabei sage ich, was ich denke: Ehrliches, direktes Feedback, auch zu Themen, die gerade nicht passen. Nicht um zu ärgern, sondern um den Fokus zu schärfen und Wege sichtbar zu machen, die auf den ersten Blick nicht offensichtlich sind.</p>
             </div>
           </details>
           <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Ein bis zwei Stunden pro Woche</span></summary>
+            <summary><span>Dein Einsatz entscheidet</span></summary>
             <div class="formate-acc-body">
-              <p>Eine Strategie im Alltag zu verankern, braucht Zeit – im doppelten Sinn: Sie lässt sich nicht von heute auf morgen umsetzen, und sie funktioniert nur, wenn wir dranbleiben. Plane dafür ein bis zwei Stunden pro Woche ein – das ist die Basis, auf der wir gemeinsam aufbauen.</p>
+              <p>Eine Strategie lässt sich nicht von außen in Dein Unternehmen hineintragen. Wir unterstützen Dich maximal – die Umsetzung bleibt aber Deine Aufgabe.</p>
+              <p>Plane dafür ein bis zwei Stunden pro Woche ein. Eine Strategie im Alltag zu verankern, geht nicht von heute auf morgen, und sie funktioniert nur, wenn wir dranbleiben.</p>
             </div>
           </details>
           <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Du bist der Hauptverantwortliche</span></summary>
+            <summary><span>Dranbleiben, klar planen, umsetzen</span></summary>
             <div class="formate-acc-body">
-              <p>Eine Strategie lässt sich nicht von außen in dein Unternehmen hineintragen. Wir unterstützen dich maximal – die Umsetzung bleibt aber deine Aufgabe. Ohne deinen eigenen Zeiteinsatz funktioniert das Thema nicht.</p>
-            </div>
-          </details>
-          <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Klares Vorgehen, flexibel im Kopf</span></summary>
-            <div class="formate-acc-body">
-              <p>Wir vereinbaren ein klares Vorgehen – bleiben dabei aber flexibel genug, um auf Engpässe und Situationen im Unternehmen zu reagieren. Das kann heißen, dass wir an der einen oder anderen Stelle umsteuern oder aushalten müssen, dass es nicht wie geplant vorangeht – und gemeinsam einen neuen Weg finden.</p>
-            </div>
-          </details>
-          <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Umsetzung schlägt Perfektion</span></summary>
-            <div class="formate-acc-body">
-              <p>Wir lieben Planung, Strategie und Klarheit – am Ende zählt aber nur, was tatsächlich umgesetzt wird. Ab einem gewissen Punkt ist eine schnelle, stringente Umsetzung wichtiger als eine weitere Abstimmungsschleife.</p>
-            </div>
-          </details>
-          <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Klartext statt Umwege</span></summary>
-            <div class="formate-acc-body">
-              <p>Wir sagen, was wir denken: ehrliches, direktes Feedback und offene Worte auch zu Themen, die gerade nicht passen. Wir hinterfragen Situationen bewusst aus unterschiedlichen Blickwinkeln – nicht um zu ärgern, sondern um den Fokus zu schärfen und Umsetzungsmöglichkeiten sichtbar zu machen, die auf den ersten Blick nicht offensichtlich sind.</p>
-            </div>
-          </details>
-          <details class="formate-acc-item" name="zusammenarbeit-acc">
-            <summary><span>Regelmäßiger Austausch, feste Dynamik</span></summary>
-            <div class="formate-acc-body">
-              <p>Wir sind greifbar und wissen, wie entscheidend der regelmäßige Austausch für den Erfolg deiner Strategie ist. Ohne ihn verliert jedes Projekt seine Dynamik – deshalb stimmen wir uns kontinuierlich ab, statt nur punktuell.</p>
+              <p>Wir stimmen uns regelmäßig ab, statt nur punktuell – ohne festen Rhythmus verliert jedes Projekt seine Dynamik.</p>
+              <p>Wir vereinbaren ein klares Vorgehen und bleiben flexibel genug, um auf Engpässe im Unternehmen zu reagieren und, wenn nötig, umzusteuern.</p>
+              <p>Und ab einem gewissen Punkt zählt eine schnelle, stringente Umsetzung mehr als eine weitere Abstimmungsschleife.</p>
             </div>
           </details>
         </div>
@@ -388,21 +517,8 @@
     </div>
   </section>
 
+<<<<<<< HEAD
   <!-- ===== Austausch (Idee: Download / stärkerer Austausch — Inhalt noch offen) ===== -->
-  <!-- Lead-Magnet-Modul (id="austausch"): bis Inhalt vom Kunden vorliegt ausgeblendet (16.09.2026)
-  <section class="section section--grey leistung-simple-section leistung-simple-section--center leistung-austausch" id="austausch">
-    <div class="container">
-      <div class="leistung-simple">
-        <p class="kicker">Platzhalter für Leadmagnet mit echtem Mehrwert</p>
-        <h2 class="h-serif">Lorem ipsum dolor sit <span class="hl">amet.</span></h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <div class="leistung-austausch-cta">
-          <a class="btn btn--dark" href="#">Lorem ipsum herunterladen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  -->
 
   <!-- ===== Kontakt (identisch zur Startseite) ===== -->
   <section class="section kontakt" id="kontakt">
@@ -443,9 +559,42 @@
           <a class="badge" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener" aria-label="LinkedIn-Profil von Daniel Ströbel">
             <span class="in"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
             <span class="btext"><span class="bname">Daniel Ströbel</span><br><span class="brole">Geschäftsführer</span></span>
+=======
+  <!-- ===== Kontakt ===== -->
+  <section class="kontakt-standalone" id="kontakt">
+    <div class="container kontakt-standalone-top">
+      <div class="kontakt-standalone-text reveal">
+        <p class="kicker">Kontakt</p>
+        <h2 class="h-serif">Wir sind <span class="hl">für Dich</span> da!</h2>
+        <p class="lead">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
+        <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
+      </div>
+      <div class="kontakt-standalone-side reveal">
+        <div class="ks-actions">
+          <a class="ks-pill" href="mailto:daniel.stroebel@empiria.de">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-mail"/></svg></span>
+            daniel.stroebel@empiria.de
+          </a>
+          <a class="ks-pill" href="tel:+4917631347217">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-phone"/></svg></span>
+            +49 176 3134 7217
+          </a>
+          <a class="ks-pill ks-pill--ghost" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
+            Auf LinkedIn vernetzen
+>>>>>>> origin/Daniel
           </a>
         </div>
+        <div class="ks-marquee">
+          <div class="marquee-viewport">
+            <div class="marquee-track"></div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="kontakt-standalone-media reveal">
+      <svg class="ks-media-icon" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
+      <img class="ks-photo" src="/assets/team-portrait.webp" alt="Das Team von empiria GmbH" width="759" height="411" loading="lazy">
     </div>
   </section>
 
@@ -475,7 +624,7 @@
             <span class="link-more">mehr erfahren</span>
           </div>
         </a>
-        <a class="related-leistung" href="/leistungen/teams">
+        <a class="related-leistung" href="/praesentationsseminar">
           <div class="related-leistung-face">
             <div class="icon"><svg><use href="#ic-raute"/></svg></div>
             <h3>Teams befähigen, professionell zu kommunizieren</h3>
@@ -498,6 +647,155 @@
   </div>
 </footer>
 
+<!-- ===== Strategiemodell-Modal ===== -->
+<div class="modal-overlay" id="strategiemodellModal" data-generic>
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure modal--strategiemodell">
+      <div class="modal-structure-head">
+        <h3>Unser Strategiemodell</h3>
+        <p>Vom Selbstverständnis bis in den Alltag deines Bereichs.</p>
+      </div>
+      <div class="modal-structure-layout">
+        <div class="modal-structure-frame" style="width:min(90vw, calc(66vh * 0.849)); aspect-ratio:900/1060">
+<svg viewBox="0 0 900 1060" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Strategiemodell: vom Selbstverständnis über Ausgangssituation, Vision und Strategie bis in den Alltag">
+<rect x="20" y="20" width="860" height="230" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<text x="450" y="50" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WOFÜR STEHEN WIR?</text>
+<text x="110" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Unternehmens-</text>
+<text x="110" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">strategie</text>
+<rect x="72" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="80" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="80" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="270" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Führungs-</text>
+<text x="270" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">verständnis</text>
+<rect x="232" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="240" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="240" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="440" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Zielgruppe:</text>
+<text x="440" y="103" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">„What's in for me?“</text>
+<rect x="402" y="130" width="76" height="90" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="410" y="140.0" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="158.5" width="49.2" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="177.0" width="38.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="410" y="195.5" width="60.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<circle cx="440" cy="175" r="0" fill="none"/>
+<line x1="540" y1="175" x2="610" y2="175" stroke="#fff400" stroke-width="2.2"/>
+<path d="M610,175 L598.8,179.8 L598.8,170.2Z" fill="#fff400"/>
+<circle cx="540" cy="175" r="4" fill="#fff400"/>
+<rect x="640" y="60" width="230" height="180" rx="12" fill="rgba(255,255,255,.06)"/>
+<rect x="658" y="90" width="70" height="110" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="666" y="100.0" width="54.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="115.66666666666667" width="44.3" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="131.33333333333334" width="34.6" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="147.0" width="54.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="162.66666666666666" width="44.3" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="666" y="178.33333333333331" width="34.6" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<text x="802" y="142" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Selbst-</text>
+<text x="802" y="166" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">verständnis</text>
+<circle cx="711" cy="240" r="4" fill="#fff400"/>
+<line x1="711" y1="240" x2="711" y2="300" stroke="#fff400" stroke-width="2.2"/>
+<path d="M711,300 L706.2,288.8 L715.8,288.8Z" fill="#fff400"/>
+<rect x="20" y="310" width="540" height="730" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<rect x="580" y="310" width="300" height="730" rx="16" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="5 5"/>
+<text x="290" y="340" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WIE KOMMEN WIR DORTHIN?</text>
+<text x="730" y="340" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WIE WOLLEN WIR</text>
+<text x="730" y="355" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" letter-spacing="1.2" fill="rgba(255,255,255,.85)">WAHRGENOMMEN WERDEN?</text>
+<circle cx="730" cy="410" r="22" fill="none" stroke="#fff400" stroke-width="2.4"/>
+<text x="730" y="416" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">2</text>
+<text x="730" y="470" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Vision</text>
+<circle cx="140" cy="530" r="22" fill="none" stroke="#fff400" stroke-width="2.4"/>
+<text x="140" y="536" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">1</text>
+<text x="140" y="590" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Ausgangssituation</text>
+<line x1="170" y1="515" x2="700" y2="402" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/>
+<path d="M700,402 L690.0,409.0 L688.0,399.6Z" fill="rgba(255,255,255,.8)"/>
+<line x1="700" y1="424" x2="425" y2="482.6" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/>
+<path d="M425,482.6 L435.0,475.6 L437.0,485.0Z" fill="rgba(255,255,255,.8)"/>
+<circle cx="390" cy="470" r="28" fill="#000"/>
+<circle cx="390" cy="470" r="22" fill="#000" stroke="#fff400" stroke-width="2.4"/>
+<text x="390" y="476" text-anchor="middle" font-family="var(--font-sans)" font-size="17" font-weight="700" fill="#fff">3</text>
+<text x="390" y="530" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="rgba(255,255,255,.95)">Strategie</text>
+<text x="585" y="480" text-anchor="middle" font-family="var(--font-sans)" font-size="12" font-weight="700" letter-spacing="0.6" fill="rgba(255,255,255,.5)">Mission</text>
+<text x="140" y="625" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Heutiges Geschäfts- und</text>
+<text x="140" y="640" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Organisationsmodell</text>
+<text x="390" y="570" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Stoßrichtungen &</text>
+<text x="390" y="585" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Handlungsfelder</text>
+<line x1="730" y1="485" x2="730" y2="590" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="730" y="625" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Zukünftiges Geschäfts- und</text>
+<text x="730" y="640" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Organisationsmodell</text>
+<rect x="100" y="660" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="108" y="670.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="680.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="690.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="108" y="700.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="350" y="610" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="358" y="620.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="630.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="640.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="358" y="650.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="690" y="660" width="80" height="56" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="698" y="670.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="680.0" width="52.5" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="690.0" width="41.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="698" y="700.0" width="64.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<line x1="390" y1="675" x2="390" y2="715" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="390" y="735" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="rgba(255,255,255,.85)">Detaillierung der Strategie</text>
+<line x1="390" y1="748" x2="390" y2="770" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="165" y1="770" x2="415" y2="770" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="165" y1="770" x2="165" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<line x1="415" y1="770" x2="415" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="165" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Führungs- und</text>
+<text x="165" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Arbeitsalltag</text>
+<text x="415" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Strategie-</text>
+<text x="415" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">kommunikation</text>
+<line x1="730" y1="730" x2="730" y2="790" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
+<text x="730" y="812" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">Positionierung</text>
+<text x="730" y="827" text-anchor="middle" font-family="var(--font-sans)" font-size="11.5" font-weight="600" fill="rgba(255,255,255,.72)">& Pitch</text>
+<rect x="108" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="148" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="188" y="848" width="32" height="32" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+<rect x="390" y="840" width="50" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="398" y="850.0" width="34.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="860.4" width="27.9" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="870.8" width="21.8" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="881.2" width="34.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="398" y="891.6" width="27.9" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="686" y="840" width="40" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="694" y="850.0" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="860.4" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="870.8" width="15.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="881.2" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="694" y="891.6" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="734" y="840" width="40" height="68" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+<rect x="742" y="850.0" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="860.4" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="870.8" width="15.4" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="881.2" width="24.0" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="742" y="891.6" width="19.7" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<path d="M147,930 L183,930 L165,944Z" fill="#fff400"/>
+<text x="165" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Wie sichern wir die</text>
+<text x="165" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Zielerreichung?</text>
+<path d="M397,930 L433,930 L415,944Z" fill="#fff400"/>
+<text x="415" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Wie erklären wir die</text>
+<text x="415" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Strategie intern?</text>
+<path d="M712,930 L748,930 L730,944Z" fill="#fff400"/>
+<text x="730" y="970" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">Welches Problem lösen wir</text>
+<text x="730" y="987" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">– und was macht uns</text>
+<text x="730" y="1004" text-anchor="middle" font-family="var(--font-sans)" font-size="12.5" font-weight="700" fill="#fff400">einzigartig?</text>
+</svg>
+        </div>
+        <div class="modal-structure-note-wrap">
+          <p class="modal-structure-note">Am Anfang steht die Frage, wofür dein Bereich steht. Die Antwort ist euer Selbstverständnis – die Basis für alles Weitere.</p>
+          <p class="modal-structure-note">Dann der Blick nach vorn: Wie wollt ihr wahrgenommen werden? Das ist die Vision. Der ehrliche Abgleich mit der Ausgangssituation zeigt, welche Strategie dorthin führt.</p>
+          <p class="modal-structure-note">Zum Schluss wird es konkret: im Führungs- und Arbeitsalltag, in der Kommunikation nach innen und in der Positionierung nach außen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="/script.js"></script>
 <script src="/tracking.js"></script>
 </body>
