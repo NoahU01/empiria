@@ -2785,6 +2785,11 @@ body.produktseite--sofortsichtbar {
    Desktop bleibt unveraendert (Ausnahme: Kicker-Groesse).
    ============================================================ */
 
+/* Produktseiten-Hero: weisse Schrift im farbigen Marker. Der Kasten endete an der
+   Grundlinie, Unterlaengen (g, p) standen weiss auf weiss und wirkten abgeschnitten.
+   Kasten reicht jetzt bis unter die Unterlaengen. */
+.produktseite-clean .produkt-hero .hl::before { bottom: -0.2em; }
+
 /* Kicker/Preheader eine Stufe kleiner, ueberall (1.15rem -> 1rem). */
 .kicker { font-size: 1rem; }
 /* "Zwischenergebnis"-Tag (Komplexe Themen) wie ein normaler Kicker, nicht fett/gross. */
