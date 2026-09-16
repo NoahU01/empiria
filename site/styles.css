@@ -2776,3 +2776,135 @@ body.produktseite--sofortsichtbar {
 .ps-leistung .leadmagnet-subhead { color: #fff; }
 .ps-leistung .leadmagnet-title { color: rgba(255,255,255,.85); }
 .ps-leistung .leadmagnet-tag { color: rgba(255,255,255,.5); }
+
+/* ============================================================
+   Mobile-Feinschliff (16.09.2026, Branch Noah)
+   Sammelblock fuer die Mobil-Abnahme. Bewusst am Dateiende und
+   in einem Stueck, damit er sich leicht mergen und nachvollziehen
+   laesst. Regeln gelten nur unterhalb der genannten Breiten, der
+   Desktop bleibt unveraendert (Ausnahme: Kicker-Groesse).
+   ============================================================ */
+
+/* Kicker/Preheader eine Stufe kleiner, ueberall (1.15rem -> 1rem). */
+.kicker { font-size: 1rem; }
+/* "Zwischenergebnis"-Tag (Komplexe Themen) wie ein normaler Kicker, nicht fett/gross. */
+.stufe-interim-tag { font-size: 1rem; font-weight: 500; }
+
+@media (max-width: 900px) {
+  /* Leistungsseiten: H1 linksbuendig statt rechtsbuendig. */
+  .leistung-hero .hero-head, .leistung-hero .hero-head h1 { text-align: left; }
+  .leistung-hero .hero-head { width: auto; }
+  .leistung-hero .hero-head .hero-arrow { text-align: left; }
+
+  /* Produktseiten-Hero: Skizzen/Mockups raus, Text zuerst. Ausnahmen (MES, Paid Ads,
+     Sparring-Portrait) behalten ihr Visual, aber unterhalb des Textes. */
+  .produktseite .produkt-hero-visual { display: none; }
+  body.produktseite--keep-visual .produkt-hero .container { display: flex; flex-direction: column; }
+  body.produktseite--keep-visual .produkt-hero-grid { display: contents; }
+  body.produktseite--keep-visual .produkt-hero-text { order: 1; }
+  body.produktseite--keep-visual .produkt-hero-actions { order: 2; }
+  body.produktseite--keep-visual .produkt-hero-visual { display: block; order: 3; margin: 32px auto 0; width: 100%; max-width: 360px; }
+  /* MES: Kopf -> Text -> Pills -> Buttons -> Mockup */
+  body.produktseite--keep-visual .produkt-hero-image-grid { display: contents; }
+  body.produktseite--keep-visual .produkt-hero-image-head { order: 1; }
+  body.produktseite--keep-visual .produkt-hero-image-text { order: 2; }
+  body.produktseite--keep-visual .produkt-hero-image-pills { order: 3; }
+  body.produktseite--keep-visual .produkt-hero-image-text + .produkt-hero-image-text { margin-top: .85rem; }
+  body.produktseite--keep-visual .produkt-hero-image-visual { order: 4; }
+  /* Sparring: Portrait unter Text und Button, kompakt. */
+  .produkt-hero--split .produkt-hero-split-grid { grid-template-areas: "text" "cta" "photo"; row-gap: 24px; }
+  .produkt-hero--split .produkt-hero-split-photo { max-width: 260px; margin: 0 auto; }
+  .produktseite-clean .produkt-hero-grid { align-items: start; }
+}
+
+@media (max-width: 640px) {
+  /* Buttons wie "konkrete Loesungen anzeigen" auf der Startseite: 44px statt 53px. */
+  body .btn { font-size: .95rem; padding: .85rem 1.7rem; }
+  body .btn--outline, body .btn--ghost { padding: .85rem 1.7rem; }
+
+  /* Fliesstext einheitlich 16px (Lead-Absaetze in den Modulen waren 18px). */
+  main p.lead { font-size: 1rem; line-height: 1.65; }
+
+  /* Startseite: Hero-Inhalt 15px hoeher. */
+  .hero { padding-top: calc(clamp(72px, 9vw, 140px) - 15px); }
+
+  /* Produktseiten-Hero: weniger Luft oben, Abstand Text -> Button halbiert. */
+  .produktseite .produkt-hero { padding-top: 56px; }
+  .produktseite-clean .produkt-hero-actions--center { margin-top: 15px; }
+  .produktseite .produkt-hero .btn--dark { margin-top: 0; }
+  .produkt-hero-actions { gap: 12px; }
+
+  /* Pills deutlich kleiner. */
+  .produkt-pills { gap: 6px; margin-top: 1rem; }
+  .produkt-pill { font-size: .72rem; padding: 5px 10px; }
+  .hero-anlass, .produkt-pill.reveal { font-size: .72rem; }
+
+  /* Burger-Menue: Unterpunkte nicht fett, eine Stufe kleiner. */
+  .mobile-menu .mobile-submenu-row .mobile-submenu-label,
+  .mobile-menu .mobile-submenu-label { font-size: .95rem; font-weight: 400; }
+  .mobile-menu .mobile-submenu-panel a { font-size: .9rem; font-weight: 400; }
+
+  /* Startseite Kontakt: Abstand Text -> Buttons halbiert und gleich dem Abstand Buttons -> Logos. */
+  .kontakt-standalone-top { row-gap: 22px; }
+  .kontakt-standalone-side { margin-top: 0; }
+  .kontakt-standalone .ks-marquee { margin-top: 22px; }
+  /* Logo-Raster in der Kontakt-Sektion: Desktop-Marquee-Abstand am Bild liess die linke Spalte ueberlaufen. */
+  .ks-marquee .marquee-track img { margin-right: 0; }
+  .ks-marquee::before, .ks-marquee::after { display: none; } /* Fade-Kanten nur fuer den Desktop-Lauf */
+
+  /* Akkordeons (Zusammenarbeit, Beispiele, Anwendungsfaelle, FAQ): flacher, Text kleiner. */
+  .formate-acc-item summary { padding: 13px 0; font-size: .95rem; }
+  .formate-acc-body p { font-size: .86rem; }
+  .produkt-faq-item summary { padding: 14px 18px; font-size: .95rem; }
+  .produkt-faq-item p { font-size: .86rem; padding: 0 18px 14px; }
+
+  /* Preis-Karten: ohne Badge keine Luft fuer den Badge-Platzhalter reservieren. */
+  .price-badge-slot:empty { min-height: 0; margin-bottom: 0; }
+  .pricing-footnote { font-size: .78rem; }
+
+  /* Modals: Titel laeuft nicht mehr unter den Schliessen-Button. */
+  .modal-close { width: 36px; height: 36px; top: 12px; right: 12px; font-size: 1rem; }
+  .modal h3, .modal h2, .modal-summary-title { padding-right: 40px; }
+  /* Sprint-Landingpage: Struktur-Skizze im Popup groesser (Popup scrollt dann). */
+
+  /* "Weitere Leistungen"-Kacheln: kompakter, Beschreibung erst nach Tipp (s. script.js). */
+  .related-leistung { min-height: 0; }
+  .related-leistung-face { min-height: 0; padding-bottom: 6px; }
+  .related-leistung.is-open .related-leistung-hover { transform: translateY(0); }
+  .medien-tile.is-open::after { transform: translateY(0); }
+  .medien-tile.is-open .medien-tile-icon, .medien-tile.is-open .medien-tile-label { opacity: 0; }
+
+  /* sofort sichtbar, Vergleichs-Grafik: Desktop-Aufbau (Label, Timeline in einer Reihe,
+     Rakete rechts), nur verkleinert statt umgebrochen. */
+  .vergleich-row { flex-direction: column; align-items: stretch; gap: 8px; }
+  .vergleich-label { flex: none; text-align: left; font-size: .78rem; }
+  .vergleich-label-logo { margin: 0; max-width: 56px; }
+  .vergleich-timeline { flex-wrap: nowrap; gap: 4px; padding: 8px; width: 100%; }
+  .vergleich-pill { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 6px 3px; font-size: .58rem; line-height: 1.15; white-space: normal; overflow-wrap: anywhere; hyphens: auto; border-radius: 8px; }
+  .vergleich-rocket { width: 36px; height: 36px; border-radius: 8px; }
+  .vergleich-rocket svg { width: 18px; height: 18px; }
+  .vergleich-bonus { flex: 1 1 auto; padding: 6px 4px; font-size: .62rem; line-height: 1.15; white-space: normal; text-align: left; gap: 6px; }
+  .vergleich-bonus svg { width: 16px; height: 16px; }
+  /* MES: Hero-Pills nebeneinander statt untereinander. */
+  .produkt-hero-image-pills .produkt-pills { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  /* Komplexe Themen: Medien-Kacheln zu dritt in einer Reihe statt untereinander. */
+  .medien-tiles { flex-direction: row; }
+  .medien-tiles .medien-tile { width: calc((100% - 2 * var(--mt-gap)) / 3); padding: 16px 6px; }
+  /* Sprint-Landingpage, Struktur-Popup: Skizze auf das Handy zugeschnitten (viewBox per script.js),
+     Rahmen volle Breite, Popup scrollt. */
+  .modal.modal--structure { max-height: 90vh; overflow-y: auto; }
+  .modal-structure-frame { width: 100%; flex: 0 0 auto; }
+  .modal-structure-frame.is-cropped { aspect-ratio: 300 / 1052; max-width: 240px; margin: 0 auto; }
+  .vergleich-timeline--outline .vergleich-pill { flex: 0 1 auto; min-width: 88px; }
+  .vergleich-timeline--outline .vergleich-bonus { flex: 1 1 0; min-width: 0; }
+  /* sofort sichtbar, Ablauf-Boxen: Schrittnummern groesser. */
+  .produkt-process-step .step-num { font-size: 1.1rem; }
+
+  /* MES-Mockup: Inhalte innerhalb des Mockups groesser. */
+  .tool-dash { min-height: 300px; }
+  .tool-dash-nav { width: 56px; gap: 14px; padding: 18px 0; }
+  .tool-dash-logo { width: 22px; height: 22px; }
+  .tool-dash-nav-item { width: 26px; height: 26px; }
+  .tool-dash-main { padding: 20px; gap: 18px; }
+  .tool-dash-line { height: 96px; }
+}

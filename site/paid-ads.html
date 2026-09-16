@@ -330,6 +330,9 @@
   .pa-rot-measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
   .pa-rot-clip { display: inline-block; overflow: hidden; vertical-align: bottom; white-space: nowrap; transition: width .45s cubic-bezier(.2,.8,.2,1); }
   .pa-rot { display: inline-block; transition: transform .3s ease-out, opacity .3s ease-out; }
+  /* Kanalname in der jeweiligen Markenfarbe (wie admemory.de): Google buchstabenweise. */
+  .pa-rot[data-kanal="meta"] { color: #0081FB; }
+  .pa-rot[data-kanal="linkedin"] { color: #0A66C2; }
   .pa-rot.is-out { transform: translateY(-80%); opacity: 0; }
   .pa-rot.is-in { transform: translateY(80%); opacity: 0; transition: none; }
   @media (prefers-reduced-motion: reduce) { .pa-rot, .pa-rot-clip { transition: none; } }
@@ -564,7 +567,7 @@
 </style>
 
 </head>
-<body class="produktseite produktseite-clean produktseite--paid-ads">
+<body class="produktseite produktseite-clean produktseite--paid-ads produktseite--keep-visual">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -878,7 +881,7 @@
     <div class="produkt-hero-grid pa-hero-grid">
       <div class="produkt-hero-text">
         <p class="kicker">Performance Marketing</p>
-        <h1 class="h-serif pa-h1"><span class="pa-rot-wrap"><span class="pa-rot-measure" aria-hidden="true">Google</span><span class="pa-rot-clip"><span class="pa-rot" id="paRot">Google</span></span></span> Ads<br>für Deine <span class="hl">Zielgruppe.</span><br>Zur richtigen Zeit.</h1>
+        <h1 class="h-serif pa-h1"><span class="pa-rot-wrap"><span class="pa-rot-measure" aria-hidden="true">Google</span><span class="pa-rot-clip"><span class="pa-rot" id="paRot">Google</span></span></span> Ads<br>für Deine Zielgruppe.<br>Zur richtigen Zeit.</h1>
         <p class="lead">Auf dem passenden Kanal erreichen wir genau die Menschen, die zu Deiner Branche und Deinem Angebot passen. Du weißt bei jedem Euro, wohin er fließt und was er auslöst.</p>
       </div>
       <div class="produkt-hero-visual">
@@ -942,8 +945,8 @@
     <div class="container">
       <div class="produkt-section-head reveal">
         <p class="kicker">Leistungen</p>
-        <h2 class="h-serif">Der richtige Kanal<br class="pa-br">für Deine Zielgruppe.</h2>
-        <p>Wir übernehmen Strategie, Setup und laufende Optimierung.<br class="pa-br">Du konzentrierst Dich auf Dein Unternehmen.</p>
+        <h2 class="h-serif">Der richtige Kanal <br class="pa-br">für Deine Zielgruppe.</h2>
+        <p>Wir übernehmen Strategie, Setup und laufende Optimierung. <br class="pa-br">Du konzentrierst Dich auf Dein Unternehmen.</p>
       </div>
       <div class="produkt-grid-cards">
       <div class="produkt-glass reveal">
@@ -1005,7 +1008,7 @@
     <div class="container">
       <div class="produkt-section-head reveal">
         <p class="kicker">Ablauf</p>
-        <h2 class="h-serif">Vier Schritte zu<br class="pa-br">planbarem Ergebnis.</h2>
+        <h2 class="h-serif">Vier Schritte zu <br class="pa-br">planbarem Ergebnis.</h2>
         <p>So wird aus Deinem Budget ein nachvollziehbares Ergebnis.</p>
       </div>
       <div class="produkt-process-list pa-flow">
@@ -1181,20 +1184,32 @@
     var rot = document.getElementById("paRot");
     var clip = rot && rot.parentNode, measure = clip && clip.previousElementSibling;
     var NAMES = { google: "Google", meta: "Meta", linkedin: "LinkedIn" };
+    var GOOGLE = ["#4285F4", "#EA4335", "#FBBC05", "#4285F4", "#34A853", "#EA4335"];
+    function setWord(kanal) {
+      var word = NAMES[kanal];
+      rot.setAttribute("data-kanal", kanal);
+      if (kanal === "google") {
+        rot.innerHTML = word.split("").map(function (ch, i) { return '<span style="color:' + GOOGLE[i] + '">' + ch + "</span>"; }).join("");
+      } else {
+        rot.textContent = word;
+      }
+    }
     function fitWidth(word) {
       measure.textContent = word;
       clip.style.width = measure.offsetWidth + "px";
     }
     if (rot) {
+      setWord("google");
       fitWidth(rot.textContent);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWidth(rot.textContent); });
       window.addEventListener("resize", function () { fitWidth(rot.textContent); }, { passive: true });
     }
-    function swapWord(word) {
-      if (reduce) { rot.textContent = word; fitWidth(word); return; }
+    function swapWord(kanal) {
+      var word = NAMES[kanal];
+      if (reduce) { setWord(kanal); fitWidth(word); return; }
       rot.classList.add("is-out");                       // altes Wort nach oben raus
       setTimeout(function () {
-        rot.textContent = word;
+        setWord(kanal);
         rot.classList.add("is-in"); rot.classList.remove("is-out"); // neues Wort unten parken
         fitWidth(word);                                  // Breite federt auf das neue Wort
         void rot.offsetWidth;                            // Reflow, damit der Übergang greift
@@ -1203,7 +1218,7 @@
     }
     function show(kanal) {
       ads.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("data-kanal") === kanal); });
-      if (rot && rot.textContent !== NAMES[kanal]) swapWord(NAMES[kanal]);
+      if (rot && rot.getAttribute("data-kanal") !== kanal) swapWord(kanal);
       tabs.forEach(function (t) {
         var on = t.getAttribute("data-kanal") === kanal;
         t.classList.toggle("is-active", on);
@@ -1212,7 +1227,7 @@
       idx = order.indexOf(kanal);
     }
     function next() { show(order[(idx + 1) % order.length]); }
-    function start() { if (reduce) return; stop(); timer = setInterval(next, 3400); }
+    function start() { if (reduce) return; stop(); timer = setInterval(next, 2600); }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
     tabs.forEach(function (t) {

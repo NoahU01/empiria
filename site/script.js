@@ -173,15 +173,17 @@
   var toggle = document.getElementById("navToggle");
   var menu = document.getElementById("mobileMenu");
   if (toggle && menu) {
-    toggle.addEventListener("click", function () {
-      var open = menu.classList.toggle("open");
+    // Geschlossen ist das Menue nur per translateY aus dem Bild geschoben; ohne "inert"
+    // wuerde die Tab-Navigation in die unsichtbaren Links springen.
+    function setMenu(open) {
+      menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
+      if ("inert" in menu) menu.inert = !open;
+    }
+    setMenu(false);
+    toggle.addEventListener("click", function () { setMenu(!menu.classList.contains("open")); });
     menu.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        menu.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+      a.addEventListener("click", function () { setMenu(false); });
     });
     menu.querySelectorAll(".mobile-submenu-toggle").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -192,6 +194,40 @@
       });
     });
   }
+
+  /* ---------- Touch: Kacheln mit Hover-Inhalt (Weitere Leistungen, Medien-Kacheln) ----------
+     Auf Desktop blendet Hover die Beschreibung ein, Klick navigiert. Auf Touch gibt es
+     kein Hover, der erste Tipp wuerde sofort wegnavigieren. Deshalb: erster Tipp oeffnet
+     die Kachel (is-open), erst der zweite Tipp (oder "mehr erfahren") folgt dem Link.
+     Tipp ausserhalb schliesst wieder. */
+  (function () {
+    if (!window.matchMedia || !window.matchMedia("(hover: none)").matches) return;
+    var tiles = document.querySelectorAll("a.related-leistung, a.medien-tile");
+    if (!tiles.length) return;
+    tiles.forEach(function (tile) {
+      tile.addEventListener("click", function (e) {
+        if (tile.classList.contains("is-open")) return; // zweiter Tipp: navigieren
+        e.preventDefault();
+        tiles.forEach(function (t) { t.classList.remove("is-open"); });
+        tile.classList.add("is-open");
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a.related-leistung, a.medien-tile")) return;
+      tiles.forEach(function (t) { t.classList.remove("is-open"); });
+    });
+  })();
+
+  /* ---------- Sprint-Landingpage: Struktur-Skizze im Popup auf Mobil zuschneiden ----------
+     Die SVG-Skizze traegt links und rechts Beschriftungen (viewBox 880 breit); auf einem
+     Handy waere das Telefon in der Mitte nur ~95px breit. Mobil wird die viewBox auf das
+     Telefon (x 300..580) zugeschnitten, dann fuellt es den Rahmen. */
+  (function () {
+    var svg = document.querySelector(".modal-structure-frame svg");
+    if (!svg || !window.matchMedia || !window.matchMedia("(max-width: 640px)").matches) return;
+    svg.setAttribute("viewBox", "290 20 300 1052");
+    svg.parentNode.classList.add("is-cropped");
+  })();
 
   /* ---------- Logo -> back to top (sticky header makes #top unreliable) ----------
      Nur auf der Startseite: dort zeigt .brand auf "#top". Auf Unterseiten zeigt
