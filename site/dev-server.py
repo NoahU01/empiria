@@ -34,7 +34,8 @@ class CleanUrlHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(('', PORT), CleanUrlHandler) as httpd:
+    # ThreadingTCPServer: sonst blockiert eine offene Keep-Alive-Verbindung (z. B. Chrome/Puppeteer) alle weiteren Requests
+    with socketserver.ThreadingTCPServer(('', PORT), CleanUrlHandler) as httpd:
         print(f'-> http://localhost:{PORT}  (Clean-URLs wie /sofort-sichtbar funktionieren jetzt auch lokal)')
         try:
             httpd.serve_forever()

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paid Ads – empiria</title>
-<meta name="description" content="Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.">
+<meta name="description" content="Google, Meta und LinkedIn Ads, die genau Deine Zielgruppe treffen. Volle Transparenz: Du siehst, wohin jeder Euro fließt und was er bringt. Paid Ads von empiria.">
 <link rel="canonical" href="https://www.empiria.de/paid-ads">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="empiria">
 <meta property="og:url" content="https://www.empiria.de/paid-ads">
 <meta property="og:title" content="Paid Ads – empiria">
-<meta property="og:description" content="Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.">
+<meta property="og:description" content="Google, Meta und LinkedIn Ads, die genau Deine Zielgruppe treffen. Volle Transparenz: Du siehst, wohin jeder Euro fließt und was er bringt. Paid Ads von empiria.">
 <meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Paid Ads – empiria">
-<meta name="twitter:description" content="Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.">
+<meta name="twitter:description" content="Google, Meta und LinkedIn Ads, die genau Deine Zielgruppe treffen. Volle Transparenz: Du siehst, wohin jeder Euro fließt und was er bringt. Paid Ads von empiria.">
 <meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
 
 <!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
@@ -309,6 +309,258 @@
   .produktseite-clean .produkt-cta .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
 
   body.produktseite-clean .site-footer { background: var(--black); }
+
+  /* =====================================================================
+     Paid Ads: seitenspezifische Module (Anzeigen-Mockups, Kanal-Check,
+     Ablauf-Verbinder, Potentialcheck). Präfix pa-, lebt nur auf dieser
+     Seite, damit styles.css unberührt bleibt.
+     ===================================================================== */
+  :root { --pa: #0B9FBD; --pa-dark: #086a80; --pa-line: #e7e2df; --pa-soft: #eaf6f9;
+          --pa-gap: clamp(40px, 5.9vw, 85px); /* halber Modulabstand: Referenz = Kanal-Check-Button -> nächstes Modul */ }
+  .produktseite-clean .produkt-hero { padding-bottom: var(--pa-gap); }
+  #kanaele, #kanal-check, #ablauf, #potentialcheck, #faq { padding-block: var(--pa-gap); }
+  .produktseite-clean .produkt-team-cta { padding-top: var(--pa-gap); }
+  body.produktseite-clean main .kicker { font-size: 1rem; }
+  .pa-pc .kicker { font-size: .9rem; }
+  .produktseite-clean .produkt-hero { padding-top: clamp(63px, 8.4vw, 105px); }
+  .produkt-hero h1.pa-h1 { max-width: none; font-size: clamp(2.3rem, 3.9vw, 3.1rem); }
+  /* Rotierender Kanalname: Wort schiebt nach oben raus / von unten rein, Container-Breite
+     federt auf das neue Wort (Nachbau von RotatingPlatform, admemory.de). */
+  .pa-rot-wrap { position: relative; display: inline-block; vertical-align: bottom; }
+  .pa-rot-measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
+  .pa-rot-clip { display: inline-block; overflow: hidden; vertical-align: bottom; white-space: nowrap; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+  .pa-rot { display: inline-block; transition: transform .3s ease-out, opacity .3s ease-out; }
+  .pa-rot.is-out { transform: translateY(-80%); opacity: 0; }
+  .pa-rot.is-in { transform: translateY(80%); opacity: 0; transition: none; }
+  @media (prefers-reduced-motion: reduce) { .pa-rot, .pa-rot-clip { transition: none; } }
+  .pa-pc [hidden], .pa-check [hidden] { display: none !important; }
+  .pa-pc-form { position: relative; }
+  .pa-hero-actions { gap: 14px; }
+  .produktseite-clean .pa-hero-actions .btn { margin-top: 0; }
+  .produktseite-clean .pa-hero-actions .btn--outline { color: var(--ink); border-color: var(--ink); }
+  .produktseite-clean .pa-hero-actions .btn--outline:hover { background: var(--ink); color: #fff; }
+
+  /* ---------- Hero: rotierende Anzeigen ---------- */
+  .pa-ads { width: 100%; max-width: 420px; margin: 0 auto; }
+  /* Alle Anzeigen liegen in derselben Grid-Zelle: Bühne ist immer so hoch wie die höchste
+     Anzeige, die Buttons darunter springen beim Wechsel nicht. */
+  .pa-ads-stage { display: grid; }
+  .pa-ad {
+    grid-area: 1 / 1; align-self: start; position: relative; width: 100%;
+    background: #fff; border: 1px solid var(--pa-line); border-radius: 18px;
+    padding: 18px 20px 16px; box-shadow: 0 24px 60px rgba(0,0,0,.10);
+    font-family: var(--font-sans); color: var(--ink);
+    opacity: 0; transform: translateY(14px) scale(.985); pointer-events: none;
+    transition: opacity .45s ease, transform .45s ease;
+  }
+  .pa-ad.is-active { opacity: 1; transform: none; pointer-events: auto; }
+  .pa-ad-badge {
+    position: absolute; top: -14px; right: 16px;
+    display: inline-flex; align-items: baseline; gap: 8px;
+    background: var(--ink); color: #fff; border-radius: 999px; padding: 6px 12px;
+    font-size: .72rem; box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  }
+  .pa-ad-badge-delta { color: var(--hl); font-weight: 700; }
+  .pa-ad-avatar {
+    flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%;
+    background: #fff; border: 1px solid var(--pa-line); color: var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .pa-ad-avatar svg { width: 18px; height: 18px; }
+  .produktseite-clean .pa-hero-grid { align-items: start; }
+  .pa-ads { margin-top: var(--pa-ads-offset, 0); }
+  @media (min-width: 901px) { .produktseite-clean .produkt-hero-visual > .pa-ads { margin-top: 28px; } }
+  .pa-ad-avatar--square { border-radius: 6px; }
+  .pa-ad-tag { margin-left: auto; font-size: .7rem; color: var(--grey-70); }
+  .pa-ad-google-head { display: flex; align-items: center; gap: 10px; }
+  .pa-ad-google-src { font-size: .78rem; line-height: 1.25; }
+  .pa-ad-google-src small { color: var(--grey-70); font-size: .7rem; }
+  .pa-ad-google-title { margin: 12px 0 4px; font-size: 1.02rem; line-height: 1.3; color: #1a0dab; font-weight: 500; }
+  .pa-ad-google-desc { margin: 0; font-size: .8rem; line-height: 1.5; color: var(--grey-70); }
+  .pa-ad-google-rating { margin: 10px 0 0; font-size: .74rem; color: var(--grey-70); }
+  .pa-ad-stars { color: #e7a600; letter-spacing: 1px; }
+  .pa-ad-google-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--pa-line); font-size: .78rem; color: #1a0dab; }
+  .pa-ad-google-links b { font-weight: 500; }
+  .pa-ad-google-links small { display: block; color: var(--grey-70); font-size: .7rem; margin-top: 2px; }
+  .pa-ad-social-head { display: flex; align-items: center; gap: 10px; }
+  .pa-ad-social-src { font-size: .78rem; line-height: 1.25; }
+  .pa-ad-social-src small { color: var(--grey-70); font-size: .7rem; }
+  .pa-ad-globe { display: inline-block; width: 9px; height: 9px; border-radius: 50%; border: 1.2px solid currentColor; vertical-align: -1px; }
+  .pa-ad-dots { margin-left: auto; color: var(--grey-50); letter-spacing: 1px; font-weight: 700; }
+  .pa-ad-social-text { margin: 12px 0; font-size: .84rem; line-height: 1.5; }
+  .pa-ad-image {
+    height: 150px; border-radius: 10px; display: flex; align-items: flex-end; padding: 14px;
+    background: linear-gradient(135deg, #f4f2f0, #e4e0dc);
+    position: relative; overflow: hidden;
+  }
+  .pa-ad-image::before { content: ""; position: absolute; right: -30px; top: -30px; width: 150px; height: 150px; border-radius: 50%; border: 18px solid rgba(0,0,0,.05); }
+  .pa-ad-image--linkedin { background: linear-gradient(135deg, #1a1817, #3a3733); }
+  .pa-ad-image-mark { font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem; line-height: 1.2; color: var(--ink); }
+  .pa-ad-image--linkedin .pa-ad-image-mark { color: #fff; }
+  .pa-ad-image-mark em { font-style: normal; background: var(--hl); color: var(--ink); padding: 0 .2em; font-weight: 700; }
+  .pa-ad-social-cta {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 10px; padding: 10px 12px; background: #f6f4f2; border-radius: 10px; font-size: .78rem; line-height: 1.25;
+  }
+  .pa-ad-social-cta small { color: var(--grey-70); font-size: .68rem; }
+  .pa-ad-btn { flex: 0 0 auto; background: var(--ink); color: #fff; border-radius: 6px; padding: 7px 12px; font-size: .74rem; font-weight: 600; }
+  .pa-ad-btn--outline { background: transparent; color: var(--pa-dark); border: 1.5px solid var(--pa-dark); border-radius: 999px; }
+
+  /* ---------- Kanäle: Icons + CTA unter den Karten ---------- */
+  .produktseite-clean .produkt-glass .feature-icon svg { color: var(--ink); width: 32px; height: 32px; }
+  .pa-kanal-cta { margin-top: 34px; display: flex; justify-content: center; }
+  .pa-br { display: none; }
+  @media (min-width: 901px) { .pa-br { display: inline; } .produkt-section-head { max-width: none; } .produkt-section-head p { max-width: none; } }
+
+  /* ---------- Kanal-Check ---------- */
+  .pa-check {
+    display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 70px); align-items: start;
+    background: #fff; border: 1px solid var(--pa-line); border-radius: 26px; padding: clamp(28px, 4.5vw, 56px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.06); position: relative; overflow: hidden;
+  }
+  .pa-check::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--pa); }
+  .pa-check-head .kicker { color: var(--pa); }
+  .pa-check-head h2 { color: var(--ink); margin: .3rem 0 .7rem; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.15; }
+  .pa-check-head p { margin: 0; color: var(--grey-70); line-height: 1.65; max-width: 40ch; }
+  .pa-check-progress { height: 4px; border-radius: 999px; background: var(--pa-line); overflow: hidden; }
+  .pa-check-progress-bar { display: block; height: 100%; width: 25%; background: var(--pa); transition: width .35s ease; }
+  .pa-check-step { margin: 14px 0 6px; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--grey-50); }
+  .pa-check-q { font-family: var(--font-serif); font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; color: var(--ink); line-height: 1.3; min-height: 2.6em; }
+  .pa-check-answers { display: grid; gap: 10px; margin-top: 18px; }
+  .pa-check-answers button {
+    text-align: left; font-family: var(--font-sans); font-size: 1rem; color: var(--ink);
+    background: #fff; border: 1.5px solid var(--pa-line); border-radius: 14px; padding: 15px 18px; cursor: pointer;
+    transition: border-color .18s, background .18s, transform .18s;
+  }
+  .pa-check-answers button:hover { border-color: var(--pa); background: var(--pa-soft); transform: translateX(3px); }
+  .pa-check-back { margin-top: 16px; background: none; border: none; color: var(--grey-70); font-family: var(--font-sans); font-size: .9rem; cursor: pointer; padding: 0; }
+  .pa-check-back:hover { color: var(--ink); text-decoration: underline; }
+  .pa-check-result { grid-column: 2; }
+  .pa-check-result-kicker { margin: 0 0 14px; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--pa); }
+  .pa-check-result-main { display: flex; gap: 18px; align-items: flex-start; }
+  .pa-check-result-icon { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; padding-top: 4px; }
+  .pa-check-result-icon svg { width: 36px; height: 36px; color: var(--ink); }
+  .pa-check-result-title { margin: 0 0 8px; font-family: var(--font-serif); font-size: 1.6rem; color: var(--ink); }
+  .pa-check-result-text { margin: 0; color: var(--grey-70); line-height: 1.65; }
+  .pa-check-result-second { margin: 18px 0 0; display: flex; align-items: flex-start; gap: 8px; color: var(--grey-70); font-size: .92rem; line-height: 1.55; }
+  .pa-check-info { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; margin-left: -26px; color: var(--pa); }
+  .pa-check-result-actions { margin-left: 54px; }
+  .pa-check-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 22px; }
+  .pa-check-restart { background: none; border: none; color: var(--grey-70); font-family: var(--font-sans); font-size: .9rem; cursor: pointer; padding: 0; text-decoration: underline; }
+
+  /* ---------- Ablauf: verbundene Schritte ---------- */
+  .pa-flow { position: relative; padding-top: 18px; }
+  .pa-flow::before { content: ""; position: absolute; left: 44px; right: 44px; top: 18px; height: 2px; background: var(--pa-line); }
+  .pa-flow .produkt-process-step { position: relative; z-index: 1; padding-top: 40px; }
+  .produktseite-clean .pa-flow .step-num {
+    position: absolute; top: -18px; left: 24px; width: 40px; height: 40px; border-radius: 50%;
+    background: var(--pa); color: #fff; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-sans); font-weight: 600; font-size: .82rem; letter-spacing: .02em;
+    box-shadow: 0 0 0 5px #fff; margin: 0; z-index: 2;
+  }
+  .pa-flow .produkt-process-step:hover { transform: none; }
+
+  /* ---------- Potentialcheck ---------- */
+  .pa-pc {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 5vw, 70px); align-items: center;
+    background: linear-gradient(150deg, var(--pa) 0%, var(--pa-dark) 100%); color: #fff;
+    border-radius: 26px; padding: clamp(28px, 4.5vw, 56px); box-shadow: 0 30px 70px rgba(0,0,0,.18);
+  }
+  .pa-pc .kicker { color: rgba(255,255,255,.8); }
+  .pa-pc h2 { color: #fff; margin: .3rem 0 .7rem; font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.15; }
+  .pa-pc-sub { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
+  .pa-pc-checks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: .9rem; }
+  .pa-pc-checks li { padding-left: 22px; position: relative; color: rgba(255,255,255,.92); }
+  .pa-pc-checks li::before { content: ""; position: absolute; left: 0; top: .45em; width: 12px; height: 12px; border-radius: 50%; background: var(--hl); }
+  .pa-pc-form { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .pa-pc-form--2 { flex-direction: column; align-items: flex-start; }
+  .pa-pc-form input:not(.pa-pc-hp) {
+    flex: 1 1 220px; min-width: 0; height: 54px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.12); color: #fff; font-family: var(--font-sans); font-size: 1rem; outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .pa-pc-form--2 input:not(.pa-pc-hp) { flex: 0 0 auto; width: 100%; max-width: 420px; }
+  .pa-pc-form input::placeholder { color: rgba(255,255,255,.6); }
+  .pa-pc-form input:focus { border-color: #fff; background: rgba(255,255,255,.18); }
+  .pa-pc-form input.is-invalid { border-color: var(--hl); }
+  .produktseite-clean .pa-pc-form .btn--dark { background: var(--ink); border-color: var(--ink); color: #fff; margin-top: 0; }
+  .pa-pc-site { margin: 0; display: flex; align-items: center; gap: 10px; font-size: .85rem; }
+  .pa-pc-site-chip { padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); }
+  .pa-pc-change { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-family: var(--font-sans); font-size: .85rem; padding: 0; }
+  .pa-pc-ads p { margin: 0 0 8px; font-size: .85rem; font-weight: 600; }
+  .pa-pc-ads-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pa-pc-ads-opts button {
+    font-family: var(--font-sans); font-size: .85rem; color: #fff; background: rgba(255,255,255,.12);
+    border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: background .18s, border-color .18s, color .18s;
+  }
+  .pa-pc-ads-opts button.is-active { background: #fff; color: var(--pa-dark); border-color: #fff; }
+  .pa-pc-hp { position: absolute; left: -9999px; width: 0; height: 0; opacity: 0; }
+  .pa-pc-error { margin: 0; font-size: .85rem; color: var(--hl); }
+  .pa-pc-error a { color: #fff; text-decoration: underline; }
+  .pa-pc-done { margin-top: 24px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); }
+  .pa-pc-done-title { margin: 0 0 4px; font-weight: 600; }
+  .pa-pc-done-text { margin: 0; font-size: .9rem; color: rgba(255,255,255,.9); }
+  .pa-pc-note { margin: 14px 0 0; font-size: .74rem; color: rgba(255,255,255,.7); }
+  .pa-pc-note a { color: #fff; text-decoration: underline; }
+  .pa-pc-report { background: #fff; color: var(--ink); border-radius: 20px; padding: 20px 22px; box-shadow: 0 30px 60px rgba(0,0,0,.25); max-width: 360px; margin: 0 auto; width: 100%; }
+  .pa-pc-report-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--pa-line); font-size: .82rem; line-height: 1.25; }
+  .pa-pc-report-head small { color: var(--grey-50); }
+  .pa-pc-report-pill { font-size: .68rem; padding: 4px 10px; border-radius: 999px; background: var(--grey-bg); color: var(--grey-70); }
+  .pa-pc-report-score { display: grid; grid-template-columns: 76px 1fr; gap: 14px; align-items: center; padding: 16px 0 6px; position: relative; }
+  .pa-pc-report-score svg { width: 76px; height: 76px; transform: rotate(-90deg); grid-column: 1; grid-row: 1; }
+  .pa-pc-report-score-num { grid-column: 1; grid-row: 1; width: 76px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
+  .pa-pc-report-score-num b { font-size: 1.3rem; }
+  .pa-pc-report-score-num small { font-size: .6rem; color: var(--grey-50); margin-top: 3px; }
+  .pa-pc-report-score-text { grid-column: 2; font-size: .82rem; line-height: 1.35; }
+  .pa-pc-report-score-text small { display: block; color: var(--grey-70); font-size: .74rem; margin-top: 3px; }
+  .pa-pc-report-rows { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 9px; }
+  .pa-pc-report-rows li { display: grid; grid-template-columns: 1fr 100px 28px; align-items: center; gap: 10px; font-size: .78rem; }
+  .pa-pc-report-rows i { display: block; height: 6px; border-radius: 999px; background: var(--pa-line); position: relative; overflow: hidden; }
+  .pa-pc-report-rows i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--pa); border-radius: inherit; }
+  .pa-pc-report-rows em { font-style: normal; font-weight: 600; text-align: right; }
+  .pa-pc-report-foot { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--pa-line); font-size: .74rem; color: var(--grey-50); text-align: center; }
+
+  /* ---------- FAQ: Kopf links, Fragen rechts (Aufbau wie sofortsichtbar.de) ---------- */
+  .pa-faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+  .pa-faq-head .kicker { color: var(--pa); }
+  .pa-faq-head h2 { color: var(--ink); margin: .3rem 0 .7rem; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; }
+  .pa-faq-head p { margin: 0; color: var(--grey-70); line-height: 1.65; max-width: 34ch; }
+  .pa-faq-list { display: flex; flex-direction: column; gap: 14px; }
+  .pa-faq-item { background: #fff; border: 1px solid var(--pa-line); border-radius: 18px; transition: border-color .2s, box-shadow .2s; }
+  .pa-faq-item:hover, .pa-faq-item[open] { border-color: #d6d0cc; box-shadow: 0 14px 34px rgba(0,0,0,.05); }
+  .pa-faq-item summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 26px 28px; font-family: var(--font-sans); font-weight: 600; font-size: 1.02rem; color: var(--ink); line-height: 1.35;
+  }
+  .pa-faq-item summary::-webkit-details-marker { display: none; }
+  .pa-faq-icon { flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; background: var(--grey-bg); position: relative; transition: transform .25s ease, background .2s; }
+  .pa-faq-icon::before, .pa-faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--ink); transform: translate(-50%, -50%); border-radius: 2px; }
+  .pa-faq-icon::before { width: 16px; height: 2px; }
+  .pa-faq-icon::after { width: 2px; height: 16px; }
+  .pa-faq-item[open] .pa-faq-icon { transform: rotate(45deg); background: var(--pa-soft); }
+  .pa-faq-answer { padding: 0 28px 26px; }
+  .pa-faq-answer p { margin: 0; color: var(--grey-70); line-height: 1.7; max-width: 62ch; }
+  @media (max-width: 900px) {
+    .pa-faq-grid { grid-template-columns: 1fr; }
+    .pa-faq-item summary { padding: 20px 20px; font-size: .98rem; }
+    .pa-faq-answer { padding: 0 20px 20px; }
+  }
+
+  @media (max-width: 900px) {
+    .pa-check, .pa-pc { grid-template-columns: 1fr; }
+    .pa-check-result { grid-column: 1; }
+    .pa-pc-report { display: none; }
+    .pa-flow::before { left: 44px; right: auto; top: 18px; bottom: 40px; width: 2px; height: auto; }
+    .pa-flow { padding-top: 0; }
+    .pa-flow .produkt-process-step { margin-top: 18px; }
+  }
+  @media (max-width: 640px) {
+    .pa-ad { padding: 16px 16px 14px; }
+    .pa-ad-badge { right: 10px; font-size: .68rem; }
+    .pa-pc-checks { grid-template-columns: 1fr; }
+    .pa-hero-actions { flex-direction: column; }
+    .pa-hero-actions .btn { width: 100%; }
+  }
 </style>
 
 </head>
@@ -614,150 +866,268 @@
 </header>
 
 <main>
-  <!-- ===== Hero ===== -->
-  <section class="produkt-hero">
-    <div class="container">
-    <div class="produkt-hero-grid">
-      <div class="produkt-hero-text">
-        <p class="kicker">Paid Ads</p>
-        <h1 class="h-serif">Dein Budget. <span class="hl">Klar ausgewertet.</span> Volle Wirkung.</h1>
-        <p class="lead">Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – mit klarer Auswertung statt Blackbox.</p>
-              <div class="produkt-pills">
-        <span class="produkt-pill reveal">Google Ads</span>
-        <span class="produkt-pill reveal">Meta Ads</span>
-        <span class="produkt-pill reveal">GA4 & Tracking</span>
-        <span class="produkt-pill reveal">DSGVO-konform</span>
-      </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-google" viewBox="0 0 24 24"><path fill="currentColor" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></symbol>
+    <symbol id="ic-meta" viewBox="0 0 24 24"><path fill="currentColor" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.499-1.584.415-.278.874-.427 1.322-.427z"/></symbol>
+    <symbol id="ic-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+  </svg>
 
+  <!-- ===== Hero ===== -->
+  <section class="produkt-hero" id="hero">
+    <div class="container">
+    <div class="produkt-hero-grid pa-hero-grid">
+      <div class="produkt-hero-text">
+        <p class="kicker">Performance Marketing</p>
+        <h1 class="h-serif pa-h1"><span class="pa-rot-wrap"><span class="pa-rot-measure" aria-hidden="true">Google</span><span class="pa-rot-clip"><span class="pa-rot" id="paRot">Google</span></span></span> Ads<br>für Deine <span class="hl">Zielgruppe.</span><br>Zur richtigen Zeit.</h1>
+        <p class="lead">Auf dem passenden Kanal erreichen wir genau die Menschen, die zu Deiner Branche und Deinem Angebot passen. Du weißt bei jedem Euro, wohin er fließt und was er auslöst.</p>
       </div>
       <div class="produkt-hero-visual">
-              <div class="produkt-mock produkt-mock--dashboard reveal">
-        <div class="produkt-dashboard">
-          <div class="dash-kpis">
-            <div class="dash-kpi"><span class="val">↑ ROAS</span><span class="lbl">Rendite</span></div>
-            <div class="dash-kpi"><span class="val">↑ Anfragen</span><span class="lbl">Conversions</span></div>
-            <div class="dash-kpi"><span class="val">↓ CPA</span><span class="lbl">Kosten je Abschluss</span></div>
+        <!-- Rotierende Anzeigen-Mockups: zeigt, was Performance Ads sind (die Anzeigen
+             selbst), nicht abstrakte Balken. Rotation + Tabs in pa-script unten. -->
+        <div class="pa-ads reveal" id="paAds" aria-label="Beispielanzeigen auf Google, Meta und LinkedIn">
+          <div class="pa-ads-stage">
+
+            <article class="pa-ad pa-ad--google is-active" data-kanal="google">
+              <div class="pa-ad-google-head">
+                <span class="pa-ad-avatar"><svg><use href="#ic-google"/></svg></span>
+                <span class="pa-ad-google-src"><b>empiria</b><br><small>www.empiria.de</small></span>
+                <span class="pa-ad-tag">Gesponsert</span>
+              </div>
+              <p class="pa-ad-google-title">Strategieberatung für Versicherer | Klarheit statt Konzeptstau</p>
+              <p class="pa-ad-google-desc">Strategie in den Alltag überführen. Seit 2012 für Versicherer und Makler. Erstgespräch in dieser Woche.</p>
+              <p class="pa-ad-google-rating"><span class="pa-ad-stars">★★★★★</span> 4,9 · 37 Rezensionen · Versicherer und Makler</p>
+              <div class="pa-ad-google-links">
+                <span><b>Strategiehandwerk</b><small>Strategie greifbar machen</small></span>
+                <span><b>1:1 Sparring</b><small>Vertraulich für Führungskräfte</small></span>
+                <span><b>Workshops</b><small>Formate, die wirken</small></span>
+                <span><b>Erstgespräch</b><small>Termin in dieser Woche</small></span>
+              </div>
+            </article>
+
+            <article class="pa-ad pa-ad--meta" data-kanal="meta">
+              <div class="pa-ad-social-head">
+                <span class="pa-ad-avatar"><svg><use href="#ic-meta"/></svg></span>
+                <span class="pa-ad-social-src"><b>empiria</b><br><small>Gesponsert · <span class="pa-ad-globe"></span></small></span>
+                <span class="pa-ad-dots">···</span>
+              </div>
+              <p class="pa-ad-social-text">Deine Strategie steht. Trotzdem passiert zu wenig? Wir übersetzen sie in Wirkung.</p>
+              <div class="pa-ad-image pa-ad-image--meta"><span class="pa-ad-image-mark">Strategie, <em>die wirkt.</em></span></div>
+              <div class="pa-ad-social-cta"><span><small>EMPIRIA.DE</small><br><b>Erstgespräch vereinbaren</b></span><span class="pa-ad-btn">Mehr dazu</span></div>
+            </article>
+
+            <article class="pa-ad pa-ad--linkedin" data-kanal="linkedin">
+              <div class="pa-ad-social-head">
+                <span class="pa-ad-avatar pa-ad-avatar--square"><svg><use href="#ic-linkedin"/></svg></span>
+                <span class="pa-ad-social-src"><b>empiria GmbH</b><br><small>1.240 Follower:innen · Anzeige</small></span>
+                <span class="pa-ad-dots">···</span>
+              </div>
+              <p class="pa-ad-social-text">Komplexe Themen im Vorstand durchbringen: In 2 Tagen von der Idee zur Entscheidungsvorlage.</p>
+              <div class="pa-ad-image pa-ad-image--linkedin"><span class="pa-ad-image-mark">Komplexe Themen <em>kommunizieren.</em></span></div>
+              <div class="pa-ad-social-cta"><span><b>Sprint buchen</b><br><small>empiria.de</small></span><span class="pa-ad-btn pa-ad-btn--outline">Mehr erfahren</span></div>
+            </article>
+
           </div>
-          <div class="dash-bars">
-            <span class="dash-bar" style="--h:32%"></span>
-            <span class="dash-bar" style="--h:44%"></span>
-            <span class="dash-bar" style="--h:40%"></span>
-            <span class="dash-bar" style="--h:58%"></span>
-            <span class="dash-bar" style="--h:52%"></span>
-            <span class="dash-bar" style="--h:72%"></span>
-            <span class="dash-bar" style="--h:68%"></span>
-            <span class="dash-bar" style="--h:88%"></span>
-          </div>
-          <p class="dash-caption">Illustrative Darstellung – laufende Optimierung über die Kampagnenlaufzeit</p>
         </div>
       </div>
-      </div>
     </div>
-    <div class="produkt-hero-actions produkt-hero-actions--center">
-      <a class="btn btn--dark" href="#naechste-sektion">Paid Ads kennenlernen</a>
-      
+    <div class="produkt-hero-actions produkt-hero-actions--center pa-hero-actions">
+      <a class="btn btn--dark" href="/kontakt.html">Jetzt beraten lassen</a>
+      <a class="btn btn--outline" href="#kanal-check">Kanal-Check starten</a>
     </div>
     </div>
   </section>
 
-  <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
-  <!-- ===== Vorteile ===== -->
-  <section class="produkt-grid">
+  <!-- ===== Kanäle ===== -->
+  <section class="produkt-grid" id="kanaele">
     <div class="container">
       <div class="produkt-section-head reveal">
         <p class="kicker">Leistungen</p>
-        <h2 class="h-serif">Zwei Plattformen, ein System.</h2>
-        <p>Google und Meta – aufeinander abgestimmt, statt getrennt betrachtet.</p>
+        <h2 class="h-serif">Der richtige Kanal<br class="pa-br">für Deine Zielgruppe.</h2>
+        <p>Wir übernehmen Strategie, Setup und laufende Optimierung.<br class="pa-br">Du konzentrierst Dich auf Dein Unternehmen.</p>
       </div>
       <div class="produkt-grid-cards">
       <div class="produkt-glass reveal">
-        <div class="feature-icon"><svg><use href="#ic-ads"/></svg></div>
-        <h3>Google Ads</h3><p>Such- und Shopping-Kampagnen, die genau dann erscheinen, wenn deine Zielgruppe aktiv sucht – so wird aus Nachfrage eine Anfrage.</p>
+        <div class="feature-icon"><svg><use href="#ic-google"/></svg></div>
+        <h3>Google Ads</h3><p>Deine Anzeige erscheint genau dann, wenn jemand aktiv nach Deiner Lösung sucht. Aus Suchanfragen werden Anfragen, aus Klicks werden Termine.</p>
       </div>
       <div class="produkt-glass reveal">
-        <div class="feature-icon"><svg><use href="#ic-audience"/></svg></div>
-        <h3>Meta Ads</h3><p>Zielgerichtete Anzeigen auf Meta – von der Zielgruppendefinition über den Test verschiedener Motive bis zur Skalierung dessen, was funktioniert.</p>
+        <div class="feature-icon"><svg><use href="#ic-meta"/></svg></div>
+        <h3>Meta Ads</h3><p>Facebook und Instagram erreichen Deine Zielgruppe im Alltag, bevor sie aktiv sucht. Wir testen Motive, finden die Gewinner und skalieren sie.</p>
       </div>
       <div class="produkt-glass reveal">
-        <div class="feature-icon"><svg><use href="#ic-shield"/></svg></div>
-        <h3>Sauberes Tracking</h3><p>GA4 und Tracking-Einrichtung, damit Entscheidungen auf Daten beruhen statt auf Bauchgefühl – DSGVO-konform umgesetzt.</p>
+        <div class="feature-icon"><svg><use href="#ic-linkedin"/></svg></div>
+        <h3>LinkedIn Ads</h3><p>Entscheider nach Branche, Position und Unternehmensgröße ansprechen: Auf LinkedIn erreichst Du die Menschen, die im B2B unterschreiben.</p>
       </div>
+      </div>
+      <div class="pa-kanal-cta reveal">
+        <a class="btn btn--dark" href="#kanal-check">Kanal-Check starten</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== Kanal-Check (Mini-Funnel) ===== -->
+  <section class="produkt-section pa-check-section" id="kanal-check">
+    <div class="container">
+      <div class="pa-check reveal" id="kanalCheck">
+        <div class="pa-check-head">
+          <p class="kicker">Kanal-Check</p>
+          <h2 class="h-serif">Welcher Kanal passt zu Deinem Business?</h2>
+          <p>Du willst wissen, welcher Kanal der richtige für Dein Unternehmen ist? Nach unserem Kanal-Check weißt Du es.</p>
+        </div>
+        <div class="pa-check-body">
+          <div class="pa-check-progress" aria-hidden="true"><span class="pa-check-progress-bar"></span></div>
+          <p class="pa-check-step"><span class="pa-check-step-num">Frage 1 von 4</span></p>
+          <div class="pa-check-q"></div>
+          <div class="pa-check-answers"></div>
+          <button type="button" class="pa-check-back" hidden>← Zurück</button>
+        </div>
+        <div class="pa-check-result" hidden>
+          <p class="pa-check-result-kicker">Unsere Empfehlung für Dich</p>
+          <div class="pa-check-result-main">
+            <div class="pa-check-result-icon"><svg><use href="#ic-google"/></svg></div>
+            <div>
+              <h3 class="pa-check-result-title"></h3>
+              <p class="pa-check-result-text"></p>
+              <p class="pa-check-result-second"><svg class="pa-check-info" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6.2v.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span></span></p>
+            </div>
+          </div>
+          <div class="pa-check-result-actions">
+            <a class="btn btn--dark" href="/kontakt.html">Jetzt beraten lassen</a>
+            <button type="button" class="pa-check-restart">Nochmal starten</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ===== Prozess ===== -->
-  <section class="produkt-section produkt-process">
+  <!-- ===== Ablauf ===== -->
+  <section class="produkt-section produkt-process" id="ablauf">
     <div class="container">
       <div class="produkt-section-head reveal">
         <p class="kicker">Ablauf</p>
-        <h2 class="h-serif">Vier Schritte zu planbarem Ergebnis.</h2>
-        <p>So wird aus deinem Budget ein nachvollziehbares Ergebnis.</p>
+        <h2 class="h-serif">Vier Schritte zu<br class="pa-br">planbarem Ergebnis.</h2>
+        <p>So wird aus Deinem Budget ein nachvollziehbares Ergebnis.</p>
       </div>
-      <div class="produkt-process-list">
+      <div class="produkt-process-list pa-flow">
         <div class="produkt-process-step reveal">
           <span class="step-num">01</span>
-          <h3>Audit & Strategie</h3>
-          <p>Wir analysieren dein bestehendes Konto – oder starten bei null. Ziele, Zielgruppen und Budget werden vorab klar definiert.</p>
+          <h3>Analyse &amp; Strategie</h3>
+          <p>Wir prüfen Dein bestehendes Konto oder starten bei null. Ziel, Zielgruppe und Budget stehen fest, bevor der erste Euro läuft.</p>
         </div>
         <div class="produkt-process-step reveal">
           <span class="step-num">02</span>
-          <h3>Setup & Launch</h3>
-          <p>Kampagnen, Tracking und Anzeigen werden sauber aufgesetzt und live geschaltet.</p>
+          <h3>Setup &amp; Start</h3>
+          <p>Kampagnen, Tracking und Anzeigen werden sauber aufgebaut und gehen live. Ab dem ersten Tag misst jedes Ergebnis.</p>
         </div>
         <div class="produkt-process-step reveal">
           <span class="step-num">03</span>
           <h3>Optimierung</h3>
-          <p>Laufende Auswertung und Anpassung – nicht einmal eingerichtet und dann vergessen.</p>
+          <p>Wir werten Deine Anzeigen laufend aus und optimieren sie: Was funktioniert, bekommt mehr Budget.</p>
         </div>
         <div class="produkt-process-step reveal">
           <span class="step-num">04</span>
-          <h3>Reporting & Skalierung</h3>
-          <p>Du siehst, was dein Budget bringt – und ausgebaut wird gezielt, nicht auf gut Glück.</p>
+          <h3>Reporting &amp; Skalierung</h3>
+          <p>Du siehst jeden Monat, wohin jeder Euro geflossen ist und was er gebracht hat. Alle Zahlen liegen offen, ausgebaut wird dort, wo sie es rechtfertigen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Potentialcheck (Lead-Magnet) ===== -->
+  <section class="produkt-section pa-pc-section" id="potentialcheck">
+    <div class="container">
+      <div class="pa-pc reveal" id="potentialCheck">
+        <div class="pa-pc-copy">
+          <p class="kicker">Kostenloser Potentialcheck</p>
+          <h2 class="h-serif">Wie viel Potential steckt in Deinem Produkt?</h2>
+          <p class="pa-pc-sub">Schick uns Deine Website. Noch diese Woche bekommst Du unsere Potentialanalyse für Dein Unternehmen und Deine Performance Ads.</p>
+
+          <form class="pa-pc-form pa-pc-form--1" novalidate>
+            <input type="text" name="website" required placeholder="deine-website.de" autocomplete="url" aria-label="Deine Website">
+            <button type="submit" class="btn btn--dark">Potentialcheck starten</button>
+          </form>
+
+          <form class="pa-pc-form pa-pc-form--2" hidden novalidate>
+            <p class="pa-pc-site"><span class="pa-pc-site-chip"></span><button type="button" class="pa-pc-change">ändern</button></p>
+            <input type="email" name="email" required placeholder="deine@email.de" autocomplete="email" aria-label="Deine E-Mail-Adresse">
+            <div class="pa-pc-ads">
+              <p>Schaltest Du bereits Ads?</p>
+              <div class="pa-pc-ads-opts">
+                <button type="button" data-opt="Google">Google</button>
+                <button type="button" data-opt="Meta">Meta</button>
+                <button type="button" data-opt="LinkedIn">LinkedIn</button>
+                <button type="button" data-opt="Nein">Noch nicht</button>
+              </div>
+            </div>
+            <input type="text" name="hp" class="pa-pc-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn--dark">Kostenlosen Check anfordern</button>
+            <p class="pa-pc-error" hidden>Das hat leider nicht geklappt. Versuch es nochmal oder schreib uns direkt an <a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>.</p>
+          </form>
+
+          <div class="pa-pc-done" hidden>
+            <p class="pa-pc-done-title">Dein Potentialcheck ist unterwegs!</p>
+            <p class="pa-pc-done-text">Wir analysieren <span class="pa-pc-done-site"></span> und melden uns noch diese Woche bei <span class="pa-pc-done-mail"></span>.</p>
+          </div>
+          <p class="pa-pc-note">Antwort noch diese Woche. Kein Spam, keine Verpflichtung. Mit dem Absenden akzeptierst Du unsere <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+        </div>
+
+        <div class="pa-pc-report" aria-hidden="true">
+          <div class="pa-pc-report-head"><span><b>Potentialcheck</b><br><small>deine-website.de</small></span><span class="pa-pc-report-pill">Beispiel</span></div>
+          <div class="pa-pc-report-score">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#e7e2df" stroke-width="9"/><circle class="pa-pc-report-ring" cx="50" cy="50" r="42" fill="none" stroke="#0B9FBD" stroke-width="9" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="103"/></svg>
+            <div class="pa-pc-report-score-num"><b>61</b><small>von 100</small></div>
+            <div class="pa-pc-report-score-text"><b>Solide Basis, Luft nach oben.</b><small>Drei Hebel mit dem größten Effekt sind markiert.</small></div>
+          </div>
+          <ul class="pa-pc-report-rows">
+            <li><span>Tracking &amp; Messung</span><i style="--w:38%"></i><em>38</em></li>
+            <li><span>Zielgruppen</span><i style="--w:72%"></i><em>72</em></li>
+            <li><span>Kanalwahl</span><i style="--w:55%"></i><em>55</em></li>
+            <li><span>Anzeigen &amp; Motive</span><i style="--w:81%"></i><em>81</em></li>
+          </ul>
+          <div class="pa-pc-report-foot">Analyse noch diese Woche</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section class="produkt-section produkt-faq">
-    <div class="container">
-      <div class="produkt-section-head reveal">
+  <section class="produkt-section pa-faq" id="faq">
+    <div class="container pa-faq-grid">
+      <div class="pa-faq-head reveal">
         <p class="kicker">FAQ</p>
         <h2 class="h-serif">Häufige Fragen.</h2>
-        <p>Was uns Kundinnen und Kunden am häufigsten fragen.</p>
+        <p>Wenn Du weitere Fragen hast, vereinbare einfach ein Gespräch mit uns. Wir klären alles, was offen ist.</p>
       </div>
-      <div class="produkt-faq-list">
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Was brauche ich, um zu starten?</summary>
-          <p>Zugriff auf deine bestehenden Konten, falls vorhanden, sowie Klarheit über dein Budget und dein Ziel – den Rest klären wir gemeinsam im Auftakt.</p>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item reveal" name="pa-faq">
+          <summary>Was brauche ich, um zu starten?<span class="pa-faq-icon" aria-hidden="true"></span></summary>
+          <div class="pa-faq-answer"><p>Zugriff auf Deine bestehenden Konten, falls vorhanden, sowie Klarheit über Dein Budget und Dein Ziel. Den Rest klären wir gemeinsam im Auftakt.</p></div>
         </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Wann sehe ich erste Ergebnisse?</summary>
-          <p>Erste Daten liegen meist nach wenigen Wochen vor – belastbare Aussagen brauchen etwas mehr Zeit, damit die Kampagnen wirklich auswerten können.</p>
+        <details class="pa-faq-item reveal" name="pa-faq">
+          <summary>Wann sehe ich erste Ergebnisse?<span class="pa-faq-icon" aria-hidden="true"></span></summary>
+          <div class="pa-faq-answer"><p>Erste Daten liegen meist nach wenigen Wochen vor. Belastbare Aussagen brauchen etwas mehr Zeit, damit die Kampagnen wirklich lernen können.</p></div>
         </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Welche Plattformen betreut ihr?</summary>
-          <p>Im Kern Google und Meta – abgestimmt auf euer Budget und eure Zielgruppe, nicht auf jede verfügbare Plattform gleichzeitig.</p>
+        <details class="pa-faq-item reveal" name="pa-faq">
+          <summary>Welche Plattformen betreut ihr?<span class="pa-faq-icon" aria-hidden="true"></span></summary>
+          <div class="pa-faq-answer"><p>Google, Meta und LinkedIn. Welcher Kanal für Dich der richtige Start ist, hängt von Zielgruppe und Angebot ab, nicht davon, was gerade angesagt ist. Der Kanal-Check oben gibt Dir eine erste Antwort.</p></div>
         </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Gibt es Mindestlaufzeiten?</summary>
-          <p>Nein, wir arbeiten ohne feste Vertragslaufzeiten – Kampagnen brauchen aber Zeit, um belastbar zu werden.</p>
+        <details class="pa-faq-item reveal" name="pa-faq">
+          <summary>Gibt es Mindestlaufzeiten?<span class="pa-faq-icon" aria-hidden="true"></span></summary>
+          <div class="pa-faq-answer"><p>Ja, mindestens drei Monate. Kampagnen brauchen diese Zeit, um belastbare Daten zu liefern und sauber optimiert zu werden. Danach läuft die Zusammenarbeit monatlich weiter.</p></div>
         </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Woher weiß ich, wie gut meine Anzeigen laufen?</summary>
-          <p>Über klare, regelmäßige Auswertungen statt einer Blackbox – du siehst, was dein Budget bringt.</p>
+        <details class="pa-faq-item reveal" name="pa-faq">
+          <summary>Woher weiß ich, wie gut meine Anzeigen laufen?<span class="pa-faq-icon" aria-hidden="true"></span></summary>
+          <div class="pa-faq-answer"><p>Du hast vollen Zugriff auf Dein Konto und bekommst jeden Monat eine klare Auswertung: Was hat jeder Euro gebracht, und woran arbeiten wir als Nächstes.</p></div>
         </details>
       </div>
     </div>
   </section>
 
   <!-- ===== Ansprechpartner + CTA ===== -->
-  <section class="produkt-cta produkt-team-cta">
+  <section class="produkt-cta produkt-team-cta" id="kontakt-cta">
     <div class="container">
       <p class="kicker">Jetzt loslegen</p>
-      <h2>Bereit für Kampagnen, die Anfragen bringen?</h2>
+      <h2>Bereit für Werbung, die Anfragen bringt?</h2>
       <p class="produkt-team-cta-sub">Dein direkter Draht zu uns. Kurze Wege statt langer Abstimmungsrunden.</p>
       <div class="ansprechpartner-grid">
         <div class="ansprechpartner-card reveal">
@@ -777,8 +1147,7 @@
         </div>
       </div>
       <div class="produkt-cta-actions">
-        <a class="btn btn--dark" href="/kontakt.html">Kampagne anfragen</a>
-        
+        <a class="btn btn--dark" href="/kontakt.html">Jetzt beraten lassen</a>
       </div>
     </div>
   </section>
@@ -793,6 +1162,227 @@
   </div>
 </footer>
 
+<script>
+/* Paid Ads: Anzeigen-Rotation, Kanal-Check, Potentialcheck. Nur auf dieser Seite. */
+(function () {
+  "use strict";
+  function track(name, params) { if (typeof window.empiriaTrack === "function") window.empiriaTrack(name, params); }
+
+  /* ---------- Hero: rotierende Anzeigen ---------- */
+  (function () {
+    var root = document.getElementById("paAds");
+    if (!root) return;
+    var ads = root.querySelectorAll(".pa-ad");
+    var tabs = root.querySelectorAll(".pa-ads-tab");
+    var order = ["google", "meta", "linkedin"];
+    var idx = 0, timer = null;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var rot = document.getElementById("paRot");
+    var clip = rot && rot.parentNode, measure = clip && clip.previousElementSibling;
+    var NAMES = { google: "Google", meta: "Meta", linkedin: "LinkedIn" };
+    function fitWidth(word) {
+      measure.textContent = word;
+      clip.style.width = measure.offsetWidth + "px";
+    }
+    if (rot) {
+      fitWidth(rot.textContent);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWidth(rot.textContent); });
+      window.addEventListener("resize", function () { fitWidth(rot.textContent); }, { passive: true });
+    }
+    function swapWord(word) {
+      if (reduce) { rot.textContent = word; fitWidth(word); return; }
+      rot.classList.add("is-out");                       // altes Wort nach oben raus
+      setTimeout(function () {
+        rot.textContent = word;
+        rot.classList.add("is-in"); rot.classList.remove("is-out"); // neues Wort unten parken
+        fitWidth(word);                                  // Breite federt auf das neue Wort
+        void rot.offsetWidth;                            // Reflow, damit der Übergang greift
+        rot.classList.remove("is-in");                   // von unten rein
+      }, 300);
+    }
+    function show(kanal) {
+      ads.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("data-kanal") === kanal); });
+      if (rot && rot.textContent !== NAMES[kanal]) swapWord(NAMES[kanal]);
+      tabs.forEach(function (t) {
+        var on = t.getAttribute("data-kanal") === kanal;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      idx = order.indexOf(kanal);
+    }
+    function next() { show(order[(idx + 1) % order.length]); }
+    function start() { if (reduce) return; stop(); timer = setInterval(next, 3400); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () {
+        show(t.getAttribute("data-kanal"));
+        track("paid_ads_mockup_" + t.getAttribute("data-kanal"));
+        stop(); setTimeout(start, 8000); // nach manueller Wahl kurz stehen lassen
+      });
+    });
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+    start();
+  })();
+
+  /* ---------- Kanal-Check ---------- */
+  (function () {
+    var root = document.getElementById("kanalCheck");
+    if (!root) return;
+
+    // Punkte je Antwort: {google, meta, linkedin}. Summen entscheiden.
+    var QUESTIONS = [
+      { q: "Wen willst Du erreichen?", a: [
+        { t: "Privatkunden", s: { google: 1, meta: 2, linkedin: 0 } },
+        { t: "Geschäftskunden", s: { google: 1, meta: 0, linkedin: 2 } },
+        { t: "Beides", s: { google: 1, meta: 1, linkedin: 1 } }
+      ]},
+      { q: "Wie kommen Deine Kunden heute auf Dich?", a: [
+        { t: "Sie suchen aktiv nach einer Lösung und finden mich", s: { google: 3, meta: 0, linkedin: 0 } },
+        { t: "Über Empfehlungen und mein Netzwerk", s: { google: 0, meta: 1, linkedin: 2 } },
+        { t: "Über Social Media und Inhalte", s: { google: 0, meta: 2, linkedin: 1 } },
+        { t: "Über Vertrieb und Kaltakquise", s: { google: 1, meta: 0, linkedin: 2 } }
+      ]},
+      { q: "Was soll die Kampagne in erster Linie bringen?", a: [
+        { t: "Anfragen und Termine", s: { google: 2, meta: 0, linkedin: 1 } },
+        { t: "Verkäufe im Shop", s: { google: 1, meta: 2, linkedin: 0 } },
+        { t: "Bekanntheit in meiner Zielgruppe", s: { google: 0, meta: 2, linkedin: 1 } },
+        { t: "Bewerbungen", s: { google: 0, meta: 1, linkedin: 2 } }
+      ]},
+      { q: "Wie viel Umsatz bringt Dir eine Anfrage im Schnitt?", a: [
+        { t: "Unter 500 €", s: { google: 1, meta: 2, linkedin: 0 } },
+        { t: "500 bis 5.000 €", s: { google: 2, meta: 1, linkedin: 0 } },
+        { t: "Über 5.000 €", s: { google: 1, meta: 0, linkedin: 2 } }
+      ]}
+    ];
+    var RESULT = {
+      google: { name: "Google Ads", icon: "#ic-google",
+        text: "Dein Angebot wird gesucht. Google Ads holt genau die Menschen ab, die gerade nach Deiner Lösung suchen, und macht aus der Suche eine Anfrage." },
+      meta: { name: "Meta Ads", icon: "#ic-meta",
+        text: "Deine Zielgruppe muss erst auf Dich aufmerksam werden. Auf Facebook und Instagram erreichst Du sie im Alltag, mit Motiven, die wir testen und skalieren." },
+      linkedin: { name: "LinkedIn Ads", icon: "#ic-linkedin",
+        text: "Du willst Entscheider erreichen. LinkedIn lässt uns nach Branche, Position und Unternehmensgröße zielen, genau dort, wo im B2B entschieden wird." }
+    };
+
+    var body = root.querySelector(".pa-check-body");
+    var result = root.querySelector(".pa-check-result");
+    var qEl = root.querySelector(".pa-check-q");
+    var aEl = root.querySelector(".pa-check-answers");
+    var stepEl = root.querySelector(".pa-check-step-num");
+    var bar = root.querySelector(".pa-check-progress-bar");
+    var back = root.querySelector(".pa-check-back");
+    var answers = [];
+
+    function render() {
+      var i = answers.length;
+      var q = QUESTIONS[i];
+      stepEl.textContent = "Frage " + (i + 1) + " von " + QUESTIONS.length;
+      bar.style.width = ((i + 1) / QUESTIONS.length * 100) + "%";
+      qEl.textContent = q.q;
+      aEl.innerHTML = "";
+      q.a.forEach(function (opt, k) {
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = opt.t;
+        b.addEventListener("click", function () { choose(k); });
+        aEl.appendChild(b);
+      });
+      back.hidden = i === 0;
+    }
+    function choose(k) {
+      if (answers.length === 0) track("kanalcheck_start");
+      answers.push(k);
+      if (answers.length < QUESTIONS.length) { render(); return; }
+      finish();
+    }
+    function finish() {
+      var score = { google: 0, meta: 0, linkedin: 0 };
+      answers.forEach(function (k, i) {
+        var s = QUESTIONS[i].a[k].s;
+        for (var c in s) score[c] += s[c];
+      });
+      var ranked = Object.keys(score).sort(function (a, b) { return score[b] - score[a]; });
+      var first = RESULT[ranked[0]], second = RESULT[ranked[1]];
+      result.querySelector(".pa-check-result-icon use").setAttribute("href", first.icon);
+      result.querySelector(".pa-check-result-title").textContent = first.name;
+      result.querySelector(".pa-check-result-text").textContent = first.text;
+      result.querySelector(".pa-check-result-second span").textContent = "Als zweiter Kanal passt: " + second.name + ". Ob und wann sich der lohnt, klären wir im Gespräch.";
+      body.hidden = true; result.hidden = false;
+      track("kanalcheck_ergebnis_" + ranked[0]);
+    }
+    back.addEventListener("click", function () { answers.pop(); render(); });
+    root.querySelector(".pa-check-restart").addEventListener("click", function () {
+      answers = []; result.hidden = true; body.hidden = false; render();
+    });
+    render();
+  })();
+
+  /* ---------- Potentialcheck (Lead-Magnet) ----------
+     Sendet an /api/lead (Payload wie bei admemory.de). Das Backend folgt separat;
+     bis dahin zeigt ein Fehlschlag den Mail-Fallback. */
+  (function () {
+    var root = document.getElementById("potentialCheck");
+    if (!root) return;
+    var f1 = root.querySelector(".pa-pc-form--1");
+    var f2 = root.querySelector(".pa-pc-form--2");
+    var done = root.querySelector(".pa-pc-done");
+    var note = root.querySelector(".pa-pc-note");
+    var err = f2.querySelector(".pa-pc-error");
+    var site = "", ads = [];
+
+    f1.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var inp = f1.querySelector("input[name=website]");
+      site = inp.value.trim().replace(/^https?:\/\//, "").replace(/\/$/, "");
+      if (!site || site.indexOf(".") < 1) { inp.classList.add("is-invalid"); inp.focus(); return; }
+      inp.classList.remove("is-invalid");
+      f2.querySelector(".pa-pc-site-chip").textContent = site;
+      f1.hidden = true; f2.hidden = false;
+      f2.querySelector("input[name=email]").focus();
+      track("potentialcheck_step2");
+    });
+    f2.querySelector(".pa-pc-change").addEventListener("click", function () { f2.hidden = true; f1.hidden = false; });
+
+    f2.querySelectorAll(".pa-pc-ads-opts button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var o = b.getAttribute("data-opt");
+        if (o === "Nein") { ads = ads.indexOf("Nein") > -1 ? [] : ["Nein"]; }
+        else {
+          ads = ads.filter(function (x) { return x !== "Nein"; });
+          ads = ads.indexOf(o) > -1 ? ads.filter(function (x) { return x !== o; }) : ads.concat([o]);
+        }
+        f2.querySelectorAll(".pa-pc-ads-opts button").forEach(function (x) {
+          x.classList.toggle("is-active", ads.indexOf(x.getAttribute("data-opt")) > -1);
+        });
+      });
+    });
+
+    f2.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var inp = f2.querySelector("input[name=email]");
+      var email = inp.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { inp.classList.add("is-invalid"); inp.focus(); return; }
+      inp.classList.remove("is-invalid");
+      var btn = f2.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Wird gesendet…"; err.hidden = true;
+      fetch("/api/lead", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "potentialcheck", website: site, email: email, ads: ads, hp: f2.querySelector("input[name=hp]").value, quelle: "paid-ads" })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("lead failed");
+        done.querySelector(".pa-pc-done-site").textContent = site;
+        done.querySelector(".pa-pc-done-mail").textContent = email;
+        f2.hidden = true; note.hidden = true; done.hidden = false;
+        track("potentialcheck_submit");
+      }).catch(function () {
+        err.hidden = false;
+      }).then(function () {
+        btn.disabled = false; btn.textContent = "Kostenlosen Check anfordern";
+      });
+    });
+  })();
+})();
+</script>
 <script src="/script.js"></script>
 <script src="/tracking.js"></script>
 </body>
