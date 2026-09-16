@@ -2788,7 +2788,7 @@ body.produktseite--sofortsichtbar {
 /* Produktseiten-Hero: weisse Schrift im farbigen Marker. Der Kasten endete an der
    Grundlinie, Unterlaengen (g, p) standen weiss auf weiss und wirkten abgeschnitten.
    Kasten reicht jetzt bis unter die Unterlaengen. */
-.produktseite-clean .produkt-hero .hl::before { bottom: -0.2em; }
+.produktseite-clean .produkt-hero .hl::before { bottom: -0.13em; }
 
 /* Produktseiten-Hero: Zeilenhoehe 1.06 war enger als die Glyphen, der Marker-Kasten
    ueberdeckte Unter-/Oberlaengen der Nachbarzeilen. 1.2 wie Startseite/Leistungsseiten. */
