@@ -453,7 +453,8 @@
 
   /* ---------- Ablauf: verbundene Schritte ---------- */
   .pa-flow { position: relative; padding-top: 18px; }
-  .pa-flow::before { content: ""; position: absolute; left: 44px; right: 44px; top: 18px; height: 2px; background: var(--pa-line); }
+  /* Verbindungslinie nur mobil (vertikal); auf Desktop stehen die Nummern frei. */
+  .pa-flow::before { content: none; }
   .pa-flow .produkt-process-step { position: relative; z-index: 1; padding-top: 40px; }
   .produktseite-clean .pa-flow .step-num {
     position: absolute; top: -18px; left: 24px; width: 40px; height: 40px; border-radius: 50%;
@@ -553,7 +554,7 @@
     .pa-check, .pa-pc { grid-template-columns: 1fr; }
     .pa-check-result { grid-column: 1; }
     .pa-pc-report { display: none; }
-    .pa-flow::before { left: 44px; right: auto; top: 18px; bottom: 40px; width: 2px; height: auto; }
+    .pa-flow::before { content: ""; position: absolute; left: 44px; top: 18px; bottom: 40px; width: 2px; background: var(--pa-line); }
     .pa-flow { padding-top: 0; }
     .pa-flow .produkt-process-step { margin-top: 18px; }
   }
