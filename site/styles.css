@@ -1199,6 +1199,17 @@ a.badge:hover { transform: translateY(-2px); background: rgba(28,27,26,0.9); }
 }
 .stufe-break p { font-size: 1rem; line-height: 1.7; color: var(--ink-2); margin: 0 auto; max-width: 62ch; }
 .stufe-break p + p { margin-top: 1rem; }
+/* Band-Variante (Komplexe Themen): Zwischenergebnis auf durchgehend hellgrauem
+   Hintergrund über die volle Fensterbreite, wie die Problem-Section. Der graue
+   Streifen entsteht per box-shadow + clip-path, die Section schneidet seitlich ab
+   (overflow: hidden) – daher kein horizontaler Überlauf. */
+.stufe-break--band {
+  max-width: none; background: var(--grey-bg);
+  border-top: 0; border-bottom: 0;
+  box-shadow: 0 0 0 100vmax var(--grey-bg); clip-path: inset(0 -100vmax);
+  padding-block: clamp(56px, 7vw, 96px);
+  margin-block: clamp(32px, 4.4vw, 56px) clamp(56px, 7vw, 96px);
+}
 .stufe-content h3 {
   font-family: var(--font-serif); font-weight: 700;
   font-size: clamp(1.7rem, 2.9vw, 2.2rem);
@@ -2776,3 +2787,265 @@ body.produktseite--sofortsichtbar {
 .ps-leistung .leadmagnet-subhead { color: #fff; }
 .ps-leistung .leadmagnet-title { color: rgba(255,255,255,.85); }
 .ps-leistung .leadmagnet-tag { color: rgba(255,255,255,.5); }
+
+/* Strategie-Seite, Lösung: Text links, anklickbares Strategiemodell rechts
+   (schwarze Karte wie der Problem-Kasten, Klick öffnet die Skizze groß im Modal). */
+.loesung-split {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: clamp(40px, 6vw, 96px); align-items: center;
+}
+.loesung-modell-card { background: var(--black); border-color: var(--black); }
+.loesung-modell-card:hover { border-color: var(--black); }
+.loesung-modell-thumb { height: auto; }
+.loesung-modell-thumb svg { height: auto; }
+.modal.modal--strategiemodell { background: var(--black); }
+@media (max-width: 900px) {
+  .loesung-split { grid-template-columns: 1fr; }
+  .loesung-modell { max-width: 420px; }
+}
+
+/* Komplexe Themen, Stufe 03 Medien: Skizzen (wie auf "Medien, die Ergebnisse
+   liefern") statt Icon-Kacheln – rein zur Ansicht, kein Hover, ein CTA darunter. */
+.medien-sketches {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 16px); max-width: 520px; margin: 1.3rem 0 1.2rem;
+}
+.medien-sketch {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  background: var(--grey-bg); border-radius: 16px; padding: clamp(12px, 1.6vw, 18px) clamp(10px, 1.4vw, 14px);
+}
+.medien-sketch-thumb { position: relative; width: 100%; aspect-ratio: 1 / 1; }
+.medien-sketch-thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: invert(1) contrast(1.6); }
+.medien-sketch-label { font-family: var(--font-sans); font-weight: 600; font-size: .8rem; color: var(--ink); text-align: center; }
+@media (max-width: 560px) { .medien-sketch-label { font-size: .68rem; } }
+.medien-sketches-cta-wrap { max-width: 520px; text-align: center; margin-bottom: 1.2rem; }
+.medien-sketches-cta { padding: 0.45rem 0.9rem; font-size: 0.78rem; }
+/* Hover: gelbe Fläche fährt von unten über den Kasten und zeigt den Kurztext
+   (Texte identisch zu den Pop-ups auf "Medien, die Ergebnisse liefern").
+   Schriftgröße skaliert mit der Kastenbreite (Container-Einheiten), damit der
+   Text in jeder Bildschirmbreite in den Kasten passt. */
+.medien-sketch { position: relative; overflow: hidden; container-type: inline-size; }
+.medien-sketch-hover {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 7cqi; background: var(--hl-solid); color: var(--ink);
+  text-align: left; transform: translateY(100%); transition: transform .3s ease;
+}
+.medien-sketch p.medien-sketch-hover-title {
+  margin: 0 0 .45em; font-family: var(--font-serif); font-weight: 700;
+  font-size: clamp(11px, 10.5cqi, 15px); line-height: 1.15;
+}
+.medien-sketch p.medien-sketch-hover-text { max-width: none; color: var(--ink);
+  margin: 0; font-family: var(--font-sans);
+  font-size: clamp(9px, 8.2cqi, 12px); line-height: 1.4;
+}
+@media (hover: hover) {
+  .medien-sketch:hover .medien-sketch-hover,
+  .medien-sketch:focus-visible .medien-sketch-hover { transform: translateY(0); }
+}
+.medien-sketch:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (max-width: 560px) { .medien-sketch-hover { display: none; } }
+/* Aufzählung im Lead-Text (z. B. Strategie-Seite, Lösung) */
+.leistung-lead-list { list-style: none; padding: 0; margin: 0.85rem 0; }
+.leistung-lead-list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.35rem; }
+.leistung-lead-list li::before { content: "•"; position: absolute; left: 0; }
+
+/* ===== Strategie-Seite: Perspektivwechsel "Homepage deiner Abteilung" =====
+   Text + Gedankenexperiment links, rechts eine leere Browser-Skizze mit den
+   fünf offenen Fragen – regt an, den eigenen Bereich von außen zu betrachten. */
+.perspektive-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: clamp(40px, 6vw, 96px); align-items: center;
+}
+.perspektive h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin: 0 0 1.1rem; }
+.perspektive .lead + .lead { margin-top: 0.85rem; }
+.perspektive-gedanke {
+  margin-top: clamp(24px, 3vw, 36px); padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.4vw, 30px);
+  background: var(--grey-bg); border-radius: var(--radius-card);
+  border-left: 6px solid var(--hl-solid);
+}
+.perspektive-gedanke p { margin: 0; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-2); }
+.perspektive-gedanke p + p { margin-top: 0.6rem; }
+.perspektive-gedanke .perspektive-gedanke-tag {
+  font-family: var(--font-sans); font-weight: 700; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--grey-50); margin-bottom: 0.5rem;
+}
+.perspektive-gedanke .perspektive-gedanke-frage {
+  font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.3rem, 2vw, 1.55rem); color: var(--ink);
+}
+
+/* Browser-Skizze */
+.perspektive-browser {
+  background: #fff; border: 1px solid #e2e0dd; border-radius: 18px; overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0,0,0,.10), 0 6px 18px rgba(0,0,0,.05);
+}
+.pb-bar {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+  background: #f5f4f2; border-bottom: 1px solid #e2e0dd;
+}
+.pb-dots { display: flex; gap: 6px; flex: 0 0 auto; }
+.pb-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d6d3cf; display: block; }
+.pb-url {
+  flex: 1; min-width: 0; display: flex; align-items: center;
+  background: #fff; border: 1px solid #e2e0dd; border-radius: 999px; padding: 6px 14px;
+  font-family: var(--font-sans); font-size: 0.8rem; color: var(--grey-70);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pb-caret { display: inline-block; width: 1.5px; height: 1em; margin-left: 2px; background: var(--ink); animation: pb-blink 1s steps(1) infinite; }
+@keyframes pb-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pb-caret { animation: none; } }
+.pb-page { padding: clamp(18px, 2.4vw, 28px); }
+.pb-hero { display: flex; flex-direction: column; gap: 8px; padding-bottom: clamp(16px, 2vw, 22px); border-bottom: 1px solid #eeecea; }
+.pb-logo { font-family: var(--font-sans); font-weight: 700; font-size: 0.78rem; color: var(--ink); margin-bottom: 6px; }
+.pb-skel { display: block; height: 12px; border-radius: 6px; background: #ecebe8; }
+.pb-skel--h1 { height: 16px; width: 82%; }
+.pb-skel--short { width: 54%; }
+.pb-rows { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.pb-rows li {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+  gap: 14px; padding: clamp(11px, 1.4vw, 15px) 0; border-bottom: 1px dashed #e2e0dd;
+}
+.pb-rows li:last-child { border-bottom: 0; padding-bottom: 0; }
+.pb-num { font-family: var(--font-serif); font-weight: 700; font-size: 0.85rem; color: var(--grey-50); }
+.pb-q { font-family: var(--font-sans); font-weight: 600; font-size: clamp(0.86rem, 1.1vw, 0.95rem); line-height: 1.35; color: var(--ink); }
+.pb-mark {
+  width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--hl-solid); color: var(--ink);
+  font-family: var(--font-serif); font-weight: 700; font-size: 0.95rem;
+}
+
+.perspektive-fazit { max-width: 760px; margin: clamp(56px, 7vw, 96px) auto 0; text-align: center; }
+.perspektive-punch { margin: 1.1rem 0 0; font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.22; color: var(--ink); }
+@media (max-width: 900px) {
+  .perspektive-grid { grid-template-columns: 1fr; }
+  .perspektive-browser { max-width: 520px; }
+}
+
+/* ===== Perspektivwechsel: Grundanordnung (Variante 1 gewählt) ===== */
+.pv-nowrap { white-space: nowrap; }
+.pv-head { max-width: 780px; margin: 0 auto clamp(44px, 5.5vw, 72px); text-align: center; }
+.pv-head .lead { max-width: 680px; margin-inline: auto; }
+.pv-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px); align-items: center;
+}
+.perspektive .pv-tag {
+  margin: 0 0 .7rem; font-family: var(--font-sans); font-weight: 700; font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--ink);
+}
+.perspektive .pv-tag::before {
+  content: ""; display: inline-block; width: 22px; height: 4px; margin-right: 10px;
+  vertical-align: middle; background: var(--hl-solid); border-radius: 2px;
+}
+.perspektive .pv-exp { margin: 0; font-size: 1.125rem; line-height: 1.65; color: var(--ink-2); }
+.perspektive .pv-q { margin: 1rem 0 0; font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.2; color: var(--ink); }
+.pv-punch { margin: 0; font-weight: 700; line-height: 1.22; color: var(--ink); }
+
+/* Abschluss 1: zentriert, ohne Rahmen */
+.pv-end--1 { max-width: 760px; margin: clamp(56px, 7vw, 96px) auto 0; text-align: center; }
+.pv-end--1 .pv-punch { margin-top: 1.1rem; font-size: clamp(1.7rem, 3vw, 2.3rem); }
+
+
+@media (max-width: 900px) {
+  .pv-row { grid-template-columns: 1fr; }
+  .pv-row .perspektive-browser { max-width: 520px; }
+}
+
+/* Aufzählung innerhalb einer Timeline-Stufe (Komplexe Themen, 04 Taktisches Briefing) */
+.stufe-bullets { list-style: none; margin: 1rem 0 0; padding: 0; max-width: 52ch; }
+.stufe-bullets li { position: relative; padding-left: 1.2rem; font-size: 1rem; line-height: 1.7; color: var(--ink-2); }
+.stufe-bullets li + li { margin-top: .9rem; }
+.stufe-bullets li::before { content: "•"; position: absolute; left: 0; color: var(--ink); }
+.stufe-bullets strong { display: block; color: var(--ink); font-weight: 600; }
+
+/* ===== Innovation-Seite: Lösung "Nichts ist in Stein gemeißelt" ===== */
+.inno-label {
+  margin: 0 0 .8rem; font-family: var(--font-sans); font-weight: 700; font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--ink);
+}
+.inno-label::before { content: ""; display: inline-block; width: 22px; height: 4px; margin-right: 10px; vertical-align: middle; background: var(--hl-solid); border-radius: 2px; }
+.inno-loesung .lead + .lead { margin-top: .85rem; }
+.inno-loesung h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin: 0 0 1.1rem; }
+
+/* 1) Einstieg */
+.inno-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.inno-stein {
+  position: relative; background: var(--grey-bg); border-radius: var(--radius-card);
+  padding: clamp(28px, 3.6vw, 48px); overflow: hidden;
+}
+.inno-stein-tag { margin: 0 0 1.2rem; font-family: var(--font-sans); font-weight: 700; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--grey-50); }
+.inno-stein ul { list-style: none; margin: 0; padding: 0; }
+.inno-stein li { margin: 0 0 .9rem; font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.25; color: var(--grey-70); }
+.inno-strike { position: relative; display: inline; background-image: linear-gradient(var(--ink), var(--ink)); background-repeat: no-repeat; background-position: 0 58%; background-size: 100% 3px; transition: background-size .6s ease; }
+.js-reveal-ready .inno-stein:not(.is-visible) .inno-strike { background-size: 0 3px; }
+.inno-stein li:nth-child(2) .inno-strike { transition-delay: .35s; }
+.inno-stein li:nth-child(3) .inno-strike { transition-delay: .7s; }
+.inno-stein-foot { position: relative; margin: 1.4rem 0 0; display: inline-block; font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.35rem, 2.2vw, 1.8rem); color: var(--ink); }
+.inno-stein-foot::before { content: ""; position: absolute; z-index: -1; left: -.1em; right: -.1em; top: .05em; bottom: -.02em; background: var(--hl-solid); border-radius: 4px; }
+.inno-stein-foot { z-index: 0; }
+
+/* 2) Einsatzmöglichkeiten */
+.inno-einsatz { margin-top: clamp(72px, 9vw, 128px); }
+.inno-einsatz-head { max-width: 720px; margin: 0 auto clamp(28px, 3.4vw, 40px); text-align: center; }
+.inno-einsatz-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 18px); }
+.inno-einsatz-item {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+  min-height: 150px; padding: 20px 20px 22px; border: 1px solid #e2e0dd; border-radius: 18px; background: #fff;
+}
+.inno-einsatz-item--main { background: var(--black); border-color: var(--black); }
+.inno-einsatz-num { font-family: var(--font-serif); font-weight: 700; font-size: .95rem; color: var(--grey-50); }
+.inno-einsatz-item { container-type: inline-size; }
+.inno-einsatz-title { font-family: var(--font-serif); font-weight: 700; font-size: clamp(0.95rem, 11cqi, 1.25rem); line-height: 1.2; color: var(--ink); hyphens: manual; overflow-wrap: normal; }
+.inno-einsatz-item--main .inno-einsatz-num { color: var(--hl-solid); }
+.inno-einsatz-item--main .inno-einsatz-title { color: #fff; }
+.inno-scope { margin: clamp(20px, 2.4vw, 28px) 0 0; text-align: center; font-family: var(--font-sans); font-size: .95rem; color: var(--grey-70); }
+
+/* 3) Methoden: Text mittig, darunter der bewährte Ansatz als großer schwarzer Fokus-Kasten.
+   Business Model Canvas + Pitch nur als angeschnittene, blasse Linien-Grafik im Kasten. */
+.inno-methode { margin-top: clamp(72px, 9vw, 128px); }
+.inno-methode-text { max-width: 720px; margin: 0 auto clamp(32px, 4vw, 48px); text-align: center; }
+.inno-greenfield {
+  position: relative; overflow: hidden; background: var(--black); border-radius: var(--radius-card);
+  padding: clamp(56px, 8vw, 120px) clamp(24px, 6vw, 96px);
+}
+.inno-greenfield-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; text-align: center; }
+.inno-greenfield-tag { margin: 0 0 1rem; font-family: var(--font-sans); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--hl-solid); }
+.inno-greenfield-text { margin: 0; font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.7rem, 3.6vw, 2.9rem); line-height: 1.22; color: #fff; }
+.inno-greenfield-text .hl { color: var(--ink); }
+.inno-deco { position: absolute; z-index: 0; opacity: .32; pointer-events: none; height: auto; }
+.inno-deco--bmc { width: clamp(260px, 30vw, 420px); left: -90px; bottom: -120px; transform: rotate(-8deg); }
+.inno-deco--pitch { width: clamp(280px, 32vw, 460px); right: -80px; top: -50px; transform: rotate(7deg); }
+@media (max-width: 700px) {
+  .inno-deco { opacity: .2; }
+  .inno-deco--bmc { width: 220px; left: -70px; bottom: -60px; }
+  .inno-deco--pitch { width: 240px; right: -90px; top: -60px; }
+}
+
+@media (max-width: 1100px) {
+  .inno-einsatz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inno-einsatz-item--main { grid-column: 1 / -1; }
+  .inno-einsatz-item { min-height: 120px; }
+}
+@media (max-width: 900px) {
+  .inno-intro { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .inno-einsatz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inno-einsatz-item { min-height: 120px; }
+  .inno-einsatz-item--main { grid-column: 1 / -1; }
+}
+
+/* ===== Responsive-Feinschliff (Tablet/Mobil) für die neuen Sections ===== */
+@media (max-width: 900px) {
+  /* Perspektivwechsel: Browser + Gedankenexperiment unter der zentrierten Headline mittig ausrichten */
+  .pv-row { justify-items: center; }
+  .pv-row .perspektive-browser, .pv-exp-block { width: 100%; max-width: 560px; }
+}
+@media (max-width: 600px) {
+  /* Lange Fließtexte auf dem Handy linksbündig statt zentriert – besser lesbar */
+  .pv-head, .pv-end--1, .inno-einsatz-head, .inno-methode-text, .inno-scope { text-align: left; }
+  .pv-head .lead, .pv-end--1 .lead { margin-inline: 0; }
+  .inno-greenfield { padding: 48px 22px; }
+  .inno-greenfield-inner { text-align: left; }
+}
