@@ -1,6 +1,6 @@
 # empiria – Website · Handoff
 
-Stand: 2026-09-11
+Stand: 2026-09-16
 
 Marketing-One-Pager für **empiria** (Strategieberatung für Führungskräfte in der
 Versicherungsbranche, GF Daniel Ströbel). 1:1 nachgebaut aus dem Kunden-Mockup
@@ -160,6 +160,12 @@ gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
   (Durchscrollen), Deckel 600 s (liegengelassene Tabs). Versand per Beacon
   bei `visibilitychange`/`pagehide`. Sektions-IDs: `hero`, `problem`,
   `loesung`, `leistungen`, `arbeitsweise`, `kontakt`.
+  **Nachkorrektur 12.09.2026 (`503c190`):** Hintergrundzeit wurde mitgezählt
+  (Uhr lief nach dem Senden weiter, obwohl der Tab im Hintergrund war) und die
+  1-s-Schwelle wurde gegen den gerundeten Wert geprüft (0,6 s → 1 s gemeldet).
+  Beides behoben; gleicher Stand wie sofortsichtbar.de und muellerundstroebel.de.
+  Auf den neuen Unterseiten aus `Daniel` funktioniert das automatisch für jede
+  `section[id]` — GA4 trennt nach `pagePath`.
 - Footer hat auf allen Seiten einen **„Cookie-Einstellungen"**-Button
   (`[data-cookie-settings]` → `Cookiebot.renew()`), Pflicht für den Widerruf.
 - `site/robots.txt` + `site/sitemap.xml` (3 URLs). KI-Crawler sind bewusst
@@ -244,18 +250,53 @@ anderen Branch kann die Live-Seite technisch nicht anfassen.
 
 Beides lässt sich nur gegen die Live-Domain testen.
 
-**Ablauf mit Pull Request:**
+**Branch-Modell seit 16.09.2026 (zwei Entwickler, niemand pusht auf `main`):**
+
+| Branch | Rolle | Wer pusht |
+|---|---|---|
+| `main` | Produktion (`www.empiria.de`) | niemand direkt — nur per PR aus `Daniel` |
+| `Daniel` | Entwicklung / Integration — hier landet alles, bevor es live geht | Daniel direkt, Noah per PR |
+| `Noah` | Noahs Arbeitsbranch, abgezweigt von `Daniel` | Noah |
+
+`Daniel` ist de facto der Entwicklungsbranch: Er liegt (Stand 16.09.) **28
+Commits vor `main`** — komplette Multi-Page-Erweiterung (Leistungs-/Produkt-/
+Archiv-Seiten, Dropdown-Menü, ~44 000 Zeilen in 76 Dateien). `main` hat
+umgekehrt 7 Commits (Tracking, Handoff), die `Daniel` noch fehlen.
+Eine Probe-Zusammenführung `main` → `Daniel` ist **konfliktfrei**.
+
+Ablauf:
 
 ```
-git checkout Daniel && git pull origin main   # erst main einholen
-… arbeiten …
-git push origin Daniel                        # -> Vercel baut die Preview neu
+# 1. Einmalig / regelmäßig: main in Daniel einholen (Tracking-Fixes etc.)
+git checkout Daniel && git pull && git merge origin/main && git push
+
+# 2. Noahs Branch von Daniel abzweigen
+git checkout -b Noah Daniel && git push -u origin Noah   # Vercel-Preview entsteht
+
+# 3. Während der Arbeit: Daniel regelmäßig in Noah holen (mind. wöchentlich,
+#    immer bevor styles.css oder index.html angefasst werden — das sind die
+#    Dateien, an denen beide hängen)
+git checkout Noah && git merge origin/Daniel
+
+# 4. Fertig: PR Noah -> Daniel auf GitHub (Daniel reviewt, Preview-URL steht im PR)
+# 5. Release: PR Daniel -> main, Vercel deployt nach Produktion
 ```
-Dann auf GitHub den PR öffnen (macht, wer die Änderung gebaut hat) und den
-Reviewer eintragen. Die **Vercel-GitHub-App kommentiert die Preview-URL in den
-PR** — das ist dieselbe Integration, die Build-Status als Commit-Status meldet
-(darüber wurde seinerzeit auch ein „Deployment was blocked" diagnostiziert).
-Nach dem Merge auf `main` deployt Vercel automatisch nach Produktion.
+
+Regeln, die Konflikte vermeiden:
+
+- **Kurze Zyklen.** `Noah` → `Daniel` mergen, sobald ein Stück fertig ist,
+  nicht erst nach Wochen. Je länger beide Branches getrennt laufen, desto
+  größer der Konflikt in `styles.css` (eine Datei für alles).
+- **Neue Features in eigene Dateien/Sektionen**, nicht mitten in bestehende
+  Blöcke — dann berühren sich die Änderungen nicht.
+- **Vor jedem Merge einmal die Preview anschauen** (Desktop + Mobil), nicht nur
+  auf „keine Konflikte" vertrauen: CSS überschreibt sich auch ohne Git-Konflikt.
+- `Daniel` → `main` ist die Release-Entscheidung des Kunden. Vorher: `node
+  shot.mjs` gegen die Preview, Legal-Seiten prüfen, Sitemap enthält alle
+  neuen URLs.
+
+Preview-URLs: `https://empiria-git-<branch>-empiria-gmb-h.vercel.app`
+(Branch-Name klein geschrieben, Vercel normalisiert).
 
 > **Kein technischer Schutz auf `main`:** Branch-Schutzregeln gibt es bei
 > privaten Repos im kostenlosen GitHub-Plan nicht. Mitarbeiter mit `write`
