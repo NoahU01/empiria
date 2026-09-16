@@ -2943,4 +2943,52 @@ body .produkt-faq-item p + p { padding-top: 0; margin-top: -12px; }
   .tool-dash-nav-item { width: 26px; height: 26px; }
   .tool-dash-main { padding: 20px; gap: 18px; }
   .tool-dash-line { height: 96px; }
+
+  /* ---------- Runde 2 (16.09.2026, abends) ---------- */
+  /* Startseite: Nav -> Hero-Inhalt -20 % (57 -> 46px); Pfeil kleiner, Abstand Pfeil -> Text -30 %. */
+  .hero { padding-top: 46px; }
+  .hero .hero-arrow svg { width: 52px; height: 52px; }
+  .hero .hero-copy { margin-top: -7px; }
+  /* Startseite Kontakt: Buttons -> Logos wieder +20 % (22 -> 27px). */
+  .kontakt-standalone .ks-marquee { margin-top: 27px; }
+
+  /* Leistungsseiten: Strategie-Pfeil kleiner und rechts; Kreuz/Kreis bleiben links. */
+  .leistung-hero .hero-head .hero-arrow { text-align: left; }
+  body.leistung--strategie .leistung-hero .hero-head .hero-arrow { text-align: right; }
+  .leistung-hero .hero-arrow svg { width: 52px; height: 52px; }
+  /* Hero-Unterkante -> naechstes Modul halbiert (40 -> 20px). */
+  .leistung-hero { padding-bottom: 20px; }
+
+  /* "Weitere Leistungen"-Kacheln, geoeffneter Zustand: Text und Link eine Stufe kleiner, mehr Luft oben. */
+  .related-leistung-hover { padding: 34px 24px 24px; }
+  .related-leistung-hover p { font-size: .875rem; }
+  .related-leistung-hover .link-more { font-size: .9rem; }
+
+  /* Produktseiten: Hero-Unterkante -> naechstes Modul halbiert (90 -> 45px). */
+  .produktseite .produkt-hero { padding-bottom: 45px; }
+
+  /* MES: Abstand H1 -> Text wie auf den anderen Seiten, Text eine Stufe kleiner; USP-Box-Text kleiner. */
+  body.produktseite--keep-visual .produkt-hero-image-text { margin-top: 18px; }
+  .produktseite--dashboard-digitales-marketing .produkt-hero-image-text p.lead { font-size: .9rem; }
+  .usp-highlight p:not(.usp-highlight-kicker) { font-size: .9rem; }
+
+  /* sofort sichtbar: Schrittnummern deutlich groesser; Buttons ganz unten gleich breit. */
+  .produkt-process-step .step-num { font-size: 1.5rem; }
+  .produkt-cta-actions { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+  .produkt-cta-actions .btn { width: 100%; }
+
+  /* Paid Ads: Akkordeon-Antworten eine Stufe kleiner. */
+  .pa-faq-answer p { font-size: .86rem; }
+
+  /* Praesentationsseminar: Onboarding-Punkte auf Hoehe der Titelzeile. */
+  .onboarding-step { align-items: flex-start; }
+  .onboarding-dot { margin-top: 6px; }
+
+  /* Startseite/Leistungsseiten: kleinerer Pfeil rutschte in die Marker-Zeile, Negativ-Margin abmildern. */
+  .hero .hero-arrow { margin-top: -6px; }
+  /* MES, "Alles greift ineinander": Erklaer-Buttons als kleine Pills nebeneinander. */
+  .mes-explainer-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+  body .mes-explainer-buttons .btn { font-size: .75rem; padding: .5rem .9rem; }
+  /* Sparring: Portrait mobil raus. */
+  .produkt-hero--split .produkt-hero-split-photo { display: none; }
 }
