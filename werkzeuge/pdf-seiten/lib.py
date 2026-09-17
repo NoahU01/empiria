@@ -1,0 +1,340 @@
+"""empiria PDF-Zusammenfassungen – Bausteine (hell, eine Akzentfarbe je Seite)."""
+import html as _h
+
+THEMES = {
+  "magenta":   dict(acc="#C51F5D", acc2="#7a1339", hl_bg="#C51F5D", hl_fg="#fff", tint="#fbeef3"),
+  "cyan":      dict(acc="#0B9FBD", acc2="#086a80", hl_bg="#0B9FBD", hl_fg="#fff", tint="#e9f6f9"),
+  "violet":    dict(acc="#8613A1", acc2="#5c0d70", hl_bg="#8613A1", hl_fg="#fff", tint="#f5ecf7"),
+  "green":     dict(acc="#4d7c0f", acc2="#33520a", hl_bg="#4d7c0f", hl_fg="#fff", tint="#f0f5e9"),
+  "emerald":   dict(acc="#059669", acc2="#037a54", hl_bg="#059669", hl_fg="#fff", tint="#e8f6f1"),
+  "capiamo":   dict(acc="#063755", acc2="#04263b", hl_bg="#063755", hl_fg="#fff", tint="#eaf0f4"),
+  "strategie": dict(acc="#1a1817", acc2="#2e2d2c", hl_bg="#fff400", hl_fg="#1a1817", tint="#f3f2ef",
+                    feat_bg="#fff400", feat_fg="#1a1817", num="#1a1817"),
+}
+
+ICONS = {
+ "check": '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+ "team": '<circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.4 3-5.2 6-5.2s5.4 1.8 6 5.2"/><circle cx="17" cy="9" r="2.4"/><path d="M16 13.9c2.6.2 4.4 1.8 5 4.6"/>',
+ "user": '<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.8-4 3.7-6.2 7.5-6.2s6.7 2.2 7.5 6.2"/>',
+ "tool": '<path d="M4 20l7-7"/><path d="M14.5 3.5a4.5 4.5 0 0 0-3.9 6.7L4 16.8 7.2 20l6.6-6.6a4.5 4.5 0 0 0 6.7-3.9l-2.8 2.8-3.2-.9-.9-3.2z"/>',
+ "target": '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+ "mail": '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.8 7l8.2 6 8.2-6"/>',
+ "clock": '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+ "bolt": '<path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/>',
+ "chart": '<path d="M4 20V4"/><path d="M4 20h16"/><rect x="7.5" y="12" width="3" height="5" rx=".6"/><rect x="12.5" y="8.5" width="3" height="8.5" rx=".6"/><path d="M18 6v11"/>',
+ "trend": '<path d="M3.5 17l5.5-5.5 4 4 7.5-7.5"/><path d="M15 8h5.5v5.5"/>',
+ "chat": '<path d="M4 5.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1h-9l-4.5 3.5V16H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1z"/><path d="M7.5 9.5h9M7.5 12.5h5.5"/>',
+ "chats": '<path d="M3.5 4.5h11a1 1 0 0 1 1 1v6.5a1 1 0 0 1-1 1H9l-3.5 3v-3h-2a1 1 0 0 1-1-1V5.5a1 1 0 0 1 1-1z"/><path d="M18 9h2.5a1 1 0 0 1 1 1v6.5a1 1 0 0 1-1 1h-1.5v3l-3.5-3H11a1 1 0 0 1-1-1V16"/>',
+ "layers": '<path d="M12 3.5l8.5 4.5L12 12.5 3.5 8z"/><path d="M3.5 12L12 16.5 20.5 12"/><path d="M3.5 16L12 20.5 20.5 16"/>',
+ "lock": '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
+ "eye": '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+ "compass": '<circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+ "flag": '<path d="M5 21V4"/><path d="M5 4.5h12l-2.5 4 2.5 4H5"/>',
+ "route": '<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/>',
+ "doc": '<path d="M6.5 3h8l4 4v14h-12z"/><path d="M14.5 3v4h4"/><path d="M9 12h6M9 15.5h6"/>',
+ "slides": '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20.5h8"/><path d="M7 12l3-3 2.5 2 4-4"/>',
+ "browser": '<rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 8.5h18"/><circle cx="6" cy="6.5" r=".6" fill="currentColor"/><circle cx="8" cy="6.5" r=".6" fill="currentColor"/><path d="M7 13h10M7 16h6"/>',
+ "rollup": '<rect x="7" y="3" width="10" height="15" rx="1"/><path d="M5.5 20.5h13"/><path d="M12 18v2.5"/><path d="M9.5 7h5M9.5 10h5M9.5 13h3"/>',
+ "mic": '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/>',
+ "spark": '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
+ "puzzle": '<path d="M5 8h3.2a2 2 0 1 1 3.6 0H15v3.2a2 2 0 1 1 0 3.6V18h-3.2a2 2 0 1 0-3.6 0H5v-3.2a2 2 0 1 0 0-3.6z"/>',
+ "cycle": '<path d="M19.5 12a7.5 7.5 0 0 1-13 5.1"/><path d="M4.5 12a7.5 7.5 0 0 1 13-5.1"/><path d="M17.5 3v4h-4"/><path d="M6.5 21v-4h4"/>',
+ "shield": '<path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+ "search": '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/>',
+ "phone": '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
+ "grid": '<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+ "bulb": '<path d="M9 17.5h6M10 20.5h4"/><path d="M12 3.5a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-.6c0-.8.4-1.5 1-2A6 6 0 0 0 12 3.5z"/>',
+ "handshake": '<path d="M2.5 11.5l4-4 3.5 1.5 2-1 5.5 0 4 4"/><path d="M6.5 7.5v6l5 4.5c.8.7 2 .6 2.6-.2l3.4-4.3"/><path d="M11 13.5l2 2M13 11.5l2.5 2.5"/>',
+ "megaphone": '<path d="M3.5 10v4h3l7.5 4.5v-13L6.5 10z"/><path d="M17.5 9a4 4 0 0 1 0 6"/><path d="M6.5 14l1.5 5.5h2.5L9.5 14"/>',
+ "arrow": '<path d="M4 12h15"/><path d="M13.5 6.5L19 12l-5.5 5.5"/>',
+ "star": '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+ "euro": '<path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4 10.5h9M4 13.5h9"/>',
+}
+def icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{ICONS[n]}</svg>'
+
+CSS = r"""
+@page { size: A4; margin: 0; }
+:root { --ink:#1a1817; --ink2:#2e2d2c; --g70:#58564f; --g50:#8a8783; --g30:#cfcac4; --bg:#f2f1ef;
+        --serif:"Lora",Georgia,serif; --sans:"Poppins",sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+b, strong { font-weight: 600; }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 20mm 22mm 18mm; background: #fff; }
+.page:last-child { page-break-after: auto; }
+.hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em; white-space: nowrap; }
+.head { display:flex; justify-content: space-between; align-items:center; margin-bottom: 15mm; }
+.head img { height: 6mm; }
+.page-no { font-size: 8pt; color: var(--g50); font-weight: 500; }
+.kicker { font-weight: 500; font-size: 10.5pt; color: var(--acc); margin: 0 0 2mm; }
+h1 { font-family: var(--serif); font-weight: 700; font-size: 40pt; line-height: 1.12; letter-spacing: -.01em; }
+h2 { font-family: var(--serif); font-weight: 700; font-size: 22pt; line-height: 1.22; margin: 0 0 4.5mm; max-width: 158mm; }
+h3 { font-family: var(--serif); font-weight: 700; font-size: 12pt; line-height: 1.28; }
+p.lead { font-size: 10pt; line-height: 1.72; color: var(--ink2); max-width: 152mm; }
+p.lead + p.lead { margin-top: 2.6mm; }
+.label { font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--g50); font-weight: 600; }
+.sec + .sec { margin-top: 12mm; }
+.gap { height: 10mm; }
+/* Deckblatt */
+.cover .logo { height: 10mm; }
+.cover .kicker { margin-top: 24mm; }
+.cover h1 { margin: 2mm 0 7mm; max-width: 166mm; }
+.cover .sub { font-size: 11.5pt; line-height: 1.62; color: var(--g70); max-width: 146mm; }
+.cover .sub + .sub { margin-top: 2.5mm; }
+.cover .sketch { position: absolute; left: 22mm; right: 22mm; bottom: 46mm; height: 78mm; display: flex; justify-content: center; align-items: flex-end; }
+.cover .sketch svg { height: 100%; width: auto; max-width: 100%; filter: invert(1) contrast(1.5); }
+.cover .sketch.noinv svg { filter: none; }
+.cover .facts { position: absolute; left: 22mm; right: 22mm; bottom: 20mm; display: grid; gap: 7mm; }
+.cover .facts b { display:block; font-family: var(--serif); font-weight: 700; font-size: 11pt; line-height: 1.3; margin-top: 1.5mm; }
+.cover .brandlogo { height: 9mm; margin-top: 24mm; display:block; }
+.cover .brandlogo + .kicker { margin-top: 6mm; }
+.cover .brandlogo + h1 { margin-top: 7mm; }
+.inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
+.inline-sketch svg { height:100%; width:auto; filter: invert(1) contrast(1.5); }
+/* Kacheln */
+.cards { display: grid; gap: 4.5mm; margin-top: 7mm; }
+.card { border: 0.7pt solid #e6e2de; border-radius: 4mm; padding: 5.5mm 5mm; background: #fff; }
+.card .ic { width: 7.5mm; height: 7.5mm; color: var(--acc); margin-bottom: 3.5mm; }
+.card .ic svg { width: 100%; height: 100%; }
+.card h3 { font-size: 11pt; margin-bottom: 1.8mm; }
+.card p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
+.card .num { font-family: var(--serif); font-weight: 700; font-size: 11pt; color: var(--num); display:block; margin-bottom: 2.5mm; }
+.card ul { margin-top: 2.5mm; }
+/* nummerierte Zeilen */
+.rows { margin-top: 5mm; }
+.row { display: grid; grid-template-columns: 11mm 1fr; column-gap: 3mm; padding: 3mm 0; }
+.row .n { font-family: var(--serif); font-weight: 700; font-size: 12pt; color: var(--num); line-height: 1.3; }
+.row h3 { margin-bottom: 1.2mm; }
+.row p { font-size: 9.2pt; line-height: 1.6; color: var(--g70); }
+.row .extra { margin-top: 2.5mm; }
+/* Stationen */
+.stations { position: relative; margin-top: 6mm; }
+.stations::before { content:""; position:absolute; left: 11pt; top: 16pt; bottom: 26pt; width: 0.7pt; background: var(--g30); }
+.st { position: relative; padding-left: 36pt; margin-bottom: 6.5mm; }
+.st:last-child { margin-bottom: 0; }
+.st .n { position:absolute; left: 0; top: 0; width: 22pt; height: 22pt; border-radius: 50%; background:#fff; border: 0.9pt solid var(--acc); color: var(--num); font-family: var(--serif); font-weight:700; font-size: 9pt; display:flex; align-items:center; justify-content:center; }
+.st small { display:block; font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--g50); font-weight: 600; }
+.st > b { display:block; font-family: var(--serif); font-weight: 700; font-size: 12pt; margin: .6mm 0 1mm; }
+.st p { font-size: 9.2pt; line-height: 1.6; color: var(--g70); }
+/* Listen */
+ul.dots { list-style: none; }
+ul.dots li { position: relative; padding: 1.3mm 0 1.3mm 5mm; font-size: 9.4pt; line-height: 1.5; color: var(--ink2); }
+ul.dots li::before { content:""; position:absolute; left: 0; top: 3.1mm; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--acc); }
+ul.dots.sm li { font-size: 8.6pt; padding: .9mm 0 .9mm 4.2mm; }
+ul.dots.sm li::before { top: 2.5mm; width: 1.4mm; height: 1.4mm; }
+ul.dots.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; }
+ul.checks { list-style: none; }
+ul.checks li { position: relative; padding: 1.6mm 0 1.6mm 7mm; font-size: 9.6pt; line-height: 1.5; color: var(--ink2); }
+ul.checks li svg { position: absolute; left: 0; top: 1.9mm; width: 4.4mm; height: 4.4mm; color: var(--acc); }
+ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; }
+/* Aussage */
+.statement { font-family: var(--sans); font-weight: 500; font-size: 12pt; line-height: 1.62; color: var(--ink); max-width: 152mm; }
+.quotes { margin-top: 5mm; display: grid; gap: 2.2mm; }
+.quotes span { display:block; font-weight: 500; font-size: 12pt; line-height: 1.4; color: var(--ink); padding-left: 5mm; position: relative; }
+.quotes span::before { content:""; position:absolute; left:0; top: .25em; bottom: .25em; width: 1.2mm; border-radius: 1mm; background: var(--acc); }
+/* Band (wichtigster Abschnitt) & Verlaufskasten */
+.band { background: var(--bg); border-radius: 4mm; padding: 7mm 7mm; margin-top: 8mm; }
+.band h3 { font-size: 14pt; margin-bottom: 2mm; }
+.band p { font-size: 9.4pt; line-height: 1.65; color: var(--ink2); }
+.band .kicker { font-size: 9.5pt; }
+.feat { background: var(--feat-bg); color: var(--feat-fg); border-radius: 4mm; padding: 7mm 7mm; margin-top: 8mm; }
+.feat .kicker { color: var(--feat-fg); opacity: .85; font-size: 9.5pt; }
+.feat h3 { font-size: 15pt; line-height: 1.3; margin-bottom: 2mm; color: var(--feat-fg); }
+.feat p { font-size: 9.4pt; line-height: 1.65; color: var(--feat-fg); opacity: .95; }
+/* Preise */
+.opts { display: grid; gap: 4mm; margin-top: 7mm; align-items: stretch; }
+.opt { background: var(--bg); border-radius: 3.5mm; padding: 5mm 5mm; display:flex; flex-direction: column; }
+.opt .tag { font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--g50); margin-bottom: 1.5mm; }
+.opt b { display:block; font-family: var(--serif); font-weight: 700; font-size: 12pt; }
+.opt small { display:block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); margin: 1.2mm 0 3mm; }
+.opt .price { font-family: var(--serif); font-weight: 700; font-size: 16pt; color: var(--ink); margin-top: auto; padding-top: 2mm; }
+.opt .price em { font-style: normal; font-family: var(--sans); font-weight: 500; font-size: 8pt; margin-left: 1mm; }
+.opt .pnote { font-size: 7.2pt; color: var(--g50); margin-top: .8mm; line-height: 1.4; }
+.opt ul.dots { margin-bottom: 2mm; }
+.opt ul.dots li { font-size: 8.3pt; padding: .8mm 0 .8mm 4mm; color: var(--ink2); }
+.opt ul.dots li::before { top: 2.3mm; width: 1.3mm; height: 1.3mm; }
+.opt--feat { background: var(--feat-bg); color: var(--feat-fg); }
+.opt--feat small, .opt--feat .price, .opt--feat .tag, .opt--feat ul.dots li, .opt--feat .pnote { color: var(--feat-fg); }
+.opt--feat ul.dots li::before { background: var(--feat-fg); }
+.note { font-size: 7.4pt; color: var(--g50); margin-top: 3mm; line-height: 1.5; }
+/* Fälle */
+.cases { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 10mm; margin-top: 7mm; }
+.case h3 { font-size: 10.8pt; margin-bottom: 1.5mm; }
+.case p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
+.case .ic { width: 6mm; height: 6mm; color: var(--acc); margin-bottom: 2mm; }
+.case .ic svg { width: 100%; height: 100%; }
+/* Chips */
+.chips { display:flex; flex-wrap: wrap; gap: 2.2mm; margin-top: 5mm; }
+.chips span { font-size: 8.4pt; font-weight: 500; padding: 1.4mm 3.4mm; border-radius: 10mm; background: var(--tint); color: var(--ink2); }
+/* Zweispalter */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+.two-6-4 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 10mm; align-items: start; }
+/* Kontakt */
+.contact { position: absolute; left: 22mm; right: 22mm; bottom: 30mm; }
+.contact h3 { font-family: var(--serif); font-weight: 700; font-size: 17pt; line-height: 1.22; margin: 0 0 7mm; max-width: 150mm; }
+.contact .one { display: grid; grid-template-columns: 24mm 56mm 1fr; column-gap: 7mm; align-items: center; }
+.contact .ph { width: 24mm; height: 24mm; border-radius: 50%; object-fit: cover; display: block; border: 0.6pt solid #d6d2cd; }
+.contact .name { font-family: var(--serif); font-weight: 700; font-size: 12pt; margin: 0 0 1mm; }
+.contact .role { font-size: 8.5pt; color: var(--g50); line-height: 1.5; }
+.contact dl { display: grid; grid-template-columns: 15mm 1fr; row-gap: 2mm; padding-left: 6mm; border-left: 0.7pt solid var(--acc); }
+.contact dt { font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--g50); font-weight: 600; align-self: center; }
+.contact dd { font-size: 9.5pt; color: var(--ink); margin: 0; }
+.contact .many .ppl { display: grid; column-gap: 6mm; }
+.contact .dlrow { display: flex; gap: 9mm; margin-top: 6mm; padding-left: 4mm; border-left: 0.7pt solid var(--acc); }
+.contact .dlrow > span { font-size: 9.5pt; color: var(--ink); }
+.contact .dlrow .label { margin-right: 2.5mm; }
+.contact .p { display: grid; grid-template-columns: 15mm 1fr; column-gap: 3.5mm; align-items: center; }
+.contact .p img { width: 15mm; height: 15mm; border-radius: 50%; object-fit: cover; border: 0.6pt solid #d6d2cd; display:block; }
+.contact .p .name { font-size: 10.5pt; margin: 0 0 .5mm; }
+.contact .p .role { font-size: 8pt; line-height: 1.35; }
+.footer { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #cfcecc; padding: 6mm 22mm; font-size: 9pt; }
+/* Browser-Mock */
+.bm { border: 0.8pt solid var(--g30); border-radius: 3.5mm; background: #fff; overflow: hidden; margin-top: 6mm; }
+.bm-bar { display:flex; align-items:center; gap: 1.6mm; padding: 2.6mm 4mm; background: #f6f5f3; }
+.bm-bar i { width: 2mm; height: 2mm; border-radius: 50%; background: #d9d5d0; display:block; }
+.bm-bar span { margin-left: 3mm; font-size: 7.6pt; color: var(--g50); background:#fff; border-radius: 3mm; padding: .8mm 4mm; }
+.bm-row { display:grid; grid-template-columns: 10mm 1fr 7mm; align-items:center; padding: 2.9mm 5mm; }
+.bm-row + .bm-row { border-top: 0.6pt solid #eeebe8; }
+.bm-row .n { font-family: var(--serif); font-weight: 700; font-size: 10pt; color: var(--num); }
+.bm-row span { font-size: 9.6pt; font-weight: 500; }
+.bm-row em { font-style: normal; width: 6mm; height: 6mm; border-radius: 50%; border: 0.8pt dashed var(--g50); color: var(--g50); display:flex; align-items:center; justify-content:center; font-size: 8pt; font-weight: 600; }
+/* Profil */
+.prof { display:grid; grid-template-columns: 22mm 1fr; column-gap: 5mm; }
+.prof img { width: 22mm; height: 22mm; border-radius: 50%; object-fit: cover; border: 0.6pt solid #d6d2cd; }
+.prof h3 { font-size: 11.5pt; margin-bottom: 1mm; }
+.prof small { display:block; font-size: 8pt; color: var(--g50); margin-bottom: 2mm; }
+.prof p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
+"""
+
+def esc(s): return _h.escape(s, quote=False)
+
+def build(theme, pages, title):
+    th = THEMES[theme]
+    feat_bg = th.get('feat_bg', f"linear-gradient(150deg, {th['acc']} 0%, {th['acc2']} 100%)")
+    feat_fg = th.get('feat_fg', '#fff')
+    num = th.get('num', th['acc'])
+    vars_ = (f":root{{--acc:{th['acc']};--acc2:{th['acc2']};--hl-bg:{th['hl_bg']};--hl-fg:{th['hl_fg']};"
+             f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};}}")
+    total = len(pages)
+    body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
+    return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
+            f'<link rel="stylesheet" href="assets/fonts/fonts.local.css"><style>{CSS}{vars_}</style></head><body>{body}</body></html>')
+
+FOOTER = '<div class="footer">empiria GmbH 2026</div>'
+def head(no, total): return f'<div class="head"><img src="assets/empiria-logo.svg" alt="empiria"><span class="page-no">Seite {no} / {total}</span></div>'
+
+def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False):
+    subs = subs if isinstance(subs, list) else [subs]
+    f = "".join(f'<div><span class="label">{l}</span><b>{v}</b></div>' for l, v in facts)
+    bl = f'<img class="brandlogo" src="{brandlogo}" alt="">' if brandlogo else ''
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    sk = f'<div class="sketch{" noinv" if noinv else ""}">{sketch}</div>' if sketch else ''
+    return lambda no, total: (f'<section class="page cover"><img class="logo" src="assets/empiria-logo.svg" alt="empiria">{bl}{k}'
+        f'<h1>{h1}</h1>' + "".join(f'<p class="sub">{s}</p>' for s in subs) + sk +
+        f'<div class="facts" style="grid-template-columns:repeat({len(facts)},1fr)">{f}</div></section>')
+
+def page(*content, contact_html=None):
+    def r(no, total):
+        c = contact_html or ""
+        foot = FOOTER if no == total else ""
+        return f'<section class="page">{head(no, total)}{"".join(content)}{c}{foot}</section>'
+    return r
+
+def sec(kicker, h2, *leads, style=""):
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    h = f'<h2>{h2}</h2>' if h2 else ''
+    return f'<div class="sec" style="{style}">{k}{h}' + "".join(f'<p class="lead">{l}</p>' for l in leads) + '</div>'
+
+def open_sec(style=""): return f'<div class="sec" style="{style}">'
+def close_sec(): return '</div>'
+
+def cards(items, cols=3, style="", numbered=False):
+    out = []
+    for i, it in enumerate(items):
+        ic, t, p = it[0], it[1], it[2]
+        extra = it[3] if len(it) > 3 else ""
+        top = f'<span class="num">{i+1:02d}</span>' if numbered else (f'<div class="ic">{icon(ic)}</div>' if ic else '')
+        out.append(f'<div class="card">{top}<h3>{t}</h3><p>{p}</p>{extra}</div>')
+    return f'<div class="cards" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+
+def rows(items, start=1, style=""):
+    out = []
+    for i, it in enumerate(items):
+        t, p = it[0], it[1]
+        extra = f'<div class="extra">{it[2]}</div>' if len(it) > 2 and it[2] else ""
+        out.append(f'<div class="row"><span class="n">{i+start:02d}</span><div><h3>{t}</h3><p>{p}</p>{extra}</div></div>')
+    return f'<div class="rows" style="{style}">{"".join(out)}</div>'
+
+def stations(items, style=""):
+    out = []
+    for i, it in enumerate(items):
+        small, t, p = it
+        sm = f'<small>{small}</small>' if small else ''
+        out.append(f'<div class="st"><span class="n">{i+1}</span>{sm}<b>{t}</b><p>{p}</p></div>')
+    return f'<div class="stations" style="{style}">{"".join(out)}</div>'
+
+def dots(items, cls="", style=""):
+    return f'<ul class="dots {cls}" style="{style}">' + "".join(f'<li>{x}</li>' for x in items) + '</ul>'
+
+def checks(items, cls="", style=""):
+    return f'<ul class="checks {cls}" style="{style}">' + "".join(f'<li>{icon("check")}{x}</li>' for x in items) + '</ul>'
+
+def statement(kicker, text, style=""):
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    return f'<div class="sec" style="{style}">{k}<p class="statement">{text}</p></div>'
+
+def quotes(items, style=""):
+    return f'<div class="quotes" style="{style}">' + "".join(f'<span>{x}</span>' for x in items) + '</div>'
+
+def band(kicker, h3, *ps, extra="", style=""):
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    h = f'<h3>{h3}</h3>' if h3 else ''
+    return f'<div class="band" style="{style}">{k}{h}' + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>'
+
+def feat(kicker, h3, *ps, extra="", style=""):
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    h = f'<h3>{h3}</h3>' if h3 else ''
+    return f'<div class="feat" style="{style}">{k}{h}' + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>'
+
+def opts(items, cols=None, style=""):
+    out = []
+    for it in items:
+        d = dict(it)
+        cls = "opt opt--feat" if d.get("feat") else "opt"
+        tag = f'<span class="tag">{d["tag"]}</span>' if d.get("tag") else ''
+        sm = f'<small>{d["text"]}</small>' if d.get("text") else ''
+        ul = dots(d["list"]) if d.get("list") else ''
+        pr = f'<span class="price">{d["price"]}</span>' if d.get("price") else ''
+        pn = f'<span class="pnote">{d["pnote"]}</span>' if d.get("pnote") else ''
+        out.append(f'<div class="{cls}">{tag}<b>{d["name"]}</b>{sm}{ul}{pr}{pn}</div>')
+    cols = cols or len(items)
+    return f'<div class="opts" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+
+def cases(items, style="", cols=2):
+    out = "".join(f'<div class="case">' + (f'<div class="ic">{icon(c[2])}</div>' if len(c) > 2 else '') + f'<h3>{c[0]}</h3><p>{c[1]}</p></div>' for c in items)
+    return f'<div class="cases" style="grid-template-columns:repeat({cols},1fr);{style}">{out}</div>'
+
+def chips(items, style=""):
+    return f'<div class="chips" style="{style}">' + "".join(f'<span>{x}</span>' for x in items) + '</div>'
+
+PEOPLE = {
+  "daniel": ("assets/ansprechpartner-daniel.webp", "Daniel Ströbel", "Strategiehandwerker<br>Geschäftsführer empiria GmbH"),
+  "kerstin_hr": ("assets/ansprechpartner-kerstin.webp", "Kerstin Christ", "Expertin HR &amp; Weiterbildung"),
+  "kerstin_content": ("assets/ansprechpartner-kerstin.webp", "Kerstin Christ", "Expertin Content &amp; Sichtbarkeit"),
+  "noah_ki": ("assets/ansprechpartner-noah.webp", "Noah Hermanns", "KI Native"),
+  "noah_pm": ("assets/ansprechpartner-noah.webp", "Noah Hermanns", "Experte Performance Marketing"),
+  "rick": ("assets/ansprechpartner-rick.webp", "Rick-Marcel Richter", "IT &amp; Transformation"),
+}
+DL = ('<dl><dt>E-Mail</dt><dd>daniel.stroebel@empiria.de</dd><dt>Telefon</dt><dd>+49 176 3134 7217</dd>'
+      '<dt>Web</dt><dd>www.empiria.de</dd></dl>')
+
+def contact(h3, people, kicker="Kontakt", bottom=None):
+    st = f' style="bottom:{bottom}mm"' if bottom else ''
+    if len(people) == 1:
+        img, n, r = PEOPLE[people[0]]
+        body = f'<div class="one"><img class="ph" src="{img}" alt=""><div><p class="name">{n}</p><p class="role">{r}</p></div>{DL}</div>'
+    else:
+        ps = "".join(f'<div class="p"><img src="{PEOPLE[k][0]}" alt=""><div><p class="name">{PEOPLE[k][1]}</p><p class="role">{PEOPLE[k][2].split("<br>")[0]}</p></div></div>' for k in people)
+        cols = len(people)
+        dlrow = '<div class="dlrow"><span><span class="label">E-Mail</span>daniel.stroebel@empiria.de</span><span><span class="label">Telefon</span>+49 176 3134 7217</span><span><span class="label">Web</span>www.empiria.de</span></div>'
+        body = f'<div class="many"><div class="ppl" style="grid-template-columns:repeat({cols},1fr)">{ps}</div>{dlrow}</div>'
+    return f'<div class="contact"{st}><p class="kicker">{kicker}</p><h3>{h3}</h3>{body}</div>'

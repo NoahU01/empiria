@@ -1,0 +1,37 @@
+<svg aria-label="Skizze einer Metaplanwand auf einem Stellwand-Gestell mit angepinnten Moderationskarten in Clustern" role="img" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="rgba(255,255,255,.05)" height="178.0" rx="6" stroke="rgba(255,255,255,.42)" stroke-width="1.6" width="252.0" x="54.0" y="14.0"></rect>
+<circle cx="180.0" cy="22.0" fill="rgba(255,255,255,.6)" r="3.0"></circle>
+<rect fill="rgba(255,255,255,.16)" height="26.0" rx="3" stroke="rgba(255,255,255,.5)" stroke-width="1.3" width="220.0" x="70.0" y="28.0"></rect>
+<rect fill="rgba(255,255,255,.55)" height="6.0" rx="2" width="192.0" x="84.0" y="38.0"></rect>
+<circle cx="104.0" cy="69.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="70.0" y="74.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="78.0" y="84.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="78.0" y="96.0"></rect>
+<circle cx="180.0" cy="69.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="146.0" y="74.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="154.0" y="84.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="154.0" y="96.0"></rect>
+<circle cx="256.0" cy="69.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="222.0" y="74.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="230.0" y="84.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="230.0" y="96.0"></rect>
+<circle cx="104.0" cy="123.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="70.0" y="128.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="78.0" y="138.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="78.0" y="150.0"></rect>
+<circle cx="180.0" cy="123.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="146.0" y="128.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="154.0" y="138.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="154.0" y="150.0"></rect>
+<circle cx="256.0" cy="123.0" fill="rgba(255,255,255,.55)" r="2.6"></circle>
+<rect fill="rgba(255,255,255,.09)" height="40.0" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.3" width="68.0" x="222.0" y="128.0"></rect>
+<rect fill="rgba(255,255,255,0.40)" height="5.0" rx="2" width="52.0" x="230.0" y="138.0"></rect>
+<rect fill="rgba(255,255,255,0.30)" height="5.0" rx="2" width="52.0" x="230.0" y="150.0"></rect>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="78.0" x2="52.0" y1="192.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="78.0" x2="84.0" y1="192.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="52.0" x2="84.0" y1="260.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="282.0" x2="256.0" y1="192.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="282.0" x2="288.0" y1="192.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.4)" stroke-width="1.6" x1="256.0" x2="288.0" y1="260.0" y2="260.0"></line>
+<line stroke="rgba(255,255,255,.16)" stroke-width="1.2" x1="20.0" x2="340.0" y1="268.0" y2="268.0"></line>
+</svg>

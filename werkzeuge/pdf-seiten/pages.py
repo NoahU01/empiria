@@ -1,0 +1,547 @@
+from lib import *
+import sketches as S
+
+P = {}  # slug -> (theme, title, pages)
+
+# ---------------------------------------------------------------- Strategie
+P["strategie"] = ("strategie", "Strategie in den Alltag überführen – empiria", [
+  cover("Strategiehandwerk", 'Strategie in den Alltag <span class="hl">überführen.</span>',
+        "Deine Strategie ist da – aber was bedeutet sie für Deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam im Alltag.",
+        S.strategie(),
+        [("Für wen", "Abteilungs- &amp; Bereichsleiter"), ("Fokus", "Rolle, Richtung, Handwerkszeug"), ("Begleitung", "Direkt mit Daniel"), ("Ergebnis", "Handlungsklarheit")]),
+  page(
+    sec("Das Problem", 'Strategisches Denken wird vorausgesetzt. Dir hat es aber <span class="hl">keiner beigebracht.</span>',
+        "Du bist Abteilungs- oder Bereichsleiter, weil Du fachlich überzeugt hast. Strategisches Denken stand nie auf dem Lehrplan – trotzdem wird es ab dem ersten Tag vorausgesetzt.",
+        "Was danach oft folgt, sind harte Gespräche mit dem eigenen Team. Hart, weil das Fundament fehlt: die klare Richtung, die eigene Rolle, das Handwerkszeug für den Alltag."),
+    sec("Die Lösung", 'Rolle, Richtung, Handwerkszeug <span class="hl">für Deinen Bereich.</span>',
+        "Wir arbeiten an drei Dingen, die Dir als Führungskraft Handlungsklarheit verschaffen:", style="margin-top:14mm"),
+    cards([("user", "Rolle", "Wofür stehe ich und mein Bereich?"),
+           ("eye", "Wahrnehmung", "Wie wollen wir wahrgenommen werden?"),
+           ("route", "Weg", "Wie kommen wir dort hin?")], 3),
+    statement(None, "Dazu gehört das praktische Handwerkszeug, mit dem Du als Führungskraft im Alltag <b>wirklich vorankommst.</b>", style="margin-top:10mm"),
+  ),
+  page(
+    sec("Perspektivwechsel", 'Wie sieht die Homepage <span class="hl">Deiner Abteilung</span> aus?',
+        "Ziemlich wahrscheinlich hast Du keine – die meisten haben keine. Also warum die Frage? Weil hier sofort klar wird, ob Du den Mehrwert Deines Bereichs sauber erklären kannst. Und wenn Du das nicht kannst, kann auch keiner in Deinem Team aktiv zu Deiner Strategie beitragen."),
+    '<div class="bm"><div class="bm-bar"><i></i><i></i><i></i><span>www.deine-abteilung-gmbh.de</span></div>' +
+    "".join(f'<div class="bm-row"><span class="n">{i+1:02d}</span><span>{q}</span><em>?</em></div>' for i, q in enumerate([
+        "Welche Zielgruppe sprechen wir an?", "Welches konkrete Problem lösen wir?", "Welcher Nutzen entsteht daraus?",
+        "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"])) + '</div>',
+    band("Gedankenexperiment", "Stell Dir vor, wir gründen morgen Deine Abteilung als GmbH.",
+         "Und verkaufen Eure Dienstleistungen an Deinen aktuellen Arbeitgeber. Wie sähe die Homepage aus? Auf einmal versteht jeder im Team, wofür Dein Bereich da ist und wie das Zielbild aussieht. Dann kann auch jeder aktiv dazu beitragen – <b>und Du bestimmst die Wahrnehmung Deines Bereichs.</b>"),
+  ),
+  page(
+    sec("Das Ergebnis", 'Du führst Dein Team, <span class="hl">statt es zu vertrösten.</span>',
+        "Du kannst jederzeit erklären, wofür Dein Bereich steht und wie das Zielbild aussieht. Dein Team zieht mit, weil die Richtung geklärt ist – nicht, weil Du sie ständig neu erklären musst."),
+    sec("Zusammenarbeit", 'So arbeiten wir <span class="hl">wirklich</span> zusammen.',
+        style="margin-top:12mm"),
+    rows([("Direkter Draht, klare Worte", "Du arbeitest direkt mit mir – Daniel – zusammen. Die Verantwortung bleibt durchgehend bei mir. Und ich sage, was ich denke: ehrliches, direktes Feedback, um den Fokus zu schärfen."),
+          ("Dein Einsatz entscheidet", "Eine Strategie lässt sich nicht von außen hineintragen. Wir unterstützen Dich maximal – die Umsetzung bleibt Deine Aufgabe. Plane dafür ein bis zwei Stunden pro Woche ein."),
+          ("Dranbleiben, klar planen, umsetzen", "Regelmäßig abstimmen statt punktuell, klares Vorgehen, flexibel bei Engpässen – und ab einem gewissen Punkt zählt schnelle Umsetzung mehr als eine weitere Abstimmungsschleife.")], style="margin-top:2mm"),
+    contact_html=contact("Lass uns über Deinen Bereich sprechen.", ["daniel"])),
+])
+
+# ---------------------------------------------------------------- Komplexe Themen
+P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizieren – empiria", [
+  cover("Strategiehandwerk", 'Komplexe Themen strukturieren &amp; <span class="hl">kommunizieren.</span>',
+        ["Überall dort, wo Du als Führungskraft in der Versicherungsbranche Menschen von Deinem Thema überzeugen willst, sorgen wir dafür, dass Deine Botschaft wirkt.", "<b>Klar. Fokussiert. Mit dem Ergebnis, das Du willst.</b>"],
+        S.komplexe(),
+        [("Gremien", "Vorstand &amp; Aufsichtsrat"), ("Intern", "Lenkungsausschuss &amp; Betriebsrat"), ("Vertrieb", "Tagung &amp; Kundenpitch"), ("Partner", "Rückversicherer &amp; Kooperationen")]),
+  page(
+    sec("Das Problem", 'Deine Präsentation ist vollständig. <span class="hl">Und wirkungslos.</span>', "Vor jedem wichtigen Termin derselbe Reflex:"),
+    quotes(["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"]),
+    '<div class="sec" style="margin-top:7mm"><p class="lead">Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und nicht in die Taktik, mit der Du zum Erfolg kommst.</p><p class="lead">Wer sitzt im Raum, wie gewinnst Du diese Entscheider, in welchen Schritten erreichst Du Dein Ziel? <b>Mit diesen Fragen hat sich vorher kaum jemand beschäftigt.</b></p></div>',
+    sec("Die Lösung", 'Die Präsentation ist nie das Ziel. <span class="hl">Das Ergebnis ist es.</span>',
+        "Wir sind keine Medienagentur. Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber.",
+        "Ein kurzes Briefing, ein paar gezielte Rückfragen, und Du kannst Dir sicher sein, dass es ab hier läuft.", style="margin-top:14mm"),
+  ),
+  page(
+    sec("Unser Vorgehen", "In vier Schritten zum Ergebnis."),
+    rows([("Ergebnis &amp; Zielgruppe", "Wir arbeiten heraus, welches Ergebnis Du erreichen willst, und strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt. Die zentrale Frage: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b>"),
+          ("Business Story", "Unabhängig vom Medium erstellen wir Deine Business Story – verdichtet zu einer klaren Kernbotschaft.",
+           chips(["<b>Why</b> · Warum ist das Thema für die Zielgruppe wichtig?", "<b>How</b> · Wie gehen wir grundsätzlich vor?", "<b>What next?</b> · Was muss als Nächstes passieren?"], style="margin-top:0;flex-direction:column;align-items:flex-start;gap:1.6mm")),
+          ("Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus: Präsentation, Landingpage oder Roll-up."),
+          ("Taktisches Briefing", "Dein Vorgehen unmittelbar vor, während und nach dem Termin: Einstieg, Moderation und wie Du im Raum Dein Ergebnis bekommst – als Briefing auf Basis unseres Frameworks oder als ausführliches Storyboard mit Ablauf, Zeitplan, Sprechtext und Folienvorschau.")]),
+    band("Zwischenergebnis", "Jetzt weißt Du schon, wie Du gewinnst.",
+         "Der Weg zum Ziel und Deine Business Story sind geklärt, bevor überhaupt eine Folie entsteht. An dieser Stelle hast Du absolute Handlungsklarheit. <b>Spoiler Alert:</b> Oftmals kommt etwas anderes heraus, als Du am Anfang gedacht hast."),
+  ),
+  page(
+    sec("Das Ergebnis", 'Eine Botschaft, die bleibt und Dein <span class="hl">Ziel erreicht.</span>',
+        "Du gehst bestens vorbereitet in entscheidende Termine. Deine Themen kommen dort an, wo sie ankommen müssen.",
+        "Und die richtigen Entscheidungen werden getroffen – <b>deshalb werden wir für wichtige Themen immer wieder gebucht.</b>"),
+    cards([("target", "Klares Ziel", "Du weißt, welches Ergebnis Du im Raum brauchst – und wie Du es erreichst."),
+           ("chat", "Starke Story", "Eine Business Story, die in der Welt Deines Gegenübers ankommt."),
+           ("slides", "Wirksame Medien", "Unterlagen, die Deine Story tragen – statt 40 Folien Detailwissen.")], 3, style="margin-top:9mm"),
+    contact_html=contact("Welches Thema muss als Nächstes sitzen?", ["daniel"])),
+])
+
+# ---------------------------------------------------------------- Innovation
+P["innovation"] = ("strategie", "Innovation & Geschäftsmodell neu denken – empiria", [
+  cover("Strategiehandwerk", 'Innovation &amp; Geschäftsmodell <span class="hl">neu denken.</span>',
+        "Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit Dir.",
+        S.innovation(),
+        [("Zukunft", "Des Geschäftsmodells"), ("Partner", "Kooperationen &amp; Fusionen"), ("Invest", "Beteiligungen"), ("Angebot", "Neue Zusatzservices")]),
+  page(
+    sec("Das Problem", 'Du entwickelst weiter. Bevor die Grundfrage <span class="hl">geklärt ist.</span>',
+        "Eine Idee für ein neues Geschäftsmodell oder Produkt entsteht, und sofort wird an Features, Prozessen und der Umsetzung gefeilt."),
+    quotes(["Welches Problem hat der Kunde eigentlich?", "Wie löst Du es?", "Ist er überhaupt bereit, es zu lösen?"]),
+    '<div class="sec" style="margin-top:6mm"><p class="lead">… diese Fragen bleiben unbeantwortet, während längst weitergebaut wird.</p></div>',
+    sec("Die Lösung", 'Nichts davon ist <span class="hl">in Stein gemeißelt.</span>',
+        "Wer sein Geschäftsmodell wirklich hinterfragt, stößt schnell an eine Grenze: Vieles gilt als gegeben, nur weil es schon immer so war – dabei ist es oft längst nicht mehr in Stein gemeißelt.",
+        "Genau hier gehen wir mit Dir grundlegend ran, sei es für das gesamte Unternehmen oder für einzelne Bereiche.", style="margin-top:14mm"),
+    band("Gilt als gegeben", None, extra=quotes(["„Das war schon immer so.“", "„Das ist bei uns gesetzt.“", "„Das macht man in unserer Branche nicht.“"], style="margin-top:1mm") + '<p style="margin-top:5mm;font-family:var(--serif);font-weight:700;font-size:14pt">Und was, wenn nicht?</p>'),
+  ),
+  page(
+    sec("Einsatzmöglichkeiten", "Für das gesamte Unternehmen oder für einzelne Bereiche.",
+        "Dies gilt für die Zukunft Eures Geschäftsmodells genauso wie für konkrete Fragen zu Kooperationen, Fusionen, Beteiligungen oder neuen Zusatzservices."),
+    chips(["01 · Zukunft des Geschäftsmodells", "02 · Kooperationen", "03 · Fusionen", "04 · Beteiligungen", "05 · Neue Zusatzservices"], style="margin-top:6mm"),
+    sec("Unsere Methoden", "Methoden schaffen Erkenntnis. Nicht umgekehrt.",
+        "Wir bringen eigene Methoden und Frameworks mit und helfen Dir, Dich von alten Denkmustern zu lösen. Dabei nutzen wir Methoden, um Erkenntnisse zu schaffen – wir wenden sie nicht unreflektiert an.", style="margin-top:12mm"),
+    feat("Ein bewährter Ansatz", "Wir denken mit Dir so, als würdet Ihr Euer Thema morgen als eigenes Unternehmen neu gründen – ganz ohne Altlasten."),
+    contact_html=None),
+  page(
+    sec("Das Ergebnis", 'Du weißt, ob die Idee <span class="hl">trägt.</span>',
+        "Du verstehst, worauf es in Eurem Geschäftsmodell wirklich ankommt – heute und in Zukunft. Ihr trefft Entscheidungen zu Innovation, Kooperationen oder Investitionen mit echter Substanz dahinter.",
+        "<b>Und Ihr traut Euch, auch mal ganz neu zu denken.</b>"),
+    cards([("search", "Grundfragen geklärt", "Kundenproblem, Lösung und Zahlungsbereitschaft – bevor weitergebaut wird."),
+           ("puzzle", "Altlasten hinterfragt", "Was wirklich gesetzt ist und was nur so aussieht."),
+           ("compass", "Klare Entscheidungen", "Mit Substanz für Innovation, Kooperation oder Investition.")], 3, style="margin-top:9mm"),
+    contact_html=contact("Welche Idee soll auf den Prüfstand?", ["daniel"])),
+])
+
+# ---------------------------------------------------------------- KI zum Anfassen
+P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
+  cover("KI zum Anfassen", 'Deine KI. <span class="hl">Zum Anfassen.</span> Volle Wirkung.',
+        "Über KI wird geredet – oft von Menschen, die sie selbst noch nie genutzt haben. Wir gehen direkt in die Anwendung, testen verschiedene KI-Tools an echten Fällen aus Eurem Alltag und sorgen für Erkenntnisse, die sofort etwas bringen.",
+        S.load("ki-zum-anfassen"),
+        [("Format", "½ bis 2 Tage"), ("Tools", "ChatGPT, Claude, Gemini &amp; mehr"), ("Fokus", "Echte Usecases"), ("Investition", "ab 2.500 €")]),
+  page(
+    sec("Das bekommst Du", "Anwendung statt Vortrag.", "Wir reden nicht über KI – wir nutzen sie, gemeinsam mit Dir und Deinem Team."),
+    cards([("bolt", "Direkt in die Anwendung", "Kein weiterer Arbeitskreis, keine Theorie – wir starten sofort, mit direktem Mehrwert."),
+           ("layers", "Tools im Vergleich", "Mehrere KI-Tools gleichzeitig – live erleben, wie unterschiedlich sie denken und liefern."),
+           ("target", "Echte Usecases", "Anwendungsfälle, die für Versicherer wirklich relevant sind – mit verwertbaren Erkenntnissen.")], 3),
+    chips(["ChatGPT", "Claude", "Perplexity", "Gemini", "NotebookLM", "Nano Banana"], style="margin-top:5mm"),
+    sec("Formate", 'Drei Formate <span class="hl">für jeden Anspruch.</span>', style="margin-top:11mm"),
+    opts([dict(tag="½ Tag", name="KI-Einstieg", text="KI-Tools ausprobieren und erste eigene Erfahrungen sammeln.", list=["Ohne Vorkenntnisse startklar", "Verschiedene KI-Tools ausprobieren"], price="2.500 €"),
+          dict(tag="1 Tag · meistgewählt", name="KI-Sprint", text="Tools kennenlernen und eine kompakte Fragestellung bearbeiten.", list=["Kompakter Anwendungsfall", "Fragestellung des Unternehmens", "Abschlussbesprechung zum Vorgehen"], price="3.900 €", feat=True),
+          dict(tag="2 Tage", name="KI-Deep-Dive", text="Direkter Einstieg in einen konkreten Usecase Eures Unternehmens.", list=["Konkreter Usecase", "Bearbeitung im Team", "Abschlussbesprechung zum Vorgehen"], price="7.350 €")]),
+    '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen – inklusive Vorbereitung und Dokumentation der Ergebnisse.</p>',
+  ),
+  page(
+    sec("Beispiele", "Konkrete Use Cases aus der Praxis.", "Eine Auswahl der Themen, die wir mit unseren Kunden bereits umsetzen durften."),
+    cases([("Sparring zu Zielgruppen", "Produktentwicklung und Marketing nutzen KI als Sparringspartner für Zielgruppenprofile im Versicherungsvertrieb – inklusive passender Ansprache.", "team"),
+           ("Generierung von Produktideen", "Auftrag vom Vorstand: eingefahrene Denkmuster aufbrechen, einen Impuls setzen und die Diskussion im Team neu in Gang bringen.", "bulb"),
+           ("KI im Führungsalltag", "Wie Führungskräfte schnell und schlagkräftig mit KI agieren – Tools, Alltagstipps und Sparring, ganz ohne Unternehmensdetails.", "user"),
+           ("Ideen für Marketingkampagnen", "Auf der grünen Wiese ausprobieren, was KI heute wirklich kann – mit konkreten Impulsen für die Arbeit im eigenen Haus.", "megaphone"),
+           ("Content für Social Media", "Text und Grafik live erstellt – am Ende stand eine Entscheidungsvorlage, welche Tools das Team im Alltag wirklich braucht.", "phone"),
+           ("HTML-Seiten für Homepage &amp; Intranet", "Wie sich Seiten mit KI am geschicktesten entwickeln lassen – inklusive Automatisierungen, Agents und Tool-Stärken.", "browser")]),
+    contact_html=contact("Bereit, KI wirklich anzufassen?", ["daniel", "noah_ki"])),
+])
+
+# ---------------------------------------------------------------- Sprint Landingpage
+P["sprint-landingpage"] = ("magenta", "Sprint Landingpage – empiria", [
+  cover("Sprint Landingpage", 'Live in nur 48 Stunden. Sauber gebaut, <span class="hl">volle Wirkung.</span>',
+        "Wenn es schnell gehen muss: In nur 48 Stunden entwickeln wir Deine fokussierte Landingpage – ohne Abstriche bei Qualität, Layout und Wirkung.",
+        S.sprint(),
+        [("Tempo", "Live in 48 Stunden"), ("Umfang", "Fix &amp; fokussiert"), ("Technik", "Mobile-First"), ("Investition", "15.850 €")]),
+  page(
+    sec("Erfolgsfaktor", 'So funktioniert Deine Landingpage <span class="hl">optimal.</span>',
+        "Eine Homepage ist oft ein Sammelsurium an Themen – zum Unternehmen, zum Team, zu Produkten. Besucher müssen sich zurechtfinden und selbst suchen, was sie wollen.",
+        "Eine Landingpage funktioniert anders: Sie richtet sich an eine klar definierte Zielgruppe und löst genau ein zentrales Problem – mit vertrieblichem Ziel. Schon im Header muss die Zielgruppe spüren: <b>Hier bin ich richtig.</b>"),
+    checks(["Eine Zielgruppe, ein Problem, eine Lösung – keine Ablenkung durch andere Themen",
+            "Visualisierung, Ansprache und Argumente exakt auf diese Zielgruppe zugeschnitten",
+            "Nie der Anspruch, alles zu erklären – immer der Fokus auf den nächsten Schritt",
+            "Ein klares Ziel: Kontaktdaten, Webinar-Anmeldung oder Download mit echtem Mehrwert"], style="margin-top:5mm"),
+    sec("Das Versprechen", "Tempo ohne Kompromisse.", style="margin-top:12mm"),
+    cards([("clock", "Schneller Start", "Kein monatelanger Prozess – wir starten in den Sprint, sobald der Rahmen steht."),
+           ("grid", "Fokussierter Umfang", "Ein klar begrenztes Set an Inhalten und Elementen, damit der Sprint hält, was er verspricht."),
+           ("check", "Ohne Kompromisse", "Trotz Tempo: sauber gebaut, mobil optimiert und technisch startklar.")], 3, style="margin-top:5mm"),
+  ),
+  page(
+    sec("Ablauf", 'Drei Schritte zur <span class="hl">fertigen Landingpage.</span>', "So läuft der Sprint konkret ab – von der Vorbereitung bis zum Go-live."),
+    stations([("2–3 Std. · online", "Onboarding", "Wir klären Zielgruppe, Problem und Ziel – damit der Sprint vom ersten Moment an sitzt."),
+              ("2 Tage · Präsenz", "Sprint-Workshop", "<b>Tag 1:</b> Sparring &amp; parallele Entwicklung der Rohversion. <b>Tag 2:</b> Vorstellung, Feedback, Feinschliff &amp; Go-live."),
+              ("Im Nachgang", "Review", "Kurzes Fazit: Hat alles gepasst, wie war das Feedback – und wo gibt es noch gezielten Anpassungsbedarf?")]),
+    sec("Investition", "Ein Paket, ein Preis.", style="margin-top:11mm"),
+    '<div class="two-6-4" style="margin-top:6mm;align-items:stretch">' +
+      '<div class="band" style="margin-top:0;padding:6mm"><p class="kicker">Dein Leistungspaket</p>' + checks(["Konzeption, Text &amp; Design der Landingpage", "Umsetzung im Sprint-Workshop bei Dir vor Ort", "Feedbackrunde &amp; Feinschliff im Workshop", "Live-Schaltung direkt im Anschluss", "Review im Nachgang", "Durchgeführt von 2 Beraterinnen und Beratern"]) + '</div>' +
+      '<div class="feat" style="margin-top:0;display:flex;flex-direction:column;justify-content:space-between"><div><p class="kicker">Investition</p><h3 style="font-size:28pt;margin-top:2mm">15.850 €</h3></div><p>Ein Paket, ein Preis – ohne versteckte Zusatzkosten.</p></div>' +
+    '</div>',
+    '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe sowie zzgl. Spesen (Anfahrt und zwei Übernachtungen für je zwei Personen).</p>',
+  ),
+  page(
+    sec("Anwendungsfälle", 'So setzen Unternehmen <span class="hl">den Sprint ein.</span>'),
+    cases([("Dynamik im Kreativworkshop", "Direkt weitermachen, statt Ergebnisse im Nachgang untergehen zu lassen.", "bolt"),
+           ("Auf den Vertrieb reagieren", "Marktchance nutzen oder kurzfristig einen Push setzen – etwa im Endjahresgeschäft.", "trend"),
+           ("Eine Situation retten", "Messe, Event oder Produktlaunch steht an – und etwas wurde schlicht vergessen.", "shield"),
+           ("Zum Wachrütteln", "Wenn Diskussionen sich ziehen: Der Sprint beweist, dass es schnell und professionell geht.", "spark"),
+           ("Methodiktraining im Marketing", "Eine schlagkräftige Methodik kennenlernen und fürs eigene Team nutzbar machen.", "tool"),
+           ("Kunden &amp; Partner begeistern", "In kürzester Zeit eine einsetzbare Lösung – etwa für Makler, Bank- oder Kooperationspartner.", "handshake")]),
+    contact_html=contact("Deine Landingpage in 48 Stunden?", ["daniel", "noah_pm"])),
+])
+
+P["workshop-moderation"] = ("magenta", "Moderation Deines Workshops – empiria", [
+  cover("Moderation Deines Workshops", 'Dein Workshop. Souverän moderiert. <span class="hl">Volle Wirkung.</span>',
+        "Wir aktivieren die Beteiligten gezielt, wechseln bewusst die Perspektive und führen alles so strukturiert zusammen, dass Handlungsklarheit entsteht – mit Ergebnissen, mit denen sich direkt weiterarbeiten lässt.",
+        S.load("workshop-moderation"),
+        [("Themen", "Strukturen, Prozesse &amp; Rollen"), ("Formate", "Kreativ- &amp; Vertriebsworkshops"), ("Ergebnis", "Handlungsklarheit")]),
+  page(
+    sec("Moderation", 'Erfahrung aus <span class="hl">unzähligen Workshops.</span>',
+        "Egal ob Strukturen, Prozesse und Rollen oder Kreativworkshops, Vertriebsansätze und mehr – wir bringen Deinen Workshop sicher ans Ziel."),
+    cards([("chats", "Gute Stimmung", "Eine Atmosphäre, in der offen gesprochen wird – die Voraussetzung für jedes gute Ergebnis."),
+           ("route", "Workshops, die funktionieren", "Klare Steuerung durch den Tag, damit Energie und Zeit dort ankommen, wo sie etwas bringen."),
+           ("grid", "Klare Strukturen", "Wir ordnen Diskussionen, statt sie laufen zu lassen – am Ende steht Struktur, keine losen Enden."),
+           ("target", "Ergebnisse, die tragen", "Ergebnisse, mit denen Dein Team direkt weiterarbeiten kann – nicht nur ein Protokoll zum Ablegen."),
+           ("layers", "Hohe Methodenvielfalt", "Von Kreativformaten bis zur klaren Entscheidungsrunde – die Methode, die zum Thema passt."),
+           ("slides", "Top Visualisierungen", "Ergebnisse werden sichtbar festgehalten statt nur besprochen – und sauber zusammengefasst.")], 3),
+    feat(None, "Wir aktivieren. Wir wechseln die Perspektive. Wir führen zusammen.", "Genau so entsteht Handlungsklarheit – statt einer weiteren Runde, in der alle reden und nichts passiert.", style="margin-top:10mm"),
+  ),
+  page(
+    sec("Beispiele", "Konkrete Usecases aus der Praxis.", "Ein Ausschnitt möglicher Workshopmoderationen – so vielfältig wie die Themen, die uns Teams mitbringen."),
+    rows([("Restrukturierung mit geteilter Führung", "Neue Rollen bis hin zu einer geteilten Führungsrolle: Der Workshop hat Rollen, Prozesse und Zuständigkeiten so konkret gemacht, dass sie sich direkt in den Alltag übertragen ließen."),
+          ("Klarheit nach zwei Strategieworkshops", "Jede Menge Themen gesammelt, aber kein klarer Weg nach vorn: Der Workshop brachte klare Schwerpunkte, klare Priorität und ein klares weiteres Vorgehen."),
+          ("Einarbeitung einer neu geschaffenen Rolle", "Über mehrere Sequenzen wurde die neue Rolle ins Gesamtgefüge integriert und an den Schnittstellen geschärft – mit konkreten Methoden für den Alltag."),
+          ("Neustart nach Führungswechsel", "Erst Vertrauen über mehrere Ebenen, dann Inhalte: Am Ende stand eine Abteilung, die schlagkräftiger in die Zukunft startete als zuvor.")]),
+    contact_html=contact("Welcher Workshop soll wirklich etwas bewegen?", ["daniel", "kerstin_hr"])),
+])
+
+# ---------------------------------------------------------------- Marketing
+P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
+  cover("Marketing 2.0", 'Marketing für Versicherer <span class="hl">anders gedacht.</span>',
+        ["Wir sind keine klassische Medienagentur. Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber."],
+        S.load("marketing"),
+        [("Lösung 01", "MarketingEcoSystem"), ("Lösung 02", "sofort sichtbar"), ("Lösung 03", "Paid Ads"), ("Lösung 04", "Medien")]),
+  page(
+    sec("Unser Ansatz", 'Marketing, das Deine Strategie <span class="hl">zum Erfolg führt.</span>',
+        "Unsere langjährige Projekterfahrung und unsere tiefe Kenntnis von Geschäftsmodell, Strategie und Zielgruppen eines Versicherers fließen in jedes Projekt ein. Das macht uns von der ersten Minute an schnell und schlagkräftig."),
+    cards([("grid", "Komplett oder einzeln", "Buche uns als klar definierte Marketingabteilung – oder hol Dir gezielt einzelne Medien dazu."),
+           ("target", "Auf den Punkt gebracht", "Wir bringen komplexe Themen auf den Punkt und übersetzen sie in die Welt Deiner Zielgruppe."),
+           ("check", "Professionell umgesetzt", "Erst wenn die Botschaft sitzt, folgt die Umsetzung – damit sie im entscheidenden Moment wirkt.")], 3),
+    band("Der Unterschied", "Ein kurzes Briefing, ein paar gezielte Rückfragen – und es läuft.",
+         "Ob als komplette Marketingabteilung im Abo oder bei einzelnen Medien: Du musst uns nicht erklären, wie Versicherung funktioniert. <b>Du kannst Dir sicher sein, dass es ab hier läuft.</b>", style="margin-top:11mm"),
+  ),
+  page(
+    sec("Unsere Lösungen", "Vier Wege. Ein Ergebnis: Sichtbarkeit, die verkauft.", "Ob als Gesamtpaket oder einzeln buchbar – Du wählst, wir liefern professionell."),
+    rows([("MarketingEcoSystem (MES)", "Homepage, Kanäle und Dashboard aus einer Hand – alles greift ineinander, Du musst uns nicht briefen."),
+          ("sofort sichtbar", "Digitale Sichtbarkeit für Agenturleiterinnen und Agenturleiter – ohne Briefing, mit fertigem Auftritt."),
+          ("Paid Ads", "Kampagnen auf Google, Meta und LinkedIn, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox."),
+          ("Medien, die Ergebnisse liefern", "PowerPoint, Landingpage und Roll-up aus einer Hand – professionell umgesetzt, damit Deine Botschaft trägt.")]),
+    contact_html=contact("Welcher Weg passt zu Deinem Marketing?", ["daniel", "kerstin_content", "noah_pm"])),
+])
+
+# ---------------------------------------------------------------- MES
+P["dashboard-digitales-marketing"] = ("cyan", "MarketingEcoSystem (MES) – empiria", [
+  cover("MarketingEcoSystem (MES)", 'Du konzentrierst Dich nicht auf Marketing, sondern auf <span class="hl">Dein Business.</span>',
+        "Unser MarketingEcoSystem führt Homepage, digitale Kanäle und zentrales Dashboard an einem Ort zusammen – inklusive laufender Schwachstellenanalyse und direkter Optimierung.",
+        S.mes(),
+        [("Für wen", "Versicherer &amp; Makler"), ("Überblick", "Alle Kanäle auf einen Blick"), ("Analyse", "Schwachstellen inkl. Lösung"), ("Daten", "DSGVO-konform")]),
+  page(
+    sec("Echter Nutzen statt Pseudo-Reporting", 'Kein Kennzahlenfriedhof. <span class="hl">Ein Ökosystem, das lebt.</span>',
+        "Alle Kanäle laufen an einem Ort zusammen – bewertet statt nur gemacht, mit Lösung statt nur Problem."),
+    cards([("puzzle", "Kanäle greifen ineinander", "Homepage, Social Media und Content sind kein Nebeneinander einzelner Aktionen mehr – sondern Dein MES: Google Ads, Meta, Website und mehr an einem Ort."),
+           ("eye", "Kein Blindflug mehr", "Dein Marketing wird laufend geprüft – Schwachstellen fallen auf, bevor sie zum Problem werden, inklusive konkretem Lösungsvorschlag."),
+           ("bolt", "Zurück in die Umsetzung", "Wir sehen, ob etwas funktioniert, wissen, warum wir anpassen – und setzen die nächste Optimierung direkt um, ohne Extra-Auftrag.")], 3),
+    band("Der Unterschied zur Agentur", "Du musst uns nicht briefen.",
+         "Bei einer Agentur liegt die Überlegung zu Markterfolg und Marketingstrategie bei Dir – Du musst briefen und sagen, was zu tun ist. Bei uns nicht: Wir holen die wichtigsten Informationen mit wenigen gezielten Fragen ab und <b>sorgen für die permanente Umsetzung.</b>", style="margin-top:11mm"),
+  ),
+  page(
+    sec("MarketingEcoSystem (MES)", "Alles greift ineinander.",
+        "Landingpage, Social-Media-Kanäle und Dashboard greifen ineinander: Kanäle bringen Besucher auf die Landingpage, das Dashboard führt alle Informationen zusammen, trackt die Entwicklung und gibt Optimierungsempfehlungen zurück in die Kanäle."),
+    stations([("Konzeption &amp; Umsetzung", "Landingpage &amp; Kanäle", "Homepage, LinkedIn, Facebook und Instagram – mit Content-Kalender, Postings und Umsetzung aus einer Hand."),
+              ("Tracking &amp; Analyse", "Zentrales Dashboard", "Alle Daten an einem Ort, laufend bewertet – mit klaren Hinweisen, wo es hakt und warum."),
+              ("Ableitung des nächsten Schritts", "Optimierung", "Die Empfehlungen fließen direkt zurück in die Kanäle. So bleibt Dein MES in einem fortlaufenden Kreislauf immer aktuell.")], style="margin-top:8mm"),
+    '<div class="inline-sketch">' + S.mes() + '</div>',
+  ),
+  page(
+    sec("Pakete", 'Drei Wege, <span class="hl">uns zu buchen.</span>', "Vom Dashboard in Eigenregie bis zur vollständigen Betreuung – wähle den Umfang, der wirklich zu Deinem Business passt."),
+    opts([dict(name="Eigenregie", text="Wenn Du das Ecosystem nutzen, die Umsetzung aber in der Hand behalten willst.", list=["Anbindung an Dashboard &amp; Reporting", "Regelmäßiges Reporting zu Optimierungen", "Mindestlaufzeit drei Monate zzgl. Setup"], price="ab 399 €<em>mtl.</em>"),
+          dict(tag="Meistgewählt", name="Marketing as a Service", text="Für alle, die ihr Marketing nicht mehr selbst stemmen, sondern uns anvertrauen wollen.", list=["Homepage betreut &amp; optimiert", "LinkedIn, Facebook, Instagram", "Content-Kalender &amp; Postings", "Monatlicher Austausch, wöchentliches Reporting"], price="ab 3.500 €<em>mtl.</em>", pnote="Mindestlaufzeit zwölf Monate, kein Setup", feat=True),
+          dict(name="Unternehmertum", text="Wenn Du mit einem erfahrenen Partner wachsen und den Markt erobern willst.", list=["Teil des Teams statt Dienstleister", "Beteiligung am Erfolg statt Honorar", "Langfristig und auf Augenhöhe"], price="Auf Anfrage")]),
+    '<p class="note">Der Preis richtet sich nach dem vereinbarten Umfang. Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>',
+    contact_html=contact("Dein Marketing als lebendes Ökosystem?", ["daniel", "kerstin_content", "noah_pm"], bottom=26)),
+])
+
+# ---------------------------------------------------------------- sofort sichtbar
+P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
+  cover(None, 'Digital sichtbar. <span class="hl">Ohne Briefing.</span> Sofort einsatzbereit.',
+        "Ein fertiges System aus Postings, Landingpage und E-Mail-Funnel für Agenturleiter und Makler, die am Vertriebserfolg gemessen werden und für Marketing weder Zeit noch Nerven übrig haben.",
+        S.sofort(),
+        [("Start", "Ohne Briefing"), ("Auswahl", "20 Zielgruppenprofile"), ("Paket", "Alles in einem"), ("Auftritt", "In Deinem Design")],
+        brandlogo="assets/sofort-sichtbar-logo-violet.svg"),
+  page(
+    sec("Was sofort sichtbar mitbringt", 'Fertig gedacht, <span class="hl">nicht nur fertig gebaut.</span>', "Alles in einem Paket – abgestimmt auf Deine Vertriebsschwerpunkte."),
+    cards([("phone", "Social Media Postings", "Fertige Postings, genau auf Deine Zielgruppe abgestimmt – sofort einsetzbar, ohne eigene Content-Produktion."),
+           ("mail", "E-Mail-Funnel", "Aktiviert Deine Bestandskunden und leitet sie auf die passende, zielgruppenspezifische Landingpage weiter."),
+           ("browser", "Passende Landingpages", "Mit Download-Dokument, integrierter Podcast-Folge und optimierten Kontaktdaten – fertig für jeden Anlass.")], 3),
+    feat("Individualisierung", "Alles in Deinem Corporate Design.", "Logo, Bilder, Kontaktdaten und Farbwelt werden eingebunden, damit alles aussieht, als wäre es für Deine Agentur gebaut.", style="margin-top:9mm"),
+    sec("Häufige Fragen", "Was Agenturleiter uns am häufigsten fragen.", style="margin-top:11mm"),
+    cases([("Mehrere Zielgruppen gleichzeitig?", "Ja – parallel buchbar oder eine Lizenz im Jahresverlauf für wechselnde Zielgruppen nutzen."),
+           ("Wofür kann ich es einsetzen?", "Neukundengewinnung, Bestandskundenaktivierung und im Beratungsalltag vor und nach Terminen."),
+           ("Kommen Anfragen DSGVO-konform an?", "Direkt bei Dir – ohne Umweg über uns, Landingpages auf Servern in der EU."),
+           ("Wie hoch ist mein Zeitaufwand?", "Sehr gering: Wir übernehmen die Technik, Du postest und führst Kundengespräche.")], style="gap:5mm 10mm;margin-top:6mm"),
+  ),
+  page(
+    sec("Preise", 'Die passenden Pakete für <span class="hl">Deinen Vertriebsfokus.</span>', "Monatlich buchbar, mit Rabatt bei jährlicher Zahlung – jede Vertriebsstrecke mit einer Mindestlaufzeit von drei Monaten."),
+    opts([dict(name="Fokus", text="Eine klar definierte Zielgruppe ganzjährig erreichen.", list=["1 digitale Vertriebsstrecke", "Individualisierungspaket", "Contentplan für Social Media"], price="349 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 435 € monatlich"),
+          dict(tag="Beliebt", name="Reichweite", text="Kontakte aus mehreren Zielgruppen gewinnen – ohne eigenen Aufwand.", list=["3 digitale Vertriebsstrecken", "Erweiterte Individualisierung", "Performance-Reporting"], price="499 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 625 € monatlich", feat=True),
+          dict(name="Marktposition", text="Berater positionieren, Stärken zeigen, planbare Neukontakte.", list=["10 digitale Vertriebsstrecken", "Automatisierung der Postings", "Regelmäßige 1:1-Beratung"], price="999 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 1.250 € monatlich")]),
+    '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>',
+    sec("Ablauf", "Monate werden zu Tagen.", style="margin-top:11mm"),
+    cards([("", "Auftragsklärung", "Kurz Deinen Vertriebsfokus klären – ohne wochenlange Konzeptphase."),
+           ("", "Zielgruppen wählen", "Aus vorbereiteten Profilen die passenden auswählen."),
+           ("", "Stil festlegen", "Stil wählen, Design einbringen: Logo, Bilder, Farbwelt."),
+           ("", "Live gehen", "Postings, Landingpage und Funnel gehen live.")], 4, style="gap:3.5mm;margin-top:6mm", numbered=True),
+  ),
+  page(
+    sec("Dein Start", 'Mehr Zeit <span class="hl">für Kundengespräche.</span>',
+        "Du wählst Zielgruppen und Stil, wir kümmern uns um den Rest. Nach der Einrichtung übernehmen wir den technischen Teil – Du investierst Deine Zeit nur ins Posten der Inhalte und in Deine eigentlichen Kundengespräche."),
+    band("Der Vergleich", "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat.", extra=
+      '<p class="label" style="margin-top:4mm;margin-bottom:1.5mm">Klassische Agentur</p>' + chips(["Auftragsklärung", "Konzeption", "Umsetzung", "Optimierung"], style="margin-top:0") +
+      '<p class="label" style="margin-top:4mm;margin-bottom:1.5mm;color:var(--acc)">sofort sichtbar</p>' + chips(["Auftragsklärung", "Mehr Zeit für Kundengespräche"], style="margin-top:0"), style="margin-top:9mm"),
+    checks(["Individuelle Landingpages mit Deinem Logo, Deinen Bildern und Kontaktdaten",
+            "Mindestlaufzeit drei Monate je Vertriebsstrecke – danach verlängern, wechseln oder kündigen",
+            "Für eine komplett individuelle Lösung sprechen wir gerne separat"], style="margin-top:6mm"),
+    contact_html=contact("Bereit, sofort sichtbar zu werden?", ["daniel", "kerstin_content", "noah_pm"])),
+])
+
+# ---------------------------------------------------------------- Paid Ads
+P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
+  cover("Performance Marketing", 'Google, Meta &amp; LinkedIn Ads <span class="hl">für Deine Zielgruppe.</span>',
+        "Auf dem passenden Kanal erreichen wir genau die Menschen, die zu Deiner Branche und Deinem Angebot passen. Du weißt bei jedem Euro, wohin er fließt und was er auslöst.",
+        S.paid_ads(),
+        [("Suche", "Google Ads"), ("Social", "Meta Ads"), ("B2B", "LinkedIn Ads"), ("Start", "Kostenloser Potentialcheck")]),
+  page(
+    sec("Leistungen", 'Der richtige Kanal <span class="hl">für Deine Zielgruppe.</span>', "Wir übernehmen Strategie, Setup und laufende Optimierung. Du konzentrierst Dich auf Dein Unternehmen."),
+    cards([("search", "Google Ads", "Deine Anzeige erscheint genau dann, wenn jemand aktiv nach Deiner Lösung sucht. Aus Suchanfragen werden Anfragen, aus Klicks werden Termine."),
+           ("phone", "Meta Ads", "Facebook und Instagram erreichen Deine Zielgruppe im Alltag, bevor sie aktiv sucht. Wir testen Motive, finden die Gewinner und skalieren sie."),
+           ("team", "LinkedIn Ads", "Entscheider nach Branche, Position und Unternehmensgröße ansprechen: die Menschen, die im B2B unterschreiben.")], 3),
+    sec("Ablauf", "Vier Schritte zu planbarem Ergebnis.", "So wird aus Deinem Budget ein nachvollziehbares Ergebnis.", style="margin-top:13mm"),
+    stations([("", "Analyse &amp; Strategie", "Wir prüfen Dein bestehendes Konto oder starten bei null. Ziel, Zielgruppe und Budget stehen fest, bevor der erste Euro läuft."),
+              ("", "Setup &amp; Start", "Kampagnen, Tracking und Anzeigen werden sauber aufgebaut und gehen live. Ab dem ersten Tag misst jedes Ergebnis."),
+              ("", "Optimierung", "Wir werten Deine Anzeigen laufend aus und optimieren sie: Was funktioniert, bekommt mehr Budget."),
+              ("", "Reporting &amp; Skalierung", "Du siehst jeden Monat, wohin jeder Euro geflossen ist und was er gebracht hat. Ausgebaut wird dort, wo die Zahlen es rechtfertigen.")], style="margin-top:6mm"),
+  ),
+  page(
+    feat("Kostenloser Potentialcheck", "Wie viel Potential steckt in Deinem Produkt?",
+         "Schick uns Deine Website. Noch diese Woche bekommst Du unsere Potentialanalyse für Dein Unternehmen und Deine Performance Ads – kein Spam, keine Verpflichtung.", style="margin-top:0"),
+    sec("Häufige Fragen", "Kurz beantwortet.", style="margin-top:12mm"),
+    cases([("Was brauche ich, um zu starten?", "Zugriff auf bestehende Konten, falls vorhanden, und Klarheit über Budget und Ziel. Den Rest klären wir im Auftakt."),
+           ("Wann sehe ich erste Ergebnisse?", "Erste Daten meist nach wenigen Wochen. Belastbare Aussagen brauchen etwas mehr Zeit, damit Kampagnen lernen."),
+           ("Welche Plattformen betreut ihr?", "Google, Meta und LinkedIn – der richtige Start hängt von Zielgruppe und Angebot ab, nicht vom Trend."),
+           ("Gibt es Mindestlaufzeiten?", "Ja, mindestens drei Monate für belastbare Daten. Danach läuft die Zusammenarbeit monatlich weiter."),
+           ("Woher weiß ich, wie gut es läuft?", "Voller Zugriff auf Dein Konto und jeden Monat eine klare Auswertung: Was hat jeder Euro gebracht?")], style="gap:5.5mm 10mm;margin-top:6mm"),
+    contact_html=contact("Welcher Kanal bringt Dir Anfragen?", ["daniel", "kerstin_content", "noah_pm"])),
+])
+
+# ---------------------------------------------------------------- Medien
+P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
+  cover("Medien, die Ergebnisse liefern", 'Deine Botschaft. <span class="hl">Auf den Punkt.</span> Volle Wirkung.',
+        "Wir sind keine typische Medienagentur. Wir sind Profis in den Themen Geschäftsmodell Versicherung, Strategie und Kommunikation – und übersetzen Deine Themen in die Welt Deiner Zielgruppe.",
+        S.medien(),
+        [("Medium 01", "PowerPoint"), ("Medium 02", "Landingpage"), ("Medium 03", "Roll-up")]),
+  page(
+    sec("Unser Ansatz", 'Keine Medienagentur, sondern <span class="hl">Profis für Wirkung.</span>', "Bevor ein einziges Medium entsteht, verstehen wir Dein Geschäftsmodell, Deine Strategie und Deine Zielgruppe."),
+    cards([("compass", "Geschäftsmodell &amp; Strategie", "Wir verstehen, wie Dein Geschäftsmodell funktioniert und wohin Deine Strategie steuert – bevor wir über Medien sprechen."),
+           ("target", "Auf den Punkt gebracht", "Wir übersetzen komplexe Themen in die Welt Deiner Zielgruppe – der entscheidende Erfolgsfaktor, damit Kommunikation ankommt."),
+           ("check", "Professionelle Medien", "Erst wenn die Botschaft sitzt, folgt die Umsetzung – professionell gebaut, damit sie im entscheidenden Moment wirkt.")], 3),
+    sec("Medien wirksam einsetzen", "Es geht nicht um Medien, sondern um Deine Ziele.",
+        "Wir starten nie mit der Frage PowerPoint, Landingpage oder Roll-up, sondern damit, was Du und Dein Team benötigen, um erfolgreich zu sein. Wenn diese Taktik steht, entwickeln wir zielgerichtete Medien, die genau dieses Ergebnis liefern.", style="margin-top:13mm"),
+    cards([("slides", "PowerPoint", "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
+           ("browser", "Landingpage", "Eine Seite für eine Zielgruppe, die genau ein zentrales Problem löst und gezielt zum nächsten Schritt führt."),
+           ("rollup", "Roll-up", "Der Gesamtzusammenhang in einem Bild – dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist.")], 3, style="margin-top:6mm"),
+  ),
+  page(
+    sec("Beispiele", "Konkrete Use Cases aus der Praxis.", "Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien wirken."),
+    rows([("Der entscheidende Pitch im Konsortium", "Statt Standardfolien mit Interpretationsspielraum Medien, die zu 100 % zeigen: Wir haben den Kunden verstanden – und die Lösung ist maßgeschneidert."),
+          ("Neupositionierung eines Konzernunternehmens", "Eine Gesamtlogik, die Kooperations-, Vertriebspartnern und Kunden verständlich macht, wofür das Unternehmen steht – aus einer Hand."),
+          ("Produktlaunch oder -relaunch", "Statt Broschüren und 150 Detailfolien eine durchdachte Kombination digitaler Formate, die den Vertrieb wirklich erfolgreich macht."),
+          ("Aufsichtsrats- und Gremientermine", "Große Themen kompakt und vertrauensbildend erzählt – übersetzt in die Welt auch fachfremder Gremienmitglieder."),
+          ("Gespräche mit dem Rückversicherer", "Die strategische Richtung stringent erzählt, nicht nur in harten Zahlen – für Erneuerungsgespräche, Monte Carlo oder Baden-Baden.")], style="margin-top:3mm"),
+    contact_html=contact("Welche Botschaft soll wirken?", ["daniel", "kerstin_content", "noah_pm"])),
+])
+
+# ---------------------------------------------------------------- Training & Sparring
+P["training-sparring"] = ("green", "Training & Sparring – empiria", [
+  cover("Training &amp; Sparring", 'Begleitung, <span class="hl">die wirkt.</span> Kein Seminar von der Stange.',
+        "Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen – zugeschnitten auf die Versicherungsbranche und Deinen Alltag.",
+        S.training_sparring(),
+        [("Format 01", "Teams befähigen"), ("Format 02", "1:1 Sparring"), ("Branche", "Versicherungen")]),
+  page(
+    sec("Unser Ansatz", 'Begleitung statt <span class="hl">Seminar von der Stange.</span>', "Ob im Team oder im 1:1: Wir bleiben dran, bis die Wirkung im Alltag ankommt."),
+    cards([("target", "Auf Deinen Alltag zugeschnitten", "Keine Vorlage von der Stange – Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche."),
+           ("lock", "Vertraulich &amp; auf Augenhöhe", "Ob im Team oder im 1:1: offen, ehrlich und mit klarer eigener Haltung."),
+           ("route", "Begleitung statt Einmal-Termin", "Wir bleiben dran, bis die Wirkung im Alltag messbar ankommt.")], 3),
+    sec("Zwei Formate", "Ein Ziel: Wirkung im Alltag.", "Wähle das Format – wir passen es auf Dich an.", style="margin-top:13mm"),
+    '<div class="two" style="margin-top:7mm">' +
+      '<div class="card"><div class="ic">' + icon("team") + '</div><h3>Teams befähigen, professionell zu kommunizieren</h3><p>Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es, wenn es zählt.</p>' + dots(["Business Storytelling &amp; Gesprächstaktik", "Visualisierung &amp; Standards", "Umsetzungsbegleitung über 3–6 Monate"], "sm", "margin-top:3mm") + '</div>' +
+      '<div class="card"><div class="ic">' + icon("chats") + '</div><h3>1:1 Sparring für Vorstände &amp; Führungskräfte</h3><p>Strategisches Sparring auf Augenhöhe – vertraulich, erfahren und mit klarer eigener Haltung.</p>' + dots(["Strategie, Geschäftsmodell &amp; Führung", "Vom Abteilungsleiter bis zum Vorstand", "Flexibel: Treffen, Telefonat, Kurznachricht"], "sm", "margin-top:3mm") + '</div>' +
+    '</div>',
+  ),
+  page(
+    sec("Das Ergebnis", 'Weniger Seminar. <span class="hl">Mehr Wirkung.</span>',
+        "Dein Team überzeugt, wenn es zählt – und Du triffst Entscheidungen mit einem Gegenüber, das mitdenkt und mitgestaltet."),
+    checks(["Inhalte und Fälle aus Deinem echten Alltag statt austauschbarer Trainer-Folien",
+            "Begleitung genau dann, wenn es zählt: vor dem Termin, beim letzten Schliff, im Review",
+            "Ein Raum, in dem Themen offen besprochen werden – ohne interne Rücksichten",
+            "Aus Gesprächen wird schnell Umsetzung – kommunikativ oder inhaltlich"], style="margin-top:6mm"),
+    feat("Unsere Haltung", "Wir begleiten, statt nur zu schulen.", "Mit klarer eigener Haltung statt austauschbarer Trainer-Folien – zugeschnitten auf die Versicherungsbranche und Deinen konkreten Alltag.", style="margin-top:10mm"),
+    contact_html=contact("Welches Format passt zu Dir?", ["daniel", "kerstin_hr"])),
+])
+
+# ---------------------------------------------------------------- Präsentationsseminar
+P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommunizieren – empiria", [
+  cover("Befähigung und Begleitung, kein Seminar", 'Teams befähigen, professionell zu <span class="hl">kommunizieren.</span>',
+        ["Du bist Führungskraft in der Versicherungsbranche und Dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?", "Dann braucht Dein Team kein Seminar, sondern <b>professionelle Begleitung bei der Umsetzung.</b>"],
+        S.praesentation(),
+        [("Baustein 01", "Storytelling &amp; Taktik"), ("Baustein 02", "Visualisierung"), ("Baustein 03", "Umsetzungsbegleitung")]),
+  page(
+    sec("Das Problem", 'Dein Team bereitet vor. Und erreicht das Ziel <span class="hl">trotzdem nicht.</span>'),
+    quotes(["Das Thema für die Vorstandssitzung – und die Diskussion läuft ins Leere.", "Die Präsentation im Lenkungsausschuss – und hinterher denkst Du: Das hätte besser laufen müssen.", "Die Story trägt nicht, die Unterlagen überzeugen nicht, im Raum fehlt die Souveränität."], style="margin-top:6mm"),
+    statement(None, "Es wird Zeit, bisherige Denkmuster <b>mit einfachen Logiken zu durchbrechen.</b>", style="margin-top:8mm"),
+    sec("Die Lösung", 'Befähigung und Begleitung <span class="hl">bei der Umsetzung.</span>',
+        "Wir bringen Deinem Team bei, wie das geht – und lassen es danach nicht allein. Wir arbeiten an echten Themen aus Eurem Alltag: dem nächsten Kundenpitch, dem nächsten Gespräch mit dem Rückversicherer, der nächsten wichtigen Abstimmungsrunde.",
+        "Vor dem Termin, beim letzten Schliff, danach beim Analysieren – genau dann sind wir da. <b>So baut sich etwas auf, das ein einzelnes Seminar nie schafft.</b>", style="margin-top:14mm"),
+  ),
+  page(
+    sec("Inhalte", "Drei Bausteine, die aufeinander aufbauen."),
+    rows([("Business Storytelling &amp; Gesprächstaktik", "Dein Team lernt, bei jedem Termin zuerst zu klären: Wer sitzt im Raum, und welches Ergebnis wird gebraucht?",
+           '<div class="two" style="gap:5mm">' +
+             '<div><p class="label" style="margin-bottom:1mm">Modul 1 · Mindset</p>' + dots(["Wie Entscheider denken", "Nutzen statt Themenfokus"], "sm") + '</div>' +
+             '<div><p class="label" style="margin-bottom:1mm">Modul 2 · Methodik</p>' + dots(["Kernlogik der Business Story", "Übertragung aufs eigene Thema"], "sm") + '</div>' +
+           '</div><div style="margin-top:2mm"><p class="label" style="margin-bottom:1mm">Modul 3 · Umsetzung</p>' + dots(["Einstieg mit sofortiger Klarheit, präziser nächster Schritt"], "sm") + '</div>'),
+          ("Visualisierung &amp; Nutzung Standards", "Aufbauend auf der Business Story entstehen professionelle Folien: klare Visualisierung statt Informationsüberladung.",
+           '<div class="two" style="gap:5mm">' +
+             '<div><p class="label" style="margin-bottom:1mm">Vortragsfolien</p><p style="font-size:8.6pt;color:var(--g70);line-height:1.5">Verdichtet auf Story und Kernbotschaft, sofort erfassbar – in Präsenz und online.</p></div>' +
+             '<div><p class="label" style="margin-bottom:1mm">Beraterfolien</p><p style="font-size:8.6pt;color:var(--g70);line-height:1.5">Für Projektarbeit: umfangreicher, aber klar strukturiert und professionell.</p></div></div>'),
+          ("Umsetzungsbegleitung · 3–6 Monate", "Erfolg entsteht nicht im Training, sondern in der Anwendung bei echten Themen – individuell abgestimmt auf die Projekte und Termine Deines Teams.")]),
+    sec("Lernlogik &amp; Erfolgsfaktor", "Orientierung an der 70-20-10-Regel.", style="margin-top:12mm"),
+    '<div style="display:grid;grid-template-columns:15fr 22fr 63fr;gap:2mm;margin-top:6mm">' +
+      '<div style="background:var(--bg);border-radius:3mm;padding:4mm 3mm"><b style="font-family:var(--serif);font-size:14pt">10 %</b></div>' +
+      '<div style="background:var(--tint);border-radius:3mm;padding:4mm 4mm"><b style="font-family:var(--serif);font-size:14pt">20 %</b></div>' +
+      '<div style="background:var(--feat-bg);color:#fff;border-radius:3mm;padding:4mm 5mm"><b style="font-family:var(--serif);font-size:14pt">70 %</b></div></div>' +
+    dots(["<b>10 %</b> Impulse im Seminar", "<b>20 %</b> kollegialer Austausch und gezielte Begleitung", "<b>70 %</b> Lernen durch Anwendung an echten, relevanten Themen"], style="margin-top:4mm"),
+  ),
+  page(
+    sec("Vorgehen in der Begleitung", "Schlank und fokussiert."),
+    chips(["1 · Auftrag &amp; Zielbild klären", "2 · Storyboard entwickeln", "3 · Präsentation erstellen", "4 · Gesprächstaktik anwenden", "5 · Review &amp; Optimierung"]),
+    sec("Das Ergebnis", 'Dein Team überzeugt <span class="hl">ohne Dich.</span>',
+        "Dein Team bereitet Themen so auf, dass sie überzeugen, und tritt sicher auf, wenn es zählt. Du bekommst Ergebnisse, mit denen Du wirklich arbeiten kannst.", style="margin-top:11mm"),
+    cards([("compass", "Strategisches Verständnis", "Dein Team stellt den Mehrwert für die Zielgruppe in den Mittelpunkt."),
+           ("chat", "Überzeugende Story", "Zügig und sicher eine Business Story aufbauen – unabhängig vom Format."),
+           ("target", "Souverän im Termin", "Klarer Einstieg, strukturiert aufs Ziel hin und professionelle Folien.")], 3, style="margin-top:7mm"),
+    contact_html=contact("Soll Dein Team ohne Dich überzeugen?", ["daniel", "kerstin_hr"], bottom=26)),
+])
+
+# ---------------------------------------------------------------- Sparring
+P["sparring"] = ("green", "1:1 Sparring – empiria", [
+  cover("1:1 Sparring", 'Offen sprechen. <span class="hl">Klar entscheiden.</span> Volle Wirkung.',
+        "Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.",
+        S.sparring(),
+        [("Für wen", "Führungskräfte in Versicherungen"), ("Ebene", "Abteilungsleiter bis Vorstand"), ("Themen", "Strategie, Geschäftsmodell, Führung")]),
+  page(
+    sec("Sparring", 'Ein Gegenüber, das <span class="hl">mitdenkt und mitgestaltet.</span>',
+        "Offen über Themen sprechen, für die es intern oft nicht die passende Distanz oder Erfahrung gibt. Komplexe Situationen aus verschiedenen Perspektiven betrachten, Vorgehensweisen abwägen, Lösungswege klar definieren."),
+    cards([("lock", "Offen &amp; vertraulich", "Ein Raum, in dem Themen wirklich offen besprochen werden – ohne interne Rücksichten."),
+           ("star", "Erfahrung, die trägt", "Viele Jahre Sparring mit Vorständen, Hauptabteilungs- und Abteilungsleitern."),
+           ("eye", "Mehrere Perspektiven", "Komplexe Situationen aus unterschiedlichen Blickwinkeln – für Lösungen, die passen."),
+           ("compass", "Klarheit", "Am Ende steht nicht nur eine Einschätzung, sondern eine Richtung."),
+           ("bolt", "Vom Gespräch zur Umsetzung", "Schnell entsteht ein einsatzbereites Konzept – kommunikativ oder inhaltlich."),
+           ("megaphone", "Schlagkräftig nach außen", "Positionierung und Auftreten gegenüber Vorstand und Bereichen werden stärker.")], 3),
+    band("Mehr als nur Sparring", "Umsetzungsturbo!",
+         "In unseren Gesprächen entstehen oft Ideen, die Du am liebsten sofort vorantreiben würdest. Intern fehlt dabei meist einer der drei Erfolgsbausteine: <b>jemand, der das Thema versteht, die Kapazität oder die Skills für die Umsetzung.</b> Genau hier finde ich oft direkt eine Lösung – ganz ohne weiteres Briefing, denn wir kennen die Hintergründe bereits.", style="margin-top:10mm"),
+  ),
+  page(
+    sec("Themen", "So flexibel, wie es für Dich passt.",
+        "Der Alltag hält sich oft nicht an planbare Termine. Ein kurzer Austausch ist oftmals genauso hilfreich wie ein strukturierter Termin – bei Bedarf auch zu Randzeiten."),
+    '<div class="two" style="margin-top:6mm"><div><p class="label" style="margin-bottom:2mm">Wann wir sprechen</p>' + chips(["Persönliches Treffen", "Offsite", "Telefonat aus dem Auto", "Kurznachricht"], style="margin-top:0") + '</div>' +
+    '<div><p class="label" style="margin-bottom:1mm">Worüber wir sprechen</p>' + dots(["Strategie und Geschäftsmodellfragen", "Führungsfragen", "Lösungswege und Vorgehensweisen abwägen", "Positionierung gegenüber dem Vorstand", "Umgang mit dem Aufsichtsrat", "Steuerung von Konzernunternehmen", "… und vieles mehr"], "sm") + '</div></div>',
+    contact_html=contact("Worüber willst Du offen sprechen?", ["daniel", "kerstin_hr"])),
+])
+
+# ---------------------------------------------------------------- Impulsvorträge
+VORTRAEGE = [("Warum sich niemand für Dein Produkt interessiert.", "Ein Impulsvortrag über Relevanz: warum gute Produkte oft ungehört bleiben – und wie Du das änderst."),
+             ("Strategie, die endlich ankommt.", "Wie Strategie aus der Präsentation raus- und im Alltag ankommt."),
+             ("Gründe Deinen stärksten Konkurrenten!", "Der Perspektivwechsel, der blinde Flecken sichtbar macht – bevor es die Konkurrenz tut."),
+             ("Strategie für Aufsichtsräte", "Impulsvortrag und Halbtagesschulung: wie der Aufsichtsrat eine Strategie einordnet – auf Wunsch mit Praxisthema und Zertifikat.")]
+P["impulsvortraege"] = ("emerald", "Impulsvorträge – empiria", [
+  cover("Impulsvorträge", 'Impulse, <span class="hl">die nachwirken.</span> Nicht nur unterhalten.',
+        "Vorträge aus echter Beratungserfahrung – pointiert, diskussionsstark und mit einer klaren eigenen Haltung. Für Kickoffs, Vertriebstagungen oder Führungskräfte-Events.",
+        S.load("impulsvortraege"),
+        [("Thema 01", "Relevanz"), ("Thema 02", "Strategie im Alltag"), ("Thema 03", "Perspektivwechsel"), ("Thema 04", "Aufsichtsräte")]),
+  page(
+    sec("Unser Ansatz", 'Impulse, die <span class="hl">eine Haltung haben.</span>', "Kein Standard-Vortrag von der Stange, sondern eine klare These, die zum Nachdenken und Diskutieren einlädt."),
+    cards([("star", "Aus echter Erfahrung", "Jeder Vortrag speist sich aus echten Projekten und Beratungserfahrung – keine austauschbare Theorie."),
+           ("target", "Auf Deinen Anlass zugeschnitten", "Ob Kickoff, Vertriebstag oder Führungskräfte-Tagung – der Vortrag passt zu Deinem Anlass."),
+           ("chats", "Diskussionsstark", "Pointiert und mit klarer Haltung, damit im Anschluss wirklich diskutiert wird – nicht nur genickt.")], 3),
+    band("Für Deinen Anlass", "Wenn ein Impuls mehr bewirken soll als ein weiterer Foliensatz.", extra=chips(["Kickoff", "Vertriebstagung", "Führungskräfte-Event", "Strategietag", "Gremium &amp; Aufsichtsrat"], style="margin-top:4mm"), style="margin-top:11mm"),
+  ),
+  page(
+    sec("Unsere Impulsvorträge", 'Vier Themen. <span class="hl">Eine Wirkung.</span>', "Wähle das Thema – wir passen den Vortrag auf Deinen Anlass an."),
+    rows(VORTRAEGE, style="margin-top:4mm"),
+    contact_html=contact("Welcher Impuls passt zu Deinem Event?", ["daniel"])),
+])
+
+def vortrag(slug, h1, lead, sketch, cards3, facts_theme, question, why):
+    return ("emerald", "Impulsvortrag – empiria", [
+      cover("Impulsvortrag", h1, lead, sketch, [("Format", "Impulsvortrag"), ("Thema", facts_theme), ("Anlass", "Kickoff, Tagung, Event"), ("Referent", "Daniel Ströbel")]),
+      page(
+        sec("Der Vortrag", question, *why),
+        cards(cards3, 3, style="margin-top:9mm"),
+        chips(["Kickoff", "Vertriebstagung", "Führungskräfte-Event", "Strategietag"], style="margin-top:9mm"),
+        contact_html=contact("Dieser Impuls für Dein Event?", ["daniel"])),
+    ])
+
+P["vortrag-1"] = vortrag("vortrag-1", 'Warum sich niemand <span class="hl">für Dein Produkt</span> interessiert.',
+    "Ein wachrüttelnder Impuls darüber, warum Qualität allein nicht überzeugt – und was ein Produkt wirklich braucht, damit es gehört, verstanden und gewollt wird.",
+    S.vortrag1(), [("eye", "Ehrlich", "Kein Motivations-Bla-Bla – eine klare Analyse, warum Botschaften verpuffen."), ("star", "Nah dran", "Beispiele aus echten Projekten statt austauschbarer Theorie."), ("check", "Umsetzbar", "Konkrete Ansatzpunkte, die am nächsten Tag im Job funktionieren.")],
+    "Relevanz", 'Gute Produkte bleiben <span class="hl">oft ungehört.</span>',
+    ["Qualität allein überzeugt nicht. Dieser Impuls zeigt, was ein Produkt wirklich braucht, damit es gehört, verstanden und gewollt wird – und wie Du das änderst."])
+P["vortrag-2"] = vortrag("vortrag-2", 'Strategie, die <span class="hl">endlich ankommt.</span>',
+    "Die beste Strategie nützt nichts, wenn sie in der Schublade landet. Dieser Vortrag zeigt, wie Strategie so kommuniziert wird, dass sie im Alltag Deines Teams tatsächlich ankommt – und wirkt.",
+    S.vortrag2(), [("chat", "Verständlich", "Strategie in einer Sprache, die jede Ebene im Unternehmen versteht."), ("route", "Verankert", "Zeigt, wie aus Folien echte Entscheidungen im Alltag werden."), ("spark", "Mitreißend", "Macht Strategie greifbar statt abstrakt – und schafft echte Zustimmung.")],
+    "Strategie im Alltag", 'Raus aus der Schublade, <span class="hl">rein in den Alltag.</span>',
+    ["Strategie scheitert selten am Inhalt, sondern daran, dass sie im Alltag nicht ankommt. Dieser Impuls zeigt, wie aus Folien echte Entscheidungen werden."])
+P["vortrag-3"] = vortrag("vortrag-3", 'Gründe Deinen <span class="hl">stärksten Konkurrenten!</span>',
+    "Ein provokanter Perspektivwechsel: Was, wenn Du selbst der schärfste Angreifer auf Dein eigenes Geschäftsmodell wärst? Dieser Vortrag deckt blinde Flecken auf, bevor es jemand anders tut.",
+    S.vortrag3(), [("bolt", "Provokant", "Stellt bequeme Wahrheiten über das eigene Geschäftsmodell infrage."), ("tool", "Konkret", "Ein Denkwerkzeug, das Teams direkt selbst anwenden können."), ("eye", "Wachrüttelnd", "Macht sichtbar, wo Angriffsfläche entsteht – bevor es teuer wird.")],
+    "Perspektivwechsel", 'Was, wenn Du <span class="hl">Dein eigener Angreifer</span> wärst?',
+    ["Wer sein Geschäftsmodell mit den Augen des stärksten Konkurrenten betrachtet, sieht blinde Flecken, bevor es jemand anders tut – und kann rechtzeitig handeln."])
+
+# ---------------------------------------------------------------- capiamo
+P["capiamo"] = ("capiamo", "capiamo · Fachbereich & IT – empiria", [
+  cover("capiamo · Fachbereich &amp; IT", 'Fachbereich trifft IT. <span class="hl">Und es läuft.</span>',
+        ["<b>capiamo</b> – italienisch für „wir verstehen“. Wir übersetzen zwischen Fachbereich und IT, bringen Themen auf den Punkt und steuern die Umsetzung – so lange, bis das Richtige herauskommt."],
+        S.load("capiamo"),
+        [("Schritt 01", "Strategie verstehen"), ("Schritt 02", "Anforderungen ableiten"), ("Schritt 03", "Umsetzung steuern")]),
+  page(
+    sec("Das Problem", "„Die verstehen mich einfach nicht – wir reden so oft aneinander vorbei!“",
+        "Das hören wir regelmäßig – aus dem Vertrieb, aus den Fachbereichen und aus der IT. Jede Seite hat recht, aus ihrer Sicht. Was fehlt, ist jemand, der beide Sprachen spricht."),
+    cards([("clock", "Themen bleiben liegen", "… bis jemand danach fragt. Keiner fühlt sich zuständig, und das Thema verliert an Fahrt."),
+           ("target", "Anforderungen verfehlen den Kern", "Die IT setzt um, was aufgeschrieben wurde – aber nicht das, was eigentlich gebraucht wird."),
+           ("flag", "Entscheidungen ziehen sich", "Vorstand und Gremien fehlt eine klare Vorlage – also wird vertagt statt entschieden.")], 3),
+    feat("Der eigentliche Engpass", "Er sitzt zwischen Fachbereich und IT.",
+         "Hier braucht es Verständnis für beide Seiten: sehen, wo der Schmerz wirklich sitzt, den Kern lösen und das Thema so in Richtung IT übersetzen, dass am Ende das Richtige herauskommt.", style="margin-top:10mm"),
+    sec("Der Mehrwert", "Sobald wir dabei sind, läuft das Thema.", "Niemand muss mehr nachhaken. Es tut sich etwas – systematisch und in die richtige Richtung.", style="margin-top:12mm"),
+    checks(["Themen kommen voran, statt liegen zu bleiben", "Fachbereich, Vertrieb und IT meinen dasselbe", "Vorlagen, auf deren Basis Gremien entscheiden", "Tools und Prozesse für die Zukunft"], "cols2", "margin-top:4mm"),
+  ),
+  page(
+    sec("Unsere Rolle", 'Zuhörer. Übersetzer. <span class="hl">Umsetzungs-Sichersteller.</span>', "Wir fragen aus verschiedenen Perspektiven, skizzieren mit und bringen Themen auf den Punkt – und dann bleiben wir dran, bis sie umgesetzt sind."),
+    stations([("", "Strategie und Zielsetzung verstehen", "Wir klären, was das Unternehmen erreichen will und wo der Schmerz wirklich sitzt – nicht nur, was gerade auf dem Tisch liegt."),
+              ("", "Fachliche Anforderungen ableiten", "Wir strukturieren das Thema und übersetzen es so in Richtung IT, dass beide Seiten dasselbe darunter verstehen."),
+              ("", "(IT-)Umsetzung steuern", "Wir treiben das Projekt voran, nehmen das Team mit und bereiten Themen so auf, dass Vorstand und Gremien entscheiden können.")]),
+    sec("Warum wir das können", "Zwei Perspektiven, ein eingespieltes Team.", style="margin-top:12mm"),
+    '<div class="two" style="margin-top:6mm">' +
+      '<div class="prof"><img src="assets/ansprechpartner-rick.webp" alt=""><div><h3>Rick-Marcel Richter</h3><small>IT &amp; Transformation</small><p>Kennt Versicherer, Vertrieb und Softwareanbieter. Kein Nerd im Hinterzimmer, sondern Umsetzungs- und Projektleitungsprofi.</p></div></div>' +
+      '<div class="prof"><img src="assets/ansprechpartner-daniel.webp" alt=""><div><h3>Daniel Ströbel</h3><small>Strategiehandwerker</small><p>Fragt aus verschiedenen Perspektiven, skizziert live mit und bringt komplexe Themen auf eine Seite.</p></div></div>' +
+    '</div>',
+    band("Ein Vorstand eines anderen Versicherers", None, extra='<p style="margin-top:1mm;font-weight:500;font-size:10.5pt;line-height:1.55;color:var(--ink)">„Eigentlich stellt Daniel viele Fragen aus verschiedenen Perspektiven, skizziert dabei mit – und wenn er es Dir hinterher zeigt, denkst Du: Ja genau, das habe ich gemeint!“</p>', style="margin-top:8mm;padding:5mm 7mm"),
+  ),
+  page(
+    sec("So arbeiten wir", "Erst klären. Dann steuern.",
+        "Am Anfang steht eine saubere Auftragsklärung: gewünschtes Ergebnis, Meilensteinplan, Kommunikationsmatrix. Danach übernehmen wir das Projektmanagement, nehmen Dein Team mit – und Vorstand und Gremien erhalten regelmäßig Unterlagen, auf deren Basis sie entscheiden können."),
+    sec("Unsere Themen", "Drei Einstiege. Ein Ziel: Es läuft.", style="margin-top:10mm"),
+    cards([("route", "Flaschenhals-Management", "Beauftragung und Koordination zwischen Fachbereich und IT – damit nichts im Nadelöhr stecken bleibt."),
+           ("cycle", "Prozessoptimierung", "Abläufe verstehen, Engpässe sichtbar machen, Prozesse so aufsetzen, dass Tools sie unterstützen."),
+           ("layers", "(Multi-)Projektbegleitung", "Von der Auftragsklärung bis zur Umsetzung: einzelne Projekte oder ein ganzes Portfolio.")], 3, style="margin-top:5mm"),
+    contact_html=contact("Wo hakt es zwischen Fachbereich und IT?", ["daniel", "rick"])),
+])
