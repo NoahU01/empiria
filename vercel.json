@@ -87,10 +87,6 @@
       "destination": "/site/paid-ads.html"
     },
     {
-      "source": "/marketing-as-a-service",
-      "destination": "/site/marketing-as-a-service.html"
-    },
-    {
       "source": "/medien",
       "destination": "/site/medien.html"
     },
@@ -161,6 +157,22 @@
     {
       "source": "/archiv/rollup",
       "destination": "/site/archiv/rollup.html"
+    },
+    {
+      "source": "/capiamo",
+      "destination": "/site/capiamo.html"
+    },
+    {
+      "source": "/strategie-aufsichtsrat",
+      "destination": "/site/strategie-aufsichtsrat.html"
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/site/kontakt.html"
+    },
+    {
+      "source": "/video",
+      "destination": "/site/video.html"
     },
     {
       "source": "/(.*)",
