@@ -26,11 +26,35 @@
      cta_kontakt            – Klick auf einen "Kontakt"-Button
      cta_mehr_erfahren      – Hero-Button "mehr erfahren"
      cta_loesungen          – "konkrete Lösungen anzeigen"
-     popup_<key>            – Leistungs-/Lösungs-Popup geöffnet (Interessen-Signal)
+     popup_<key>            – Popup geöffnet (Interessen-Signal); key aus data-modal,
+                              data-modal-target (mesModalLandingpage -> mes_landingpage)
+                              oder fest: pdf_vorschau, zeitplan, struktur, angebot_formular
      section_view_<id>      – Sektion wurde gesehen (Reichweite / Absprung-Analyse)
      section_time_<id>      – Sekunden im Viewport, als `value` (Verweildauer je Sektion)
      cookie_einstellungen   – Cookie-Banner erneut geöffnet
+
+     --- seit 18.09.2026 (Multi-Page-Ausbau) ---
+     cta_anfrage            – Klick auf "… anfragen"/"Jetzt beraten lassen" -> /kontakt
+                              (Param cta_text)                 [weiche Conversion, kein Schlüsselereignis]
+     cta_hero               – Hero-Button "… kennenlernen" (Scroll-Anker, Param cta_text)
+     formular_sprint_angebot – Sprint-Landingpage: Angebotsformular abgeschickt  [Conversion]
+     potentialcheck_submit  – Paid Ads: Potentialcheck abgeschickt (paid-ads.html) [Conversion]
+     download_<datei>       – PDF-Download, datei = Dateiname ohne Präfix/Endung
+                              (empiria-workshops.pdf -> download_workshops)
+     extern_klick           – Klick auf externe Domain (Param link_url)
+     akkordeon_oeffnen      – Akkordeon/FAQ aufgeklappt (Param frage -> Custom Dimension "frage")
+     kanalcheck_*, paid_ads_mockup_* – siehe paid-ads.html
   */
+
+  function slug(str) {
+    return String(str || "").toLowerCase()
+      .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+      .replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  }
+  // mesModalLandingpage -> mes_landingpage, jobProfileModal -> job_profile
+  function modalKey(id) {
+    return slug(String(id || "").replace(/Modal|Overlay/g, "").replace(/([a-z0-9])([A-Z])/g, "$1_$2"));
+  }
 
   function track(name, params) {
     if (!name) return;
@@ -67,15 +91,51 @@
       track("cta_mehr_erfahren");
     } else if (/#leistungen$/.test(href) && a.classList.contains("btn")) {
       track("cta_loesungen");
+    } else if (/\/kontakt(\.html)?(\?.*)?$/.test(href)) {
+      // "Workshop anfragen", "Jetzt beraten lassen" ... -> Kontaktseite
+      track("cta_anfrage", { cta_text: (a.textContent || "").trim().slice(0, 60) });
+    } else if (/\.pdf(\?|$)/i.test(href) || a.hasAttribute("download")) {
+      var datei = href.split("?")[0].split("/").pop().replace(/\.pdf$/i, "")
+        .replace(/^(empiria[-_]|EMP_\d+_)/i, "");
+      track("download_" + slug(datei), { link_url: href });
+    } else if (/^https?:\/\//.test(href) && !/(^|\.)empiria\.de(\/|$)/.test(href.replace(/^https?:\/\//, ""))) {
+      track("extern_klick", { link_url: href });
+    } else if (/^#|\/#/.test(href) && a.classList.contains("btn") && a.closest(".produkt-hero, .hero, .leistung-hero")) {
+      // "KI zum Anfassen kennenlernen" & Co.: Scroll-Anker im Hero
+      track("cta_hero", { cta_text: (a.textContent || "").trim().slice(0, 60) });
     }
   }, true);
 
-  /* ---------- Popups: welches Thema zieht? ---------- */
-  document.querySelectorAll("[data-modal]").forEach(function (el) {
-    el.addEventListener("click", function () {
-      track("popup_" + el.getAttribute("data-modal"));
-    });
-  });
+  /* ---------- Popups: welches Thema zieht? ----------
+     Drei Auslöser-Arten, ein Event: data-modal (Startseite), data-modal-target
+     (generische Vorschau-Modals) und die fest verdrahteten Öffner-Klassen. */
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest && e.target.closest("[data-modal], [data-modal-target], .js-pdf-open, .js-onboarding-open, .js-form-open, .sprint-structure-card, .sprint-structure-cta");
+    if (!t) return;
+    var key = t.getAttribute("data-modal")
+      || (t.getAttribute("data-modal-target") && modalKey(t.getAttribute("data-modal-target")))
+      || (t.classList.contains("js-pdf-open") && "pdf_vorschau")
+      || (t.classList.contains("js-onboarding-open") && "zeitplan")
+      || (t.classList.contains("js-form-open") && "angebot_formular")
+      || "struktur";
+    track("popup_" + key);
+  }, true);
+
+  /* ---------- Sprint Landingpage: Angebotsformular abgeschickt ---------- */
+  document.addEventListener("submit", function (e) {
+    var f = e.target;
+    if (f && f.classList && f.classList.contains("contact-form")) {
+      track("formular_sprint_angebot");
+    }
+  }, true);
+
+  /* ---------- Akkordeons: welche Frage wird aufgeklappt? ---------- */
+  document.addEventListener("toggle", function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== "DETAILS" || !d.open) return;
+    var sum = d.querySelector("summary");
+    track("akkordeon_oeffnen", { frage: (sum ? sum.textContent : "").replace(/\s+/g, " ").trim().slice(0, 100) });
+  }, true);
 
   /* ---------- Cookie-Einstellungen erneut öffnen ---------- */
   document.querySelectorAll("[data-cookie-settings]").forEach(function (el) {
