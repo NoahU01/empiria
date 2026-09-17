@@ -60,7 +60,11 @@ def icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 CSS = r"""
 @page { size: A4; margin: 0; }
 :root { --ink:#1a1817; --ink2:#2e2d2c; --g70:#58564f; --g50:#8a8783; --g30:#cfcac4; --bg:#f2f1ef;
-        --serif:"Lora",Georgia,serif; --sans:"Poppins",sans-serif; }
+        --serif:"Lora",Georgia,serif; --sans:"Poppins",sans-serif;
+        /* Die Skizzen stammen 1:1 von der Website und referenzieren dort
+           var(--font-sans)/var(--font-serif). Ohne diese Aliase fallen alle
+           SVG-Beschriftungen auf die Browser-Standardschrift zurueck. */
+        --font-sans:"Poppins",sans-serif; --font-serif:"Lora",Georgia,serif; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 b, strong { font-weight: 600; }
@@ -103,6 +107,86 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .bm--schmal .bm-row span { font-size: 8.4pt; }
 .medien-zwei { display: grid; grid-template-columns: 1fr 88mm; gap: 8mm; align-items: start; margin-top: 7mm; }
 .inline-sketch svg { height:100%; width:auto; filter: invert(1) contrast(1.5); }
+
+/* ---- Modellkasten ----------------------------------------------------------
+   Die Skizzen der Website sind fuer dunklen Grund gezeichnet (weisse Linien,
+   Akzent #fff400). Auf weissem Papier musste bisher `filter: invert(1)` helfen
+   - das macht aus dem Gelb ein grelles Blau und aus den Kaesten graue Flecken.
+   Stattdessen bekommen sie hier ihre native Umgebung: schwarzer Kasten, weisse
+   Zeichnung, gelbe Highlights - exakt wie im Pop-up auf der Website. */
+.mdl { background:#0f0e0d; border-radius:4mm; padding:7mm; margin-top:7mm; color:#fff;
+       display:grid; grid-template-columns: var(--figw,68mm) 1fr; gap:8mm; align-items:center; }
+.mdl--breit { grid-template-columns:1fr; }
+.mdl-fig svg { display:block; width:100%; height:auto; filter:none; }
+.mdl-txt .kicker { color:#fff400; font-size:9pt; margin:0 0 1.6mm; }
+.mdl-txt h3 { color:#fff; font-size:13pt; line-height:1.28; margin-bottom:3mm; }
+.mdl-txt p { font-size:8.8pt; line-height:1.62; color:rgba(255,255,255,.74); }
+.mdl-txt p + p { margin-top:2.6mm; }
+.mdl-txt p b { color:#fff; font-weight:600; }
+.mdl-steps { margin-top:4mm; display:grid; gap:2.6mm; }
+.mdl-step { display:grid; grid-template-columns:5.5mm 1fr; gap:2.5mm; align-items:baseline; }
+.mdl-step i { font-style:normal; font-family:var(--serif); font-weight:700; font-size:9.5pt; color:#fff400; }
+.mdl-step span { font-size:8.6pt; line-height:1.55; color:rgba(255,255,255,.78); }
+.mdl-step span b { color:#fff; font-weight:600; display:block; margin-bottom:.4mm; }
+
+/* ---- Sektion im Landingpage-Look ------------------------------------------
+   Heller Grund ueber die volle Seitenbreite, ein grosses Icon als Wasserzeichen
+   und darauf der schwarze Kasten - dieselbe Schichtung wie auf den Landingpages. */
+.stage { position:relative; margin:9mm -22mm 0; padding:8mm 22mm 9mm; background:var(--bg); overflow:hidden; }
+.stage > * { position:relative; z-index:1; }
+.stage-wm { position:absolute; z-index:0; right:-18mm; bottom:-24mm; width:98mm; height:98mm;
+            color:var(--ink); opacity:.055; }
+.stage-wm svg { width:100%; height:100%; stroke-width:.9; }
+.stage-head h2 { font-size:19pt; margin-bottom:3mm; }
+.stage-head p { font-size:9.4pt; line-height:1.66; color:var(--ink2); max-width:148mm; }
+.stage .mdl, .stage .mocks-box { margin-top:6mm; }
+
+/* ---- Ein Paket, ein Preis: Leistungen und Preis als EIN Block --------------
+   Zwei getrennte Kaesten mit justify-content:space-between reissen den Preis
+   vom Text weg und hinterlassen ein sichtbares Loch. Hier sitzen beide
+   Haelften randlos in einem gemeinsamen Rahmen, der Preis mittig. */
+.paket { display:grid; grid-template-columns:1fr 60mm; margin-top:6mm;
+         border-radius:4mm; overflow:hidden; border:0.7pt solid var(--g30); }
+.paket-l { background:var(--bg); padding:6mm; }
+.paket-l .kicker { font-size:9pt; margin:0 0 3mm; }
+.paket-l ul.checks li { font-size:9pt; padding:1.3mm 0 1.3mm 6.4mm; }
+.paket-r { background:var(--feat-bg); color:var(--feat-fg); padding:6mm;
+           display:flex; flex-direction:column; justify-content:center; }
+.paket-r .kicker { color:var(--feat-fg); opacity:.85; font-size:9pt; margin:0 0 2mm; }
+.paket-r .price { font-family:var(--serif); font-weight:700; font-size:25pt; line-height:1.05; }
+.paket-r p { font-size:8.6pt; line-height:1.55; margin-top:3.5mm; opacity:.95; }
+
+/* ---- Durchgestrichene Denkmuster (inno-stein von der Landingpage) ----------
+   Das staerkste Element der Innovationsseite: Saetze, die als gesetzt gelten,
+   sichtbar durchgestrichen - und darunter die Gegenfrage. */
+.stein { background:#0f0e0d; border-radius:4mm; padding:7mm; margin-top:7mm; color:#fff; }
+.stein .tag { font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase;
+              color:rgba(255,255,255,.55); font-weight:600; }
+.stein ul { list-style:none; margin:4.5mm 0 0; display:grid; gap:3mm; }
+.stein li { font-family:var(--serif); font-weight:700; font-size:13.5pt; line-height:1.25;
+            color:rgba(255,255,255,.40); text-decoration:line-through;
+            text-decoration-color:#fff400; text-decoration-thickness:1.5pt; }
+.stein .foot { margin-top:5.5mm; font-family:var(--serif); font-weight:700; font-size:15pt; color:#fff400; }
+
+/* ---- Nummeriertes Raster (inno-einsatz-grid), erstes Feld hervorgehoben ---- */
+.raster { display:grid; gap:3.5mm; margin-top:6mm; }
+.raster > div { border:0.7pt solid var(--g30); border-radius:3mm; padding:4.5mm 4mm; background:#fff; }
+.raster .num { display:block; font-family:var(--serif); font-weight:700; font-size:11pt;
+               color:var(--acc); margin-bottom:2.5mm; }
+.raster b { font-family:var(--serif); font-weight:700; font-size:9.6pt; line-height:1.3; display:block; }
+.raster > div.main { background:var(--ink); color:#fff; border-color:var(--ink); }
+.raster > div.main .num { color:#fff400; }
+
+/* ---- Medien-Mockups nebeneinander (wie die Sketch-Reihe auf der Website) --- */
+.mocks-box { background:#0f0e0d; border-radius:4mm; padding:7mm; color:#fff; }
+/* align-items:start + feste Figurenhoehe, damit die Beschriftungen aller drei
+   Mockups auf einer Linie sitzen - sonst richtet sich jede Spalte nach der
+   Hoehe ihrer eigenen Skizze. */
+.mocks { display:grid; grid-template-columns:repeat(3,1fr); gap:7mm; align-items:start; }
+.mock-fig { height:52mm; display:flex; align-items:flex-end; justify-content:center; }
+.mock-fig svg { max-height:100%; width:auto; max-width:100%; display:block; filter:none; }
+.mock b { display:block; font-family:var(--serif); font-weight:700; font-size:11pt; color:#fff; margin:4.5mm 0 1.5mm; }
+.mock p { font-size:8.2pt; line-height:1.55; color:rgba(255,255,255,.72); }
 /* Kacheln */
 .cards { display: grid; gap: 4.5mm; margin-top: 7mm; }
 .card { border: 0.7pt solid #e6e2de; border-radius: 4mm; padding: 5.5mm 5mm; background: #fff; }
@@ -153,20 +237,32 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .feat .kicker { color: var(--feat-fg); opacity: .85; font-size: 9.5pt; }
 .feat h3 { font-size: 15pt; line-height: 1.3; margin-bottom: 2mm; color: var(--feat-fg); }
 .feat p { font-size: 9.4pt; line-height: 1.65; color: var(--feat-fg); opacity: .95; }
-/* Preise */
+/* ---- Preiskarten: exakt die Reihenfolge der Website ----
+   Badge, Name + Dauer, Beschreibung, PREIS, Unterschrift, Leistungen.
+   Der Preis gehoert nach oben (direkt unter die Beschreibung), nicht an den
+   unteren Rand - und die Unterschrift ("Kompakter Anwendungsfall") ist eine
+   eigene Zeile zwischen Preis und Bullets, kein Listenpunkt. */
 .opts { display: grid; gap: 4mm; margin-top: 7mm; align-items: stretch; }
-.opt { background: var(--bg); border-radius: 3.5mm; padding: 5mm 5mm; display:flex; flex-direction: column; }
-.opt .tag { font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--g50); margin-bottom: 1.5mm; }
+.opt { background: var(--bg); border-radius: 3.5mm; padding: 4.5mm 4.5mm; display:flex; flex-direction: column; }
+/* immer vorhanden, damit die Namen aller Karten auf einer Linie sitzen */
+.opt .badgeslot { min-height: 5.4mm; margin-bottom: 1.5mm; }
+.opt .badge { display:inline-block; font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;
+              font-weight: 600; padding: 1.1mm 2.6mm; border-radius: 10mm;
+              background: var(--acc); color: #fff; }
 .opt b { display:block; font-family: var(--serif); font-weight: 700; font-size: 12pt; }
-.opt small { display:block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); margin: 1.2mm 0 3mm; }
-.opt .price { font-family: var(--serif); font-weight: 700; font-size: 16pt; color: var(--ink); margin-top: auto; padding-top: 2mm; }
-.opt .price em { font-style: normal; font-family: var(--sans); font-weight: 500; font-size: 8pt; margin-left: 1mm; }
-.opt .pnote { font-size: 7.2pt; color: var(--g50); margin-top: .8mm; line-height: 1.4; }
-.opt ul.dots { margin-bottom: 2mm; }
+.opt b .sub { font-family: var(--sans); font-weight: 500; font-size: 8pt; color: var(--g50); margin-left: 2mm; }
+.opt small { display:block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); margin: 1.2mm 0 0; min-height: 10mm; }
+.opt .price { font-family: var(--serif); font-weight: 700; font-size: 17pt; color: var(--ink); display:block; }
+.opt .price em { font-style: normal; font-family: var(--sans); font-weight: 500; font-size: 8pt; margin-left: 1mm; color: var(--g70); }
+.opt .pnote { display:block; font-size: 8pt; font-weight: 500; color: var(--ink2); margin-top: 1.2mm; line-height: 1.4; }
+.opt ul.dots { margin-top: 3.5mm; padding-top: 3.5mm; border-top: 0.7pt solid var(--g30); }
 .opt ul.dots li { font-size: 8.3pt; padding: .8mm 0 .8mm 4mm; color: var(--ink2); }
 .opt ul.dots li::before { top: 2.3mm; width: 1.3mm; height: 1.3mm; }
 .opt--feat { background: var(--feat-bg); color: var(--feat-fg); }
-.opt--feat small, .opt--feat .price, .opt--feat .tag, .opt--feat ul.dots li, .opt--feat .pnote { color: var(--feat-fg); }
+.opt--feat small, .opt--feat .price, .opt--feat .price em, .opt--feat ul.dots li, .opt--feat .pnote,
+.opt--feat b, .opt--feat b .sub { color: var(--feat-fg); }
+.opt--feat .badge { background: #fff; color: var(--acc2); }
+.opt--feat ul.dots { border-top-color: rgba(255,255,255,.34); }
 .opt--feat ul.dots li::before { background: var(--feat-fg); }
 .note { font-size: 7.4pt; color: var(--g50); margin-top: 3mm; line-height: 1.5; }
 /* Fälle */
@@ -416,18 +512,105 @@ def feat(kicker, h3, *ps, extra="", style=""):
     return f'<div class="feat" style="{style}">{k}{h}' + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>'
 
 def opts(items, cols=None, style=""):
+    """Preiskarten in der Reihenfolge der Website.
+
+    Felder: name, sub (Dauer, steht neben dem Namen), badge ("Meistgewaehlt"),
+    text (Beschreibung), price, unit, pnote (Unterschrift unter dem Preis),
+    list (Leistungen), feat (hervorgehobene Karte).
+    `tag` wird weiter unterstuetzt und als Dauer gelesen; ein darin enthaltener
+    Zusatz nach "·" wird zum Badge.
+    """
     out = []
     for it in items:
         d = dict(it)
+        sub, badge = d.get("sub"), d.get("badge")
+        if not sub and d.get("tag"):
+            teile = [t.strip() for t in d["tag"].split("·")]
+            sub = teile[0]
+            if len(teile) > 1 and not badge:
+                badge = teile[1]
         cls = "opt opt--feat" if d.get("feat") else "opt"
-        tag = f'<span class="tag">{d["tag"]}</span>' if d.get("tag") else ''
+        bd = f'<span class="badge">{badge}</span>' if badge else ''
+        sb = f'<span class="sub">{sub}</span>' if sub else ''
         sm = f'<small>{d["text"]}</small>' if d.get("text") else ''
-        ul = dots(d["list"]) if d.get("list") else ''
-        pr = f'<span class="price">{d["price"]}</span>' if d.get("price") else ''
+        unit = f'<em>{d["unit"]}</em>' if d.get("unit") else ''
+        pr = f'<span class="price">{d["price"]}{unit}</span>' if d.get("price") else ''
         pn = f'<span class="pnote">{d["pnote"]}</span>' if d.get("pnote") else ''
-        out.append(f'<div class="{cls}">{tag}<b>{d["name"]}</b>{sm}{ul}{pr}{pn}</div>')
+        ul = dots(d["list"]) if d.get("list") else ''
+        out.append(f'<div class="{cls}"><div class="badgeslot">{bd}</div>'
+                   f'<b>{d["name"]}{sb}</b>{sm}{pr}{pn}{ul}</div>')
     cols = cols or len(items)
     return f'<div class="opts" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+
+def mdl(kicker, titel, svg, *ps, steps=None, figw="68mm", style=""):
+    """Skizze im schwarzen Kasten, daneben die Erlaeuterung - wie im Pop-up.
+
+    svg: fertiges SVG-Markup (S.load(...)). Es wird NICHT invertiert, sondern
+    auf schwarzem Grund in seinen Originalfarben gezeigt.
+    steps: optionale Liste (Nummer, Titel, Text) als gelbe Schritt-Liste.
+    """
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    h = f'<h3>{titel}</h3>' if titel else ''
+    txt = "".join(f'<p>{p}</p>' for p in ps)
+    st = ''
+    if steps:
+        st = '<div class="mdl-steps">' + "".join(
+            f'<div class="mdl-step"><i>{n}</i><span><b>{t}</b>{x}</span></div>'
+            for n, t, x in steps) + '</div>'
+    return (f'<div class="mdl" style="--figw:{figw};{style}">'
+            f'<div class="mdl-fig">{svg}</div>'
+            f'<div class="mdl-txt">{k}{h}{txt}{st}</div></div>')
+
+
+def paket(kicker_l, leistungen, kicker_r, preis, preis_note, style=""):
+    """Leistungspaket und Preis als ein zusammenhaengender Block."""
+    return (f'<div class="paket" style="{style}">'
+            f'<div class="paket-l"><p class="kicker">{kicker_l}</p>{checks(leistungen)}</div>'
+            f'<div class="paket-r"><p class="kicker">{kicker_r}</p>'
+            f'<span class="price">{preis}</span><p>{preis_note}</p></div></div>')
+
+
+def stein(tag, items, foot, style=""):
+    """Durchgestrichene Denkmuster im schwarzen Kasten - wie auf der Landingpage."""
+    lis = "".join(f'<li>{i}</li>' for i in items)
+    return (f'<div class="stein" style="{style}"><p class="tag">{tag}</p>'
+            f'<ul>{lis}</ul><p class="foot">{foot}</p></div>')
+
+
+def raster(items, cols=None, style=""):
+    """Nummeriertes Raster; ein Eintrag kann per main=True hervorgehoben werden.
+
+    items: Liste (Nummer, Titel) oder (Nummer, Titel, True) fuer das Hauptfeld.
+    """
+    out = []
+    for it in items:
+        cls = ' class="main"' if len(it) > 2 and it[2] else ''
+        out.append(f'<div{cls}><span class="num">{it[0]}</span><b>{it[1]}</b></div>')
+    cols = cols or len(items)
+    return f'<div class="raster" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+
+
+def stage(kicker, h2, *ps, inhalt="", wm=None, style=""):
+    """Sektion im Landingpage-Look: heller Grund, Icon-Wasserzeichen, dunkler Kasten."""
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''
+    h = f'<h2>{h2}</h2>' if h2 else ''
+    txt = "".join(f'<p>{p}</p>' for p in ps)
+    w = f'<div class="stage-wm">{icon(wm)}</div>' if wm else ''
+    return (f'<div class="stage" style="{style}">{w}'
+            f'<div class="stage-head">{k}{h}{txt}</div>{inhalt}</div>')
+
+
+def mocks(items, kicker=None, titel=None, style=""):
+    """Drei Medien-Mockups nebeneinander im schwarzen Kasten (Website-Sketchreihe).
+
+    items: Liste (svg, Label, Text).
+    """
+    k = f'<p class="kicker" style="color:#fff400">{kicker}</p>' if kicker else ''
+    h = f'<h3 style="color:#fff;font-family:var(--serif);font-size:13pt;margin-bottom:5mm">{titel}</h3>' if titel else ''
+    cells = "".join(f'<div class="mock"><div class="mock-fig">{svg}</div><b>{lab}</b><p>{txt}</p></div>'
+                    for svg, lab, txt in items)
+    return f'<div class="mocks-box" style="{style}">{k}{h}<div class="mocks">{cells}</div></div>'
+
 
 def cases(items, style="", cols=2):
     out = "".join(f'<div class="case">' + (f'<div class="ic">{icon(c[2])}</div>' if len(c) > 2 else '') + f'<h3>{c[0]}</h3><p>{c[1]}</p></div>' for c in items)

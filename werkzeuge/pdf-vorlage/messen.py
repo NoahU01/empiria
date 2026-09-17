@@ -38,7 +38,13 @@ window.addEventListener('load', function () { setTimeout(function () {
       if (getComputedStyle(e).position === 'absolute') return;
       var rel = b.bottom - r.top;
       if (rel > bottom) bottom = rel;
-      if (b.right - r.left > r.width + 1) over.push(e.className || e.tagName);
+      // .stage ist bewusst randlos (negative Margins) - dort ist ein Ueberstand
+      // nach rechts gewollt und keine Meldung wert. Die Hoehe zaehlt weiter mit.
+      if (e.closest('.stage')) return;
+      // SVG-Elemente haben kein String-className (SVGAnimatedString) - sonst
+      // steht in der Meldung nur "{}".
+      if (b.right - r.left > r.width + 1)
+        over.push((typeof e.className === 'string' && e.className) || e.tagName);
     });
     out.push({ page: i + 1, frei_mm: +(((limit - bottom) / MM).toFixed(1)),
                rechts_ueber: over.slice(0, 3) });
