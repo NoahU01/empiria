@@ -422,9 +422,12 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
   page(
     sec("Dein Start", 'Mehr Zeit <span class="hl">für Kundengespräche.</span>',
         "Du wählst Zielgruppen und Stil, wir kümmern uns um den Rest. Nach der Einrichtung übernehmen wir den technischen Teil – Du investierst Deine Zeit nur ins Posten der Inhalte und in Deine eigentlichen Kundengespräche."),
-    band("Der Vergleich", "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat.", extra=
-      '<p class="label" style="margin-top:4mm;margin-bottom:1.5mm">Klassische Agentur</p>' + chips(["Auftragsklärung", "Konzeption", "Umsetzung", "Optimierung"], style="margin-top:0") +
-      '<p class="label" style="margin-top:4mm;margin-bottom:1.5mm;color:var(--acc)">sofort sichtbar</p>' + chips(["Auftragsklärung", "Mehr Zeit für Kundengespräche"], style="margin-top:0"), style="margin-top:9mm"),
+    sec("Der Vergleich", "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat.", style="margin-top:10mm"),
+    vergleich("Klassische<br>Agentur",
+              ["Auftragsklärung", "Konzeption", "Umsetzung", "Optimierung"],
+              "assets/sofort-sichtbar-logo-stacked-violet.svg",
+              "Auftragsklärung",
+              "Mehr Zeit für Kundengespräche"),
     checks(["Individuelle Landingpages mit Deinem Logo, Deinen Bildern und Kontaktdaten",
             "Mindestlaufzeit drei Monate je Vertriebsstrecke – danach verlängern, wechseln oder kündigen",
             "Für eine komplett individuelle Lösung sprechen wir gerne separat"], style="margin-top:6mm"),
@@ -513,10 +516,41 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
            ("lock", "Vertraulich &amp; auf Augenhöhe", "Ob im Team oder im 1:1: offen, ehrlich und mit klarer eigener Haltung."),
            ("route", "Begleitung statt Einmal-Termin", "Wir bleiben dran, bis die Wirkung im Alltag messbar ankommt.")], 3),
     sec("Zwei Formate", "Ein Ziel: Wirkung im Alltag.", "Wähle das Format – wir passen es auf Dich an.", style="margin-top:13mm"),
-    '<div class="two" style="margin-top:7mm">' +
-      '<div class="card"><div class="ic">' + icon("team") + '</div><h3>Teams befähigen, professionell zu kommunizieren</h3><p>Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es, wenn es zählt.</p>' + dots(["Business Storytelling &amp; Gesprächstaktik", "Visualisierung &amp; Standards", "Umsetzungsbegleitung über 3–6 Monate"], "sm", "margin-top:3mm") + '</div>' +
-      '<div class="card"><div class="ic">' + icon("chats") + '</div><h3>1:1 Sparring für Vorstände &amp; Führungskräfte</h3><p>Strategisches Sparring auf Augenhöhe – vertraulich, erfahren und mit klarer eigener Haltung.</p>' + dots(["Strategie, Geschäftsmodell &amp; Führung", "Vom Abteilungsleiter bis zum Vorstand", "Flexibel: Treffen, Telefonat, Kurznachricht"], "sm", "margin-top:3mm") + '</div>' +
-    '</div>',
+    overview([
+      ("Teams befähigen", "Business Storytelling, Visualisierung und Begleitung über 3–6 Monate", "Format 01", "individuell"),
+      ("1:1 Sparring", "Vertrauliches Gegenüber für Vorstände und Führungskräfte", "Format 02", "individuell"),
+    ], style="margin-top:7mm"),
+  ),
+  page(
+    sec("Format 01", 'Teams befähigen, <span class="hl">professionell zu kommunizieren.</span>',
+        "Dein Team bereitet ein Thema für die Vorstandssitzung vor – und die Diskussion läuft ins Leere. Dann braucht es kein Seminar von der Stange, sondern Befähigung und Begleitung bei der Umsetzung an echten Themen."),
+    rows([("Business Storytelling &amp; Gesprächstaktik", "Wer sitzt im Raum, welches Ergebnis wird gebraucht – und wie wird daraus eine Story, die trägt? Mindset, Methodik und Umsetzung bauen aufeinander auf."),
+          ("Visualisierung &amp; Nutzung Standards", "Aus der Business Story entstehen Folien, die verdichten statt zu überladen – als Vortragsfolien für den Auftritt und als Beraterfolien für die Projektarbeit."),
+          ("Umsetzungsbegleitung · 3–6 Monate", "Erfolg entsteht nicht im Training, sondern in der Anwendung: Wir begleiten die echten Termine Deines Teams, bis die Wirkung im Alltag ankommt.")], style="margin-top:6mm"),
+    who("Für wen das gemacht ist", [
+      "Teams vor Vorstands- und Aufsichtsratssitzungen",
+      "Projektlenkungsausschüsse und Vertriebstagungen",
+      "Gespräche mit Kooperationspartnern und Rückversicherern",
+      "Wichtige Kundenpitches, bei denen es zählt",
+    ], style="margin-top:10mm"),
+    '<p class="note">Umfang und Investition hängen von Teamgröße und Begleitungszeitraum ab – Du bekommst zeitnah ein konkretes Angebot.</p>',
+  ),
+  page(
+    sec("Format 02", '1:1 Sparring für Vorstände <span class="hl">und Führungskräfte.</span>',
+        "Seit vielen Jahren begleiten wir Vorstandsmitglieder und Führungskräfte vertraulich im 1:1 – ein Raum, in dem Themen wirklich offen besprochen werden, ohne interne Rücksichten."),
+    dots(["Strategische Themen und Geschäftsmodellfragen",
+          "Betrachtung komplexer Situationen aus unterschiedlichen Perspektiven",
+          "Abwägen von Lösungswegen und Vorgehensweisen",
+          "Positionierung gegenüber Vorstand und anderen Bereichen",
+          "Umgang mit dem Aufsichtsrat und Steuerung von Konzernunternehmen",
+          "Konzeption von Kommunikation nach außen"], style="margin-top:6mm"),
+    who("Für wen das gemacht ist", [
+      "Vorstandsmitglieder mit Themen ohne internes Gegenüber",
+      "Hauptabteilungs- und Abteilungsleitungen",
+      "Führungskräfte vor strategischen Weichenstellungen",
+      "Alle, die Positionierung und Auftreten stärken wollen",
+    ], style="margin-top:10mm"),
+    '<p class="note">Rhythmus und Umfang richten sich danach, wie es für Dich passt – vom regelmäßigen Termin bis zur kurzfristigen Rückfrage.</p>',
   ),
   page(
     who("Für wen das gemacht ist", [

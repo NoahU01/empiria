@@ -53,6 +53,7 @@ ICONS = {
  "arrow": '<path d="M4 12h15"/><path d="M13.5 6.5L19 12l-5.5 5.5"/>',
  "star": '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
  "euro": '<path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4 10.5h9M4 13.5h9"/>',
+ "rocket": '<path d="M12 3c3 2.4 4.2 6 4.2 9.6 0 2.4-1.2 4.8-4.2 6.6-3-1.8-4.2-4.2-4.2-6.6C7.8 9 9 5.4 12 3z"/><circle cx="12" cy="10.2" r="1.8"/><path d="M7.8 14.4L5.4 18.6"/><path d="M16.2 14.4l2.4 4.2"/><path d="M10.2 19.2c0 1.8.9 3 1.8 3.6.9-.6 1.8-1.8 1.8-3.6"/>',
 }
 def icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{ICONS[n]}</svg>'
 
@@ -89,7 +90,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cover .sketch.noinv svg { filter: none; }
 .cover .facts { position: absolute; left: 22mm; right: 22mm; bottom: 20mm; display: grid; gap: 7mm; }
 .cover .facts b { display:block; font-family: var(--serif); font-weight: 700; font-size: 11pt; line-height: 1.3; margin-top: 1.5mm; }
-.cover .brandlogo { height: 9mm; margin-top: 24mm; display:block; }
+.cover .brandlogo { height: 4.5mm; margin-top: 24mm; display:block; }  /* Kicker-Groesse, nicht Headline */
 .cover .brandlogo + .kicker { margin-top: 6mm; }
 .cover .brandlogo + h1 { margin-top: 7mm; }
 .inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
@@ -230,6 +231,30 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
    ihren Abstand trotzdem bekommen - sonst klebt die Subheadline am Block davor. */
 .who + .sec, .sols + .sec, .ov + .sec, .note + .sec,
 .who + .cards, .sols + .cards, .who + .band, .sols + .band { margin-top: 12mm; }
+.who + .note, .sols + .note, .pakete + .note, .vgl + .note { margin-top: 5mm; }
+
+/* ---- Vergleichs-Timeline (wie auf der Website: Agentur vs. eigenes Angebot) ----
+   Zwei Zeilen mit gleicher Timeline-Geometrie; die zweite ist umrandet und
+   endet frueher - der gewonnene Vorsprung wird als eigener Chip gezeigt. */
+.vgl { margin-top: 6mm; background: var(--bg); border: 0.8pt solid var(--g30);
+       border-radius: 4mm; padding: 5mm; display: grid; gap: 3.5mm; }
+.vgl-row { display: grid; grid-template-columns: 26mm 1fr; gap: 4mm; align-items: center; }
+.vgl-label { font-size: 8.4pt; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.vgl-label img { display: block; width: 100%; max-width: 24mm; height: auto; }
+.vgl-line { display: flex; align-items: stretch; gap: 1.8mm; background: #fff;
+            border: 0.8pt solid transparent; border-radius: 3mm; padding: 2.2mm; }
+.vgl-line--outline { border-color: var(--acc); }
+.vgl-pill { flex: 1 1 0; display: flex; align-items: center; justify-content: center;
+            text-align: center; background: var(--bg); border: 0.6pt solid var(--g30);
+            border-radius: 2mm; padding: 2.4mm 1.5mm; font-size: 7.6pt; line-height: 1.25; }
+.vgl-line--outline .vgl-pill { flex: 0 0 34mm; }
+.vgl-rocket { flex: 0 0 11mm; display: flex; align-items: center; justify-content: center;
+              border-radius: 2mm; background: var(--feat-bg); color: var(--feat-fg); }
+.vgl-rocket svg { width: 6mm; height: 6mm; }
+.vgl-bonus { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 2mm;
+             padding: 2.4mm 3mm; border-radius: 2mm; background: var(--tint);
+             font-size: 7.8pt; font-weight: 600; color: var(--ink); text-align: center; }
+.vgl-bonus svg { flex: 0 0 auto; width: 4mm; height: 4mm; color: var(--acc); }
 
 /* ---- Preispakete gestapelt (statt drei schmaler, ungleich hoher Karten) ---- */
 .pakete { margin-top: 5mm; display: grid; gap: 3mm; }
@@ -475,3 +500,20 @@ def pakete(items, style=""):
                 f'<p class="pk-text">{it["text"]}</p>{bl}{fazit}</div>'
                 f'<div class="pk-preis"><span class="pk-betrag">{it["preis"]}{einheit}</span>{hinweis}</div></div>')
     return f'<div class="pakete" style="{style}">{out}</div>'
+
+
+def vergleich(label_a, pills_a, label_b_logo, pill_b, bonus, style=""):
+    """Zeitstrahl-Vergleich wie auf der Website.
+
+    label_a/pills_a: klassischer Weg mit mehreren Phasen
+    label_b_logo:    Bildpfad des Produktlogos fuer die zweite Zeile
+    pill_b/bonus:    eigener Weg - eine Phase, danach der gewonnene Vorsprung
+    """
+    r = f'<span class="vgl-rocket">{icon("rocket")}</span>'
+    pa = "".join(f'<span class="vgl-pill">{x}</span>' for x in pills_a)
+    return (f'<div class="vgl" style="{style}">'
+            f'<div class="vgl-row"><div class="vgl-label">{label_a}</div>'
+            f'<div class="vgl-line">{pa}{r}</div></div>'
+            f'<div class="vgl-row"><div class="vgl-label"><img src="{label_b_logo}" alt=""></div>'
+            f'<div class="vgl-line vgl-line--outline"><span class="vgl-pill">{pill_b}</span>{r}'
+            f'<span class="vgl-bonus">{icon("clock")}{bonus}</span></div></div></div>')
