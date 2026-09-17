@@ -21,12 +21,20 @@ P["strategie"] = ("strategie", "Strategie in den Alltag überführen – empiria
     statement(None, "Dazu gehört das praktische Handwerkszeug, mit dem Du als Führungskraft im Alltag <b>wirklich vorankommst.</b>", style="margin-top:10mm"),
   ),
   page(
+    sec("Das Modell", 'Wofür Ihr steht, wohin Ihr wollt – <span class="hl">und wie Ihr hinkommt.</span>',
+        "Dieselbe Struktur, mit der wir im Sparring arbeiten: vom Selbstverständnis des Bereichs über das Zielbild bis zu den Schritten, die im Alltag tatsächlich gegangen werden."),
+    '<div class="inline-sketch inline-sketch--hoch">' + S.load("strategiemodell") + '</div>',
+  ),
+  page(
     sec("Perspektivwechsel", 'Wie sieht die Homepage <span class="hl">Deiner Abteilung</span> aus?',
         "Ziemlich wahrscheinlich hast Du keine – die meisten haben keine. Also warum die Frage? Weil hier sofort klar wird, ob Du den Mehrwert Deines Bereichs sauber erklären kannst. Und wenn Du das nicht kannst, kann auch keiner in Deinem Team aktiv zu Deiner Strategie beitragen."),
-    '<div class="bm"><div class="bm-bar"><i></i><i></i><i></i><span>www.deine-abteilung-gmbh.de</span></div>' +
-    "".join(f'<div class="bm-row"><span class="n">{i+1:02d}</span><span>{q}</span><em>?</em></div>' for i, q in enumerate([
-        "Welche Zielgruppe sprechen wir an?", "Welches konkrete Problem lösen wir?", "Welcher Nutzen entsteht daraus?",
-        "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"])) + '</div>',
+    '<div class="medien-zwei">' +
+      '<div><p class="lead">Fünf Fragen, die eine Homepage in Sekunden beantwortet – und die Dein Bereich genauso klar beantworten können muss. Wer sie nicht beantworten kann, überlässt die Wahrnehmung seines Bereichs dem Zufall.</p></div>' +
+      '<div class="bm bm--schmal"><div class="bm-bar"><i></i><i></i><i></i><span>www.deine-abteilung-gmbh.de</span></div>' +
+      "".join(f'<div class="bm-row"><span class="n">{i+1:02d}</span><span>{q}</span><em>?</em></div>' for i, q in enumerate([
+          "Welche Zielgruppe sprechen wir an?", "Welches konkrete Problem lösen wir?", "Welcher Nutzen entsteht daraus?",
+          "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"])) + '</div>' +
+    '</div>',
     band("Gedankenexperiment", "Stell Dir vor, wir gründen morgen Deine Abteilung als GmbH.",
          "Und verkaufen Eure Dienstleistungen an Deinen aktuellen Arbeitgeber. Wie sähe die Homepage aus? Auf einmal versteht jeder im Team, wofür Dein Bereich da ist und wie das Zielbild aussieht. Dann kann auch jeder aktiv dazu beitragen – <b>und Du bestimmst die Wahrnehmung Deines Bereichs.</b>"),
   ),
@@ -75,6 +83,11 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
            chips(["<b>Why</b> · Warum ist das Thema für die Zielgruppe wichtig?", "<b>How</b> · Wie gehen wir grundsätzlich vor?", "<b>What next?</b> · Was muss als Nächstes passieren?"], style="margin-top:0;flex-direction:column;align-items:flex-start;gap:1.6mm")),
           ("Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus: Präsentation, Landingpage oder Roll-up."),
           ("Taktisches Briefing", "Dein Vorgehen unmittelbar vor, während und nach dem Termin: Einstieg, Moderation und wie Du im Raum Dein Ergebnis bekommst – als Briefing auf Basis unseres Frameworks oder als ausführliches Storyboard mit Ablauf, Zeitplan, Sprechtext und Folienvorschau.")]),
+  ),
+  page(
+    sec("Die Struktur", 'So bauen wir Dein Thema <span class="hl">auf.</span>',
+        "Vom Ergebnis her gedacht: Wer sitzt im Raum, was soll entschieden werden – und welche Struktur trägt das Thema dorthin?"),
+    '<div class="inline-sketch inline-sketch--hoch" style="height:112mm">' + S.load("komplexe-modell") + '</div>',
     band("Zwischenergebnis", "Jetzt weißt Du schon, wie Du gewinnst.",
          "Der Weg zum Ziel und Deine Business Story sind geklärt, bevor überhaupt eine Folie entsteht. An dieser Stelle hast Du absolute Handlungsklarheit. <b>Spoiler Alert:</b> Oftmals kommt etwas anderes heraus, als Du am Anfang gedacht hast."),
   ),
@@ -116,6 +129,7 @@ P["innovation"] = ("strategie", "Innovation & Geschäftsmodell neu denken – em
     chips(["01 · Zukunft des Geschäftsmodells", "02 · Kooperationen", "03 · Fusionen", "04 · Beteiligungen", "05 · Neue Zusatzservices"], style="margin-top:6mm"),
     sec("Unsere Methoden", "Methoden schaffen Erkenntnis. Nicht umgekehrt.",
         "Wir bringen eigene Methoden und Frameworks mit und helfen Dir, Dich von alten Denkmustern zu lösen. Dabei nutzen wir Methoden, um Erkenntnisse zu schaffen – wir wenden sie nicht unreflektiert an.", style="margin-top:12mm"),
+    '<div class="inline-sketch" style="height:78mm">' + S.load("innovation-greenfield") + '</div>',
     feat("Ein bewährter Ansatz", "Wir denken mit Dir so, als würdet Ihr Euer Thema morgen als eigenes Unternehmen neu gründen – ganz ohne Altlasten."),
     contact_html=None),
   page(
@@ -310,6 +324,38 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
     ]),
     '<p class="note">Preise zzgl. Umsatzsteuer in gesetzlicher Höhe. Bei Paid Ads und Medien hängt der Umfang vom Vorhaben ab – Du bekommst zeitnah ein konkretes Angebot.</p>'),
   page(
+    sec("Lösung 01", 'MarketingEcoSystem <span class="hl">(MES).</span>',
+        "Homepage, digitale Kanäle und ein zentrales Dashboard laufen an einem Ort zusammen: Die Kanäle bringen Besucher auf die Landingpage, das Dashboard führt alle Daten zusammen, bewertet sie laufend – und die Empfehlungen fließen direkt zurück in die Umsetzung."),
+    dots(["Landingpage und Kanäle inklusive Content-Kalender und Postings",
+          "Zentrales Dashboard: alle Daten an einem Ort, laufend bewertet",
+          "Schwachstellen samt Lösungsvorschlag – und direkter Umsetzung",
+          "Drei Buchungswege: Eigenregie ab 399 € mtl., Marketing as a Service ab 3.500 € mtl., unternehmerische Partnerschaft"], style="margin-top:6mm"),
+    '<p class="note">Für wen: Versicherer, Maklerunternehmen und Versicherungsbüros, die sich auf ihr Geschäft konzentrieren wollen statt auf Marketing.</p>',
+    sec("Lösung 02", 'sofort <span class="hl">sichtbar.</span>', style="margin-top:12mm"),
+    '<p class="lead">Ein fertiges System aus Postings, Landingpage und E-Mail-Funnel – abgestimmt auf Deine Vertriebsschwerpunkte, ohne eigene Content-Produktion und ohne Briefing.</p>',
+    dots(["Fertige Postings, genau auf die gewählte Zielgruppe abgestimmt",
+          "Individuelle Landingpage mit Deinem Logo, Deinen Bildern und Kontaktdaten",
+          "E-Mail-Funnel, der Bestandskunden aktiviert und weiterleitet",
+          "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat – ab 349 € mtl."], style="margin-top:6mm"),
+    '<p class="note">Für wen: Agenturleitungen und Makler, die am Vertriebserfolg gemessen werden und für Marketing weder Zeit noch Nerven übrig haben.</p>',
+  ),
+  page(
+    sec("Lösung 03", 'Paid <span class="hl">Ads.</span>',
+        "Kampagnen auf Google, Meta und LinkedIn, die nicht nur Reichweite bringen, sondern Anfragen. Ziel, Zielgruppe und Budget stehen fest, bevor der erste Euro läuft – und Du siehst jeden Monat, wohin er geflossen ist."),
+    dots(["Google Ads: sichtbar genau dann, wenn jemand aktiv sucht",
+          "Meta Ads: Zielgruppe im Alltag erreichen, bevor sie sucht",
+          "LinkedIn Ads: Entscheider nach Branche, Position und Unternehmensgröße",
+          "Vier Schritte: Analyse, Setup, laufende Optimierung, Reporting und Skalierung"], style="margin-top:6mm"),
+    '<p class="note">Für wen: Alle, die wissen wollen, wohin jeder eingesetzte Euro fließt und was er auslöst. Einstieg über den kostenlosen Potentialcheck.</p>',
+    sec("Lösung 04", 'Medien, die <span class="hl">Ergebnisse liefern.</span>', style="margin-top:12mm"),
+    '<p class="lead">Wir sind keine typische Medienagentur: Bevor ein einziges Medium entsteht, verstehen wir Geschäftsmodell, Strategie und Zielgruppe. Erst wenn die Botschaft sitzt, folgt die Umsetzung.</p>',
+    dots(["PowerPoint: eine Präsentation, die Deine Business Story trägt",
+          "Landingpage: eine Zielgruppe, ein Problem, ein nächster Schritt",
+          "Roll-up und Printmedien für den Auftritt vor Ort",
+          "Aus einer Hand – damit die Botschaft über alle Medien gleich trägt"], style="margin-top:6mm"),
+    '<p class="note">Für wen: Themen, die im entscheidenden Moment tragen müssen – im Vorstand, im Vertrieb oder auf der Messe.</p>',
+  ),
+  page(
     sec("Kontakt", 'Welcher Weg passt <span class="hl">zu Deinem Marketing?</span>',
         "Kurze Wege statt langer Abstimmungsrunden: Schildere uns Deine Ausgangslage – wir melden uns zeitnah mit einem konkreten Vorschlag, welcher der vier Wege für Dich am meisten bringt."),
     stations([
@@ -452,9 +498,22 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
               ("", "Reporting &amp; Skalierung", "Du siehst jeden Monat, wohin jeder Euro geflossen ist und was er gebracht hat. Ausgebaut wird dort, wo die Zahlen es rechtfertigen.")], style="margin-top:6mm"),
   ),
   page(
+    sec("So sieht das aus", 'Deine Anzeige <span class="hl">im echten Umfeld.</span>',
+        "Kein abstraktes Konzept: So begegnet Deine Anzeige der Zielgruppe in der Google-Suche – inklusive Bewertungen und Sitelinks, die direkt auf die passenden Angebote führen."),
+    anzeige("empiria", "www.empiria.de",
+            "Strategieberatung für Versicherer | Klarheit statt Konzeptstau",
+            "Strategie in den Alltag überführen. Seit 2012 für Versicherer und Makler. Erstgespräch in dieser Woche.",
+            "4,9 · 37 Rezensionen · Versicherer und Makler",
+            [("Strategiehandwerk", "Strategie greifbar machen"),
+             ("1:1 Sparring", "Vertraulich für Führungskräfte"),
+             ("Workshops", "Formate, die wirken"),
+             ("Erstgespräch", "Termin in dieser Woche")],
+            note="Auf Meta und LinkedIn entsteht dasselbe Prinzip im jeweiligen Format – Bildanzeige im Feed statt Textanzeige in der Suche."),
     feat("Kostenloser Potentialcheck", "Wie viel Potential steckt in Deinem Produkt?",
-         "Schick uns Deine Website. Noch diese Woche bekommst Du unsere Potentialanalyse für Dein Unternehmen und Deine Performance Ads – kein Spam, keine Verpflichtung.", style="margin-top:0"),
-    sec("Häufige Fragen", "Kurz beantwortet.", style="margin-top:12mm"),
+         "Schick uns Deine Website. Noch diese Woche bekommst Du unsere Potentialanalyse für Dein Unternehmen und Deine Performance Ads – kein Spam, keine Verpflichtung.", style="margin-top:10mm"),
+  ),
+  page(
+    sec("Häufige Fragen", "Kurz beantwortet."),
     cases([("Was brauche ich, um zu starten?", "Zugriff auf bestehende Konten, falls vorhanden, und Klarheit über Budget und Ziel. Den Rest klären wir im Auftakt."),
            ("Wann sehe ich erste Ergebnisse?", "Erste Daten meist nach wenigen Wochen. Belastbare Aussagen brauchen etwas mehr Zeit, damit Kampagnen lernen."),
            ("Welche Plattformen betreut ihr?", "Google, Meta und LinkedIn – der richtige Start hängt von Zielgruppe und Angebot ab, nicht vom Trend."),

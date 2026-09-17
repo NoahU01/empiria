@@ -94,6 +94,14 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cover .brandlogo + .kicker { margin-top: 6mm; }
 .cover .brandlogo + h1 { margin-top: 7mm; }
 .inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
+/* Hochformatige Skizzen (z. B. Strategiemodell 900x1060) brauchen mehr Hoehe,
+   sonst werden sie unleserlich schmal. */
+.inline-sketch--hoch { height: 150mm; margin-top: 8mm; }
+/* Browser-Mockup neben dem Text statt ueber die volle Seitenbreite. */
+.bm--schmal { margin-top: 0; }
+.bm--schmal .bm-row { grid-template-columns: 8mm 1fr 6mm; padding: 2.4mm 3.5mm; }
+.bm--schmal .bm-row span { font-size: 8.4pt; }
+.medien-zwei { display: grid; grid-template-columns: 1fr 88mm; gap: 8mm; align-items: start; margin-top: 7mm; }
 .inline-sketch svg { height:100%; width:auto; filter: invert(1) contrast(1.5); }
 /* Kacheln */
 .cards { display: grid; gap: 4.5mm; margin-top: 7mm; }
@@ -232,6 +240,25 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .who + .sec, .sols + .sec, .ov + .sec, .note + .sec,
 .who + .cards, .sols + .cards, .who + .band, .sols + .band { margin-top: 12mm; }
 .who + .note, .sols + .note, .pakete + .note, .vgl + .note { margin-top: 5mm; }
+
+/* ---- Anzeigen-Vorschau (Google-SERP-Mockup wie auf der Website) ---- */
+.serp { margin-top: 6mm; border: 0.8pt solid var(--g30); border-radius: 3.5mm; padding: 5mm; background: #fff; max-width: 118mm; }
+.serp-head { display: flex; align-items: center; gap: 2.5mm; }
+.serp-avatar { flex: 0 0 auto; width: 8mm; height: 8mm; border-radius: 50%; border: 0.6pt solid var(--g30);
+               display: flex; align-items: center; justify-content: center; font-family: var(--serif);
+               font-weight: 700; font-size: 9pt; }
+.serp-src { font-size: 7.6pt; line-height: 1.3; }
+.serp-src small { display: block; color: var(--g50); }
+.serp-tag { margin-left: auto; font-size: 6.8pt; color: var(--g50); }
+.serp-title { margin: 3mm 0 1.2mm; font-size: 10.5pt; line-height: 1.3; color: #1a0dab; font-weight: 500; }
+.serp-desc { font-size: 7.8pt; line-height: 1.5; color: var(--g70); }
+.serp-rating { margin-top: 2.5mm; font-size: 7.2pt; color: var(--g70); }
+.serp-stars { color: #e7a600; letter-spacing: .5pt; }
+.serp-links { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm 5mm; margin-top: 3mm;
+              padding-top: 3mm; border-top: 0.6pt solid var(--g30); font-size: 7.6pt; }
+.serp-links b { display: block; color: #1a0dab; font-weight: 600; }
+.serp-links small { color: var(--g50); font-size: 7pt; }
+.serp-note { margin-top: 3mm; font-size: 7.2pt; color: var(--g50); line-height: 1.45; }
 
 /* ---- Vergleichs-Timeline (wie auf der Website: Agentur vs. eigenes Angebot) ----
    Zwei Zeilen mit gleicher Timeline-Geometrie; die zweite ist umrandet und
@@ -517,3 +544,19 @@ def vergleich(label_a, pills_a, label_b_logo, pill_b, bonus, style=""):
             f'<div class="vgl-row"><div class="vgl-label"><img src="{label_b_logo}" alt=""></div>'
             f'<div class="vgl-line vgl-line--outline"><span class="vgl-pill">{pill_b}</span>{r}'
             f'<span class="vgl-bonus">{icon("clock")}{bonus}</span></div></div></div>')
+
+
+def anzeige(quelle, url, titel, text, bewertung, links, note=None, initial="e"):
+    """Google-Anzeigenvorschau - im PDF war davon vorher nur Flies-Text uebrig.
+
+    links: Liste aus (Titel, Untertitel) fuer die Sitelinks
+    """
+    ll = "".join(f"<span><b>{a}</b><small>{b}</small></span>" for a, b in links)
+    n = f'<p class="serp-note">{note}</p>' if note else ""
+    return (f'<div class="serp"><div class="serp-head">'
+            f'<span class="serp-avatar">{initial}</span>'
+            f'<span class="serp-src"><b>{quelle}</b><small>{url}</small></span>'
+            f'<span class="serp-tag">Gesponsert</span></div>'
+            f'<p class="serp-title">{titel}</p><p class="serp-desc">{text}</p>'
+            f'<p class="serp-rating"><span class="serp-stars">★★★★★</span> {bewertung}</p>'
+            f'<div class="serp-links">{ll}</div></div>{n}')
