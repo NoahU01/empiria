@@ -2251,11 +2251,15 @@ body.produktseite--sofortsichtbar {
 .feature-icon svg { width: 22px; height: 22px; color: #fff; }
 .produkt-glass h3 { font-family: var(--font-serif); font-size: 1.2rem; margin: 0 0 .5rem; color: #fff; }
 .produkt-glass p { margin: 0; font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.78); }
-/* Sonderfall sofort sichtbar: echte Vorschaubilder statt Icons, Bild unten im Kasten. */
-.sofort-feature-card { display: flex; flex-direction: column; }
+/* Sonderfall sofort sichtbar: echte Vorschaubilder statt Icons, Bild unten im
+   Kasten. Die PNGs sind freigestellt (transparent) - sie brauchen daher keinen
+   Rahmen und keine Rundung, sondern muessen auf der Unterkante des Kastens
+   stehen. Deshalb padding-bottom:0 am Kasten und margin-top:auto am Bild;
+   mit einem festen margin-top schwebten die Bilder vorher im Kasten. */
+.sofort-feature-card { display: flex; flex-direction: column; padding-bottom: 0; overflow: hidden; }
 .sofort-feature-img {
-  margin-top: 20px; width: 100%; height: auto; display: block;
-  border-radius: 12px;
+  margin-top: auto; padding-top: 20px; width: 100%; height: auto; display: block;
+  border-radius: 0;
 }
 /* "Das Problem"-Sektion (sofort sichtbar): statt Fließtext ein knapper, dunkler
    Zitat-Kasten mit kurzen, pointierten Zeilen (gleiche Bildsprache wie der
@@ -2559,6 +2563,14 @@ body.produktseite--sofortsichtbar {
 @media (min-width: 701px) {
   .vergleich-timeline:not(.vergleich-timeline--outline) .vergleich-pill {
     flex: 1 1 0; white-space: normal;
+  }
+  /* Kernaussage der Grafik: "Online, bevor eine klassische Agentur die
+     Auftragsklaerung abgeschlossen hat." Dann darf die Pille in der
+     sofort-sichtbar-Zeile nicht genauso breit sein wie die gleichnamige in
+     der Agentur-Zeile - sonst sagt das Bild das Gegenteil. Kleinere Schrift
+     und engeres Padding machen sie sichtbar kuerzer. */
+  .vergleich-timeline--outline .vergleich-pill {
+    flex: 0 0 auto; max-width: 132px; padding: 10px 12px; font-size: .72rem;
   }
 }
 .vergleich-rocket {

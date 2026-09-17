@@ -105,7 +105,10 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cover .facts { position: absolute; left: 22mm; right: 22mm; bottom: 20mm; display: grid; gap: 7mm; }
 .cover .facts b { display:block; font-family: var(--serif); font-weight: 700; font-size: 11pt; line-height: 1.3; margin-top: 1.5mm; }
 .cover .brandlogo { height: 3.2mm; margin-top: 24mm; display:block; }  /* Kicker-Groesse, nicht Headline */
+/* Kleinere Subheadline sitzt naeher an der Headline - der Abstand fuer die
+   grosse Variante wirkt darunter zu weit. */
 .cover--subklein .sub { font-size: 9.2pt; }
+.cover--subklein h1 { margin-bottom: 4mm; }
 .cover .brandlogo + .kicker { margin-top: 6mm; }
 .cover .brandlogo + h1 { margin-top: 7mm; }
 .inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
@@ -126,8 +129,16 @@ p.lead + p.lead { margin-top: 2.6mm; }
    Stattdessen bekommen sie hier ihre native Umgebung: schwarzer Kasten, weisse
    Zeichnung, gelbe Highlights - exakt wie im Pop-up auf der Website. */
 .mdl { background:#0f0e0d; border-radius:4mm; padding:7mm; margin-top:7mm; color:#fff;
-       display:grid; grid-template-columns: var(--figw,68mm) 1fr; gap:8mm; align-items:center; }
+       display:grid; grid-template-columns: var(--figw,68mm) 1fr; gap:8mm; align-items:start; }
 .mdl--breit { grid-template-columns:1fr; }
+/* Ganzseitiger Modellkasten: Die Skizzen der Landingpages sind dichte
+   Zeichnungen (900x1060). In einer 78-mm-Spalte sind ihre Beschriftungen
+   unlesbar - sie brauchen die volle Satzbreite. */
+.mdl--seite { grid-template-columns:1fr; gap:6mm; padding:8mm; }
+.mdl--seite .mdl-txt { order:1; }
+.mdl--seite .mdl-fig { order:2; }
+.mdl--seite .mdl-txt p { max-width:150mm; }
+.mdl--seite .mdl-fig svg { max-height:133mm; width:auto; margin:0 auto; }
 .mdl-fig svg { display:block; width:100%; height:auto; filter:none; }
 .mdl-txt .kicker { color:var(--dark-acc); font-size:9pt; margin:0 0 1.6mm; }
 .mdl-txt h3 { color:#fff; font-size:13pt; line-height:1.28; margin-bottom:3mm; }
@@ -213,6 +224,18 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .raster > div.main { background:var(--ink); color:#fff; border-color:var(--ink); }
 .raster > div.main .num { color:var(--dark-acc); }
 
+/* ---- Anteilsbalken (z. B. 70-20-10-Regel) ----------------------------------
+   Vorher waren die Balken unterschiedlich hoch und die Beschriftungen darunter
+   sprangen. Jetzt: gleiche Hoehe, die Breite zeigt den Anteil, die Texte
+   stehen auf einer Linie. */
+.anteile { display:grid; gap:3mm; margin-top:6mm; align-items:start; }
+.anteil-bar { height:15mm; border-radius:2.5mm; background:#fff;
+              border:0.7pt solid var(--g30); display:flex; align-items:center;
+              padding:0 3mm; font-family:var(--serif); font-weight:700; font-size:12pt;
+              white-space:nowrap; }
+.anteil--haupt .anteil-bar { background:var(--feat-bg); color:var(--feat-fg); border-color:transparent; }
+.anteil p { font-size:8.4pt; line-height:1.5; color:var(--g70); margin-top:3mm; }
+
 /* ---- Medien-Mockups nebeneinander (wie die Sketch-Reihe auf der Website) --- */
 .mocks-box { background:#0f0e0d; border-radius:4mm; padding:7mm; color:#fff; }
 /* align-items:start + feste Figurenhoehe, damit die Beschriftungen aller drei
@@ -255,6 +278,15 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cards--bild { align-items: stretch; }
 .cards--bild .card { display: flex; flex-direction: column; }
 .cards--bild .card-img { margin-top: auto; }
+/* Freigestellte Vorschaubilder (transparente PNGs) brauchen keinen Rahmen und
+   sitzen auf der Unterkante des Kastens - genauso wie auf der Produktseite.
+   Mit Rahmen und Innenabstand schweben sie sonst im Kasten. */
+.cards--frei { align-items: stretch; }
+.cards--frei .card { display: flex; flex-direction: column;
+                     padding-bottom: 0; overflow: hidden; }
+.cards--frei .card-img { margin-top: auto; margin-bottom: 0;
+                         border: 0; border-radius: 0; }
+.bilder--frei .bilder-fig img { border: 0; border-radius: 0; }
 /* nummerierte Zeilen */
 .rows { margin-top: 5mm; }
 .row { display: grid; grid-template-columns: 11mm 1fr; column-gap: 3mm; padding: 3mm 0; }
@@ -550,14 +582,15 @@ def sec(kicker, h2, *leads, style=""):
 def open_sec(style=""): return f'<div class="sec" style="{style}">'
 def close_sec(): return '</div>'
 
-def cards(items, cols=3, style="", numbered=False):
+def cards(items, cols=3, style="", numbered=False, frei=False):
     out = []
     for i, it in enumerate(items):
         ic, t, p = it[0], it[1], it[2]
         extra = it[3] if len(it) > 3 else ""
         top = f'<span class="num">{i+1:02d}</span>' if numbered else (f'<div class="ic">{icon(ic)}</div>' if ic else '')
         out.append(f'<div class="card">{top}<h3>{t}</h3><p>{p}</p>{extra}</div>')
-    return f'<div class="cards" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+    cls = "cards cards--frei" if frei else "cards"
+    return f'<div class="{cls}" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
 
 def rows(items, start=1, style=""):
     out = []
@@ -634,7 +667,7 @@ def opts(items, cols=None, style=""):
     cols = cols or len(items)
     return f'<div class="opts" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
 
-def mdl(kicker, titel, svg, *ps, steps=None, figw="68mm", style=""):
+def mdl(kicker, titel, svg, *ps, steps=None, figw="68mm", cls="", style=""):
     """Skizze im schwarzen Kasten, daneben die Erlaeuterung - wie im Pop-up.
 
     svg: fertiges SVG-Markup (S.load(...)). Es wird NICHT invertiert, sondern
@@ -649,7 +682,7 @@ def mdl(kicker, titel, svg, *ps, steps=None, figw="68mm", style=""):
         st = '<div class="mdl-steps">' + "".join(
             f'<div class="mdl-step"><i>{n}</i><span><b>{t}</b>{x}</span></div>'
             for n, t, x in steps) + '</div>'
-    return (f'<div class="mdl" style="--figw:{figw};{style}">'
+    return (f'<div class="mdl {cls}" style="--figw:{figw};{style}">'
             f'<div class="mdl-fig">{svg}</div>'
             f'<div class="mdl-txt">{k}{h}{txt}{st}</div></div>')
 
@@ -710,7 +743,7 @@ def _bildpfad(name):
     return f"assets/{name}" if "/" in name else f"assets/pdf-bausteine/{name}.png"
 
 
-def bilder(items, cols=None, hoehe=None, style=""):
+def bilder(items, cols=None, hoehe=None, rahmen=True, style=""):
     """Mehrere Bilder nebeneinander. items: (name, Label, Text).
 
     name ist entweder der Kurzname eines abgenommenen Bausteins oder ein Pfad
@@ -722,7 +755,8 @@ def bilder(items, cols=None, hoehe=None, style=""):
         f'<img src="{_bildpfad(n)}" alt=""></div>'
         f'<b>{lab}</b><p>{txt}</p></div>' for n, lab, txt in items)
     cols = cols or len(items)
-    return f'<div class="bilder" style="grid-template-columns:repeat({cols},1fr);{style}">{cells}</div>'
+    cls = "bilder" if rahmen else "bilder bilder--frei"
+    return f'<div class="{cls}" style="grid-template-columns:repeat({cols},1fr);{style}">{cells}</div>'
 
 
 def bild(name, breite=None, style="", rahmen=True):
@@ -735,6 +769,16 @@ def bild(name, breite=None, style="", rahmen=True):
     s = f"max-width:{breite};" if breite else ""
     cls = "baustein" if rahmen else "baustein baustein--blank"
     return f'<img class="{cls}" src="{_bildpfad(name)}" alt="" style="{s}{style}">'
+
+
+def anteile(items, style=""):
+    """Anteilsbalken: items = (Prozentzahl, Text, haupt?) - die Spaltenbreite
+    entspricht dem Anteil, alle Balken sind gleich hoch."""
+    spalten = " ".join(f"{int(str(i[0]).rstrip(' %'))}fr" for i in items)
+    zellen = "".join(
+        f'<div class="anteil{" anteil--haupt" if len(i) > 2 and i[2] else ""}">'
+        f'<div class="anteil-bar">{i[0]}</div><p>{i[1]}</p></div>' for i in items)
+    return f'<div class="anteile" style="grid-template-columns:{spalten};{style}">{zellen}</div>'
 
 
 def mocks(items, kicker=None, titel=None, style=""):
