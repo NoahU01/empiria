@@ -705,12 +705,21 @@ def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, style=""):
             f'<div class="stage-head">{k}{h}{txt}</div>{inhalt}</div>')
 
 
+def _bildpfad(name):
+    """Kurzname -> abgenommener Baustein; Pfad mit "/" -> direkt aus assets/."""
+    return f"assets/{name}" if "/" in name else f"assets/pdf-bausteine/{name}.png"
+
+
 def bilder(items, cols=None, hoehe=None, style=""):
-    """Mehrere Original-Bausteine nebeneinander. items: (name, Label, Text)."""
+    """Mehrere Bilder nebeneinander. items: (name, Label, Text).
+
+    name ist entweder der Kurzname eines abgenommenen Bausteins oder ein Pfad
+    unterhalb von site/assets/ (z. B. "produktseiten/vorschau.png").
+    """
     h = f'style="height:{hoehe}"' if hoehe else ''
     cells = "".join(
         f'<div><div class="bilder-fig" {h}>'
-        f'<img src="assets/pdf-bausteine/{n}.png" alt=""></div>'
+        f'<img src="{_bildpfad(n)}" alt=""></div>'
         f'<b>{lab}</b><p>{txt}</p></div>' for n, lab, txt in items)
     cols = cols or len(items)
     return f'<div class="bilder" style="grid-template-columns:repeat({cols},1fr);{style}">{cells}</div>'
@@ -725,7 +734,7 @@ def bild(name, breite=None, style="", rahmen=True):
     """
     s = f"max-width:{breite};" if breite else ""
     cls = "baustein" if rahmen else "baustein baustein--blank"
-    return f'<img class="{cls}" src="assets/pdf-bausteine/{name}.png" alt="" style="{s}{style}">'
+    return f'<img class="{cls}" src="{_bildpfad(name)}" alt="" style="{s}{style}">'
 
 
 def mocks(items, kicker=None, titel=None, style=""):

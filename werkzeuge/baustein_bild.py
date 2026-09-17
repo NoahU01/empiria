@@ -28,9 +28,14 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 JS = """
 <script>
 window.__ziel = %s;
+window.__ohne = %s;
 window.addEventListener('load', function () { setTimeout(function () {
   var el = document.querySelector(window.__ziel);
   if (!el) { document.title = 'BB:ERR:nicht gefunden'; return; }
+  // Teile ausblenden, die im PDF keinen Sinn haben (z. B. "Mehr erfahren").
+  (window.__ohne || []).forEach(function (s) {
+    el.querySelectorAll(s).forEach(function (e) { e.style.display = 'none'; });
+  });
   document.querySelectorAll('.reveal, [class*="reveal"]').forEach(function (e) {
     e.classList.add('is-visible', 'revealed', 'in-view');
     e.style.opacity = '1'; e.style.transform = 'none'; e.style.visibility = 'visible';
@@ -80,12 +85,12 @@ def _server(wurzel):
             srv.shutdown()
 
 
-def abnehmen(seite, selektor, name, breite=1200, skala=3):
+def abnehmen(seite, selektor, name, breite=1200, skala=3, ohne=None):
     pfad = seite if os.path.isabs(seite) else os.path.join(SITE, seite)
     html = open(pfad, encoding="utf-8").read()
     tmp = os.path.join(os.path.dirname(pfad), "_bb_tmp.html")
     open(tmp, "w", encoding="utf-8").write(
-        html.replace("</body>", (JS % json.dumps(selektor)) + "</body>"))
+        html.replace("</body>", (JS % (json.dumps(selektor), json.dumps(ohne or []))) + "</body>"))
     try:
         rel = os.path.relpath(tmp, SITE).replace(os.sep, "/")
         with _server(SITE) as basis:
@@ -102,6 +107,12 @@ def abnehmen(seite, selektor, name, breite=1200, skala=3):
             if m.group(1).startswith("ERR"):
                 raise RuntimeError(f"{selektor}: {m.group(1)}")
             masse = json.loads(m.group(1))
+            # Ohne diese Pruefung startet Chrome mit --window-size=0,0 und
+            # haengt bis zum Timeout. Tritt auf, wenn das Element zum
+            # Messzeitpunkt noch keine Ausdehnung hat (Animation, lazy SVG).
+            if masse["w"] < 2 or masse["h"] < 2:
+                raise RuntimeError(f"{selektor}: Element ohne Ausdehnung "
+                                   f"({masse['w']}x{masse['h']}) - anderer Selektor noetig")
 
             # 2. Durchlauf: Screenshot in exakt dieser Groesse, hochaufloesend
             os.makedirs(OUT, exist_ok=True)
@@ -129,5 +140,7 @@ if __name__ == "__main__":
     ap.add_argument("name")
     ap.add_argument("--breite", type=int, default=1200)
     ap.add_argument("--skala", type=int, default=3)
+    ap.add_argument("--ohne", action="append", default=[],
+                    help="CSS-Selektor innerhalb des Elements, der ausgeblendet wird")
     a = ap.parse_args()
-    abnehmen(a.seite, a.selektor, a.name, a.breite, a.skala)
+    abnehmen(a.seite, a.selektor, a.name, a.breite, a.skala, a.ohne)
