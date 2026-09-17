@@ -231,6 +231,28 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .who + .sec, .sols + .sec, .ov + .sec, .note + .sec,
 .who + .cards, .sols + .cards, .who + .band, .sols + .band { margin-top: 12mm; }
 
+/* ---- Preispakete gestapelt (statt drei schmaler, ungleich hoher Karten) ---- */
+.pakete { margin-top: 5mm; display: grid; gap: 3mm; }
+.pk { display: grid; grid-template-columns: 1fr 42mm; gap: 7mm; align-items: start;
+      border: 0.8pt solid var(--g30); border-radius: 3.5mm; padding: 4mm 5mm; background: #fff; }
+.pk--feat { border-color: var(--acc); background: var(--tint); }
+.pk-head { display: flex; align-items: baseline; gap: 3.5mm; margin-bottom: 1.8mm; }
+.pk-head b { font-family: var(--serif); font-weight: 700; font-size: 13pt; }
+.pk-badge { font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
+            color: #fff; background: var(--acc); border-radius: 2mm; padding: .8mm 2.2mm; }
+.pk-text { font-size: 9.2pt; line-height: 1.6; color: var(--g70); }
+.pk-list { list-style: none; margin-top: 2mm; display: grid; gap: .9mm; }
+.pk-list li { position: relative; padding-left: 4.5mm; font-size: 8.8pt; line-height: 1.5; color: var(--ink2); }
+.pk-list li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1.6mm; height: 1.6mm;
+                      border-radius: 50%; background: var(--acc); }
+.pk-fazit { margin-top: 2mm; font-size: 8.6pt; line-height: 1.5; color: var(--g50); font-style: italic; }
+.pk-preis { text-align: right; }
+.pk-betrag { display: block; font-family: var(--serif); font-weight: 700; font-size: 16pt;
+             line-height: 1.1; white-space: nowrap; }
+.pk-betrag em { font-style: normal; font-family: var(--sans); font-weight: 500; font-size: 8pt;
+                color: var(--g50); margin-left: 1.2mm; }
+.pk-hinweis { display: block; margin-top: 2mm; font-size: 7.4pt; line-height: 1.45; color: var(--g50); }
+
 /* ---- "Fuer wen" als eigener Block ---- */
 .who { margin-top: 6mm; }
 .who-title { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; margin-bottom: 3mm; }
@@ -427,3 +449,29 @@ def overview(rows_, style=""):
                  f'<td class="t-price">{price}</td></tr>')
     return (f'<table class="ov" style="{style}"><thead><tr><th>Angebot</th><th>Umfang</th>'
             f'<th>Investition</th></tr></thead><tbody>{body}</tbody></table>')
+
+
+def pakete(items, style=""):
+    """Preispakete als gestapelte Zeilen statt gequetschter Spalten.
+
+    Drei schmale Spalten erzwingen unterschiedlich hohe Karten, wodurch die
+    Preise auf verschiedenen Hoehen sitzen und das Ganze unsauber wirkt.
+    Gestapelt bekommt jedes Paket die volle Breite: links Inhalt, rechts Preis.
+
+    items: dict(name, badge, text, bullets, preis, einheit, hinweis, fazit)
+    """
+    out = ""
+    for it in items:
+        badge = f'<span class="pk-badge">{it["badge"]}</span>' if it.get("badge") else ""
+        bl = ""
+        if it.get("bullets"):
+            bl = '<ul class="pk-list">' + "".join(f"<li>{b}</li>" for b in it["bullets"]) + "</ul>"
+        fazit = f'<p class="pk-fazit">{it["fazit"]}</p>' if it.get("fazit") else ""
+        einheit = f'<em>{it["einheit"]}</em>' if it.get("einheit") else ""
+        hinweis = f'<span class="pk-hinweis">{it["hinweis"]}</span>' if it.get("hinweis") else ""
+        feat = " pk--feat" if it.get("badge") else ""
+        out += (f'<div class="pk{feat}"><div class="pk-main">'
+                f'<div class="pk-head"><b>{it["name"]}</b>{badge}</div>'
+                f'<p class="pk-text">{it["text"]}</p>{bl}{fazit}</div>'
+                f'<div class="pk-preis"><span class="pk-betrag">{it["preis"]}{einheit}</span>{hinweis}</div></div>')
+    return f'<div class="pakete" style="{style}">{out}</div>'
