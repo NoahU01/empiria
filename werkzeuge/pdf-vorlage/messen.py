@@ -20,6 +20,13 @@ window.addEventListener('load', function () { setTimeout(function () {
     var r = pg.getBoundingClientRect();
     var padBottom = parseFloat(getComputedStyle(pg).paddingBottom);
     var limit = r.height - padBottom;   // Unterkante des Satzspiegels
+    // Sitzt unten ein absolut positionierter Kontaktblock (oder eine Skizze),
+    // endet der Satzspiegel dort - sonst laeuft der Text unsichtbar darunter.
+    var c = pg.querySelector('.contact') || pg.querySelector('.sketch');
+    if (c) {
+      var ct = c.getBoundingClientRect().top - r.top - 6 * MM;
+      if (ct < limit) limit = ct;
+    }
     var bottom = 0, over = [];
     // Absolut positionierte Bloecke (Deckblatt-Skizze, Kontakt, Footer, Fussnote)
     // samt ihrer Kinder ausklammern - sie sitzen bewusst am Seitenrand.

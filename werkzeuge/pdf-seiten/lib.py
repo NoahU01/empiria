@@ -203,6 +203,42 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .prof h3 { font-size: 11.5pt; margin-bottom: 1mm; }
 .prof small { display:block; font-size: 8pt; color: var(--g50); margin-bottom: 2mm; }
 .prof p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
+
+/* ---- Loesungsblock: ersetzt die duennen rows() auf Uebersichtsseiten ----
+   Statt Name + zwei Zeilen: Name, Einordnung, "fuer wen" und Preis. */
+.sols { margin-top: 6mm; border-top: 0.8pt solid var(--line); }
+.sol { display: grid; grid-template-columns: 1fr auto; gap: 8mm; align-items: start;
+       padding: 5mm 0; border-bottom: 0.8pt solid var(--line); }
+.sol-name { display: flex; align-items: baseline; gap: 3.5mm; margin-bottom: 1.6mm; }
+.sol-name b { font-family: var(--serif); font-weight: 700; font-size: 12.5pt; }
+.sol-tag { font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase;
+           color: var(--acc); font-weight: 600; }
+.sol p { font-size: 9.2pt; line-height: 1.6; color: var(--g70); max-width: 112mm; }
+.sol .for { display: block; font-size: 8.6pt; line-height: 1.5; color: var(--ink2); margin-top: 1.8mm; }
+.sol .for b { font-weight: 600; }
+.sol-price { font-family: var(--serif); font-weight: 700; font-size: 15pt;
+             white-space: nowrap; text-align: right; }
+.sol-price em { font-style: normal; font-family: var(--sans); font-weight: 500;
+                font-size: 7.6pt; display: block; color: var(--g50); margin-top: 1mm; }
+
+/* ---- "Fuer wen" als eigener Block ---- */
+.who { margin-top: 6mm; }
+.who-title { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; margin-bottom: 3mm; }
+.who ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 7mm; }
+.who li { position: relative; padding-left: 5.5mm; font-size: 9.2pt; line-height: 1.55; color: var(--g70); }
+.who li::before { content: ""; position: absolute; left: 0; top: 1.7mm; width: 2.2mm; height: 2.2mm;
+                  border-radius: 50%; background: var(--acc); }
+
+/* ---- Uebersichtstabelle ---- */
+.ov { margin-top: 6mm; width: 100%; border-collapse: collapse; }
+.ov th { text-align: left; font-size: 6.8pt; letter-spacing: .12em; text-transform: uppercase;
+         color: var(--g50); font-weight: 600; padding: 0 5mm 2.5mm 0; border-bottom: 0.8pt solid var(--line); }
+.ov td { padding: 4mm 5mm 4mm 0; border-bottom: 0.8pt solid var(--line); vertical-align: top; }
+.ov td:last-child, .ov th:last-child { padding-right: 0; text-align: right; }
+.ov .t-name { font-family: var(--serif); font-weight: 700; font-size: 11pt; }
+.ov .t-sub { display: block; font-size: 8.5pt; color: var(--g70); line-height: 1.5; margin-top: .8mm; }
+.ov .t-dur { font-size: 9pt; color: var(--g70); white-space: nowrap; }
+.ov .t-price { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; white-space: nowrap; }
 """
 
 def esc(s): return _h.escape(s, quote=False)
@@ -338,3 +374,45 @@ def contact(h3, people, kicker="Kontakt", bottom=None):
         dlrow = '<div class="dlrow"><span><span class="label">E-Mail</span>daniel.stroebel@empiria.de</span><span><span class="label">Telefon</span>+49 176 3134 7217</span><span><span class="label">Web</span>www.empiria.de</span></div>'
         body = f'<div class="many"><div class="ppl" style="grid-template-columns:repeat({cols},1fr)">{ps}</div>{dlrow}</div>'
     return f'<div class="contact"{st}><p class="kicker">{kicker}</p><h3>{h3}</h3>{body}</div>'
+
+
+def sols(items, style=""):
+    """Loesungsblock fuer Uebersichtsseiten.
+
+    items: (name, tag, beschreibung, fuer_wen, preis, preis_zusatz)
+    tag/fuer_wen/preis/preis_zusatz duerfen leer sein.
+    """
+    out = ""
+    for it in items:
+        name, tag, desc, forwhom, price, pnote = (list(it) + [""] * 6)[:6]
+        t = f'<span class="sol-tag">{tag}</span>' if tag else ""
+        f = f'<span class="for"><b>Für wen:</b> {forwhom}</span>' if forwhom else ""
+        if price:
+            em = f"<em>{pnote}</em>" if pnote else ""
+            right = f'<div class="sol-price">{price}{em}</div>'
+        else:
+            right = '<div class="sol-price" style="font-size:10.5pt;color:var(--g70)">individuell</div>'
+        out += (f'<div class="sol"><div><div class="sol-name"><b>{name}</b>{t}</div>'
+                f'<p>{desc}</p>{f}</div>{right}</div>')
+    return f'<div class="sols" style="{style}">{out}</div>'
+
+
+def who(title, items, style=""):
+    """Wer profitiert davon - fuellt die bisher leeren Flaechen mit Substanz."""
+    lis = "".join(f"<li>{i}</li>" for i in items)
+    return f'<div class="who" style="{style}"><p class="who-title">{title}</p><ul>{lis}</ul></div>'
+
+
+def overview(rows_, style=""):
+    """Tabelle: Angebot / Umfang / Investition - Orientierung auf einen Blick.
+
+    rows_: (name, sub, umfang, preis)
+    """
+    body = ""
+    for name, sub, dur, price in rows_:
+        body += (f'<tr><td><span class="t-name">{name}</span>'
+                 f'<span class="t-sub">{sub}</span></td>'
+                 f'<td class="t-dur">{dur}</td>'
+                 f'<td class="t-price">{price}</td></tr>')
+    return (f'<table class="ov" style="{style}"><thead><tr><th>Angebot</th><th>Umfang</th>'
+            f'<th>Investition</th></tr></thead><tbody>{body}</tbody></table>')
