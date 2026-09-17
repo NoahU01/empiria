@@ -36,13 +36,22 @@ P["strategie"] = ("strategie", "Strategie in den Alltag überführen – empiria
     who("Für wen das gemacht ist", [
       "Abteilungs- und Bereichsleitungen, die fachlich überzeugt haben",
       "Führungskräfte, die ihrem Bereich Richtung geben müssen",
-    ], style="margin-top:0"),
+    ], style="margin-top:7mm"),
     sec("Zusammenarbeit", 'So arbeiten wir <span class="hl">wirklich</span> zusammen.',
         style="margin-top:12mm"),
     rows([("Direkter Draht, klare Worte", "Du arbeitest direkt mit mir – Daniel – zusammen. Die Verantwortung bleibt durchgehend bei mir. Und ich sage, was ich denke: ehrliches, direktes Feedback, um den Fokus zu schärfen."),
           ("Dein Einsatz entscheidet", "Eine Strategie lässt sich nicht von außen hineintragen. Wir unterstützen Dich maximal – die Umsetzung bleibt Deine Aufgabe. Plane dafür ein bis zwei Stunden pro Woche ein."),
           ("Dranbleiben, klar planen, umsetzen", "Regelmäßig abstimmen statt punktuell, klares Vorgehen, flexibel bei Engpässen – und ab einem gewissen Punkt zählt schnelle Umsetzung mehr als eine weitere Abstimmungsschleife.")], style="margin-top:2mm"),
-    contact_html=contact("Lass uns über Deinen Bereich sprechen.", ["daniel"])),
+    ),
+  page(
+    sec("Kontakt", 'Lass uns über <span class="hl">Deinen Bereich sprechen.</span>',
+        "Kein Pitch, kein Angebot von der Stange: ein offenes Gespräch über Deinen Verantwortungsbereich – und was ihn gerade ausbremst."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel"])),
 ])
 
 # ---------------------------------------------------------------- Komplexe Themen
@@ -149,7 +158,7 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
       "Grundsatz- und Strategieabteilungen mit Analysebedarf",
       "Marketing und Kommunikation für schnellere Inhalte",
       "Führungskräfte, die selbst schlagkräftiger werden wollen",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Beispiele", "Konkrete Use Cases aus der Praxis.", "Eine Auswahl der Themen, die wir mit unseren Kunden bereits umsetzen durften."),
     cases([("Sparring zu Zielgruppen", "Produktentwicklung und Marketing nutzen KI als Sparringspartner für Zielgruppenprofile im Versicherungsvertrieb – inklusive passender Ansprache.", "team"),
            ("Generierung von Produktideen", "Auftrag vom Vorstand: eingefahrene Denkmuster aufbrechen, einen Impuls setzen und die Diskussion im Team neu in Gang bringen.", "bulb"),
@@ -157,7 +166,16 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
            ("Ideen für Marketingkampagnen", "Auf der grünen Wiese ausprobieren, was KI heute wirklich kann – mit konkreten Impulsen für die Arbeit im eigenen Haus.", "megaphone"),
            ("Content für Social Media", "Text und Grafik live erstellt – am Ende stand eine Entscheidungsvorlage, welche Tools das Team im Alltag wirklich braucht.", "phone"),
            ("HTML-Seiten für Homepage &amp; Intranet", "Wie sich Seiten mit KI am geschicktesten entwickeln lassen – inklusive Automatisierungen, Agents und Tool-Stärken.", "browser")]),
-    contact_html=contact("Bereit, KI wirklich anzufassen?", ["daniel", "noah_ki"])),
+    ),
+  page(
+    sec("Kontakt", 'Bereit, KI <span class="hl">wirklich anzufassen?</span>',
+        "Sag uns, welche Fragestellung bei Euch ansteht und wer dabei sein soll – wir schlagen Dir das passende Format vor."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "noah_ki"])),
 ])
 
 # ---------------------------------------------------------------- Sprint Landingpage
@@ -197,7 +215,7 @@ P["sprint-landingpage"] = ("magenta", "Sprint Landingpage – empiria", [
       "Teams vor Messe, Event oder Vertriebstagung",
       "Marketing, dem jemand ausgefallen ist und der Termin trotzdem steht",
       "Alle, die zeigen wollen, dass es auch schnell und sauber geht",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Anwendungsfälle", 'So setzen Unternehmen <span class="hl">den Sprint ein.</span>'),
     cases([("Dynamik im Kreativworkshop", "Direkt weitermachen, statt Ergebnisse im Nachgang untergehen zu lassen.", "bolt"),
            ("Auf den Vertrieb reagieren", "Marktchance nutzen oder kurzfristig einen Push setzen – etwa im Endjahresgeschäft.", "trend"),
@@ -230,13 +248,23 @@ P["workshop-moderation"] = ("magenta", "Moderation Deines Workshops – empiria"
       "Abteilungen mit vielen Themen, aber ohne klaren Weg nach vorn",
       "Rollenklärung zwischen Führungskraft und neuer Stelle",
       "Führungswechsel, die mit einem Umbau zusammenfallen",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Beispiele", "Konkrete Usecases aus der Praxis.", "Ein Ausschnitt möglicher Workshopmoderationen – so vielfältig wie die Themen, die uns Teams mitbringen."),
     rows([("Restrukturierung mit geteilter Führung", "Neue Rollen bis hin zu einer geteilten Führungsrolle: Der Workshop hat Rollen, Prozesse und Zuständigkeiten so konkret gemacht, dass sie sich direkt in den Alltag übertragen ließen."),
           ("Klarheit nach zwei Strategieworkshops", "Jede Menge Themen gesammelt, aber kein klarer Weg nach vorn: Der Workshop brachte klare Schwerpunkte, klare Priorität und ein klares weiteres Vorgehen."),
           ("Einarbeitung einer neu geschaffenen Rolle", "Über mehrere Sequenzen wurde die neue Rolle ins Gesamtgefüge integriert und an den Schnittstellen geschärft – mit konkreten Methoden für den Alltag."),
-          ("Neustart nach Führungswechsel", "Erst Vertrauen über mehrere Ebenen, dann Inhalte: Am Ende stand eine Abteilung, die schlagkräftiger in die Zukunft startete als zuvor.")]),
-    contact_html=contact("Welcher Workshop soll wirklich etwas bewegen?", ["daniel", "kerstin_hr"])),
+          ("Neustart nach Führungswechsel", "Erst Vertrauen über mehrere Ebenen, dann Inhalte: Am Ende stand eine Abteilung, die schlagkräftiger in die Zukunft startete als zuvor."),
+          ("Prozess- und Strukturworkshop im Team", "Gewachsene Strukturen, laufend neue Themen – aber nie die Frage, was wegfallen kann. Erst die Klärung, wofür die Abteilung steht, dann Prozesse, die im Alltag tragen statt dokumentiert abgelegt zu werden.")]),
+    ),
+  page(
+    sec("Kontakt", 'Welcher Workshop soll <span class="hl">wirklich etwas bewegen?</span>',
+        "Schildere uns Dein Thema und wen Du im Raum hast – wir sagen Dir, wie wir den Workshop aufsetzen würden und was er kostet."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_hr"])),
 ])
 
 # ---------------------------------------------------------------- Marketing
@@ -284,7 +312,12 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
   page(
     sec("Kontakt", 'Welcher Weg passt <span class="hl">zu Deinem Marketing?</span>',
         "Kurze Wege statt langer Abstimmungsrunden: Schildere uns Deine Ausgangslage – wir melden uns zeitnah mit einem konkreten Vorschlag, welcher der vier Wege für Dich am meisten bringt."),
-    contact_html=contact("Dein direkter Draht zu uns", ["daniel", "kerstin_content", "noah_pm"])),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_content", "noah_pm"])),
 ])
 
 # ---------------------------------------------------------------- MES
@@ -316,7 +349,7 @@ P["dashboard-digitales-marketing"] = ("cyan", "MarketingEcoSystem (MES) – empi
       "Maklerunternehmen mit mehreren Mitarbeitenden",
       "Versicherungsbüros, die digital sichtbar werden wollen",
       "Alle, die Wirkung sehen wollen statt Pseudo-Reporting",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Pakete", 'Drei Wege, <span class="hl">uns zu buchen.</span>', "Vom Dashboard in Eigenregie bis zur vollständigen Betreuung – wähle den Umfang, der wirklich zu Deinem Business passt."),
     opts([dict(name="Eigenregie", text="Wenn Du das Ecosystem nutzen, die Umsetzung aber in der Hand behalten willst.", list=["Anbindung an Dashboard &amp; Reporting", "Regelmäßiges Reporting zu Optimierungen", "Mindestlaufzeit drei Monate zzgl. Setup"], price="ab 399 €<em>mtl.</em>"),
           dict(tag="Meistgewählt", name="Marketing as a Service", text="Für alle, die ihr Marketing nicht mehr selbst stemmen, sondern uns anvertrauen wollen.", list=["Homepage betreut &amp; optimiert", "LinkedIn, Facebook, Instagram", "Content-Kalender &amp; Postings", "Monatlicher Austausch, wöchentliches Reporting"], price="ab 3.500 €<em>mtl.</em>", pnote="Mindestlaufzeit zwölf Monate, kein Setup", feat=True),
@@ -326,7 +359,12 @@ P["dashboard-digitales-marketing"] = ("cyan", "MarketingEcoSystem (MES) – empi
   page(
     sec("Kontakt", 'Dein Marketing als <span class="hl">lebendes Ökosystem?</span>',
         "Kurze Wege statt langer Abstimmungsrunden: Schildere uns Deine Ausgangslage – wir sagen Dir, welches Paket zu Deinem Haus passt."),
-    contact_html=contact("Dein direkter Draht zu uns", ["daniel", "kerstin_content", "noah_pm"])),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_content", "noah_pm"])),
 ])
 
 # ---------------------------------------------------------------- sofort sichtbar
@@ -423,14 +461,23 @@ P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
       "Themen, die im Vorstand oder Gremium tragen müssen",
       "Vertrieb und Messeauftritte mit klarer Botschaft",
       "Bereiche ohne eigene Medienproduktion",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Beispiele", "Konkrete Use Cases aus der Praxis.", "Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien wirken."),
     rows([("Der entscheidende Pitch im Konsortium", "Statt Standardfolien mit Interpretationsspielraum Medien, die zu 100 % zeigen: Wir haben den Kunden verstanden – und die Lösung ist maßgeschneidert."),
           ("Neupositionierung eines Konzernunternehmens", "Eine Gesamtlogik, die Kooperations-, Vertriebspartnern und Kunden verständlich macht, wofür das Unternehmen steht – aus einer Hand."),
           ("Produktlaunch oder -relaunch", "Statt Broschüren und 150 Detailfolien eine durchdachte Kombination digitaler Formate, die den Vertrieb wirklich erfolgreich macht."),
           ("Aufsichtsrats- und Gremientermine", "Große Themen kompakt und vertrauensbildend erzählt – übersetzt in die Welt auch fachfremder Gremienmitglieder."),
           ("Gespräche mit dem Rückversicherer", "Die strategische Richtung stringent erzählt, nicht nur in harten Zahlen – für Erneuerungsgespräche, Monte Carlo oder Baden-Baden.")], style="margin-top:3mm"),
-    contact_html=contact("Welche Botschaft soll wirken?", ["daniel", "kerstin_content", "noah_pm"])),
+    ),
+  page(
+    sec("Kontakt", 'Welche Botschaft <span class="hl">soll wirken?</span>',
+        "Schildere uns Dein Thema und die Zielgruppe – wir sagen Dir, welches Medium dafür trägt und was es braucht."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_content", "noah_pm"])),
 ])
 
 # ---------------------------------------------------------------- Training & Sparring
@@ -456,7 +503,7 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
       "Führungskräfte, die ein vertrauliches 1:1-Gegenüber suchen",
       "Teams vor wiederkehrenden Gremien- und Vertriebsterminen",
       "Alle, denen ein Seminar von der Stange zu wenig ist",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Das Ergebnis", 'Weniger Seminar. <span class="hl">Mehr Wirkung.</span>',
         "Dein Team überzeugt, wenn es zählt – und Du triffst Entscheidungen mit einem Gegenüber, das mitdenkt und mitgestaltet."),
     checks(["Inhalte und Fälle aus Deinem echten Alltag statt austauschbarer Trainer-Folien",
@@ -506,7 +553,7 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
       "Teams, die regelmäßig vor Vorstand oder Aufsichtsrat auftreten",
       "Bereiche mit wiederkehrenden Vertriebstagungen und Gremienterminen",
       "Teams, die vor Kundenpitches und Partnergesprächen sicher werden sollen",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Vorgehen in der Begleitung", "Schlank und fokussiert."),
     chips(["1 · Auftrag &amp; Zielbild klären", "2 · Storyboard entwickeln", "3 · Präsentation erstellen", "4 · Gesprächstaktik anwenden", "5 · Review &amp; Optimierung"]),
     sec("Das Ergebnis", 'Dein Team überzeugt <span class="hl">ohne Dich.</span>',
@@ -514,7 +561,16 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
     cards([("compass", "Strategisches Verständnis", "Dein Team stellt den Mehrwert für die Zielgruppe in den Mittelpunkt."),
            ("chat", "Überzeugende Story", "Zügig und sicher eine Business Story aufbauen – unabhängig vom Format."),
            ("target", "Souverän im Termin", "Klarer Einstieg, strukturiert aufs Ziel hin und professionelle Folien.")], 3, style="margin-top:7mm"),
-    contact_html=contact("Soll Dein Team ohne Dich überzeugen?", ["daniel", "kerstin_hr"], bottom=26)),
+    ),
+  page(
+    sec("Kontakt", 'Soll Dein Team <span class="hl">ohne Dich überzeugen?</span>',
+        "Schildere uns, wo Dein Team heute steht und vor welchen Terminen es steht – wir schlagen ein passendes Begleitungskonzept vor."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_hr"])),
 ])
 
 # ---------------------------------------------------------------- Sparring
@@ -541,7 +597,7 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
       "Hauptabteilungs- und Abteilungsleitungen in der Versicherungsbranche",
       "Führungskräfte vor strategischen Weichenstellungen",
       "Alle, die Positionierung und Auftreten spürbar stärken wollen",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Themen", "So flexibel, wie es für Dich passt.",
         "Der Alltag hält sich oft nicht an planbare Termine. Ein kurzer Austausch ist oftmals genauso hilfreich wie ein strukturierter Termin – bei Bedarf auch zu Randzeiten."),
     '<div class="two" style="margin-top:6mm"><div><p class="label" style="margin-bottom:2mm">Wann wir sprechen</p>' + chips(["Persönliches Treffen", "Offsite", "Telefonat aus dem Auto", "Kurznachricht"], style="margin-top:0") + '</div>' +
@@ -593,7 +649,12 @@ P["impulsvortraege"] = ("emerald", "Impulsvorträge – empiria", [
   page(
     sec("Kontakt", 'Welcher Impuls passt <span class="hl">zu Deinem Event?</span>',
         "Sag uns, worum es bei Deinem Anlass geht und wen Du im Raum hast – wir schlagen Dir den Vortrag vor, der dort am meisten bewegt."),
-    contact_html=contact("Dein direkter Draht zu uns", ["daniel"])),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel"])),
 ])
 
 def vortrag(slug, h1, lead, sketch, cards3, facts_theme, question, why):
@@ -663,12 +724,20 @@ P["capiamo"] = ("capiamo", "capiamo · Fachbereich & IT – empiria", [
     who("Für wen das gemacht ist", [
       "Fachbereiche, deren Themen in der IT liegen bleiben",
       "Vorstände und Gremien, denen eine klare Entscheidungsvorlage fehlt",
-      "Projekte, die zwischen Fachbereich und IT feststecken",
       "Häuser ohne eigene Übersetzerrolle zwischen beiden Welten",
-    ], style="margin-top:0"),
+    ], style="margin-top:9mm"),
     sec("Unsere Themen", "Drei Einstiege. Ein Ziel: Es läuft.", style="margin-top:10mm"),
     cards([("route", "Flaschenhals-Management", "Beauftragung und Koordination zwischen Fachbereich und IT – damit nichts im Nadelöhr stecken bleibt."),
            ("cycle", "Prozessoptimierung", "Abläufe verstehen, Engpässe sichtbar machen, Prozesse so aufsetzen, dass Tools sie unterstützen."),
            ("layers", "(Multi-)Projektbegleitung", "Von der Auftragsklärung bis zur Umsetzung: einzelne Projekte oder ein ganzes Portfolio.")], 3, style="margin-top:5mm"),
-    contact_html=contact("Wo hakt es zwischen Fachbereich und IT?", ["daniel", "rick"])),
+    ),
+  page(
+    sec("Kontakt", 'Wo hakt es zwischen <span class="hl">Fachbereich und IT?</span>',
+        "Schildere uns, welches Thema bei Euch feststeckt – wir sagen Dir, wo wir ansetzen würden und wie ein erster Schritt aussieht."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Worum geht es, wer ist beteiligt und bis wann soll es stehen? Eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag – kurze Wege statt langer Abstimmungsrunden."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Termine und Investition klären wir gemeinsam, bevor es losgeht."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "rick"])),
 ])

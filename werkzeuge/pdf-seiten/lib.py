@@ -221,6 +221,12 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .sol-price em { font-style: normal; font-family: var(--sans); font-weight: 500;
                 font-size: 7.6pt; display: block; color: var(--g50); margin-top: 1mm; }
 
+/* Abstand zwischen Sektionen: .sec + .sec greift nur bei direkter Nachbarschaft.
+   Sobald ein Block (who/sols/ov) dazwischensteht, muss die folgende Sektion
+   ihren Abstand trotzdem bekommen - sonst klebt die Subheadline am Block davor. */
+.who + .sec, .sols + .sec, .ov + .sec, .note + .sec,
+.who + .cards, .sols + .cards, .who + .band, .sols + .band { margin-top: 12mm; }
+
 /* ---- "Fuer wen" als eigener Block ---- */
 .who { margin-top: 6mm; }
 .who-title { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; margin-bottom: 3mm; }
@@ -373,7 +379,8 @@ def contact(h3, people, kicker="Kontakt", bottom=None):
         cols = len(people)
         dlrow = '<div class="dlrow"><span><span class="label">E-Mail</span>daniel.stroebel@empiria.de</span><span><span class="label">Telefon</span>+49 176 3134 7217</span><span><span class="label">Web</span>www.empiria.de</span></div>'
         body = f'<div class="many"><div class="ppl" style="grid-template-columns:repeat({cols},1fr)">{ps}</div>{dlrow}</div>'
-    return f'<div class="contact"{st}><p class="kicker">{kicker}</p><h3>{h3}</h3>{body}</div>'
+    k = f'<p class="kicker">{kicker}</p>' if kicker else ''   # leerer Kicker wuerde Luft fressen
+    return f'<div class="contact"{st}>{k}<h3>{h3}</h3>{body}</div>'
 
 
 def sols(items, style=""):
