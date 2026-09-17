@@ -51,6 +51,42 @@
         data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
         data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
 
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
 <!-- ===== Google Tag (GA4) ===== -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
 <script data-cookieconsent="ignore">
