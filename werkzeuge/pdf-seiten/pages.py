@@ -531,21 +531,27 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
   page(
     sec("Inhalte", "Drei Bausteine, die aufeinander aufbauen."),
     rows([("Business Storytelling &amp; Gesprächstaktik", "Dein Team lernt, bei jedem Termin zuerst zu klären: Wer sitzt im Raum, und welches Ergebnis wird gebraucht?",
-           '<div class="two" style="gap:5mm">' +
-             '<div><p class="label" style="margin-bottom:1mm">Modul 1 · Mindset</p>' + dots(["Wie Entscheider denken", "Nutzen statt Themenfokus"], "sm") + '</div>' +
-             '<div><p class="label" style="margin-bottom:1mm">Modul 2 · Methodik</p>' + dots(["Kernlogik der Business Story", "Übertragung aufs eigene Thema"], "sm") + '</div>' +
-           '</div><div style="margin-top:2mm"><p class="label" style="margin-bottom:1mm">Modul 3 · Umsetzung</p>' + dots(["Einstieg mit sofortiger Klarheit, präziser nächster Schritt"], "sm") + '</div>'),
+           '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:3mm">' +
+             '<div><p class="label" style="margin-bottom:1.2mm">Modul 1 · Mindset</p>' + dots(["Wie Entscheider denken", "Nutzen statt Themenfokus"], "sm") + '</div>' +
+             '<div><p class="label" style="margin-bottom:1.2mm">Modul 2 · Methodik</p>' + dots(["Kernlogik der Business Story", "Übertragung aufs eigene Thema"], "sm") + '</div>' +
+             '<div><p class="label" style="margin-bottom:1.2mm">Modul 3 · Umsetzung</p>' + dots(["Einstieg mit sofortiger Klarheit", "Präziser nächster Schritt"], "sm") + '</div>' +
+           '</div>'),
           ("Visualisierung &amp; Nutzung Standards", "Aufbauend auf der Business Story entstehen professionelle Folien: klare Visualisierung statt Informationsüberladung.",
            '<div class="two" style="gap:5mm">' +
              '<div><p class="label" style="margin-bottom:1mm">Vortragsfolien</p><p style="font-size:8.6pt;color:var(--g70);line-height:1.5">Verdichtet auf Story und Kernbotschaft, sofort erfassbar – in Präsenz und online.</p></div>' +
              '<div><p class="label" style="margin-bottom:1mm">Beraterfolien</p><p style="font-size:8.6pt;color:var(--g70);line-height:1.5">Für Projektarbeit: umfangreicher, aber klar strukturiert und professionell.</p></div></div>'),
           ("Umsetzungsbegleitung · 3–6 Monate", "Erfolg entsteht nicht im Training, sondern in der Anwendung bei echten Themen – individuell abgestimmt auf die Projekte und Termine Deines Teams.")]),
     sec("Lernlogik &amp; Erfolgsfaktor", "Orientierung an der 70-20-10-Regel.", style="margin-top:12mm"),
-    '<div style="display:grid;grid-template-columns:15fr 22fr 63fr;gap:2mm;margin-top:6mm">' +
-      '<div style="background:var(--bg);border-radius:3mm;padding:4mm 3mm"><b style="font-family:var(--serif);font-size:14pt">10 %</b></div>' +
-      '<div style="background:var(--tint);border-radius:3mm;padding:4mm 4mm"><b style="font-family:var(--serif);font-size:14pt">20 %</b></div>' +
-      '<div style="background:var(--feat-bg);color:#fff;border-radius:3mm;padding:4mm 5mm"><b style="font-family:var(--serif);font-size:14pt">70 %</b></div></div>' +
-    dots(["<b>10 %</b> Impulse im Seminar", "<b>20 %</b> kollegialer Austausch und gezielte Begleitung", "<b>70 %</b> Lernen durch Anwendung an echten, relevanten Themen"], style="margin-top:4mm"),
+    # Balken und Legende in einem Element: Anteil wird ueber die Spaltenbreite
+    # gezeigt, der Text steht direkt darunter - keine doppelten Prozentzahlen mehr.
+    '<div style="display:grid;grid-template-columns:15fr 22fr 63fr;gap:2.5mm;margin-top:6mm;max-width:140mm">' +
+      '<div style="background:var(--bg);border-radius:2.5mm;padding:2.6mm 3mm"><b style="font-family:var(--serif);font-size:11.5pt">10 %</b></div>' +
+      '<div style="background:var(--tint);border-radius:2.5mm;padding:2.6mm 3mm"><b style="font-family:var(--serif);font-size:11.5pt">20 %</b></div>' +
+      '<div style="background:var(--feat-bg);color:var(--feat-fg);border-radius:2.5mm;padding:2.6mm 3.5mm"><b style="font-family:var(--serif);font-size:11.5pt">70 %</b></div>' +
+      '<p style="font-size:8pt;line-height:1.45;color:var(--g70);margin-top:1.5mm">Impulse im Seminar</p>' +
+      '<p style="font-size:8pt;line-height:1.45;color:var(--g70);margin-top:1.5mm">Kollegialer Austausch und gezielte Begleitung</p>' +
+      '<p style="font-size:8pt;line-height:1.45;color:var(--g70);margin-top:1.5mm">Lernen durch Anwendung an echten, relevanten Themen</p>' +
+    '</div>',
   ),
   page(
     who("Für wen das gemacht ist", [

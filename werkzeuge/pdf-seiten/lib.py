@@ -5,7 +5,11 @@ THEMES = {
   "magenta":   dict(acc="#C51F5D", acc2="#7a1339", hl_bg="#C51F5D", hl_fg="#fff", tint="#fbeef3"),
   "cyan":      dict(acc="#0B9FBD", acc2="#086a80", hl_bg="#0B9FBD", hl_fg="#fff", tint="#e9f6f9"),
   "violet":    dict(acc="#8613A1", acc2="#5c0d70", hl_bg="#8613A1", hl_fg="#fff", tint="#f5ecf7"),
-  "green":     dict(acc="#4d7c0f", acc2="#33520a", hl_bg="#4d7c0f", hl_fg="#fff", tint="#f0f5e9"),
+  # Lime ist die Highlight-Farbe aus dem Corporate Design (wie auf der Website:
+  # #A3E635 mit dunkler Schrift, Verlauf nach #6b9422). Das fruehere #4d7c0f als
+  # Flaechenfarbe wirkte zu dunkel/waldig.
+  "green":     dict(acc="#6b9422", acc2="#4d7c0f", hl_bg="#A3E635", hl_fg="#1c2b0e", tint="#f0f5e9",
+                    feat_bg="linear-gradient(150deg, #A3E635 0%, #6b9422 100%)", feat_fg="#1c2b0e"),
   "emerald":   dict(acc="#059669", acc2="#037a54", hl_bg="#059669", hl_fg="#fff", tint="#e8f6f1"),
   "capiamo":   dict(acc="#063755", acc2="#04263b", hl_bg="#063755", hl_fg="#fff", tint="#eaf0f4"),
   "strategie": dict(acc="#1a1817", acc2="#2e2d2c", hl_bg="#fff400", hl_fg="#1a1817", tint="#f3f2ef",
