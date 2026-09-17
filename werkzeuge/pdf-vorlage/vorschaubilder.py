@@ -36,8 +36,12 @@ def screenshot_pages(html_path, pages, tmpdir):
     src_dir = os.path.dirname(os.path.abspath(html_path))
     out = {}
     for p in pages:
+        # Wichtig: .page--stretch ist eine Flex-Spalte (abschliessendes Band
+        # fuellt den Restplatz). Ein pauschales display:block wuerde das
+        # ueberschreiben - das Vorschaubild zeigte dann etwas anderes als das PDF.
         css = (f"<style>.page{{display:none !important}}"
-               f".page:nth-of-type({p}){{display:block !important}}</style>")
+               f".page:nth-of-type({p}){{display:block !important}}"
+               f".page--stretch:nth-of-type({p}){{display:flex !important}}</style>")
         tmp_html = os.path.join(src_dir, f"_vorschau_tmp{p}.html")
         open(tmp_html, "w", encoding="utf-8").write(html.replace("</body>", css + "</body>"))
         shot = os.path.join(tmpdir, f"p{p}.png")

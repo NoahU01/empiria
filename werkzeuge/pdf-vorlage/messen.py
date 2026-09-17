@@ -30,12 +30,18 @@ window.addEventListener('load', function () { setTimeout(function () {
     var bottom = 0, over = [];
     // Absolut positionierte Bloecke (Deckblatt-Skizze, Kontakt, Footer, Fussnote)
     // samt ihrer Kinder ausklammern - sie sitzen bewusst am Seitenrand.
-    var skip = '.contact, .footer, .head, .sketch, .facts';
+    // .stage-wm ist das absolut positionierte Icon-Wasserzeichen. Es selbst
+    // wird ueber die position-Pruefung ausgeklammert, seine Kinder (svg/path)
+    // sind aber statisch und ragen sonst als Falschmeldung nach unten heraus.
+    var skip = '.contact, .footer, .head, .sketch, .facts, .stage-wm';
     pg.querySelectorAll('*').forEach(function (e) {
       var b = e.getBoundingClientRect();
       if (b.height <= 0 || b.width <= 0) return;
       if (e.closest(skip)) return;
       if (getComputedStyle(e).position === 'absolute') return;
+      // .stage--boden laeuft absichtlich bis an die Blattkante. Der Kasten
+      // selbst zaehlt daher nicht, seine Kinder sehr wohl.
+      if (e.classList && e.classList.contains('stage--boden')) return;
       var rel = b.bottom - r.top;
       if (rel > bottom) bottom = rel;
       // .stage ist bewusst randlos (negative Margins) - dort ist ein Ueberstand

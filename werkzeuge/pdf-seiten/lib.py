@@ -1,19 +1,29 @@
 """empiria PDF-Zusammenfassungen – Bausteine (hell, eine Akzentfarbe je Seite)."""
 import html as _h
 
+# "dark" ist der Akzent fuer dunkle Kaesten (mdl/stein/mocks/raster). Die
+# Flaechenfarbe eines Themes ist auf Schwarz oft zu dunkel, deshalb je Theme
+# eine aufgehellte Variante derselben Farbe - niemals die Farbe eines anderen
+# Themes. Fehlt der Schluessel, wird hl_bg genommen.
 THEMES = {
-  "magenta":   dict(acc="#C51F5D", acc2="#7a1339", hl_bg="#C51F5D", hl_fg="#fff", tint="#fbeef3"),
-  "cyan":      dict(acc="#0B9FBD", acc2="#086a80", hl_bg="#0B9FBD", hl_fg="#fff", tint="#e9f6f9"),
-  "violet":    dict(acc="#8613A1", acc2="#5c0d70", hl_bg="#8613A1", hl_fg="#fff", tint="#f5ecf7"),
+  "magenta":   dict(acc="#C51F5D", acc2="#7a1339", hl_bg="#C51F5D", hl_fg="#fff", tint="#fbeef3",
+                    dark="#F2588C"),
+  "cyan":      dict(acc="#0B9FBD", acc2="#086a80", hl_bg="#0B9FBD", hl_fg="#fff", tint="#e9f6f9",
+                    dark="#3FC7E3"),
+  "violet":    dict(acc="#8613A1", acc2="#5c0d70", hl_bg="#8613A1", hl_fg="#fff", tint="#f5ecf7",
+                    dark="#C77BDB"),
   # Lime ist die Highlight-Farbe aus dem Corporate Design (wie auf der Website:
   # #A3E635 mit dunkler Schrift, Verlauf nach #6b9422). Das fruehere #4d7c0f als
   # Flaechenfarbe wirkte zu dunkel/waldig.
   "green":     dict(acc="#6b9422", acc2="#4d7c0f", hl_bg="#A3E635", hl_fg="#1c2b0e", tint="#f0f5e9",
-                    feat_bg="linear-gradient(150deg, #A3E635 0%, #6b9422 100%)", feat_fg="#1c2b0e"),
-  "emerald":   dict(acc="#059669", acc2="#037a54", hl_bg="#059669", hl_fg="#fff", tint="#e8f6f1"),
-  "capiamo":   dict(acc="#063755", acc2="#04263b", hl_bg="#063755", hl_fg="#fff", tint="#eaf0f4"),
+                    feat_bg="linear-gradient(150deg, #A3E635 0%, #6b9422 100%)", feat_fg="#1c2b0e",
+                    dark="#A3E635"),
+  "emerald":   dict(acc="#059669", acc2="#037a54", hl_bg="#059669", hl_fg="#fff", tint="#e8f6f1",
+                    dark="#22C79A"),
+  "capiamo":   dict(acc="#063755", acc2="#04263b", hl_bg="#063755", hl_fg="#fff", tint="#eaf0f4",
+                    dark="#7FB2D4"),
   "strategie": dict(acc="#1a1817", acc2="#2e2d2c", hl_bg="#fff400", hl_fg="#1a1817", tint="#f3f2ef",
-                    feat_bg="#fff400", feat_fg="#1a1817", num="#1a1817"),
+                    feat_bg="#fff400", feat_fg="#1a1817", num="#1a1817", dark="#fff400"),
 }
 
 ICONS = {
@@ -94,7 +104,8 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cover .sketch.noinv svg { filter: none; }
 .cover .facts { position: absolute; left: 22mm; right: 22mm; bottom: 20mm; display: grid; gap: 7mm; }
 .cover .facts b { display:block; font-family: var(--serif); font-weight: 700; font-size: 11pt; line-height: 1.3; margin-top: 1.5mm; }
-.cover .brandlogo { height: 4.5mm; margin-top: 24mm; display:block; }  /* Kicker-Groesse, nicht Headline */
+.cover .brandlogo { height: 3.2mm; margin-top: 24mm; display:block; }  /* Kicker-Groesse, nicht Headline */
+.cover--subklein .sub { font-size: 9.2pt; }
 .cover .brandlogo + .kicker { margin-top: 6mm; }
 .cover .brandlogo + h1 { margin-top: 7mm; }
 .inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
@@ -118,14 +129,14 @@ p.lead + p.lead { margin-top: 2.6mm; }
        display:grid; grid-template-columns: var(--figw,68mm) 1fr; gap:8mm; align-items:center; }
 .mdl--breit { grid-template-columns:1fr; }
 .mdl-fig svg { display:block; width:100%; height:auto; filter:none; }
-.mdl-txt .kicker { color:#fff400; font-size:9pt; margin:0 0 1.6mm; }
+.mdl-txt .kicker { color:var(--dark-acc); font-size:9pt; margin:0 0 1.6mm; }
 .mdl-txt h3 { color:#fff; font-size:13pt; line-height:1.28; margin-bottom:3mm; }
 .mdl-txt p { font-size:8.8pt; line-height:1.62; color:rgba(255,255,255,.74); }
 .mdl-txt p + p { margin-top:2.6mm; }
 .mdl-txt p b { color:#fff; font-weight:600; }
 .mdl-steps { margin-top:4mm; display:grid; gap:2.6mm; }
 .mdl-step { display:grid; grid-template-columns:5.5mm 1fr; gap:2.5mm; align-items:baseline; }
-.mdl-step i { font-style:normal; font-family:var(--serif); font-weight:700; font-size:9.5pt; color:#fff400; }
+.mdl-step i { font-style:normal; font-family:var(--serif); font-weight:700; font-size:9.5pt; color:var(--dark-acc); }
 .mdl-step span { font-size:8.6pt; line-height:1.55; color:rgba(255,255,255,.78); }
 .mdl-step span b { color:#fff; font-weight:600; display:block; margin-bottom:.4mm; }
 
@@ -137,6 +148,12 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .stage-wm { position:absolute; z-index:0; right:-18mm; bottom:-24mm; width:98mm; height:98mm;
             color:var(--ink); opacity:.055; }
 .stage-wm svg { width:100%; height:100%; stroke-width:.9; }
+/* Steht das Band am Seitenende, laeuft es bis an die Blattkante - so wie die
+   Sektionen auf der Website. Sonst bleibt darunter ein weisser Streifen, der
+   wie ein Fehler aussieht. */
+.stage--boden { margin-bottom:-18mm; padding-bottom:20mm; }
+.page--stretch { display:flex; flex-direction:column; }
+.page--stretch > .stage--boden { flex:1 0 auto; }
 .stage-head h2 { font-size:19pt; margin-bottom:3mm; }
 .stage-head p { font-size:9.4pt; line-height:1.66; color:var(--ink2); max-width:148mm; }
 .stage .mdl, .stage .mocks-box { margin-top:6mm; }
@@ -165,8 +182,27 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .stein ul { list-style:none; margin:4.5mm 0 0; display:grid; gap:3mm; }
 .stein li { font-family:var(--serif); font-weight:700; font-size:13.5pt; line-height:1.25;
             color:rgba(255,255,255,.40); text-decoration:line-through;
-            text-decoration-color:#fff400; text-decoration-thickness:1.5pt; }
-.stein .foot { margin-top:5.5mm; font-family:var(--serif); font-weight:700; font-size:15pt; color:#fff400; }
+            text-decoration-color:var(--dark-acc); text-decoration-thickness:1.5pt; }
+.stein .foot { margin-top:5.5mm; font-family:var(--serif); font-weight:700; font-size:15pt; color:var(--dark-acc); }
+
+/* ---- Sprechblasen: wiederkehrende Saetze als Dialog statt als Punkteliste ---
+   Fuer Reflexe/Einwaende ("Wir brauchen eine Praesentation."). Abwechselnd
+   links und rechts, damit die Seite eine Bewegung bekommt. */
+.bubbles { background:#0f0e0d; border-radius:4mm; padding:7mm; margin-top:7mm; color:#fff; }
+.bubbles .tag { font-size:6.6pt; letter-spacing:.12em; text-transform:uppercase;
+                color:rgba(255,255,255,.55); font-weight:600; margin-bottom:4.5mm; }
+.bubbles ul { list-style:none; display:grid; gap:3mm; }
+.bubbles li { background:rgba(255,255,255,.085); border-radius:3.4mm 3.4mm 3.4mm .8mm;
+              padding:3.2mm 5.5mm; font-family:var(--serif); font-weight:700; font-size:12pt;
+              line-height:1.3; color:#fff; justify-self:start; max-width:116mm; }
+.bubbles li:nth-child(even) { justify-self:end; border-radius:3.4mm 3.4mm .8mm 3.4mm; }
+.bubbles .foot { margin-top:6mm; font-size:9pt; line-height:1.62; color:rgba(255,255,255,.74); }
+.bubbles .foot b { color:var(--dark-acc); font-weight:600; }
+
+/* Stationen im hellen Band: der weisse Punkt braucht dort einen eigenen Grund,
+   sonst verschwindet die Nummer im Grau. */
+.stage .stations::before { background: var(--g30); }
+.stage .st .n { background:#fff; }
 
 /* ---- Nummeriertes Raster (inno-einsatz-grid), erstes Feld hervorgehoben ---- */
 .raster { display:grid; gap:3.5mm; margin-top:6mm; }
@@ -175,7 +211,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
                color:var(--acc); margin-bottom:2.5mm; }
 .raster b { font-family:var(--serif); font-weight:700; font-size:9.6pt; line-height:1.3; display:block; }
 .raster > div.main { background:var(--ink); color:#fff; border-color:var(--ink); }
-.raster > div.main .num { color:#fff400; }
+.raster > div.main .num { color:var(--dark-acc); }
 
 /* ---- Medien-Mockups nebeneinander (wie die Sketch-Reihe auf der Website) --- */
 .mocks-box { background:#0f0e0d; border-radius:4mm; padding:7mm; color:#fff; }
@@ -196,6 +232,29 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .card p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
 .card .num { font-family: var(--serif); font-weight: 700; font-size: 11pt; color: var(--num); display:block; margin-bottom: 2.5mm; }
 .card ul { margin-top: 2.5mm; }
+/* Original-Vorschaubilder der Produktseite in der Karte (Postings, Funnel,
+   Landingpages). Unten angesetzt, damit die Bildkanten aller Karten fluchten. */
+.card-img { display:block; width: 100%; height: auto; border-radius: 2.5mm;
+            margin-top: 4mm; border: 0.6pt solid #e6e2de; }
+/* ---- Bausteine nebeneinander: Bild oben, Beschriftung darunter -------------
+   Die Bilder stehen ohne Kartenrahmen, damit sie die Spaltenbreite voll nutzen
+   und lesbar bleiben. align-items:end laesst die Bildunterkanten fluchten. */
+.bilder { display: grid; gap: 7mm; margin-top: 6mm; align-items: start; }
+.bilder-fig { display: flex; align-items: flex-end; justify-content: center; }
+.bilder-fig img { display: block; width: 100%; height: auto; border-radius: 2.5mm;
+                  border: 0.6pt solid #e6e2de; }
+.bilder b { display: block; font-family: var(--serif); font-weight: 700; font-size: 11pt;
+            margin: 4.5mm 0 1.5mm; }
+.bilder p { font-size: 8.4pt; line-height: 1.55; color: var(--g70); }
+
+/* Original-Bausteine der Website (siehe werkzeuge/baustein_bild.py) */
+.baustein { display: block; width: 100%; height: auto; margin: 7mm auto 0;
+            border-radius: 3mm; border: 0.6pt solid #e6e2de; }
+.baustein--blank { border: 0; border-radius: 0; }
+.stage .baustein { margin-top: 6mm; }
+.cards--bild { align-items: stretch; }
+.cards--bild .card { display: flex; flex-direction: column; }
+.cards--bild .card-img { margin-top: auto; }
 /* nummerierte Zeilen */
 .rows { margin-top: 5mm; }
 .row { display: grid; grid-template-columns: 11mm 1fr; column-gap: 3mm; padding: 3mm 0; }
@@ -242,20 +301,27 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
    Der Preis gehoert nach oben (direkt unter die Beschreibung), nicht an den
    unteren Rand - und die Unterschrift ("Kompakter Anwendungsfall") ist eine
    eigene Zeile zwischen Preis und Bullets, kein Listenpunkt. */
-.opts { display: grid; gap: 4mm; margin-top: 7mm; align-items: stretch; }
-.opt { background: var(--bg); border-radius: 3.5mm; padding: 4.5mm 4.5mm; display:flex; flex-direction: column; }
+/* Alle Karten teilen dieselben Grid-Zeilen (subgrid): Badge, Name, Beschreibung,
+   Preis, Leistungen. Dadurch stehen Ueberschriften, Texte und Preise ueber alle
+   Karten hinweg exakt auf einer Linie - nichts springt mehr optisch. Der
+   row-gap des Elterngrids erzeugt gleichzeitig die Luft zwischen den Zeilen. */
+.opts { display: grid; column-gap: 4mm; row-gap: 5mm; margin-top: 7mm;
+        grid-template-rows: repeat(5, auto); align-items: stretch; }
+.opt { grid-row: span 5; display: grid; grid-template-rows: subgrid;
+       background: var(--bg); border-radius: 3.5mm; padding: 6mm 5.5mm; }
 /* immer vorhanden, damit die Namen aller Karten auf einer Linie sitzen */
-.opt .badgeslot { min-height: 5.4mm; margin-bottom: 1.5mm; }
+.opt .badgeslot { min-height: 5.4mm; }
 .opt .badge { display:inline-block; font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;
               font-weight: 600; padding: 1.1mm 2.6mm; border-radius: 10mm;
               background: var(--acc); color: #fff; }
-.opt b { display:block; font-family: var(--serif); font-weight: 700; font-size: 12pt; }
+.opt b { display:block; font-family: var(--serif); font-weight: 700; font-size: 12pt; align-self: start; }
 .opt b .sub { font-family: var(--sans); font-weight: 500; font-size: 8pt; color: var(--g50); margin-left: 2mm; }
-.opt small { display:block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); margin: 1.2mm 0 0; min-height: 10mm; }
+.opt small { display:block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); align-self: start; }
+.opt .priceblock { align-self: start; }
 .opt .price { font-family: var(--serif); font-weight: 700; font-size: 17pt; color: var(--ink); display:block; }
 .opt .price em { font-style: normal; font-family: var(--sans); font-weight: 500; font-size: 8pt; margin-left: 1mm; color: var(--g70); }
-.opt .pnote { display:block; font-size: 8pt; font-weight: 500; color: var(--ink2); margin-top: 1.2mm; line-height: 1.4; }
-.opt ul.dots { margin-top: 3.5mm; padding-top: 3.5mm; border-top: 0.7pt solid var(--g30); }
+.opt .pnote { display:block; font-size: 8pt; font-weight: 500; color: var(--ink2); margin-top: 1.6mm; line-height: 1.4; }
+.opt ul.dots { padding-top: 4mm; border-top: 0.7pt solid var(--g30); align-self: start; }
 .opt ul.dots li { font-size: 8.3pt; padding: .8mm 0 .8mm 4mm; color: var(--ink2); }
 .opt ul.dots li::before { top: 2.3mm; width: 1.3mm; height: 1.3mm; }
 .opt--feat { background: var(--feat-bg); color: var(--feat-fg); }
@@ -359,25 +425,38 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 /* ---- Vergleichs-Timeline (wie auf der Website: Agentur vs. eigenes Angebot) ----
    Zwei Zeilen mit gleicher Timeline-Geometrie; die zweite ist umrandet und
    endet frueher - der gewonnene Vorsprung wird als eigener Chip gezeigt. */
-.vgl { margin-top: 6mm; background: var(--bg); border: 0.8pt solid var(--g30);
-       border-radius: 4mm; padding: 5mm; display: grid; gap: 3.5mm; }
-.vgl-row { display: grid; grid-template-columns: 26mm 1fr; gap: 4mm; align-items: center; }
-.vgl-label { font-size: 8.4pt; font-weight: 700; line-height: 1.25; color: var(--ink); }
-.vgl-label img { display: block; width: 100%; max-width: 24mm; height: auto; }
-.vgl-line { display: flex; align-items: stretch; gap: 1.8mm; background: #fff;
-            border: 0.8pt solid transparent; border-radius: 3mm; padding: 2.2mm; }
-.vgl-line--outline { border-color: var(--acc); }
-.vgl-pill { flex: 1 1 0; display: flex; align-items: center; justify-content: center;
-            text-align: center; background: var(--bg); border: 0.6pt solid var(--g30);
-            border-radius: 2mm; padding: 2.4mm 1.5mm; font-size: 7.6pt; line-height: 1.25; }
-.vgl-line--outline .vgl-pill { flex: 0 0 34mm; }
-.vgl-rocket { flex: 0 0 11mm; display: flex; align-items: center; justify-content: center;
-              border-radius: 2mm; background: var(--feat-bg); color: var(--feat-fg); }
-.vgl-rocket svg { width: 6mm; height: 6mm; }
-.vgl-bonus { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 2mm;
-             padding: 2.4mm 3mm; border-radius: 2mm; background: var(--tint);
-             font-size: 7.8pt; font-weight: 600; color: var(--ink); text-align: center; }
-.vgl-bonus svg { flex: 0 0 auto; width: 4mm; height: 4mm; color: var(--acc); }
+/* ---- Vergleich "Monate werden zu Tagen" -------------------------------------
+   Werte 1:1 von .vergleich-bild auf sofort-sichtbar.html uebernommen (px -> mm).
+   KERNAUSSAGE der Grafik: Die Pillen sind grundsaetzlich nur so breit wie ihr
+   Text (flex: 0 1 auto). Nur die Agentur-Zeile streckt ihre vier Pillen auf die
+   volle Breite - dadurch ist "Auftragsklaerung" bei sofort sichtbar sichtbar
+   SCHMALER als bei der Agentur. Beide Zeitstrahlen brauchen dasselbe Padding,
+   sonst starten die Pillen nicht auf derselben Linie. */
+.vgl { margin-top: 6mm; background: #211d24; border-radius: 7mm; padding: 6mm;
+       display: flex; flex-direction: column; gap: 4mm; }
+.vgl-row { display: flex; align-items: center; justify-content: space-between; gap: 5mm; }
+.vgl-label { flex: 0 0 24mm; font-size: 8.4pt; font-weight: 700; line-height: 1.3;
+             text-align: center; color: #fff; }
+.vgl-label img { display: block; width: 100%; max-width: 16mm; height: auto; margin: 0 auto; }
+.vgl-line { flex: 1; display: flex; align-items: center; gap: 2mm;
+            background: rgba(0,0,0,.4); border: 0.8pt solid transparent;
+            border-radius: 4mm; padding: 4mm; }
+.vgl-line--outline { border-color: rgba(255,255,255,.22); }
+.vgl-pill { flex: 0 1 auto; display: flex; align-items: center; justify-content: center;
+            text-align: center; min-height: 13mm; padding: 2.5mm 3.5mm;
+            background: rgba(255,255,255,.07); border-radius: 3mm;
+            font-size: 8.4pt; font-weight: 600; color: rgba(255,255,255,.92); white-space: nowrap; }
+/* nur die Agentur-Zeile fuellt die Breite aus */
+.vgl-line:not(.vgl-line--outline) .vgl-pill { flex: 1 1 0; white-space: normal; }
+.vgl-rocket { flex: 0 0 14.5mm; height: 14.5mm; display: flex; align-items: center;
+              justify-content: center; border-radius: 3mm;
+              background: linear-gradient(172deg, var(--acc2), var(--acc));
+              border: 0.5mm solid rgba(255,255,255,.28); color: #fff; }
+.vgl-rocket svg { width: 7mm; height: 7mm; }
+.vgl-bonus { flex: 0 1 auto; display: flex; align-items: center; justify-content: center;
+             gap: 2mm; padding: 2.5mm 3mm; white-space: nowrap;
+             font-size: 7.8pt; font-weight: 600; color: #fff; }
+.vgl-bonus svg { flex: 0 0 auto; width: 5mm; height: 5mm; color: rgba(255,255,255,.85); }
 
 /* ---- Preispakete gestapelt (statt drei schmaler, ungleich hoher Karten) ---- */
 .pakete { margin-top: 5mm; display: grid; gap: 3mm; }
@@ -428,8 +507,10 @@ def build(theme, pages, title):
     feat_bg = th.get('feat_bg', f"linear-gradient(150deg, {th['acc']} 0%, {th['acc2']} 100%)")
     feat_fg = th.get('feat_fg', '#fff')
     num = th.get('num', th['acc'])
+    dark = th.get('dark', th['hl_bg'])
     vars_ = (f":root{{--acc:{th['acc']};--acc2:{th['acc2']};--hl-bg:{th['hl_bg']};--hl-fg:{th['hl_fg']};"
-             f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};}}")
+             f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};"
+             f"--dark-acc:{dark};}}")
     total = len(pages)
     body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
@@ -438,13 +519,14 @@ def build(theme, pages, title):
 FOOTER = '<div class="footer">empiria GmbH 2026</div>'
 def head(no, total): return f'<div class="head"><img src="assets/empiria-logo.svg" alt="empiria"><span class="page-no">Seite {no} / {total}</span></div>'
 
-def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False):
+def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein=False):
     subs = subs if isinstance(subs, list) else [subs]
     f = "".join(f'<div><span class="label">{l}</span><b>{v}</b></div>' for l, v in facts)
     bl = f'<img class="brandlogo" src="{brandlogo}" alt="">' if brandlogo else ''
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     sk = f'<div class="sketch{" noinv" if noinv else ""}">{sketch}</div>' if sketch else ''
-    return lambda no, total: (f'<section class="page cover"><img class="logo" src="assets/empiria-logo.svg" alt="empiria">{bl}{k}'
+    kl = ' cover--subklein' if subklein else ''
+    return lambda no, total: (f'<section class="page cover{kl}"><img class="logo" src="assets/empiria-logo.svg" alt="empiria">{bl}{k}'
         f'<h1>{h1}</h1>' + "".join(f'<p class="sub">{s}</p>' for s in subs) + sk +
         f'<div class="facts" style="grid-template-columns:repeat({len(facts)},1fr)">{f}</div></section>')
 
@@ -452,7 +534,12 @@ def page(*content, contact_html=None):
     def r(no, total):
         c = contact_html or ""
         foot = FOOTER if no == total else ""
-        return f'<section class="page">{head(no, total)}{"".join(content)}{c}{foot}</section>'
+        body = "".join(content)
+        # Ein abschliessendes Band soll den Restplatz ausfuellen. Dafuer muss
+        # die Seite eine Flex-Spalte sein - aber nur dann, damit alle anderen
+        # Seiten ihr bisheriges Verhalten behalten.
+        cls = "page page--stretch" if "stage--boden" in body else "page"
+        return f'<section class="{cls}">{head(no, total)}{body}{c}{foot}</section>'
     return r
 
 def sec(kicker, h2, *leads, style=""):
@@ -481,11 +568,13 @@ def rows(items, start=1, style=""):
     return f'<div class="rows" style="{style}">{"".join(out)}</div>'
 
 def stations(items, style=""):
+    """Timeline mit Verbindungslinie. items: (Vorzeile, Titel, Text[, Zusatz-HTML])."""
     out = []
     for i, it in enumerate(items):
-        small, t, p = it
+        small, t, p = it[0], it[1], it[2]
+        extra = it[3] if len(it) > 3 else ""
         sm = f'<small>{small}</small>' if small else ''
-        out.append(f'<div class="st"><span class="n">{i+1}</span>{sm}<b>{t}</b><p>{p}</p></div>')
+        out.append(f'<div class="st"><span class="n">{i+1}</span>{sm}<b>{t}</b><p>{p}</p>{extra}</div>')
     return f'<div class="stations" style="{style}">{"".join(out)}</div>'
 
 def dots(items, cls="", style=""):
@@ -537,8 +626,11 @@ def opts(items, cols=None, style=""):
         pr = f'<span class="price">{d["price"]}{unit}</span>' if d.get("price") else ''
         pn = f'<span class="pnote">{d["pnote"]}</span>' if d.get("pnote") else ''
         ul = dots(d["list"]) if d.get("list") else ''
+        # Preis und Unterschrift liegen zusammen in einer Grid-Zeile, damit die
+        # fuenf Zeilen (Badge, Name, Text, Preis, Leistungen) des subgrid passen.
         out.append(f'<div class="{cls}"><div class="badgeslot">{bd}</div>'
-                   f'<b>{d["name"]}{sb}</b>{sm}{pr}{pn}{ul}</div>')
+                   f'<b>{d["name"]}{sb}</b>{sm}'
+                   f'<div class="priceblock">{pr}{pn}</div>{ul}</div>')
     cols = cols or len(items)
     return f'<div class="opts" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
 
@@ -570,6 +662,14 @@ def paket(kicker_l, leistungen, kicker_r, preis, preis_note, style=""):
             f'<span class="price">{preis}</span><p>{preis_note}</p></div></div>')
 
 
+def bubbles(tag, items, foot, style=""):
+    """Wiederkehrende Saetze als Dialog im dunklen Kasten statt als Punkteliste."""
+    lis = "".join(f'<li>{i}</li>' for i in items)
+    f = f'<p class="foot">{foot}</p>' if foot else ''
+    return (f'<div class="bubbles" style="{style}"><p class="tag">{tag}</p>'
+            f'<ul>{lis}</ul>{f}</div>')
+
+
 def stein(tag, items, foot, style=""):
     """Durchgestrichene Denkmuster im schwarzen Kasten - wie auf der Landingpage."""
     lis = "".join(f'<li>{i}</li>' for i in items)
@@ -590,14 +690,42 @@ def raster(items, cols=None, style=""):
     return f'<div class="raster" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
 
 
-def stage(kicker, h2, *ps, inhalt="", wm=None, style=""):
-    """Sektion im Landingpage-Look: heller Grund, Icon-Wasserzeichen, dunkler Kasten."""
+def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, style=""):
+    """Sektion im Landingpage-Look: heller Grund, Icon-Wasserzeichen, dunkler Kasten.
+
+    boden=True laesst das Band bis an die Blattkante laufen - fuer Baender,
+    die eine Seite abschliessen.
+    """
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     h = f'<h2>{h2}</h2>' if h2 else ''
     txt = "".join(f'<p>{p}</p>' for p in ps)
     w = f'<div class="stage-wm">{icon(wm)}</div>' if wm else ''
-    return (f'<div class="stage" style="{style}">{w}'
+    cls = "stage stage--boden" if boden else "stage"
+    return (f'<div class="{cls}" style="{style}">{w}'
             f'<div class="stage-head">{k}{h}{txt}</div>{inhalt}</div>')
+
+
+def bilder(items, cols=None, hoehe=None, style=""):
+    """Mehrere Original-Bausteine nebeneinander. items: (name, Label, Text)."""
+    h = f'style="height:{hoehe}"' if hoehe else ''
+    cells = "".join(
+        f'<div><div class="bilder-fig" {h}>'
+        f'<img src="assets/pdf-bausteine/{n}.png" alt=""></div>'
+        f'<b>{lab}</b><p>{txt}</p></div>' for n, lab, txt in items)
+    cols = cols or len(items)
+    return f'<div class="bilder" style="grid-template-columns:repeat({cols},1fr);{style}">{cells}</div>'
+
+
+def bild(name, breite=None, style="", rahmen=True):
+    """Ein mit werkzeuge/baustein_bild.py abgenommener Original-Baustein.
+
+    Die Datei liegt unter site/assets/pdf-bausteine/<name>.png und ist ein
+    hochaufloesender Ausschnitt des echten Elements der Website - deshalb im
+    PDF identisch zur Seite, ohne Nachbau.
+    """
+    s = f"max-width:{breite};" if breite else ""
+    cls = "baustein" if rahmen else "baustein baustein--blank"
+    return f'<img class="{cls}" src="assets/pdf-bausteine/{name}.png" alt="" style="{s}{style}">'
 
 
 def mocks(items, kicker=None, titel=None, style=""):
@@ -605,7 +733,7 @@ def mocks(items, kicker=None, titel=None, style=""):
 
     items: Liste (svg, Label, Text).
     """
-    k = f'<p class="kicker" style="color:#fff400">{kicker}</p>' if kicker else ''
+    k = f'<p class="kicker" style="color:var(--dark-acc)">{kicker}</p>' if kicker else ''
     h = f'<h3 style="color:#fff;font-family:var(--serif);font-size:13pt;margin-bottom:5mm">{titel}</h3>' if titel else ''
     cells = "".join(f'<div class="mock"><div class="mock-fig">{svg}</div><b>{lab}</b><p>{txt}</p></div>'
                     for svg, lab, txt in items)

@@ -77,21 +77,29 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
         ["Überall dort, wo Du als Führungskraft in der Versicherungsbranche Menschen von Deinem Thema überzeugen willst, sorgen wir dafür, dass Deine Botschaft wirkt.", "<b>Klar. Fokussiert. Mit dem Ergebnis, das Du willst.</b>"],
         S.komplexe(),
         [("Gremien", "Vorstand &amp; Aufsichtsrat"), ("Intern", "Lenkungsausschuss &amp; Betriebsrat"), ("Vertrieb", "Tagung &amp; Kundenpitch"), ("Partner", "Rückversicherer &amp; Kooperationen")]),
+  # Seitengrammatik: weisse Headline -> dunkler Kasten -> helles Band mit
+  # Icon-Wasserzeichen. Jede Seite hat genau eine dominante Darstellung,
+  # nie zwei Textsektionen uebereinander.
   page(
-    sec("Das Problem", 'Deine Präsentation ist vollständig. <span class="hl">Und wirkungslos.</span>', "Vor jedem wichtigen Termin derselbe Reflex:"),
-    quotes(["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"]),
-    '<div class="sec" style="margin-top:7mm"><p class="lead">Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und nicht in die Taktik, mit der Du zum Erfolg kommst.</p><p class="lead">Wer sitzt im Raum, wie gewinnst Du diese Entscheider, in welchen Schritten erreichst Du Dein Ziel? <b>Mit diesen Fragen hat sich vorher kaum jemand beschäftigt.</b></p></div>',
-    sec("Die Lösung", 'Die Präsentation ist nie das Ziel. <span class="hl">Das Ergebnis ist es.</span>',
-        "Wir sind keine Medienagentur. Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber.",
-        "Ein kurzes Briefing, ein paar gezielte Rückfragen, und Du kannst Dir sicher sein, dass es ab hier läuft.", style="margin-top:14mm"),
+    sec("Das Problem", 'Deine Präsentation ist vollständig. <span class="hl">Und wirkungslos.</span>'),
+    bubbles("Vor jedem wichtigen Termin derselbe Reflex",
+            ["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"],
+            "Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und <b>nicht in die Taktik, mit der Du zum Erfolg kommst.</b>"),
+    stage("Die Fragen, die keiner stellt", "Damit hat sich vorher kaum jemand beschäftigt.",
+          wm="search", boden=True,
+          inhalt=raster([("01", "Wer sitzt<br>im Raum?", True),
+                         ("02", "Wie gewinnst Du<br>diese Entscheider?"),
+                         ("03", "In welchen Schritten<br>erreichst Du Dein Ziel?")], cols=3)),
   ),
   page(
-    sec("Unser Vorgehen", "In vier Schritten zum Ergebnis."),
-    rows([("Ergebnis &amp; Zielgruppe", "Wir arbeiten heraus, welches Ergebnis Du erreichen willst, und strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt. Die zentrale Frage: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b>"),
-          ("Business Story", "Unabhängig vom Medium erstellen wir Deine Business Story – verdichtet zu einer klaren Kernbotschaft.",
-           chips(["<b>Why</b> · Warum ist das Thema für die Zielgruppe wichtig?", "<b>How</b> · Wie gehen wir grundsätzlich vor?", "<b>What next?</b> · Was muss als Nächstes passieren?"], style="margin-top:0;flex-direction:column;align-items:flex-start;gap:1.6mm")),
-          ("Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus: Präsentation, Landingpage oder Roll-up."),
-          ("Taktisches Briefing", "Dein Vorgehen unmittelbar vor, während und nach dem Termin: Einstieg, Moderation und wie Du im Raum Dein Ergebnis bekommst – als Briefing auf Basis unseres Frameworks oder als ausführliches Storyboard mit Ablauf, Zeitplan, Sprechtext und Folienvorschau.")]),
+    sec("Die Lösung", 'Die Präsentation ist nie das Ziel. <span class="hl">Das Ergebnis ist es.</span>',
+        "Wir sind keine Medienagentur: Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber. <b>Ein kurzes Briefing, ein paar gezielte Rückfragen, und Du kannst Dir sicher sein, dass es ab hier läuft.</b>"),
+    stage("Unser Vorgehen", "In vier Schritten zum Ergebnis.", wm="route", boden=True, inhalt=stations([
+      (None, "Ergebnis &amp; Zielgruppe", "Wir strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt. Die zentrale Frage: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b>"),
+      (None, "Business Story", "Verdichtet zu einer klaren Kernbotschaft – unabhängig vom Medium: <b>Why</b> (warum ist das Thema für die Zielgruppe wichtig), <b>How</b> (wie gehen wir vor) und <b>What next</b> (was passiert als Nächstes)."),
+      (None, "Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus."),
+      (None, "Taktisches Briefing", "Einstieg, Moderation und wie Du im Raum Dein Ergebnis bekommst – als Briefing oder als ausführliches Storyboard."),
+    ])),
   ),
   page(
     sec("Medien", 'Aus der Business Story entstehen <span class="hl">professionelle Medien.</span>',
@@ -184,7 +192,12 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
            ("layers", "Tools im Vergleich", "Mehrere KI-Tools gleichzeitig – live erleben, wie unterschiedlich sie denken und liefern."),
            ("target", "Echte Usecases", "Anwendungsfälle, die für Versicherer wirklich relevant sind – mit verwertbaren Erkenntnissen.")], 3),
     chips(["ChatGPT", "Claude", "Perplexity", "Gemini", "NotebookLM", "Nano Banana"], style="margin-top:5mm"),
-    sec("Formate", 'Drei Formate <span class="hl">für jeden Anspruch.</span>', style="margin-top:8mm"),
+  ),
+  # Eigene Seite fuer die Formate: die Preiskarten brauchen Luft, gedraengt
+  # wirken sie billig.
+  page(
+    sec("Formate", 'Drei Formate <span class="hl">für jeden Anspruch.</span>',
+        "Vom ersten Ausprobieren bis zum konkreten Usecase Eures Unternehmens – Du wählst die Tiefe."),
     # Aufbau und Texte 1:1 wie die Preiskarten auf ki-zum-anfassen.html:
     # Die Einordnung ("Kompakter Anwendungsfall") ist die Unterschrift zum Preis,
     # kein Listenpunkt.
@@ -479,43 +492,51 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
         "Ein fertiges System aus Postings, Landingpage und E-Mail-Funnel für Agenturleiter und Makler, die am Vertriebserfolg gemessen werden und für Marketing weder Zeit noch Nerven übrig haben.",
         S.sofort(),
         [("Start", "Ohne Briefing"), ("Auswahl", "20 Zielgruppenprofile"), ("Paket", "Alles in einem"), ("Auftritt", "In Deinem Design")],
-        brandlogo="assets/sofort-sichtbar-logo-violet.svg"),
+        brandlogo="assets/sofort-sichtbar-logo-violet.svg", subklein=True),
   page(
     sec("Was sofort sichtbar mitbringt", 'Fertig gedacht, <span class="hl">nicht nur fertig gebaut.</span>', "Alles in einem Paket – abgestimmt auf Deine Vertriebsschwerpunkte."),
-    cards([("phone", "Social Media Postings", "Fertige Postings, genau auf Deine Zielgruppe abgestimmt – sofort einsetzbar, ohne eigene Content-Produktion."),
-           ("mail", "E-Mail-Funnel", "Aktiviert Deine Bestandskunden und leitet sie auf die passende, zielgruppenspezifische Landingpage weiter."),
-           ("browser", "Passende Landingpages", "Mit Download-Dokument, integrierter Podcast-Folge und optimierten Kontaktdaten – fertig für jeden Anlass.")], 3),
+    # Die Original-Vorschaubilder der Produktseite statt nur Icons.
+    cards([(None, "Social Media Postings", "Fertige Postings, genau auf Deine Zielgruppe abgestimmt – sofort einsetzbar, ohne eigene Content-Produktion.",
+            '<img class="card-img" src="assets/produktseiten/sofort-sichtbar-preview-postings.png" alt="">'),
+           (None, "E-Mail-Funnel", "Aktiviert Deine Bestandskunden und leitet sie auf die passende, zielgruppenspezifische Landingpage weiter.",
+            '<img class="card-img" src="assets/produktseiten/sofort-sichtbar-preview-funnel.png" alt="">'),
+           (None, "Passende Landingpages", "Mit Download-Dokument, integrierter Podcast-Folge und optimierten Kontaktdaten – fertig für jeden Anlass.",
+            '<img class="card-img" src="assets/produktseiten/sofort-sichtbar-preview-landingpages.png" alt="">')],
+          3, style="margin-top:7mm"),
     feat("Individualisierung", "Alles in Deinem Corporate Design.", "Logo, Bilder, Kontaktdaten und Farbwelt werden eingebunden, damit alles aussieht, als wäre es für Deine Agentur gebaut.", style="margin-top:9mm"),
-    sec("Häufige Fragen", "Was Agenturleiter uns am häufigsten fragen.", style="margin-top:11mm"),
-    cases([("Mehrere Zielgruppen gleichzeitig?", "Ja – parallel buchbar oder eine Lizenz im Jahresverlauf für wechselnde Zielgruppen nutzen."),
-           ("Wofür kann ich es einsetzen?", "Neukundengewinnung, Bestandskundenaktivierung und im Beratungsalltag vor und nach Terminen."),
-           ("Kommen Anfragen DSGVO-konform an?", "Direkt bei Dir – ohne Umweg über uns, Landingpages auf Servern in der EU."),
-           ("Wie hoch ist mein Zeitaufwand?", "Sehr gering: Wir übernehmen die Technik, Du postest und führst Kundengespräche.")], style="gap:5mm 10mm;margin-top:6mm"),
   ),
   page(
     sec("Preise", 'Die passenden Pakete für <span class="hl">Deinen Vertriebsfokus.</span>', "Monatlich buchbar, mit Rabatt bei jährlicher Zahlung – jede Vertriebsstrecke mit einer Mindestlaufzeit von drei Monaten."),
     opts([dict(name="Fokus", text="Eine klar definierte Zielgruppe ganzjährig erreichen.", list=["1 digitale Vertriebsstrecke", "Individualisierungspaket", "Contentplan für Social Media"], price="349 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 435 € monatlich"),
-          dict(tag="Beliebt", name="Reichweite", text="Kontakte aus mehreren Zielgruppen gewinnen – ohne eigenen Aufwand.", list=["3 digitale Vertriebsstrecken", "Erweiterte Individualisierung", "Performance-Reporting"], price="499 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 625 € monatlich", feat=True),
+          dict(badge="Beliebt", name="Reichweite", text="Kontakte aus mehreren Zielgruppen gewinnen – ohne eigenen Aufwand.", list=["3 digitale Vertriebsstrecken", "Erweiterte Individualisierung", "Performance-Reporting"], price="499 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 625 € monatlich", feat=True),
           dict(name="Marktposition", text="Berater positionieren, Stärken zeigen, planbare Neukontakte.", list=["10 digitale Vertriebsstrecken", "Automatisierung der Postings", "Regelmäßige 1:1-Beratung"], price="999 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 1.250 € monatlich")]),
     '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>',
-    sec("Ablauf", "Monate werden zu Tagen.", style="margin-top:11mm"),
-    cards([("", "Auftragsklärung", "Kurz Deinen Vertriebsfokus klären – ohne wochenlange Konzeptphase."),
-           ("", "Zielgruppen wählen", "Aus vorbereiteten Profilen die passenden auswählen."),
-           ("", "Stil festlegen", "Stil wählen, Design einbringen: Logo, Bilder, Farbwelt."),
-           ("", "Live gehen", "Postings, Landingpage und Funnel gehen live.")], 4, style="gap:3.5mm;margin-top:6mm", numbered=True),
   ),
+  # Reihenfolge wie auf der Produktseite: "Monate werden zu Tagen" ist die
+  # Aussage ZUR Vergleichsgrafik, danach folgen die vier Ablaufschritte.
   page(
-    sec("Dein Start", 'Mehr Zeit <span class="hl">für Kundengespräche.</span>',
-        "Du wählst Zielgruppen und Stil, wir kümmern uns um den Rest. Nach der Einrichtung übernehmen wir den technischen Teil – Du investierst Deine Zeit nur ins Posten der Inhalte und in Deine eigentlichen Kundengespräche."),
-    sec("Der Vergleich", "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat.", style="margin-top:10mm"),
+    sec("Ablauf", "Monate werden zu Tagen.",
+        "Mit sofort sichtbar bist Du online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat."),
     vergleich("Klassische<br>Agentur",
               ["Auftragsklärung", "Konzeption", "Umsetzung", "Optimierung"],
               "assets/sofort-sichtbar-logo-stacked-violet.svg",
               "Auftragsklärung",
               "Mehr Zeit für Kundengespräche"),
+    cards([(None, "Auftragsklärung", "Wir klären kurz Deinen Vertriebsfokus – ohne die wochenlange Konzeptphase einer klassischen Agentur."),
+           (None, "Zielgruppen auswählen", "Du wählst aus den vorbereiteten Profilen die aus, die zu Deinen Kundinnen und Kunden passen."),
+           (None, "Stil &amp; Auftritt festlegen", "Du wählst Deinen Stil und bringst Dein Design ein – Logo, Bilder, Kontaktdaten, Farbwelt."),
+           (None, "Live gehen", "Postings, Landingpage und E-Mail-Funnel gehen live – und Du hast mehr Zeit für Kundengespräche.")],
+          4, style="gap:3.5mm;margin-top:9mm", numbered=True),
+  ),
+  page(
+    sec("Häufige Fragen", "Was Agenturleiter uns am häufigsten fragen."),
+    cases([("Mehrere Zielgruppen gleichzeitig?", "Ja – parallel buchbar oder eine Lizenz im Jahresverlauf für wechselnde Zielgruppen nutzen."),
+           ("Wofür kann ich es einsetzen?", "Neukundengewinnung, Bestandskundenaktivierung und im Beratungsalltag vor und nach Terminen."),
+           ("Kommen Anfragen DSGVO-konform an?", "Direkt bei Dir – ohne Umweg über uns, Landingpages auf Servern in der EU."),
+           ("Wie hoch ist mein Zeitaufwand?", "Sehr gering: Wir übernehmen die Technik, Du postest und führst Kundengespräche.")], style="gap:5mm 10mm;margin-top:6mm"),
     checks(["Individuelle Landingpages mit Deinem Logo, Deinen Bildern und Kontaktdaten",
             "Mindestlaufzeit drei Monate je Vertriebsstrecke – danach verlängern, wechseln oder kündigen",
-            "Für eine komplett individuelle Lösung sprechen wir gerne separat"], style="margin-top:6mm"),
+            "Für eine komplett individuelle Lösung sprechen wir gerne separat"], style="margin-top:9mm"),
     contact_html=contact("Bereit, sofort sichtbar zu werden?", ["daniel", "kerstin_content", "noah_pm"])),
 ])
 
@@ -527,29 +548,29 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
         [("Suche", "Google Ads"), ("Social", "Meta Ads"), ("B2B", "LinkedIn Ads"), ("Start", "Kostenloser Potentialcheck")]),
   page(
     sec("Leistungen", 'Der richtige Kanal <span class="hl">für Deine Zielgruppe.</span>', "Wir übernehmen Strategie, Setup und laufende Optimierung. Du konzentrierst Dich auf Dein Unternehmen."),
-    cards([("search", "Google Ads", "Deine Anzeige erscheint genau dann, wenn jemand aktiv nach Deiner Lösung sucht. Aus Suchanfragen werden Anfragen, aus Klicks werden Termine."),
-           ("phone", "Meta Ads", "Facebook und Instagram erreichen Deine Zielgruppe im Alltag, bevor sie aktiv sucht. Wir testen Motive, finden die Gewinner und skalieren sie."),
-           ("team", "LinkedIn Ads", "Entscheider nach Branche, Position und Unternehmensgröße ansprechen: die Menschen, die im B2B unterschreiben.")], 3),
-    sec("Ablauf", "Vier Schritte zu planbarem Ergebnis.", "So wird aus Deinem Budget ein nachvollziehbares Ergebnis.", style="margin-top:13mm"),
+    # Die echten Anzeigen-Mockups der Produktseite - mit den Original-Icons von
+    # Google, Meta und LinkedIn. Drei nebeneinander, bewusst klein gehalten.
+    stage("So sieht das aus", "Deine Anzeige im echten Umfeld.",
+          "Kein abstraktes Konzept – so begegnet Deine Anzeige der Zielgruppe: Textanzeige in der Suche, Bildanzeige im Feed.",
+          wm="megaphone", boden=True,
+          inhalt=bilder([
+            ("pa-anzeige-google", "Google Ads", "Sichtbar genau dann, wenn jemand aktiv nach Deiner Lösung sucht. Aus Klicks werden Termine."),
+            ("pa-anzeige-meta", "Meta Ads", "Facebook und Instagram erreichen Deine Zielgruppe im Alltag, bevor sie aktiv sucht."),
+            ("pa-anzeige-linkedin", "LinkedIn Ads", "Entscheider nach Branche, Position und Unternehmensgröße – wer im B2B unterschreibt."),
+          ], hoehe="62mm")),
+  ),
+  page(
+    sec("Ablauf", "Vier Schritte zu planbarem Ergebnis.", "So wird aus Deinem Budget ein nachvollziehbares Ergebnis."),
     stations([("", "Analyse &amp; Strategie", "Wir prüfen Dein bestehendes Konto oder starten bei null. Ziel, Zielgruppe und Budget stehen fest, bevor der erste Euro läuft."),
               ("", "Setup &amp; Start", "Kampagnen, Tracking und Anzeigen werden sauber aufgebaut und gehen live. Ab dem ersten Tag misst jedes Ergebnis."),
               ("", "Optimierung", "Wir werten Deine Anzeigen laufend aus und optimieren sie: Was funktioniert, bekommt mehr Budget."),
-              ("", "Reporting &amp; Skalierung", "Du siehst jeden Monat, wohin jeder Euro geflossen ist und was er gebracht hat. Ausgebaut wird dort, wo die Zahlen es rechtfertigen.")], style="margin-top:6mm"),
-  ),
-  page(
-    sec("So sieht das aus", 'Deine Anzeige <span class="hl">im echten Umfeld.</span>',
-        "Kein abstraktes Konzept: So begegnet Deine Anzeige der Zielgruppe in der Google-Suche – inklusive Bewertungen und Sitelinks, die direkt auf die passenden Angebote führen."),
-    anzeige("empiria", "www.empiria.de",
-            "Strategieberatung für Versicherer | Klarheit statt Konzeptstau",
-            "Strategie in den Alltag überführen. Seit 2012 für Versicherer und Makler. Erstgespräch in dieser Woche.",
-            "4,9 · 37 Rezensionen · Versicherer und Makler",
-            [("Strategiehandwerk", "Strategie greifbar machen"),
-             ("1:1 Sparring", "Vertraulich für Führungskräfte"),
-             ("Workshops", "Formate, die wirken"),
-             ("Erstgespräch", "Termin in dieser Woche")],
-            note="Auf Meta und LinkedIn entsteht dasselbe Prinzip im jeweiligen Format – Bildanzeige im Feed statt Textanzeige in der Suche."),
-    feat("Kostenloser Potentialcheck", "Wie viel Potential steckt in Deinem Produkt?",
-         "Schick uns Deine Website. Noch diese Woche bekommst Du unsere Potentialanalyse für Dein Unternehmen und Deine Performance Ads – kein Spam, keine Verpflichtung.", style="margin-top:10mm"),
+              ("", "Reporting &amp; Skalierung", "Du siehst jeden Monat, wohin jeder Euro geflossen ist und was er gebracht hat.")], style="margin-top:6mm"),
+    # Der Kanal-Check im Original, in ruhiger Groesse statt seitenfuellend.
+    # Ueberschrift nicht wiederholen - sie steht bereits im Baustein selbst.
+    stage("Kanal-Check", "Nach vier Fragen weißt Du es.",
+          "Zielgruppe, heutiger Weg zu Deinen Kunden, Ziel der Kampagne und Wert einer Anfrage – daraus ergibt sich der Kanal, mit dem Du starten solltest.",
+          wm="compass", boden=True,
+          inhalt=bild("pa-kanalcheck", breite="145mm")),
   ),
   page(
     sec("Häufige Fragen", "Kurz beantwortet."),
@@ -558,7 +579,18 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
            ("Welche Plattformen betreut ihr?", "Google, Meta und LinkedIn – der richtige Start hängt von Zielgruppe und Angebot ab, nicht vom Trend."),
            ("Gibt es Mindestlaufzeiten?", "Ja, mindestens drei Monate für belastbare Daten. Danach läuft die Zusammenarbeit monatlich weiter."),
            ("Woher weiß ich, wie gut es läuft?", "Voller Zugriff auf Dein Konto und jeden Monat eine klare Auswertung: Was hat jeder Euro gebracht?")], style="gap:5.5mm 10mm;margin-top:6mm"),
-    contact_html=contact("Welcher Kanal bringt Dir Anfragen?", ["daniel", "kerstin_content", "noah_pm"])),
+    # Der Potenzialcheck-Kasten im Original als Einstieg.
+    bild("pa-potenzialcheck", breite="150mm", rahmen=False, style="margin-top:9mm"),
+  ),
+  page(
+    sec("Kontakt", 'Welcher Kanal bringt Dir <span class="hl">Anfragen?</span>',
+        "Sag uns, welche Zielgruppe Du erreichen willst und mit welchem Budget Du rechnest – wir schlagen Dir den passenden Kanal vor."),
+    stations([
+      ("Schritt 01", "Kurz schildern", "Zielgruppe, Angebot und Budgetrahmen – eine Mail oder ein Anruf reicht."),
+      ("Schritt 02", "Zeitnah Rückmeldung", "Wir melden uns mit Rückfragen und einem konkreten Vorschlag zum passenden Kanal."),
+      ("Schritt 03", "Verbindlich festzurren", "Umfang, Laufzeit und Investition klären wir gemeinsam, bevor der erste Euro läuft."),
+    ], style="margin-top:10mm"),
+    contact_html=contact("Dein direkter Draht zu uns", kicker="", people=["daniel", "kerstin_content", "noah_pm"])),
 ])
 
 # ---------------------------------------------------------------- Medien
