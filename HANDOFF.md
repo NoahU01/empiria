@@ -166,6 +166,20 @@ gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
   Beides behoben; gleicher Stand wie sofortsichtbar.de und muellerundstroebel.de.
   Auf den neuen Unterseiten aus `Daniel` funktioniert das automatisch für jede
   `section[id]` — GA4 trennt nach `pagePath`.
+- **Event-Katalog erweitert (18.09.2026, Multi-Page-Ausbau):** `cta_anfrage`
+  („… anfragen"/„Jetzt beraten lassen" → Kontaktseite, Param `cta_text`; weiche
+  Conversion, bewusst kein Schlüsselereignis), `cta_hero` (Hero-Scroll-Buttons),
+  `popup_<key>` jetzt auch für `data-modal-target` (mesModalLandingpage →
+  `popup_mes_landingpage`) und die festen Öffner (`popup_pdf_vorschau`,
+  `popup_zeitplan`, `popup_struktur`, `popup_angebot_formular`),
+  `formular_sprint_angebot` (Sprint-Angebotsformular abgeschickt),
+  `download_<datei>` (PDF-Download-Boxen, z. B. `download_workshops`),
+  `extern_klick` (Param `link_url`), `akkordeon_oeffnen` (Param `frage` →
+  **Custom Dimension „frage" in GA4 anlegen**, sonst nicht auswertbar).
+  Alles zentral in `tracking.js` über vorhandene Klassen/Attribute, keine
+  HTML-Änderung. Alle 18 Fälle per Skript gegen den dataLayer getestet.
+  **Schlüsselereignisse ergänzen:** `formular_sprint_angebot` und
+  `potentialcheck_submit` (echte Leads) — zusätzlich zu Mail/Telefon.
 - **Interner Traffic (seit 17.09.2026):** Markierung am Browser statt per IP.
   Block vor dem GA4-Tag auf allen 38 Seiten (Storage-Key `empiria_internal`,
   Baustein aus AdMemory-Skill `tracking-seo-setup/interner-traffic.html`).
@@ -328,7 +342,7 @@ und Nutzerdaten; die Zahl steht jetzt konkret in der Datenschutzerklärung),
 **LinkedIn-URL bestätigt** (zeigt auf Daniel Ströbels echtes Profil; steht in
 `index.html` an drei Stellen — Badge, Mobil-Karte und JSON-LD `founder.sameAs`),
 **GA4-Schlüsselereignisse angelegt** (18.08.2026):
-`kontakt_email_klick` und `kontakt_telefon_klick` — und nur diese beiden.
+`kontakt_email_klick` und `kontakt_telefon_klick`; seit 18.09. zusätzlich vorgesehen: `formular_sprint_angebot`, `potentialcheck_submit` (in GA4 anlegen).
 Bewusst *keine* Schlüsselereignisse sind `cta_kontakt`, `linkedin_klick`,
 `popup_*` und `section_view_*`: In GA4 zählen alle Schlüsselereignisse in
 dieselbe Conversion-Kennzahl, und dieselbe Liste wandert später nach Google
