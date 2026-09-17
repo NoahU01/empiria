@@ -166,6 +166,16 @@ gar nicht greifen (dann keine cookielosen Pings, keine Modellierung).
   Beides behoben; gleicher Stand wie sofortsichtbar.de und muellerundstroebel.de.
   Auf den neuen Unterseiten aus `Daniel` funktioniert das automatisch für jede
   `section[id]` — GA4 trennt nach `pagePath`.
+- **Interner Traffic (seit 17.09.2026):** Markierung am Browser statt per IP.
+  Block vor dem GA4-Tag auf allen 38 Seiten (Storage-Key `empiria_internal`,
+  Baustein aus AdMemory-Skill `tracking-seo-setup/interner-traffic.html`).
+  Einmal je Browser/Gerät `https://www.empiria.de/?internal=1` aufrufen
+  (Rückgängig `?internal=0`), Toast bestätigt. GA4-Datenfilter „Internal
+  Traffic" steht auf **Aktiv** (Ausschließen, `traffic_type = internal`).
+  Nachweis 17.09.: `/g/collect` trug `tt=internal`, unmarkiertes Gerät erschien
+  in Echtzeit. Gilt je Browser/Gerät, privates Fenster nie markiert, Website-
+  daten löschen hebt es auf, Filter wirkt nur nach vorn (Testbesuche bis
+  17.09. stecken in den Daten).
 - Footer hat auf allen Seiten einen **„Cookie-Einstellungen"**-Button
   (`[data-cookie-settings]` → `Cookiebot.renew()`), Pflicht für den Widerruf.
 - `site/robots.txt` + `site/sitemap.xml` (3 URLs). KI-Crawler sind bewusst
