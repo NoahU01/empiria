@@ -3066,8 +3066,8 @@ body.produktseite--sofortsichtbar {
    ueberdeckte Unter-/Oberlaengen der Nachbarzeilen. 1.2 wie Startseite/Leistungsseiten. */
 .produktseite .produkt-hero h1 { line-height: 1.2; }
 
-/* Unterstes Modul (Ansprechpartner + CTA): Headline-Zeilenabstand 1.6 -> 1.2 wie auf der Startseite. */
-.produkt-cta h2 { line-height: 1.2; }
+/* Unterstes Modul (Ansprechpartner + CTA): Headline-Zeilenabstand wie 'Weitere Leistungen' (1.06). */
+.produkt-cta h2 { line-height: 1.06; }
 
 /* Akkordeons auf Produktseiten (FAQ, Beispiele, Anwendungsfaelle): Aufbau wie das FAQ
    auf Paid Ads. Desktop: Kopf links (1/3), Karten rechts (2/3); Karten mit rundem Plus. */
