@@ -9,10 +9,3 @@ node_modules/
 
 # Local screenshot output
 site/_shots/
-
-# PDF-Generator: Build-Artefakte und Vorschau-Exporte (werden erzeugt, nicht gepflegt)
-werkzeuge/**/_build/
-werkzeuge/**/_vorschau/
-werkzeuge/**/__pycache__/
-__pycache__/
-*.pyc
