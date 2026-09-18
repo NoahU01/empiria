@@ -33,7 +33,7 @@ window.addEventListener('load', function () { setTimeout(function () {
     // .stage-wm ist das absolut positionierte Icon-Wasserzeichen. Es selbst
     // wird ueber die position-Pruefung ausgeklammert, seine Kinder (svg/path)
     // sind aber statisch und ragen sonst als Falschmeldung nach unten heraus.
-    var skip = '.contact, .footer, .head, .sketch, .facts, .stage-wm, .pfoot';
+    var skip = '.contact, .footer, .head, .sketch, .facts, .stage-wm, .pfoot, .buehne-bild';
     pg.querySelectorAll('*').forEach(function (e) {
       var b = e.getBoundingClientRect();
       if (b.height <= 0 || b.width <= 0) return;

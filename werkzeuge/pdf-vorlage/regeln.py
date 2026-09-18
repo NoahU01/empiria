@@ -29,7 +29,7 @@ from messen import measure  # noqa: E402
 FLAECHEN = ["stage", "band", "mdl", "bubbles", "stein", "mocks-box", "feat", "paket", "vgl"]
 # Klassen, die eine Seite gestaltet machen (Grafik, Kasten, Bild, Raster)
 GESTALTEND = FLAECHEN + ["cards", "raster", "bilder", "baustein", "opts", "stations", "pakete",
-                         "inline-sketch", "quotes", "cases", "chips", "bm"]
+                         "inline-sketch", "quotes", "cases", "chips", "bm", "buehne-bild"]
 
 
 def _seiten(html):
@@ -74,7 +74,8 @@ def pruefen(pfad):
         if m:
             if m["frei_mm"] < 0:
                 befunde.append((i, "R3", f"Ueberlauf {m['frei_mm']} mm"))
-            elif m["frei_mm"] > LEER_MAX and "stage--boden" not in inhalt and 'class="contact"' not in inhalt:
+            elif (m["frei_mm"] > LEER_MAX and "stage--boden" not in inhalt
+                  and 'class="contact"' not in inhalt and "buehne-bild" not in inhalt):
                 befunde.append((i, "R4", f"{m['frei_mm']} mm leer"))
     return befunde
 

@@ -266,11 +266,30 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .tool img { width: 11mm; height: 11mm; object-fit: contain; display: block; }
 .tool span { font-size: 8.4pt; font-weight: 500; color: var(--ink2); line-height: 1.3; min-height: 7.8mm; }
 
+/* ---- Dunkle Seite mit angeschnittenem Bild -----------------------------------
+   Eine Seite, die sich bewusst von allen anderen unterscheidet: schwarzer
+   Grund, die Aussage links, und das Motiv ragt gross von unten herein -
+   angeschnitten, damit es wie ein Plakat im Raum wirkt. */
+.page--dunkel { background: #0f0e0d; }
+.page--dunkel .head img { content: url("assets/empiria-logo-white.svg"); }
+/* Die Fusszeile liegt auf dunklen Seiten ueber dem angeschnittenen Motiv -
+   mit leichtem Schatten bleibt sie auf beiden Untergruenden lesbar. */
+.page--dunkel .pfoot { z-index: 3; }
+.page--dunkel .page-no { color: rgba(255,255,255,.8); text-shadow: 0 0 1.6mm rgba(0,0,0,.85); }
+.page--dunkel h2, .page--dunkel h3 { color: #fff; }
+.page--dunkel p.lead { color: rgba(255,255,255,.76); }
+.page--dunkel .kicker { color: var(--dark-acc); }
+.page--dunkel ul.checks li { color: rgba(255,255,255,.82); }
+.page--dunkel ul.checks li svg { color: var(--dark-acc); }
+.buehne-bild { position: absolute; right: 16mm; bottom: 0; width: 88mm; }
+.buehne-bild img { display: block; width: 100%; height: auto;
+                   border-radius: 3mm 3mm 0 0; box-shadow: 0 0 22mm rgba(0,0,0,.5); }
+
 /* ---- Anteilsbalken (z. B. 70-20-10-Regel) ----------------------------------
    Vorher waren die Balken unterschiedlich hoch und die Beschriftungen darunter
    sprangen. Jetzt: gleiche Hoehe, die Breite zeigt den Anteil, die Texte
    stehen auf einer Linie. */
-.anteile { display:grid; gap:3mm; margin-top:6mm; align-items:start; }
+.anteile { display:grid; gap:3mm; margin-top:6mm; align-items:start; max-width:118mm; }
 .anteil-bar { height:15mm; border-radius:2.5mm; background:#fff;
               border:0.7pt solid var(--g30); display:flex; align-items:center;
               padding:0 3mm; font-family:var(--serif); font-weight:700; font-size:12pt;
@@ -446,6 +465,9 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 /* Chips */
 .chips { display:flex; flex-wrap: wrap; gap: 2.2mm; margin-top: 5mm; }
 .chips span { font-size: 8.4pt; font-weight: 500; padding: 1.4mm 3.4mm; border-radius: 10mm; background: var(--tint); color: var(--ink2); }
+/* Variante wie die produkt-pill der Website: weiss mit feinem Rand. */
+.chips--pill span { background: #fff; border: 0.7pt solid var(--g30); color: var(--ink);
+                    font-weight: 600; padding: 2mm 4.5mm; }
 /* Zweispalter */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
 .two-6-4 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 10mm; align-items: start; }
@@ -664,7 +686,7 @@ def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein
         f'<h1>{h1}</h1>' + "".join(f'<p class="sub">{s}</p>' for s in subs) + sk +
         f'<div class="facts" style="grid-template-columns:repeat({len(facts)},1fr)">{f}</div></section>')
 
-def page(*content, contact_html=None, farbe=None):
+def page(*content, contact_html=None, farbe=None, dunkel=False):
     """farbe setzt die Farbwelt NUR fuer diese Seite (z. B. eine Loesungsseite,
     die die Farbe ihres eigenen Produkts traegt)."""
     def r(no, total):
@@ -676,6 +698,8 @@ def page(*content, contact_html=None, farbe=None):
         # die Seite eine Flex-Spalte sein - aber nur dann, damit alle anderen
         # Seiten ihr bisheriges Verhalten behalten.
         cls = "page page--stretch" if "stage--boden" in body else "page"
+        if dunkel:
+            cls += " page--dunkel"
         stil = f' style="{theme_vars(farbe)}"' if farbe else ''
         return f'<section class="{cls}"{stil}>{head(no, total)}{body}{c}{foot}</section>'
     return r
@@ -919,8 +943,9 @@ def cases(items, style="", cols=2):
     out = "".join(f'<div class="case">' + (f'<div class="ic">{icon(c[2])}</div>' if len(c) > 2 else '') + f'<h3>{c[0]}</h3><p>{c[1]}</p></div>' for c in items)
     return f'<div class="cases" style="grid-template-columns:repeat({cols},1fr);{style}">{out}</div>'
 
-def chips(items, style=""):
-    return f'<div class="chips" style="{style}">' + "".join(f'<span>{x}</span>' for x in items) + '</div>'
+def chips(items, cls="", style=""):
+    k = f"chips {cls}".strip()
+    return f'<div class="{k}" style="{style}">' + "".join(f'<span>{x}</span>' for x in items) + '</div>'
 
 PEOPLE = {
   "daniel": ("assets/ansprechpartner-daniel.webp", "Daniel Ströbel", "Strategiehandwerker<br>Geschäftsführer empiria GmbH"),

@@ -49,6 +49,41 @@ def typografie():
     return fehler
 
 
+def reihenfolge():
+    """Nummerierte Abfolgen duerfen nicht zurueckspringen.
+
+    Zweimal ist mir derselbe Fehler passiert: In "Komplexe Themen" stand das
+    Zwischenergebnis nach Stufe 3 statt nach Stufe 2, im Seminar-PDF folgte auf
+    "Baustein 01 und 02" eine Seite ueber Baustein 01. Beim Ansehen faellt so
+    etwas kaum auf, im Text ist es eindeutig messbar.
+    """
+    muster = re.compile(r"(Baustein|Lösung|Format|Modul|Schritt|Vortrag|Stufe)\s*(?:0)?(\d)")
+    fehler = []
+    for f in _quellen():
+        roh = open(f, encoding="utf-8").read()
+        text = re.sub(r"<[^>]+>", " ", roh)
+        letzte = {}
+        for m in muster.finditer(text):
+            wort, nr = m.group(1), int(m.group(2))
+            vor = letzte.get(wort)
+            if nr == 1:
+                # Ein Deckblatt listet oft alle Stufen, danach beginnt die
+                # Abfolge legitim wieder bei 1. Das ist ein Neustart, kein Bruch.
+                letzte[wort] = 1
+                continue
+            if vor is not None and nr < vor:
+                fehler.append(f"{os.path.basename(f)}: {wort} {vor} -> {wort} {nr} "
+                              f"(Abfolge springt zurueck)")
+            letzte[wort] = nr
+    # je Datei und Wort nur einmal melden
+    gesehen, knapp = set(), []
+    for z in fehler:
+        s = z.split("(")[0]
+        if s not in gesehen:
+            gesehen.add(s); knapp.append(z)
+    return knapp
+
+
 def seitenzahlen():
     """Nur zwischen Deckblatt und Schlussseite."""
     fehler = []
@@ -92,6 +127,7 @@ def main(bauen=False):
     befunde["Fluchten"] = flu
 
     befunde["Typografie"] = typografie()
+    befunde["Reihenfolge"] = reihenfolge()
     befunde["Seitenzahlen"] = seitenzahlen()
 
     gesamt = 0
