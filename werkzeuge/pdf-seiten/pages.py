@@ -402,6 +402,8 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
             ("02", "Marketing as a Service<br><b>ab 3.500 € mtl.</b>"),
             ("03", "Unternehmerische<br>Partnerschaft")], cols=3),
   ),
+  # Diese Seite traegt die Farbe ihres eigenen Produkts (sofort sichtbar = Violett),
+  # alle uebrigen Seiten bleiben Cyan.
   page(
     sec("Lösung 02", 'sofort <span class="hl">sichtbar.</span>',
         "Ein fertiges System aus Postings, Landingpage und E-Mail-Funnel – abgestimmt auf Deine Vertriebsschwerpunkte, ohne eigene Content-Produktion und ohne Briefing."),
@@ -418,7 +420,7 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
           "Online, bevor eine klassische Agentur die Auftragsklärung abgeschlossen hat – ab 349 € monatlich.",
           wm="clock", boden=True,
           inhalt=bild("ss-vergleich", rahmen=False, style="margin-top:6mm")),
-  ),
+    farbe="violet"),
   page(
     sec("Lösung 03", 'Paid <span class="hl">Ads.</span>',
         "Kampagnen auf Google, Meta und LinkedIn, die nicht nur Reichweite bringen, sondern Anfragen. Ziel, Zielgruppe und Budget stehen fest, bevor der erste Euro läuft – und Du siehst jeden Monat, wohin er geflossen ist."),
@@ -612,7 +614,7 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
     stage("Kanal-Check", "Nach vier Fragen weißt Du es.",
           "Zielgruppe, heutiger Weg zu Deinen Kunden, Ziel der Kampagne und Wert einer Anfrage – daraus ergibt sich der Kanal, mit dem Du starten solltest.",
           wm="compass", boden=True,
-          inhalt=bild("pa-kanalcheck", breite="145mm")),
+          inhalt=bild("pa-kanalcheck", breite="145mm", rahmen=False, style="margin-left:0")),
   ),
   page(
     sec("Häufige Fragen", "Kurz beantwortet."),
@@ -688,7 +690,7 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
   page(
     sec("Unser Ansatz", 'Begleitung statt <span class="hl">Seminar von der Stange.</span>', "Ob im Team oder im 1:1: Wir bleiben dran, bis die Wirkung im Alltag ankommt."),
     cards([("target", "Auf Deinen Alltag zugeschnitten", "Keine Vorlage von der Stange – Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche."),
-           ("lock", "Vertraulich &amp; auf Augenhöhe", "Ob im Team oder im 1:1: offen, ehrlich und mit klarer eigener Haltung."),
+           ("lock", "Vertraulich &amp; auf Augenhöhe", "Ob im Team oder im 1:1: offen, ehrlich und mit klarer Rückmeldung, auch wenn sie unbequem ist."),
            ("route", "Begleitung statt Einmal-Termin", "Wir bleiben dran, bis die Wirkung im Alltag messbar ankommt.")], 3),
     # Die Formate-Grafik von der Landingpage statt einer Tabellenzeile.
     mdl("Zwei Formate", "Ein Ziel: Wirkung im Alltag.",
@@ -749,11 +751,19 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
     ], style="margin-top:9mm"),
     sec("Das Ergebnis", 'Weniger Seminar. <span class="hl">Mehr Wirkung.</span>',
         "Dein Team überzeugt, wenn es zählt – und Du triffst Entscheidungen mit einem Gegenüber, das mitdenkt und mitgestaltet."),
-    checks(["Inhalte und Fälle aus Deinem echten Alltag statt austauschbarer Trainer-Folien",
-            "Begleitung genau dann, wenn es zählt: vor dem Termin, beim letzten Schliff, im Review",
-            "Ein Raum, in dem Themen offen besprochen werden – ohne interne Rücksichten",
-            "Aus Gesprächen wird schnell Umsetzung – kommunikativ oder inhaltlich"], style="margin-top:6mm"),
-    feat("Unsere Haltung", "Wir begleiten, statt nur zu schulen.", "Mit klarer eigener Haltung statt austauschbarer Trainer-Folien – zugeschnitten auf die Versicherungsbranche und Deinen konkreten Alltag.", style="margin-top:10mm"),
+    stage("Was bleibt", "Wirkung, die im Alltag ankommt.", wm="kreis", boden=True,
+          inhalt=checks(["Inhalte und Fälle aus Deinem echten Alltag statt austauschbarer Trainer-Folien",
+                         "Begleitung genau dann, wenn es zählt: vor dem Termin, beim letzten Schliff, im Review",
+                         "Ein Raum, in dem Themen offen besprochen werden – ohne interne Rücksichten",
+                         "Aus Gesprächen wird schnell Umsetzung – kommunikativ oder inhaltlich"],
+                        style="margin-top:6mm")),
+  ),
+  # Der Kasten traegt das zentrale Argument und bekommt deshalb die Schlussseite.
+  page(
+    feat("Warum Begleitung", "Wir begleiten, statt nur zu schulen.",
+         "Ein Seminar erzeugt Impulse. Zwei Wochen später sind sie im Tagesgeschäft verpufft – nicht, weil das Seminar schlecht war, sondern weil im entscheidenden Moment niemand mehr dabei ist.",
+         "Dieser Moment ist der echte Termin: die Vorstandssitzung, der Kundenpitch, die schwierige Abstimmungsrunde. <b>Genau dort sind wir dabei – denn der größte Teil der Wirkung entsteht nicht im Seminar, sondern in der Anwendung.</b>",
+         ikon="forward", dunkel=True, style="margin-top:4mm"),
     contact_html=contact("Welches Format passt zu Dir?", ["daniel", "kerstin_hr"])),
 ])
 
@@ -859,14 +869,14 @@ VORTRAEGE = [("Warum sich niemand für Dein Produkt interessiert.", "Ein Impulsv
              ("Strategie für Aufsichtsräte", "Impulsvortrag und Halbtagesschulung: wie der Aufsichtsrat eine Strategie einordnet – auf Wunsch mit Praxisthema und Zertifikat.")]
 P["impulsvortraege"] = ("emerald", "Impulsvorträge – empiria", [
   cover("Impulsvorträge", 'Impulse, <span class="hl">die nachwirken.</span> Nicht nur unterhalten.',
-        "Vorträge aus echter Beratungserfahrung – pointiert, diskussionsstark und mit einer klaren eigenen Haltung. Für Kickoffs, Vertriebstagungen oder Führungskräfte-Events.",
+        "Vorträge aus echter Beratungserfahrung – pointiert, diskussionsstark und mit einer klaren These. Für Kickoffs, Vertriebstagungen oder Führungskräfte-Events.",
         S.load("impulsvortraege"),
         [("Thema 01", "Relevanz"), ("Thema 02", "Strategie im Alltag"), ("Thema 03", "Perspektivwechsel"), ("Thema 04", "Aufsichtsräte")]),
   page(
-    sec("Unser Ansatz", 'Impulse, die <span class="hl">eine Haltung haben.</span>', "Kein Standard-Vortrag von der Stange, sondern eine klare These, die zum Nachdenken und Diskutieren einlädt."),
+    sec("Unser Ansatz", 'Impulse, die <span class="hl">eine These haben.</span>', "Kein Standard-Vortrag von der Stange, sondern eine klare These, die zum Nachdenken und Diskutieren einlädt."),
     cards([("star", "Aus echter Erfahrung", "Jeder Vortrag speist sich aus echten Projekten und Beratungserfahrung – keine austauschbare Theorie."),
            ("target", "Auf Deinen Anlass zugeschnitten", "Ob Kickoff, Vertriebstag oder Führungskräfte-Tagung – der Vortrag passt zu Deinem Anlass."),
-           ("chats", "Diskussionsstark", "Pointiert und mit klarer Haltung, damit im Anschluss wirklich diskutiert wird – nicht nur genickt.")], 3),
+           ("chats", "Diskussionsstark", "Pointiert und mit klarer These, damit im Anschluss wirklich diskutiert wird – nicht nur genickt.")], 3),
     who("Für welche Anlässe", [
       "Kickoffs, bei denen der Ton für das Jahr gesetzt wird",
       "Vertriebstagungen mit vielen Teilnehmenden",
@@ -915,7 +925,7 @@ def vortrag(slug, h1, lead, sketch, cards3, facts_theme, question, why):
         who("Für wen der Vortrag gedacht ist", [
           "Führungskräfte-Tagungen und Kickoffs in der Versicherungsbranche",
           "Vertriebstagungen, die einen echten Impuls statt Folien brauchen",
-          "Strategietage, an denen eine Haltung gefragt ist",
+          "Strategietage, an denen ein klarer Standpunkt gefragt ist",
           "Runden, in denen danach weitergedacht werden soll",
         ], style="margin-top:10mm"),
         chips(["Kickoff", "Vertriebstagung", "Führungskräfte-Event", "Strategietag"], style="margin-top:9mm"),

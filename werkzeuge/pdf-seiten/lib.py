@@ -395,6 +395,13 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .feat .kicker { color: var(--feat-fg); opacity: .85; font-size: 9.5pt; }
 .feat h3 { font-size: 15pt; line-height: 1.3; margin-bottom: 2mm; color: var(--feat-fg); }
 .feat p { font-size: 9.4pt; line-height: 1.65; color: var(--feat-fg); opacity: .95; }
+.feat p + p { margin-top: 2.6mm; }
+.feat--dunkel { background: linear-gradient(150deg, var(--acc) 0%, var(--acc2) 100%); }
+.feat--dunkel .kicker, .feat--dunkel h3, .feat--dunkel p { color: #fff; }
+.feat--dunkel p b { color: #fff; font-weight: 600; }
+.feat .ic { width: 9mm; height: 9mm; color: var(--feat-fg); margin-bottom: 4mm; }
+.feat--dunkel .ic { color: #fff; }
+.feat .ic svg { width: 100%; height: 100%; }
 /* ---- Preiskarten: exakt die Reihenfolge der Website ----
    Badge, Name + Dauer, Beschreibung, PREIS, Unterschrift, Leistungen.
    Der Preis gehoert nach oben (direkt unter die Beschreibung), nicht an den
@@ -606,9 +613,8 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 
 def esc(s): return _h.escape(s, quote=False)
 
-def build(theme, pages, title, fusszeile=False):
-    global _FUSS
-    _FUSS = fusszeile
+def theme_vars(theme):
+    """Die Farbvariablen eines Themes - fuer :root oder fuer eine einzelne Seite."""
     th = THEMES[theme]
     feat_bg = th.get('feat_bg', f"linear-gradient(150deg, {th['acc']} 0%, {th['acc2']} 100%)")
     feat_fg = th.get('feat_fg', '#fff')
@@ -616,9 +622,15 @@ def build(theme, pages, title, fusszeile=False):
     dark = th.get('dark', th['hl_bg'])
     # Fussstrich in der Highlight-Farbe des Themes, sofern nicht ueberschrieben
     strich = th.get('strich', th['hl_bg'])
-    vars_ = (f":root{{--acc:{th['acc']};--acc2:{th['acc2']};--hl-bg:{th['hl_bg']};--hl-fg:{th['hl_fg']};"
-             f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};"
-             f"--dark-acc:{dark};--strich:{strich};}}")
+    return (f"--acc:{th['acc']};--acc2:{th['acc2']};--hl-bg:{th['hl_bg']};--hl-fg:{th['hl_fg']};"
+            f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};"
+            f"--dark-acc:{dark};--strich:{strich};")
+
+
+def build(theme, pages, title, fusszeile=False):
+    global _FUSS
+    _FUSS = fusszeile
+    vars_ = ":root{" + theme_vars(theme) + "}"
     total = len(pages)
     body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
@@ -652,7 +664,9 @@ def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein
         f'<h1>{h1}</h1>' + "".join(f'<p class="sub">{s}</p>' for s in subs) + sk +
         f'<div class="facts" style="grid-template-columns:repeat({len(facts)},1fr)">{f}</div></section>')
 
-def page(*content, contact_html=None):
+def page(*content, contact_html=None, farbe=None):
+    """farbe setzt die Farbwelt NUR fuer diese Seite (z. B. eine Loesungsseite,
+    die die Farbe ihres eigenen Produkts traegt)."""
     def r(no, total):
         c = contact_html or ""
         letzte = (no == total)
@@ -662,7 +676,8 @@ def page(*content, contact_html=None):
         # die Seite eine Flex-Spalte sein - aber nur dann, damit alle anderen
         # Seiten ihr bisheriges Verhalten behalten.
         cls = "page page--stretch" if "stage--boden" in body else "page"
-        return f'<section class="{cls}">{head(no, total)}{body}{c}{foot}</section>'
+        stil = f' style="{theme_vars(farbe)}"' if farbe else ''
+        return f'<section class="{cls}"{stil}>{head(no, total)}{body}{c}{foot}</section>'
     return r
 
 def sec(kicker, h2, *leads, style=""):
@@ -719,10 +734,13 @@ def band(kicker, h3, *ps, extra="", style=""):
     h = f'<h3>{h3}</h3>' if h3 else ''
     return f'<div class="band" style="{style}">{k}{h}' + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>'
 
-def feat(kicker, h3, *ps, extra="", style=""):
+def feat(kicker, h3, *ps, extra="", ikon=None, dunkel=False, style=""):
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     h = f'<h3>{h3}</h3>' if h3 else ''
-    return f'<div class="feat" style="{style}">{k}{h}' + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>'
+    i = f'<div class="ic">{cd_icon(ikon) if ikon in CD_ICONS else icon(ikon)}</div>' if ikon else ''
+    cls = "feat feat--dunkel" if dunkel else "feat"
+    return (f'<div class="{cls}" style="{style}">{i}{k}{h}'
+            + "".join(f'<p>{p}</p>' for p in ps) + extra + '</div>')
 
 def opts(items, cols=None, style=""):
     """Preiskarten in der Reihenfolge der Website.

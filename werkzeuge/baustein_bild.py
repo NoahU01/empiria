@@ -44,7 +44,12 @@ window.addEventListener('load', function () { setTimeout(function () {
   // Meta-/LinkedIn-Anzeige im Karussell), sonst unsichtbar abgenommen wuerden.
   el.classList.add('is-active');
   el.style.opacity = '1'; el.style.visibility = 'visible';
-  el.style.transform = 'none'; el.style.position = 'static'; el.style.inset = 'auto';
+  el.style.transform = 'none';
+  // position NICHT pauschal auf static setzen: Bausteine mit position:relative
+  // verlieren sonst den Bezugspunkt fuer ihre ::before-Elemente (z. B. der
+  // farbige Balken am Rand des Kanal-Checks) samt deren Rundung.
+  var pos = getComputedStyle(el).position;
+  if (pos === 'absolute' || pos === 'fixed') { el.style.position = 'relative'; el.style.inset = 'auto'; }
   el.removeAttribute('hidden');
   var r = el.getBoundingClientRect();
   var st = document.createElement('style');
