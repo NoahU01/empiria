@@ -175,7 +175,10 @@ P["innovation"] = ("strategie", "Innovation & Geschäftsmodell neu denken – em
             ["„Das war schon immer so.“", "„Das ist bei uns gesetzt.“", "„Das macht man in unserer Branche nicht.“"],
             "Und was, wenn nicht?", cls="stein--schmal", style="margin-top:0")
     + '</div>',
-  ),
+  
+    # Luft am Seitenende ist hier gewollt: die getoente Flaeche wurde
+    # bewusst geloescht. Nimmt die Seite von R4 aus.
+    cls_extra="page--luft"),
   page(
     sec("Einsatzmöglichkeiten", "Für das gesamte Unternehmen oder für einzelne Bereiche.",
         "Dies gilt für die Zukunft Eures Geschäftsmodells genauso wie für konkrete Fragen zu Kooperationen, Fusionen, Beteiligungen oder neuen Zusatzservices."),
@@ -244,7 +247,10 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
                price="7.350 €", pnote="Konkreter Usecase",
                list=["Kennenlernen der Tools", "Bearbeitung eines konkreten Usecases des Unternehmens", "Abschlussbesprechung zum internen, weiteren Vorgehen"])])
     + '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen – inklusive Vorbereitung und Dokumentation der Ergebnisse.</p>'),
-  ),
+  
+    # Luft am Seitenende ist hier gewollt: die getoente Flaeche wurde
+    # bewusst geloescht. Nimmt die Seite von R4 aus.
+    cls_extra="page--luft"),
   page(
     who("Für wen das gemacht ist", [
       "Vorstände, die im Haus mehr Tempo bei neuen Ideen wollen",
@@ -590,7 +596,10 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
           dict(badge="Beliebt", name="Reichweite", text="Kontakte aus mehreren Zielgruppen gewinnen – ohne eigenen Aufwand.", list=["3 digitale Vertriebsstrecken", "Erweiterte Individualisierung", "Performance-Reporting"], price="499 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 625 € monatlich", feat=True),
           dict(name="Marktposition", text="Berater positionieren, Stärken zeigen, planbare Neukontakte.", list=["10 digitale Vertriebsstrecken", "Automatisierung der Postings", "Regelmäßige 1:1-Beratung"], price="999 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 1.250 € monatlich")])
     + '<p class="note">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>'),
-  ),
+  
+    # Luft am Seitenende ist hier gewollt: die getoente Flaeche wurde
+    # bewusst geloescht. Nimmt die Seite von R4 aus.
+    cls_extra="page--luft"),
   # Reihenfolge wie auf der Produktseite: "Monate werden zu Tagen" ist die
   # Aussage ZUR Vergleichsgrafik, danach folgen die vier Ablaufschritte.
   page(

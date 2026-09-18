@@ -12,7 +12,10 @@ R2  Keine Seite ohne gestaltendes Element - reiner Fliesstext ist unzulaessig.
 R3  Kein Ueberlauf.
 R4  Nicht mehr als LEER_MAX mm freier Raum am Seitenende. Seiten mit
     abschliessendem Band (stage--boden) oder Kontaktblock sind ausgenommen,
-    dort fuellt das Band bzw. der Block den Rest.
+    dort fuellt das Band bzw. der Block den Rest. Ausserdem ausgenommen:
+    Seiten mit der Klasse page--luft. Das sind die drei Seiten, auf denen
+    Daniel die getoente Flaeche bewusst hat loeschen lassen (Innovation S2,
+    KI zum Anfassen S3, sofort sichtbar S3) - die Luft dort ist gewollt.
 
 Aufruf:  python3 regeln.py [datei.html ...]      (ohne Angabe: alle in _build/)
 """
@@ -77,7 +80,8 @@ def pruefen(pfad):
                 befunde.append((i, "R3", f"Ueberlauf {m['frei_mm']} mm"))
             elif (m["frei_mm"] > LEER_MAX and "stage--boden" not in inhalt
                   and 'class="contact"' not in inhalt and "buehne-bild" not in inhalt
-                  and "rollup-berg" not in inhalt):
+                  and "rollup-berg" not in inhalt
+                  and "page--luft" not in klassen):
                 befunde.append((i, "R4", f"{m['frei_mm']} mm leer"))
     return befunde
 
