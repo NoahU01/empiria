@@ -23,7 +23,9 @@ THEMES = {
   "capiamo":   dict(acc="#063755", acc2="#04263b", hl_bg="#063755", hl_fg="#fff", tint="#eaf0f4",
                     dark="#7FB2D4"),
   "strategie": dict(acc="#1a1817", acc2="#2e2d2c", hl_bg="#fff400", hl_fg="#1a1817", tint="#f3f2ef",
-                    feat_bg="#fff400", feat_fg="#1a1817", num="#1a1817", dark="#fff400"),
+                    feat_bg="#fff400", feat_fg="#1a1817", num="#1a1817", dark="#fff400",
+                    # Gelb traegt als duenner Strich auf Weiss nicht - hier Schwarz.
+                    strich="#1a1817"),
 }
 
 ICONS = {
@@ -99,7 +101,7 @@ b, strong { font-weight: 600; }
 .hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em; white-space: nowrap; }
 .head { display:flex; justify-content: space-between; align-items:center; margin-bottom: 15mm; }
 .head img { height: 6mm; }
-.page-no { font-size: 8pt; color: var(--g50); font-weight: 500; }
+.page-no { font-size: 6.6pt; color: var(--g50); font-weight: 500; }
 /* ---- Fussbereich ----------------------------------------------------------
    Seitenzahl unten rechts, links ein kurzer Strich als grafischer Anker. Ohne
    ihn wirkt der Fuss leer - vor allem auf Seiten, deren helles Band bis zur
@@ -107,8 +109,8 @@ b, strong { font-weight: 600; }
    empiria-Logo auf, etwas kraeftiger. */
 .pfoot { position: absolute; left: 22mm; right: 22mm; bottom: 9mm;
          display: flex; align-items: center; justify-content: space-between; }
-.pfoot .strich { display: block; width: 14mm; height: .9mm;
-                 background: var(--ink); border-radius: .45mm; }
+.pfoot .strich { display: block; width: 11.9mm; height: .9mm;
+                 background: var(--strich); border-radius: .45mm; }
 .kicker { font-weight: 500; font-size: 10.5pt; color: var(--acc); margin: 0 0 2mm; }
 h1 { font-family: var(--serif); font-weight: 700; font-size: 40pt; line-height: 1.12; letter-spacing: -.01em; }
 h2 { font-family: var(--serif); font-weight: 700; font-size: 22pt; line-height: 1.22; margin: 0 0 4.5mm; max-width: 158mm; }
@@ -185,8 +187,8 @@ p.lead + p.lead { margin-top: 2.6mm; }
    voller Deckkraft - NICHT Schwarz mit 5,5 % Deckkraft. Gemessen ergab das im
    PDF nur 4 von 255 Kontrast, das rechnen Betrachter faktisch weg. Die
    Website nutzt #dedede auf hellem Grund, rund 15 von 255. */
-.stage-wm { position:absolute; z-index:0; right:-18mm; bottom:-24mm; width:98mm; height:98mm;
-            color:#dedede; opacity:1; }
+.stage-wm { position:absolute; z-index:0; right:14mm; bottom:12mm; width:46mm; height:46mm;
+            color:#c3c1be; opacity:1; }
 .stage-wm svg { width:100%; height:100%; stroke-width:.9; }
 /* Steht das Band am Seitenende, laeuft es bis an die Blattkante - so wie die
    Sektionen auf der Website. Sonst bleibt darunter ein weisser Streifen, der
@@ -252,6 +254,14 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .raster b { font-family:var(--serif); font-weight:700; font-size:9.6pt; line-height:1.3; display:block; }
 .raster > div.main { background:var(--ink); color:#fff; border-color:var(--ink); }
 .raster > div.main .num { color:var(--dark-acc); }
+
+/* ---- Werkzeuge mit Original-Logos (tools-row der Produktseite) -------------
+   Nur die Namen als Textchips zu setzen verschenkt die Wiedererkennung - die
+   Logos liegen als PNG in site/assets/tools/. */
+.tools { display: grid; gap: 4mm; margin-top: 6mm; }
+.tool { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.5mm; }
+.tool img { width: 11mm; height: 11mm; object-fit: contain; display: block; }
+.tool span { font-size: 8.4pt; font-weight: 500; color: var(--ink2); line-height: 1.3; }
 
 /* ---- Anteilsbalken (z. B. 70-20-10-Regel) ----------------------------------
    Vorher waren die Balken unterschiedlich hoch und die Beschriftungen darunter
@@ -577,9 +587,11 @@ def build(theme, pages, title, fusszeile=False):
     feat_fg = th.get('feat_fg', '#fff')
     num = th.get('num', th['acc'])
     dark = th.get('dark', th['hl_bg'])
+    # Fussstrich in der Highlight-Farbe des Themes, sofern nicht ueberschrieben
+    strich = th.get('strich', th['hl_bg'])
     vars_ = (f":root{{--acc:{th['acc']};--acc2:{th['acc2']};--hl-bg:{th['hl_bg']};--hl-fg:{th['hl_fg']};"
              f"--feat-bg:{feat_bg};--feat-fg:{feat_fg};--tint:{th['tint']};--num:{num};"
-             f"--dark-acc:{dark};}}")
+             f"--dark-acc:{dark};--strich:{strich};}}")
     total = len(pages)
     body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
@@ -821,6 +833,14 @@ def bild(name, breite=None, style="", rahmen=True):
     s = f"max-width:{breite};" if breite else ""
     cls = "baustein" if rahmen else "baustein baustein--blank"
     return f'<img class="{cls}" src="{_bildpfad(name)}" alt="" style="{s}{style}">'
+
+
+def tools(items, cols=None, style=""):
+    """Werkzeuge mit ihren Original-Logos. items = (Dateiname ohne Pfad, Name)."""
+    z = "".join(f'<div class="tool"><img src="assets/tools/{d}" alt=""><span>{n}</span></div>'
+                for d, n in items)
+    cols = cols or len(items)
+    return f'<div class="tools" style="grid-template-columns:repeat({cols},1fr);{style}">{z}</div>'
 
 
 def anteile(items, style=""):

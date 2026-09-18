@@ -7,9 +7,9 @@ from lib import build
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_build")
 os.makedirs(OUT, exist_ok=True)
 
-# Neue Fusszeile (Strich links, Seitenzahl rechts) - vorerst nur hier, bis die
-# Gestaltung sitzt. Zum Ausrollen weitere Slugs eintragen oder FUSSZEILE = set(P).
-FUSSZEILE = {"strategie"}
+# Fusszeile: Strich links, Seitenzahl rechts. Gilt fuer alle PDFs; zum
+# Einschraenken einzelne Slugs eintragen.
+FUSSZEILE = set(P)   # alle PDFs
 
 only = sys.argv[1:] or list(P)
 for slug in only:

@@ -195,7 +195,10 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
     stage("Die Werkzeuge", "Mehrere Tools im direkten Vergleich.",
           "Wir arbeiten nicht mit einem Werkzeug, sondern zeigen an Euren Fällen, wie unterschiedlich die Tools denken und liefern.",
           wm="layers", boden=True,
-          inhalt=chips(["ChatGPT", "Claude", "Perplexity", "Gemini", "NotebookLM", "Nano Banana"], style="margin-top:6mm")),
+          inhalt=tools([("chatgpt-magenta.png", "ChatGPT"), ("claude-magenta.png", "Claude"),
+                        ("perplexity-magenta.png", "Perplexity"), ("gemini-magenta.png", "Gemini"),
+                        ("notebooklm-magenta.png", "NotebookLM"), ("nanobanana-magenta.png", "Nano Banana")],
+                       style="margin-top:8mm")),
   ),
   # Eigene Seite fuer die Formate: die Preiskarten brauchen Luft, gedraengt
   # wirken sie billig.
