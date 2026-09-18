@@ -251,7 +251,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .raster > div { border:0.7pt solid var(--g30); border-radius:3mm; padding:4.5mm 4mm; background:#fff; }
 .raster .num { display:block; font-family:var(--serif); font-weight:700; font-size:11pt;
                color:var(--acc); margin-bottom:2.5mm; }
-.raster b { font-family:var(--serif); font-weight:700; font-size:9.6pt; line-height:1.3; display:block; }
+.raster b { font-family:var(--serif); font-weight:700; font-size:9.6pt; line-height:1.3; display:block; min-height:8.8mm; }
 .raster > div.main { background:var(--ink); color:#fff; border-color:var(--ink); }
 .raster > div.main .num { color:var(--dark-acc); }
 
@@ -261,7 +261,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .tools { display: grid; gap: 4mm; margin-top: 6mm; }
 .tool { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.5mm; }
 .tool img { width: 11mm; height: 11mm; object-fit: contain; display: block; }
-.tool span { font-size: 8.4pt; font-weight: 500; color: var(--ink2); line-height: 1.3; }
+.tool span { font-size: 8.4pt; font-weight: 500; color: var(--ink2); line-height: 1.3; min-height: 7.8mm; }
 
 /* ---- Anteilsbalken (z. B. 70-20-10-Regel) ----------------------------------
    Vorher waren die Balken unterschiedlich hoch und die Beschriftungen darunter
@@ -283,15 +283,21 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .mocks { display:grid; grid-template-columns:repeat(3,1fr); gap:7mm; align-items:start; }
 .mock-fig { height:52mm; display:flex; align-items:flex-end; justify-content:center; }
 .mock-fig svg { max-height:100%; width:auto; max-width:100%; display:block; filter:none; }
-.mock b { display:block; font-family:var(--serif); font-weight:700; font-size:11pt; color:#fff; margin:4.5mm 0 1.5mm; }
+.mock b { display:block; font-family:var(--serif); font-weight:700; font-size:11pt; line-height:1.28; color:#fff; margin:4.5mm 0 0; min-height:11.5mm; }
 .mock p { font-size:8.2pt; line-height:1.55; color:rgba(255,255,255,.72); }
 /* Kacheln */
 .cards { display: grid; gap: 4.5mm; margin-top: 7mm; }
-.card { border: 0.7pt solid #e6e2de; border-radius: 4mm; padding: 5.5mm 5mm; background: #fff; }
+.card { border: 0.7pt solid #e6e2de; border-radius: 4mm; padding: 5.5mm 5mm; background: #fff;
+        display: flex; flex-direction: column; }
 .card .ic { width: 7.5mm; height: 7.5mm; color: var(--acc); margin-bottom: 3.5mm; }
 .card .ic svg { width: 100%; height: 100%; }
-.card h3 { font-size: 11pt; margin-bottom: 1.8mm; }
+/* Zwei Zeilen fest reservieren: sonst beginnt der Text bei einzeiliger
+   Ueberschrift hoeher und die Karten einer Reihe springen gegeneinander. */
+.card h3 { font-size: 11pt; line-height: 1.28; margin-bottom: 0; min-height: 11.8mm; }
 .card p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
+/* Abschliessender Zusatz (Preis, Dauer) sitzt unten - dadurch fluchten die
+   Angaben ueber alle Karten einer Reihe. */
+.card .fuss { margin-top: auto; padding-top: 3.5mm; font-size: 8.8pt; font-weight: 600; color: var(--ink); }
 .card .num { font-family: var(--serif); font-weight: 700; font-size: 11pt; color: var(--num); display:block; margin-bottom: 2.5mm; }
 .card ul { margin-top: 2.5mm; }
 /* Original-Vorschaubilder der Produktseite in der Karte (Postings, Funnel,
@@ -301,12 +307,27 @@ p.lead + p.lead { margin-top: 2.6mm; }
 /* ---- Bausteine nebeneinander: Bild oben, Beschriftung darunter -------------
    Die Bilder stehen ohne Kartenrahmen, damit sie die Spaltenbreite voll nutzen
    und lesbar bleiben. align-items:end laesst die Bildunterkanten fluchten. */
-.bilder { display: grid; gap: 7mm; margin-top: 6mm; align-items: start; }
+/* subgrid statt fester Mindesthoehen: Bild, Beschriftung und Text teilen sich
+   je eine Zeile ueber alle Spalten. Die Zeile ist so hoch wie ihr hoechster
+   Inhalt - bei durchgehend einzeiligen Beschriftungen entsteht also keine
+   leere Reserve, bei einer zweizeiligen rutscht trotzdem nichts. */
+.bilder { display: grid; column-gap: 7mm; row-gap: 0; margin-top: 6mm; align-items: start; }
+.bilder > div { grid-row: span 3; display: grid; grid-template-rows: subgrid; }
+/* Abstand zwischen zwei Bildreihen haengt am letzten Element, nicht am
+   row-gap - der wuerde sonst auch die Zeilen INNERHALB eines Eintrags
+   auseinanderziehen. */
+.bilder p { margin-bottom: 7mm; }
 .bilder-fig { display: flex; align-items: flex-end; justify-content: center; }
-.bilder-fig img { display: block; width: 100%; height: auto; border-radius: 2.5mm;
-                  border: 0.6pt solid #e6e2de; }
+/* Hoehe der Figur begrenzt das Bild. Ohne max-height ragt ein hoeheres Bild
+   wegen align-items:flex-end nach OBEN heraus und ueberlappt den Text darueber. */
+/* width:auto statt 100 %: Das Element ist dann exakt so gross wie das
+   skalierte Bild, der Rahmen liegt eng an. Mit width:100% und object-fit
+   blieben helle Streifen links und rechts stehen. */
+.bilder-fig img { display: block; width: auto; height: auto;
+                  max-width: 100%; max-height: 100%;
+                  border-radius: 2.5mm; border: 0.6pt solid #e6e2de; }
 .bilder b { display: block; font-family: var(--serif); font-weight: 700; font-size: 11pt;
-            margin: 4.5mm 0 1.5mm; }
+            line-height: 1.28; margin: 4.5mm 0 2.5mm; }
 .bilder p { font-size: 8.4pt; line-height: 1.55; color: var(--g70); }
 
 /* Original-Bausteine der Website (siehe werkzeuge/baustein_bild.py) */
@@ -404,7 +425,7 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .note { font-size: 7.4pt; color: var(--g50); margin-top: 3mm; line-height: 1.5; }
 /* Fälle */
 .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 10mm; margin-top: 7mm; }
-.case h3 { font-size: 10.8pt; margin-bottom: 1.5mm; }
+.case h3 { font-size: 10.8pt; line-height: 1.28; margin-bottom: 0; min-height: 11.3mm; }
 .case p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
 .case .ic { width: 6mm; height: 6mm; color: var(--acc); margin-bottom: 2mm; }
 .case .ic svg { width: 100%; height: 100%; }
@@ -438,7 +459,6 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .footer { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #cfcecc;
           padding: 6mm 22mm; font-size: 9pt;
           display: flex; align-items: center; justify-content: space-between; }
-.footer .page-no { color: rgba(255,255,255,.55); }
 /* Browser-Mock */
 .bm { border: 0.8pt solid var(--g30); border-radius: 3.5mm; background: #fff; overflow: hidden; margin-top: 6mm; }
 .bm-bar { display:flex; align-items:center; gap: 1.6mm; padding: 2.6mm 4mm; background: #f6f5f3; }
@@ -603,8 +623,9 @@ _FUSS = False
 def _seitenzahl(no, total): return f'<span class="page-no">Seite {no} / {total}</span>'
 
 def FOOTER(no=None, total=None):
-    z = _seitenzahl(no, total) if (_FUSS and no) else ""
-    return f'<div class="footer"><span>empiria GmbH 2026</span>{z}</div>'
+    # Keine Seitenzahl auf der Schlussseite - wie auf dem Deckblatt. Sie steht
+    # nur auf den Seiten dazwischen.
+    return '<div class="footer"><span>empiria GmbH 2026</span></div>'
 
 def pfoot(no, total):
     return f'<div class="pfoot"><span class="strich"></span>{_seitenzahl(no, total)}</div>'
@@ -819,8 +840,12 @@ def bilder(items, cols=None, hoehe=None, rahmen=True, style=""):
         f'<img src="{_bildpfad(n)}" alt=""></div>'
         f'<b>{lab}</b><p>{txt}</p></div>' for n, lab, txt in items)
     cols = cols or len(items)
+    # Je Eintrag drei Zeilen (Bild, Beschriftung, Text). Bei mehreren Reihen
+    # muessen alle Zeilen definiert sein, sonst ueberlappen sie sich.
+    zeilen = -(-len(items) // cols) * 3
     cls = "bilder" if rahmen else "bilder bilder--frei"
-    return f'<div class="{cls}" style="grid-template-columns:repeat({cols},1fr);{style}">{cells}</div>'
+    return (f'<div class="{cls}" style="grid-template-columns:repeat({cols},1fr);'
+            f'grid-template-rows:repeat({zeilen},auto);{style}">{cells}</div>')
 
 
 def bild(name, breite=None, style="", rahmen=True):
