@@ -231,6 +231,11 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .stein li { font-family:var(--serif); font-weight:700; font-size:13.5pt; line-height:1.25;
             color:rgba(255,255,255,.40); text-decoration:line-through;
             text-decoration-color:var(--dark-acc); text-decoration-thickness:1.5pt; }
+/* Schmale Variante fuer den Zweispalter: im 74-mm-Kasten braucht die
+   Schrift weniger Groesse, sonst bricht jede Zeile dreimal um. */
+.stein--schmal { padding:6mm; }
+.stein--schmal li { font-size:11.5pt; }
+.stein--schmal .foot { font-size:13pt; margin-top:4.5mm; }
 .stein .foot { margin-top:5.5mm; font-family:var(--serif); font-weight:700; font-size:15pt; color:var(--dark-acc); }
 
 /* ---- Sprechblasen: wiederkehrende Saetze als Dialog statt als Punkteliste ---
@@ -405,9 +410,6 @@ ul.checks li svg { position: absolute; left: 0; top: 1.9mm; width: 4.4mm; height
 ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; }
 /* Aussage */
 .statement { font-family: var(--sans); font-weight: 500; font-size: 10.5pt; line-height: 1.6; color: var(--ink); max-width: 152mm; }
-.quotes { margin-top: 5mm; display: grid; gap: 3mm; }
-.quotes span { display:block; font-weight: 400; font-size: 9.8pt; line-height: 1.55; color: var(--ink2); padding-left: 5mm; position: relative; }
-.quotes span::before { content:""; position:absolute; left:0; top: .25em; bottom: .25em; width: 1.2mm; border-radius: 1mm; background: var(--acc); }
 /* Band (wichtigster Abschnitt) & Verlaufskasten */
 .band { background: var(--bg); border-radius: 4mm; padding: 7mm 7mm; margin-top: 8mm; }
 .band h3 { font-size: 14pt; margin-bottom: 2mm; }
@@ -753,9 +755,6 @@ def statement(kicker, text, style=""):
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     return f'<div class="sec" style="{style}">{k}<p class="statement">{text}</p></div>'
 
-def quotes(items, style=""):
-    return f'<div class="quotes" style="{style}">' + "".join(f'<span>{x}</span>' for x in items) + '</div>'
-
 def band(kicker, h3, *ps, extra="", style=""):
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     h = f'<h3>{h3}</h3>' if h3 else ''
@@ -839,10 +838,10 @@ def bubbles(tag, items, foot, style=""):
             f'<ul>{lis}</ul>{f}</div>')
 
 
-def stein(tag, items, foot, style=""):
+def stein(tag, items, foot, cls="", style=""):
     """Durchgestrichene Denkmuster im schwarzen Kasten - wie auf der Landingpage."""
     lis = "".join(f'<li>{i}</li>' for i in items)
-    return (f'<div class="stein" style="{style}"><p class="tag">{tag}</p>'
+    return (f'<div class="stein {cls}" style="{style}"><p class="tag">{tag}</p>'
             f'<ul>{lis}</ul><p class="foot">{foot}</p></div>')
 
 

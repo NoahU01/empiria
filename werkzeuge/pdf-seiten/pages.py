@@ -141,15 +141,23 @@ P["innovation"] = ("strategie", "Innovation & Geschäftsmodell neu denken – em
   page(
     sec("Das Problem", 'Du entwickelst weiter. Bevor die Grundfrage <span class="hl">geklärt ist.</span>',
         "Eine Idee für ein neues Geschäftsmodell oder Produkt entsteht, und sofort wird an Features, Prozessen und der Umsetzung gefeilt."),
-    quotes(["Welches Problem hat der Kunde eigentlich?", "Wie löst Du es?", "Ist er überhaupt bereit, es zu lösen?"]),
-    '<div class="sec" style="margin-top:6mm"><p class="lead">… diese Fragen bleiben unbeantwortet, während längst weitergebaut wird.</p></div>',
-    sec("Die Lösung", 'Nichts davon ist <span class="hl">in Stein gemeißelt.</span>',
-        "Wer sein Geschäftsmodell wirklich hinterfragt, stößt schnell an eine Grenze: Vieles gilt als gegeben, nur weil es schon immer so war – dabei ist es oft längst nicht mehr in Stein gemeißelt.",
-        "Genau hier gehen wir mit Dir grundlegend ran, sei es für das gesamte Unternehmen oder für einzelne Bereiche.", style="margin-top:14mm"),
-    # Das staerkste Element der Landingpage: die durchgestrichenen Denkmuster.
-    stein("Gilt als gegeben",
-          ["„Das war schon immer so.“", "„Das ist bei uns gesetzt.“", "„Das macht man in unserer Branche nicht.“"],
-          "Und was, wenn nicht?"),
+    dots(["Welches Problem hat der Kunde eigentlich?",
+          "Wie löst Du es?",
+          "Ist er überhaupt bereit, es zu lösen?"], style="margin-top:5mm"),
+    '<div class="sec" style="margin-top:5mm"><p class="lead">… diese Fragen bleiben unbeantwortet, während längst weitergebaut wird.</p></div>',
+    # Zweispaltig: der Text traegt links, die durchgestrichenen Denkmuster
+    # stehen als kompakter Kasten rechts daneben - ueber die volle Seitenbreite
+    # erschlug der Kasten die Aussage.
+    sec("Die Lösung", 'Nichts davon ist <span class="hl">in Stein gemeißelt.</span>', style="margin-top:13mm"),
+    '<div style="display:grid;grid-template-columns:1fr 74mm;gap:9mm;align-items:start;margin-top:1mm">'
+    + '<div><p class="lead">Wer sein Geschäftsmodell wirklich hinterfragt, stößt schnell an eine Grenze: '
+      'Vieles gilt als gegeben, nur weil es schon immer so war – dabei ist es oft längst nicht mehr in Stein gemeißelt.</p>'
+      '<p class="lead">Genau hier gehen wir mit Dir grundlegend ran, sei es für das gesamte Unternehmen '
+      'oder für einzelne Bereiche.</p></div>'
+    + stein("Gilt als gegeben",
+            ["„Das war schon immer so.“", "„Das ist bei uns gesetzt.“", "„Das macht man in unserer Branche nicht.“"],
+            "Und was, wenn nicht?", cls="stein--schmal", style="margin-top:0")
+    + '</div>',
   ),
   page(
     sec("Einsatzmöglichkeiten", "Für das gesamte Unternehmen oder für einzelne Bereiche.",
@@ -203,9 +211,9 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
   # Eigene Seite fuer die Formate: die Preiskarten brauchen Luft, gedraengt
   # wirken sie billig.
   page(
-    stage("Formate", 'Drei Formate für jeden Anspruch.',
-          "Vom ersten Ausprobieren bis zum konkreten Usecase Eures Unternehmens – Du wählst die Tiefe.",
-          wm="grid", boden=True, inhalt=
+    sec("Formate", 'Drei Formate <span class="hl">für jeden Anspruch.</span>',
+        "Vom ersten Ausprobieren bis zum konkreten Usecase Eures Unternehmens – Du wählst die Tiefe."),
+    (
     # Aufbau und Texte 1:1 wie die Preiskarten auf ki-zum-anfassen.html:
     # Die Einordnung ("Kompakter Anwendungsfall") ist die Unterschrift zum Preis,
     # kein Listenpunkt.
@@ -229,7 +237,7 @@ P["ki-zum-anfassen"] = ("magenta", "KI zum Anfassen – empiria", [
     ], style="margin-top:9mm"),
     stage("Beispiele", "Konkrete Use Cases aus der Praxis.",
           "Eine Auswahl der Themen, die wir mit unseren Kunden bereits umsetzen durften.",
-          wm="bulb", boden=True,
+          boden=True,
           inhalt=cases([("Sparring zu Zielgruppen", "Produktentwicklung und Marketing nutzen KI als Sparringspartner für Zielgruppenprofile im Versicherungsvertrieb – inklusive passender Ansprache.", "team"),
            ("Generierung von Produktideen", "Auftrag vom Vorstand: eingefahrene Denkmuster aufbrechen, einen Impuls setzen und die Diskussion im Team neu in Gang bringen.", "bulb"),
            ("KI im Führungsalltag", "Wie Führungskräfte schnell und schlagkräftig mit KI agieren – Tools, Alltagstipps und Sparring, ganz ohne Unternehmensdetails.", "user"),
@@ -316,7 +324,7 @@ P["workshop-moderation"] = ("magenta", "Moderation Deines Workshops – empiria"
            ("target", "Ergebnisse, die tragen", "Ergebnisse, mit denen Dein Team direkt weiterarbeiten kann – nicht nur ein Protokoll zum Ablegen."),
            ("layers", "Hohe Methodenvielfalt", "Von Kreativformaten bis zur klaren Entscheidungsrunde – die Methode, die zum Thema passt."),
            ("slides", "Top Visualisierungen", "Ergebnisse werden sichtbar festgehalten statt nur besprochen – und sauber zusammengefasst.")], 3),
-    feat(None, "Wir aktivieren. Wir wechseln die Perspektive. Wir führen zusammen.", "Genau so entsteht Handlungsklarheit – statt einer weiteren Runde, in der alle reden und nichts passiert.", style="margin-top:10mm"),
+    feat(None, "Wir aktivieren. Wir wechseln die Perspektive.<br>Wir führen zusammen.", "Genau so entsteht Handlungsklarheit – statt einer weiteren Runde, in der alle reden und nichts passiert.", style="margin-top:10mm"),
   ),
   page(
     who("Für wen das gemacht ist", [
@@ -375,14 +383,14 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
     # Feste Figurenhoehe, damit beide Zeilen auf einer Linie sitzen - die
     # Paid-Ads-Box ist im Original etwas hoeher als die uebrigen drei.
     bilder([
-      ("mk-thumb-mes", "Lösung 01",
-       "Für Versicherer, Makler und Versicherungsbüros. <b>ab 399 € monatlich</b>"),
-      ("mk-thumb-sofort", "Lösung 02",
-       "Für Agenturleitungen und Makler im Vertrieb. <b>ab 349 € monatlich</b>"),
-      ("mk-thumb-paidads", "Lösung 03",
-       "Für alle, die jeden eingesetzten Euro nachvollziehen wollen. <b>Umfang nach Vorhaben</b>"),
-      ("mk-thumb-medien", "Lösung 04",
-       "Für Themen, die im entscheidenden Moment tragen müssen. <b>Umfang nach Vorhaben</b>"),
+      ("mk-thumb-mes", "ab 399 € monatlich",
+       "Für Versicherer, Makler und Versicherungsbüros."),
+      ("mk-thumb-sofort", "ab 349 € monatlich",
+       "Für Agenturleitungen und Makler im Vertrieb."),
+      ("mk-thumb-paidads", "Umfang nach Vorhaben",
+       "Für alle, die jeden eingesetzten Euro nachvollziehen wollen."),
+      ("mk-thumb-medien", "Umfang nach Vorhaben",
+       "Für Themen, die im entscheidenden Moment tragen müssen."),
     ], cols=2, hoehe="52mm", style="margin-top:7mm"),
     '<p class="note">Preise zzgl. Umsatzsteuer in gesetzlicher Höhe. Bei Paid Ads und Medien hängt der Umfang vom Vorhaben ab – Du bekommst zeitnah ein konkretes Angebot.</p>'),
   # Je Loesung eine eigene Seite mit der Darstellung der zugehoerigen
@@ -1048,7 +1056,7 @@ P["workshops"] = ("magenta", "Workshops – empiria", [
            ("team", "Professionell moderiert", "Klare Strukturen, gute Stimmung und Ergebnisse, mit denen sich weiterarbeiten lässt.")], 3),
     stage("Unsere Workshops", "Drei Formate. Ein Ziel: Ergebnisse.",
           "Wähle das Format – wir bringen Dein Team ans Ziel.",
-          wm="grid", boden=True,
+          boden=True,
           inhalt=cards([
             (None, "KI zum Anfassen",
              "Echte KI-Tools, echte Usecases aus der Versicherungsbranche – Schluss mit Arbeitskreisen ohne Praxis.",
@@ -1071,7 +1079,7 @@ P["workshops"] = ("magenta", "Workshops – empiria", [
       "Strategietage, die zu Ergebnissen führen sollen statt zu Themensammlungen",
     ], style="margin-top:8mm"),
     stage("Was Du bekommst", "Ergebnisse, mit denen sich weiterarbeiten lässt.",
-          wm="check", boden=True,
+          wm="check", boden=True, style="margin-top:22mm",
           inhalt=checks(["Ergebnisse aus echten Fällen Deines Hauses, nicht aus Fallstudien",
                          "Eine Dokumentation, die auch Wochen später noch verständlich ist",
                          "Klare nächste Schritte statt einer Liste offener Punkte",
