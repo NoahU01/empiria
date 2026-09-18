@@ -112,9 +112,9 @@ b, strong { font-weight: 600; }
 .pfoot .strich { display: block; width: 11.9mm; height: .9mm;
                  background: var(--strich); border-radius: .45mm; }
 .kicker { font-weight: 500; font-size: 10.5pt; color: var(--acc); margin: 0 0 2mm; }
-h1 { font-family: var(--serif); font-weight: 700; font-size: 40pt; line-height: 1.12; letter-spacing: -.01em; }
-h2 { font-family: var(--serif); font-weight: 700; font-size: 22pt; line-height: 1.22; margin: 0 0 4.5mm; max-width: 158mm; }
-h3 { font-family: var(--serif); font-weight: 700; font-size: 12pt; line-height: 1.28; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 40pt; line-height: 1.12; letter-spacing: -.01em; }
+h2 { font-family: var(--serif); font-weight: 600; font-size: 22pt; line-height: 1.22; margin: 0 0 4.5mm; max-width: 158mm; }
+h3 { font-family: var(--serif); font-weight: 600; font-size: 12pt; line-height: 1.28; }
 p.lead { font-size: 10pt; line-height: 1.72; color: var(--ink2); max-width: 152mm; }
 p.lead + p.lead { margin-top: 2.6mm; }
 .label { font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--g50); font-weight: 600; }
@@ -189,6 +189,9 @@ p.lead + p.lead { margin-top: 2.6mm; }
    Website nutzt #dedede auf hellem Grund, rund 15 von 255. */
 .stage-wm { position:absolute; z-index:0; right:14mm; bottom:12mm; width:46mm; height:46mm;
             color:#c3c1be; opacity:1; }
+/* Laeuft das Band bis an die Blattkante, reicht es unter die Fusszeile. Das
+   Wasserzeichen braucht dort Abstand, sonst klebt es an Seitenzahl und Strich. */
+.stage--boden .stage-wm { bottom: 28mm; }
 .stage-wm svg { width:100%; height:100%; stroke-width:.9; }
 /* Steht das Band am Seitenende, laeuft es bis an die Blattkante - so wie die
    Sektionen auf der Website. Sonst bleibt darunter ein weisser Streifen, der
@@ -297,7 +300,11 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .card p { font-size: 8.8pt; line-height: 1.58; color: var(--g70); }
 /* Abschliessender Zusatz (Preis, Dauer) sitzt unten - dadurch fluchten die
    Angaben ueber alle Karten einer Reihe. */
-.card .fuss { margin-top: auto; padding-top: 3.5mm; font-size: 8.8pt; font-weight: 600; color: var(--ink); }
+/* margin-top:auto allein richtet nur die UNTERKANTE aus - bei zweizeiligem
+   Zusatz beginnt die Zeile dann hoeher als bei einzeiligem. Zusaetzlich zwei
+   Zeilen reservieren, damit die erste Zeile ueber alle Karten fluchtet. */
+.card .fuss { margin-top: auto; padding-top: 3.5mm; min-height: 12.8mm;
+              font-size: 8.8pt; line-height: 1.5; font-weight: 600; color: var(--ink); }
 .card .num { font-family: var(--serif); font-weight: 700; font-size: 11pt; color: var(--num); display:block; margin-bottom: 2.5mm; }
 .card ul { margin-top: 2.5mm; }
 /* Original-Vorschaubilder der Produktseite in der Karte (Postings, Funnel,
