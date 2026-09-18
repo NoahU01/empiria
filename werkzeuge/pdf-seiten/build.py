@@ -11,10 +11,15 @@ os.makedirs(OUT, exist_ok=True)
 # Einschraenken einzelne Slugs eintragen.
 FUSSZEILE = set(P)   # alle PDFs
 
+# Test: Fliesstext in Poppins Light (300) statt Regular (400), wie im
+# Corporate Design Manual vorgegeben. Vorerst nur dieses eine PDF, damit
+# die Wirkung beurteilt werden kann.
+LEICHT = {"strategie"}
+
 only = sys.argv[1:] or list(P)
 for slug in only:
     th, title, pages = P[slug]
     path = os.path.join(OUT, f"_pdfsrc_{slug}.html")
     open(path, "w", encoding="utf-8").write(
-        build(th, pages, title, fusszeile=slug in FUSSZEILE))
+        build(th, pages, title, fusszeile=slug in FUSSZEILE, leicht=slug in LEICHT))
 print(" ".join(only))

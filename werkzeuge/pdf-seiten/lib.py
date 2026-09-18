@@ -649,10 +649,15 @@ def theme_vars(theme):
             f"--dark-acc:{dark};--strich:{strich};")
 
 
-def build(theme, pages, title, fusszeile=False):
+def build(theme, pages, title, fusszeile=False, leicht=False):
+    """leicht=True setzt den Fliesstext auf Poppins Light (300) - die
+    Vorgabe des Corporate Design Manuals. Elemente mit eigenem Gewicht
+    (Ueberschriften, Preise, Labels) bleiben unberuehrt."""
     global _FUSS
     _FUSS = fusszeile
     vars_ = ":root{" + theme_vars(theme) + "}"
+    if leicht:
+        vars_ += "body{font-weight:300}"
     total = len(pages)
     body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
