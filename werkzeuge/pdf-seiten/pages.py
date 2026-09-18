@@ -82,39 +82,56 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
     # Eine getoente Flaeche je Seite: der dunkle Dialogkasten liegt IM hellen
     # Band, so wie auf der Website - nicht daneben.
     stage("Die Fragen, die keiner stellt", "Damit hat sich vorher kaum jemand beschäftigt.",
-          wm="kreuz", boden=True,
-          inhalt=bubbles("Vor jedem wichtigen Termin derselbe Reflex",
-                         ["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"],
-                         "Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und <b>nicht in die Taktik, mit der Du zum Erfolg kommst.</b>")
-                 + raster([("01", "Wer sitzt<br>im Raum?", True),
-                           ("02", "Wie gewinnst Du<br>diese Entscheider?"),
-                           ("03", "In welchen Schritten<br>erreichst Du Dein Ziel?")], cols=3)),
+          # Links der Problemkasten der Detailseite - woertlich -, rechts die
+          # Anlaesse aus deren Header.
+          wm="kreuz", wm_style="bottom:20mm;width:38mm;height:38mm", boden=True,
+          inhalt='<div class="halb" style="margin-top:6mm">'
+                 + bubbles("Vor jedem wichtigen Termin derselbe Reflex",
+                           ["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"],
+                           ["Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und <b>nicht in die Taktik, mit der Du zum Erfolg kommst.</b>",
+                            "Wer sitzt im Raum, wie gewinnst Du diese Entscheider, in welchen Schritten erreichst Du Dein Ziel? <b>Mit diesen Fragen hat sich vorher kaum jemand beschäftigt.</b>"])
+                 + '<div>' + chips(["Vorstand", "Aufsichtsrat", "Projektlenkungsausschuss", "Vertriebstagung",
+                                    "Betriebsrat", "Kooperationspartner", "Rückversicherer", "Kundenpitch"],
+                                   cls="chips--pill", style="margin-top:0") + '</div></div>'),
   ),
   page(
     sec("Die Lösung", 'Die Präsentation ist nie das Ziel. <span class="hl">Das Ergebnis ist es.</span>',
         "Wir sind keine Medienagentur: Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber. <b>Ein kurzes Briefing, ein paar gezielte Rückfragen, und Du kannst Dir sicher sein, dass es ab hier läuft.</b>"),
-    stage("Unser Vorgehen", "In vier Schritten zum Ergebnis.", wm="kreuz", boden=True, inhalt=stations([
-      (None, "Ergebnis &amp; Zielgruppe", "Wir strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt. Die zentrale Frage: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b>"),
-      (None, "Business Story", "Verdichtet zu einer klaren Kernbotschaft – unabhängig vom Medium: <b>Why</b> (warum ist das Thema für die Zielgruppe wichtig), <b>How</b> (wie gehen wir vor) und <b>What next</b> (was passiert als Nächstes)."),
-      (None, "Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus."),
-      (None, "Taktisches Briefing", "Einstieg, Moderation und wie Du im Raum Dein Ergebnis bekommst – als Briefing oder als ausführliches Storyboard."),
-    ])),
+    # Stufe 01 und 02 auf dieser Seite, 03 und 04 auf der naechsten. Die Linie
+    # laeuft unten aus der Seite heraus und auf der Folgeseite oben wieder
+    # herein - so liest sich die Abfolge ueber den Umbruch als ein Strang.
+    strang(stufen([
+      ("Ergebnis &amp; Zielgruppe",
+       "Wir arbeiten heraus, welches Ergebnis Du erreichen willst, und strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt.",
+       "Die zentrale Frage lautet dabei immer: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b> Hier liegen die meisten Stolpersteine, und hier entscheidet sich der Erfolg."),
+      ("Business Story",
+       "Unabhängig vom Medium erstellen wir Deine Business Story: <b>Why</b> (warum ist das Thema für die Zielgruppe wichtig), <b>How</b> (wie gehen wir vor) und <b>What next</b> (was muss als Nächstes gemacht werden).",
+       "Das Ganze abschließend verdichtet zu einer klaren Kernbotschaft."),
+    ], luft="15mm"),
+    zwischen("Zwischenergebnis", 'Jetzt weißt Du schon, <span class="hl">wie Du gewinnst.</span>',
+             "Der Weg zum Ziel und Deine Business Story sind geklärt, bevor überhaupt eine Folie entsteht. An dieser Stelle hast Du absolute Handlungsklarheit.",
+             "<b>Spoiler Alert:</b> Oftmals kommt etwas anderes heraus, als Du am Anfang gedacht hast.",
+             style="margin-top:13mm")),
   ),
   page(
-    sec("Medien", 'Aus der Business Story entstehen <span class="hl">professionelle Medien.</span>',
-        "Gezielt für den jeweiligen Einsatz – und weit über die klassische PowerPoint hinaus. Welches Medium trägt, entscheidet der Termin, nicht die Gewohnheit."),
-    # Dieselbe Schichtung wie auf der Landingpage: heller Grund, Icon als
-    # Wasserzeichen, darauf der schwarze Kasten mit den echten Mockups.
-    stage("Zwischenergebnis", "Jetzt weißt Du schon, wie Du gewinnst.",
-          "Der Weg zum Ziel und Deine Business Story sind geklärt, bevor überhaupt eine Folie entsteht. <b>Spoiler Alert:</b> Oftmals kommt etwas anderes heraus, als Du am Anfang gedacht hast.",
-          wm="kreuz", boden=True, inhalt=mocks([
-        (S.load("medium-powerpoint"), "PowerPoint",
-         "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
-        (S.load("medium-landingpage"), "Landingpage",
-         "Eine auf Deine Zielgruppe zugeschnittene Seite, die ein zentrales Problem löst und gezielt zum nächsten Schritt führt."),
-        (S.load("medium-rollup"), "Roll-up",
-         "Der Gesamtzusammenhang in einem Bild – dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist."),
-    ])),
+    # Die Linie kommt oben wieder herein: Fortsetzung von Seite 3.
+    stufen([
+      ("Medien",
+       "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz, und weit über die klassische PowerPoint hinaus.",
+       mocks([
+         (S.load("medium-powerpoint"), "PowerPoint",
+          "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
+         (S.load("medium-landingpage"), "Landingpage",
+          "Eine auf Deine Zielgruppe zugeschnittene Seite, die ein zentrales Problem löst und gezielt zum nächsten Schritt führt."),
+         (S.load("medium-rollup"), "Roll-up",
+          "Der Gesamtzusammenhang in einem Bild – dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist."),
+       ], style="margin-top:5mm")),
+      ("Taktisches Briefing",
+       "Dein taktisches Vorgehen unmittelbar vor, während und nach dem Termin: Einstieg, Moderation – und wie Du im Raum dafür sorgst, dass Du Dein Ergebnis bekommst.",
+       dots(["<b>Framework:</b> Briefing auf Basis unseres Frameworks für den optimalen Ablauf eines Termins",
+             "<b>Storyboard:</b> Ausführliches Storyboard mit Ablauf, Zeitplan, Sprechtext und Folienvorschau"],
+            "sm", style="margin-top:3mm")),
+    ], start=3, oben=True, unten=True, luft="15mm", style="margin-top:0"),
   ),
   page(
     who("Für wen das gemacht ist", [

@@ -30,7 +30,7 @@ FLAECHEN = ["stage", "band", "mdl", "bubbles", "stein", "mocks-box", "feat", "pa
 # Klassen, die eine Seite gestaltet machen (Grafik, Kasten, Bild, Raster)
 GESTALTEND = FLAECHEN + ["cards", "raster", "bilder", "baustein", "opts", "stations", "pakete",
                          "inline-sketch", "quotes", "cases", "chips", "bm", "buehne-bild",
-                         "regeln", "donut", "zs"]
+                         "regeln", "donut", "zs", "stufen", "zwischen"]
 
 
 def _seiten(html):

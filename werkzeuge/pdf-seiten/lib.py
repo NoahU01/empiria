@@ -265,6 +265,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
               padding:3.2mm 5.5mm; font-family:var(--serif); font-weight:700; font-size:12pt;
               line-height:1.3; color:#fff; justify-self:start; max-width:116mm; }
 .bubbles li:nth-child(even) { justify-self:end; border-radius:3.4mm 3.4mm .8mm 3.4mm; }
+.bubbles .foot + .foot { margin-top:3mm; }
 .bubbles .foot { margin-top:6mm; font-size:9pt; line-height:1.62; color:rgba(255,255,255,.74); }
 .bubbles .foot b { color:var(--dark-acc); font-weight:600; }
 
@@ -655,6 +656,55 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .ov .t-dur { font-size: 9pt; color: var(--g70); white-space: nowrap; }
 .ov .t-price { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; white-space: nowrap; }
 
+/* ---- Stufen-Timeline ueber mehrere Seiten ---------------------------------
+   Uebernimmt die .stufen-timeline der Website: Ziffernkreis links, senkrechte
+   Verbindungslinie, Inhalt rechts. Die Ziffer steht in Gold/Braun (#998675 aus
+   dem Manual), so wie .stl-icon auf der Website.
+   Mit --oben kommt die Linie schon von der Blattkante herunter, mit --unten
+   laeuft sie bis dorthin weiter: so liest sich die Abfolge ueber den
+   Seitenumbruch hinweg als ein durchgehender Strang. Die Seite hat
+   overflow:hidden, der Ueberstand wird also sauber beschnitten. */
+.stufen { position: relative; margin-top: 7mm; }
+.stufe { position: relative; display: grid; grid-template-columns: 15mm 1fr; gap: 8mm;
+         padding-bottom: var(--stufen-luft, 11mm); }
+.stufe:last-child { padding-bottom: 0; }
+.stufe-mk { position: relative; }
+.stufe-mk i { position: relative; z-index: 1; display: flex; width: 15mm; height: 15mm;
+              align-items: center; justify-content: center; border-radius: 50%;
+              background: #fff; border: 0.5mm solid var(--g30); color: #998675;
+              font-family: var(--serif); font-weight: 700; font-size: 11pt; font-style: normal; }
+.stufe-mk::after { content: ""; position: absolute; left: 7.5mm; top: 15mm;
+                   bottom: calc(-1 * var(--stufen-luft, 11mm)); width: .35mm;
+                   background: var(--g30); transform: translateX(-50%); }
+.stufe:last-child .stufe-mk::after { display: none; }
+.stufen--unten .stufe:last-child .stufe-mk::after { display: block; bottom: -120mm; }
+/* Die Linie kommt von der Vorseite herunter - sie setzt unterhalb der
+   Kopfzeile an, damit sie nicht durch das Logo laeuft. */
+.stufen--oben::before { content: ""; position: absolute; left: 7.5mm; top: -15mm; height: 15mm;
+                        width: .35mm; background: var(--g30); transform: translateX(-50%); }
+/* Alles ab der ersten Stufe bis ans Ende des gestaltbaren Bereichs: die Linie
+   laeuft hinter den folgenden Bloecken weiter bis zur Fusszeile. */
+.strang { position: relative; padding-top: 11mm; }
+.strang::before { content: ""; position: absolute; left: 7.5mm; top: 26mm; bottom: 0; width: .35mm;
+                  background: var(--g30); transform: translateX(-50%); }
+.strang > .stufen { margin-top: 0; }
+.strang .stufe:last-child .stufe-mk::after { display: none; }
+.page--stretch > .strang { flex: 1 0 auto; }
+.stufe-txt h3 { font-family: var(--serif); font-weight: 700; font-size: 12.5pt; margin-bottom: 1.6mm; }
+.stufe-txt p { font-size: 9.2pt; line-height: 1.62; color: var(--g70); }
+.stufe-txt p + p { margin-top: 2.4mm; }
+
+/* ---- Zwischenergebnis: zentrierte Zaesur zwischen zwei Timeline-Haelften --- */
+.zwischen { text-align: center; max-width: 152mm; margin: 0 auto;
+            padding: 8mm 0; border-top: .3mm solid var(--g30); border-bottom: .3mm solid var(--g30); }
+.zwischen .tag { font-weight: 700; font-size: 7.2pt; text-transform: uppercase;
+                 letter-spacing: .06em; color: #998675; margin-bottom: 3mm; }
+.zwischen h3 { font-family: var(--serif); font-weight: 700; font-size: 17pt; line-height: 1.22;
+               margin-bottom: 3.5mm; }
+.zwischen p { font-size: 9.2pt; line-height: 1.66; color: var(--ink2); max-width: 134mm;
+              margin: 0 auto; }
+.zwischen p + p { margin-top: 3mm; }
+
 /* ---- Waagerechter Zeitstrahl ----------------------------------------------
    Uebernimmt die .onboarding-timeline der Website: eine durchgehende Linie,
    darauf die Punkte, darunter Titel und Dauer - zentriert je Station. */
@@ -787,7 +837,8 @@ def page(*content, contact_html=None, farbe=None, dunkel=False, cls_extra=""):
         # Ein abschliessendes Band soll den Restplatz ausfuellen. Dafuer muss
         # die Seite eine Flex-Spalte sein - aber nur dann, damit alle anderen
         # Seiten ihr bisheriges Verhalten behalten.
-        cls = "page page--stretch" if "stage--boden" in body else "page"
+        cls = ("page page--stretch" if ("stage--boden" in body or 'class="strang"' in body)
+               else "page")
         if dunkel:
             cls += " page--dunkel"
         # Steht die Fusszeile auf dunklem Grund, braucht die Seitenzahl Weiss.
@@ -921,9 +972,13 @@ def paket(kicker_l, leistungen, kicker_r, preis, preis_note, style=""):
 
 
 def bubbles(tag, items, foot, style=""):
-    """Wiederkehrende Saetze als Dialog im dunklen Kasten statt als Punkteliste."""
+    """Wiederkehrende Saetze als Dialog im dunklen Kasten statt als Punkteliste.
+
+    foot darf eine Liste sein - der Kasten der Website traegt zwei Absaetze.
+    """
     lis = "".join(f'<li>{i}</li>' for i in items)
-    f = f'<p class="foot">{foot}</p>' if foot else ''
+    fs = foot if isinstance(foot, (list, tuple)) else ([foot] if foot else [])
+    f = "".join(f'<p class="foot">{x}</p>' for x in fs)
     return (f'<div class="bubbles" style="{style}"><p class="tag">{tag}</p>'
             f'<ul>{lis}</ul>{f}</div>')
 
@@ -946,6 +1001,41 @@ def raster(items, cols=None, style=""):
         out.append(f'<div{cls}><span class="num">{it[0]}</span><b>{it[1]}</b></div>')
     cols = cols or len(items)
     return f'<div class="raster" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
+
+
+def stufen(items, start=1, oben=False, unten=False, luft=None, style=""):
+    """Vertikale Timeline im Layout der Website - auch ueber den Seitenumbruch.
+
+    items: (Titel, Text[, Text2 ...]) - das letzte Element darf fertiges HTML
+    sein (z. B. ein Kasten), es wird dann unter den Text gehaengt.
+    oben/unten ziehen die Linie bis an die Blattkante, damit sich die Abfolge
+    ueber zwei Seiten als ein Strang liest.
+    """
+    out = []
+    for i, it in enumerate(items):
+        titel, rest = it[0], it[1:]
+        txt = "".join(p if p.lstrip().startswith("<") else f'<p>{p}</p>' for p in rest)
+        out.append(f'<div class="stufe"><div class="stufe-mk"><i>{i+start:02d}</i></div>'
+                   f'<div class="stufe-txt"><h3>{titel}</h3>{txt}</div></div>')
+    cls = "stufen" + (" stufen--oben" if oben else "") + (" stufen--unten" if unten else "")
+    st = (f"--stufen-luft:{luft};" if luft else "") + style
+    return f'<div class="{cls}" style="{st}">{"".join(out)}</div>'
+
+
+def strang(*inhalt, style=""):
+    """Klammert alles ab der ersten Stufe bis zum Seitenende.
+
+    Die Verbindungslinie laeuft dadurch hinter den folgenden Bloecken weiter
+    bis dorthin, wo der gestaltbare Bereich endet - und nicht bis an die
+    Blattkante.
+    """
+    return f'<div class="strang" style="{style}">' + "".join(inhalt) + '</div>'
+
+
+def zwischen(tag, h3, *ps, style=""):
+    """Zwischenergebnis als zentrierte Zaesur - wie .stufe-break auf der Website."""
+    return (f'<div class="zwischen" style="{style}"><p class="tag">{tag}</p><h3>{h3}</h3>'
+            + "".join(f'<p>{p}</p>' for p in ps) + '</div>')
 
 
 def zeitstrahl(items, style=""):
