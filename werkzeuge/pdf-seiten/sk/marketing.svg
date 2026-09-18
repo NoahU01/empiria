@@ -1,0 +1,29 @@
+<svg aria-label="Skizze eines Content-Kalenders mit erledigten Aufgaben und einer Wachstumskurve" role="img" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+<rect fill="rgba(255,255,255,.05)" height="228.0" rx="12" stroke="rgba(255,255,255,.4)" stroke-width="1.6" width="200.0" x="20.0" y="16.0"></rect>
+<path d="M20,50 h200" stroke="rgba(255,255,255,.3)" stroke-width="1.4"></path>
+<rect fill="rgba(255,255,255,.5)" height="8.0" rx="2" width="64.0" x="36.0" y="29.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="34.0" y="66.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="78.0" y="66.0"></rect>
+<path d="M86.0,84.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="122.0" y="66.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="166.0" y="66.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="34.0" y="110.0"></rect>
+<path d="M42.0,128.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="78.0" y="110.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="122.0" y="110.0"></rect>
+<path d="M130.0,128.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="166.0" y="110.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="34.0" y="154.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="78.0" y="154.0"></rect>
+<path d="M86.0,172.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="122.0" y="154.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="166.0" y="154.0"></rect>
+<path d="M174.0,172.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="34.0" y="198.0"></rect>
+<path d="M42.0,216.0 l7,8 l14,-16" fill="none" stroke="rgba(255,255,255,.55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="78.0" y="198.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="122.0" y="198.0"></rect>
+<rect fill="rgba(255,255,255,.05)" height="36.0" rx="6" stroke="rgba(255,255,255,.22)" stroke-width="1.2" width="36.0" x="166.0" y="198.0"></rect>
+<path d="M244,120 L274,88 L298,106 L336,46" fill="none" stroke="rgba(255,255,255,.5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<path d="M314.0,46.0 L336.0,46.0 L336.0,66.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>

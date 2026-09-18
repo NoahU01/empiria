@@ -1,0 +1,17 @@
+<svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="80.0" y="376.0" width="60.0" height="10.0" rx="4" fill="rgba(255,255,255,.22)"/>
+          <line x1="110.0" y1="376.0" x2="110.0" y2="404.0" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
+          <rect x="76.0" y="404.0" width="68.0" height="8.0" rx="4" fill="rgba(255,255,255,.3)"/>
+          <rect x="30.0" y="6.0" width="160.0" height="370.0" rx="8" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.36)" stroke-width="2"/>
+          <rect x="46.0" y="24.0" width="70.0" height="8.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="48.0" width="128.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="65.0" width="87.0" height="13.0" rx="3" fill="rgba(255,255,255,.88)"/>
+          <rect x="46.0" y="98.0" width="128.0" height="148.0" rx="8" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.24)" stroke-width="1.4"/>
+          <circle cx="110.0" cy="172.0" r="20.0" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="52.0" cy="274.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="270.0" width="91.5" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <circle cx="52.0" cy="294.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="62.0" y="290.0" width="74.9" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="64.0" y="304.0" width="92.0" height="24.0" rx="12" fill="rgba(255,255,255,.9)"/>
+          <rect x="72.0" y="344.0" width="76.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+              </svg>

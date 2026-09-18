@@ -1,0 +1,59 @@
+<svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="307.0" width="103.6" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="324.0" width="52.0" height="14.0" rx="7" fill="rgba(255,255,255,.5)"/>
+          <text x="290.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Landingpage</text>
+          <rect x="420.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="434.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="487.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="540.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="434.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="487.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="540.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <text x="510.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Social-Media-Kanäle</text>
+          <rect x="305.0" y="460.0" width="190.0" height="95.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="319.0" y="471.0" width="64.6" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <circle cx="481.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="469.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="457.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <line x1="305.0" y1="484.0" x2="495.0" y2="484.0" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <rect x="319.0" y="528.3" width="21.0" height="14.7" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="346.0" y="516.0" width="21.0" height="27.0" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="373.0" y="523.4" width="21.0" height="19.6" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="400.0" y="506.2" width="21.0" height="36.8" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="427.0" y="518.5" width="21.0" height="24.5" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="454.0" y="511.1" width="21.0" height="31.9" rx="2" fill="rgba(255,255,255,.26)"/>
+          <line x1="319.0" y1="543.0" x2="481.0" y2="543.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <polyline points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/>
+          <circle cx="329.5" cy="523.3" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="356.5" cy="511.0" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="383.5" cy="518.4" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="410.5" cy="501.2" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="437.5" cy="513.5" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="464.5" cy="506.1" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <text x="400.0" y="448.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Dashboard</text>
+          <line x1="304.3" y1="351.8" x2="326.6" y2="440.5" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"/>
+          <text x="288.1" y="406.8" text-anchor="end" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Daten</text>
+          <line x1="346.5" y1="458.2" x2="324.2" y2="369.5" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"/>
+          <line x1="481.1" y1="348.2" x2="458.9" y2="436.8" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"/>
+          <line x1="468.1" y1="461.8" x2="490.3" y2="373.2" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"/>
+          <text x="511.9" y="406.8" text-anchor="start" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Optimierung</text>
+          <path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"/>
+          <text x="400.0" y="75.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Konzeption &amp;</text>
+          <text x="400.0" y="93.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Umsetzung</text>
+          <text x="693.8" y="587.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Tracking &amp;</text>
+          <text x="693.8" y="605.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Analyse</text>
+          <text x="106.2" y="587.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Ableitung</text>
+          <text x="106.2" y="605.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Next Step</text>
+              </svg>

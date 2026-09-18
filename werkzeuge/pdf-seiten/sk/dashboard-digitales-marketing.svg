@@ -1,0 +1,59 @@
+<svg aria-label="Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts" role="img" viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg">
+<rect fill="rgba(255,255,255,.05)" height="90.0" rx="12" stroke="rgba(255,255,255,.4)" stroke-width="1.6" width="180.0" x="200.0" y="260.0"></rect>
+<rect fill="rgba(255,255,255,.55)" height="8.0" rx="2" width="75.6" x="216.0" y="274.0"></rect>
+<rect fill="rgba(255,255,255,.28)" height="8.0" rx="2" width="148.0" x="216.0" y="292.0"></rect>
+<rect fill="rgba(255,255,255,.28)" height="8.0" rx="2" width="103.6" x="216.0" y="307.0"></rect>
+<rect fill="rgba(255,255,255,.5)" height="14.0" rx="7" width="52.0" x="216.0" y="324.0"></rect>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="middle" x="290.0" y="248.0">Landingpage</text>
+<rect fill="rgba(255,255,255,.05)" height="90.0" rx="12" stroke="rgba(255,255,255,.4)" stroke-width="1.6" width="180.0" x="420.0" y="260.0"></rect>
+<rect fill="rgba(255,255,255,0.22)" height="27.5" rx="5" width="46.0" x="434.0" y="274.0"></rect>
+<rect fill="rgba(255,255,255,0.13)" height="27.5" rx="5" width="46.0" x="487.0" y="274.0"></rect>
+<rect fill="rgba(255,255,255,0.22)" height="27.5" rx="5" width="46.0" x="540.0" y="274.0"></rect>
+<rect fill="rgba(255,255,255,0.13)" height="27.5" rx="5" width="46.0" x="434.0" y="308.5"></rect>
+<rect fill="rgba(255,255,255,0.22)" height="27.5" rx="5" width="46.0" x="487.0" y="308.5"></rect>
+<rect fill="rgba(255,255,255,0.13)" height="27.5" rx="5" width="46.0" x="540.0" y="308.5"></rect>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="middle" x="510.0" y="248.0">Social-Media-Kanäle</text>
+<rect fill="rgba(255,255,255,.05)" height="95.0" rx="12" stroke="rgba(255,255,255,.4)" stroke-width="1.6" width="190.0" x="305.0" y="460.0"></rect>
+<rect fill="rgba(255,255,255,.5)" height="7.0" rx="2" width="64.6" x="319.0" y="471.0"></rect>
+<circle cx="481.0" cy="474.5" fill="rgba(255,255,255,.32)" r="2.6"></circle>
+<circle cx="469.0" cy="474.5" fill="rgba(255,255,255,.32)" r="2.6"></circle>
+<circle cx="457.0" cy="474.5" fill="rgba(255,255,255,.32)" r="2.6"></circle>
+<line stroke="rgba(255,255,255,.2)" stroke-width="1" x1="305.0" x2="495.0" y1="484.0" y2="484.0"></line>
+<rect fill="rgba(255,255,255,.26)" height="14.7" rx="2" width="21.0" x="319.0" y="528.3"></rect>
+<rect fill="rgba(255,255,255,.26)" height="27.0" rx="2" width="21.0" x="346.0" y="516.0"></rect>
+<rect fill="rgba(255,255,255,.26)" height="19.6" rx="2" width="21.0" x="373.0" y="523.4"></rect>
+<rect fill="rgba(255,255,255,.26)" height="36.8" rx="2" width="21.0" x="400.0" y="506.2"></rect>
+<rect fill="rgba(255,255,255,.26)" height="24.5" rx="2" width="21.0" x="427.0" y="518.5"></rect>
+<rect fill="rgba(255,255,255,.26)" height="31.9" rx="2" width="21.0" x="454.0" y="511.1"></rect>
+<line stroke="rgba(255,255,255,.22)" stroke-width="1" x1="319.0" x2="481.0" y1="543.0" y2="543.0"></line>
+<polyline fill="none" points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" stroke="rgba(255,255,255,.7)" stroke-width="1.8"></polyline>
+<circle cx="329.5" cy="523.3" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<circle cx="356.5" cy="511.0" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<circle cx="383.5" cy="518.4" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<circle cx="410.5" cy="501.2" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<circle cx="437.5" cy="513.5" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<circle cx="464.5" cy="506.1" fill="rgba(255,255,255,.8)" r="2.1"></circle>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="middle" x="400.0" y="448.0">Dashboard</text>
+<line stroke="rgba(255,255,255,.62)" stroke-width="2.1" x1="304.3" x2="326.6" y1="351.8" y2="440.5"></line>
+<path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"></path>
+<text fill="rgba(255,255,255,.72)" font-family="var(--font-sans)" font-size="11" font-weight="600" text-anchor="end" x="288.1" y="406.8">Daten</text>
+<line stroke="rgba(255,255,255,.4)" stroke-dasharray="4,5" stroke-width="1.7" x1="346.5" x2="324.2" y1="458.2" y2="369.5"></line>
+<path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"></path>
+<line stroke="rgba(255,255,255,.62)" stroke-width="2.1" x1="481.1" x2="458.9" y1="348.2" y2="436.8"></line>
+<path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"></path>
+<line stroke="rgba(255,255,255,.4)" stroke-dasharray="4,5" stroke-width="1.7" x1="468.1" x2="490.3" y1="461.8" y2="373.2"></line>
+<path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"></path>
+<text fill="rgba(255,255,255,.72)" font-family="var(--font-sans)" font-size="11" font-weight="600" text-anchor="start" x="511.9" y="406.8">Optimierung</text>
+<path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"></path>
+<path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"></path>
+<path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"></path>
+<path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"></path>
+<path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"></path>
+<path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"></path>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="14" font-weight="700" text-anchor="middle" x="400.0" y="75.0">Konzeption &amp;</text>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="14" font-weight="700" text-anchor="middle" x="400.0" y="93.0">Umsetzung</text>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="start" x="693.8" y="587.0">Tracking &amp;</text>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="start" x="693.8" y="605.0">Analyse</text>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="end" x="106.2" y="587.0">Ableitung</text>
+<text fill="rgba(255,255,255,.92)" font-family="var(--font-serif)" font-size="13" font-weight="700" text-anchor="end" x="106.2" y="605.0">Next Step</text>
+</svg>
