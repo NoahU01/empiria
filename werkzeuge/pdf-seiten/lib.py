@@ -1,5 +1,11 @@
 """empiria PDF-Zusammenfassungen – Bausteine (hell, eine Akzentfarbe je Seite)."""
 import html as _h
+import os as _os
+
+# Die PDF-Quellen verlinken Assets relativ; fuer das Auslesen der Bildmasse
+# beim Bauen brauchen wir den echten Pfad.
+ASSETS = _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                                        "..", "..", "site", "assets"))
 
 # "dark" ist der Akzent fuer dunkle Kaesten (mdl/stein/mocks/raster). Die
 # Flaechenfarbe eines Themes ist auf Schwarz oft zu dunkel, deshalb je Theme
@@ -398,6 +404,11 @@ p.lead + p.lead { margin-top: 2.6mm; }
 .cards--frei .card-img { margin-top: auto; margin-bottom: 0;
                          border: 0; border-radius: 0; }
 .bilder--frei .bilder-fig img { border: 0; border-radius: 0; }
+/* Beschriftung auf die Textbreite IM Kasten: der Kasten steht linksbuendig in
+   der Spalte, Ueberschrift und Text darunter ruecken um denselben Innenabstand
+   ein, den der Kasten selbst hat (gemessen: 4,92 % der Kastenbreite). So steht
+   "ab 349 EUR monatlich" genau unter "sofort sichtbar". */
+.bilder--kasten .bilder-fig { justify-content: flex-start; }
 /* nummerierte Zeilen */
 .rows { margin-top: 5mm; }
 .row { display: grid; grid-template-columns: 11mm 1fr; column-gap: 3mm; padding: 3mm 0; }
@@ -1115,22 +1126,52 @@ def _bildpfad(name):
     return f"assets/{name}" if "/" in name else f"assets/pdf-bausteine/{name}.png"
 
 
-def bilder(items, cols=None, hoehe=None, rahmen=True, style=""):
+def _png_masse(pfad):
+    """Breite und Hoehe eines PNG aus dem IHDR-Kopf - ohne Bildbibliothek."""
+    with open(pfad, "rb") as f:
+        kopf = f.read(24)
+    return int.from_bytes(kopf[16:20], "big"), int.from_bytes(kopf[20:24], "big")
+
+
+# Gemessener Innenabstand der aufgenommenen Website-Kaesten (.media-box-footer)
+# als Anteil der Kastenbreite. Siehe Kommentar bei .bilder--kasten.
+KASTEN_INNEN = 0.0492
+
+
+def bilder(items, cols=None, hoehe=None, rahmen=True, kasten=False, style=""):
     """Mehrere Bilder nebeneinander. items: (name, Label, Text).
 
     name ist entweder der Kurzname eines abgenommenen Bausteins oder ein Pfad
     unterhalb von site/assets/ (z. B. "produktseiten/vorschau.png").
+    kasten=True: die Bilder sind Kaesten mit eigenem Innenabstand. Sie stehen
+    dann linksbuendig, und die Beschriftung darunter bekommt exakt die
+    Textbreite des Kastens - nicht die volle Spaltenbreite.
     """
     h = f'style="height:{hoehe}"' if hoehe else ''
-    cells = "".join(
-        f'<div><div class="bilder-fig" {h}>'
-        f'<img src="{_bildpfad(n)}" alt=""></div>'
-        f'<b>{lab}</b><p>{txt}</p></div>' for n, lab, txt in items)
+    zellen = []
+    for n, lab, txt in items:
+        stil = ""
+        if kasten and hoehe and hoehe.endswith("mm"):
+            hmm = float(hoehe[:-2])
+            pw, ph = _png_masse(_os.path.join(ASSETS, _bildpfad(n).split("assets/", 1)[1]))
+            bmm = hmm * pw / ph
+            ein = bmm * KASTEN_INNEN
+            stil = (f' style="box-sizing:border-box;width:{bmm:.2f}mm;'
+                    f'padding-left:{ein:.2f}mm;padding-right:{ein:.2f}mm"')
+        # b und p bleiben DIREKTE Kinder: sie sind Zeilen des Subgrids, das die
+        # Beschriftungen aller Zellen auf eine Linie bringt. Ein Wrapper haette
+        # das zerstoert.
+        zellen.append(f'<div><div class="bilder-fig" {h}>'
+                      f'<img src="{_bildpfad(n)}" alt=""></div>'
+                      f'<b{stil}>{lab}</b><p{stil}>{txt}</p></div>')
+    cells = "".join(zellen)
     cols = cols or len(items)
     # Je Eintrag drei Zeilen (Bild, Beschriftung, Text). Bei mehreren Reihen
     # muessen alle Zeilen definiert sein, sonst ueberlappen sie sich.
     zeilen = -(-len(items) // cols) * 3
     cls = "bilder" if rahmen else "bilder bilder--frei"
+    if kasten:
+        cls += " bilder--kasten"
     return (f'<div class="{cls}" style="grid-template-columns:repeat({cols},1fr);'
             f'grid-template-rows:repeat({zeilen},auto);{style}">{cells}</div>')
 

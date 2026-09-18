@@ -30,7 +30,14 @@ sys.path.insert(0, VORLAGE)
 
 
 def _quellen():
-    return sorted(glob.glob(os.path.join(BUILD, "_pdfsrc_*.html")))
+    """Alle PDF-Quellen - ohne das Sammeldokument.
+
+    _pdfsrc_alle.html ist die Aneinanderreihung aller PDFs (siehe
+    werkzeuge/pdfs_zusammenfassen.py). Dort beginnt die Seitenzaehlung je PDF
+    neu, die Pruefung der Seitenzahlen wuerde also zwangslaeufig anschlagen.
+    """
+    return sorted(f for f in glob.glob(os.path.join(BUILD, "_pdfsrc_*.html"))
+                  if os.path.basename(f) != "_pdfsrc_alle.html")
 
 
 def typografie():

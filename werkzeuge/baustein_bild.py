@@ -29,6 +29,7 @@ JS = """
 <script>
 window.__ziel = %s;
 window.__ohne = %s;
+window.__keinSchatten = %s;
 window.addEventListener('load', function () { setTimeout(function () {
   var el = document.querySelector(window.__ziel);
   if (!el) { document.title = 'BB:ERR:nicht gefunden'; return; }
@@ -51,6 +52,12 @@ window.addEventListener('load', function () { setTimeout(function () {
   var pos = getComputedStyle(el).position;
   if (pos === 'absolute' || pos === 'fixed') { el.style.position = 'relative'; el.style.inset = 'auto'; }
   el.removeAttribute('hidden');
+  // Ein Schlagschatten des Originals endet an der Bildkante und wird im PDF
+  // als hartes Viereck sichtbar - auf Wunsch vorher abschalten.
+  if (window.__keinSchatten) {
+    el.style.boxShadow = 'none';
+    el.querySelectorAll('*').forEach(function (e) { e.style.boxShadow = 'none'; });
+  }
   var r = el.getBoundingClientRect();
   var st = document.createElement('style');
   st.textContent = 'body > * { display: none !important; } ' +
@@ -90,12 +97,13 @@ def _server(wurzel):
             srv.shutdown()
 
 
-def abnehmen(seite, selektor, name, breite=1200, skala=3, ohne=None):
+def abnehmen(seite, selektor, name, breite=1200, skala=3, ohne=None, kein_schatten=False):
     pfad = seite if os.path.isabs(seite) else os.path.join(SITE, seite)
     html = open(pfad, encoding="utf-8").read()
     tmp = os.path.join(os.path.dirname(pfad), "_bb_tmp.html")
     open(tmp, "w", encoding="utf-8").write(
-        html.replace("</body>", (JS % (json.dumps(selektor), json.dumps(ohne or []))) + "</body>"))
+        html.replace("</body>", (JS % (json.dumps(selektor), json.dumps(ohne or []),
+                                     json.dumps(bool(kein_schatten)))) + "</body>"))
     try:
         rel = os.path.relpath(tmp, SITE).replace(os.sep, "/")
         with _server(SITE) as basis:
@@ -147,5 +155,8 @@ if __name__ == "__main__":
     ap.add_argument("--skala", type=int, default=3)
     ap.add_argument("--ohne", action="append", default=[],
                     help="CSS-Selektor innerhalb des Elements, der ausgeblendet wird")
+    ap.add_argument("--kein-schatten", action="store_true",
+                    help="box-shadow abschalten - sonst endet der Schatten als "
+                         "hartes Viereck an der Bildkante")
     a = ap.parse_args()
-    abnehmen(a.seite, a.selektor, a.name, a.breite, a.skala, a.ohne)
+    abnehmen(a.seite, a.selektor, a.name, a.breite, a.skala, a.ohne, a.kein_schatten)

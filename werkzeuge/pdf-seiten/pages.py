@@ -408,7 +408,7 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
        "Für alle, die jeden eingesetzten Euro nachvollziehen wollen."),
       ("mk-thumb-medien", "Umfang nach Vorhaben",
        "Für Themen, die im entscheidenden Moment tragen müssen."),
-    ], cols=2, hoehe="52mm", style="margin-top:7mm"),
+    ], cols=2, hoehe="52mm", kasten=True, style="margin-top:7mm"),
     '<p class="note">Preise zzgl. Umsatzsteuer in gesetzlicher Höhe. Bei Paid Ads und Medien hängt der Umfang vom Vorhaben ab – Du bekommst zeitnah ein konkretes Angebot.</p>'),
   # Je Loesung eine eigene Seite mit der Darstellung der zugehoerigen
   # Produktseite - nicht nur Bullets.
@@ -658,7 +658,11 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
            ("Gibt es Mindestlaufzeiten?", "Ja, mindestens drei Monate für belastbare Daten. Danach läuft die Zusammenarbeit monatlich weiter."),
            ("Woher weiß ich, wie gut es läuft?", "Voller Zugriff auf Dein Konto und jeden Monat eine klare Auswertung: Was hat jeder Euro gebracht?")], style="gap:5.5mm 10mm;margin-top:6mm"),
     # Der Potenzialcheck-Kasten im Original als Einstieg.
+    # Das graue Band startet auf derselben Hoehe wie auf der Vorseite (165,2 mm),
+    # damit "Der Einstieg / Kostenloser Potentialcheck." mit "Kanal-Check /
+    # Nach vier Fragen weisst Du es." fluchtet. Gemessen: 161,6 mm + 3,6 mm.
     stage("Der Einstieg", "Kostenloser Potentialcheck.", wm="search", boden=True,
+          style="margin-top:12.6mm",
           inhalt=bild("pa-potenzialcheck", breite="150mm", rahmen=False, style="margin-top:6mm")),
   ),
   page(
@@ -835,7 +839,9 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
   # dem Ergebnis, denn das ist die Antwort auf "was habe ich davon".
   page(
     sec("Die Inhalte", 'Drei Bausteine, <span class="hl">die aufeinander aufbauen.</span>'),
-    stage(None, None, wm="kreuz", boden=True, inhalt=rows([
+    # Ohne Wasserzeichen: es lag hinter den Ergebniszeilen und machte die
+    # Seite unruhig.
+    stage(None, None, boden=True, inhalt=rows([
       ("Business Storytelling &amp; Gesprächstaktik",
        "Wie Entscheider denken, wie sie Themen bewerten – und warum viele Kommunikationsversuche genau daran scheitern.",
        dots(["Die drei goldenen Regeln erfolgreicher Gespräche mit Entscheidern",
