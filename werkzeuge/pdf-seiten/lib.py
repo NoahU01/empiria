@@ -68,6 +68,15 @@ ICONS = {
  "rocket": '<path d="M12 3c3 2.4 4.2 6 4.2 9.6 0 2.4-1.2 4.8-4.2 6.6-3-1.8-4.2-4.2-4.2-6.6C7.8 9 9 5.4 12 3z"/><circle cx="12" cy="10.2" r="1.8"/><path d="M7.8 14.4L5.4 18.6"/><path d="M16.2 14.4l2.4 4.2"/><path d="M10.2 19.2c0 1.8.9 3 1.8 3.6.9-.6 1.8-1.8 1.8-3.6"/>',
 }
 
+# ---- Icons der Produktseiten (viewBox 0 0 80 80) ---------------------------
+# Damit im PDF an derselben Stelle dasselbe Icon steht wie auf der Website.
+SEITEN_ICONS = {
+  "control": '<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"> <path d="M18,20h44"/> <path d="M18,40h44"/> <path d="M18,60h44"/> <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/> <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/> <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/> </g>',
+  "audience": '<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"> <circle cx="28" cy="30" r="10"/> <circle cx="54" cy="34" r="8"/> <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/> <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/> </g>',
+}
+def seiten_icon(n):
+    return f'<svg viewBox="0 0 80 80" aria-hidden="true">{SEITEN_ICONS[n]}</svg>'
+
 # ---- Die fuenf Icons des Corporate Design -----------------------------------
 # Marker neben Farbkacheln und grafisches Wiederholungselement. Anders als die
 # uebrigen Icons sind es Flaechenformen (fill) mit eigener viewBox.
@@ -83,7 +92,14 @@ def cd_icon(n):
             f'aria-hidden="true">{CD_ICONS[n]}</svg>')
 
 
-def icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{ICONS[n]}</svg>'
+def icon(n):
+    if n in SEITEN_ICONS:
+        return seiten_icon(n)
+    if n in CD_ICONS:
+        return cd_icon(n)
+    return _strich_icon(n)
+
+def _strich_icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{ICONS[n]}</svg>'
 
 CSS = r"""
 @page { size: A4; margin: 0; }
@@ -138,7 +154,7 @@ p.lead + p.lead { margin-top: 2.6mm; }
 /* Kleinere Subheadline sitzt naeher an der Headline - der Abstand fuer die
    grosse Variante wirkt darunter zu weit. */
 .cover--subklein .sub { font-size: 9.2pt; }
-.cover--subklein h1 { margin-bottom: 4mm; }
+.cover--subklein h1 { margin-bottom: 9mm; }
 .cover .brandlogo + .kicker { margin-top: 6mm; }
 .cover .brandlogo + h1 { margin-top: 7mm; }
 .inline-sketch { display:flex; justify-content:center; margin-top: 12mm; height: 62mm; }
@@ -439,6 +455,8 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
         grid-template-rows: repeat(5, auto); align-items: stretch; }
 .opt { grid-row: span 5; display: grid; grid-template-rows: subgrid;
        background: var(--bg); border-radius: 3.5mm; padding: 6mm 5.5mm; }
+/* Auf weissem Grund braucht die Karte eine Kante, sonst zerfliesst sie. */
+.opt:not(.opt--feat) { border: 0.7pt solid var(--g30); }
 /* immer vorhanden, damit die Namen aller Karten auf einer Linie sitzen */
 .opt .badgeslot { min-height: 5.4mm; }
 .opt .badge { display:inline-block; font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;

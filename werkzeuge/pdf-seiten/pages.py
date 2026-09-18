@@ -541,13 +541,22 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
         [("Start", "Ohne Briefing"), ("Auswahl", "20 Zielgruppenprofile"), ("Paket", "Alles in einem"), ("Auftritt", "In Deinem Design")],
         brandlogo="assets/sofort-sichtbar-logo-violet.svg", subklein=True),
   page(
-    sec("Was sofort sichtbar mitbringt", 'Fertig gedacht, <span class="hl">nicht nur fertig gebaut.</span>', "Alles in einem Paket – abgestimmt auf Deine Vertriebsschwerpunkte."),
+    sec("Was sofort sichtbar mitbringt", 'Fertig gedacht, <span class="hl">nicht nur fertig gebaut.</span>'),
+    '<div style="display:grid;grid-template-columns:1fr 76mm;gap:10mm;align-items:start;margin-top:2mm">'
+    + '<div><p class="lead">Alles in einem Paket, abgestimmt auf Deine Vertriebsschwerpunkte: '
+      'fertige Postings, eine individuelle Landingpage und ein E-Mail-Funnel, der Deine '
+      'Bestandskunden aktiviert.</p>'
+      '<p class="lead">Du wählst Zielgruppe und Stil – den Rest übernehmen wir. '
+      '<b>Kein Briefing, keine eigene Content-Produktion, keine wochenlange Konzeptphase.</b></p></div>'
+    + '<img src="assets/produktseiten/sofort-sichtbar-mockup.webp" alt="" '
+      'style="display:block;width:100%;height:auto;border-radius:3mm">'
+    + '</div>',
     # Die freigestellten Original-Vorschaubilder der Produktseite - ohne Rahmen
     # und mit Flaeche, sonst wirken sie wie Briefmarken. Die Aussage zur
     # Individualisierung ist der Kopf des Bandes, kein zweiter Kasten daneben.
     stage("Individualisierung", "Alles in Deinem Corporate Design.",
           "Logo, Bilder, Kontaktdaten und Farbwelt werden eingebunden, damit alles aussieht, als wäre es für Deine Agentur gebaut.",
-          wm="phone", boden=True, inhalt=bilder([
+          boden=True, style="margin-top:14mm", inhalt=bilder([
       ("produktseiten/sofort-sichtbar-preview-postings.png", "Social Media Postings",
        "Fertige Postings, genau auf Deine Zielgruppe abgestimmt – ohne eigene Content-Produktion."),
       ("produktseiten/sofort-sichtbar-preview-funnel.png", "E-Mail-Funnel",
@@ -557,9 +566,9 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
     ], hoehe="30mm", rahmen=False)),
   ),
   page(
-    stage("Preise", 'Die passenden Pakete für Deinen Vertriebsfokus.',
-          "Monatlich buchbar, mit Rabatt bei jährlicher Zahlung – jede Vertriebsstrecke mit einer Mindestlaufzeit von drei Monaten.",
-          wm="euro", boden=True, inhalt=
+    sec("Preise", 'Die passenden Pakete für <span class="hl">Deinen Vertriebsfokus.</span>',
+        "Monatlich buchbar, mit Rabatt bei jährlicher Zahlung – jede Vertriebsstrecke mit einer Mindestlaufzeit von drei Monaten."),
+    (
     opts([dict(name="Fokus", text="Eine klar definierte Zielgruppe ganzjährig erreichen.", list=["1 digitale Vertriebsstrecke", "Individualisierungspaket", "Contentplan für Social Media"], price="349 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 435 € monatlich"),
           dict(badge="Beliebt", name="Reichweite", text="Kontakte aus mehreren Zielgruppen gewinnen – ohne eigenen Aufwand.", list=["3 digitale Vertriebsstrecken", "Erweiterte Individualisierung", "Performance-Reporting"], price="499 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 625 € monatlich", feat=True),
           dict(name="Marktposition", text="Berater positionieren, Stärken zeigen, planbare Neukontakte.", list=["10 digitale Vertriebsstrecken", "Automatisierung der Postings", "Regelmäßige 1:1-Beratung"], price="999 €<em>/Monat</em>", pnote="bei jährlicher Zahlung · 1.250 € monatlich")])
@@ -654,21 +663,30 @@ P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
         [("Medium 01", "PowerPoint"), ("Medium 02", "Landingpage"), ("Medium 03", "Roll-up")]),
   page(
     sec("Unser Ansatz", 'Keine Medienagentur, sondern <span class="hl">Profis für Wirkung.</span>', "Bevor ein einziges Medium entsteht, verstehen wir Dein Geschäftsmodell, Deine Strategie und Deine Zielgruppe."),
-    cards([("compass", "Geschäftsmodell &amp; Strategie", "Wir verstehen, wie Dein Geschäftsmodell funktioniert und wohin Deine Strategie steuert – bevor wir über Medien sprechen."),
-           ("target", "Auf den Punkt gebracht", "Wir übersetzen komplexe Themen in die Welt Deiner Zielgruppe – der entscheidende Erfolgsfaktor, damit Kommunikation ankommt."),
-           ("check", "Professionelle Medien", "Erst wenn die Botschaft sitzt, folgt die Umsetzung – professionell gebaut, damit sie im entscheidenden Moment wirkt.")], 3),
-    sec("Medien wirksam einsetzen", "Es geht nicht um Medien, sondern um Deine Ziele.",
-        "Wir starten nie mit der Frage PowerPoint, Landingpage oder Roll-up, sondern damit, was Du und Dein Team benötigen, um erfolgreich zu sein.", style="margin-top:9mm"),
-    cards([("slides", "PowerPoint", "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
-           ("browser", "Landingpage", "Eine Seite für eine Zielgruppe, die genau ein zentrales Problem löst und gezielt zum nächsten Schritt führt."),
-           ("rollup", "Roll-up", "Der Gesamtzusammenhang in einem Bild – dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist.")], 3, style="margin-top:6mm"),
+    cards([("control", "Geschäftsmodell &amp; Strategie", "Wir verstehen, wie Dein Geschäftsmodell funktioniert und wohin Deine Strategie steuert – bevor wir über Medien sprechen."),
+           ("audience", "Auf den Punkt gebracht", "Wir übersetzen komplexe Themen in die Welt Deiner Zielgruppe – der entscheidende Erfolgsfaktor, damit Kommunikation ankommt."),
+           ("forward", "Professionelle Medien", "Erst wenn die Botschaft sitzt, folgt die Umsetzung – professionell gebaut, damit sie im entscheidenden Moment wirkt.")], 3),
+    stage("Für wen das gemacht ist", "Themen, die im entscheidenden Moment tragen müssen.",
+          wm="forward", boden=True, style="margin-top:14mm",
+          inhalt=checks(["Themen, die im Vorstand oder Gremium tragen müssen",
+                         "Vertrieb und Messeauftritte mit klarer Botschaft",
+                         "Bereiche ohne eigene Medienproduktion",
+                         "Auftritte, bei denen die Unterlage den Unterschied macht"],
+                        cls="cols2", style="margin-top:6mm")),
   ),
   page(
-    who("Für wen das gemacht ist", [
-      "Themen, die im Vorstand oder Gremium tragen müssen",
-      "Vertrieb und Messeauftritte mit klarer Botschaft",
-      "Bereiche ohne eigene Medienproduktion",
-    ], style="margin-top:9mm"),
+    sec("Medien wirksam einsetzen", 'Es geht nicht um Medien, sondern um <span class="hl">Deine Ziele.</span>',
+        "Wir starten nie mit der Frage PowerPoint, Landingpage oder Roll-up, sondern damit, was Du und Dein Team benötigen, um erfolgreich zu sein. Wenn die Taktik steht, entwickeln wir die Medien, die genau dieses Ergebnis liefern."),
+    stage(None, None, boden=True, inhalt=mocks([
+      (S.load("medium-powerpoint"), "PowerPoint",
+       "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
+      (S.load("medium-landingpage"), "Landingpage",
+       "Eine Seite für eine Zielgruppe, die genau ein zentrales Problem löst und gezielt zum nächsten Schritt führt."),
+      (S.load("medium-rollup"), "Roll-up",
+       "Der Gesamtzusammenhang in einem Bild – dauerhaft im Raum präsent, auch wenn der Beamer längst aus ist."),
+    ])),
+  ),
+  page(
     stage("Beispiele", "Konkrete Use Cases aus der Praxis.",
           "Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien wirken.",
           wm="slides", boden=True,
