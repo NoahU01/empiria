@@ -718,37 +718,41 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
     cards([("target", "Auf Deinen Alltag zugeschnitten", "Keine Vorlage von der Stange – Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche."),
            ("lock", "Vertraulich &amp; auf Augenhöhe", "Ob im Team oder im 1:1: offen, ehrlich und mit klarer Rückmeldung, auch wenn sie unbequem ist."),
            ("route", "Begleitung statt Einmal-Termin", "Wir bleiben dran, bis die Wirkung im Alltag messbar ankommt.")], 3),
-    # Die Formate-Grafik von der Landingpage statt einer Tabellenzeile.
-    mdl("Zwei Formate", "Ein Ziel: Wirkung im Alltag.",
-        S.load("ts-formate"),
-        "Wähle das Format – wir passen es auf Dich an.",
-        figw="86mm", style="margin-top:13mm",
-        steps=[("01", "Teams befähigen", "Business Storytelling, Visualisierung und Begleitung über 3–6 Monate."),
-               ("02", "1:1 Sparring", "Vertrauliches Gegenüber für Vorstände und Führungskräfte.")]),
+    # Die Trainingsplan-Skizze gehoert zu Format 01 und steht deshalb dort (S3),
+    # nicht hier - hier geht es um die Wahl zwischen den beiden Formaten.
+    stage("Zwei Formate", "Ein Ziel: Wirkung im Alltag.",
+          "Wähle das Format – wir passen es auf Dich an.",
+          wm="route", boden=True,
+          inhalt=cards([
+            (None, "Teams befähigen", "Business Storytelling, Visualisierung und Begleitung über 3–6 Monate – an den echten Terminen Deines Teams."),
+            (None, "1:1 Sparring", "Ein vertrauliches Gegenüber für Vorstände und Führungskräfte – offen, ohne interne Rücksichten."),
+          ], 2, numbered=True, style="margin-top:6mm")
+          + '<p class="note" style="margin-top:7mm">Beide Formate lassen sich kombinieren: Dein Team wird befähigt – und Du bekommst zusätzlich ein Gegenüber für Deine eigenen Themen.</p>'),
   ),
   page(
     sec("Format 01", 'Teams befähigen, <span class="hl">professionell zu kommunizieren.</span>',
         "Dein Team bereitet ein Thema für die Vorstandssitzung vor – und die Diskussion läuft ins Leere. Dann braucht es kein Seminar von der Stange, sondern Befähigung und Begleitung bei der Umsetzung an echten Themen."),
-    # Drei Bausteine als Abfolge im Landingpage-Look statt als Textzeilen.
+    # Die Original-Grafik aus dem Header der Detailseite, unveraendert - dazu die
+    # drei Bausteine als kompakte Schrittliste statt als drei Textkaesten.
     stage("Die drei Bausteine", "Mindset, Methodik, Anwendung – in dieser Reihenfolge.",
-          "Jeder Baustein baut auf dem vorherigen auf. Erst in der Begleitung entsteht die Wirkung, die im Alltag bleibt.",
-          wm="route",
-          inhalt=cards([
-            (None, "Business Storytelling &amp; Gesprächstaktik", "Wer sitzt im Raum, welches Ergebnis wird gebraucht – und wie wird daraus eine Story, die trägt? Mindset, Methodik und Umsetzung bauen aufeinander auf."),
-            (None, "Visualisierung &amp; Nutzung Standards", "Aus der Business Story entstehen Folien, die verdichten statt zu überladen – als Vortragsfolien für den Auftritt und als Beraterfolien für die Projektarbeit."),
-            (None, "Umsetzungsbegleitung · 3–6 Monate", "Erfolg entsteht nicht im Training, sondern in der Anwendung: Wir begleiten die echten Termine Deines Teams, bis die Wirkung im Alltag ankommt."),
-          ], 3, numbered=True)),
-    who("Für wen das gemacht ist", [
-      "Teams vor Vorstands- und Aufsichtsratssitzungen",
-      "Projektlenkungsausschüsse und Vertriebstagungen",
-      "Gespräche mit Kooperationspartnern und Rückversicherern",
-      "Wichtige Kundenpitches, bei denen es zählt",
-    ], style="margin-top:8mm"),
-    '<p class="note">Umfang und Investition hängen von Teamgröße und Begleitungszeitraum ab – Du bekommst zeitnah ein konkretes Angebot.</p>',
+          wm="route", style="margin-top:9mm",
+          inhalt=mdl(None, None, S.load("praesentationsseminar"), figw="82mm", style="margin-top:5mm",
+                     steps=[("01", "Business Storytelling &amp; Gesprächstaktik",
+                             "Wer sitzt im Raum, welches Ergebnis wird gebraucht – und wie wird daraus eine Story, die trägt?"),
+                            ("02", "Visualisierung &amp; Standards",
+                             "Folien, die verdichten statt zu überladen – für den Auftritt und für die Projektarbeit."),
+                            ("03", "Umsetzungsbegleitung · 3–6 Monate",
+                             "Wir begleiten die echten Termine Deines Teams, bis die Wirkung im Alltag ankommt.")])),
+    who("Für wen das gemacht ist – und für wen nicht", [
+      "Für Teams, die ihre Ziele erreichen wollen – und wissen wollen, wie das im echten Termin gelingt",
+      "Nicht für „wir haben noch Budget für zwei Tage Seminar übrig“",
+      "Für Führungskräfte, die eine echte Verhaltensänderung in ihrem Team wollen",
+      "Nicht, wenn nur ein Haken hinter „Weiterbildung“ gesetzt werden soll",
+    ], style="margin-top:7mm"),
   ),
   page(
     sec("Format 02", '1:1 Sparring für Vorstände <span class="hl">und Führungskräfte.</span>',
-        "Seit vielen Jahren begleiten wir Vorstandsmitglieder und Führungskräfte vertraulich im 1:1 – ein Raum, in dem Themen wirklich offen besprochen werden, ohne interne Rücksichten."),
+        "Seit vielen Jahren begleiten wir Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen."),
     # Die Themen als Raster im Landingpage-Look statt als lange Punkteliste.
     stage("Worüber wir sprechen", "Sechs Themen, die im 1:1 wirklich auf den Tisch kommen.",
           wm="lock",
@@ -768,28 +772,16 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
     ], style="margin-top:10mm"),
     '<p class="note">Rhythmus und Umfang richten sich danach, wie es für Dich passt – vom regelmäßigen Termin bis zur kurzfristigen Rückfrage.</p>',
   ),
+  # Das zentrale Argument steht als normale Sektion, der Kasten traegt den
+  # Umsetzungsturbo von der Sparring-Detailseite.
   page(
-    who("Für wen das gemacht ist", [
-      "Führungskräfte, deren Team Themen nicht überzeugend vorbereitet",
-      "Führungskräfte, die ein vertrauliches 1:1-Gegenüber suchen",
-      "Teams vor wiederkehrenden Gremien- und Vertriebsterminen",
-      "Alle, denen ein Seminar von der Stange zu wenig ist",
-    ], style="margin-top:9mm"),
-    sec("Das Ergebnis", 'Weniger Seminar. <span class="hl">Mehr Wirkung.</span>',
-        "Dein Team überzeugt, wenn es zählt – und Du triffst Entscheidungen mit einem Gegenüber, das mitdenkt und mitgestaltet."),
-    stage("Was bleibt", "Wirkung, die im Alltag ankommt.", wm="kreis", boden=True,
-          inhalt=checks(["Inhalte und Fälle aus Deinem echten Alltag statt austauschbarer Trainer-Folien",
-                         "Begleitung genau dann, wenn es zählt: vor dem Termin, beim letzten Schliff, im Review",
-                         "Ein Raum, in dem Themen offen besprochen werden – ohne interne Rücksichten",
-                         "Aus Gesprächen wird schnell Umsetzung – kommunikativ oder inhaltlich"],
-                        style="margin-top:6mm")),
-  ),
-  # Der Kasten traegt das zentrale Argument und bekommt deshalb die Schlussseite.
-  page(
-    feat("Warum Begleitung", "Wir begleiten, statt nur zu schulen.",
-         "Ein Seminar erzeugt Impulse. Zwei Wochen später sind sie im Tagesgeschäft verpufft – nicht, weil das Seminar schlecht war, sondern weil im entscheidenden Moment niemand mehr dabei ist.",
-         "Dieser Moment ist der echte Termin: die Vorstandssitzung, der Kundenpitch, die schwierige Abstimmungsrunde. <b>Genau dort sind wir dabei – denn der größte Teil der Wirkung entsteht nicht im Seminar, sondern in der Anwendung.</b>",
-         ikon="forward", dunkel=True, style="margin-top:4mm"),
+    sec("Warum Begleitung", 'Wir begleiten, statt <span class="hl">nur zu schulen.</span>',
+        "Ein Seminar erzeugt Impulse. Zwei Wochen später sind sie im Tagesgeschäft verpufft – nicht, weil das Seminar schlecht war, sondern weil im entscheidenden Moment niemand mehr dabei ist.",
+        "Dieser Moment ist der echte Termin: die Vorstandssitzung, der Kundenpitch, die schwierige Abstimmungsrunde. <b>Genau dort sind wir dabei – denn der größte Teil der Wirkung entsteht nicht im Seminar, sondern in der Anwendung.</b>"),
+    feat("Mehr als nur Sparring", "Umsetzungsturbo!",
+         "In unseren Gesprächen entstehen oft Ideen, die Du am liebsten sofort vorantreiben würdest. Intern fehlt dann meist einer der drei Erfolgsbausteine: <b>jemand, der das Thema versteht</b>, <b>die Kapazität für die Umsetzung</b> oder <b>die Skills für die Umsetzung</b>.",
+         "Genau hier finden wir oftmals direkt eine Lösung, wie es schnell gehen kann – ganz ohne weiteres Briefing, denn wir kennen die Hintergründe bereits aus dem Sparring. <b>Wir liefern das Ergebnis: egal, ob wir es komplett konzipieren und erstellen oder Dein Team direkt mit einbinden.</b>",
+         ikon="forward", dunkel=True, style="margin-top:9mm"),
     contact_html=contact("Welches Format passt zu Dir?", ["daniel", "kerstin_hr"])),
 ])
 
@@ -799,80 +791,81 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
         ["Du bist Führungskraft in der Versicherungsbranche und Dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?", "Dann braucht Dein Team kein Seminar, sondern <b>professionelle Begleitung bei der Umsetzung.</b>"],
         S.praesentation(),
         [("Baustein 01", "Storytelling &amp; Taktik"), ("Baustein 02", "Visualisierung"), ("Baustein 03", "Umsetzungsbegleitung")]),
-  # Problem: die drei Saetze knapp, darunter konkret, WO es zaehlt.
-  # Problem: die drei Saetze im dunklen Kasten (wie bei Komplexe Themen),
-  # darunter konkret die Termine, bei denen es sitzen muss.
+  # Problem und Ablauf auf einer Seite: links der dunkle Kasten mit den Saetzen,
+  # rechts die Termine, darunter der waagerechte Zeitstrahl wie auf der Website.
   page(
     sec("Das Problem", 'Dein Team bereitet vor. Und erreicht das Ziel <span class="hl">trotzdem nicht.</span>'),
-    stage("Überall dort, wo es zählt", "Acht Termine, bei denen es sitzen muss.",
-          wm="raute", boden=True,
-          inhalt=bubbles("Immer wieder dieselbe Erfahrung",
-                         ["„Das hätte besser laufen müssen.“",
-                          "„Die Diskussion lief ins Leere.“",
-                          "„Im Raum fehlte die Souveränität.“"],
-                         "Die Story trägt nicht, die Unterlagen überzeugen nicht. <b>Es wird Zeit, bisherige Denkmuster mit einfachen Logiken zu durchbrechen.</b>")
-                 + chips(["Vorstand", "Aufsichtsrat", "Projektlenkungsausschuss", "Vertriebstagung",
-                        "Betriebsrat", "Kooperationspartner", "Rückversicherer", "Kundenpitch"],
-                       cls="chips--pill", style="margin-top:7mm")),
+    stage("Überall dort, wo es zählt", "Entscheidende Situationen, in denen es sitzen muss.",
+          # Das Wasserzeichen steht rechts in der Luecke zwischen Pills und
+          # Zeitstrahl - unten wuerde es auf den Stationen liegen.
+          wm="raute", wm_style="bottom:64mm;width:38mm;height:38mm", boden=True,
+          inhalt='<div class="halb" style="margin-top:6mm">'
+                 + bubbles("Immer wieder dieselbe Erfahrung",
+                           ["„Das hätte besser laufen müssen.“",
+                            "„Die Diskussion lief ins Leere.“",
+                            "„Im Raum fehlte die Souveränität.“"],
+                           "Die Story trägt nicht, die Unterlagen überzeugen nicht. <b>Es wird Zeit, bisherige Denkmuster mit einfachen Logiken zu durchbrechen.</b>")
+                 + '<div>' + chips(["Vorstand", "Aufsichtsrat", "Projektlenkungsausschuss", "Vertriebstagung",
+                                    "Betriebsrat", "Kooperationspartner", "Rückversicherer", "Kundenpitch"],
+                                   cls="chips--pill", style="margin-top:0") + '</div></div>'
+                 + '<p class="label" style="margin-top:10mm">Der Ablauf · vom Onboarding bis in den Alltag</p>'
+                 + zeitstrahl([("Onboarding", "2–3 Std., online", "Ausgangslage, Ziel und Themen klären."),
+                               ("Vorbereitung", "2–3 Wochen", "Dein Team bringt echte Fälle ein."),
+                               ("Training", "2 Tage, Präsenz", "Baustein 01 und 02 an diesen Fällen."),
+                               ("Anwendung", "3–6 Monate", "Baustein 03: Begleitung an echten Terminen.")])),
   ),
-  # Ablauf mit den echten Dauern der Produktseite.
-  page(
-    sec("Der Ablauf", 'Vom Onboarding <span class="hl">bis in den Alltag.</span>',
-        "Vier Phasen über rund ein halbes Jahr. Der Aufwand für Dein Team bleibt überschaubar – die Wirkung hält an, weil wir in der Anwendung dabei sind."),
-    stage(None, None, wm="route", boden=True, inhalt=stations([
-      ("2–3 Std., online", "Onboarding", "Wir klären Ausgangslage, Ziel und die Themen, an denen gearbeitet wird."),
-      ("2–3 Wochen", "Vorbereitungsphase", "Dein Team bringt echte Fälle ein – kein Fallbeispiel aus dem Lehrbuch."),
-      ("2 Tage, Präsenz", "Training", "Die Bausteine 01 und 02: Storytelling und Gesprächstaktik, Visualisierung."),
-      ("3–6 Monate, individuell", "Anwendungsphase", "Baustein 03: Begleitung an echten Terminen – vor dem Termin, beim letzten Schliff, im Review."),
-    ])),
-  ),
-  # Alle drei Bausteine auf einer Seite, in ihrer Reihenfolge. Sie vorher
-  # aufzuteilen hat die Logik zerrissen.
+  # Alle drei Bausteine auf einer Seite, in ihrer Reihenfolge - und jeweils mit
+  # dem Ergebnis, denn das ist die Antwort auf "was habe ich davon".
   page(
     sec("Die Inhalte", 'Drei Bausteine, <span class="hl">die aufeinander aufbauen.</span>'),
     stage(None, None, wm="kreuz", boden=True, inhalt=rows([
       ("Business Storytelling &amp; Gesprächstaktik",
        "Wie Entscheider denken, wie sie Themen bewerten – und warum viele Kommunikationsversuche genau daran scheitern.",
        dots(["Die drei goldenen Regeln erfolgreicher Gespräche mit Entscheidern",
-             "Nutzenorientierung statt Themenfokus",
-             "„Ich mache meine Zielgruppe erfolgreich“ statt „Ich will überzeugen“"], "sm", style="margin-top:2.5mm")),
+             "Nutzenorientierung statt Themenfokus"], "sm", style="margin-top:2.5mm")
+       + '<p class="erg"><b>Ergebnis:</b> Die Teilnehmer haben ein klares strategisches Verständnis davon, wie sie ihr Thema zum Erfolg führen – indem sie den Mehrwert für ihre Zielgruppe in den Mittelpunkt stellen.</p>'),
       ("Visualisierung &amp; Nutzung Standards",
        "Aus der Business Story entstehen Folien, die verdichten statt zu überladen – in zwei klar getrennten Arten.",
-       dots(["Vortragsfolien: verdichtet auf Story und Kernbotschaft, sofort erfassbar",
-             "Beraterfolien: Statusberichte und Analysen, detailliert und trotzdem klar",
-             "Klare Blickführung – in Präsenz wie online"], "sm", style="margin-top:2.5mm")),
+       dots(["Vortragsfolien: verdichtet auf Story und Kernbotschaft",
+             "Beraterfolien: Statusberichte und Analysen, detailliert und trotzdem klar"], "sm", style="margin-top:2.5mm")
+       + '<p class="erg"><b>Ergebnis:</b> Die Teilnehmer haben das Handwerkszeug und die Sicherheit, auf Basis einer klaren Business Story schnell professionelle, überzeugende Folien zu erstellen.</p>'),
       ("Umsetzungsbegleitung · 3–6 Monate",
        "Die Inhalte werden in den Arbeitsalltag überführt. Erfolg entsteht nicht im Training, sondern in der Anwendung an echten Themen.",
-       dots(["Storyboard für das konkrete Thema entwickeln",
-             "Gesprächstaktik für den Termin festlegen und anwenden",
-             "Review zur Reflexion und Optimierung"], "sm", style="margin-top:2.5mm")),
+       dots(["Storyboard und Gesprächstaktik für das konkrete Thema",
+             "Review zur Reflexion und Optimierung"], "sm", style="margin-top:2.5mm")
+       + '<p class="erg"><b>Ergebnis:</b> Die Teilnehmer setzen die Inhalte sicher bei echten Themen um, entwickeln klare Stories und gehen strukturiert in entscheidende Termine.</p>'),
     ])),
   ),
-  # Bewusst anders als alle anderen Seiten: schwarzer Grund, das Roll-up ragt
-  # gross von unten herein und ist angeschnitten.
+  # Das Roll-up nicht als Bild, sondern in seinem eigenen Layout: Kreis-Icons
+  # aus dem Original, der Berg randlos bis an die Blattkante, goldener Balken.
   page(
-    sec("Was bleibt", 'Die drei goldenen Regeln – <span class="hl">im Raum Deines Teams.</span>',
-        "Was im Training erarbeitet wird, verschwindet nicht im Ordner. Es steht danach als Roll-up im Arbeitsbereich – und erinnert täglich an die Logik, die dahintersteht."),
-    checks(["Aus Baustein 01: die drei goldenen Regeln für Gespräche mit Entscheidern",
-            "Im Format, das Dein Team täglich sieht",
-            "Teil der Begleitung, kein Zusatzposten"], style="margin-top:8mm"),
-    '<div class="buehne-bild"><img src="assets/downloads/rollup-golden-rules-thumb.jpg" alt=""></div>',
-    dunkel=True),
-  # Lernlogik kompakt neben dem Text, nicht ueber die volle Breite.
+    sec("Das Roll-up für den Raum Deines Teams",
+        'Die drei goldenen Regeln für erfolgreiche <span class="hl">Gespräche mit Entscheidern.</span>'),
+    regeln([
+      ("rollup-regel-1", "Mache Deine<br>Zielgruppe erfolgreich",
+       "Du „verkaufst“ nicht Dein Thema, sondern den Erfolg, der hieraus entstehen wird.",
+       "Wenn Du kein Problem löst bzw. einen Mehrwert schaffst, ist Dein Thema aktuell nicht relevant."),
+      ("rollup-regel-2", "Spare Deiner<br>Zielgruppe Arbeit",
+       "Deine Aufgabe ist es, Struktur zu schaffen und gezielte Informationen bereitzustellen.",
+       "Deine Zielgruppe hat keine Zeit, Deine Präsentation zu überarbeiten."),
+      ("rollup-regel-3", "Zeige den<br>nächsten Schritt auf",
+       "Du schaffst Vertrauen, wenn Du klar aufzeigst, „Was“ jetzt zu tun ist – nicht „Wie“.",
+       "Auf dieser Basis können Entscheidungen getroffen werden."),
+    ]),
+    '<div class="rollup-berg"><img src="assets/pdf-bausteine/rollup-berg.png" alt=""></div>',
+    '<div class="rollup-balken"></div>',
+    cls_extra="page--rollup"),
+  # Lernlogik als Donut - die Anteile sind hier die Aussage.
   page(
     sec("Die Lernlogik", 'Warum Begleitung <span class="hl">den Unterschied macht.</span>',
-        "Nur ein Zehntel der Wirkung entsteht im Seminar. Der große Rest entsteht dort, wo an echten Themen gearbeitet wird – und genau dort sind wir dabei."),
-    anteile([("10 %", "Impulse im Seminar"),
-             ("20 %", "Kollegialer Austausch und gezielte Begleitung"),
-             ("70 %", "Lernen durch Anwendung an echten Themen", True)]),
-    stage("Das Ergebnis", "Dein Team überzeugt ohne Dich.",
-          "Dein Team bereitet Themen so auf, dass sie überzeugen, und tritt sicher auf, wenn es zählt.",
-          wm="forward", boden=True,
-          inhalt=cards([
-            (None, "Klares Ziel je Termin", "Wer sitzt im Raum, welches Ergebnis wird gebraucht – das steht vor der ersten Folie."),
-            (None, "Story statt Folienschlacht", "Eine Argumentation, die trägt, statt 40 Folien Detailwissen."),
-            (None, "Sicherheit im Raum", "Ein Einstieg, der sitzt, und ein präziser nächster Schritt."),
-          ], 3, style="margin-top:6mm")),
+        "Wir arbeiten nach dem <b>70-20-10-Modell</b>, das in der Personalentwicklung seit den 1980er-Jahren als Faustregel dient: Der weit überwiegende Teil beruflicher Kompetenz entsteht nicht im Seminarraum, sondern bei der Arbeit an echten Aufgaben. Ein Training allein kann deshalb gar nicht wirken – entscheidend ist, was in den Monaten danach passiert."),
+    donut([(70, "Anwendung|Lernen an echten, relevanten Themen im Alltag", "#4d7c0f"),
+           (20, "Austausch|Kollegialer Austausch und gezielte Begleitung", "#a3e635"),
+           (10, "Seminar|Impulse und Methodik im Training", "#2e2d2c")],
+          mitte="Lernlogik"),
+    stage("Ergebnis", 'Dein Team überzeugt <span class="hl">ohne Dich.</span>',
+          "Dein Team bereitet Themen so auf, dass sie überzeugen, und tritt sicher auf, wenn es zählt. Du bekommst Ergebnisse, mit denen Du wirklich arbeiten kannst.",
+          wm="forward", boden=True, dunkel=True, style="margin-top:11mm"),
   ),
   page(
     sec("Kontakt", 'Soll Dein Team <span class="hl">ohne Dich überzeugen?</span>',
@@ -893,15 +886,18 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
         [("Für wen", "Führungskräfte in Versicherungen"), ("Ebene", "Abteilungsleiter bis Vorstand"), ("Themen", "Strategie, Geschäftsmodell, Führung")]),
   page(
     sec("Sparring", 'Ein Gegenüber, das <span class="hl">mitdenkt und mitgestaltet.</span>',
-        "Offen über Themen sprechen, für die es intern oft nicht die passende Distanz oder Erfahrung gibt. Komplexe Situationen aus verschiedenen Perspektiven betrachten, Vorgehensweisen abwägen, Lösungswege klar definieren."),
-    cards([("lock", "Offen &amp; vertraulich", "Ein Raum, in dem Themen wirklich offen besprochen werden – ohne interne Rücksichten."),
-           ("star", "Erfahrung, die trägt", "Viele Jahre Sparring mit Vorständen, Hauptabteilungs- und Abteilungsleitern."),
-           ("eye", "Mehrere Perspektiven", "Komplexe Situationen aus unterschiedlichen Blickwinkeln – für Lösungen, die passen."),
+        "Offen über Themen sprechen, für die es intern oft nicht die passende Distanz oder Erfahrung gibt – und Lösungswege klar definieren."),
+    cards([("lock", "Offen &amp; vertraulich", "Ein Raum für Themen ohne interne Rücksichten."),
+           ("star", "Erfahrung, die trägt", "Viele Jahre Sparring mit Vorständen und Abteilungsleitern."),
+           ("eye", "Mehrere Perspektiven", "Komplexe Situationen aus mehreren Blickwinkeln betrachtet."),
            ("compass", "Klarheit", "Am Ende steht nicht nur eine Einschätzung, sondern eine Richtung."),
-           ("bolt", "Vom Gespräch zur Umsetzung", "Schnell entsteht ein einsatzbereites Konzept – kommunikativ oder inhaltlich."),
-           ("megaphone", "Schlagkräftig nach außen", "Positionierung und Auftreten gegenüber Vorstand und Bereichen werden stärker.")], 3),
-    band("Mehr als nur Sparring", "Umsetzungsturbo!",
-         "In unseren Gesprächen entstehen oft Ideen, die Du am liebsten sofort vorantreiben würdest. Intern fehlt dabei meist einer der drei Erfolgsbausteine: <b>jemand, der das Thema versteht, die Kapazität oder die Skills für die Umsetzung.</b> Genau hier finden wir oft direkt eine Lösung – ganz ohne weiteres Briefing, denn wir kennen die Hintergründe bereits.", style="margin-top:10mm"),
+           ("bolt", "Vom Gespräch zur Umsetzung", "Schnell entsteht ein einsatzbereites Konzept."),
+           ("megaphone", "Schlagkräftig nach außen", "Positionierung und Auftreten werden spürbar stärker.")], 3),
+    # Derselbe Kasten wie im uebergreifenden PDF: gruen mit weisser Schrift.
+    feat("Mehr als nur Sparring", "Umsetzungsturbo!",
+         "In unseren Gesprächen entstehen oft Ideen, die Du am liebsten sofort vorantreiben würdest. Intern fehlt dann meist einer der drei Erfolgsbausteine: <b>jemand, der das Thema versteht</b>, <b>die Kapazität</b> oder <b>die Skills für die Umsetzung</b>. Genau hier finden wir oftmals direkt eine Lösung – ganz ohne weiteres Briefing, denn wir kennen die Hintergründe bereits.",
+         "<b>Wir liefern das Ergebnis: egal, ob wir es komplett konzipieren und erstellen oder Dein Team direkt mit einbinden.</b>",
+         ikon="forward", dunkel=True, style="margin-top:6mm"),
   ),
   page(
     who("Für wen das gemacht ist", [

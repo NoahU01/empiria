@@ -654,6 +654,73 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .ov .t-sub { display: block; font-size: 8.5pt; color: var(--g70); line-height: 1.5; margin-top: .8mm; }
 .ov .t-dur { font-size: 9pt; color: var(--g70); white-space: nowrap; }
 .ov .t-price { font-family: var(--serif); font-weight: 700; font-size: 11.5pt; white-space: nowrap; }
+
+/* ---- Waagerechter Zeitstrahl ----------------------------------------------
+   Uebernimmt die .onboarding-timeline der Website: eine durchgehende Linie,
+   darauf die Punkte, darunter Titel und Dauer - zentriert je Station. */
+.zs { position: relative; display: grid; margin-top: 5mm; }
+.zs-linie { position: absolute; left: 0; right: 0; top: 2.1mm; height: .35mm; background: var(--g30); }
+.zs-st { position: relative; z-index: 1; display: flex; flex-direction: column;
+         align-items: center; gap: 2.4mm; padding: 0 2mm; text-align: center; }
+.zs-punkt { width: 4.2mm; height: 4.2mm; border-radius: 50%; background: #fff;
+            border: .7mm solid var(--acc); }
+.zs-st b { font-family: var(--serif); font-weight: 700; font-size: 9.6pt; line-height: 1.25; }
+.zs-st small { font-size: 7.4pt; color: var(--g50); letter-spacing: .01em; }
+.zs-st p { font-size: 8pt; line-height: 1.5; color: var(--g70); margin-top: .6mm; }
+
+/* ---- Zwei Spalten: linke Haelfte Kasten, rechte Haelfte Inhalt ------------- */
+.halb { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; align-items: start; }
+.halb > * { margin-top: 0 !important; }
+
+/* ---- Ergebniszeile je Baustein --------------------------------------------
+   Das Ergebnis ist die Antwort auf "was habe ich davon" und darf deshalb nicht
+   als vierter Spiegelstrich untergehen. */
+.erg { margin-top: 3mm; padding: 2.6mm 3.4mm; border-left: .9mm solid var(--acc);
+       background: #fff; font-size: 8.6pt; line-height: 1.5; color: var(--ink2); }
+.erg b { font-weight: 600; color: var(--ink); }
+
+/* ---- Donut fuer die 70-20-10-Logik ---------------------------------------- */
+.donut { display: grid; grid-template-columns: 54mm 1fr; gap: 10mm; align-items: center;
+         margin-top: 6mm; }
+.donut svg { width: 54mm; height: 54mm; display: block; }
+.donut-mitte { font-family: var(--serif); font-weight: 700; fill: var(--ink); }
+.donut-leg { display: grid; gap: 3.4mm; }
+.donut-leg div { position: relative; padding-left: 12mm; font-size: 9pt; line-height: 1.5;
+                 color: var(--g70); }
+.donut-leg b { position: absolute; left: 0; top: -0.3mm; font-family: var(--serif);
+               font-weight: 700; font-size: 11.5pt; color: var(--ink); }
+.donut-leg span { display: block; font-weight: 600; color: var(--ink); }
+
+/* ---- Dunkles, zentriertes Abschlussband (Ergebnis-Sektion der Website) ----- */
+.stage--dunkel { background: #0f0e0d; }
+.stage--dunkel .stage-head { text-align: center; max-width: 138mm; margin: 0 auto; }
+.stage--dunkel .stage-head h2 { color: #fff; }
+.stage--dunkel .stage-head p { color: rgba(255,255,255,.76); max-width: none; }
+.stage--dunkel .kicker { color: var(--dark-acc); }
+.stage--dunkel .stage-wm { color: rgba(255,255,255,.10); }
+/* Steht die Fusszeile auf dem dunklen Band, braucht die Seitenzahl Weiss -
+   der Strich bleibt in der Highlight-Farbe des Themes. */
+.page--fussdunkel .page-no { color: rgba(255,255,255,.85); }
+
+/* ---- Roll-up-Seite: die drei goldenen Regeln ------------------------------
+   Das Roll-up wird nicht als Bild eingesetzt, sondern in seinem eigenen Layout
+   nachgezogen: Regeln als Kreis-Icons, darunter der Berg randlos bis an die
+   Blattkante und der goldene Balken als Abschluss. */
+.regeln { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr);
+           gap: 8mm; margin-top: 7mm; }
+.regel { text-align: center; }
+.regel img { width: 19mm; height: 19mm; display: block; margin: 0 auto 3.5mm; }
+.regel h3 { font-family: var(--sans); font-weight: 700; font-size: 10pt; line-height: 1.28;
+            text-transform: uppercase; letter-spacing: .01em; margin-bottom: 3mm; }
+.regel p { font-size: 8pt; line-height: 1.52; color: var(--g70); text-align: left; }
+.regel p + p { margin-top: 2.2mm; }
+.rollup-berg { position: absolute; left: 0; right: 0; bottom: 11mm; z-index: 0; }
+.rollup-berg img { display: block; width: 100%; height: auto; }
+.rollup-balken { position: absolute; left: 0; right: 0; bottom: 0; height: 11mm;
+                 background: #b4975a; z-index: 1; }
+.page--rollup .pfoot { bottom: 3.6mm; z-index: 2; }
+.page--rollup .page-no { color: rgba(255,255,255,.9); }
+.page--rollup .pfoot .strich { background: rgba(255,255,255,.9); }
 """
 
 def esc(s): return _h.escape(s, quote=False)
@@ -709,7 +776,7 @@ def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein
         f'<h1>{h1}</h1>' + "".join(f'<p class="sub">{s}</p>' for s in subs) + sk +
         f'<div class="facts" style="grid-template-columns:repeat({len(facts)},1fr)">{f}</div></section>')
 
-def page(*content, contact_html=None, farbe=None, dunkel=False):
+def page(*content, contact_html=None, farbe=None, dunkel=False, cls_extra=""):
     """farbe setzt die Farbwelt NUR fuer diese Seite (z. B. eine Loesungsseite,
     die die Farbe ihres eigenen Produkts traegt)."""
     def r(no, total):
@@ -723,6 +790,11 @@ def page(*content, contact_html=None, farbe=None, dunkel=False):
         cls = "page page--stretch" if "stage--boden" in body else "page"
         if dunkel:
             cls += " page--dunkel"
+        # Steht die Fusszeile auf dunklem Grund, braucht die Seitenzahl Weiss.
+        if "stage--dunkel" in body:
+            cls += " page--fussdunkel"
+        if cls_extra:
+            cls += " " + cls_extra
         stil = f' style="{theme_vars(farbe)}"' if farbe else ''
         return f'<section class="{cls}"{stil}>{head(no, total)}{body}{c}{foot}</section>'
     return r
@@ -876,7 +948,61 @@ def raster(items, cols=None, style=""):
     return f'<div class="raster" style="grid-template-columns:repeat({cols},1fr);{style}">{"".join(out)}</div>'
 
 
-def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, style=""):
+def zeitstrahl(items, style=""):
+    """Waagerechter Zeitstrahl wie die .onboarding-timeline der Website.
+
+    items: (Titel, Dauer[, Text]).
+    """
+    out = []
+    for it in items:
+        t, dauer = it[0], it[1]
+        p = f'<p>{it[2]}</p>' if len(it) > 2 and it[2] else ''
+        out.append(f'<div class="zs-st"><span class="zs-punkt"></span>'
+                   f'<span><b>{t}</b><br><small>{dauer}</small></span>{p}</div>')
+    return (f'<div class="zs" style="grid-template-columns:repeat({len(items)},1fr);{style}">'
+            f'<div class="zs-linie"></div>{"".join(out)}</div>')
+
+
+def donut(items, mitte="", style=""):
+    """Ringdiagramm. items: (Prozentwert, Beschriftung, Farbe).
+
+    Ein Donut statt eines Balkens, weil die Anteile hier die Aussage sind -
+    die Mitte bleibt offen und traegt die Bezeichnung des Modells.
+    """
+    r, u = 42.0, 2 * 3.141592653589793 * 42.0
+    kreise, leg, start = [], [], 0.0
+    gesamt = sum(i[0] for i in items) or 100.0
+    for wert, text, farbe in items:
+        anteil = wert / gesamt
+        kreise.append(
+            f'<circle cx="60" cy="60" r="{r}" fill="none" stroke="{farbe}" stroke-width="15" '
+            f'stroke-dasharray="{u*anteil:.2f} {u:.2f}" '
+            f'stroke-dashoffset="{-u*start:.2f}" transform="rotate(-90 60 60)"/>')
+        kopf, _, rest = text.partition("|")
+        leg.append(f'<div><b>{wert} %</b><span>{kopf.strip()}</span>{rest.strip()}</div>')
+        start += anteil
+    m = (f'<text class="donut-mitte" x="60" y="57" text-anchor="middle" font-size="13">70·20·10</text>'
+         f'<text x="60" y="68" text-anchor="middle" font-size="7" fill="#8a8783">{mitte}</text>') if mitte else ''
+    return (f'<div class="donut" style="{style}">'
+            f'<svg viewBox="0 0 120 120" role="img" aria-label="70-20-10-Modell">{"".join(kreise)}{m}</svg>'
+            f'<div class="donut-leg">{"".join(leg)}</div></div>')
+
+
+def regeln(items, style=""):
+    """Die drei goldenen Regeln im Layout des Roll-ups: Kreis-Icon, Titel, Text.
+
+    Die Kreise stammen unveraendert aus EMP_01_rollup_golden_rules.pdf und
+    werden nicht nachgezeichnet.
+    """
+    out = []
+    for bild, titel, *ps in items:
+        t = "".join(f'<p>{p}</p>' for p in ps)
+        out.append(f'<div class="regel"><img src="{_bildpfad(bild)}" alt="">'
+                   f'<h3>{titel}</h3>{t}</div>')
+    return f'<div class="regeln" style="{style}">{"".join(out)}</div>'
+
+
+def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, dunkel=False, wm_style="", style=""):
     """Sektion im Landingpage-Look: heller Grund, Icon-Wasserzeichen, dunkler Kasten.
 
     boden=True laesst das Band bis an die Blattkante laufen - fuer Baender,
@@ -886,8 +1012,10 @@ def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, style=""):
     h = f'<h2>{h2}</h2>' if h2 else ''
     txt = "".join(f'<p>{p}</p>' for p in ps)
     ikon = cd_icon(wm) if wm in CD_ICONS else (icon(wm) if wm else "")
-    w = f'<div class="stage-wm">{ikon}</div>' if wm else ''
+    w = f'<div class="stage-wm" style="{wm_style}">{ikon}</div>' if wm else ''
     cls = "stage stage--boden" if boden else "stage"
+    if dunkel:
+        cls += " stage--dunkel"
     return (f'<div class="{cls}" style="{style}">{w}'
             f'<div class="stage-head">{k}{h}{txt}</div>{inhalt}</div>')
 
