@@ -1090,8 +1090,8 @@ P["capiamo"] = ("capiamo", "capiamo · Fachbereich & IT – empiria", [
 # mitpflegen. Inhalte 1:1 von workshops.html.
 P["workshops"] = ("magenta", "Workshops – empiria", [
   cover("Workshops", 'Workshops, die wirken. <span class="hl">Nicht nur Theorie.</span>',
-        ["Ob Künstliche Intelligenz, eine neue Landingpage oder die Moderation Deines nächsten Workshops: Aus unzähligen Projekten sind Formate entstanden, die in der Versicherungsbranche wirklich tragen.",
-         "<b>Echte Tools, echte Ergebnisse – und eine Moderation, die Dein Team mitnimmt.</b>"],
+        ["Ob Künstliche Intelligenz, eine neue Landingpage oder die Moderation Deines nächsten Workshops. Aus unseren Projekten sind Formate entstanden, die Du direkt buchen kannst.",
+         "<b>Jeder Workshop ist auf einen konkreten Anwendungsfall zugeschnitten – mit klaren Ergebnissen und einer Moderation, die Dein Team wirklich ans Ziel bringt.</b>"],
         S.load("ki-zum-anfassen"),
         [("Format 01", "KI zum Anfassen"), ("Format 02", "Sprint Landingpage"), ("Format 03", "Workshop-Moderation")]),
   page(
