@@ -382,9 +382,9 @@ ul.checks li { position: relative; padding: 1.6mm 0 1.6mm 7mm; font-size: 9.6pt;
 ul.checks li svg { position: absolute; left: 0; top: 1.9mm; width: 4.4mm; height: 4.4mm; color: var(--acc); }
 ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; }
 /* Aussage */
-.statement { font-family: var(--sans); font-weight: 500; font-size: 12pt; line-height: 1.62; color: var(--ink); max-width: 152mm; }
-.quotes { margin-top: 5mm; display: grid; gap: 2.2mm; }
-.quotes span { display:block; font-weight: 500; font-size: 12pt; line-height: 1.4; color: var(--ink); padding-left: 5mm; position: relative; }
+.statement { font-family: var(--sans); font-weight: 500; font-size: 10.5pt; line-height: 1.6; color: var(--ink); max-width: 152mm; }
+.quotes { margin-top: 5mm; display: grid; gap: 3mm; }
+.quotes span { display:block; font-weight: 400; font-size: 9.8pt; line-height: 1.55; color: var(--ink2); padding-left: 5mm; position: relative; }
 .quotes span::before { content:""; position:absolute; left:0; top: .25em; bottom: .25em; width: 1.2mm; border-radius: 1mm; background: var(--acc); }
 /* Band (wichtigster Abschnitt) & Verlaufskasten */
 .band { background: var(--bg); border-radius: 4mm; padding: 7mm 7mm; margin-top: 8mm; }
