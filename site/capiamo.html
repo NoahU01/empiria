@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>capiamo – Übersetzer zwischen Fachbereich und IT – empiria</title>
+<meta name="description" content="capiamo löst bei Versicherern den Engpass zwischen Fachbereich und IT: Strategie verstehen, fachliche Anforderungen ableiten, IT-Umsetzung steuern – damit Themen laufen und das Richtige herauskommt.">
+<link rel="canonical" href="https://www.empiria.de/capiamo">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/capiamo">
+<meta property="og:title" content="capiamo – empiria">
+<meta property="og:description" content="capiamo löst bei Versicherern den Engpass zwischen Fachbereich und IT: Strategie verstehen, fachliche Anforderungen ableiten, IT-Umsetzung steuern – damit Themen laufen und das Richtige herauskommt.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="capiamo – empiria">
+<meta name="twitter:description" content="capiamo löst bei Versicherern den Engpass zwischen Fachbereich und IT: Strategie verstehen, fachliche Anforderungen ableiten, IT-Umsetzung steuern – damit Themen laufen und das Richtige herauskommt.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  // GA4 NUR auf der Produktions-Domain konfigurieren. Ohne diese Sperre
+  // schicken Vercel-Preview-Deployments (*.vercel.app) und lokale Tests ihre
+  // Klicks in dieselbe Property und verfaelschen die Zahlen dauerhaft --
+  // herausrechnen laesst sich das hinterher nicht mehr.
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "capiamo-blau" (#063755) ===== */
+  body.produktseite-clean { background: #fff; }
+  .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
+  .produktseite-clean .produkt-hero .kicker { color: #063755; }
+  .produktseite-clean .produkt-hero h1 { color: var(--ink); }
+  .produktseite-clean .produkt-hero .hl { color: #fff; }
+  .produktseite-clean .produkt-hero .hl::before { background: #063755; }
+  .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
+  .produktseite-clean .produkt-hero .btn--dark { background: #063755; border-color: #063755; color: #fff; }
+  .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
+  .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
+  .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
+  .produktseite-clean .hero-stat-label { color: var(--grey-70); }
+  .produktseite-clean .btn--outline { color: var(--ink); border-color: var(--black); }
+  .produktseite-clean .btn--outline:hover { background: var(--black); color: #fff; }
+
+  /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
+     dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
+  .usp-turbo-icon { background: #063755; color: #fff; }
+
+  /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
+     Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
+  .produktseite-clean .sprint-structure-card {
+    background: linear-gradient(155deg, #063755 0%, #04263b 100%);
+    border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
+  }
+  .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
+  .produktseite-clean .media-box-footer,
+  .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
+  .produktseite-clean .media-box-title,
+  .produktseite-clean .sprint-structure-title { color: #fff; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #04263b; }
+
+  /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
+  .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
+  .produktseite-clean .produkt-mock-icon { background: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #063755; filter: none; }
+  .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
+
+  /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
+  .produktseite-clean .produkt-mock--dashboard,
+  .produktseite-clean .produkt-mock--tool { border-color: #e7e2df; background: var(--grey-bg); }
+  .produktseite-clean .dash-kpi { background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .dash-kpi .val { color: var(--ink); }
+  .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
+  .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #063755, #04263b); }
+  .produktseite-clean .dash-caption { color: var(--grey-50); }
+  .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
+  .produktseite-clean .tool-dash-logo { background: #063755; }
+  .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
+  .produktseite-clean .tool-dash-nav-item--active { background: #063755; }
+
+  /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
+     ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
+     macht sie auf Weiß lesbar; verstärkter Kontrast gleicht das Fehlen der Karte aus. */
+  .produktseite-clean .mock-split-half svg { filter: invert(1) contrast(1.6); }
+
+  /* Tools-Reihe (KI zum Anfassen) — die Logos werden bereits vorab eingefärbt als
+     PNG ausgeliefert (siehe _KI_TOOLS_ITEMS), daher hier nur die Beschriftung. */
+  .produktseite-clean .tools-row-label { color: var(--grey-70); }
+  .produktseite-clean .tools-row-icon img { opacity: 1; }
+
+  /* Hero: zweispaltiges Grid — Text links, Skizzen-Visualisierung rechts. Die
+     Visualisierung steht IMMER frei im Header: kein Kasten, kein Hintergrund, keine
+     Klickfläche — jede Kastenoptik einzelner Mockup-Bausteine wird hier neutralisiert. */
+  .produktseite-clean .produkt-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(36px, 6vw, 90px); align-items: center;
+  }
+  /* Modifier fuer Seiten, deren Lead-Text NICHT in der linken Spalte steht, sondern
+     darunter ueber die volle Breite (siehe lead_below_full_width): Skizze richtet
+     sich dann an der Kopfzeile aus, statt sich an einem laengeren Textblock zu
+     zentrieren — nur ueber die Zusatzklasse aktiv, betrifft keine andere Seite. */
+  .produktseite-clean .produkt-hero-grid.produkt-hero-grid--top { align-items: flex-start; }
+  .produktseite-clean .produkt-hero-text { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual { min-width: 0; }
+  .produktseite-clean .produkt-hero-visual > * { margin-top: 0; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--dashboard,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--tool,
+  .produktseite-clean .produkt-hero-visual .produkt-mock--structure {
+    background: none; border: none; box-shadow: none; padding: 0;
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock { aspect-ratio: 1/1; max-width: 440px; }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-icon svg {
+    width: clamp(100px, 13vw, 168px); height: clamp(100px, 13vw, 168px);
+  }
+  .produktseite-clean .produkt-hero-visual .produkt-mock-bare { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch { max-width: 420px; }
+  .produktseite-clean .produkt-mock-sketch svg { width: 100%; height: auto; display: block; filter: invert(1) contrast(1.6); }
+  /* Roll-up-Skizze ist im Ausgangsformat sehr hochformatig (220x460) — deutlich
+     schmaler begrenzen, damit die Höhe im Header nicht dominiert (min. -50%). */
+  .produktseite-clean .produkt-mock-sketch--rollup { max-width: 190px; }
+
+  /* Wiederverwendete Skizzen auf farbigen Kacheln/Kästen (Übersichtsseiten-Kacheln,
+     Übersichts-Popups): dort sind sie wie das MarketingEcoSystem-Diagramm auf der
+     Marketing-as-a-Service-Seite zu behandeln — weiß gezeichnet, direkt auf dem
+     Farbverlauf, OHNE Invertierung und OHNE separaten hellen Kasten. */
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch svg,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch svg { filter: none; }
+  .produktseite-clean .media-box-thumb .produkt-mock-sketch,
+  .produktseite-clean .modal-summary-mock .produkt-mock-sketch { max-width: none; }
+  /* iPhone-Körper der KI-zum-Anfassen-Skizze: auf farbigen Kacheln/Popups (ohne
+     Invertierung) weiß/transparent statt des dunklen Ausgangs-Fills, der nur im
+     Header (mit Invertierung) automatisch weiß wird. */
+  .produktseite-clean .media-box-thumb .mock-phone-body,
+  .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #063755 0%, #04263b 100%); }
+  @media (max-width: 900px) {
+    .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
+    .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
+  }
+  .produktseite-clean .produkt-hero-actions--center {
+    justify-content: center; margin-top: clamp(30px, 4vw, 46px);
+  }
+
+  /* Vorschau-Abschnitt (PowerPoint/Roll-up/Landingpage/Sprint Landingpage): die farbige,
+     anklickbare Vorschau-Karte, jetzt unterhalb des ersten CTAs statt im Header. */
+  .produktseite-clean .produkt-vorschau-card { max-width: 380px; margin: 0 auto; }
+
+  /* Sprint-Landingpage: Timeline */
+  .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
+  .produktseite-clean .sprint-step-marker { background: #063755; border-color: #063755; color: #fff; }
+  .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
+  .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
+  .produktseite-clean .sprint-substep-tag { color: #fff; background: #063755; border-color: #063755; }
+  .produktseite-clean .sprint-substep p { color: var(--grey-70); }
+
+  /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
+  .produktseite-clean .produkt-section-head .kicker { color: #063755; }
+  .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
+  .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
+
+  /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
+  .produktseite-clean .vorschau-split-text .kicker { color: #063755; }
+  .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
+  .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
+  .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
+  .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
+  .produktseite-clean .vorschau-facts-list li::before { background: #063755; }
+  .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
+  .produktseite-clean .produkt-glass h3 { color: var(--ink); }
+  .produktseite-clean .produkt-glass p { color: var(--grey-70); }
+  .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #063755; }
+  .produktseite-clean .topics-list li { color: var(--ink); }
+  .produktseite-clean .topics-list li::before { background: #063755; }
+
+  /* Preis-Hinweis-Karte (einzelner großer Preis) */
+  .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #063755 0%, #04263b 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-amount { color: #fff; }
+  .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
+  .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
+  .produktseite-clean .price-note-list { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-note-list li { color: rgba(255,255,255,.9); }
+  .produktseite-clean .price-note-list li::before { background: #fff; }
+
+  /* Preis-Bundles: Karten clean, hervorgehobene Karte als Farbkarte */
+  .produktseite-clean .price-card h3, .produktseite-clean .price-amount { color: var(--ink); }
+  .produktseite-clean .price-name-sub, .produktseite-clean .price-desc,
+  .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
+  .produktseite-clean .price-features { border-top-color: #e7e2df; }
+  .produktseite-clean .price-features li { color: var(--ink); }
+  .produktseite-clean .price-features li::before { background: #063755; }
+  .produktseite-clean .price-badge { background: #063755; border-color: #063755; color: #fff; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #063755 0%, #04263b 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #063755 0%, #04263b 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
+  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #04263b; border-color: #fff; }
+  .produktseite-clean .pricing-footnote { color: var(--grey-50); }
+  .produktseite-clean .price-more-btn { margin-top: 30px; align-self: center; }
+  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #04263b; border-color: #fff; }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #04263b; opacity: .92; }
+  .produktseite-clean .price-ideal-band { background: var(--grey-bg); }
+  .produktseite-clean .price-ideal { color: var(--ink); }
+  .produktseite-clean .price-card--featured .price-ideal-band { background: rgba(0,0,0,.16); }
+  .produktseite-clean .price-card--featured .price-ideal { color: #fff; }
+
+  /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
+  .produktseite-clean .modal .sprint-step-marker { background: #063755; border-color: #063755; color: #fff; }
+
+  /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
+     bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
+  .produktseite-clean .usp-highlight {
+    margin-top: 28px; padding: clamp(28px, 4vw, 44px);
+    border-radius: 22px; background: linear-gradient(150deg, #063755 0%, #04263b 100%);
+    color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
+  }
+  .produktseite-clean .usp-highlight-icon {
+    flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px;
+    background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
+  }
+  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #fff; }
+  .produktseite-clean .usp-highlight-body { flex: 1 1 320px; }
+  .produktseite-clean .usp-highlight-kicker {
+    font-family: var(--font-sans); font-weight: 700; font-size: .74rem; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin: 0 0 8px;
+  }
+  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #fff; }
+  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
+
+  /* Prozess-Schritte */
+  .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
+  .produktseite-clean .produkt-process-step .step-num { color: #063755; }
+  .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
+  .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
+
+  /* Vergleich-Bild (z.B. sofort sichtbar: klassische Agentur vs. sofort sichtbar) — auf der
+     hellen "clean"-Seite als helle Karte statt als dunkler Kasten, deshalb überall dunkle
+     statt weißer Schrift (sonst unlesbar auf hellem Grund). */
+  .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
+  .produktseite-clean .vergleich-label { color: var(--ink); }
+  .produktseite-clean .vergleich-label--brand { color: #063755; }
+  .produktseite-clean .vergleich-timeline { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .vergleich-timeline--outline { border-color: #063755; }
+  .produktseite-clean .vergleich-pill { background: var(--grey-bg); border: 1px solid #e7e2df; color: var(--ink); }
+  .produktseite-clean .vergleich-rocket { border-color: rgba(255,255,255,.5); }
+  .produktseite-clean .vergleich-bonus { color: var(--ink); }
+  .produktseite-clean .vergleich-bonus svg { color: #063755; }
+
+  /* FAQ */
+  .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
+  .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
+  .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
+  .produktseite-clean .produkt-faq-item summary::after { color: #063755; }
+  .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
+
+  /* Ansprechpartner + finaler CTA */
+  .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
+  .produktseite-clean .produkt-team-cta .kicker { color: #063755; }
+  .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
+  .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
+  .produktseite-clean .ansprechpartner-name { color: var(--ink); }
+  .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
+  .produktseite-clean .produkt-cta .btn--dark { background: #063755; border-color: #063755; color: #fff; }
+
+  body.produktseite-clean .site-footer { background: var(--black); }
+
+  /* ===== capiamo: nur kleine Ergänzungen, sonst Standard-Produktseiten-Bausteine ===== */
+  .cp-name { font-family: var(--font-sans); font-size: .95rem; color: var(--grey-50); margin: .2rem 0 1.4rem; }
+  .cp-name i { font-family: var(--font-serif); color: #063755; }
+  .cp-cv { list-style: none; margin: .4rem 0 1rem; padding: 0; }
+  .cp-cv li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding: 8px 0; border-bottom: 1px solid #e7e2df; font-size: .95rem; line-height: 1.5; color: var(--grey-70); }
+  .cp-cv li:last-child { border-bottom: 0; }
+  .cp-cv time { font-weight: 600; color: #063755; }
+  .cp-cv b { color: var(--ink); font-weight: 600; }
+  .cp-quote-inline { font-family: var(--font-serif); font-style: italic; color: var(--ink); }
+  @media (max-width: 600px) { .cp-cv li { grid-template-columns: 1fr; gap: 0; } }
+</style>
+
+</head>
+<body class="produktseite produktseite-clean produktseite--capiamo">
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-workshop" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c-11,0-20,9-20,20,0,7,4,12,8,16v8h24v-8c4-4,8-9,8-16,0-11-9-20-20-20Z"/>
+        <path d="M32,62h16"/>
+        <path d="M34,70h12"/>
+      </g>
+    </symbol><symbol id="ic-ai" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="24" width="32" height="32" rx="5"/>
+        <path d="M40,10v14"/>
+        <path d="M40,56v14"/>
+        <path d="M10,40h14"/>
+        <path d="M56,40h14"/>
+        <circle cx="33" cy="37" r="1.6" fill="currentColor" stroke="none"/>
+        <circle cx="47" cy="37" r="1.6" fill="currentColor" stroke="none"/>
+        <path d="M32,46c3,2.5,13,2.5,16,0"/>
+      </g>
+    </symbol><symbol id="ic-sprint" viewBox="0 0 80 80">
+      <path fill="currentColor" d="M42,6 L16,46 L34,46 L30,74 L62,28 L42,28 Z"/>
+    </symbol><symbol id="ic-moderation" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,18h36c3,0,5,2,5,5v20c0,3-2,5-5,5H32l-10,10v-10h-8c-3,0-5-2-5-5V23c0-3,2-5,5-5Z"/>
+        <path d="M52,32h14c3,0,5,2,5,5v15c0,3-2,5-5,5h-3v9l-9-9h-2c-3,0-5-2-5-5v-4"/>
+      </g>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-rocket" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c10,8,14,20,14,32c0,8-4,16-14,22c-10-6-14-14-14-22c0-12,4-24,14-32z"/>
+        <circle cx="40" cy="34" r="6"/>
+        <path d="M26,48l-8,14"/>
+        <path d="M54,48l8,14"/>
+        <path d="M34,64c0,6,3,10,6,12c3-2,6-6,6-12"/>
+      </g>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="26"/>
+        <path d="M40,24v16l12,8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-refresh" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,33A22,22,0,0,0,20,25"/>
+        <path d="M20,13v14h14"/>
+        <path d="M20,47A22,22,0,0,0,60,55"/>
+        <path d="M60,67v-14h-14"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html#leistungen" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--desktop" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<a href="/impulsvortraege" class="dev-dd-link"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<a href="/vortrag-1" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Impulsvortrag · Relevanz</small></span></a>
+<a href="/vortrag-2" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Impulsvortrag · Strategie im Alltag</small></span></a>
+<a href="/vortrag-3" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Impulsvortrag · Perspektivwechsel</small></span></a>
+<a href="/strategie-aufsichtsrat" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<a href="/capiamo" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="/leistungen/teams" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="/der-beste-workshop" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/startseite-v1" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="/archiv/sofort-sichtbar-problem" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/digitale-tools-1-0" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/marketing-1-0" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/medien" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand mit PowerPoint, Landingpage, Roll-up</small></span></a>
+<a href="/archiv/powerpoint" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/landingpage" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/rollup" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-flex;align-items:center;margin-left:auto}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:inherit;font-size:.95rem;font-weight:400;line-height:1.4;color:var(--grey-50);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;transition:color .18s ease}
+.dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow:auto;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
+.dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.dev-dd-group{margin:4px 8px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-50);font-weight:600}
+.dev-dd-group--sub{margin-top:14px;padding-top:12px;border-top:1px solid var(--grey-bg)}
+a.dev-dd-link{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:var(--ink);text-decoration:none;border-bottom:0;font-size:inherit;min-height:0;white-space:normal}
+a.dev-dd-link:hover,a.dev-dd-link.is-current{background:var(--grey-bg);color:var(--ink)}
+a.dev-dd-link--indent{padding-left:30px}
+.dev-dd-tag{flex:0 0 32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12px}
+.dev-dd-link--muted .dev-dd-tag{background:var(--grey-bg);color:var(--grey-70)}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dev-dd-txt b{font-weight:500;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:var(--grey-50);margin-top:1px}
+.dev-dd--mobile{display:none}
+.dev-dd-short{display:none}
+@media (min-width:901px) and (max-width:1140px){
+.dev-dd--desktop .dev-dd-long{display:none}
+.dev-dd--desktop .dev-dd-short{display:inline}
+.dev-dd--desktop ~ .nav-cta{margin-left:1.1rem;padding-left:1.6rem;padding-right:1.6rem}
+}
+@media (max-width:900px){
+.nav .dev-dd--desktop{display:none}
+.mobile-menu .dev-dd--mobile{display:block;margin:0}
+.mobile-menu .dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 0;font-size:1.15rem;border-bottom:1px solid #f2f2f2}
+.mobile-menu .dev-dd-panel{position:static;width:auto;max-height:none;overflow:visible;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;margin:10px 0 6px;padding:0 0 0 12px}
+.mobile-menu .dev-dd-panel::before{display:none}
+.mobile-menu .dev-dd.is-open .dev-dd-panel{display:block}
+.mobile-menu a.dev-dd-link{padding:9px 8px;font-size:inherit;border-bottom:0}
+.mobile-menu a.dev-dd-link--indent{padding-left:30px}
+}
+</style>
+<script>
+(function(){
+function init(){
+var here=location.href.split('#')[0].split('?')[0];
+document.querySelectorAll('[data-dev-dd]').forEach(function(d){
+var b=d.querySelector('.dev-dd-toggle'),t;
+function desk(){return window.innerWidth>900;}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
+d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
+});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark btn--sm nav-cta" href="/index.html#kontakt">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html#leistungen">Strategiehandwerk</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Strategiehandwerk anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Workshops anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Training & Sparring anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+    </div>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--mobile" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<a href="/impulsvortraege" class="dev-dd-link"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<a href="/vortrag-1" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Impulsvortrag · Relevanz</small></span></a>
+<a href="/vortrag-2" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Impulsvortrag · Strategie im Alltag</small></span></a>
+<a href="/vortrag-3" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Impulsvortrag · Perspektivwechsel</small></span></a>
+<a href="/strategie-aufsichtsrat" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<a href="/capiamo" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="/leistungen/teams" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="/der-beste-workshop" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/startseite-v1" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="/archiv/sofort-sichtbar-problem" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/digitale-tools-1-0" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/marketing-1-0" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/medien" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand mit PowerPoint, Landingpage, Roll-up</small></span></a>
+<a href="/archiv/powerpoint" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/landingpage" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="/archiv/rollup" class="dev-dd-link dev-dd-link--muted dev-dd-link--indent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div>
+</div>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark" href="/index.html#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="produkt-hero">
+    <div class="container">
+    <div class="produkt-hero-grid">
+      <div class="produkt-hero-text">
+        <p class="kicker">capiamo · Fachbereich &amp; IT</p>
+        <h1 class="h-serif">Fachbereich trifft IT. <span class="hl">Und es läuft.</span></h1>
+        <p class="cp-name"><i>capiamo</i> – italienisch für „wir verstehen“.</p>
+        <div class="produkt-hero-lead-cols produkt-hero-lead-cols--single" style="max-width:none;gap:1.6em">
+          <p class="lead">Bei Versicherern entscheidet sich an der Schnittstelle zwischen Fachbereich und IT, ob aus einer Strategie die richtigen Tools und Prozesse werden. Genau dort sitzt oft der Engpass.</p>
+          <p class="lead">Wir übersetzen zwischen beiden Seiten, bringen Themen auf den Punkt und steuern die Umsetzung – so lange, bis das Richtige herauskommt.</p>
+        </div>
+        <div class="produkt-pills">
+          <span class="produkt-pill reveal">Strategie verstehen</span>
+          <span class="produkt-pill reveal">Anforderungen ableiten</span>
+          <span class="produkt-pill reveal">Umsetzung steuern</span>
+        </div>
+      </div>
+      <div class="produkt-hero-visual">
+        <div class="produkt-mock-sketch reveal">
+<svg viewBox="0 40 560 236" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze: Eine unklare Anforderung aus dem Fachbereich wird über einen Übersetzer-Knoten zu einer klaren Linie in Richtung IT, die ein fertiges Ergebnis liefert">
+<path d="M48,70 H140 A14,14 0 0 1 154,84 V154 A14,14 0 0 1 140,168 H62 L40,190 V168 H48 A14,14 0 0 1 34,154 V84 A14,14 0 0 1 48,70 Z" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.8"/>
+<path d="M50,100 c10,-12 18,12 28,0 s18,12 28,0 s16,10 26,-2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"/>
+<path d="M50,122 c8,8 16,-10 26,0 s14,-8 22,2 s18,6 30,-4" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/>
+<path d="M50,144 c12,-6 20,6 30,-2" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+<path d="M160,130 C185,95 200,165 215,118 S240,150 228,128 S250,110 262,128" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 4"/>
+<circle cx="290" cy="128" r="30" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.85)" stroke-width="2.4"/>
+<path d="M277,120 h26 M277,136 h26" stroke="rgba(255,255,255,.9)" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M296,113 l7,7 -7,7 M284,129 l-7,7 7,7" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M320,128 H372" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round"/>
+<path d="M362,119 l11,9 -11,9" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="384" y="62" width="150" height="132" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.8"/>
+<line x1="384" y1="84" x2="534" y2="84" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+<circle cx="398" cy="73" r="3" fill="rgba(255,255,255,.35)"/>
+<circle cx="408" cy="73" r="3" fill="rgba(255,255,255,.35)"/>
+<circle cx="418" cy="73" r="3" fill="rgba(255,255,255,.35)"/>
+<path d="M406,108 l-10,10 10,10 M510,108 l10,10 -10,10" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="420" y="102" width="70" height="5" rx="2.5" fill="rgba(255,255,255,0.55)"/>
+<rect x="430" y="114" width="56" height="5" rx="2.5" fill="rgba(255,255,255,0.4)"/>
+<rect x="420" y="126" width="80" height="5" rx="2.5" fill="rgba(255,255,255,0.45)"/>
+<rect x="430" y="138" width="40" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
+<circle cx="459" cy="170" r="11" fill="rgba(255,255,255,.9)"/>
+<path d="M453,170 l4,4 8,-8" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="94" cy="226" r="9" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+<path d="M78,262 a16,16 0 0 1 32,0" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+<circle cx="459" cy="226" r="9" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+<path d="M443,262 a16,16 0 0 1 32,0" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+<line x1="20" y1="266" x2="544" y2="266" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/>
+</svg>
+        </div>
+      </div>
+    </div>
+    <div class="produkt-hero-actions produkt-hero-actions--center">
+      <a class="btn btn--dark" href="#naechste-sektion">capiamo kennenlernen</a>
+    </div>
+    </div>
+  </section>
+
+  <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
+  <!-- ===== Problem ===== -->
+  <section class="produkt-grid">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Das Problem</p>
+        <h2 class="h-serif">„Die verstehen mich einfach nicht – wir reden so oft aneinander vorbei!“</h2>
+        <p>Das hören wir regelmäßig – aus dem Vertrieb, aus den Fachbereichen und aus der IT. Jede Seite hat recht, aus ihrer Sicht. Was fehlt, ist jemand, der beide Sprachen spricht.</p>
+      </div>
+      <div class="produkt-grid-cards">
+        <div class="produkt-glass reveal">
+          <div class="feature-icon"><svg><use href="#ic-clock"/></svg></div>
+          <h3>Themen bleiben liegen</h3><p>… bis jemand danach fragt. Keiner fühlt sich zuständig, und das Thema verliert an Fahrt.</p>
+        </div>
+        <div class="produkt-glass reveal">
+          <div class="feature-icon"><svg><use href="#ic-text"/></svg></div>
+          <h3>Anforderungen treffen nicht den Kern</h3><p>Die IT setzt um, was aufgeschrieben wurde – aber nicht das, was eigentlich gebraucht wird.</p>
+        </div>
+        <div class="produkt-glass reveal">
+          <div class="feature-icon"><svg><use href="#ic-doc"/></svg></div>
+          <h3>Entscheidungen ziehen sich</h3><p>Vorstand und Gremien fehlt eine klare Vorlage – also wird vertagt statt entschieden.</p>
+        </div>
+      </div>
+      <div class="usp-highlight reveal">
+        <div class="usp-highlight-icon"><svg><use href="#ic-control"/></svg></div>
+        <div class="usp-highlight-body">
+          <p class="usp-highlight-kicker">Der eigentliche Engpass</p>
+          <h3>Er sitzt zwischen Fachbereich und IT.</h3>
+          <p>Hier braucht es Verständnis für beide Seiten: sehen, wo der Schmerz wirklich sitzt, den Kern lösen und das Thema so in Richtung IT übersetzen, dass am Ende das Richtige herauskommt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Unsere Rolle ===== -->
+  <section class="produkt-section">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Unsere Rolle</p>
+        <h2 class="h-serif">Zuhörer. Übersetzer. Umsetzungs-Sichersteller.</h2>
+        <p>Wir fragen aus verschiedenen Perspektiven, skizzieren mit und bringen Themen auf den Punkt – und dann bleiben wir dran, bis sie umgesetzt sind.</p>
+      </div>
+      <div class="sprint-timeline reveal" style="max-width:760px;margin:0 auto;">
+        <div class="sprint-step">
+          <div class="sprint-step-marker">1</div>
+          <div class="sprint-step-body">
+            <h4>Strategie und Zielsetzung verstehen</h4>
+            <p class="sprint-step-meta">Wir klären, was das Unternehmen erreichen will und wo der Schmerz wirklich sitzt – nicht nur, was gerade auf dem Tisch liegt.</p>
+          </div>
+        </div>
+        <div class="sprint-step">
+          <div class="sprint-step-marker">2</div>
+          <div class="sprint-step-body">
+            <h4>Fachliche Anforderungen ableiten</h4>
+            <p class="sprint-step-meta">Wir strukturieren das Thema und übersetzen es so in Richtung IT, dass beide Seiten dasselbe darunter verstehen.</p>
+          </div>
+        </div>
+        <div class="sprint-step">
+          <div class="sprint-step-marker">3</div>
+          <div class="sprint-step-body">
+            <h4>(IT-)Umsetzung steuern</h4>
+            <p class="sprint-step-meta">Wir treiben das Projekt voran, nehmen das Team mit und bereiten Themen so auf, dass Vorstand und Gremien entscheiden können.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Mehrwert (grauer Balken – der wichtigste Punkt) ===== -->
+  <section class="produkt-section usp-turbo-section">
+    <div class="container">
+      <div class="usp-turbo-head reveal">
+        <div class="usp-turbo-icon">
+          <svg width="34" height="34" aria-hidden="true"><use href="#ic-rocket"/></svg>
+        </div>
+        <div>
+          <p class="kicker">Der Mehrwert</p>
+          <h2 class="h-serif">Sobald wir dabei sind, läuft das Thema.</h2>
+        </div>
+      </div>
+      <div class="usp-turbo-cols">
+        <div class="usp-turbo-col reveal">
+          <p>Niemand muss mehr nachhaken. Niemand muss das Gesamtsystem noch besser verstehen, um endlich die richtige Frage zu stellen. Es tut sich etwas – systematisch und in die richtige Richtung.</p>
+          <ul class="tc-check-list">
+            <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg><span>Themen kommen voran, statt liegen zu bleiben</span></li>
+            <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg><span>Fachbereich, Vertrieb und IT meinen dasselbe</span></li>
+            <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg><span>Vorlagen, auf deren Basis Vorstand und Gremien entscheiden</span></li>
+            <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg><span>Tools und Prozesse, mit denen Ihr in die Zukunft geht</span></li>
+          </ul>
+        </div>
+        <div class="usp-turbo-col reveal">
+          <p>Oder wie es ein Vorstand eines anderen Versicherers bei einem Branchentreff beschrieben hat:</p>
+          <p class="cp-quote-inline">„Eigentlich stellt Daniel viele Fragen aus verschiedenen Perspektiven, skizziert dabei mit – und wenn er es Dir hinterher zeigt, denkst Du: Ja genau, das habe ich gemeint!“</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== So arbeiten wir ===== -->
+  <section class="produkt-section produkt-vorschau produkt-vorschau--split">
+    <div class="container">
+      <div class="vorschau-split-grid">
+        <div class="vorschau-split-text reveal">
+          <p class="kicker">So arbeiten wir</p>
+          <h2 class="h-serif">Erst klären. Dann steuern.</h2>
+          <p>Am Anfang steht eine saubere Auftragsklärung: gewünschtes Ergebnis, Meilensteinplan, Kommunikationsmatrix. Danach übernehmen wir das Projektmanagement – und nehmen das Team des Auftraggebers mit.</p>
+          <p>Über die gesamte Zeit erhalten Vorstand und Gremien regelmäßig Unterlagen, auf deren Basis sie entscheiden können.</p>
+        </div>
+        <div class="vorschau-split-card reveal">
+          <div class="media-box sprint-structure-card">
+            <button type="button" class="media-box-thumb-btn" data-modal-target="capiamoModalVorgehen" aria-label="Vorschau öffnen: Unser Vorgehen">
+              <div class="media-box-thumb">
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="40" y="24" width="880" height="72" rx="14" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.7)" stroke-width="2"/>
+<text x="480" y="68" text-anchor="middle" font-family="var(--font-serif)" font-size="20" font-weight="700" fill="#fff">Regelmäßige Unterlagen für die Gremienkommunikation</text>
+<line x1="140" y1="160" x2="140" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M133,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="380" y1="160" x2="380" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M373,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="620" y1="160" x2="620" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M613,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="840" y1="160" x2="840" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M833,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40,180 H264 L290,226.0 L264,272 H40 L66,226.0 Z" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2"/>
+<text x="170" y="232" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="#fff">Auftragsklärung</text>
+<line x1="318" y1="160" x2="318" y2="500" stroke="rgba(255,255,255,.5)" stroke-width="1.6" stroke-dasharray="6 7"/>
+<circle cx="318" cy="226" r="9" fill="rgba(255,255,255,.2)" stroke="#fff" stroke-width="3"/>
+<text x="318" y="150" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.6)">Meilenstein</text>
+<path d="M346,180 H894 L920,226.0 L894,272 H346 L372,226.0 Z" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2"/>
+<text x="640" y="232" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="#fff">Projektmanagement</text>
+<circle cx="62" cy="317" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="322" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Gewünschtes Ergebnis</text>
+<circle cx="62" cy="359" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="364" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Meilensteinplan</text>
+<circle cx="62" cy="401" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="406" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Kommunikationsmatrix</text>
+<rect x="70" y="470" width="52" height="66" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><rect x="84" y="460" width="52" height="66" rx="4" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/><line x1="80" y1="488" x2="108" y2="488" stroke="rgba(255,255,255,.8)" stroke-width="2.4"/><line x1="80" y1="498" x2="100" y2="498" stroke="rgba(255,255,255,.8)" stroke-width="2.4"/>
+<circle cx="372" cy="317" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="322" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Rolle: Wir nehmen das Team des Auftraggebers mit</text>
+<circle cx="372" cy="359" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="364" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Termin-Arten</text>
+<circle cx="372" cy="401" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="406" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Auftragsmanagement</text>
+</svg>
+              </div>
+            </button>
+            <div class="media-box-footer">
+              <span class="media-box-title">Unser Vorgehen</span>
+              <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="capiamoModalVorgehen">Vorschau ansehen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Unsere Themen ===== -->
+  <section class="produkt-section produkt-media-boxes">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Unsere Themen</p>
+        <h2 class="h-serif">Drei Einstiege. Ein Ziel: Es läuft.</h2>
+        <p>Klar abgegrenzte Angebote – auf Wunsch unterfüttert mit Tools und Automatisierungen.</p>
+      </div>
+      <div class="media-boxes-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1088px; margin-left: auto; margin-right: auto;">
+        <div class="media-box sprint-structure-card media-box--icon">
+          <div class="media-box-thumb media-box-thumb--icon"><svg aria-hidden="true"><use href="#ic-control"/></svg></div>
+          <div class="media-box-footer">
+            <span class="media-box-title">Flaschenhals-Management</span>
+            <p class="media-box-desc">Beauftragung und Koordination zwischen Fachbereich und IT – damit Anforderungen nicht im Nadelöhr stecken bleiben.</p>
+            <span class="btn btn--dark btn--sm sprint-structure-cta">Details folgen</span>
+          </div>
+        </div>
+        <div class="media-box sprint-structure-card media-box--icon">
+          <div class="media-box-thumb media-box-thumb--icon"><svg aria-hidden="true"><use href="#ic-refresh"/></svg></div>
+          <div class="media-box-footer">
+            <span class="media-box-title">Prozessoptimierung</span>
+            <p class="media-box-desc">Abläufe verstehen, Engpässe sichtbar machen und Prozesse so aufsetzen, dass Tools sie wirklich unterstützen.</p>
+            <span class="btn btn--dark btn--sm sprint-structure-cta">Details folgen</span>
+          </div>
+        </div>
+        <div class="media-box sprint-structure-card media-box--icon">
+          <div class="media-box-thumb media-box-thumb--icon"><svg aria-hidden="true"><use href="#ic-chart"/></svg></div>
+          <div class="media-box-footer">
+            <span class="media-box-title">(Multi-)Projektbegleitung</span>
+            <p class="media-box-desc">Von der Auftragsklärung bis zur Umsetzung: Wir steuern einzelne Projekte oder ein ganzes Portfolio.</p>
+            <span class="btn btn--dark btn--sm sprint-structure-cta">Details folgen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Warum wir das können ===== -->
+  <section class="produkt-section produkt-faq">
+    <div class="container">
+      <div class="produkt-section-head reveal">
+        <p class="kicker">Warum wir das können</p>
+        <h2 class="h-serif">Zwei Perspektiven, ein eingespieltes Team.</h2>
+        <p>Wir arbeiten seit vielen Jahren erfolgreich zusammen – und kennen den Versicherer von der Strategie bis zur IT-Umsetzung.</p>
+      </div>
+      <div class="produkt-faq-list">
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Rick-Marcel Richter – IT &amp; Transformation</summary>
+          <p>Rick kennt alle Seiten: den Versicherer, den Vertrieb und den Softwareanbieter. Damit bringt er die Kombination mit, die es braucht, um den Engpass zwischen Fachbereich und IT zu verstehen und zu lösen.</p>
+          <p>Er ist kein Nerd im Hinterzimmer, sondern Umsetzungs- und Projektleitungsprofi: Er treibt Themen voran, bringt Ideen ein, sorgt für Ergebnisse und stellt Themen so dar, dass sie im Vorstand oder im Gremium entschieden werden können. Und mit ihm arbeitet man einfach gern zusammen.</p>
+          <ul class="cp-cv">
+            <li><time>seit 2022</time><span><b>empiria GmbH</b> · Senior Consultant</span></li>
+            <li><time>seit 2022</time><span><b>IT &amp; Transformation Consulting</b> · selbstständig</span></li>
+            <li><time>2020 – 2022</time><span><b>Weiss GmbH Softwarelösungen</b> · CIO</span></li>
+            <li><time>2018 – 2020</time><span><b>Weiss GmbH Softwarelösungen</b> · Head of Development, Runtime &amp; Support</span></li>
+            <li><time>2015 – 2018</time><span><b>SV SparkassenVersicherung</b> · IT Project Manager</span></li>
+            <li><time>2012 – 2018</time><span><b>SV SparkassenVersicherung</b> · IT Consultant (Inhouse): Release- und Projektkoordination, Testmanagement, verantwortlich für die Einführung einer modernen Schadenanwendung für den Vertrieb</span></li>
+          </ul>
+        </details>
+        <details class="produkt-faq-item reveal" name="produkt-faq">
+          <summary>Daniel Ströbel – Strategiehandwerker</summary>
+          <p>Daniel stellt Fragen aus verschiedenen Perspektiven, skizziert live mit und bringt komplexe Themen auf eine Seite. So entstehen Strategien, Anforderungen und Entscheidungsvorlagen, in denen sich alle Beteiligten wiederfinden.</p>
+          <ul class="cp-cv">
+            <li><time>Strategie</time><span>Strategien auf Konzernebene entwickelt, Vorstandsklausuren konzipiert</span></li>
+            <li><time>Übersetzung</time><span>Live-Visualisierung: Themen so skizzieren, dass alle sagen „genau das ist gemeint“</span></li>
+            <li><time>Gremien</time><span>Führungsverantwortliche bis auf Aufsichtsratsebene begleitet, Entscheidungsvorlagen aufbereitet</span></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Download: PDF-Zusammenfassung ===== -->
+  <section class="produkt-section pdf-dl-section">
+    <div class="container">
+      <div class="pdf-dl pdf-dl--mist reveal" id="download" style="--dl-acc:#1f6e9c;">
+        <div class="pdf-dl-visual" aria-hidden="true">
+          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/empiria-capiamo-2.webp" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/empiria-capiamo-1.webp" alt="" loading="lazy">
+        </div>
+        <div class="pdf-dl-text">
+          <p class="pdf-dl-kicker">Download</p>
+          <h2 class="pdf-dl-h">capiamo auf <span class="hl-acc">einen Blick.</span></h2>
+          <p class="pdf-dl-lead">Das Wichtigste kompakt zusammengefasst. Zum Nachlesen und Weitergeben an Dein Team oder Deine Entscheider.</p>
+          <div class="pdf-dl-meta"><span>PDF</span><span>5 Seiten</span><span>0,6 MB</span></div>
+          <a class="pdf-dl-btn" href="/assets/downloads/empiria-capiamo.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ansprechpartner + CTA ===== -->
+  <section class="produkt-cta produkt-team-cta">
+    <div class="container">
+      <p class="kicker">Jetzt sprechen</p>
+      <h2>Wo hakt es zwischen Fachbereich und IT?</h2>
+      <p class="produkt-team-cta-sub">Erzähl uns von Deinem Thema. Wir hören zu, stellen die richtigen Fragen – und sagen Dir ehrlich, ob und wie wir helfen können.</p>
+      <div class="ansprechpartner-grid">
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Daniel Ströbel</p>
+          <p class="ansprechpartner-role">Strategiehandwerker</p>
+        </div>
+        <div class="ansprechpartner-card reveal">
+          <div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-rick.webp" alt="Rick-Marcel Richter" width="132" height="132" loading="lazy"></div>
+          <p class="ansprechpartner-name">Rick-Marcel Richter</p>
+          <p class="ansprechpartner-role">IT &amp; Transformation</p>
+        </div>
+      </div>
+      <div class="produkt-cta-actions">
+        <a class="btn btn--dark" href="/kontakt.html">Gespräch anfragen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+
+<!-- ===== capiamo: Vorgehen ===== -->
+<div class="modal-overlay" id="capiamoModalVorgehen" data-generic>
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure modal--structure-accent">
+      <div class="modal-structure-head">
+        <h3>Unser Vorgehen</h3>
+        <p>Erst klären, dann steuern – mit regelmäßigen Unterlagen für Vorstand und Gremien.</p>
+      </div>
+      <div class="modal-structure-layout modal-structure-layout--stacked">
+        <div class="modal-structure-frame" style="width:min(88vw, calc(52vh * 1.714)); aspect-ratio:960/560">
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vorgehen: Auftragsklärung mit gewünschtem Ergebnis, Meilensteinplan und Kommunikationsmatrix, dann Projektmanagement mit Rolle, Termin-Arten und Auftragsmanagement; darüber regelmäßige Unterlagen für die Gremienkommunikation">
+<rect x="40" y="24" width="880" height="72" rx="14" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.7)" stroke-width="2"/>
+<text x="480" y="68" text-anchor="middle" font-family="var(--font-serif)" font-size="20" font-weight="700" fill="#fff">Regelmäßige Unterlagen für die Gremienkommunikation</text>
+<line x1="140" y1="160" x2="140" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M133,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="380" y1="160" x2="380" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M373,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="620" y1="160" x2="620" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M613,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="840" y1="160" x2="840" y2="106" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+<path d="M833,114 l7,-9 7,9" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40,180 H264 L290,226.0 L264,272 H40 L66,226.0 Z" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2"/>
+<text x="170" y="232" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="#fff">Auftragsklärung</text>
+<line x1="318" y1="160" x2="318" y2="500" stroke="rgba(255,255,255,.5)" stroke-width="1.6" stroke-dasharray="6 7"/>
+<circle cx="318" cy="226" r="9" fill="rgba(255,255,255,.2)" stroke="#fff" stroke-width="3"/>
+<text x="318" y="150" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.6)">Meilenstein</text>
+<path d="M346,180 H894 L920,226.0 L894,272 H346 L372,226.0 Z" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2"/>
+<text x="640" y="232" text-anchor="middle" font-family="var(--font-serif)" font-size="19" font-weight="700" fill="#fff">Projektmanagement</text>
+<circle cx="62" cy="317" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="322" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Gewünschtes Ergebnis</text>
+<circle cx="62" cy="359" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="364" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Meilensteinplan</text>
+<circle cx="62" cy="401" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="78" y="406" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Kommunikationsmatrix</text>
+<rect x="70" y="470" width="52" height="66" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><rect x="84" y="460" width="52" height="66" rx="4" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/><line x1="80" y1="488" x2="108" y2="488" stroke="rgba(255,255,255,.8)" stroke-width="2.4"/><line x1="80" y1="498" x2="100" y2="498" stroke="rgba(255,255,255,.8)" stroke-width="2.4"/>
+<circle cx="372" cy="317" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="322" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Rolle: Wir nehmen das Team des Auftraggebers mit</text>
+<circle cx="372" cy="359" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="364" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Termin-Arten</text>
+<circle cx="372" cy="401" r="4" fill="rgba(255,255,255,.75)"/>
+<text x="388" y="406" text-anchor="start" font-family="var(--font-sans)" font-size="15" fill="rgba(255,255,255,.88)">Auftragsmanagement</text>
+</svg>
+        </div>
+        <p class="modal-structure-note">Zuerst klären wir den Auftrag: gewünschtes Ergebnis, Meilensteinplan und wer wann wie informiert wird. Danach steuern wir das Projekt, nehmen das Team des Auftraggebers mit und sorgen mit klaren Termin-Arten und sauberem Auftragsmanagement dafür, dass es vorangeht. Über die gesamte Zeit bereiten wir regelmäßig Unterlagen für Vorstand und Gremien auf.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>
