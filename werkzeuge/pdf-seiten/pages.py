@@ -52,7 +52,7 @@ P["strategie"] = ("strategie", "Strategie in den Alltag überführen – empiria
       "Abteilungs- und Bereichsleitungen, die fachlich überzeugt haben",
       "Führungskräfte, die ihrem Bereich Richtung geben müssen",
     ], style="margin-top:7mm"),
-    stage("Zusammenarbeit", 'So arbeiten wir wirklich zusammen.', wm="handshake", boden=True,
+    stage("Zusammenarbeit", 'So arbeiten wir wirklich zusammen.', wm="forward", boden=True,
           inhalt=rows([("Direkter Draht, klare Worte", "Du arbeitest direkt mit mir – Daniel – zusammen. Die Verantwortung bleibt durchgehend bei mir. Und ich sage, was ich denke: ehrliches, direktes Feedback, um den Fokus zu schärfen."),
           ("Dein Einsatz entscheidet", "Eine Strategie lässt sich nicht von außen hineintragen. Wir unterstützen Dich maximal – die Umsetzung bleibt Deine Aufgabe. Plane dafür ein bis zwei Stunden pro Woche ein."),
           ("Dranbleiben, klar planen, umsetzen", "Regelmäßig abstimmen statt punktuell, klares Vorgehen, flexibel bei Engpässen – und ab einem gewissen Punkt zählt schnelle Umsetzung mehr als eine weitere Abstimmungsschleife.")], style="margin-top:2mm")),
@@ -82,7 +82,7 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
     # Eine getoente Flaeche je Seite: der dunkle Dialogkasten liegt IM hellen
     # Band, so wie auf der Website - nicht daneben.
     stage("Die Fragen, die keiner stellt", "Damit hat sich vorher kaum jemand beschäftigt.",
-          wm="search", boden=True,
+          wm="kreuz", boden=True,
           inhalt=bubbles("Vor jedem wichtigen Termin derselbe Reflex",
                          ["„Wir brauchen eine Präsentation.“", "„Noch eine Folie.“", "„Noch ein Punkt, ja nichts vergessen.“"],
                          "Am Ende funktioniert es trotzdem nicht – weil die ganze Energie in die Präsentation floss und <b>nicht in die Taktik, mit der Du zum Erfolg kommst.</b>")
@@ -93,7 +93,7 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
   page(
     sec("Die Lösung", 'Die Präsentation ist nie das Ziel. <span class="hl">Das Ergebnis ist es.</span>',
         "Wir sind keine Medienagentur: Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber. <b>Ein kurzes Briefing, ein paar gezielte Rückfragen, und Du kannst Dir sicher sein, dass es ab hier läuft.</b>"),
-    stage("Unser Vorgehen", "In vier Schritten zum Ergebnis.", wm="route", boden=True, inhalt=stations([
+    stage("Unser Vorgehen", "In vier Schritten zum Ergebnis.", wm="kreuz", boden=True, inhalt=stations([
       (None, "Ergebnis &amp; Zielgruppe", "Wir strukturieren Dein Thema so, dass es in der Welt Deines Gesprächspartners ankommt. Die zentrale Frage: <b>Welche Bedeutung hat Dein Thema für die Zielgruppe?</b>"),
       (None, "Business Story", "Verdichtet zu einer klaren Kernbotschaft – unabhängig vom Medium: <b>Why</b> (warum ist das Thema für die Zielgruppe wichtig), <b>How</b> (wie gehen wir vor) und <b>What next</b> (was passiert als Nächstes)."),
       (None, "Medien", "Aus der Business Story entstehen professionelle Medien – gezielt für den jeweiligen Einsatz und weit über die klassische PowerPoint hinaus."),
@@ -107,7 +107,7 @@ P["komplexe-themen"] = ("strategie", "Komplexe Themen strukturieren & kommunizie
     # Wasserzeichen, darauf der schwarze Kasten mit den echten Mockups.
     stage("Zwischenergebnis", "Jetzt weißt Du schon, wie Du gewinnst.",
           "Der Weg zum Ziel und Deine Business Story sind geklärt, bevor überhaupt eine Folie entsteht. <b>Spoiler Alert:</b> Oftmals kommt etwas anderes heraus, als Du am Anfang gedacht hast.",
-          wm="slides", boden=True, inhalt=mocks([
+          wm="kreuz", boden=True, inhalt=mocks([
         (S.load("medium-powerpoint"), "PowerPoint",
          "Eine Präsentation, die Deine Business Story trägt – klar strukturiert und startklar für den großen Moment im Raum."),
         (S.load("medium-landingpage"), "Landingpage",
@@ -162,7 +162,7 @@ P["innovation"] = ("strategie", "Innovation & Geschäftsmodell neu denken – em
         "Wir bringen eigene Methoden und Frameworks mit und helfen Dir, Dich von alten Denkmustern zu lösen.",
         "<b>Wir nutzen Methoden, um Erkenntnisse zu schaffen. Wir wenden sie nicht unreflektiert an.</b>",
         style="margin-top:12mm"),
-    stage(None, None, wm="bulb", boden=True,
+    stage(None, None, wm="kreis", boden=True,
           inhalt=feat("Ein bewährter Ansatz", "Wir denken mit Dir so, als würdet Ihr Euer Thema morgen als eigenes Unternehmen neu gründen – ganz ohne Altlasten.", style="margin-top:0")),
     contact_html=None),
   page(

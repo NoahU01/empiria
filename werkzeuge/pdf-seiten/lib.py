@@ -65,6 +65,22 @@ ICONS = {
  "euro": '<path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4 10.5h9M4 13.5h9"/>',
  "rocket": '<path d="M12 3c3 2.4 4.2 6 4.2 9.6 0 2.4-1.2 4.8-4.2 6.6-3-1.8-4.2-4.2-4.2-6.6C7.8 9 9 5.4 12 3z"/><circle cx="12" cy="10.2" r="1.8"/><path d="M7.8 14.4L5.4 18.6"/><path d="M16.2 14.4l2.4 4.2"/><path d="M10.2 19.2c0 1.8.9 3 1.8 3.6.9-.6 1.8-1.8 1.8-3.6"/>',
 }
+
+# ---- Die fuenf Icons des Corporate Design -----------------------------------
+# Marker neben Farbkacheln und grafisches Wiederholungselement. Anders als die
+# uebrigen Icons sind es Flaechenformen (fill) mit eigener viewBox.
+CD_ICONS = {
+  "kreuz": '<path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/>',
+  "kreis": '<path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/>',
+  "quadrat": '<path fill="currentColor" d="M209.61,22.83v186.77H22.83V22.83h186.77M216.12,2.83H16.32c-7.45,0-13.49,6.04-13.49,13.49v199.8c0,7.45,6.04,13.49,13.49,13.49h199.8c7.45,0,13.49-6.04,13.49-13.49V16.32c0-7.45-6.04-13.49-13.49-13.49h0Z"/>',
+  "raute": '<path fill="currentColor" d="M116.22,27.03l89.19,89.19-89.19,89.19L27.03,116.22,116.22,27.03M116.22,2.83c-2.53,0-5.06.96-6.99,2.89L5.73,109.23c-3.86,3.86-3.86,10.11,0,13.97l103.51,103.51c1.93,1.93,4.46,2.89,6.99,2.89s5.06-.96,6.99-2.89l103.51-103.51c3.86-3.86,3.86-10.11,0-13.97L123.21,5.73c-1.93-1.93-4.46-2.89-6.99-2.89h0Z"/>',
+  "forward": '<path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/> <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>',
+}
+def cd_icon(n):
+    return (f'<svg viewBox="0 0 232.44 232.44" fill="currentColor" '
+            f'aria-hidden="true">{CD_ICONS[n]}</svg>')
+
+
 def icon(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{ICONS[n]}</svg>'
 
 CSS = r"""
@@ -84,6 +100,15 @@ b, strong { font-weight: 600; }
 .head { display:flex; justify-content: space-between; align-items:center; margin-bottom: 15mm; }
 .head img { height: 6mm; }
 .page-no { font-size: 8pt; color: var(--g50); font-weight: 500; }
+/* ---- Fussbereich ----------------------------------------------------------
+   Seitenzahl unten rechts, links ein kurzer Strich als grafischer Anker. Ohne
+   ihn wirkt der Fuss leer - vor allem auf Seiten, deren helles Band bis zur
+   Blattkante laeuft. Der Strich nimmt das Motiv des Unterstrichs im
+   empiria-Logo auf, etwas kraeftiger. */
+.pfoot { position: absolute; left: 22mm; right: 22mm; bottom: 9mm;
+         display: flex; align-items: center; justify-content: space-between; }
+.pfoot .strich { display: block; width: 14mm; height: .9mm;
+                 background: var(--ink); border-radius: .45mm; }
 .kicker { font-weight: 500; font-size: 10.5pt; color: var(--acc); margin: 0 0 2mm; }
 h1 { font-family: var(--serif); font-weight: 700; font-size: 40pt; line-height: 1.12; letter-spacing: -.01em; }
 h2 { font-family: var(--serif); font-weight: 700; font-size: 22pt; line-height: 1.22; margin: 0 0 4.5mm; max-width: 158mm; }
@@ -156,8 +181,12 @@ p.lead + p.lead { margin-top: 2.6mm; }
    und darauf der schwarze Kasten - dieselbe Schichtung wie auf den Landingpages. */
 .stage { position:relative; margin:9mm -22mm 0; padding:8mm 22mm 9mm; background:var(--bg); overflow:hidden; }
 .stage > * { position:relative; z-index:1; }
+/* Wasserzeichen wie auf der Website: eine definierte helle Graustufe bei
+   voller Deckkraft - NICHT Schwarz mit 5,5 % Deckkraft. Gemessen ergab das im
+   PDF nur 4 von 255 Kontrast, das rechnen Betrachter faktisch weg. Die
+   Website nutzt #dedede auf hellem Grund, rund 15 von 255. */
 .stage-wm { position:absolute; z-index:0; right:-18mm; bottom:-24mm; width:98mm; height:98mm;
-            color:var(--ink); opacity:.055; }
+            color:#dedede; opacity:1; }
 .stage-wm svg { width:100%; height:100%; stroke-width:.9; }
 /* Steht das Band am Seitenende, laeuft es bis an die Blattkante - so wie die
    Sektionen auf der Website. Sonst bleibt darunter ein weisser Streifen, der
@@ -392,8 +421,14 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .contact .p { display: grid; grid-template-columns: 15mm 1fr; column-gap: 3.5mm; align-items: center; }
 .contact .p img { width: 15mm; height: 15mm; border-radius: 50%; object-fit: cover; border: 0.6pt solid #d6d2cd; display:block; }
 .contact .p .name { font-size: 10.5pt; margin: 0 0 .5mm; }
-.contact .p .role { font-size: 8pt; line-height: 1.35; }
-.footer { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #cfcecc; padding: 6mm 22mm; font-size: 9pt; }
+/* Zwei Zeilen fest reservieren: Sonst ist der Textblock bei einzeiligen
+   Bezeichnungen niedriger, und weil Bild und Text zueinander zentriert sind,
+   sitzen die Namen dann auf unterschiedlicher Hoehe. */
+.contact .p .role { font-size: 8pt; line-height: 1.35; min-height: 7.7mm; }
+.footer { position: absolute; left: 0; right: 0; bottom: 0; background: #000; color: #cfcecc;
+          padding: 6mm 22mm; font-size: 9pt;
+          display: flex; align-items: center; justify-content: space-between; }
+.footer .page-no { color: rgba(255,255,255,.55); }
 /* Browser-Mock */
 .bm { border: 0.8pt solid var(--g30); border-radius: 3.5mm; background: #fff; overflow: hidden; margin-top: 6mm; }
 .bm-bar { display:flex; align-items:center; gap: 1.6mm; padding: 2.6mm 4mm; background: #f6f5f3; }
@@ -534,7 +569,9 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 
 def esc(s): return _h.escape(s, quote=False)
 
-def build(theme, pages, title):
+def build(theme, pages, title, fusszeile=False):
+    global _FUSS
+    _FUSS = fusszeile
     th = THEMES[theme]
     feat_bg = th.get('feat_bg', f"linear-gradient(150deg, {th['acc']} 0%, {th['acc2']} 100%)")
     feat_fg = th.get('feat_fg', '#fff')
@@ -548,8 +585,21 @@ def build(theme, pages, title):
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'
             f'<link rel="stylesheet" href="assets/fonts/fonts.local.css"><style>{CSS}{vars_}</style></head><body>{body}</body></html>')
 
-FOOTER = '<div class="footer">empiria GmbH 2026</div>'
-def head(no, total): return f'<div class="head"><img src="assets/empiria-logo.svg" alt="empiria"><span class="page-no">Seite {no} / {total}</span></div>'
+# Wird je PDF von build() gesetzt: neue Fusszeile statt Seitenzahl im Kopf.
+_FUSS = False
+
+def _seitenzahl(no, total): return f'<span class="page-no">Seite {no} / {total}</span>'
+
+def FOOTER(no=None, total=None):
+    z = _seitenzahl(no, total) if (_FUSS and no) else ""
+    return f'<div class="footer"><span>empiria GmbH 2026</span>{z}</div>'
+
+def pfoot(no, total):
+    return f'<div class="pfoot"><span class="strich"></span>{_seitenzahl(no, total)}</div>'
+
+def head(no, total):
+    z = "" if _FUSS else _seitenzahl(no, total)
+    return f'<div class="head"><img src="assets/empiria-logo.svg" alt="empiria">{z}</div>'
 
 def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein=False):
     subs = subs if isinstance(subs, list) else [subs]
@@ -565,7 +615,8 @@ def cover(kicker, h1, subs, sketch, facts, brandlogo=None, noinv=False, subklein
 def page(*content, contact_html=None):
     def r(no, total):
         c = contact_html or ""
-        foot = FOOTER if no == total else ""
+        letzte = (no == total)
+        foot = FOOTER(no, total) if letzte else (pfoot(no, total) if _FUSS else "")
         body = "".join(content)
         # Ein abschliessendes Band soll den Restplatz ausfuellen. Dafuer muss
         # die Seite eine Flex-Spalte sein - aber nur dann, damit alle anderen
@@ -732,7 +783,8 @@ def stage(kicker, h2, *ps, inhalt="", wm=None, boden=False, style=""):
     k = f'<p class="kicker">{kicker}</p>' if kicker else ''
     h = f'<h2>{h2}</h2>' if h2 else ''
     txt = "".join(f'<p>{p}</p>' for p in ps)
-    w = f'<div class="stage-wm">{icon(wm)}</div>' if wm else ''
+    ikon = cd_icon(wm) if wm in CD_ICONS else (icon(wm) if wm else "")
+    w = f'<div class="stage-wm">{ikon}</div>' if wm else ''
     cls = "stage stage--boden" if boden else "stage"
     return (f'<div class="{cls}" style="{style}">{w}'
             f'<div class="stage-head">{k}{h}{txt}</div>{inhalt}</div>')
