@@ -107,6 +107,15 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* body paragraphs */
+/* Corporate Design Manual, 01 Typografie: Fliesstext in "Poppins - Light".
+   Bewusst auf den Inhaltsbereich begrenzt - Navigation, Buttons und Footer
+   haben kein eigenes Gewicht, erben vom body und wuerden sonst mit ausduennen. */
+main p, main li { font-weight: 300; }
+main .btn { font-weight: 500; }
+/* Ohne explizites Gewicht loest "bolder" relativ zu 300 nur 400 auf; die
+   Hervorhebungen im Text waeren damit praktisch unsichtbar. */
+b, strong { font-weight: 600; }
+
 .lead { color: var(--ink-2); font-size: 1.125rem; line-height: 1.7; }
 .muted { color: var(--grey-50); }
 

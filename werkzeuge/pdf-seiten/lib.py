@@ -94,7 +94,10 @@ CSS = r"""
            SVG-Beschriftungen auf die Browser-Standardschrift zurueck. */
         --font-sans:"Poppins",sans-serif; --font-serif:"Lora",Georgia,serif; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+/* Corporate Design Manual, 01 Typografie: Fliesstext in "Poppins - Light".
+   Elemente mit eigenem Gewicht (Ueberschriften, Preise, Labels, b/strong)
+   bleiben davon unberuehrt. */
+body { font-family: var(--sans); font-weight: 300; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 b, strong { font-weight: 600; }
 .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 20mm 22mm 18mm; background: #fff; }
 .page:last-child { page-break-after: auto; }
@@ -649,15 +652,10 @@ def theme_vars(theme):
             f"--dark-acc:{dark};--strich:{strich};")
 
 
-def build(theme, pages, title, fusszeile=False, leicht=False):
-    """leicht=True setzt den Fliesstext auf Poppins Light (300) - die
-    Vorgabe des Corporate Design Manuals. Elemente mit eigenem Gewicht
-    (Ueberschriften, Preise, Labels) bleiben unberuehrt."""
+def build(theme, pages, title, fusszeile=False):
     global _FUSS
     _FUSS = fusszeile
     vars_ = ":root{" + theme_vars(theme) + "}"
-    if leicht:
-        vars_ += "body{font-weight:300}"
     total = len(pages)
     body = "".join(p(i + 1, total) if callable(p) else p for i, p in enumerate(pages))
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{title}</title>'

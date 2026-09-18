@@ -14,7 +14,7 @@ Geprueft wird:
   3 Fluchten           gleichartige Elemente nebeneinander beginnen auf
                        derselben Hoehe                     (fluchten.py)
   4 Typografie         Corporate Design: Headline in Medium (600),
-                       Highlight-Wort in Bold (700)
+                       Highlight-Wort in Bold (700), Fliesstext in Light (300)
   5 Seitenzahlen       nur zwischen Deckblatt und Schlussseite
 
 Aufruf:  python3 werkzeuge/pdf_pruefen.py [--bauen]
@@ -39,13 +39,24 @@ def typografie():
     for f in _quellen():
         css = open(f, encoding="utf-8").read().split("<style>")[1].split("</style>")[0]
         def gewicht(sel):
+            """Nur INNERHALB der Regel suchen - ein fester Zeichenabstand
+            rutscht sonst in die naechste Regel und meldet deren Wert."""
             i = css.find(sel)
-            m = re.search(r"font-weight:\s*(\d+)", css[i:i + 260]) if i >= 0 else None
+            if i < 0:
+                return 0
+            ende = css.find("}", i)
+            m = re.search(r"font-weight:\s*(\d+)", css[i:ende])
             return int(m.group(1)) if m else 0
         h, hl = gewicht("h2 {"), gewicht(".hl {")
+        koerper, fett = gewicht("body {"), gewicht("b, strong {")
         if h != 600 or hl != 700:
             fehler.append(f"{os.path.basename(f)}: Headline {h}, Highlight {hl} "
                           f"(erwartet 600 / 700)")
+        # Manual 01: Fliesstext in Light. b/strong braucht ein eigenes Gewicht -
+        # "bolder" wuerde relativ zu 300 nur 400 ergeben.
+        if koerper != 300 or fett != 600:
+            fehler.append(f"{os.path.basename(f)}: Fliesstext {koerper}, b/strong {fett} "
+                          f"(erwartet 300 / 600)")
     return fehler
 
 
