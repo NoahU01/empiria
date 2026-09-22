@@ -36,50 +36,25 @@
 .br-wortmarke-text small { display: block; font-size: .55rem; letter-spacing: .24em;
                            text-transform: uppercase; color: var(--grey-50); margin-top: 4px; }
 
-/* ---- Der Weg bis zum Jahresende ----------------------------------------
-   Statt einer ablaufenden Uhr der Weg dorthin. Eine Uhr auf 60 Tagen sagt
-   "Du hast Zeit"; der Plan sagt, wann gesprochen werden muss, damit es noch
-   klappt - und widerspricht der Headline nicht, weil der 31.12. der
-   Endpunkt bleibt und nicht als Restzeit behauptet wird. */
-.br-pfad { margin: 0 auto clamp(18px,2.4vw,26px); max-width: 780px; }
-.br-pfad-txt { display: block; text-align: center; font-size: .72rem; letter-spacing: .16em;
-               text-transform: uppercase; color: var(--grey-50); font-weight: 600;
-               margin-bottom: clamp(14px,1.8vw,20px); }
-/* Subgrid: Punkt, Datum, Titel und Zeile stehen in allen drei Halten auf
-   derselben Hoehe. Ohne das verschiebt schon die gelb hinterlegte Jahreszahl
-   die Zeile darunter. */
-.br-halte { position: relative; display: grid; grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(4, auto); gap: 0 10px; }
-.br-halte::before { content: ""; position: absolute; left: 16%; right: 16%; top: 7px;
-                    height: 2px; background: var(--grey-bg); }
-.br-halt { grid-row: span 4; display: grid; grid-template-rows: subgrid;
-           justify-items: center; text-align: center; }
-.br-punkt { position: relative; z-index: 1; display: block; width: 16px; height: 16px;
-            margin-bottom: 12px; border-radius: 50%; background: #fff;
-            border: 3px solid var(--grey-50); }
-.br-halt--jetzt .br-punkt { border-color: var(--ink); background: var(--ink); }
-.br-halt--ziel .br-punkt { border-color: var(--ink); background: var(--hl); }
-.br-datum { display: inline-block; position: relative; z-index: 0; padding: 0 .2em;
-            font-family: var(--font-serif); font-weight: 700; line-height: 1.24;
-            font-size: clamp(1.05rem,1.5vw,1.3rem); color: var(--ink); }
-.br-halt--ziel .br-datum::before { content: ""; position: absolute; left: 0; right: 0;
-                                   top: .1em; bottom: .04em; background: var(--hl);
-                                   z-index: -1; border-radius: 3px; }
-.br-halt b { font-size: .86rem; font-weight: 600; margin-top: 5px; color: var(--ink);
-             align-self: start; }
-.br-halt small { font-size: .76rem; line-height: 1.45; color: var(--grey-70); margin-top: 3px;
-                 max-width: 24ch; align-self: start; }
-
-@media (max-width: 680px) {
-  .br-halte { grid-template-columns: 16px 1fr; grid-template-rows: none; gap: 0 14px; }
-  .br-halte::before { left: 7px; right: auto; top: 8px; bottom: 8px; width: 2px; height: auto; }
-  .br-halt { grid-row: auto; grid-column: 1 / -1; grid-template-rows: none;
-             grid-template-columns: 16px 1fr; justify-items: start; text-align: left;
-             margin-bottom: 18px; }
-  .br-halt > :not(.br-punkt) { grid-column: 2; }
-  .br-punkt { grid-row: 1 / span 3; margin: 2px 0 0; }
-  .br-halt:last-child { margin-bottom: 0; }
-}
+/* ---- Timer -------------------------------------------------------------
+   Mittig direkt ueber dem Knopf: erst der Grund, dann die Handlung.
+   Ziffern in Lora mit tabellarischen Zahlen, damit beim Zaehlen nichts
+   springt. */
+.br-count { margin: 0 auto clamp(16px,2vw,22px); text-align: center; }
+.br-count-txt { display: block; font-size: .72rem; letter-spacing: .16em;
+                text-transform: uppercase; color: var(--grey-50); font-weight: 600;
+                margin-bottom: 10px; }
+.br-uhr { display: inline-flex; align-items: flex-start; justify-content: center; gap: 0; }
+.br-feldchen { display: flex; flex-direction: column; align-items: center; gap: 4px;
+               min-width: clamp(56px,6vw,74px); }
+.br-feldchen b { font-family: var(--font-serif); font-weight: 700;
+                 font-size: clamp(1.9rem,3.2vw,2.6rem); line-height: .94; color: var(--ink);
+                 font-variant-numeric: tabular-nums; }
+.br-feldchen small { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+                     color: var(--grey-50); font-weight: 600; }
+.br-trenn { width: 1px; align-self: stretch; margin: 4px 0 16px; background: var(--grey-bg); }
+/* Die Sekunden etwas ruhiger, damit das Auge nicht dauernd hinspringt */
+.br-feldchen--sek b { color: var(--grey-70); }
 
 /* Software-Detail am Rand */
 .br-stand { border-top: 1px solid var(--grey-bg); }
@@ -433,27 +408,16 @@
 
       </div>
       <div class="br-cta">
-        <div class="br-pfad">
-          <span class="br-pfad-txt">Damit es noch in dieses Jahr passt</span>
-          <div class="br-halte">
-            <div class="br-halt br-halt--jetzt">
-              <span class="br-punkt" aria-hidden="true"></span>
-              <span class="br-datum">bis 28. Nov.</span>
-              <b>Kurz sprechen</b>
-              <small>Ein Telefonat, Angebot in zwei Arbeitstagen.</small>
-            </div>
-            <div class="br-halt">
-              <span class="br-punkt" aria-hidden="true"></span>
-              <span class="br-datum">Anfang Dez.</span>
-              <b>Termin steht</b>
-              <small>Wir halten den Tag frei, Ihr bringt die Themen.</small>
-            </div>
-            <div class="br-halt br-halt--ziel">
-              <span class="br-punkt" aria-hidden="true"></span>
-              <span class="br-datum">31. Dez.</span>
-              <b>Gestartet und abgerechnet</b>
-              <small>Im laufenden Jahr, direkt verbuchbar.</small>
-            </div>
+        <div class="br-count" id="count">
+          <span class="br-count-txt">Budget verfällt in</span>
+          <div class="br-uhr">
+            <span class="br-feldchen"><b id="c-tage">–</b><small>Tage</small></span>
+            <span class="br-trenn" aria-hidden="true"></span>
+            <span class="br-feldchen"><b id="c-std">–</b><small>Stunden</small></span>
+            <span class="br-trenn" aria-hidden="true"></span>
+            <span class="br-feldchen"><b id="c-min">–</b><small>Minuten</small></span>
+            <span class="br-trenn" aria-hidden="true"></span>
+            <span class="br-feldchen br-feldchen--sek"><b id="c-sek">–</b><small>Sekunden</small></span>
           </div>
         </div>
         <a class="btn btn--dark" href="#wege">Budget jetzt retten</a>
@@ -686,6 +650,27 @@
   </div>
 </footer>
 
+
+<script>
+/* Timer bis zum Jahresende. Das Zieldatum steht bewusst als EINE Zeile -
+   es ist eine Geschaeftsentscheidung, kein technisches Detail. */
+(function () {
+  var ZIEL = new Date(2026, 11, 31, 23, 59, 59);
+
+  var f = { tage: document.getElementById('c-tage'), std: document.getElementById('c-std'),
+            min: document.getElementById('c-min'), sek: document.getElementById('c-sek') };
+  function zwei(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var s = Math.max(0, Math.floor((ZIEL.getTime() - Date.now()) / 1000));
+    f.tage.textContent = Math.floor(s / 86400);
+    f.std.textContent  = zwei(Math.floor(s % 86400 / 3600));
+    f.min.textContent  = zwei(Math.floor(s % 3600 / 60));
+    f.sek.textContent  = zwei(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 
 <script>
 /* Beim Neuladen soll die Seite oben beginnen - bei einer Landingpage will
