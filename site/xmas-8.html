@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Schneesturm – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* ===== Xmas 8 · "Der Schneesturm legt sich" ==================================
+   Beim Oeffnen ist alles weiss - man sieht die Hand vor Augen nicht. Dann
+   legt sich der Sturm, und darunter kommt der Gruss zum Vorschein. Der
+   Aha-Effekt liegt im Zeitverlauf, nicht in einer Grafik. */
+.st { position: relative; height: 100svh; overflow: hidden; background: var(--black);
+      color: #fff; }
+.st a { border-bottom: 0; }
+
+/* ---- Der Sturm ---------------------------------------------------------- */
+.sturm { position: absolute; inset: 0; z-index: 9; pointer-events: none; background: #fff;
+         animation: st-lichten 3.1s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes st-lichten { 0% { opacity: 1; } 55% { opacity: .72; } 100% { opacity: 0; } }
+.flocken { position: absolute; inset: -40% 0 0; z-index: 8; pointer-events: none; }
+.flocken i { position: absolute; inset: 0; display: block;
+  background-image:
+    radial-gradient(3px 3px at 12% 8%, #fff 50%, transparent 51%),
+    radial-gradient(2.4px 2.4px at 48% 22%, #fff 50%, transparent 51%),
+    radial-gradient(3px 3px at 76% 12%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 30% 54%, #fff 50%, transparent 51%),
+    radial-gradient(2.6px 2.6px at 88% 62%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 62% 82%, #fff 50%, transparent 51%),
+    radial-gradient(2.4px 2.4px at 18% 88%, #fff 50%, transparent 51%);
+  background-size: 300px 300px;
+  animation: st-fall 2.2s linear infinite, st-ruhe 3.4s ease-out forwards; }
+.flocken i:nth-child(2) { background-size: 220px 220px; animation-duration: 3.1s, 3.4s; }
+.flocken i:nth-child(3) { background-size: 160px 160px; animation-duration: 4.4s, 3.4s; }
+.flocken i:nth-child(4) { background-size: 110px 110px; animation-duration: 6s, 3.4s; }
+@keyframes st-fall { to { transform: translateY(300px); } }
+/* Der Sturm wird ruhiger und duenner, bis nur noch leichter Schneefall bleibt. */
+@keyframes st-ruhe { 0% { opacity: 1; } 100% { opacity: .22; } }
+
+/* ---- Was darunter liegt -------------------------------------------------- */
+.st-kopf { position: absolute; left: 0; right: 0; top: 0; z-index: 4;
+           padding: clamp(20px,3vw,36px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.st-kopf img { height: 26px; }
+.st-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+
+.st-raum { position: relative; z-index: 3; height: 100%; display: grid; place-items: center;
+           text-align: center; padding: clamp(80px,12vh,120px) var(--pad-x) clamp(26px,4vh,50px); }
+.st-inhalt > * { opacity: 0; animation: st-auf .9s ease forwards; }
+.st-inhalt > *:nth-child(1) { animation-delay: 1.5s; }
+.st-inhalt > *:nth-child(2) { animation-delay: 1.75s; }
+.st-inhalt > *:nth-child(3) { animation-delay: 2.0s; }
+.st-inhalt > *:nth-child(4) { animation-delay: 2.3s; }
+@keyframes st-auf { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.st-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 1rem; }
+.st-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.03;
+         font-size: clamp(2.3rem,6vw,4.8rem); margin: 0 0 1.1rem; }
+.st-h1 .hl { color: var(--ink); }
+.st-lead { font-size: clamp(.98rem,1.3vw,1.14rem); line-height: 1.68; font-weight: 300;
+           color: rgba(255,255,255,.76); margin: 0 auto clamp(26px,3.6vh,44px); max-width: 52ch; }
+.st-lead b { color: #fff; font-weight: 600; }
+.st-liste { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.st-chip { display: inline-flex; align-items: center; gap: 9px; padding: 10px 18px;
+           border-radius: 999px; text-decoration: none; font-size: .88rem; font-weight: 500;
+           background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.22);
+           color: rgba(255,255,255,.86);
+           transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.st-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--hl);
+                   transition: transform .2s ease; }
+.st-chip:hover, .st-chip:focus-visible { background: var(--hl); color: var(--ink);
+           border-color: var(--hl); transform: translateY(-3px); }
+.st-chip:hover::before { background: var(--ink); transform: scale(1.4); }
+
+.st-nochmal { position: absolute; z-index: 5; right: var(--pad-x); bottom: clamp(18px,3vh,32px);
+              display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+              background: none; border: 1px solid rgba(255,255,255,.2); border-radius: 999px;
+              padding: 8px 15px; color: rgba(255,255,255,.5); font: inherit; font-size: .76rem;
+              letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+              opacity: 0; animation: st-auf .8s ease 2.8s forwards;
+              transition: color .2s ease, border-color .2s ease; }
+.st-nochmal:hover { color: var(--hl); border-color: var(--hl); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sturm, .flocken { display: none; }
+  .st-inhalt > * { opacity: 1; animation: none; }
+  .st-nochmal { opacity: 1; animation: none; }
+}
+</style>
+</head>
+<body>
+
+<main class="st" id="seite">
+  <header class="st-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="st-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="st-raum">
+    <div class="st-inhalt">
+      <p class="st-kicker">Weihnachten 2026</p>
+      <h1 class="st-h1">Und dann wird es<br><span class="hl">ganz ruhig.</span></h1>
+      <p class="st-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
+        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
+        für die Menschen, die zählen.</b></p>
+      <nav class="st-liste" aria-label="Unsere Leistungen">
+        <a class="st-chip" href="/leistungen/strategie">Strategie in den Alltag</a>
+        <a class="st-chip" href="/leistungen/komplexe-themen">Komplexe Themen</a>
+        <a class="st-chip" href="/workshops">Workshops</a>
+        <a class="st-chip" href="/marketing">Marketing 2.0</a>
+        <a class="st-chip" href="/training-sparring">Training &amp; Sparring</a>
+        <a class="st-chip" href="/leistungen/innovation">Innovation</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="flocken" id="flocken" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="sturm" id="sturm" aria-hidden="true"></div>
+
+  <button class="st-nochmal" id="nochmal" type="button">Nochmal stürmen</button>
+</main>
+
+<script>
+document.getElementById('nochmal').addEventListener('click', function(){
+  location.reload();     // einfacher und zuverlaessiger als jede Animation neu zu starten
+});
+</script>
+
+</body>
+</html>

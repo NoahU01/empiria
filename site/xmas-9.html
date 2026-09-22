@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Baum aus Worten – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* ===== Xmas 9 · "Der Baum aus Worten" ========================================
+   Kein gezeichneter Baum - der Baum besteht aus unseren Themen. Die Zeilen
+   werden nach unten laenger, dadurch entsteht die Silhouette von selbst.
+   Der Aha-Effekt kommt beim zweiten Hinsehen: das sind ja Woerter.
+   Typografie statt Illustration - das ist die Sprache des Hauses. */
+.bw { position: relative; height: 100svh; overflow: hidden; background: var(--black);
+      color: #fff; display: flex; flex-direction: column; }
+.bw a { border-bottom: 0; }
+.bw-wm { position: absolute; color: #151515; width: 66vmin; height: 66vmin;
+         left: 50%; top: 54%; transform: translate(-50%,-50%); pointer-events: none; z-index: 0; }
+
+.bw-kopf { position: relative; z-index: 3; padding: clamp(18px,2.6vw,32px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.bw-kopf img { height: 26px; }
+.bw-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+
+.bw-raum { position: relative; z-index: 2; flex: 1 1 auto; display: flex;
+           flex-direction: column; align-items: center; justify-content: center;
+           padding: clamp(8px,1.4vh,20px) var(--pad-x) clamp(16px,2.6vh,34px); }
+
+/* ---- Der Baum ----------------------------------------------------------- */
+.baum { display: flex; flex-direction: column; align-items: center;
+        gap: clamp(2px,.5vh,6px); text-align: center; }
+.baum-stern { width: clamp(26px,3.4vh,38px); height: clamp(26px,3.4vh,38px);
+              color: var(--hl); margin-bottom: clamp(4px,.8vh,10px); }
+.zeile { display: flex; flex-wrap: nowrap; justify-content: center; align-items: baseline;
+         gap: clamp(6px,.9vw,14px); white-space: nowrap; line-height: 1.12; }
+.zeile span, .zeile a { font-family: var(--font-serif); font-weight: 500;
+         color: rgba(255,255,255,.5); text-decoration: none; letter-spacing: -.005em; }
+/* Die Zeilen werden nach unten groesser - daraus entsteht die Baumform. */
+.z1 { font-size: clamp(.72rem,1.5vh,1rem); }
+.z2 { font-size: clamp(.82rem,1.7vh,1.15rem); }
+.z3 { font-size: clamp(.92rem,1.95vh,1.35rem); }
+.z4 { font-size: clamp(1.02rem,2.2vh,1.55rem); }
+.z5 { font-size: clamp(1.12rem,2.45vh,1.75rem); }
+.z6 { font-size: clamp(1.22rem,2.7vh,1.95rem); }
+.z7 { font-size: clamp(1.3rem,2.9vh,2.1rem); }
+.zeile a { position: relative; transition: color .2s ease; }
+.zeile a::after { content: ""; position: absolute; left: -.18em; right: -.18em; top: -.08em;
+                  bottom: -.08em; border-radius: 4px; background: var(--hl); z-index: -1;
+                  transform: scaleX(0); transform-origin: center;
+                  transition: transform .22s cubic-bezier(.2,.8,.3,1); }
+.zeile a:hover, .zeile a:focus-visible { color: var(--ink); }
+.zeile a:hover::after, .zeile a:focus-visible::after { transform: scaleX(1); }
+/* Die reinen Schmuckworte leuchten nur mit */
+.zeile span { transition: color .2s ease; }
+.baum:hover .zeile span { color: rgba(255,255,255,.38); }
+.kugel { color: var(--hl) !important; font-size: .7em; }
+
+.stamm { margin-top: clamp(4px,.8vh,10px); font-family: var(--font-sans); font-weight: 600;
+         font-size: clamp(.7rem,1.5vh,.92rem); letter-spacing: .3em; text-transform: uppercase;
+         color: var(--grey-50); border-top: 2px solid #2a2a2a; padding-top: clamp(6px,1vh,12px);
+         width: clamp(64px,9vh,96px); }
+
+/* ---- Der Gruss ---------------------------------------------------------- */
+.bw-gruss { margin-top: clamp(14px,2.6vh,34px); text-align: center; max-width: 54ch; }
+.bw-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.1;
+         font-size: clamp(1.4rem,3.2vh,2.2rem); margin: 0 0 .6rem; }
+.bw-h1 .hl { color: var(--ink); }
+.bw-lead { font-size: clamp(.84rem,1.7vh,1rem); line-height: 1.62; font-weight: 300;
+           color: rgba(255,255,255,.68); margin: 0; }
+.bw-tipp { margin: clamp(10px,1.8vh,20px) 0 0; font-size: .72rem; letter-spacing: .12em;
+           text-transform: uppercase; color: rgba(255,255,255,.3); }
+
+@media (max-width: 760px) {
+  .zeile { gap: 5px; }
+  .z1,.z2,.z3 { font-size: .74rem; } .z4,.z5 { font-size: .84rem; }
+  .z6,.z7 { font-size: .92rem; }
+  .bw-lead { display: none; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+<symbol id="ic-stern" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 2.6v18.8M2.6 12h18.8M5.3 5.3l13.4 13.4M18.7 5.3 5.3 18.7"/></symbol>
+</defs></svg>
+
+<main class="bw">
+  <svg class="bw-wm" aria-hidden="true"><use href="#ic-kreis"/></svg>
+
+  <header class="bw-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="bw-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="bw-raum">
+    <div class="baum">
+      <svg class="baum-stern" aria-hidden="true"><use href="#ic-stern"/></svg>
+
+      <p class="zeile z1"><span>2027</span></p>
+      <p class="zeile z2"><span>Klarheit</span><span class="kugel">●</span><span>Fokus</span></p>
+      <p class="zeile z3"><a href="/leistungen/strategie">Strategie</a><span>·</span><span>Wirkung</span><span>·</span><span>Mut</span></p>
+      <p class="zeile z4"><span>Zuhören</span><span class="kugel">●</span><a href="/workshops">Workshops</a><span class="kugel">●</span><span>Klartext</span></p>
+      <p class="zeile z5"><a href="/leistungen/komplexe-themen">Komplexe Themen</a><span>·</span><a href="/marketing">Marketing 2.0</a></p>
+      <p class="zeile z6"><span>Dranbleiben</span><span class="kugel">●</span><a href="/training-sparring">Training &amp; Sparring</a><span class="kugel">●</span><a href="/leistungen/innovation">Innovation</a></p>
+      <p class="zeile z7"><a href="/sofort-sichtbar">sofort sichtbar</a><span>·</span><a href="/dashboard-digitales-marketing">MarketingEcoSystem</a><span>·</span><a href="/sparring">1:1 Sparring</a></p>
+
+      <p class="stamm">2026</p>
+    </div>
+
+    <div class="bw-gruss">
+      <h1 class="bw-h1">Unser Baum besteht aus dem,<br>was wir <span class="hl">2026 gemacht haben.</span></h1>
+      <p class="bw-lead">Danke, dass Du Teil davon warst. Ruhige Tage, gutes Essen und Zeit für
+        die Menschen, die zählen – und dann holen wir uns 2027 der Reihe nach ab, was da steht.</p>
+      <p class="bw-tipp">Jedes zweite Wort führt irgendwohin</p>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
