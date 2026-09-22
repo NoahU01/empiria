@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gute Vorsätze 2027 · Die Jahreszahlen – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/xmas/lead.css">
+<style>
+/* ===== Xmas 13 · "Die Jahreszahlen" ==========================================
+   Keine Liste, sondern Typografie: 2025 und 2026 stehen gross und sind
+   durchgestrichen, 2027 leuchtet gelb. Der Strich wird beim Laden gezogen -
+   man sieht also zu, wie die beiden Jahre gestrichen werden. Daneben die
+   Vorsaetze als Kacheln; ein Klick oeffnet den Lead-Dialog. */
+.jz { position: relative; height: 100svh; overflow: hidden; background: var(--black);
+      color: #fff; display: flex; flex-direction: column; }
+.jz a { border-bottom: 0; }
+.jz-wm { position: fixed; color: #151515; width: 60vmin; height: 60vmin;
+         left: -18vmin; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 0; }
+
+.jz-kopf { position: relative; z-index: 3; padding: clamp(18px,2.6vw,32px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.jz-kopf img { height: 26px; }
+.jz-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+
+.jz-raum { position: relative; z-index: 3; flex: 1 1 auto; display: grid;
+           grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr);
+           align-items: center; gap: clamp(26px,4vw,64px);
+           padding: clamp(14px,2.2vh,28px) var(--pad-x) clamp(18px,3vh,40px); }
+
+/* ---- Die Jahreszahlen --------------------------------------------------- */
+.jahre { display: flex; flex-direction: column; gap: clamp(2px,.6vh,8px);
+         margin-bottom: clamp(16px,2.6vh,30px); }
+.jahr { position: relative; font-family: var(--font-serif); font-weight: 700; line-height: .96;
+        font-size: clamp(3rem,8.5vw,6.4rem); letter-spacing: -.02em; width: fit-content; }
+.jahr--alt { color: #3a3a3a; }
+/* Der Strich waechst beim Laden von links nach rechts */
+.jahr--alt::after { content: ""; position: absolute; left: -3%; right: -3%; top: 50%;
+                    height: clamp(5px,.9vw,9px); background: var(--hl); border-radius: 3px;
+                    transform: scaleX(0) rotate(-1.6deg); transform-origin: left center;
+                    animation: jz-strich .7s cubic-bezier(.2,.8,.3,1) forwards; }
+.jahr--alt:nth-child(1)::after { animation-delay: .5s; }
+.jahr--alt:nth-child(2)::after { animation-delay: 1.05s; transform: scaleX(0) rotate(1.3deg); }
+@keyframes jz-strich { to { transform: scaleX(1) rotate(-1.6deg); } }
+.jahr--alt:nth-child(2)::after { animation-name: jz-strich2; }
+@keyframes jz-strich2 { to { transform: scaleX(1) rotate(1.3deg); } }
+.jahr--neu { color: var(--ink); }
+.jahr--neu::before { content: ""; position: absolute; left: -4%; right: -4%; top: 6%; bottom: 8%;
+                     background: var(--hl); z-index: -1; border-radius: 6px;
+                     transform: scaleX(0); transform-origin: left center;
+                     animation: jz-fuell .6s cubic-bezier(.2,.8,.3,1) 1.65s forwards; }
+@keyframes jz-fuell { to { transform: scaleX(1); } }
+
+.jz-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 .7rem; }
+.jz-h2 { font-family: var(--font-serif); font-weight: 500; line-height: 1.16;
+         font-size: clamp(1.1rem,1.9vw,1.55rem); margin: 0 0 .8rem; color: #fff; }
+.jz-lead { font-size: clamp(.9rem,1.1vw,1.02rem); line-height: 1.64; font-weight: 300;
+           color: rgba(255,255,255,.72); margin: 0; max-width: 40ch; }
+.jz-lead b { color: #fff; font-weight: 600; }
+
+/* ---- Die Vorsaetze als Kacheln ------------------------------------------ */
+.kacheln { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(9px,1.1vw,14px); }
+.kachel { position: relative; text-align: left; background: rgba(255,255,255,.04);
+          border: 1px solid rgba(255,255,255,.15); border-radius: 16px; cursor: pointer;
+          font: inherit; color: #fff; padding: clamp(13px,1.5vw,19px);
+          display: flex; flex-direction: column; gap: 6px;
+          transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.kachel:hover, .kachel:focus-visible { background: rgba(255,244,0,.09); border-color: var(--hl);
+          transform: translateY(-4px); }
+.kachel-nr { font-family: var(--font-serif); font-weight: 700; font-size: .76rem;
+             color: var(--hl); letter-spacing: .08em; }
+.kachel b { font-family: var(--font-serif); font-weight: 700; line-height: 1.24;
+            font-size: clamp(.9rem,1.15vw,1.02rem); }
+.kachel small { font-size: .76rem; line-height: 1.45; color: rgba(255,255,255,.58);
+                font-weight: 300; }
+.kachel-pdf { margin-top: auto; padding-top: 6px; font-size: .66rem; letter-spacing: .12em;
+              text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,.35);
+              transition: color .2s ease; }
+.kachel:hover .kachel-pdf, .kachel:focus-visible .kachel-pdf { color: var(--hl); }
+
+@media (max-width: 1000px) {
+  .jz-raum { grid-template-columns: 1fr; align-content: center; gap: 18px; }
+  .jahre { flex-direction: row; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+  .jahr { font-size: clamp(2rem,7vw,3.2rem); }
+  .jz-lead { display: none; }
+}
+@media (max-height: 800px) { .kachel small { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .jahr--alt::after { animation: none; transform: scaleX(1) rotate(-1.6deg); }
+  .jahr--neu::before { animation: none; transform: scaleX(1); }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-raute" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,31.11l85.11,85.11-85.11,85.11L31.11,116.22,116.22,31.11M116.22,2.83L2.83,116.22l113.39,113.39,113.39-113.39L116.22,2.83h0Z"/></symbol>
+</defs></svg>
+
+<main class="jz">
+  <svg class="jz-wm" aria-hidden="true"><use href="#ic-raute"/></svg>
+
+  <header class="jz-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="jz-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="jz-raum">
+    <div>
+      <div class="jahre">
+        <span class="jahr jahr--alt">2025</span>
+        <span class="jahr jahr--alt">2026</span>
+        <span class="jahr jahr--neu">2027</span>
+      </div>
+      <p class="jz-kicker">Weihnachten 2026</p>
+      <h2 class="jz-h2">Die guten Vorsätze sind nicht neu.<br>Nur das Jahr ist es.</h2>
+      <p class="jz-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
+        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
+        für die Menschen, die zählen.</b></p>
+    </div>
+
+    <div class="kacheln">
+      <button class="kachel" type="button"
+        data-lead="Innovation &amp; Geschäftsmodell neu denken"
+        data-text="Wie Ihr Euer Geschäftsmodell ohne Altlasten auf den Prüfstand stellt – und was davon in zehn Jahren noch trägt."
+        data-pdf="/assets/downloads/empiria-innovation.pdf"
+        data-bild="/assets/downloads/empiria-innovation-1.webp">
+        <span class="kachel-nr">01</span>
+        <b>Endlich alles einmal neu denken.</b>
+        <small>Ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+
+      <button class="kachel" type="button"
+        data-lead="Strategie in den Alltag überführen"
+        data-text="Wie aus der Strategie ein Zielbild wird, mit dem Dein Bereich wirklich arbeiten kann."
+        data-pdf="/assets/downloads/empiria-strategie.pdf"
+        data-bild="/assets/downloads/empiria-strategie-1.webp">
+        <span class="kachel-nr">02</span>
+        <b>Endlich ein klares Zielbild für mein Team.</b>
+        <small>Damit jeder weiß, worauf er hinarbeitet – und der Bereich nach vorne kommt.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+
+      <button class="kachel" type="button"
+        data-lead="KI zum Anfassen"
+        data-text="Ein Workshop, in dem Dein Team mit echten Tools arbeitet – und danach weiß, wo KI im Alltag hilft."
+        data-pdf="/assets/downloads/empiria-ki-zum-anfassen.pdf"
+        data-bild="/assets/downloads/empiria-ki-zum-anfassen-1.webp">
+        <span class="kachel-nr">03</span>
+        <b>Endlich KI im Team verstehen.</b>
+        <small>Nicht darüber reden, sondern anfassen: wo sie im Alltag trägt – und wo nicht.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+
+      <button class="kachel" type="button"
+        data-lead="Sprint Landingpage"
+        data-text="In zwei Tagen von der Idee zur fertigen Seite – gemeinsam im Workshop gebaut."
+        data-pdf="/assets/downloads/empiria-sprint-landingpage.pdf"
+        data-bild="/assets/downloads/empiria-sprint-landingpage-1.webp">
+        <span class="kachel-nr">04</span>
+        <b>Endlich in Tagen sichtbar werden.</b>
+        <small>Eine Seite, die steht, bevor die nächste Abstimmungsrunde beginnt.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+
+      <button class="kachel" type="button"
+        data-lead="MarketingEcoSystem (MES)"
+        data-text="Homepage, Kanäle und Zahlen an einem Ort – laufend bewertet statt einmal im Jahr."
+        data-pdf="/assets/downloads/empiria-dashboard-digitales-marketing.pdf"
+        data-bild="/assets/downloads/empiria-dashboard-digitales-marketing-1.webp">
+        <span class="kachel-nr">05</span>
+        <b>Endlich sehen, was das Marketing bringt.</b>
+        <small>Alle Kanäle und Zahlen an einem Ort, laufend bewertet.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+
+      <button class="kachel" type="button"
+        data-lead="1:1 Sparring"
+        data-text="Ein vertrauliches Gegenüber für die Themen, für die es intern keine Distanz gibt."
+        data-pdf="/assets/downloads/empiria-sparring.pdf"
+        data-bild="/assets/downloads/empiria-sparring-1.webp">
+        <span class="kachel-nr">06</span>
+        <b>Endlich jemanden zum Mitdenken haben.</b>
+        <small>Offen sprechen über das, wofür es intern keine Distanz gibt.</small>
+        <span class="kachel-pdf">PDF holen</span></button>
+    </div>
+  </div>
+</main>
+
+<script src="/assets/xmas/lead.js"></script>
+</body>
+</html>
