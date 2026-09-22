@@ -11,6 +11,22 @@ d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){se
 document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
+// Zweite Ebene: ein Flyout weit unten in der Liste wuerde sonst unter den
+// Fensterrand rutschen (gemessen: 925px bei 813px Fensterhoehe). Es wird
+// deshalb beim Oeffnen genau um den Ueberstand nach oben geschoben.
+d.querySelectorAll('.dev-dd-sub').forEach(function(s){
+var f=s.querySelector('.dev-dd-flyout');
+if(!f)return;
+function platzieren(){
+if(!desk()){f.style.top='';return;}
+f.style.top='-10px';
+var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+if(u>0)f.style.top=(-10-u)+'px';
+}
+s.addEventListener('mouseenter',platzieren);
+s.addEventListener('focusin',platzieren);
+window.addEventListener('resize',function(){f.style.top='';});
+});
 });
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
