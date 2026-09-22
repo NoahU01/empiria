@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die Lichterkette – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* ===== Xmas 4 · "Die Lichterkette" ===========================================
+   Schwarzer Grund, aber die Birnen tragen die Sekundaerfarben des Manuals -
+   Magenta, Cyan, Violett, Lime, Emerald, Gelb. Jede Birne ist eine Leistung.
+   Die Kette geht beim Laden nacheinander an; mit dem Schalter komplett aus. */
+.lk { position: relative; min-height: 100svh; background: #0b0b0b; color: #fff;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: background .5s ease; }
+.lk.is-dunkel { background: #050505; }
+.lk a { border-bottom: 0; }
+
+.lk-kopf { position: relative; z-index: 5; padding: clamp(22px,3.4vw,40px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lk-kopf img { height: 26px; }
+.lk-schalter { display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+               background: none; border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
+               padding: 7px 14px; color: rgba(255,255,255,.6); font: inherit; font-size: .78rem;
+               letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+               transition: color .2s ease, border-color .2s ease; }
+.lk-schalter:hover { color: var(--hl); border-color: var(--hl); }
+.lk-schalter i { width: 9px; height: 9px; border-radius: 50%; background: var(--hl);
+                 box-shadow: 0 0 10px var(--hl); transition: all .3s ease; }
+.lk.is-dunkel .lk-schalter i { background: #444; box-shadow: none; }
+
+/* ---- Die Kette ---------------------------------------------------------- */
+.lk-kette { position: relative; z-index: 3; height: clamp(190px, 26vh, 280px);
+            margin-top: clamp(-6px, -1vw, 0px); }
+.lk-draht { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lk-birne { position: absolute; transform: translate(-50%, 0); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center; }
+.lk-glas { position: relative; width: 26px; height: 36px; border-radius: 50% 50% 46% 46%;
+           background: #2a2a2a; border: 1.5px solid rgba(255,255,255,.18);
+           transition: background .4s ease, box-shadow .4s ease, border-color .4s ease,
+                       transform .22s cubic-bezier(.2,.8,.3,1); }
+.lk-glas::before { content: ""; position: absolute; left: 50%; top: -9px; width: 12px; height: 9px;
+                   transform: translateX(-50%); border-radius: 2px; background: #3a3a3a; }
+.lk-birne.an .lk-glas { background: var(--f); border-color: var(--f);
+                        box-shadow: 0 0 18px var(--f), 0 0 44px color-mix(in srgb, var(--f) 55%, transparent); }
+.lk-birne:hover .lk-glas, .lk-birne:focus-visible .lk-glas { transform: scale(1.32) translateY(3px); }
+.lk-birne:hover.an .lk-glas, .lk-birne:focus-visible.an .lk-glas {
+  box-shadow: 0 0 26px var(--f), 0 0 70px color-mix(in srgb, var(--f) 70%, transparent); }
+.lk-name { margin-top: 14px; font-size: .78rem; font-weight: 500; line-height: 1.3;
+           text-align: center; max-width: 13ch; color: rgba(255,255,255,.38);
+           opacity: 0; transform: translateY(-5px);
+           transition: opacity .22s ease, transform .22s ease, color .22s ease; }
+.lk-birne:hover .lk-name, .lk-birne:focus-visible .lk-name {
+  opacity: 1; transform: none; color: var(--f); }
+.lk.is-dunkel .lk-birne.an .lk-glas { background: #2a2a2a; border-color: rgba(255,255,255,.18);
+  box-shadow: none; }
+
+/* ---- Der Wunsch --------------------------------------------------------- */
+.lk-mitte { position: relative; z-index: 4; flex: 1 1 auto; display: grid; place-items: center;
+            text-align: center; padding: clamp(10px,2vw,26px) var(--pad-x) clamp(30px,4vw,56px); }
+.lk-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 1rem; }
+.lk-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.04;
+         font-size: clamp(2.3rem,6vw,4.6rem); margin: 0 0 1.1rem; }
+.lk-h1 .hl { color: var(--ink); }
+.lk-lead { font-size: clamp(.98rem,1.3vw,1.12rem); line-height: 1.68; font-weight: 300;
+           color: rgba(255,255,255,.72); margin: 0 auto; max-width: 54ch; }
+.lk-lead b { color: #fff; font-weight: 600; }
+.lk-tipp { margin: 1.6rem 0 0; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+           color: rgba(255,255,255,.3); }
+
+@media (max-width: 760px) {
+  .lk-kette { height: 150px; }
+  .lk-glas { width: 21px; height: 29px; }
+  .lk-name { display: none; }
+}
+</style>
+</head>
+<body>
+
+<main class="lk" id="seite">
+  <header class="lk-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <button class="lk-schalter" id="schalter" type="button" aria-pressed="true">
+      <i aria-hidden="true"></i><span id="schalter-txt">Licht an</span></button>
+  </header>
+
+  <nav class="lk-kette" aria-label="Unsere Leistungen">
+    <svg class="lk-draht" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M 0 30 Q 50 120 100 30" fill="none" stroke="rgba(255,255,255,.2)"
+            stroke-width="1" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <a class="lk-birne" style="--f:#fff400; left:14%; top:36.9%" href="/leistungen/strategie">
+      <span class="lk-glas"></span><span class="lk-name">Strategie in den Alltag</span></a>
+    <a class="lk-birne" style="--f:#C51F5D; left:28%; top:47.4%" href="/workshops">
+      <span class="lk-glas"></span><span class="lk-name">Workshops</span></a>
+    <a class="lk-birne" style="--f:#0B9FBD; left:42%; top:52.7%" href="/marketing">
+      <span class="lk-glas"></span><span class="lk-name">Marketing 2.0</span></a>
+    <a class="lk-birne" style="--f:#A3E635; left:58%; top:52.7%" href="/training-sparring">
+      <span class="lk-glas"></span><span class="lk-name">Training &amp; Sparring</span></a>
+    <a class="lk-birne" style="--f:#8613A1; left:72%; top:47.4%" href="/sofort-sichtbar">
+      <span class="lk-glas"></span><span class="lk-name">sofort sichtbar</span></a>
+    <a class="lk-birne" style="--f:#059669; left:86%; top:36.9%" href="/leistungen/innovation">
+      <span class="lk-glas"></span><span class="lk-name">Innovation</span></a>
+  </nav>
+
+  <div class="lk-mitte">
+    <div>
+      <p class="lk-kicker">Weihnachten 2026</p>
+      <h1 class="lk-h1">Wir machen mal <span class="hl">das Licht an.</span></h1>
+      <p class="lk-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
+        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
+        für die Menschen, die zählen.</b></p>
+      <p class="lk-tipp">Jede Birne führt zu einer Leistung</p>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var birnen = [].slice.call(document.querySelectorAll('.lk-birne'));
+  var seite = document.getElementById('seite');
+  var schalter = document.getElementById('schalter');
+  var txt = document.getElementById('schalter-txt');
+  var flott = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nacheinander angehen lassen - das ist der Moment, der Spass macht.
+  birnen.forEach(function(b, i){
+    setTimeout(function(){ b.classList.add('an'); }, flott ? 260 + i * 170 : 0);
+  });
+
+  schalter.addEventListener('click', function(){
+    var aus = seite.classList.toggle('is-dunkel');
+    schalter.setAttribute('aria-pressed', String(!aus));
+    txt.textContent = aus ? 'Licht aus' : 'Licht an';
+  });
+})();
+</script>
+
+</body>
+</html>

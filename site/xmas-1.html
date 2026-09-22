@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frohe Weihnachten – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* ===== Xmas 1 · "Die Bescherung" =============================================
+   Schwarz-gelbes Hauptlayout. Eine Landschaft in der Strichsprache der
+   CD-Icons; die Geschenke darunter sind die Leistungen und werden beim
+   Darueberfahren gelb. Alles auf einen Blick, kein Scrollen. */
+/* Feste Fensterhoehe statt min-height: die Seite soll nicht scrollen koennen.
+   Landschaft, Geschenke und Fusszeile liegen dafuer als Ebenen uebereinander,
+   nicht untereinander im Fluss. */
+.xm { position: relative; height: 100svh; background: var(--black); color: #fff;
+      overflow: hidden; }
+.xm a { border-bottom: 0; }
+
+/* Wasserzeichen wie auf den schwarz-gelben Seiten, nur dunkler */
+.xm-wm { position: absolute; color: #1c1c1c; pointer-events: none; z-index: 0; }
+.xm-wm--1 { width: 52vmin; height: 52vmin; left: -12vmin; top: -10vmin; }
+.xm-wm--2 { width: 34vmin; height: 34vmin; right: -6vmin; top: 34%; }
+
+/* Schneefall: drei Ebenen aus Farbverlaeufen, ohne Bild und ohne Bibliothek */
+.xm-snow { position: absolute; inset: -20% 0 0; z-index: 1; pointer-events: none; opacity: .5; }
+.xm-snow i { position: absolute; inset: 0; display: block;
+  background-image:
+    radial-gradient(2px 2px at 20% 10%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 65% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 40% 60%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 85% 75%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 10% 85%, #fff 50%, transparent 51%);
+  background-size: 340px 340px; animation: xm-fall 17s linear infinite; }
+.xm-snow i:nth-child(2) { background-size: 260px 260px; animation-duration: 25s; opacity: .7; }
+.xm-snow i:nth-child(3) { background-size: 190px 190px; animation-duration: 34s; opacity: .45; }
+@keyframes xm-fall { to { transform: translateY(340px); } }
+
+.xm-kopf { position: absolute; left: 0; right: 0; top: 0; z-index: 5; padding: clamp(20px, 3vw, 36px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.xm-kopf img { height: 26px; width: auto; }
+.xm-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+           color: var(--grey-50); }
+
+.xm-mitte { position: absolute; left: 0; top: clamp(90px, 14vh, 150px); z-index: 5;
+            padding: 0 var(--pad-x); }
+.xm-text { max-width: 27ch; }
+.xm-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 .9rem; }
+.xm-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.02;
+         font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 1rem; color: #fff; }
+.xm-h1 .hl { color: var(--ink); }
+.xm-lead { font-size: clamp(.92rem, 1.1vw, 1.04rem); line-height: 1.62;
+           color: rgba(255,255,255,.76); font-weight: 300; margin: 0; }
+.xm-lead b { color: #fff; font-weight: 600; }
+
+/* ---- Landschaft --------------------------------------------------------- */
+.xm-buehne { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; }
+.xm-land { display: block; width: 100%; height: clamp(150px, 30vh, 300px); }
+
+/* ---- Geschenke ---------------------------------------------------------- */
+.xm-gaben { position: absolute; left: 0; right: 0; bottom: clamp(52px, 8vh, 78px); z-index: 4;
+            display: flex; align-items: flex-end; justify-content: center;
+            gap: clamp(10px, 1.8vw, 26px); flex-wrap: nowrap;
+            padding: 0 var(--pad-x); }
+.xm-gabe { position: relative; display: block; text-decoration: none; text-align: center;
+           transition: transform .22s cubic-bezier(.2,.8,.3,1); }
+.xm-gabe:hover, .xm-gabe:focus-visible { transform: translateY(-10px); }
+.xm-gabe-box { position: relative; width: var(--b, 104px); height: var(--h, 82px);
+               border: 2px solid rgba(255,255,255,.55); border-radius: 6px;
+               background: rgba(255,255,255,.05);
+               transition: background .22s ease, border-color .22s ease; }
+/* Schleife: zwei Baender aus demselben Strich wie die Icons */
+.xm-gabe-box::before, .xm-gabe-box::after { content: ""; position: absolute;
+  background: rgba(255,255,255,.55); transition: background .22s ease; }
+.xm-gabe-box::before { left: calc(50% - 5px); top: -2px; bottom: -2px; width: 10px; }
+.xm-gabe-box::after { top: 26%; left: -2px; right: -2px; height: 8px; }
+.xm-gabe-deckel { position: absolute; left: -7px; right: -7px; top: -13px; height: 15px;
+                  border: 2px solid rgba(255,255,255,.55); border-radius: 4px;
+                  background: var(--black);
+                  transition: transform .22s cubic-bezier(.2,.8,.3,1),
+                              background .22s ease, border-color .22s ease; }
+.xm-gabe:hover .xm-gabe-box, .xm-gabe:focus-visible .xm-gabe-box { background: var(--hl); border-color: var(--hl); }
+.xm-gabe:hover .xm-gabe-box::before, .xm-gabe:hover .xm-gabe-box::after,
+.xm-gabe:focus-visible .xm-gabe-box::before, .xm-gabe:focus-visible .xm-gabe-box::after { background: var(--black); }
+.xm-gabe:hover .xm-gabe-deckel, .xm-gabe:focus-visible .xm-gabe-deckel {
+  background: var(--hl); border-color: var(--hl); transform: translateY(-9px) rotate(-3deg); }
+.xm-gabe-txt { display: block; margin-top: 14px; font-size: .82rem; line-height: 1.35;
+               font-weight: 500; color: rgba(255,255,255,.5); max-width: 15ch;
+               margin-inline: auto; transition: color .22s ease; }
+.xm-gabe:hover .xm-gabe-txt, .xm-gabe:focus-visible .xm-gabe-txt { color: var(--hl); }
+
+.xm-fuss { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5;
+           padding: 0 var(--pad-x) clamp(16px, 2.2vw, 26px);
+           display: flex; justify-content: space-between; align-items: center; gap: 16px;
+           font-size: .8rem; color: var(--grey-50); flex-wrap: wrap; }
+.xm-fuss a { color: var(--grey-50); }
+.xm-fuss a:hover { color: var(--hl); }
+
+/* Schmale oder flache Fenster: kleinere Gaben, Text enger - die Seite bleibt
+   in jedem Fall ohne Bildlauf. */
+@media (max-width: 900px) {
+  .xm-gabe { --b: 66px !important; --h: 52px !important; }
+  .xm-gabe-txt { font-size: .68rem; max-width: 11ch; margin-top: 9px; }
+  .xm-gaben { gap: 8px; }
+  .xm-text { max-width: 22ch; }
+}
+@media (max-height: 720px) {
+  .xm-gabe { --b: 72px !important; --h: 56px !important; }
+  .xm-gabe-txt { display: none; }
+  .xm-mitte { top: clamp(78px, 12vh, 110px); }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+<symbol id="ic-raute" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,31.11l85.11,85.11-85.11,85.11L31.11,116.22,116.22,31.11M116.22,2.83L2.83,116.22l113.39,113.39,113.39-113.39L116.22,2.83h0Z"/></symbol>
+</defs></svg>
+
+<main class="xm">
+  <svg class="xm-wm xm-wm--1" aria-hidden="true"><use href="#ic-kreis"/></svg>
+  <svg class="xm-wm xm-wm--2" aria-hidden="true"><use href="#ic-raute"/></svg>
+  <div class="xm-snow" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <header class="xm-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="xm-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="xm-mitte">
+    <div class="xm-text">
+      <p class="xm-kicker">Von uns für Dich</p>
+      <h1 class="xm-h1">Frohe <span class="hl">Weihnachten.</span></h1>
+      <p class="xm-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
+        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und
+        Zeit für die Menschen, die zählen.</b> Und unter dem Baum liegt schon etwas für
+        das neue Jahr – schau ruhig nach.</p>
+    </div>
+  </div>
+
+  <div class="xm-buehne" aria-hidden="true">
+    <svg class="xm-land" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice">
+      <!-- Sterne in der Strichsprache der CD-Icons -->
+      <g stroke="#3a3a3a" stroke-width="2" stroke-linecap="round">
+        <path d="M180 34v18M171 43h18"/><path d="M1410 52v14M1403 59h14"/>
+        <path d="M980 24v12M974 30h12"/><path d="M520 62v12M514 68h12"/>
+      </g>
+      <!-- Huegel -->
+      <path d="M0 232 C 210 186 360 250 560 224 C 760 198 900 252 1120 220 C 1330 190 1470 240 1600 214 L1600 300 L0 300 Z" fill="#111"/>
+      <path d="M0 262 C 260 226 470 282 720 258 C 980 232 1180 286 1600 250 L1600 300 L0 300 Z" fill="#191919"/>
+      <!-- Baum: gestapelte Rauten-Haelften, gelber Stern -->
+      <g transform="translate(800 0)">
+        <rect x="-11" y="214" width="22" height="34" fill="#2a2a2a"/>
+        <path d="M0 58 L58 146 L-58 146 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M0 106 L78 196 L-78 196 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M0 156 L100 240 L-100 240 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <g stroke="#fff400" stroke-width="3" stroke-linecap="round">
+          <path d="M0 26v26M-13 39h26M-9 30l18 18M9 30l-18 18"/>
+        </g>
+        <circle cx="-34" cy="132" r="4.5" fill="#fff400"/><circle cx="40" cy="176" r="4.5" fill="#fff400"/>
+        <circle cx="-56" cy="186" r="4.5" fill="#fff400"/><circle cx="26" cy="118" r="4.5" fill="#fff400"/>
+        <circle cx="-14" cy="222" r="4.5" fill="#fff400"/><circle cx="66" cy="226" r="4.5" fill="#fff400"/>
+      </g>
+    </svg>
+  </div>
+
+  <nav class="xm-gaben" aria-label="Unsere Leistungen">
+    <a class="xm-gabe" style="--b:96px;--h:76px" href="/leistungen/strategie">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">Strategie in den Alltag</span></a>
+    <a class="xm-gabe" style="--b:118px;--h:92px" href="/workshops">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">Workshops</span></a>
+    <a class="xm-gabe" style="--b:86px;--h:66px" href="/ki-zum-anfassen">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">KI zum Anfassen</span></a>
+    <a class="xm-gabe" style="--b:110px;--h:70px" href="/dashboard-digitales-marketing">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">MarketingEcoSystem</span></a>
+    <a class="xm-gabe" style="--b:92px;--h:86px" href="/training-sparring">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">Training &amp; Sparring</span></a>
+    <a class="xm-gabe" style="--b:104px;--h:64px" href="/leistungen/komplexe-themen">
+      <span class="xm-gabe-deckel"></span><span class="xm-gabe-box"></span>
+      <span class="xm-gabe-txt">Komplexe Themen</span></a>
+  </nav>
+
+  <footer class="xm-fuss">
+    <span>empiria GmbH · Strategiehandwerk für die Versicherungsbranche</span>
+    <span><a href="/">empiria.de</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

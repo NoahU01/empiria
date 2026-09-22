@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X-Mas · Varianten – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Platzhalterseite: Einstieg zu den Varianten der Weihnachtsseite.
+   Schwarz-gelbes Hauptlayout, hellgraues Icon im Hintergrund. */
+.xv { position: relative; min-height: 100svh; background: var(--black); color: #fff;
+      display: flex; flex-direction: column; }
+.xv a { border-bottom: 0; }
+/* fixed statt absolute: ein Wasserzeichen mit negativem Versatz wuerde die
+   Seite sonst verlaengern und Bildlauf erzeugen, den es hier nicht braucht. */
+.xv-wm { position: fixed; color: #181818; width: 60vmin; height: 60vmin;
+         right: -14vmin; bottom: -18vmin; pointer-events: none; z-index: 0; }
+.xv-kopf { position: relative; z-index: 2; padding: clamp(22px,3.4vw,40px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.xv-kopf img { height: 26px; }
+.xv-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+.xv-raum { position: relative; z-index: 2; flex: 1 1 auto;
+           padding: clamp(22px,3vw,40px) var(--pad-x) clamp(24px,3vw,40px); }
+.xv-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 .9rem; }
+.xv-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.06;
+         font-size: clamp(1.9rem,3.6vw,3rem); margin: 0 0 .85rem; }
+.xv-h1 .hl { color: var(--ink); }
+.xv-lead { font-size: clamp(.98rem,1.2vw,1.08rem); line-height: 1.68; font-weight: 300;
+           color: rgba(255,255,255,.72); margin: 0 0 clamp(20px,2.4vw,32px); max-width: 60ch; }
+.xv-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+             gap: clamp(14px,1.8vw,22px); }
+.xv-karte { display: flex; flex-direction: column; gap: 8px; padding: clamp(15px,1.7vw,21px);
+            border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius-card);
+            background: rgba(255,255,255,.03); text-decoration: none; color: #fff;
+            transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.xv-karte:hover { border-color: var(--hl); background: rgba(255,244,0,.06); transform: translateY(-4px); }
+.xv-nr { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+         color: var(--hl); font-weight: 600; }
+.xv-karte h2 { font-family: var(--font-serif); font-weight: 700; font-size: 1.18rem;
+               line-height: 1.24; margin: 0; color: #fff; }
+.xv-karte p { font-size: .88rem; line-height: 1.6; font-weight: 300;
+              color: rgba(255,255,255,.62); margin: 0; }
+.xv-marke { margin-top: 4px; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
+            color: var(--grey-50); }
+.xv-hinweis { margin-top: clamp(18px,2.2vw,28px); padding: 12px 16px; border-radius: 12px;
+              background: var(--hl); color: var(--ink); font-size: .86rem; line-height: 1.5;
+              max-width: 70ch; }
+.xv-hinweis b { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-raute" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,31.11l85.11,85.11-85.11,85.11L31.11,116.22,116.22,31.11M116.22,2.83L2.83,116.22l113.39,113.39,113.39-113.39L116.22,2.83h0Z"/></symbol>
+</defs></svg>
+
+<main class="xv">
+  <svg class="xv-wm" aria-hidden="true"><use href="#ic-raute"/></svg>
+
+  <header class="xv-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="xv-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="xv-raum">
+    <p class="xv-kicker">X-Mas · Entwurfsstand</p>
+    <h1 class="xv-h1">Vier Varianten einer <span class="hl">Weihnachtsseite.</span></h1>
+    <p class="xv-lead">Gedacht als Seite, deren Link man direkt verschickt: alles auf einen Blick,
+      kein langes Scrollen. Jede Variante trägt einen Weihnachtsgruß und führt über die
+      weihnachtlichen Elemente zu unseren Leistungen.</p>
+
+    <div class="xv-gitter">
+      <a class="xv-karte" href="/xmas-1.html">
+        <span class="xv-nr">Xmas 1</span>
+        <h2>Die Bescherung</h2>
+        <p>Winterlandschaft mit Baum in der Strichsprache unserer Icons. Darunter liegen
+          Geschenke – beim Darüberfahren springt der Deckel auf und alles wird gelb.</p>
+        <span class="xv-marke">Schwarz · Gelb · Hauptlayout</span>
+      </a>
+      <a class="xv-karte" href="/xmas-2.html">
+        <span class="xv-nr">Xmas 2</span>
+        <h2>Der Adventskalender</h2>
+        <p>Heller Grund, schwarze Türchen. Hinter zehn Türchen steckt eine Leistung, hinter
+          zwei ein Gruß – und hinter dem großen der Wunsch.</p>
+        <span class="xv-marke">Weiß · Schwarz · Gelb</span>
+      </a>
+      <a class="xv-karte" href="/xmas-3.html">
+        <span class="xv-nr">Xmas 3</span>
+        <h2>Die Schneekugel</h2>
+        <p>Der Wunsch steht in der Kugel, die Leistungen liegen als Ring darum. Anklicken –
+          sie schüttelt sich. Nachthimmel im Blau des Manuals.</p>
+        <span class="xv-marke">Blau #063755 · Gelb</span>
+      </a>
+      <a class="xv-karte" href="/xmas-4.html">
+        <span class="xv-nr">Xmas 4</span>
+        <h2>Die Lichterkette</h2>
+        <p>Eine Kette hängt durchs Bild und geht beim Laden Birne für Birne an. Jede Birne
+          eine Leistung, in den Sekundärfarben. Mit Lichtschalter.</p>
+        <span class="xv-marke">Schwarz · alle Sekundärfarben</span>
+      </a>
+    </div>
+
+    <p class="xv-hinweis"><b>Nur in der Entwicklungsumgebung.</b> Diese Seiten sind bewusst
+      nicht in der Live-Version enthalten und auf <code>noindex</code> gesetzt. Sobald eine
+      Variante steht, entscheiden wir, ob und wie sie online geht.</p>
+  </div>
+</main>
+
+</body>
+</html>
