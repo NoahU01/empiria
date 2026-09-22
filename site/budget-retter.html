@@ -38,12 +38,11 @@
 .br-cta .btn { white-space: nowrap; }
 
 /* ---- Das Telefon --------------------------------------------------------
-   Seitenverhaeltnis 9:19,5 - so proportioniert Apple die aktuellen iPhones.
-   (Zu einem iPhone 18 liegen mir keine gesicherten Masse vor, deshalb das
-   aktuelle Format.) Tasten links und rechts sind angedeutet, oben die
-   Statuszeile und eine Chat-Kopfzeile. */
+   Seitenverhaeltnis nach den Gehaeusemassen des iPhone 16 Pro:
+   71,7 x 148,7 mm, also 1 : 2,074. Tasten links und rechts sind angedeutet,
+   oben Statuszeile und Chat-Kopfzeile. */
 .br-phone { position: relative; justify-self: center; width: min(292px, 76vw); }
-.br-phone-rahmen { position: relative; aspect-ratio: 9 / 19.5; border-radius: 13%/6%;
+.br-phone-rahmen { position: relative; aspect-ratio: 71.7 / 148.7; border-radius: 13%/6%;
                    background: linear-gradient(150deg, #2b2b2b 0%, #0d0d0d 42%, #202020 100%);
                    padding: 9px; box-shadow: 0 40px 80px rgba(0,0,0,.34),
                    inset 0 0 0 1.5px rgba(255,255,255,.12); }
@@ -112,15 +111,21 @@
 @keyframes br-huepf { 0%,60%,100% { transform: none; } 30% { transform: translateY(-4px); } }
 
 /* Eingabezeile - macht aus der Grafik erst einen Chat */
+/* Eine durchgehende Eingabezeile mit Symbolen darin - so wie iMessage es
+   macht. Zwei getrennte Felder nebeneinander gibt es in keinem Chat. */
 .br-eingabe { flex: 0 0 auto; display: flex; align-items: center; gap: 8px;
-              padding: 9px 12px 14px; }
-.br-eingabe span { flex: 1; height: 28px; border-radius: 999px; background: #fff;
-                   border: 1px solid #e0dbd3; display: flex; align-items: center;
-                   padding: 0 12px; font-size: .68rem; color: #a9a39a; }
-.br-senden { width: 28px; height: 28px; border-radius: 50%; background: var(--ink);
-             display: grid; place-items: center; flex: 0 0 auto; }
-.br-senden svg { width: 13px; height: 13px; stroke: var(--hl); stroke-width: 2.2;
-                 fill: none; stroke-linecap: round; stroke-linejoin: round; }
+              padding: 8px 11px 12px; }
+.br-plus { width: 26px; height: 26px; border-radius: 50%; flex: 0 0 auto;
+           background: rgba(26,24,23,.07); display: grid; place-items: center; }
+.br-feld { flex: 1 1 auto; min-width: 0; height: 30px; border-radius: 999px;
+           background: #fff; border: 1px solid #ddd8d0; display: flex; align-items: center;
+           gap: 7px; padding: 0 9px 0 13px; }
+.br-feld em { flex: 1 1 auto; font-style: normal; font-size: .68rem; color: #a9a39a;
+              overflow: hidden; white-space: nowrap; }
+.br-eingabe svg { width: 14px; height: 14px; flex: 0 0 auto; fill: none;
+                  stroke: rgba(26,24,23,.42); stroke-width: 1.8;
+                  stroke-linecap: round; stroke-linejoin: round; }
+.br-plus svg { stroke: rgba(26,24,23,.55); stroke-width: 2.2; }
 .br-leiste { width: 36%; height: 4px; border-radius: 2px; background: rgba(0,0,0,.28);
              margin: 0 auto 7px; }
 
@@ -314,8 +319,12 @@
               </div>
 
               <div class="br-eingabe" aria-hidden="true">
-                <span>Nachricht</span>
-                <span class="br-senden"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+                <span class="br-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+                <span class="br-feld">
+                  <em>Nachricht</em>
+                  <svg viewBox="0 0 24 24"><path d="M4 8.5h3.2L9 6h6l1.8 2.5H20v10H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+                  <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>
+                </span>
               </div>
               <div class="br-leiste" aria-hidden="true"></div>
 
