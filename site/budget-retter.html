@@ -18,47 +18,37 @@
 .br-kopf img { height: 26px; }
 .br-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
 
-/* ---- Wortmarke und Statusleiste ----------------------------------------
-   Drei kleine Dinge, die aus einer Landingpage ein Produkt machen: eine
-   eigene Wortmarke, eine Statusleiste wie bei einer Anwendung und ein
-   laufender Countdown. Die Zeit laeuft sichtbar ab - das ist der Kern der
-   Aussage und zugleich das, was sich am meisten nach Software anfuehlt. */
-.br-wortmarke { display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+/* ---- Wortmarke ----------------------------------------------------------
+   Der Rettungsring ist das Zeichen: er sagt woertlich, was das Produkt tut,
+   und ist zugleich der Kreis aus der Formensprache des Manuals. Ein Viertel
+   in Gelb bringt die Hausfarbe hinein. */
+.br-wortmarke { display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
                 color: inherit; border-bottom: 0; }
-.br-wortmarke-zeichen { position: relative; width: 26px; height: 26px; flex: 0 0 auto;
-                        display: grid; place-items: center; }
-.br-wortmarke-zeichen svg.raute { position: absolute; inset: 0; width: 100%; height: 100%;
-                                  color: currentColor; }
-.br-wortmarke-zeichen svg.haken { position: relative; width: 12px; height: 12px;
-                                  stroke: var(--hl); stroke-width: 3; fill: none;
-                                  stroke-linecap: round; stroke-linejoin: round; }
-.br-wortmarke-text { display: block; line-height: 1.05; }
+.br-ring { width: 32px; height: 32px; flex: 0 0 auto; display: block; }
+.br-wortmarke-text { display: block; line-height: 1.02; }
 .br-wortmarke-text b { display: block; font-family: var(--font-serif); font-weight: 700;
-                       font-size: .96rem; letter-spacing: -.01em; }
-.br-wortmarke-text small { display: block; font-size: .58rem; letter-spacing: .18em;
-                           text-transform: uppercase; opacity: .55; margin-top: 1px; }
+                       font-size: 1.06rem; letter-spacing: -.015em; }
+.br-wortmarke-text small { display: block; font-size: .56rem; letter-spacing: .22em;
+                           text-transform: uppercase; color: var(--grey-50); margin-top: 3px; }
 
-.br-leiste { background: var(--ink); color: #fff; }
-.br-leiste .container { display: flex; align-items: center; justify-content: space-between;
-                        gap: 16px; padding-block: 11px; flex-wrap: wrap; }
-.br-leiste-links { display: flex; align-items: center; gap: 14px; }
-.br-saison { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase;
-             color: rgba(255,255,255,.45); padding-left: 14px;
-             border-left: 1px solid rgba(255,255,255,.18); }
-
-/* Countdown in Ziffernfeldern - wie eine Anzeige, nicht wie Fliesstext */
-.br-count { display: flex; align-items: center; gap: 7px; }
-.br-count-txt { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase;
-                color: rgba(255,255,255,.45); margin-right: 3px; }
-.br-feldchen { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.br-feldchen b { display: block; min-width: 30px; padding: 4px 5px; border-radius: 5px;
-                 background: rgba(255,255,255,.09); color: var(--hl);
-                 font-family: var(--font-serif); font-weight: 700; font-size: .92rem;
-                 line-height: 1; text-align: center;
-                 font-variant-numeric: tabular-nums; }
-.br-feldchen small { font-size: .52rem; letter-spacing: .12em; text-transform: uppercase;
-                     color: rgba(255,255,255,.4); }
-.br-doppel { color: rgba(255,255,255,.25); font-weight: 700; padding-bottom: 12px; }
+/* ---- Countdown im Aufmacher --------------------------------------------
+   Steht zwischen Text und Knopf, nicht als eigener Balken. Der gelbe
+   Seitenstrich bindet ihn an die Marke, ohne dass er wie ein Kasten wirkt. */
+.br-count { margin: clamp(22px,2.8vw,32px) 0 0; padding-left: 16px;
+            border-left: 4px solid var(--hl); }
+.br-count-txt { display: block; font-size: .7rem; letter-spacing: .16em;
+                text-transform: uppercase; color: var(--grey-50); font-weight: 600;
+                margin-bottom: 8px; }
+.br-uhr { display: flex; align-items: flex-end; gap: 12px; }
+.br-feldchen { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.br-feldchen b { font-family: var(--font-serif); font-weight: 700; font-size: 2rem;
+                 line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.br-feldchen small { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+                     color: var(--grey-50); font-weight: 600; }
+.br-doppel { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem;
+             line-height: 1; color: var(--grey-50); padding-bottom: 12px; }
+.br-feldchen--tage b { color: var(--ink); }
+.br-feldchen--tage { margin-right: 4px; }
 
 /* Software-Detail am Rand */
 .br-stand { border-top: 1px solid var(--grey-bg); }
@@ -67,10 +57,9 @@
                        font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
                        color: var(--grey-50); }
 
-@media (max-width: 700px) {
-  .br-leiste .container { justify-content: center; }
-  .br-saison { display: none; }
-  .br-count-txt { display: none; }
+@media (max-width: 560px) {
+  .br-feldchen b { font-size: 1.6rem; }
+  .br-uhr { gap: 9px; }
 }
 
 /* ---- Aufmacher ----------------------------------------------------------
@@ -345,32 +334,18 @@
 <header class="br-kopf">
   <a href="/"><img src="/assets/empiria-logo.svg" alt="empiria"></a>
   <span class="br-wortmarke">
-    <span class="br-wortmarke-zeichen" aria-hidden="true">
-      <svg class="raute" viewBox="0 0 232.44 232.44"><use href="#ic-raute"/></svg>
-      <svg class="haken" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
-    </span>
-    <span class="br-wortmarke-text"><b>Budget-Retter</b><small>by empiria</small></span>
+    <svg class="br-ring" viewBox="0 0 100 100" aria-hidden="true">
+      <g transform="rotate(-84 50 50)">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#1a1817" stroke-width="15"
+                stroke-dasharray="52 10.83"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#fff400" stroke-width="15"
+                stroke-dasharray="52 199.33"/>
+      </g>
+    </svg>
+    <span class="br-wortmarke-text"><b>Budget-Retter</b><small>von empiria</small></span>
   </span>
 </header>
 
-<div class="br-leiste">
-  <div class="container">
-    <div class="br-leiste-links">
-      <span class="br-saison">Saison 2026</span>
-      <span class="br-saison" style="border-left:0;padding-left:0">Stand 22.09.2026</span>
-    </div>
-    <div class="br-count" id="count" aria-label="Verbleibende Zeit bis zum 31. Dezember">
-      <span class="br-count-txt">Budget verfällt in</span>
-      <span class="br-feldchen"><b id="c-tage">–</b><small>Tage</small></span>
-      <span class="br-doppel">:</span>
-      <span class="br-feldchen"><b id="c-std">–</b><small>Std</small></span>
-      <span class="br-doppel">:</span>
-      <span class="br-feldchen"><b id="c-min">–</b><small>Min</small></span>
-      <span class="br-doppel">:</span>
-      <span class="br-feldchen"><b id="c-sek">–</b><small>Sek</small></span>
-    </div>
-  </div>
-</div>
 
 <main>
   <!-- ===== Aufmacher ===== -->
@@ -433,10 +408,22 @@
 
             </div>
           </div>
+
+          <div class="br-count" id="count">
+            <span class="br-count-txt">Budget verfällt in</span>
+            <div class="br-uhr">
+              <span class="br-feldchen br-feldchen--tage"><b id="c-tage">–</b><small>Tage</small></span>
+              <span class="br-feldchen"><b id="c-std">–</b><small>Std</small></span>
+              <span class="br-doppel">:</span>
+              <span class="br-feldchen"><b id="c-min">–</b><small>Min</small></span>
+              <span class="br-doppel">:</span>
+              <span class="br-feldchen"><b id="c-sek">–</b><small>Sek</small></span>
+            </div>
+          </div>
         </div>
 
       </div>
-      <p class="br-cta"><a class="btn btn--dark" href="#wege">Möglichkeiten kennenlernen</a></p>
+      <p class="br-cta"><a class="btn btn--dark" href="#wege">Budget jetzt retten</a></p>
     </div>
   </section>
 
@@ -618,7 +605,7 @@
     <div class="container kontakt-standalone-top">
       <div class="kontakt-standalone-text reveal">
         <p class="kicker">Kontakt</p>
-        <h2 class="h-serif">Sag uns, was noch <span class="hl">im Topf ist.</span></h2>
+        <h2 class="h-serif">Was ist noch <span class="hl">im Topf?</span></h2>
         <p class="lead">Ein kurzes Telefonat reicht: Du nennst uns den Rahmen und das Thema, wir sagen Dir ehrlich, was sich noch in diesem Jahr anstoßen lässt – und was besser Zeit braucht.</p>
         <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem. Und kein Angebot, das erst im Februar kommt.</p>
       </div>
