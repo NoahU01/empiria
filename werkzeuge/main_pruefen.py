@@ -32,9 +32,9 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
 INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/xmas.html", "site/xmas-1.html", "site/xmas-2.html",
-                  "site/xmas-3.html", "site/xmas-4.html",
+                  "site/xmas-4.html",
                   "site/xmas-5.html", "site/xmas-6.html",
-                  "site/xmas-7.html", "site/xmas-8.html",
+                  "site/xmas-8.html",
                   "site/xmas-9.html", "site/xmas-10.html",
                   "site/xmas-11.html", "site/xmas-12.html",
                   "site/xmas-13.html"]
