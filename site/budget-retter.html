@@ -19,36 +19,40 @@
 .br-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
 
 /* ---- Wortmarke ----------------------------------------------------------
-   Der Rettungsring ist das Zeichen: er sagt woertlich, was das Produkt tut,
-   und ist zugleich der Kreis aus der Formensprache des Manuals. Ein Viertel
-   in Gelb bringt die Hausfarbe hinein. */
+   Kein Bildzeichen. Ein Ring, ein Schild, ein Haken - all das sieht aus wie
+   das Zeichen irgendeines Verbands. Das eigenstaendigste Erkennungsmerkmal
+   des Hauses ist der gelbe Balken hinter einem Wort; genau der traegt hier
+   die Marke. Davor die Forward-Form aus dem Manual als kleines Signal. */
 .br-wortmarke { display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
                 color: inherit; border-bottom: 0; }
-.br-ring { width: 32px; height: 32px; flex: 0 0 auto; display: block; }
-.br-wortmarke-text { display: block; line-height: 1.02; }
+.br-wortmarke svg { width: 15px; height: 15px; flex: 0 0 auto; color: var(--ink); }
+.br-wortmarke-text { display: block; line-height: 1.04; }
 .br-wortmarke-text b { display: block; font-family: var(--font-serif); font-weight: 700;
-                       font-size: 1.06rem; letter-spacing: -.015em; }
-.br-wortmarke-text small { display: block; font-size: .56rem; letter-spacing: .22em;
-                           text-transform: uppercase; color: var(--grey-50); margin-top: 3px; }
+                       font-size: 1.08rem; letter-spacing: -.015em; white-space: nowrap; }
+.br-wortmarke-text i { font-style: normal; position: relative; z-index: 0; padding: 0 .12em; }
+.br-wortmarke-text i::before { content: ""; position: absolute; left: 0; right: 0;
+                               top: .12em; bottom: .04em; background: var(--hl);
+                               z-index: -1; border-radius: 2px; }
+.br-wortmarke-text small { display: block; font-size: .55rem; letter-spacing: .24em;
+                           text-transform: uppercase; color: var(--grey-50); margin-top: 4px; }
 
-/* ---- Countdown im Aufmacher --------------------------------------------
-   Steht zwischen Text und Knopf, nicht als eigener Balken. Der gelbe
-   Seitenstrich bindet ihn an die Marke, ohne dass er wie ein Kasten wirkt. */
-.br-count { margin: clamp(22px,2.8vw,32px) 0 0; padding-left: 16px;
-            border-left: 4px solid var(--hl); }
-.br-count-txt { display: block; font-size: .7rem; letter-spacing: .16em;
+/* ---- Countdown ----------------------------------------------------------
+   Steht mittig direkt ueber dem Knopf: erst der Grund, dann die Handlung.
+   Ohne Sekunden - auf einem Horizont von Wochen wirkt eine tickende
+   Sekundenanzeige wie ein Countdown-Widget aus dem Onlinehandel und kostet
+   bei dieser Zielgruppe eher Glaubwuerdigkeit, als dass sie Druck erzeugt. */
+.br-count { margin: 0 auto clamp(14px,1.8vw,20px); text-align: center; }
+.br-count-txt { display: block; font-size: .72rem; letter-spacing: .16em;
                 text-transform: uppercase; color: var(--grey-50); font-weight: 600;
-                margin-bottom: 8px; }
-.br-uhr { display: flex; align-items: flex-end; gap: 12px; }
-.br-feldchen { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-.br-feldchen b { font-family: var(--font-serif); font-weight: 700; font-size: 2rem;
-                 line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+                margin-bottom: 9px; }
+.br-uhr { display: inline-flex; align-items: flex-end; justify-content: center; gap: 14px; }
+.br-feldchen { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.br-feldchen b { font-family: var(--font-serif); font-weight: 700; font-size: 2.3rem;
+                 line-height: .92; color: var(--ink); font-variant-numeric: tabular-nums; }
 .br-feldchen small { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
                      color: var(--grey-50); font-weight: 600; }
-.br-doppel { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem;
-             line-height: 1; color: var(--grey-50); padding-bottom: 12px; }
-.br-feldchen--tage b { color: var(--ink); }
-.br-feldchen--tage { margin-right: 4px; }
+.br-feldchen--tage b::after { content: ""; position: absolute; }
+.br-trenn { width: 1px; align-self: stretch; background: var(--grey-bg); margin: 2px 0 6px; }
 
 /* Software-Detail am Rand */
 .br-stand { border-top: 1px solid var(--grey-bg); }
@@ -334,15 +338,8 @@
 <header class="br-kopf">
   <a href="/"><img src="/assets/empiria-logo.svg" alt="empiria"></a>
   <span class="br-wortmarke">
-    <svg class="br-ring" viewBox="0 0 100 100" aria-hidden="true">
-      <g transform="rotate(-84 50 50)">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#1a1817" stroke-width="15"
-                stroke-dasharray="52 10.83"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#fff400" stroke-width="15"
-                stroke-dasharray="52 199.33"/>
-      </g>
-    </svg>
-    <span class="br-wortmarke-text"><b>Budget-Retter</b><small>von empiria</small></span>
+    <svg viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
+    <span class="br-wortmarke-text"><b>Budget-<i>Retter</i></b><small>von empiria</small></span>
   </span>
 </header>
 
@@ -409,21 +406,20 @@
             </div>
           </div>
 
-          <div class="br-count" id="count">
-            <span class="br-count-txt">Budget verfällt in</span>
-            <div class="br-uhr">
-              <span class="br-feldchen br-feldchen--tage"><b id="c-tage">–</b><small>Tage</small></span>
-              <span class="br-feldchen"><b id="c-std">–</b><small>Std</small></span>
-              <span class="br-doppel">:</span>
-              <span class="br-feldchen"><b id="c-min">–</b><small>Min</small></span>
-              <span class="br-doppel">:</span>
-              <span class="br-feldchen"><b id="c-sek">–</b><small>Sek</small></span>
-            </div>
-          </div>
         </div>
 
       </div>
-      <p class="br-cta"><a class="btn btn--dark" href="#wege">Budget jetzt retten</a></p>
+      <div class="br-cta">
+        <div class="br-count" id="count">
+          <span class="br-count-txt">Budget verfällt in</span>
+          <div class="br-uhr">
+            <span class="br-feldchen"><b id="c-tage">–</b><small>Tage</small></span>
+            <span class="br-trenn" aria-hidden="true"></span>
+            <span class="br-feldchen"><b id="c-std">–</b><small>Stunden</small></span>
+          </div>
+        </div>
+        <a class="btn btn--dark" href="#wege">Budget jetzt retten</a>
+      </div>
     </div>
   </section>
 
@@ -654,24 +650,22 @@
 
 
 <script>
-/* Countdown bis zum Jahresende. Laeuft sichtbar - das ist der Punkt: die
-   knappe Ressource ist der Termin, nicht das Geld. */
+/* Countdown. Das Zieldatum steht bewusst als EINE Zeile hier oben - es ist
+   eine Geschaeftsentscheidung, kein technisches Detail.
+   Derzeit der 31.12.; sinnvoller waere der letzte Tag, an dem ein Start in
+   diesem Jahr noch realistisch ist. */
 (function () {
-  var ziel = new Date(2026, 11, 31, 23, 59, 59).getTime();
-  var f = { tage: document.getElementById('c-tage'), std: document.getElementById('c-std'),
-            min: document.getElementById('c-min'), sek: document.getElementById('c-sek') };
-  function zwei(n) { return n < 10 ? '0' + n : String(n); }
+  var ZIEL = new Date(2026, 11, 31, 23, 59, 59);
+
+  var f = { tage: document.getElementById('c-tage'), std: document.getElementById('c-std') };
   function tick() {
-    var rest = ziel - Date.now();
-    if (rest < 0) rest = 0;
+    var rest = Math.max(0, ZIEL.getTime() - Date.now());
     var s = Math.floor(rest / 1000);
     f.tage.textContent = Math.floor(s / 86400);
-    f.std.textContent  = zwei(Math.floor(s % 86400 / 3600));
-    f.min.textContent  = zwei(Math.floor(s % 3600 / 60));
-    f.sek.textContent  = zwei(s % 60);
+    f.std.textContent  = Math.floor(s % 86400 / 3600);
   }
   tick();
-  setInterval(tick, 1000);
+  setInterval(tick, 30000);   // Stunden reichen - kein Sekundenticker
 })();
 </script>
 <script src="/script.js"></script>
