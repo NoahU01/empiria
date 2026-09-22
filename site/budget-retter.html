@@ -3,79 +3,128 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Budget-Retter – empiria</title>
-<meta name="description" content="Restbudget bis zum Jahresende? Zwei Themen, die wir noch in diesem Jahr liefern – und damit auch in diesem Jahr abrechnen.">
+<title>empiria Budget-Retter</title>
+<meta name="description" content="Restbudget bis zum Jahresende? Zwei Themen, die wir noch in diesem Jahr liefern – und so rechtzeitig abrechnen, dass Du die Rechnung direkt verbuchen kannst.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/lead/lead.css">
 <style>
-/* ===== Budget-Retter =========================================================
-   Kurze Landingpage im Schwarz-Gelb der Strategieseiten. Bewusst knapp: Thema
-   anreissen, drei Wege zeigen, Rechnungsfrage klaeren, Kontakt.
-
-   Zur Tonalitaet: Augenzwinkern ja, Grauzone nein. Die knappe Ressource ist
-   hier nicht das Geld, sondern der Termin - nur was bis zum 31.12. tatsaechlich
-   geliefert ist, laesst sich auch in diesem Jahr abrechnen. Genau so ist die
-   Seite formuliert. */
+/* ===== empiria Budget-Retter =================================================
+   Kurze Landingpage zum Jahresende im Schwarz-Gelb der Strategieseiten.
+   Links der Text, rechts ein Telefon, in dem der typische Anruf als Chat
+   laeuft. Darunter drei Wege, die Rechnungsfrage, Kontakt. */
 .br-kopf { position: relative; z-index: 3; padding: clamp(20px,3vw,34px) var(--pad-x) 0;
            display: flex; align-items: center; justify-content: space-between; gap: 18px; }
 .br-kopf img { height: 26px; }
 .br-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
 
 /* ---- Aufmacher ---------------------------------------------------------- */
-.br-hero { position: relative; padding: clamp(44px,7vw,92px) 0 clamp(36px,5vw,64px); overflow: hidden; }
-.br-hero .watermark { width: clamp(280px,32vw,460px); height: clamp(280px,32vw,460px);
-                      right: -6%; top: -18%; }
+.br-hero { position: relative; padding: clamp(36px,5.4vw,72px) 0 clamp(40px,5.4vw,76px);
+           overflow: hidden; }
+.br-hero .watermark { width: clamp(260px,28vw,420px); height: clamp(260px,28vw,420px);
+                      left: -9%; bottom: -22%; }
+.br-hero-grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr);
+                gap: clamp(30px,5vw,80px); align-items: center; }
+/* Der Text laeuft bewusst nicht ueber die halbe Seite hinaus. */
+.br-text { max-width: 30ch; }
 .br-hero h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.04;
-              font-size: clamp(2.3rem,5.2vw,4.1rem); margin: .6rem 0 1.2rem; max-width: 18ch; }
-.br-lead { font-size: clamp(1rem,1.35vw,1.16rem); line-height: 1.7; color: var(--grey-70);
-           max-width: 62ch; margin: 0 0 1rem; }
+              font-size: clamp(2.2rem,4.4vw,3.6rem); margin: .5rem 0 1.1rem; }
+.br-lead { font-size: clamp(.98rem,1.25vw,1.1rem); line-height: 1.7; color: var(--grey-70);
+           max-width: 34ch; margin: 0 0 .9rem; }
 .br-lead b { color: var(--ink); font-weight: 600; }
+.br-cta { margin-top: clamp(20px,2.6vw,30px); }
 
-/* Der typische Anruf - das Augenzwinkern */
-.br-anruf { display: grid; gap: 14px; margin-top: clamp(26px,3.4vw,40px); max-width: 720px; }
-.br-blase { position: relative; background: var(--ink); color: #fff; border-radius: 18px 18px 18px 4px;
-            padding: 16px 20px; font-size: clamp(.98rem,1.2vw,1.1rem); line-height: 1.5;
-            font-family: var(--font-serif); font-weight: 500; justify-self: start; max-width: 34ch; }
-.br-blase--wir { background: var(--hl); color: var(--ink); border-radius: 18px 18px 4px 18px;
-                 justify-self: end; text-align: right; }
-.br-blase small { display: block; margin-top: 6px; font-family: var(--font-sans); font-weight: 500;
-                  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; opacity: .55; }
+/* ---- Das Telefon -------------------------------------------------------- */
+.br-phone { justify-self: center; width: min(300px, 74vw); }
+.br-phone-rahmen { position: relative; border-radius: 42px; background: #111;
+                   padding: 11px; box-shadow: 0 34px 70px rgba(0,0,0,.28),
+                   inset 0 0 0 2px #2a2a2a; }
+.br-phone-schirm { position: relative; border-radius: 32px; background: #f4f2ef;
+                   padding: 40px 14px 20px; min-height: 480px; overflow: hidden;
+                   display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; }
+.br-notch { position: absolute; left: 50%; top: 10px; transform: translateX(-50%);
+            width: 104px; height: 22px; border-radius: 12px; background: #111; }
+.br-phone-kopf { position: absolute; left: 14px; right: 14px; top: 42px;
+                 padding-bottom: 10px; border-bottom: 1px solid #e3ded7;
+                 font-size: .72rem; color: var(--grey-50); font-weight: 600;
+                 letter-spacing: .08em; text-transform: uppercase; }
+
+.br-blase { position: relative; padding: 13px 16px; margin: 0; font-size: .92rem;
+            line-height: 1.45; max-width: 88%; opacity: 0;
+            animation: br-rein .5s cubic-bezier(.2,.8,.3,1) forwards; }
+.br-blase--du { align-self: flex-start; background: #e6e2dc; color: var(--ink);
+                border-radius: 16px 16px 16px 4px; animation-delay: .5s; }
+.br-blase--wir { align-self: flex-end; background: var(--hl); color: var(--ink);
+                 border-radius: 16px 16px 4px 16px; text-align: right;
+                 font-weight: 500; animation-delay: 2.3s; }
+.br-blase small { display: block; margin-top: 5px; font-size: .64rem; letter-spacing: .1em;
+                  text-transform: uppercase; font-weight: 600; opacity: .5; }
+@keyframes br-rein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Tippanzeige zwischen den beiden Blasen */
+.br-tippt { align-self: flex-end; display: flex; gap: 5px; padding: 13px 16px;
+            background: #e6e2dc; border-radius: 16px; opacity: 0;
+            animation: br-tipp-an .3s ease 1.3s forwards, br-tipp-aus .3s ease 2.3s forwards; }
+.br-tippt i { width: 7px; height: 7px; border-radius: 50%; background: #9a948b;
+              animation: br-huepf 1.1s ease-in-out infinite; }
+.br-tippt i:nth-child(2) { animation-delay: .15s; }
+.br-tippt i:nth-child(3) { animation-delay: .3s; }
+@keyframes br-tipp-an { to { opacity: 1; } }
+@keyframes br-tipp-aus { to { opacity: 0; height: 0; padding: 0; margin: 0; } }
+@keyframes br-huepf { 0%,60%,100% { transform: none; } 30% { transform: translateY(-4px); } }
 
 /* ---- Die drei Wege ------------------------------------------------------ */
 .br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
 .br-wege .kicker { color: var(--hl); }
 .br-wege h2 { font-family: var(--font-serif); font-weight: 500; color: #fff;
               font-size: clamp(1.7rem,3.2vw,2.5rem); line-height: 1.12; margin: 0 0 .8rem; }
-.br-wege .br-sub { color: rgba(255,255,255,.72); max-width: 60ch; margin: 0 0 clamp(28px,3.4vw,44px);
-                   font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.66; }
-.br-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
-             gap: clamp(14px,1.8vw,22px); align-items: stretch; }
-.br-karte { display: flex; flex-direction: column; }
-.br-frist { display: flex; align-items: baseline; gap: 8px; margin: 16px 0 2px; }
+.br-sub { color: rgba(255,255,255,.72); max-width: 60ch; margin: 0 0 clamp(28px,3.4vw,44px);
+          font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.66; }
+
+/* Subgrid: jede Karte spannt dieselben acht Zeilen auf. Dadurch stehen
+   Ueberschrift, Dauer, Text, Frist, Hinweis, Trennlinie und Knopf in allen
+   drei Karten exakt auf einer Hoehe - unabhaengig davon, wie lang der
+   einzelne Text ist. Mindesthoehen zu schaetzen hat genau das nie sauber
+   hinbekommen. */
+.br-karten { display: grid; grid-template-columns: repeat(3, 1fr);
+             grid-template-rows: repeat(8, auto);
+             gap: clamp(14px,1.8vw,22px); }
+.br-karte { grid-row: span 8; display: grid; grid-template-rows: subgrid; align-content: start; }
+.br-karte > * { margin: 0; }
+.br-titel { font-family: var(--font-serif); font-weight: 700; font-size: 1.22rem;
+            line-height: 1.28; color: #fff; }
+.br-dauer { font-family: var(--font-serif); font-weight: 500; font-size: 1rem;
+            color: rgba(255,255,255,.72); padding-top: 4px; }
+.br-desc { color: rgba(255,255,255,.85); font-size: .95rem; line-height: 1.6; padding-top: 12px; }
+.br-frist { display: flex; align-items: baseline; gap: 8px; padding-top: 18px; }
 .br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem; color: var(--hl); }
 .br-frist span { font-size: .85rem; color: rgba(255,255,255,.8); }
-.br-knopf { margin-top: auto; width: 100%; padding: 13px 18px; border-radius: 12px; cursor: pointer;
+.br-hinweis { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.7); padding-top: 6px; }
+.br-liste { list-style: none; padding: 20px 0 0; border-top: 1px solid rgba(255,255,255,.24);
+            margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.br-liste li { position: relative; padding-left: 22px; font-size: .9rem; line-height: 1.5;
+               color: rgba(255,255,255,.88); }
+.br-liste li::before { content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px;
+                       border-radius: 50%; background: var(--hl); }
+.br-knopfzeile { padding-top: 22px; }
+.br-knopf { width: 100%; padding: 13px 18px; border-radius: 12px; cursor: pointer;
             font: inherit; font-weight: 600; font-size: .92rem; border: 1px solid var(--hl);
-            background: var(--hl); color: var(--ink);
-            transition: transform .18s ease, background .18s ease; }
-.br-knopf:hover { transform: translateY(-2px); background: #fff; border-color: #fff; }
-.br-knopf--leer { background: transparent; color: #fff; border-color: rgba(255,255,255,.45);
-                  text-decoration: none; text-align: center; display: block; }
+            background: var(--hl); color: var(--ink); display: block; text-align: center;
+            text-decoration: none; transition: transform .18s ease, background .18s ease; }
+.br-knopf:hover { transform: translateY(-2px); background: #fff; border-color: #fff; color: var(--ink); }
+.br-knopf--leer { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
 .br-knopf--leer:hover { background: #fff; color: var(--ink); border-color: #fff; }
 
 /* ---- Die Rechnungsfrage ------------------------------------------------- */
 .br-rechnung { background: var(--hl); color: var(--ink); padding-block: clamp(40px,5.4vw,72px); }
-.br-rechnung .container { max-width: 900px; }
+.br-rechnung .container { max-width: 860px; }
 .br-rechnung .kicker { color: rgba(26,24,23,.6); }
 .br-rechnung h2 { font-family: var(--font-serif); font-weight: 700;
                   font-size: clamp(1.6rem,3vw,2.3rem); line-height: 1.14; margin: 0 0 1rem; }
-.br-rechnung p { font-size: clamp(.96rem,1.2vw,1.08rem); line-height: 1.7; margin: 0 0 .9rem;
-                 max-width: 66ch; }
+.br-rechnung p { font-size: clamp(1rem,1.3vw,1.14rem); line-height: 1.7; margin: 0 0 1rem;
+                 max-width: 62ch; }
 .br-rechnung p:last-child { margin-bottom: 0; }
 .br-rechnung b { font-weight: 700; }
-.br-nicht { margin-top: 1.4rem; padding: 16px 20px; border-radius: 14px;
-            background: rgba(26,24,23,.08); border-left: 4px solid var(--ink); }
 
 /* ---- Kontakt ------------------------------------------------------------ */
 .br-kontakt { padding-block: clamp(42px,5.6vw,80px); }
@@ -85,9 +134,21 @@
                 max-width: 58ch; margin: 0 0 1.6rem; }
 .br-draht { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
 .br-draht a { font-weight: 600; }
-
 .br-fuss { border-top: 1px solid var(--grey-bg); padding: 20px 0 30px; font-size: .8rem;
            color: var(--grey-50); }
+
+@media (max-width: 900px) {
+  .br-hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .br-text, .br-lead { max-width: none; }
+  .br-karten { grid-template-columns: 1fr; grid-template-rows: none; }
+  .br-karte { grid-row: auto; display: flex; flex-direction: column; }
+  .br-liste { flex: 1; }
+  .br-knopfzeile { margin-top: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .br-blase { opacity: 1; animation: none; }
+  .br-tippt { display: none; }
+}
 </style>
 </head>
 <body>
@@ -106,85 +167,102 @@
   <section class="br-hero">
     <svg class="watermark" aria-hidden="true"><use href="#ic-kreis"/></svg>
     <div class="container">
-      <p class="kicker">Budget-Retter</p>
-      <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
-      <p class="br-lead">Jedes Jahr dasselbe Telefonat: Im November wird klar, dass im Topf noch
-        etwas übrig ist – und ab dem 1. Januar ist es verfallen. Wir kennen den Anruf gut.</p>
-      <p class="br-lead">Deshalb liegen hier zwei Themen bereit, die wir <b>noch in diesem Jahr
-        liefern können</b>. Und wenn keines davon passt: Ruf an. Uns fällt etwas ein.</p>
+      <div class="br-hero-grid">
 
-      <div class="br-anruf">
-        <p class="br-blase">„Wir haben da noch was im Budget. Fällt Euch was ein?"
-          <small>Jedes Jahr, ab November</small></p>
-        <p class="br-blase br-blase--wir">„Ja. Und zwar etwas, das Ihr auch wirklich braucht."
-          <small>Unsere Antwort</small></p>
+        <div class="br-text">
+          <p class="kicker">empiria Budget-Retter</p>
+          <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
+          <p class="br-lead">Im November wird klar, dass im Topf noch etwas übrig ist – und ab
+            dem 1. Januar ist es verfallen. Wir kennen den Anruf.</p>
+          <p class="br-lead">Der <b>empiria Budget-Retter</b> ist unsere Antwort darauf: zwei
+            Themen, die wir noch in diesem Jahr liefern.</p>
+          <p class="br-cta"><a class="btn btn--dark" href="#wege">Möglichkeiten kennenlernen</a></p>
+        </div>
+
+        <div class="br-phone" aria-label="Der typische Anruf im Dezember">
+          <div class="br-phone-rahmen">
+            <div class="br-notch" aria-hidden="true"></div>
+            <div class="br-phone-schirm">
+              <p class="br-phone-kopf">Dezember · eingehend</p>
+              <p class="br-blase br-blase--du">„Wir haben da noch was im Budget. Fällt Euch was ein?"
+                <small>Jedes Jahr, ab November</small></p>
+              <div class="br-tippt" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="br-blase br-blase--wir">„Ja. Und zwar etwas, das Ihr auch wirklich braucht."
+                <small>Unsere Antwort</small></p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ===== Die drei Wege ===== -->
-  <section class="br-wege">
+  <section class="br-wege" id="wege">
     <div class="container">
       <p class="kicker">Drei Wege</p>
       <h2>Was sich bis Silvester noch ausgeht.</h2>
-      <p class="br-sub">Beides sind Formate, die wir regelmäßig liefern – kompakt genug, um sie
-        noch in diesem Jahr durchzuführen. Den One-Pager mit allen Details bekommst Du sofort.</p>
+      <p class="br-sub">Zwei Formate, die wir regelmäßig liefern – kompakt genug, um sie noch in
+        diesem Jahr durchzuführen. Den One-Pager mit allen Details bekommst Du sofort.</p>
 
       <div class="br-karten">
 
-        <div class="produkt-glass price-card br-karte">
-          <div class="price-badge-slot"></div>
-          <h3>KI im Alltag anwenden<span class="price-name-sub">1 Tag, bei Euch im Haus</span></h3>
-          <p class="price-desc">Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben – und
-            weiß danach, wo KI trägt und wo nicht.</p>
+        <div class="produkt-glass br-karte">
+          <h3 class="br-titel">KI im Alltag anwenden</h3>
+          <p class="br-dauer">1 Tag, bei Euch im Haus</p>
+          <p class="br-desc">Ein Tag mit echten Tools an Euren echten Fällen – danach weiß Dein Team, wo KI wirklich trägt.</p>
           <div class="br-frist"><b>bis 31.12.</b><span>durchführbar</span></div>
-          <p class="price-note">Termine im Dezember sind erfahrungsgemäß schnell vergeben.</p>
-          <ul class="price-features">
+          <p class="br-hinweis">Termine im Dezember sind schnell vergeben.</p>
+          <ul class="br-liste">
             <li>Kein Vortrag – Hände an den Werkzeugen</li>
             <li>Zwei bis drei Fälle aus Eurem Bereich</li>
             <li>Liste konkreter Anwendungen zum Mitnehmen</li>
           </ul>
-          <button class="br-knopf" type="button"
-            data-kicker="Budget-Retter · One-Pager"
-            data-lead="KI im Alltag anwenden"
-            data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
-            data-pdf="/assets/downloads/empiria-budget-ki.pdf"
-            data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
+          <div class="br-knopfzeile">
+            <button class="br-knopf" type="button"
+              data-kicker="empiria Budget-Retter · One-Pager"
+              data-lead="KI im Alltag anwenden"
+              data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
+              data-pdf="/assets/downloads/empiria-budget-ki.pdf"
+              data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
+          </div>
         </div>
 
-        <div class="produkt-glass price-card price-card--featured br-karte">
-          <div class="price-badge-slot"><span class="price-badge">Am häufigsten gefragt</span></div>
-          <h3>Strategie in den Alltag überführen<span class="price-name-sub">1–2 Tage, moderiert</span></h3>
-          <p class="price-desc">Aus der Strategie wird ein Zielbild, mit dem Dein Bereich ab Montag
-            wirklich arbeiten kann.</p>
+        <div class="produkt-glass br-karte">
+          <h3 class="br-titel">Strategie in den Alltag überführen</h3>
+          <p class="br-dauer">1–2 Tage, moderiert</p>
+          <p class="br-desc">Aus der Strategie wird ein Zielbild, mit dem Dein Bereich ab Montag arbeiten kann – in Eurer Sprache.</p>
           <div class="br-frist"><b>bis 31.12.</b><span>durchführbar</span></div>
-          <p class="price-note">Auch als Auftakt möglich, mit Fortsetzung im neuen Jahr.</p>
-          <ul class="price-features">
+          <p class="br-hinweis">Auch als Auftakt mit Fortsetzung im neuen Jahr.</p>
+          <ul class="br-liste">
             <li>Vorgespräch, Arbeitstag, Dokumentation</li>
-            <li>In der Sprache Deines Teams, nicht in Strategiedeutsch</li>
+            <li>In der Sprache Deines Teams</li>
             <li>Mit klarem nächsten Schritt statt schöner Folien</li>
           </ul>
-          <button class="br-knopf" type="button"
-            data-kicker="Budget-Retter · One-Pager"
-            data-lead="Strategie in den Alltag überführen"
-            data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
-            data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
-            data-bild="/assets/downloads/empiria-budget-strategie-1.webp">One-Pager laden</button>
+          <div class="br-knopfzeile">
+            <button class="br-knopf" type="button"
+              data-kicker="empiria Budget-Retter · One-Pager"
+              data-lead="Strategie in den Alltag überführen"
+              data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
+              data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
+              data-bild="/assets/downloads/empiria-budget-strategie-1.webp">One-Pager laden</button>
+          </div>
         </div>
 
-        <div class="produkt-glass price-card br-karte">
-          <div class="price-badge-slot"></div>
-          <h3>Dein Thema<span class="price-name-sub">Sag uns, was ansteht</span></h3>
-          <p class="price-desc">Passt keines der beiden? Dann sag uns, was bei Dir liegt und welcher
-            Rahmen da ist.</p>
+        <div class="produkt-glass br-karte">
+          <h3 class="br-titel">Dein Thema</h3>
+          <p class="br-dauer">Sag uns, was ansteht</p>
+          <p class="br-desc">Passt keines der beiden? Sag uns, was bei Dir liegt – wir schätzen ehrlich ein, was noch geht.</p>
           <div class="br-frist"><b>ehrlich</b><span>eingeschätzt</span></div>
-          <p class="price-note">Wenn es sich seriös nicht mehr ausgeht, sagen wir Dir das auch.</p>
-          <ul class="price-features">
-            <li>Kurzes Telefonat, keine Präsentationsrunde</li>
-            <li>Einschätzung, was bis Jahresende realistisch ist</li>
+          <p class="br-hinweis">Kurzes Telefonat, keine Präsentationsrunde.</p>
+          <ul class="br-liste">
+            <li>Einschätzung noch im selben Gespräch</li>
             <li>Angebot innerhalb von zwei Arbeitstagen</li>
+            <li>Auch mal ein ehrliches „lieber nicht mehr"</li>
           </ul>
-          <a class="br-knopf br-knopf--leer" href="#kontakt">Kurz sprechen</a>
+          <div class="br-knopfzeile">
+            <a class="br-knopf br-knopf--leer" href="#kontakt">Kurz sprechen</a>
+          </div>
         </div>
 
       </div>
@@ -196,17 +274,10 @@
     <div class="container">
       <p class="kicker">Die Frage, die jetzt kommt</p>
       <h2>Und die Rechnung? Die kommt noch in diesem Jahr.</h2>
-      <p>Was wir bis zum 31.12. geliefert haben, rechnen wir auch in diesem Jahr ab – mit dem
-        Leistungsdatum, an dem es tatsächlich stattgefunden hat. Das gilt genauso für
-        <b>Teilleistungen</b>: Läuft ein Thema über den Jahreswechsel, rechnen wir den Teil ab,
-        der bis dahin erbracht ist.</p>
-      <div class="br-nicht">
-        <p><b>Was wir nicht machen:</b> Rechnungen für Leistungen, die es noch gar nicht gibt.
-          Das hilft Deiner Revision nicht weiter, unserem Steuerberater auch nicht – und Dir am
-          Ende erst recht nicht.</p>
-      </div>
-      <p style="margin-top:1.4rem">Deshalb ist der Termin die eigentliche Währung, nicht das Geld:
-        <b>Je früher wir sprechen, desto mehr passt noch ins Jahr.</b></p>
+      <p>Und zwar so rechtzeitig, dass Du sie direkt verbuchen kannst – ohne dafür extra eine
+        Rückstellung bilden zu müssen.</p>
+      <p>Deshalb ist der Termin die eigentliche Währung, nicht das Geld:
+        <b>Je früher wir sprechen, desto mehr Spielraum hast Du.</b></p>
     </div>
   </section>
 
@@ -215,8 +286,8 @@
     <div class="container">
       <p class="kicker">Kurze Wege</p>
       <h2>Ein Anruf reicht.</h2>
-      <p>Sag uns in fünf Minuten, was ansteht und welcher Rahmen da ist. Wir sagen Dir ehrlich,
-        was sich bis Jahresende noch ausgeht – und was besser ins neue Jahr gehört.</p>
+      <p>Sag uns, was ansteht und welcher Rahmen da ist. Wir sagen Dir ehrlich, was sich bis
+        Jahresende noch ausgeht – und was besser ins neue Jahr gehört.</p>
       <div class="br-draht">
         <span><strong>Daniel Ströbel</strong> · Strategiehandwerker</span>
         <a href="tel:+4917631347217">+49 176 3134 7217</a>
