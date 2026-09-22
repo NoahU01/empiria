@@ -51,7 +51,7 @@
 .br-lead { font-size: clamp(1rem,1.3vw,1.14rem); line-height: 1.72; color: var(--grey-70);
            max-width: 52ch; margin: 0 0 1rem; }
 .br-lead b { color: var(--ink); font-weight: 600; }
-.br-cta { margin-top: clamp(26px,3.4vw,40px); text-align: center; }
+.br-cta { margin-top: clamp(44px,5.4vw,78px); text-align: center; }
 /* Der Knopftext darf nie umbrechen - zweizeilig sieht billig aus. */
 .br-cta .btn { white-space: nowrap; }
 
@@ -175,10 +175,6 @@
 .br-frist { display: flex; align-items: baseline; gap: 8px; padding-top: 18px; }
 .br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem; color: var(--hl); }
 .br-frist span { font-size: .85rem; color: rgba(255,255,255,.8); }
-/* Der dritte Kasten ist ein Auffangnetz, kein gleichwertiges Angebot -
-   er tritt deshalb optisch zurueck. */
-.br-karte--leise { background: transparent; border-style: dashed; }
-.br-karte--leise .br-frist b { color: rgba(255,255,255,.7); font-size: 1.35rem; }
 .br-nebenlink { padding-top: 10px; text-align: center; }
 .br-nebenlink a { font-size: .8rem; color: rgba(255,255,255,.6); border-bottom: 0;
                   text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
@@ -188,15 +184,6 @@
                        text-decoration: underline; text-underline-offset: 3px; }
 .br-nebenlink button:hover { color: var(--hl); }
 
-/* ---- Beweis und Risikoabbau ------------------------------------------- */
-.br-beweis { padding-block: clamp(34px,4.4vw,58px); border-top: 1px solid var(--grey-bg); }
-.br-beweis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,64px);
-                  align-items: start; }
-.br-beweis h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.12rem;
-                margin: 0 0 .5rem; }
-.br-beweis p { font-size: .95rem; line-height: 1.68; color: var(--grey-70); margin: 0;
-               max-width: 44ch; }
-@media (max-width: 760px) { .br-beweis-grid { grid-template-columns: 1fr; gap: 24px; } }
 .br-hinweis { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.7); padding-top: 6px; }
 .br-liste { list-style: none; padding: 20px 0 0; border-top: 1px solid rgba(255,255,255,.24);
             margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
@@ -513,9 +500,9 @@
   <section class="br-wege" id="wege">
     <div class="container">
       <p class="kicker">Die Angebote</p>
-      <h2>Zwei Formate, die noch in dieses Jahr passen.</h2>
-      <p class="br-sub">Zwei Formate, die wir regelmäßig liefern – kompakt genug, um noch in diesem
-        Jahr zu starten. Den One-Pager mit allen Details bekommst Du sofort.</p>
+      <h2>Womit Du Dein Budget sinnvoll einsetzt.</h2>
+      <p class="br-sub">Zwei Formate, die wir regelmäßig liefern – und Dein eigenes Thema.
+        Sag uns, was ansteht, dann finden wir den passenden Rahmen.</p>
 
       <div class="br-karten">
 
@@ -524,7 +511,7 @@
           <p class="br-dauer">1 Tag, bei Euch im Haus</p>
           <p class="br-desc">Ein Tag mit echten Tools an Euren echten Fällen – danach weiß Dein Team, wo KI wirklich trägt.</p>
           <div class="br-frist"><b>3.900 €</b><span>zzgl. USt.</span></div>
-          <p class="br-hinweis">Start bis 31.12. · Dezembertermine sind schnell vergeben.</p>
+          <p class="br-hinweis">Dezembertermine sind erfahrungsgemäß schnell vergeben.</p>
           <ul class="br-liste">
             <li>Kein Vortrag – Hände an den Werkzeugen</li>
             <li>Zwei bis drei Fälle aus Eurem Bereich</li>
@@ -550,7 +537,7 @@
                Zahl dokumentiert; ich erfinde keine. Sobald Du sie nennst,
                steht hier dasselbe wie in der ersten Karte. -->
           <div class="br-frist"><b>auf Anfrage</b><span>Zahl im Telefonat</span></div>
-          <p class="br-hinweis">Start bis 31.12. · Dezembertermine sind schnell vergeben.</p>
+          <p class="br-hinweis">Dezembertermine sind erfahrungsgemäß schnell vergeben.</p>
           <ul class="br-liste">
             <li>Vorgespräch, Arbeitstag, Dokumentation</li>
             <li>Mit klarem nächsten Schritt statt schöner Folien</li>
@@ -568,41 +555,22 @@
           </p>
         </div>
 
-        <div class="produkt-glass br-karte br-karte--leise">
+        <div class="produkt-glass br-karte">
           <h3 class="br-titel">Dein Thema</h3>
           <p class="br-dauer">Sag uns, was ansteht</p>
           <p class="br-desc">Passt keines der beiden? Sag uns, was bei Dir liegt – wir sagen Dir ehrlich, was noch geht.</p>
-          <div class="br-frist"><b>ehrlich eingeschätzt</b><span></span></div>
-          <p class="br-hinweis">Auch mal ein „lieber nicht mehr".</p>
+          <div class="br-frist"><b>nach Umfang</b><span>Zahl im Telefonat</span></div>
+          <p class="br-hinweis">Auch mal ein ehrliches „lieber nicht mehr".</p>
           <ul class="br-liste">
             <li>Einschätzung noch im selben Gespräch</li>
-            <li>Angebot innerhalb von zwei Arbeitstagen</li>
+            <li>Angebot bis zum nächsten Arbeitstag</li>
           </ul>
           <div class="br-knopfzeile">
-            <a class="br-knopf br-knopf--leer" href="#kontakt">Kurz sprechen</a>
+            <a class="br-knopf" href="#kontakt">Thema besprechen</a>
           </div>
           <p class="br-nebenlink">&nbsp;</p>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Beweis und Risiko ===== -->
-  <section class="br-beweis">
-    <div class="container">
-      <div class="br-beweis-grid">
-        <div>
-          <h3>Das machen wir nicht zum ersten Mal.</h3>
-          <p>Seit Jahren arbeiten wir mit Versicherern, Maklerunternehmen und Vertrieben –
-            die Häuser unten im Band sind ein Ausschnitt. Der Dezember ist bei uns jedes Jahr
-            der vollste Monat.</p>
-        </div>
-        <div>
-          <h3>Und wenn der Termin platzt?</h3>
-          <p>Kommt bei Euch etwas dazwischen, verschieben wir kostenfrei. Wir wissen, wie ein
-            Dezember in einem Versicherungsunternehmen aussieht.</p>
-        </div>
       </div>
     </div>
   </section>
