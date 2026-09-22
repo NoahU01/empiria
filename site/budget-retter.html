@@ -687,6 +687,32 @@
 </footer>
 
 
+<script>
+/* Beim Neuladen soll die Seite oben beginnen - bei einer Landingpage will
+   man jedes Mal mit dem Aufmacher anfangen, nicht mittendrin.
+   Zwei Ursachen dafuer, dass sie es nicht tat:
+   1. Die Ankerlinks schreiben "#wege" bzw. "#kontakt" in die Adresszeile;
+      der Browser springt beim Neuladen genau dorthin zurueck.
+   2. Der Browser stellt ausserdem die letzte Scrollposition wieder her.
+   Beides wird hier abgeschaltet - die Links selbst funktionieren
+   unveraendert, auch ohne JavaScript. */
+(function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      // Der Browser springt selbst; direkt danach den Anker aus der
+      // Adresszeile nehmen.
+      setTimeout(function () {
+        history.replaceState(null, '', location.pathname + location.search);
+      }, 0);
+    });
+  });
+
+  // Ohne Anker in der Adresse immer oben starten.
+  if (!location.hash) window.scrollTo(0, 0);
+})();
+</script>
 <script src="/script.js"></script>
 <script src="/assets/lead/lead.js"></script>
 </body>
