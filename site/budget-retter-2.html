@@ -161,9 +161,9 @@
    einzelne Text ist. Mindesthoehen zu schaetzen hat genau das nie sauber
    hinbekommen. */
 .br-karten { display: grid; grid-template-columns: repeat(3, 1fr);
-             grid-template-rows: repeat(9, auto);
+             grid-template-rows: repeat(7, auto);
              gap: clamp(14px,1.8vw,22px); }
-.br-karte { grid-row: span 9; display: grid; grid-template-rows: subgrid; align-content: start; }
+.br-karte { grid-row: span 7; display: grid; grid-template-rows: subgrid; align-content: start; }
 .br-karte > * { margin: 0; }
 .br-titel { font-family: var(--font-serif); font-weight: 700; font-size: 1.22rem;
             line-height: 1.28; color: #fff; }
@@ -173,16 +173,11 @@
 /* Die Preiszeile ersetzt die Fristzeile: auf einer Budget-Seite ist die
    Groessenordnung die Frage, die zuerst beantwortet werden muss. */
 .br-frist { display: flex; align-items: baseline; gap: 8px; padding-top: 18px; }
-.br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem; color: var(--hl); }
+.br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem;
+              color: var(--hl); white-space: nowrap; }
 .br-frist span { font-size: .85rem; color: rgba(255,255,255,.8); }
-.br-nebenlink { padding-top: 10px; text-align: center; }
-.br-nebenlink a { font-size: .8rem; color: rgba(255,255,255,.6); border-bottom: 0;
-                  text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-.br-nebenlink a:hover { color: var(--hl); }
-.br-nebenlink button { background: none; border: 0; padding: 0; font: inherit;
-                       font-size: .8rem; color: rgba(255,255,255,.6); cursor: pointer;
-                       text-decoration: underline; text-underline-offset: 3px; }
-.br-nebenlink button:hover { color: var(--hl); }
+/* Wortwerte wie "auf Anfrage" brauchen weniger Grad, sonst brechen sie um. */
+.br-frist--wort b { font-size: 1.32rem; }
 
 .br-hinweis { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.7); padding-top: 6px; }
 .br-liste { list-style: none; padding: 20px 0 0; border-top: 1px solid rgba(255,255,255,.24);
@@ -500,7 +495,7 @@
   <section class="br-wege" id="wege">
     <div class="container">
       <p class="kicker">Die Angebote</p>
-      <h2>Womit Du Dein Budget sinnvoll einsetzt.</h2>
+      <h2>Wofür Du Dein Budget sinnvoll einsetzt.</h2>
       <p class="br-sub">Zwei Formate, die wir regelmäßig liefern – und Dein eigenes Thema.
         Sag uns, was ansteht, dann finden wir den passenden Rahmen.</p>
 
@@ -511,22 +506,19 @@
           <p class="br-dauer">1 Tag, bei Euch im Haus</p>
           <p class="br-desc">Ein Tag mit echten Tools an Euren echten Fällen – danach weiß Dein Team, wo KI wirklich trägt.</p>
           <div class="br-frist"><b>3.900 €</b><span>zzgl. USt.</span></div>
-          <p class="br-hinweis">Dezembertermine sind erfahrungsgemäß schnell vergeben.</p>
+          <p class="br-hinweis">Termine im Dezember sind schnell vergeben.</p>
           <ul class="br-liste">
             <li>Kein Vortrag – Hände an den Werkzeugen</li>
             <li>Zwei bis drei Fälle aus Eurem Bereich</li>
           </ul>
           <div class="br-knopfzeile">
-            <a class="br-knopf" href="#kontakt">Termin sichern</a>
-          </div>
-          <p class="br-nebenlink">
-            <button type="button"
+            <button class="br-knopf" type="button"
               data-kicker="empiria Budget-Retter · One-Pager"
               data-lead="KI im Alltag anwenden"
               data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
               data-pdf="/assets/downloads/empiria-budget-ki.pdf"
-              data-bild="/assets/downloads/empiria-budget-ki-1.webp">Erst den One-Pager lesen</button>
-          </p>
+              data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
+          </div>
         </div>
 
         <div class="produkt-glass br-karte">
@@ -536,31 +528,28 @@
           <!-- PREIS BITTE SETZEN: Fuer dieses Format ist auf der Website keine
                Zahl dokumentiert; ich erfinde keine. Sobald Du sie nennst,
                steht hier dasselbe wie in der ersten Karte. -->
-          <div class="br-frist"><b>auf Anfrage</b><span>Zahl im Telefonat</span></div>
-          <p class="br-hinweis">Dezembertermine sind erfahrungsgemäß schnell vergeben.</p>
+          <div class="br-frist br-frist--wort"><b>auf Anfrage</b></div>
+          <p class="br-hinweis">Den Termin stimmen wir kurzfristig mit Dir ab.</p>
           <ul class="br-liste">
             <li>Vorgespräch, Arbeitstag, Dokumentation</li>
             <li>Mit klarem nächsten Schritt statt schöner Folien</li>
           </ul>
           <div class="br-knopfzeile">
-            <a class="br-knopf" href="#kontakt">Termin sichern</a>
-          </div>
-          <p class="br-nebenlink">
-            <button type="button"
+            <button class="br-knopf" type="button"
               data-kicker="empiria Budget-Retter · One-Pager"
               data-lead="Strategie in den Alltag überführen"
               data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
               data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
-              data-bild="/assets/downloads/empiria-budget-strategie-1.webp">Erst den One-Pager lesen</button>
-          </p>
+              data-bild="/assets/downloads/empiria-budget-strategie-1.webp">One-Pager laden</button>
+          </div>
         </div>
 
         <div class="produkt-glass br-karte">
           <h3 class="br-titel">Dein Thema</h3>
           <p class="br-dauer">Sag uns, was ansteht</p>
           <p class="br-desc">Passt keines der beiden? Sag uns, was bei Dir liegt – wir sagen Dir ehrlich, was noch geht.</p>
-          <div class="br-frist"><b>nach Umfang</b><span>Zahl im Telefonat</span></div>
-          <p class="br-hinweis">Auch mal ein ehrliches „lieber nicht mehr".</p>
+          <div class="br-frist br-frist--wort"><b>nach Umfang</b></div>
+          <p class="br-hinweis">Sag uns Deinen Rahmen, wir machen einen Vorschlag.</p>
           <ul class="br-liste">
             <li>Einschätzung noch im selben Gespräch</li>
             <li>Angebot bis zum nächsten Arbeitstag</li>
@@ -568,7 +557,6 @@
           <div class="br-knopfzeile">
             <a class="br-knopf" href="#kontakt">Thema besprechen</a>
           </div>
-          <p class="br-nebenlink">&nbsp;</p>
         </div>
 
       </div>
