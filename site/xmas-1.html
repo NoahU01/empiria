@@ -60,7 +60,7 @@
 /* "meet" statt "slice": bei breiten Fenstern schnitt slice oben ab - genau
    dort, wo der Stern auf der Baumspitze sitzt. Mit festem Seitenverhaeltnis
    wird nie etwas abgeschnitten und die Huegel laufen trotzdem randlos. */
-.xm-land { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 420; }
+.xm-land { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 560; }
 
 /* ---- Geschenke ---------------------------------------------------------- */
 .xm-gaben { position: absolute; left: 0; right: 0; bottom: clamp(46px, 6.5vh, 66px); z-index: 4;
@@ -155,30 +155,53 @@
   </div>
 
   <div class="xm-buehne" aria-hidden="true">
-    <svg class="xm-land" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax meet">
+    <svg class="xm-land" viewBox="0 0 1600 560" preserveAspectRatio="xMidYMax meet">
       <!-- Sterne in der Strichsprache der CD-Icons -->
-      <g stroke="#3a3a3a" stroke-width="2" stroke-linecap="round">
-        <path d="M180 46v18M171 55h18"/><path d="M1410 70v14M1403 77h14"/>
-        <path d="M1090 34v12M1084 40h12"/><path d="M420 88v12M414 94h12"/>
-        <path d="M300 150v12M294 156h12"/><path d="M1290 168v12M1284 174h12"/>
+      <g stroke="#4a4a4a" stroke-width="2.4" stroke-linecap="round">
+        <path d="M150 62v20M139 72h20"/><path d="M1466 96v16M1458 104h16"/>
+        <path d="M368 128v14M361 135h14"/><path d="M1180 52v18M1171 61h18"/>
+        <path d="M262 214v12M256 220h12"/><path d="M1386 206v14M1379 213h14"/>
+        <path d="M596 76v12M590 82h12"/><path d="M1042 156v12M1036 162h12"/>
       </g>
-      <!-- Huegel -->
-      <path d="M0 300 C 210 254 360 318 560 292 C 760 266 900 320 1120 288 C 1330 258 1470 308 1600 282 L1600 420 L0 420 Z" fill="#111"/>
-      <path d="M0 344 C 260 308 470 364 720 340 C 980 314 1180 368 1600 332 L1600 420 L0 420 Z" fill="#191919"/>
-      <!-- Baum: von unten nach oben gezeichnet und gefuellt, damit die oberen
-           Stufen die unteren verdecken -->
+      <!-- Mond als Kreis in der Strichsprache des CD -->
+      <circle cx="1330" cy="122" r="46" fill="none" stroke="#dedede" stroke-width="2.6" opacity=".75"/>
+      <circle cx="1306" cy="110" r="36" fill="#000"/>
+
+      <!-- Drei Huegelebenen, nach vorn heller: so entsteht Tiefe. Vorher lagen
+           sie bei #111 auf Schwarz und waren praktisch unsichtbar. -->
+      <path d="M0 330 C 190 286 330 352 520 326 C 720 298 860 358 1080 328 C 1300 298 1450 348 1600 322 L1600 560 L0 560 Z" fill="#141414"/>
+      <!-- kleine Baeume in der Ferne -->
+      <g fill="#1c1c1c">
+        <path d="M150 344 L172 388 L128 388 Z"/><path d="M196 336 L222 390 L170 390 Z"/>
+        <path d="M1402 340 L1426 388 L1378 388 Z"/><path d="M1452 348 L1472 388 L1432 388 Z"/>
+        <path d="M456 338 L478 386 L434 386 Z"/>
+      </g>
+      <path d="M0 402 C 240 362 430 420 660 396 C 900 370 1090 424 1340 396 C 1450 384 1520 404 1600 392 L1600 560 L0 560 Z" fill="#1d1d1d"/>
+      <path d="M0 470 C 280 436 520 486 800 464 C 1080 442 1320 492 1600 462 L1600 560 L0 560 Z" fill="#272727"/>
+
+      <!-- Der Baum: vier Stufen, von unten nach oben gezeichnet und gefuellt,
+           damit die oberen die unteren verdecken. -->
       <g transform="translate(800 0)">
-        <rect x="-14" y="330" width="28" height="34" fill="#0d0d0d" stroke="#dedede" stroke-width="2.2"/>
-        <path d="M0 224 L120 342 L-120 342 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.6" stroke-linejoin="round"/>
-        <path d="M0 150 L94 268 L-94 268 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.6" stroke-linejoin="round"/>
-        <path d="M0 84 L66 194 L-66 194 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.6" stroke-linejoin="round"/>
-        <g stroke="#fff400" stroke-width="3.4" stroke-linecap="round">
-          <path d="M0 26v30M-15 41h30M-11 30l22 22M11 30l-22 22"/>
+        <rect x="-19" y="452" width="38" height="46" fill="#0d0d0d" stroke="#dedede" stroke-width="2.6"/>
+        <path d="M0 296 L196 476 L-196 476 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M0 218 L154 392 L-154 392 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M0 146 L114 308 L-114 308 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M0 82 L76 226 L-76 226 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="3" stroke-linejoin="round"/>
+        <!-- Stern mit Schein -->
+        <circle cx="0" cy="48" r="30" fill="#fff400" opacity=".12"/>
+        <g stroke="#fff400" stroke-width="4" stroke-linecap="round">
+          <path d="M0 18v34M-17 35h34M-12 23l24 24M12 23l-24 24"/>
         </g>
-        <circle cx="-30" cy="164" r="5.5" fill="#fff400"/><circle cx="34" cy="176" r="5.5" fill="#fff400"/>
-        <circle cx="-58" cy="242" r="5.5" fill="#fff400"/><circle cx="62" cy="250" r="5.5" fill="#fff400"/>
-        <circle cx="0" cy="214" r="5.5" fill="#fff400"/>
-        <circle cx="-88" cy="318" r="5.5" fill="#fff400"/><circle cx="92" cy="322" r="5.5" fill="#fff400"/>
+        <g fill="#fff400">
+          <circle cx="-40" cy="182" r="6.5"/><circle cx="46" cy="196" r="6.5"/>
+          <circle cx="0" cy="150" r="6.5"/>
+          <circle cx="-82" cy="272" r="6.5"/><circle cx="88" cy="284" r="6.5"/>
+          <circle cx="-24" cy="256" r="6.5"/><circle cx="34" cy="338" r="6.5"/>
+          <circle cx="-130" cy="366" r="6.5"/><circle cx="136" cy="378" r="6.5"/>
+          <circle cx="-58" cy="428" r="6.5"/><circle cx="74" cy="448" r="6.5"/>
+          <circle cx="0" cy="372" r="6.5"/><circle cx="-160" cy="452" r="6.5"/>
+          <circle cx="168" cy="460" r="6.5"/>
+        </g>
       </g>
     </svg>
   </div>
