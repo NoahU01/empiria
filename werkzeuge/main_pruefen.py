@@ -31,7 +31,8 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 # Seiten, die es auf main nicht geben darf. Bewusst als feste Liste: was
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
 INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
-                  "site/budget-retter.html",
+                  "site/budget-retter.html", "site/budget-retter-1.html",
+                  "site/budget-retter-2.html",
                   "site/xmas.html", "site/xmas-1.html", "site/xmas-2.html",
                   "site/xmas-4.html",
                   "site/xmas-5.html", "site/xmas-6.html",
