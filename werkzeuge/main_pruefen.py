@@ -31,6 +31,7 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 # Seiten, die es auf main nicht geben darf. Bewusst als feste Liste: was
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
 INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
+                  "site/budget-retter.html",
                   "site/xmas.html", "site/xmas-1.html", "site/xmas-2.html",
                   "site/xmas-4.html",
                   "site/xmas-5.html", "site/xmas-6.html",
@@ -38,10 +39,11 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/xmas-9.html", "site/xmas-10.html",
                   "site/xmas-11.html", "site/xmas-12.html",
                   "site/xmas-13.html"]
-INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas"]
+INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
 # Produktion ausschliesslich Problem, Loesung und Leistungen.
-MENUE_VERBOTEN = ["Entwicklung", "Archiv", "capiamo", "Aufsichtsräte", "Sandbox", "X-Mas"]
+MENUE_VERBOTEN = ["Entwicklung", "Archiv", "capiamo", "Aufsichtsräte", "Sandbox",
+                  "X-Mas", "Budget-Retter"]
 
 
 def _lauf(*args):

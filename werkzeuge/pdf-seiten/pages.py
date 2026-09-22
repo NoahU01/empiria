@@ -945,6 +945,41 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
     contact_html=contact("Worüber willst Du offen sprechen?", ["daniel", "kerstin_hr"])),
 ])
 
+# ---------------------------------------------------------------- Budget-Retter (One-Pager)
+# Zwei einseitige PDFs fuer die Landingpage /budget-retter. Bewusst je EINE
+# Seite: sie sind der Gegenwert fuer die E-Mail-Adresse, kein Prospekt.
+P["budget-ki"] = ("strategie", "KI im Alltag anwenden – One-Pager – empiria", [
+  page(
+    sec("Budget-Retter · One-Pager", 'KI im Alltag <span class="hl">anwenden.</span>',
+        "Ein Tag bei Euch im Haus: Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag – und weiß danach, wo Künstliche Intelligenz trägt und wo nicht.",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    stage("Der Ablauf", "Ein Tag, vier Schritte.",
+          "Vor- und Nachbereitung sind enthalten. Ihr braucht nur einen Raum und Eure Themen.",
+          wm="forward", boden=True,
+          inhalt=rows([("Auftakt", "Was ist KI, was ist sie nicht – und wo steht Euer Haus? Rund eine Stunde, ohne Vorkenntnisse."),
+                       ("Werkzeuge", "Die Tools, die wir selbst täglich nutzen: ausprobieren, vergleichen, einordnen."),
+                       ("Eure Fälle", "Zwei bis drei Aufgaben aus Eurem Alltag werden gemeinsam bearbeitet."),
+                       ("Was bleibt", "Eine Liste konkreter Anwendungen, die im Haus sofort funktionieren – samt Grenzen.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
+])
+
+P["budget-strategie"] = ("strategie", "Strategie in den Alltag überführen – One-Pager – empiria", [
+  page(
+    sec("Budget-Retter · One-Pager", 'Strategie in den Alltag <span class="hl">überführen.</span>',
+        "Die Strategie steht. Aber was heißt sie für Deinen Bereich? Wir übersetzen sie in ein Zielbild, mit dem Dein Team wirklich arbeiten kann – in ein bis zwei Tagen, moderiert.",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    stage("Der Ablauf", "Kompakt und moderiert.",
+          "Ein Vorgespräch, ein bis zwei Arbeitstage, eine saubere Dokumentation. Mehr braucht es nicht.",
+          wm="kreuz", boden=True,
+          inhalt=rows([("Vorgespräch", "Wo steht Ihr, was ist schon entschieden und wo hakt es? Rund eine Stunde, telefonisch."),
+                       ("Arbeitstag", "Das Zielbild für Deinen Bereich entsteht gemeinsam mit Deinem Team – nicht im stillen Kämmerlein."),
+                       ("Übersetzung", "Was bedeutet das für die einzelnen Rollen, Termine und Entscheidungen?"),
+                       ("Dokumentation", "Ein Ergebnisdokument, mit dem Du im Haus weiterarbeiten und argumentieren kannst.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
+])
+
 # ---------------------------------------------------------------- Impulsvorträge
 VORTRAEGE = [("Warum sich niemand für Dein Produkt interessiert.", "Ein Impulsvortrag über Relevanz: warum gute Produkte oft ungehört bleiben – und wie Du das änderst."),
              ("Strategie, die endlich ankommt.", "Wie Strategie aus der Präsentation raus- und im Alltag ankommt."),

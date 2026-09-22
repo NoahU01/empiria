@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budget-Retter – empiria</title>
+<meta name="description" content="Restbudget bis zum Jahresende? Zwei Themen, die wir noch in diesem Jahr liefern – und damit auch in diesem Jahr abrechnen.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/lead/lead.css">
+<style>
+/* ===== Budget-Retter =========================================================
+   Kurze Landingpage im Schwarz-Gelb der Strategieseiten. Bewusst knapp: Thema
+   anreissen, drei Wege zeigen, Rechnungsfrage klaeren, Kontakt.
+
+   Zur Tonalitaet: Augenzwinkern ja, Grauzone nein. Die knappe Ressource ist
+   hier nicht das Geld, sondern der Termin - nur was bis zum 31.12. tatsaechlich
+   geliefert ist, laesst sich auch in diesem Jahr abrechnen. Genau so ist die
+   Seite formuliert. */
+.br-kopf { position: relative; z-index: 3; padding: clamp(20px,3vw,34px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.br-kopf img { height: 26px; }
+.br-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+
+/* ---- Aufmacher ---------------------------------------------------------- */
+.br-hero { position: relative; padding: clamp(44px,7vw,92px) 0 clamp(36px,5vw,64px); overflow: hidden; }
+.br-hero .watermark { width: clamp(280px,32vw,460px); height: clamp(280px,32vw,460px);
+                      right: -6%; top: -18%; }
+.br-hero h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.04;
+              font-size: clamp(2.3rem,5.2vw,4.1rem); margin: .6rem 0 1.2rem; max-width: 18ch; }
+.br-lead { font-size: clamp(1rem,1.35vw,1.16rem); line-height: 1.7; color: var(--grey-70);
+           max-width: 62ch; margin: 0 0 1rem; }
+.br-lead b { color: var(--ink); font-weight: 600; }
+
+/* Der typische Anruf - das Augenzwinkern */
+.br-anruf { display: grid; gap: 14px; margin-top: clamp(26px,3.4vw,40px); max-width: 720px; }
+.br-blase { position: relative; background: var(--ink); color: #fff; border-radius: 18px 18px 18px 4px;
+            padding: 16px 20px; font-size: clamp(.98rem,1.2vw,1.1rem); line-height: 1.5;
+            font-family: var(--font-serif); font-weight: 500; justify-self: start; max-width: 34ch; }
+.br-blase--wir { background: var(--hl); color: var(--ink); border-radius: 18px 18px 4px 18px;
+                 justify-self: end; text-align: right; }
+.br-blase small { display: block; margin-top: 6px; font-family: var(--font-sans); font-weight: 500;
+                  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; opacity: .55; }
+
+/* ---- Die drei Wege ------------------------------------------------------ */
+.br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
+.br-wege .kicker { color: var(--hl); }
+.br-wege h2 { font-family: var(--font-serif); font-weight: 500; color: #fff;
+              font-size: clamp(1.7rem,3.2vw,2.5rem); line-height: 1.12; margin: 0 0 .8rem; }
+.br-wege .br-sub { color: rgba(255,255,255,.72); max-width: 60ch; margin: 0 0 clamp(28px,3.4vw,44px);
+                   font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.66; }
+.br-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+             gap: clamp(14px,1.8vw,22px); align-items: stretch; }
+.br-karte { display: flex; flex-direction: column; }
+.br-frist { display: flex; align-items: baseline; gap: 8px; margin: 16px 0 2px; }
+.br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem; color: var(--hl); }
+.br-frist span { font-size: .85rem; color: rgba(255,255,255,.8); }
+.br-knopf { margin-top: auto; width: 100%; padding: 13px 18px; border-radius: 12px; cursor: pointer;
+            font: inherit; font-weight: 600; font-size: .92rem; border: 1px solid var(--hl);
+            background: var(--hl); color: var(--ink);
+            transition: transform .18s ease, background .18s ease; }
+.br-knopf:hover { transform: translateY(-2px); background: #fff; border-color: #fff; }
+.br-knopf--leer { background: transparent; color: #fff; border-color: rgba(255,255,255,.45);
+                  text-decoration: none; text-align: center; display: block; }
+.br-knopf--leer:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
+/* ---- Die Rechnungsfrage ------------------------------------------------- */
+.br-rechnung { background: var(--hl); color: var(--ink); padding-block: clamp(40px,5.4vw,72px); }
+.br-rechnung .container { max-width: 900px; }
+.br-rechnung .kicker { color: rgba(26,24,23,.6); }
+.br-rechnung h2 { font-family: var(--font-serif); font-weight: 700;
+                  font-size: clamp(1.6rem,3vw,2.3rem); line-height: 1.14; margin: 0 0 1rem; }
+.br-rechnung p { font-size: clamp(.96rem,1.2vw,1.08rem); line-height: 1.7; margin: 0 0 .9rem;
+                 max-width: 66ch; }
+.br-rechnung p:last-child { margin-bottom: 0; }
+.br-rechnung b { font-weight: 700; }
+.br-nicht { margin-top: 1.4rem; padding: 16px 20px; border-radius: 14px;
+            background: rgba(26,24,23,.08); border-left: 4px solid var(--ink); }
+
+/* ---- Kontakt ------------------------------------------------------------ */
+.br-kontakt { padding-block: clamp(42px,5.6vw,80px); }
+.br-kontakt h2 { font-family: var(--font-serif); font-weight: 500;
+                 font-size: clamp(1.6rem,3vw,2.3rem); line-height: 1.14; margin: 0 0 .8rem; }
+.br-kontakt p { font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.68; color: var(--grey-70);
+                max-width: 58ch; margin: 0 0 1.6rem; }
+.br-draht { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
+.br-draht a { font-weight: 600; }
+
+.br-fuss { border-top: 1px solid var(--grey-bg); padding: 20px 0 30px; font-size: .8rem;
+           color: var(--grey-50); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+</defs></svg>
+
+<header class="br-kopf">
+  <a href="/"><img src="/assets/empiria-logo.svg" alt="empiria"></a>
+  <span class="br-marke">Jahresende 2026</span>
+</header>
+
+<main>
+  <!-- ===== Aufmacher ===== -->
+  <section class="br-hero">
+    <svg class="watermark" aria-hidden="true"><use href="#ic-kreis"/></svg>
+    <div class="container">
+      <p class="kicker">Budget-Retter</p>
+      <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
+      <p class="br-lead">Jedes Jahr dasselbe Telefonat: Im November wird klar, dass im Topf noch
+        etwas übrig ist – und ab dem 1. Januar ist es verfallen. Wir kennen den Anruf gut.</p>
+      <p class="br-lead">Deshalb liegen hier zwei Themen bereit, die wir <b>noch in diesem Jahr
+        liefern können</b>. Und wenn keines davon passt: Ruf an. Uns fällt etwas ein.</p>
+
+      <div class="br-anruf">
+        <p class="br-blase">„Wir haben da noch was im Budget. Fällt Euch was ein?"
+          <small>Jedes Jahr, ab November</small></p>
+        <p class="br-blase br-blase--wir">„Ja. Und zwar etwas, das Ihr auch wirklich braucht."
+          <small>Unsere Antwort</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Die drei Wege ===== -->
+  <section class="br-wege">
+    <div class="container">
+      <p class="kicker">Drei Wege</p>
+      <h2>Was sich bis Silvester noch ausgeht.</h2>
+      <p class="br-sub">Beides sind Formate, die wir regelmäßig liefern – kompakt genug, um sie
+        noch in diesem Jahr durchzuführen. Den One-Pager mit allen Details bekommst Du sofort.</p>
+
+      <div class="br-karten">
+
+        <div class="produkt-glass price-card br-karte">
+          <div class="price-badge-slot"></div>
+          <h3>KI im Alltag anwenden<span class="price-name-sub">1 Tag, bei Euch im Haus</span></h3>
+          <p class="price-desc">Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben – und
+            weiß danach, wo KI trägt und wo nicht.</p>
+          <div class="br-frist"><b>bis 31.12.</b><span>durchführbar</span></div>
+          <p class="price-note">Termine im Dezember sind erfahrungsgemäß schnell vergeben.</p>
+          <ul class="price-features">
+            <li>Kein Vortrag – Hände an den Werkzeugen</li>
+            <li>Zwei bis drei Fälle aus Eurem Bereich</li>
+            <li>Liste konkreter Anwendungen zum Mitnehmen</li>
+          </ul>
+          <button class="br-knopf" type="button"
+            data-kicker="Budget-Retter · One-Pager"
+            data-lead="KI im Alltag anwenden"
+            data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
+            data-pdf="/assets/downloads/empiria-budget-ki.pdf"
+            data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
+        </div>
+
+        <div class="produkt-glass price-card price-card--featured br-karte">
+          <div class="price-badge-slot"><span class="price-badge">Am häufigsten gefragt</span></div>
+          <h3>Strategie in den Alltag überführen<span class="price-name-sub">1–2 Tage, moderiert</span></h3>
+          <p class="price-desc">Aus der Strategie wird ein Zielbild, mit dem Dein Bereich ab Montag
+            wirklich arbeiten kann.</p>
+          <div class="br-frist"><b>bis 31.12.</b><span>durchführbar</span></div>
+          <p class="price-note">Auch als Auftakt möglich, mit Fortsetzung im neuen Jahr.</p>
+          <ul class="price-features">
+            <li>Vorgespräch, Arbeitstag, Dokumentation</li>
+            <li>In der Sprache Deines Teams, nicht in Strategiedeutsch</li>
+            <li>Mit klarem nächsten Schritt statt schöner Folien</li>
+          </ul>
+          <button class="br-knopf" type="button"
+            data-kicker="Budget-Retter · One-Pager"
+            data-lead="Strategie in den Alltag überführen"
+            data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
+            data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
+            data-bild="/assets/downloads/empiria-budget-strategie-1.webp">One-Pager laden</button>
+        </div>
+
+        <div class="produkt-glass price-card br-karte">
+          <div class="price-badge-slot"></div>
+          <h3>Dein Thema<span class="price-name-sub">Sag uns, was ansteht</span></h3>
+          <p class="price-desc">Passt keines der beiden? Dann sag uns, was bei Dir liegt und welcher
+            Rahmen da ist.</p>
+          <div class="br-frist"><b>ehrlich</b><span>eingeschätzt</span></div>
+          <p class="price-note">Wenn es sich seriös nicht mehr ausgeht, sagen wir Dir das auch.</p>
+          <ul class="price-features">
+            <li>Kurzes Telefonat, keine Präsentationsrunde</li>
+            <li>Einschätzung, was bis Jahresende realistisch ist</li>
+            <li>Angebot innerhalb von zwei Arbeitstagen</li>
+          </ul>
+          <a class="br-knopf br-knopf--leer" href="#kontakt">Kurz sprechen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Die Rechnungsfrage ===== -->
+  <section class="br-rechnung">
+    <div class="container">
+      <p class="kicker">Die Frage, die jetzt kommt</p>
+      <h2>Und die Rechnung? Die kommt noch in diesem Jahr.</h2>
+      <p>Was wir bis zum 31.12. geliefert haben, rechnen wir auch in diesem Jahr ab – mit dem
+        Leistungsdatum, an dem es tatsächlich stattgefunden hat. Das gilt genauso für
+        <b>Teilleistungen</b>: Läuft ein Thema über den Jahreswechsel, rechnen wir den Teil ab,
+        der bis dahin erbracht ist.</p>
+      <div class="br-nicht">
+        <p><b>Was wir nicht machen:</b> Rechnungen für Leistungen, die es noch gar nicht gibt.
+          Das hilft Deiner Revision nicht weiter, unserem Steuerberater auch nicht – und Dir am
+          Ende erst recht nicht.</p>
+      </div>
+      <p style="margin-top:1.4rem">Deshalb ist der Termin die eigentliche Währung, nicht das Geld:
+        <b>Je früher wir sprechen, desto mehr passt noch ins Jahr.</b></p>
+    </div>
+  </section>
+
+  <!-- ===== Kontakt ===== -->
+  <section class="br-kontakt" id="kontakt">
+    <div class="container">
+      <p class="kicker">Kurze Wege</p>
+      <h2>Ein Anruf reicht.</h2>
+      <p>Sag uns in fünf Minuten, was ansteht und welcher Rahmen da ist. Wir sagen Dir ehrlich,
+        was sich bis Jahresende noch ausgeht – und was besser ins neue Jahr gehört.</p>
+      <div class="br-draht">
+        <span><strong>Daniel Ströbel</strong> · Strategiehandwerker</span>
+        <a href="tel:+4917631347217">+49 176 3134 7217</a>
+        <a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container br-fuss">
+    empiria GmbH · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</main>
+
+<script src="/assets/lead/lead.js"></script>
+</body>
+</html>

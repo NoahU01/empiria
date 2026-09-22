@@ -5,6 +5,7 @@
      data-text        ein Satz dazu
      data-pdf         Pfad zum PDF
      data-bild        Vorschaubild des PDF (optional)
+     data-kicker      Zeile ueber dem Titel (optional, Standard unten)
 
    WICHTIG, damit hier keine falsche Sicherheit entsteht:
    Es gibt noch KEINE Anbindung. Die Adresse wird nur dann verschickt, wenn
@@ -27,7 +28,7 @@
         '<button class="lead-zu" type="button" aria-label="Schließen">&times;</button>' +
         '<div class="lead-kopf">' +
           '<img class="lead-bild" src="" alt="" hidden>' +
-          '<div><p class="lead-kicker">Dein Vorsatz für 2027</p>' +
+          '<div><p class="lead-kicker"></p>' +
           '<h3 class="lead-h"></h3><p class="lead-txt"></p></div>' +
         '</div>' +
         '<form class="lead-form" novalidate>' +
@@ -68,6 +69,7 @@
     form.reset();
     knopf.disabled = false;
     knopf.textContent = 'PDF anfordern';
+    bg.querySelector('.lead-kicker').textContent = daten.kicker || 'Zum Download';
     bg.querySelector('.lead-h').textContent = daten.titel;
     bg.querySelector('.lead-txt').textContent = daten.text;
     var bild = bg.querySelector('.lead-bild');
@@ -121,7 +123,8 @@
           titel: el.getAttribute('data-lead'),
           text: el.getAttribute('data-text') || '',
           pdf: el.getAttribute('data-pdf'),
-          bild: el.getAttribute('data-bild')
+          bild: el.getAttribute('data-bild'),
+          kicker: el.getAttribute('data-kicker')
         }, el);
       });
     });
