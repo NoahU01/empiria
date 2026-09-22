@@ -238,8 +238,6 @@
                 max-width: 58ch; margin: 0 0 1.6rem; }
 .br-draht { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
 .br-draht a { font-weight: 600; }
-.br-fuss { border-top: 1px solid var(--grey-bg); padding: 20px 0 30px; font-size: .8rem;
-           color: var(--grey-50); }
 
 @media (max-width: 900px) {
   .br-hero-grid { grid-template-columns: 1fr; gap: 34px; }
@@ -262,6 +260,28 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+<symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+<symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+<symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+<symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
 </defs></svg>
 
 <header class="br-kopf">
@@ -511,26 +531,52 @@
     </div>
   </section>
 
-  <!-- ===== Kontakt ===== -->
-  <section class="br-kontakt" id="kontakt">
-    <div class="container">
-      <p class="kicker">Kurze Wege</p>
-      <h2>Ein Anruf reicht.</h2>
-      <p>Sag uns, was ansteht und welcher Rahmen da ist. Wir sagen Dir ehrlich, was sich noch in diesem Jahr
-        anstoßen lässt – und was besser Zeit braucht.</p>
-      <div class="br-draht">
-        <span><strong>Daniel Ströbel</strong> · Strategiehandwerker</span>
-        <a href="tel:+4917631347217">+49 176 3134 7217</a>
-        <a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>
+  <section class="kontakt-standalone" id="kontakt">
+    <div class="container kontakt-standalone-top">
+      <div class="kontakt-standalone-text reveal">
+        <p class="kicker">Kontakt</p>
+        <h2 class="h-serif">Wir sind <span class="hl">für Dich</span> da!</h2>
+        <p class="lead">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
+        <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
+      </div>
+      <div class="kontakt-standalone-side reveal">
+        <div class="ks-actions">
+          <a class="ks-pill" href="mailto:daniel.stroebel@empiria.de">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-mail"/></svg></span>
+            daniel.stroebel@empiria.de
+          </a>
+          <a class="ks-pill" href="tel:+4917631347217">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-phone"/></svg></span>
+            +49 176 3134 7217
+          </a>
+          <a class="ks-pill ks-pill--ghost" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
+            Auf LinkedIn vernetzen
+          </a>
+        </div>
+        <div class="ks-marquee">
+          <div class="marquee-viewport">
+            <div class="marquee-track"></div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="kontakt-standalone-media reveal">
+      <svg class="ks-media-icon" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
+      <img class="ks-photo" src="/assets/team-portrait.webp" alt="Das Team von empiria GmbH" width="759" height="411" loading="lazy">
+    </div>
   </section>
-
-  <div class="container br-fuss">
-    empiria GmbH · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-  </div>
 </main>
 
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+
+<script src="/script.js"></script>
 <script src="/assets/lead/lead.js"></script>
 </body>
 </html>
