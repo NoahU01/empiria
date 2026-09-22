@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Das Fenster – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* ===== Xmas 5 · "Das Fenster" ================================================
+   Blick aus einem beschlagenen Fenster in die Winternacht. Jede Scheibe ist
+   eine Leistung; faehrt man darueber, wischt der Beschlag weg und gibt sie
+   frei. Der Rahmen ist schwarz wie die Kaesten der Hauptseiten, der Akzent
+   bleibt Gelb. */
+.fe { position: relative; height: 100svh; overflow: hidden; color: #fff;
+      background: linear-gradient(#0a0a0a 0%, #101418 46%, #0c1116 100%); }
+.fe a { border-bottom: 0; }
+.fe-nacht { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 16% 16%, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 72% 10%, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1.7px 1.7px at 40% 26%, rgba(255,255,255,.55) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 88% 32%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 58% 6%, rgba(255,255,255,.6) 50%, transparent 51%); }
+.fe-huegel { position: absolute; left: 0; right: 0; bottom: 0; height: 34%; z-index: 0; }
+
+.fe-kopf { position: absolute; left: 0; right: 0; top: 0; z-index: 6;
+           padding: clamp(20px,3vw,36px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.fe-kopf img { height: 26px; }
+.fe-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+
+.fe-raum { position: relative; z-index: 4; height: 100%; display: grid;
+           grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+           align-items: center; gap: clamp(26px,4vw,72px);
+           padding: clamp(86px,13vh,132px) var(--pad-x) clamp(26px,4vh,52px); }
+.fe-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 .9rem; }
+.fe-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.04;
+         font-size: clamp(2rem,4.2vw,3.5rem); margin: 0 0 1rem; }
+.fe-h1 .hl { color: var(--ink); }
+.fe-lead { font-size: clamp(.94rem,1.15vw,1.06rem); line-height: 1.66; font-weight: 300;
+           color: rgba(255,255,255,.74); margin: 0 0 1.3rem; max-width: 40ch; }
+.fe-lead b { color: #fff; font-weight: 600; }
+.fe-tipp { display: inline-flex; align-items: center; gap: 9px; font-size: .78rem;
+           letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.fe-tipp i { width: 22px; height: 1px; background: var(--hl); display: block; }
+
+/* ---- Der Fensterrahmen -------------------------------------------------- */
+.fe-fenster { position: relative; width: 100%; max-width: 640px; justify-self: center;
+              aspect-ratio: 1.12 / 1; background: #0e0e0e;
+              border: clamp(10px,1.1vw,15px) solid #141414; border-radius: 10px;
+              box-shadow: 0 40px 90px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.07);
+              display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr);
+              gap: clamp(9px,1vw,14px); padding: clamp(9px,1vw,14px); }
+.scheibe { position: relative; overflow: hidden; border-radius: 4px; text-decoration: none;
+           display: flex; flex-direction: column; justify-content: flex-end;
+           padding: clamp(10px,1.1vw,15px);
+           background: linear-gradient(150deg, var(--f) 0%, color-mix(in srgb, var(--f) 55%, #000) 100%);
+           color: #fff; }
+/* Der Beschlag liegt als eigene Ebene darueber und wischt beim Hover weg. */
+.scheibe::before { content: ""; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(150deg, rgba(232,240,245,.94) 0%, rgba(205,219,228,.9) 100%);
+  transition: opacity .34s ease, transform .5s cubic-bezier(.2,.8,.3,1);
+  transform-origin: 50% 100%; }
+.scheibe::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 78%, rgba(255,255,255,.55) 0 16%, transparent 17%),
+    radial-gradient(circle at 74% 66%, rgba(255,255,255,.4) 0 12%, transparent 13%),
+    radial-gradient(circle at 46% 88%, rgba(255,255,255,.5) 0 10%, transparent 11%);
+  opacity: .7; transition: opacity .34s ease; }
+.scheibe:hover::before, .scheibe:focus-visible::before { opacity: 0; transform: translateY(14%) scale(1.08); }
+.scheibe:hover::after, .scheibe:focus-visible::after { opacity: 0; }
+.scheibe-txt { position: relative; z-index: 4; opacity: 0; transform: translateY(8px);
+               transition: opacity .3s ease .08s, transform .3s ease .08s; }
+.scheibe:hover .scheibe-txt, .scheibe:focus-visible .scheibe-txt { opacity: 1; transform: none; }
+.scheibe-txt small { display: block; font-size: .64rem; letter-spacing: .12em;
+                     text-transform: uppercase; font-weight: 600; opacity: .72; margin-bottom: 3px; }
+.scheibe-txt b { font-family: var(--font-serif); font-weight: 700;
+                 font-size: clamp(.86rem,1.05vw,1rem); line-height: 1.22; display: block; }
+/* Zahl im Beschlag - "mit dem Finger geschrieben" */
+.scheibe-nr { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center;
+              font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.4rem,2.4vw,2rem);
+              color: rgba(90,110,125,.5); transition: opacity .28s ease; }
+.scheibe:hover .scheibe-nr, .scheibe:focus-visible .scheibe-nr { opacity: 0; }
+
+/* Fensterbank mit Kerze */
+.fe-bank { position: absolute; left: -4%; right: -4%; bottom: -26px; height: 20px;
+           background: #171717; border-radius: 4px; box-shadow: 0 16px 30px rgba(0,0,0,.5); }
+.fe-kerze { position: absolute; right: 9%; bottom: -26px; width: 15px; height: 46px;
+            background: #e8e3d8; border-radius: 3px 3px 0 0; }
+.fe-flamme { position: absolute; left: 50%; top: -17px; width: 11px; height: 17px;
+             transform: translateX(-50%); background: var(--hl);
+             border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+             box-shadow: 0 0 16px var(--hl), 0 0 38px rgba(255,244,0,.45);
+             animation: fe-flackern 2.6s ease-in-out infinite; }
+@keyframes fe-flackern { 0%,100% { transform: translateX(-50%) scaleY(1); opacity: .95; }
+                          50% { transform: translateX(-50%) scaleY(1.14); opacity: 1; } }
+
+@media (max-width: 900px) {
+  .fe-raum { grid-template-columns: 1fr; align-content: center; gap: 22px;
+             padding-top: clamp(74px,11vh,100px); }
+  .fe-fenster { max-width: 420px; }
+  .fe-lead { max-width: none; }
+}
+@media (max-height: 720px) { .fe-fenster { max-width: 480px; } .fe-lead { display: none; } }
+</style>
+</head>
+<body>
+
+<main class="fe">
+  <div class="fe-nacht" aria-hidden="true"></div>
+  <svg class="fe-huegel" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 108 C 240 62 420 132 660 104 C 900 76 1080 136 1320 100 C 1460 80 1540 110 1600 96 L1600 200 L0 200 Z" fill="#0a0d10"/>
+    <path d="M0 148 C 300 116 520 166 800 144 C 1080 122 1300 172 1600 140 L1600 200 L0 200 Z" fill="#07090b"/>
+  </svg>
+
+  <header class="fe-kopf">
+    <img src="/assets/empiria-logo-white.svg" alt="empiria">
+    <span class="fe-jahr">Weihnachten 2026</span>
+  </header>
+
+  <div class="fe-raum">
+    <div>
+      <p class="fe-kicker">Weihnachten 2026</p>
+      <h1 class="fe-h1">Drinnen warm.<br><span class="hl">Draußen Schnee.</span></h1>
+      <p class="fe-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
+        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage und einen richtig
+        guten Start in 2027.</b></p>
+      <span class="fe-tipp"><i aria-hidden="true"></i>Wisch die Scheiben frei</span>
+    </div>
+
+    <nav class="fe-fenster" aria-label="Unsere Leistungen">
+      <a class="scheibe" style="--f:#1a1817" href="/leistungen/strategie">
+        <span class="scheibe-nr" aria-hidden="true">1</span>
+        <span class="scheibe-txt"><small>Strategiehandwerk</small><b>Strategie in den Alltag</b></span></a>
+      <a class="scheibe" style="--f:#C51F5D" href="/workshops">
+        <span class="scheibe-nr" aria-hidden="true">2</span>
+        <span class="scheibe-txt"><small>Workshops</small><b>Workshops, die wirken</b></span></a>
+      <a class="scheibe" style="--f:#0B9FBD" href="/marketing">
+        <span class="scheibe-nr" aria-hidden="true">3</span>
+        <span class="scheibe-txt"><small>Marketing</small><b>Marketing 2.0</b></span></a>
+      <a class="scheibe" style="--f:#6b9422" href="/training-sparring">
+        <span class="scheibe-nr" aria-hidden="true">4</span>
+        <span class="scheibe-txt"><small>Training</small><b>Training &amp; Sparring</b></span></a>
+      <a class="scheibe" style="--f:#8613A1" href="/sofort-sichtbar">
+        <span class="scheibe-nr" aria-hidden="true">5</span>
+        <span class="scheibe-txt"><small>Sichtbarkeit</small><b>sofort sichtbar</b></span></a>
+      <a class="scheibe" style="--f:#1a1817" href="/leistungen/innovation">
+        <span class="scheibe-nr" aria-hidden="true">6</span>
+        <span class="scheibe-txt"><small>Strategiehandwerk</small><b>Innovation</b></span></a>
+      <span class="fe-bank" aria-hidden="true"></span>
+      <span class="fe-kerze" aria-hidden="true"><span class="fe-flamme"></span></span>
+    </nav>
+  </div>
+</main>
+
+</body>
+</html>

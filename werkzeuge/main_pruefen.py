@@ -32,7 +32,8 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
 INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/xmas.html", "site/xmas-1.html", "site/xmas-2.html",
-                  "site/xmas-3.html", "site/xmas-4.html"]
+                  "site/xmas-3.html", "site/xmas-4.html",
+                  "site/xmas-5.html", "site/xmas-6.html"]
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
 # Produktion ausschliesslich Problem, Loesung und Leistungen.

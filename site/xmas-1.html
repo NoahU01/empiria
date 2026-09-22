@@ -57,7 +57,10 @@
 
 /* ---- Landschaft --------------------------------------------------------- */
 .xm-buehne { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; }
-.xm-land { display: block; width: 100%; height: clamp(150px, 30vh, 300px); }
+/* "meet" statt "slice": bei breiten Fenstern schnitt slice oben ab - genau
+   dort, wo der Stern auf der Baumspitze sitzt. Mit festem Seitenverhaeltnis
+   wird nie etwas abgeschnitten und die Huegel laufen trotzdem randlos. */
+.xm-land { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 300; }
 
 /* ---- Geschenke ---------------------------------------------------------- */
 .xm-gaben { position: absolute; left: 0; right: 0; bottom: clamp(52px, 8vh, 78px); z-index: 4;
@@ -74,13 +77,20 @@
 /* Schleife: zwei Baender aus demselben Strich wie die Icons */
 .xm-gabe-box::before, .xm-gabe-box::after { content: ""; position: absolute;
   background: rgba(255,255,255,.55); transition: background .22s ease; }
-.xm-gabe-box::before { left: calc(50% - 5px); top: -2px; bottom: -2px; width: 10px; }
-.xm-gabe-box::after { top: 26%; left: -2px; right: -2px; height: 8px; }
-.xm-gabe-deckel { position: absolute; left: -7px; right: -7px; top: -13px; height: 15px;
+.xm-gabe-box::before { left: calc(50% - 4px); top: -2px; bottom: -2px; width: 8px; }
+.xm-gabe-box::after { top: calc(50% - 4px); left: -2px; right: -2px; height: 8px; }
+.xm-gabe-deckel { position: absolute; left: -7px; right: -7px; top: -14px; height: 16px;
                   border: 2px solid rgba(255,255,255,.55); border-radius: 4px;
                   background: var(--black);
                   transition: transform .22s cubic-bezier(.2,.8,.3,1),
                               background .22s ease, border-color .22s ease; }
+.xm-gabe-deckel::before, .xm-gabe-deckel::after { content: ""; position: absolute; top: -11px;
+  width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.55); border-radius: 50% 50% 0 50%;
+  transition: border-color .22s ease; }
+.xm-gabe-deckel::before { left: calc(50% - 14px); transform: rotate(-16deg); }
+.xm-gabe-deckel::after { left: calc(50% + 1px); transform: rotate(74deg); }
+.xm-gabe:hover .xm-gabe-deckel::before, .xm-gabe:hover .xm-gabe-deckel::after,
+.xm-gabe:focus-visible .xm-gabe-deckel::before, .xm-gabe:focus-visible .xm-gabe-deckel::after { border-color: var(--hl); }
 .xm-gabe:hover .xm-gabe-box, .xm-gabe:focus-visible .xm-gabe-box { background: var(--hl); border-color: var(--hl); }
 .xm-gabe:hover .xm-gabe-box::before, .xm-gabe:hover .xm-gabe-box::after,
 .xm-gabe:focus-visible .xm-gabe-box::before, .xm-gabe:focus-visible .xm-gabe-box::after { background: var(--black); }
@@ -142,7 +152,7 @@
   </div>
 
   <div class="xm-buehne" aria-hidden="true">
-    <svg class="xm-land" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice">
+    <svg class="xm-land" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax meet">
       <!-- Sterne in der Strichsprache der CD-Icons -->
       <g stroke="#3a3a3a" stroke-width="2" stroke-linecap="round">
         <path d="M180 34v18M171 43h18"/><path d="M1410 52v14M1403 59h14"/>
@@ -153,16 +163,17 @@
       <path d="M0 262 C 260 226 470 282 720 258 C 980 232 1180 286 1600 250 L1600 300 L0 300 Z" fill="#191919"/>
       <!-- Baum: gestapelte Rauten-Haelften, gelber Stern -->
       <g transform="translate(800 0)">
-        <rect x="-11" y="214" width="22" height="34" fill="#2a2a2a"/>
-        <path d="M0 58 L58 146 L-58 146 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
-        <path d="M0 106 L78 196 L-78 196 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
-        <path d="M0 156 L100 240 L-100 240 Z" fill="none" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <rect x="-12" y="222" width="24" height="30" fill="#0d0d0d" stroke="#dedede" stroke-width="2.2"/>
+        <path d="M0 150 L104 244 L-104 244 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M0 100 L80 190 L-80 190 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M0 54 L58 140 L-58 140 Z" fill="#0d0d0d" stroke="#dedede" stroke-width="2.4" stroke-linejoin="round"/>
         <g stroke="#fff400" stroke-width="3" stroke-linecap="round">
           <path d="M0 26v26M-13 39h26M-9 30l18 18M9 30l-18 18"/>
         </g>
-        <circle cx="-34" cy="132" r="4.5" fill="#fff400"/><circle cx="40" cy="176" r="4.5" fill="#fff400"/>
-        <circle cx="-56" cy="186" r="4.5" fill="#fff400"/><circle cx="26" cy="118" r="4.5" fill="#fff400"/>
-        <circle cx="-14" cy="222" r="4.5" fill="#fff400"/><circle cx="66" cy="226" r="4.5" fill="#fff400"/>
+        <circle cx="-30" cy="126" r="5" fill="#fff400"/><circle cx="28" cy="112" r="5" fill="#fff400"/>
+        <circle cx="-52" cy="176" r="5" fill="#fff400"/><circle cx="46" cy="170" r="5" fill="#fff400"/>
+        <circle cx="-74" cy="228" r="5" fill="#fff400"/><circle cx="68" cy="230" r="5" fill="#fff400"/>
+        <circle cx="0" cy="200" r="5" fill="#fff400"/>
       </g>
     </svg>
   </div>

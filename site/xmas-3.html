@@ -31,12 +31,12 @@
 .sk-kopf img { height: 26px; }
 .sk-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.5); }
 
-.sk-raum { position: relative; z-index: 2; flex: 1 1 auto; display: grid; place-items: center;
-           padding: clamp(16px,2.4vw,32px) var(--pad-x) clamp(24px,3.4vw,44px); }
-.sk-ring { position: relative; width: min(84vmin, 720px); aspect-ratio: 1; display: grid; place-items: center; }
+.sk-raum { position: relative; z-index: 2; flex: 1 1 auto; display: flex; flex-direction: column;
+           align-items: center; justify-content: center; gap: clamp(22px,3.4vh,44px);
+           padding: clamp(12px,2vw,26px) var(--pad-x) clamp(20px,3vh,38px); }
 
 /* ---- Die Kugel ---------------------------------------------------------- */
-.sk-kugel { position: relative; width: 54%; aspect-ratio: 1; border-radius: 50%;
+.sk-kugel { position: relative; width: min(46vh, 42vw, 400px); aspect-ratio: 1; border-radius: 50%;
             background: radial-gradient(120% 120% at 32% 24%, rgba(255,255,255,.22) 0%, rgba(255,255,255,.07) 40%, rgba(255,255,255,.03) 70%);
             border: 2px solid rgba(255,255,255,.4); overflow: hidden;
             display: grid; place-items: center; text-align: center;
@@ -73,32 +73,29 @@
             border-radius: 6px; background: linear-gradient(#123f5c, #0a2b41);
             border: 2px solid rgba(255,255,255,.28); }
 
-/* ---- Der Ring aus Leistungen -------------------------------------------- */
-.sk-punkt { position: absolute; left: 50%; top: 50%; width: max-content;
-            transform: rotate(var(--a)) translate(min(38vmin,326px)) rotate(calc(-1 * var(--a)));
-            transform-origin: 0 0; }
+/* ---- Die Leistungen als ruhige Reihe unter der Kugel --------------------
+   Ein frei schwebender Ring wirkte beliebig; eine gesetzte Zeile passt zur
+   Ordnung der uebrigen Seiten. */
+.sk-unten { text-align: center; max-width: 900px; }
+.sk-ueber { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+            color: rgba(255,255,255,.45); font-weight: 600; margin: 0 0 clamp(12px,1.8vh,18px); }
+.sk-liste { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .sk-chip { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
-           transform: translate(-50%,-50%);
-           padding: 9px 16px; border-radius: 999px; text-decoration: none;
-           background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.26);
-           color: rgba(255,255,255,.88); font-size: .86rem; font-weight: 500;
-           backdrop-filter: blur(4px);
+           padding: 10px 17px; border-radius: 999px; text-decoration: none;
+           background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.24);
+           color: rgba(255,255,255,.88); font-size: .88rem; font-weight: 500;
            transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
 .sk-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%;
                    background: var(--hl); flex: 0 0 auto; transition: transform .2s ease; }
 .sk-chip:hover, .sk-chip:focus-visible { background: var(--hl); color: #06283d;
-           border-color: var(--hl); transform: translate(-50%,-50%) scale(1.07); }
+           border-color: var(--hl); transform: translateY(-3px); }
 .sk-chip:hover::before, .sk-chip:focus-visible::before { background: #06283d; transform: scale(1.4); }
 
 @media (max-width: 760px) {
-  .sk-ring { width: 100%; aspect-ratio: auto; display: block; }
-  .sk-kugel { width: min(76vw, 340px); margin: 0 auto clamp(26px,6vw,40px); }
-  .sk-punkt { position: static; transform: none; width: auto; }
-  .sk-chip { transform: none; }
-  .sk-chip:hover, .sk-chip:focus-visible { transform: scale(1.03); }
-  .sk-liste { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+  .sk-kugel { width: min(74vw, 320px); }
+  .sk-chip { font-size: .8rem; padding: 8px 14px; }
 }
-@media (min-width: 761px) { .sk-liste { display: contents; } }
+@media (max-height: 700px) { .sk-kugel { width: min(40vh, 40vw, 320px); } }
 </style>
 </head>
 <body>
@@ -116,8 +113,6 @@
   </header>
 
   <div class="sk-raum">
-    <div class="sk-ring">
-
       <div class="sk-kugel" id="kugel" role="button" tabindex="0" aria-label="Schneekugel schütteln">
         <div class="sk-flocken" aria-hidden="true"><i></i><i></i></div>
         <div class="sk-inhalt">
@@ -130,16 +125,17 @@
         <span class="sk-boden" aria-hidden="true"></span>
       </div>
 
-      <nav class="sk-liste" aria-label="Unsere Leistungen">
-        <span class="sk-punkt" style="--a:-96deg"><a class="sk-chip" href="/leistungen/strategie">Strategie in den Alltag</a></span>
-        <span class="sk-punkt" style="--a:-36deg"><a class="sk-chip" href="/workshops">Workshops</a></span>
-        <span class="sk-punkt" style="--a:24deg"><a class="sk-chip" href="/marketing">Marketing 2.0</a></span>
-        <span class="sk-punkt" style="--a:84deg"><a class="sk-chip" href="/training-sparring">Training &amp; Sparring</a></span>
-        <span class="sk-punkt" style="--a:144deg"><a class="sk-chip" href="/dashboard-digitales-marketing">MarketingEcoSystem</a></span>
-        <span class="sk-punkt" style="--a:204deg"><a class="sk-chip" href="/leistungen/innovation">Innovation</a></span>
-      </nav>
-
-    </div>
+      <div class="sk-unten">
+        <p class="sk-ueber">Und das haben wir für 2027 im Gepäck</p>
+        <nav class="sk-liste" aria-label="Unsere Leistungen">
+          <a class="sk-chip" href="/leistungen/strategie">Strategie in den Alltag</a>
+          <a class="sk-chip" href="/leistungen/komplexe-themen">Komplexe Themen</a>
+          <a class="sk-chip" href="/workshops">Workshops</a>
+          <a class="sk-chip" href="/marketing">Marketing 2.0</a>
+          <a class="sk-chip" href="/training-sparring">Training &amp; Sparring</a>
+          <a class="sk-chip" href="/leistungen/innovation">Innovation</a>
+        </nav>
+      </div>
   </div>
 </main>
 
