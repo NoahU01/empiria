@@ -51,7 +51,7 @@
            padding: clamp(32px,4.6vw,62px) 0 clamp(40px,5.4vw,76px); }
 .br-hero .watermark { z-index: 1;
                       width: clamp(360px,40vw,620px); height: clamp(360px,40vw,620px);
-                      left: -11%; bottom: -34%; color: rgba(0,0,0,.28); opacity: 1; }
+                      left: -11%; bottom: -34%; color: rgba(0,0,0,.18); opacity: 1; }
 .br-hero > .container,
 .br-rechnung > .container { position: relative; z-index: 2; }
 body { overflow-x: clip; }
@@ -172,7 +172,10 @@ body { overflow-x: clip; }
           background: var(--ink); display: grid; place-items: center;
           box-shadow: 0 14px 30px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2),
                       inset 0 1px 0 rgba(255,255,255,.12); }
-.br-app svg { width: 54%; height: 54%; color: var(--hl); }
+/* Der Wecker nutzt die Zeichenflaeche fast ganz aus, anders als das schmale
+   Zeichen davor. Darum die Flaeche groesser setzen, damit das Zeichen im
+   Kaestchen optisch gleich viel Platz einnimmt wie bei echten Apps. */
+.br-app svg { width: 62%; height: 62%; color: var(--hl); }
 
 /* ---- Die drei Wege ------------------------------------------------------ */
 .br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
@@ -368,14 +371,16 @@ body { overflow-x: clip; }
           <span class="br-taste br-taste--leiser" aria-hidden="true"></span>
           <span class="br-taste br-taste--power" aria-hidden="true"></span>
           <span class="br-app" aria-hidden="true">
-            <!-- Eigenes Zeichen: ein fallender Pfeil, aufgefangen von einem
-                 Balken. Drei Striche, keine feinen Details - so haelt es
-                 auch in App-Groesse. -->
+            <!-- Ein sehr einfacher Wecker: Gehaeuse, zwei Glocken, ein Zeiger.
+                 Vier Striche, keine feinen Details - so haelt es auch in
+                 App-Groesse. Die Glocken sitzen wie bei einem echten Wecker
+                 mit Abstand ueber dem Gehaeuse. -->
             <svg viewBox="0 0 100 100" fill="none" stroke="currentColor"
-                 stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M50 16v40"/>
-              <path d="M33 45 50 62 67 45"/>
-              <path d="M26 84h48"/>
+                 stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="50" cy="54" r="33"/>
+              <path d="M50 37v17l9 9"/>
+              <path d="M21 13 8 26"/>
+              <path d="M79 13 92 26"/>
             </svg>
           </span>
           <div class="br-phone-rahmen">
