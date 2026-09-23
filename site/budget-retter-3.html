@@ -13,25 +13,13 @@
    Kurze Landingpage zum Jahresende im Schwarz-Gelb der Strategieseiten.
    Links der Text, rechts ein Telefon, in dem der typische Anruf als Chat
    laeuft. Darunter drei Wege, die Rechnungsfrage, Kontakt. */
-/* ---- Die Wortmarke im Aufmacher ------------------------------------------
-   Nur der Name, ohne Kachel. Die Kachel taucht auf dieser Seite dreimal auf,
-   aber nie als Schmuck: gross und leise als Wasserzeichen, klein am Telefon
-   als App-Symbol, klein im Briefkopf der Rechnung als Absender. Ueber der
-   Ueberschrift haette sie keine solche Aufgabe - sie stuende nur da und
-   nimmt der Schlagzeile Aufmerksamkeit weg. */
-.br-wortmarke { display: inline-block; margin: 0 0 .9rem; }
-/* "Budget" in Lora Medium, "Retter" in Lora Bold - wie im Zeichen: das
-   markierte Wort traegt das Gewicht, das unmarkierte nimmt sich zurueck. */
-.br-wortmarke b { font-family: var(--font-serif); font-weight: 500; color: var(--ink);
-                  font-size: clamp(1.25rem,1.9vw,1.55rem); letter-spacing: -.02em;
-                  line-height: 1.14; white-space: nowrap; }
-/* Kein Bindestrich. Die Trennung machen das grosse R und ein schmaler
-   Abstand - und genau in diesen Abstand faellt die gelbe Markierung. */
-.br-wortmarke i { font-style: normal; position: relative; z-index: 0;
-                  font-weight: 700; margin-left: .17em; color: var(--ink); }
-.br-wortmarke i::before { content: ""; position: absolute; left: -.07em; right: -.07em;
-                          top: .13em; bottom: .09em; background: var(--hl);
-                          z-index: -1; border-radius: .06em; }
+/* Der Aufmacher bekommt denselben Kicker wie jede andere Sektion der Seite -
+   Poppins, klein, grau. Ein Zeichen stand hier vorher nur halb: ohne die
+   Kachel ist der Name kein Logo, sondern ein Kicker, der sich nicht an die
+   Regel haelt. Und der gelbe Balken hinter "Retter" stand zwei Zeilen ueber
+   dem der Schlagzeile - zwei Hervorhebungen dicht uebereinander schwaechen
+   sich gegenseitig. Die Kachel steht dort, wo sie eine Aufgabe hat: am
+   Telefon und im Briefkopf der Rechnung. */
 
 /* ---- Aufmacher ----------------------------------------------------------
    Zweigeteilt wie auf der Startseite: linke Spalte, rechte Spalte. Der Text
@@ -228,7 +216,11 @@ body { overflow-x: clip; }
    Rechnung als Strichzeichnung - dieselbe Bildsprache wie die Skizzen auf
    den Produktseiten, nur in Tinte statt in Weiss, weil der Grund gelb ist. */
 .br-rechnung { position: relative; background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
-.br-rechnung .kicker { color: rgba(26,24,23,.6); }
+/* Der Kicker ist ein <p> und faengt sich sonst die Absatzregel dieser
+   Sektion ein - die ist spezifischer als .kicker und macht ihn eine Stufe
+   groesser als jeden anderen Kicker der Seite. Groesse und Abstand darum
+   hier zurueckholen. */
+.br-rechnung .kicker { color: rgba(26,24,23,.6); font-size: 1rem; margin: 0 0 .9rem; }
 .br-rechnung-grid { display: grid; grid-template-columns: 1.1fr .9fr;
                     gap: clamp(30px,5vw,76px); align-items: center; }
 .br-rechnung h2 { font-family: var(--font-serif); font-weight: 700;
@@ -698,7 +690,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="br-hero-grid">
 
         <div class="br-text">
-          <p class="br-wortmarke"><b>Budget<i>Retter</i></b></p>
+          <p class="kicker">empiria BudgetRetter</p>
           <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
           <p class="br-lead">Im November wird klar, dass im Topf noch etwas übrig ist – und ab
             dem 1. Januar ist es verfallen. Wir kennen den Anruf, er kommt jedes Jahr.</p>
