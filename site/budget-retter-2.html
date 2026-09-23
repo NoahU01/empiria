@@ -13,32 +13,26 @@
    Kurze Landingpage zum Jahresende im Schwarz-Gelb der Strategieseiten.
    Links der Text, rechts ein Telefon, in dem der typische Anruf als Chat
    laeuft. Darunter drei Wege, die Rechnungsfrage, Kontakt. */
-.br-kopf { position: relative; z-index: 3; padding: clamp(20px,3vw,34px) var(--pad-x) 0;
-           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-.br-kopf img { height: 26px; }
-.br-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
-
-/* ---- Wortmarke ----------------------------------------------------------
-   Kein Bildzeichen. Ein Ring, ein Schild, ein Haken - all das sieht aus wie
-   das Zeichen irgendeines Verbands. Das eigenstaendigste Erkennungsmerkmal
-   des Hauses ist der gelbe Balken hinter einem Wort; genau der traegt hier
-   die Marke. Davor die Forward-Form aus dem Manual als kleines Signal. */
-.br-wortmarke { display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-                color: inherit; border-bottom: 0; }
-.br-wortmarke svg { width: 15px; height: 15px; flex: 0 0 auto; color: var(--ink); }
-.br-wortmarke-text { display: block; line-height: 1.04; }
-.br-wortmarke-text b { display: block; font-family: var(--font-serif); font-weight: 700;
-                       font-size: 1.08rem; letter-spacing: -.015em; white-space: nowrap; }
+/* ---- Die Wortmarke im Aufmacher ------------------------------------------
+   Die Kopfzeile gehoert empiria und sieht auf jeder Seite gleich aus - Logo
+   links, Menue rechts. Fuer ein zweites Zeichen ist dort kein Platz, und es
+   waere auch falsch: die Kopfzeile ist das Haus, nicht das Produkt.
+   Das Produktzeichen steht deshalb eine Ebene tiefer, an der Stelle des
+   Kickers ueber der Ueberschrift - genau dort sagt die Seite, was sie ist.
+   "empiria" fehlt hier bewusst, denn das Logo steht schon in der Kopfzeile.
+   Die vollstaendige Form mit dem empiria-Logo braucht es erst dort, wo das
+   Zeichen die Seite verlaesst: One-Pager, App-Kachel, E-Mail, Social. */
+.br-wortmarke { display: inline-block; margin: 0 0 .9rem; }
+.br-wortmarke b { font-family: var(--font-serif); font-weight: 700; color: var(--ink);
+                  font-size: clamp(1.25rem,1.9vw,1.55rem); letter-spacing: -.02em;
+                  line-height: 1.14; white-space: nowrap; }
 /* Kein Bindestrich. Die Trennung machen das grosse R und ein schmaler
    Abstand - und genau in diesen Abstand faellt die gelbe Markierung. */
-.br-wortmarke-text i { font-style: normal; position: relative; z-index: 0;
-                       margin-left: .17em; color: var(--ink); }
-.br-wortmarke-text i::before { content: ""; position: absolute; left: -.07em; right: -.07em;
-                               top: .13em; bottom: .09em; background: var(--hl);
-                               z-index: -1; border-radius: 2px; }
-/* "empiria" steht immer klein - kein text-transform, und kein "von". */
-.br-wortmarke-text small { display: block; font-size: .55rem; letter-spacing: .24em;
-                           text-transform: none; color: var(--grey-50); margin-top: 5px; }
+.br-wortmarke i { font-style: normal; position: relative; z-index: 0;
+                  margin-left: .17em; color: var(--ink); }
+.br-wortmarke i::before { content: ""; position: absolute; left: -.07em; right: -.07em;
+                          top: .13em; bottom: .09em; background: var(--hl);
+                          z-index: -1; border-radius: .06em; }
 
 /* ---- Aufmacher ----------------------------------------------------------
    Zweigeteilt wie auf der Startseite: linke Spalte, rechte Spalte. Der Text
@@ -230,13 +224,20 @@ body { overflow-x: clip; }
 .lg-mark::before { content: ""; position: absolute; z-index: -1;
                    left: -.07em; right: -.07em; top: .13em; bottom: .09em;
                    background: var(--hl); border-radius: .06em; }
-.lg-haus { font-family: var(--font-sans, inherit); font-weight: 500; font-style: normal;
-           text-transform: none; color: var(--lg-still); }
+/* "empiria" wird nirgends gesetzt, sondern immer das Originallogo eingebunden.
+   Die Schreibweise gehoert zum Logo und darf nicht davon abweichen, je
+   nachdem wo sie steht. Technisch als Maske, nicht als Bild: dadurch sind es
+   exakt die Pfade der Logodatei, nur eingefaerbt - schwarz auf Hell, weiss
+   auf Dunkel, so wie die Original-Dateien es vorgeben. Die Hoehe haengt an
+   der Schriftgroesse, das Seitenverhaeltnis an den Massen der Datei. */
+.lg-haus { display: block; height: .4em; aspect-ratio: 340.16 / 89.29;
+           background-color: var(--lg-fg);
+           -webkit-mask: url(/assets/empiria-logo.svg) no-repeat center / contain;
+           mask: url(/assets/empiria-logo.svg) no-repeat center / contain; }
 
 /* 1 - Die Markierung: Produkt oben, Haus darunter */
 .lg-1 { display: inline-block; }
-.lg-1 .lg-haus { display: block; margin-top: .5em; margin-right: -.34em;
-                 font-size: .32em; letter-spacing: .34em; }
+.lg-1 .lg-haus { margin-top: .56em; height: .42em; }
 
 /* 2 - Die Kachel: Zeichen im Kaestchen, rechts daneben zwei Zeilen */
 .lg-2 { display: inline-flex; align-items: center; gap: .5em; }
@@ -244,8 +245,7 @@ body { overflow-x: clip; }
              background: var(--lg-kachel-bg); color: var(--lg-kachel-fg);
              display: grid; place-items: center; }
 .lg-kachel svg { width: 62%; height: 62%; display: block; }
-.lg-2 .lg-haus { display: block; margin-top: .34em; margin-right: -.3em;
-                 font-size: .3em; letter-spacing: .3em; }
+.lg-2 .lg-haus { margin-top: .42em; height: .36em; }
 
 /* 3 - Der Stempel: alles im gelben Feld, keine Umkehrvariante noetig */
 .lg-3 { display: inline-flex; align-items: center; gap: .48em;
@@ -256,8 +256,9 @@ body { overflow-x: clip; }
    Woerter statt eines. */
 .lg-3 .lg-mark { margin-left: .07em; }
 .lg-3 .lg-mark::before { display: none; }
-.lg-3 .lg-haus { color: rgba(0,0,0,.6); font-size: .32em; letter-spacing: .3em;
-                 margin-right: -.3em; }
+/* Im gelben Feld bleibt das Logo schwarz - auch in der dunklen Variante,
+   denn das Feld selbst wechselt ja nicht die Farbe. */
+.lg-3 .lg-haus { height: .4em; background-color: var(--ink); }
 .lg-3-teiler { flex: 0 0 auto; width: 1px; align-self: stretch; background: rgba(0,0,0,.26); }
 
 /* 4 - Budgetretter bei empiria: markiert wird das, was verfaellt */
@@ -266,13 +267,16 @@ body { overflow-x: clip; }
    zum R optisch derselbe ist wie in den anderen Entwuerfen, steht hier
    .10em statt .17em. */
 .lg-4 .lg-mark { margin-left: 0; margin-right: .1em; }
-.lg-4-zu { display: block; margin-top: .44em; font-size: .3em; letter-spacing: .2em; }
-.lg-4-zu em { font-style: normal; font-weight: 300; color: var(--lg-still); }
-.lg-4-zu b { font-weight: 600; color: var(--lg-fg); }
+.lg-4-zu { display: flex; align-items: center; gap: .34em; margin-top: .5em; }
+/* Die Sperrung haengt auch hinter dem letzten Buchstaben; ohne den
+   negativen Rand stuende "bei" zu weit vom Logo weg. */
+.lg-4-zu em { font-style: normal; font-weight: 400; font-size: .3em;
+              letter-spacing: .12em; margin-right: -.12em; color: var(--lg-still); }
+.lg-4-zu .lg-haus { height: .34em; }
 
 /* 5 - Der Einzeiler: Haus zuerst, Produkt danach, eine Grundlinie */
-.lg-5 { display: inline-flex; align-items: baseline; gap: .44em; }
-.lg-5 .lg-haus { font-size: .4em; letter-spacing: .2em; }
+.lg-5 { display: inline-flex; align-items: center; gap: .5em; }
+.lg-5 .lg-haus { height: .42em; }
 
 @media (max-width: 560px) {
   .lg { font-size: 1.3rem; }
@@ -451,12 +455,343 @@ body { overflow-x: clip; }
     </symbol>
 </defs></svg>
 
-<header class="br-kopf">
-  <a href="/"><img src="/assets/empiria-logo.svg" alt="empiria"></a>
-  <span class="br-wortmarke">
-    <svg viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
-    <span class="br-wortmarke-text"><b>Budget<i>Retter</i></b><small>empiria</small></span>
-  </span>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html#leistungen" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--desktop" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+</div></div>
+</div>
+<a href="strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-flex;align-items:center;margin-left:auto}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:inherit;font-size:.95rem;font-weight:400;line-height:1.4;color:var(--grey-50);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;transition:color .18s ease}
+.dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow:visible;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
+.dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.dev-dd-group{margin:4px 8px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-50);font-weight:600}
+.dev-dd-group--sub{margin-top:14px;padding-top:12px;border-top:1px solid var(--grey-bg)}
+a.dev-dd-link{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:var(--ink);text-decoration:none;border-bottom:0;font-size:inherit;min-height:0;white-space:normal}
+a.dev-dd-link:hover,a.dev-dd-link.is-current{background:var(--grey-bg);color:var(--ink)}
+a.dev-dd-link--indent{padding-left:30px}
+.dev-dd-tag{flex:0 0 32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12px}
+.dev-dd-link--muted .dev-dd-tag{background:var(--grey-bg);color:var(--grey-70)}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dev-dd-txt b{font-weight:500;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:var(--grey-50);margin-top:1px}
+/* ---- Zweite Ebene: oeffnet nach rechts, wie im Leistungen-Menue -----------
+   Das Panel sitzt am rechten Rand; gemessen bleiben dort auch bei 1280 px
+   Fensterbreite noch 277 px frei, das reicht fuer das Flyout. */
+.dev-dd-sub{position:relative}
+a.dev-dd-link--parent::after{content:"";width:6px;height:6px;margin-left:auto;flex:0 0 auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.45}
+.dev-dd-sub:hover>a.dev-dd-link--parent,.dev-dd-sub:focus-within>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout{position:absolute;left:100%;top:-10px;padding-left:10px;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;z-index:81}
+.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout{opacity:1;visibility:visible}
+.dev-dd-flyout-panel{width:262px;padding:10px;background:#fff;border:1px solid var(--grey-bg);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.dev-dd-flyout-panel .dev-dd-group{margin:2px 8px 6px}
+.dev-dd--mobile{display:none}
+.dev-dd-short{display:none}
+@media (min-width:901px) and (max-width:1140px){
+.dev-dd--desktop .dev-dd-long{display:none}
+.dev-dd--desktop .dev-dd-short{display:inline}
+.dev-dd--desktop ~ .nav-cta{margin-left:1.1rem;padding-left:1.6rem;padding-right:1.6rem}
+}
+@media (max-width:900px){
+.nav .dev-dd--desktop{display:none}
+.mobile-menu .dev-dd--mobile{display:block;margin:0}
+.mobile-menu .dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 0;font-size:1.15rem;border-bottom:1px solid #f2f2f2}
+.mobile-menu .dev-dd-panel{position:static;width:auto;max-height:none;overflow:visible;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;margin:10px 0 6px;padding:0 0 0 12px}
+.mobile-menu .dev-dd-panel::before{display:none}
+.mobile-menu .dev-dd.is-open .dev-dd-panel{display:block}
+.mobile-menu a.dev-dd-link{padding:9px 8px;font-size:inherit;border-bottom:0}
+.mobile-menu a.dev-dd-link--indent{padding-left:30px}
+.mobile-menu .dev-dd-panel{overflow:auto}
+.mobile-menu .dev-dd-flyout{position:static;opacity:1;visibility:visible;padding-left:0}
+.mobile-menu .dev-dd-flyout-panel{width:auto;padding:0 0 0 12px;margin:2px 0 6px 20px;background:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;box-shadow:none}
+.mobile-menu a.dev-dd-link--parent::after{display:none}
+}
+</style>
+<script>
+(function(){
+function init(){
+var here=location.href.split('#')[0].split('?')[0];
+document.querySelectorAll('[data-dev-dd]').forEach(function(d){
+var b=d.querySelector('.dev-dd-toggle'),t;
+function desk(){return window.innerWidth>900;}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
+d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
+// Zweite Ebene: ein Flyout weit unten in der Liste wuerde sonst unter den
+// Fensterrand rutschen (gemessen: 925px bei 813px Fensterhoehe). Es wird
+// deshalb beim Oeffnen genau um den Ueberstand nach oben geschoben.
+d.querySelectorAll('.dev-dd-sub').forEach(function(s){
+var f=s.querySelector('.dev-dd-flyout');
+if(!f)return;
+function platzieren(){
+if(!desk()){f.style.top='';return;}
+f.style.top='-10px';
+var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+if(u>0)f.style.top=(-10-u)+'px';
+}
+s.addEventListener('mouseenter',platzieren);
+s.addEventListener('focusin',platzieren);
+window.addEventListener('resize',function(){f.style.top='';});
+});
+});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark btn--sm nav-cta" href="#kontakt">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html#leistungen">Strategiehandwerk</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Strategiehandwerk anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Workshops anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Training & Sparring anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+    </div>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--mobile" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+</div></div>
+</div>
+<a href="strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div>
+</div>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark" href="#kontakt">Kontakt</a>
+  </nav>
 </header>
 
 
@@ -468,7 +803,7 @@ body { overflow-x: clip; }
       <div class="br-hero-grid">
 
         <div class="br-text">
-          <p class="kicker">empiria BudgetRetter</p>
+          <p class="br-wortmarke"><b>Budget<i>Retter</i></b></p>
           <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
           <p class="br-lead">Im November wird klar, dass im Topf noch etwas übrig ist – und ab
             dem 1. Januar ist es verfallen. Wir kennen den Anruf, er kommt jedes Jahr.</p>
@@ -662,13 +997,13 @@ body { overflow-x: clip; }
           <div class="lgk-hell">
             <span class="lg lg-1">
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
             </span>
           </div>
           <div class="lgk-dunkel">
             <span class="lg lg-1">
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
             </span>
           </div>
           <div class="lgk-text">
@@ -688,7 +1023,7 @@ body { overflow-x: clip; }
               <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
               <span>
                 <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-                <span class="lg-haus">empiria</span>
+                <span class="lg-haus" role="img" aria-label="empiria"></span>
               </span>
             </span>
           </div>
@@ -697,7 +1032,7 @@ body { overflow-x: clip; }
               <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
               <span>
                 <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-                <span class="lg-haus">empiria</span>
+                <span class="lg-haus" role="img" aria-label="empiria"></span>
               </span>
             </span>
           </div>
@@ -717,14 +1052,14 @@ body { overflow-x: clip; }
             <span class="lg lg-3">
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
               <span class="lg-3-teiler"></span>
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
             </span>
           </div>
           <div class="lgk-dunkel">
             <span class="lg lg-3">
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
               <span class="lg-3-teiler"></span>
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
             </span>
           </div>
           <div class="lgk-text">
@@ -742,13 +1077,13 @@ body { overflow-x: clip; }
           <div class="lgk-hell">
             <span class="lg lg-4">
               <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
-              <span class="lg-4-zu"><em>bei</em> <b>empiria</b></span>
+              <span class="lg-4-zu"><em>bei</em><span class="lg-haus" role="img" aria-label="empiria"></span></span>
             </span>
           </div>
           <div class="lgk-dunkel">
             <span class="lg lg-4">
               <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
-              <span class="lg-4-zu"><em>bei</em> <b>empiria</b></span>
+              <span class="lg-4-zu"><em>bei</em><span class="lg-haus" role="img" aria-label="empiria"></span></span>
             </span>
           </div>
           <div class="lgk-text">
@@ -764,13 +1099,13 @@ body { overflow-x: clip; }
         <div class="lgk">
           <div class="lgk-hell">
             <span class="lg lg-5">
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
             </span>
           </div>
           <div class="lgk-dunkel">
             <span class="lg lg-5">
-              <span class="lg-haus">empiria</span>
+              <span class="lg-haus" role="img" aria-label="empiria"></span>
               <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
             </span>
           </div>
