@@ -2444,7 +2444,9 @@ body.produktseite--sofortsichtbar {
 .vorschau-split-grid {
   display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 64px); align-items: center;
 }
-.vorschau-split-text .kicker { color: rgba(255,255,255,.75); }
+/* Wie bei .produkt-section-head: der Kicker ist ein <p> und faengt sich
+   sonst die Absatzregel dieser Spalte ein. */
+.vorschau-split-text .kicker { color: rgba(255,255,255,.75); font-size: 1rem; }
 .vorschau-split-text h2 {
   font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2.1rem); color: #fff; margin: .5rem 0 1rem;
 }
@@ -2488,7 +2490,12 @@ body.produktseite--sofortsichtbar {
 .produkt-section-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
 .produkt-section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
 .produkt-section-head--center p { margin-left: auto; margin-right: auto; }
-.produkt-section-head .kicker { color: rgba(255,255,255,.75); }
+/* Der Kicker ist ein <p> und faengt sich sonst die Absatzregel direkt
+   darunter ein - die ist spezifischer als .kicker und setzt ihn auf
+   .95rem. Dadurch standen die Abschnitts-Kicker auf allen Produktseiten
+   eine Stufe kleiner als der Kicker im Aufmacher und in der Kontaktsektion
+   derselben Seite. Groesse hier zurueckholen. */
+.produkt-section-head .kicker { color: rgba(255,255,255,.75); font-size: 1rem; }
 .produkt-section-head h2 {
   font-family: var(--font-serif); font-weight: 700; color: #fff;
   font-size: clamp(1.6rem, 3vw, 2.3rem); max-width: 24ch; margin: .3rem 0 0;

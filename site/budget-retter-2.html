@@ -320,7 +320,11 @@ body { overflow-x: clip; }
    Rechnung als Strichzeichnung - dieselbe Bildsprache wie die Skizzen auf
    den Produktseiten, nur in Tinte statt in Weiss, weil der Grund gelb ist. */
 .br-rechnung { position: relative; background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
-.br-rechnung .kicker { color: rgba(26,24,23,.6); }
+/* Der Kicker ist ein <p> und faengt sich sonst die Absatzregel dieser
+   Sektion ein - die ist spezifischer als .kicker und macht ihn eine Stufe
+   groesser als jeden anderen Kicker der Seite. Groesse und Abstand darum
+   hier zurueckholen. */
+.br-rechnung .kicker { color: rgba(26,24,23,.6); font-size: 1rem; margin: 0 0 .9rem; }
 .br-rechnung-grid { display: grid; grid-template-columns: 1.1fr .9fr;
                     gap: clamp(30px,5vw,76px); align-items: center; }
 .br-rechnung h2 { font-family: var(--font-serif); font-weight: 700;
