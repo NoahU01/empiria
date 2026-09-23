@@ -951,19 +951,19 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
 P["budget-ki"] = ("strategie", "KI im Alltag anwenden – BudgetRetter – empiria", [
   page(
     sec("BudgetRetter", 'KI im Alltag <span class="hl">anwenden.</span>',
-        "Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag und weiß danach, wo Künstliche Intelligenz trägt und wo nicht. Wie tief Ihr geht, entscheidet Ihr.",
-        ),
-    '<div class="frist-band">Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</div>',
+        "Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag und weiß danach, wo Künstliche Intelligenz trägt und wo nicht.",
+        "Wie tief Ihr geht, entscheidet Ihr. Vor- und Nachbereitung sind enthalten.",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
     # Die drei Formate stehen dort, wo im Strategie-Pager der Ablauf steht.
     # Beides zusammen passt nicht auf eine Seite, und der One-Pager bleibt
     # bewusst einseitig - er ist der Gegenwert fuer die E-Mail-Adresse.
     stage("Die Formate", "Drei Tiefen, ein Aufbau.",
-          "Jedes Format beginnt mit denselben Werkzeugen, Vor- und Nachbereitung sind enthalten. Der Unterschied ist, wie weit Ihr damit kommt.",
-          wm="wecker", dunkel=True,
+          "Jedes Format beginnt mit denselben Werkzeugen. Der Unterschied liegt darin, wie weit Ihr damit kommt.",
+          wm="wecker", boden=True,
           inhalt=rows([("½ Tag · KI-Einstieg — 2.500 €", "Die Werkzeuge ausprobieren und erste eigene Erfahrungen sammeln. Ohne Vorkenntnisse startklar."),
                        ("1 Tag · KI-Sprint — 3.900 €", "Werkzeuge kennenlernen und eine kompakte Fragestellung aus Eurem Haus bearbeiten. Das meistgewählte Format."),
                        ("2 Tage · KI-Deep-Dive — 7.350 €", "Direkter Einstieg in einen konkreten Anwendungsfall Eures Unternehmens – mit Abschlussbesprechung zum weiteren Vorgehen.")],
-                      style="margin-top:5mm"), style="margin-top:2mm;padding-top:6mm;padding-bottom:6mm"),
+                      style="margin-top:6mm")),
     contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
 ])
 
@@ -971,11 +971,10 @@ P["budget-strategie"] = ("strategie", "Strategie in den Alltag überführen – 
   page(
     sec("BudgetRetter", 'Strategie in den Alltag <span class="hl">überführen.</span>',
         "Die Strategie steht. Aber was heißt sie für Deinen Bereich? Wir übersetzen sie in ein Zielbild, mit dem Dein Team wirklich arbeiten kann – in ein bis zwei Tagen, moderiert.",
-        ),
-    '<div class="frist-band">Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</div>',
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
     stage("Der Ablauf", "Kompakt und moderiert.",
-          "Ein Vorgespräch, ein bis zwei Arbeitstage, eine saubere Dokumentation.",
-          wm="kreuz", boden=True,
+          "Ein Vorgespräch, ein bis zwei Arbeitstage, eine saubere Dokumentation. Mehr braucht es nicht.",
+          wm="wecker", boden=True,
           inhalt=rows([("Vorgespräch", "Wo steht Ihr, was ist schon entschieden und wo hakt es? Rund eine Stunde, telefonisch."),
                        ("Arbeitstag", "Das Zielbild für Deinen Bereich entsteht gemeinsam mit Deinem Team – nicht im stillen Kämmerlein."),
                        ("Übersetzung", "Was bedeutet das für die einzelnen Rollen, Termine und Entscheidungen?"),
@@ -987,16 +986,16 @@ P["budget-strategie"] = ("strategie", "Strategie in den Alltag überführen – 
 P["budget-innovation"] = ("strategie", "Innovation für Deinen Bereich – BudgetRetter – empiria", [
   page(
     sec("BudgetRetter", 'Innovation für <span class="hl">Deinen Bereich.</span>',
-        "Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht: ein bis zwei Tage, moderiert, für einen Bereich und ein Thema. Vieles gilt als gesetzt, nur weil es schon immer so war – die Frage dahinter lautet: Was davon trägt in fünf Jahren noch?",
-        ),
-    '<div class="frist-band">Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</div>',
+        "Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht. Ein bis zwei Tage, moderiert, für einen Bereich und ein Thema.",
+        "Vieles gilt als gesetzt, nur weil es schon immer so war. Die Frage dahinter: Was davon trägt in fünf Jahren noch?",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
     stage("Der Ablauf", "Ein Tag zum Öffnen, einer zum Schärfen.",
-          "Davor steht ein kurzes Vorgespräch: welcher Bereich, welches Thema, wer sitzt mit am Tisch.",
-          wm="wecker", dunkel=True,
+          "Davor steht ein telefonisches Vorgespräch: welcher Bereich, welches Thema, wer sitzt mit am Tisch.",
+          wm="wecker", boden=True,
           inhalt=rows([("Öffnen", "Wir nehmen auseinander, was als gegeben gilt – mit Methoden, die auch Ungewohntes aushalten."),
                        ("Schärfen", "Aus den Ideen werden wenige, die tragen: bewertet nach Wirkung und Aufwand."),
                        ("Was bleibt", "Die Ideen, an denen Ihr 2027 weiterarbeitet – dokumentiert, mit klarem nächsten Schritt.")],
-                      style="margin-top:5mm"), style="margin-top:2mm;padding-top:6mm;padding-bottom:6mm"),
+                      style="margin-top:6mm")),
     contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
 ])
 

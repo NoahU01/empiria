@@ -771,20 +771,6 @@ ul.checks.cols2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10m
 .stage--dunkel .stage-head p { color: rgba(255,255,255,.76); max-width: none; }
 .stage--dunkel .kicker { color: var(--dark-acc); }
 .stage--dunkel .stage-wm { color: rgba(255,255,255,.10); }
-/* Zeilen auf dem dunklen Band: die Grundfarben sind fuer hellen Grund
-   gedacht und waeren hier unlesbar. Der Block laeuft in derselben Breite
-   wie der Kopf darueber. */
-.stage--dunkel .rows { max-width: 138mm; margin-left: auto; margin-right: auto; }
-.stage--dunkel .row .n { color: var(--dark-acc); }
-.stage--dunkel .row h3 { color: #fff; }
-.stage--dunkel .row p { color: rgba(255,255,255,.78); }
-
-/* Gelbes Band fuer die eine Aussage, auf die es bei den BudgetRetter-Seiten
-   ankommt. Steht bewusst als Flaeche, nicht als fetter Absatz. */
-.frist-band { margin-top: 4.5mm; padding: 3.2mm 5.5mm; border-radius: 2mm;
-              background: var(--hl-bg); color: var(--hl-fg);
-              font-family: var(--serif); font-weight: 700; font-size: 10.5pt;
-              line-height: 1.35; }
 /* Steht die Fusszeile auf dem dunklen Band, braucht die Seitenzahl Weiss -
    der Strich bleibt in der Highlight-Farbe des Themes. */
 .page--fussdunkel .page-no { color: rgba(255,255,255,.85); }
