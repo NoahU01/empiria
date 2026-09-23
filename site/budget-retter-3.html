@@ -181,8 +181,15 @@ body { overflow-x: clip; }
              gap: clamp(14px,1.8vw,22px); }
 .br-karte { grid-row: span 7; display: grid; grid-template-rows: subgrid; align-content: start; }
 .br-karte > * { margin: 0; }
-.br-titel { font-family: var(--font-serif); font-weight: 700; font-size: 1.22rem;
-            line-height: 1.28; color: #fff; }
+/* Eine Stufe ueber dem Standard des Hauses (Preiskarten stehen dort auf
+   1.2rem). Bewusst: auf den Produktseiten sind Preiskarten ein Abschnitt
+   unter vielen, hier sind die drei Kaesten die Seite. Mehr als 1.35rem
+   liest sich dann aber wie ein anderes Layout. */
+/* Zwei Klassen, weil .produkt-glass h3 mit Klasse plus Element sonst
+   spezifischer ist als .br-titel allein - die 1.22rem von vorher sind
+   deshalb nie angekommen, die Ueberschrift stand immer auf 1.2rem. */
+.br-karte .br-titel { font-family: var(--font-serif); font-weight: 700; font-size: 1.35rem;
+                      line-height: 1.26; color: #fff; }
 .br-dauer { font-family: var(--font-serif); font-weight: 500; font-size: 1rem;
             color: rgba(255,255,255,.72); padding-top: 4px; }
 .br-desc { color: rgba(255,255,255,.85); font-size: .95rem; line-height: 1.6; padding-top: 12px; }
@@ -215,6 +222,12 @@ body { overflow-x: clip; }
 .br-staffel-was b { font-weight: 600; color: #fff; white-space: nowrap; }
 .br-staffel-preis { font-weight: 600; color: var(--hl); white-space: nowrap; }
 
+/* NUR FUER DIE ABSTIMMUNG: der direkte Weg zum PDF, am Lead-Dialog vorbei.
+   Vor dem Livegang raus - sonst ist der Lead-Magnet kostenlos zu haben. */
+.br-ansehen { display: block; margin-top: 10px; text-align: center; font-style: italic;
+              font-size: .82rem; color: #fff; text-decoration: none;
+              border-bottom: 0; opacity: .78; transition: opacity .2s ease; }
+.br-ansehen:hover, .br-ansehen:focus-visible { opacity: 1; text-decoration: underline; }
 .br-knopfzeile { padding-top: 22px; }
 .br-knopf { width: 100%; padding: 13px 18px; border-radius: 12px; cursor: pointer;
             font: inherit; font-weight: 600; font-size: .92rem; border: 1px solid var(--hl);
@@ -907,6 +920,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               data-text="Drei Formate, ein Aufbau, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
               data-pdf="/assets/downloads/empiria-budget-ki.pdf"
               data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
+            <a class="br-ansehen" href="/assets/downloads/empiria-budget-ki.pdf" target="_blank" rel="noopener">PDF direkt ansehen</a>
           </div>
         </div>
 
@@ -930,6 +944,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               data-text="Auftakt, Arbeitstag, Ergebnis – der Innovationsauftakt kompakt auf einer Seite."
               data-pdf="/assets/downloads/empiria-budget-innovation.pdf"
               data-bild="/assets/downloads/empiria-budget-innovation-1.webp">One-Pager laden</button>
+            <a class="br-ansehen" href="/assets/downloads/empiria-budget-innovation.pdf" target="_blank" rel="noopener">PDF direkt ansehen</a>
           </div>
         </div>
 
