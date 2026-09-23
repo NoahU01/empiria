@@ -39,14 +39,21 @@
 /* ---- Aufmacher ----------------------------------------------------------
    Zweigeteilt wie auf der Startseite: linke Spalte, rechte Spalte. Der Text
    bekommt die Breite seiner Spalte, keine kuenstliche Verengung. */
-/* Der Aufmacher liegt ueber der gelben Sektion, damit das Kreis-Icon am
-   Uebergang weiterlaufen kann statt an der Kante abgeschnitten zu werden.
-   Darum hier kein overflow:hidden; das waagerechte Beschneiden uebernimmt
-   der body. */
-.br-hero { position: relative; z-index: 2;
+/* Ebenen am Uebergang zur gelben Sektion:
+   Beide Sektionen bleiben auf z-index auto, ihre Hintergruende liegen damit
+   ganz unten. Der Kreis bekommt z-index 1 und liegt dadurch ueber beiden
+   Flaechen - ein positiver Wert schlaegt immer auto, unabhaengig von der
+   Reihenfolge im Dokument. Die Inhalte beider Sektionen stehen auf 2 und
+   damit ueber dem Kreis; sonst deckt er in der schmalen Ansicht den Text zu.
+   Kein overflow:hidden, sonst waere der Kreis an der Kante abgeschnitten;
+   das waagerechte Beschneiden uebernimmt der body. */
+.br-hero { position: relative;
            padding: clamp(32px,4.6vw,62px) 0 clamp(40px,5.4vw,76px); }
-.br-hero .watermark { width: clamp(260px,28vw,420px); height: clamp(260px,28vw,420px);
-                      left: -6%; bottom: -30%; color: #dedede; }
+.br-hero .watermark { z-index: 1;
+                      width: clamp(360px,40vw,620px); height: clamp(360px,40vw,620px);
+                      left: -11%; bottom: -34%; color: rgba(0,0,0,.28); opacity: 1; }
+.br-hero > .container,
+.br-rechnung > .container { position: relative; z-index: 2; }
 body { overflow-x: clip; }
 .br-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr;
                 gap: clamp(30px,5vw,76px); align-items: center; }
@@ -165,7 +172,7 @@ body { overflow-x: clip; }
           background: var(--ink); display: grid; place-items: center;
           box-shadow: 0 14px 30px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2),
                       inset 0 1px 0 rgba(255,255,255,.12); }
-.br-app svg { width: 46%; height: 46%; color: var(--hl); }
+.br-app svg { width: 54%; height: 54%; color: var(--hl); }
 
 /* ---- Die drei Wege ------------------------------------------------------ */
 .br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
@@ -219,7 +226,7 @@ body { overflow-x: clip; }
    Zweispaltig: links der Text linksbuendig am Satzspiegel, rechts die
    Rechnung als Strichzeichnung - dieselbe Bildsprache wie die Skizzen auf
    den Produktseiten, nur in Tinte statt in Weiss, weil der Grund gelb ist. */
-.br-rechnung { position: relative; z-index: 1; background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
+.br-rechnung { position: relative; background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
 .br-rechnung .kicker { color: rgba(26,24,23,.6); }
 .br-rechnung-grid { display: grid; grid-template-columns: 1.1fr .9fr;
                     gap: clamp(30px,5vw,76px); align-items: center; }
@@ -361,7 +368,15 @@ body { overflow-x: clip; }
           <span class="br-taste br-taste--leiser" aria-hidden="true"></span>
           <span class="br-taste br-taste--power" aria-hidden="true"></span>
           <span class="br-app" aria-hidden="true">
-            <svg viewBox="0 0 232.44 232.44"><use href="#ic-forward"/></svg>
+            <!-- Eigenes Zeichen: ein fallender Pfeil, aufgefangen von einem
+                 Balken. Drei Striche, keine feinen Details - so haelt es
+                 auch in App-Groesse. -->
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor"
+                 stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M50 16v40"/>
+              <path d="M33 45 50 62 67 45"/>
+              <path d="M26 84h48"/>
+            </svg>
           </span>
           <div class="br-phone-rahmen">
             <div class="br-insel" aria-hidden="true"></div>
