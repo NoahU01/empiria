@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>empiria Budget-Retter · Variante 2</title>
+<title>empiria BudgetRetter · Variante 2</title>
 <meta name="description" content="Restbudget bis zum Jahresende? Zwei Themen, die wir noch in diesem Jahr liefern – und so rechtzeitig abrechnen, dass Du die Rechnung direkt verbuchen kannst.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/lead/lead.css">
 <style>
-/* ===== empiria Budget-Retter =================================================
+/* ===== empiria BudgetRetter =================================================
    Kurze Landingpage zum Jahresende im Schwarz-Gelb der Strategieseiten.
    Links der Text, rechts ein Telefon, in dem der typische Anruf als Chat
    laeuft. Darunter drei Wege, die Rechnungsfrage, Kontakt. */
@@ -29,12 +29,16 @@
 .br-wortmarke-text { display: block; line-height: 1.04; }
 .br-wortmarke-text b { display: block; font-family: var(--font-serif); font-weight: 700;
                        font-size: 1.08rem; letter-spacing: -.015em; white-space: nowrap; }
-.br-wortmarke-text i { font-style: normal; position: relative; z-index: 0; padding: 0 .12em; }
-.br-wortmarke-text i::before { content: ""; position: absolute; left: 0; right: 0;
-                               top: .12em; bottom: .04em; background: var(--hl);
+/* Kein Bindestrich. Die Trennung machen das grosse R und ein schmaler
+   Abstand - und genau in diesen Abstand faellt die gelbe Markierung. */
+.br-wortmarke-text i { font-style: normal; position: relative; z-index: 0;
+                       margin-left: .17em; color: var(--ink); }
+.br-wortmarke-text i::before { content: ""; position: absolute; left: -.07em; right: -.07em;
+                               top: .13em; bottom: .09em; background: var(--hl);
                                z-index: -1; border-radius: 2px; }
+/* "empiria" steht immer klein - kein text-transform, und kein "von". */
 .br-wortmarke-text small { display: block; font-size: .55rem; letter-spacing: .24em;
-                           text-transform: uppercase; color: var(--grey-50); margin-top: 4px; }
+                           text-transform: none; color: var(--grey-50); margin-top: 5px; }
 
 /* ---- Aufmacher ----------------------------------------------------------
    Zweigeteilt wie auf der Startseite: linke Spalte, rechte Spalte. Der Text
@@ -178,6 +182,103 @@ body { overflow-x: clip; }
 .br-app svg { width: 62%; height: 62%; color: var(--hl); }
 
 /* ---- Die drei Wege ------------------------------------------------------ */
+/* ---- Logo-Varianten zur Auswahl ------------------------------------------
+   Fuenf Entwuerfe fuer die Wortmarke. Was fuer alle gilt:
+   - "empiria" steht immer klein. Kein text-transform, nirgends.
+   - Kein "von". Entweder steht das Haus davor, daneben oder darunter.
+   - Kein Bindestrich im Produktnamen. Die Trennung zwischen den beiden
+     Worthaelften macht das grosse R plus ein schmaler Abstand - und in
+     drei Varianten faellt die gelbe Markierung genau in diesen Abstand.
+   - Jede Variante steht hell und dunkel, weil ein Zeichen beides koennen
+     muss. Das markierte Wort bleibt dabei immer dunkel auf Gelb. */
+.lgs { background: #fff; padding-block: clamp(46px,6.4vw,88px); }
+.lgs .kicker { color: var(--grey-50); }
+.lgs h2 { font-family: var(--font-serif); font-weight: 500; color: var(--ink);
+          font-size: clamp(1.7rem,3.2vw,2.5rem); line-height: 1.12; margin: 0 0 .8rem; }
+.lgs-sub { color: var(--grey-70); max-width: 64ch; margin: 0 0 clamp(28px,3.4vw,44px);
+           font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.66; }
+.lgs-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr));
+              gap: clamp(16px,2vw,26px); }
+.lgk { display: flex; flex-direction: column; background: #fff;
+       border: 1px solid #e4e1dd; border-radius: var(--radius-card); overflow: hidden; }
+.lgk-hell { background: #faf9f7; padding: clamp(30px,3.4vw,46px) 20px;
+            display: grid; place-items: center; min-height: 132px; }
+.lgk-dunkel { background: var(--black); padding: 20px; display: grid; place-items: center; }
+.lgk-text { padding: 20px 22px 24px; border-top: 1px solid #efece8; }
+.lgk-nr { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+          font-weight: 600; color: var(--grey-50); }
+.lgk-text h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+               line-height: 1.26; margin: .34rem 0 .5rem; color: var(--ink); }
+.lgk-text p { font-size: .87rem; line-height: 1.62; color: var(--grey-70); margin: 0; }
+
+/* Gemeinsame Bausteine. Alles in em, damit eine einzige Schriftgroesse
+   die ganze Marke skaliert - gross auf Hell, klein auf Dunkel. */
+.lg { --lg-fg: var(--ink); --lg-still: var(--grey-50);
+      --lg-kachel-bg: var(--black); --lg-kachel-fg: var(--hl);
+      color: var(--lg-fg); line-height: 1; text-align: left;
+      font-size: clamp(1.4rem,2.2vw,1.9rem); }
+.lgk-dunkel .lg { --lg-fg: #fff; --lg-still: rgba(255,255,255,.6);
+                  --lg-kachel-bg: var(--hl); --lg-kachel-fg: var(--black);
+                  font-size: .96rem; }
+.lg-wort { display: block; font-family: var(--font-serif); font-weight: 700;
+           font-size: 1em; letter-spacing: -.02em; line-height: 1.14; white-space: nowrap; }
+/* Die Markierung sitzt hinter dem Wort. Oben und unten so beschnitten,
+   dass sie weder die Oberlaengen abschneidet noch das g von "Budget"
+   durchkreuzt - dieselbe Logik wie bei Noahs Korrektur im Aufmacher. */
+.lg-mark { font-style: normal; position: relative; z-index: 0; color: var(--ink);
+           margin-left: .17em; }
+.lg-mark::before { content: ""; position: absolute; z-index: -1;
+                   left: -.07em; right: -.07em; top: .13em; bottom: .09em;
+                   background: var(--hl); border-radius: .06em; }
+.lg-haus { font-family: var(--font-sans, inherit); font-weight: 500; font-style: normal;
+           text-transform: none; color: var(--lg-still); }
+
+/* 1 - Die Markierung: Produkt oben, Haus darunter */
+.lg-1 { display: inline-block; }
+.lg-1 .lg-haus { display: block; margin-top: .5em; margin-right: -.34em;
+                 font-size: .32em; letter-spacing: .34em; }
+
+/* 2 - Die Kachel: Zeichen im Kaestchen, rechts daneben zwei Zeilen */
+.lg-2 { display: inline-flex; align-items: center; gap: .5em; }
+.lg-kachel { flex: 0 0 auto; width: 1.78em; height: 1.78em; border-radius: .44em;
+             background: var(--lg-kachel-bg); color: var(--lg-kachel-fg);
+             display: grid; place-items: center; }
+.lg-kachel svg { width: 62%; height: 62%; display: block; }
+.lg-2 .lg-haus { display: block; margin-top: .34em; margin-right: -.3em;
+                 font-size: .3em; letter-spacing: .3em; }
+
+/* 3 - Der Stempel: alles im gelben Feld, keine Umkehrvariante noetig */
+.lg-3 { display: inline-flex; align-items: center; gap: .48em;
+        background: var(--hl); color: var(--ink);
+        padding: .34em .54em; border-radius: .14em; }
+/* Ohne Markierung traegt allein das grosse R die Trennung. Der Abstand muss
+   darum deutlich enger sein als ein Wortzwischenraum, sonst liest man zwei
+   Woerter statt eines. */
+.lg-3 .lg-mark { margin-left: .07em; }
+.lg-3 .lg-mark::before { display: none; }
+.lg-3 .lg-haus { color: rgba(0,0,0,.6); font-size: .32em; letter-spacing: .3em;
+                 margin-right: -.3em; }
+.lg-3-teiler { flex: 0 0 auto; width: 1px; align-self: stretch; background: rgba(0,0,0,.26); }
+
+/* 4 - Budgetretter bei empiria: markiert wird das, was verfaellt */
+.lg-4 { display: inline-block; }
+/* Die Markierung ragt rechts .07em ueber das Wort hinaus. Damit der Abstand
+   zum R optisch derselbe ist wie in den anderen Entwuerfen, steht hier
+   .10em statt .17em. */
+.lg-4 .lg-mark { margin-left: 0; margin-right: .1em; }
+.lg-4-zu { display: block; margin-top: .44em; font-size: .3em; letter-spacing: .2em; }
+.lg-4-zu em { font-style: normal; font-weight: 300; color: var(--lg-still); }
+.lg-4-zu b { font-weight: 600; color: var(--lg-fg); }
+
+/* 5 - Der Einzeiler: Haus zuerst, Produkt danach, eine Grundlinie */
+.lg-5 { display: inline-flex; align-items: baseline; gap: .44em; }
+.lg-5 .lg-haus { font-size: .4em; letter-spacing: .2em; }
+
+@media (max-width: 560px) {
+  .lg { font-size: 1.3rem; }
+  .lgk-hell { padding: 28px 16px; }
+}
+
 .br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
 .br-wege .kicker { color: var(--hl); }
 .br-wege h2 { font-family: var(--font-serif); font-weight: 500; color: #fff;
@@ -354,7 +455,7 @@ body { overflow-x: clip; }
   <a href="/"><img src="/assets/empiria-logo.svg" alt="empiria"></a>
   <span class="br-wortmarke">
     <svg viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
-    <span class="br-wortmarke-text"><b>Budget-<i>Retter</i></b><small>von empiria</small></span>
+    <span class="br-wortmarke-text"><b>Budget<i>Retter</i></b><small>empiria</small></span>
   </span>
 </header>
 
@@ -367,11 +468,11 @@ body { overflow-x: clip; }
       <div class="br-hero-grid">
 
         <div class="br-text">
-          <p class="kicker">empiria Budget-Retter</p>
+          <p class="kicker">empiria BudgetRetter</p>
           <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
           <p class="br-lead">Im November wird klar, dass im Topf noch etwas übrig ist – und ab
             dem 1. Januar ist es verfallen. Wir kennen den Anruf, er kommt jedes Jahr.</p>
-          <p class="br-lead">Der <b>empiria Budget-Retter</b> ist unsere Antwort darauf.</p>
+          <p class="br-lead">Der <b>empiria BudgetRetter</b> ist unsere Antwort darauf.</p>
         </div>
 
         <div class="br-phone" aria-label="Der typische Anruf im Dezember">
@@ -543,6 +644,149 @@ body { overflow-x: clip; }
     </div>
   </section>
 
+  <!-- ===== Logo-Varianten zur Auswahl ===== -->
+  <section class="lgs" id="logo">
+    <div class="container">
+      <p class="kicker">Zur Auswahl</p>
+      <h2>Fünf Entwürfe für die Wortmarke.</h2>
+      <p class="lgs-sub">In allen fünf gelten dieselben Regeln: empiria steht immer klein,
+        nirgends ein „von“, kein Bindestrich im Produktnamen. Die Trennung machen das große R
+        und ein schmaler Abstand – in drei Entwürfen fällt die gelbe Markierung genau dort
+        hinein. Jeder Entwurf steht einmal hell und einmal dunkel, damit Du siehst, ob er
+        beides kann.</p>
+
+      <div class="lgs-gitter">
+
+        <!-- 1 -->
+        <div class="lgk">
+          <div class="lgk-hell">
+            <span class="lg lg-1">
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+              <span class="lg-haus">empiria</span>
+            </span>
+          </div>
+          <div class="lgk-dunkel">
+            <span class="lg lg-1">
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+              <span class="lg-haus">empiria</span>
+            </span>
+          </div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Entwurf 1</span>
+            <h3>Die Markierung</h3>
+            <p>Der gelbe Balken ist das Erkennungsmerkmal des Hauses – hier arbeitet er doppelt:
+              Er hebt das Versprechen hervor <em>und</em> trennt die beiden Worthälften. Der
+              Abstand zwischen Budget und Retter <em>ist</em> die Markierung. Deshalb braucht
+              dieser Entwurf keinen Bindestrich und keinen Zusatz.</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="lgk">
+          <div class="lgk-hell">
+            <span class="lg lg-2">
+              <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
+              <span>
+                <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+                <span class="lg-haus">empiria</span>
+              </span>
+            </span>
+          </div>
+          <div class="lgk-dunkel">
+            <span class="lg lg-2">
+              <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
+              <span>
+                <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+                <span class="lg-haus">empiria</span>
+              </span>
+            </span>
+          </div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Entwurf 2</span>
+            <h3>Die Kachel</h3>
+            <p>Der einzige Entwurf, der schon einen Rahmen mitbringt. Das Kästchen mit dem Wecker
+              ist zugleich App-Symbol, Favicon und Absenderbild – dasselbe Zeichen, das im
+              Aufmacher auf dem Telefon klebt. Auf Schwarz dreht sich die Kachel um, das Zeichen
+              bleibt gleich.</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="lgk">
+          <div class="lgk-hell">
+            <span class="lg lg-3">
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+              <span class="lg-3-teiler"></span>
+              <span class="lg-haus">empiria</span>
+            </span>
+          </div>
+          <div class="lgk-dunkel">
+            <span class="lg lg-3">
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+              <span class="lg-3-teiler"></span>
+              <span class="lg-haus">empiria</span>
+            </span>
+          </div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Entwurf 3</span>
+            <h3>Der Stempel</h3>
+            <p>Hier ist die Markierung nicht hinter dem Wort, sondern um alles herum. Das macht
+              ihn zum einzigen Entwurf ohne Umkehrvariante: eine Form, ein Zeichen, auf jedem
+              Untergrund identisch. Und ein Stempel passt zu einem Angebot mit Ablaufdatum – er
+              ist von Haus aus befristet.</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="lgk">
+          <div class="lgk-hell">
+            <span class="lg lg-4">
+              <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
+              <span class="lg-4-zu"><em>bei</em> <b>empiria</b></span>
+            </span>
+          </div>
+          <div class="lgk-dunkel">
+            <span class="lg lg-4">
+              <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
+              <span class="lg-4-zu"><em>bei</em> <b>empiria</b></span>
+            </span>
+          </div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Entwurf 4</span>
+            <h3>Budgetretter bei empiria</h3>
+            <p>Markiert wird Budget statt Retter – denn das Budget ist das, was verfällt. Die
+              Marke zeigt damit auf das Problem, nicht auf sich selbst. „bei empiria“ ist die
+              natürlichste deutsche Zuordnung und kommt ohne „von“ aus.</p>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="lgk">
+          <div class="lgk-hell">
+            <span class="lg lg-5">
+              <span class="lg-haus">empiria</span>
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+            </span>
+          </div>
+          <div class="lgk-dunkel">
+            <span class="lg lg-5">
+              <span class="lg-haus">empiria</span>
+              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
+            </span>
+          </div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Entwurf 5</span>
+            <h3>Der Einzeiler</h3>
+            <p>Haus zuerst, Produkt danach – die Rangfolge einer Dachmarke. Eine Zeile, eine
+              Grundlinie, keine zweite Ebene: Das passt in die Kopfzeile, in die Signatur und in
+              die Fußzeile, ohne dass etwas umgebaut werden muss.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Die drei Wege ===== -->
   <section class="br-wege" id="wege">
     <div class="container">
@@ -565,7 +809,7 @@ body { overflow-x: clip; }
           </ul>
           <div class="br-knopfzeile">
             <button class="br-knopf" type="button"
-              data-kicker="empiria Budget-Retter · One-Pager"
+              data-kicker="empiria BudgetRetter · One-Pager"
               data-lead="KI im Alltag anwenden"
               data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
               data-pdf="/assets/downloads/empiria-budget-ki.pdf"
@@ -588,7 +832,7 @@ body { overflow-x: clip; }
           </ul>
           <div class="br-knopfzeile">
             <button class="br-knopf" type="button"
-              data-kicker="empiria Budget-Retter · One-Pager"
+              data-kicker="empiria BudgetRetter · One-Pager"
               data-lead="Strategie in den Alltag überführen"
               data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
               data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
