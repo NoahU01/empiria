@@ -177,9 +177,13 @@ body { overflow-x: clip; }
    einzelne Text ist. Mindesthoehen zu schaetzen hat genau das nie sauber
    hinbekommen. */
 .br-karten { display: grid; grid-template-columns: repeat(3, 1fr);
-             grid-template-rows: repeat(7, auto);
+             grid-template-rows: repeat(6, auto);
              gap: clamp(14px,1.8vw,22px); }
-.br-karte { grid-row: span 7; display: grid; grid-template-rows: subgrid; align-content: start; }
+/* Mehr Luft ueber der Ueberschrift als die 34px, die .produkt-glass
+   mitbringt. Gleich fuer alle drei Karten, sonst verrutscht das Subgrid
+   gegeneinander. */
+.br-karte { grid-row: span 6; display: grid; grid-template-rows: subgrid; align-content: start;
+            padding-top: 48px; }
 .br-karte > * { margin: 0; }
 /* Eine Stufe ueber dem Standard des Hauses (Preiskarten stehen dort auf
    1.2rem). Bewusst: auf den Produktseiten sind Preiskarten ein Abschnitt
@@ -199,10 +203,7 @@ body { overflow-x: clip; }
 .br-frist b { font-family: var(--font-serif); font-weight: 700; font-size: 1.85rem;
               color: var(--hl); white-space: nowrap; }
 .br-frist span { font-size: .85rem; color: rgba(255,255,255,.8); }
-/* Wortwerte wie "auf Anfrage" brauchen weniger Grad, sonst brechen sie um. */
-.br-frist--wort b { font-size: 1.32rem; }
 
-.br-hinweis { font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.7); padding-top: 6px; }
 .br-liste { list-style: none; padding: 20px 0 0; border-top: 1px solid rgba(255,255,255,.24);
             margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
 .br-liste li { position: relative; padding-left: 22px; font-size: .9rem; line-height: 1.5;
@@ -907,7 +908,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <p class="br-dauer">½, 1 oder 2 Tage – bei Euch im Haus</p>
           <p class="br-desc">Echte Werkzeuge an Euren echten Fällen. Wie tief Ihr geht, entscheidet Ihr – und danach weiß Dein Team, wo KI wirklich trägt.</p>
           <div class="br-frist"><b>ab 2.500 €</b><span>zzgl. USt.</span></div>
-          <p class="br-hinweis">Termine im Dezember sind schnell vergeben.</p>
           <ul class="br-staffel">
             <li><span class="br-staffel-was"><b>½ Tag</b> · Ausprobieren</span><span class="br-staffel-preis">2.500 €</span></li>
             <li><span class="br-staffel-was"><b>1 Tag</b> · Eine Fragestellung</span><span class="br-staffel-preis">3.900 €</span></li>
@@ -927,12 +927,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="produkt-glass br-karte">
           <h3 class="br-titel">Innovation für Deinen Bereich</h3>
           <p class="br-dauer">1–2 Tage, je nach Umfang</p>
-          <p class="br-desc">Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht: Was gilt bei Euch als gesetzt, nur weil es schon immer so war – und was davon trägt wirklich?</p>
+          <p class="br-desc">Der Auftakt zum Neudenken, bevor 2027 losgeht: Was gilt bei Euch als gesetzt, nur weil es schon immer so war?</p>
           <!-- PREIS BITTE SETZEN: Fuer den Innovationsauftakt ist auf der
                Website keine Zahl dokumentiert; ich erfinde keine. Sobald Du
                sie nennst, steht hier dasselbe wie in der ersten Karte. -->
-          <div class="br-frist br-frist--wort"><b>auf Anfrage</b></div>
-          <p class="br-hinweis">Den Termin stimmen wir kurzfristig mit Dir ab.</p>
+          <div class="br-frist"><b>auf Anfrage</b></div>
           <ul class="br-liste">
             <li>Ein Bereich, ein Thema – kein Rundum-Programm</li>
             <li>Am Ende die Ideen, an denen Ihr 2027 weiterarbeitet</li>
@@ -951,9 +950,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="produkt-glass br-karte">
           <h3 class="br-titel">Dein Thema</h3>
           <p class="br-dauer">Sag uns, was ansteht</p>
-          <p class="br-desc">Passt keines der beiden? Sag uns, was bei Dir liegt – wir sagen Dir ehrlich, was noch geht.</p>
-          <div class="br-frist br-frist--wort"><b>nach Umfang</b></div>
-          <p class="br-hinweis">Sag uns Deinen Rahmen, wir machen einen Vorschlag.</p>
+          <p class="br-desc">Passt keines der beiden? Sag uns, was bei Dir liegt – wir sagen Dir ehrlich, was in diesem Jahr noch geht.</p>
+          <div class="br-frist"><b>nach Umfang</b></div>
           <ul class="br-liste">
             <li>Einschätzung noch im selben Gespräch</li>
             <li>Angebot bis zum nächsten Arbeitstag</li>
