@@ -251,23 +251,30 @@ body { overflow-x: clip; }
 .lg-kachel svg { width: 62%; height: 62%; display: block; }
 
 /* A - empiria oben, wie Kicker ueber Headline.
-   Das Logo ist hier so hoch wie die Versalhoehe des Produktnamens; damit
-   stehen beide Zeilen auf demselben optischen Gewicht. */
+   Zwei Ausrichtungen sitzen hier von Hand, weil weder das Logo noch die
+   Schrift an ihrer Kastenkante beginnen:
+
+   1. Links. In der Logodatei stehen vor dem e 6,606 % Leerraum (Tinte bei
+      x 22,47 von 340,16). Bei .52em Logohoehe ist der Kasten
+      .52 x 3,8096 = 1,981em breit, der Vorlauf also .1309em. Das B von
+      Budget hat in Lora Bold .05em Vorlauf. Die Differenz von .0809em rueckt
+      das Logo nach links - dann beginnt das e genau ueber dem B.
+
+   2. Oben und unten. Die Kachel gibt das Band vor, die Schrift muss ganz
+      hineinpassen. Lora Bold hat eine Inhaltshoehe von 1,28em, die Zeile
+      steht aber auf line-height 1,14 - der Durchschuss ist also negativ und
+      die Unterlaenge des g ragt .067em unter den Kasten der Wortzeile
+      hinaus. Zusammen mit dem Vorlauf im Logo war die Tinte 1,894em hoch
+      und damit hoeher als die Kachel mit 1,78em; deshalb hing das g unten
+      heraus. Der Abstand zwischen Logo und Wort ist darum um genau diese
+      Differenz von .114em enger (statt .3em jetzt .186em), damit die Tinte
+      1,78em hoch ist - so hoch wie die Kachel.
+   3. Mittig heisst nicht buendig: der Logokasten hat oben .132em Vorlauf,
+      die Wortzeile unten .067em Ueberhang. Das Polster von .199em unter dem
+      Block gleicht das aus, danach liegt die Tinte exakt im Band. */
 .lg-a { display: inline-flex; align-items: center; gap: .54em; }
-.lg-a-text { display: block; }
-.lg-a .lg-haus { height: .52em; margin: 0 0 .3em .04em; }
-
-/* B - empiria oben, aber ueber dem ganzen Zeichen: die Kante der Kachel ist
-   die Kante der Marke, nicht die des Wortes. */
-.lg-b { display: inline-block; }
-.lg-b-reihe { display: flex; align-items: center; gap: .54em; }
-.lg-b .lg-haus { height: .54em; margin: 0 0 .42em .06em; }
-
-/* C - dieselbe Ordnung von unten gelesen: Produkt gross, Absender darunter,
-   ebenfalls an der Kante der Kachel. */
-.lg-c { display: inline-block; }
-.lg-c-reihe { display: flex; align-items: center; gap: .54em; }
-.lg-c .lg-haus { height: .54em; margin: .42em 0 0 .06em; }
+.lg-a-text { display: block; padding-bottom: .1987em; }
+.lg-a .lg-haus { height: .52em; margin: 0 0 .186em -.0809em; }
 
 /* D - gestapelt und mittig: die Form, die ein App-Eintrag hat. Die Kachel
    darf hier groesser werden, weil sie oben alleine steht. */
@@ -980,11 +987,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="lgs" id="logo">
     <div class="container">
       <p class="kicker">Zur Auswahl</p>
-      <h2>Die Kachel, vier Mal aufgebaut.</h2>
-      <p class="lgs-sub">Zeichen, Name und Absender bleiben in allen vier gleich – nur ihre
-        Anordnung wechselt. Das empiria-Logo ist überall deutlich größer als im ersten Entwurf
-        und steht jetzt an einer sauberen Kante. Jede Variante steht einmal hell und einmal
-        dunkel; die kleine Fassung zeigt, ob sie auch in Kleinschrift noch lesbar ist.</p>
+      <h2>Die beiden Aufbauten.</h2>
+      <p class="lgs-sub">Zeichen, Name und Absender sind in beiden gleich – nur ihre Anordnung
+        wechselt. In A steht das e von empiria jetzt exakt über dem B von Budget, und die
+        Schrift liegt vollständig im Band der Kachel: oben die Oberkante des Logos, unten die
+        Unterlänge des g. Jeder Aufbau steht einmal hell und einmal dunkel; die kleine Fassung
+        zeigt, ob er auch in Kleinschrift noch lesbar ist.</p>
 
       <div class="lgs-gitter">
         <div class="lgk">
@@ -997,25 +1005,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="lgk">
-          <div class="lgk-hell"><span class="lg lg-b"><span class="lg-haus" role="img" aria-label="empiria"></span><span class="lg-b-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
-          <div class="lgk-dunkel"><span class="lg lg-b"><span class="lg-haus" role="img" aria-label="empiria"></span><span class="lg-b-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
-          <div class="lgk-text">
-            <span class="lgk-nr">Variante B</span>
-            <h3>empiria über dem ganzen Zeichen</h3>
-            <p>Dieselbe Reihenfolge, aber der Absender steht über allem – auch über der Kachel. Die linke Kante der Marke ist dadurch eine einzige Linie statt zwei versetzter. Das ist die ruhigste Variante und die, die sich am besten an einer Seitenkante ausrichten lässt.</p>
-          </div>
-        </div>
 
-        <div class="lgk">
-          <div class="lgk-hell"><span class="lg lg-c"><span class="lg-c-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
-          <div class="lgk-dunkel"><span class="lg lg-c"><span class="lg-c-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
-          <div class="lgk-text">
-            <span class="lgk-nr">Variante C</span>
-            <h3>empiria unter dem ganzen Zeichen</h3>
-            <p>Der alte Aufbau, aber korrigiert: Das Logo ist deutlich größer und steht jetzt an der Kante der Kachel statt unter dem Wort. Genau das war vorher schief. Produkt zuerst, Haus als Unterschrift – die Form für alles, was für sich stehen muss.</p>
-          </div>
-        </div>
 
         <div class="lgk">
           <div class="lgk-hell"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
