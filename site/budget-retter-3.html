@@ -202,6 +202,19 @@ body { overflow-x: clip; }
                color: rgba(255,255,255,.88); }
 .br-liste li::before { content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px;
                        border-radius: 50%; background: var(--hl); }
+/* Die drei Formate aus "KI zum Anfassen" in einer einzigen Karte. Statt
+   Stichpunkten tragen hier die Formate selbst die Liste: links Dauer und
+   Tiefe, rechts der Preis. Sie sitzt in derselben Gitterzeile wie die
+   Stichpunkte der anderen Karten und hat dieselbe Trennlinie - die Karte
+   bleibt damit im Raster. */
+.br-staffel { list-style: none; padding: 18px 0 0; border-top: 1px solid rgba(255,255,255,.24);
+              margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.br-staffel li { display: flex; align-items: baseline; justify-content: space-between;
+                 gap: 14px; font-size: .88rem; line-height: 1.45; }
+.br-staffel-was { color: rgba(255,255,255,.72); }
+.br-staffel-was b { font-weight: 600; color: #fff; white-space: nowrap; }
+.br-staffel-preis { font-weight: 600; color: var(--hl); white-space: nowrap; }
+
 .br-knopfzeile { padding-top: 22px; }
 .br-knopf { width: 100%; padding: 13px 18px; border-radius: 12px; cursor: pointer;
             font: inherit; font-weight: 600; font-size: .92rem; border: 1px solid var(--hl);
@@ -878,44 +891,45 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="produkt-glass br-karte">
           <h3 class="br-titel">KI im Alltag anwenden</h3>
-          <p class="br-dauer">1 Tag, bei Euch im Haus</p>
-          <p class="br-desc">Ein Tag mit echten Tools an Euren echten Fällen – danach weiß Dein Team, wo KI wirklich trägt.</p>
-          <div class="br-frist"><b>3.900 €</b><span>zzgl. USt.</span></div>
+          <p class="br-dauer">½, 1 oder 2 Tage – bei Euch im Haus</p>
+          <p class="br-desc">Echte Werkzeuge an Euren echten Fällen. Wie tief Ihr geht, entscheidet Ihr – und danach weiß Dein Team, wo KI wirklich trägt.</p>
+          <div class="br-frist"><b>ab 2.500 €</b><span>zzgl. USt.</span></div>
           <p class="br-hinweis">Termine im Dezember sind schnell vergeben.</p>
-          <ul class="br-liste">
-            <li>Kein Vortrag – Hände an den Werkzeugen</li>
-            <li>Zwei bis drei Fälle aus Eurem Bereich</li>
+          <ul class="br-staffel">
+            <li><span class="br-staffel-was"><b>½ Tag</b> · Ausprobieren</span><span class="br-staffel-preis">2.500 €</span></li>
+            <li><span class="br-staffel-was"><b>1 Tag</b> · Eine Fragestellung</span><span class="br-staffel-preis">3.900 €</span></li>
+            <li><span class="br-staffel-was"><b>2 Tage</b> · Ein Anwendungsfall</span><span class="br-staffel-preis">7.350 €</span></li>
           </ul>
           <div class="br-knopfzeile">
             <button class="br-knopf" type="button"
               data-kicker="empiria BudgetRetter · One-Pager"
               data-lead="KI im Alltag anwenden"
-              data-text="Ein Tag, vier Schritte, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
+              data-text="Drei Formate, ein Aufbau, ein Ergebnis zum Mitnehmen. Alles Wichtige auf einer Seite."
               data-pdf="/assets/downloads/empiria-budget-ki.pdf"
               data-bild="/assets/downloads/empiria-budget-ki-1.webp">One-Pager laden</button>
           </div>
         </div>
 
         <div class="produkt-glass br-karte">
-          <h3 class="br-titel">Strategie in den Alltag überführen</h3>
-          <p class="br-dauer">1–2 Tage, moderiert</p>
-          <p class="br-desc">Aus der Strategie wird ein Zielbild, mit dem Dein Bereich ab Montag arbeiten kann – in Eurer Sprache.</p>
-          <!-- PREIS BITTE SETZEN: Fuer dieses Format ist auf der Website keine
-               Zahl dokumentiert; ich erfinde keine. Sobald Du sie nennst,
-               steht hier dasselbe wie in der ersten Karte. -->
+          <h3 class="br-titel">Innovation für Deinen Bereich</h3>
+          <p class="br-dauer">1–2 Tage, je nach Umfang</p>
+          <p class="br-desc">Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht: Was gilt bei Euch als gesetzt, nur weil es schon immer so war – und was davon trägt wirklich?</p>
+          <!-- PREIS BITTE SETZEN: Fuer den Innovationsauftakt ist auf der
+               Website keine Zahl dokumentiert; ich erfinde keine. Sobald Du
+               sie nennst, steht hier dasselbe wie in der ersten Karte. -->
           <div class="br-frist br-frist--wort"><b>auf Anfrage</b></div>
           <p class="br-hinweis">Den Termin stimmen wir kurzfristig mit Dir ab.</p>
           <ul class="br-liste">
-            <li>Vorgespräch, Arbeitstag, Dokumentation</li>
-            <li>Mit klarem nächsten Schritt statt schöner Folien</li>
+            <li>Ein Bereich, ein Thema – kein Rundum-Programm</li>
+            <li>Am Ende die Ideen, an denen Ihr 2027 weiterarbeitet</li>
           </ul>
           <div class="br-knopfzeile">
             <button class="br-knopf" type="button"
               data-kicker="empiria BudgetRetter · One-Pager"
-              data-lead="Strategie in den Alltag überführen"
-              data-text="Vorgespräch, Arbeitstag, Dokumentation – kompakt auf einer Seite erklärt."
-              data-pdf="/assets/downloads/empiria-budget-strategie.pdf"
-              data-bild="/assets/downloads/empiria-budget-strategie-1.webp">One-Pager laden</button>
+              data-lead="Innovation für Deinen Bereich"
+              data-text="Auftakt, Arbeitstag, Ergebnis – der Innovationsauftakt kompakt auf einer Seite."
+              data-pdf="/assets/downloads/empiria-budget-innovation.pdf"
+              data-bild="/assets/downloads/empiria-budget-innovation-1.webp">One-Pager laden</button>
           </div>
         </div>
 

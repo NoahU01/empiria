@@ -951,15 +951,18 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
 P["budget-ki"] = ("strategie", "KI im Alltag anwenden – One-Pager – empiria", [
   page(
     sec("Budget-Retter · One-Pager", 'KI im Alltag <span class="hl">anwenden.</span>',
-        "Ein Tag bei Euch im Haus: Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag – und weiß danach, wo Künstliche Intelligenz trägt und wo nicht.",
+        "Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag und weiß danach, wo Künstliche Intelligenz trägt und wo nicht.",
+        "Wie tief Ihr geht, entscheidet Ihr. Vor- und Nachbereitung sind enthalten.",
         "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
-    stage("Der Ablauf", "Ein Tag, vier Schritte.",
-          "Vor- und Nachbereitung sind enthalten. Ihr braucht nur einen Raum und Eure Themen.",
+    # Die drei Formate stehen dort, wo im Strategie-Pager der Ablauf steht.
+    # Beides zusammen passt nicht auf eine Seite, und der One-Pager bleibt
+    # bewusst einseitig - er ist der Gegenwert fuer die E-Mail-Adresse.
+    stage("Die Formate", "Drei Tiefen, ein Aufbau.",
+          "Jedes Format beginnt mit denselben Werkzeugen. Der Unterschied liegt darin, wie weit Ihr damit kommt.",
           wm="forward", boden=True,
-          inhalt=rows([("Auftakt", "Was ist KI, was ist sie nicht – und wo steht Euer Haus? Rund eine Stunde, ohne Vorkenntnisse."),
-                       ("Werkzeuge", "Die Tools, die wir selbst täglich nutzen: ausprobieren, vergleichen, einordnen."),
-                       ("Eure Fälle", "Zwei bis drei Aufgaben aus Eurem Alltag werden gemeinsam bearbeitet."),
-                       ("Was bleibt", "Eine Liste konkreter Anwendungen, die im Haus sofort funktionieren – samt Grenzen.")],
+          inhalt=rows([("½ Tag · KI-Einstieg — 2.500 €", "Die Werkzeuge ausprobieren und erste eigene Erfahrungen sammeln. Ohne Vorkenntnisse startklar."),
+                       ("1 Tag · KI-Sprint — 3.900 €", "Werkzeuge kennenlernen und eine kompakte Fragestellung aus Eurem Haus bearbeiten. Das meistgewählte Format."),
+                       ("2 Tage · KI-Deep-Dive — 7.350 €", "Direkter Einstieg in einen konkreten Anwendungsfall Eures Unternehmens – mit Abschlussbesprechung zum weiteren Vorgehen.")],
                       style="margin-top:6mm")),
     contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
 ])
@@ -976,6 +979,22 @@ P["budget-strategie"] = ("strategie", "Strategie in den Alltag überführen – 
                        ("Arbeitstag", "Das Zielbild für Deinen Bereich entsteht gemeinsam mit Deinem Team – nicht im stillen Kämmerlein."),
                        ("Übersetzung", "Was bedeutet das für die einzelnen Rollen, Termine und Entscheidungen?"),
                        ("Dokumentation", "Ein Ergebnisdokument, mit dem Du im Haus weiterarbeiten und argumentieren kannst.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
+])
+
+P["budget-innovation"] = ("strategie", "Innovation für Deinen Bereich – One-Pager – empiria", [
+  page(
+    sec("Budget-Retter · One-Pager", 'Innovation für <span class="hl">Deinen Bereich.</span>',
+        "Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht. Ein bis zwei Tage, moderiert, für einen Bereich und ein Thema.",
+        "Vieles gilt als gesetzt, nur weil es schon immer so war. Die Frage dahinter: Was davon trägt in fünf Jahren noch?",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    stage("Der Ablauf", "Ein Tag zum Öffnen, einer zum Schärfen.",
+          "Davor steht ein telefonisches Vorgespräch: welcher Bereich, welches Thema, wer sitzt mit am Tisch.",
+          wm="raute", boden=True,
+          inhalt=rows([("Öffnen", "Wir nehmen auseinander, was als gegeben gilt – mit Methoden, die auch Ungewohntes aushalten."),
+                       ("Schärfen", "Aus den Ideen werden wenige, die tragen: bewertet nach Wirkung und Aufwand."),
+                       ("Was bleibt", "Die Ideen, an denen Ihr 2027 weiterarbeitet – dokumentiert, mit klarem nächsten Schritt.")],
                       style="margin-top:6mm")),
     contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
 ])
