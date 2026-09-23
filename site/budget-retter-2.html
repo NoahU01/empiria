@@ -23,13 +23,15 @@
    Die vollstaendige Form mit dem empiria-Logo braucht es erst dort, wo das
    Zeichen die Seite verlaesst: One-Pager, App-Kachel, E-Mail, Social. */
 .br-wortmarke { display: inline-block; margin: 0 0 .9rem; }
-.br-wortmarke b { font-family: var(--font-serif); font-weight: 700; color: var(--ink);
+/* "Budget" in Lora Medium, "Retter" in Lora Bold - wie im Zeichen: das
+   markierte Wort traegt das Gewicht, das unmarkierte nimmt sich zurueck. */
+.br-wortmarke b { font-family: var(--font-serif); font-weight: 500; color: var(--ink);
                   font-size: clamp(1.25rem,1.9vw,1.55rem); letter-spacing: -.02em;
                   line-height: 1.14; white-space: nowrap; }
 /* Kein Bindestrich. Die Trennung machen das grosse R und ein schmaler
    Abstand - und genau in diesen Abstand faellt die gelbe Markierung. */
 .br-wortmarke i { font-style: normal; position: relative; z-index: 0;
-                  margin-left: .17em; color: var(--ink); }
+                  font-weight: 700; margin-left: .17em; color: var(--ink); }
 .br-wortmarke i::before { content: ""; position: absolute; left: -.07em; right: -.07em;
                           top: .13em; bottom: .09em; background: var(--hl);
                           z-index: -1; border-radius: .06em; }
@@ -223,72 +225,43 @@ body { overflow-x: clip; }
 .lgk-dunkel .lg { --lg-fg: #fff; --lg-still: rgba(255,255,255,.6);
                   --lg-kachel-bg: var(--hl); --lg-kachel-fg: var(--black);
                   font-size: .96rem; }
-.lg-wort { display: block; font-family: var(--font-serif); font-weight: 700;
+/* "Budget" steht in Lora Medium, "Retter" in Lora Bold - das markierte Wort
+   traegt das Gewicht, das unmarkierte nimmt sich zurueck. */
+.lg-wort { display: block; font-family: var(--font-serif); font-weight: 500;
            font-size: 1em; letter-spacing: -.02em; line-height: 1.14; white-space: nowrap; }
 /* Die Markierung sitzt hinter dem Wort. Oben und unten so beschnitten,
    dass sie weder die Oberlaengen abschneidet noch das g von "Budget"
    durchkreuzt - dieselbe Logik wie bei Noahs Korrektur im Aufmacher. */
 .lg-mark { font-style: normal; position: relative; z-index: 0; color: var(--ink);
-           margin-left: .17em; }
+           font-weight: 700; margin-left: .17em; }
 .lg-mark::before { content: ""; position: absolute; z-index: -1;
                    left: -.07em; right: -.07em; top: .13em; bottom: .09em;
                    background: var(--hl); border-radius: .06em; }
-/* "empiria" wird nirgends gesetzt, sondern immer das Originallogo eingebunden.
-   Die Schreibweise gehoert zum Logo und darf nicht davon abweichen, je
-   nachdem wo sie steht. Technisch als Maske, nicht als Bild: dadurch sind es
-   exakt die Pfade der Logodatei, nur eingefaerbt - schwarz auf Hell, weiss
-   auf Dunkel, so wie die Original-Dateien es vorgeben. Die Hoehe haengt an
-   der Schriftgroesse, das Seitenverhaeltnis an den Massen der Datei. */
-.lg-haus { display: block; height: .4em; aspect-ratio: 340.16 / 89.29;
-           background-color: var(--lg-fg);
-           -webkit-mask: url(/assets/empiria-logo.svg) no-repeat center / contain;
-           mask: url(/assets/empiria-logo.svg) no-repeat center / contain; }
-
-/* Die Kachel - in allen vier Aufbauten dieselbe. */
+/* Die Kachel - in beiden Aufbauten dieselbe. */
 .lg-kachel { flex: 0 0 auto; width: 1.78em; height: 1.78em; border-radius: .44em;
              background: var(--lg-kachel-bg); color: var(--lg-kachel-fg);
              display: grid; place-items: center; }
 .lg-kachel svg { width: 62%; height: 62%; display: block; }
 
-/* A - empiria oben, wie Kicker ueber Headline.
-   Zwei Ausrichtungen sitzen hier von Hand, weil weder das Logo noch die
-   Schrift an ihrer Kastenkante beginnen:
-
-   1. Links. In der Logodatei stehen vor dem e 6,606 % Leerraum (Tinte bei
-      x 22,47 von 340,16). Bei .52em Logohoehe ist der Kasten
-      .52 x 3,8096 = 1,981em breit, der Vorlauf also .1309em. Das B von
-      Budget hat in Lora Bold .05em Vorlauf. Die Differenz von .0809em rueckt
-      das Logo nach links - dann beginnt das e genau ueber dem B.
-
-   2. Oben und unten. Die Kachel gibt das Band vor, die Schrift muss ganz
-      hineinpassen. Lora Bold hat eine Inhaltshoehe von 1,28em, die Zeile
-      steht aber auf line-height 1,14 - der Durchschuss ist also negativ und
-      die Unterlaenge des g ragt .067em unter den Kasten der Wortzeile
-      hinaus. Zusammen mit dem Vorlauf im Logo war die Tinte 1,894em hoch
-      und damit hoeher als die Kachel mit 1,78em; deshalb hing das g unten
-      heraus. Der Abstand zwischen Logo und Wort ist darum um genau diese
-      Differenz von .114em enger (statt .3em jetzt .186em), damit die Tinte
-      1,78em hoch ist - so hoch wie die Kachel.
-   3. Mittig heisst nicht buendig: der Logokasten hat oben .132em Vorlauf,
-      die Wortzeile unten .067em Ueberhang. Das Polster von .199em unter dem
-      Block gleicht das aus, danach liegt die Tinte exakt im Band. */
+/* A - Kachel links, Wort rechts daneben.
+   Ausgerichtet wird auf den Querstrich des e: zieht man durch die Mitte der
+   Kachel eine Waagerechte, soll sie genau durch den Querstrich laufen.
+   Gemessen an der gerasterten Glyphe liegt der Querstrich des e in Lora
+   Medium .31em ueber der Grundlinie. Die Grundlinie wiederum liegt
+   (1,14 - 1,28)/2 + 1,005 = .935em unter der Oberkante der Wortzeile
+   (Inhaltshoehe 1,28em bei line-height 1,14 - der Durchschuss ist negativ).
+   Der Querstrich sitzt also .625em unter der Oberkante des Blocks. Mittig
+   ausgerichtet liegt dagegen die Mitte des Blocks auf der Mitte der Kachel;
+   damit beides zusammenfaellt, muss der Block .625 x 2 = 1,25em hoch sein.
+   Die Zeile bringt 1,14em mit, die fehlenden .11em kommen als Polster
+   darunter. */
 .lg-a { display: inline-flex; align-items: center; gap: .54em; }
-.lg-a-text { display: block; padding-bottom: .1987em; }
-.lg-a .lg-haus { height: .52em; margin: 0 0 .186em -.0809em; }
-
-/* A2 - wie A, nur ohne das Logo. Jetzt steht die Wortzeile allein und soll
-   mittig zur Kachel sitzen. "Mittig" heisst auch hier wieder: die Mitte der
-   Buchstaben, nicht die des Kastens. Die Tinte reicht .755em ueber und
-   .271em unter die Grundlinie, ihre Mitte liegt damit .124em unter der
-   Kastenmitte. Das Polster von .248em unter dem Block - das Doppelte -
-   schiebt das Wort um genau diese Haelfte nach oben. */
-.lg-a--pur .lg-a-text { padding-bottom: .248em; }
+.lg-a-text { display: block; padding-bottom: .11em; }
 
 /* D - gestapelt und mittig: die Form, die ein App-Eintrag hat. Die Kachel
    darf hier groesser werden, weil sie oben alleine steht. */
 .lg-d { display: inline-flex; flex-direction: column; align-items: center; gap: .4em; }
 .lg-d .lg-kachel { width: 2.3em; height: 2.3em; border-radius: .56em; }
-.lg-d .lg-haus { height: .5em; margin-top: .1em; }
 
 @media (max-width: 560px) {
   .lg { font-size: 1.3rem; }
@@ -995,41 +968,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="lgs" id="logo">
     <div class="container">
       <p class="kicker">Zur Auswahl</p>
-      <h2>Zwei Aufbauten, je mit und ohne Absender.</h2>
-      <p class="lgs-sub">A steht nebeneinander, D gestapelt – dazu jeweils eine Fassung ohne
-        das empiria-Logo für alles, wo der Absender ohnehin schon danebensteht. In A steht das
-        e von empiria exakt über dem B von Budget, und die Schrift liegt vollständig im Band
-        der Kachel; in A2 sitzt das Wort mittig dazu. Jeder Aufbau steht einmal hell und einmal
-        dunkel; die kleine Fassung zeigt, ob er auch in Kleinschrift noch lesbar ist.</p>
+      <h2>Die beiden Aufbauten.</h2>
+      <p class="lgs-sub">Ohne Absender – empiria steht überall dort schon daneben, wo das
+        Zeichen auftaucht. „Budget“ läuft in Lora Medium, „Retter“ in Lora Bold: Das markierte
+        Wort trägt das Gewicht, das unmarkierte nimmt sich zurück. Jeder Aufbau steht einmal
+        hell und einmal dunkel; die kleine Fassung zeigt, ob er auch in Kleinschrift noch
+        lesbar ist.</p>
 
       <div class="lgs-gitter">
         <div class="lgk">
-          <div class="lgk-hell"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><span class="lg-haus" role="img" aria-label="empiria"></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
-          <div class="lgk-dunkel"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><span class="lg-haus" role="img" aria-label="empiria"></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
-          <div class="lgk-text">
-            <span class="lgk-nr">Variante A</span>
-            <h3>empiria über dem Namen</h3>
-            <p>Die Logik unserer Überschriften, auf das Zeichen übertragen: Oben steht klein, wer spricht – darunter groß, worum es geht. Das e steht exakt über dem B, und die Schrift liegt vollständig im Band der Kachel.</p>
-          </div>
-        </div>
-
-        <div class="lgk">
-          <div class="lgk-hell"><span class="lg lg-a lg-a--pur"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
-          <div class="lgk-dunkel"><span class="lg lg-a lg-a--pur"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-hell"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
           <div class="lgk-text">
             <span class="lgk-nr">Variante A2</span>
-            <h3>A ohne Absender</h3>
-            <p>Dieselbe Zeile, nur ohne das Logo – für alles, wo empiria schon danebensteht: die Seite selbst, Folien im Haus, die Kopfzeile eines Dokuments. Das Wort sitzt mittig zur Kachel, gerechnet auf die Buchstaben, nicht auf den Kasten.</p>
-          </div>
-        </div>
-
-        <div class="lgk">
-          <div class="lgk-hell"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
-          <div class="lgk-dunkel"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
-          <div class="lgk-text">
-            <span class="lgk-nr">Variante D</span>
-            <h3>Gestapelt und mittig</h3>
-            <p>Die Form, die ein Eintrag im App Store hat: Zeichen, Name, Herausgeber. Die Kachel darf hier größer werden, weil sie oben allein steht. Stark auf Titelfolien, als Profilbild und überall dort, wo mittig gesetzt wird.</p>
+            <h3>Nebeneinander</h3>
+            <p>Kachel links, Name rechts. Ausgerichtet ist alles am Querstrich des e: Die Waagerechte durch die Mitte der Kachel läuft genau durch ihn hindurch – nicht durch die Mitte des Kastens, in dem die Zeile steht.</p>
           </div>
         </div>
 
@@ -1038,8 +991,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <div class="lgk-dunkel"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></div>
           <div class="lgk-text">
             <span class="lgk-nr">Variante D2</span>
-            <h3>D ohne Absender</h3>
-            <p>Der gestapelte Aufbau ohne Herausgeber – die kompakteste Form von allen. Als Profilbild, als Marke in einer Folienecke oder überall dort, wo daneben ohnehin schon empiria steht.</p>
+            <h3>Gestapelt</h3>
+            <p>Kachel oben, Name darunter, beides mittig. Die kompakteste Form – als Profilbild, in der Ecke einer Folie oder überall dort, wo mittig gesetzt wird. Die Kachel darf hier größer sein, weil sie oben allein steht.</p>
           </div>
         </div>
 
