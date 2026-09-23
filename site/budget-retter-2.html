@@ -51,7 +51,7 @@
            padding: clamp(32px,4.6vw,62px) 0 clamp(40px,5.4vw,76px); }
 .br-hero .watermark { z-index: 1;
                       width: clamp(360px,40vw,620px); height: clamp(360px,40vw,620px);
-                      left: -11%; bottom: -34%; color: rgba(0,0,0,.18); opacity: 1; }
+                      left: -11%; bottom: -34%; color: rgba(0,0,0,.15); opacity: 1; }
 .br-hero > .container,
 .br-rechnung > .container { position: relative; z-index: 2; }
 body { overflow-x: clip; }
@@ -313,7 +313,16 @@ body { overflow-x: clip; }
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+<!-- Derselbe Wecker wie im App-Kaestchen, nur als grosses Zeichen im Hintergrund.
+     Die Strichstaerke von 9 auf 100 Einheiten entspricht fast genau der Staerke
+     des Kreis-Zeichens, das hier vorher stand - dadurch wirkt es gleich schwer. -->
+<symbol id="ic-wecker" viewBox="0 0 100 100" fill="none" stroke="currentColor"
+        stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="50" cy="54" r="33"/>
+  <path d="M50 37v17l9 9"/>
+  <path d="M21 13 8 26"/>
+  <path d="M79 13 92 26"/>
+</symbol>
 <symbol id="ic-mail" viewBox="0 0 80 80">
       <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <rect x="10" y="18" width="60" height="44" rx="6"/>
@@ -353,7 +362,7 @@ body { overflow-x: clip; }
 <main>
   <!-- ===== Aufmacher ===== -->
   <section class="br-hero">
-    <svg class="watermark" aria-hidden="true"><use href="#ic-kreis"/></svg>
+    <svg class="watermark" aria-hidden="true"><use href="#ic-wecker"/></svg>
     <div class="container">
       <div class="br-hero-grid">
 
