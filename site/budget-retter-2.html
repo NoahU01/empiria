@@ -39,12 +39,22 @@
 /* ---- Aufmacher ----------------------------------------------------------
    Zweigeteilt wie auf der Startseite: linke Spalte, rechte Spalte. Der Text
    bekommt die Breite seiner Spalte, keine kuenstliche Verengung. */
-.br-hero { position: relative; padding: clamp(32px,4.6vw,62px) 0 clamp(40px,5.4vw,76px);
-           overflow: hidden; }
+/* Der Aufmacher liegt ueber der gelben Sektion, damit das Kreis-Icon am
+   Uebergang weiterlaufen kann statt an der Kante abgeschnitten zu werden.
+   Darum hier kein overflow:hidden; das waagerechte Beschneiden uebernimmt
+   der body. */
+.br-hero { position: relative; z-index: 2;
+           padding: clamp(32px,4.6vw,62px) 0 clamp(40px,5.4vw,76px); }
 .br-hero .watermark { width: clamp(260px,28vw,420px); height: clamp(260px,28vw,420px);
-                      left: -9%; bottom: -24%; }
+                      left: -6%; bottom: -30%; color: #dedede; }
+body { overflow-x: clip; }
 .br-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr;
                 gap: clamp(30px,5vw,76px); align-items: center; }
+/* Dieselbe Korrektur, die Noah fuer .hero h1 auf der Startseite hinterlegt
+   hat: im grossen Schriftgrad sitzt der gelbe Balken sonst zu hoch und
+   ueberdeckt Unterlaengen - etwa das g in "Budget" und das Wort "weg". */
+.br-hero h1 .hl { margin-left: .02em; }
+.br-hero h1 .hl::before { top: .07em; bottom: .01em; }
 .br-hero h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.1;
               letter-spacing: -.015em; font-size: clamp(2.4rem,5vw,4.3rem);
               margin: .5rem 0 1.3rem; }
@@ -147,6 +157,16 @@
 .br-home { width: 36%; height: 4px; border-radius: 2px; background: rgba(0,0,0,.28);
            margin: 0 auto 7px; }
 
+/* App-Symbol: bewusst reduziert. Ein Quadrat mit weichen Ecken, eine
+   Flaeche, ein Zeichen - so bauen Instagram oder WhatsApp ihre Icons.
+   Feine Details wuerden in dieser Groesse nur schmutzig aussehen. */
+.br-app { position: absolute; left: -22px; bottom: 38px; z-index: 4;
+          width: clamp(56px,7vw,68px); aspect-ratio: 1; border-radius: 23%;
+          background: var(--ink); display: grid; place-items: center;
+          box-shadow: 0 14px 30px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2),
+                      inset 0 1px 0 rgba(255,255,255,.12); }
+.br-app svg { width: 46%; height: 46%; color: var(--hl); }
+
 /* ---- Die drei Wege ------------------------------------------------------ */
 .br-wege { background: var(--black); color: #fff; padding-block: clamp(46px,6.4vw,88px); }
 .br-wege .kicker { color: var(--hl); }
@@ -199,7 +219,7 @@
    Zweispaltig: links der Text linksbuendig am Satzspiegel, rechts die
    Rechnung als Strichzeichnung - dieselbe Bildsprache wie die Skizzen auf
    den Produktseiten, nur in Tinte statt in Weiss, weil der Grund gelb ist. */
-.br-rechnung { background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
+.br-rechnung { position: relative; z-index: 1; background: var(--hl); color: var(--ink); padding-block: clamp(44px,5.8vw,80px); }
 .br-rechnung .kicker { color: rgba(26,24,23,.6); }
 .br-rechnung-grid { display: grid; grid-template-columns: 1.1fr .9fr;
                     gap: clamp(30px,5vw,76px); align-items: center; }
@@ -340,6 +360,9 @@
           <span class="br-taste br-taste--lauter" aria-hidden="true"></span>
           <span class="br-taste br-taste--leiser" aria-hidden="true"></span>
           <span class="br-taste br-taste--power" aria-hidden="true"></span>
+          <span class="br-app" aria-hidden="true">
+            <svg viewBox="0 0 232.44 232.44"><use href="#ic-forward"/></svg>
+          </span>
           <div class="br-phone-rahmen">
             <div class="br-insel" aria-hidden="true"></div>
             <div class="br-phone-schirm">
@@ -384,7 +407,7 @@
 
       </div>
       <div class="br-cta">
-        <a class="btn btn--dark" href="#kontakt">Termin sichern</a>
+        <a class="btn btn--dark" href="#kontakt">Budget jetzt retten</a>
       </div>
     </div>
   </section>
