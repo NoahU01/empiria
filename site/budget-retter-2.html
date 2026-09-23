@@ -191,10 +191,19 @@ body { overflow-x: clip; }
           font-size: clamp(1.7rem,3.2vw,2.5rem); line-height: 1.12; margin: 0 0 .8rem; }
 .lgs-sub { color: var(--grey-70); max-width: 64ch; margin: 0 0 clamp(28px,3.4vw,44px);
            font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.66; }
-.lgs-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr));
-              gap: clamp(16px,2vw,26px); }
-.lgk { display: flex; flex-direction: column; background: #fff;
-       border: 1px solid #e4e1dd; border-radius: var(--radius-card); overflow: hidden; }
+/* Zwei Spalten statt drei: die Buehne wird dadurch breit genug, dass das
+   empiria-Logo in Lesegroesse danebensteht. */
+.lgs-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(430px,1fr));
+              grid-template-rows: repeat(3, auto); gap: clamp(16px,2vw,26px); }
+/* Subgrid: jede Karte spannt dieselben drei Zeilen auf. Ohne das stehen die
+   Trennkanten zwischen heller und dunkler Buehne unterschiedlich hoch, weil
+   die vier Aufbauten unterschiedlich viel Platz brauchen. */
+/* row-gap: 0 setzt den vom Gitter geerbten Zeilenabstand innerhalb der Karte
+   zurueck - sonst klafft zwischen heller und dunkler Buehne eine weisse
+   Luecke. Zwischen den Kartenreihen bleibt der Abstand erhalten. */
+.lgk { grid-row: span 3; display: grid; grid-template-rows: subgrid; row-gap: 0;
+       background: #fff; border: 1px solid #e4e1dd;
+       border-radius: var(--radius-card); overflow: hidden; }
 .lgk-hell { background: #faf9f7; padding: clamp(30px,3.4vw,46px) 20px;
             display: grid; place-items: center; min-height: 132px; }
 .lgk-dunkel { background: var(--black); padding: 20px; display: grid; place-items: center; }
@@ -210,7 +219,7 @@ body { overflow-x: clip; }
 .lg { --lg-fg: var(--ink); --lg-still: var(--grey-50);
       --lg-kachel-bg: var(--black); --lg-kachel-fg: var(--hl);
       color: var(--lg-fg); line-height: 1; text-align: left;
-      font-size: clamp(1.4rem,2.2vw,1.9rem); }
+      font-size: clamp(1.5rem,2.6vw,2.2rem); }
 .lgk-dunkel .lg { --lg-fg: #fff; --lg-still: rgba(255,255,255,.6);
                   --lg-kachel-bg: var(--hl); --lg-kachel-fg: var(--black);
                   font-size: .96rem; }
@@ -235,48 +244,36 @@ body { overflow-x: clip; }
            -webkit-mask: url(/assets/empiria-logo.svg) no-repeat center / contain;
            mask: url(/assets/empiria-logo.svg) no-repeat center / contain; }
 
-/* 1 - Die Markierung: Produkt oben, Haus darunter */
-.lg-1 { display: inline-block; }
-.lg-1 .lg-haus { margin-top: .56em; height: .42em; }
-
-/* 2 - Die Kachel: Zeichen im Kaestchen, rechts daneben zwei Zeilen */
-.lg-2 { display: inline-flex; align-items: center; gap: .5em; }
+/* Die Kachel - in allen vier Aufbauten dieselbe. */
 .lg-kachel { flex: 0 0 auto; width: 1.78em; height: 1.78em; border-radius: .44em;
              background: var(--lg-kachel-bg); color: var(--lg-kachel-fg);
              display: grid; place-items: center; }
 .lg-kachel svg { width: 62%; height: 62%; display: block; }
-.lg-2 .lg-haus { margin-top: .42em; height: .36em; }
 
-/* 3 - Der Stempel: alles im gelben Feld, keine Umkehrvariante noetig */
-.lg-3 { display: inline-flex; align-items: center; gap: .48em;
-        background: var(--hl); color: var(--ink);
-        padding: .34em .54em; border-radius: .14em; }
-/* Ohne Markierung traegt allein das grosse R die Trennung. Der Abstand muss
-   darum deutlich enger sein als ein Wortzwischenraum, sonst liest man zwei
-   Woerter statt eines. */
-.lg-3 .lg-mark { margin-left: .07em; }
-.lg-3 .lg-mark::before { display: none; }
-/* Im gelben Feld bleibt das Logo schwarz - auch in der dunklen Variante,
-   denn das Feld selbst wechselt ja nicht die Farbe. */
-.lg-3 .lg-haus { height: .4em; background-color: var(--ink); }
-.lg-3-teiler { flex: 0 0 auto; width: 1px; align-self: stretch; background: rgba(0,0,0,.26); }
+/* A - empiria oben, wie Kicker ueber Headline.
+   Das Logo ist hier so hoch wie die Versalhoehe des Produktnamens; damit
+   stehen beide Zeilen auf demselben optischen Gewicht. */
+.lg-a { display: inline-flex; align-items: center; gap: .54em; }
+.lg-a-text { display: block; }
+.lg-a .lg-haus { height: .52em; margin: 0 0 .3em .04em; }
 
-/* 4 - Budgetretter bei empiria: markiert wird das, was verfaellt */
-.lg-4 { display: inline-block; }
-/* Die Markierung ragt rechts .07em ueber das Wort hinaus. Damit der Abstand
-   zum R optisch derselbe ist wie in den anderen Entwuerfen, steht hier
-   .10em statt .17em. */
-.lg-4 .lg-mark { margin-left: 0; margin-right: .1em; }
-.lg-4-zu { display: flex; align-items: center; gap: .34em; margin-top: .5em; }
-/* Die Sperrung haengt auch hinter dem letzten Buchstaben; ohne den
-   negativen Rand stuende "bei" zu weit vom Logo weg. */
-.lg-4-zu em { font-style: normal; font-weight: 400; font-size: .3em;
-              letter-spacing: .12em; margin-right: -.12em; color: var(--lg-still); }
-.lg-4-zu .lg-haus { height: .34em; }
+/* B - empiria oben, aber ueber dem ganzen Zeichen: die Kante der Kachel ist
+   die Kante der Marke, nicht die des Wortes. */
+.lg-b { display: inline-block; }
+.lg-b-reihe { display: flex; align-items: center; gap: .54em; }
+.lg-b .lg-haus { height: .54em; margin: 0 0 .42em .06em; }
 
-/* 5 - Der Einzeiler: Haus zuerst, Produkt danach, eine Grundlinie */
-.lg-5 { display: inline-flex; align-items: center; gap: .5em; }
-.lg-5 .lg-haus { height: .42em; }
+/* C - dieselbe Ordnung von unten gelesen: Produkt gross, Absender darunter,
+   ebenfalls an der Kante der Kachel. */
+.lg-c { display: inline-block; }
+.lg-c-reihe { display: flex; align-items: center; gap: .54em; }
+.lg-c .lg-haus { height: .54em; margin: .42em 0 0 .06em; }
+
+/* D - gestapelt und mittig: die Form, die ein App-Eintrag hat. Die Kachel
+   darf hier groesser werden, weil sie oben alleine steht. */
+.lg-d { display: inline-flex; flex-direction: column; align-items: center; gap: .4em; }
+.lg-d .lg-kachel { width: 2.3em; height: 2.3em; border-radius: .56em; }
+.lg-d .lg-haus { height: .5em; margin-top: .1em; }
 
 @media (max-width: 560px) {
   .lg { font-size: 1.3rem; }
@@ -983,138 +980,50 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="lgs" id="logo">
     <div class="container">
       <p class="kicker">Zur Auswahl</p>
-      <h2>Fünf Entwürfe für die Wortmarke.</h2>
-      <p class="lgs-sub">In allen fünf gelten dieselben Regeln: empiria steht immer klein,
-        nirgends ein „von“, kein Bindestrich im Produktnamen. Die Trennung machen das große R
-        und ein schmaler Abstand – in drei Entwürfen fällt die gelbe Markierung genau dort
-        hinein. Jeder Entwurf steht einmal hell und einmal dunkel, damit Du siehst, ob er
-        beides kann.</p>
+      <h2>Die Kachel, vier Mal aufgebaut.</h2>
+      <p class="lgs-sub">Zeichen, Name und Absender bleiben in allen vier gleich – nur ihre
+        Anordnung wechselt. Das empiria-Logo ist überall deutlich größer als im ersten Entwurf
+        und steht jetzt an einer sauberen Kante. Jede Variante steht einmal hell und einmal
+        dunkel; die kleine Fassung zeigt, ob sie auch in Kleinschrift noch lesbar ist.</p>
 
       <div class="lgs-gitter">
-
-        <!-- 1 -->
         <div class="lgk">
-          <div class="lgk-hell">
-            <span class="lg lg-1">
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-            </span>
-          </div>
-          <div class="lgk-dunkel">
-            <span class="lg lg-1">
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-            </span>
-          </div>
+          <div class="lgk-hell"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><span class="lg-haus" role="img" aria-label="empiria"></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-a"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><span class="lg-haus" role="img" aria-label="empiria"></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
           <div class="lgk-text">
-            <span class="lgk-nr">Entwurf 1</span>
-            <h3>Die Markierung</h3>
-            <p>Der gelbe Balken ist das Erkennungsmerkmal des Hauses – hier arbeitet er doppelt:
-              Er hebt das Versprechen hervor <em>und</em> trennt die beiden Worthälften. Der
-              Abstand zwischen Budget und Retter <em>ist</em> die Markierung. Deshalb braucht
-              dieser Entwurf keinen Bindestrich und keinen Zusatz.</p>
+            <span class="lgk-nr">Variante A</span>
+            <h3>empiria über dem Namen</h3>
+            <p>Die Logik unserer Überschriften, auf das Zeichen übertragen: Oben steht klein, wer spricht – darunter groß, worum es geht. Das Logo ist jetzt so hoch wie die Versalhöhe von BudgetRetter, damit beide Zeilen gleich schwer wiegen.</p>
           </div>
         </div>
 
-        <!-- 2 -->
         <div class="lgk">
-          <div class="lgk-hell">
-            <span class="lg lg-2">
-              <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
-              <span>
-                <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-                <span class="lg-haus" role="img" aria-label="empiria"></span>
-              </span>
-            </span>
-          </div>
-          <div class="lgk-dunkel">
-            <span class="lg lg-2">
-              <span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span>
-              <span>
-                <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-                <span class="lg-haus" role="img" aria-label="empiria"></span>
-              </span>
-            </span>
-          </div>
+          <div class="lgk-hell"><span class="lg lg-b"><span class="lg-haus" role="img" aria-label="empiria"></span><span class="lg-b-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-b"><span class="lg-haus" role="img" aria-label="empiria"></span><span class="lg-b-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
           <div class="lgk-text">
-            <span class="lgk-nr">Entwurf 2</span>
-            <h3>Die Kachel</h3>
-            <p>Der einzige Entwurf, der schon einen Rahmen mitbringt. Das Kästchen mit dem Wecker
-              ist zugleich App-Symbol, Favicon und Absenderbild – dasselbe Zeichen, das im
-              Aufmacher auf dem Telefon klebt. Auf Schwarz dreht sich die Kachel um, das Zeichen
-              bleibt gleich.</p>
+            <span class="lgk-nr">Variante B</span>
+            <h3>empiria über dem ganzen Zeichen</h3>
+            <p>Dieselbe Reihenfolge, aber der Absender steht über allem – auch über der Kachel. Die linke Kante der Marke ist dadurch eine einzige Linie statt zwei versetzter. Das ist die ruhigste Variante und die, die sich am besten an einer Seitenkante ausrichten lässt.</p>
           </div>
         </div>
 
-        <!-- 3 -->
         <div class="lgk">
-          <div class="lgk-hell">
-            <span class="lg lg-3">
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-3-teiler"></span>
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-            </span>
-          </div>
-          <div class="lgk-dunkel">
-            <span class="lg lg-3">
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-              <span class="lg-3-teiler"></span>
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-            </span>
-          </div>
+          <div class="lgk-hell"><span class="lg lg-c"><span class="lg-c-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-c"><span class="lg-c-reihe"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
           <div class="lgk-text">
-            <span class="lgk-nr">Entwurf 3</span>
-            <h3>Der Stempel</h3>
-            <p>Hier ist die Markierung nicht hinter dem Wort, sondern um alles herum. Das macht
-              ihn zum einzigen Entwurf ohne Umkehrvariante: eine Form, ein Zeichen, auf jedem
-              Untergrund identisch. Und ein Stempel passt zu einem Angebot mit Ablaufdatum – er
-              ist von Haus aus befristet.</p>
+            <span class="lgk-nr">Variante C</span>
+            <h3>empiria unter dem ganzen Zeichen</h3>
+            <p>Der alte Aufbau, aber korrigiert: Das Logo ist deutlich größer und steht jetzt an der Kante der Kachel statt unter dem Wort. Genau das war vorher schief. Produkt zuerst, Haus als Unterschrift – die Form für alles, was für sich stehen muss.</p>
           </div>
         </div>
 
-        <!-- 4 -->
         <div class="lgk">
-          <div class="lgk-hell">
-            <span class="lg lg-4">
-              <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
-              <span class="lg-4-zu"><em>bei</em><span class="lg-haus" role="img" aria-label="empiria"></span></span>
-            </span>
-          </div>
-          <div class="lgk-dunkel">
-            <span class="lg lg-4">
-              <b class="lg-wort"><i class="lg-mark">Budget</i>Retter</b>
-              <span class="lg-4-zu"><em>bei</em><span class="lg-haus" role="img" aria-label="empiria"></span></span>
-            </span>
-          </div>
+          <div class="lgk-hell"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
           <div class="lgk-text">
-            <span class="lgk-nr">Entwurf 4</span>
-            <h3>Budgetretter bei empiria</h3>
-            <p>Markiert wird Budget statt Retter – denn das Budget ist das, was verfällt. Die
-              Marke zeigt damit auf das Problem, nicht auf sich selbst. „bei empiria“ ist die
-              natürlichste deutsche Zuordnung und kommt ohne „von“ aus.</p>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="lgk">
-          <div class="lgk-hell">
-            <span class="lg lg-5">
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-            </span>
-          </div>
-          <div class="lgk-dunkel">
-            <span class="lg lg-5">
-              <span class="lg-haus" role="img" aria-label="empiria"></span>
-              <b class="lg-wort">Budget<i class="lg-mark">Retter</i></b>
-            </span>
-          </div>
-          <div class="lgk-text">
-            <span class="lgk-nr">Entwurf 5</span>
-            <h3>Der Einzeiler</h3>
-            <p>Haus zuerst, Produkt danach – die Rangfolge einer Dachmarke. Eine Zeile, eine
-              Grundlinie, keine zweite Ebene: Das passt in die Kopfzeile, in die Signatur und in
-              die Fußzeile, ohne dass etwas umgebaut werden muss.</p>
+            <span class="lgk-nr">Variante D</span>
+            <h3>Gestapelt und mittig</h3>
+            <p>Die Form, die ein Eintrag im App Store hat: Zeichen, Name, Herausgeber. Die Kachel darf hier größer werden, weil sie oben allein steht. Stark auf Titelfolien, als Profilbild und überall dort, wo mittig gesetzt wird.</p>
           </div>
         </div>
 
