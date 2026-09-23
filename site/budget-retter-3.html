@@ -13,33 +13,17 @@
    Kurze Landingpage zum Jahresende im Schwarz-Gelb der Strategieseiten.
    Links der Text, rechts ein Telefon, in dem der typische Anruf als Chat
    laeuft. Darunter drei Wege, die Rechnungsfrage, Kontakt. */
-/* ---- Das Zeichen im Aufmacher --------------------------------------------
-   Die Kopfzeile gehoert empiria und sieht auf jeder Seite gleich aus - Logo
-   links, Menue rechts. Fuer ein zweites Zeichen ist dort kein Platz, und es
-   waere auch falsch: die Kopfzeile ist das Haus, nicht das Produkt.
-   Das Zeichen steht deshalb eine Ebene tiefer, an der Stelle des Kickers
-   ueber der Ueberschrift - genau dort sagt die Seite, was sie ist. Und zwar
-   vollstaendig, als Aufbau A2: Kachel und Name. "empiria" fehlt bewusst,
-   denn das Logo haengt schon in der Kopfzeile.
-   Alle Masse in em, eine Schriftgroesse skaliert das ganze Zeichen. */
-.br-wortmarke { display: inline-flex; align-items: center; gap: .54em;
-                font-size: clamp(1.15rem,1.7vw,1.4rem); margin: 0 0 1.05rem; }
-.br-wortmarke-kachel { flex: 0 0 auto; width: 1.78em; height: 1.78em; border-radius: .44em;
-                       background: var(--ink); color: var(--hl);
-                       display: grid; place-items: center; }
-.br-wortmarke-kachel svg { width: 62%; height: 62%; display: block; }
-/* Ausgerichtet wird am Querstrich des e: die Waagerechte durch die Mitte der
-   Kachel laeuft genau durch ihn. Der Querstrich liegt in Lora Medium .31em
-   ueber der Grundlinie, die Grundlinie .935em unter der Oberkante der Zeile
-   ((1,14 - 1,28)/2 + 1,005; die Inhaltshoehe ist groesser als der
-   Zeilenabstand, der Durchschuss also negativ). Der Querstrich sitzt damit
-   .625em unter der Blockoberkante, der Block muss also 1,25em hoch sein -
-   die Zeile bringt 1,14em mit, .11em kommen als Polster darunter. */
-.br-wortmarke-text { display: block; padding-bottom: .11em; }
-/* "Budget" in Lora Medium, "Retter" in Lora Bold - das markierte Wort traegt
-   das Gewicht, das unmarkierte nimmt sich zurueck. */
-.br-wortmarke b { display: block; font-family: var(--font-serif); font-weight: 500;
-                  color: var(--ink); font-size: 1em; letter-spacing: -.02em;
+/* ---- Die Wortmarke im Aufmacher ------------------------------------------
+   Nur der Name, ohne Kachel. Die Kachel taucht auf dieser Seite dreimal auf,
+   aber nie als Schmuck: gross und leise als Wasserzeichen, klein am Telefon
+   als App-Symbol, klein im Briefkopf der Rechnung als Absender. Ueber der
+   Ueberschrift haette sie keine solche Aufgabe - sie stuende nur da und
+   nimmt der Schlagzeile Aufmerksamkeit weg. */
+.br-wortmarke { display: inline-block; margin: 0 0 .9rem; }
+/* "Budget" in Lora Medium, "Retter" in Lora Bold - wie im Zeichen: das
+   markierte Wort traegt das Gewicht, das unmarkierte nimmt sich zurueck. */
+.br-wortmarke b { font-family: var(--font-serif); font-weight: 500; color: var(--ink);
+                  font-size: clamp(1.25rem,1.9vw,1.55rem); letter-spacing: -.02em;
                   line-height: 1.14; white-space: nowrap; }
 /* Kein Bindestrich. Die Trennung machen das grosse R und ein schmaler
    Abstand - und genau in diesen Abstand faellt die gelbe Markierung. */
@@ -101,6 +85,16 @@ body { overflow-x: clip; }
 .br-taste--lauter { left: -3.5px; top: 23.5%; width: 4px; height: 8.4%; }
 .br-taste--leiser { left: -3.5px; top: 34%;   width: 4px; height: 8.4%; }
 .br-taste--power  { right: -3.5px; top: 28%;  width: 4px; height: 12.6%; }
+
+.br-app { position: absolute; left: -22px; bottom: 38px; z-index: 4;
+          width: clamp(56px,7vw,68px); aspect-ratio: 1; border-radius: 23%;
+          background: var(--ink); display: grid; place-items: center;
+          box-shadow: 0 14px 30px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2),
+                      inset 0 1px 0 rgba(255,255,255,.12); }
+/* Der Wecker nutzt die Zeichenflaeche fast ganz aus, anders als das schmale
+   Zeichen davor. Darum die Flaeche groesser setzen, damit das Zeichen im
+   Kaestchen optisch gleich viel Platz einnimmt wie bei echten Apps. */
+.br-app svg { width: 62%; height: 62%; color: var(--hl); }
 
 .br-phone-schirm { position: relative; height: 100%; border-radius: 11%/5.2%;
                    background: #efece7; overflow: hidden;
@@ -704,12 +698,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="br-hero-grid">
 
         <div class="br-text">
-          <p class="br-wortmarke">
-            <span class="br-wortmarke-kachel" aria-hidden="true">
-              <svg viewBox="0 0 100 100"><use href="#ic-wecker"/></svg>
-            </span>
-            <span class="br-wortmarke-text"><b>Budget<i>Retter</i></b></span>
-          </p>
+          <p class="br-wortmarke"><b>Budget<i>Retter</i></b></p>
           <h1>Am 31.12. ist das Budget weg.<br><span class="hl">Das Thema nicht.</span></h1>
           <p class="br-lead">Im November wird klar, dass im Topf noch etwas übrig ist – und ab
             dem 1. Januar ist es verfallen. Wir kennen den Anruf, er kommt jedes Jahr.</p>
@@ -721,6 +710,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <span class="br-taste br-taste--lauter" aria-hidden="true"></span>
           <span class="br-taste br-taste--leiser" aria-hidden="true"></span>
           <span class="br-taste br-taste--power" aria-hidden="true"></span>
+          <span class="br-app" aria-hidden="true">
+            <!-- Derselbe Wecker wie im Wasserzeichen und im Briefkopf der
+                 Rechnung. Eine Definition, drei Verwendungen - so koennen die
+                 drei Auftritte gar nicht auseinanderlaufen. -->
+            <svg viewBox="0 0 100 100"><use href="#ic-wecker"/></svg>
+          </span>
           <div class="br-phone-rahmen">
             <div class="br-insel" aria-hidden="true"></div>
             <div class="br-phone-schirm">
