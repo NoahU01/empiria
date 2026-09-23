@@ -276,6 +276,14 @@ body { overflow-x: clip; }
 .lg-a-text { display: block; padding-bottom: .1987em; }
 .lg-a .lg-haus { height: .52em; margin: 0 0 .186em -.0809em; }
 
+/* A2 - wie A, nur ohne das Logo. Jetzt steht die Wortzeile allein und soll
+   mittig zur Kachel sitzen. "Mittig" heisst auch hier wieder: die Mitte der
+   Buchstaben, nicht die des Kastens. Die Tinte reicht .755em ueber und
+   .271em unter die Grundlinie, ihre Mitte liegt damit .124em unter der
+   Kastenmitte. Das Polster von .248em unter dem Block - das Doppelte -
+   schiebt das Wort um genau diese Haelfte nach oben. */
+.lg-a--pur .lg-a-text { padding-bottom: .248em; }
+
 /* D - gestapelt und mittig: die Form, die ein App-Eintrag hat. Die Kachel
    darf hier groesser werden, weil sie oben alleine steht. */
 .lg-d { display: inline-flex; flex-direction: column; align-items: center; gap: .4em; }
@@ -987,12 +995,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="lgs" id="logo">
     <div class="container">
       <p class="kicker">Zur Auswahl</p>
-      <h2>Die beiden Aufbauten.</h2>
-      <p class="lgs-sub">Zeichen, Name und Absender sind in beiden gleich – nur ihre Anordnung
-        wechselt. In A steht das e von empiria jetzt exakt über dem B von Budget, und die
-        Schrift liegt vollständig im Band der Kachel: oben die Oberkante des Logos, unten die
-        Unterlänge des g. Jeder Aufbau steht einmal hell und einmal dunkel; die kleine Fassung
-        zeigt, ob er auch in Kleinschrift noch lesbar ist.</p>
+      <h2>Zwei Aufbauten, je mit und ohne Absender.</h2>
+      <p class="lgs-sub">A steht nebeneinander, D gestapelt – dazu jeweils eine Fassung ohne
+        das empiria-Logo für alles, wo der Absender ohnehin schon danebensteht. In A steht das
+        e von empiria exakt über dem B von Budget, und die Schrift liegt vollständig im Band
+        der Kachel; in A2 sitzt das Wort mittig dazu. Jeder Aufbau steht einmal hell und einmal
+        dunkel; die kleine Fassung zeigt, ob er auch in Kleinschrift noch lesbar ist.</p>
 
       <div class="lgs-gitter">
         <div class="lgk">
@@ -1001,11 +1009,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <div class="lgk-text">
             <span class="lgk-nr">Variante A</span>
             <h3>empiria über dem Namen</h3>
-            <p>Die Logik unserer Überschriften, auf das Zeichen übertragen: Oben steht klein, wer spricht – darunter groß, worum es geht. Das Logo ist jetzt so hoch wie die Versalhöhe von BudgetRetter, damit beide Zeilen gleich schwer wiegen.</p>
+            <p>Die Logik unserer Überschriften, auf das Zeichen übertragen: Oben steht klein, wer spricht – darunter groß, worum es geht. Das e steht exakt über dem B, und die Schrift liegt vollständig im Band der Kachel.</p>
           </div>
         </div>
 
-
+        <div class="lgk">
+          <div class="lgk-hell"><span class="lg lg-a lg-a--pur"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-a lg-a--pur"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><span class="lg-a-text"><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></span></div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Variante A2</span>
+            <h3>A ohne Absender</h3>
+            <p>Dieselbe Zeile, nur ohne das Logo – für alles, wo empiria schon danebensteht: die Seite selbst, Folien im Haus, die Kopfzeile eines Dokuments. Das Wort sitzt mittig zur Kachel, gerechnet auf die Buchstaben, nicht auf den Kasten.</p>
+          </div>
+        </div>
 
         <div class="lgk">
           <div class="lgk-hell"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b><span class="lg-haus" role="img" aria-label="empiria"></span></span></div>
@@ -1014,6 +1030,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <span class="lgk-nr">Variante D</span>
             <h3>Gestapelt und mittig</h3>
             <p>Die Form, die ein Eintrag im App Store hat: Zeichen, Name, Herausgeber. Die Kachel darf hier größer werden, weil sie oben allein steht. Stark auf Titelfolien, als Profilbild und überall dort, wo mittig gesetzt wird.</p>
+          </div>
+        </div>
+
+        <div class="lgk">
+          <div class="lgk-hell"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></div>
+          <div class="lgk-dunkel"><span class="lg lg-d"><span class="lg-kachel"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ic-wecker"/></svg></span><b class="lg-wort">Budget<i class="lg-mark">Retter</i></b></span></div>
+          <div class="lgk-text">
+            <span class="lgk-nr">Variante D2</span>
+            <h3>D ohne Absender</h3>
+            <p>Der gestapelte Aufbau ohne Herausgeber – die kompakteste Form von allen. Als Profilbild, als Marke in einer Folienecke oder überall dort, wo daneben ohnehin schon empiria steht.</p>
           </div>
         </div>
 
