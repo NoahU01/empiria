@@ -645,8 +645,12 @@
                        height: 2px; border-radius: 2px; background: var(--ak); }
 .ab-kette { counter-reset: kette; gap: 7px; }
 .ab-kette > li { padding-left: 26px; counter-increment: kette; }
+/* Die Ziffern tragen den Akzent. Der dritte Punkt ist Reserve - Ziffer und
+   Text stehen in Grau, damit der Blick auf 1 und 2 bleibt. */
 .ab-kette > li::before { content: counter(kette); position: absolute; left: 0; top: 0;
-                         font-size: .78rem; font-weight: 700; color: var(--grey-50); }
+                         font-size: .78rem; font-weight: 700; color: var(--ak); }
+.ab-kette > li.ist-reserve, .ab-kette > li.ist-reserve b { color: #a8a29b; }
+.ab-kette > li.ist-reserve::before { color: #c4beb7; }
 .ab-unterkette { margin-top: 6px; gap: 4px; }
 .ab-unterkette li { position: relative; padding-left: 15px; font-size: .92rem;
                     color: var(--grey-50); }
@@ -705,8 +709,12 @@
                        height: 2px; border-radius: 2px; background: var(--ak); }
 .ab-kette { counter-reset: kette; gap: 7px; }
 .ab-kette > li { padding-left: 26px; counter-increment: kette; }
+/* Die Ziffern tragen den Akzent. Der dritte Punkt ist Reserve - Ziffer und
+   Text stehen in Grau, damit der Blick auf 1 und 2 bleibt. */
 .ab-kette > li::before { content: counter(kette); position: absolute; left: 0; top: 0;
-                         font-size: .78rem; font-weight: 700; color: var(--grey-50); }
+                         font-size: .78rem; font-weight: 700; color: var(--ak); }
+.ab-kette > li.ist-reserve, .ab-kette > li.ist-reserve b { color: #a8a29b; }
+.ab-kette > li.ist-reserve::before { color: #c4beb7; }
 .ab-unterkette { margin-top: 6px; gap: 4px; }
 .ab-unterkette li { position: relative; padding-left: 15px; font-size: .92rem;
                     color: var(--grey-50); }
@@ -1265,12 +1273,3 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .pj-swot-seite .mk--neben { margin: 0; }
 @media (max-width: 900px) { .pj-swot-zeile { grid-template-columns: 1fr; } }
 
-/* Deep Dive: liegt bereit, gehoert aber nicht in den Hauptstrang. Deshalb
-   abgesetzt und gestrichelt - sichtbar als Reserve, nicht als Schritt. */
-.ab-tiefe { margin-top: 16px; padding: 14px 16px; border: 1px dashed #d9d5d1;
-            border-radius: 14px; background: #faf9f7; }
-.ab-tiefe-marke { display: inline-block; margin-bottom: 7px; font-size: .68rem;
-                  letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
-                  color: var(--ak); }
-.ab-tiefe p { margin: 0; font-size: .92rem; line-height: 1.65; color: var(--grey-70); }
-.ab-tiefe b { color: var(--ink); font-weight: 600; }
