@@ -1,0 +1,17 @@
+<body><pre id="o" style="font:12px monospace"></pre>
+<script>const f=document.createElement('iframe');f.style.cssText='width:1440px;height:900px;border:0';f.src='/projekte/sv-akademie.html';
+f.onload=()=>{setTimeout(()=>{const d=f.contentDocument,w=f.contentWindow,out=[];
+ const R=e=>e.getBoundingClientRect();
+ const hl=d.querySelector('#themenfelder .hl'), img=d.querySelector('.pj-modell-dezent img');
+ const band=parseFloat(w.getComputedStyle(hl).backgroundPosition.split(' ')[1]||0);
+ out.push('Oberkante gelber Kasten = '+(R(hl).top+band).toFixed(1)+'   Oberkante Bild = '+R(img).top.toFixed(1)
+   +'   Differenz = '+((R(img).top)-(R(hl).top+band)).toFixed(1));
+ const k3=d.querySelectorAll('#themenfelder .pj-feld')[2], txt=d.querySelector('.pj-modell-dezent span');
+ out.push('rechte Kante Kasten 3 = '+R(k3).right.toFixed(1)+'   Bezeichnung = '+R(txt).right.toFixed(1));
+ const felder=d.querySelector('.pj-felder'), stand=d.querySelector('.pj-standzeile');
+ out.push('Abstand Felder -> Projektplanung = '+(R(stand).top-R(felder).bottom).toFixed(1)+' px');
+ const sek=d.querySelector('#themenfelder'), cs=w.getComputedStyle(sek);
+ out.push('Sektion unten = '+cs.paddingBottom+'   Lead-Breite = '+R(d.querySelector('#themenfelder .lead')).width.toFixed(0));
+ out.push('Kopfzeile: '+w.getComputedStyle(d.querySelector('.pj-kopfzeile--mitbild')).gridTemplateColumns);
+ document.getElementById('o').textContent=out.join('\n');},700)};
+document.body.appendChild(f);</script></body>
