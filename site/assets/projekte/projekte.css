@@ -663,8 +663,8 @@
 .ab-liste, .ab-fragen, .ab-kette, .ab-unterkette { margin: 0; padding: 0; list-style: none;
                                                    display: grid; gap: 6px; }
 .ab-liste li, .ab-kette li { position: relative; padding-left: 17px; }
-.ab-liste li::before { content: ""; position: absolute; left: 0; top: .66em; width: 6px;
-                       height: 6px; border-radius: 50%; background: var(--hl); }
+.ab-liste li::before { content: ""; position: absolute; left: 0; top: .78em; width: 11px;
+                       height: 1.5px; border-radius: 2px; background: #998675; }
 .ab-kette { counter-reset: kette; gap: 7px; }
 .ab-kette > li { padding-left: 26px; counter-increment: kette; }
 .ab-kette > li::before { content: counter(kette); position: absolute; left: 0; top: 0;
@@ -674,7 +674,7 @@
                     color: var(--grey-50); }
 .ab-unterkette li::before { content: ""; position: absolute; left: 0; top: .68em; width: 6px;
                             height: 1.5px; background: var(--grey-50); }
-.ab-fragen li { padding-left: 16px; border-left: 2px solid var(--hl); font-style: italic;
+.ab-fragen li { padding-left: 16px; border-left: 2px solid #998675; font-style: italic;
                 color: var(--ink); }
 .ab-warnung { color: var(--ink); font-weight: 500; }
 .ab-rollen { display: grid; gap: 10px; }
@@ -763,12 +763,20 @@
    Block; das Oeffnen des naechsten schliesst den vorigen. */
 .ab-block:not(.is-offen) .ab-feld:not(:first-child) { display: none; }
 
-/* --- Ohne Zeitspur: Agenda, Zeitstrahl, Leitfragen --- */
-.ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-spur { display: none; }
-.ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-block {
+/* --- Ohne Zeitspur: die reinen Listenansichten --- */
+.ab-ablauf[data-ansicht="kompakt"] .ab-spur,
+.ab-ablauf[data-ansicht="streifen"] .ab-spur,
+.ab-ablauf[data-ansicht="uhr"] .ab-spur { display: none; }
+.ab-ablauf[data-ansicht="kompakt"] .ab-block,
+.ab-ablauf[data-ansicht="streifen"] .ab-block,
+.ab-ablauf[data-ansicht="uhr"] .ab-block {
   grid-template-columns: 1fr; gap: 0; border-bottom: 1px solid #ebe8e5; }
-.ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-block:last-child { border-bottom: 0; }
-.ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-inhalt { padding: clamp(18px,2vw,24px) 0; }
+.ab-ablauf[data-ansicht="kompakt"] .ab-block:last-child,
+.ab-ablauf[data-ansicht="streifen"] .ab-block:last-child,
+.ab-ablauf[data-ansicht="uhr"] .ab-block:last-child { border-bottom: 0; }
+.ab-ablauf[data-ansicht="kompakt"] .ab-inhalt,
+.ab-ablauf[data-ansicht="streifen"] .ab-inhalt,
+.ab-ablauf[data-ansicht="uhr"] .ab-inhalt { padding: clamp(18px,2vw,24px) 0; }
 .ab-ablauf[data-ansicht="ausfuehrlich"] .ab-marke-dauer { display: none; }
 
 /* ==========================================================================
@@ -1162,51 +1170,25 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    ====================================================================== */
 .ab-uhr, .ab-modus { display: none; }
 
-/* --- Zeitachse: wo im Termin bin ich? ---------------------------------
-   Statt Dauer je Block die laufende Uhr. Im Termin selbst ist das die
-   Frage, die man wirklich hat. Links eine Linie mit einem Punkt je Block. */
-.ab-ablauf[data-ansicht="uhr"] .ab-uhr { display: block; position: relative;
-  width: 86px; flex: 0 0 auto; padding-left: 26px;
-  font-family: var(--font-serif); font-weight: 700; font-size: 1.02rem; color: var(--ink); }
-.ab-ablauf[data-ansicht="uhr"] .ab-uhr::before { content: ""; position: absolute; left: 4px;
-  top: 50%; width: 11px; height: 11px; margin-top: -5.5px; border-radius: 50%;
-  background: #fff; border: 2px solid var(--grey-50); }
-.ab-ablauf[data-ansicht="uhr"] .ab-block.is-offen .ab-uhr::before { border-color: var(--ink);
-  background: var(--ink); }
-/* Die durchgehende Linie zwischen den Punkten. */
-.ab-ablauf[data-ansicht="uhr"] .ab-block { position: relative; }
-.ab-ablauf[data-ansicht="uhr"] .ab-block::before { content: ""; position: absolute;
-  left: 9.5px; top: 0; bottom: 0; width: 1px; background: #ddd9d4; }
-.ab-ablauf[data-ansicht="uhr"] .ab-block:first-child::before { top: 50%; }
-.ab-ablauf[data-ansicht="uhr"] .ab-block:last-child::before { bottom: 50%; }
+/* --- Zeitachse: von wann bis wann -------------------------------------
+   Vorher stand dort nur die Startzeit - dann muss man selbst rechnen, wie
+   lang ein Block dauert und wann der Termin endet. Jetzt steht die Spanne
+   da, und am Fuss die Gesamtdauer. Ohne Linie und Punkte: die trugen keine
+   Information, nur Unruhe. */
+.ab-ablauf[data-ansicht="uhr"] .ab-uhr { display: block; width: 116px; flex: 0 0 auto;
+  font-family: var(--font-serif); font-weight: 700; font-size: .98rem; color: var(--ink);
+  white-space: nowrap; }
 .ab-ablauf[data-ansicht="uhr"] .ab-nr,
 .ab-ablauf[data-ansicht="uhr"] .ab-marke-dauer { display: none; }
-.ab-ablauf[data-ansicht="uhr"] .ab-inhalt { padding-left: 86px; }
-.ab-ablauf[data-ansicht="uhr"] .ab-marke { padding-left: 0; }
+.ab-ablauf[data-ansicht="uhr"] .ab-inhalt { padding-left: 116px; }
+.ab-summe { display: none; }
+.ab-ablauf[data-ansicht="uhr"] .ab-summe { display: flex; align-items: baseline; gap: 14px;
+  padding: 18px 0 0; }
+.ab-summe b { font-family: var(--font-serif); font-weight: 700; font-size: .98rem;
+  width: 116px; flex: 0 0 auto; }
+.ab-summe span { font-size: .9rem; color: var(--grey-50); }
 
-/* --- Modus: was passiert hier? -----------------------------------------
-   Ein Wort statt einer Nummer. Es traegt genau die Information, die die
-   Skizze in der ausfuehrlichen Ansicht andeuten sollte - nur lesbar. */
-.ab-ablauf[data-ansicht="modus"] .ab-modus { display: inline-block; width: 124px;
-  flex: 0 0 auto; padding: 5px 0; font-size: .72rem; letter-spacing: .14em;
-  text-transform: uppercase; font-weight: 700; color: var(--grey-50);
-  border-bottom: 2px solid var(--hl); margin-right: 8px; }
-.ab-ablauf[data-ansicht="modus"] .ab-block.is-offen .ab-modus { color: var(--ink); }
-.ab-ablauf[data-ansicht="modus"] .ab-nr { display: none; }
-.ab-ablauf[data-ansicht="modus"] .ab-inhalt { padding-left: 0; }
 
-/* --- Gewicht: wie viel Zeit frisst was? --------------------------------
-   Die Zeile ist so hoch, wie der Block lang ist. 45 Minuten sehen dann auch
-   nach 45 Minuten aus - das sieht man in keiner Liste, in der jede Zeile
-   gleich hoch ist. 1,9 px je Minute: aus 10 Minuten werden 19 px Zusatz. */
-.ab-ablauf[data-ansicht="gewicht"] .ab-block:not(.is-offen) .ab-inhalt {
-  min-height: calc(74px + var(--min) * 1.9px);
-  display: flex; flex-direction: column; justify-content: center; }
-.ab-ablauf[data-ansicht="gewicht"] .ab-block:not(.is-offen) {
-  border-left: 3px solid var(--ink); padding-left: 16px; }
-.ab-ablauf[data-ansicht="gewicht"] .ab-nr { align-self: center; }
-.ab-ablauf[data-ansicht="gewicht"] .ab-marke-dauer { font-size: .92rem; color: var(--ink);
-  font-family: var(--font-serif); font-weight: 700; }
 
 /* ==========================================================================
    Themenfelder: drei Entwuerfe zur Auswahl
@@ -1285,3 +1267,44 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .tm-posten--vergangen .tm-stand { color: #a8a29b; }
 .tm-posten--vergangen.is-offen .tm-text b,
 .tm-posten--vergangen.is-offen .tm-datum b { color: var(--ink); }
+
+/* --- Streifen: jedes zweite Segment hellgrau --------------------------- */
+.ab-ablauf[data-ansicht="streifen"] .ab-block { border-bottom: 0;
+  border-radius: var(--radius-card); }
+.ab-ablauf[data-ansicht="streifen"] .ab-block:nth-child(even) { background: #faf9f7; }
+.ab-ablauf[data-ansicht="streifen"] .ab-inhalt {
+  padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
+
+/* --- Zeichen: ein grosses Symbol je Block ------------------------------
+   Es sagt, was in diesen Minuten passiert - Rahmen setzen, zuhoeren,
+   bauen, abzweigen, sich einigen. Mehr soll es nicht. */
+.ab-zeichen { display: none; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-spur { display: flex; align-items: center;
+  justify-content: center; background: none; border: 0; min-height: 0;
+  padding: clamp(18px,2vw,24px) 0; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-block { grid-template-columns: minmax(0,132px) 1fr;
+  gap: clamp(18px,2.4vw,34px); border-bottom: 1px solid #ebe8e5; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-dauer,
+.ab-ablauf[data-ansicht="zeichen"] .ab-anteil,
+.ab-ablauf[data-ansicht="zeichen"] .sk { display: none; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-zeichen { display: block; color: #cfc7bf; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-zeichen svg { width: 76px; height: 76px; display: block; }
+.ab-ablauf[data-ansicht="zeichen"] .ab-block.is-offen .ab-zeichen { color: var(--ink); }
+.ab-ablauf[data-ansicht="zeichen"] .ab-inhalt { padding-top: clamp(18px,2vw,24px); }
+
+/* --- Zahl: die Dauer gross, als Ziffer ---------------------------------
+   Dieselbe Spur wie in "Ausfuehrlich", nur ohne Skizze: die Minutenzahl
+   traegt die Spalte allein. */
+.ab-ablauf[data-ansicht="zahl"] .ab-spur { background: none; border: 0; border-radius: 0;
+  min-height: 0; padding: clamp(18px,2vw,24px) 0; gap: 10px; }
+.ab-ablauf[data-ansicht="zahl"] .ab-block { grid-template-columns: minmax(0,132px) 1fr;
+  gap: clamp(18px,2.4vw,34px); border-bottom: 1px solid #ebe8e5; }
+.ab-ablauf[data-ansicht="zahl"] .sk { display: none; }
+/* Die Minutenzahl steht links gross - rechts braucht sie niemand noch einmal. */
+.ab-ablauf[data-ansicht="zahl"] .ab-marke-dauer { display: none; }
+.ab-ablauf[data-ansicht="zahl"] .ab-dauer { font-size: 2.6rem; line-height: 1; }
+.ab-ablauf[data-ansicht="zahl"] .ab-dauer small { display: block; margin: 4px 0 0;
+  font-size: .68rem; }
+.ab-ablauf[data-ansicht="zahl"] .ab-anteil { margin-top: 2px; }
+.ab-ablauf[data-ansicht="zahl"] .ab-block.is-offen .ab-dauer { color: var(--ink); }
+.ab-ablauf[data-ansicht="zahl"] .ab-inhalt { padding-top: clamp(18px,2vw,24px); }

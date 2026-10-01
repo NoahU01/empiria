@@ -43,6 +43,29 @@
     </symbol>
 </defs></svg>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- Ein Zeichen je Block: was in diesen Minuten passiert. Keine CD-Formen. -->
+<symbol id="az-rahmen" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="7" y="10" width="34" height="28" rx="2.5"/><path d="M7 18h34"/><path d="M14 26h20M14 32h13"/>
+</symbol>
+<symbol id="az-dialog" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 12a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H14l-8 6z"/>
+  <path d="M42 22a2 2 0 0 0-2-2h-6v4a4 4 0 0 1-4 4h-6v6a2 2 0 0 0 2 2h10l6 5z"/>
+</symbol>
+<symbol id="az-bau" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="7" y="28" width="15" height="11" rx="1.5"/><rect x="26" y="28" width="15" height="11" rx="1.5"/>
+  <rect x="16.5" y="13" width="15" height="11" rx="1.5"/>
+</symbol>
+<symbol id="az-weg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M8 38c0-10 8-10 12-14s4-10 10-10"/><path d="M30 14h8"/><path d="M34 9l5 5-5 5"/>
+  <circle cx="8" cy="38" r="2.5"/>
+</symbol>
+<symbol id="az-hand" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 22l7-5 9 6 5-3 8 5 7-4"/><path d="M13 17v16"/><path d="M35 20v13"/>
+  <path d="M18 33h12"/>
+</symbol>
+</defs></svg>
+
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="/index.html" aria-label="empiria Startseite">
@@ -575,19 +598,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="ab-ansichten" role="group" aria-label="Darstellung des Ablaufs">
         <span class="ab-ansichten-tag">Anzeigen als</span>
-        <button type="button" class="ab-pill is-aktiv" data-ansicht="uhr" aria-pressed="true">Zeitachse</button>
-        <button type="button" class="ab-pill" data-ansicht="modus" aria-pressed="false">Modus</button>
-        <button type="button" class="ab-pill" data-ansicht="gewicht" aria-pressed="false">Gewicht</button>
-        <button type="button" class="ab-pill" data-ansicht="kompakt" aria-pressed="false">Agenda</button>
+        <button type="button" class="ab-pill is-aktiv" data-ansicht="kompakt" aria-pressed="true">Agenda</button>
+        <button type="button" class="ab-pill" data-ansicht="streifen" aria-pressed="false">Streifen</button>
+        <button type="button" class="ab-pill" data-ansicht="uhr" aria-pressed="false">Zeitachse</button>
         <button type="button" class="ab-pill" data-ansicht="ausfuehrlich" aria-pressed="false">Ausführlich</button>
+        <button type="button" class="ab-pill" data-ansicht="zeichen" aria-pressed="false">Zeichen</button>
+        <button type="button" class="ab-pill" data-ansicht="zahl" aria-pressed="false">Zahl</button>
       </div>
 
-      <div class="ab-ablauf" data-ansicht="uhr">
+      <div class="ab-ablauf" data-ansicht="kompakt">
 
 
 
         <div class="ab-block" style="--min:10;--vor:0">
           <div class="ab-spur ab-spur--erste">
+            <span class="ab-zeichen" aria-hidden="true"><svg><use href="#az-rahmen"/></svg></span>
             <span class="ab-dauer">10<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--einstieg" aria-hidden="true">
@@ -599,7 +624,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:00</span><span class="ab-nr">01</span><span class="ab-modus">Rahmen</span><span class="ab-marke-titel">Einstieg und Erwartungsklärung</span><span class="ab-marke-dauer">10 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:00 – 0:10</span><span class="ab-nr">01</span><span class="ab-marke-titel">Einstieg und Erwartungsklärung</span><span class="ab-marke-dauer">10 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -623,6 +648,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="ab-block" style="--min:15;--vor:10">
           <div class="ab-spur">
+            <span class="ab-zeichen" aria-hidden="true"><svg><use href="#az-dialog"/></svg></span>
             <span class="ab-dauer">15<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--zuhoeren" aria-hidden="true">
@@ -631,7 +657,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:10</span><span class="ab-nr">02</span><span class="ab-modus">Zuhören</span><span class="ab-marke-titel">Das Bild von M.&nbsp;S.</span><span class="ab-marke-dauer">15 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:10 – 0:25</span><span class="ab-nr">02</span><span class="ab-marke-titel">Das Bild von M.&nbsp;S.</span><span class="ab-marke-dauer">15 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -663,6 +689,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="ab-block" style="--min:45;--vor:25">
           <div class="ab-spur">
+            <span class="ab-zeichen" aria-hidden="true"><svg><use href="#az-bau"/></svg></span>
             <span class="ab-dauer">45<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--zielbild" aria-hidden="true">
@@ -673,7 +700,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:25</span><span class="ab-nr">03</span><span class="ab-modus">Entwickeln</span><span class="ab-marke-titel">Gemeinsames Zielbild</span><span class="ab-marke-dauer">45 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:25 – 1:10</span><span class="ab-nr">03</span><span class="ab-marke-titel">Gemeinsames Zielbild</span><span class="ab-marke-dauer">45 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -724,6 +751,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="ab-block" style="--min:30;--vor:70">
           <div class="ab-spur">
+            <span class="ab-zeichen" aria-hidden="true"><svg><use href="#az-weg"/></svg></span>
             <span class="ab-dauer">30<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--weg" aria-hidden="true">
@@ -735,7 +763,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:10</span><span class="ab-nr">04</span><span class="ab-modus">Entscheiden</span><span class="ab-marke-titel">Vom Zielbild zur Strategie</span><span class="ab-marke-dauer">30 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:10 – 1:40</span><span class="ab-nr">04</span><span class="ab-marke-titel">Vom Zielbild zur Strategie</span><span class="ab-marke-dauer">30 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -768,6 +796,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="ab-block" style="--min:20;--vor:100">
           <div class="ab-spur ab-spur--letzte">
+            <span class="ab-zeichen" aria-hidden="true"><svg><use href="#az-hand"/></svg></span>
             <span class="ab-dauer">20<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--rolle" aria-hidden="true">
@@ -778,7 +807,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:40</span><span class="ab-nr">05</span><span class="ab-modus">Verabreden</span><span class="ab-marke-titel">Sponsoring, Rolle und Abschluss</span><span class="ab-marke-dauer">20 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:40 – 2:00</span><span class="ab-nr">05</span><span class="ab-marke-titel">Sponsoring, Rolle und Abschluss</span><span class="ab-marke-dauer">20 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -825,6 +854,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </dl>
           </div>
         </div>
+
+        <p class="ab-summe"><b>2:00</b><span>Gesamtdauer des Termins</span></p>
 
       </div>
 
@@ -890,7 +921,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     });
   });
 
-  setze('uhr');
+  setze('kompakt');
 })();
 </script>
 
