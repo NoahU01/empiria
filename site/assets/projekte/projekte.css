@@ -1107,3 +1107,58 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
   .tm-ziel-marke { width: auto; text-align: left; }
   .tm-ziel-linie { display: none; }
 }
+
+/* Zwei Roll-ups nebeneinander im Pop-up - beide ganz zu sehen, beide
+   herunterladbar. */
+.modal.modal--breit { max-width: 980px; }
+.pj-rollups { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px,2.6vw,36px); }
+.pj-rollup { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+/* Die Roll-ups sind doppelt so hoch wie breit. Ohne Deckel passen Bild,
+   Text und Knopf nicht zusammen ins Fenster - dann muesste man im Pop-up
+   scrollen, um ueberhaupt an den Download zu kommen. */
+.pj-rollup-bild { display: flex; justify-content: center; width: 100%;
+                  border: 1px solid #e4e1dd; border-radius: 12px;
+                  overflow: hidden; background: #fff; line-height: 0;
+                  transition: border-color .2s ease, box-shadow .2s ease; }
+.pj-rollup-bild:hover { border-color: var(--ink); box-shadow: 0 14px 32px rgba(0,0,0,.12); }
+.pj-rollup-bild img { display: block; max-height: 46vh; width: auto; max-width: 100%;
+                      height: auto; }
+/* Das Fenster ist dunkel - Titel in Tinte waere darin nicht zu lesen. */
+.pj-rollup b { font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+               line-height: 1.26; color: #fff; }
+.pj-rollup small { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.72); }
+.pj-rollup .btn { margin-top: auto; }
+@media (max-width: 760px) { .pj-rollups { grid-template-columns: 1fr; } }
+
+/* ---- Termine: Dokumente je Termin --------------------------------------
+   Ein Termin bringt selten nur ein Blatt mit. Zugeklappt bleibt die Liste
+   lesbar; offen zeigt der Streifen seine Dokumente als kleine gerahmte
+   Kaesten mit Vorschau und Unterschrift. */
+button.tm-eintrag { width: 100%; text-align: left; cursor: pointer;
+                    font-family: inherit; font-size: inherit; }
+.tm-pfeil { flex: 0 0 auto; width: 9px; height: 9px; border-right: 2px solid var(--grey-50);
+            border-bottom: 2px solid var(--grey-50); transform: rotate(45deg);
+            margin-bottom: 3px; transition: transform .2s ease; }
+button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
+li.is-offen .tm-pfeil { transform: rotate(-135deg); margin-bottom: -3px; }
+.tm-dokumente { display: none; }
+li.is-offen .tm-dokumente { display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(260px,320px));
+                            gap: 12px; margin: 12px 0 4px 92px; }
+.tm-dok { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px;
+          padding: 12px 16px 12px 12px; background: #fff;
+          border: 1px solid #e4e1dd; border-radius: 16px;
+          text-decoration: none; color: var(--ink);
+          transition: border-color .2s ease, box-shadow .2s ease; }
+.tm-dok:hover { border-color: var(--ink); box-shadow: 0 10px 24px rgba(0,0,0,.07); }
+.tm-dok-bild { width: 46px; height: 62px; flex: 0 0 auto; overflow: hidden;
+               border: 1px solid #ebe8e5; border-radius: 6px; background: #fff; line-height: 0; }
+.tm-dok-bild img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.tm-dok-bild--zeichen { display: grid; place-items: center; background: var(--ink);
+                        border-color: var(--ink); }
+.tm-dok-bild--zeichen svg { width: 22px; height: 22px; color: var(--hl); }
+.tm-dok-text b { display: block; font-weight: 600; font-size: .95rem; line-height: 1.3; }
+.tm-dok-text small { display: block; margin-top: 2px; font-size: .8rem; line-height: 1.45;
+                     color: var(--grey-50); }
+@media (max-width: 760px) { li.is-offen .tm-dokumente { margin-left: 0;
+                            grid-template-columns: 1fr; } }

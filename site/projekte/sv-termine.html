@@ -43,6 +43,16 @@
     </symbol>
 </defs></svg>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="zi-dokument" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 3.5h8l4 4V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/>
+  <path d="M13.5 3.5V8h4.2"/><path d="M9 12.5h6M9 16h4"/>
+</symbol>
+<symbol id="zi-fenster" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4.5" width="18" height="15" rx="1.6"/><path d="M3 9h18"/><circle cx="6.3" cy="6.8" r=".5" fill="currentColor"/>
+</symbol>
+</defs></svg>
+
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="/index.html" aria-label="empiria Startseite">
@@ -567,17 +577,22 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </li>
 
         <li>
-          <a class="tm-eintrag tm-eintrag--geplant" href="/projekte/sv-abstimmung-hal.html">
+          <button type="button" class="tm-eintrag tm-eintrag--geplant" aria-expanded="false">
             <span class="tm-datum"><b>Ende Sep.</b><small>Mitte Okt. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Abstimmung</span>
               <b>Workshop Strategie mit dem Hauptabteilungsleiter</b>
-              <small>Vision und strategische Stoßrichtungen mit Michael Sauerbrunn. Agenda,
-                Ziel und Ablauf sind ausgearbeitet.</small>
+              <small>Vision und strategische Stoßrichtungen mit Michael Sauerbrunn.</small>
             </span>
-            <span class="tm-stand">Agenda ansehen</span>
-            <span class="mk-pfeil">&#8594;</span>
-          </a>
+            <span class="tm-stand">1 Dokument</span>
+            <span class="tm-pfeil" aria-hidden="true"></span>
+          </button>
+          <div class="tm-dokumente">
+            <a class="tm-dok" href="/projekte/sv-abstimmung-hal.html">
+              <span class="tm-dok-bild tm-dok-bild--zeichen"><svg><use href="#zi-fenster"/></svg></span>
+              <span class="tm-dok-text"><b>Agenda</b><small>Ziel, Dramaturgie und Leitfragen</small></span>
+            </a>
+          </div>
         </li>
 
         <li>
@@ -656,17 +671,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </li>
 
         <li>
-          <a class="tm-eintrag" href="/projekte/sv-selbstverstaendnis.html#protokoll">
+          <button type="button" class="tm-eintrag" aria-expanded="false">
             <span class="tm-datum"><b>29./30.</b><small>Okt. 2025</small></span>
             <span class="tm-text">
               <span class="tm-art">Kick-off</span>
               <b>Kick-off</b>
               <small>Freiburg. Zwei Tage: Denkmodelle, Stakeholderanalyse und der erste
-                Entwurf des Leitbilds – protokolliert.</small>
+                Entwurf des Leitbilds.</small>
             </span>
-            <span class="tm-stand">Protokoll ansehen</span>
-            <span class="mk-pfeil">&#8594;</span>
-          </a>
+            <span class="tm-stand">2 Dokumente</span>
+            <span class="tm-pfeil" aria-hidden="true"></span>
+          </button>
+          <div class="tm-dokumente">
+            <a class="tm-dok" href="/assets/projekte/sv-impulsfragen.pdf" target="_blank" rel="noopener">
+              <span class="tm-dok-bild"><img src="/assets/projekte/sv-impulsfragen-vorschau.webp" alt="" loading="lazy"></span>
+              <span class="tm-dok-text"><b>Impulsfragen</b><small>Vorab an die Teilnehmenden · PDF</small></span>
+            </a>
+            <a class="tm-dok" href="/projekte/sv-selbstverstaendnis.html#protokoll">
+              <span class="tm-dok-bild tm-dok-bild--zeichen"><svg><use href="#zi-dokument"/></svg></span>
+              <span class="tm-dok-text"><b>Protokoll</b><small>Die fünf Schritte der zwei Tage</small></span>
+            </a>
+          </div>
         </li>
 
       </ol>
@@ -686,6 +711,28 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 
+
+<script>
+/* Ein Termin kann mehrere Dokumente haben. Zugeklappt bleibt die Liste
+   lesbar, offen zeigt der Streifen die Dokumente als kleine Kaesten.
+   Offen ist immer nur einer. */
+(function () {
+  var koepfe = Array.prototype.slice.call(document.querySelectorAll('.tm-eintrag[aria-expanded]'));
+  if (!koepfe.length) return;
+  function setze(k, offen) {
+    k.setAttribute('aria-expanded', offen ? 'true' : 'false');
+    k.closest('li').classList.toggle('is-offen', offen);
+  }
+  koepfe.forEach(function (k) {
+    setze(k, false);
+    k.addEventListener('click', function () {
+      var offen = k.getAttribute('aria-expanded') === 'true';
+      koepfe.forEach(function (x) { setze(x, false); });
+      if (!offen) setze(k, true);
+    });
+  });
+})();
+</script>
 
 <script src="/script.js"></script>
 </body>
