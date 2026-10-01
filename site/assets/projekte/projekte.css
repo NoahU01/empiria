@@ -27,30 +27,13 @@
 .pj-hero-arrow svg { width: clamp(64px,6vw,88px); height: auto; display: block;
                      fill: currentColor; }
 
-/* ---- Steckbrief ---------------------------------------------------------- */
-.pj-steckbrief { border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-                 padding: clamp(22px,2.4vw,30px); background: #fff; }
-.pj-steckbrief-kopf { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-                      font-weight: 600; color: var(--grey-50); margin: 0 0 1rem; }
-.pj-steckbrief-kopf--zweit { margin-top: clamp(22px,2.4vw,28px); padding-top: clamp(18px,2vw,22px);
-                             border-top: 1px solid var(--grey-bg); }
-.pj-fakten { margin: 0; display: grid; gap: 14px; }
-.pj-fakten div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-.pj-fakten dt { font-size: .88rem; color: var(--grey-70); }
-.pj-fakten dd { margin: 0; font-family: var(--font-serif); font-weight: 600; font-size: .98rem;
-                color: var(--ink); text-align: right; }
-/* Fortschritt: die Ziffer zeigt, wo das Projekt steht. Das laufende Feld
-   bekommt Gelb, die uebrigen bleiben grau - mehr Zustaende braucht es nicht. */
-.pj-fortschritt { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
-.pj-fortschritt li { display: flex; align-items: flex-start; gap: 12px; }
-.pj-fortschritt-nr { flex: 0 0 26px; height: 26px; border-radius: 50%; display: grid;
-                     place-items: center; font-size: .76rem; font-weight: 700;
-                     background: var(--grey-bg); color: var(--grey-50); }
-.pj-fortschritt .is-laeuft .pj-fortschritt-nr,
-.pj-fortschritt li.is-laeuft .pj-fortschritt-nr { background: var(--hl); color: var(--ink); }
-.pj-fortschritt-txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.pj-fortschritt-txt b { font-size: .9rem; font-weight: 600; color: var(--ink); }
-.pj-fortschritt-txt small { font-size: .78rem; color: var(--grey-50); line-height: 1.4; }
+/* ---- Die Rakete ---------------------------------------------------------
+   Dasselbe Bild wie im Aufmacher der SV-Akademie-Startseite. Es steht fuer
+   den Antrieb, der schon da ist - die Ueberschrift daneben fuer das Ziel,
+   auf das er zufliegt. */
+.pj-rakete { display: flex; justify-content: center; align-items: center; }
+.pj-rakete img { display: block; width: auto; max-width: 100%;
+                 height: clamp(260px,32vw,420px); }
 
 /* ---- Pills --------------------------------------------------------------
    Dieselbe Form wie .produkt-pill, nur fuer hellen Grund: .produkt-pill ist

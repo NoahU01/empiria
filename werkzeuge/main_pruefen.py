@@ -54,7 +54,8 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/assets/projekte/sv-akademie-selbstverstaendnis.pdf",
                   "site/assets/projekte/strategiemodell-mini.webp",
                   "site/assets/projekte/sv-meilensteine-vorschau.webp",
-                  "site/projekte/sv-meilensteine.html"]
+                  "site/projekte/sv-meilensteine.html",
+                  "site/assets/projekte/sv-rakete.webp"]
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter",
                  "/projekte", "/strategie"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
