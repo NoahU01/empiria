@@ -218,11 +218,6 @@
          margin-bottom: 1.1rem; font-size: .84rem; color: var(--grey-50); }
 .pj-wo a { color: var(--grey-50); text-decoration: none; border-bottom: 0; }
 .pj-wo a:hover { color: var(--ink); }
-.pj-wo-schritte { display: inline-flex; gap: 6px; margin-left: 4px; }
-.pj-wo-schritt { width: 22px; height: 22px; border-radius: 50%; display: grid;
-                 place-items: center; font-size: .72rem; font-weight: 700;
-                 background: var(--grey-bg); color: var(--grey-50); }
-.pj-wo-schritt.is-hier { background: var(--ink); color: var(--hl); }
 
 .pj-bausteine { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px,1fr));
                 gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
@@ -951,3 +946,88 @@
 .pj-punkt--gruen { background: #059669; }
 .pj-punkt--blau  { background: #0B9FBD; }
 .pj-punkt--rot   { background: #C51F5D; }
+
+/* ---- Kopfzeile: voller Pfad und die drei Themenfelder als Reiter --------
+   Vorher stand dort nur ein Schritt zurueck ("<- Strategie") und auf den
+   Feldseiten drei nummerierte Punkte. Auf Ebene 3 war damit nicht zu sehen,
+   wo man ueberhaupt ist. Jetzt steht der ganze Weg da, und die Reiter zeigen
+   die Struktur auf jeder Seite des Strangs - auch zwei Ebenen tiefer. */
+.pj-wo-trenner { color: var(--grey-50); }
+.pj-wo [aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+.pj-reiter { display: flex; flex-wrap: wrap; gap: 8px; margin: 1rem 0 1.7rem; }
+.pj-reiter-knopf { display: inline-flex; align-items: center; gap: 9px;
+                   padding: 7px 15px 7px 9px; border-radius: 999px;
+                   border: 1px solid #ddd9d4; background: #fff; color: var(--grey-70);
+                   text-decoration: none; font-family: var(--font-sans);
+                   font-weight: 600; font-size: .84rem;
+                   transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.pj-reiter-knopf:hover { border-color: var(--ink); color: var(--ink); }
+.pj-reiter-nr { width: 21px; height: 21px; border-radius: 50%; flex: 0 0 auto;
+                display: grid; place-items: center; background: var(--grey-bg);
+                color: var(--grey-50); font-family: var(--font-serif); font-weight: 700;
+                font-size: .76rem; }
+.pj-reiter-knopf.is-hier { background: var(--ink); border-color: var(--ink); color: #fff; }
+.pj-reiter-knopf.is-hier .pj-reiter-nr { background: var(--hl); color: var(--ink); }
+
+/* ---- Termine: der Verlauf als zweite Achse ------------------------------
+   Themen gehen ueber die drei Felder, Zeit geht hier entlang. Der juengste
+   Termin steht oben, damit man nicht scrollen muss, um den aktuellen Stand
+   zu sehen. Aufbau wie die Methodenzeilen im Werkzeugkasten - dieselbe
+   Lesebewegung, dieselbe Hoehe. */
+.tm-kopf { margin-top: clamp(36px,4.4vw,62px); }
+.tm-liste { list-style: none; margin: clamp(22px,2.6vw,32px) 0 0; padding: 0;
+            display: grid; gap: 12px; counter-reset: termin; }
+.tm-eintrag { display: grid; grid-template-columns: 92px 1fr auto auto;
+              align-items: center; gap: clamp(16px,2vw,26px);
+              padding: 16px 20px; background: #fff; border: 1px solid #e4e1dd;
+              border-radius: var(--radius-card); text-decoration: none; color: var(--ink);
+              transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+a.tm-eintrag:hover { border-color: var(--ink); transform: translateY(-2px);
+                     box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+.tm-datum { text-align: center; flex: 0 0 auto; }
+.tm-datum b { display: block; font-family: var(--font-serif); font-weight: 700;
+              font-size: 1.02rem; line-height: 1.2; }
+.tm-datum small { display: block; margin-top: 2px; font-size: .72rem; color: var(--grey-50); }
+.tm-text { min-width: 0; }
+.tm-art { display: inline-block; margin-bottom: 5px; padding: 3px 10px; border-radius: 999px;
+          background: var(--grey-bg); font-size: .66rem; letter-spacing: .12em;
+          text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.tm-text b { display: block; font-weight: 600; font-size: .98rem; line-height: 1.3; }
+.tm-text small { display: block; margin-top: 3px; font-size: .86rem; line-height: 1.5;
+                 color: var(--grey-70); }
+.tm-stand { font-size: .82rem; font-weight: 600; color: var(--grey-50); white-space: nowrap; }
+a.tm-eintrag:hover .tm-stand { color: var(--ink); }
+/* Der geplante Termin ist der einzige, der noch bevorsteht - gelbe Kante. */
+.tm-eintrag--geplant { border-left: 4px solid var(--hl); }
+.tm-eintrag--geplant .tm-datum b { color: var(--ink); }
+.tm-eintrag--offen { background: transparent; border-style: dashed; }
+.tm-eintrag--offen .tm-text b, .tm-eintrag--offen .tm-datum b { color: var(--grey-50); }
+.tm-stand--offen { font-style: italic; font-weight: 400; }
+@media (max-width: 760px) {
+  .tm-eintrag { grid-template-columns: 70px 1fr; }
+  .tm-stand, .tm-eintrag .mk-pfeil { grid-column: 2; }
+}
+
+/* Die Terminzeile traegt statt der drei Straenge ein Listenzeichen. */
+.pj-standzeile-balken--liste .pj-standbalken { background: #ddd9d4; }
+.pj-standzeile-balken--liste .pj-standbalken:nth-child(1) { width: 100%; }
+.pj-standzeile-balken--liste .pj-standbalken:nth-child(2) { width: 72%; }
+.pj-standzeile-balken--liste .pj-standbalken:nth-child(3) { width: 86%; }
+.pj-standzeile + .pj-standzeile { margin-top: 12px; }
+
+/* Vierter Ast: die Termine. Gleiche Form, andere Rolle - deshalb kein
+   nummeriertes Zeichen, sondern ein Pfeil nach unten fuer "Verlauf". */
+.sm-aeste--vier { grid-template-columns: repeat(4, 1fr); }
+.sm-aeste--vier::before { left: 12.5%; right: 12.5%; }
+.sm-ast--verlauf .sm-kn--feld { border-style: dashed; }
+.sm-nr--verlauf { background: var(--grey-bg); color: var(--grey-50); font-family: var(--font-sans);
+                  font-size: .9rem; font-weight: 700; }
+.sm-spalte-kopf--fertig { color: #059669; }
+.sm-spalte-kopf--fertig ~ .sm-liste li::before { background: #059669; }
+@media (max-width: 1100px) { .sm-aeste--vier { grid-template-columns: repeat(2, 1fr); }
+  .sm-aeste--vier::before, .sm-ast::before, .sm-wurzel::after { display: none; }
+  .sm-aeste { padding-top: 0; } }
+
+/* Ein Pfeil nach schraeg oben heisst: hier geht es aus dem Projekt heraus. */
+.pj-extern { display: inline-block; margin-left: 2px; font-size: .9em; line-height: 1; }

@@ -164,6 +164,7 @@
 </div>
 </div></div>
 </div>
+<a href="sv-termine.html" class="dev-dd-link"><span class="dev-dd-tag">TM</span><span class="dev-dd-txt"><b>Termine</b><small>Projektverlauf &middot; Agenden und Protokolle</small></span></a>
 <a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
@@ -463,6 +464,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div></div>
 </div>
+<a href="sv-termine.html" class="dev-dd-link"><span class="dev-dd-tag">TM</span><span class="dev-dd-txt"><b>Termine</b><small>Projektverlauf &middot; Agenden und Protokolle</small></span></a>
 <a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
@@ -502,10 +504,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <div class="container">
       <p class="pj-wo">
         <a href="/projekte/sv-akademie.html">&#8592; SV Akademie</a>
-        <span>&middot;</span>
-        <span>Themenfeld 2 von 3</span>
-        <span class="pj-wo-schritte"><span class="pj-wo-schritt">1</span><span class="pj-wo-schritt is-hier">2</span><span class="pj-wo-schritt">3</span></span>
+        <span class="pj-wo-trenner" aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Vision</span>
       </p>
+      <nav class="pj-reiter" aria-label="Die drei Themenfelder">
+        <a class="pj-reiter-knopf" href="/projekte/sv-selbstverstaendnis.html"><span class="pj-reiter-nr">1</span>Selbstverständnis</a>
+        <a class="pj-reiter-knopf is-hier" href="/projekte/sv-vision.html" aria-current="page"><span class="pj-reiter-nr">2</span>Vision</a>
+        <a class="pj-reiter-knopf" href="/projekte/sv-strategie.html"><span class="pj-reiter-nr">3</span>Strategie</a>
+      </nav>
       <div class="pj-hero-grid">
         <div class="pj-hero-text">
           <p class="kicker">Vision</p>
@@ -622,7 +628,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </button>
 
       <div class="pj-browser-aktionen pj-browser-aktionen--mitte">
-        <a class="btn btn--dark" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Zur Webseite gehen</a>
+        <a class="btn btn--dark" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Zur Webseite gehen <span class="pj-extern" aria-label="öffnet in neuem Tab">&#8599;</span></a>
         <span class="pj-hinweis">Öffnet den aktuellen Stand in einem neuen Tab.</span>
       </div>
     </div>
@@ -690,7 +696,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
              alt="Startseite der SV Akademie in voller Größe" loading="lazy">
       </div>
       <div class="pj-modal-fuss">
-        <a class="btn btn--dark" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Zur Webseite gehen</a>
+        <a class="btn btn--dark" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Zur Webseite gehen <span class="pj-extern" aria-label="öffnet in neuem Tab">&#8599;</span></a>
       </div>
     </div>
   </div>

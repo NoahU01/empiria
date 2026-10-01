@@ -164,6 +164,7 @@
 </div>
 </div></div>
 </div>
+<a href="sv-termine.html" class="dev-dd-link"><span class="dev-dd-tag">TM</span><span class="dev-dd-txt"><b>Termine</b><small>Projektverlauf &middot; Agenden und Protokolle</small></span></a>
 <a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
@@ -463,6 +464,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div></div>
 </div>
+<a href="sv-termine.html" class="dev-dd-link"><span class="dev-dd-tag">TM</span><span class="dev-dd-txt"><b>Termine</b><small>Projektverlauf &middot; Agenden und Protokolle</small></span></a>
 <a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
@@ -502,15 +504,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <div class="container">
       <p class="pj-wo">
         <a href="/projekte/sv-akademie.html">&#8592; SV Akademie</a>
-        <span>&middot;</span>
-        <span>Übersicht</span>
+        <span class="pj-wo-trenner" aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Sitemap</span>
       </p>
       <div class="pj-hero-grid">
         <div class="pj-hero-text">
           <p class="kicker">Sitemap</p>
           <h1 class="h-serif">Was hängt <span class="hl">wo.</span></h1>
         </div>
-        <div class="hero-copy lead"><p>Die Steuerungsseite, drei Themenfelder, darunter die Vertiefungen. Neun Seiten plus die Webseite der Akademie – und eine kurze Analyse, was jemand ohne Vorwissen davon versteht.</p></div>
+        <div class="hero-copy lead"><p>Die Steuerungsseite, drei Themenfelder, darunter die Vertiefungen. Zwei Achsen: über die Themenfelder ins Thema, über die Termine in den Verlauf. Darunter steht, was aus der Analyse umgesetzt ist und was offen bleibt.</p></div>
       </div>
     </div>
   </section>
@@ -527,7 +529,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </a>
         </div>
 
-        <div class="sm-aeste">
+        <div class="sm-aeste sm-aeste--vier">
 
           <div class="sm-ast">
             <a class="sm-kn sm-kn--feld" href="/projekte/sv-selbstverstaendnis.html">
@@ -572,17 +574,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               </a>
               <a class="sm-kn" href="/projekte/sv-meilensteine.html">
                 <b>Meilensteinplan</b>
-                <small>27 Pakete &middot; drei Ansichten</small>
+                <small>27 Pakete &middot; auch von Termine aus</small>
               </a>
-              <div class="sm-enkel">
-                <a class="sm-kn" href="/projekte/sv-abstimmung-hal.html">
-                  <b>Agenda HAL-Termin</b>
-                  <small>hängt an einem Schritt im Plan</small>
-                </a>
-              </div>
             </div>
           </div>
 
+
+          <div class="sm-ast sm-ast--verlauf">
+            <a class="sm-kn sm-kn--feld" href="/projekte/sv-termine.html">
+              <span class="sm-nr sm-nr--verlauf" aria-hidden="true">&#8595;</span>
+              <b>Termine</b>
+              <small>Der Verlauf statt der Themen</small>
+            </a>
+            <div class="sm-kinder">
+              <a class="sm-kn" href="/projekte/sv-abstimmung-hal.html">
+                <b>Agenda HAL-Termin</b>
+                <small>Ziel, Dramaturgie, Leitfragen</small>
+              </a>
+              <span class="sm-leer">weitere Termine folgen</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -590,44 +601,56 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="sm-analyse">
         <div class="sm-analyse-kopf">
           <p class="pj-tag">Analyse</p>
-          <h2 class="h-serif">Versteht das jemand, <span class="hl">der es nicht gebaut hat?</span></h2>
+          <h2 class="h-serif">Was sich geändert hat – <span class="hl">und was bleibt.</span></h2>
         </div>
 
         <div class="sm-spalten">
 
           <div class="sm-spalte">
-            <p class="sm-spalte-kopf">Das trägt</p>
-            <ul class="sm-liste">
-              <li>Die drei Themenfelder sind auf jeder Seite gleich nummeriert. Wer „Themenfeld 2 von 3“ liest, weiß, wo er ist.</li>
-              <li>Jede Seite hat dieselbe Dramaturgie: Kopf, Bausteine, Ergebnis. Man muss sie einmal lernen.</li>
+            <p class="sm-spalte-kopf sm-spalte-kopf--fertig">Umgesetzt</p>
+            <ul class="sm-liste sm-liste--fertig">
+              <li><b>Ein Name je Gegenstand.</b> Der Plan heißt überall „Meilensteinplan“ –
+                auf der Projektseite, auf der Strategieseite und im Menü.</li>
+              <li><b>Voller Pfad in der Kopfzeile.</b> „SV Akademie › Strategie ›
+                Ist-Situation“ statt nur eines Schritts zurück.</li>
+              <li><b>Die drei Themenfelder als feste Reiter</b> auf jeder Seite des Strangs,
+                auch zwei Ebenen tiefer. Das aktuelle Feld ist markiert.</li>
+              <li><b>Die Agenda hat einen Ort.</b> Sie hängt nicht mehr nur an einer Karte im
+                Plan, sondern unter den Terminen – und ist von der Projektseite aus in zwei
+                Klicks erreichbar.</li>
             </ul>
           </div>
 
           <div class="sm-spalte">
-            <p class="sm-spalte-kopf sm-spalte-kopf--warnung">Das stolpert</p>
+            <p class="sm-spalte-kopf">Die Struktur in einem Satz</p>
             <ul class="sm-liste">
-              <li><b>Ein Gegenstand, drei Namen.</b> Der Meilensteinplan heißt auf der Projektseite „Wo wir stehen“, auf der Strategieseite „Umsetzung“ und im Menü „Meilensteinplan“. Dass das dreimal dasselbe ist, weiß nur, wer es gebaut hat.</li>
-              <li><b>Der Rückweg zeigt nur einen Schritt.</b> Auf der Ist-Situation steht „← Strategie“, nicht der ganze Pfad. Ab Ebene 3 fehlt die Antwort auf „wo bin ich“.</li>
-              <li><b>Die Agenda findet niemand.</b> Sie hängt an einer einzelnen Karte im Meilensteinplan. Wer nicht weiß, dass es sie gibt, klickt nicht darauf.</li>
-              <li><b>Der Sprung nach draußen ist nicht markiert.</b> Von der Vision geht es auf die Webseite der Akademie – anderes Projekt, andere Marke, kein Hinweis darauf.</li>
+              <li><b>Die Projektseite ist die Schaltzentrale.</b> Von dort führen zwei Achsen
+                weg: über die drei Themenfelder ins Thema, über die Termine in den Verlauf.</li>
+              <li><b>Der Werkzeugkasten sammelt ein,</b> was auf den Unterseiten verstreut
+                liegt – damit niemand suchen muss, wo noch mal das Strategiemodell erklärt war.</li>
+              <li><b>Der Meilensteinplan gehört beiden Achsen:</b> er steht unter Strategie und
+                ist von den Terminen aus erreichbar.</li>
             </ul>
           </div>
 
           <div class="sm-spalte">
-            <p class="sm-spalte-kopf sm-spalte-kopf--vorschlag">Vorschläge</p>
-            <ul class="sm-liste sm-liste--vorschlag">
-              <li><b>Einen Namen je Gegenstand.</b> Überall „Meilensteinplan“, auch in der Zeile auf der Projektseite.</li>
-              <li><b>Vollen Pfad in die Kopfzeile.</b> „SV Akademie · Strategie · Ist-Situation“ statt nur eines Schritts zurück.</li>
-              <li><b>Die drei Themenfelder als feste Reiter</b> auf jeder Unterseite, mit Markierung des aktuellen – auch auf Ebene 3. Dann ist die Struktur immer sichtbar, statt erinnert zu werden.</li>
-              <li><b>Vertiefungen auf der Ausgangsseite ankündigen.</b> Auf der Strategieseite steht, was darunter liegt; auf der Projektseite steht es nicht. Eine Zeile „drei Vertiefungen“ reicht.</li>
-              <li><b>Externe Ziele kennzeichnen</b> – ein kleines Zeichen am Knopf genügt.</li>
+            <p class="sm-spalte-kopf sm-spalte-kopf--warnung">Noch offen</p>
+            <ul class="sm-liste">
+              <li><b>Die Termine haben keine Daten.</b> Ohne sie ist die Reihenfolge behauptet,
+                nicht belegt.</li>
+              <li><b>Nur ein Termin hat eine Agenda.</b> Führungskreise und Workshops warten
+                auf ihre Unterlagen.</li>
+              <li><b>Der Meilensteinplan liegt unter drei Adressen</b> (hell, fein, dunkel).
+                Das ist in Ordnung, solange nur die Seite selbst umschaltet – im Menü und in
+                der Sitemap steht er einmal.</li>
             </ul>
           </div>
 
         </div>
 
         <p class="sm-fuss">Nicht auf der Liste: dass unter Selbstverständnis und Vision keine
-          Unterseiten hängen. Das ist kein Strukturfehler, sondern der Stand der Inhalte.</p>
+          eigenen Unterseiten hängen. Das ist kein Strukturfehler, sondern der Stand der
+          Inhalte.</p>
       </div>
 
     </div>

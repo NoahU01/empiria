@@ -42,6 +42,7 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/xmas-13.html",
                   "site/projekte/sv-akademie.html",
     "site/projekte/sitemap.html",
+    "site/projekte/sv-termine.html",
                   "site/projekte/sv-selbstverstaendnis.html",
                   "site/projekte/sv-vision.html",
                   "site/projekte/sv-strategie.html",
@@ -68,7 +69,7 @@ INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter
 # Produktion ausschliesslich Problem, Loesung und Leistungen.
 MENUE_VERBOTEN = ["Entwicklung", "Archiv", "capiamo", "Aufsichtsräte", "Sandbox",
                   "X-Mas", "Budget-Retter", "Projekte", "SV Akademie",
-                  "Zielbild", "Meilensteine", "Sitemap"]
+                  "Zielbild", "Meilensteine", "Sitemap", "Termine"]
 
 
 def _lauf(*args):
