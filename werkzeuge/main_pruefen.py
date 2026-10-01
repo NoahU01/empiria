@@ -44,6 +44,8 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/projekte/sv-selbstverstaendnis.html",
                   "site/projekte/sv-vision.html",
                   "site/projekte/sv-strategie.html",
+    "site/projekte/sv-strategie-ist.html",
+    "site/projekte/sv-strategie-stossrichtungen.html",
                   "site/strategie/zielbild.html",
                   "site/strategie/meilensteine.html",
                   # Das Stylesheet gehoert nur zu diesen Seiten - ohne sie hat

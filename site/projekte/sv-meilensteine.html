@@ -1532,7 +1532,21 @@ img { max-width: 100%; display:block; }
 .me__station-titel, .g2__station-titel, .me__station-nr, .g2__station-nr,
 .me__rail-bahn b, .g2__rail-bahn b, .g2__karte-titel,
 .k-detail__titel, .k-detail__block h3 { font-family: var(--font-head); }
-.mk__titel { font-weight: 700; letter-spacing: -0.01em; }
+.mk__titel { font-weight: 500; letter-spacing: -0.015em; }
+/* Der Kopf traegt die Zeile allein: breiterer Textblock, damit die
+   Ueberschrift in zwei Zeilen steht statt in dreien. Das Wort, um das es
+   geht, steht fett und gelb hinterlegt - wie die Hochstellungen auf der
+   uebrigen Website. */
+.mk__text { flex: 1 1 34rem; max-width: 48rem; }
+/* Die Sammelregel weiter unten setzt jedem h1 eine Breite von 24ch - hier
+   soll die Zeile laenger laufen, damit die Ueberschrift in zwei Zeilen passt. */
+.mk__titel { font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.16;
+             max-width: 30ch; text-wrap: normal; }
+.mk__hl { display: inline-block; font-weight: 700;
+          background-color: #fff400; color: #1a1817;  /* empiria-Gelb, nicht das SV-Gelb aus --gelb */
+          padding: 0 .16em; margin-left: -.16em; }
+.k--dunkel .mk__hl { color: #1a1817; }
+.mk__lead { max-width: 44rem; font-size: 1.02rem; line-height: 1.62; }
 .me__halt-label, .g2__karte-satz, .mk__lead, .mk__eintrag { font-family: var(--font-body); }
 
 .k-bar { background-color: var(--hellgrau); border-bottom: 1px solid var(--grau2); }
@@ -1607,11 +1621,12 @@ b, strong { font-weight: 600; }
 
 <header class="mk">
   <div class="mk__text">
-    <h1 class="mk__titel">Meilensteine zur Transformation der SV Akademie</h1>
+    <h1 class="mk__titel"><span class="mk__hl">Meilensteine</span> zur Transformation der SV&nbsp;Akademie</h1>
     <p class="mk__lead">
-      Drei Stränge laufen parallel auf das Zielbild zu. Dazwischen liegen fünf
-      Ergebnisstufen mit festen Terminen — jede ist erst erreicht, wenn alle drei
-      Stränge ihren Teil erledigt haben.
+      Von „Ende 2026 · Big Bang“ bis Ende 2028: 26 Arbeitspakete auf drei Bahnen,
+      verknüpft zu fünf Ergebnisstufen mit festem Termin. Eine Stufe gilt erst als
+      erreicht, wenn jede Bahn ihren Teil geliefert hat — und jeder Pfeil im Bild
+      heißt „muss vorher fertig sein“.
     </p>
   </div>
   <div class="mk__boxen">
