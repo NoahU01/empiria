@@ -653,6 +653,10 @@
 .ab-nr { font-family: var(--font-serif); font-weight: 700; color: var(--grey-50); }
 .ab-felder { margin: 0; display: grid; gap: 14px; }
 .ab-feld { display: grid; grid-template-columns: 7.5rem 1fr; gap: 4px 20px; }
+/* Zugeklappt steht nur ein Feld da - eine Beschriftung "Ergebnis" erklaert
+   dann nichts und schiebt den Satz nach rechts. Beides weg. */
+.ab-block:not(.is-offen) .ab-feld { grid-template-columns: 1fr; }
+.ab-block:not(.is-offen) .ab-feld dt { display: none; }
 .ab-feld dt { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
               font-weight: 600; color: var(--grey-50); padding-top: 2px; }
 .ab-feld dd { margin: 0; font-size: .96rem; line-height: 1.7; color: var(--grey-70); }
@@ -1071,26 +1075,6 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
 .ab-ablauf[data-ansicht="agenda2"] .ab-block:nth-child(odd) .ab-inhalt {
   padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
 
-/* --- Agenda 3.0: die Nummern als schwarze Kreise mit gelber Zahl, wie die
-       Kreise bei den Themenfeldern auf der Projektseite. --- */
-.ab-ablauf[data-ansicht="agenda3"] .ab-nr { width: 30px; height: 30px; border-radius: 50%;
-  display: grid; place-items: center; background: var(--ink); color: var(--hl);
-  font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
-.ab-ablauf[data-ansicht="agenda3"] .ab-marke { gap: 14px; }
-.ab-ablauf[data-ansicht="agenda3"] .ab-block { border-bottom-color: #e4e1dd; }
-
-/* --- Agenda 4.0: Weiss und Grau im Wechsel, dazu die schwarzen Zahlenkreise.
-       Ohne Trennstriche - der Farbwechsel zeigt die Grenze schon, zwei
-       Trennzeichen uebereinander waeren doppelt gemoppelt. --- */
-.ab-ablauf[data-ansicht="agenda4"] .ab-block { border-bottom: 0; border-radius: var(--radius-card); }
-.ab-ablauf[data-ansicht="agenda4"] .ab-block:nth-child(even) { background: #faf9f7; }
-.ab-ablauf[data-ansicht="agenda4"] .ab-inhalt {
-  padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
-.ab-ablauf[data-ansicht="agenda4"] .ab-nr { width: 30px; height: 30px; border-radius: 50%;
-  display: grid; place-items: center; background: var(--ink); color: var(--hl);
-  font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
-.ab-ablauf[data-ansicht="agenda4"] .ab-marke { gap: 14px; }
-
 /* Zielpunkte aus dem Meilensteinplan: kein Kasten, sondern eine Marke auf
    einem Strich. Sie sind kein Termin, sondern das Ergebnis, das bis dahin
    vorliegen soll - das soll man auch sehen. */
@@ -1117,14 +1101,16 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
 /* Die Roll-ups sind doppelt so hoch wie breit. Ohne Deckel passen Bild,
    Text und Knopf nicht zusammen ins Fenster - dann muesste man im Pop-up
    scrollen, um ueberhaupt an den Download zu kommen. */
+/* Kein weisser Rahmen hinter den Blaettern - sie liegen direkt auf dem
+   dunklen Fenster, wie die Vorschau im Selbstverstaendnis und bei der
+   Startseite der Akademie. */
 .pj-rollup-bild { display: flex; justify-content: center; width: 100%;
-                  border: 1px solid #e4e1dd; border-radius: 12px;
-                  overflow: hidden; background: #fff; line-height: 0;
-                  transition: border-color .2s ease, box-shadow .2s ease; }
-.pj-rollup-bild:hover { border-color: var(--ink); box-shadow: 0 14px 32px rgba(0,0,0,.12); }
+                  border: 0; background: none; padding: 0; line-height: 0;
+                  border-radius: 10px; transition: transform .2s ease, box-shadow .2s ease; }
+.pj-rollup-bild:hover { transform: translateY(-2px);
+                        box-shadow: 0 18px 40px rgba(0,0,0,.35); }
 .pj-rollup-bild img { display: block; max-height: 46vh; width: auto; max-width: 100%;
-                      height: auto; }
-/* Das Fenster ist dunkel - Titel in Tinte waere darin nicht zu lesen. */
+                      height: auto; border-radius: 10px; }
 .pj-rollup b { font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
                line-height: 1.26; color: #fff; }
 .pj-rollup small { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.72); }
@@ -1171,3 +1157,56 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    schneidet der hochkante Ausschnitt die Ueberschrift weg. */
 .tm-dok-bild--quer { width: 72px; height: 54px; }
 .tm-dok-bild--quer img { object-position: center top; }
+
+/* ======================================================================
+   Drei andere Blicke auf denselben Ablauf
+   Gemeinsam: die Bloecke stehen untereinander und klappen auf. Verschieden
+   ist, was die Zeile traegt, solange sie zu ist.
+   ====================================================================== */
+.ab-uhr, .ab-modus { display: none; }
+
+/* --- Zeitachse: wo im Termin bin ich? ---------------------------------
+   Statt Dauer je Block die laufende Uhr. Im Termin selbst ist das die
+   Frage, die man wirklich hat. Links eine Linie mit einem Punkt je Block. */
+.ab-ablauf[data-ansicht="uhr"] .ab-uhr { display: block; position: relative;
+  width: 86px; flex: 0 0 auto; padding-left: 26px;
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.02rem; color: var(--ink); }
+.ab-ablauf[data-ansicht="uhr"] .ab-uhr::before { content: ""; position: absolute; left: 4px;
+  top: 50%; width: 11px; height: 11px; margin-top: -5.5px; border-radius: 50%;
+  background: #fff; border: 2px solid var(--grey-50); }
+.ab-ablauf[data-ansicht="uhr"] .ab-block.is-offen .ab-uhr::before { border-color: var(--ink);
+  background: var(--ink); }
+/* Die durchgehende Linie zwischen den Punkten. */
+.ab-ablauf[data-ansicht="uhr"] .ab-block { position: relative; }
+.ab-ablauf[data-ansicht="uhr"] .ab-block::before { content: ""; position: absolute;
+  left: 9.5px; top: 0; bottom: 0; width: 1px; background: #ddd9d4; }
+.ab-ablauf[data-ansicht="uhr"] .ab-block:first-child::before { top: 50%; }
+.ab-ablauf[data-ansicht="uhr"] .ab-block:last-child::before { bottom: 50%; }
+.ab-ablauf[data-ansicht="uhr"] .ab-nr,
+.ab-ablauf[data-ansicht="uhr"] .ab-marke-dauer { display: none; }
+.ab-ablauf[data-ansicht="uhr"] .ab-inhalt { padding-left: 86px; }
+.ab-ablauf[data-ansicht="uhr"] .ab-marke { padding-left: 0; }
+
+/* --- Modus: was passiert hier? -----------------------------------------
+   Ein Wort statt einer Nummer. Es traegt genau die Information, die die
+   Skizze in der ausfuehrlichen Ansicht andeuten sollte - nur lesbar. */
+.ab-ablauf[data-ansicht="modus"] .ab-modus { display: inline-block; width: 124px;
+  flex: 0 0 auto; padding: 5px 0; font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700; color: var(--grey-50);
+  border-bottom: 2px solid var(--hl); margin-right: 8px; }
+.ab-ablauf[data-ansicht="modus"] .ab-block.is-offen .ab-modus { color: var(--ink); }
+.ab-ablauf[data-ansicht="modus"] .ab-nr { display: none; }
+.ab-ablauf[data-ansicht="modus"] .ab-inhalt { padding-left: 0; }
+
+/* --- Gewicht: wie viel Zeit frisst was? --------------------------------
+   Die Zeile ist so hoch, wie der Block lang ist. 45 Minuten sehen dann auch
+   nach 45 Minuten aus - das sieht man in keiner Liste, in der jede Zeile
+   gleich hoch ist. 1,9 px je Minute: aus 10 Minuten werden 19 px Zusatz. */
+.ab-ablauf[data-ansicht="gewicht"] .ab-block:not(.is-offen) .ab-inhalt {
+  min-height: calc(74px + var(--min) * 1.9px);
+  display: flex; flex-direction: column; justify-content: center; }
+.ab-ablauf[data-ansicht="gewicht"] .ab-block:not(.is-offen) {
+  border-left: 3px solid var(--ink); padding-left: 16px; }
+.ab-ablauf[data-ansicht="gewicht"] .ab-nr { align-self: center; }
+.ab-ablauf[data-ansicht="gewicht"] .ab-marke-dauer { font-size: .92rem; color: var(--ink);
+  font-family: var(--font-serif); font-weight: 700; }

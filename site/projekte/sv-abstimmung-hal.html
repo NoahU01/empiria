@@ -575,19 +575,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="ab-ansichten" role="group" aria-label="Darstellung des Ablaufs">
         <span class="ab-ansichten-tag">Anzeigen als</span>
-        <button type="button" class="ab-pill is-aktiv" data-ansicht="ausfuehrlich" aria-pressed="true">Ausführlich</button>
+        <button type="button" class="ab-pill is-aktiv" data-ansicht="uhr" aria-pressed="true">Zeitachse</button>
+        <button type="button" class="ab-pill" data-ansicht="modus" aria-pressed="false">Modus</button>
+        <button type="button" class="ab-pill" data-ansicht="gewicht" aria-pressed="false">Gewicht</button>
         <button type="button" class="ab-pill" data-ansicht="kompakt" aria-pressed="false">Agenda</button>
-        <button type="button" class="ab-pill" data-ansicht="agenda2" aria-pressed="false">Agenda 2.0</button>
-        <button type="button" class="ab-pill" data-ansicht="agenda3" aria-pressed="false">Agenda 3.0</button>
-        <button type="button" class="ab-pill" data-ansicht="agenda4" aria-pressed="false">Agenda 4.0</button>
+        <button type="button" class="ab-pill" data-ansicht="ausfuehrlich" aria-pressed="false">Ausführlich</button>
       </div>
 
-      <div class="ab-ablauf" data-ansicht="ausfuehrlich">
+      <div class="ab-ablauf" data-ansicht="uhr">
 
 
 
-        <div class="ab-block">
-          <div class="ab-spur ab-spur--erste" style="--min:10;--vor:0">
+        <div class="ab-block" style="--min:10;--vor:0">
+          <div class="ab-spur ab-spur--erste">
             <span class="ab-dauer">10<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--einstieg" aria-hidden="true">
@@ -599,7 +599,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-nr">01</span><span class="ab-marke-titel">Einstieg und Erwartungsklärung</span><span class="ab-marke-dauer">10 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:00</span><span class="ab-nr">01</span><span class="ab-modus">Rahmen</span><span class="ab-marke-titel">Einstieg und Erwartungsklärung</span><span class="ab-marke-dauer">10 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -621,8 +621,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="ab-block">
-          <div class="ab-spur" style="--min:15;--vor:10">
+        <div class="ab-block" style="--min:15;--vor:10">
+          <div class="ab-spur">
             <span class="ab-dauer">15<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--zuhoeren" aria-hidden="true">
@@ -631,7 +631,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-nr">02</span><span class="ab-marke-titel">Das Bild von M.&nbsp;S.</span><span class="ab-marke-dauer">15 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:10</span><span class="ab-nr">02</span><span class="ab-modus">Zuhören</span><span class="ab-marke-titel">Das Bild von M.&nbsp;S.</span><span class="ab-marke-dauer">15 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -661,8 +661,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="ab-block">
-          <div class="ab-spur" style="--min:45;--vor:25">
+        <div class="ab-block" style="--min:45;--vor:25">
+          <div class="ab-spur">
             <span class="ab-dauer">45<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--zielbild" aria-hidden="true">
@@ -673,7 +673,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-nr">03</span><span class="ab-marke-titel">Gemeinsames Zielbild</span><span class="ab-marke-dauer">45 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">0:25</span><span class="ab-nr">03</span><span class="ab-modus">Entwickeln</span><span class="ab-marke-titel">Gemeinsames Zielbild</span><span class="ab-marke-dauer">45 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -722,8 +722,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="ab-block">
-          <div class="ab-spur" style="--min:30;--vor:70">
+        <div class="ab-block" style="--min:30;--vor:70">
+          <div class="ab-spur">
             <span class="ab-dauer">30<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--weg" aria-hidden="true">
@@ -735,7 +735,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-nr">04</span><span class="ab-marke-titel">Vom Zielbild zur Strategie</span><span class="ab-marke-dauer">30 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:10</span><span class="ab-nr">04</span><span class="ab-modus">Entscheiden</span><span class="ab-marke-titel">Vom Zielbild zur Strategie</span><span class="ab-marke-dauer">30 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -766,8 +766,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="ab-block">
-          <div class="ab-spur ab-spur--letzte" style="--min:20;--vor:100">
+        <div class="ab-block" style="--min:20;--vor:100">
+          <div class="ab-spur ab-spur--letzte">
             <span class="ab-dauer">20<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
             <div class="sk sk--rolle" aria-hidden="true">
@@ -778,7 +778,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
           </div>
           <div class="ab-inhalt">
-            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-nr">05</span><span class="ab-marke-titel">Sponsoring, Rolle und Abschluss</span><span class="ab-marke-dauer">20 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
+            <button type="button" class="ab-marke" aria-expanded="false"><span class="ab-uhr">1:40</span><span class="ab-nr">05</span><span class="ab-modus">Verabreden</span><span class="ab-marke-titel">Sponsoring, Rolle und Abschluss</span><span class="ab-marke-dauer">20 Min</span><span class="ab-marke-pfeil" aria-hidden="true"></span></button>
             <dl class="ab-felder">
               <div class="ab-feld">
                 <dt>Ergebnis</dt>
@@ -890,7 +890,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     });
   });
 
-  setze('ausfuehrlich');
+  setze('uhr');
 })();
 </script>
 
