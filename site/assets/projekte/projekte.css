@@ -616,7 +616,7 @@
 
 /* ---- Ablauf: Spur links, Inhalt rechts ---------------------------------- */
 .ab-ablauf { margin-top: clamp(26px,3.2vw,40px); }
-.ab-block { display: grid; grid-template-columns: minmax(0,300px) 1fr;
+.ab-block { display: grid; grid-template-columns: minmax(0,214px) 1fr;
             gap: clamp(20px,3vw,52px); align-items: stretch; }
 .ab-spur { position: relative; display: flex; flex-direction: column; gap: 18px;
            padding: clamp(18px,2vw,24px); background: #faf9f7;
@@ -629,7 +629,7 @@
 .ab-spur--letzte { border-bottom: 1px solid #e4e1dd;
                    border-radius: 0 0 var(--radius-card) var(--radius-card); }
 .ab-block + .ab-block .ab-spur { border-top: 1px solid #ebe8e5; }
-.ab-dauer { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem;
+.ab-dauer { font-family: var(--font-serif); font-weight: 700; font-size: 1.24rem;
             line-height: 1; color: var(--ink); }
 .ab-dauer small { font-size: .72rem; font-family: var(--font-sans); font-weight: 600;
                   letter-spacing: .1em; text-transform: uppercase; color: var(--grey-50);
@@ -638,8 +638,12 @@
    taugt dafuer nicht - sie richtet sich nach dem Text daneben. */
 .ab-anteil { display: block; width: 100%; height: 4px; border-radius: 999px;
              background: #e4e1dd; margin-top: -6px; }
+/* Die Markierung wandert mit: --vor sind die Minuten, die vor diesem Block
+   liegen. So sieht man an der Spur, wo im Termin man gerade ist, statt
+   fuenfmal am selben Punkt zu starten. */
 .ab-anteil i { display: block; height: 100%; border-radius: 999px; background: var(--ink);
-               width: calc(var(--min) / 120 * 100%); }
+               width: calc(var(--min) / 120 * 100%);
+               margin-left: calc(var(--vor, 0) / 120 * 100%); }
 /* Die Skizze sitzt in der verbleibenden Hoehe mittig. */
 .ab-spur .sk { margin-top: auto; margin-bottom: auto; }
 
@@ -676,7 +680,10 @@
                   color: var(--grey-70); }
 
 /* ---- Skizzen: dieselben Grundformen wie in den Strukturbildern ---------- */
-.sk { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+/* Die Skizze erklaert den Modus des Blocks, mehr nicht - sie darf den Text
+   daneben nicht ueberstrahlen. Deshalb klein und blass. */
+.sk { display: flex; flex-direction: column; gap: 5px; align-items: flex-start;
+      transform: scale(.78); transform-origin: left center; opacity: .9; }
 .sk-zeile { display: block; height: 5px; border-radius: 999px; background: #d8d3cd; }
 .sk-zeile--dunkel { background: #9a938b; height: 7px; }
 .sk-leiste { display: flex; gap: 4px; margin-bottom: 4px; }
@@ -760,29 +767,6 @@
 .ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-inhalt { padding: clamp(18px,2vw,24px) 0; }
 .ab-ablauf[data-ansicht="ausfuehrlich"] .ab-marke-dauer { display: none; }
 
-/* --- Zeitstrahl: die zwei Stunden als ein Band --- */
-.ab-strahl { display: none; }
-.ab-ablauf[data-ansicht="strahl"] .ab-strahl {
-  display: flex; gap: 4px; margin-bottom: clamp(22px,2.6vw,32px); }
-.ab-strahl-stueck { appearance: none; -webkit-appearance: none; cursor: pointer;
-                    /* Die Breite ist die Dauer: 45 Minuten sind viereinhalbmal
-                       so breit wie 10. Genau das sieht man hier und sonst nicht. */
-                    flex: var(--min) 1 0; min-width: 0;
-                    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
-                    padding: 12px 14px; border: 1px solid #e4e1dd; border-radius: 12px;
-                    background: #fff; color: var(--ink); font-family: var(--font-sans);
-                    transition: border-color .15s ease, background .15s ease; }
-.ab-strahl-stueck:hover { border-color: var(--ink); }
-.ab-strahl-stueck.is-aktiv { background: var(--ink); border-color: var(--ink); color: #fff; }
-.ab-strahl-stueck b { font-family: var(--font-serif); font-weight: 700; font-size: 1rem;
-                      line-height: 1; }
-.ab-strahl-stueck span { font-size: .74rem; font-weight: 600; color: var(--grey-50);
-                         letter-spacing: .04em; }
-.ab-strahl-stueck.is-aktiv span { color: rgba(255,255,255,.75); }
-
-@media (max-width: 760px) {
-  .ab-strahl-stueck { padding: 10px; }
-  .ab-strahl-stueck span { display: none; }
 }
 
 /* ==========================================================================
@@ -1078,3 +1062,20 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
 @media (max-width: 900px) {
   .pj-schritt-box.is-offen .pj-schritt-koerper { grid-template-columns: 1fr; }
 }
+
+/* --- Agenda 2.0: jedes zweite Segment hellgrau, damit man die Grenzen
+       zwischen den Bloecken schneller sieht. --- */
+.ab-ablauf[data-ansicht="agenda2"] .ab-block:nth-child(even) {
+  background: #faf9f7; border-radius: var(--radius-card); border-bottom: 0; }
+.ab-ablauf[data-ansicht="agenda2"] .ab-block:nth-child(even) .ab-inhalt {
+  padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
+.ab-ablauf[data-ansicht="agenda2"] .ab-block:nth-child(odd) .ab-inhalt {
+  padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
+
+/* --- Agenda 3.0: die Nummern als schwarze Kreise mit gelber Zahl, wie die
+       Kreise bei den Themenfeldern auf der Projektseite. --- */
+.ab-ablauf[data-ansicht="agenda3"] .ab-nr { width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--ink); color: var(--hl);
+  font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
+.ab-ablauf[data-ansicht="agenda3"] .ab-marke { gap: 14px; }
+.ab-ablauf[data-ansicht="agenda3"] .ab-block { border-bottom-color: #e4e1dd; }
