@@ -502,35 +502,35 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
-  <!-- ===== Ausgangssituation ===== -->
+  <!-- ===== Projekt-Scope ===== -->
   <section class="section">
     <div class="container">
       <div class="pj-kopfzeile">
-        <p class="kicker">Ausgangssituation</p>
-        <h2 class="h-serif">Das Angebot ist gewachsen. <span class="hl">Die Begründung nicht.</span></h2>
-        <p class="lead">Eine Akademie, die über Jahre gewachsen ist, hat selten ein Problem mit
-          dem Angebot. Sie hat ein Problem damit, es zu begründen.</p>
+        <p class="kicker">Projekt-Scope</p>
+        <h2 class="h-serif">Was am Ende <span class="hl">stehen soll.</span></h2>
+        <p class="lead">Die SV Akademie bekommt eine Strategie, die man erklären kann –
+          vom Selbstverständnis über das Zielbild bis zum Weg dorthin. Drei Ergebnisse,
+          die aufeinander aufbauen.</p>
       </div>
 
-      <div class="pj-punkte">
-        <div class="pj-punkt">
-          <span class="pj-punkt-nr">01</span>
-          <h3>Vieles gilt als gesetzt</h3>
-          <p>Formate laufen weiter, weil sie schon immer gelaufen sind. Warum es sie gibt, kann
-            im Zweifel niemand in einem Satz sagen.</p>
+      <div class="pj-ziele">
+        <div class="pj-ziel">
+          <span class="pj-ziel-nr">1</span>
+          <h3>Ein Selbstverständnis, auf das sich alle berufen können</h3>
         </div>
-        <div class="pj-punkt">
-          <span class="pj-punkt-nr">02</span>
-          <h3>Der Nutzen bleibt unausgesprochen</h3>
-          <p>Was die Teilnehmer wirklich davon haben, steht nirgends. Damit fehlt auch das
-            Argument, warum sie kommen sollten.</p>
+        <div class="pj-ziel">
+          <span class="pj-ziel-nr">2</span>
+          <h3>Ein Zielbild, das man erklären kann, ohne es vorzulesen</h3>
         </div>
-        <div class="pj-punkt">
-          <span class="pj-punkt-nr">03</span>
-          <h3>Jede Entscheidung beginnt von vorn</h3>
-          <p>Ohne gemeinsames Zielbild wird jedes neue Thema einzeln diskutiert – und jedes Mal
-            mit denselben Argumenten.</p>
+        <div class="pj-ziel">
+          <span class="pj-ziel-nr">3</span>
+          <h3>Ein Weg dorthin, mit Reihenfolge und Verantwortung</h3>
         </div>
+      </div>
+
+      <div class="pj-scope-fuss">
+        <button type="button" class="btn btn--dark btn--sm" data-modal-target="ausgangslageModal">Ausgangssituation</button>
+        <a class="btn btn--ghost btn--sm" href="#themenfelder">Zu den Themenfeldern</a>
       </div>
     </div>
   </section>
@@ -591,94 +591,39 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
 
       <div class="pj-modell-zeile">
-        <p>Das Modell dahinter – dieselbe Logik, die wir auch bei Kunden anwenden.</p>
-        <button type="button" class="btn btn--dark btn--sm" data-modal-target="strategiemodellModal">Strategiemodell ansehen</button>
+        <button type="button" class="pj-modell-mini" data-modal-target="strategiemodellModal"
+                aria-label="Strategiemodell groß ansehen">
+          <img src="/assets/projekte/strategiemodell-mini.webp" alt="" width="407" height="480" loading="lazy">
+        </button>
+        <p>Dahinter steht unser Strategiemodell – dieselbe Logik, die wir auch bei Kunden
+          anwenden. Die Reihenfolge der drei Felder kommt daher.</p>
+        <button type="button" class="btn btn--dark btn--sm" data-modal-target="strategiemodellModal">Modell ansehen</button>
       </div>
     </div>
   </section>
 
-  <!-- ===== Ergebnisse ===== -->
-  <section class="section" id="ergebnisse">
+  <!-- ===== Was schon vorliegt ===== -->
+  <section class="section">
     <div class="container">
       <div class="pj-kopfzeile">
-        <p class="kicker">Ergebnisse</p>
-        <h2 class="h-serif">Was am Ende <span class="hl">steht.</span></h2>
-        <p class="lead">Drei Dinge, die zusammengehören: ein Leitbild, auf das sich alle berufen
-          können, eine Akademie, die man von außen versteht, und die Strukturen, mit denen das
-          im Alltag trägt.</p>
+        <p class="kicker">Stand</p>
+        <h2 class="h-serif">Was schon <span class="hl">vorliegt.</span></h2>
       </div>
 
-      <div class="pj-ergebnisse">
-
-        <div class="pj-ergebnis">
-          <span class="pj-ergebnis-kopf"><span class="pj-status pj-status--fertig">Liegt vor</span></span>
-          <h3>Leitbild</h3>
-          <p>Wofür die Akademie steht, schriftlich festgehalten. Grundlage für alles Weitere –
-            und der Maßstab, an dem sich Vision und Strategie messen lassen.</p>
-          <a class="pj-ergebnis-link" href="/projekte/sv-selbstverstaendnis.html">Zum Selbstverständnis &#8594;</a>
-        </div>
-
-        <div class="pj-ergebnis">
-          <span class="pj-ergebnis-kopf"><span class="pj-status pj-status--laeuft">In Arbeit</span></span>
-          <h3>Sichtbarkeit</h3>
-          <p>Die Akademie so erklärt, dass sie jeder versteht – als Homepage statt als Papier.
-            Was sich dort nicht sauber erklären lässt, ist in der Vision noch nicht geklärt.</p>
-          <button type="button" class="pj-ergebnis-link" data-modal-target="svHomepageModal">Startseite ansehen &#8594;</button>
-        </div>
-
-        <div class="pj-ergebnis">
-          <span class="pj-ergebnis-kopf"><span class="pj-status pj-status--offen">Offen</span></span>
-          <h3>Strukturen</h3>
-          <p>Formate, Rollen und die Zusammenarbeit mit den Fachbereichen – damit aus dem
-            Zielbild ein Betrieb wird und nicht ein Papier im Laufwerk.</p>
-          <a class="pj-ergebnis-link" href="/projekte/sv-strategie.html">Zur Strategie &#8594;</a>
-        </div>
-
-      </div>
-
-      <div class="pj-browser-grid pj-browser-grid--ergebnis">
-        <button type="button" class="pj-browser-btn" data-modal-target="svHomepageModal"
-                aria-label="Startseite der SV Akademie groß ansehen">
-          <span class="perspektive-browser">
-            <span class="pb-bar">
-              <span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="pb-url">sv-akademie.de<span class="pb-caret" aria-hidden="true"></span></span>
-            </span>
-            <span class="pb-page pj-browser-seite">
-              <img src="/assets/projekte/sv-akademie-homepage.webp"
-                   alt="Startseite der SV Akademie: Wir sind Dein Ansprechpartner für Bildung und Weiterentwicklung"
-                   width="1440" height="900" loading="lazy">
-            </span>
-          </span>
-        </button>
-
-        <div class="pj-browser-text">
-          <p class="pj-tag">Zwischenstand Sichtbarkeit</p>
-          <p>Die Homepage ist der Prüfstein für die Vision: Sie zwingt zu Entscheidungen, die
-            ein Strategiepapier offenlassen kann. Wen sprechen wir zuerst an? Was versprechen
-            wir? Was lassen wir weg?</p>
-          <div class="pj-browser-aktionen">
-            <button type="button" class="btn btn--dark" data-modal-target="svHomepageModal">Startseite ansehen</button>
-            <!-- ZIEL BITTE SETZEN: Der Entwurf liegt bisher nur lokal
-                 (~/Downloads/SV-Akademie-Website) und ist nicht gehostet. -->
-            <span class="pj-hinweis">Entwurf, noch nicht veröffentlicht.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="pj-ablage">
-        <p class="pj-tag">Ablage</p>
-        <!-- Hier kommen die Dokumente rein. Aufbau einer Zeile:
-             <li><span class="pj-dok-ic">PDF</span><div><b>Titel</b><small>Datum &middot; Kurzbeschreibung</small></div></li>
-             Die Dateien gehoeren nach site/assets/projekte/. -->
-        <ul class="pj-dok">
-          <li>
-            <span class="pj-dok-ic">PDF</span>
-            <div><b>Selbstverständnis der SV Akademie</b><small>Grundlage des Projekts &middot; liegt vor</small></div>
-            <a class="pj-dok-link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">Öffnen</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="pj-dok">
+        <li>
+          <span class="pj-dok-ic">PDF</span>
+          <div><b>Selbstverständnis der SV Akademie</b><small>Grundlage des Projekts &middot; Themenfeld 1</small></div>
+          <a class="pj-dok-link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">Öffnen</a>
+        </li>
+        <li>
+          <span class="pj-dok-ic">WEB</span>
+          <div><b>Startseite der Akademie</b><small>Entwurf aus der Vision &middot; Themenfeld 2</small></div>
+          <button type="button" class="pj-dok-link" style="background:none;border:0;font:inherit;cursor:pointer" data-modal-target="svHomepageModal">Ansehen</button>
+        </li>
+      </ul>
+      <!-- Weitere Dokumente kommen als zusaetzliche <li> dazu.
+           Die Dateien gehoeren nach site/assets/projekte/. -->
     </div>
   </section>
 
@@ -690,6 +635,34 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
   </div>
 </footer>
+
+<div class="modal-overlay" id="ausgangslageModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Ausgangssituation</h3>
+        <p>Warum das Projekt läuft.</p>
+      </div>
+      <!-- INHALT BITTE SETZEN: Hier gehoert der echte Anlass hinein - der
+           Stand, den Du aus den Gespraechen mit der Akademie kennst. Bis
+           dahin stehen hier nur die Fragen, die das Projekt beantwortet;
+           erfundene Befunde stehen hier bewusst nicht. -->
+      <div class="pj-modal-text">
+        <p>Die Fragen, auf die das Projekt eine Antwort geben soll:</p>
+        <ul>
+          <li>Wofür steht die Akademie – und wofür ausdrücklich nicht?</li>
+          <li>Was haben Mitarbeitende und Vertriebspartner konkret davon?</li>
+          <li>Woran lässt sich erkennen, ob ein Format gewirkt hat?</li>
+          <li>Wie entscheidet die Akademie künftig, was sie anbietet und was nicht?</li>
+        </ul>
+        <p class="pj-hinweis">Der konkrete Anlass aus den Gesprächen ist hier noch nicht
+          hinterlegt – gib ihn mir, dann steht er an dieser Stelle.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="modal-overlay" id="svHomepageModal" data-generic>
   <div class="modal-wrap modal-wrap--structure">

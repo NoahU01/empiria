@@ -97,6 +97,8 @@
 .pj-dok { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pj-dok li { display: flex; align-items: center; gap: 14px; padding: 15px 17px;
              background: #fff; border: 1px solid #e4e1dd; border-radius: 14px; }
+/* Der Textblock muss wachsen, sonst klebt der Link am Titel statt rechts. */
+.pj-dok li > div { flex: 1 1 auto; min-width: 0; }
 .pj-dok-ic { flex: 0 0 34px; height: 34px; border-radius: 9px; background: var(--ink);
              color: var(--hl); display: grid; place-items: center; font-size: .66rem; font-weight: 700; }
 .pj-dok b { font-weight: 600; font-size: .96rem; }
@@ -207,28 +209,6 @@
                    background: #faf9f7; border-radius: var(--radius-card); }
 .pj-modell-zeile p { margin: 0; color: var(--grey-70); font-size: .95rem; }
 
-/* ---- Ergebnisse ---------------------------------------------------------- */
-.pj-ergebnisse { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-                 grid-template-rows: repeat(4, auto);
-                 gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
-.pj-ergebnis { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 0;
-               padding: clamp(20px,2.2vw,28px); border: 1px solid #e4e1dd;
-               border-radius: var(--radius-card); background: #fff; }
-.pj-ergebnis > * { margin: 0; }
-.pj-ergebnis h3 { padding-top: 14px; font-family: var(--font-serif); font-weight: 700;
-                  font-size: 1.2rem; line-height: 1.24; }
-.pj-ergebnis p { padding-top: 10px; font-size: .94rem; line-height: 1.64; color: var(--grey-70); }
-.pj-ergebnis-link { align-self: end; padding-top: 16px; background: none; border: 0;
-                    font: inherit; font-size: .9rem; font-weight: 600; color: var(--ink);
-                    text-align: left; cursor: pointer; text-decoration: none; border-bottom: 0; }
-.pj-ergebnis-link:hover { text-decoration: underline; }
-.pj-browser-grid--ergebnis { margin-top: clamp(30px,3.6vw,46px); }
-.pj-ablage { margin-top: clamp(30px,3.6vw,46px); }
-.pj-dok-link { margin-left: auto; font-size: .88rem; font-weight: 600; color: var(--ink);
-               text-decoration: underline; border-bottom: 0; white-space: nowrap; }
-@media (max-width: 860px) { .pj-felder { grid-template-columns: 1fr; } }
-.pj-steckbrief-cta { display: block; width: 100%; text-align: center; margin-top: clamp(20px,2.2vw,26px); }
-
 /* ---- Unterseiten: die Arbeitsflaeche -------------------------------------
    Diese Seiten werden bearbeitet, nicht praesentiert. Darum zuerst die
    Orientierung (wo bin ich, welches Feld von dreien), dann die Bausteine als
@@ -264,3 +244,33 @@
                    align-items: center; margin-top: 6px; }
 .pj-baustein-dok .pj-dok-vorschau { max-height: 210px; box-shadow: 0 14px 34px rgba(0,0,0,.10); }
 @media (max-width: 620px) { .pj-baustein-dok { grid-template-columns: 1fr; } }
+
+/* ---- Projekt-Scope -------------------------------------------------------
+   Kurz halten: drei Saetze, was am Ende steht. Details zur Ausgangslage
+   liegen im Pop-up, damit die Seite nicht mit Vorgeschichte anfaengt. */
+.pj-ziele { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+            gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
+.pj-ziel { display: flex; align-items: flex-start; gap: 16px;
+           padding: clamp(20px,2.2vw,26px); border: 1px solid #e4e1dd;
+           border-radius: var(--radius-card); background: #fff; }
+.pj-ziel-nr { flex: 0 0 32px; height: 32px; border-radius: 50%; display: grid;
+              place-items: center; background: var(--ink); color: var(--hl);
+              font-family: var(--font-serif); font-weight: 700; font-size: .92rem; }
+.pj-ziel h3 { margin: 0; font-family: var(--font-serif); font-weight: 700;
+              font-size: 1.08rem; line-height: 1.34; }
+.pj-scope-fuss { display: flex; flex-wrap: wrap; gap: 14px;
+                 margin-top: clamp(24px,2.8vw,34px); }
+.pj-modal-text p { color: var(--grey-70); line-height: 1.72; margin: 0 0 1rem; }
+.pj-modal-text ul { margin: 0 0 1rem; padding-left: 20px; display: grid; gap: 8px; }
+.pj-modal-text li { color: var(--grey-70); line-height: 1.7; }
+
+/* ---- Kleine Vorschau des Modells ----------------------------------------
+   Bewusst klein: das Modell erklaert die Reihenfolge der Felder, es ist
+   nicht selbst eine Aufgabe. Ein Klick macht es gross. */
+.pj-modell-mini { appearance: none; -webkit-appearance: none; border: 1px solid #d9d5d1;
+                  margin: 0; padding: 0; background: var(--black); cursor: pointer;
+                  border-radius: 10px; overflow: hidden; flex: 0 0 auto; width: 74px;
+                  line-height: 0; transition: transform .2s ease, border-color .2s ease; }
+.pj-modell-mini:hover { transform: translateY(-2px); border-color: var(--ink); }
+.pj-modell-mini img { display: block; width: 100%; height: auto; }
+.pj-modell-zeile p { flex: 1 1 320px; }
