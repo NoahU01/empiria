@@ -492,9 +492,11 @@
 /* Die Methode steht NEBEN dem Schritt, nicht darin. Ein umrandeter Kasten
    im umrandeten Kasten wirkt abgekastelt - deshalb zwei Geschwister in einer
    Zeile, gleich hoch, der Schritt etwas breiter als die Methode. */
-.pj-schritt { display: grid; grid-template-columns: 54px 1fr .72fr; gap: clamp(16px,2vw,24px);
-              align-items: stretch; }
-.pj-schritt--solo { grid-template-columns: 54px 1fr; }
+/* Die Methode steht jetzt im aufgeklappten Kasten, nicht mehr daneben -
+   deshalb nur noch zwei Spalten: Nummer und Kasten ueber die volle Breite.
+   Sonst waeren die Kaesten mit Methode schmaler als die ohne. */
+.pj-schritt { display: grid; grid-template-columns: 54px 1fr; gap: clamp(16px,2vw,24px);
+              align-items: start; }
 .mk--neben { border-radius: var(--radius-card); align-self: start; }
 @media (max-width: 900px) {
   .pj-schritt { grid-template-columns: 54px 1fr; }
@@ -940,12 +942,6 @@
 .pj-ebenen li:nth-child(2)::before { width: 13px; }
 .pj-ebenen li:nth-child(3)::before { width: 16px; }
 .pj-ebenen b { color: var(--ink); font-weight: 600; }
-/* Die Punktfarben der Stakeholder-Priorisierung im Fliesstext. */
-.pj-punkt { display: inline-block; width: 9px; height: 9px; border-radius: 50%;
-            margin-right: 5px; vertical-align: baseline; }
-.pj-punkt--gruen { background: #059669; }
-.pj-punkt--blau  { background: #0B9FBD; }
-.pj-punkt--rot   { background: #C51F5D; }
 
 /* ---- Kopfzeile: voller Pfad und die drei Themenfelder als Reiter --------
    Vorher stand dort nur ein Schritt zurueck ("<- Strategie") und auf den
@@ -1031,3 +1027,54 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
 
 /* Ein Pfeil nach schraeg oben heisst: hier geht es aus dem Projekt heraus. */
 .pj-extern { display: inline-block; margin-left: 2px; font-size: .9em; line-height: 1; }
+
+/* ---- Protokoll: Schritte zum Aufklappen ---------------------------------
+   Fuenf Schritte, zugeklappt gleich hoch - so sieht man 1 bis 5 auf einen
+   Blick, statt durch drei Bildschirmhoehen Text zu scrollen. Offen ist
+   immer nur einer. */
+.pj-schritt-box { border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+                  background: #fff; overflow: hidden; }
+.pj-schritt-kopf { appearance: none; -webkit-appearance: none; cursor: pointer;
+                   width: 100%; display: flex; align-items: center; gap: 14px;
+                   padding: clamp(16px,1.9vw,21px) clamp(18px,2.2vw,26px);
+                   background: none; border: 0; text-align: left;
+                   font-family: var(--font-serif); font-weight: 700;
+                   font-size: 1.14rem; line-height: 1.26; color: var(--ink); }
+.pj-schritt-titel { flex: 1 1 auto; }
+.pj-schritt-pfeil { flex: 0 0 auto; width: 9px; height: 9px;
+                    border-right: 2px solid var(--grey-50);
+                    border-bottom: 2px solid var(--grey-50); transform: rotate(45deg);
+                    margin-bottom: 3px; transition: transform .2s ease; }
+.pj-schritt-kopf:hover .pj-schritt-pfeil { border-color: var(--ink); }
+.pj-schritt-box.is-offen .pj-schritt-pfeil { transform: rotate(-135deg); margin-bottom: -3px; }
+.pj-schritt-koerper { display: none; padding: 0 clamp(18px,2.2vw,26px) clamp(20px,2.4vw,28px);
+                      gap: clamp(16px,2vw,24px); }
+.pj-schritt-box.is-offen .pj-schritt-koerper { display: grid; grid-template-columns: 1fr .72fr;
+                                               align-items: start; }
+/* In den schmalen Armen der Gabelung steht die Methode unter dem Text. */
+.pj-gabel .pj-schritt-box.is-offen .pj-schritt-koerper { grid-template-columns: 1fr; }
+.pj-schritt-box .pj-schritt-inhalt { border: 0; border-radius: 0; background: none; padding: 0; }
+.pj-schritt-box .mk--neben { margin-top: clamp(16px,2vw,22px); }
+.pj-schritt-box.is-offen .pj-schritt-koerper > .mk--neben { margin-top: 0; }
+.pj-gabel .pj-schritt-kopf { font-size: 1.06rem; }
+/* Das Zeichen bleibt kleiner als die Textzeile - sonst sind die beiden
+   Arme hoeher als die fuenf Schritte darueber. */
+.pj-gabel .pj-schritt-nr--zweig { width: 24px; height: 24px; font-size: .72rem; }
+
+/* Aufzaehlungen im Protokoll: farbige Punkte und Striche statt Fliesstext. */
+.pj-punktliste, .pj-striche { list-style: none; margin: .9rem 0; padding: 0;
+                              display: grid; gap: 8px; }
+.pj-punktliste li, .pj-striche li { position: relative; padding-left: 20px;
+                                    font-size: .96rem; line-height: 1.6; color: var(--grey-70); }
+.pj-punktliste li::before { content: ""; position: absolute; left: 0; top: .52em;
+                            width: 10px; height: 10px; border-radius: 50%; }
+.pj-punktliste .pj-punkt--gruen::before { background: #059669; }
+.pj-punktliste .pj-punkt--blau::before  { background: #0B9FBD; }
+.pj-punktliste .pj-punkt--rot::before   { background: #C51F5D; }
+.pj-striche li::before { content: ""; position: absolute; left: 0; top: .72em; width: 11px;
+                         height: 2px; border-radius: 2px; background: var(--ink); }
+.pj-punktliste b, .pj-striche b { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .pj-schritt-box.is-offen .pj-schritt-koerper { grid-template-columns: 1fr; }
+}
