@@ -41,17 +41,21 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/xmas-11.html", "site/xmas-12.html",
                   "site/xmas-13.html",
                   "site/projekte/sv-akademie.html",
-                  "site/projekte/strategie-zielbild.html",
-                  "site/projekte/meilensteine.html",
+                  "site/projekte/sv-selbstverstaendnis.html",
+                  "site/projekte/sv-vision.html",
+                  "site/projekte/sv-strategie.html",
+                  "site/strategie/zielbild.html",
+                  "site/strategie/meilensteine.html",
                   # Das Stylesheet gehoert nur zu diesen Seiten - ohne sie hat
                   # es auf main nichts verloren.
                   "site/assets/projekte/projekte.css"]
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter",
-                 "/projekte"]
+                 "/projekte", "/strategie"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
 # Produktion ausschliesslich Problem, Loesung und Leistungen.
 MENUE_VERBOTEN = ["Entwicklung", "Archiv", "capiamo", "Aufsichtsräte", "Sandbox",
-                  "X-Mas", "Budget-Retter", "Projekte", "SV Akademie"]
+                  "X-Mas", "Budget-Retter", "Projekte", "SV Akademie",
+                  "Zielbild", "Meilensteine"]
 
 
 def _lauf(*args):

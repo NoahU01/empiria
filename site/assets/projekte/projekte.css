@@ -1,93 +1,118 @@
-/* ===== Projektseiten =========================================================
-   Arbeitsflaechen, keine Verkaufsseiten: heller Grund, viel Weissraum, alles
-   auf einen Blick. Dieselben Schriften und Farben wie der Rest des Hauses,
-   aber ruhiger - diese Seiten werden gelesen, nicht ueberflogen.
-   Liegt als eigene Datei, weil alle Projektseiten sie teilen; so laeuft die
-   Gestaltung nicht auseinander, sobald es mehr als ein Projekt gibt. */
+/* ===== Projekt- und Strategieseiten =========================================
+   Arbeitsflaechen im Schwarz-Gelb des Hauses: schwarzer Grund, weisse
+   Schrift, Gelb nur dort, wo es etwas bedeutet. Die Kopfzeile bleibt weiss
+   und unveraendert - sie gehoert dem Haus, nicht der Seite.
+   Liegt als eigene Datei, weil alle diese Seiten sie teilen; so laeuft die
+   Gestaltung nicht auseinander, sobald ein zweites Projekt dazukommt. */
 
-.pj-kopf { padding: clamp(34px,4.6vw,62px) 0 clamp(26px,3.2vw,40px); }
-.pj-zurueck { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 1.1rem;
-              font-size: .86rem; color: var(--grey-50); text-decoration: none; border-bottom: 0; }
-.pj-zurueck:hover { color: var(--ink); }
-.pj-zurueck span { font-size: 1.05em; line-height: 1; }
+body.pj { background: var(--black); color: #fff; }
+/* Die Kopfzeile ist halbtransparent mit backdrop-filter - ueber schwarzem
+   Grund wird daraus ein graues Band. Auf diesen Seiten steht sie deshalb
+   deckend weiss, wie auf allen anderen Seiten des Hauses. */
+body.pj .site-header { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* ---- Kopf ---------------------------------------------------------------- */
+.pj-kopf { position: relative; background: var(--black); color: #fff;
+           padding: clamp(34px,4.6vw,66px) 0 clamp(26px,3.2vw,44px); }
+.pj-kopf .kicker { color: var(--hl); }
+.pj-zurueck { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1.2rem;
+              font-size: .86rem; color: rgba(255,255,255,.6); text-decoration: none;
+              border-bottom: 0; transition: color .2s ease; }
+.pj-zurueck:hover { color: var(--hl); }
 .pj-kopf h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.08;
-              letter-spacing: -.015em; font-size: clamp(2.1rem,4.2vw,3.4rem); margin: .2rem 0 1rem; }
-.pj-kopf h2 { font-family: var(--font-serif); font-weight: 500; line-height: 1.12;
-              font-size: clamp(1.7rem,3.2vw,2.4rem); margin: .2rem 0 1rem; }
-.pj-lead { font-size: clamp(1rem,1.3vw,1.12rem); line-height: 1.72; color: var(--grey-70);
-           max-width: 62ch; margin: 0; }
+              letter-spacing: -.015em; color: #fff;
+              font-size: clamp(2.1rem,4.4vw,3.5rem); margin: .2rem 0 1.1rem; }
+/* Die Leitfrage steht ueber allem - sie ist der Grund, warum es die Seite gibt. */
+.pj-frage { display: inline-block; font-family: var(--font-serif); font-weight: 700;
+            font-size: clamp(1.05rem,1.7vw,1.35rem); line-height: 1.3; color: var(--ink);
+            background: var(--hl); padding: .3em .6em; border-radius: 3px; margin: 0 0 1.2rem; }
+.pj-lead { font-size: clamp(1rem,1.3vw,1.12rem); line-height: 1.72;
+           color: rgba(255,255,255,.78); max-width: 62ch; margin: 0; }
+.pj-lead b { color: #fff; font-weight: 600; }
 
-/* ---- Kopfzeile mit Eckdaten --------------------------------------------- */
-.pj-meta { display: flex; flex-wrap: wrap; gap: clamp(14px,2.4vw,34px);
-           margin-top: clamp(22px,2.8vw,34px); padding-top: clamp(18px,2.2vw,26px);
-           border-top: 1px solid var(--grey-bg, #edebe9); }
-.pj-meta div { display: flex; flex-direction: column; gap: 3px; }
-.pj-meta dt, .pj-meta b { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-                          color: var(--grey-50); font-weight: 600; }
-.pj-meta span { font-family: var(--font-serif); font-weight: 500; font-size: 1.02rem; color: var(--ink); }
+/* ---- Eckdaten ------------------------------------------------------------ */
+.pj-meta { display: flex; flex-wrap: wrap; gap: clamp(16px,2.6vw,38px);
+           margin-top: clamp(24px,3vw,38px); padding-top: clamp(18px,2.2vw,26px);
+           border-top: 1px solid rgba(255,255,255,.18); }
+.pj-meta div { display: flex; flex-direction: column; gap: 4px; }
+.pj-meta b { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+             color: rgba(255,255,255,.55); font-weight: 600; }
+.pj-meta span { font-family: var(--font-serif); font-weight: 500; font-size: 1.04rem; color: #fff; }
 
 /* ---- Abschnitte ---------------------------------------------------------- */
-.pj-sek { padding-block: clamp(30px,4vw,54px); }
-.pj-sek--grau { background: #faf9f7; border-block: 1px solid #edebe9; }
-.pj-sek h2 { font-family: var(--font-serif); font-weight: 500; line-height: 1.14;
-             font-size: clamp(1.4rem,2.4vw,1.9rem); margin: 0 0 .5rem; }
-.pj-sek > .container > p { color: var(--grey-70); line-height: 1.7; max-width: 66ch;
-                           margin: 0 0 clamp(20px,2.6vw,30px); }
+.pj-sek { background: var(--black); color: #fff; padding-block: clamp(32px,4.4vw,64px); }
+.pj-sek--rand { border-top: 1px solid rgba(255,255,255,.14); }
+.pj-sek .kicker { color: var(--hl); }
+.pj-sek h2 { font-family: var(--font-serif); font-weight: 500; line-height: 1.14; color: #fff;
+             font-size: clamp(1.5rem,2.8vw,2.1rem); margin: 0 0 .6rem; }
+.pj-sub { color: rgba(255,255,255,.72); line-height: 1.7; max-width: 66ch;
+          margin: 0 0 clamp(22px,2.8vw,34px); font-size: clamp(.96rem,1.2vw,1.04rem); }
 
 /* ---- Kacheln ------------------------------------------------------------- */
-.pj-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(282px,1fr));
-             gap: clamp(14px,1.8vw,20px); }
-.pj-karte { display: flex; flex-direction: column; gap: 7px; padding: clamp(18px,2vw,24px);
-            background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            text-decoration: none; border-bottom: 0; color: var(--ink);
-            transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
-a.pj-karte:hover { border-color: var(--ink); transform: translateY(-3px);
-                   box-shadow: 0 14px 30px rgba(0,0,0,.07); }
-.pj-karte h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.12rem;
-               line-height: 1.26; margin: 0; }
-.pj-karte p { font-size: .9rem; line-height: 1.6; color: var(--grey-70); margin: 0; }
-.pj-karte-fuss { margin-top: auto; padding-top: 12px; display: flex; align-items: center;
+.pj-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+             gap: clamp(14px,1.8vw,22px); }
+.pj-karte { display: flex; flex-direction: column; gap: 9px;
+            padding: clamp(20px,2.2vw,28px);
+            background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
+            border-radius: var(--radius-card); text-decoration: none; border-bottom: 0;
+            color: #fff; transition: border-color .22s ease, background .22s ease, transform .22s ease; }
+a.pj-karte:hover { border-color: var(--hl); background: rgba(255,244,0,.07); transform: translateY(-4px); }
+/* Die Leitfrage steht ueber dem Namen, wie der Kicker ueber einer Headline. */
+.pj-karte-frage { font-size: .76rem; letter-spacing: .1em; text-transform: uppercase;
+                  font-weight: 600; color: var(--hl); }
+.pj-karte h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.22rem;
+               line-height: 1.26; margin: 0; color: #fff; }
+.pj-karte p { font-size: .92rem; line-height: 1.62; color: rgba(255,255,255,.76); margin: 0; }
+.pj-karte ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; }
+.pj-karte li { position: relative; padding-left: 16px; font-size: .84rem; line-height: 1.5;
+               color: rgba(255,255,255,.62); }
+.pj-karte li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px;
+                       border-radius: 50%; background: var(--hl); }
+.pj-karte-fuss { margin-top: auto; padding-top: 16px; display: flex; align-items: center;
                  justify-content: space-between; gap: 10px; }
-/* Offene Themen stehen bewusst im selben Raster, nur ohne Ziel - sonst sieht
-   das Dashboard vollstaendig aus, obwohl die Haelfte noch fehlt. */
+.pj-pfeil { font-size: 1.15rem; line-height: 1; color: rgba(255,255,255,.5); }
+a.pj-karte:hover .pj-pfeil { color: var(--hl); }
+/* Offene Themen stehen im selben Raster, nur ohne Ziel - sonst sieht die
+   Seite vollstaendig aus, obwohl die Haelfte noch fehlt. */
 .pj-karte--offen { background: transparent; border-style: dashed; }
-.pj-karte--offen h3, .pj-karte--offen p { color: var(--grey-50); }
+.pj-karte--offen h3 { color: rgba(255,255,255,.6); }
+.pj-karte--offen p { color: rgba(255,255,255,.45); }
+.pj-karte--offen .pj-karte-frage { color: rgba(255,255,255,.4); }
 
 /* ---- Status -------------------------------------------------------------- */
-.pj-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+.pj-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px;
              border-radius: 999px; font-size: .72rem; font-weight: 600; letter-spacing: .04em;
-             background: #edebe9; color: var(--grey-70); white-space: nowrap; }
+             background: rgba(255,255,255,.1); color: rgba(255,255,255,.75); white-space: nowrap; }
 .pj-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%;
                      background: currentColor; flex: 0 0 auto; }
-.pj-status--laeuft { background: #fff9b8; color: #6b5e00; }
-.pj-status--fertig { background: #e3f5ec; color: #0a6b43; }
-.pj-status--offen  { background: #f2f0ed; color: #8a8783; }
-.pj-pfeil { margin-left: auto; font-size: 1.1rem; line-height: 1; color: var(--grey-50); }
-a.pj-karte:hover .pj-pfeil { color: var(--ink); }
+.pj-status--laeuft { background: rgba(255,244,0,.16); color: var(--hl); }
+.pj-status--fertig { background: rgba(5,150,105,.2); color: #6ee7b7; }
+.pj-status--offen  { background: rgba(255,255,255,.08); color: rgba(255,255,255,.5); }
 
-/* ---- Dokumente ----------------------------------------------------------- */
+/* ---- Textbloecke --------------------------------------------------------- */
+.pj-block { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+            border-radius: var(--radius-card); padding: clamp(20px,2.4vw,32px); }
+.pj-block + .pj-block { margin-top: clamp(14px,1.8vw,20px); }
+.pj-block h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.14rem;
+               line-height: 1.26; margin: 0 0 .6rem; color: #fff; }
+.pj-block p, .pj-block li { color: rgba(255,255,255,.76); line-height: 1.72; font-size: .98rem; }
+.pj-block p { margin: 0 0 .85rem; max-width: 70ch; }
+.pj-block p:last-child, .pj-block ul:last-child { margin-bottom: 0; }
+.pj-block ul { margin: 0; padding-left: 20px; display: grid; gap: 7px; }
+.pj-block b { color: #fff; font-weight: 600; }
+
+/* ---- Dokumente und offene Stellen ---------------------------------------- */
 .pj-dok { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pj-dok li { display: flex; align-items: center; gap: 14px; padding: 14px 16px;
-             background: #fff; border: 1px solid #e4e1dd; border-radius: 14px; }
-.pj-dok-ic { flex: 0 0 34px; height: 34px; border-radius: 9px; background: var(--ink);
-             color: #fff; display: grid; place-items: center; font-size: .68rem; font-weight: 700; }
-.pj-dok b { font-weight: 600; font-size: .95rem; }
-.pj-dok small { display: block; font-size: .8rem; color: var(--grey-50); margin-top: 1px; }
-.pj-leer { padding: clamp(22px,3vw,34px); border: 1px dashed #d6d3cf; border-radius: var(--radius-card);
-           background: #fff; color: var(--grey-50); font-size: .92rem; line-height: 1.65; max-width: 66ch; }
-.pj-leer b { color: var(--ink); font-weight: 600; }
+             background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+             border-radius: 14px; }
+.pj-dok-ic { flex: 0 0 34px; height: 34px; border-radius: 9px; background: var(--hl);
+             color: var(--ink); display: grid; place-items: center; font-size: .66rem; font-weight: 700; }
+.pj-dok b { font-weight: 600; font-size: .95rem; color: #fff; }
+.pj-dok small { display: block; font-size: .8rem; color: rgba(255,255,255,.55); margin-top: 1px; }
+.pj-leer { padding: clamp(22px,3vw,34px); border: 1px dashed rgba(255,255,255,.28);
+           border-radius: var(--radius-card); color: rgba(255,255,255,.6);
+           font-size: .94rem; line-height: 1.7; max-width: 66ch; }
+.pj-leer b { color: #fff; font-weight: 600; }
 
-/* ---- Notizblock ---------------------------------------------------------- */
-.pj-block { background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            padding: clamp(20px,2.4vw,30px); }
-.pj-block + .pj-block { margin-top: clamp(14px,1.8vw,20px); }
-.pj-block h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
-               line-height: 1.26; margin: 0 0 .5rem; }
-.pj-block p, .pj-block li { color: var(--grey-70); line-height: 1.72; font-size: .96rem; }
-.pj-block p { margin: 0 0 .8rem; max-width: 70ch; }
-.pj-block p:last-child, .pj-block ul:last-child { margin-bottom: 0; }
-.pj-block ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-
-@media (max-width: 560px) {
-  .pj-meta { gap: 14px 24px; }
-}
+@media (max-width: 560px) { .pj-meta { gap: 14px 26px; } }

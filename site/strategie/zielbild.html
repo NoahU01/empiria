@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Strategie und Zielbild · SV Akademie – empiria</title>
-<meta name="description" content="Strategie und Zielbild der SV Akademie.">
+<title>Strategie und Zielbild &middot; empiria</title>
+<meta name="description" content="Zielbild und Strategie von empiria.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/projekte/projekte.css">
 </head>
-<body>
+<body class="pj">
 
 <header class="site-header">
   <div class="container nav">
@@ -115,13 +115,17 @@
 <a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Projekte</p>
 <div class="dev-dd-sub">
-<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Dashboard &middot; Themen &amp; Dokumente</small></span></a>
+<a href="../projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Themenfelder</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
-<p class="dev-dd-group">Strategie</p>
-<a href="strategie-zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wohin die Akademie läuft</small></span></a>
-<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Wegmarken und Termine</small></span></a>
+<p class="dev-dd-group">Die Themenfelder</p>
+<a href="../projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="../projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<a href="../projekte/sv-strategie.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
 </div></div>
 </div>
+<p class="dev-dd-group dev-dd-group--sub">Strategie</p>
+<a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
+<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -152,7 +156,7 @@
 .dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
 .dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
 .dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
-.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow:visible;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow-y:auto;overscroll-behavior:contain;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
 .dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
 .dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
 .dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
@@ -174,7 +178,8 @@ a.dev-dd-link--indent{padding-left:30px}
 a.dev-dd-link--parent::after{content:"";width:6px;height:6px;margin-left:auto;flex:0 0 auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.45}
 .dev-dd-sub:hover>a.dev-dd-link--parent,.dev-dd-sub:focus-within>a.dev-dd-link--parent{background:var(--grey-bg)}
 .dev-dd-flyout{position:absolute;left:100%;top:-10px;padding-left:10px;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;z-index:81}
-.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout{opacity:1;visibility:visible}
+.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout,.dev-dd-flyout.is-auf{opacity:1;visibility:visible}
+.dev-dd-sub.is-auf>a.dev-dd-link--parent{background:var(--grey-bg)}
 .dev-dd-flyout-panel{width:262px;padding:10px;background:#fff;border:1px solid var(--grey-bg);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.14)}
 .dev-dd-flyout-panel .dev-dd-group{margin:2px 8px 6px}
 .dev-dd--mobile{display:none}
@@ -212,35 +217,75 @@ d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);
 d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
 document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
-d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
-// Flyouts platzieren. Zwei Faelle:
-// 1. Senkrecht: ein Flyout weit unten in der Liste rutscht sonst unter den
-//    Fensterrand (gemessen: 925px bei 813px Fensterhoehe). Es wird beim
-//    Oeffnen genau um den Ueberstand nach oben geschoben.
-// 2. Waagerecht: seit das Archiv eine eigene Ebene hat, gibt es eine dritte.
-//    Die passt rechts nicht mehr neben die zweite und klappt dann nach links
-//    auf. Gilt auch fuer die zweite Ebene in schmalen Fenstern.
-// ':scope>' ist wichtig: ein verschachteltes Flyout liegt ebenfalls unter
-// seinem Elternteil und wuerde sonst mitgemessen.
-d.querySelectorAll('.dev-dd-sub').forEach(function(s){
-var f=s.querySelector(':scope>.dev-dd-flyout');
-if(!f)return;
-function zuruecksetzen(){f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';}
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href&&a.href.split('#')[0]===here)a.classList.add('is-current');});
+
+var panel=d.querySelector('.dev-dd-panel');
+
+// ---- Zweite Ebene -------------------------------------------------------
+// Das Panel muss scrollen, seit es vier Kategorien hat (gemessen: 834px
+// Inhalt bei 680px Platz auf einem 900er Bildschirm). Ein Flyout darin wuerde
+// mitgeschnitten. position:fixed hilft nicht - die Kopfzeile hat einen
+// backdrop-filter und wird dadurch zum Bezugsrahmen fuer fixed. Das Flyout
+// haengt sich beim Oeffnen deshalb unter .dev-dd um: dort ist es absolut
+// positioniert, aber ausserhalb des scrollenden Panels.
+// Weil :hover dort nicht mehr traegt, steuert eine Klasse die Sichtbarkeit.
+panel&&panel.querySelectorAll(':scope>.dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+var heim=f.parentNode,nachbar=f.nextSibling,t2;
+function heimholen(){
+clearTimeout(t2);f.classList.remove('is-auf');s.classList.remove('is-auf');
+if(f.parentNode!==heim){heim.insertBefore(f,nachbar);f.removeAttribute('style');}
+}
+function auf(){
+if(!desk()){heimholen();return;}
+clearTimeout(t2);
+if(f.parentNode!==d)d.appendChild(f);
+var z=s.getBoundingClientRect(),dr=d.getBoundingClientRect(),
+    k=f.firstElementChild.getBoundingClientRect();
+// Rechts daneben, wenn Platz ist - sonst nach links gekippt.
+if(z.right+10+k.width>window.innerWidth-12){
+f.style.left=(z.left-dr.left-10-k.width)+'px';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}else{
+f.style.left=(z.right-dr.left)+'px';
+f.style.paddingLeft='';f.style.paddingRight='';
+}
+// Senkrecht an der Zeile, aber nie unter den Fensterrand.
+var oben=z.top-dr.top-10,grenze=window.innerHeight-12-k.height-dr.top;
+f.style.top=Math.max(-dr.top+12,Math.min(oben,grenze))+'px';
+f.classList.add('is-auf');s.classList.add('is-auf');
+}
+function zu(){t2=setTimeout(function(){f.classList.remove('is-auf');s.classList.remove('is-auf');},180);}
+s.addEventListener('mouseenter',auf);
+s.addEventListener('focusin',auf);
+s.addEventListener('mouseleave',zu);
+f.addEventListener('mouseenter',function(){clearTimeout(t2);});
+f.addEventListener('mouseleave',zu);
+panel.addEventListener('scroll',function(){if(f.classList.contains('is-auf'))auf();});
+window.addEventListener('resize',heimholen);
+});
+
+// ---- Dritte Ebene -------------------------------------------------------
+// Die bleibt, wo sie ist: ihr Elternteil ist bereits aus dem Panel heraus,
+// dort wird nichts mehr abgeschnitten. Sie braucht nur die Kippung nach
+// links, weil rechts neben der zweiten Ebene kein Platz mehr ist.
+d.querySelectorAll('.dev-dd-flyout .dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
 function platzieren(){
-if(!desk()){zuruecksetzen();return;}
-zuruecksetzen();
+f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';
+if(!desk())return;
 f.style.top='-10px';
-var r=f.getBoundingClientRect();
-var u=r.bottom-(window.innerHeight-12);
-if(u>0)f.style.top=(-10-u)+'px';
-if(r.right>window.innerWidth-12){
+var r=f.firstElementChild.getBoundingClientRect(),z=s.getBoundingClientRect();
+if(z.right+10+r.width>window.innerWidth-12){
 f.style.left='auto';f.style.right='100%';
 f.style.paddingLeft='0';f.style.paddingRight='10px';
 }
+var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+if(u>0)f.style.top=(-10-u)+'px';
 }
 s.addEventListener('mouseenter',platzieren);
 s.addEventListener('focusin',platzieren);
-window.addEventListener('resize',zuruecksetzen);
+window.addEventListener('resize',function(){f.removeAttribute('style');});
 });
 });
 }
@@ -359,13 +404,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Projekte</p>
 <div class="dev-dd-sub">
-<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Dashboard &middot; Themen &amp; Dokumente</small></span></a>
+<a href="../projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Themenfelder</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
-<p class="dev-dd-group">Strategie</p>
-<a href="strategie-zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wohin die Akademie läuft</small></span></a>
-<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Wegmarken und Termine</small></span></a>
+<p class="dev-dd-group">Die Themenfelder</p>
+<a href="../projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="../projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<a href="../projekte/sv-strategie.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
 </div></div>
 </div>
+<p class="dev-dd-group dev-dd-group--sub">Strategie</p>
+<a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
+<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -399,31 +448,34 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   <section class="pj-kopf">
     <div class="container">
-      <a class="pj-zurueck" href="/projekte/sv-akademie.html"><span>&#8592;</span> SV Akademie</a>
-      <p class="kicker">Strategie</p>
+      <a class="pj-zurueck" href="/index.html"><span>&#8592;</span> Startseite</a>
+      <p class="kicker">Strategie &middot; empiria</p>
+      <p class="pj-frage">Wo wollen wir hin?</p>
       <h1>Strategie und Zielbild</h1>
-      <p class="pj-lead">Wohin die SV Akademie laufen soll, warum es sie gibt und woran wir merken, dass sie ankommt. Das Gerüst steht, der Inhalt kommt von Dir.</p>
+      <p class="pj-lead">Das Zielbild f&uuml;r empiria: Wof&uuml;r wir stehen, wo wir in den n&auml;chsten Jahren sein wollen und woran wir merken, dass wir dort ankommen. Das Ger&uuml;st steht, die Inhalte kommen Schritt f&uuml;r Schritt dazu.</p>
     </div>
   </section>
 
-  <section class="pj-sek pj-sek--grau">
+  <section class="pj-sek pj-sek--rand">
     <div class="container">
       <div class="pj-block">
-        <h3>Warum es die Akademie gibt</h3>
-        <p>Noch offen – hier kommt der Anlass hinein: Welches Problem löst die Akademie,
-          für wen, und was passiert, wenn es niemand löst.</p>
+        <h3>Wof&uuml;r wir stehen</h3>
+        <p>Noch offen &ndash; das Selbstverst&auml;ndnis von empiria in wenigen S&auml;tzen: welches Problem wir l&ouml;sen, f&uuml;r wen, und was uns von anderen unterscheidet.</p>
       </div>
 
       <div class="pj-block">
-        <h3>Das Zielbild</h3>
-        <p>Noch offen – der Zustand, den wir erreichen wollen, in einem Bild statt in einer
-          Liste. Konkret genug, dass jeder im Haus erkennt, ob er schon da ist.</p>
+        <h3>Wo wir hinwollen</h3>
+        <p>Noch offen &ndash; das Zielbild als Bild, nicht als Liste. Konkret genug, dass man erkennt, ob man schon dort ist.</p>
       </div>
 
       <div class="pj-block">
-        <h3>Woran wir es messen</h3>
-        <p>Noch offen – wenige Kennzahlen statt vieler. Lieber drei, die jemand wirklich
-          anschaut, als zwölf in einem Bericht.</p>
+        <h3>Woran wir es merken</h3>
+        <p>Noch offen &ndash; wenige Kenngr&ouml;&szlig;en statt vieler. Lieber drei, die wirklich jemand anschaut, als zw&ouml;lf in einem Bericht.</p>
+      </div>
+
+      <div class="pj-block">
+        <h3>Was wir daf&uuml;r lassen</h3>
+        <p>Noch offen &ndash; eine Strategie sagt auch, was nicht gemacht wird. Diese Liste geh&ouml;rt genauso dazu wie die andere.</p>
       </div>
     </div>
   </section>
