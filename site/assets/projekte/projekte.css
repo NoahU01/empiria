@@ -240,12 +240,16 @@
    liegen im Pop-up, damit die Seite nicht mit Vorgeschichte anfaengt. */
 .pj-ziele { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
             gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
-.pj-ziel { display: flex; align-items: flex-start; gap: 16px;
+/* Keine Ziffern: die 1-2-3 der Themenfelder kommt aus dem Strategiemodell
+   und steht fuer eine Reihenfolge. Haette der Scope daneben auch Ziffern,
+   laegen zwei Zaehlungen uebereinander, die nichts miteinander zu tun haben.
+   Das Zeichen steht ueber dem Text, beide an derselben linken Kante. */
+.pj-ziel { display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
            padding: clamp(20px,2.2vw,26px); border: 1px solid #e4e1dd;
            border-radius: var(--radius-card); background: #fff; }
-.pj-ziel-nr { flex: 0 0 32px; height: 32px; border-radius: 50%; display: grid;
-              place-items: center; background: var(--ink); color: var(--hl);
-              font-family: var(--font-serif); font-weight: 700; font-size: .92rem; }
+.pj-ziel-ic { width: 40px; height: 40px; border-radius: 12px; display: grid;
+              place-items: center; background: var(--ink); color: var(--hl); }
+.pj-ziel-ic svg { width: 21px; height: 21px; display: block; }
 .pj-ziel h3 { margin: 0; font-family: var(--font-serif); font-weight: 700;
               font-size: 1.08rem; line-height: 1.34; }
 .pj-scope-fuss { display: flex; flex-wrap: wrap; gap: 14px;
