@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/projekte/projekte.css">
 </head>
-<body class="pj">
+<body>
 
 <header class="site-header">
   <div class="container nav">
@@ -446,14 +446,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <main>
 
-  <section class="pj-kopf">
+  <section class="hero pj-hero">
     <div class="container">
-      <p class="kicker">Projekt</p>
-      <h1>SV Akademie</h1>
-      <p class="pj-lead">Die Steuerungsseite für das Projekt. Gearbeitet wird in drei
-        Themenfeldern – sie folgen dem Strategiemodell, das wir auch bei Kunden einsetzen:
-        erst das Selbstverständnis, dann das Bild vom Ziel, dann der Weg dorthin. Von hier
-        aus geht es in die Felder, und hier liegen die Dokumente.</p>
+      <div class="hero-grid">
+        <div class="hero-head">
+          <p class="kicker">Projekt</p>
+          <h1 class="h-serif">SV <span class="hl">Akademie.</span></h1>
+        </div>
+        <div class="hero-copy lead">
+          <p>Die Steuerungsseite für das Projekt. Gearbeitet wird in drei Themenfeldern –
+            sie folgen dem Strategiemodell, das wir auch bei Kunden einsetzen. Von hier aus
+            geht es in die Felder, und hier liegen die Dokumente.</p>
+        </div>
+      </div>
 
       <div class="pj-meta">
         <div><b>Stand</b><span>1. Oktober 2026</span></div>
@@ -463,22 +468,23 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
-  <section class="pj-sek pj-sek--rand">
+  <section class="section section--grey">
     <div class="container">
-      <p class="kicker">Die Themenfelder</p>
-      <h2>Drei Fragen, in dieser Reihenfolge.</h2>
-      <p class="pj-sub">Dieselben drei Felder wie im Strategiemodell auf der Seite
-        „Strategie in den Alltag überführen“. Die Reihenfolge ist kein Zufall: Ohne
-        Selbstverständnis gibt es keine tragfähige Vision, und ohne Vision weiß die
-        Strategie nicht, wohin.</p>
+      <div class="pj-kopfzeile">
+        <p class="kicker">Die Themenfelder</p>
+        <h2 class="h-serif">Drei Fragen, <span class="hl">in dieser Reihenfolge.</span></h2>
+        <p class="lead">Dieselben drei Felder wie im Strategiemodell auf der Seite „Strategie in
+          den Alltag überführen“. Die Reihenfolge ist kein Zufall: Ohne Selbstverständnis gibt es
+          keine tragfähige Vision, und ohne Vision weiß die Strategie nicht, wohin.</p>
+      </div>
 
       <div class="pj-gitter">
 
         <a class="pj-karte" href="/projekte/sv-selbstverstaendnis.html">
           <span class="pj-karte-frage">Wofür stehen wir?</span>
           <h3>Selbstverständnis</h3>
-          <p>Die Basis. Hier läuft zusammen, was von außen vorgegeben ist – und hier liegt
-            das Leitbild, auf das lange hingearbeitet wurde.</p>
+          <p>Die Basis. Hier läuft zusammen, was von außen vorgegeben ist – und hier liegt das
+            Leitbild, auf das lange hingearbeitet wurde.</p>
           <ul>
             <li>Leitbild</li>
             <li>Unternehmensstrategie der SV</li>
@@ -519,17 +525,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
-  <section class="pj-sek pj-sek--rand">
+  <section class="section">
     <div class="container">
-      <p class="kicker">Ablage</p>
-      <h2>Dokumente</h2>
-      <p class="pj-sub">Alles, was im Projekt entstanden ist, an einer Stelle – damit niemand
-        im Postfach suchen muss.</p>
+      <div class="pj-kopfzeile">
+        <p class="kicker">Ablage</p>
+        <h2 class="h-serif">Alles an <span class="hl">einer Stelle.</span></h2>
+        <p class="lead">Jedes Dokument, das im Projekt entsteht, liegt hier – damit niemand im
+          Postfach suchen muss.</p>
+      </div>
 
       <!-- Hier kommen die bisher entstandenen Dokumente rein. Aufbau einer Zeile:
            <li><span class="pj-dok-ic">PDF</span><div><b>Titel</b><small>Datum &middot; Kurzbeschreibung</small></div></li>
            Die Dateien gehoeren nach site/assets/projekte/. -->
-      <div class="pj-leer"><b>Noch keine Dokumente hinterlegt.</b><br>
+      <div class="pj-leer" style="margin-top:clamp(22px,2.8vw,34px)"><b>Noch keine Dokumente hinterlegt.</b><br>
         Sobald Du mir die bisher entstandenen Unterlagen gibst – allen voran das Leitbild –
         lege ich sie hier ab und verlinke sie aus dem passenden Themenfeld. Liste und Ablage
         sind vorbereitet.</div>
