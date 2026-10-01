@@ -604,46 +604,65 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </button>
       </div>
 
-      <div class="pj-felder">
+      <!-- DREI ENTWUERFE ZUR AUSWAHL: Jedes Feld ist anders gebaut, damit Du
+           vergleichen kannst. Sobald Du Dich entschieden hast, bekommen alle
+           drei dieselbe Form. Gemeinsam ist allen: keine gelben Aufzaehlungs-
+           punkte, kein blasses Gelb im Status, mehr Gewicht auf dem Titel. -->
+      <div class="pj-felder pj-felder--entwurf">
 
-        <a class="pj-feld" href="/projekte/sv-selbstverstaendnis.html">
-          <span class="pj-feld-nr">1</span>
-          <span class="pj-feld-frage">Wofür stehen wir?</span>
-          <h3>Selbstverständnis</h3>
-          <p>Die Basis. Hier liegt das Leitbild, auf das lange hingearbeitet wurde.</p>
-          <ul>
-            <li>Leitbild</li>
+        <a class="pj-feld pj-feld--a" href="/projekte/sv-selbstverstaendnis.html">
+          <span class="pj-feld-kopf">
+            <span class="pj-feld-nr">1</span>
+            <span class="pj-feld-frage">Wofür stehen wir?</span>
+          </span>
+          <span class="pj-feld-koerper">
+            <h3>Selbstverständnis</h3>
+            <p>Die Basis. Hier liegt das Leitbild, auf das lange hingearbeitet wurde.</p>
+            <ul class="pj-feld-liste">
+              <li>Leitbild</li>
               <li>Führungsverständnis</li>
-            <li>Zielgruppe: „What’s in for me?“</li>
-          </ul>
-          <span class="pj-feld-fuss"><span class="pj-status pj-status--laeuft">In Arbeit</span><span class="pj-pfeil">&#8594;</span></span>
+              <li>Zielgruppe: „What’s in for me?“</li>
+            </ul>
+            <span class="pj-feld-fuss">
+              <span class="pj-marke pj-marke--fertig">Abgeschlossen</span>
+              <span class="pj-pfeil">&#8594;</span>
+            </span>
+          </span>
         </a>
 
-        <a class="pj-feld" href="/projekte/sv-vision.html">
-          <span class="pj-feld-nr">2</span>
+        <a class="pj-feld pj-feld--b" href="/projekte/sv-vision.html">
+          <span class="pj-feld-ziffer" aria-hidden="true">2</span>
           <span class="pj-feld-frage">Wie wollen wir wahrgenommen werden?</span>
           <h3>Vision</h3>
-          <p>Das Bild vom Zielzustand – gedacht, als würden wir die Akademie heute neu gründen.</p>
-          <ul>
+          <p>Das Bild vom Zielzustand – gedacht, als würden wir die Akademie heute neu
+            gründen.</p>
+          <ul class="pj-feld-liste">
             <li>Vision und Mission</li>
             <li>Künftiges Geschäfts- und Organisationsmodell</li>
             <li>Wenn wir heute neu gründen würden</li>
           </ul>
-          <span class="pj-feld-fuss"><span class="pj-status pj-status--laeuft">In Arbeit</span><span class="pj-pfeil">&#8594;</span></span>
+          <span class="pj-feld-fuss">
+            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+            <span class="pj-pfeil">&#8594;</span>
+          </span>
         </a>
 
-        <a class="pj-feld" href="/projekte/sv-strategie.html">
-          <span class="pj-feld-nr">3</span>
+        <a class="pj-feld pj-feld--c" href="/projekte/sv-strategie.html">
+          <span class="pj-feld-band" aria-hidden="true"></span>
+          <span class="pj-feld-zeile">
+            <span class="pj-feld-nr">3</span>
+            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+          </span>
           <span class="pj-feld-frage">Wie kommen wir dorthin?</span>
           <h3>Strategie</h3>
           <p>Der ehrliche Ausgangspunkt und die Stoßrichtungen, die die Lücke schließen.</p>
-          <ul>
+          <ul class="pj-feld-liste">
             <li>Ausgangssituation</li>
             <li>Die Lücke</li>
             <li>Stoßrichtungen und Handlungsfelder</li>
             <li>Reihenfolge</li>
           </ul>
-          <span class="pj-feld-fuss"><span class="pj-status pj-status--laeuft">In Arbeit</span><span class="pj-pfeil">&#8594;</span></span>
+          <span class="pj-feld-fuss"><span class="pj-feld-mehr">Zum Themenfeld</span><span class="pj-pfeil">&#8594;</span></span>
         </a>
 
       </div>
