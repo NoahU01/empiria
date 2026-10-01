@@ -621,7 +621,8 @@
 .ab-inhalt { padding: clamp(18px,2vw,26px) 0 clamp(26px,3vw,40px); }
 .ab-marke { display: flex; align-items: center; gap: 12px; margin: 0 0 1.1rem;
             font-weight: 600; font-size: 1.04rem; color: var(--ink); }
-.ab-nr { font-family: var(--font-serif); font-weight: 700; color: var(--grey-50); }
+/* Die Blocknummer traegt den Akzent mit. */
+.ab-nr { font-family: var(--font-serif); font-weight: 700; color: var(--ak); }
 .ab-felder { margin: 0; display: grid; gap: 14px; }
 .ab-feld { display: grid; grid-template-columns: 7.5rem 1fr; gap: 4px 20px; }
 /* Zugeklappt steht nur ein Feld da - eine Beschriftung "Ergebnis" erklaert
