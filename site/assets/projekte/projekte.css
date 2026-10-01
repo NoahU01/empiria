@@ -877,12 +877,12 @@
 /* Das Strategiemodell steht nicht mehr als Balken unter den Feldern, sondern
    klein neben der Ueberschrift. Es ist fast schwarz und traegt sich damit
    von selbst - deshalb nur so gross, dass man es erkennt, und mit Luft. */
-.pj-kopfzeile--mitbild { display: grid; grid-template-columns: auto auto;
-                         justify-content: start; gap: clamp(28px,4vw,60px);
+.pj-kopfzeile--mitbild { display: grid; grid-template-columns: 1fr auto;
+                         gap: clamp(28px,4vw,60px);
                          align-items: start; max-width: none; }
 .pj-kopfzeile--mitbild > div { max-width: 56ch; }
 .pj-modell-dezent { appearance: none; -webkit-appearance: none; cursor: pointer;
-                    display: flex; flex-direction: column; align-items: center; gap: 8px;
+                    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
                     padding: 0; background: none; border: 0; opacity: .82;
                     /* Die Oberkante liegt auf der Oberkante des gelben Kastens in
                        der Ueberschrift. Die 43 px sind die Hoehe der Kickerzeile
