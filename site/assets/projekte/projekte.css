@@ -1301,3 +1301,12 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
   background: #fff; }
 .ab-block--kern.is-offen .ab-kette--fortsetzung {
   border: 1px solid transparent; padding: 0 16px; }
+
+/* Die fette Aussage jedes Story-Schritts steht als eigene Zeile ueber dem
+   Erlaeuterungstext - sonst laeuft beides ineinander und man sieht die
+   Kernaussage erst beim Lesen. Platz ist da, der Block klappt frei auf. */
+.ab-kette > li > b { display: block; margin-bottom: 3px; }
+/* Jeder Schritt besteht jetzt aus zwei Zeilen. Beim alten Abstand von 7px
+   stand der naechste Schritt genauso eng wie seine eigene zweite Zeile -
+   die drei Gruppen waren nicht mehr auseinanderzuhalten. */
+.ab-kette--kern { gap: 14px; }
