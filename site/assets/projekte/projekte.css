@@ -420,18 +420,18 @@
                       background: #fff; }
 /* Das Dokument ist ein hoher Streifen aller Seiten. Es wird auf die Hoehe
    des Kastens gebracht, nicht beschnitten - man soll sehen, was drinsteht. */
-/* Das Dokument liegt absolut im Rahmen. Nur so geht seine Eigenhoehe (1400 px)
-   nicht in die Zeilenhoehe ein - der Kasten bleibt so hoch wie der Text links,
-   und object-fit: contain zeigt das Dokument trotzdem vollstaendig. */
-.pj-kasten-bild { appearance: none; -webkit-appearance: none; border: 1px solid #e4e1dd;
-                  margin: 0; padding: 6px; background: #f4f2ef; cursor: pointer; display: block;
-                  border-radius: 10px; line-height: 0; align-self: stretch;
+/* Kein Rahmen im Rahmen: das Dokument steht frei im umrandeten Kasten.
+   Es liegt absolut, damit seine Eigenhoehe (1400 px) nicht in die Zeilenhoehe
+   eingeht - der Kasten bleibt so hoch wie der Text links, und
+   object-fit: contain zeigt das Dokument trotzdem vollstaendig. */
+.pj-kasten-bild { appearance: none; -webkit-appearance: none; border: 0;
+                  margin: 0; padding: 0; background: none; cursor: pointer; display: block;
+                  line-height: 0; align-self: stretch;
                   position: relative; min-height: 240px;
-                  transition: border-color .2s ease, box-shadow .2s ease; }
-.pj-kasten-bild:hover { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
-.pj-kasten-bild img { position: absolute; inset: 6px; width: calc(100% - 12px);
-                      height: calc(100% - 12px); max-width: none; object-fit: contain;
-                      object-position: center; }
+                  transition: opacity .2s ease; }
+.pj-kasten-bild:hover { opacity: .88; }
+.pj-kasten-bild img { position: absolute; inset: 0; width: 100%; height: 100%;
+                      max-width: none; object-fit: contain; object-position: center; }
 .pj-kasten-text { align-self: stretch; display: flex; flex-direction: column;
                   padding-top: clamp(14px,1.8vw,26px); }
 .pj-kasten-text b { display: block; font-family: var(--font-serif); font-weight: 700;
