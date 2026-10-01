@@ -1310,3 +1310,13 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 /* "Offen" in derselben Schreibweise wie die anderen Marken. */
 .pj-marke--offen { color: #b4aea7; }
 .pj-marke--offen::before { background: #fff; border: 2px solid #ddd7d0; }
+
+/* Der Vorspann steht unter der Ueberschrift, nicht als schmale Spalte
+   rechts daneben - eine Ueberschrift links und ein Textchen rechts liest
+   sich wie zwei unverbundene Teile. */
+.pj-hero-grid--einspaltig { grid-template-columns: 1fr; }
+.pj-hero-grid--einspaltig .pj-hero-text { max-width: 62ch; }
+.pj-hero-grid--einspaltig .pj-hero-text .lead { margin-top: 0; }
+
+/* Der Knopf unter der Webseite steht mittig zum Bild und mit Luft darunter. */
+.pj-browser-aktionen--mitte { justify-content: center; margin-top: clamp(26px,3vw,40px); }
