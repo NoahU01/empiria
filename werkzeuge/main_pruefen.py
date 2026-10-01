@@ -57,6 +57,8 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/assets/projekte/strategiemodell-mini.webp",
                   "site/assets/projekte/sv-meilensteine-vorschau.webp",
                   "site/projekte/sv-meilensteine.html",
+    "site/projekte/sv-meilensteine-fein.html",
+    "site/projekte/sv-meilensteine-dunkel.html",
                   "site/assets/projekte/sv-rakete.webp"]
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter",
                  "/projekte", "/strategie"]
