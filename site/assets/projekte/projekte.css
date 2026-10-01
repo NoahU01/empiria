@@ -327,9 +327,8 @@
 .pj-weg-karte h3 { margin: 0 0 .6rem; font-family: var(--font-serif); font-weight: 700;
                    font-size: 1.42rem; line-height: 1.22; }
 .pj-weg-karte p { margin: 0; font-size: .96rem; line-height: 1.68; color: var(--grey-70); }
-.pj-weg-hinweis { display: inline-block; align-self: flex-start; margin-top: 16px;
-                  padding: 6px 12px; border-radius: 999px; background: var(--grey-bg);
-                  font-size: .78rem; font-weight: 600; color: var(--grey-70); }
+/* Der Hinweis auf die Methode steht als Zeile in der Aufzaehlung, nicht als
+   graue Pille. Zwei Pillenformen in einem Kasten wirken unaufgeraeumt. */
 .pj-weg-fuss { margin-top: auto; padding-top: 22px; display: flex; align-items: center;
                justify-content: space-between; gap: 10px; }
 .pj-weg-karte:hover .pj-pfeil { color: var(--ink); }
@@ -1197,8 +1196,8 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    blassem Gelb, und deutlich mehr Gewicht auf dem Titel - das sind die
    Hauptthemen des Projekts.
    ========================================================================== */
-.pj-felder--entwurf { grid-template-rows: none; align-items: stretch; }
-.pj-felder--entwurf .pj-feld { grid-row: auto; display: flex; flex-direction: column;
+.pj-felder { grid-template-rows: none; align-items: stretch; }
+.pj-felder .pj-feld { grid-row: auto; display: flex; flex-direction: column;
                                padding: 0; overflow: hidden; }
 
 /* Der Status: Wort und Punkt, keine Flaeche. */
@@ -1224,38 +1223,17 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .pj-feld p { color: var(--grey-70); }
 
 /* --- A: schwarzer Kopf -------------------------------------------------- */
-.pj-feld--a .pj-feld-kopf { display: flex; align-items: center; gap: 14px;
-  padding: 18px clamp(22px,2.4vw,30px); background: var(--ink); }
-.pj-feld--a .pj-feld-nr { width: 30px; height: 30px; flex: 0 0 auto; background: var(--hl);
+/* Feste Kopfhoehe: Die zweite Frage laeuft ueber zwei Zeilen - ohne das
+   Mindestmass starten die Titel darunter auf drei verschiedenen Hoehen. */
+.pj-feld .pj-feld-kopf { display: flex; align-items: center; gap: 14px;
+  min-height: 74px; padding: 14px clamp(22px,2.4vw,30px); background: var(--ink); }
+.pj-feld .pj-feld-nr { width: 30px; height: 30px; flex: 0 0 auto; background: var(--hl);
   color: var(--ink); }
-.pj-feld--a .pj-feld-frage { padding: 0; color: rgba(255,255,255,.72); }
-.pj-feld--a .pj-feld-koerper { display: flex; flex-direction: column; flex: 1 1 auto;
+.pj-feld .pj-feld-frage { padding: 0; color: rgba(255,255,255,.72); }
+.pj-feld .pj-feld-koerper { display: flex; flex-direction: column; flex: 1 1 auto;
   padding: clamp(22px,2.4vw,30px); }
-.pj-feld--a h3 { font-size: 1.7rem; margin-bottom: .5rem; }
-.pj-feld--a p { font-size: .95rem; line-height: 1.62; margin: 0; }
-
-/* --- B: grosse Ziffer im Hintergrund ----------------------------------- */
-.pj-feld--b { position: relative; padding: clamp(22px,2.4vw,30px); }
-.pj-feld-ziffer { position: absolute; top: 24px; right: 20px;
-  font-family: var(--font-serif); font-weight: 700; font-size: 5.2rem; line-height: 1;
-  color: #ebe6e1; pointer-events: none; }
-.pj-feld--b > * { position: relative; }
-.pj-feld--b .pj-feld-frage { padding: 0 0 10px; }
-.pj-feld--b h3 { font-size: 1.9rem; margin-bottom: .55rem; }
-.pj-feld--b p { font-size: .95rem; line-height: 1.62; margin: 0; }
-
-/* --- C: Band oben, Status im Kopf -------------------------------------- */
-.pj-feld--c { position: relative; padding: clamp(22px,2.4vw,30px); }
-.pj-feld-band { position: absolute; top: 0; left: 0; right: 0; height: 5px;
-  background: var(--hl); }
-.pj-feld--c { padding-top: calc(clamp(22px,2.4vw,30px) + 14px); }
-.pj-feld--c .pj-feld-zeile { display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; }
-.pj-feld--c .pj-feld-nr { width: 30px; height: 30px; }
-.pj-feld--c .pj-feld-frage { padding: 16px 0 8px; }
-.pj-feld--c h3 { font-size: 1.7rem; margin-bottom: .5rem; }
-.pj-feld--c p { font-size: .95rem; line-height: 1.62; margin: 0; }
-.pj-feld-mehr { font-size: .86rem; font-weight: 600; color: var(--ink); }
+.pj-feld h3 { font-size: 1.7rem; margin-bottom: .5rem; }
+.pj-feld p { font-size: .95rem; line-height: 1.62; margin: 0; }
 
 /* Was hinter uns liegt, steht in Grau - so sieht man beim Ueberfliegen, wo
    die Gegenwart ist. Die Zielpunkte bleiben schwarz, sie sind Ergebnisse
@@ -1308,3 +1286,27 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .ab-ablauf[data-ansicht="zahl"] .ab-anteil { margin-top: 2px; }
 .ab-ablauf[data-ansicht="zahl"] .ab-block.is-offen .ab-dauer { color: var(--ink); }
 .ab-ablauf[data-ansicht="zahl"] .ab-inhalt { padding-top: clamp(18px,2vw,24px); }
+
+/* Ein Dokument im Methodenfenster: Vorschau links, Einordnung rechts.
+   Das Blatt liegt direkt auf dem dunklen Grund, ohne weissen Rahmen. */
+/* Die Methodenfenster sind hell - Text in Tinte, nicht in Weiss. */
+.pj-modal-dok { display: grid; grid-template-columns: auto 1fr;
+                gap: clamp(18px,2.4vw,28px); align-items: start;
+                margin-top: clamp(20px,2.4vw,28px); padding-top: clamp(20px,2.4vw,28px);
+                border-top: 1px solid #ebe8e5; }
+.pj-modal-dok-bild { display: block; width: clamp(120px,14vw,168px); line-height: 0;
+                     border-radius: 8px; overflow: hidden;
+                     transition: transform .2s ease, box-shadow .2s ease; }
+.pj-modal-dok-bild { border: 1px solid #e4e1dd; }
+.pj-modal-dok-bild:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+.pj-modal-dok-bild img { display: block; width: 100%; height: auto; }
+.pj-modal-dok-text b { display: block; font-family: var(--font-serif); font-weight: 700;
+                       font-size: 1.06rem; color: var(--ink); margin-bottom: .4rem; }
+.pj-modal-dok-text small { display: block; font-size: .9rem; line-height: 1.6;
+                           color: var(--grey-70); }
+.pj-modal-dok-knoepfe { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+@media (max-width: 600px) { .pj-modal-dok { grid-template-columns: 1fr; } }
+
+/* "Offen" in derselben Schreibweise wie die anderen Marken. */
+.pj-marke--offen { color: #b4aea7; }
+.pj-marke--offen::before { background: #fff; border: 2px solid #ddd7d0; }

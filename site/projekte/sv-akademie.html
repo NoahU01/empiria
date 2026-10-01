@@ -604,13 +604,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </button>
       </div>
 
-      <!-- DREI ENTWUERFE ZUR AUSWAHL: Jedes Feld ist anders gebaut, damit Du
-           vergleichen kannst. Sobald Du Dich entschieden hast, bekommen alle
-           drei dieselbe Form. Gemeinsam ist allen: keine gelben Aufzaehlungs-
-           punkte, kein blasses Gelb im Status, mehr Gewicht auf dem Titel. -->
-      <div class="pj-felder pj-felder--entwurf">
+      <div class="pj-felder">
 
-        <a class="pj-feld pj-feld--a" href="/projekte/sv-selbstverstaendnis.html">
+        <a class="pj-feld" href="/projekte/sv-selbstverstaendnis.html">
           <span class="pj-feld-kopf">
             <span class="pj-feld-nr">1</span>
             <span class="pj-feld-frage">Wofür stehen wir?</span>
@@ -630,39 +626,45 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </span>
         </a>
 
-        <a class="pj-feld pj-feld--b" href="/projekte/sv-vision.html">
-          <span class="pj-feld-ziffer" aria-hidden="true">2</span>
-          <span class="pj-feld-frage">Wie wollen wir wahrgenommen werden?</span>
-          <h3>Vision</h3>
-          <p>Das Bild vom Zielzustand – gedacht, als würden wir die Akademie heute neu
-            gründen.</p>
-          <ul class="pj-feld-liste">
-            <li>Vision und Mission</li>
-            <li>Künftiges Geschäfts- und Organisationsmodell</li>
-            <li>Wenn wir heute neu gründen würden</li>
-          </ul>
-          <span class="pj-feld-fuss">
-            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
-            <span class="pj-pfeil">&#8594;</span>
+        <a class="pj-feld" href="/projekte/sv-vision.html">
+          <span class="pj-feld-kopf">
+            <span class="pj-feld-nr">2</span>
+            <span class="pj-feld-frage">Wie wollen wir wahrgenommen werden?</span>
+          </span>
+          <span class="pj-feld-koerper">
+            <h3>Vision</h3>
+            <p>Das Bild vom Zielzustand – gedacht, als würden wir die Akademie heute neu gründen.</p>
+            <ul class="pj-feld-liste">
+              <li>Vision und Mission</li>
+              <li>Künftiges Geschäfts- und Organisationsmodell</li>
+              <li>Wenn wir heute neu gründen würden</li>
+            </ul>
+            <span class="pj-feld-fuss">
+              <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+              <span class="pj-pfeil">&#8594;</span>
+            </span>
           </span>
         </a>
 
-        <a class="pj-feld pj-feld--c" href="/projekte/sv-strategie.html">
-          <span class="pj-feld-band" aria-hidden="true"></span>
-          <span class="pj-feld-zeile">
+        <a class="pj-feld" href="/projekte/sv-strategie.html">
+          <span class="pj-feld-kopf">
             <span class="pj-feld-nr">3</span>
-            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+            <span class="pj-feld-frage">Wie kommen wir dorthin?</span>
           </span>
-          <span class="pj-feld-frage">Wie kommen wir dorthin?</span>
-          <h3>Strategie</h3>
-          <p>Der ehrliche Ausgangspunkt und die Stoßrichtungen, die die Lücke schließen.</p>
-          <ul class="pj-feld-liste">
-            <li>Ausgangssituation</li>
-            <li>Die Lücke</li>
-            <li>Stoßrichtungen und Handlungsfelder</li>
-            <li>Reihenfolge</li>
-          </ul>
-          <span class="pj-feld-fuss"><span class="pj-feld-mehr">Zum Themenfeld</span><span class="pj-pfeil">&#8594;</span></span>
+          <span class="pj-feld-koerper">
+            <h3>Strategie</h3>
+            <p>Der ehrliche Ausgangspunkt und die Stoßrichtungen, die die Lücke schließen.</p>
+            <ul class="pj-feld-liste">
+              <li>Ausgangssituation</li>
+              <li>Die Lücke</li>
+              <li>Stoßrichtungen und Handlungsfelder</li>
+              <li>Reihenfolge</li>
+            </ul>
+            <span class="pj-feld-fuss">
+              <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+              <span class="pj-pfeil">&#8594;</span>
+            </span>
+          </span>
         </a>
 
       </div>
@@ -690,7 +692,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <div class="container">
       <div class="pj-kopfzeile">
         <p class="kicker">Werkzeugkasten</p>
-        <h2 class="h-serif">Was vorliegt – <span class="hl">und womit gearbeitet wird.</span></h2>
+        <h2 class="h-serif">Was vorliegt – und womit <span class="hl">gearbeitet wird.</span></h2>
         <p class="lead">Links die Ergebnisse, die schon erarbeitet sind, zum direkten Zugriff.
           Rechts die Methoden dahinter, kurz erklärt und so beschrieben, dass Führungskräfte
           sie im eigenen Bereich wiederverwenden können.</p>
@@ -1096,6 +1098,23 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           trifft, ergibt eine Baustelle, die man nicht liegen lassen darf.</p>
         <p class="pj-hinweis">Deshalb ist die SWOT bei uns kein Selbstzweck – sie ist der
           Zwischenschritt zwischen Ist-Analyse und Strategie.</p>
+      </div>
+
+      <div class="pj-modal-dok">
+        <a class="pj-modal-dok-bild" href="/assets/projekte/sv-swot-arbeitsauftrag.pdf" target="_blank" rel="noopener">
+          <img src="/assets/projekte/sv-swot-vorschau.webp" alt="Erste Seite des Arbeitsauftrags zur SWOT-Analyse" loading="lazy">
+        </a>
+        <div class="pj-modal-dok-text">
+          <b>Arbeitsauftrag zur Einzelübung</b>
+          <small>Die vier Schritte als Vorlage, mit den Leitfragen zu Stärken, Schwächen,
+            Chancen und Risiken. Vorbereitend ausgefüllt – jede Führungskraft für sich, aus
+            ihrer eigenen Sicht auf die Akademie. Das ist der erste Schritt; die gemeinsame
+            Auswertung und die Ableitung der Stoßrichtungen folgen darauf.</small>
+          <span class="pj-modal-dok-knoepfe">
+            <a class="btn btn--dark btn--sm" href="/assets/projekte/sv-swot-arbeitsauftrag.pdf" target="_blank" rel="noopener">PDF öffnen</a>
+            <a class="btn btn--ghost btn--sm" href="/assets/projekte/sv-swot-arbeitsauftrag.pdf" download>Herunterladen</a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
