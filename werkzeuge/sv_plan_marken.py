@@ -72,10 +72,11 @@ CSS = '''
                                  border-radius: 50%; background: #F0603A; }
 .k-detail__block--kritisch h3 { color: #F0603A; }
 .k-detail__block--mehr { margin-top: 2px; }
+/* Das Detailfenster ist in jeder Ansicht dunkel - auch in der hellen. Ein
+   dunkler Link waere darin unsichtbar, deshalb steht er in empiria-Gelb. */
 .k-mehr-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
-               color: var(--dunkelgrau2, #1a1817); text-decoration: underline;
-               text-underline-offset: 3px; }
-.k--dunkel .k-mehr-link { color: #ffffff; }
+               color: #fff400; text-decoration: underline; text-underline-offset: 3px; }
+.k-mehr-link:hover { color: #ffffff; }
 /* MARKEN-ENDE */
 '''.strip()
 
