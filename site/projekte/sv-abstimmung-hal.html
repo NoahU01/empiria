@@ -574,7 +574,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           und zu prüfen.</p>
       </div>
 
-      <div class="ab-ablauf" data-ansicht="zahl" data-farbe="cyan">
+      <div class="ab-zahlen-wahl" role="group" aria-label="Darstellung der Minuten">
+        <span class="ab-ansichten-tag">Minuten</span>
+        <button type="button" class="ab-pill is-aktiv" data-zahlen="rechts" aria-pressed="true">Rechtsbündig</button>
+        <button type="button" class="ab-pill" data-zahlen="zeile" aria-pressed="false">Mit Einheit</button>
+        <button type="button" class="ab-pill" data-zahlen="links" aria-pressed="false">Linksbündig</button>
+        <button type="button" class="ab-pill" data-zahlen="band" aria-pressed="false">Nur Balken</button>
+        <button type="button" class="ab-pill" data-zahlen="schwerpunkt" aria-pressed="false">Mit Schwerpunkt</button>
+      </div>
+
+      <div class="ab-ablauf" data-ansicht="zahl" data-farbe="cyan" data-zahlen="rechts">
 
 
 
@@ -642,7 +651,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
-        <div class="ab-block" style="--min:45;--vor:25">
+        <div class="ab-block ab-block--kern" style="--min:45;--vor:25">
           <div class="ab-spur">
             <span class="ab-dauer">45<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
@@ -658,13 +667,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <div class="ab-feld">
                 <dt>Die Story</dt>
                 <dd>
-                  <ol class="ab-kette">
+                  <ol class="ab-kette ab-kette--kern">
                     <li><b>Das Rahmengerüst.</b> Woran machen wir fest, dass eine Akademie die
                       beste der Versicherungsbranche ist? Die Kriterien, an denen sich dieser
                       Anspruch messen lässt.</li>
                     <li><b>Die Übersetzung in die Vision.</b> Wie arbeitet die SV Akademie,
                       wenn sie diesen Anspruch einlöst? Was sie konkret anbietet, wie sie
                       aufgestellt ist und wie sie auftritt.</li>
+                  </ol>
+                  <ol class="ab-kette ab-kette--fortsetzung">
                     <li class="ist-reserve"><b>Deep Dive: Ausgangssituation und Annahmen.</b>
                       Welche Annahmen führen zum Leitbild der SV Akademie? Liegt bereit, kommt
                       aber nur auf den Tisch, wenn danach gefragt wird.</li>
@@ -780,6 +791,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </div>
 
+
+        <div class="ab-summe" style="--min:120;--vor:0">
+          <div class="ab-spur">
+            <span class="ab-dauer">120<small>Min</small></span>
+            <span class="ab-anteil" aria-hidden="true"><i></i></span>
+          </div>
+          <div class="ab-inhalt">
+            <p class="ab-summe-text">Gesamtdauer des Termins</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -813,6 +835,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
 
   bloecke.forEach(function (b) { klappe(b, false); });
+
+  var wahl = Array.prototype.slice.call(document.querySelectorAll('.ab-pill[data-zahlen]'));
+  wahl.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ablauf.dataset.zahlen = b.dataset.zahlen;
+      wahl.forEach(function (x) {
+        var an = x === b;
+        x.classList.toggle('is-aktiv', an);
+        x.setAttribute('aria-pressed', an ? 'true' : 'false');
+      });
+    });
+  });
 
   ablauf.querySelectorAll('.ab-marke').forEach(function (m) {
     m.addEventListener('click', function () {

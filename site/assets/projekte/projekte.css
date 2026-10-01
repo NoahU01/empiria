@@ -1273,3 +1273,63 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .pj-swot-seite .mk--neben { margin: 0; }
 @media (max-width: 900px) { .pj-swot-zeile { grid-template-columns: 1fr; } }
 
+
+/* Summenzeile unter dem Ablauf: dieselbe Spur wie bei den Bloecken, der
+   Balken ueber die vollen zwei Stunden.
+   Die Ziffern stehen rechtsbuendig in einer Spalte von drei Zeichen Breite
+   und in Tabellenziffern - so stehen Einer unter Einern und Zehner unter
+   Zehnern, auch wenn eine Zahl dreistellig ist. */
+.ab-dauer { font-variant-numeric: tabular-nums; display: block; width: 3ch;
+            text-align: right; }
+.ab-dauer small { text-align: right; }
+.ab-summe { display: grid; grid-template-columns: minmax(0,132px) 1fr;
+            gap: clamp(18px,2.4vw,34px); align-items: start;
+            border-top: 1px solid #ebe8e5; }
+.ab-summe .ab-dauer { color: var(--ak); }
+.ab-summe .ab-anteil i { width: 100%; margin-left: 0; }
+.ab-summe-text { margin: 0; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase;
+                 font-weight: 700; color: var(--ak); }
+
+/* ---- Vier Darstellungen der Minuten (zum Vergleichen) ------------------
+   Gemeinsam: Tabellenziffern, damit die Stellen untereinander stehen.
+   Verschieden ist, wo die Zahl sitzt und ob die Einheit mitlaeuft. */
+.ab-zahlen-wahl { display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+                  margin-top: clamp(26px,3.2vw,40px); }
+
+/* rechts (Standard): Zahl und Einheit rechtsbuendig in drei Zeichen Breite */
+.ab-ablauf[data-zahlen="rechts"] .ab-dauer { width: 3ch; text-align: right; }
+
+/* zeile: Zahl und Einheit auf einer Grundlinie */
+.ab-ablauf[data-zahlen="zeile"] .ab-dauer { width: auto; text-align: left;
+  display: flex; align-items: baseline; gap: 8px; font-size: 2.2rem; }
+.ab-ablauf[data-zahlen="zeile"] .ab-dauer small { margin: 0; }
+
+/* links: Zahl linksbuendig, Einheit darunter - die Hunderterstelle laeuft
+   nach rechts aus */
+.ab-ablauf[data-zahlen="links"] .ab-dauer { width: auto; text-align: left; }
+.ab-ablauf[data-zahlen="links"] .ab-dauer small { text-align: left; }
+
+/* band: ohne Ziffer, nur der Balken - die Dauer steht rechts in der Marke */
+.ab-ablauf[data-zahlen="band"] .ab-dauer { display: none; }
+.ab-ablauf[data-zahlen="band"] .ab-marke-dauer { display: block; }
+.ab-ablauf[data-zahlen="band"] .ab-anteil { height: 8px; margin-top: 10px; }
+.ab-ablauf[data-zahlen="band"] .ab-summe .ab-summe-text { font-size: .82rem; }
+.ab-ablauf[data-zahlen="band"] .ab-summe::after { content: "120 Min"; grid-column: 1;
+  grid-row: 1; font-family: var(--font-serif); font-weight: 700; color: var(--ak); }
+
+/* Die Zaehlung laeuft ueber zwei Listen weiter: 1 und 2 stehen im Kern,
+   3 folgt als Reserve. */
+.ab-kette--fortsetzung { counter-reset: kette 2; margin-top: 7px; }
+
+/* --- Variante "Mit Schwerpunkt": Block 03 traegt den Termin, das soll man
+       sehen. Der Block bekommt einen hauchzarten cyanen Grund, und im
+       aufgeklappten Zustand rahmt eine gestrichelte Linie die beiden
+       Schritte ein, um die es wirklich geht. --- */
+.ab-ablauf[data-zahlen="schwerpunkt"] .ab-dauer { width: 3ch; text-align: right; }
+.ab-ablauf[data-zahlen="schwerpunkt"] .ab-block--kern {
+  background: rgba(11,159,189,.05); border-radius: var(--radius-card); }
+.ab-ablauf[data-zahlen="schwerpunkt"] .ab-block--kern .ab-spur { padding-left: 16px; }
+.ab-ablauf[data-zahlen="schwerpunkt"] .ab-block--kern .ab-inhalt { padding-right: 16px; }
+.ab-ablauf[data-zahlen="schwerpunkt"] .ab-block--kern.is-offen .ab-kette--kern {
+  border: 1px dashed var(--ak); border-radius: 14px; padding: 14px 16px;
+  background: #fff; }
