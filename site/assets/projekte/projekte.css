@@ -1196,7 +1196,6 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
   .pj-kopfzeile--mitbild { grid-template-columns: 1fr; }
   .pj-modellkasten { margin-top: 8px; width: 100%; max-width: 360px; }
 }
-}
 
 /* Die Zeile zur Projektplanung gehoert zu den drei Feldern, steht aber
    nicht auf ihnen - ein Abstand wie zwischen den Feldern selbst. */
