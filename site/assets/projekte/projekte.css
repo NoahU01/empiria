@@ -98,6 +98,13 @@
    .pb-page hat Innenabstand fuer die Skizze; fuer ein Bild muss er weg. */
 .pj-browser-grid { display: grid; grid-template-columns: 1.1fr .9fr;
                    gap: clamp(32px,4.5vw,64px); align-items: center; }
+/* Die Meilenstein-Vorschau ist ein Absprung, keine Buehne - sie zeigt den
+   Kopf des Plans, nicht den ganzen. */
+.pj-browser-btn--plan .pj-browser-seite { max-height: 300px; overflow: hidden; }
+.pj-browser-btn--plan { position: relative; }
+.pj-browser-btn--plan::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: 1px;
+                               height: 90px; border-radius: 0 0 17px 17px;
+                               background: linear-gradient(rgba(255,255,255,0), #fff); }
 .pj-browser-btn { appearance: none; -webkit-appearance: none; border: 0; margin: 0;
                   padding: 0; background: transparent; width: 100%; display: block;
                   cursor: pointer; text-align: left;
@@ -412,3 +419,59 @@
 
 @media (max-width: 900px) { .pj-leitbild { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .pj-schritt { grid-template-columns: 1fr; } }
+
+/* ---- Wo wir stehen: eine Zeile, kein Abschnitt --------------------------
+   Auf der Projektseite reicht das Signal "es gibt einen Plan" plus der
+   Absprung. Die ausfuehrliche Darstellung steht auf der Strategie-Seite,
+   deshalb hier bewusst flach - drei Striche in den Strangfarben statt
+   einer Vorschau. */
+.pj-stand { padding-block: clamp(18px,2.2vw,30px); }
+.pj-standzeile { display: flex; align-items: center; gap: clamp(20px,3vw,44px);
+                 padding: clamp(18px,2vw,24px) clamp(20px,2.4vw,30px);
+                 border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+                 background: #fff; text-decoration: none; border-bottom: 0; color: var(--ink);
+                 transition: border-color .2s ease, box-shadow .2s ease; }
+.pj-standzeile:hover { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.07); }
+.pj-standzeile-text { flex: 1 1 auto; min-width: 0; }
+.pj-standzeile-text .pj-tag { margin-bottom: .4rem; }
+.pj-standzeile-text b { display: block; font-family: var(--font-serif); font-weight: 700;
+                        font-size: 1.1rem; line-height: 1.3; margin-bottom: .25rem; }
+.pj-standzeile-text small { font-size: .88rem; line-height: 1.55; color: var(--grey-70); }
+.pj-standzeile-balken { display: flex; flex-direction: column; gap: 7px; flex: 0 0 140px; }
+.pj-standbalken { display: block; height: 7px; border-radius: 4px; background: var(--kante); }
+.pj-standbalken--1 { --kante: #C51F5D; width: 100%; }
+.pj-standbalken--2 { --kante: #8613A1; width: 72%; }
+.pj-standbalken--3 { --kante: #0B9FBD; width: 86%; }
+.pj-standzeile-pfeil { flex: 0 0 auto; font-size: 1.25rem; color: var(--grey-50); }
+.pj-standzeile:hover .pj-standzeile-pfeil { color: var(--ink); }
+@media (max-width: 620px) {
+  .pj-standzeile { flex-wrap: wrap; gap: 16px; }
+  .pj-standzeile-balken { flex-basis: 100%; flex-direction: row; align-items: center; }
+  .pj-standbalken { height: 7px; }
+  .pj-standbalken--1 { width: 40%; } .pj-standbalken--2 { width: 28%; } .pj-standbalken--3 { width: 32%; }
+}
+
+/* ---- Werkzeugkasten zweispaltig -----------------------------------------
+   Links, was vorliegt - rechts, womit es erarbeitet wurde. Beides gehoert
+   zusammen: das eine ist das Ergebnis, das andere der Weg dorthin.
+   Auf den Unterseiten stehen die Methoden gross (.mk); hier reicht die
+   schmale Zeile, sonst erschlaegt der Werkzeugkasten die Ergebnisse. */
+.pj-kasten-grid { display: grid; grid-template-columns: 1fr 1fr;
+                  gap: clamp(26px,3.6vw,56px); margin-top: clamp(26px,3.2vw,40px);
+                  align-items: start; }
+.pj-kasten-spalte .pj-tag { margin-bottom: 1rem; }
+.pj-methodenliste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.mk--klein { flex-direction: row; align-items: center; gap: 14px; width: 100%;
+             padding: 14px 16px; border-radius: 16px; }
+.mk--klein:hover { transform: none; box-shadow: 0 10px 24px rgba(0,0,0,.07); }
+.mk--klein .mk-ic { width: 30px; height: 30px; border-radius: 9px; }
+.mk--klein .mk-ic svg { width: 16px; height: 16px; }
+.mk-text { flex: 1 1 auto; min-width: 0; }
+.mk--klein .mk-text b { display: block; font-family: var(--font-sans); font-weight: 600;
+                        font-size: .95rem; line-height: 1.3; }
+.mk--klein .mk-text small { display: block; font-size: .82rem; line-height: 1.45;
+                            color: var(--grey-50); margin-top: 1px; }
+.mk-pfeil { flex: 0 0 auto; color: var(--grey-50); font-size: 1.05rem; }
+.mk--klein:hover .mk-pfeil { color: var(--ink); }
+.pj-kasten-spalte .pj-hinweis { display: block; margin-top: 14px; line-height: 1.6; }
+@media (max-width: 860px) { .pj-kasten-grid { grid-template-columns: 1fr; } }

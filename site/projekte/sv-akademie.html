@@ -606,73 +606,83 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
-  <!-- ===== Was schon vorliegt ===== -->
-  <section class="section">
+  <!-- ===== Wo wir stehen ===== -->
+  <section class="section pj-stand">
     <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Stand</p>
-        <h2 class="h-serif">Was schon <span class="hl">vorliegt.</span></h2>
-      </div>
-
-      <ul class="pj-dok">
-        <li>
-          <span class="pj-dok-ic">PDF</span>
-          <div><b>Selbstverständnis der SV Akademie</b><small>Grundlage des Projekts &middot; Themenfeld 1</small></div>
-          <a class="pj-dok-link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">Öffnen</a>
-        </li>
-        <li>
-          <span class="pj-dok-ic">WEB</span>
-          <div><b>Startseite der Akademie</b><small>Entwurf aus der Vision &middot; Themenfeld 2</small></div>
-          <button type="button" class="pj-dok-link" style="background:none;border:0;font:inherit;cursor:pointer" data-modal-target="svHomepageModal">Ansehen</button>
-        </li>
-      </ul>
-      <!-- Weitere Dokumente kommen als zusaetzliche <li> dazu.
-           Die Dateien gehoeren nach site/assets/projekte/. -->
+      <a class="pj-standzeile" href="/projekte/sv-meilensteine.html">
+        <span class="pj-standzeile-text">
+          <span class="pj-tag">Wo wir stehen</span>
+          <b>Ein Meilensteinplan über drei Stränge</b>
+          <small>Transformation 1, Transformation 2 und Sichtbarkeit &amp; Außenwirkung –
+            fünf Ergebnisstufen mit festen Terminen.</small>
+        </span>
+        <span class="pj-standzeile-balken" aria-hidden="true">
+          <span class="pj-standbalken pj-standbalken--1"></span>
+          <span class="pj-standbalken pj-standbalken--2"></span>
+          <span class="pj-standbalken pj-standbalken--3"></span>
+        </span>
+        <span class="pj-standzeile-pfeil" aria-hidden="true">&#8594;</span>
+      </a>
     </div>
   </section>
 
-  <!-- ===== Werkzeugkasten ===== -->
+  <!-- ===== Werkzeugkasten: Ergebnisse und Methoden ===== -->
   <section class="section pj-werkzeug">
     <div class="container">
       <div class="pj-kopfzeile">
         <p class="kicker">Werkzeugkasten</p>
-        <h2 class="h-serif">Die Methoden <span class="hl">zum Mitnehmen.</span></h2>
-        <p class="lead">Was in diesem Projekt an Methodik zum Einsatz kommt, steht hier gesammelt –
-          kurz erklärt und so beschrieben, dass Führungskräfte es im eigenen Bereich
-          wiederverwenden können. Wo im Projekt dieses Zeichen auftaucht, steckt eine Methode
-          dahinter.</p>
+        <h2 class="h-serif">Was vorliegt – <span class="hl">und womit gearbeitet wird.</span></h2>
+        <p class="lead">Links die Ergebnisse, die schon erarbeitet sind, zum direkten Zugriff.
+          Rechts die Methoden dahinter, kurz erklärt und so beschrieben, dass Führungskräfte
+          sie im eigenen Bereich wiederverwenden können.</p>
       </div>
 
-      <div class="pj-werkzeug-gitter">
+      <div class="pj-kasten-grid">
 
-        <button type="button" class="mk" data-modal-target="mZielgruppeModal">
-          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span><span class="mk-tag">Methode</span></span>
-          <b>Zielgruppenanalyse</b>
-          <small>Wer sind die Menschen, für die wir arbeiten – und was brauchen sie wirklich?</small>
-          <span class="mk-mehr">Methode ansehen &#8594;</span>
-        </button>
+        <div class="pj-kasten-spalte">
+          <p class="pj-tag">Ergebnisse</p>
+          <ul class="pj-dok">
+            <li>
+              <span class="pj-dok-ic">PDF</span>
+              <div><b>Selbstverständnis der SV Akademie</b><small>Leitbild &middot; Themenfeld 1</small></div>
+              <a class="pj-dok-link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">Öffnen</a>
+            </li>
+            <li>
+              <span class="pj-dok-ic">WEB</span>
+              <div><b>Startseite der Akademie</b><small>Entwurf aus der Vision &middot; Themenfeld 2</small></div>
+              <button type="button" class="pj-dok-link" style="background:none;border:0;font:inherit;cursor:pointer" data-modal-target="svHomepageModal">Ansehen</button>
+            </li>
+            <li>
+              <span class="pj-dok-ic">PLAN</span>
+              <div><b>Meilensteinplan</b><small>Drei Stränge &middot; Themenfeld 3</small></div>
+              <a class="pj-dok-link" href="/projekte/sv-meilensteine.html">Öffnen</a>
+            </li>
+          </ul>
+          <!-- Weitere Ergebnisse kommen als zusaetzliche <li> dazu, thematisch
+               sortiert nach Themenfeld. Dateien nach site/assets/projekte/. -->
+        </div>
 
-        <button type="button" class="mk" data-modal-target="mNeugruendungModal">
-          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-werkstatt"/></svg></span><span class="mk-tag">Methode</span></span>
-          <b>Gedankliche Neugründung</b>
-          <small>Wie würden wir den Bereich heute gründen – ganz ohne Altlasten?</small>
-          <span class="mk-mehr">Methode ansehen &#8594;</span>
-        </button>
-
-        <button type="button" class="mk" data-modal-target="swotModal">
-          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-protokoll"/></svg></span><span class="mk-tag">Methode</span></span>
-          <b>SWOT-Analyse</b>
-          <small>Stärken, Schwächen, Chancen, Risiken – und was sich daraus ableiten lässt.</small>
-          <span class="mk-mehr">Methode ansehen &#8594;</span>
-        </button>
-
-        <!-- WEITERE METHODEN: kommen dazu, sobald sie im Projekt eingesetzt
-             wurden. Aufbau wie oben; das Modal gehoert ans Seitenende. -->
-        <div class="mk mk--leer">
-          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-werkstatt"/></svg></span><span class="mk-tag">Methode</span></span>
-          <b>Weitere folgen</b>
-          <small>Jede Methode, die im Projekt zum Einsatz kommt, landet hier – mit kurzer
-            Anleitung zum Nachmachen.</small>
+        <div class="pj-kasten-spalte">
+          <p class="pj-tag">Methoden</p>
+          <ul class="pj-methodenliste">
+            <li><button type="button" class="mk mk--klein" data-modal-target="mZielgruppeModal">
+              <span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span>
+              <span class="mk-text"><b>Zielgruppenanalyse</b><small>Für wen sind wir da – und was brauchen sie?</small></span>
+              <span class="mk-pfeil">&#8594;</span>
+            </button></li>
+            <li><button type="button" class="mk mk--klein" data-modal-target="mNeugruendungModal">
+              <span class="mk-ic"><svg><use href="#mi-werkstatt"/></svg></span>
+              <span class="mk-text"><b>Gedankliche Neugründung</b><small>Wie würden wir heute gründen – ohne Altlasten?</small></span>
+              <span class="mk-pfeil">&#8594;</span>
+            </button></li>
+            <li><button type="button" class="mk mk--klein" data-modal-target="swotModal">
+              <span class="mk-ic"><svg><use href="#mi-protokoll"/></svg></span>
+              <span class="mk-text"><b>SWOT-Analyse</b><small>Stärken, Schwächen, Chancen, Risiken – und was folgt.</small></span>
+              <span class="mk-pfeil">&#8594;</span>
+            </button></li>
+          </ul>
+          <p class="pj-hinweis">Jede Methode, die im Projekt zum Einsatz kommt, landet hier –
+            mit kurzer Anleitung zum Nachmachen.</p>
         </div>
 
       </div>
