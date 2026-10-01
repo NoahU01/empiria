@@ -164,6 +164,7 @@
 </div>
 </div></div>
 </div>
+<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
 <a href="../strategie/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
@@ -462,6 +463,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div></div>
 </div>
+<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
 <a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
 <a href="../strategie/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
@@ -509,13 +511,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <h1 class="h-serif">Zwei Stunden, <span class="hl">ein gemeinsames Zielbild.</span></h1>
         </div>
         <div class="hero-copy lead"><p>Abstimmung der Vision und der strategischen Stoßrichtungen mit Michael Sauerbrunn, Hauptabteilungsleiter. Aus dem Bild von M.&nbsp;S. und unserer Ausarbeitung soll ein gemeinsames werden – und daraus die Grundlage für die weitere Arbeit.</p></div>
-      </div>
-
-      <div class="ab-ansichten" role="group" aria-label="Darstellung des Ablaufs">
-        <span class="ab-ansichten-tag">Ablauf anzeigen als</span>
-        <button type="button" class="ab-pill is-aktiv" data-ansicht="kompakt" aria-pressed="true">Agenda</button>
-        <button type="button" class="ab-pill" data-ansicht="ausfuehrlich" aria-pressed="false">Ausführlich</button>
-        <button type="button" class="ab-pill" data-ansicht="blick" aria-pressed="false">Auf einen Blick</button>
       </div>
     </div>
   </section>
@@ -574,9 +569,28 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           M.&nbsp;S. im weiteren Verlauf.</p>
       </div>
 
+      <div class="ab-ansichten" role="group" aria-label="Darstellung des Ablaufs">
+        <span class="ab-ansichten-tag">Anzeigen als</span>
+        <button type="button" class="ab-pill is-aktiv" data-ansicht="kompakt" aria-pressed="true">Agenda</button>
+        <button type="button" class="ab-pill" data-ansicht="ausfuehrlich" aria-pressed="false">Ausführlich</button>
+        <button type="button" class="ab-pill" data-ansicht="strahl" aria-pressed="false">Zeitstrahl</button>
+        <button type="button" class="ab-pill" data-ansicht="fragen" aria-pressed="false">Leitfragen</button>
+      </div>
+
       <div class="ab-ablauf" data-ansicht="kompakt">
 
-        <div class="ab-block">
+        <!-- Nur im Zeitstrahl sichtbar: die zwei Stunden als ein Band,
+             jedes Stueck so breit, wie der Block lang ist. -->
+        <div class="ab-strahl">
+          <button type="button" class="ab-strahl-stueck" style="--min:10" data-block="0"><b>01</b><span>10 Min</span></button>
+          <button type="button" class="ab-strahl-stueck" style="--min:15" data-block="1"><b>02</b><span>15 Min</span></button>
+          <button type="button" class="ab-strahl-stueck" style="--min:45" data-block="2"><b>03</b><span>45 Min</span></button>
+          <button type="button" class="ab-strahl-stueck" style="--min:30" data-block="3"><b>04</b><span>30 Min</span></button>
+          <button type="button" class="ab-strahl-stueck" style="--min:20" data-block="4"><b>05</b><span>20 Min</span></button>
+        </div>
+
+
+        <div class="ab-block ab-block--ohne-fragen">
           <div class="ab-spur ab-spur--erste" style="--min:10">
             <span class="ab-dauer">10<small>Min</small></span>
             <span class="ab-anteil" aria-hidden="true"><i></i></span>
@@ -637,7 +651,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   <li>Noch nicht argumentieren, noch nicht erklären.</li>
                 </ul></dd>
               </div>
-              <div class="ab-feld">
+              <div class="ab-feld ab-feld--fragen">
                 <dt>Leitfragen</dt>
                 <dd><ul class="ab-fragen">
                   <li>Wenn Sie heute an Ihr damaliges Statement denken: Was macht für Sie die
@@ -699,7 +713,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                 <dd class="ab-warnung">Nicht 45 Minuten präsentieren. Immer wieder stoppen,
                   abgleichen, gemeinsam weiterdenken.</dd>
               </div>
-              <div class="ab-feld">
+              <div class="ab-feld ab-feld--fragen">
                 <dt>Leitfragen</dt>
                 <dd><ul class="ab-fragen">
                   <li>Wo trifft das genau Ihr Bild – und wo nicht?</li>
@@ -743,7 +757,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   <li>Offene Punkte bewusst für die Strategieentwicklung parken.</li>
                 </ul></dd>
               </div>
-              <div class="ab-feld">
+              <div class="ab-feld ab-feld--fragen">
                 <dt>Leitfragen</dt>
                 <dd><ul class="ab-fragen">
                   <li>Sind das aus Ihrer Sicht die richtigen Hebel, um dieses Zielbild zu
@@ -794,7 +808,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   </div>
                 </div></dd>
               </div>
-              <div class="ab-feld">
+              <div class="ab-feld ab-feld--fragen">
                 <dt>Leitfragen</dt>
                 <dd><ul class="ab-fragen">
                   <li>Wo brauchen wir Sie persönlich, damit dieses Zielbild Realität werden kann?</li>
@@ -841,15 +855,24 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 <script>
-/* Drei Blicke auf denselben Ablauf - eine Quelle, drei Tiefen:
-   Agenda    - Ergebnis sichtbar, der Rest auf Klick
+/* Vier Blicke auf denselben Ablauf - eine Quelle, vier Tiefen:
+   Agenda       - Ergebnis sichtbar, der Rest auf Klick
    Ausfuehrlich - alles offen, dazu die Zeitspur links
-   Auf einen Blick - nur Dauer und Ergebnis, zum Mitnehmen in den Termin */
+   Zeitstrahl   - die zwei Stunden als Band, ein Klick oeffnet den Block
+   Leitfragen   - nur die Fragen, fuer den Termin selbst */
 (function () {
   var ablauf = document.querySelector('.ab-ablauf');
   if (!ablauf) return;
-  var pills = document.querySelectorAll('.ab-pill');
-  var marken = ablauf.querySelectorAll('.ab-marke');
+  var pills  = Array.prototype.slice.call(document.querySelectorAll('.ab-pill'));
+  var marken = Array.prototype.slice.call(ablauf.querySelectorAll('.ab-marke'));
+  var bloecke = Array.prototype.slice.call(ablauf.querySelectorAll('.ab-block'));
+  var stuecke = Array.prototype.slice.call(ablauf.querySelectorAll('.ab-strahl-stueck'));
+
+  function klappe(block, offen) {
+    block.classList.toggle('is-offen', offen);
+    var m = block.querySelector('.ab-marke');
+    if (m) m.setAttribute('aria-expanded', offen ? 'true' : 'false');
+  }
 
   function setze(ansicht) {
     ablauf.dataset.ansicht = ansicht;
@@ -858,12 +881,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       b.classList.toggle('is-aktiv', an);
       b.setAttribute('aria-pressed', an ? 'true' : 'false');
     });
-    marken.forEach(function (m) {
-      // Ausfuehrlich zeigt alles, die anderen starten zugeklappt.
-      var offen = ansicht === 'ausfuehrlich';
-      m.setAttribute('aria-expanded', offen ? 'true' : 'false');
-      m.closest('.ab-block').classList.toggle('is-offen', offen);
-    });
+    // Ausfuehrlich zeigt alles, die anderen starten zugeklappt.
+    bloecke.forEach(function (b) { klappe(b, ansicht === 'ausfuehrlich'); });
+    stuecke.forEach(function (s) { s.classList.remove('is-aktiv'); });
   }
 
   pills.forEach(function (b) {
@@ -872,10 +892,23 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   marken.forEach(function (m) {
     m.addEventListener('click', function () {
-      if (ablauf.dataset.ansicht === 'blick') return;   // dort gibt es nichts aufzuklappen
+      if (ablauf.dataset.ansicht === 'fragen') return;   // dort gibt es nichts aufzuklappen
       var block = m.closest('.ab-block');
-      var offen = block.classList.toggle('is-offen');
-      m.setAttribute('aria-expanded', offen ? 'true' : 'false');
+      klappe(block, !block.classList.contains('is-offen'));
+    });
+  });
+
+  stuecke.forEach(function (s) {
+    s.addEventListener('click', function () {
+      var block = bloecke[+s.dataset.block];
+      var war = block.classList.contains('is-offen');
+      bloecke.forEach(function (b) { klappe(b, false); });
+      stuecke.forEach(function (x) { x.classList.remove('is-aktiv'); });
+      if (!war) {
+        klappe(block, true);
+        s.classList.add('is-aktiv');
+        block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
   });
 
