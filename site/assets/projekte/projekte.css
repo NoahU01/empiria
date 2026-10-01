@@ -424,7 +424,7 @@
    nicht in die Zeilenhoehe ein - der Kasten bleibt so hoch wie der Text links,
    und object-fit: contain zeigt das Dokument trotzdem vollstaendig. */
 .pj-kasten-bild { appearance: none; -webkit-appearance: none; border: 1px solid #e4e1dd;
-                  margin: 0; padding: 6px; background: #fff; cursor: pointer; display: block;
+                  margin: 0; padding: 6px; background: #f4f2ef; cursor: pointer; display: block;
                   border-radius: 10px; line-height: 0; align-self: stretch;
                   position: relative; min-height: 240px;
                   transition: border-color .2s ease, box-shadow .2s ease; }
@@ -432,11 +432,13 @@
 .pj-kasten-bild img { position: absolute; inset: 6px; width: calc(100% - 12px);
                       height: calc(100% - 12px); max-width: none; object-fit: contain;
                       object-position: center; }
-.pj-kasten-text { align-self: center; }
+.pj-kasten-text { align-self: stretch; display: flex; flex-direction: column;
+                  padding-top: clamp(14px,1.8vw,26px); }
 .pj-kasten-text b { display: block; font-family: var(--font-serif); font-weight: 700;
                     font-size: 1.14rem; line-height: 1.26; margin-bottom: .45rem; }
 .pj-kasten-text small { display: block; font-size: .92rem; line-height: 1.6;
                         color: var(--grey-70); margin-bottom: 1.1rem; }
+.pj-kasten-text .btn { margin-top: auto; align-self: flex-start; }
 
 /* ---- Methodenkasten -----------------------------------------------------
    Ein Baustein, der ueberall gleich aussieht: wo er auftaucht, steckt eine

@@ -661,11 +661,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-kasten-spalte">
           <p class="pj-tag">Ergebnisse</p>
           <ul class="pj-methodenliste">
-            <li><a class="mk mk--klein" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">
+            <li><button type="button" class="mk mk--klein" data-modal-target="selbstverstaendnisModal">
               <span class="mk-ic"><svg><use href="#zi-dokument"/></svg></span>
               <span class="mk-text"><b>Selbstverständnis der SV Akademie</b><small>Leitbild &middot; Themenfeld 1</small></span>
               <span class="mk-pfeil">&#8594;</span>
-            </a></li>
+            </button></li>
             <li><button type="button" class="mk mk--klein" data-modal-target="svHomepageModal">
               <span class="mk-ic"><svg><use href="#zi-fenster"/></svg></span>
               <span class="mk-text"><b>Startseite der Akademie</b><small>Entwurf aus der Vision &middot; Themenfeld 2</small></span>
@@ -743,6 +743,25 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 
 
+<div class="modal-overlay" id="selbstverstaendnisModal" data-generic>
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure">
+      <div class="modal-structure-head">
+        <h3>Unser Selbstverständnis</h3>
+        <p>SV Akademie &middot; was uns antreibt, wofür wir stehen und wie wir zusammenarbeiten.</p>
+      </div>
+      <div class="pj-modal-bild">
+        <img src="/assets/projekte/sv-akademie-selbstverstaendnis-1.webp"
+             alt="Selbstverständnis der SV Akademie, alle Seiten" loading="lazy">
+      </div>
+      <div class="pj-modal-fuss">
+        <a class="btn btn--dark" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">Als PDF öffnen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="svHomepageModal" data-generic>
   <div class="modal-wrap modal-wrap--structure">
     <button class="modal-close" aria-label="Schließen">&times;</button>
@@ -754,6 +773,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="pj-modal-bild">
         <img src="/assets/projekte/sv-akademie-homepage.webp"
              alt="Startseite der SV Akademie in voller Größe" loading="lazy">
+      </div>
+      <div class="pj-modal-fuss">
+        <a class="btn btn--dark" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Zur Webseite gehen</a>
       </div>
     </div>
   </div>
