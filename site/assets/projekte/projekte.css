@@ -1169,14 +1169,16 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 
 /* Das Strategiemodell steht rechts neben Ueberschrift und Text - als
    kleiner umrandeter Kasten wie die Dokumentvorschau im Selbstverstaendnis,
-   nur schmaler. Seine Oberkante liegt auf der Oberkante des gelben Kastens
-   in der Ueberschrift; die 40 px sind die Kickerzeile darueber. */
+   nur schmaler. Seine Unterkante liegt auf der Unterkante des Textes. */
 .pj-kopfzeile--mitbild { display: grid; grid-template-columns: 1fr auto;
                          gap: clamp(28px,4vw,60px); align-items: start; max-width: none; }
 .pj-kopfzeile--mitbild > div { max-width: 56ch; }
+/* Der Kasten schliesst unten mit dem Text links ab - deshalb align-self:
+   end statt eines festen Abstands nach oben. */
 .pj-modellkasten { appearance: none; -webkit-appearance: none; cursor: pointer;
                    display: grid; grid-template-columns: auto 1fr; align-items: center;
-                   gap: 16px; width: clamp(280px,26vw,330px); margin-top: 40px;
+                   align-self: end;
+                   gap: 16px; width: clamp(280px,26vw,330px);
                    padding: 16px; text-align: left;
                    background: #fff; border: 1px solid #e4e1dd;
                    border-radius: var(--radius-card);
