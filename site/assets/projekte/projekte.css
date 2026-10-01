@@ -1077,3 +1077,15 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
   font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
 .ab-ablauf[data-ansicht="agenda3"] .ab-marke { gap: 14px; }
 .ab-ablauf[data-ansicht="agenda3"] .ab-block { border-bottom-color: #e4e1dd; }
+
+/* --- Agenda 4.0: Weiss und Grau im Wechsel, dazu die schwarzen Zahlenkreise.
+       Ohne Trennstriche - der Farbwechsel zeigt die Grenze schon, zwei
+       Trennzeichen uebereinander waeren doppelt gemoppelt. --- */
+.ab-ablauf[data-ansicht="agenda4"] .ab-block { border-bottom: 0; border-radius: var(--radius-card); }
+.ab-ablauf[data-ansicht="agenda4"] .ab-block:nth-child(even) { background: #faf9f7; }
+.ab-ablauf[data-ansicht="agenda4"] .ab-inhalt {
+  padding-left: clamp(16px,2vw,22px); padding-right: clamp(16px,2vw,22px); }
+.ab-ablauf[data-ansicht="agenda4"] .ab-nr { width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--ink); color: var(--hl);
+  font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
+.ab-ablauf[data-ansicht="agenda4"] .ab-marke { gap: 14px; }
