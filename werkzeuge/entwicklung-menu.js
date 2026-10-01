@@ -11,21 +11,34 @@ d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){se
 document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
-// Zweite Ebene: ein Flyout weit unten in der Liste wuerde sonst unter den
-// Fensterrand rutschen (gemessen: 925px bei 813px Fensterhoehe). Es wird
-// deshalb beim Oeffnen genau um den Ueberstand nach oben geschoben.
+// Flyouts platzieren. Zwei Faelle:
+// 1. Senkrecht: ein Flyout weit unten in der Liste rutscht sonst unter den
+//    Fensterrand (gemessen: 925px bei 813px Fensterhoehe). Es wird beim
+//    Oeffnen genau um den Ueberstand nach oben geschoben.
+// 2. Waagerecht: seit das Archiv eine eigene Ebene hat, gibt es eine dritte.
+//    Die passt rechts nicht mehr neben die zweite und klappt dann nach links
+//    auf. Gilt auch fuer die zweite Ebene in schmalen Fenstern.
+// ':scope>' ist wichtig: ein verschachteltes Flyout liegt ebenfalls unter
+// seinem Elternteil und wuerde sonst mitgemessen.
 d.querySelectorAll('.dev-dd-sub').forEach(function(s){
-var f=s.querySelector('.dev-dd-flyout');
+var f=s.querySelector(':scope>.dev-dd-flyout');
 if(!f)return;
+function zuruecksetzen(){f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';}
 function platzieren(){
-if(!desk()){f.style.top='';return;}
+if(!desk()){zuruecksetzen();return;}
+zuruecksetzen();
 f.style.top='-10px';
-var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+var r=f.getBoundingClientRect();
+var u=r.bottom-(window.innerHeight-12);
 if(u>0)f.style.top=(-10-u)+'px';
+if(r.right>window.innerWidth-12){
+f.style.left='auto';f.style.right='100%';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}
 }
 s.addEventListener('mouseenter',platzieren);
 s.addEventListener('focusin',platzieren);
-window.addEventListener('resize',function(){f.style.top='';});
+window.addEventListener('resize',zuruecksetzen);
 });
 });
 }

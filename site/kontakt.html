@@ -360,7 +360,20 @@
 </div></div>
 </div>
 <a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Dashboard &middot; Themen &amp; Dokumente</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Strategie</p>
+<a href="projekte/strategie-zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wohin die Akademie läuft</small></span></a>
+<a href="projekte/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Wegmarken und Termine</small></span></a>
+</div></div>
+</div>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
 <a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
 <a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
 <a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
@@ -374,6 +387,8 @@
 <a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
 <a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
 <a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
 </div></div>
 </div>
 </div>
@@ -445,21 +460,34 @@ d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){se
 document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href.split('#')[0]===here)a.classList.add('is-current');});
-// Zweite Ebene: ein Flyout weit unten in der Liste wuerde sonst unter den
-// Fensterrand rutschen (gemessen: 925px bei 813px Fensterhoehe). Es wird
-// deshalb beim Oeffnen genau um den Ueberstand nach oben geschoben.
+// Flyouts platzieren. Zwei Faelle:
+// 1. Senkrecht: ein Flyout weit unten in der Liste rutscht sonst unter den
+//    Fensterrand (gemessen: 925px bei 813px Fensterhoehe). Es wird beim
+//    Oeffnen genau um den Ueberstand nach oben geschoben.
+// 2. Waagerecht: seit das Archiv eine eigene Ebene hat, gibt es eine dritte.
+//    Die passt rechts nicht mehr neben die zweite und klappt dann nach links
+//    auf. Gilt auch fuer die zweite Ebene in schmalen Fenstern.
+// ':scope>' ist wichtig: ein verschachteltes Flyout liegt ebenfalls unter
+// seinem Elternteil und wuerde sonst mitgemessen.
 d.querySelectorAll('.dev-dd-sub').forEach(function(s){
-var f=s.querySelector('.dev-dd-flyout');
+var f=s.querySelector(':scope>.dev-dd-flyout');
 if(!f)return;
+function zuruecksetzen(){f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';}
 function platzieren(){
-if(!desk()){f.style.top='';return;}
+if(!desk()){zuruecksetzen();return;}
+zuruecksetzen();
 f.style.top='-10px';
-var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+var r=f.getBoundingClientRect();
+var u=r.bottom-(window.innerHeight-12);
 if(u>0)f.style.top=(-10-u)+'px';
+if(r.right>window.innerWidth-12){
+f.style.left='auto';f.style.right='100%';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}
 }
 s.addEventListener('mouseenter',platzieren);
 s.addEventListener('focusin',platzieren);
-window.addEventListener('resize',function(){f.style.top='';});
+window.addEventListener('resize',zuruecksetzen);
 });
 });
 }
@@ -576,7 +604,20 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div></div>
 </div>
 <a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Dashboard &middot; Themen &amp; Dokumente</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Strategie</p>
+<a href="projekte/strategie-zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wohin die Akademie läuft</small></span></a>
+<a href="projekte/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Wegmarken und Termine</small></span></a>
+</div></div>
+</div>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
 <a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
 <a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
 <a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
@@ -590,6 +631,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
 <a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
 <a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
 </div></div>
 </div>
 </div>
