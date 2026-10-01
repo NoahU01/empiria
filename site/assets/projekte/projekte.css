@@ -563,3 +563,141 @@
 .mk--klein:hover .mk-pfeil { color: var(--ink); }
 .pj-kasten-spalte .pj-hinweis { display: block; margin-top: 14px; line-height: 1.6; }
 @media (max-width: 860px) { .pj-kasten-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Abstimmungstermin: Ziele, Dramaturgie, Skizzen
+   Aufbau wie das Storyboard im MSP-Projekt: links eine durchgehende Spur,
+   rechts auf gleicher Hoehe der Inhalt. Nur ist die Spur hier keine
+   Bildschirmskizze, sondern die Zeitachse - jeder Block ist so hoch, wie er
+   lang ist (--min), damit man die zwei Stunden sieht und nicht nur liest.
+   ========================================================================== */
+.ab-ziele { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px,1.8vw,22px);
+            margin-top: clamp(26px,3.2vw,40px); }
+.ab-ziel { padding: clamp(20px,2.2vw,28px); background: #fff; border: 1px solid #e4e1dd;
+           border-radius: var(--radius-card); }
+.ab-ziel-nr { display: block; font-family: var(--font-serif); font-weight: 700;
+              font-size: 1.1rem; color: var(--grey-50); margin-bottom: .7rem; }
+.ab-ziel h3 { margin: 0 0 .5rem; font-family: var(--font-serif); font-weight: 700;
+              font-size: 1.16rem; line-height: 1.26; }
+.ab-ziel p { margin: 0; font-size: .95rem; line-height: 1.66; color: var(--grey-70); }
+
+.ab-gefuehl { margin: clamp(18px,2.2vw,26px) 0 0; padding: clamp(24px,3vw,38px);
+              background: var(--ink); border-radius: var(--radius-card); }
+.ab-gefuehl blockquote { margin: 0; font-family: var(--font-serif); font-weight: 500;
+                         font-size: clamp(1.2rem,2vw,1.6rem); line-height: 1.42; color: #fff;
+                         max-width: 46ch; }
+.ab-gefuehl blockquote::before { content: "„"; }
+.ab-gefuehl blockquote::after { content: "“"; }
+.ab-gefuehl figcaption { margin-top: 1.1rem; font-size: .84rem; letter-spacing: .1em;
+                         text-transform: uppercase; font-weight: 600; color: var(--hl); }
+
+.ab-abgrenzung { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 18px;
+                 margin-top: clamp(16px,1.8vw,22px);
+                 padding: clamp(16px,1.9vw,22px) clamp(20px,2.2vw,28px);
+                 background: #faf9f7; border-radius: var(--radius-card); }
+.ab-abgrenzung-tag { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+                     font-weight: 700; color: var(--ink); flex: 0 0 auto; }
+.ab-abgrenzung p { margin: 0; flex: 1 1 320px; font-size: .95rem; line-height: 1.66;
+                   color: var(--grey-70); }
+
+/* ---- Ablauf: Spur links, Inhalt rechts ---------------------------------- */
+.ab-ablauf { margin-top: clamp(26px,3.2vw,40px); }
+.ab-block { display: grid; grid-template-columns: minmax(0,300px) 1fr;
+            gap: clamp(20px,3vw,52px); align-items: stretch; }
+.ab-spur { position: relative; display: flex; flex-direction: column; gap: 18px;
+           padding: clamp(18px,2vw,24px); background: #faf9f7;
+           border-left: 1px solid #e4e1dd; border-right: 1px solid #e4e1dd;
+           /* 5.4 px je Minute: aus 10 Minuten werden 54 px, aus 45 ganze 243 -
+              die Spur zeigt damit die Laenge der Bloecke im Verhaeltnis. */
+           min-height: calc(var(--min) * 5.4px); }
+.ab-spur--erste { border-top: 1px solid #e4e1dd;
+                  border-radius: var(--radius-card) var(--radius-card) 0 0; }
+.ab-spur--letzte { border-bottom: 1px solid #e4e1dd;
+                   border-radius: 0 0 var(--radius-card) var(--radius-card); }
+.ab-block + .ab-block .ab-spur { border-top: 1px solid #ebe8e5; }
+.ab-dauer { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem;
+            line-height: 1; color: var(--ink); }
+.ab-dauer small { font-size: .72rem; font-family: var(--font-sans); font-weight: 600;
+                  letter-spacing: .1em; text-transform: uppercase; color: var(--grey-50);
+                  margin-left: 7px; }
+/* Der Balken zeigt den Anteil an den zwei Stunden. Die Hoehe der Spur allein
+   taugt dafuer nicht - sie richtet sich nach dem Text daneben. */
+.ab-anteil { display: block; width: 100%; height: 4px; border-radius: 999px;
+             background: #e4e1dd; margin-top: -6px; }
+.ab-anteil i { display: block; height: 100%; border-radius: 999px; background: var(--ink);
+               width: calc(var(--min) / 120 * 100%); }
+/* Die Skizze sitzt in der verbleibenden Hoehe mittig. */
+.ab-spur .sk { margin-top: auto; margin-bottom: auto; }
+
+.ab-inhalt { padding: clamp(18px,2vw,26px) 0 clamp(26px,3vw,40px); }
+.ab-marke { display: flex; align-items: center; gap: 12px; margin: 0 0 1.1rem;
+            font-weight: 600; font-size: 1.04rem; color: var(--ink); }
+.ab-nr { font-family: var(--font-serif); font-weight: 700; color: var(--grey-50); }
+.ab-felder { margin: 0; display: grid; gap: 14px; }
+.ab-feld { display: grid; grid-template-columns: 7.5rem 1fr; gap: 4px 20px; }
+.ab-feld dt { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+              font-weight: 600; color: var(--grey-50); padding-top: 2px; }
+.ab-feld dd { margin: 0; font-size: .96rem; line-height: 1.7; color: var(--grey-70); }
+.ab-liste, .ab-fragen, .ab-kette, .ab-unterkette { margin: 0; padding: 0; list-style: none;
+                                                   display: grid; gap: 6px; }
+.ab-liste li, .ab-kette li { position: relative; padding-left: 17px; }
+.ab-liste li::before { content: ""; position: absolute; left: 0; top: .66em; width: 6px;
+                       height: 6px; border-radius: 50%; background: var(--hl); }
+.ab-kette { counter-reset: kette; gap: 7px; }
+.ab-kette > li { padding-left: 26px; counter-increment: kette; }
+.ab-kette > li::before { content: counter(kette); position: absolute; left: 0; top: 0;
+                         font-size: .78rem; font-weight: 700; color: var(--grey-50); }
+.ab-unterkette { margin-top: 6px; gap: 4px; }
+.ab-unterkette li { position: relative; padding-left: 15px; font-size: .92rem;
+                    color: var(--grey-50); }
+.ab-unterkette li::before { content: ""; position: absolute; left: 0; top: .68em; width: 6px;
+                            height: 1.5px; background: var(--grey-50); }
+.ab-fragen li { padding-left: 16px; border-left: 2px solid var(--hl); font-style: italic;
+                color: var(--ink); }
+.ab-warnung { color: var(--ink); font-weight: 500; }
+.ab-rollen { display: grid; gap: 10px; }
+.ab-rolle { padding: 12px 16px; background: #faf9f7; border-radius: 14px; }
+.ab-rolle b { display: block; font-weight: 600; font-size: .95rem; color: var(--ink); }
+.ab-rolle small { display: block; margin-top: 2px; font-size: .88rem; line-height: 1.55;
+                  color: var(--grey-70); }
+
+/* ---- Skizzen: dieselben Grundformen wie in den Strukturbildern ---------- */
+.sk { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+.sk-zeile { display: block; height: 5px; border-radius: 999px; background: #d8d3cd; }
+.sk-zeile--dunkel { background: #9a938b; height: 7px; }
+.sk-leiste { display: flex; gap: 4px; margin-bottom: 4px; }
+.sk-punkt { width: 6px; height: 6px; border-radius: 50%; background: #cfc9c2; }
+.sk--zuhoeren { gap: 10px; width: 100%; }
+.sk-blase { display: block; height: 30px; border-radius: 14px; }
+.sk-blase--er { width: 78%; background: var(--ink); border-bottom-left-radius: 4px; }
+.sk-blase--wir { width: 46%; background: #e4e1dd; border-bottom-right-radius: 4px;
+                 align-self: flex-end; }
+.sk--zielbild { display: grid; grid-template-columns: repeat(3, 34px); gap: 6px;
+                position: relative; }
+.sk-stein { width: 34px; height: 22px; border-radius: 5px; background: #ded9d3; }
+.sk-stein--hell { background: var(--hl); }
+.sk-ring { position: absolute; right: -14px; bottom: -10px; width: 34px; height: 34px;
+           border: 2px solid var(--ink); border-radius: 50%; }
+.sk--weg { position: relative; width: 100%; height: 56px; display: block; }
+.sk-start, .sk-ziel { position: absolute; top: 50%; width: 12px; height: 12px;
+                      border-radius: 50%; transform: translateY(-50%); }
+.sk-start { left: 0; background: #b8b1a9; }
+.sk-ziel { right: 0; background: var(--ink); }
+.sk-pfad { position: absolute; left: 12px; right: 12px; height: 2px; background: #d8d3cd; }
+.sk-pfad--1 { top: 14px; }
+.sk-pfad--2 { top: 27px; background: var(--hl); height: 3px; }
+.sk-pfad--3 { top: 40px; }
+.sk--rolle { width: 100%; }
+.sk-person { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--ink);
+             margin-bottom: 4px; }
+
+@media (max-width: 900px) {
+  .ab-ziele { grid-template-columns: 1fr; }
+  .ab-block { grid-template-columns: 1fr; gap: 14px; }
+  .ab-spur { flex-direction: row; align-items: center; gap: 22px; min-height: 0;
+             border: 1px solid #e4e1dd; border-radius: var(--radius-card); }
+  .ab-block + .ab-block .ab-spur { border-top: 1px solid #e4e1dd; }
+  .ab-spur--erste, .ab-spur--letzte { border-radius: var(--radius-card); }
+  .ab-inhalt { padding-top: 4px; }
+  .ab-feld { grid-template-columns: 1fr; gap: 2px; }
+}
