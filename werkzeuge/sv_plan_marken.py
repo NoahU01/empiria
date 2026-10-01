@@ -28,7 +28,7 @@ SEITEN = ["site/projekte/sv-meilensteine.html",
 MARKEN = {
     "sa-1-hal": {
         "seite": "/projekte/sv-abstimmung-hal.html",
-        "linktext": "Agenda und Ablauf des Termins ansehen",
+        "linktext": "Agenda zum Workshop ansehen",
     },
     "t1-1-copilot": {
         "kritisch": {
