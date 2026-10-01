@@ -1540,8 +1540,11 @@ img { max-width: 100%; display:block; }
 .mk__text { flex: 1 1 34rem; max-width: 48rem; }
 /* Die Sammelregel weiter unten setzt jedem h1 eine Breite von 24ch - hier
    soll die Zeile laenger laufen, damit die Ueberschrift in zwei Zeilen passt. */
+/* 25.4ch sind rund 700 px: "Meilensteine zur Transformation" (662 px) passt
+   in die erste Zeile, "... der" (741 px) nicht mehr. Damit rutscht der
+   Artikel sicher in die zweite Zeile, auch wenn die Schrift anders faellt. */
 .mk__titel { font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.16;
-             max-width: 30ch; text-wrap: normal; }
+             max-width: 25.4ch; text-wrap: normal; }
 .mk__hl { display: inline-block; font-weight: 700;
           background-color: #fff400; color: #1a1817;  /* empiria-Gelb, nicht das SV-Gelb aus --gelb */
           padding: 0 .16em; margin-left: -.16em; }
