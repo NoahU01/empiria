@@ -48,7 +48,10 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/strategie/meilensteine.html",
                   # Das Stylesheet gehoert nur zu diesen Seiten - ohne sie hat
                   # es auf main nichts verloren.
-                  "site/assets/projekte/projekte.css"]
+                  "site/assets/projekte/projekte.css",
+                  "site/assets/projekte/sv-akademie-homepage.webp",
+                  "site/assets/projekte/sv-akademie-selbstverstaendnis-1.webp",
+                  "site/assets/projekte/sv-akademie-selbstverstaendnis.pdf"]
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter",
                  "/projekte", "/strategie"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der

@@ -789,6 +789,56 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
+  <!-- ===== Die Homepage als Ergebnis der Vision ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="pj-kopfzeile">
+        <p class="kicker">Die Vision, sichtbar gemacht</p>
+        <h2 class="h-serif">Wie sieht die Homepage <span class="hl">der Akademie aus?</span></h2>
+        <p class="lead">Genau die Frage, die wir sonst Führungskräften stellen, haben wir hier
+          selbst beantwortet – und zwar nicht als Text, sondern als Seite. Die Homepage zeigt
+          die Akademie so, wie sie nach der Vision aussehen soll: Zielgruppe, Nutzen,
+          Zusammenarbeit, alles an einem Ort.</p>
+      </div>
+
+      <div class="pj-browser-grid">
+        <button type="button" class="pj-browser-btn" data-modal-target="svHomepageModal"
+                aria-label="Startseite der SV Akademie groß ansehen">
+          <span class="perspektive-browser">
+            <span class="pb-bar">
+              <span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="pb-url">sv-akademie.de<span class="pb-caret" aria-hidden="true"></span></span>
+            </span>
+            <span class="pb-page pj-browser-seite">
+              <img src="/assets/projekte/sv-akademie-homepage.webp"
+                   alt="Startseite der SV Akademie: Wir sind Dein Ansprechpartner für Bildung und Weiterentwicklung"
+                   width="1440" height="900" loading="lazy">
+            </span>
+          </span>
+        </button>
+
+        <div class="pj-browser-text">
+          <p class="pj-tag">Gedankenexperiment</p>
+          <p class="pj-exp">Stell Dir vor, wir gründen die SV Akademie morgen als eigenes
+            Unternehmen – ganz ohne Altlasten. Wie sähe die Homepage aus?</p>
+          <p>Fünf Fragen muss sie beantworten: Welche Zielgruppe sprechen wir an? Welches
+            Problem lösen wir? Welcher Nutzen entsteht daraus? Was macht uns einzigartig?
+            Und wie läuft die Zusammenarbeit ab?</p>
+          <p>Die Seite ist deshalb kein Nebenprodukt, sondern die Probe aufs Exempel: Was sich
+            dort nicht sauber erklären lässt, ist in der Vision noch nicht geklärt.</p>
+          <div class="pj-browser-aktionen">
+            <button type="button" class="btn btn--dark" data-modal-target="svHomepageModal">Startseite ansehen</button>
+            <!-- ZIEL BITTE SETZEN: Der Entwurf liegt bisher nur lokal
+                 (~/Downloads/SV-Akademie-Website) und ist nicht gehostet.
+                 Sobald es eine Adresse gibt, kommt sie hier hinein - oder wir
+                 legen den Entwurf in dieses Repository. -->
+            <span class="pj-hinweis">Der Entwurf ist noch nicht veröffentlicht.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Ergebnisse ===== -->
   <section class="section">
     <div class="container">
@@ -817,6 +867,22 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
   </div>
 </footer>
+
+<div class="modal-overlay" id="svHomepageModal" data-generic>
+  <div class="modal-wrap modal-wrap--structure">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal modal--structure">
+      <div class="modal-structure-head">
+        <h3>Startseite der SV Akademie</h3>
+        <p>Der Entwurf, der aus der Vision entstanden ist.</p>
+      </div>
+      <div class="pj-modal-bild">
+        <img src="/assets/projekte/sv-akademie-homepage.webp"
+             alt="Startseite der SV Akademie in voller Größe" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="strategiemodellModal" data-generic>
   <div class="modal-wrap modal-wrap--structure">
