@@ -507,9 +507,6 @@
    Absprung. Die ausfuehrliche Darstellung steht auf der Strategie-Seite,
    deshalb hier bewusst flach - drei Striche in den Strangfarben statt
    einer Vorschau. */
-/* Die Zeile sitzt direkt ueber der grauen Flaeche des Werkzeugkastens.
-   Ohne Luft darunter schneidet die Kante den unteren Rand des Kastens an. */
-.pj-stand { padding-top: 0; padding-bottom: clamp(46px,5.4vw,80px); }
 .pj-standzeile { display: flex; align-items: center; gap: clamp(20px,3vw,44px);
                  padding: clamp(18px,2vw,24px) clamp(20px,2.4vw,30px);
                  border: 1px solid #e4e1dd; border-radius: var(--radius-card);
@@ -852,3 +849,27 @@
   .sm-reihe--2::before { left: 6px; } .sm-reihe--3::before { left: 22px; }
   .sm-reihe--4::before { left: 38px; }
 }
+
+/* Das Strategiemodell steht nicht mehr als Balken unter den Feldern, sondern
+   klein neben der Ueberschrift. Es ist fast schwarz und traegt sich damit
+   von selbst - deshalb nur so gross, dass man es erkennt, und mit Luft. */
+.pj-kopfzeile--mitbild { display: grid; grid-template-columns: 1fr auto;
+                         gap: clamp(24px,4vw,64px); align-items: start; max-width: none; }
+.pj-kopfzeile--mitbild > div { max-width: 56ch; }
+.pj-modell-dezent { appearance: none; -webkit-appearance: none; cursor: pointer;
+                    display: flex; flex-direction: column; align-items: center; gap: 8px;
+                    padding: 0; background: none; border: 0; opacity: .82;
+                    transition: opacity .2s ease, transform .2s ease; }
+.pj-modell-dezent:hover { opacity: 1; transform: translateY(-2px); }
+.pj-modell-dezent img { display: block; width: clamp(58px,6vw,78px); height: auto;
+                        border-radius: 6px; }
+.pj-modell-dezent span { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+                         font-weight: 600; color: var(--grey-50); }
+@media (max-width: 760px) {
+  .pj-kopfzeile--mitbild { grid-template-columns: 1fr; }
+  .pj-modell-dezent { flex-direction: row; align-self: start; }
+}
+
+/* Die Standzeile schliesst jetzt direkt an die drei Felder an - sie gehoert
+   dazu, nicht in eine eigene Sektion. */
+.pj-felder + .pj-standzeile { margin-top: clamp(14px,1.8vw,22px); }

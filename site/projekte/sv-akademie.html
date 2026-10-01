@@ -15,6 +15,9 @@
 <!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
      (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
      Leistungen des Hauses und sind belegt. -->
+<symbol id="mi-modell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4.5 18.5h15"/><path d="M6.5 13.5h11"/><path d="M8.5 8.5h7"/><path d="M12 3.5v1.6"/>
+</symbol>
 <symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
   <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
 </symbol>
@@ -582,11 +585,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <!-- ===== Die Themenfelder: der Arbeitsbereich ===== -->
   <section class="section" id="themenfelder">
     <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Die Themenfelder</p>
-        <h2 class="h-serif">Hier wird <span class="hl">gearbeitet.</span></h2>
-        <p class="lead">Drei Felder, in dieser Reihenfolge – sie folgen dem Strategiemodell,
-          das wir auch bei Kunden einsetzen. Jedes Feld ist eine eigene Seite.</p>
+      <div class="pj-kopfzeile pj-kopfzeile--mitbild">
+        <div>
+          <p class="kicker">Die Themenfelder</p>
+          <h2 class="h-serif">Hier wird <span class="hl">gearbeitet.</span></h2>
+          <p class="lead">Drei Felder, in dieser Reihenfolge – sie folgen dem Strategiemodell,
+            das wir auch bei Kunden einsetzen. Jedes Feld ist eine eigene Seite.</p>
+        </div>
+        <button type="button" class="pj-modell-dezent" data-modal-target="strategiemodellModal">
+          <img src="/assets/projekte/strategiemodell-mini.webp" alt="" width="407" height="480" loading="lazy">
+          <span>Strategiemodell</span>
+        </button>
       </div>
 
       <div class="pj-felder">
@@ -633,21 +642,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       </div>
 
-      <div class="pj-modell-zeile">
-        <button type="button" class="pj-modell-mini" data-modal-target="strategiemodellModal"
-                aria-label="Strategiemodell groß ansehen">
-          <img src="/assets/projekte/strategiemodell-mini.webp" alt="" width="407" height="480" loading="lazy">
-        </button>
-        <p>Dahinter steht unser Strategiemodell – dieselbe Logik, die wir auch bei Kunden
-          anwenden. Die Reihenfolge der drei Felder kommt daher.</p>
-        <button type="button" class="btn btn--dark btn--sm" data-modal-target="strategiemodellModal">Modell ansehen</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Wo wir stehen ===== -->
-  <section class="section pj-stand">
-    <div class="container">
       <a class="pj-standzeile" href="/projekte/sv-meilensteine.html">
         <span class="pj-standzeile-text">
           <span class="pj-tag">Wo wir stehen</span>
@@ -662,6 +656,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </span>
         <span class="pj-standzeile-pfeil" aria-hidden="true">&#8594;</span>
       </a>
+
     </div>
   </section>
 
@@ -704,6 +699,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-kasten-spalte">
           <p class="pj-tag">Methoden</p>
           <ul class="pj-methodenliste">
+            <li><button type="button" class="mk mk--klein" data-modal-target="strategiemodellModal">
+              <span class="mk-ic"><svg><use href="#mi-modell"/></svg></span>
+              <span class="mk-text"><b>Strategiemodell</b><small>Die Reihenfolge, in der wir arbeiten.</small></span>
+              <span class="mk-pfeil">&#8594;</span>
+            </button></li>
             <li><button type="button" class="mk mk--klein" data-modal-target="mZielgruppeModal">
               <span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span>
               <span class="mk-text"><b>Zielgruppenanalyse</b><small>Für wen sind wir da – und was brauchen sie?</small></span>
