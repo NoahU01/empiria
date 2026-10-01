@@ -460,7 +460,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
-  <section class="section pj-sek pj-sek--linie">
+  <section class="section">
     <div class="container">
       <div class="pj-kopfzeile">
         <p class="kicker">Die Wegmarken</p>
@@ -468,21 +468,34 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <p class="lead">Wenige Marken mit einem klaren Ergebnis sind mehr wert als ein voller Plan, den niemand mehr liest.</p>
       </div>
       <div style="margin-top:clamp(26px,3.2vw,40px)">
-      <div class="pj-block">
-        <h3>Dieses Jahr</h3>
-        <p>Noch offen &ndash; was bis zum 31.12. stehen soll.</p>
-      </div>
-      <div class="pj-block">
-        <h3>Erstes Halbjahr 2027</h3>
-        <p>Noch offen &ndash; die Schritte, die auf dem aufsetzen, was dieses Jahr fertig wird.</p>
-      </div>
-      <div class="pj-block">
-        <h3>Zweites Halbjahr 2027</h3>
-        <p>Noch offen &ndash; was erst sinnvoll ist, wenn das Vorherige steht.</p>
-      </div>
-      <div class="pj-block">
-        <h3>Daueraufgaben</h3>
-        <p>Noch offen &ndash; was nie fertig wird, aber regelm&auml;&szlig;ig Aufmerksamkeit braucht.</p>
+      <div class="formate-accordion">
+        <details class="formate-acc-item formate-acc--magenta" name="bst-meilensteine" open>
+          <summary><span>Dieses Jahr</span></summary>
+          <div class="formate-acc-body">
+            <p>Noch offen &ndash; was bis zum 31.12. stehen soll.</p>
+          </div>
+        </details>
+
+        <details class="formate-acc-item formate-acc--violet" name="bst-meilensteine">
+          <summary><span>Erstes Halbjahr 2027</span></summary>
+          <div class="formate-acc-body">
+            <p>Noch offen &ndash; die Schritte, die auf dem aufsetzen, was dieses Jahr fertig wird.</p>
+          </div>
+        </details>
+
+        <details class="formate-acc-item formate-acc--cyan" name="bst-meilensteine">
+          <summary><span>Zweites Halbjahr 2027</span></summary>
+          <div class="formate-acc-body">
+            <p>Noch offen &ndash; was erst sinnvoll ist, wenn das Vorherige steht.</p>
+          </div>
+        </details>
+
+        <details class="formate-acc-item formate-acc--emerald" name="bst-meilensteine">
+          <summary><span>Daueraufgaben</span></summary>
+          <div class="formate-acc-body">
+            <p>Noch offen &ndash; was nie fertig wird, aber regelm&auml;&szlig;ig Aufmerksamkeit braucht.</p>
+          </div>
+        </details>
       </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 /* ===== Projekt- und Strategieseiten =========================================
    Dieselbe Bildsprache wie Startseite und Strategiehandwerk: heller Grund,
-   Serifen-Ueberschrift mit einer gelben Hervorhebung, Abschnitte im Wechsel
-   weiss und grau. Eigene Regeln gibt es nur fuer das, was es dort noch nicht
-   gibt - die Themenkacheln, die Textbloecke und die Ablage.
+   Serifen-Ueberschrift mit einer gelben Hervorhebung. Die Seiten bauen auf
+   den Bausteinen des Hauses auf - Problemkasten, Icon-Karten, Akkordeon,
+   dunkles Zahlenband, Modellkasten. Eigene Regeln gibt es nur fuer das, was
+   es dort noch nicht gibt: Steckbrief, helle Pills und die Ablage.
    Liegt als eigene Datei, weil alle diese Seiten sie teilen; so laeuft die
    Gestaltung nicht auseinander, sobald ein zweites Projekt dazukommt. */
 
@@ -51,40 +52,30 @@
 .pj-fortschritt-txt b { font-size: .9rem; font-weight: 600; color: var(--ink); }
 .pj-fortschritt-txt small { font-size: .78rem; color: var(--grey-50); line-height: 1.4; }
 
-/* ---- Abschnitte ---------------------------------------------------------- */
-/* Alles auf Weiss. Getrennt wird mit einer Haarlinie statt mit einer grauen
-   Flaeche - die wirkt wie ein Notbehelf, sobald zwei davon untereinander
-   stehen. Die Abstaende machen den Rhythmus. */
-.pj-sek { padding-block: clamp(50px,6vw,92px); overflow: visible; }
-.pj-sek--linie { border-top: 1px solid var(--grey-bg); }
+/* ---- Pills --------------------------------------------------------------
+   Dieselbe Form wie .produkt-pill, nur fuer hellen Grund: .produkt-pill ist
+   weiss auf dunkel und waere hier unsichtbar. */
+.pj-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.4rem; }
+.pj-pill { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 999px;
+           background: #fff; border: 1px solid #d9d5d1; color: var(--ink);
+           font-family: var(--font-sans); font-weight: 600; font-size: .78rem;
+           letter-spacing: .02em; }
+/* Im Akkordeon ist der Grund schon hellgrau - dort traegt Weiss die Form. */
+.pj-pills--dunkel { margin: 0 0 1.3rem; }
+.pj-pills--dunkel .pj-pill { background: #fff; border-color: #e0dbd6; }
 
-/* ---- Ausgangssituation: nummerierte Punkte ------------------------------- */
-.pj-punkte { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-             gap: clamp(22px,3vw,44px); }
-.pj-punkt-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
-               color: var(--grey-50); display: block; margin-bottom: .7rem; }
-.pj-punkt h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.22rem;
-               line-height: 1.26; margin: 0 0 .5rem; }
-.pj-punkt p { color: var(--grey-70); line-height: 1.7; font-size: .98rem; margin: 0; }
-
-/* ---- Vorgehen: Schritte links, Modell rechts ----------------------------- */
-.pj-modell-grid { display: grid; grid-template-columns: 1fr .82fr;
-                  gap: clamp(32px,4.5vw,64px); align-items: start; }
-.pj-schritte { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(22px,2.6vw,32px); }
-.pj-schritte li { display: flex; align-items: flex-start; gap: 18px; }
-.pj-schritt-nr { flex: 0 0 38px; height: 38px; border-radius: 50%; display: grid;
-                 place-items: center; background: var(--ink); color: var(--hl);
-                 font-family: var(--font-serif); font-weight: 700; font-size: 1.02rem; }
-.pj-schritte h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.16rem;
-                  line-height: 1.26; margin: .3rem 0 .4rem; }
-.pj-schritte p { color: var(--grey-70); line-height: 1.7; font-size: .96rem; margin: 0; max-width: 46ch; }
-/* Der Modellkasten ist der einzige dunkle Baustein der Seite - genau dort,
-   wo er etwas erklaert. */
-.pj-modell-bild { position: sticky; top: 104px; }
+/* ---- Vorgehen: die drei Karten unter dem Modellkasten -------------------- */
+/* .cards-3col ist dreispaltig. Neben dem Modellkasten steht nur eine Spalte
+   zur Verfuegung, die Karten laufen deshalb untereinander. */
+.pj-cards-1col { grid-template-columns: 1fr; gap: clamp(26px,3.2vw,40px); }
+/* Auf der Startseite haengt das Zeichen um 50px ueber die Karte hinaus, weil
+   es dort in eine Reihe von drei Karten greift. Untereinander wuerde es in
+   die Karte darueber ragen - deshalb steht es hier auf seiner Zeile. */
+.pj-cards-1col .lcard-icon { transform: none; }
 
 @media (max-width: 900px) {
-  .pj-hero-grid, .pj-modell-grid { grid-template-columns: 1fr; }
-  .pj-modell-bild { position: static; max-width: 460px; }
+  .pj-hero-grid { grid-template-columns: 1fr; }
+  .loesung-modell { max-width: 460px; }
 }
 .pj-zurueck { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1.4rem;
               font-size: .88rem; color: var(--grey-50); text-decoration: none;
@@ -102,66 +93,6 @@
 .pj-kopfzeile .lead { max-width: 62ch; margin: 0; }
 @media (max-width: 900px) { .pj-kopfzeile h2 { font-size: clamp(2.3rem,9.5vw,2.9rem); } }
 
-/* ---- Eckdaten ------------------------------------------------------------ */
-.pj-meta { display: flex; flex-wrap: wrap; gap: clamp(16px,2.6vw,40px);
-           margin-top: clamp(26px,3.2vw,42px); padding-top: clamp(18px,2.2vw,26px);
-           border-top: 1px solid var(--grey-bg); }
-.pj-meta div { display: flex; flex-direction: column; gap: 4px; }
-.pj-meta b { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-             color: var(--grey-50); font-weight: 600; }
-.pj-meta span { font-family: var(--font-serif); font-weight: 500; font-size: 1.06rem; color: var(--ink); }
-
-/* ---- Kacheln ------------------------------------------------------------- */
-.pj-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-             grid-template-rows: repeat(5, auto);
-             gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
-/* Subgrid: die Kacheln spannen dieselben fuenf Zeilen auf, damit Leitfrage,
-   Name, Text, Liste und Fusszeile ueberall auf einer Hoehe stehen. */
-.pj-karte { grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 0;
-            align-content: start; padding: clamp(20px,2.2vw,30px);
-            background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            text-decoration: none; border-bottom: 0; color: var(--ink);
-            transition: border-color .22s ease, transform .22s ease, box-shadow .22s ease; }
-a.pj-karte:hover { border-color: var(--ink); transform: translateY(-4px);
-                   box-shadow: 0 16px 34px rgba(0,0,0,.08); }
-.pj-karte > * { margin: 0; }
-.pj-karte-frage { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
-                  font-weight: 600; color: var(--grey-50); }
-.pj-karte h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem;
-               line-height: 1.24; padding-top: 8px; }
-.pj-karte p { font-size: .94rem; line-height: 1.62; color: var(--grey-70); padding-top: 12px; }
-.pj-karte ul { list-style: none; padding: 16px 0 0; display: grid; gap: 7px; }
-.pj-karte li { position: relative; padding-left: 18px; font-size: .86rem; line-height: 1.5;
-               color: var(--grey-70); }
-.pj-karte li::before { content: ""; position: absolute; left: 0; top: .52em; width: 7px; height: 7px;
-                       border-radius: 50%; background: var(--hl); }
-.pj-karte-fuss { padding-top: 20px; display: flex; align-items: center;
-                 justify-content: space-between; gap: 10px; align-self: end; }
-.pj-pfeil { font-size: 1.2rem; line-height: 1; color: var(--grey-50); }
-a.pj-karte:hover .pj-pfeil { color: var(--ink); }
-
-/* ---- Status -------------------------------------------------------------- */
-.pj-status { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px;
-             border-radius: 999px; font-size: .72rem; font-weight: 600; letter-spacing: .04em;
-             background: var(--grey-bg); color: var(--grey-70); white-space: nowrap; }
-.pj-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%;
-                     background: currentColor; flex: 0 0 auto; }
-.pj-status--laeuft { background: #fff9b8; color: #6b5e00; }
-.pj-status--fertig { background: #e3f5ec; color: #0a6b43; }
-.pj-status--offen  { background: var(--grey-bg); color: var(--grey-50); }
-
-/* ---- Textbloecke --------------------------------------------------------- */
-.pj-block { background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            padding: clamp(22px,2.6vw,34px); }
-.pj-block + .pj-block { margin-top: clamp(14px,1.8vw,20px); }
-.pj-block h3 { font-family: var(--font-serif); font-weight: 700; font-size: 1.18rem;
-               line-height: 1.26; margin: 0 0 .6rem; color: var(--ink); }
-.pj-block p, .pj-block li { color: var(--grey-70); line-height: 1.72; font-size: 1rem; }
-.pj-block p { margin: 0 0 .85rem; max-width: 70ch; }
-.pj-block p:last-child, .pj-block ul:last-child { margin-bottom: 0; }
-.pj-block ul { margin: 0; padding-left: 20px; display: grid; gap: 7px; }
-.pj-block b { color: var(--ink); font-weight: 600; }
-
 /* ---- Ablage -------------------------------------------------------------- */
 .pj-dok { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pj-dok li { display: flex; align-items: center; gap: 14px; padding: 15px 17px;
@@ -175,4 +106,3 @@ a.pj-karte:hover .pj-pfeil { color: var(--ink); }
            font-size: .96rem; line-height: 1.72; max-width: 66ch; }
 .pj-leer b { color: var(--ink); font-weight: 600; }
 
-@media (max-width: 560px) { .pj-meta { gap: 14px 26px; } }
