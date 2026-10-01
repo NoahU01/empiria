@@ -88,7 +88,19 @@ class Quelle:
             r = _lauf("git", "show", f"{self.ref}:{pfad}")
             return r.stdout if r.returncode == 0 else None
         p = os.path.join(ROOT, pfad)
-        return open(p, encoding="utf-8").read() if os.path.exists(p) else None
+        if not os.path.exists(p):
+            return None
+        # errors="replace": In der Liste der internen Seiten stehen auch
+        # Bilder und PDFs. Die werden nie durchsucht, aber ein harter
+        # Decodierfehler wuerde die ganze Pruefung abbrechen - und damit
+        # ausgerechnet das Werkzeug, das main schuetzt.
+        return open(p, encoding="utf-8", errors="replace").read()
+
+    def gibt_es(self, pfad):
+        """Nur die Existenz - ohne den Inhalt zu lesen."""
+        if self.ref:
+            return _lauf("git", "cat-file", "-e", f"{self.ref}:{pfad}").returncode == 0
+        return os.path.exists(os.path.join(ROOT, pfad))
 
 
 def pruefen(q):
@@ -106,7 +118,7 @@ def pruefen(q):
 
     # 2 Interne Seiten
     befunde["Interne Seiten"] = [f"{s} liegt im Stand" for s in INTERNE_SEITEN
-                                 if q.lesen(s) is not None]
+                                 if q.gibt_es(s)]
 
     # 3 Rewrites
     rew = []

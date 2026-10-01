@@ -377,7 +377,7 @@ P["workshop-moderation"] = ("magenta", "Moderation Deines Workshops – empiria"
 ])
 
 # ---------------------------------------------------------------- Marketing
-P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
+P["marketing"] = ("violet", "Marketing 2.0 – empiria", [
   cover("Marketing 2.0", 'Marketing für Versicherer <span class="hl">anders gedacht.</span>',
         ["Wir sind keine klassische Medienagentur. Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber."],
         S.load("marketing"),
@@ -487,7 +487,7 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
 ])
 
 # ---------------------------------------------------------------- MES
-P["dashboard-digitales-marketing"] = ("cyan", "MarketingEcoSystem (MES) – empiria", [
+P["dashboard-digitales-marketing"] = ("violet", "MarketingEcoSystem (MES) – empiria", [
   cover("MarketingEcoSystem (MES)", 'Du konzentrierst Dich nicht auf Marketing, sondern auf <span class="hl">Dein Business.</span>',
         "Unser MarketingEcoSystem führt Homepage, digitale Kanäle und zentrales Dashboard an einem Ort zusammen – inklusive laufender Schwachstellenanalyse und direkter Optimierung.",
         S.mes(),
@@ -628,7 +628,7 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
 ])
 
 # ---------------------------------------------------------------- Paid Ads
-P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
+P["paid-ads"] = ("violet", "Paid Ads – empiria", [
   cover("Performance Marketing", 'Google, Meta &amp; LinkedIn Ads <span class="hl">für Deine Zielgruppe.</span>',
         "Auf dem passenden Kanal erreichen wir genau die Menschen, die zu Deiner Branche und Deinem Angebot passen. Du weißt bei jedem Euro, wohin er fließt und was er auslöst.",
         S.paid_ads(),
@@ -686,7 +686,7 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
 ])
 
 # ---------------------------------------------------------------- Medien
-P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
+P["medien"] = ("violet", "Medien, die Ergebnisse liefern – empiria", [
   cover("Medien, die Ergebnisse liefern", 'Deine Botschaft. <span class="hl">Auf den Punkt.</span> Volle Wirkung.',
         "Wir sind keine typische Medienagentur. Wir sind Profis in den Themen Geschäftsmodell Versicherung, Strategie und Kommunikation – und übersetzen Deine Themen in die Welt Deiner Zielgruppe.",
         S.medien(),
@@ -738,7 +738,7 @@ P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
 ])
 
 # ---------------------------------------------------------------- Training & Sparring
-P["training-sparring"] = ("green", "Training & Sparring – empiria", [
+P["training-sparring"] = ("cyan", "Training & Sparring – empiria", [
   cover("Training &amp; Sparring", 'Begleitung, <span class="hl">die wirkt.</span> Kein Seminar von der Stange.',
         "Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen – zugeschnitten auf die Versicherungsbranche und Deinen Alltag.",
         S.training_sparring(),
@@ -816,7 +816,7 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
 ])
 
 # ---------------------------------------------------------------- Präsentationsseminar
-P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommunizieren – empiria", [
+P["praesentationsseminar"] = ("cyan", "Teams befähigen, professionell zu kommunizieren – empiria", [
   cover("Befähigung und Begleitung, kein Seminar", 'Teams befähigen, professionell zu <span class="hl">kommunizieren.</span>',
         ["Du bist Führungskraft in der Versicherungsbranche und Dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?", "Dann braucht Dein Team kein Seminar, sondern <b>professionelle Begleitung bei der Umsetzung.</b>"],
         S.praesentation(),
@@ -911,7 +911,7 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
 ])
 
 # ---------------------------------------------------------------- Sparring
-P["sparring"] = ("green", "1:1 Sparring – empiria", [
+P["sparring"] = ("cyan", "1:1 Sparring – empiria", [
   cover("1:1 Sparring", 'Offen sprechen. <span class="hl">Klar entscheiden.</span> Volle Wirkung.',
         "Seit vielen Jahren begleitet Daniel Ströbel Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.",
         S.sparring(),
