@@ -65,14 +65,12 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* Markierung: ein enges Band hinter dem Text.
-   Frueher ein inline-block mit absolutem ::before. Das konnte nur eine Zeile:
-   laeuft die Markierung ueber zwei Zeilen, legte sich ein einziger Block ueber
-   beide - samt der Leerflaeche hinter der kuerzeren Zeile.
-   Jetzt ist .hl inline, das Band ist sein eigener Hintergrund, und
-   box-decoration-break: clone gibt jedem Zeilenstueck ein eigenes Band.
-   Die Hoehe steckt in background-size statt im Polster, weil ein Polster die
-   Inhaltsbox nur vergroessern koennte - das Band muss aber kleiner sein als
-   sie, sonst stossen die Baender zweier Zeilen aneinander. */
+   Erst war es ein inline-block mit absolutem ::before - das konnte nur eine
+   Zeile. Dann ein eingerueckter Verlauf - der konnte zwei Zeilen, aber keine
+   runden Ecken, und das kleine g hing unten heraus.
+   Jetzt ist das Band der Hintergrund des Elements selbst: er fuellt die
+   Schriftbox samt Ober- und Unterlaengen, die Ecken lassen sich runden, und
+   box-decoration-break: clone gibt jedem Zeilenstueck ein eigenes Band. */
 .hl {
   display: inline;
   color: var(--ink);
@@ -80,9 +78,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 0.1em;
   margin: 0 -0.1em;
   background-image: linear-gradient(var(--hl), var(--hl));
-  background-repeat: no-repeat;
-  background-size: 100% 1.06em;
-  background-position: 0 0.06em;
+  border-radius: 0.14em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
@@ -337,7 +333,6 @@ a.nav-dropdown-leaf:hover { background: var(--grey-bg); color: var(--ink); }
 }
 .hero-head { width: max-content; max-width: 100%; }
 .hero h1 .hl { font-weight: 700; margin-left: 0.02em; }
-.hero h1 .hl { background-size: 100% 1.14em; background-position: 0 0.10em; }
 .hero-arrow { margin-top: -0.9rem; color: var(--ink); text-align: right; }
 .hero-arrow svg { width: clamp(70px, 7vw, 96px); height: auto; display: inline-block; }
 .hero-copy { padding-top: calc(0.6rem + 5px); }
@@ -3092,7 +3087,6 @@ body.produktseite--sofortsichtbar {
 /* Produktseiten-Hero: weisse Schrift im farbigen Marker. Der Kasten endete an der
    Grundlinie, Unterlaengen (g, p) standen weiss auf weiss und wirkten abgeschnitten.
    Kasten reicht jetzt bis unter die Unterlaengen. */
-.produktseite-clean .produkt-hero .hl { background-size: 100% 1.19em; }
 
 /* Produktseiten-Hero: Zeilenhoehe 1.06 war enger als die Glyphen, der Marker-Kasten
    ueberdeckte Unter-/Oberlaengen der Nachbarzeilen. 1.2 wie Startseite/Leistungsseiten. */

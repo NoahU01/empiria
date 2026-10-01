@@ -767,8 +767,6 @@
 .ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-inhalt { padding: clamp(18px,2vw,24px) 0; }
 .ab-ablauf[data-ansicht="ausfuehrlich"] .ab-marke-dauer { display: none; }
 
-}
-
 /* ==========================================================================
    Sitemap: die Struktur als Organigramm
    Vorschaubilder sahen alle gleich aus und halfen nicht beim Erfassen. Jetzt

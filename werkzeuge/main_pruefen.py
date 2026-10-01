@@ -171,6 +171,19 @@ def pruefen(q):
                     men.append(f"{f}: Menue verlinkt {p}")
     befunde["Menueband"] = sorted(set(men))
 
+    # 6 Klammerbilanz der Stylesheets
+    # Eine ueberzaehlige schliessende Klammer macht alle Regeln danach
+    # ungueltig - ohne Fehlermeldung, die Seite sieht nur falsch aus. Das ist
+    # mir zweimal beim Austauschen ganzer Bloecke passiert.
+    css = []
+    for f in q.dateien(endung=".css"):
+        t = q.lesen(f) or ""
+        ohne = re.sub(r"/\*.*?\*/", "", t, flags=re.S)
+        bilanz = ohne.count("{") - ohne.count("}")
+        if bilanz:
+            css.append(f"{f}: Klammerbilanz {bilanz:+d}")
+    befunde["Stylesheets"] = css
+
     return befunde
 
 
