@@ -1089,3 +1089,21 @@ a.tm-eintrag:hover .tm-stand { color: var(--ink); }
   display: grid; place-items: center; background: var(--ink); color: var(--hl);
   font-family: var(--font-serif); font-weight: 700; font-size: .84rem; flex: 0 0 auto; }
 .ab-ablauf[data-ansicht="agenda4"] .ab-marke { gap: 14px; }
+
+/* Zielpunkte aus dem Meilensteinplan: kein Kasten, sondern eine Marke auf
+   einem Strich. Sie sind kein Termin, sondern das Ergebnis, das bis dahin
+   vorliegen soll - das soll man auch sehen. */
+.tm-ziel { display: flex; align-items: center; gap: 14px; padding: 8px 4px 8px 0; }
+.tm-ziel-marke { flex: 0 0 auto; width: 92px; text-align: center;
+                 font-size: .66rem; letter-spacing: .14em; text-transform: uppercase;
+                 font-weight: 700; color: var(--ink); }
+.tm-ziel-text { flex: 0 1 auto; font-size: .92rem; line-height: 1.55; color: var(--grey-50); }
+.tm-ziel-text b { color: var(--ink); font-weight: 600; }
+/* Der Strich laeuft hinter dem Text aus, nicht durch ihn hindurch. */
+.tm-ziel-linie { flex: 1 1 auto; min-width: 24px; height: 1px; background: var(--ink);
+                 opacity: .22; }
+@media (max-width: 760px) {
+  .tm-ziel { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .tm-ziel-marke { width: auto; text-align: left; }
+  .tm-ziel-linie { display: none; }
+}

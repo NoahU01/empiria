@@ -542,19 +542,38 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           vorliegt, führt der Eintrag direkt dorthin.</p>
       </div>
 
-      <!-- DATEN BITTE ERGAENZEN: Die Termine stehen hier ohne Datum, weil mir
-           die Daten noch fehlen. Aufbau je Eintrag: <span class="tm-datum">
-           mit Tag und Monat, darunter das Jahr. Reihenfolge: neuester oben. -->
+      <!-- Quelle: "Strategie SV Akademie - Meilensteinplan 2027", oberste Zeile
+           (01 Meilensteine - Termine & Schluesselereignisse). Zwei Termine
+           tragen im Plan kein Datum, nur eine Position auf der Zeitachse;
+           bei ihnen steht die Einordnung statt eines Datums. -->
       <ol class="tm-liste">
 
         <li>
+          <span class="tm-eintrag tm-eintrag--geplant">
+            <span class="tm-datum"><b>08./09.</b><small>Dez. 2026</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Workshop</span>
+              <b>Workshop Strategie</b>
+              <small>Feinschliff und Operationalisierung.</small>
+            </span>
+            <span class="tm-stand tm-stand--offen">geplant</span>
+          </span>
+        </li>
+
+        <li class="tm-ziel">
+          <span class="tm-ziel-marke">Zielpunkt</span>
+          <span class="tm-ziel-text"><b>Die abgestimmte Strategie liegt vor.</b> Mitte bis Ende November 2026.</span>
+          <span class="tm-ziel-linie" aria-hidden="true"></span>
+        </li>
+
+        <li>
           <a class="tm-eintrag tm-eintrag--geplant" href="/projekte/sv-abstimmung-hal.html">
-            <span class="tm-datum"><b>geplant</b><small>Datum folgt</small></span>
+            <span class="tm-datum"><b>Ende Sep.</b><small>Mitte Okt. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Abstimmung</span>
-              <b>Vision und Stoßrichtungen mit dem Hauptabteilungsleiter</b>
-              <small>Zwei Stunden mit Michael Sauerbrunn. Agenda, Ziel und Ablauf sind
-                ausgearbeitet.</small>
+              <b>Workshop Strategie mit dem Hauptabteilungsleiter</b>
+              <small>Vision und strategische Stoßrichtungen mit Michael Sauerbrunn. Agenda,
+                Ziel und Ablauf sind ausgearbeitet.</small>
             </span>
             <span class="tm-stand">Agenda ansehen</span>
             <span class="mk-pfeil">&#8594;</span>
@@ -562,30 +581,92 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </li>
 
         <li>
-          <a class="tm-eintrag" href="/projekte/sv-selbstverstaendnis.html#protokoll">
-            <span class="tm-datum"><b>2 Tage</b><small>Datum folgt</small></span>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>11./12.</b><small>Aug. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Workshop</span>
-              <b>Selbstverständnis der Akademie</b>
-              <small>Von den Denkmodellen über die Stakeholder bis zu den Varianten des Why –
-                fünf Schritte, protokolliert.</small>
+              <b>Workshop Strategie</b>
+              <small>Freudenstadt.</small>
+            </span>
+          </span>
+        </li>
+
+        <li>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>Mitte</b><small>2026</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Workshop</span>
+              <b>Strategie</b>
+              <small>Zweiflingen-Friedrichsruhe, am Vortag der Abstimmplattform Bildung.
+                Im Plan ohne festes Datum.</small>
+            </span>
+          </span>
+        </li>
+
+        <li class="tm-ziel">
+          <span class="tm-ziel-marke">Zielpunkt</span>
+          <span class="tm-ziel-text"><b>Das Leitbild der Akademie liegt vor.</b> Mai 2026.</span>
+          <span class="tm-ziel-linie" aria-hidden="true"></span>
+        </li>
+
+        <li>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>16./17.</b><small>Apr. 2026</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Abteilungsbesprechung</span>
+              <b>Abteilungsbesprechung SV Akademie (PW7)</b>
+              <small>Einbindung des Teams: Gesamtlogik, Vision und Leitbild, Feedback im
+                Worldcafé.</small>
+            </span>
+          </span>
+        </li>
+
+        <li>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>Apr.</b><small>2026</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Workshop</span>
+              <b>Workshop Strategie</b>
+              <small>Freudenstadt, am Vortag der Abteilungsbesprechung. Im Plan ohne festes
+                Datum.</small>
+            </span>
+          </span>
+        </li>
+
+        <li>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>20./21.</b><small>Jan. 2026</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Klausur</span>
+              <b>Strategieklausur</b>
+              <small>SV Mannheim.</small>
+            </span>
+          </span>
+        </li>
+
+        <li>
+          <span class="tm-eintrag">
+            <span class="tm-datum"><b>18.</b><small>Dez. 2025</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Abstimmung</span>
+              <b>Abstimmung HAL</b>
+              <small>SV Stuttgart.</small>
+            </span>
+          </span>
+        </li>
+
+        <li>
+          <a class="tm-eintrag" href="/projekte/sv-selbstverstaendnis.html#protokoll">
+            <span class="tm-datum"><b>29./30.</b><small>Okt. 2025</small></span>
+            <span class="tm-text">
+              <span class="tm-art">Kick-off</span>
+              <b>Kick-off</b>
+              <small>Freiburg. Zwei Tage: Denkmodelle, Stakeholderanalyse und der erste
+                Entwurf des Leitbilds – protokolliert.</small>
             </span>
             <span class="tm-stand">Protokoll ansehen</span>
             <span class="mk-pfeil">&#8594;</span>
           </a>
-        </li>
-
-        <li>
-          <span class="tm-eintrag tm-eintrag--offen">
-            <span class="tm-datum"><b>&mdash;</b><small>noch offen</small></span>
-            <span class="tm-text">
-              <span class="tm-art">Führungskreis</span>
-              <b>Weitere Termine</b>
-              <small>Führungskreise und Workshops, zu denen es Agenden gibt – sobald Du sie
-                mir gibst, stehen sie hier mit Datum und eigener Seite.</small>
-            </span>
-            <span class="tm-stand tm-stand--offen">noch nicht hinterlegt</span>
-          </span>
         </li>
 
       </ol>
