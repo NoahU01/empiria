@@ -1167,27 +1167,35 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    und Kasten braucht es keine volle Sektionshoehe. */
 .section--eng { padding-top: clamp(26px,3.4vw,52px); }
 
-/* Das Strategiemodell steht klein rechts neben Ueberschrift und Text. Es ist
-   fast schwarz und traegt sich von selbst - deshalb nur so gross, dass man
-   es erkennt. Bild und Bezeichnung schliessen rechts mit der Kante des
-   dritten Themenfelds ab; die Oberkante liegt auf der Oberkante des gelben
-   Kastens in der Ueberschrift (die 43 px sind die Kickerzeile darueber). */
+/* Das Strategiemodell steht rechts neben Ueberschrift und Text - als
+   kleiner umrandeter Kasten wie die Dokumentvorschau im Selbstverstaendnis,
+   nur schmaler. Seine Oberkante liegt auf der Oberkante des gelben Kastens
+   in der Ueberschrift; die 40 px sind die Kickerzeile darueber. */
 .pj-kopfzeile--mitbild { display: grid; grid-template-columns: 1fr auto;
                          gap: clamp(28px,4vw,60px); align-items: start; max-width: none; }
 .pj-kopfzeile--mitbild > div { max-width: 56ch; }
-.pj-modell-dezent { appearance: none; -webkit-appearance: none; cursor: pointer;
-                    display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
-                    padding: 0; background: none; border: 0; opacity: .82;
-                    margin-top: 40px;
-                    transition: opacity .2s ease, transform .2s ease; }
-.pj-modell-dezent:hover { opacity: 1; transform: translateY(-2px); }
-.pj-modell-dezent img { display: block; width: clamp(58px,6vw,78px); height: auto;
-                        border-radius: 6px; }
-.pj-modell-dezent span { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-                         font-weight: 600; color: var(--grey-50); }
-@media (max-width: 760px) {
+.pj-modellkasten { appearance: none; -webkit-appearance: none; cursor: pointer;
+                   display: grid; grid-template-columns: auto 1fr; align-items: center;
+                   gap: 16px; width: clamp(280px,26vw,330px); margin-top: 40px;
+                   padding: 16px; text-align: left;
+                   background: #fff; border: 1px solid #e4e1dd;
+                   border-radius: var(--radius-card);
+                   transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.pj-modellkasten:hover { border-color: var(--ink); transform: translateY(-2px);
+                         box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+.pj-modellkasten-bild { display: block; width: 84px; flex: 0 0 auto; line-height: 0;
+                        border-radius: 7px; overflow: hidden; }
+.pj-modellkasten-bild img { display: block; width: 100%; height: auto; }
+.pj-modellkasten-text b { display: block; font-family: var(--font-serif); font-weight: 700;
+                          font-size: 1rem; line-height: 1.25; }
+.pj-modellkasten-text small { display: block; margin-top: 4px; font-size: .82rem;
+                              line-height: 1.5; color: var(--grey-70); }
+.pj-modellkasten-mehr { display: block; margin-top: 10px; font-size: .82rem;
+                        font-weight: 600; color: var(--ink); }
+@media (max-width: 860px) {
   .pj-kopfzeile--mitbild { grid-template-columns: 1fr; }
-  .pj-modell-dezent { flex-direction: row; align-self: start; margin-top: 4px; }
+  .pj-modellkasten { margin-top: 8px; width: 100%; max-width: 360px; }
+}
 }
 
 /* Die Zeile zur Projektplanung gehoert zu den drei Feldern, steht aber
