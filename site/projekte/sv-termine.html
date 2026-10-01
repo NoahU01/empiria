@@ -558,8 +558,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
            bei ihnen steht die Einordnung statt eines Datums. -->
       <ol class="tm-liste">
 
-        <li>
-          <span class="tm-eintrag tm-eintrag--geplant">
+        <li class="tm-posten tm-posten--geplant">
+          <span class="tm-eintrag">
             <span class="tm-datum"><b>08./09.</b><small>Dez. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Workshop</span>
@@ -576,8 +576,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <span class="tm-ziel-linie" aria-hidden="true"></span>
         </li>
 
-        <li>
-          <button type="button" class="tm-eintrag tm-eintrag--geplant" aria-expanded="false">
+        <li class="tm-posten tm-posten--geplant">
+          <button type="button" class="tm-eintrag" aria-expanded="false">
             <span class="tm-datum"><b>Ende Sep.</b><small>Mitte Okt. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Abstimmung</span>
@@ -595,7 +595,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <span class="tm-eintrag">
             <span class="tm-datum"><b>11./12.</b><small>Aug. 2026</small></span>
             <span class="tm-text">
@@ -606,7 +606,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </span>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <span class="tm-eintrag">
             <span class="tm-datum"><b>Mitte</b><small>2026</small></span>
             <span class="tm-text">
@@ -624,7 +624,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <span class="tm-ziel-linie" aria-hidden="true"></span>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <span class="tm-eintrag">
             <span class="tm-datum"><b>16./17.</b><small>Apr. 2026</small></span>
             <span class="tm-text">
@@ -636,7 +636,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </span>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <span class="tm-eintrag">
             <span class="tm-datum"><b>Apr.</b><small>2026</small></span>
             <span class="tm-text">
@@ -648,18 +648,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </span>
         </li>
 
-        <li>
-          <span class="tm-eintrag">
+        <li class="tm-posten">
+          <button type="button" class="tm-eintrag" aria-expanded="false">
             <span class="tm-datum"><b>20./21.</b><small>Jan. 2026</small></span>
             <span class="tm-text">
               <span class="tm-art">Klausur</span>
               <b>Strategieklausur</b>
               <small>SV Mannheim.</small>
             </span>
-          </span>
+            <span class="tm-stand">1 Dokument</span>
+            <span class="tm-pfeil" aria-hidden="true"></span>
+          </button>
+          <div class="tm-dokumente">
+            <a class="tm-dok" href="/assets/projekte/sv-swot-arbeitsauftrag.pdf" target="_blank" rel="noopener">
+              <span class="tm-dok-bild tm-dok-bild--quer"><img src="/assets/projekte/sv-swot-vorschau.webp" alt="" loading="lazy"></span>
+              <span class="tm-dok-text"><b>SWOT-Analyse</b><small>Arbeitsauftrag zur Vorbereitung · PDF</small></span>
+            </a>
+          </div>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <span class="tm-eintrag">
             <span class="tm-datum"><b>18.</b><small>Dez. 2025</small></span>
             <span class="tm-text">
@@ -670,7 +678,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </span>
         </li>
 
-        <li>
+        <li class="tm-posten">
           <button type="button" class="tm-eintrag" aria-expanded="false">
             <span class="tm-datum"><b>29./30.</b><small>Okt. 2025</small></span>
             <span class="tm-text">

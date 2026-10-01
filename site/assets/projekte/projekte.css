@@ -956,13 +956,18 @@
 .tm-kopf { margin-top: clamp(36px,4.4vw,62px); }
 .tm-liste { list-style: none; margin: clamp(22px,2.6vw,32px) 0 0; padding: 0;
             display: grid; gap: 12px; counter-reset: termin; }
+/* Der Kasten ist das <li>: Klappt ein Termin auf, oeffnet sich seine
+   Umrandung mit und schliesst die Dokumente ein. Stuenden sie darunter,
+   waere nicht zu sehen, zu welchem Termin sie gehoeren. */
+.tm-posten { background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+             overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease; }
+.tm-posten--geplant { border-left: 4px solid var(--hl); }
+.tm-posten--offen { background: transparent; border-style: dashed; }
+.tm-posten.is-offen { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.08); }
 .tm-eintrag { display: grid; grid-template-columns: 92px 1fr auto auto;
               align-items: center; gap: clamp(16px,2vw,26px);
-              padding: 16px 20px; background: #fff; border: 1px solid #e4e1dd;
-              border-radius: var(--radius-card); text-decoration: none; color: var(--ink);
-              transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
-a.tm-eintrag:hover { border-color: var(--ink); transform: translateY(-2px);
-                     box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+              padding: 16px 20px; background: none; border: 0;
+              text-decoration: none; color: var(--ink); }
 .tm-datum { text-align: center; flex: 0 0 auto; }
 .tm-datum b { display: block; font-family: var(--font-serif); font-weight: 700;
               font-size: 1.02rem; line-height: 1.2; }
@@ -976,11 +981,7 @@ a.tm-eintrag:hover { border-color: var(--ink); transform: translateY(-2px);
                  color: var(--grey-70); }
 .tm-stand { font-size: .82rem; font-weight: 600; color: var(--grey-50); white-space: nowrap; }
 a.tm-eintrag:hover .tm-stand { color: var(--ink); }
-/* Der geplante Termin ist der einzige, der noch bevorsteht - gelbe Kante. */
-.tm-eintrag--geplant { border-left: 4px solid var(--hl); }
-.tm-eintrag--geplant .tm-datum b { color: var(--ink); }
-.tm-eintrag--offen { background: transparent; border-style: dashed; }
-.tm-eintrag--offen .tm-text b, .tm-eintrag--offen .tm-datum b { color: var(--grey-50); }
+.tm-posten--offen .tm-text b, .tm-posten--offen .tm-datum b { color: var(--grey-50); }
 .tm-stand--offen { font-style: italic; font-weight: 400; }
 @media (max-width: 760px) {
   .tm-eintrag { grid-template-columns: 70px 1fr; }
@@ -1140,11 +1141,15 @@ button.tm-eintrag { width: 100%; text-align: left; cursor: pointer;
             border-bottom: 2px solid var(--grey-50); transform: rotate(45deg);
             margin-bottom: 3px; transition: transform .2s ease; }
 button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
-li.is-offen .tm-pfeil { transform: rotate(-135deg); margin-bottom: -3px; }
+.tm-posten.is-offen .tm-pfeil { transform: rotate(-135deg); margin-bottom: -3px; }
 .tm-dokumente { display: none; }
-li.is-offen .tm-dokumente { display: grid;
+.tm-posten.is-offen .tm-dokumente { display: grid;
                             grid-template-columns: repeat(auto-fill, minmax(260px,320px));
-                            gap: 12px; margin: 12px 0 4px 92px; }
+                            gap: 12px; padding: 4px 20px 20px calc(92px + clamp(16px,2vw,26px) + 20px); }
+/* Ein feiner Strich trennt Kopfzeile und Dokumente im selben Kasten. Als
+   Rahmenkante laeuft er ueber die ganze Breite; ein Gitterelement haette
+   nur bis zur letzten Spalte gereicht. */
+.tm-posten.is-offen .tm-dokumente { border-top: 1px solid #ebe8e5; padding-top: 16px; }
 .tm-dok { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px;
           padding: 12px 16px 12px 12px; background: #fff;
           border: 1px solid #e4e1dd; border-radius: 16px;
@@ -1160,5 +1165,9 @@ li.is-offen .tm-dokumente { display: grid;
 .tm-dok-text b { display: block; font-weight: 600; font-size: .95rem; line-height: 1.3; }
 .tm-dok-text small { display: block; margin-top: 2px; font-size: .8rem; line-height: 1.45;
                      color: var(--grey-50); }
-@media (max-width: 760px) { li.is-offen .tm-dokumente { margin-left: 0;
+@media (max-width: 760px) { .tm-posten.is-offen .tm-dokumente { padding-left: 20px;
                             grid-template-columns: 1fr; } }
+/* Querformatige Vorlagen bekommen einen querformatigen Rahmen - sonst
+   schneidet der hochkante Ausschnitt die Ueberschrift weg. */
+.tm-dok-bild--quer { width: 72px; height: 54px; }
+.tm-dok-bild--quer img { object-position: center top; }
