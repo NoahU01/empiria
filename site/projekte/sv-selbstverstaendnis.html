@@ -12,6 +12,22 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
+     (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
+     Leistungen des Hauses und sind belegt. -->
+<symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="mi-werkstatt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 19.5 10.5 13"/><path d="M14.5 3.5a4.5 4.5 0 0 0-3.9 6.7L4 16.8 7.2 20l6.6-6.6a4.5 4.5 0 0 0 6.7-3.9l-2.8 2.8-3.2-.9-.9-3.2z"/>
+</symbol>
+<symbol id="mi-protokoll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/>
+  <path d="M14.5 3.5V8h4.2"/><path d="M9 12.5h6M9 16h4"/>
+</symbol>
+</defs></svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
       <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
       <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
@@ -480,56 +496,94 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
+  <!-- ===== Das Leitbild ===== -->
   <section class="section">
     <div class="container">
       <div class="pj-kopfzeile">
-        <p class="kicker">Die Bausteine</p>
-        <h2 class="h-serif">Woran hier <span class="hl">gearbeitet wird.</span></h2>
-        <p class="lead">Jeder Baustein bekommt eine eigene Antwort. Erst wenn alle stehen,
-          trägt das Feld.</p>
+        <p class="kicker">Das Ergebnis</p>
+        <h2 class="h-serif">Das Leitbild <span class="hl">steht.</span></h2>
+        <p class="lead">Die erste der drei Fragen ist beantwortet. Wofür die Akademie da ist,
+          für wen sie arbeitet und wie sie dabei auftritt, ist schriftlich festgehalten – und
+          damit die Grundlage für Vision und Strategie.</p>
       </div>
 
-      <div class="pj-bausteine">
-        <div class="pj-baustein pj-baustein--breit">
-          <div class="pj-baustein-kopf">
-            <h3>Leitbild</h3>
-            <span class="pj-status pj-status--fertig">Liegt vor</span>
+      <div class="pj-leitbild">
+        <div class="pj-leitbild-text">
+          <p class="pj-exp">Für wen die Akademie da ist</p>
+          <p>Ob im Innendienst, im Vertrieb oder als selbstständige Vertriebspartnerin – die
+            SV Akademie richtet sich an alle, die im Rahmen ihrer Tätigkeit für die SV wachsen
+            und sich weiterentwickeln möchten. Fit für morgen: fachlich, persönlich und mit
+            Blick auf das, was im Alltag wirklich zählt.</p>
+          <p>Als strategischer Entwicklungspartner denkt die Akademie mit, berät auf Augenhöhe
+            und entwickelt sich selbst stetig weiter – verlässlich, serviceorientiert und mit
+            klarem Blick für das Machbare.</p>
+          <p>Darüber steht der Satz, auf den sich alles Weitere beruft: <b>Menschen, die
+            wachsen, lassen auch das Unternehmen wachsen.</b></p>
+        </div>
+
+        <div class="pj-leitbild-dok">
+          <button type="button" class="pj-dok-vorschau" data-modal-target="selbstverstaendnisModal"
+                  aria-label="Leitbild als Vorschau ansehen">
+            <img src="/assets/projekte/sv-akademie-selbstverstaendnis-1.webp"
+                 alt="Vorschau des Selbstverständnisses der SV Akademie" loading="lazy">
+          </button>
+          <div class="pj-leitbild-dok-text">
+            <b>Unser Selbstverständnis</b>
+            <small>Was die Akademie antreibt, wofür sie steht und wie sie zusammenarbeitet –
+              schriftlich festgehalten.</small>
+            <span class="pj-browser-aktionen">
+              <button type="button" class="btn btn--dark btn--sm" data-modal-target="selbstverstaendnisModal">Vorschau ansehen</button>
+              <a class="pj-hinweis pj-hinweis--link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">PDF öffnen</a>
+            </span>
           </div>
-          <p>Das Ergebnis der bisherigen Arbeit – und die Grundlage für Vision und Strategie.</p>
-          <div class="pj-baustein-dok">
-            <button type="button" class="pj-dok-vorschau" data-modal-target="selbstverstaendnisModal"
-                    aria-label="Selbstverständnis als Vorschau ansehen">
-              <img src="/assets/projekte/sv-akademie-selbstverstaendnis-1.webp"
-                   alt="Vorschau des Selbstverständnisses der SV Akademie" loading="lazy">
-            </button>
-            <div>
-              <p>„Wir glauben an die Kraft von Entwicklung.“ Menschen, die wachsen, lassen auch
-                das Unternehmen wachsen – das ist der Satz, auf den sich alles Weitere beruft.</p>
-              <p class="pj-baustein-fuss">
-                <button type="button" class="pj-baustein-link" style="background:none;border:0;font:inherit;cursor:pointer" data-modal-target="selbstverstaendnisModal">Vorschau ansehen</button>
-                &nbsp;&middot;&nbsp;
-                <a class="pj-baustein-link" href="/assets/projekte/sv-akademie-selbstverstaendnis.pdf" target="_blank" rel="noopener">PDF öffnen</a>
-              </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Wie wir zum Leitbild gekommen sind ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="pj-kopfzeile">
+        <p class="kicker">Das Protokoll</p>
+        <h2 class="h-serif">Wie wir <span class="hl">dorthin gekommen sind.</span></h2>
+        <p class="lead">Inhaltlich und methodisch festgehalten – damit nachvollziehbar bleibt,
+          warum das Leitbild so aussieht, wie es aussieht. Und damit die Methoden dahinter ein
+          zweites Mal benutzt werden können.</p>
+      </div>
+
+      <!-- SCHRITTE BITTE ERGAENZEN: Daniel liefert die Details zu den
+           einzelnen Arbeitsstufen nach. Ein Schritt besteht aus Nummer,
+           Titel, Text und optional einem oder mehreren Methodenkaesten. -->
+      <div class="pj-protokoll">
+
+        <div class="pj-schritt">
+          <span class="pj-schritt-nr">1</span>
+          <div class="pj-schritt-inhalt">
+            <h3>Zielgruppe geschärft</h3>
+            <p>Bevor über Formate gesprochen wurde, ging es um die Menschen: Wer kommt
+              eigentlich – und was braucht die Person wirklich? Erst danach ließ sich sagen,
+              wofür die Akademie da ist.</p>
+            <div class="pj-schritt-methoden">
+              <button type="button" class="mk" data-modal-target="mZielgruppeModal">
+                <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span><span class="mk-tag">Methode</span></span>
+                <b>Zielgruppenanalyse</b>
+                <small>Wer sind die Menschen, für die wir arbeiten – und was brauchen sie wirklich?</small>
+                <span class="mk-mehr">Methode ansehen &#8594;</span>
+              </button>
             </div>
           </div>
-          <div class="pj-baustein pj-baustein--breit">
-          <div class="pj-baustein-kopf">
-            <h3>Wie wir zum Leitbild gekommen sind</h3>
-            <span class="pj-status pj-status--laeuft">In Arbeit</span>
-          </div>
-          <p>Die Arbeitsstufen, die zum Leitbild gefuehrt haben – damit nachvollziehbar
-            bleibt, warum es so aussieht, wie es aussieht.</p>
-          <!-- STUFEN BITTE ERGAENZEN: Daniel liefert die Details zu den einzelnen
-               Arbeitsstufen nach. Aufbau einer Stufe:
-               <li><span class="pj-stufe-nr">1</span><div><b>Titel</b><p>Text</p></div></li> -->
-          <ol class="pj-stufen">
-            <li>
-              <span class="pj-stufe-nr">1</span>
-              <div><b>Noch offen</b>
-                <p>Die Arbeitsstufen trage ich ein, sobald Du mir die Details gibst.</p></div>
-            </li>
-          </ol>
         </div>
+
+        <div class="pj-schritt">
+          <span class="pj-schritt-nr">2</span>
+          <div class="pj-schritt-inhalt">
+            <h3>Weitere Schritte</h3>
+            <p>Noch offen – sobald Du mir die Stufen gibst, stehen sie hier, jeweils mit der
+              Methode, die dabei zum Einsatz kam.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -561,6 +615,37 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </div>
 </div>
+
+<div class="modal-overlay" id="mZielgruppeModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Zielgruppenanalyse</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> Bevor man beschreibt, was ein Bereich anbietet, muss klar sein, für
+          wen. Die Zielgruppenanalyse zwingt dazu, von den Menschen her zu denken statt vom
+          eigenen Angebot.</p>
+        <p><b>Wie.</b> In drei Durchgängen:</p>
+        <ul>
+          <li><b>Trennen</b> – Wer gehört dazu? Nicht „alle Mitarbeitenden“, sondern
+            unterscheidbare Gruppen mit unterschiedlichem Bedarf.</li>
+          <li><b>Zuhören</b> – Was ist für diese Gruppe der Anlass, zu uns zu kommen? Und was
+            hält sie ab?</li>
+          <li><b>Zuspitzen</b> – Welchen Satz würde die Gruppe über uns sagen, wenn sie
+            zufrieden ist? Der Satz ist das Ziel.</li>
+        </ul>
+        <p><b>Woran man merkt, dass es getragen hat.</b> Man kann für jede Gruppe in einem
+          Satz sagen, was sie davon hat – ohne das eigene Angebot aufzuzählen.</p>
+        <p class="pj-hinweis">Übertragbar auf jeden Bereich: Die Frage „Für wen sind wir da?“
+          lässt sich überall stellen, wo eine Abteilung ihren Nutzen erklären muss.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="/script.js"></script>
 </body>

@@ -344,3 +344,71 @@
 .pj-hinweiskasten p { margin: 0; color: var(--grey-70); line-height: 1.66; font-size: .95rem; }
 
 @media (max-width: 560px) { .pj-swot { grid-template-columns: 1fr; } }
+
+/* ---- Leitbild: Text links, Dokument rechts -------------------------------
+   Aufbau wie auf der Seite "Ueber uns" der SV-Akademie: links, fuer wen die
+   Akademie da ist, rechts das Dokument zum Aufschlagen. */
+.pj-leitbild { display: grid; grid-template-columns: 1fr .8fr;
+               gap: clamp(32px,4.5vw,66px); align-items: center;
+               margin-top: clamp(26px,3.2vw,40px); }
+.pj-leitbild-text p { color: var(--grey-70); line-height: 1.74; margin: 0 0 1.1rem; max-width: 54ch; }
+.pj-leitbild-text p:last-child { margin-bottom: 0; }
+.pj-leitbild-text .pj-exp { color: var(--ink); margin-bottom: 1.3rem; }
+.pj-leitbild-dok { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.pj-leitbild-dok .pj-dok-vorschau { max-height: 400px; width: 100%; }
+.pj-leitbild-dok-text b { display: block; font-family: var(--font-serif); font-weight: 700;
+                          font-size: 1.1rem; margin-bottom: .3rem; }
+.pj-leitbild-dok-text small { display: block; font-size: .9rem; line-height: 1.6;
+                              color: var(--grey-70); margin-bottom: .9rem; }
+
+/* ---- Methodenkasten -----------------------------------------------------
+   Ein Baustein, der ueberall gleich aussieht: wo er auftaucht, steckt eine
+   Methode dahinter, die sich wiederverwenden laesst. Darum eigene Form -
+   staerker gerundet als die uebrigen Kaesten - und immer dasselbe Zeichen
+   oben links plus das Wort "Methode". */
+.mk { appearance: none; -webkit-appearance: none; text-align: left; font: inherit;
+      display: flex; flex-direction: column; gap: 8px; cursor: pointer;
+      padding: clamp(20px,2.2vw,26px); background: #fff;
+      border: 1px solid #ddd9d4; border-radius: 22px; color: var(--ink);
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.mk:hover { border-color: var(--ink); transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(0,0,0,.08); }
+.mk-kopf { display: flex; align-items: center; gap: 10px; }
+.mk-ic { width: 34px; height: 34px; border-radius: 11px; background: var(--ink); color: var(--hl);
+         display: grid; place-items: center; flex: 0 0 auto; }
+.mk-ic svg { width: 18px; height: 18px; display: block; }
+.mk-tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+          font-weight: 700; color: var(--grey-50); }
+.mk b { font-family: var(--font-serif); font-weight: 700; font-size: 1.14rem; line-height: 1.26; }
+.mk small { font-size: .9rem; line-height: 1.6; color: var(--grey-70); }
+.mk-mehr { margin-top: auto; padding-top: 12px; font-size: .88rem; font-weight: 600; color: var(--ink); }
+.mk:hover .mk-mehr { text-decoration: underline; }
+
+/* Der Werkzeugkasten hebt sich vom Rest ab: hier geht es nicht um dieses
+   Projekt, sondern um das, was sich mitnehmen laesst. */
+.pj-werkzeug { background: #faf9f7; }
+.pj-werkzeug-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+                      gap: clamp(14px,1.8vw,22px); margin-top: clamp(26px,3.2vw,40px); }
+.pj-werkzeug .mk { background: #fff; }
+.mk--leer { border-style: dashed; cursor: default; background: transparent; }
+.mk--leer:hover { transform: none; box-shadow: none; border-color: #ddd9d4; }
+.mk--leer .mk-ic { background: var(--grey-bg); color: var(--grey-50); }
+.mk--leer b, .mk--leer small { color: var(--grey-50); }
+
+/* ---- Protokoll: wie wir dorthin gekommen sind --------------------------- */
+.pj-protokoll { display: grid; gap: clamp(16px,2vw,22px); margin-top: clamp(26px,3.2vw,40px); }
+.pj-schritt { display: grid; grid-template-columns: 54px 1fr; gap: clamp(16px,2vw,24px);
+              align-items: start; }
+.pj-schritt-nr { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+                 background: var(--ink); color: var(--hl); font-family: var(--font-serif);
+                 font-weight: 700; font-size: 1.02rem; }
+.pj-schritt-inhalt { border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+                     background: #fff; padding: clamp(20px,2.2vw,28px); }
+.pj-schritt-inhalt > h3 { margin: 0 0 .5rem; font-family: var(--font-serif); font-weight: 700;
+                          font-size: 1.18rem; line-height: 1.26; }
+.pj-schritt-inhalt > p { margin: 0; color: var(--grey-70); line-height: 1.72; font-size: .98rem; }
+.pj-schritt-methoden { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+                       gap: 14px; margin-top: 18px; }
+
+@media (max-width: 900px) { .pj-leitbild { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .pj-schritt { grid-template-columns: 1fr; } }

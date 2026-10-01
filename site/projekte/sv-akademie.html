@@ -12,6 +12,22 @@
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
+     (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
+     Leistungen des Hauses und sind belegt. -->
+<symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="mi-werkstatt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 19.5 10.5 13"/><path d="M14.5 3.5a4.5 4.5 0 0 0-3.9 6.7L4 16.8 7.2 20l6.6-6.6a4.5 4.5 0 0 0 6.7-3.9l-2.8 2.8-3.2-.9-.9-3.2z"/>
+</symbol>
+<symbol id="mi-protokoll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/>
+  <path d="M14.5 3.5V8h4.2"/><path d="M9 12.5h6M9 16h4"/>
+</symbol>
+</defs></svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
       <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
       <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
@@ -615,6 +631,54 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
 
+  <!-- ===== Werkzeugkasten ===== -->
+  <section class="section pj-werkzeug">
+    <div class="container">
+      <div class="pj-kopfzeile">
+        <p class="kicker">Werkzeugkasten</p>
+        <h2 class="h-serif">Die Methoden <span class="hl">zum Mitnehmen.</span></h2>
+        <p class="lead">Was in diesem Projekt an Methodik zum Einsatz kommt, steht hier gesammelt –
+          kurz erklärt und so beschrieben, dass Führungskräfte es im eigenen Bereich
+          wiederverwenden können. Wo im Projekt dieses Zeichen auftaucht, steckt eine Methode
+          dahinter.</p>
+      </div>
+
+      <div class="pj-werkzeug-gitter">
+
+        <button type="button" class="mk" data-modal-target="mZielgruppeModal">
+          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span><span class="mk-tag">Methode</span></span>
+          <b>Zielgruppenanalyse</b>
+          <small>Wer sind die Menschen, für die wir arbeiten – und was brauchen sie wirklich?</small>
+          <span class="mk-mehr">Methode ansehen &#8594;</span>
+        </button>
+
+        <button type="button" class="mk" data-modal-target="mNeugruendungModal">
+          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-werkstatt"/></svg></span><span class="mk-tag">Methode</span></span>
+          <b>Gedankliche Neugründung</b>
+          <small>Wie würden wir den Bereich heute gründen – ganz ohne Altlasten?</small>
+          <span class="mk-mehr">Methode ansehen &#8594;</span>
+        </button>
+
+        <button type="button" class="mk" data-modal-target="swotModal">
+          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-protokoll"/></svg></span><span class="mk-tag">Methode</span></span>
+          <b>SWOT-Analyse</b>
+          <small>Stärken, Schwächen, Chancen, Risiken – und was sich daraus ableiten lässt.</small>
+          <span class="mk-mehr">Methode ansehen &#8594;</span>
+        </button>
+
+        <!-- WEITERE METHODEN: kommen dazu, sobald sie im Projekt eingesetzt
+             wurden. Aufbau wie oben; das Modal gehoert ans Seitenende. -->
+        <div class="mk mk--leer">
+          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-werkstatt"/></svg></span><span class="mk-tag">Methode</span></span>
+          <b>Weitere folgen</b>
+          <small>Jede Methode, die im Projekt zum Einsatz kommt, landet hier – mit kurzer
+            Anleitung zum Nachmachen.</small>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -816,6 +880,94 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </div>
 </div>
+
+<div class="modal-overlay" id="mZielgruppeModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Zielgruppenanalyse</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> Bevor man beschreibt, was ein Bereich anbietet, muss klar sein, für
+          wen. Die Zielgruppenanalyse zwingt dazu, von den Menschen her zu denken statt vom
+          eigenen Angebot.</p>
+        <p><b>Wie.</b> In drei Durchgängen:</p>
+        <ul>
+          <li><b>Trennen</b> – Wer gehört dazu? Nicht „alle Mitarbeitenden“, sondern
+            unterscheidbare Gruppen mit unterschiedlichem Bedarf.</li>
+          <li><b>Zuhören</b> – Was ist für diese Gruppe der Anlass, zu uns zu kommen? Und was
+            hält sie ab?</li>
+          <li><b>Zuspitzen</b> – Welchen Satz würde die Gruppe über uns sagen, wenn sie
+            zufrieden ist? Der Satz ist das Ziel.</li>
+        </ul>
+        <p><b>Woran man merkt, dass es getragen hat.</b> Man kann für jede Gruppe in einem
+          Satz sagen, was sie davon hat – ohne das eigene Angebot aufzuzählen.</p>
+        <p class="pj-hinweis">Übertragbar auf jeden Bereich: Die Frage „Für wen sind wir da?“
+          lässt sich überall stellen, wo eine Abteilung ihren Nutzen erklären muss.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mNeugruendungModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Gedankliche Neugründung</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> Gewachsene Bereiche schreiben sich fort. Die Neugründung bricht das
+          auf: Nicht „Was ändern wir?“, sondern „Was würden wir heute wieder genau so bauen?“</p>
+        <p><b>Wie.</b> Man stellt sich vor, der Bereich würde morgen als eigenes Unternehmen
+          gegründet – ohne Altlasten, ohne Besitzstände. Dann beantwortet man fünf Fragen:</p>
+        <ul>
+          <li>Welche Zielgruppe sprechen wir an?</li>
+          <li>Welches konkrete Problem lösen wir?</li>
+          <li>Welcher Nutzen entsteht daraus?</li>
+          <li>Was macht uns einzigartig?</li>
+          <li>Wie läuft die Zusammenarbeit ab?</li>
+        </ul>
+        <p><b>Die Probe.</b> Wie sähe die Homepage dieses Unternehmens aus? Eine Seite lässt
+          keine Unschärfe zu – was sich dort nicht in einem Satz erklären lässt, ist noch nicht
+          geklärt.</p>
+        <p class="pj-hinweis">In diesem Projekt ist daraus der Entwurf der Akademie-Startseite
+          entstanden.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="swotModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>SWOT-Analyse</h3>
+        <p>Vier Felder, zwei Achsen – mehr ist es nicht.</p>
+      </div>
+      <div class="pj-modal-text">
+        <p>Die SWOT sortiert, was über eine Organisation bekannt ist, entlang von zwei Fragen:
+          Kommt es von innen oder von außen? Und hilft es oder behindert es?</p>
+        <ul>
+          <li><b>Stärken</b> – intern und hilfreich. Was können wir, das andere nicht können?</li>
+          <li><b>Schwächen</b> – intern und hinderlich. Woran scheitern wir regelmäßig selbst?</li>
+          <li><b>Chancen</b> – extern und hilfreich. Was verändert sich im Umfeld zu unseren Gunsten?</li>
+          <li><b>Risiken</b> – extern und hinderlich. Was könnte uns das Geschäft kosten?</li>
+        </ul>
+        <p>Der Wert liegt nicht in der Liste, sondern in den Kombinationen: Eine Stärke, die auf
+          eine Chance trifft, ergibt eine Stoßrichtung. Eine Schwäche, die auf ein Risiko
+          trifft, ergibt eine Baustelle, die man nicht liegen lassen darf.</p>
+        <p class="pj-hinweis">Deshalb ist die SWOT bei uns kein Selbstzweck – sie ist der
+          Zwischenschritt zwischen Ist-Analyse und Strategie.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="/script.js"></script>
 </body>
