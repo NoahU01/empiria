@@ -534,27 +534,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           Kombinationen – aus ihnen entstehen die strategischen Stoßrichtungen.</p>
       </div>
 
-      <div class="pj-swot">
-        <div class="pj-swot-feld pj-swot-feld--s"><span>S</span><b>Stärken</b><small>intern, hilfreich</small></div>
-        <div class="pj-swot-feld pj-swot-feld--w"><span>W</span><b>Schwächen</b><small>intern, hinderlich</small></div>
-        <div class="pj-swot-feld pj-swot-feld--o"><span>O</span><b>Chancen</b><small>extern, hilfreich</small></div>
-        <div class="pj-swot-feld pj-swot-feld--t"><span>T</span><b>Risiken</b><small>extern, hinderlich</small></div>
-      </div>
+      <div class="pj-swot-zeile">
+        <div class="pj-swot">
+          <div class="pj-swot-feld pj-swot-feld--s"><span>S</span><b>Stärken</b><small>intern, hilfreich</small></div>
+          <div class="pj-swot-feld pj-swot-feld--w"><span>W</span><b>Schwächen</b><small>intern, hinderlich</small></div>
+          <div class="pj-swot-feld pj-swot-feld--o"><span>O</span><b>Chancen</b><small>extern, hilfreich</small></div>
+          <div class="pj-swot-feld pj-swot-feld--t"><span>T</span><b>Risiken</b><small>extern, hinderlich</small></div>
+        </div>
 
-      <div class="pj-schritt-methoden" style="margin-top:26px;max-width:680px">
-        <button type="button" class="mk" data-modal-target="swotModal">
-          <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-protokoll"/></svg></span><span class="mk-tag">Methode</span></span>
-          <b>SWOT-Analyse</b>
-          <small>Stärken, Schwächen, Chancen, Risiken – und was sich daraus ableiten lässt.</small>
-          <span class="mk-mehr">Methode ansehen &#8594;</span>
-        </button>
-      </div>
-
-      <div class="pj-swot-fuss">
-        <!-- ERGEBNIS BITTE HINTERLEGEN: Sobald die ausgefuellte SWOT vorliegt,
-             kommt sie hier hinein - als Pop-up mit der Tabelle oder als PDF
-             unter site/assets/projekte/. -->
-        <span class="pj-status pj-status--offen">Ergebnis noch nicht hinterlegt</span>
+        <div class="pj-swot-seite">
+          <button type="button" class="mk mk--neben" data-modal-target="swotModal">
+            <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-protokoll"/></svg></span><span class="mk-tag">Methode</span></span>
+            <b>SWOT-Analyse</b>
+            <small>Stärken, Schwächen, Chancen, Risiken – und was sich daraus ableiten lässt.</small>
+            <span class="mk-mehr">Methode ansehen &#8594;</span>
+          </button>
+          <!-- ERGEBNIS BITTE HINTERLEGEN: Sobald die ausgefuellte SWOT vorliegt,
+               kommt sie hier hinein - als Pop-up mit der Tabelle oder als PDF
+               unter site/assets/projekte/. -->
+          <span class="pj-marke pj-marke--offen">Ergebnis noch nicht hinterlegt</span>
+        </div>
       </div>
     </div>
   </section>
@@ -570,7 +569,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-baustein">
           <div class="pj-baustein-kopf">
             <h3>Geschäftsmodell</h3>
-            <span class="pj-status pj-status--offen">Offen</span>
+            <span class="pj-marke pj-marke--offen">Offen</span>
           </div>
           <p class="pj-offen">Welche Leistungen die Akademie heute erbringt, für wen – und
             womit sie ihren Aufwand rechtfertigt.</p>
@@ -578,7 +577,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-baustein">
           <div class="pj-baustein-kopf">
             <h3>Organisationsmodell</h3>
-            <span class="pj-status pj-status--offen">Offen</span>
+            <span class="pj-marke pj-marke--offen">Offen</span>
           </div>
           <p class="pj-offen">Rollen, Zuständigkeiten, Abläufe. Wo entstehen Reibungsverluste,
             die niemand mehr hinterfragt?</p>
@@ -586,7 +585,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-baustein">
           <div class="pj-baustein-kopf">
             <h3>Nachfrage</h3>
-            <span class="pj-status pj-status--offen">Offen</span>
+            <span class="pj-marke pj-marke--offen">Offen</span>
           </div>
           <p class="pj-offen">Was tatsächlich gebucht und nachgefragt wird – und was im
             Programm steht, weil es immer im Programm stand.</p>
@@ -594,7 +593,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="pj-baustein">
           <div class="pj-baustein-kopf">
             <h3>Außensicht</h3>
-            <span class="pj-status pj-status--offen">Offen</span>
+            <span class="pj-marke pj-marke--offen">Offen</span>
           </div>
           <p class="pj-offen">Wie die Akademie im Haus wahrgenommen wird. Die Fremdsicht ist
             Teil des Ausgangspunkts, nicht der Kür.</p>
