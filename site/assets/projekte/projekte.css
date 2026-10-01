@@ -1310,3 +1310,14 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    stand der naechste Schritt genauso eng wie seine eigene zweite Zeile -
    die drei Gruppen waren nicht mehr auseinanderzuhalten. */
 .ab-kette--kern { gap: 14px; }
+
+/* Die drei Rollen stehen nebeneinander, nicht untereinander: Botschafter,
+   Schutzgeber, Tueroeffner sind drei gleichwertige Zusagen und als Reihe
+   schneller zu erfassen. Unter 820px Fensterbreite waere jede Spalte zu
+   schmal fuer den Erlaeuterungstext, dann stehen sie wieder untereinander. */
+.ab-rollen { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+             align-items: stretch; }
+/* Der Rahmen laeuft einmal komplett herum, wie beim Projektscope - der
+   helle Grund allein hebt die drei Kaesten vor Weiss kaum ab. */
+.ab-rolle { border: 1px solid #e4e1dd; }
+@media (max-width: 820px) { .ab-rollen { grid-template-columns: 1fr; } }
