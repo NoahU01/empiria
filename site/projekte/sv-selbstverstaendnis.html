@@ -15,6 +15,18 @@
 <!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
      (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
      Leistungen des Hauses und sind belegt. -->
+<symbol id="mi-kreis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.6"/><circle cx="12" cy="12" r="2.3" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="mi-ebenen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 18.5h16"/><path d="M6.5 12.5h11"/><path d="M9 6.5h6"/>
+</symbol>
+<symbol id="mi-karte" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4.5 3.5v17h16"/><circle cx="9.5" cy="15" r="1.9"/><circle cx="16" cy="8.5" r="2.6"/>
+</symbol>
+<symbol id="mi-karten" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3.5" y="6.5" width="11" height="8" rx="1.4"/><rect x="9.5" y="11" width="11" height="8" rx="1.4"/>
+</symbol>
 <symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
   <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
 </symbol>
@@ -574,30 +586,174 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
            Titel, Text und optional einem oder mehreren Methodenkaesten. -->
       <div class="pj-protokoll">
 
-        <div class="pj-schritt">
+        <div class="pj-schritt pj-schritt--solo">
           <span class="pj-schritt-nr">1</span>
           <div class="pj-schritt-inhalt">
-            <h3>Zielgruppe geschärft</h3>
-            <p>Bevor über Formate gesprochen wurde, ging es um die Menschen: Wer kommt
-              eigentlich – und was braucht die Person wirklich? Erst danach ließ sich sagen,
-              wofür die Akademie da ist.</p>
+            <h3>Zielsetzung und Erwartungen</h3>
+            <p>Zum Auftakt stand, worum es in den zwei Tagen gehen sollte: die Basis für
+              Positionierung und Strategie der Akademie. Drei Fragen gaben die Richtung vor –
+              Was treibt uns an? Wofür stehen wir? Und wie schaffen wir spürbare Wirkung, für
+              die Menschen, für das Unternehmen, für die Zukunft?</p>
           </div>
-          <button type="button" class="mk mk--neben" data-modal-target="mZielgruppeModal">
-            <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-zielgruppe"/></svg></span><span class="mk-tag">Methode</span></span>
-            <b>Zielgruppenanalyse</b>
-            <small>Wer sind die Menschen, für die wir arbeiten – und was brauchen sie wirklich?</small>
+        </div>
+
+        <div class="pj-schritt">
+          <span class="pj-schritt-nr">2</span>
+          <div class="pj-schritt-inhalt">
+            <h3>Gemeinsame Denkmodelle</h3>
+            <p>Bevor inhaltlich gearbeitet wurde, wurde der Rahmen gelegt: die strategischen
+              Grundlagen des Unternehmens und der Zusammenhang von Unternehmens- und
+              Personalstrategie, in den sich die Arbeit der Akademie einordnet. Der
+              Führungskompass schärfte die eigene Rolle in diesem Gesamtbild.</p>
+            <p>Dazu kamen zwei Denkmodelle: die Abfolge von Vision, Mission, Strategie, Zielen
+              und strategischen Handlungsfeldern – mit der SWOT-Analyse als ergänzendem
+              Instrument – und der Golden Circle, der das eigene Handeln aus dem „Warum“
+              herleitet. Beide blieben für den Rest der zwei Tage die methodische Grundlage.</p>
+          </div>
+          <button type="button" class="mk mk--neben" data-modal-target="mGoldenCircleModal">
+            <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-kreis"/></svg></span><span class="mk-tag">Methode</span></span>
+            <b>Golden Circle</b>
+            <small>Vom Warum über das Wie zum Was – statt umgekehrt.</small>
+            <span class="mk-mehr">Methode ansehen &#8594;</span>
+          </button>
+        </div>
+
+        <div class="pj-schritt">
+          <span class="pj-schritt-nr">3</span>
+          <div class="pj-schritt-inhalt">
+            <h3>Die zentrale Fragestellung</h3>
+            <p>Die inhaltliche Arbeit begann mit den drei Ebenen der Wahrnehmung, die danach
+              als Strukturierungshilfe durchliefen.</p>
+            <ul class="pj-ebenen">
+              <li><b>Was tun wir in der Akademie?</b> Die Innensicht. Schnell beantwortet – für
+                die strategische Weiterentwicklung aber wenig ergiebig.</li>
+              <li><b>Wie wollen wir wahrgenommen werden?</b> Der Kern der zwei Tage und die
+                Leitfrage für alles, was danach kam.</li>
+              <li><b>Wie werden wir heute wahrgenommen?</b> Der Abgleich mit der Realität, aus
+                Sicht der Stakeholder.</li>
+            </ul>
+            <p>Zwischen heutiger und gewünschter Wahrnehmung liegen die Handlungsfelder. Diese
+              Unterscheidung ordnete die Diskussionen und schärfte die Frage: Wofür steht die
+              Akademie, wie will sie wahrgenommen werden – und welchen konkreten Nutzen schafft
+              sie? Die eigenen Ziele lassen sich nur dann dauerhaft erreichen, wenn sich
+              Selbstverständnis und Ausrichtung in erkennbaren Mehrwert für die Anspruchsgruppen
+              übersetzen.</p>
+          </div>
+          <button type="button" class="mk mk--neben" data-modal-target="mWahrnehmungModal">
+            <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-ebenen"/></svg></span><span class="mk-tag">Methode</span></span>
+            <b>Drei Ebenen der Wahrnehmung</b>
+            <small>Was wir tun, wie wir wirken wollen, wie wir wirken.</small>
+            <span class="mk-mehr">Methode ansehen &#8594;</span>
+          </button>
+        </div>
+
+        <!-- Schritt 3 teilt sich: links die Stakeholder, rechts das eigene Wofuer.
+             Beide Straenge laufen in Schritt 4 wieder zusammen. -->
+        <div class="pj-gabel">
+
+          <div class="pj-gabel-arm">
+            <div class="pj-gabel-kopf">
+              <span class="pj-schritt-nr pj-schritt-nr--zweig">3a</span>
+              <h3>Wer sind unsere Stakeholder?</h3>
+            </div>
+            <div class="pj-schritt-inhalt">
+              <p>Ausgangspunkt war der Impuls „What’s in it for me?“ – Menschen handeln dann,
+                wenn sie damit ein eigenes Problem lösen. Übertragen auf die Akademie: In einem
+                großen Unternehmen erreicht sie ihre Ziele nur im Zusammenspiel mit vielen
+                Stakeholdern. Niemand interessiert sich dafür, was die Akademie tut, sondern
+                dafür, welchen Nutzen sie ihm stiftet.</p>
+              <p>Auf dieser Grundlage entstand eine Stakeholder Map: erst alle relevanten
+                Anspruchsgruppen sammeln, dann einordnen entlang zweier Achsen –
+                Entscheidungsmacht über Ressourcen, Prioritäten und Mandate sowie Impact auf
+                Erfolg oder Misserfolg im Alltag.</p>
+              <p>Danach wurde mit Punkten priorisiert: <span class="pj-punkt pj-punkt--gruen"></span>grün
+                für die Stakeholder, an denen sich Why und Vision ausrichten,
+                <span class="pj-punkt pj-punkt--blau"></span>blau für die, die über den Erfolg
+                entscheiden, und <span class="pj-punkt pj-punkt--rot"></span>rot für die, die
+                bisher zu wenig Beachtung fanden. Die Karte zeigt seitdem, an wem sich die
+                Akademie ausrichtet – und an wem bewusst nicht.</p>
+            </div>
+            <button type="button" class="mk mk--neben" data-modal-target="mStakeholderModal">
+              <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-karte"/></svg></span><span class="mk-tag">Methode</span></span>
+              <b>Stakeholder Map</b>
+              <small>Wer hat Macht, wer hat Einfluss – und wen übersehen wir?</small>
+              <span class="mk-mehr">Methode ansehen &#8594;</span>
+            </button>
+          </div>
+
+          <div class="pj-gabel-arm">
+            <div class="pj-gabel-kopf">
+              <span class="pj-schritt-nr pj-schritt-nr--zweig">3b</span>
+              <h3>Wofür steht die SV Akademie?</h3>
+            </div>
+            <div class="pj-schritt-inhalt">
+              <p>Parallel arbeiteten die Teilnehmenden einzeln an zwei Fragen: Wofür stehen
+                wir? Und welche Probleme lösen wir konkret?</p>
+              <p>Zuerst das persönliche Why jeder Führungskraft – die eigene Motivation und der
+                Sinn des eigenen Handelns in der Akademie. Festgehalten auf Metaplankarten,
+                vorgestellt und an der Wand gesammelt. Nachgefragt wurde bis zu den persönlichen
+                Beweggründen: Das Warum wirkt nur dann nach innen und außen, wenn die
+                Führungskräfte es selbst vertreten und vorleben.</p>
+              <p>In der zweiten Runde ging es um die Probleme, die die Akademie tatsächlich
+                löst. Auch diese Beiträge wurden gesammelt, sichtbar gemacht und diskutiert. Das
+                Bild an der Wand war die inhaltliche Grundlage für alles Weitere.</p>
+            </div>
+            <button type="button" class="mk mk--neben" data-modal-target="mWhyModal">
+              <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-karten"/></svg></span><span class="mk-tag">Methode</span></span>
+              <b>Persönliches Why</b>
+              <small>Einzeln denken, auf Karten festhalten, gemeinsam sortieren.</small>
+              <span class="mk-mehr">Methode ansehen &#8594;</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="pj-zusammen" aria-hidden="true"></div>
+
+        <div class="pj-schritt">
+          <span class="pj-schritt-nr">4</span>
+          <div class="pj-schritt-inhalt">
+            <h3>Varianten des Why als Zwischenschritt</h3>
+            <p>Zwischen den beiden Tagen wurden die Beiträge aus 3a und 3b sortiert. Um die
+              unterschiedlichen Flughöhen zu ordnen, wanderte alles in die Logik des Golden
+              Circle: <b>Unser Warum</b> – Sinn und Daseinszweck der Akademie. <b>Unser Wie</b> –
+              Grundprinzipien, Werte und strategische Leitplanken. <b>Unser Beitrag</b> –
+              konkrete Aufgaben, Angebote und Wirkungen.</p>
+            <p>Daraus entstanden mehrere Varianten möglicher Purpose Statements, die die
+              Richtungen sichtbar machten: von strategisch klar formuliert über modern und
+              zukunftsorientiert bis menschlich und nah.</p>
+            <p>Ziel war ausdrücklich keine fertige Formulierung, sondern ein Arbeitsgerüst, mit
+              dem der zweite Tag schneller und gezielter weiterdenken konnte.</p>
+          </div>
+          <button type="button" class="mk mk--neben" data-modal-target="mGoldenCircleModal">
+            <span class="mk-kopf"><span class="mk-ic"><svg><use href="#mi-kreis"/></svg></span><span class="mk-tag">Methode</span></span>
+            <b>Golden Circle</b>
+            <small>Zum zweiten Mal – diesmal als Raster zum Sortieren.</small>
             <span class="mk-mehr">Methode ansehen &#8594;</span>
           </button>
         </div>
 
         <div class="pj-schritt pj-schritt--solo">
-          <span class="pj-schritt-nr">2</span>
+          <span class="pj-schritt-nr">5</span>
           <div class="pj-schritt-inhalt">
-            <h3>Weitere Schritte</h3>
-            <p>Noch offen – sobald Du mir die Stufen gibst, stehen sie hier, jeweils mit der
-              Methode, die dabei zum Einsatz kam.</p>
+            <h3>Weiterentwicklung in den Gruppen PW71, PW72 und PW73</h3>
+            <p>Am zweiten Tag entstanden die Entwürfe – auf zwei Seiten gleichzeitig.
+              Abteilungsleiter und strategische Referentin entwickelten ein erstes Bild des
+              übergreifenden Why, formulierten darauf aufbauend Entwürfe für Vision und Mission
+              und leiteten Kennzahlen und Ziele ab, an denen sich der Beitrag der Akademie
+              messen lässt.</p>
+            <p>Parallel erarbeiteten die drei Gruppenleiter jeweils eigenständig ihr Verständnis
+              des übergreifenden Why, beschrieben, wofür ihre Gruppe steht, und benannten den
+              Anspruch ihres Verantwortungsbereichs.</p>
+            <p>Vor Beginn tauschten beide Seiten ihre Erwartungen aneinander aus. So flossen die
+              Perspektiven in alle Arbeitspakete ein, obwohl getrennt gearbeitet wurde. Die
+              Präsentationen danach brachten die Impulse und Klarstellungen, auf denen das
+              Selbstverständnis heute steht.</p>
           </div>
         </div>
+
+        <!-- BILDER: Sobald Fotos von Wand, Stakeholder Map oder Metaplan vorliegen,
+             passen sie als <div class="pj-schritt-bild"> unter den jeweiligen Schritt. -->
 
       </div>
     </div>
@@ -631,31 +787,113 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </div>
 </div>
 
-<div class="modal-overlay" id="mZielgruppeModal" data-generic>
+<div class="modal-overlay" id="mGoldenCircleModal" data-generic>
   <div class="modal-wrap">
     <button class="modal-close" aria-label="Schließen">&times;</button>
     <div class="modal">
       <div class="modal-structure-head">
-        <h3>Zielgruppenanalyse</h3>
+        <h3>Golden Circle</h3>
         <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
       </div>
       <div class="pj-modal-text">
-        <p><b>Wofür.</b> Bevor man beschreibt, was ein Bereich anbietet, muss klar sein, für
-          wen. Die Zielgruppenanalyse zwingt dazu, von den Menschen her zu denken statt vom
-          eigenen Angebot.</p>
+        <p><b>Wofür.</b> Die meisten Bereiche beschreiben sich von außen nach innen: erst das
+          Angebot, dann die Arbeitsweise, das Warum bleibt ungesagt. Der Golden Circle dreht
+          die Reihenfolge um – und zwingt dazu, den Sinn zuerst zu formulieren.</p>
+        <p><b>Wie.</b> Drei Ringe, von innen nach außen:</p>
+        <ul>
+          <li><b>Warum</b> – Wofür gibt es uns? Sinn und Daseinszweck, nicht die Aufgabe.</li>
+          <li><b>Wie</b> – Nach welchen Grundprinzipien arbeiten wir? Werte und Leitplanken.</li>
+          <li><b>Was</b> – Was tun wir konkret? Aufgaben, Angebote, Wirkungen.</li>
+        </ul>
+        <p>In der Akademie diente das Modell zweimal: erst als gemeinsame Sprache für die
+          Diskussion, später als Raster, um die gesammelten Karten zu sortieren.</p>
+        <p class="pj-hinweis">Der häufigste Fehler: ein „Warum“, das in Wahrheit ein „Was“ ist.
+          Prüfsatz – wenn der Satz auch für den Wettbewerb gilt, ist es noch kein Warum.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mWahrnehmungModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Drei Ebenen der Wahrnehmung</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> Diskussionen über die eigene Rolle verlaufen sich, weil drei
+          verschiedene Fragen durcheinandergehen. Die Ebenen trennen sie.</p>
+        <ul>
+          <li><b>Was tun wir?</b> Die Innensicht. Schnell beantwortet und meist unstrittig –
+            für die Weiterentwicklung aber wenig ergiebig.</li>
+          <li><b>Wie wollen wir wahrgenommen werden?</b> Das gewünschte Selbstverständnis.
+            Hier liegt die strategische Arbeit.</li>
+          <li><b>Wie werden wir heute wahrgenommen?</b> Die Fremdsicht der Stakeholder. Der
+            Abgleich mit der Realität.</li>
+        </ul>
+        <p><b>Der Nutzen</b> liegt im Abstand zwischen den beiden oberen Ebenen: Wo gewünschte
+          und tatsächliche Wahrnehmung auseinanderliegen, entstehen die Handlungsfelder.</p>
+        <p class="pj-hinweis">Praktisch: Jede Wortmeldung im Workshop einer Ebene zuordnen.
+          Allein das Zuordnen klärt die Hälfte der Missverständnisse.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mStakeholderModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Stakeholder Map</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> In einem großen Haus erreicht kein Bereich seine Ziele allein. Die
+          Karte zeigt, von wem man abhängt – und wen man bisher übersehen hat.</p>
         <p><b>Wie.</b> In drei Durchgängen:</p>
         <ul>
-          <li><b>Trennen</b> – Wer gehört dazu? Nicht „alle Mitarbeitenden“, sondern
-            unterscheidbare Gruppen mit unterschiedlichem Bedarf.</li>
-          <li><b>Zuhören</b> – Was ist für diese Gruppe der Anlass, zu uns zu kommen? Und was
-            hält sie ab?</li>
-          <li><b>Zuspitzen</b> – Welchen Satz würde die Gruppe über uns sagen, wenn sie
-            zufrieden ist? Der Satz ist das Ziel.</li>
+          <li><b>Sammeln</b> – Alle Anspruchsgruppen aufschreiben, auch die unbequemen.</li>
+          <li><b>Einordnen</b> – Entlang zweier Achsen: Entscheidungsmacht über Ressourcen,
+            Prioritäten und Mandate; Impact auf Erfolg oder Misserfolg im Alltag.</li>
+          <li><b>Priorisieren</b> – Mit Punkten. Grün: Daran richten sich Why und Vision aus.
+            Blau: Davon hängt der Erfolg ab. Rot: Bisher zu wenig beachtet.</li>
         </ul>
-        <p><b>Woran man merkt, dass es getragen hat.</b> Man kann für jede Gruppe in einem
-          Satz sagen, was sie davon hat – ohne das eigene Angebot aufzuzählen.</p>
-        <p class="pj-hinweis">Übertragbar auf jeden Bereich: Die Frage „Für wen sind wir da?“
-          lässt sich überall stellen, wo eine Abteilung ihren Nutzen erklären muss.</p>
+        <p>Der Wert entsteht beim Streit über die Platzierung, nicht beim fertigen Bild.</p>
+        <p class="pj-hinweis">Leitfrage zu jedem Namen auf der Karte: „What’s in it for me?“ –
+          Niemand interessiert sich dafür, was ein Bereich tut, sondern dafür, welches eigene
+          Problem er löst.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mWhyModal" data-generic>
+  <div class="modal-wrap">
+    <button class="modal-close" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-structure-head">
+        <h3>Persönliches Why</h3>
+        <p>Methode &middot; für Führungskräfte zum Nachmachen</p>
+      </div>
+      <div class="pj-modal-text">
+        <p><b>Wofür.</b> Ein Leitbild, das nur auf dem Papier steht, trägt nicht. Es trägt erst,
+          wenn die Führungskräfte es aus eigener Überzeugung vertreten. Deshalb beginnt die
+          Arbeit beim Einzelnen, nicht bei der Gruppe.</p>
+        <p><b>Wie.</b></p>
+        <ul>
+          <li><b>Einzeln denken</b> – Jede Führungskraft schreibt ihr eigenes Warum auf
+            Metaplankarten. Keine Diskussion, keine Abstimmung.</li>
+          <li><b>Vorstellen</b> – Jede Karte wird erklärt und an die Wand gehängt.</li>
+          <li><b>Nachfragen</b> – Bis der persönliche Beweggrund dahinter sichtbar ist. Erst
+            dort zeigt sich, ob das individuelle Warum zum künftigen Selbstverständnis passt.</li>
+        </ul>
+        <p>In einer zweiten Runde dieselbe Mechanik für die Frage, welche Probleme der Bereich
+          tatsächlich löst. Das Bild an der Wand ist danach die Grundlage für alles Weitere.</p>
+        <p class="pj-hinweis">Reihenfolge nicht tauschen: Wer mit der Gruppendiskussion
+          beginnt, bekommt den kleinsten gemeinsamen Nenner statt echter Beweggründe.</p>
       </div>
     </div>
   </div>

@@ -452,6 +452,24 @@
       transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
 .mk:hover { border-color: var(--ink); transform: translateY(-3px);
             box-shadow: 0 16px 34px rgba(0,0,0,.08); }
+/* Auf den Unterseiten steht eine Methode zwischen lauter Inhaltskaesten.
+   Ein kleines Icon reicht dort nicht - man sieht nicht auf den ersten Blick,
+   dass es sich um ein Werkzeug handelt und nicht um ein Ergebnis. Deshalb
+   zwei eindeutige Zeichen: eine graue Flaeche statt weiss und ein schwarzes
+   Schild "Methode", das auf der Oberkante sitzt. Die kleinen Zeilen im
+   Werkzeugkasten der Projektseite bleiben, wie sie sind. */
+.mk:not(.mk--klein) { position: relative; background: #faf9f7;
+                      padding-top: clamp(28px,3vw,34px); }
+.mk:not(.mk--klein)::before {
+  content: "Methode"; position: absolute; top: 0; left: clamp(20px,2.2vw,26px);
+  transform: translateY(-50%); padding: 5px 13px; border-radius: 999px;
+  background: var(--ink); color: var(--hl);
+  font-family: var(--font-sans); font-size: .66rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; }
+.mk:not(.mk--klein) .mk-tag { display: none; }
+.mk:not(.mk--klein):hover { background: #fff; }
+.pj-werkzeug .mk:not(.mk--klein) { background: #fff; }
+
 .mk-kopf { display: flex; align-items: center; gap: 10px; }
 .mk-ic { width: 34px; height: 34px; border-radius: 11px; background: var(--ink); color: var(--hl);
          display: grid; place-items: center; flex: 0 0 auto; }
@@ -482,7 +500,7 @@
 .pj-schritt { display: grid; grid-template-columns: 54px 1fr .72fr; gap: clamp(16px,2vw,24px);
               align-items: stretch; }
 .pj-schritt--solo { grid-template-columns: 54px 1fr; }
-.mk--neben { border-radius: var(--radius-card); }
+.mk--neben { border-radius: var(--radius-card); align-self: start; }
 @media (max-width: 900px) {
   .pj-schritt { grid-template-columns: 54px 1fr; }
   .mk--neben { grid-column: 2; }
@@ -495,6 +513,8 @@
 .pj-schritt-inhalt > h3 { margin: 0 0 .5rem; font-family: var(--font-serif); font-weight: 700;
                           font-size: 1.18rem; line-height: 1.26; }
 .pj-schritt-inhalt > p { margin: 0; color: var(--grey-70); line-height: 1.72; font-size: .98rem; }
+.pj-schritt-inhalt > p + p { margin-top: .95rem; }
+.pj-schritt-inhalt > ul + p, .pj-schritt-inhalt > p + ul { margin-top: .95rem; }
 /* Weiterhin fuer freistehende Methodenreihen (Vision, Strategie). */
 .pj-schritt-methoden { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
                        gap: 14px; margin-top: 18px; }
@@ -699,12 +719,11 @@
   .ab-feld { grid-template-columns: 1fr; gap: 2px; }
 }
 
-/* ---- Ablauf: vier Ansichten auf dieselben Inhalte -----------------------
+/* ---- Ablauf: drei Ansichten auf dieselben Inhalte -----------------------
    Der volle Ablauf ist lang. Statt ihn mehrfach zu schreiben, schaltet eine
    Pille die Tiefe um: Agenda (Ergebnis sichtbar, Rest auf Klick),
-   Ausfuehrlich (alles offen, mit Zeitspur), Zeitstrahl (die zwei Stunden als
-   Band) und Leitfragen (nur die Fragen). Eine Quelle, vier Blicke - der Text
-   steht nur einmal im Markup. */
+   Ausfuehrlich (mit Zeitspur und Skizze), Zeitstrahl (die zwei Stunden als
+   Band). Eine Quelle, drei Blicke - der Text steht nur einmal im Markup. */
 .ab-ansichten { display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
                 margin-top: clamp(26px,3.2vw,40px); }
 .ab-ansichten-tag { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
@@ -732,12 +751,9 @@
 .ab-block.is-offen .ab-marke-pfeil { transform: rotate(-135deg); margin-bottom: -3px; }
 .ab-marke:hover .ab-marke-pfeil { border-color: var(--ink); }
 
-/* Zugeklappt ist zugeklappt - in jeder Ansicht, die den Pfeil zeigt. Vorher
-   galt das nur fuer die Agenda, in "Ausfuehrlich" bewegte der Pfeil nichts. */
-.ab-ablauf[data-ansicht="kompakt"] .ab-block:not(.is-offen) .ab-feld:not(:first-child),
-.ab-ablauf[data-ansicht="ausfuehrlich"] .ab-block:not(.is-offen) .ab-feld:not(:first-child),
-.ab-ablauf[data-ansicht="strahl"] .ab-block:not(.is-offen) .ab-feld:not(:first-child) {
-  display: none; }
+/* Zugeklappt ist zugeklappt - in jeder Ansicht. Offen ist immer nur ein
+   Block; das Oeffnen des naechsten schliesst den vorigen. */
+.ab-block:not(.is-offen) .ab-feld:not(:first-child) { display: none; }
 
 /* --- Ohne Zeitspur: Agenda, Zeitstrahl, Leitfragen --- */
 .ab-ablauf:not([data-ansicht="ausfuehrlich"]) .ab-spur { display: none; }
@@ -766,17 +782,6 @@
 .ab-strahl-stueck span { font-size: .74rem; font-weight: 600; color: var(--grey-50);
                          letter-spacing: .04em; }
 .ab-strahl-stueck.is-aktiv span { color: rgba(255,255,255,.75); }
-
-/* --- Leitfragen: nur die Fragen, fuer den Termin selbst --- */
-.ab-ablauf[data-ansicht="fragen"] .ab-feld:not(.ab-feld--fragen) { display: none; }
-.ab-ablauf[data-ansicht="fragen"] .ab-block--ohne-fragen { display: none; }
-.ab-ablauf[data-ansicht="fragen"] .ab-marke { cursor: default; margin-bottom: .7rem; }
-.ab-ablauf[data-ansicht="fragen"] .ab-marke-pfeil { display: none; }
-.ab-ablauf[data-ansicht="fragen"] .ab-feld { grid-template-columns: 1fr; }
-.ab-ablauf[data-ansicht="fragen"] .ab-feld dt { display: none; }
-.ab-ablauf[data-ansicht="fragen"] .ab-fragen { gap: 10px; }
-.ab-ablauf[data-ansicht="fragen"] .ab-fragen li { font-size: 1.04rem; line-height: 1.6;
-                                                   padding-left: 18px; }
 
 @media (max-width: 760px) {
   .ab-strahl-stueck { padding: 10px; }
@@ -873,3 +878,47 @@
 /* Die Standzeile schliesst jetzt direkt an die drei Felder an - sie gehoert
    dazu, nicht in eine eigene Sektion. */
 .pj-felder + .pj-standzeile { margin-top: clamp(14px,1.8vw,22px); }
+
+/* ---- Gabelung im Protokoll: zwei Straenge, die wieder zusammenlaufen ----
+   Schritt 3 teilt sich in 3a und 3b und muendet in Schritt 4. Die Klammer
+   darueber und darunter macht das sichtbar, ohne eine Grafik zu brauchen. */
+.pj-gabel { position: relative; display: grid; grid-template-columns: 1fr 1fr;
+            gap: clamp(16px,2vw,24px); margin-left: 70px; padding-top: 30px; }
+.pj-gabel::before { content: ""; position: absolute; top: 12px; left: 25%; right: 25%;
+                    height: 18px; border: 1px solid #ddd9d4; border-bottom: 0;
+                    border-radius: 12px 12px 0 0; }
+.pj-gabel::after { content: ""; position: absolute; top: -10px; left: 50%; width: 1px;
+                   height: 22px; background: #ddd9d4; }
+.pj-gabel-arm { display: grid; gap: 14px; align-content: start; }
+.pj-gabel-kopf { display: flex; align-items: center; gap: 12px; }
+.pj-schritt-nr--zweig { width: 38px; height: 38px; font-size: .9rem; flex: 0 0 auto; }
+.pj-gabel-kopf h3 { margin: 0; font-family: var(--font-serif); font-weight: 700;
+                    font-size: 1.18rem; line-height: 1.26; }
+.pj-gabel .pj-schritt-inhalt { padding: clamp(18px,2vw,24px); }
+/* Die Klammer, mit der die beiden Straenge wieder zusammenlaufen. */
+.pj-zusammen { position: relative; height: 34px; margin-left: 70px; }
+.pj-zusammen::before { content: ""; position: absolute; top: 0; left: 25%; right: 25%;
+                       height: 18px; border: 1px solid #ddd9d4; border-top: 0;
+                       border-radius: 0 0 12px 12px; }
+.pj-zusammen::after { content: ""; position: absolute; top: 18px; left: 50%; width: 1px;
+                      height: 16px; background: #ddd9d4; }
+@media (max-width: 900px) {
+  .pj-gabel { grid-template-columns: 1fr; margin-left: 0; padding-top: 10px; }
+  .pj-gabel::before, .pj-gabel::after, .pj-zusammen { display: none; }
+}
+
+/* Die drei Ebenen der Wahrnehmung im Protokolltext. */
+.pj-ebenen { list-style: none; margin: 1rem 0; padding: 0; display: grid; gap: 10px; }
+.pj-ebenen li { position: relative; padding-left: 20px; font-size: .96rem; line-height: 1.68;
+                color: var(--grey-70); }
+.pj-ebenen li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px;
+                        height: 2px; border-radius: 2px; background: var(--ink); }
+.pj-ebenen li:nth-child(2)::before { width: 13px; }
+.pj-ebenen li:nth-child(3)::before { width: 16px; }
+.pj-ebenen b { color: var(--ink); font-weight: 600; }
+/* Die Punktfarben der Stakeholder-Priorisierung im Fliesstext. */
+.pj-punkt { display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+            margin-right: 5px; vertical-align: baseline; }
+.pj-punkt--gruen { background: #059669; }
+.pj-punkt--blau  { background: #0B9FBD; }
+.pj-punkt--rot   { background: #C51F5D; }
