@@ -1264,3 +1264,13 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
 .pj-swot-seite { display: grid; gap: 16px; align-content: start; }
 .pj-swot-seite .mk--neben { margin: 0; }
 @media (max-width: 900px) { .pj-swot-zeile { grid-template-columns: 1fr; } }
+
+/* Deep Dive: liegt bereit, gehoert aber nicht in den Hauptstrang. Deshalb
+   abgesetzt und gestrichelt - sichtbar als Reserve, nicht als Schritt. */
+.ab-tiefe { margin-top: 16px; padding: 14px 16px; border: 1px dashed #d9d5d1;
+            border-radius: 14px; background: #faf9f7; }
+.ab-tiefe-marke { display: inline-block; margin-bottom: 7px; font-size: .68rem;
+                  letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+                  color: var(--ak); }
+.ab-tiefe p { margin: 0; font-size: .92rem; line-height: 1.65; color: var(--grey-70); }
+.ab-tiefe b { color: var(--ink); font-weight: 600; }
