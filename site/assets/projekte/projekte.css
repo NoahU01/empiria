@@ -501,7 +501,13 @@
   .pj-schritt { grid-template-columns: 54px 1fr; }
   .mk--neben { grid-column: 2; }
 }
-.pj-schritt-nr { align-self: start; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+/* Das Zeichen sitzt mittig zur Kopfzeile des Kastens daneben. Zugeklappt
+   ist die Kopfzeile der ganze Kasten - dann steht es mittig zu ihm. Die
+   Rechnung: Polster oben und unten plus Titelzeile, davon die Hoehe des
+   Zeichens abgezogen, halbiert. */
+.pj-schritt-nr { align-self: start;
+                 margin-top: calc((clamp(16px,1.9vw,21px) * 2 + 1.44rem - 44px) / 2 + 1px);
+                 width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
                  background: var(--ink); color: var(--hl); font-family: var(--font-serif);
                  font-weight: 700; font-size: 1.02rem; }
 .pj-schritt-inhalt { border: 1px solid #e4e1dd; border-radius: var(--radius-card);
