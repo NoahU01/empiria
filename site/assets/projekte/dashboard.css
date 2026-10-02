@@ -294,316 +294,228 @@
 }
 
 
-/* ==========================================================================
-   V7 "Dunkel" - dunkler Grund, Gelb als einzige Farbe
 
-   Das Haus hat dunkle Flaechen (Zitatkasten, Methodenfenster, Kopf der
-   Modulkarten), hier traegt eine davon die ganze Seite. Weiss wird dadurch
-   knapp und markiert, was zaehlt: die Ueberschrift, die Modulnamen, die
-   Marke am Rand.
-   ========================================================================== */
-.vt-dunkel { background: var(--ink); color: rgba(255,255,255,.78); }
-.dk-raum { padding-bottom: clamp(50px, 6vw, 92px); }
-.vt-dunkel .pv-pille { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18);
-                       color: rgba(255,255,255,.72); }
-.vt-dunkel .pv-pille:hover { border-color: #fff; color: #fff; }
-.vt-dunkel .pv-pille.is-aktiv { background: var(--hl); border-color: var(--hl);
-                                color: var(--ink); }
-.vt-dunkel .pv-wahl-tag { color: rgba(255,255,255,.45); }
+/* ---- Projektscope und Arbeitsstand sind zusammengelegt -----------------
+   Vorher standen drei Scope-Kaesten ueber drei Modulkarten - dieselbe
+   Dreiteilung zweimal. Jetzt traegt jede Modulkarte beides: oben das
+   Ergebnis, das der Scope ihr zuordnet, darunter der Stand. */
+.db-modul-ergebnis { margin: 0 0 12px; font-family: var(--font-serif); font-weight: 700;
+                     font-size: 1.02rem; line-height: 1.4; color: var(--ink); }
+.db-modul-stand { margin: 0; font-size: .92rem; line-height: 1.6; color: var(--grey-70);
+                  padding-top: 12px; border-top: 1px solid #f0eeea; }
+.db-modul-stand-tag { display: block; margin-bottom: 3px; font-size: .68rem;
+                      letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+                      color: var(--grey-50); }
 
-.dk-kopf { max-width: 68ch; }
-.dk-kicker { color: rgba(255,255,255,.5); }
-.dk-titel { font-weight: 500; line-height: 1.34; letter-spacing: -.015em; color: #fff;
-            font-size: clamp(2rem, 3.8vw, 3.1rem); margin: .4rem 0 0; }
-.dk-satz { margin: 1.1rem 0 0; font-size: 1.02rem; line-height: 1.75;
-           color: rgba(255,255,255,.66); }
-
-.dk-marke-zeile { margin: 0 0 1rem; font-size: .72rem; letter-spacing: .14em;
-                  text-transform: uppercase; font-weight: 700; color: var(--hl); }
-
-.dk-scope { margin-top: clamp(38px, 4.4vw, 64px); padding-top: clamp(24px, 2.6vw, 32px);
-            border-top: 1px solid rgba(255,255,255,.14); }
-.dk-scope-reihe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-                  gap: clamp(16px, 2.2vw, 30px); }
-.dk-scope-reihe span { display: block; padding-left: 20px; position: relative;
-                       font-family: var(--font-serif); font-size: 1.04rem; line-height: 1.45;
-                       color: #fff; }
-.dk-scope-reihe span::before { content: ""; position: absolute; left: 0; top: .62em;
-                               width: 12px; height: 2px; border-radius: 2px;
-                               background: var(--hl); }
-.dk-flach { appearance: none; -webkit-appearance: none; border: 0; background: none;
-            padding: 0; margin-top: 1.4rem; cursor: pointer; font-family: inherit;
-            font-size: .9rem; font-weight: 600; color: rgba(255,255,255,.66); }
-.dk-flach:hover { color: #fff; text-decoration: underline; }
-
-.dk-abschnitt { margin-top: clamp(38px, 4.4vw, 64px); padding-top: clamp(24px, 2.6vw, 32px);
-                border-top: 1px solid rgba(255,255,255,.14); }
-.dk-module { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-             gap: clamp(12px, 1.6vw, 18px); }
-.dk-modul { display: grid; gap: 7px; align-content: start; padding: 20px 22px;
-            background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.12);
-            border-radius: var(--radius-card); text-decoration: none; color: inherit;
-            transition: background-color .2s ease, border-color .2s ease, transform .2s ease; }
-.dk-modul:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.3);
-                  transform: translateY(-2px); }
-.dk-modul-reihe { display: flex; align-items: center; justify-content: space-between;
-                  gap: 10px; }
-.dk-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem;
-               color: var(--hl); }
-.dk-modul b { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700;
-              line-height: 1.2; color: #fff; }
-.dk-modul small { font-size: .88rem; line-height: 1.45; color: rgba(255,255,255,.52); }
-.dk-modul-satz { display: block; margin-top: .5rem; font-size: .93rem; line-height: 1.6;
-                 color: rgba(255,255,255,.72); }
-.dk-marke { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
-            font-size: .76rem; font-weight: 600; color: rgba(255,255,255,.8); }
-.dk-marke::before { content: ""; width: 8px; height: 8px; border-radius: 50%;
-                    background: #fff; }
-.dk-marke--laeuft::before { background: none; border: 2px solid rgba(255,255,255,.55); }
-
-.dk-planung { display: flex; align-items: center; justify-content: space-between; gap: 24px;
-              margin-top: clamp(12px, 1.6vw, 18px); padding: 20px 24px;
-              background: var(--hl); border-radius: var(--radius-card);
-              text-decoration: none; color: var(--ink);
-              transition: transform .2s ease; }
-.dk-planung:hover { transform: translateY(-2px); }
-.dk-planung-text b { display: block; font-family: var(--font-serif); font-weight: 700;
-                     font-size: 1.2rem; line-height: 1.25; }
-.dk-planung-text small { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.55;
-                         color: rgba(26,24,23,.72); }
-.dk-planung-pfeil { font-size: 1.3rem; }
-
-.dk-werkzeug { margin-top: clamp(38px, 4.4vw, 64px); padding: clamp(28px, 3.2vw, 44px);
-               background: rgba(255,255,255,.045); border-radius: var(--radius-card); }
-.dk-werkzeug-kopf { margin-bottom: clamp(20px, 2.4vw, 30px); }
-.dk-werkzeug-kopf h2 { margin: 0; font-weight: 600; color: #fff;
-                       font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.25; }
-.dk-werkzeug-kopf p { margin: .6rem 0 0; max-width: 62ch; font-size: .96rem;
-                      line-height: 1.7; color: rgba(255,255,255,.62); }
-.dk-werkzeug-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: clamp(20px, 2.6vw, 38px); }
-.dk-zeile { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
-            align-items: center; gap: 14px; width: 100%; padding: 12px 14px;
-            border: 1px solid rgba(255,255,255,.12); border-radius: 14px;
-            background: none; cursor: pointer; font-family: inherit; text-align: left;
-            text-decoration: none; color: inherit;
-            transition: background-color .15s ease, border-color .15s ease; }
-.dk-zeile + .dk-zeile { margin-top: 8px; }
-.dk-zeile:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.3); }
-.dk-zeile-ic { display: grid; place-items: center; width: 32px; height: 32px;
-               border-radius: 9px; background: var(--hl); color: var(--ink); }
-.dk-zeile-ic svg { width: 17px; height: 17px; }
-.dk-zeile-text b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3;
-                   color: #fff; }
-.dk-zeile-text small { display: block; margin-top: 2px; font-size: .82rem; line-height: 1.45;
-                       color: rgba(255,255,255,.55); }
-.dk-zeile-pfeil { color: rgba(255,255,255,.45); }
-.dk-zeile:hover .dk-zeile-pfeil { color: #fff; }
-
+/* Das Strategiemodell steht neben der Ueberschrift des Scope-Abschnitts.
+   Es erklaert die Logik der drei Module und gehoert deshalb hierher, nicht
+   erst in den Werkzeugkasten. */
+.db-abschnitt-kopf--mitbild { display: grid; grid-template-columns: minmax(0, 1fr) auto;
+                              gap: clamp(24px, 3vw, 48px); align-items: end; }
+.db-abschnitt-kopf--mitbild > div { max-width: 62ch; }
 @media (max-width: 900px) {
-  .dk-scope-reihe, .dk-module, .dk-werkzeug-grid { grid-template-columns: 1fr; }
+  .db-abschnitt-kopf--mitbild { grid-template-columns: 1fr; }
+  .db-abschnitt-kopf--mitbild .pj-modellkasten { width: 100%; max-width: 360px; }
 }
 
-
-/* Eine Variante, die zur Auswahl steht, aber nicht im Vordergrund:
-   dieselbe Pille, nur leiser. */
-.pv-pille--leise { color: #a8a29b; border-color: #efecE8; }
-.pv-pille--leise small { opacity: .6; }
-.pv-pille--leise:hover { color: var(--grey-70); border-color: #ddd8d2; }
-
-/* Ohne Terminkasten steht der Kopf von V2 in einer Spalte. */
-.db-kopf--einspaltig { display: block; max-width: 64ch; }
-
-/* V5: der Werkzeugkasten liegt auf hellem Grund, so wie in V2 und V3 -
-   er gehoert nicht zum Arbeitsstand und soll auch zugeklappt anders
-   aussehen als die beiden Ebenen darueber. */
-.fl-ebene--werkzeug { background: #faf9f7; }
-.fl-ebene--werkzeug .fl-kopf:hover { background: #f4f2ef; }
-.fl-ebene--werkzeug .mk--klein { background: #fff; }
-
-
-/* ==========================================================================
-   V8 "Licht" - dieselbe Anordnung wie V7, heller Grund
-
-   Dieselben Flaechen, nur umgedreht: der Grund traegt das Papierweiss des
-   Hauses, die Module stehen als weisse Karten darauf, und Gelb bleibt die
-   einzige Farbe. Was in V7 ueber Helligkeit getrennt wird, trennt hier
-   die Linie.
-   ========================================================================== */
-.vt-licht { background: #faf9f7; }
-.lh-raum { padding-bottom: clamp(50px, 6vw, 92px); }
-.lh-kopf { max-width: 68ch; }
-.lh-titel { font-weight: 500; line-height: 1.34; letter-spacing: -.015em;
-            font-size: clamp(2rem, 3.8vw, 3.1rem); margin: .4rem 0 0; }
-.lh-satz { margin: 1.1rem 0 0; font-size: 1.02rem; line-height: 1.75; color: var(--grey-70); }
-
-.lh-marke-zeile { margin: 0 0 1rem; font-size: .72rem; letter-spacing: .14em;
-                  text-transform: uppercase; font-weight: 700; color: var(--ink); }
-
-.lh-scope, .lh-abschnitt { margin-top: clamp(38px, 4.4vw, 64px);
-                           padding-top: clamp(24px, 2.6vw, 32px);
-                           border-top: 1px solid #e4e1dd; }
-.lh-scope-reihe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-                  gap: clamp(16px, 2.2vw, 30px); }
-.lh-scope-reihe span { display: block; padding-left: 20px; position: relative;
-                       font-family: var(--font-serif); font-size: 1.04rem; line-height: 1.45; }
-.lh-scope-reihe span::before { content: ""; position: absolute; left: 0; top: .62em;
-                               width: 12px; height: 2px; border-radius: 2px;
-                               background: var(--hl); }
-
-.lh-module { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-             gap: clamp(12px, 1.6vw, 18px); }
-.lh-modul { display: grid; gap: 7px; align-content: start; padding: 20px 22px;
-            background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            text-decoration: none; color: inherit;
-            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
-.lh-modul:hover { border-color: var(--ink); transform: translateY(-2px);
-                  box-shadow: 0 14px 32px rgba(0,0,0,.07); }
-.lh-modul-reihe { display: flex; align-items: center; justify-content: space-between;
-                  gap: 10px; }
-.lh-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem;
-               color: var(--grey-50); }
-.lh-modul b { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700;
-              line-height: 1.2; }
-.lh-modul small { font-size: .88rem; line-height: 1.45; color: var(--grey-50); }
-.lh-modul-satz { display: block; margin-top: .5rem; font-size: .93rem; line-height: 1.6;
+/* V5: dieselbe Erklaerung, nur innerhalb der aufgeklappten Ebene. */
+.fl-logik { display: grid; grid-template-columns: minmax(0, 1fr) auto;
+            gap: clamp(20px, 2.6vw, 40px); align-items: end;
+            margin-bottom: clamp(18px, 2.2vw, 26px); }
+.fl-logik-text { margin: 0; max-width: 56ch; font-size: .96rem; line-height: 1.7;
                  color: var(--grey-70); }
-
-.lh-planung { display: flex; align-items: center; justify-content: space-between; gap: 24px;
-              margin-top: clamp(12px, 1.6vw, 18px); padding: 20px 24px;
-              background: var(--hl); border-radius: var(--radius-card);
-              text-decoration: none; color: var(--ink); transition: transform .2s ease; }
-.lh-planung:hover { transform: translateY(-2px); }
-.lh-planung-text b { display: block; font-family: var(--font-serif); font-weight: 700;
-                     font-size: 1.2rem; line-height: 1.25; }
-.lh-planung-text small { display: block; margin-top: 3px; font-size: .9rem; line-height: 1.55;
-                         color: rgba(26,24,23,.72); }
-.lh-planung-pfeil { font-size: 1.3rem; }
-
-.lh-werkzeug { margin-top: clamp(38px, 4.4vw, 64px); padding: clamp(28px, 3.2vw, 44px);
-               background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card); }
-.lh-werkzeug-kopf { margin-bottom: clamp(20px, 2.4vw, 30px); }
-.lh-werkzeug-kopf h2 { margin: 0; font-weight: 600;
-                       font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.25; }
-.lh-werkzeug-kopf p { margin: .6rem 0 0; max-width: 62ch; font-size: .96rem;
-                      line-height: 1.7; color: var(--grey-70); }
-.lh-werkzeug-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: clamp(20px, 2.6vw, 38px); }
-.lh-zeile { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
-            align-items: center; gap: 14px; width: 100%; padding: 12px 14px;
-            border: 1px solid #e8e5e1; border-radius: 14px; background: #fff;
-            cursor: pointer; font-family: inherit; text-align: left;
-            text-decoration: none; color: inherit;
-            transition: border-color .15s ease, background-color .15s ease; }
-.lh-zeile + .lh-zeile { margin-top: 8px; }
-.lh-zeile:hover { border-color: var(--ink); background: #faf9f7; }
-.lh-zeile-ic { display: grid; place-items: center; width: 32px; height: 32px;
-               border-radius: 9px; background: var(--ink); color: var(--hl); }
-.lh-zeile-ic svg { width: 17px; height: 17px; }
-.lh-zeile-text b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3; }
-.lh-zeile-text small { display: block; margin-top: 2px; font-size: .82rem; line-height: 1.45;
-                       color: var(--grey-70); }
-.lh-zeile-pfeil { color: var(--grey-50); }
-.lh-zeile:hover .lh-zeile-pfeil { color: var(--ink); }
-
 @media (max-width: 900px) {
-  .lh-scope-reihe, .lh-module, .lh-werkzeug-grid { grid-template-columns: 1fr; }
+  .fl-logik { grid-template-columns: 1fr; }
+  .fl-logik .pj-modellkasten { width: 100%; max-width: 360px; }
 }
+
+/* V4: der Satz zum Scope steht unter der Leiste, das Modell als erste
+   Zeile im Panel - mit Vorschaubild, damit es nicht wie ein Eintrag mehr
+   aussieht, sondern wie die Erklaerung darueber. */
+.tl-satz { margin: 16px 2px 0; max-width: 72ch; font-size: .98rem; line-height: 1.7;
+           color: var(--grey-70); }
+.tl-panel--voll { grid-column: 1 / -1; }
+.tl-modul-stand-satz { display: block; margin-top: 4px; font-size: .84rem; line-height: 1.5;
+                       color: var(--grey-50); }
+.tl-modell { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+             align-items: center; gap: 14px; width: 100%; padding: 10px;
+             margin-bottom: 6px; border: 0; border-bottom: 1px solid #ebe8e5;
+             background: none; border-radius: 10px 10px 0 0; cursor: pointer;
+             font-family: inherit; text-align: left;
+             transition: background-color .15s ease; }
+.tl-modell:hover { background: #faf9f7; }
+.tl-modell-bild { display: block; width: 52px; line-height: 0; border-radius: 7px;
+                  overflow: hidden; border: 1px solid #e4e1dd; }
+.tl-modell-bild img { display: block; width: 100%; height: auto; }
+.tl-modell-text b { display: block; font-size: .92rem; font-weight: 600; line-height: 1.3; }
+.tl-modell-text small { display: block; margin-top: 2px; font-size: .8rem; line-height: 1.45;
+                        color: var(--grey-70); }
 
 
 /* ==========================================================================
-   V9 "Fokus" - was mich jetzt betrifft, steht gross
-
-   Kein Bericht ueber alles. Das laufende Modul fuellt die linke Haelfte,
-   die beiden anderen schrumpfen auf je eine Zeile. Wer die Seite oeffnet,
-   sieht zuerst, woran gerade gearbeitet wird und wann der naechste Termin
-   ist - der Rest bleibt erreichbar, draengt sich aber nicht auf.
+   V9 "Auswahl" - drei Reiter, einer gross daneben
    ========================================================================== */
-.fk-raster { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+.aw-raster { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
              gap: 14px; margin-top: 14px; align-items: stretch; }
-.fk-fokus { padding: clamp(24px, 3vw, 38px); background: var(--ink); color: #fff;
-            border-radius: 14px; }
-.fk-marke { margin: 0; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-            font-weight: 700; color: var(--hl); }
-.fk-nr { display: block; margin-top: 18px; font-family: var(--font-serif); font-weight: 700;
-         font-size: 1.1rem; color: rgba(255,255,255,.5); }
-.fk-fokus h2 { margin: 2px 0 0; font-weight: 700; color: #fff;
-               font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; }
-.fk-frage { margin: .4rem 0 0; font-size: .95rem; color: rgba(255,255,255,.6); }
-.fk-satz { margin: 1.1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.7;
-           color: rgba(255,255,255,.82); }
-.fk-wege { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.6rem; }
-.fk-wege .btn--dark { background: var(--hl); color: var(--ink); border-color: var(--hl); }
-.fk-wege .btn--ghost { color: #fff; border-color: rgba(255,255,255,.4); }
-.fk-wege .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-.fk-termin { margin-top: clamp(22px, 2.6vw, 32px); padding-top: clamp(18px, 2.2vw, 24px);
-             border-top: 1px solid rgba(255,255,255,.16); }
-.fk-termin-tag { display: block; font-size: .7rem; letter-spacing: .12em;
-                 text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,.5); }
-.fk-termin b { display: block; margin-top: 5px; font-family: var(--font-serif);
-               font-size: 1.1rem; font-weight: 700; color: #fff; }
-.fk-termin small { display: block; margin-top: 2px; font-size: .86rem;
-                   color: rgba(255,255,255,.6); }
+.aw-spalte { display: flex; flex-direction: column; gap: 12px; padding: 16px;
+             background: #fff; border: 1px solid #e4e1dd; border-radius: 14px; }
+.aw-spalte-tag { margin: 0 0 2px 2px; font-size: .74rem; letter-spacing: .12em;
+                 text-transform: uppercase; font-weight: 700; color: var(--grey-70); }
+.aw-reiter-reihe { display: grid; gap: 6px; }
+.aw-reiter { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+             align-items: center; gap: 12px; width: 100%; padding: 12px 14px;
+             border: 1px solid transparent; border-radius: 12px; background: none;
+             cursor: pointer; font-family: inherit; text-align: left;
+             transition: background-color .15s ease, border-color .15s ease; }
+.aw-reiter:hover { background: #faf9f7; }
+.aw-reiter.is-aktiv { background: var(--ink); border-color: var(--ink); }
+.aw-reiter-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
+                color: var(--grey-50); }
+.aw-reiter.is-aktiv .aw-reiter-nr { color: var(--hl); }
+.aw-reiter-text b { display: block; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.aw-reiter-text small { display: block; margin-top: 2px; font-size: .82rem; line-height: 1.4;
+                        color: var(--grey-70); }
+.aw-reiter.is-aktiv .aw-reiter-text b { color: #fff; }
+.aw-reiter.is-aktiv .aw-reiter-text small { color: rgba(255,255,255,.6); }
+.aw-reiter.is-aktiv .pj-marke { color: rgba(255,255,255,.8); }
+.aw-reiter.is-aktiv .pj-marke::before { background: #fff; border-color: rgba(255,255,255,.6); }
+.aw-balken { grid-column: 1 / -1; display: block; height: 3px; margin-top: 4px;
+             border-radius: 999px; background: #e8e5e1; overflow: hidden; }
+.aw-reiter.is-aktiv .aw-balken { background: rgba(255,255,255,.2); }
+.aw-balken i { display: block; height: 100%; border-radius: 999px; background: var(--ink);
+               width: var(--anteil, 0%); }
+.aw-reiter.is-aktiv .aw-balken i { background: var(--hl); }
+.aw-spalte .pj-modellkasten { width: 100%; margin-top: auto; }
 
-.fk-seite { display: grid; gap: 14px; align-content: start; }
-.fk-neben { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
-            align-items: center; gap: 14px; padding: 12px 10px; border-radius: 10px;
-            text-decoration: none; color: inherit; transition: background-color .15s ease; }
-.fk-neben + .fk-neben { border-top: 1px solid #f0eeea; }
-.fk-neben:hover { background: #faf9f7; }
-.fk-neben-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
-               color: var(--grey-50); }
-.fk-neben-text b { display: block; font-size: .98rem; font-weight: 600; line-height: 1.3; }
-.fk-neben-text small { display: block; margin-top: 2px; font-size: .84rem; line-height: 1.45;
-                       color: var(--grey-70); }
-.fk-planung { margin-top: 14px; background: #fff; }
-.vt-fokus .tl-raster--zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.aw-tafel { padding: clamp(24px, 3vw, 38px); background: #fff;
+            border: 1px solid #e4e1dd; border-radius: 14px; }
+.aw-tafel-nr { display: block; font-family: var(--font-serif); font-weight: 700;
+               font-size: 1.05rem; color: var(--grey-50); }
+.aw-tafel h2 { margin: 4px 0 0; font-weight: 700; line-height: 1.15;
+               font-size: clamp(1.7rem, 2.8vw, 2.4rem); }
+.aw-tafel-frage { margin: .3rem 0 0; font-size: .95rem; color: var(--grey-50); }
+.aw-tafel-ergebnis { margin: 1.3rem 0 0; font-family: var(--font-serif); font-weight: 700;
+                     font-size: 1.15rem; line-height: 1.45; max-width: 46ch; }
+.aw-tafel-stand { margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid #f0eeea;
+                  font-size: .95rem; line-height: 1.65; color: var(--grey-70); }
+.aw-stand-tag { display: block; margin-bottom: 3px; font-size: .68rem; letter-spacing: .12em;
+                text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.aw-tafel-wege { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                 gap: clamp(16px, 2.2vw, 30px); margin-top: 1.6rem; }
+.aw-wege-tag { margin: 0 0 6px 2px; font-size: .68rem; letter-spacing: .12em;
+               text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.aw-weg { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px;
+          border: 0; background: none; border-radius: 9px; cursor: pointer;
+          font-family: inherit; font-size: .9rem; text-align: left; text-decoration: none;
+          color: var(--grey-70); transition: background-color .15s ease, color .15s ease; }
+.aw-weg:hover { background: #faf9f7; color: var(--ink); }
+.aw-weg span { margin-left: auto; color: var(--grey-50); }
+.aw-leer { display: block; padding: 8px 10px; font-size: .86rem; color: #b4aea7; }
+.aw-tafel-knopf { margin-top: 1.6rem; }
+.aw-planung { margin-top: 14px; background: #fff; }
 
 @media (max-width: 1000px) {
-  .fk-raster, .vt-fokus .tl-raster--zwei { grid-template-columns: 1fr; }
+  .aw-raster { grid-template-columns: 1fr; }
+  .aw-tafel-wege { grid-template-columns: 1fr; }
 }
 
 
 /* ==========================================================================
-   V10 "Register" - eine Liste, nach Art filterbar
-
-   Das Gefuehl, die Themen im Griff zu haben, entsteht nicht aus Zahlen,
-   sondern daraus, dass nichts versteckt liegt: alles, was es im Projekt
-   gibt, steht in einer Liste, jede Zeile traegt ihre Art, und die Chips
-   schalten um. Zwei Klicks bis zu jedem Eintrag, hoechstens.
+   V11 "Reiter" - Arbeitsbereich mit Registerkarten
    ========================================================================== */
-.rg-kopf { display: flex; align-items: center; justify-content: space-between;
-           flex-wrap: wrap; gap: 14px; margin-top: 18px; }
-.rg-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.rg-chip { appearance: none; -webkit-appearance: none; cursor: pointer;
-           padding: 7px 15px; border-radius: 999px; border: 1px solid #e4e1dd;
-           background: #fff; font-family: inherit; font-size: .85rem; font-weight: 600;
-           color: var(--grey-70); line-height: 1;
-           transition: border-color .15s ease, background-color .15s ease, color .15s ease; }
-.rg-chip:hover { border-color: var(--ink); color: var(--ink); }
-.rg-chip.is-aktiv { background: var(--ink); border-color: var(--ink); color: #fff; }
-.rg-zaehler { font-size: .82rem; font-weight: 600; color: var(--grey-50); }
+.rt-leiste { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 16px;
+             border-bottom: 1px solid #e4e1dd; }
+.rt-reiter { appearance: none; -webkit-appearance: none; cursor: pointer;
+             padding: 11px 18px; border: 1px solid transparent; border-bottom: 0;
+             border-radius: 10px 10px 0 0; background: none; font-family: inherit;
+             font-size: .92rem; font-weight: 600; color: var(--grey-70);
+             margin-bottom: -1px;
+             transition: background-color .15s ease, color .15s ease; }
+.rt-reiter:hover { background: #faf9f7; color: var(--ink); }
+.rt-reiter.is-aktiv { background: #fff; border-color: #e4e1dd; color: var(--ink); }
+.rt-flaeche { padding: clamp(22px, 2.8vw, 34px) 0 0; }
+.rt-satz { margin: 0 0 clamp(18px, 2.2vw, 26px); max-width: 72ch; font-size: .98rem;
+           line-height: 1.7; color: var(--grey-70); }
+.rt-module { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.rt-modul { display: grid; gap: 6px; align-content: start; padding: 18px 20px;
+            background: #fff; border: 1px solid #e4e1dd; border-radius: 14px;
+            text-decoration: none; color: inherit;
+            transition: border-color .2s ease, box-shadow .2s ease; }
+.rt-modul:hover { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.06); }
+.rt-modul-kopf { display: flex; align-items: center; justify-content: space-between;
+                 gap: 10px; }
+.rt-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
+               color: var(--grey-50); }
+.rt-modul b { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700;
+              line-height: 1.2; }
+.rt-modul small { font-size: .9rem; line-height: 1.5; color: var(--grey-70); }
+.rt-balken { display: block; height: 3px; margin-top: 8px; border-radius: 999px;
+             background: #e8e5e1; overflow: hidden; }
+.rt-balken i { display: block; height: 100%; border-radius: 999px; background: var(--ink);
+               width: var(--anteil, 0%); }
+.rt-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+           margin-top: 14px; }
+.rt-kachel { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+             align-items: center; gap: 16px; width: 100%; padding: 16px 20px;
+             background: #fff; border: 1px solid #e4e1dd; border-radius: 14px;
+             cursor: pointer; font-family: inherit; text-align: left;
+             text-decoration: none; color: inherit;
+             transition: border-color .2s ease, box-shadow .2s ease; }
+.rt-kachel:hover { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.06); }
+.rt-kachel-bild { display: block; width: 58px; line-height: 0; border-radius: 8px;
+                  overflow: hidden; border: 1px solid #e4e1dd; }
+.rt-kachel-bild img { display: block; width: 100%; height: auto; }
+.rt-kachel-text b { display: block; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.rt-kachel-text small { display: block; margin-top: 3px; font-size: .86rem; line-height: 1.5;
+                        color: var(--grey-70); }
+.rt-kachel-pfeil { color: var(--grey-50); font-size: 1.1rem; }
+.rt-kachel:hover .rt-kachel-pfeil { color: var(--ink); }
+.vt-reiter .tl-raster--zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-.rg-liste { margin-top: 14px; background: #fff; border: 1px solid #e4e1dd;
-            border-radius: 14px; overflow: hidden; }
-.rg-posten { display: grid; grid-template-columns: 104px minmax(0, 1fr) auto auto;
-             align-items: center; gap: clamp(12px, 1.8vw, 24px); width: 100%;
-             padding: 14px 18px; border: 0; background: none; cursor: pointer;
-             font-family: inherit; text-align: left; text-decoration: none; color: inherit;
-             transition: background-color .15s ease; }
-.rg-posten + .rg-posten { border-top: 1px solid #f0eeea; }
-.rg-posten:hover { background: #faf9f7; }
-.rg-art { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
-          font-weight: 700; color: var(--grey-50); }
-.rg-text b { display: block; font-size: .98rem; font-weight: 600; line-height: 1.3; }
-.rg-text small { display: block; margin-top: 2px; font-size: .84rem; line-height: 1.45;
-                 color: var(--grey-70); }
-.rg-stand { min-width: 128px; text-align: right; }
-.rg-pfeil { color: var(--grey-50); }
-.rg-posten:hover .rg-pfeil { color: var(--ink); }
+@media (max-width: 900px) {
+  .rt-module, .rt-zwei, .vt-reiter .tl-raster--zwei { grid-template-columns: 1fr; }
+}
 
-@media (max-width: 760px) {
-  .rg-posten { grid-template-columns: minmax(0, 1fr) auto; }
-  .rg-art { grid-column: 1 / -1; }
-  .rg-stand { min-width: 0; }
+
+/* ==========================================================================
+   V12 "Kette" - die drei Module als Strecke
+
+   Die Antwort auf "wie gehoert das zusammen": nicht nebeneinander, sondern
+   hintereinander, mit dem Pfeil dazwischen. Das Strategiemodell steht im
+   Kopf daneben und erklaert dieselbe Logik im Bild.
+   ========================================================================== */
+.kt-kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto;
+           gap: clamp(24px, 3vw, 48px); align-items: end; margin-top: 18px; }
+.kt-tag { margin: 0 0 .5rem; font-size: .74rem; letter-spacing: .12em;
+          text-transform: uppercase; font-weight: 700; color: var(--grey-70); }
+.kt-satz { margin: 0; max-width: 62ch; font-family: var(--font-serif); font-weight: 700;
+           font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.45; }
+.kt-strecke { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+              gap: 10px; align-items: stretch; margin-top: clamp(22px, 2.6vw, 32px); }
+.kt-pfeil { align-self: center; font-size: 1.4rem; color: #cfc9c2; }
+.kt-glied { display: grid; gap: 6px; align-content: start; padding: 20px 22px;
+            background: #fff; border: 1px solid #e4e1dd; border-radius: 14px;
+            text-decoration: none; color: inherit;
+            transition: border-color .2s ease, box-shadow .2s ease; }
+.kt-glied:hover { border-color: var(--ink); box-shadow: 0 12px 28px rgba(0,0,0,.06); }
+.kt-glied.is-dran { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(26,24,23,.06); }
+.kt-glied-kopf { display: flex; align-items: center; justify-content: space-between;
+                 gap: 10px; }
+.kt-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
+         color: var(--grey-50); }
+.kt-glied b { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700;
+              line-height: 1.2; }
+.kt-glied small { font-size: .86rem; color: var(--grey-50); }
+.kt-ergebnis { display: block; margin-top: .7rem; font-family: var(--font-serif);
+               font-weight: 700; font-size: 1rem; line-height: 1.45; }
+.kt-stand { display: block; margin-top: .7rem; padding-top: .7rem;
+            border-top: 1px solid #f0eeea; font-size: .88rem; line-height: 1.55;
+            color: var(--grey-70); }
+.kt-planung { margin-top: 14px; background: #fff; }
+.kt-werkzeug { margin-top: 14px; }
+
+@media (max-width: 1000px) {
+  .kt-kopf { grid-template-columns: 1fr; }
+  .kt-strecke { grid-template-columns: 1fr; }
+  .kt-pfeil { justify-self: center; transform: rotate(90deg); }
 }

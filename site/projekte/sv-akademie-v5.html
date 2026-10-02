@@ -538,10 +538,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <a class="pv-pille pv-pille--leise" href="/projekte/sv-akademie-v3.html">V3 <small>Scope</small></a>
         <a class="pv-pille" href="/projekte/sv-akademie-v4.html">V4 <small>Tool</small></a>
         <a class="pv-pille is-aktiv" href="/projekte/sv-akademie-v5.html" aria-current="page">V5 <small>Faltung</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v7.html">V7 <small>Dunkel</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v8.html">V8 <small>Licht</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v9.html">V9 <small>Fokus</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v10.html">V10 <small>Register</small></a>
+        <a class="pv-pille" href="/projekte/sv-akademie-v9.html">V9 <small>Auswahl</small></a>
+        <a class="pv-pille" href="/projekte/sv-akademie-v11.html">V11 <small>Reiter</small></a>
+        <a class="pv-pille" href="/projekte/sv-akademie-v12.html">V12 <small>Kette</small></a>
       </div>
 
       <div class="fl-kopf-zeile">
@@ -549,51 +548,36 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <p class="kicker">Projekt &middot; SV Akademie</p>
           <h1 class="h-serif">Die <span class="hl">beste Akademie</span> der Branche.</h1>
         </div>
-        <p class="fl-satz">Die Akademie weiß, wofür sie da ist. Wir entwickeln das Zielbild dafür, wie die beste Akademie der Branche arbeitet – und den Weg dorthin.</p>
+        <p class="fl-satz">Die SV Akademie bekommt eine Strategie, die man erklären kann – vom Selbstverständnis über das Zielbild bis zum Weg dorthin.</p>
       </div>
 
       <div class="fl-ebenen">
 
-        <section class="fl-ebene">
-          <button type="button" class="fl-kopf" aria-expanded="false">
+        <section class="fl-ebene is-offen">
+          <button type="button" class="fl-kopf" aria-expanded="true">
             <span class="fl-kopf-nr">01</span>
             <span class="fl-kopf-text">
               <b>Projektscope</b>
-              <small>Drei Ergebnisse, die aufeinander aufbauen.</small>
-            </span>
-            <span class="fl-kopf-marke">3 Ergebnisse</span>
-            <span class="fl-kopf-pfeil" aria-hidden="true"></span>
-          </button>
-          <div class="fl-koerper">
-            <div class="pj-ziele">
-              <div class="pj-ziel">
-                <span class="pj-ziel-ic"><svg><use href="#zi-fundament"/></svg></span>
-                <h3>Ein Selbstverständnis, auf das sich alle berufen können</h3>
-              </div>
-              <div class="pj-ziel">
-                <span class="pj-ziel-ic"><svg><use href="#zi-zielbild"/></svg></span>
-                <h3>Ein Zielbild, das man erklären kann, ohne es vorzulesen</h3>
-              </div>
-              <div class="pj-ziel">
-                <span class="pj-ziel-ic"><svg><use href="#zi-weg"/></svg></span>
-                <h3>Ein Weg dorthin, mit Reihenfolge und Verantwortung</h3>
-              </div>
-            </div>
-            <button type="button" class="db-leise" data-modal-target="ausgangslageModal">Womit das Projekt begonnen hat &#8594;</button>
-          </div>
-        </section>
-
-        <section class="fl-ebene is-offen">
-          <button type="button" class="fl-kopf" aria-expanded="true">
-            <span class="fl-kopf-nr">02</span>
-            <span class="fl-kopf-text">
-              <b>Arbeitsstand</b>
-              <small>Wo die drei Module heute stehen.</small>
+              <small>Drei Module mit Ergebnis und Stand.</small>
             </span>
             <span class="fl-kopf-marke">1 von 3 abgeschlossen</span>
             <span class="fl-kopf-pfeil" aria-hidden="true"></span>
           </button>
           <div class="fl-koerper">
+            <div class="fl-logik">
+              <p class="fl-logik-text">Die drei Module bauen aufeinander auf. Wie sie
+                zusammenhängen, zeigt das Strategiemodell.</p>
+              <button type="button" class="pj-modellkasten" data-modal-target="strategiemodellModal">
+                <span class="pj-modellkasten-bild">
+                  <img src="/assets/projekte/strategiemodell-mini.webp" alt="" width="407" height="480" loading="lazy">
+                </span>
+                <span class="pj-modellkasten-text">
+                  <b>Strategiemodell</b>
+                  <small>Die Logik hinter den drei Modulen.</small>
+                  <span class="pj-modellkasten-mehr">Ansehen &#8594;</span>
+                </span>
+              </button>
+            </div>
             <div class="db-module">
               <article class="db-modul">
                 <a class="db-modul-kopf" href="/projekte/sv-selbstverstaendnis.html">
@@ -605,7 +589,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   <span class="db-modul-frage">Wofür stehen wir?</span>
                 </a>
                 <div class="db-modul-koerper">
-                  <p>Leitbild, Führungsverständnis und Zielgruppe liegen vor.</p>
+                  <p class="db-modul-ergebnis">Ein Selbstverständnis, auf das sich alle berufen können</p>
+                  <p class="db-modul-stand"><span class="db-modul-stand-tag">Stand</span>Leitbild, Führungsverständnis und Zielgruppe liegen vor.</p>
                   <span class="db-modul-fuss"><a href="/projekte/sv-selbstverstaendnis.html">Zum Modul &#8594;</a></span>
                 </div>
               </article>
@@ -619,7 +604,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   <span class="db-modul-frage">Wie wollen wir wahrgenommen werden?</span>
                 </a>
                 <div class="db-modul-koerper">
-                  <p>Das Bild vom Zielzustand steht als Entwurf und wird mit M.&nbsp;S. abgestimmt.</p>
+                  <p class="db-modul-ergebnis">Ein Zielbild, das man erklären kann, ohne es vorzulesen</p>
+                  <p class="db-modul-stand"><span class="db-modul-stand-tag">Stand</span>Der Entwurf steht und wird mit M.&nbsp;S. abgestimmt.</p>
                   <span class="db-modul-fuss"><a href="/projekte/sv-vision.html">Zum Modul &#8594;</a></span>
                 </div>
               </article>
@@ -633,7 +619,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                   <span class="db-modul-frage">Wie kommen wir dorthin?</span>
                 </a>
                 <div class="db-modul-koerper">
-                  <p>Die Ist-Situation steht, die Stoßrichtungen sind abgeleitet.</p>
+                  <p class="db-modul-ergebnis">Ein Weg dorthin, mit Reihenfolge und Verantwortung</p>
+                  <p class="db-modul-stand"><span class="db-modul-stand-tag">Stand</span>Die Ist-Situation steht, die Stoßrichtungen sind abgeleitet.</p>
                   <span class="db-modul-fuss"><a href="/projekte/sv-strategie.html">Zum Modul &#8594;</a></span>
                 </div>
               </article>
@@ -657,7 +644,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <section class="fl-ebene fl-ebene--werkzeug">
           <button type="button" class="fl-kopf" aria-expanded="false">
-            <span class="fl-kopf-nr">03</span>
+            <span class="fl-kopf-nr">02</span>
             <span class="fl-kopf-text">
               <b>Werkzeugkasten</b>
               <small>Ergebnisse und Methoden zum Nachschlagen.</small>
@@ -727,9 +714,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </section>
 
   <script>
-  /* Drei Ebenen, jede zum Aufklappen. Eine steht beim Laden offen, die
-     anderen koennen dazukommen - es wird nichts zugeklappt, was der Leser
-     selbst geoeffnet hat. */
+  /* Zwei Ebenen zum Aufklappen. Eine steht beim Laden offen, die andere
+     kommt dazu - es klappt nichts zu, was man selbst geoeffnet hat. */
   (function () {
     document.querySelectorAll('.fl-ebene').forEach(function (e) {
       var k = e.querySelector('.fl-kopf');

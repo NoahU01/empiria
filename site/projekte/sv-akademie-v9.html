@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SV Akademie &middot; Fokus &ndash; empiria</title>
+<title>SV Akademie &middot; Auswahl &ndash; empiria</title>
 <meta name="description" content="Projektseite SV Akademie: Scope, die drei Module, Projektplanung und Werkzeugkasten.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
@@ -526,7 +526,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </nav>
 </header>
 
-<main class="vt-tool vt-fokus">
+<main class="vt-tool vt-auswahl">
 
   <section class="section section--eng">
     <div class="container">
@@ -538,10 +538,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <a class="pv-pille pv-pille--leise" href="/projekte/sv-akademie-v3.html">V3 <small>Scope</small></a>
         <a class="pv-pille" href="/projekte/sv-akademie-v4.html">V4 <small>Tool</small></a>
         <a class="pv-pille" href="/projekte/sv-akademie-v5.html">V5 <small>Faltung</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v7.html">V7 <small>Dunkel</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v8.html">V8 <small>Licht</small></a>
-        <a class="pv-pille is-aktiv" href="/projekte/sv-akademie-v9.html" aria-current="page">V9 <small>Fokus</small></a>
-        <a class="pv-pille" href="/projekte/sv-akademie-v10.html">V10 <small>Register</small></a>
+        <a class="pv-pille is-aktiv" href="/projekte/sv-akademie-v9.html" aria-current="page">V9 <small>Auswahl</small></a>
+        <a class="pv-pille" href="/projekte/sv-akademie-v11.html">V11 <small>Reiter</small></a>
+        <a class="pv-pille" href="/projekte/sv-akademie-v12.html">V12 <small>Kette</small></a>
       </div>
 
       <div class="tl-leiste">
@@ -553,62 +552,117 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <div class="tl-leiste-werte">
           <span class="tl-wert"><b>1</b><small>von 3 fertig</small></span>
           <span class="tl-wert"><b>8</b><small>Werkzeuge</small></span>
+          <span class="tl-wert"><b>9</b><small>Termine</small></span>
         </div>
       </div>
 
-      <div class="fk-raster">
+      <p class="tl-satz">Die SV Akademie bekommt eine Strategie, die man erklären kann – vom Selbstverständnis über das Zielbild bis zum Weg dorthin.</p>
 
-        <section class="fk-fokus">
-          <p class="fk-marke">Im Fokus</p>
-          <span class="fk-nr">02</span>
+      <div class="aw-raster">
+
+        <div class="aw-spalte">
+          <p class="aw-spalte-tag">Projektscope</p>
+          <div class="aw-reiter-reihe" role="tablist" aria-label="Module">
+          <button type="button" class="aw-reiter" data-modul="01" role="tab" aria-selected="false">
+            <span class="aw-reiter-nr">01</span>
+            <span class="aw-reiter-text">
+              <b>Selbstverständnis</b>
+              <small>Wofür stehen wir?</small>
+            </span>
+            <span class="pj-marke pj-marke--fertig">Abgeschlossen</span>
+            <span class="aw-balken" style="--anteil:100%" aria-hidden="true"><i></i></span>
+          </button>
+          <button type="button" class="aw-reiter" data-modul="02" role="tab" aria-selected="false">
+            <span class="aw-reiter-nr">02</span>
+            <span class="aw-reiter-text">
+              <b>Vision</b>
+              <small>Wie wollen wir wahrgenommen werden?</small>
+            </span>
+            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+            <span class="aw-balken" style="--anteil:60%" aria-hidden="true"><i></i></span>
+          </button>
+          <button type="button" class="aw-reiter" data-modul="03" role="tab" aria-selected="false">
+            <span class="aw-reiter-nr">03</span>
+            <span class="aw-reiter-text">
+              <b>Strategie</b>
+              <small>Wie kommen wir dorthin?</small>
+            </span>
+            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
+            <span class="aw-balken" style="--anteil:35%" aria-hidden="true"><i></i></span>
+          </button>
+          </div>
+          <button type="button" class="pj-modellkasten" data-modal-target="strategiemodellModal">
+            <span class="pj-modellkasten-bild">
+              <img src="/assets/projekte/strategiemodell-mini.webp" alt="" width="407" height="480" loading="lazy">
+            </span>
+            <span class="pj-modellkasten-text">
+              <b>Strategiemodell</b>
+              <small>Die Logik hinter den drei Modulen.</small>
+              <span class="pj-modellkasten-mehr">Ansehen &#8594;</span>
+            </span>
+          </button>
+        </div>
+
+        <section class="aw-tafel" data-modul="01" hidden>
+          <span class="aw-tafel-nr">01</span>
+          <h2 class="h-serif">Selbstverständnis</h2>
+          <p class="aw-tafel-frage">Wofür stehen wir?</p>
+          <p class="aw-tafel-ergebnis">Ein Selbstverständnis, auf das sich alle berufen können</p>
+          <p class="aw-tafel-stand"><span class="aw-stand-tag">Stand</span>Leitbild, Führungsverständnis und Zielgruppe liegen vor.</p>
+          <div class="aw-tafel-wege">
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Unterseiten</p>
+              <span class="aw-leer">keine &ndash; der Inhalt steht auf der Modulseite</span>
+            </div>
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Dokument</p>
+              <button type="button" class="aw-weg" data-modal-target="selbstverstaendnisModal">Selbstverständnis der SV Akademie<span>&#8594;</span></button>
+            </div>
+          </div>
+          <a class="btn btn--dark btn--sm aw-tafel-knopf" href="/projekte/sv-selbstverstaendnis.html">Zum Modul</a>
+        </section>
+        <section class="aw-tafel" data-modul="02" hidden>
+          <span class="aw-tafel-nr">02</span>
           <h2 class="h-serif">Vision</h2>
-          <p class="fk-frage">Wie wollen wir wahrgenommen werden?</p>
-          <p class="fk-satz">Das Bild vom Zielzustand steht als Entwurf. Beim nächsten Termin
-            wird es mit M.&nbsp;S. abgestimmt – danach ist es das gemeinsame Zielbild.</p>
-          <div class="fk-wege">
-            <a class="btn btn--dark btn--sm" href="/projekte/sv-vision.html">Zum Modul</a>
-            <a class="btn btn--ghost btn--sm" href="/projekte/sv-abstimmung-hal.html">Agenda des Termins</a>
+          <p class="aw-tafel-frage">Wie wollen wir wahrgenommen werden?</p>
+          <p class="aw-tafel-ergebnis">Ein Zielbild, das man erklären kann, ohne es vorzulesen</p>
+          <p class="aw-tafel-stand"><span class="aw-stand-tag">Stand</span>Der Entwurf steht und wird mit M.&nbsp;S. abgestimmt.</p>
+          <div class="aw-tafel-wege">
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Unterseiten</p>
+              <a class="aw-weg" href="https://svakademie.vercel.app/ueber-uns.html" target="_blank" rel="noopener">Webseite der Akademie<span>&#8594;</span></a>
+            </div>
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Dokument</p>
+              <button type="button" class="aw-weg" data-modal-target="svHomepageModal">Homepage der SV Akademie<span>&#8594;</span></button>
+            </div>
           </div>
-          <div class="fk-termin">
-            <span class="fk-termin-tag">Nächster Termin</span>
-            <b>Workshop Vision &amp; Strategie</b>
-            <small>Ende September bis Mitte Oktober 2026 &middot; mit M.&nbsp;S.</small>
+          <a class="btn btn--dark btn--sm aw-tafel-knopf" href="/projekte/sv-vision.html">Zum Modul</a>
+        </section>
+        <section class="aw-tafel" data-modul="03" hidden>
+          <span class="aw-tafel-nr">03</span>
+          <h2 class="h-serif">Strategie</h2>
+          <p class="aw-tafel-frage">Wie kommen wir dorthin?</p>
+          <p class="aw-tafel-ergebnis">Ein Weg dorthin, mit Reihenfolge und Verantwortung</p>
+          <p class="aw-tafel-stand"><span class="aw-stand-tag">Stand</span>Die Ist-Situation steht, die Stoßrichtungen sind abgeleitet.</p>
+          <div class="aw-tafel-wege">
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Unterseiten</p>
+              <a class="aw-weg" href="/projekte/sv-strategie-ist.html">Ist-Situation<span>&#8594;</span></a>
+              <a class="aw-weg" href="/projekte/sv-strategie-stossrichtungen.html">Stoßrichtungen<span>&#8594;</span></a>
+              <a class="aw-weg" href="/projekte/sv-meilensteine.html">Meilensteinplan<span>&#8594;</span></a>
+            </div>
+            <div class="aw-wege">
+              <p class="aw-wege-tag">Methode</p>
+              <button type="button" class="aw-weg" data-modal-target="swotModal">SWOT-Analyse<span>&#8594;</span></button>
+            </div>
           </div>
+          <a class="btn btn--dark btn--sm aw-tafel-knopf" href="/projekte/sv-strategie.html">Zum Modul</a>
         </section>
 
-        <div class="fk-seite">
-          <section class="tl-panel">
-            <header class="tl-panel-kopf"><h2>Die anderen Module</h2></header>
-            <div class="tl-panel-koerper">
-              <a class="fk-neben" href="/projekte/sv-selbstverstaendnis.html">
-                <span class="fk-neben-nr">01</span>
-                <span class="fk-neben-text"><b>Selbstverständnis</b><small>Leitbild, Führungsverständnis und Zielgruppe liegen vor.</small></span>
-                <span class="pj-marke pj-marke--fertig">Abgeschlossen</span>
-              </a>
-              <a class="fk-neben" href="/projekte/sv-strategie.html">
-                <span class="fk-neben-nr">03</span>
-                <span class="fk-neben-text"><b>Strategie</b><small>Ist-Situation steht, die Stoßrichtungen sind abgeleitet.</small></span>
-                <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
-              </a>
-            </div>
-          </section>
-
-          <section class="tl-panel">
-            <header class="tl-panel-kopf"><h2>Projektscope</h2></header>
-            <div class="tl-panel-koerper">
-              <ul class="tl-scope">
-                <li>Ein Selbstverständnis, auf das sich alle berufen können</li>
-                <li>Ein Zielbild, das man erklären kann, ohne es vorzulesen</li>
-                <li>Ein Weg dorthin, mit Reihenfolge und Verantwortung</li>
-              </ul>
-              <button type="button" class="tl-flach" data-modal-target="ausgangslageModal">Ausgangssituation &#8594;</button>
-            </div>
-          </section>
-        </div>
-
       </div>
 
-      <a class="pj-standzeile fk-planung" href="/projekte/sv-projektplanung.html">
+      <a class="pj-standzeile aw-planung" href="/projekte/sv-projektplanung.html">
         <span class="pj-standzeile-text">
           <span class="pj-tag">Projektplanung</span>
           <b>Was bisher lief – und was als Nächstes ansteht</b>
@@ -672,6 +726,28 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
     </div>
   </section>
+
+  <script>
+  /* Drei Reiter, eine Tafel. Welcher Reiter leuchtet, entscheidet, welche
+     Tafel steht - mehr passiert hier nicht. */
+  (function () {
+    var reiter = Array.prototype.slice.call(document.querySelectorAll('.aw-reiter'));
+    var tafeln = Array.prototype.slice.call(document.querySelectorAll('.aw-tafel'));
+    if (!reiter.length) return;
+    function zeigen(nr) {
+      reiter.forEach(function (r) {
+        var an = r.dataset.modul === nr;
+        r.classList.toggle('is-aktiv', an);
+        r.setAttribute('aria-selected', an ? 'true' : 'false');
+      });
+      tafeln.forEach(function (t) { t.hidden = t.dataset.modul !== nr; });
+    }
+    reiter.forEach(function (r) {
+      r.addEventListener('click', function () { zeigen(r.dataset.modul); });
+    });
+    zeigen('02');
+  })();
+  </script>
 
 </main>
 
