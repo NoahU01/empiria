@@ -126,21 +126,6 @@
 
 
 /* ==========================================================================
-   V3 "Scope" - der Look von V2, dazu der Projektscope und mehr Zug oben
-   Statt des schwarzen Terminkastens steht rechts die Rakete: sie traegt
-   dasselbe Bild wie V1 und nimmt der Kopfzeile die Nuechternheit, ohne
-   eine weitere Ebene aufzumachen.
-   ========================================================================== */
-.db-kopf--rakete { align-items: center; }
-.db-kopf--rakete h1 { line-height: 1.34; }
-.db-rakete { display: block; width: clamp(130px, 14vw, 190px); line-height: 0;
-             justify-self: end; }
-.db-rakete img { display: block; width: 100%; height: auto; }
-.db-kopf--rakete .db-leise { margin-top: 1.2rem; }
-@media (max-width: 1000px) { .db-rakete { display: none; } }
-
-
-/* ==========================================================================
    V4 "Tool" - Panels auf hellem Anwendungsgrund
 
    Was eine Anwendung von einer Seite unterscheidet, ist nicht die Farbe,
@@ -447,9 +432,9 @@
 .tl-ziel-koerper p { margin: 0 0 .8rem; font-size: .96rem; line-height: 1.75;
                      color: var(--grey-70); }
 .tl-ziel-koerper p:last-child { margin-bottom: 0; }
-.tl-ziel-satz { font-family: var(--font-serif); font-weight: 700;
-                font-size: clamp(1.1rem, 1.7vw, 1.3rem) !important; line-height: 1.5 !important;
-                color: var(--ink) !important; }
+/* Der erste Satz stand in Serife, fett und gross - und ueberlagerte
+   damit alles, was danach kam. Jetzt liest sich der Block als Absatz. */
+.tl-ziel-koerper p:first-child { color: var(--ink); }
 .tl-werkzeug-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
                     gap: clamp(16px, 2.2vw, 30px); padding: 14px; }
 .tl-spalte-tag { margin: 0 0 6px 10px; font-size: .68rem; letter-spacing: .12em;
@@ -462,9 +447,7 @@
 .db-abschnitt--eng .db-abschnitt-kopf { margin-bottom: clamp(16px, 2vw, 22px); }
 .fl-ziel { max-width: 74ch; }
 .fl-ziel p { margin: 0 0 .9rem; font-size: .98rem; line-height: 1.75; color: var(--grey-70); }
-.fl-ziel-satz { font-family: var(--font-serif); font-weight: 700;
-                font-size: clamp(1.15rem, 1.8vw, 1.4rem) !important; line-height: 1.5 !important;
-                color: var(--ink) !important; }
+.fl-ziel p:first-child { color: var(--ink); }
 @media (max-width: 760px) { .tl-werkzeug-grid { grid-template-columns: 1fr; } }
 
 
@@ -543,135 +526,6 @@
   .sp-pfeil { display: none; }
   .sp-fuss-raster, .sp-werkzeug-grid { grid-template-columns: 1fr; }
 }
-
-
-/* ==========================================================================
-   V14 "Linie" - rein typografisch
-
-   Haarlinien und eine Spaltenachse halten zusammen, was sonst eine Flaeche
-   haelt. Farbe kommt nur als kurzer Strich vor dem Modulnamen vor. Liest
-   sich wie ein gesetztes Dokument und bleibt bedienbar: jede Zeile fuehrt
-   an eine Stelle.
-   ========================================================================== */
-.vt-linie { background: #fff; }
-.ln-spalte { max-width: 1040px; }
-.ln-titel { font-weight: 500; line-height: 1.15; letter-spacing: -.02em;
-            font-size: clamp(2.2rem, 4.4vw, 3.6rem); margin: .4rem 0 0; }
-.ln-ziel { max-width: 68ch; margin-top: clamp(26px, 3vw, 40px); }
-.ln-ziel p { margin: 0 0 .9rem; font-size: 1rem; line-height: 1.8; color: var(--grey-70); }
-.ln-ziel-gross { font-family: var(--font-serif); font-weight: 700;
-                 font-size: clamp(1.2rem, 2vw, 1.55rem) !important; line-height: 1.5 !important;
-                 color: var(--ink) !important; }
-
-.ln-block { margin-top: clamp(40px, 5vw, 72px); }
-.ln-block-kopf { display: flex; align-items: baseline; justify-content: space-between;
-                 gap: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
-.ln-block-kopf h2 { margin: 0; font-size: .78rem; letter-spacing: .14em;
-                    text-transform: uppercase; font-weight: 700; }
-.ln-zahl { font-size: .78rem; font-weight: 600; color: var(--grey-50); }
-.ln-flach { appearance: none; -webkit-appearance: none; border: 0; background: none;
-            padding: 0; cursor: pointer; font-family: inherit; font-size: .82rem;
-            font-weight: 600; color: var(--grey-70); }
-.ln-flach:hover { color: var(--ink); text-decoration: underline; }
-
-.ln-zeile { display: grid; grid-template-columns: 96px minmax(0, 1fr) 232px;
-            gap: clamp(20px, 3vw, 44px); align-items: start;
-            padding: clamp(22px, 2.6vw, 32px) 0; border-bottom: 1px solid #e8e5e1;
-            text-decoration: none; color: inherit; transition: padding-left .2s ease; }
-.ln-zeile:hover { padding-left: 10px; }
-.ln-nr { font-family: var(--font-serif); font-weight: 700; line-height: .9;
-         font-size: clamp(2.2rem, 3.6vw, 3.2rem); color: #ddd8d2; }
-.ln-zeile:hover .ln-nr { color: var(--ink); }
-.ln-strich { display: block; width: 34px; height: 4px; border-radius: 2px;
-             background: var(--f); margin-bottom: 12px; }
-.ln-haupt b { display: block; font-family: var(--font-serif); font-weight: 700;
-              font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; }
-.ln-haupt small { display: block; margin-top: 3px; font-size: .9rem; color: var(--grey-50); }
-.ln-ergebnis { display: block; margin-top: .9rem; font-size: 1rem; line-height: 1.65;
-               color: var(--grey-70); max-width: 46ch; }
-.ln-stand { display: grid; gap: 8px; justify-items: start; }
-.ln-stand-satz { font-size: .9rem; line-height: 1.6; color: var(--grey-50); }
-.ln-zeile--flach { grid-template-columns: 96px minmax(0, 1fr) 232px; }
-.ln-zeile--flach .ln-nr { font-size: 1.6rem; }
-
-.ln-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-           gap: clamp(22px, 3vw, 44px); margin-top: clamp(18px, 2.2vw, 26px); }
-.ln-posten { display: grid; grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px;
-             column-gap: 14px; width: 100%; padding: 14px 0; border: 0; border-bottom: 1px solid #e8e5e1;
-             background: none; cursor: pointer; font-family: inherit; text-align: left;
-             text-decoration: none; color: inherit; transition: padding-left .2s ease; }
-.ln-posten:hover { padding-left: 8px; }
-.ln-posten b { font-size: .97rem; font-weight: 600; line-height: 1.35; }
-.ln-posten small { grid-column: 1; font-size: .85rem; line-height: 1.5; color: var(--grey-70); }
-.ln-posten span { grid-row: 1 / span 2; align-self: center; color: var(--grey-50); }
-@media (max-width: 860px) {
-  .ln-zeile, .ln-zeile--flach { grid-template-columns: 64px minmax(0, 1fr); }
-  .ln-stand { grid-column: 2; }
-  .ln-zwei { grid-template-columns: 1fr; }
-}
-
-
-/* ==========================================================================
-   V15 "Strecke" - ein durchgehender Strang
-
-   Links laeuft eine Linie von oben nach unten, die drei Module haengen als
-   Knoten daran. Der erledigte Knoten ist gefuellt, der laufende traegt
-   einen Ring, der kommende bleibt blass. Reihenfolge und Stand stehen
-   damit in einem Bild, ohne dass eine Zahl danebenstehen muss.
-   ========================================================================== */
-.vt-strecke { background: #fff; }
-.st-kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto;
-           gap: clamp(26px, 3.4vw, 56px); align-items: end; }
-.st-kopf h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.15;
-              letter-spacing: -.02em; font-size: clamp(2.1rem, 4vw, 3.2rem); margin: .4rem 0 0; }
-.st-ziel { margin: 1.3rem 0 0; max-width: 56ch; font-family: var(--font-serif);
-           font-weight: 700; font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.5; }
-.st-ziel-klein { margin: .8rem 0 0; max-width: 60ch; font-size: .98rem; line-height: 1.75;
-                 color: var(--grey-70); }
-
-.st-strang { position: relative; margin-top: clamp(36px, 4.4vw, 64px);
-             padding-left: clamp(44px, 5vw, 72px); }
-.st-linie { position: absolute; left: clamp(17px, 1.9vw, 27px); top: 10px; bottom: 10px;
-            width: 4px; border-radius: 2px;
-            background: linear-gradient(#C51F5D 0%, #8613A1 42%, #0B9FBD 78%, #e4e1dd 78%); }
-.st-knoten { position: relative; padding-bottom: clamp(18px, 2.2vw, 26px); }
-.st-knoten:last-child { padding-bottom: 0; }
-.st-punkt { position: absolute; left: calc(clamp(44px, 5vw, 72px) * -1 + clamp(5px, .6vw, 9px));
-            top: 18px; display: grid; place-items: center; width: 28px; height: 28px;
-            border-radius: 50%; background: #fff; border: 3px solid var(--f, #ddd8d2); }
-.st-punkt i { font-family: var(--font-serif); font-style: normal; font-weight: 700;
-              font-size: .7rem; color: var(--f, var(--grey-50)); }
-.st-knoten.ist-fertig .st-punkt { background: var(--f); }
-.st-knoten.ist-fertig .st-punkt i { color: #fff; }
-.st-knoten.ist-dran .st-punkt { box-shadow: 0 0 0 5px color-mix(in srgb, var(--f) 18%, transparent); }
-.st-punkt--ziel { border-color: var(--ink); }
-.st-punkt--ziel i { color: var(--ink); }
-
-.st-karte { display: block; padding: clamp(18px, 2.2vw, 26px) clamp(20px, 2.4vw, 30px);
-            border-left: 4px solid var(--f, var(--ink)); background: #faf9f7;
-            text-decoration: none; color: inherit; transition: background-color .2s ease; }
-.st-karte:hover { background: #f2efeb; }
-.st-karte-kopf { display: flex; align-items: center; justify-content: space-between;
-                 gap: 16px; }
-.st-karte b { font-family: var(--font-serif); font-weight: 700; line-height: 1.2;
-              font-size: clamp(1.3rem, 2.1vw, 1.7rem); }
-.st-karte small { display: block; margin-top: 3px; font-size: .9rem; color: var(--grey-50); }
-.st-ergebnis { display: block; margin-top: 1rem; font-family: var(--font-serif);
-               font-weight: 700; font-size: 1.05rem; line-height: 1.5; max-width: 46ch; }
-.st-stand { display: block; margin-top: .6rem; font-size: .94rem; line-height: 1.65;
-            color: var(--grey-70); max-width: 52ch; }
-.st-mehr { display: inline-block; margin-top: 1rem; font-size: .9rem; font-weight: 600; }
-.st-karte--ziel { border-left-color: var(--ink); background: var(--ink); color: #fff; }
-.st-karte--ziel:hover { background: #000; }
-.st-karte--ziel small { color: rgba(255,255,255,.66); }
-
-.st-werkzeug { margin-top: clamp(40px, 5vw, 72px); padding-top: clamp(26px, 3vw, 40px);
-               border-top: 2px solid var(--ink); }
-.st-werkzeug-kopf { display: flex; align-items: baseline; justify-content: space-between;
-                    gap: 16px; margin-bottom: clamp(16px, 2vw, 24px); }
-.st-werkzeug-kopf h2 { margin: 0; font-weight: 600; font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
-.st-werkzeug .tl-werkzeug-grid { padding: 0; }
-@media (max-width: 900px) { .st-kopf { grid-template-columns: 1fr; } }
 
 
 /* ==========================================================================
