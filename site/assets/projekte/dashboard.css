@@ -1,15 +1,22 @@
 /* ==========================================================================
-   Projektseite SV Akademie - Dashboard-Varianten (V2 Leitstand, V3 Board)
+   Projektseite SV Akademie - V2 "Leitstand"
 
-   Die erste Fassung der Seite ist eine Landingpage: Abschnitt unter
-   Abschnitt, jeder mit Ueberschrift, Vorspann und Luft. Wer die Seite zum
-   fuenften Mal oeffnet, sucht aber nicht mehr nach Einstieg, sondern nach
-   einer Stelle - "wo liegt die SWOT", "was steht als Naechstes an".
+   V1 ist eine Landingpage: Abschnitt unter Abschnitt, jeder mit Vorspann.
+   Wer die Seite zum fuenften Mal oeffnet, sucht aber keinen Einstieg mehr,
+   sondern eine Stelle. V2 zeigt denselben Inhalt in zwei Ebenen - und in
+   genau zwei, nicht mehr:
 
-   Deshalb hier zwei Varianten mit demselben Inhalt und anderer Ordnung:
-   V2 stellt eine stehende Navigation neben den Inhalt, V3 legt alles in
-   vier Spalten nebeneinander. Beide zeigen Status und Zugaenge sofort,
-   ohne dass man scrollen oder lesen muss.
+     1  Arbeitsstand   - die drei Module als kraeftige Karten mit schwarzem
+                         Kopf, darunter ein Balken zur Projektplanung.
+                         Alles Terminliche liegt hinter diesem einen Balken.
+     2  Werkzeugkasten - Ergebnisse und Methoden, abgesetzt auf eigenem
+                         Grund und in anderer Form: schlanke Zeilen statt
+                         Karten. Das hat mit dem Fortschritt des Projekts
+                         nichts zu tun, also darf es auch nicht so aussehen.
+
+   Eine erste Fassung hatte drei Ebenen (Statusband, Modulkarten, Kacheln)
+   und eine stehende Leiste daneben. Ergebnis: vier Formen, die alle gleich
+   wogen, und keine Blickfuehrung. Beides ist wieder raus.
    ========================================================================== */
 
 /* ---- Variantenwahl ueber der Subheadline -------------------------------- */
@@ -20,221 +27,99 @@
 .pv-pille { display: inline-flex; align-items: center; gap: 7px;
             padding: 7px 15px; border-radius: 999px; text-decoration: none;
             font-size: .85rem; font-weight: 600; line-height: 1;
-            color: var(--grey-70); background: #fff;
-            border: 1px solid #e4e1dd;
+            color: var(--grey-70); background: #fff; border: 1px solid #e4e1dd;
             transition: border-color .2s ease, color .2s ease, background-color .2s ease; }
 .pv-pille:hover { border-color: var(--ink); color: var(--ink); }
 .pv-pille.is-aktiv { background: var(--ink); border-color: var(--ink); color: #fff; }
 .pv-pille small { font-weight: 500; opacity: .72; }
 
-/* ---- Projektkopf: der Stand in einer Zeile ------------------------------
-   Name, Phase, naechster Termin. Das ist die Antwort auf "wo stehe ich",
-   bevor irgendetwas angeklickt wird. */
+/* ---- Kopf: Projekt links, naechster Termin rechts -----------------------
+   Die beiden Fragen, die jeder zuerst hat: worum geht es, und wann
+   passiert das Naechste. */
 .db-kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto;
-           gap: clamp(20px, 2.6vw, 40px); align-items: end;
-           padding-bottom: clamp(20px, 2.4vw, 28px);
-           border-bottom: 1px solid #ebe8e5; }
+           gap: clamp(24px, 3vw, 48px); align-items: start; }
 .db-kopf h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.2;
-              font-size: clamp(1.8rem, 3.2vw, 2.6rem); letter-spacing: -.015em;
-              margin: .3rem 0 0; }
-.db-kopf .lead { margin: .9rem 0 0; max-width: 64ch; }
-.db-naechst { display: grid; gap: 4px; justify-items: start; min-width: 240px;
-              padding: 14px 18px; background: var(--ink); border-radius: var(--radius-card);
+              font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -.015em;
+              margin: .35rem 0 0; }
+.db-kopf .lead { margin: 1rem 0 0; max-width: 60ch; }
+.db-leise { appearance: none; -webkit-appearance: none; border: 0; background: none;
+            padding: 0; margin-top: 1rem; cursor: pointer; font-family: inherit;
+            font-size: .9rem; font-weight: 600; color: var(--grey-70);
+            transition: color .15s ease; }
+.db-leise:hover { color: var(--ink); text-decoration: underline; }
+
+.db-naechst { display: grid; gap: 5px; justify-items: start;
+              width: clamp(260px, 26vw, 330px);
+              padding: 18px 22px; background: var(--ink); border-radius: var(--radius-card);
               text-decoration: none; color: #fff;
               transition: transform .2s ease, box-shadow .2s ease; }
-.db-naechst:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.14); }
+.db-naechst:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.16); }
 .db-naechst-tag { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
                   font-weight: 700; color: var(--hl); }
-.db-naechst b { font-size: 1.02rem; font-weight: 600; line-height: 1.3; }
-.db-naechst small { font-size: .84rem; color: rgba(255,255,255,.72); }
+.db-naechst b { font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700;
+                line-height: 1.25; }
+.db-naechst small { font-size: .85rem; line-height: 1.5; color: rgba(255,255,255,.7); }
+.db-naechst-mehr { margin-top: 8px; font-size: .84rem; font-weight: 600; color: #fff; }
 
-/* ---- Statusband: drei Module, ein Blick -------------------------------- */
-.db-band { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-           gap: clamp(10px, 1.4vw, 16px); margin-top: clamp(22px, 2.6vw, 32px); }
-.db-stufe { display: grid; gap: 8px; padding: 14px 18px;
-            background: #faf9f7; border: 1px solid #e4e1dd;
-            border-radius: var(--radius-card); text-decoration: none; color: inherit;
-            transition: border-color .2s ease, background-color .2s ease; }
-.db-stufe:hover { border-color: var(--ink); background: #fff; }
-.db-stufe-kopf { display: flex; align-items: center; justify-content: space-between;
-                 gap: 12px; }
-.db-stufe-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem;
-               color: var(--grey-50); }
-.db-stufe b { font-size: 1rem; font-weight: 600; line-height: 1.25; }
-.db-stufe small { font-size: .84rem; line-height: 1.5; color: var(--grey-70); }
-.db-balken { display: block; height: 4px; border-radius: 999px; background: #e4e1dd;
-             overflow: hidden; }
-.db-balken i { display: block; height: 100%; border-radius: 999px; background: var(--ink);
-               width: var(--anteil, 0%); }
+/* ---- Abschnittskopf ---------------------------------------------------- */
+.db-abschnitt { margin-top: clamp(40px, 5vw, 72px); }
+.db-abschnitt-kopf { margin-bottom: clamp(18px, 2.2vw, 26px); }
+.db-abschnitt-kopf h2 { font-weight: 600; margin: 0;
+                        font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.25; }
+.db-abschnitt-kopf p { margin: .5rem 0 0; max-width: 62ch;
+                       font-size: .96rem; line-height: 1.7; color: var(--grey-70); }
 
-/* ---- V2: stehende Navigation neben dem Inhalt --------------------------- */
-.db-raster { display: grid; grid-template-columns: 238px minmax(0, 1fr);
-             gap: clamp(26px, 3.2vw, 52px); align-items: start;
-             margin-top: clamp(28px, 3.4vw, 46px); }
-.db-leiste { position: sticky; top: 104px; display: grid; gap: 16px; }
-.db-leiste-gruppe { display: grid; gap: 2px; }
-.db-leiste-gruppe + .db-leiste-gruppe { padding-top: 14px; border-top: 1px solid #ebe8e5; }
-.db-leiste-tag { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
-                 font-weight: 700; color: var(--grey-50); margin: 0 0 6px 12px; }
-.db-leiste a, .db-leiste button { display: flex; align-items: center; gap: 10px;
-            width: 100%; padding: 8px 12px; border: 0; background: none;
-            border-radius: 10px; text-align: left; text-decoration: none; cursor: pointer;
-            font-family: inherit; font-size: .92rem; font-weight: 500; color: var(--grey-70);
-            transition: background-color .15s ease, color .15s ease; }
-.db-leiste a:hover, .db-leiste button:hover { background: #f4f2ef; color: var(--ink); }
-.db-leiste .is-hier { background: #f4f2ef; color: var(--ink); font-weight: 600; }
-.db-leiste-zahl { margin-left: auto; font-size: .78rem; font-weight: 600;
-                  color: var(--grey-50); }
-
-/* ---- Abschnitte im Inhaltsbereich -------------------------------------- */
-.db-block + .db-block { margin-top: clamp(34px, 4vw, 56px); }
-.db-block-kopf { display: flex; align-items: baseline; justify-content: space-between;
-                 gap: 16px; margin-bottom: clamp(14px, 1.8vw, 20px); }
-.db-block-kopf h2 { font-family: var(--font-serif); font-weight: 600; margin: 0;
-                    font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.25; }
-.db-block-kopf p { margin: 4px 0 0; font-size: .92rem; line-height: 1.6;
-                   color: var(--grey-70); max-width: 64ch; }
-.db-block-mehr { font-size: .86rem; font-weight: 600; color: var(--ink);
-                 text-decoration: none; white-space: nowrap; }
-.db-block-mehr:hover { text-decoration: underline; }
-
-/* ---- Modulkarte: Status, Inhalt und Unterseiten in einem Stueck --------- */
+/* ---- Ebene 1: die drei Module ------------------------------------------
+   Die kraeftigste Form auf der Seite. Schwarzer Kopf, weisser Koerper,
+   drei nebeneinander - das ist der Arbeitsstand und sonst nichts. */
 .db-module { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-             gap: clamp(12px, 1.6vw, 18px); }
+             gap: clamp(12px, 1.6vw, 20px); }
 .db-modul { display: flex; flex-direction: column;
             border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-            background: #fff; overflow: hidden; }
-.db-modul-kopf { display: block; padding: 16px 18px 14px; text-decoration: none;
-                 color: inherit; background: var(--ink); color: #fff;
-                 transition: background-color .2s ease; }
-.db-modul-kopf:hover { background: #000; }
+            background: #fff; overflow: hidden;
+            transition: border-color .2s ease, box-shadow .2s ease; }
+.db-modul:hover { border-color: var(--ink); box-shadow: 0 14px 32px rgba(0,0,0,.07); }
+.db-modul-kopf { display: block; min-height: 136px; padding: 20px 22px 18px;
+                 text-decoration: none; background: var(--ink); color: #fff; }
 .db-modul-reihe { display: flex; align-items: center; justify-content: space-between;
                   gap: 10px; }
-.db-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;
+.db-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem;
                color: var(--hl); }
-.db-modul-kopf h3 { margin: 6px 0 0; font-size: 1.1rem; font-weight: 600; line-height: 1.25;
-                    color: #fff; }
-.db-modul-frage { display: block; margin-top: 3px; font-size: .84rem;
+.db-modul-kopf h3 { margin: 10px 0 0; font-family: var(--font-serif); font-size: 1.3rem;
+                    font-weight: 700; line-height: 1.2; color: #fff; }
+.db-modul-frage { display: block; margin-top: 5px; font-size: .88rem; line-height: 1.45;
                   color: rgba(255,255,255,.66); }
 .db-modul-marke { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
-                  font-size: .76rem; font-weight: 600; color: rgba(255,255,255,.82); }
+                  font-size: .76rem; font-weight: 600; letter-spacing: .02em;
+                  color: rgba(255,255,255,.82); }
 .db-modul-marke::before { content: ""; width: 8px; height: 8px; border-radius: 50%;
                           background: #fff; }
 .db-modul-marke--laeuft::before { background: none; border: 2px solid rgba(255,255,255,.6); }
-.db-modul-koerper { display: grid; gap: 3px; padding: 12px 10px 10px; }
-.db-modul-tag { margin: 0 0 2px 8px; font-size: .7rem; letter-spacing: .1em;
-                text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
-.db-pos { display: flex; align-items: center; gap: 10px; padding: 8px 8px;
-          border-radius: 10px; text-decoration: none; color: var(--grey-70);
-          font-size: .9rem; line-height: 1.4;
-          transition: background-color .15s ease, color .15s ease; }
-.db-pos:hover { background: #f4f2ef; color: var(--ink); }
-.db-pos-pfeil { margin-left: auto; color: var(--grey-50); }
-.db-pos--leer { color: #b4aea7; font-size: .86rem; padding-left: 8px; }
-.db-pos--extern .db-pos-pfeil::after { content: "\2197"; }
+.db-modul-koerper { display: flex; flex-direction: column; flex: 1 1 auto;
+                    padding: 18px 22px 20px; }
+.db-modul-koerper p { margin: 0; font-size: .95rem; line-height: 1.65; color: var(--grey-70); }
+.db-modul-fuss { display: block; margin-top: auto; padding-top: 16px; }
+.db-modul-fuss a { font-size: .9rem; font-weight: 600; color: var(--ink);
+                   text-decoration: none; }
+.db-modul-fuss a:hover { text-decoration: underline; }
 
-/* ---- Kachelreihen fuer Ergebnisse, Methoden und Planung ---------------- */
-.db-kacheln { display: grid; gap: clamp(10px, 1.3vw, 14px);
-              grid-template-columns: repeat(auto-fill, minmax(228px, 1fr)); }
-.db-kachel { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px;
-             align-items: start; width: 100%; padding: 14px 16px; text-align: left;
-             background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
-             text-decoration: none; color: inherit; cursor: pointer;
-             font-family: inherit;
-             transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
-.db-kachel:hover { border-color: var(--ink); transform: translateY(-2px);
-                   box-shadow: 0 12px 28px rgba(0,0,0,.07); }
-.db-kachel-ic { display: grid; place-items: center; width: 34px; height: 34px;
-                border-radius: 9px; background: #f4f2ef; color: var(--ink); }
-.db-kachel-ic svg { width: 18px; height: 18px; }
-.db-kachel b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3; }
-.db-kachel small { display: block; margin-top: 3px; font-size: .82rem; line-height: 1.5;
-                   color: var(--grey-70); }
+/* Der Balken zur Projektplanung schliesst an die Module an - er gehoert
+   zur selben Ebene, traegt aber die Zeit statt der Themen. */
+.db-module + .pj-standzeile { margin-top: clamp(14px, 1.8vw, 22px); }
 
-/* ---- V3: vier Spalten nebeneinander ------------------------------------
-   Alles steht gleichzeitig da. Keine Sektion liegt unter der anderen, es
-   wird nicht gescrollt, um zu erfahren, dass es den Werkzeugkasten gibt. */
-.db-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(12px, 1.5vw, 18px); align-items: start;
-            margin-top: clamp(26px, 3vw, 40px); }
-.db-spalte { display: grid; gap: 10px; align-content: start;
-             padding: 16px; background: #faf9f7; border-radius: var(--radius-card); }
-.db-spalte-kopf { display: flex; align-items: baseline; justify-content: space-between;
-                  gap: 10px; padding: 0 2px 4px; }
-.db-spalte-kopf b { font-size: .95rem; font-weight: 700; }
-.db-spalte-zahl { font-size: .78rem; font-weight: 600; color: var(--grey-50); }
-.db-spalte-frage { margin: 0 2px 6px; font-size: .84rem; line-height: 1.5;
-                   color: var(--grey-70); }
-.db-karte { display: grid; gap: 6px; padding: 14px 16px; background: #fff;
-            border: 1px solid #e4e1dd; border-radius: 16px;
-            text-decoration: none; color: inherit; text-align: left; cursor: pointer;
-            font-family: inherit; width: 100%;
-            transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
-.db-karte:hover { border-color: var(--ink); transform: translateY(-2px);
-                  box-shadow: 0 10px 24px rgba(0,0,0,.07); }
-.db-karte-reihe { display: flex; align-items: center; justify-content: space-between;
-                  gap: 10px; }
-.db-karte-nr { font-family: var(--font-serif); font-weight: 700; font-size: .95rem;
-               color: var(--grey-50); }
-.db-karte b { font-size: .97rem; font-weight: 600; line-height: 1.3; }
-.db-karte small { font-size: .84rem; line-height: 1.55; color: var(--grey-70); }
-.db-karte-fuss { display: flex; align-items: center; gap: 8px; margin-top: 2px;
-                 font-size: .8rem; color: var(--grey-50); }
-.db-unter { display: grid; gap: 1px; margin-top: 4px; padding-top: 8px;
-            border-top: 1px solid #ebe8e5; }
-.db-unter a { display: flex; align-items: center; gap: 8px; padding: 5px 6px;
-              border-radius: 8px; font-size: .85rem; color: var(--grey-70);
-              text-decoration: none; transition: background-color .15s ease, color .15s ease; }
-.db-unter a:hover { background: #f4f2ef; color: var(--ink); }
-.db-unter a span { margin-left: auto; color: var(--grey-50); }
+/* ---- Ebene 2: der Werkzeugkasten ---------------------------------------
+   Eigener Grund ueber die volle Breite, damit der Schnitt zur Ebene
+   darueber im Augenwinkel sichtbar ist, bevor man liest. */
+/* Kein zusaetzlicher Aussenabstand: der Abschnitt darueber bringt seinen
+   eigenen Fuss mit, zusammen klafft sonst eine halbe Bildschirmhoehe. */
+.db-werkzeug { background: #faf9f7; border-top: 1px solid #ebe8e5; }
+.db-abschnitt-kopf--werkzeug { max-width: 62ch; }
+.db-werkzeug .mk--klein { background: #fff; }
 
 /* ---- Schmalere Fenster ------------------------------------------------- */
-@media (max-width: 1100px) {
-  .db-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1000px) {
+  .db-kopf { grid-template-columns: 1fr; }
+  .db-naechst { width: 100%; max-width: 420px; }
+  .db-module { grid-template-columns: 1fr; }
+  .db-modul-kopf { min-height: 0; }
 }
-@media (max-width: 980px) {
-  .db-raster { grid-template-columns: 1fr; }
-  .db-leiste { position: static; grid-auto-flow: column; grid-auto-columns: max-content;
-               overflow-x: auto; gap: 10px; }
-  .db-leiste-gruppe + .db-leiste-gruppe { padding-top: 0; border-top: 0;
-                                          border-left: 1px solid #ebe8e5; padding-left: 10px; }
-}
-@media (max-width: 860px) {
-  .db-kopf { grid-template-columns: 1fr; align-items: start; }
-  .db-naechst { min-width: 0; }
-  .db-band, .db-module { grid-template-columns: 1fr; }
-}
-@media (max-width: 620px) {
-  .db-board { grid-template-columns: 1fr; }
-}
-
-/* Knoepfe, die ein Fenster oeffnen, sehen aus wie Verweise - sie fuehren
-   genauso an eine Stelle, nur ohne Seitenwechsel. */
-button.db-pos, .db-unter button { appearance: none; -webkit-appearance: none;
-                                  border: 0; background: none; font-family: inherit;
-                                  width: 100%; cursor: pointer; }
-.db-unter button { display: flex; align-items: center; gap: 8px; padding: 5px 6px;
-                   border-radius: 8px; font-size: .85rem; color: var(--grey-70);
-                   text-align: left; transition: background-color .15s ease, color .15s ease; }
-.db-unter button:hover { background: #f4f2ef; color: var(--ink); }
-.db-unter button span { margin-left: auto; color: var(--grey-50); }
-
-/* Die Modulkarte im Board traegt mehrere Ziele: Titel, Unterseiten,
-   Dokument. Sie ist deshalb ein Kasten und kein einziger Verweis - ein
-   Verweis im Verweis ist kein gueltiges HTML und bricht die Anordnung. */
-.db-karte--modul { cursor: default; }
-.db-karte--modul:hover { border-color: #e4e1dd; transform: none; box-shadow: none; }
-.db-karte-titel { display: flex; align-items: center; gap: 8px;
-                  font-size: .97rem; font-weight: 600; line-height: 1.3;
-                  color: var(--ink); text-decoration: none; }
-.db-karte-titel span { margin-left: auto; color: var(--grey-50); }
-.db-karte-titel:hover { text-decoration: underline; }
-
-/* Die schwarzen Koepfe der drei Module enden auf einer Linie. Ohne feste
-   Hoehe reicht eine Frage, die zweizeilig umbricht, und der mittlere Kopf
-   steht 21px tiefer als seine Nachbarn. */
-.db-modul-kopf { min-height: 131px; }
-
-/* Die vier Spalten des Boards enden auf einer Linie - sonst sieht das
-   Raster aus, als waere es abgerissen. */
-.db-board { align-items: stretch; }
