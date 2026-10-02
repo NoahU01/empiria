@@ -1294,8 +1294,14 @@ button.tm-eintrag:hover .tm-pfeil { border-color: var(--ink); }
    der Block, die 45 Minuten stehen aber auf derselben Achse wie 10, 15, 30
    und 20. Die 16px bleiben immer im Seitenrand des Containers (mindestens
    20px), es entsteht also kein Querscrollen. */
-.ab-block--kern { background: rgba(11,159,189,.05); border-radius: var(--radius-card);
+.ab-block--kern { background: rgba(11,159,189,.05);
                   padding-inline: 16px; margin-inline: -16px; }
+/* Bloecke 02 und 03 liegen auf einem gemeinsamen Grund. Damit daraus ein
+   Kasten wird und nicht zwei: der erste rundet oben, der zweite unten.
+   Welcher der zweite ist, sagt der Nachbarselektor - einen Selektor fuer
+   "steht als erstes einer Reihe" gibt es nicht. */
+.ab-block--kern { border-radius: var(--radius-card) var(--radius-card) 0 0; }
+.ab-block--kern + .ab-block--kern { border-radius: 0 0 var(--radius-card) var(--radius-card); }
 .ab-block--kern.is-offen .ab-kette--kern {
   border: 1px dashed var(--ak); border-radius: 14px; padding: 14px 16px;
   background: #fff; }
