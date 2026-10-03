@@ -610,3 +610,241 @@
   .bu-raum { height: auto; scroll-snap-type: none; }
   .bu-stufe { min-height: 0; }
 }
+
+/* ---- Designideen: die Uebersicht --------------------------------------- */
+.di-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+             gap: clamp(16px, 2.2vw, 28px); margin-top: clamp(26px, 3.2vw, 42px); }
+.di-karte { display: grid; gap: 4px; align-content: start; padding: 0 0 clamp(22px, 2.6vw, 30px);
+            border: 1px solid #e4e1dd; border-radius: var(--radius-card); background: #fff;
+            overflow: hidden; text-decoration: none; color: inherit;
+            transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.di-karte:hover { border-color: var(--ink); transform: translateY(-2px);
+                  box-shadow: 0 16px 36px rgba(0,0,0,.08); }
+.di-streifen { display: grid; grid-template-columns: repeat(3, 1fr); height: 10px;
+               margin-bottom: clamp(20px, 2.4vw, 28px); }
+.di-streifen i { display: block; height: 100%; }
+.di-karte b { font-family: var(--font-serif); font-weight: 700; line-height: 1.2;
+              font-size: clamp(1.4rem, 2.2vw, 1.9rem); padding: 0 clamp(22px, 2.6vw, 30px); }
+.di-karte small { font-size: .9rem; color: var(--grey-50);
+                  padding: 0 clamp(22px, 2.6vw, 30px); }
+.di-satz { display: block; margin-top: 1rem; font-size: .96rem; line-height: 1.7;
+           color: var(--grey-70); padding: 0 clamp(22px, 2.6vw, 30px); }
+.di-wofuer { display: block; margin-top: .9rem; padding: 12px clamp(22px, 2.6vw, 30px);
+             background: #faf9f7; font-size: .9rem; line-height: 1.6; color: var(--grey-70); }
+.di-mehr { display: block; margin-top: 1rem; font-size: .92rem; font-weight: 600;
+           color: var(--ink); padding: 0 clamp(22px, 2.6vw, 30px); }
+.pv-pille--zurueck { font-weight: 600; }
+@media (max-width: 860px) { .di-karten { grid-template-columns: 1fr; } }
+
+
+/* ##########################################################################
+   Die Fassungen ohne Scrollen
+
+   Die Frage war: alles sehen, ohne zu scrollen, und trotzdem Tiefe
+   behalten. Schrift verkleinern loest das nicht - das kostet nur
+   Lesbarkeit und man sieht trotzdem nicht mehr. Was es loest, ist ein
+   Rahmen in Bildschirmhoehe, in dem der Inhalt wechselt, statt zu wachsen.
+   Vier Antworten darauf, jede mit einer anderen Steuerungslogik.
+   ########################################################################## */
+.vt-sz { background: #f4f2ef; }
+.sz-raum { padding-top: clamp(16px, 2vw, 26px); padding-bottom: clamp(16px, 2vw, 26px); }
+.pv-wahl--zwei { margin-top: -12px; }
+.vt-sz .pv-wahl { margin-bottom: 10px; gap: 6px; }
+.vt-sz .pv-pille { padding: 5px 12px; font-size: .8rem; }
+
+/* ---- Der Kopf: eine Zeile, mehr Platz ist nicht da --------------------- */
+.sz-kopf { display: flex; align-items: center; justify-content: space-between;
+           flex-wrap: wrap; gap: 14px; padding: 12px 18px; margin-bottom: 12px;
+           background: var(--ink); border-radius: 12px; color: #fff; }
+.sz-kopf-name { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+                min-width: 0; }
+.sz-kopf-name b { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; }
+.sz-punkt { width: 8px; height: 8px; border-radius: 50%; background: var(--hl);
+            align-self: center; flex: 0 0 auto; }
+.sz-kopf-satz { font-size: .84rem; color: rgba(255,255,255,.62); }
+.sz-kopf-werte { display: flex; align-items: center; gap: 18px; flex: 0 0 auto; }
+.sz-wert { display: flex; align-items: baseline; gap: 6px; }
+.sz-wert b { font-family: var(--font-serif); font-size: 1.1rem; color: var(--hl); }
+.sz-wert small { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+                 color: rgba(255,255,255,.6); }
+.sz-flach { appearance: none; -webkit-appearance: none; cursor: pointer;
+            padding: 6px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.28);
+            background: none; font-family: inherit; font-size: .82rem; font-weight: 600;
+            color: #fff; transition: border-color .15s ease, background-color .15s ease; }
+.sz-flach:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+/* ---- Der Rahmen: feste Hoehe, der Inhalt rollt darin ------------------- */
+/* Die Hoehe rechnet sich aus dem Fenster: Kopfzeile der Seite, zwei
+   Pillenreihen, der Projektkopf. Was darunter bleibt, ist der Rahmen.
+   Reicht es nicht, rollt der Inhalt im Feld - abgeschnitten wird nichts. */
+.sz-rahmen { display: grid; gap: 10px;
+             height: calc(100vh - 392px); min-height: 420px; }
+.sz-feld { display: flex; flex-direction: column; min-height: 0;
+           padding: 14px 16px; background: #fff; border: 1px solid #e4e1dd;
+           border-radius: 14px; }
+.sz-feld-tag { margin: 0 0 10px 2px; font-size: .7rem; letter-spacing: .12em;
+               text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.sz-spalte-tag { margin: 0 0 6px 2px; font-size: .66rem; letter-spacing: .12em;
+                 text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.sz-rollbar { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding-right: 4px;
+              scrollbar-width: thin; }
+
+/* ---- Die Bausteine, die alle vier teilen ------------------------------- */
+.sz-module { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;
+             flex: 1 1 auto; min-height: 0; }
+.sz-modul { display: grid; gap: 4px; align-content: start; padding: 13px 15px;
+            background: #faf9f7; border: 1px solid #e4e1dd; border-radius: 12px;
+            text-decoration: none; color: inherit; min-height: 0; overflow-y: auto;
+            transition: border-color .2s ease, background-color .2s ease; }
+.sz-modul:hover { border-color: var(--ink); background: #fff; }
+.sz-modul-kopf { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sz-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1rem;
+               color: var(--grey-50); }
+.sz-modul b { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700;
+              line-height: 1.2; }
+.sz-modul small { font-size: .82rem; color: var(--grey-50); }
+.sz-modul-ergebnis { display: block; margin-top: .4rem; font-family: var(--font-serif);
+                     font-weight: 700; font-size: .95rem; line-height: 1.4; }
+.sz-modul-stand { display: block; margin-top: .4rem; padding-top: .4rem;
+                  border-top: 1px solid #ebe8e5; font-size: .84rem; line-height: 1.5;
+                  color: var(--grey-70); }
+
+.sz-planung { display: grid; grid-template-columns: minmax(0, 1fr) auto;
+              align-items: center; gap: 10px; margin-top: 10px; padding: 11px 16px;
+              background: var(--hl); border-radius: 12px; text-decoration: none;
+              color: var(--ink); flex: 0 0 auto; }
+.sz-planung .pj-tag { grid-column: 1; margin: 0; }
+.sz-planung b { grid-column: 1; font-family: var(--font-serif); font-size: 1rem;
+                font-weight: 700; line-height: 1.25; }
+.sz-planung small { grid-column: 1; font-size: .82rem; color: rgba(26,24,23,.72); }
+.sz-planung-pfeil { grid-column: 2; grid-row: 1 / span 3; font-size: 1.2rem; }
+
+.sz-zeile { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center;
+            gap: 10px; width: 100%; padding: 7px 8px; border: 0; background: none;
+            border-radius: 9px; cursor: pointer; font-family: inherit; text-align: left;
+            text-decoration: none; color: inherit; transition: background-color .15s ease; }
+.sz-zeile:hover { background: #f4f2ef; }
+.sz-zeile-ic { display: grid; place-items: center; width: 26px; height: 26px;
+               border-radius: 7px; background: var(--ink); color: var(--hl); }
+.sz-zeile-ic svg { width: 14px; height: 14px; }
+.sz-zeile-text b { display: block; font-size: .88rem; font-weight: 600; line-height: 1.3; }
+.sz-zeile-text small { display: block; font-size: .78rem; line-height: 1.4; color: var(--grey-50); }
+.sz-werkzeug { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
+               flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.sz-ziel { margin: 0 0 .7rem; font-size: .92rem; line-height: 1.7; color: var(--grey-70); }
+.sz-ziel:last-child { margin-bottom: 0; }
+
+/* ---- V2+ alles gleichzeitig ------------------------------------------- */
+/* In V2+ steht am meisten gleichzeitig. Die Module bekommen den groesseren
+   Anteil, sonst rollen ihre Karten innen. */
+.sz-rahmen--v2 { grid-template-rows: minmax(0, 1.3fr) minmax(0, 1fr); }
+
+/* ---- V4+ Panels mit eigenem Rollbereich -------------------------------- */
+.sz-rahmen--v4 { grid-template-columns: repeat(3, minmax(0, 1fr));
+                 grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto; }
+.sz-feld--weit { grid-column: span 2; }
+.sz-feld--voll { grid-column: 1 / -1; padding: 0; border: 0; background: none; }
+.sz-feld--voll .sz-planung { margin-top: 0; }
+.sz-rollbar--zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 0 14px; align-content: start; }
+.sz-reihe { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: center; gap: 12px; padding: 9px 8px; border-radius: 10px;
+            text-decoration: none; color: inherit; transition: background-color .15s ease; }
+.sz-reihe + .sz-reihe { border-top: 1px solid #f0eeea; }
+.sz-reihe:hover { background: #faf9f7; }
+.sz-reihe-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1rem;
+               color: var(--grey-50); }
+.sz-reihe-text b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3; }
+.sz-reihe-text small { display: block; margin-top: 1px; font-size: .84rem; line-height: 1.45;
+                       color: var(--grey-70); }
+.sz-reihe-stand { display: block; margin-top: 2px; font-size: .8rem; color: var(--grey-50); }
+.sz-reihe-marke { display: grid; gap: 5px; justify-items: end; }
+.sz-balken { display: block; width: 92px; height: 3px; border-radius: 999px;
+             background: #e4e1dd; overflow: hidden; }
+.sz-balken i { display: block; height: 100%; background: var(--ink); width: var(--anteil, 0%); }
+
+/* ---- V5+ drei Ebenen nebeneinander ------------------------------------- */
+.sz-rahmen--quer { display: flex; gap: 10px; }
+.qr-ebene { display: flex; min-width: 0; background: #fff; border: 1px solid #e4e1dd;
+            border-radius: 14px; overflow: hidden; flex: 0 0 62px;
+            transition: flex-basis .25s ease, flex-grow .25s ease; }
+.qr-ebene.is-offen { flex: 1 1 auto; }
+.qr-griff { display: flex; flex-direction: column; align-items: center; gap: 14px;
+            flex: 0 0 62px; padding: 16px 0; border: 0; border-right: 1px solid #ebe8e5;
+            background: #faf9f7; cursor: pointer; font-family: inherit;
+            transition: background-color .15s ease; }
+.qr-griff:hover { background: #f0ede9; }
+.qr-ebene.is-offen .qr-griff { background: var(--ink); border-right-color: var(--ink); }
+.qr-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1rem;
+         color: var(--grey-50); }
+.qr-ebene.is-offen .qr-nr { color: var(--hl); }
+.qr-titel { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+            font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+            font-weight: 700; color: var(--grey-70); }
+.qr-ebene.is-offen .qr-titel { color: #fff; }
+.qr-inhalt { display: none; flex: 1 1 auto; min-width: 0; flex-direction: column;
+             padding: 14px 16px; }
+.qr-ebene.is-offen .qr-inhalt { display: flex; }
+
+/* ---- V9+ links waehlen, rechts lesen ----------------------------------- */
+.sz-rahmen--wahl { grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr); }
+.kw-wahl { display: grid; gap: 7px; align-content: start; flex: 1 1 auto; min-height: 0;
+           overflow-y: auto; }
+.kw-modul { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: center; gap: 11px; width: 100%; padding: 11px 13px;
+            border: 1px solid transparent; border-radius: 11px; background: #faf9f7;
+            cursor: pointer; font-family: inherit; text-align: left;
+            transition: background-color .15s ease, border-color .15s ease; }
+.kw-modul:hover { background: #f0ede9; }
+.kw-modul.is-aktiv { background: var(--ink); border-color: var(--ink); }
+.kw-modul-nr { font-family: var(--font-serif); font-weight: 700; font-size: 1rem;
+               color: var(--grey-50); }
+.kw-modul.is-aktiv .kw-modul-nr { color: var(--hl); }
+.kw-modul-text b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3; }
+.kw-modul-text small { display: block; font-size: .79rem; line-height: 1.35; color: var(--grey-70); }
+.kw-modul.is-aktiv .kw-modul-text b { color: #fff; }
+.kw-modul.is-aktiv .kw-modul-text small { color: rgba(255,255,255,.6); }
+.kw-modul.is-aktiv .pj-marke { color: rgba(255,255,255,.8); }
+.kw-modul.is-aktiv .pj-marke::before { background: #fff; border-color: rgba(255,255,255,.6); }
+.kw-reiter-reihe { display: flex; gap: 2px; margin-bottom: 12px;
+                   border-bottom: 1px solid #ebe8e5; flex: 0 0 auto; }
+.kw-reiter { appearance: none; -webkit-appearance: none; cursor: pointer;
+             padding: 8px 15px; border: 0; background: none; font-family: inherit;
+             font-size: .86rem; font-weight: 600; color: var(--grey-50);
+             border-bottom: 2px solid transparent; margin-bottom: -1px;
+             transition: color .15s ease, border-color .15s ease; }
+.kw-reiter:hover { color: var(--ink); }
+.kw-reiter.is-aktiv { color: var(--ink); border-bottom-color: var(--ink); }
+.kw-tafel-nr { display: block; font-family: var(--font-serif); font-weight: 700;
+               font-size: 1rem; color: var(--grey-50); }
+.kw-tafel h2 { margin: 3px 0 0; font-weight: 700; line-height: 1.15;
+               font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+.kw-tafel-frage { margin: .25rem 0 0; font-size: .92rem; color: var(--grey-50); }
+.kw-tafel-ergebnis { margin: 1rem 0 0; font-family: var(--font-serif); font-weight: 700;
+                     font-size: 1.08rem; line-height: 1.45; max-width: 46ch; }
+.kw-tafel-stand { margin: .9rem 0 0; padding-top: .9rem; border-top: 1px solid #f0eeea;
+                  font-size: .92rem; line-height: 1.6; color: var(--grey-70); }
+.kw-wege { margin-top: 1.2rem; }
+.kw-weg { display: flex; align-items: center; gap: 9px; padding: 7px 9px; border-radius: 9px;
+          font-size: .88rem; color: var(--grey-70); text-decoration: none;
+          transition: background-color .15s ease, color .15s ease; }
+.kw-weg:hover { background: #faf9f7; color: var(--ink); }
+.kw-weg span { margin-left: auto; color: var(--grey-50); }
+.kw-leer { display: block; padding: 7px 9px; font-size: .85rem; color: #b4aea7; }
+.kw-knopf { margin-top: 1.2rem; }
+
+@media (max-width: 1100px) {
+  .sz-rahmen { height: auto; min-height: 0; }
+  .sz-rahmen--v4, .sz-rahmen--wahl { grid-template-columns: 1fr; }
+  .sz-feld--weit, .sz-feld--voll { grid-column: auto; }
+  .sz-module, .sz-werkzeug, .sz-rollbar--zwei { grid-template-columns: 1fr; }
+  .sz-rahmen--quer { flex-direction: column; }
+  .qr-ebene { flex: 0 0 auto; }
+  .qr-griff { flex-direction: row; flex: 0 0 auto; border-right: 0;
+              border-bottom: 1px solid #ebe8e5; padding: 12px 16px; }
+  .qr-titel { writing-mode: horizontal-tb; transform: none; }
+  .sz-rollbar { overflow: visible; }
+}
+
+/* "STAND" klebte am Satz, weil die Marke inline stand. */
+.kw-tafel-stand .sz-spalte-tag { display: block; margin-bottom: 4px; }
