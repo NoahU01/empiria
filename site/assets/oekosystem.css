@@ -58,8 +58,14 @@
 
 /* Der grosse Knoten traegt die Mitte: Ausfuehrung und Dashboard. */
 .oe-knoten--gross { width: 100%; max-width: 360px; gap: 2px;
-                    padding: 12px 16px; background: var(--ink); border-color: var(--ink);
+                    padding: 16px 18px; background: var(--ink); border-color: var(--ink);
                     color: #fff; }
+/* Die Marke steht in den beiden grossen Kaesten weiter vom Satz ab - sie
+   ist dort eine eigene Aussage und kein Anhaengsel. Der Satz haelt zwei
+   Zeilen frei, damit beide Kaesten gleich hoch bleiben: Der eine braucht
+   zwei Zeilen, der andere eine. */
+.oe-knoten--gross .oe-marke { margin-top: 12px; }
+.oe-knoten--gross .oe-knoten-unter { min-height: 2.8em; }
 .oe-knoten--gross:hover { background: #000; }
 .oe-knoten--gross .oe-knoten-titel { font-family: var(--font-serif); font-weight: 700;
                                      font-size: 1.08rem; }
