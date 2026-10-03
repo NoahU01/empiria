@@ -643,29 +643,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <div class="oe-abschnitt">
             <p class="oe-spalte-tag">Aktionen &middot; was herausgeht</p>
             <div class="oe-aktionen">
-            <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false" style="grid-column: 1; grid-row: 1;">
+            <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false" style="grid-column: 1 / 4; grid-row: 1;">
               <span class="oe-knoten-titel">Postings</span>
               <span class="oe-knoten-unter">Beiträge für die Kanäle</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="mails" aria-expanded="false" style="grid-column: 2; grid-row: 1;">
-              <span class="oe-knoten-titel">E-Mails</span>
-              <span class="oe-knoten-unter">Entwürfe und Antworten</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="termine" aria-expanded="false" style="grid-column: 3; grid-row: 1;">
-              <span class="oe-knoten-titel">Terminplanung</span>
-              <span class="oe-knoten-unter">im Sparring</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false" style="grid-column: 4; grid-row: 1;">
-              <span class="oe-knoten-titel">Kontaktpflege</span>
-              <span class="oe-knoten-unter">Frequenz je Person</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false" style="grid-column: 5; grid-row: 1;">
-              <span class="oe-knoten-titel">Projekt-Cockpits</span>
-              <span class="oe-knoten-unter">je Kundenprojekt</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="buffer" aria-expanded="false" style="grid-column: 1 / 4; grid-row: 2;">
@@ -688,6 +668,28 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-unter">Seite</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
+            <div class="oe-aktionen-rest">
+              <button type="button" class="oe-knoten" data-baustein="mails" aria-expanded="false">
+                <span class="oe-knoten-titel">E-Mails</span>
+                <span class="oe-knoten-unter">Entwürfe und Antworten</span>
+                <span class="oe-marke oe-marke--geplant">geplant</span>
+              </button>
+              <button type="button" class="oe-knoten" data-baustein="termine" aria-expanded="false">
+                <span class="oe-knoten-titel">Terminplanung</span>
+                <span class="oe-knoten-unter">im Sparring</span>
+                <span class="oe-marke oe-marke--geplant">geplant</span>
+              </button>
+              <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false">
+                <span class="oe-knoten-titel">Kontaktpflege</span>
+                <span class="oe-knoten-unter">Frequenz je Person</span>
+                <span class="oe-marke oe-marke--geplant">geplant</span>
+              </button>
+              <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false">
+                <span class="oe-knoten-titel">Projekt-Cockpits</span>
+                <span class="oe-knoten-unter">je Kundenprojekt</span>
+                <span class="oe-marke oe-marke--geplant">geplant</span>
+              </button>
+            </div>
             </div>
           </div>
         </div>
@@ -1253,7 +1255,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
     var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["nextcloud", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "kontakte_db", "beide"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var STAND = {"homepages": "zuerst", "linkedin": "fragil", "instagram": "geplant", "facebook": "geplant", "mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "helper": "fragil", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "buffer": "geplant", "aus_linkedin": "geplant", "aus_instagram": "geplant", "aus_facebook": "geplant", "knoten": "entschieden", "dashboard": "beauftragt", "kontakte_db": "geplant", "schiene": "zuerst"};
+    var STAND = {"homepages": "zuerst", "linkedin": "fragil", "instagram": "geplant", "facebook": "geplant", "mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "helper": "fragil", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "buffer": "geplant", "aus_linkedin": "geplant", "aus_instagram": "geplant", "aus_facebook": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "knoten": "entschieden", "dashboard": "beauftragt", "kontakte_db": "geplant", "schiene": "zuerst"};
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
 
@@ -1390,6 +1392,30 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       });
       /* Die Marker-Definition bleibt stehen, nur die Pfade werden neu
          geschrieben. */
+      /* Die Schiene selbst: Sie laeuft nur so weit, wie Leitungen auf ihr
+         ankommen - links von der ersten und rechts von der letzten hat sie
+         nichts zu suchen. Gezeichnet wird sie deshalb hier und nicht als
+         Kasten mit voller Breite. */
+      var s = kasten('schiene');
+      if (s) {
+        var sr = s.getBoundingClientRect(), pp = plan.getBoundingClientRect();
+        var min = 1e9, max = -1e9, quer2 = richtung === 'rechts';
+        LEITUNGEN.forEach(function (l) {
+          if (l[0] !== 'schiene' && l[1] !== 'schiene') return;
+          var k = kasten(l[0] === 'schiene' ? l[1] : l[0]);
+          if (!k) return;
+          var r = k.getBoundingClientRect();
+          var w = quer2 ? r.top - pp.top + r.height / 2 : r.left - pp.left + r.width / 2;
+          min = Math.min(min, w); max = Math.max(max, w);
+        });
+        if (min < max) {
+          var m2 = quer2 ? sr.left - pp.left + sr.width / 2
+                         : sr.top - pp.top + sr.height / 2;
+          var dS = quer2 ? 'M' + m2 + ',' + min + 'L' + m2 + ',' + max
+                         : 'M' + min + ',' + m2 + 'L' + max + ',' + m2;
+          teile.push('<path class="oe-draht oe-draht--schiene" d="' + dS + '"/>');
+        }
+      }
       var defs = svg.querySelector('defs');
       svg.innerHTML = (defs ? defs.outerHTML : '') + teile.join('');
     }

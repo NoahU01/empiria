@@ -287,7 +287,7 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 /* Drei Zeilen: die fuenf Aktionen, darunter Buffer, darunter die drei
    Kanaele. Damit laeuft der Weg eines Beitrags von oben nach unten durch
    und endet dort, wo er veroeffentlicht wird. */
-.oe-aktionen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+.oe-aktionen { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
                grid-template-rows: auto auto auto;
                gap: clamp(22px, 2.8vh, 36px) 8px;
                position: relative; z-index: 1; }
@@ -323,7 +323,7 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 @media (max-width: 1100px) {
   .oe-plan--strang { grid-template-columns: 1fr; }
   .oe-plan--verdrahtung .oe-mittelreihe { grid-template-columns: 1fr; }
-  .oe-plan--verdrahtung .oe-gruppe--aktionen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .oe-draehte { display: none; }
 }
 
@@ -455,9 +455,13 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    eine einzige Leitung in den Knoten. Das ist der Grund, warum sich jetzt
    nichts mehr kreuzt: Vorher suchte sich jede Zuleitung ihren eigenen Weg
    um die Eingabegeraete herum - und lief dabei durch sie hindurch. */
-.oe-schiene { position: relative; z-index: 1; height: 3px; border-radius: 2px;
-              background: var(--ink); margin: clamp(26px, 3.4vh, 44px) 0 0; }
-.oe-plan--strang .oe-schiene { width: 3px; height: auto; align-self: stretch;
+/* Die Schiene ist hier nur der Anker, an dem die Leitungen enden - die
+   sichtbare Linie zeichnet das Skript, und zwar nur so weit, wie Zuleitungen
+   darauf ankommen. Vorher lief sie als Kasten ueber die ganze Breite und
+   stand links und rechts ins Leere. */
+.oe-schiene { position: relative; z-index: 1; height: 2px; background: none;
+              margin: clamp(26px, 3.4vh, 44px) 0 0; }
+.oe-plan--strang .oe-schiene { width: 2px; height: auto; align-self: stretch;
                                margin: 0; justify-self: center; }
 
 /* Unter der Schiene liegt der Bedienbereich: Geraete, Knoten, Bestand.
@@ -492,14 +496,14 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-schiene { margin-top: clamp(20px, 2.6vh, 32px); }
 .oe-plan--gefasst .oe-mittelreihe { margin-top: 0; }
 .oe-plan--gefasst .oe-geraete { max-width: 240px; }
-.oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(5, minmax(0, 1fr));
+.oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(10, minmax(0, 1fr));
                                 gap: clamp(20px, 2.6vh, 32px) 8px; }
 .oe-plan--gefasst .oe-pfeil { height: 26px; }
 .oe-plan--gefasst .oe-pfeil::before { background: var(--ink); width: 3px; }
 .oe-plan--gefasst .oe-pfeil::after { border-color: var(--ink); border-width: 3px;
                                      width: 11px; height: 11px; }
 @media (max-width: 1100px) {
-  .oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
 }
 
 /* In B3 steht die Ausfuehrung wie in B: Geraete links, Knoten mittig,
@@ -515,3 +519,12 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-draehte { z-index: 2; }
 .oe-plan--gefasst .oe-knoten { position: relative; z-index: 3; }
 .oe-plan--gefasst .oe-schiene { z-index: 3; }
+/* Die Schiene ist so stark wie die Leitungen, die auf ihr ankommen. */
+.oe-draht--schiene { stroke: var(--ink); stroke-width: 2; }
+
+/* Die vier uebrigen Aktionen teilen sich den Platz rechts vom Strang zu
+   gleichen Teilen - in einem eigenen Raster, damit sie nicht an die
+   Spaltenteilung der Kanaele gebunden sind. */
+.oe-aktionen-rest { grid-column: 4 / 11; grid-row: 1; display: grid;
+                    grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.oe-aktionen-rest .oe-knoten { align-self: stretch; }

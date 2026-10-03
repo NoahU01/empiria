@@ -36,7 +36,11 @@ function n(){
         return {id:k.dataset.baustein, x1:r.left-plan.left+3, y1:r.top-plan.top+3,
                 x2:r.right-plan.left-3, y2:r.bottom-plan.top-3};
       });
-      var pfade=[].map.call(d.querySelectorAll('.oe-draht'),function(p){
+      /* Die Sammelschiene selbst ist keine Leitung zwischen zwei Kaesten -
+         sie wird von jeder Zuleitung beruehrt und zaehlt deshalb nicht mit. */
+      var pfade=[].filter.call(d.querySelectorAll('.oe-draht'),function(p){
+        return p.dataset.von && p.dataset.nach;
+      }).map(function(p){
         return {von:p.dataset.von, nach:p.dataset.nach, p:punkte(p,40)};
       });
       var durch=[], kreuzungen=0, kreuzListe=[];
