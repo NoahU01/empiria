@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Oekosystem - der Schaltplan der Steuerungszentrale
+
+   Zwei Ebenen, strikt getrennt:
+
+   Ebene 1  Der Plan. Baender untereinander, dazwischen ein Pfeil. Jeder
+            Knoten ist ein kleiner Kasten mit Titel, Zusatz und Stand. Das
+            Ganze passt ohne Scrollen auf einen Bildschirm - deshalb sind
+            die Knoten klein und die Abstaende knapp.
+
+   Ebene 2  Ein Feld unter dem Plan, das sich beim Klick auf einen Knoten
+            fuellt. Bewusst kein Fenster ueber dem Plan: der Zusammenhang
+            soll sichtbar bleiben, waehrend man einen Baustein liest. Der
+            angeklickte Knoten steht derweil gelb.
+
+   Farben: Weiss traegt, Schwarz fuehrt, Gelb markiert. Keine Sekundaer-
+   farben - der Plan soll nicht bunt werden, sondern lesbar.
+   ========================================================================== */
+
+.oe-titel { font-family: var(--font-serif); font-weight: 500; line-height: 1.34;
+            letter-spacing: -.015em; font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+            margin: .3rem 0 0; }
+.oe-lead { margin: .7rem 0 0; max-width: 100ch; font-size: .95rem; line-height: 1.65; }
+
+/* ---- Ebene 1: der Plan ------------------------------------------------- */
+.oe-plan { display: grid; justify-items: stretch;
+           margin-top: clamp(20px, 2.4vw, 30px); }
+
+.oe-band { border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+           background: #fff; padding: 10px 12px 12px; }
+.oe-band-tag { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+               margin: 0 0 9px 2px; }
+.oe-band-tag b { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+                 font-weight: 700; color: var(--ink); }
+.oe-band-tag span { font-size: .8rem; color: var(--grey-50); }
+
+/* Die Knotenreihe bricht um, statt schmaler zu werden - ein Kasten, in dem
+   der Text umbricht, ist in einem Schaltplan nicht mehr zu ueberfliegen. */
+/* Mindestbreite statt freier Teilung: neun Quellen auf die halbe
+   Fensterbreite gequetscht ergaben Kaesten, in denen "Homepages" abriss.
+   Lieber zwei Reihen mit lesbaren Kaesten als eine mit unlesbaren. */
+.oe-reihe { display: grid; gap: 6px;
+             grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); }
+
+.oe-knoten { appearance: none; -webkit-appearance: none; cursor: pointer;
+             display: grid; gap: 1px; align-content: start; text-align: left;
+             min-width: 0; padding: 8px 10px;
+             font-family: inherit; color: inherit;
+             background: #faf9f7; border: 1px solid #e4e1dd; border-radius: 12px;
+             transition: border-color .15s ease, background-color .15s ease,
+                         transform .15s ease; }
+.oe-knoten:hover { border-color: var(--ink); background: #fff; transform: translateY(-1px); }
+.oe-knoten.is-offen { background: var(--hl); border-color: var(--ink); }
+.oe-knoten-titel { font-size: .86rem; font-weight: 600; line-height: 1.25;
+                   hyphens: auto; }
+.oe-knoten-unter { font-size: .72rem; line-height: 1.3; color: var(--grey-50); }
+.oe-knoten.is-offen .oe-knoten-unter { color: rgba(26,24,23,.66); }
+
+/* Der grosse Knoten traegt die Mitte: Ausfuehrung und Dashboard. */
+.oe-knoten--gross { width: 100%; max-width: 360px; gap: 2px;
+                    padding: 12px 16px; background: var(--ink); border-color: var(--ink);
+                    color: #fff; }
+.oe-knoten--gross:hover { background: #000; }
+.oe-knoten--gross .oe-knoten-titel { font-family: var(--font-serif); font-weight: 700;
+                                     font-size: 1.08rem; }
+.oe-knoten--gross .oe-knoten-unter { color: rgba(255,255,255,.6); }
+.oe-knoten--gross.is-offen { background: var(--hl); border-color: var(--ink);
+                             color: var(--ink); }
+.oe-knoten--gross.is-offen .oe-knoten-unter { color: rgba(26,24,23,.66); }
+
+/* ---- Die Stand-Marke an jedem Knoten ----------------------------------- */
+/* Die Marke bricht lieber um, als abzureissen: in den schmalen Kaesten
+   stand sonst "SCHWACH..." statt "schwaches Glied". */
+.oe-marke { justify-self: start; margin-top: 4px; padding: 2px 7px;
+            max-width: 100%; border-radius: 10px;
+            font-size: .62rem; letter-spacing: .07em; text-transform: uppercase;
+            font-weight: 700; line-height: 1.35;
+            background: #eceae6; color: var(--grey-70); }
+.oe-marke--entschieden { background: var(--ink); color: #fff; }
+.oe-marke--beauftragt  { background: var(--hl); color: var(--ink); }
+.oe-marke--zuerst      { background: #ded9d2; color: var(--ink); }
+.oe-marke--fragil      { background: #fff; color: var(--grey-70);
+                         box-shadow: inset 0 0 0 1px #cfc9c2; }
+.oe-marke--bestand     { background: none; color: var(--grey-50);
+                         box-shadow: inset 0 0 0 1px #e4e1dd; }
+.oe-knoten--gross .oe-marke--entschieden { background: var(--hl); color: var(--ink); }
+.oe-knoten--gross.is-offen .oe-marke--entschieden { background: var(--ink); color: #fff; }
+
+/* ---- Die Verbindung zwischen den Baendern ------------------------------
+   Eine Linie mit Spitze, mittig. Gezeichnet in CSS statt in SVG: so bleibt
+   sie bei jeder Breite mittig, ohne dass etwas nachgerechnet werden muss. */
+.oe-pfeil { position: relative; display: block; height: 18px; }
+.oe-pfeil::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 7px;
+                    width: 2px; transform: translateX(-50%); background: #d8d3cd; }
+.oe-pfeil::after { content: ""; position: absolute; left: 50%; bottom: 0;
+                   width: 9px; height: 9px; transform: translateX(-50%) rotate(45deg);
+                   border-right: 2px solid #d8d3cd; border-bottom: 2px solid #d8d3cd; }
+
+/* ---- Das Band der Ausfuehrung: Geraete links, Knoten in der Mitte ------ */
+.oe-kern { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr);
+           gap: clamp(12px, 2vw, 26px); align-items: center; }
+.oe-spalte-tag { margin: 0 0 6px 2px; font-size: .66rem; letter-spacing: .12em;
+                 text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.oe-eingabe-reihe { display: grid; gap: 7px;
+                    grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.oe-kern-mitte { display: flex; justify-content: flex-start; }
+
+/* Der Querpfeil von den Geraeten zum Knoten. */
+.oe-pfeil-quer { position: relative; display: block; width: 46px; height: 2px;
+                 background: #d8d3cd; }
+.oe-pfeil-quer::after { content: ""; position: absolute; right: 0; top: 50%;
+                        width: 9px; height: 9px;
+                        transform: translateY(-50%) rotate(-45deg);
+                        border-right: 2px solid #d8d3cd; border-bottom: 2px solid #d8d3cd; }
+
+.oe-mitte { display: flex; justify-content: center; }
+.oe-band--mitte .oe-band-tag { justify-content: center; }
+
+/* Die Marken tragen den Plan - sie stehen auf dunklem Grund, damit der
+   Blick am Ende dort ankommt und nicht einfach ausklingt. */
+.oe-band--marken { background: var(--ink); border-color: var(--ink); }
+.oe-band--marken .oe-band-tag b { color: var(--hl); }
+.oe-band--marken .oe-band-tag span { color: rgba(255,255,255,.55); }
+.oe-band--marken .oe-knoten { background: rgba(255,255,255,.06);
+                              border-color: rgba(255,255,255,.18); color: #fff; }
+.oe-band--marken .oe-knoten:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+.oe-band--marken .oe-knoten-unter { color: rgba(255,255,255,.55); }
+.oe-band--marken .oe-marke--bestand { color: rgba(255,255,255,.6);
+                                      box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
+.oe-band--marken .oe-knoten.is-offen { background: var(--hl); border-color: var(--hl);
+                                       color: var(--ink); }
+.oe-band--marken .oe-knoten.is-offen .oe-knoten-unter { color: rgba(26,24,23,.66); }
+.oe-band--marken .oe-knoten.is-offen .oe-marke--bestand { color: rgba(26,24,23,.7);
+                                      box-shadow: inset 0 0 0 1px rgba(26,24,23,.3); }
+
+/* ---- Ebene 2: das Feld unter dem Plan ---------------------------------- */
+.oe-feld { position: relative; margin-top: clamp(18px, 2.2vw, 26px);
+           padding: clamp(22px, 2.6vw, 32px);
+           border: 2px solid var(--ink); border-radius: var(--radius-card);
+           background: #fff; }
+.oe-feld-zu { position: absolute; top: 14px; right: 16px; width: 34px; height: 34px;
+              display: grid; place-items: center; cursor: pointer;
+              border: 0; border-radius: 50%; background: #f4f2ef;
+              font-family: inherit; font-size: 1.3rem; line-height: 1; color: var(--grey-70);
+              transition: background-color .15s ease, color .15s ease; }
+.oe-feld-zu:hover { background: var(--ink); color: #fff; }
+.oe-feld-band { margin: 0; font-size: .7rem; letter-spacing: .14em;
+                text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.oe-feld-titel { display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+                 margin: .4rem 0 0; font-weight: 700; line-height: 1.2;
+                 font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.oe-feld-titel .oe-marke { margin-top: 0; }
+.oe-feld-satz { margin: .9rem 0 0; max-width: 72ch; font-size: 1rem; line-height: 1.75;
+                color: var(--grey-70); }
+.oe-feld-spalten { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                   gap: clamp(18px, 2.4vw, 34px); margin-top: clamp(20px, 2.4vw, 28px); }
+.oe-feld-spalte { min-width: 0; }
+.oe-feld-tag { margin: 0 0 8px; font-size: .68rem; letter-spacing: .12em;
+               text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.oe-feld-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.oe-feld-liste li { position: relative; padding-left: 20px; font-size: .94rem;
+                    line-height: 1.6; color: var(--grey-70); }
+.oe-feld-liste li::before { content: ""; position: absolute; left: 0; top: .66em;
+                            width: 11px; height: 2px; border-radius: 2px;
+                            background: var(--ink); }
+
+.oe-stand { margin: clamp(22px, 2.6vw, 32px) 0 0; font-size: .82rem;
+            color: var(--grey-50); }
+
+/* ---- Schmalere Fenster -------------------------------------------------
+   Unter 900px wird aus dem Schaltbild eine Abfolge: Geraete ueber dem
+   Knoten statt daneben, der Querpfeil dreht sich. */
+@media (max-width: 900px) {
+  .oe-kern { grid-template-columns: 1fr; }
+  .oe-pfeil-quer { width: 2px; height: 26px; justify-self: center;
+                   background: #d8d3cd; }
+  .oe-pfeil-quer::after { right: auto; left: 50%; top: auto; bottom: 0;
+                          transform: translateX(-50%) rotate(45deg); }
+  .oe-kern-mitte, .oe-mitte { justify-content: stretch; }
+  .oe-knoten--gross { flex: 1 1 auto; }
+}
+
+/* Der Abschnitt beginnt knapp unter der Kopfzeile: der Plan soll ohne
+   Scrollen dastehen, und jede Zeile Vorspann geht davon ab. */
+.oe-plan ~ * { }
+body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
+
+/* ---- Plan und Detailfeld nebeneinander ---------------------------------
+   Das Feld stand zuerst unter dem Plan. Nach einem Klick musste man dann
+   scrollen, um die Antwort zu lesen - und verlor dabei genau den
+   Zusammenhang, den die Seite zeigen soll. Jetzt steht es rechts daneben
+   und bleibt beim Scrollen stehen. Solange nichts gewaehlt ist, steht dort
+   der Hinweis, dass die Kaesten anklickbar sind. */
+.oe-raum { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+           gap: clamp(14px, 1.8vw, 24px); align-items: start;
+           margin-top: clamp(20px, 2.4vw, 30px); }
+.oe-raum .oe-plan { margin-top: 0; }
+.oe-raum .oe-feld { position: sticky; top: 100px; margin-top: 0; }
+.oe-feld-leer p:last-child { margin: .5rem 0 0; font-size: .92rem; line-height: 1.7;
+                             color: var(--grey-50); }
+.oe-feld { border-color: #e4e1dd; }
+.oe-feld:has(.oe-feld-inhalt:not([hidden])) { border-color: var(--ink); }
+.oe-feld-titel { font-size: clamp(1.2rem, 1.8vw, 1.5rem); }
+.oe-feld-spalten { grid-template-columns: 1fr; gap: clamp(14px, 1.8vw, 20px); }
+@media (max-width: 1100px) {
+  .oe-raum { grid-template-columns: 1fr; }
+  .oe-raum .oe-feld { position: static; }
+}
+
+/* Die Quellen tragen kurze Namen und kommen mit schmaleren Kaesten aus -
+   so stehen die neun in zwei Reihen statt in drei, und der Plan bleibt
+   auf einem Laptop ohne Scrollen sichtbar. */
+#band-quellen .oe-reihe { grid-template-columns: repeat(auto-fill, minmax(126px, 1fr)); }
+.oe-raum { grid-template-columns: minmax(0, 1fr) minmax(290px, 330px); }
