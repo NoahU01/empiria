@@ -50,6 +50,7 @@
                          transform .15s ease; }
 .oe-knoten:hover { border-color: var(--ink); background: #fff; transform: translateY(-1px); }
 .oe-knoten.is-offen { background: var(--hl); border-color: var(--ink); }
+.oe-knoten-titel, .oe-knoten-unter { overflow-wrap: break-word; }
 .oe-knoten-titel { font-size: .86rem; font-weight: 600; line-height: 1.25;
                    hyphens: auto; }
 .oe-knoten-unter { font-size: .72rem; line-height: 1.3; color: var(--grey-50); }
@@ -318,6 +319,8 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-geraete::after { content: "\00a0"; display: block;
                      font-size: .66rem; letter-spacing: .12em; }
 .oe-knotenplatz { display: flex; justify-content: center; }
+.oe-leitstandplatz { display: flex; justify-content: flex-start; }
+.oe-leitstandplatz .oe-knoten--gross { width: 300px; max-width: 300px; }
 .oe-knotenplatz .oe-knoten--gross { width: 330px; max-width: 330px; }
 .oe-steuerung { display: flex; justify-content: center; position: relative; z-index: 1; }
 .oe-steuerung .oe-knoten--gross { width: 330px; max-width: 330px; }
@@ -512,7 +515,7 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    sich jetzt ueber die Farbe ab: Cyan aus dem Corporate Design, dieselbe
    Farbe wie seine Leitung. Eine Farbe fuer eine Sache - mehr wird der Plan
    nicht bunt. */
-.oe-knoten--speicher { max-width: 270px; border: 2px solid #0B9FBD;
+.oe-knoten--speicher { border: 2px solid #0B9FBD;
                        border-radius: 12px; background: #fff; }
 .oe-knoten--speicher .oe-knoten-titel { font-size: .92rem; color: #0B9FBD; }
 .oe-knoten--speicher .oe-marke { background: rgba(11,159,189,.12); color: #0B9FBD;
