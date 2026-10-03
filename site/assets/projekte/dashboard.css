@@ -1033,7 +1033,13 @@
    die letzte darf nicht mitwachsen - sonst steht unter den Karten Luft,
    bevor die Projektplanung kommt. */
 
-.vt-falt--grau .pj-feld { padding-bottom: clamp(16px, 1.8vw, 22px); }
+/* Der Raum unter der Marke ist um ein Fuenftel knapper als in V1 - dort
+   traegt die Karte mehr Inhalt und vertraegt mehr Luft. */
+.vt-falt--grau .pj-feld { padding-bottom: clamp(13px, 1.45vw, 18px); }
+.vt-falt--grau .pj-feld-fuss { padding-top: 16px; }
+/* Unter der Marke lagen 48px: 18 von der Karte und 30 vom Koerper. Jetzt
+   sind es 39 - ein Fuenftel weniger, wie gewuenscht. */
+.vt-falt--grau .pj-feld-koerper { padding-bottom: 21px; }
 @media (max-width: 900px) {
   .vt-falt--grau .pj-felder { grid-template-columns: 1fr; grid-template-rows: none; }
   .vt-falt--grau .pj-feld { grid-row: auto; grid-template-rows: none; }
