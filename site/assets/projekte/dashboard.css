@@ -968,3 +968,35 @@
 /* display:grid schlaegt das hidden-Attribut - ohne diese Zeile standen
    alle drei Tafeln uebereinander im Bild. */
 .vb-tafel[hidden] { display: none; }
+
+/* ---- Die Verbindung zwischen Auswahl und Tafel -------------------------
+   Die schwarze Raute war ein Fremdkoerper. Jetzt macht es die Zeile
+   selbst: Sie schiebt sich um einen Pixel ueber die Trennlinie, ihre
+   rechten Ecken werden gerade, und der Rand auf dieser Seite faellt weg.
+   Damit laeuft sie in die Tafel hinein - wie ein Reiter in sein Blatt.
+   Kein zusaetzliches Zeichen noetig. */
+.vb-zeile.is-aktiv { margin-right: -13px; padding-right: 24px;
+                     border-top-right-radius: 0; border-bottom-right-radius: 0;
+                     border-right-color: var(--ink); position: relative; z-index: 2; }
+
+/* ---- V9 in voller Hoehe: dieselben drei Ebenen, nur ohne Rahmenzwang --- */
+.aw-ebenen { display: grid; gap: 12px; margin-top: 14px; }
+.aw-ebenen .vb-ebene { min-height: 0; }
+.aw-ebenen .vb-liste { max-height: none; }
+.aw-ebenen .vb-tafel-raum { overflow: visible; }
+.vb-wege--zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                 gap: clamp(14px, 2vw, 26px); }
+
+/* Das Strategiemodell steht als schlanke Zeile unter der Modulauswahl -
+   es gehoert zu den Modulen, ist aber keines. */
+.aw-modell, .fl-modell { margin-top: 10px; background: #fff; }
+.aw-modell { width: 100%; }
+
+/* ---- V5: das Modell schlank statt als Kasten mit Vorschau --------------
+   Der Kasten mit dem Vorschaubild war hoch und hat die ganze Ebene nach
+   unten gezogen. Als Zeile wie im Werkzeugkasten braucht er ein Drittel
+   der Hoehe, und der Text steht wieder oben. */
+.fl-logik { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+            align-items: center; margin-bottom: clamp(14px, 1.8vw, 20px); }
+.fl-modell { margin-top: 0; }
+@media (max-width: 900px) { .fl-logik { grid-template-columns: 1fr; } }
