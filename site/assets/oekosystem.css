@@ -240,11 +240,11 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-draht--geplant      { stroke: #b8b2ab; stroke-width: 1.8; stroke-dasharray: 4 5; }
 
 /* Die Ampel der Sicht "Status" - sichtbar nur in dieser Sicht. */
-.oe-draehte.ist-ampel .oe-draht.oe-ampel--gruen { stroke: #2f8f4e; stroke-width: 2.6;
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--gruen { stroke: #34b87a; stroke-width: 2.6;
                                                   stroke-dasharray: none; }
-.oe-draehte.ist-ampel .oe-draht.oe-ampel--gelb  { stroke: #d9a400; stroke-width: 2.6;
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--gelb  { stroke: #e8a800; stroke-width: 2.6;
                                                   stroke-dasharray: none; }
-.oe-draehte.ist-ampel .oe-draht.oe-ampel--rot   { stroke: #C51F5D; stroke-width: 2.6;
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--rot   { stroke: #f0495a; stroke-width: 2.6;
                                                   stroke-dasharray: none; }
 .oe-draehte.ist-gefiltert .oe-draht { opacity: .12; }
 .oe-draehte.ist-gefiltert .oe-draht.ist-hell { opacity: 1; stroke: var(--ink);
@@ -287,7 +287,16 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
                                         gap: clamp(24px, 4vw, 60px); align-items: center;
                                         position: relative; z-index: 1; }
 .oe-geraete { display: grid; gap: 7px; align-content: center; justify-self: start;
-              max-width: 230px; }
+              max-width: 230px; position: relative; }
+/* Der Tag steht im Fluss - in B3 wuerde er sonst auf dem Kastentitel
+   liegen. Stattdessen traegt die Gruppe unten ein Gegengewicht von genau
+   einer Textzeile desselben Stils. Damit liegt die Mitte der drei Kaesten
+   auf der Mitte der Gruppe, und das iPad fluchtet mit dem Knoten. */
+.oe-plan--verdrahtung .oe-geraete > .oe-spalte-tag,
+.oe-plan--gefasst .oe-geraete > .oe-spalte-tag { margin-bottom: 0; }
+.oe-plan--verdrahtung .oe-geraete::after,
+.oe-plan--gefasst .oe-geraete::after { content: "\00a0"; display: block;
+                     font-size: .66rem; letter-spacing: .12em; }
 .oe-knotenplatz { display: flex; justify-content: center; }
 .oe-knotenplatz .oe-knoten--gross { width: 330px; max-width: 330px; }
 .oe-steuerung { display: flex; justify-content: center; position: relative; z-index: 1; }
@@ -306,11 +315,12 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    sondern eine Pille mit gestricheltem Rand. */
 /* Kasten mit runden Ecken, nicht Pille - rund wirkt sonst zu weich. Der
    gestrichelte Rand bleibt: Geraete liefern nichts, sie bedienen. */
-.oe-knoten--geraet { border-radius: 12px; border-style: dashed; background: #fff; }
+.oe-knoten--geraet { border-radius: 12px; border-style: solid;
+                     border-color: #c8c4bf; background: #fff; }
 .oe-knoten--geraet .oe-knoten-unter { display: none; }
 .oe-knoten--geraet .oe-marke { background: none; color: var(--grey-50);
                                box-shadow: inset 0 0 0 1px #ddd8d2; margin-top: 2px; }
-.oe-knoten--geraet:hover { border-style: solid; }
+.oe-knoten--geraet:hover { border-color: var(--ink); }
 
 /* ---- Die Legende der Strichstaerken ------------------------------------ */
 .oe-legende { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;
@@ -323,9 +333,9 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-strich { display: block; width: 26px; height: 0; border-top: 2px solid #cfc9c2; }
 .oe-strich--eingerichtet { border-color: #8a8783; }
 .oe-strich--geplant      { border-top-style: dashed; border-color: #b8b2ab; }
-.oe-strich--gruen        { border-color: #2f8f4e; }
-.oe-strich--gelb         { border-color: #d9a400; }
-.oe-strich--rot          { border-color: #C51F5D; }
+.oe-strich--gruen        { border-color: #34b87a; }
+.oe-strich--gelb         { border-color: #e8a800; }
+.oe-strich--rot          { border-color: #f0495a; }
 
 /* Die Ampel steht nur in der Legende, wenn die Sicht "Status" laeuft. */
 .oe-legende-ampel { display: none; align-items: center; gap: 8px 20px; }
@@ -536,7 +546,8 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-knoten { position: relative; z-index: 3; }
 .oe-plan--gefasst .oe-schiene { z-index: 3; }
 /* Die Schiene ist so stark wie die Leitungen, die auf ihr ankommen. */
-.oe-draht--schiene { stroke: var(--ink); stroke-width: 2; }
+.oe-draht--schiene { stroke: #b8b2ab; stroke-width: 2;
+                     stroke-dasharray: 4 5; }
 
 /* Die vier uebrigen Aktionen teilen sich den Platz rechts vom Strang zu
    gleichen Teilen - in einem eigenen Raster, damit sie nicht an die

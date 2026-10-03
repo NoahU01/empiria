@@ -493,11 +493,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="pv-wahl" role="group" aria-label="Darstellung des Plans">
         <span class="pv-wahl-tag">Darstellung</span>
-        <a class="pv-pille" href="/strategie/oekosystem.html">A <small>Bänder</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-verdrahtung.html">B <small>Verdrahtung</small></a>
+        <a class="pv-pille" href="/strategie/oekosystem.html">B <small>Verdrahtung</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
         <a class="pv-pille is-aktiv" href="/strategie/oekosystem-gefasst.html" aria-current="page">B3 <small>Gefasst</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-strang.html">C <small>Strang</small></a>
       </div>
 
       <p class="kicker">Strategie &middot; Entwicklung</p>
@@ -1254,7 +1252,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
     var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["nextcloud", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "kontakte_db", "beide"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "nextcloud>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "macbook>knoten": "eingerichtet", "ipad>knoten": "eingerichtet", "iphone>knoten": "eingerichtet", "knoten>kontakte_db": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
+    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "nextcloud>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>kontakte_db": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
     var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "nextcloud>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "macbook>knoten": "gruen", "ipad>knoten": "gruen", "iphone>knoten": "gruen", "knoten>kontakte_db": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
 
     /* Die Klasse einer Leitung: ihr Zustand, nicht der Stand des Kastens
@@ -1487,7 +1485,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
          Stylesheet war sie nicht zuverlaessig durchzusetzen, und eine
          Farbe, die man sehen will, darf nicht an einer Spezifitaetsfrage
          haengen. */
-      var FARBE = { gruen: '#2f8f4e', gelb: '#d9a400', rot: '#C51F5D' };
+      var FARBE = { gruen: '#34b87a', gelb: '#e8a800', rot: '#f0495a' };
       svg.querySelectorAll('path').forEach(function (d) {
         var dran = !!menge && menge.indexOf(d.dataset.von) > -1 &&
                    (menge.indexOf(d.dataset.nach) > -1 || d.dataset.nach === 'schiene');
