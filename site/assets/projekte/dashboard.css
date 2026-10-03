@@ -1044,3 +1044,81 @@
   .vt-falt--grau .pj-felder { grid-template-columns: 1fr; grid-template-rows: none; }
   .vt-falt--grau .pj-feld { grid-row: auto; grid-template-rows: none; }
 }
+
+
+/* ==========================================================================
+   Vier Fassungen des Werkzeugkastens
+
+   Auf einer hellgrauen Seite kann der Werkzeugkasten nicht noch heller
+   werden - der Trick aus V1 und V2, ihn grau zu hinterlegen, faellt hier
+   also aus. Drei andere Wege:
+
+   W2 "Dunkel"   der Kasten wird dunkel. Weiss wird dadurch knapp und die
+                 Eintraege treten hervor.
+   W3 "Karten"   zwei grosse Karten mit dunklem Kopf, innen nur Haarlinien.
+                 Damit steht nicht Kasten in Kasten in Kasten.
+   W4 "Kacheln"  jedes Werkzeug eine Kachel mit grossem Zeichen. Liest sich
+                 als Sammlung, nicht als Liste.
+   ========================================================================== */
+
+/* ---- W2 "Dunkel" ------------------------------------------------------- */
+.wk-dunkel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+             gap: clamp(22px, 2.8vw, 40px);
+             padding: clamp(22px, 2.6vw, 32px); margin-top: 4px;
+             background: var(--ink); border-radius: var(--radius-card); }
+.wk-dunkel .pj-tag { color: var(--hl); }
+.mk--dunkel { background: rgba(255,255,255,.06) !important;
+              border-color: rgba(255,255,255,.14) !important; color: #fff; }
+.mk--dunkel:hover { background: rgba(255,255,255,.12) !important;
+                    border-color: rgba(255,255,255,.4) !important; }
+.mk--dunkel .mk-text b { color: #fff; }
+.mk--dunkel .mk-text small { color: rgba(255,255,255,.58); }
+.mk--dunkel .mk-pfeil { color: rgba(255,255,255,.45); }
+.mk--dunkel:hover .mk-pfeil { color: #fff; }
+@media (max-width: 760px) { .wk-dunkel { grid-template-columns: 1fr; } }
+
+/* ---- W3 "Karten" ------------------------------------------------------- */
+.wk-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+             gap: clamp(14px, 1.8vw, 22px); margin-top: 4px; }
+.wk-karte { background: #fff; border: 1px solid #e4e1dd;
+            border-radius: var(--radius-card); overflow: hidden; }
+.wk-karte header { display: flex; align-items: baseline; justify-content: space-between;
+                   gap: 12px; padding: 13px 20px; background: var(--ink); }
+.wk-karte header b { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+                     font-weight: 700; color: var(--hl); }
+.wk-karte header span { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.55); }
+.wk-zeile { display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: center; gap: 14px; width: 100%; padding: 14px 20px;
+            border: 0; background: none; cursor: pointer; font-family: inherit;
+            text-align: left; text-decoration: none; color: inherit;
+            transition: background-color .15s ease; }
+.wk-zeile + .wk-zeile { border-top: 1px solid #f0eeea; }
+.wk-zeile:hover { background: #faf9f7; }
+.wk-zeile-ic { display: grid; place-items: center; width: 34px; height: 34px;
+               border-radius: 11px; background: var(--ink); color: var(--hl); }
+.wk-zeile-ic svg { width: 18px; height: 18px; }
+.wk-zeile-text b { display: block; font-size: .95rem; font-weight: 600; line-height: 1.3; }
+.wk-zeile-text small { display: block; margin-top: 2px; font-size: .84rem; line-height: 1.5;
+                       color: var(--grey-70); }
+.wk-zeile-pfeil { color: var(--grey-50); }
+.wk-zeile:hover .wk-zeile-pfeil { color: var(--ink); }
+@media (max-width: 760px) { .wk-karten { grid-template-columns: 1fr; } }
+
+/* ---- W4 "Kacheln" ------------------------------------------------------ */
+.wk-gruppe + .wk-gruppe { margin-top: clamp(22px, 2.6vw, 32px); }
+.wk-kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+              gap: clamp(10px, 1.3vw, 14px); margin-top: 10px; }
+.wk-kachel { display: grid; gap: 4px; align-content: start; padding: 18px 18px 20px;
+             background: #fff; border: 1px solid #e4e1dd; border-radius: var(--radius-card);
+             cursor: pointer; font-family: inherit; text-align: left;
+             text-decoration: none; color: inherit;
+             transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.wk-kachel:hover { border-color: var(--ink); transform: translateY(-2px);
+                   box-shadow: 0 14px 30px rgba(0,0,0,.07); }
+.wk-kachel-ic { display: grid; place-items: center; width: 44px; height: 44px;
+                margin-bottom: 10px; border-radius: 13px;
+                background: var(--ink); color: var(--hl); }
+.wk-kachel-ic svg { width: 23px; height: 23px; }
+.wk-kachel b { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 700;
+               line-height: 1.3; }
+.wk-kachel small { font-size: .84rem; line-height: 1.5; color: var(--grey-70); }
