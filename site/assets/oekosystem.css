@@ -284,8 +284,14 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-knotenplatz .oe-knoten--gross { width: 330px; max-width: 330px; }
 .oe-steuerung { display: flex; justify-content: center; position: relative; z-index: 1; }
 .oe-steuerung .oe-knoten--gross { width: 330px; max-width: 330px; }
-.oe-aktionen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;
+/* Drei Zeilen: die fuenf Aktionen, darunter Buffer, darunter die drei
+   Kanaele. Damit laeuft der Weg eines Beitrags von oben nach unten durch
+   und endet dort, wo er veroeffentlicht wird. */
+.oe-aktionen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+               grid-template-rows: auto auto auto;
+               gap: clamp(22px, 2.8vh, 36px) 8px;
                position: relative; z-index: 1; }
+.oe-aktionen .oe-knoten { align-self: stretch; }
 
 /* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
    liefern nichts, sie bedienen. Deshalb tragen sie keine Kastenform,
@@ -486,7 +492,8 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-schiene { margin-top: clamp(20px, 2.6vh, 32px); }
 .oe-plan--gefasst .oe-mittelreihe { margin-top: 0; }
 .oe-plan--gefasst .oe-geraete { max-width: 240px; }
-.oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(5, minmax(0, 1fr));
+                                gap: clamp(20px, 2.6vh, 32px) 8px; }
 .oe-plan--gefasst .oe-pfeil { height: 26px; }
 .oe-plan--gefasst .oe-pfeil::before { background: var(--ink); width: 3px; }
 .oe-plan--gefasst .oe-pfeil::after { border-color: var(--ink); border-width: 3px;
