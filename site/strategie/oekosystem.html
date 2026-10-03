@@ -624,8 +624,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </div>
             <div class="oe-leitstandplatz">
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
-              <span class="oe-knoten-titel">Leitstand</span>
-              <span class="oe-knoten-unter">zeigt, was die Schicht weiß &middot; eigenes Repo</span>
+              <span class="oe-knoten-titel">Dashboard</span>
+              <span class="oe-knoten-unter">Ansichtsebene &middot; Analyse und Entscheidung</span>
               <span class="oe-marke oe-marke--beauftragt">beauftragt</span>
             </button>
             </div>
@@ -841,7 +841,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     ]
   },
   "dashboard": {
-    "satz": "Die Oberfläche, über die alles sichtbar und bedienbar wird. Eigenes Repository und eigenes Vercel-Projekt, getrennt von den Homepage-Repos.",
+    "satz": "Die Ansichtsebene: Hier werden alle Informationen und Entscheidungen visualisiert – Aufgaben, Vorschläge, Textentwürfe, der Stand der Kontakte. Das Ziel ist ein schnelles Verständnis, aus dem heraus entschieden wird. Analyse und Entscheidung, keine Steuerung: Gearbeitet wird mit Claude, nicht mit einer Oberfläche. Eigenes Repository und eigenes Vercel-Projekt, getrennt von den Homepage-Repos.",
     "tools": [
       "Eigenes GitHub-Repository",
       "Eigenes Vercel-Projekt",
@@ -1022,45 +1022,39 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 };
 
     var KOEPFE = {
-  "mail": {
-    "titel": "E-Mail",
-    "unter": "Outlook 365",
-    "art": "zuerst",
-    "band": "Datenquellen"
-  },
   "homepages": {
     "titel": "Homepages",
     "unter": "Drei Marken",
     "art": "zuerst",
     "band": "Datenquellen"
   },
-  "analytics": {
-    "titel": "Analytics",
-    "unter": "Google",
-    "art": "zuerst",
-    "band": "Datenquellen"
-  },
-  "search": {
-    "titel": "Search Console",
-    "unter": "Google",
-    "art": "zuerst",
-    "band": "Datenquellen"
-  },
   "linkedin": {
     "titel": "LinkedIn",
-    "unter": "Profil &amp; Sales Navigator",
+    "unter": "Profil und Netzwerk",
     "art": "fragil",
     "band": "Datenquellen"
   },
-  "social": {
-    "titel": "Social Media",
-    "unter": "Alle Kanäle",
+  "instagram": {
+    "titel": "Instagram",
+    "unter": "Konto",
     "art": "geplant",
+    "band": "Datenquellen"
+  },
+  "facebook": {
+    "titel": "Facebook",
+    "unter": "Seite",
+    "art": "geplant",
+    "band": "Datenquellen"
+  },
+  "mail": {
+    "titel": "E-Mail",
+    "unter": "Outlook 365",
+    "art": "zuerst",
     "band": "Datenquellen"
   },
   "nextcloud": {
     "titel": "Nextcloud",
-    "unter": "IONOS-Hosting",
+    "unter": "Ablage bei IONOS",
     "art": "geplant",
     "band": "Datenquellen"
   },
@@ -1076,39 +1070,93 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "art": "geplant",
     "band": "Datenquellen"
   },
+  "kontakte_db": {
+    "titel": "Kontakte",
+    "unter": "wird gelesen und beschrieben",
+    "art": "geplant",
+    "band": "Datenquellen"
+  },
+  "analytics": {
+    "titel": "Google Analytics",
+    "unter": "liest die Homepages",
+    "art": "zuerst",
+    "band": "Datenquellen"
+  },
+  "search": {
+    "titel": "Search Console",
+    "unter": "liest die Homepages",
+    "art": "zuerst",
+    "band": "Datenquellen"
+  },
+  "salesnav": {
+    "titel": "Sales Navigator",
+    "unter": "liest LinkedIn",
+    "art": "fragil",
+    "band": "Datenquellen"
+  },
+  "helper": {
+    "titel": "Linked Helper",
+    "unter": "arbeitet auf dem Sales Navigator",
+    "art": "fragil",
+    "band": "Datenquellen"
+  },
   "macbook": {
     "titel": "Haupt-MacBook",
     "unter": "Büro und unterwegs",
     "art": "entschieden",
-    "band": "Ausführung"
+    "band": "Zugänge"
   },
   "ipad": {
     "titel": "iPad",
     "unter": "Zwei Geräte",
     "art": "entschieden",
-    "band": "Ausführung"
+    "band": "Zugänge"
   },
   "iphone": {
     "titel": "iPhone",
     "unter": "Unterwegs",
     "art": "entschieden",
-    "band": "Ausführung"
+    "band": "Zugänge"
   },
   "knoten": {
-    "titel": "Ausführungsknoten",
-    "unter": "Always-on-MacBook &middot; Claude Code",
+    "titel": "Intelligenzschicht",
+    "unter": "Claude Code &middot; läuft auf einem Always-on-MacBook",
     "art": "entschieden",
     "band": "Ausführung"
   },
   "dashboard": {
     "titel": "Dashboard",
-    "unter": "Eigenes Repo &middot; eigenes Vercel-Projekt",
+    "unter": "Ansichtsebene &middot; Analyse und Entscheidung",
     "art": "beauftragt",
-    "band": "Steuerung"
+    "band": "Ansicht"
   },
   "postings": {
     "titel": "Postings",
-    "unter": "über Buffer",
+    "unter": "Beiträge für die Kanäle",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "buffer": {
+    "titel": "Buffer",
+    "unter": "spielt aus und liest zurück",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "aus_linkedin": {
+    "titel": "LinkedIn",
+    "unter": "Profil und Netzwerk",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "aus_instagram": {
+    "titel": "Instagram",
+    "unter": "Konto",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "aus_facebook": {
+    "titel": "Facebook",
+    "unter": "Seite",
     "art": "geplant",
     "band": "Aktionen"
   },
@@ -1135,24 +1183,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "unter": "je Kundenprojekt",
     "art": "geplant",
     "band": "Aktionen"
-  },
-  "empiria": {
-    "titel": "empiria",
-    "unter": "Wert je Angebot, Kooperationen",
-    "art": "bestand",
-    "band": "Marken"
-  },
-  "sichtbar": {
-    "titel": "sofort sichtbar",
-    "unter": "Funnel bis zum Umsatz",
-    "art": "bestand",
-    "band": "Marken"
-  },
-  "ms": {
-    "titel": "Müller &amp; Ströbel",
-    "unter": "Sonderform von empiria",
-    "art": "bestand",
-    "band": "Marken"
   }
 };
 
