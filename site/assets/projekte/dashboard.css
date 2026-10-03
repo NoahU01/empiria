@@ -678,7 +678,7 @@
    Pillenreihen, der Projektkopf. Was darunter bleibt, ist der Rahmen.
    Reicht es nicht, rollt der Inhalt im Feld - abgeschnitten wird nichts. */
 .sz-rahmen { display: grid; gap: 10px;
-             height: calc(100vh - 392px); min-height: 420px; }
+             height: calc(100vh - 388px); min-height: 420px; }
 .sz-feld { display: flex; flex-direction: column; min-height: 0;
            padding: 14px 16px; background: #fff; border: 1px solid #e4e1dd;
            border-radius: 14px; }
@@ -848,3 +848,123 @@
 
 /* "STAND" klebte am Satz, weil die Marke inline stand. */
 .kw-tafel-stand .sz-spalte-tag { display: block; margin-bottom: 4px; }
+
+
+/* ==========================================================================
+   V9++ "Auswahl verbunden"
+
+   Zwei Dinge, die V9+ nicht geleistet hat:
+
+   1  Drei Ebenen, die als drei Ebenen zu erkennen sind. Vorher stand ein
+      Feld mit Tag, darunter ein gelber Balken, darunter ein Feld mit
+      Reitern - drei Formen fuer drei gleichrangige Dinge. Jetzt tragen
+      alle drei denselben Kopf: Ziffer, Name, Anzahl. Der Werkzeugkasten
+      unterscheidet sich nur im Grund, nicht in der Beschriftung.
+
+   2  Die Auswahl und ihre Tafel gehoeren sichtbar zusammen. Vorher waren
+      es zwei getrennte Kaesten nebeneinander. Jetzt ein Rahmen mit einer
+      Trennlinie, und die gewaehlte Zeile traegt eine Nase, die auf die
+      Tafel zeigt. Die Tafel wiederholt die Ziffer - damit liest es sich
+      als aufgeklappter Zustand und nicht als zweiter Kasten.
+   ========================================================================== */
+/* Die Modulebene braucht am meisten: ihre Tafel traegt Ergebnis, Stand,
+   Unterseiten und den Knopf. Ebene 02 ist eine Zeile und bekommt nur, was
+   sie braucht. */
+.sz-rahmen--vb { grid-template-rows: minmax(0, 1.28fr) auto minmax(0, 1.12fr); gap: 9px; }
+.sz-rahmen--vb .vb-ebene:nth-child(2) .vb-koerper { padding: 9px 14px; }
+
+.vb-ebene { display: flex; flex-direction: column; min-height: 0;
+            background: #fff; border: 1px solid #e4e1dd; border-radius: 14px;
+            overflow: hidden; }
+.vb-ebene--werkzeug { background: #faf9f7; }
+
+/* Der Kopf ist in allen drei Ebenen derselbe - daran haengt die Einheit. */
+.vb-kopf { display: flex; align-items: baseline; gap: 12px; flex: 0 0 auto;
+           padding: 9px 16px; border-bottom: 1px solid #ebe8e5; background: #fff; }
+.vb-ebene--werkzeug .vb-kopf { background: #faf9f7; }
+.vb-kopf-nr { font-family: var(--font-serif); font-weight: 700; font-size: .95rem;
+              color: var(--grey-50); }
+.vb-kopf h2 { margin: 0; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
+              font-weight: 700; color: var(--ink); }
+.vb-kopf-zahl { margin-left: auto; font-size: .76rem; font-weight: 600; color: var(--grey-50); }
+
+.vb-koerper { flex: 1 1 auto; min-height: 0; padding: 12px 14px; }
+.vb-koerper--wahl { display: grid; grid-template-columns: minmax(260px, .78fr) minmax(0, 1.22fr);
+                    gap: 0; padding: 0; }
+
+/* Links die Liste, rechts die Tafel - eine Flaeche, eine Trennlinie. */
+.vb-liste { display: grid; gap: 4px; align-content: start; min-height: 0; overflow-y: auto;
+            padding: 12px; border-right: 1px solid #ebe8e5; background: #faf9f7; }
+.vb-zeile { position: relative; display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px;
+            width: 100%; padding: 10px 12px; border: 1px solid transparent;
+            border-radius: 10px; background: none; cursor: pointer; font-family: inherit;
+            text-align: left; transition: background-color .15s ease; }
+.vb-zeile:hover { background: #fff; }
+.vb-zeile.is-aktiv { background: var(--ink); border-color: var(--ink); }
+.vb-zeile-nr { font-family: var(--font-serif); font-weight: 700; font-size: .98rem;
+               color: var(--grey-50); }
+.vb-zeile.is-aktiv .vb-zeile-nr { color: var(--hl); }
+.vb-zeile-text b { display: block; font-size: .94rem; font-weight: 600; line-height: 1.3; }
+.vb-zeile-text small { display: block; font-size: .78rem; line-height: 1.35; color: var(--grey-70); }
+.vb-zeile.is-aktiv .vb-zeile-text b { color: #fff; }
+.vb-zeile.is-aktiv .vb-zeile-text small { color: rgba(255,255,255,.6); }
+.vb-zeile.is-aktiv .pj-marke { color: rgba(255,255,255,.8); }
+.vb-zeile.is-aktiv .pj-marke::before { background: #fff; border-color: rgba(255,255,255,.6); }
+
+/* Die Nase zeigt von der gewaehlten Zeile auf die Tafel. Sie sitzt auf der
+   Trennlinie und macht aus zwei Kaesten einen Zusammenhang. */
+.vb-nase { position: absolute; right: -13px; top: 50%; width: 12px; height: 12px;
+           transform: translateY(-50%) rotate(45deg); background: var(--ink);
+           opacity: 0; transition: opacity .15s ease; }
+.vb-zeile.is-aktiv .vb-nase { opacity: 1; }
+
+.vb-tafel-raum { min-height: 0; overflow-y: auto; padding: 13px 18px; }
+.vb-tafel-nr { display: block; font-family: var(--font-serif); font-weight: 700;
+               font-size: 1.6rem; line-height: 1; color: #ddd8d2; }
+.vb-tafel h3 { margin: 4px 0 0; font-weight: 700; line-height: 1.15;
+               font-size: clamp(1.35rem, 2.1vw, 1.8rem); }
+.vb-tafel-frage { margin: .25rem 0 0; font-size: .9rem; color: var(--grey-50); }
+.vb-tafel-ergebnis { margin: .7rem 0 0; font-family: var(--font-serif); font-weight: 700;
+                     font-size: 1.05rem; line-height: 1.45; max-width: 44ch; }
+.vb-tafel-stand { margin: .65rem 0 0; padding-top: .65rem; border-top: 1px solid #f0eeea;
+                  font-size: .9rem; line-height: 1.6; color: var(--grey-70); }
+.vb-tafel-stand .sz-spalte-tag { display: block; margin-bottom: 3px; }
+.vb-wege { margin-top: .8rem; }
+.vb-knopf { margin-top: .8rem; }
+
+/* Ebene 02 ist eine Zeile - sie braucht keinen eigenen Kasten mehr, der
+   Kopf darueber traegt sie schon. */
+.vb-planung { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+              gap: 14px; padding: 12px 14px; background: var(--hl); border-radius: 10px;
+              text-decoration: none; color: var(--ink); }
+.vb-planung-text b { display: block; font-family: var(--font-serif); font-size: 1.02rem;
+                     font-weight: 700; line-height: 1.25; }
+.vb-planung-text small { display: block; margin-top: 2px; font-size: .84rem; line-height: 1.5;
+                         color: rgba(26,24,23,.72); }
+.vb-planung-pfeil { font-size: 1.2rem; }
+.vt-vb .sz-werkzeug { gap: 14px; }
+.vt-vb .sz-zeile:hover { background: #fff; }
+
+@media (max-width: 1000px) {
+  .vb-koerper--wahl { grid-template-columns: 1fr; }
+  .vb-liste { border-right: 0; border-bottom: 1px solid #ebe8e5; }
+  .vb-nase { display: none; }
+}
+
+/* Zwei Stellen, an denen der Platz noch nicht reichte:
+   - Die fuenf Methoden standen untereinander und schoben zwei davon aus
+     dem Bild. Sie stehen jetzt in zwei Spalten.
+   - Der Knopf "Zum Modul" lag unter der Tafel und wurde abgeschnitten.
+     Er sitzt jetzt oben rechts neben dem Modulnamen, wo ohnehin Platz ist. */
+.vt-vb .sz-werkzeug > div:last-child { display: grid; grid-template-rows: auto 1fr; }
+.vt-vb .sz-werkzeug > div:last-child .sz-spalte-tag { grid-column: 1 / -1; }
+.vt-vb .sz-werkzeug > div:last-child { grid-template-columns: repeat(2, minmax(0, 1fr));
+                                       gap: 0 10px; align-content: start; }
+.vb-tafel { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; }
+.vb-tafel > * { grid-column: 1; }
+.vb-knopf { grid-column: 2; grid-row: 1 / span 3; align-self: start; margin-top: 4px; }
+
+/* display:grid schlaegt das hidden-Attribut - ohne diese Zeile standen
+   alle drei Tafeln uebereinander im Bild. */
+.vb-tafel[hidden] { display: none; }
