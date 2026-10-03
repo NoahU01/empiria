@@ -491,31 +491,29 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="section section--eng">
     <div class="container">
 
-      <div class="oe-kopf">
-        <p class="kicker">Strategie &middot; Entwicklung</p>
-        <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
-        <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
-          Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Die Leitungen laufen nur senkrecht und waagerecht.</p>
+      <p class="kicker">Strategie &middot; Entwicklung</p>
+      <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
       <div class="oe-pult">
         <p class="oe-pult-kopf">
           <span class="oe-pult-zeichen" aria-hidden="true"></span>
           <span>Menü</span>
         </p>
         <div class="oe-pult-koerper">
-          <div class="oe-pult-zeile oe-pult-zeile--sicht">
-            <span class="oe-pult-tag">Sicht</span>
-            <div class="oe-pult-feld">
+          <div class="oe-pult-zeilen">
+            <div class="oe-pult-zeile oe-pult-zeile--sicht">
+              <span class="oe-pult-tag">Sicht</span>
+              <div class="oe-pult-feld">
             <button type="button" class="pv-pille oe-sicht is-aktiv" data-sicht="alles" aria-pressed="true">Alles</button>
             <button type="button" class="pv-pille oe-sicht" data-sicht="status" aria-pressed="false">Status</button>
             <button type="button" class="pv-pille oe-sicht" data-sicht="naechste" aria-pressed="false">Als Nächstes</button>
             <button type="button" class="pv-pille oe-sicht" data-sicht="kritisch" aria-pressed="false">Kritischer Pfad</button>
             <button type="button" class="pv-pille oe-sicht" data-sicht="schnell" aria-pressed="false">Schnellster Nutzen</button>
             <button type="button" class="pv-pille oe-sicht" data-sicht="fragil" aria-pressed="false">Schwache Glieder</button>
+              </div>
             </div>
-          </div>
-          <div class="oe-pult-zeile oe-pult-zeile--leitungen">
-            <span class="oe-pult-tag">Leitungen</span>
-            <div class="oe-pult-feld">
+            <div class="oe-pult-zeile oe-pult-zeile--leitungen">
+              <span class="oe-pult-tag">Leitungen</span>
+              <div class="oe-pult-feld">
             <span class="oe-legende-posten"><i class="oe-strich oe-strich--eingerichtet"></i>eingerichtet</span>
             <span class="oe-legende-posten"><i class="oe-strich oe-strich--geplant"></i>geplant</span>
             <span class="oe-legende-ampel">
@@ -523,13 +521,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <span class="oe-legende-posten"><i class="oe-strich oe-strich--gelb"></i>verbesserbar</span>
             <span class="oe-legende-posten"><i class="oe-strich oe-strich--rot"></i>Handlungsbedarf</span>
           </span>
+              </div>
             </div>
           </div>
+          <div class="oe-pult-satz" id="oeSichtSatz">Der ganze Plan: Was hereinkommt, wo gearbeitet wird und was herausgeht. Eine Sicht wählen beantwortet eine bestimmte Frage – wie es um jeden Weg steht, was zuerst drankommt, was alles andere blockiert.</div>
         </div>
       </div>
-      </div>
-
-      <p class="oe-sicht-satz" id="oeSichtSatz" hidden></p>
 
       <div class="oe-raum">
 
@@ -1437,6 +1434,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
        beide Enden nicht zur Sicht gehoeren. */
     var SICHTEN = {"status": {"name": "Status", "satz": "Wie gut läuft jeder Weg heute? Grün heißt: läuft optimal. Gelb heißt: läuft, lässt sich aber verbessern. Rot heißt Handlungsbedarf – entweder ist der Weg noch nicht eingerichtet, oder er läuft schlecht.", "ampel": true, "knoten": []}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "kontakte"]}};
     var AMPEL_KNOTEN = {"homepages": "gruen", "mail": "gruen", "nextcloud": "gruen", "finder": "gruen", "chrome": "gruen", "instagram": "gruen", "facebook": "gruen", "analytics": "gruen", "search": "gruen", "macbook": "gruen", "ipad": "gruen", "iphone": "gruen", "linkedin": "gelb", "salesnav": "gelb", "helper": "gelb", "kontakte": "gelb", "knoten": "rot", "dashboard": "rot", "kontakte_db": "rot", "postings": "rot", "buffer": "rot", "mails": "rot", "termine": "rot", "cockpits": "rot", "aus_linkedin": "rot", "aus_instagram": "rot", "aus_facebook": "rot"};
+    var SATZ_ALLES = "Der ganze Plan: Was hereinkommt, wo gearbeitet wird und was herausgeht. Eine Sicht wählen beantwortet eine bestimmte Frage – wie es um jeden Weg steht, was zuerst drankommt, was alles andere blockiert.";
     var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
     var satz = document.getElementById('oeSichtSatz');
 
@@ -1449,10 +1447,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       var s = SICHTEN[name];
       plan.classList.toggle('ist-sicht', !!s);
       svg.classList.toggle('ist-gefiltert', !!s);
-      if (satz) {
-        satz.hidden = !s;
-        if (s) satz.textContent = s.satz;
-      }
+      if (satz) satz.textContent = s ? s.satz : SATZ_ALLES;
       /* Die Sicht "Status" faerbt Leitungen und Kaesten. Ein Rahmen in
          Vollfarbe und ein heller Grund sagen auf einen Blick, wie es um
          das einzelne Element steht. */
