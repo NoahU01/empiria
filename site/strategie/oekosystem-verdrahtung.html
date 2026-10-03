@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ökosystem &middot; Steuerungszentrale &ndash; empiria</title>
+<title>Ökosystem &middot; Verdrahtung &ndash; empiria</title>
 <meta name="description" content="Schaltplan der Steuerungszentrale: Datenquellen, Ausführungsknoten, Dashboard, Aktionen und die drei Marken.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
@@ -477,166 +477,148 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="pv-wahl" role="group" aria-label="Darstellung des Plans">
         <span class="pv-wahl-tag">Darstellung</span>
-        <a class="pv-pille is-aktiv" href="/strategie/oekosystem.html" aria-current="page">A <small>Bänder</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-verdrahtung.html">B <small>Verdrahtung</small></a>
+        <a class="pv-pille" href="/strategie/oekosystem.html">A <small>Bänder</small></a>
+        <a class="pv-pille is-aktiv" href="/strategie/oekosystem-verdrahtung.html" aria-current="page">B <small>Verdrahtung</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-strang.html">C <small>Strang</small></a>
       </div>
 
       <p class="kicker">Strategie &middot; Entwicklung</p>
       <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
       <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
-        Müller&nbsp;&amp; Ströbel zusammen. Oben steht, was hereinkommt, in der Mitte, wo gearbeitet wird, unten, was herausgeht. Jeder Kasten lässt sich anklicken und zeigt rechts, was dahintersteht.</p>
+        Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Auf einen Kasten zeigen hebt seine Leitungen hervor.</p>
 
       <div class="oe-raum">
 
-        <div class="oe-plan oe-plan--baender">
-          <div class="oe-band" id="band-quellen">
-          <p class="oe-band-tag"><b>Datenquellen</b><span>Was hereinkommt</span></p>
-            <div class="oe-reihe">
-              <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false">
-                <span class="oe-knoten-titel">E-Mail</span>
-                <span class="oe-knoten-unter">Outlook 365</span>
-                <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="homepages" aria-expanded="false">
-                <span class="oe-knoten-titel">Homepages</span>
-                <span class="oe-knoten-unter">Drei Marken</span>
-                <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="analytics" aria-expanded="false">
-                <span class="oe-knoten-titel">Analytics</span>
-                <span class="oe-knoten-unter">Google</span>
-                <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="search" aria-expanded="false">
-                <span class="oe-knoten-titel">Search Console</span>
-                <span class="oe-knoten-unter">Google</span>
-                <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false">
-                <span class="oe-knoten-titel">LinkedIn</span>
-                <span class="oe-knoten-unter">Profil &amp; Sales Navigator</span>
-                <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="social" aria-expanded="false">
-                <span class="oe-knoten-titel">Social Media</span>
-                <span class="oe-knoten-unter">Alle Kanäle</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false">
-                <span class="oe-knoten-titel">Nextcloud</span>
-                <span class="oe-knoten-unter">IONOS-Hosting</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false">
-                <span class="oe-knoten-titel">Dateisystem</span>
-                <span class="oe-knoten-unter">Finder auf dem Mac</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false">
-                <span class="oe-knoten-titel">Chrome</span>
-                <span class="oe-knoten-unter">Recherche im Netz</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-            </div>
+        <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten">
+          <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"></svg>
+        <div class="oe-gruppe oe-gruppe--quellen">
+          <p class="oe-spalte-tag">Datenquellen &middot; was hereinkommt</p>
+            <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false">
+              <span class="oe-knoten-titel">E-Mail</span>
+              <span class="oe-knoten-unter">Outlook 365</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="homepages" aria-expanded="false">
+              <span class="oe-knoten-titel">Homepages</span>
+              <span class="oe-knoten-unter">Drei Marken</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="analytics" aria-expanded="false">
+              <span class="oe-knoten-titel">Analytics</span>
+              <span class="oe-knoten-unter">Google</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="search" aria-expanded="false">
+              <span class="oe-knoten-titel">Search Console</span>
+              <span class="oe-knoten-unter">Google</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false">
+              <span class="oe-knoten-titel">LinkedIn</span>
+              <span class="oe-knoten-unter">Profil &amp; Sales Navigator</span>
+              <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="social" aria-expanded="false">
+              <span class="oe-knoten-titel">Social Media</span>
+              <span class="oe-knoten-unter">Alle Kanäle</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false">
+              <span class="oe-knoten-titel">Nextcloud</span>
+              <span class="oe-knoten-unter">IONOS-Hosting</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false">
+              <span class="oe-knoten-titel">Dateisystem</span>
+              <span class="oe-knoten-unter">Finder auf dem Mac</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false">
+              <span class="oe-knoten-titel">Chrome</span>
+              <span class="oe-knoten-unter">Recherche im Netz</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+        </div>
+          <div class="oe-mittelreihe">
+        <div class="oe-gruppe oe-gruppe--geraete">
+          <p class="oe-spalte-tag">Eingabegeräte</p>
+            <button type="button" class="oe-knoten" data-baustein="macbook" aria-expanded="false">
+              <span class="oe-knoten-titel">Haupt-MacBook</span>
+              <span class="oe-knoten-unter">Büro und unterwegs</span>
+              <span class="oe-marke oe-marke--entschieden">entschieden</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="ipad" aria-expanded="false">
+              <span class="oe-knoten-titel">iPad</span>
+              <span class="oe-knoten-unter">Zwei Geräte</span>
+              <span class="oe-marke oe-marke--entschieden">entschieden</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="iphone" aria-expanded="false">
+              <span class="oe-knoten-titel">iPhone</span>
+              <span class="oe-knoten-unter">Unterwegs</span>
+              <span class="oe-marke oe-marke--entschieden">entschieden</span>
+            </button>
+        </div>
+        <div class="oe-gruppe oe-gruppe--knoten">
+            <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
+              <span class="oe-knoten-titel">Ausführungsknoten</span>
+              <span class="oe-knoten-unter">Always-on-MacBook &middot; Claude Code</span>
+              <span class="oe-marke oe-marke--entschieden">entschieden</span>
+            </button>
+        </div>
           </div>
-          <span class="oe-pfeil" aria-hidden="true"></span>
-          <div class="oe-band oe-band--kern" id="band-kern">
-          <p class="oe-band-tag"><b>Ausführung</b><span>Wo gearbeitet wird</span></p>
-            <div class="oe-kern">
-              <div class="oe-eingabe">
-                <p class="oe-spalte-tag">Eingabegeräte</p>
-                <div class="oe-eingabe-reihe">
-                  <button type="button" class="oe-knoten" data-baustein="macbook" aria-expanded="false">
-                    <span class="oe-knoten-titel">Haupt-MacBook</span>
-                    <span class="oe-knoten-unter">Büro und unterwegs</span>
-                    <span class="oe-marke oe-marke--entschieden">entschieden</span>
-                  </button>
-                  <button type="button" class="oe-knoten" data-baustein="ipad" aria-expanded="false">
-                    <span class="oe-knoten-titel">iPad</span>
-                    <span class="oe-knoten-unter">Zwei Geräte</span>
-                    <span class="oe-marke oe-marke--entschieden">entschieden</span>
-                  </button>
-                  <button type="button" class="oe-knoten" data-baustein="iphone" aria-expanded="false">
-                    <span class="oe-knoten-titel">iPhone</span>
-                    <span class="oe-knoten-unter">Unterwegs</span>
-                    <span class="oe-marke oe-marke--entschieden">entschieden</span>
-                  </button>
-                </div>
-              </div>
-              <span class="oe-pfeil-quer" aria-hidden="true"></span>
-              <div class="oe-kern-mitte">
-                <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
-                  <span class="oe-knoten-titel">Ausführungsknoten</span>
-                  <span class="oe-knoten-unter">Always-on-MacBook &middot; Claude Code</span>
-                  <span class="oe-marke oe-marke--entschieden">entschieden</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <span class="oe-pfeil" aria-hidden="true"></span>
-          <div class="oe-band oe-band--mitte" id="band-steuerung">
-          <p class="oe-band-tag"><b>Steuerung</b><span>Was ich sehe und bediene</span></p>
-            <div class="oe-mitte">
-              <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
-                <span class="oe-knoten-titel">Dashboard</span>
-                <span class="oe-knoten-unter">Eigenes Repo &middot; eigenes Vercel-Projekt</span>
-                <span class="oe-marke oe-marke--beauftragt">beauftragt</span>
-              </button>
-            </div>
-          </div>
-          <span class="oe-pfeil" aria-hidden="true"></span>
-          <div class="oe-band" id="band-aktionen">
-          <p class="oe-band-tag"><b>Aktionen</b><span>Was herausgeht</span></p>
-            <div class="oe-reihe">
-              <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false">
-                <span class="oe-knoten-titel">Postings</span>
-                <span class="oe-knoten-unter">über Buffer</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="mails" aria-expanded="false">
-                <span class="oe-knoten-titel">E-Mails</span>
-                <span class="oe-knoten-unter">Entwürfe und Antworten</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="termine" aria-expanded="false">
-                <span class="oe-knoten-titel">Terminplanung</span>
-                <span class="oe-knoten-unter">im Sparring</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false">
-                <span class="oe-knoten-titel">Kontaktpflege</span>
-                <span class="oe-knoten-unter">Frequenz je Person</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false">
-                <span class="oe-knoten-titel">Projekt-Cockpits</span>
-                <span class="oe-knoten-unter">je Kundenprojekt</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
-              </button>
-            </div>
-          </div>
-          <span class="oe-pfeil" aria-hidden="true"></span>
-          <div class="oe-band oe-band--marken" id="band-marken">
-          <p class="oe-band-tag"><b>Marken</b><span>Worauf alles einzahlt</span></p>
-            <div class="oe-reihe">
-              <button type="button" class="oe-knoten" data-baustein="empiria" aria-expanded="false">
-                <span class="oe-knoten-titel">empiria</span>
-                <span class="oe-knoten-unter">Wert je Angebot, Kooperationen</span>
-                <span class="oe-marke oe-marke--bestand">besteht</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="sichtbar" aria-expanded="false">
-                <span class="oe-knoten-titel">sofort sichtbar</span>
-                <span class="oe-knoten-unter">Funnel bis zum Umsatz</span>
-                <span class="oe-marke oe-marke--bestand">besteht</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="ms" aria-expanded="false">
-                <span class="oe-knoten-titel">Müller &amp; Ströbel</span>
-                <span class="oe-knoten-unter">Sonderform von empiria</span>
-                <span class="oe-marke oe-marke--bestand">besteht</span>
-              </button>
-            </div>
-          </div>
+        <div class="oe-gruppe oe-gruppe--dashboard">
+            <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
+              <span class="oe-knoten-titel">Dashboard</span>
+              <span class="oe-knoten-unter">Eigenes Repo &middot; eigenes Vercel-Projekt</span>
+              <span class="oe-marke oe-marke--beauftragt">beauftragt</span>
+            </button>
+        </div>
+        <div class="oe-gruppe oe-gruppe--aktionen">
+          <p class="oe-spalte-tag">Aktionen &middot; was herausgeht</p>
+            <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false">
+              <span class="oe-knoten-titel">Postings</span>
+              <span class="oe-knoten-unter">über Buffer</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="mails" aria-expanded="false">
+              <span class="oe-knoten-titel">E-Mails</span>
+              <span class="oe-knoten-unter">Entwürfe und Antworten</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="termine" aria-expanded="false">
+              <span class="oe-knoten-titel">Terminplanung</span>
+              <span class="oe-knoten-unter">im Sparring</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false">
+              <span class="oe-knoten-titel">Kontaktpflege</span>
+              <span class="oe-knoten-unter">Frequenz je Person</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false">
+              <span class="oe-knoten-titel">Projekt-Cockpits</span>
+              <span class="oe-knoten-unter">je Kundenprojekt</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+        </div>
+        <div class="oe-gruppe oe-gruppe--marken">
+          <p class="oe-spalte-tag">Marken &middot; worauf alles einzahlt</p>
+            <button type="button" class="oe-knoten" data-baustein="empiria" aria-expanded="false">
+              <span class="oe-knoten-titel">empiria</span>
+              <span class="oe-knoten-unter">Wert je Angebot, Kooperationen</span>
+              <span class="oe-marke oe-marke--bestand">besteht</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="sichtbar" aria-expanded="false">
+              <span class="oe-knoten-titel">sofort sichtbar</span>
+              <span class="oe-knoten-unter">Funnel bis zum Umsatz</span>
+              <span class="oe-marke oe-marke--bestand">besteht</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="ms" aria-expanded="false">
+              <span class="oe-knoten-titel">Müller &amp; Ströbel</span>
+              <span class="oe-knoten-unter">Sonderform von empiria</span>
+              <span class="oe-marke oe-marke--bestand">besteht</span>
+            </button>
+        </div>
         </div>
 
         <aside class="oe-feld" id="oeFeld">
@@ -656,7 +638,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       </div>
 
-
+        <div class="oe-legende">
+          <span class="oe-legende-tag">Leitungen</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--entschieden"></i>entschieden</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--beauftragt"></i>beauftragt</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--zuerst"></i>zuerst dran</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--geplant"></i>geplant</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--fragil"></i>schwaches Glied</span>
+          <span class="oe-legende-hinweis">Auf einen Kasten zeigen hebt seine Leitungen hervor.</span>
+        </div>
 
       <p class="oe-stand">Stand des Briefings: 2.&nbsp;Oktober 2026. Diese Seite liegt
         nur im Entwicklungszweig.</p>
@@ -1092,7 +1082,93 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     });
   })();
   </script>
+  <script>
+  /* Die Leitungen werden gerechnet, nicht geschrieben. Fuer jedes Paar aus
+     LEITUNGEN wird der Mittelpunkt der passenden Kante beider Kaesten
+     genommen und eine Kurve dazwischen gelegt. Bei jeder Aenderung der
+     Groesse wird neu gerechnet - deshalb stimmt der Plan auf jedem Schirm,
+     ohne dass irgendwo Koordinaten stehen. */
+  (function () {
+    var plan = document.querySelector('.oe-plan');
+    var svg = document.getElementById('oeDraehte');
+    if (!plan || !svg) return;
+    var richtung = plan.dataset.richtung || 'unten';
+    var LEITUNGEN = [["mail", "knoten"], ["homepages", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "empiria"], ["postings", "sichtbar"], ["postings", "ms"], ["mails", "empiria"], ["mails", "sichtbar"], ["mails", "ms"], ["termine", "empiria"], ["termine", "sichtbar"], ["termine", "ms"], ["kontakte", "empiria"], ["kontakte", "sichtbar"], ["kontakte", "ms"], ["cockpits", "empiria"], ["cockpits", "sichtbar"], ["cockpits", "ms"]];
+    var STAND = {"mail": "zuerst", "homepages": "zuerst", "analytics": "zuerst", "search": "zuerst", "linkedin": "fragil", "social": "geplant", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "knoten": "entschieden", "dashboard": "beauftragt", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "empiria": "bestand", "sichtbar": "bestand", "ms": "bestand"};
 
+    function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
+
+    function anker(el, seite) {
+      var r = el.getBoundingClientRect(), p = plan.getBoundingClientRect();
+      var x = r.left - p.left, y = r.top - p.top;
+      if (seite === 'unten')  return [x + r.width / 2, y + r.height];
+      if (seite === 'oben')   return [x + r.width / 2, y];
+      if (seite === 'rechts') return [x + r.width, y + r.height / 2];
+      return [x, y + r.height / 2];
+    }
+
+    function pfad(a, b, quer) {
+      if (quer) {
+        var mx = (a[0] + b[0]) / 2;
+        return 'M' + a[0] + ',' + a[1] + 'C' + mx + ',' + a[1] +
+               ' ' + mx + ',' + b[1] + ' ' + b[0] + ',' + b[1];
+      }
+      var my = (a[1] + b[1]) / 2;
+      return 'M' + a[0] + ',' + a[1] + 'C' + a[0] + ',' + my +
+             ' ' + b[0] + ',' + my + ' ' + b[0] + ',' + b[1];
+    }
+
+    function zeichnen() {
+      var p = plan.getBoundingClientRect();
+      svg.setAttribute('viewBox', '0 0 ' + p.width + ' ' + p.height);
+      svg.setAttribute('width', p.width);
+      svg.setAttribute('height', p.height);
+      var teile = [];
+      LEITUNGEN.forEach(function (l) {
+        var von = kasten(l[0]), nach = kasten(l[1]);
+        if (!von || !nach) return;
+        var vr = von.getBoundingClientRect(), nr = nach.getBoundingClientRect();
+        var quer = richtung === 'rechts';
+        var a, b;
+        if (quer) {
+          /* Die Geraete haengen unter dem Knoten, nicht links davon. */
+          if (nr.left < vr.right && nr.top > vr.bottom) { a = anker(von, 'unten'); b = anker(nach, 'oben'); quer = false; }
+          else if (vr.top > nr.bottom) { a = anker(von, 'oben'); b = anker(nach, 'unten'); quer = false; }
+          else { a = anker(von, 'rechts'); b = anker(nach, 'links'); }
+        } else {
+          if (Math.abs(vr.top - nr.top) < 8) { a = anker(von, 'rechts'); b = anker(nach, 'links'); quer = true; }
+          else { a = anker(von, 'unten'); b = anker(nach, 'oben'); }
+        }
+        teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
+                   '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' +
+                   pfad(a, b, quer) + '"/>');
+      });
+      svg.innerHTML = teile.join('');
+    }
+
+    zeichnen();
+    window.addEventListener('resize', zeichnen);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(zeichnen);
+
+    /* Zeigen auf einen Kasten hebt seine Leitungen hervor - das ist die
+       Antwort auf "wo fliesst was hin". */
+    plan.addEventListener('mouseover', function (e) {
+      var k = e.target.closest('.oe-knoten');
+      if (!k) return;
+      var id = k.dataset.baustein;
+      svg.classList.add('ist-gefiltert');
+      svg.querySelectorAll('path').forEach(function (d) {
+        d.classList.toggle('ist-hell', d.dataset.von === id || d.dataset.nach === id);
+      });
+    });
+    plan.addEventListener('mouseout', function (e) {
+      if (e.relatedTarget && plan.contains(e.relatedTarget) &&
+          e.relatedTarget.closest('.oe-knoten')) return;
+      svg.classList.remove('ist-gefiltert');
+      svg.querySelectorAll('path').forEach(function (d) { d.classList.remove('ist-hell'); });
+    });
+  })();
+  </script>
 
 </main>
 
