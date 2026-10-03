@@ -495,6 +495,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <span class="pv-wahl-tag">Darstellung</span>
         <a class="pv-pille" href="/strategie/oekosystem.html">A <small>Bänder</small></a>
         <a class="pv-pille is-aktiv" href="/strategie/oekosystem-verdrahtung.html" aria-current="page">B <small>Verdrahtung</small></a>
+        <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-strang.html">C <small>Strang</small></a>
       </div>
 
@@ -502,6 +503,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
       <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
         Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Auf einen Kasten zeigen hebt seine Leitungen hervor.</p>
+
+      <div class="oe-marken-zeile">
+        <span class="oe-marken-tag">Gilt für</span>
+        <button type="button" class="oe-markenknopf" data-baustein="empiria">empiria</button>
+        <button type="button" class="oe-markenknopf" data-baustein="sichtbar">sofort sichtbar</button>
+        <button type="button" class="oe-markenknopf" data-baustein="ms">Müller&nbsp;&amp; Ströbel</button>
+        <span class="oe-marken-satz">Drei Marken, eine Maschine. Was unten herauskommt,
+          zahlt auf alle drei ein.</span>
+      </div>
 
       <div class="pv-wahl oe-sichten" role="group" aria-label="Sicht auf den Plan">
         <span class="pv-wahl-tag">Sicht</span>
@@ -625,25 +635,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-titel">Projekt-Cockpits</span>
               <span class="oe-knoten-unter">je Kundenprojekt</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-        </div>
-          <div class="oe-schiene" data-baustein="schiene" aria-hidden="true"></div>
-        <div class="oe-gruppe oe-gruppe--marken">
-          <p class="oe-spalte-tag">Marken &middot; worauf alles einzahlt</p>
-            <button type="button" class="oe-knoten" data-baustein="empiria" aria-expanded="false">
-              <span class="oe-knoten-titel">empiria</span>
-              <span class="oe-knoten-unter">Wert je Angebot, Kooperationen</span>
-              <span class="oe-marke oe-marke--bestand">besteht</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="sichtbar" aria-expanded="false">
-              <span class="oe-knoten-titel">sofort sichtbar</span>
-              <span class="oe-knoten-unter">Funnel bis zum Umsatz</span>
-              <span class="oe-marke oe-marke--bestand">besteht</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="ms" aria-expanded="false">
-              <span class="oe-knoten-titel">Müller &amp; Ströbel</span>
-              <span class="oe-knoten-unter">Sonderform von empiria</span>
-              <span class="oe-marke oe-marke--bestand">besteht</span>
             </button>
         </div>
         </div>
@@ -1121,7 +1112,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["mail", "knoten"], ["homepages", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "schiene"], ["mails", "schiene"], ["termine", "schiene"], ["kontakte", "schiene"], ["cockpits", "schiene"], ["schiene", "empiria"], ["schiene", "sichtbar"], ["schiene", "ms"]];
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["mail", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"]];
     var STAND = {"mail": "zuerst", "homepages": "zuerst", "analytics": "zuerst", "search": "zuerst", "linkedin": "fragil", "social": "geplant", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "knoten": "entschieden", "dashboard": "beauftragt", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "empiria": "bestand", "sichtbar": "bestand", "ms": "bestand"};
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
@@ -1135,15 +1126,40 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       return [x, y + r.height / 2];
     }
 
+    /* Zwei Linienarten. Geschwungen laeuft weicher, eckig liest sich wie
+       ein Stromlaufplan: nur senkrecht und waagerecht, dazwischen ein Knie
+       mit kleinem Radius. Eckig ist bei vielen parallelen Leitungen
+       klarer, weil gleiche Wege sich decken statt sich zu faechern. */
     function pfad(a, b, quer) {
-      if (quer) {
-        var mx = (a[0] + b[0]) / 2;
-        return 'M' + a[0] + ',' + a[1] + 'C' + mx + ',' + a[1] +
-               ' ' + mx + ',' + b[1] + ' ' + b[0] + ',' + b[1];
+      if (plan.dataset.linien === 'eckig') {
+        var r = 8;
+        if (quer) {
+          var mx = (a[0] + b[0]) / 2;
+          var sx = b[1] > a[1] ? 1 : -1;
+          if (Math.abs(b[1] - a[1]) < 2) return 'M' + a[0] + ',' + a[1] + 'L' + b[0] + ',' + b[1];
+          return 'M' + a[0] + ',' + a[1] + 'H' + (mx - r) +
+                 'Q' + mx + ',' + a[1] + ' ' + mx + ',' + (a[1] + r * sx) +
+                 'V' + (b[1] - r * sx) +
+                 'Q' + mx + ',' + b[1] + ' ' + (mx + r) + ',' + b[1] +
+                 'H' + b[0];
+        }
+        var my = (a[1] + b[1]) / 2;
+        var sy = b[0] > a[0] ? 1 : -1;
+        if (Math.abs(b[0] - a[0]) < 2) return 'M' + a[0] + ',' + a[1] + 'L' + b[0] + ',' + b[1];
+        return 'M' + a[0] + ',' + a[1] + 'V' + (my - r) +
+               'Q' + a[0] + ',' + my + ' ' + (a[0] + r * sy) + ',' + my +
+               'H' + (b[0] - r * sy) +
+               'Q' + b[0] + ',' + my + ' ' + b[0] + ',' + (my + r) +
+               'V' + b[1];
       }
-      var my = (a[1] + b[1]) / 2;
-      return 'M' + a[0] + ',' + a[1] + 'C' + a[0] + ',' + my +
-             ' ' + b[0] + ',' + my + ' ' + b[0] + ',' + b[1];
+      if (quer) {
+        var mx2 = (a[0] + b[0]) / 2;
+        return 'M' + a[0] + ',' + a[1] + 'C' + mx2 + ',' + a[1] +
+               ' ' + mx2 + ',' + b[1] + ' ' + b[0] + ',' + b[1];
+      }
+      var my2 = (a[1] + b[1]) / 2;
+      return 'M' + a[0] + ',' + a[1] + 'C' + a[0] + ',' + my2 +
+             ' ' + b[0] + ',' + my2 + ' ' + b[0] + ',' + b[1];
     }
 
     function zeichnen() {
@@ -1183,16 +1199,20 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                      '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d + '"/>');
           return;
         }
-        var quer = richtung === 'rechts';
+        /* Welche Kante genommen wird, entscheidet die Lage der beiden
+           Kaesten zueinander, nicht die Leserichtung des Plans. Stehen sie
+           nebeneinander, tritt die Leitung seitlich aus - die Geraete
+           links vom Knoten hatten sie sonst unten heraushaengen. */
+        var dx = (nr.left + nr.width / 2) - (vr.left + vr.width / 2);
+        var dy = (nr.top + nr.height / 2) - (vr.top + vr.height / 2);
+        var quer = Math.abs(dx) > Math.abs(dy);
         var a, b;
         if (quer) {
-          /* Die Geraete haengen unter dem Knoten, nicht links davon. */
-          if (nr.left < vr.right && nr.top > vr.bottom) { a = anker(von, 'unten'); b = anker(nach, 'oben'); quer = false; }
-          else if (vr.top > nr.bottom) { a = anker(von, 'oben'); b = anker(nach, 'unten'); quer = false; }
-          else { a = anker(von, 'rechts'); b = anker(nach, 'links'); }
+          a = anker(von, dx > 0 ? 'rechts' : 'links');
+          b = anker(nach, dx > 0 ? 'links' : 'rechts');
         } else {
-          if (Math.abs(vr.top - nr.top) < 8) { a = anker(von, 'rechts'); b = anker(nach, 'links'); quer = true; }
-          else { a = anker(von, 'unten'); b = anker(nach, 'oben'); }
+          a = anker(von, dy > 0 ? 'unten' : 'oben');
+          b = anker(nach, dy > 0 ? 'oben' : 'unten');
         }
         teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
                    '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' +

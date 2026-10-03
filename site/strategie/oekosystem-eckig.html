@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ökosystem &middot; Strang &ndash; empiria</title>
+<title>Ökosystem &middot; Eckig &ndash; empiria</title>
 <meta name="description" content="Schaltplan der Steuerungszentrale: Datenquellen, Ausführungsknoten, Dashboard, Aktionen und die drei Marken.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
@@ -495,14 +495,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <span class="pv-wahl-tag">Darstellung</span>
         <a class="pv-pille" href="/strategie/oekosystem.html">A <small>Bänder</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-verdrahtung.html">B <small>Verdrahtung</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
-        <a class="pv-pille is-aktiv" href="/strategie/oekosystem-strang.html" aria-current="page">C <small>Strang</small></a>
+        <a class="pv-pille is-aktiv" href="/strategie/oekosystem-eckig.html" aria-current="page">B2 <small>Eckig</small></a>
+        <a class="pv-pille" href="/strategie/oekosystem-strang.html">C <small>Strang</small></a>
       </div>
 
       <p class="kicker">Strategie &middot; Entwicklung</p>
       <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
       <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
-        Müller&nbsp;&amp; Ströbel zusammen. Von links nach rechts gelesen wie ein Stromlaufplan: Quellen, Ausführung mit den Geräten darunter, Steuerung, Aktionen, Marken. Auf einen Kasten zeigen hebt seine Leitungen hervor.</p>
+        Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Auf einen Kasten zeigen hebt seine Leitungen hervor. Die Leitungen laufen nur senkrecht und waagerecht.</p>
 
       <div class="oe-marken-zeile">
         <span class="oe-marken-tag">Gilt für</span>
@@ -525,10 +525,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="oe-raum">
 
-        <div class="oe-plan oe-plan--strang" data-richtung="rechts">
+        <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten" data-linien="eckig">
           <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"></svg>
         <div class="oe-gruppe oe-gruppe--quellen">
-          <p class="oe-spalte-tag">Datenquellen</p>
+          <p class="oe-spalte-tag">Datenquellen &middot; was hereinkommt</p>
             <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false">
               <span class="oe-knoten-titel">E-Mail</span>
               <span class="oe-knoten-unter">Outlook 365</span>
@@ -575,15 +575,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
         </div>
-          <div class="oe-mittelspalte">
-        <div class="oe-gruppe oe-gruppe--knoten">
-          <p class="oe-spalte-tag">Ausführung</p>
-            <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
-              <span class="oe-knoten-titel">Ausführungsknoten</span>
-              <span class="oe-knoten-unter">Always-on-MacBook &middot; Claude Code</span>
-              <span class="oe-marke oe-marke--entschieden">entschieden</span>
-            </button>
-        </div>
+          <div class="oe-mittelreihe">
         <div class="oe-gruppe oe-gruppe--geraete">
           <p class="oe-spalte-tag">Eingabegeräte</p>
             <button type="button" class="oe-knoten" data-baustein="macbook" aria-expanded="false">
@@ -602,9 +594,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-marke oe-marke--entschieden">entschieden</span>
             </button>
         </div>
+        <div class="oe-gruppe oe-gruppe--knoten">
+            <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
+              <span class="oe-knoten-titel">Ausführungsknoten</span>
+              <span class="oe-knoten-unter">Always-on-MacBook &middot; Claude Code</span>
+              <span class="oe-marke oe-marke--entschieden">entschieden</span>
+            </button>
+        </div>
           </div>
         <div class="oe-gruppe oe-gruppe--dashboard">
-          <p class="oe-spalte-tag">Steuerung</p>
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
               <span class="oe-knoten-titel">Dashboard</span>
               <span class="oe-knoten-unter">Eigenes Repo &middot; eigenes Vercel-Projekt</span>
@@ -612,7 +610,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             </button>
         </div>
         <div class="oe-gruppe oe-gruppe--aktionen">
-          <p class="oe-spalte-tag">Aktionen</p>
+          <p class="oe-spalte-tag">Aktionen &middot; was herausgeht</p>
             <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false">
               <span class="oe-knoten-titel">Postings</span>
               <span class="oe-knoten-unter">über Buffer</span>
