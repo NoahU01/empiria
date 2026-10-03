@@ -21,7 +21,7 @@ function schneidet(a,b,c,d){
   function kreuz(o,p,q){ return (q[1]-o[1])*(p[0]-o[0]) > (p[1]-o[1])*(q[0]-o[0]); }
   return kreuz(a,c,d)!==kreuz(b,c,d) && kreuz(a,b,c)!==kreuz(a,b,d);
 }
-var seiten=['oekosystem-eckig','oekosystem-gefasst'], z=[], i=0;
+var seiten=['oekosystem'], z=[], i=0;
 function n(){
   if(i>=seiten.length){document.getElementById('o').textContent=z.join('\n');return;}
   var f=document.createElement('iframe');
