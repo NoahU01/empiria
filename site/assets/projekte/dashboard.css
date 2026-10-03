@@ -1009,7 +1009,21 @@
 .vt-falt--grau .fl-ebene { background: #fff; border-color: #e4e1dd; }
 .vt-falt--grau .fl-ebene.is-offen { box-shadow: 0 16px 38px rgba(0,0,0,.06); }
 .vt-falt--grau .fl-kopf:hover { background: #faf9f7; }
-.vt-falt--grau .fl-ebene--werkzeug { background: #faf9f7; }
-.vt-falt--grau .fl-ebene--werkzeug .fl-kopf:hover { background: #f4f2ef; }
+/* Alle drei Ebenen stehen auf Weiss. Der Werkzeugkasten hatte zusaetzlich
+   einen hellen Grund - auf dem ohnehin hellen Seitenhintergrund war das
+   ein Unterschied ohne Aussage. */
+.vt-falt--grau .fl-ebene--werkzeug { background: #fff; }
+.vt-falt--grau .fl-ebene--werkzeug .fl-kopf:hover { background: #faf9f7; }
 .vt-falt--grau .mk--klein { background: #fff; }
 .vt-falt--grau .pj-standzeile { background: #fff; }
+
+/* V5g: die Modulkarten kommen aus V1. Innerhalb der Faltung braucht das
+   Raster seine sechs Zeilen, damit die Kaesten auf einer Linie stehen. */
+.vt-falt--grau .pj-felder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+                            grid-template-rows: repeat(6, auto);
+                            gap: clamp(12px, 1.6vw, 20px); }
+.vt-falt--grau .pj-felder + .pj-standzeile { margin-top: clamp(14px, 1.8vw, 22px); }
+@media (max-width: 900px) {
+  .vt-falt--grau .pj-felder { grid-template-columns: 1fr; grid-template-rows: none; }
+  .vt-falt--grau .pj-feld { grid-row: auto; grid-template-rows: none; }
+}
