@@ -404,15 +404,24 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    sich den Rest, damit der Kasten bis zur Unterkante des Leads traegt. */
 .oe-pult-koerper { flex: 1 1 auto; display: flex; flex-direction: column; }
 .oe-pult-zeile { flex: 1 1 auto; display: grid;
-                 grid-template-columns: 64px minmax(0, 1fr);
-                 align-items: center; gap: 0 10px; padding: 7px 14px; }
+                 grid-template-columns: 70px minmax(0, 1fr);
+                 align-items: center; gap: 0 16px; padding: 7px 14px; }
+/* Die Sicht traegt sechs Pillen in drei Reihen zu zweit, alle gleich breit.
+   Ihr Tag steht oben, weil die Zeile hoch ist - mittig haengt das Wort
+   sonst neben der zweiten Reihe und zeigt auf nichts. */
+.oe-pult-zeile--sicht { align-items: start; }
+.oe-pult-zeile--sicht .oe-pult-tag { padding-top: 6px; }
+.oe-pult-zeile--sicht .oe-pult-feld { display: grid; gap: 6px;
+                                      grid-template-columns: 1fr 1fr; }
+.oe-pult-zeile--sicht .pv-pille { width: 100%; justify-content: center;
+                                  text-align: center; }
 /* Im Kopf steht das Pult in einer schmalen Spalte - die Pillen tragen
    dort eine Nummer kleiner, sonst bricht die Sicht auf fuenf Zeilen um
    und der Kasten wird hoeher als der Text daneben. */
 .oe-pult .pv-pille { padding: 5px 11px; font-size: .78rem; }
-.oe-pult .oe-legende-posten { font-size: .74rem; gap: 6px; }
-.oe-pult .oe-strich { width: 17px; }
-.oe-pult-feld { gap: 6px 11px; }
+.oe-pult .oe-legende-posten { font-size: .71rem; gap: 5px; }
+.oe-pult .oe-strich { width: 14px; }
+.oe-pult-feld { gap: 6px 9px; }
 .oe-pult-zeile + .oe-pult-zeile { border-top: 1px solid #e4e1dd; }
 .oe-pult-tag { font-size: .68rem; letter-spacing: .13em; text-transform: uppercase;
                font-weight: 700; color: var(--grey-50); }
