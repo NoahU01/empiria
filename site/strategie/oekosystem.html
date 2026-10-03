@@ -620,13 +620,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
               <span class="oe-knoten-titel">Intelligenzschicht</span>
               <span class="oe-knoten-unter">Claude Code &middot; läuft auf einem Always-on-MacBook</span>
+              <span class="oe-marke oe-marke--ausfuehrung">Ausführung</span>
             </button>
             </div>
             <div class="oe-leitstandplatz">
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
               <span class="oe-knoten-titel">Dashboard</span>
-              <span class="oe-knoten-unter">Ansichtsebene &middot; Analyse und Entscheidung</span>
-              <span class="oe-marke oe-marke--beauftragt">beauftragt</span>
+              <span class="oe-knoten-unter">Analyse und Entscheidung</span>
+              <span class="oe-marke oe-marke--ansicht">Ansichtsebene</span>
             </button>
             </div>
           </div>
@@ -805,7 +806,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "tools": [
       "Claude Code im Terminal",
       "VS Code",
-      "Leitstand im Browser"
+      "Dashboard im Browser"
     ],
     "schritte": [],
     "offen": []
@@ -814,7 +815,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "satz": "Dieselbe Claude-Code-Sitzung wie am Schreibtisch, nur auf einem anderen Bildschirm. Über Remote Control hängt die App am Always-on-MacBook – das Gespräch läuft weiter, wo es aufgehört hat.",
     "tools": [
       "Claude-App · Remote Control",
-      "Leitstand im Browser"
+      "Dashboard im Browser"
     ],
     "schritte": [],
     "offen": []
@@ -823,7 +824,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "satz": "Im Auto, beim Kunden, zwischendurch: In der Claude-App weiterdiskutieren und am Ende sagen, dass es umgesetzt wird. Ausgeführt wird es auf dem Always-on-MacBook.",
     "tools": [
       "Claude-App · Remote Control",
-      "Leitstand im Browser"
+      "Dashboard im Browser"
     ],
     "schritte": [],
     "offen": []
@@ -1129,13 +1130,13 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   "knoten": {
     "titel": "Intelligenzschicht",
     "unter": "Claude Code &middot; läuft auf einem Always-on-MacBook",
-    "art": "entschieden",
+    "art": "ausfuehrung",
     "band": "Ausführung"
   },
   "dashboard": {
     "titel": "Dashboard",
-    "unter": "Ansichtsebene &middot; Analyse und Entscheidung",
-    "art": "beauftragt",
+    "unter": "Analyse und Entscheidung",
+    "art": "ansicht",
     "band": "Ansicht"
   },
   "postings": {
@@ -1194,7 +1195,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
 };
 
-    var MARKEN = {"zuerst": "next", "entschieden": "entschieden", "beauftragt": "beauftragt", "geplant": "geplant", "fragil": "fragil", "bestand": "besteht"};
+    var MARKEN = {"zuerst": "next", "entschieden": "entschieden", "beauftragt": "beauftragt", "geplant": "geplant", "fragil": "fragil", "bestand": "besteht", "ausfuehrung": "Ausführung", "ansicht": "Ansichtsebene"};
 
     var feld = document.getElementById('oeFeld');
     if (!feld) return;
