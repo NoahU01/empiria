@@ -491,35 +491,55 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="section section--eng">
     <div class="container">
 
-      <div class="pv-wahl" role="group" aria-label="Darstellung des Plans">
-        <span class="pv-wahl-tag">Darstellung</span>
-        <a class="pv-pille is-aktiv" href="/strategie/oekosystem.html" aria-current="page">B <small>Verdrahtung</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
-        <a class="pv-pille" href="/strategie/oekosystem-gefasst.html">B3 <small>Gefasst</small></a>
-      </div>
-
       <p class="kicker">Strategie &middot; Entwicklung</p>
       <h1 class="h-serif oe-titel">Das <span class="hl">Ökosystem</span> auf einen Blick.</h1>
       <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
-        Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Auf einen Kasten zeigen hebt seine Leitungen hervor.</p>
+        Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht.</p>
 
-      <div class="oe-marken-zeile">
-        <span class="oe-marken-tag">Gilt für</span>
-        <button type="button" class="oe-markenknopf" data-baustein="empiria">empiria</button>
-        <button type="button" class="oe-markenknopf" data-baustein="sichtbar">sofort sichtbar</button>
-        <button type="button" class="oe-markenknopf" data-baustein="ms">Müller&nbsp;&amp; Ströbel</button>
-        <span class="oe-marken-satz">Drei Marken, eine Maschine. Was unten herauskommt,
-          zahlt auf alle drei ein.</span>
-      </div>
-
-      <div class="pv-wahl oe-sichten" role="group" aria-label="Sicht auf den Plan">
-        <span class="pv-wahl-tag">Sicht</span>
-        <button type="button" class="pv-pille oe-sicht is-aktiv" data-sicht="alles" aria-pressed="true">Alles</button>
-        <button type="button" class="pv-pille oe-sicht" data-sicht="status" aria-pressed="false">Status</button>
-        <button type="button" class="pv-pille oe-sicht" data-sicht="kritisch" aria-pressed="false">Kritischer Pfad</button>
-        <button type="button" class="pv-pille oe-sicht" data-sicht="naechste" aria-pressed="false">Als Nächstes</button>
-        <button type="button" class="pv-pille oe-sicht" data-sicht="schnell" aria-pressed="false">Schnellster Nutzen</button>
-        <button type="button" class="pv-pille oe-sicht" data-sicht="fragil" aria-pressed="false">Schwache Glieder</button>
+      <div class="oe-pult">
+        <p class="oe-pult-titel">So liest Du den Plan</p>
+        <div class="oe-pult-zeile">
+          <span class="oe-pult-tag">Darstellung</span>
+          <div class="oe-pult-feld">
+          <a class="pv-pille is-aktiv" href="/strategie/oekosystem.html" aria-current="page">B <small>Verdrahtung</small></a>
+          <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
+          <a class="pv-pille" href="/strategie/oekosystem-gefasst.html">B3 <small>Gefasst</small></a>
+          </div>
+        </div>
+        <div class="oe-pult-zeile">
+          <span class="oe-pult-tag">Sicht</span>
+          <div class="oe-pult-feld">
+          <button type="button" class="pv-pille oe-sicht is-aktiv" data-sicht="alles" aria-pressed="true">Alles</button>
+          <button type="button" class="pv-pille oe-sicht" data-sicht="status" aria-pressed="false">Status</button>
+          <button type="button" class="pv-pille oe-sicht" data-sicht="kritisch" aria-pressed="false">Kritischer Pfad</button>
+          <button type="button" class="pv-pille oe-sicht" data-sicht="naechste" aria-pressed="false">Als Nächstes</button>
+          <button type="button" class="pv-pille oe-sicht" data-sicht="schnell" aria-pressed="false">Schnellster Nutzen</button>
+          <button type="button" class="pv-pille oe-sicht" data-sicht="fragil" aria-pressed="false">Schwache Glieder</button>
+          </div>
+        </div>
+        <div class="oe-pult-zeile">
+          <span class="oe-pult-tag">Leitungen</span>
+          <div class="oe-pult-feld">
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--eingerichtet"></i>eingerichtet</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--geplant"></i>geplant</span>
+          <span class="oe-legende-ampel">
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gruen"></i>läuft optimal</span>
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gelb"></i>Optimierung möglich</span>
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--rot"></i>Handlungsbedarf</span>
+          </span>
+          </div>
+        </div>
+        <div class="oe-pult-zeile">
+          <span class="oe-pult-tag">Gilt für</span>
+          <div class="oe-pult-feld">
+          <button type="button" class="pv-pille oe-markenknopf" data-baustein="empiria">empiria</button>
+          <button type="button" class="pv-pille oe-markenknopf" data-baustein="sichtbar">sofort sichtbar</button>
+          <button type="button" class="pv-pille oe-markenknopf" data-baustein="ms">Müller&nbsp;&amp; Ströbel</button>
+          <span class="oe-pult-satz">Drei Marken, eine Maschine. Was unten herauskommt,
+            zahlt auf alle drei ein.</span>
+          </div>
+        </div>
+        <p class="oe-pult-fuss">Auf einen Kasten zeigen hebt seine Leitungen hervor. Ein Klick öffnet rechts, was dahintersteckt.</p>
       </div>
       <p class="oe-sicht-satz" id="oeSichtSatz" hidden></p>
 
@@ -694,18 +714,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </aside>
 
       </div>
-
-        <div class="oe-legende">
-          <span class="oe-legende-tag">Leitungen</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--eingerichtet"></i>eingerichtet</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--geplant"></i>geplant</span>
-          <span class="oe-legende-ampel">
-            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gruen"></i>läuft optimal</span>
-            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gelb"></i>Optimierung möglich</span>
-            <span class="oe-legende-posten"><i class="oe-strich oe-strich--rot"></i>Handlungsbedarf</span>
-          </span>
-          <span class="oe-legende-hinweis">Auf einen Kasten zeigen hebt seine Leitungen hervor.</span>
-        </div>
 
       <p class="oe-stand">Stand des Briefings: 2.&nbsp;Oktober 2026. Diese Seite liegt
         nur im Entwicklungszweig.</p>
@@ -1218,8 +1226,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
     knoten.forEach(function (b) {
       b.addEventListener('click', function () {
-        if (offen === b.dataset.baustein) { schliessen(); return; }
-        zeigen(b.dataset.baustein);
+        var id = b.dataset.baustein;
+        /* Ein Kasten ohne Erklaerung liess vorher die alte Markierung und
+           den alten Infokasten stehen - das sah aus, als haette der Klick
+           nicht gezaehlt. Jetzt raeumt er auf. */
+        if (offen === id || !DETAILS[id] || !KOEPFE[id]) { schliessen(); return; }
+        zeigen(id);
       });
     });
     feld.querySelector('.oe-feld-zu').addEventListener('click', schliessen);

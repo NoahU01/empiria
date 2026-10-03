@@ -323,11 +323,6 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-knoten--geraet:hover { border-color: var(--ink); }
 
 /* ---- Die Legende der Strichstaerken ------------------------------------ */
-.oe-legende { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;
-              margin-top: clamp(16px, 2vw, 24px); padding-top: 14px;
-              border-top: 1px solid #ebe8e5; }
-.oe-legende-tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-                  font-weight: 700; color: var(--grey-50); }
 .oe-legende-posten { display: inline-flex; align-items: center; gap: 8px;
                      font-size: .8rem; color: var(--grey-70); }
 .oe-strich { display: block; width: 26px; height: 0; border-top: 2px solid #cfc9c2; }
@@ -340,8 +335,47 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 /* Die Ampel steht nur in der Legende, wenn die Sicht "Status" laeuft. */
 .oe-legende-ampel { display: none; align-items: center; gap: 8px 20px; }
 .ist-ampel-seite .oe-legende-ampel { display: inline-flex; }
-.ist-ampel-seite .oe-legende > .oe-legende-posten { opacity: .35; }
-.oe-legende-hinweis { margin-left: auto; font-size: .78rem; color: var(--grey-50); }
+.ist-ampel-seite .oe-pult-feld > .oe-legende-posten { opacity: .35; }
+
+/* ---- Das Pult: alles, was den Plan erklaert oder steuert ---------------
+   Darstellung, Sicht, Leitungen und Marken standen vorher an drei Stellen,
+   die Legende sogar unter dem Plan. Sie gehoeren zusammen und vor den
+   Plan - wer ihn liest, hat die Zeichensprache dann schon gesehen. */
+.oe-pult { margin-top: clamp(18px, 2.4vw, 28px);
+           border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+           background: #faf9f7; overflow: hidden; }
+.oe-pult-titel { margin: 0; padding: 11px 18px 10px;
+                 border-bottom: 1px solid #e4e1dd; background: #fff;
+                 font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+                 font-weight: 700; color: var(--grey-50); }
+.oe-pult-zeile { display: grid; grid-template-columns: 104px minmax(0, 1fr);
+                 align-items: center; gap: 0 16px; padding: 9px 18px; }
+.oe-pult-zeile + .oe-pult-zeile { border-top: 1px solid #efece8; }
+.oe-pult-tag { font-size: .68rem; letter-spacing: .13em; text-transform: uppercase;
+               font-weight: 700; color: var(--grey-50); }
+.oe-pult-feld { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 18px; }
+/* Der Grund des Pults ist schon hell - die Pillen heben sich nur ab, wenn
+   sie weiss sind. Die aktive bleibt davon ausgenommen, sonst schlaegt die
+   spaetere Regel die Markierung aus dashboard.css. */
+.oe-pult .pv-pille:not(.is-aktiv) { background: #fff; }
+.oe-pult .pv-pille.is-aktiv { background: var(--ink); border-color: var(--ink);
+                              color: #fff; }
+.oe-pult-satz { margin: 0 0 0 auto; font-size: .82rem; line-height: 1.5;
+                color: var(--grey-50); max-width: 44ch; text-align: right; }
+.oe-pult-fuss { margin: 0; padding: 9px 18px 11px;
+                border-top: 1px solid #e4e1dd;
+                font-size: .78rem; color: var(--grey-50); }
+
+/* Die Marken sind Filter wie die Sichten und tragen deshalb dieselbe
+   Pille - nur die Schrift bleibt die Serife, weil es Namen sind. */
+.oe-markenknopf { font-family: var(--font-serif); font-weight: 700; }
+.oe-markenknopf.is-offen { background: var(--hl); border-color: var(--hl);
+                           color: var(--ink); }
+
+@media (max-width: 800px) {
+  .oe-pult-zeile { grid-template-columns: 1fr; gap: 6px; }
+  .oe-pult-satz { margin-left: 0; text-align: left; }
+}
 
 @media (max-width: 1100px) {
   .oe-plan--strang { grid-template-columns: 1fr; }
@@ -389,33 +423,13 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
   border-radius: 4px; }
 
 /* ---- Sichten: dieselbe Karte, eine andere Frage ------------------------ */
-.oe-sichten { margin-top: clamp(18px, 2.2vw, 26px); margin-bottom: 12px; }
 .oe-sicht { cursor: pointer; font-family: inherit; }
-.oe-sicht-satz { margin: -4px 0 18px; max-width: 84ch; padding: 12px 16px;
+.oe-sicht-satz { margin: 14px 0 0; max-width: 84ch; padding: 12px 16px;
                  background: #faf9f7; border-left: 3px solid var(--ink);
                  border-radius: 0 10px 10px 0;
                  font-size: .92rem; line-height: 1.7; color: var(--grey-70); }
 .oe-knoten.ist-blass { opacity: .25; filter: grayscale(1); }
 .ist-sicht .oe-knoten:not(.ist-blass) { border-color: var(--ink); }
-
-/* ---- Die Marken stehen ueber dem Plan ----------------------------------
-   Sie waren als unterste Reihe im Liniensystem - dort fliesst aber nichts
-   hinein, was man schalten koennte. Sie sind der Rahmen, fuer den das
-   Ganze gilt, und stehen deshalb vor dem Plan. */
-.oe-marken-zeile { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px;
-                   margin-top: clamp(18px, 2.2vw, 26px); padding: 12px 16px;
-                   background: var(--ink); border-radius: 12px; }
-.oe-marken-tag { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-                 font-weight: 700; color: rgba(255,255,255,.5); }
-.oe-markenknopf { appearance: none; -webkit-appearance: none; cursor: pointer;
-                  padding: 6px 14px; border-radius: 999px;
-                  border: 1px solid rgba(255,255,255,.26); background: none;
-                  font-family: var(--font-serif); font-size: .95rem; font-weight: 700;
-                  color: #fff; transition: background-color .15s ease, border-color .15s ease; }
-.oe-markenknopf:hover { background: rgba(255,255,255,.1); border-color: #fff; }
-.oe-markenknopf.is-offen { background: var(--hl); border-color: var(--hl); color: var(--ink); }
-.oe-marken-satz { margin-left: auto; font-size: .84rem; line-height: 1.5;
-                  color: rgba(255,255,255,.6); max-width: 46ch; }
 
 /* Die vierte Reihe im Plan faellt weg, dadurch rutscht alles enger. */
 
