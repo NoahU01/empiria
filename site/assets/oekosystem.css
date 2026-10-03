@@ -251,66 +251,46 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-gruppe { display: grid; gap: 7px; align-content: start; }
 .oe-gruppe .oe-spalte-tag { grid-column: 1 / -1; margin: 0 0 2px 2px; }
 
-/* ---- B "Verdrahtung": von oben nach unten ------------------------------ */
-.oe-plan--verdrahtung { display: grid; gap: clamp(30px, 4vh, 54px); }
-/* Feste Spaltenzahl statt auto-fit: mit minmax(0,1fr) legt auto-fit alle
-   neun Kaesten uebereinander, weil die Mindestbreite null ist. */
-.oe-plan--verdrahtung .oe-gruppe--quellen { grid-template-columns: repeat(9, minmax(0, 1fr));
-                                            gap: 8px; }
-/* Drei Spalten: Geraete links, Knoten in der Mitte des Plans, rechts
-   bleibt frei. Mit zwei Spalten sass der Knoten in der rechten Haelfte
-   und wirkte wie eine Nebensache - er ist der zentrale Punkt. */
+/* ---- B "Verdrahtung": eine Zeile je Ebene -------------------------------
+   Die Quellen liegen in einem Raster aus neun Spalten und drei Zeilen.
+   Wer auf einer Quelle aufsitzt, steht in derselben Spalte eine Zeile
+   tiefer - dadurch laeuft seine Leitung senkrecht nach unten und kreuzt
+   keine andere. Das war der Fehler der ersten Fassung: Die Ebenen waren
+   benannt, aber alle Kaesten standen in einer Reihe. Eine Querverbindung
+   zwischen Nachbarn liest niemand als "greift darauf zu". */
+.oe-plan--verdrahtung { display: grid; gap: clamp(52px, 7vh, 88px); }
+.oe-quellen { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr));
+              grid-template-rows: auto auto auto;
+              gap: clamp(26px, 3.4vh, 44px) 8px; position: relative; z-index: 1; }
+/* Die Beschriftung steht vor dem Raster, nicht darin - als Rasterkind
+   belegte sie eine vierte Zeile und riss den Abstand zum Knoten auf. */
+.oe-abschnitt { position: relative; z-index: 1; }
+.oe-abschnitt .oe-spalte-tag { margin: 0 0 9px 2px; }
+.oe-quellen .oe-knoten { align-self: start; }
+
+/* Die Mittelreihe: Geraete ganz links, der Knoten in der Mitte des Plans. */
 .oe-plan--verdrahtung .oe-mittelreihe { display: grid;
                                         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
                                         gap: clamp(24px, 4vw, 60px); align-items: center;
                                         position: relative; z-index: 1; }
-.oe-plan--verdrahtung .oe-gruppe--geraete { justify-self: end; }
-.oe-plan--verdrahtung .oe-gruppe--knoten { grid-column: 2; }
-/* Die drei Geraete stehen untereinander. Nebeneinander lief die Leitung
-   des linken quer durch die beiden anderen Kaesten. */
-.oe-plan--verdrahtung .oe-gruppe--geraete { grid-template-columns: minmax(0, 1fr);
-                                            gap: 7px; max-width: 260px; }
-.oe-plan--verdrahtung .oe-gruppe--knoten,
-.oe-plan--verdrahtung .oe-gruppe--dashboard { justify-items: center; }
-.oe-plan--verdrahtung .oe-gruppe--knoten .oe-knoten--gross,
-.oe-plan--verdrahtung .oe-gruppe--dashboard .oe-knoten--gross { max-width: 320px; }
-.oe-plan--verdrahtung .oe-gruppe--aktionen { grid-template-columns: repeat(5, minmax(0, 1fr));
-                                             gap: 8px; }
-.oe-plan--verdrahtung .oe-gruppe--marken { grid-template-columns: repeat(3, minmax(0, 1fr));
-                                           gap: 8px; }
-.oe-plan--verdrahtung .oe-gruppe--marken .oe-knoten { background: var(--ink); color: #fff;
-                                                      border-color: var(--ink); }
-.oe-plan--verdrahtung .oe-gruppe--marken .oe-knoten-unter { color: rgba(255,255,255,.6); }
-.oe-plan--verdrahtung .oe-gruppe--marken .oe-marke--bestand { color: rgba(255,255,255,.65);
-                                          box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
-.oe-plan--verdrahtung .oe-gruppe--marken .oe-knoten.is-offen { background: var(--hl);
-                                          border-color: var(--hl); color: var(--ink); }
+.oe-geraete { display: grid; gap: 7px; align-content: center; justify-self: start;
+              max-width: 230px; }
+.oe-knotenplatz { display: flex; justify-content: center; }
+.oe-knotenplatz .oe-knoten--gross { max-width: 330px; }
+.oe-steuerung { display: flex; justify-content: center; position: relative; z-index: 1; }
+.oe-steuerung .oe-knoten--gross { max-width: 330px; }
+.oe-aktionen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;
+               position: relative; z-index: 1; }
 
-/* ---- C "Strang": von links nach rechts --------------------------------- */
-/* Sechs Spalten, nicht fuenf: Quellen, Ausfuehrung, Steuerung, Aktionen,
-   Sammelschiene, Marken. Mit fuenf rutschten die Marken in eine zweite
-   Zeile unter die Quellen und der Plan war nicht mehr zu lesen. */
-.oe-plan--strang { display: grid; align-items: start;
-                   grid-template-columns: minmax(140px, 1fr) minmax(165px, 1.1fr)
-                                          minmax(150px, 1fr) minmax(145px, 1fr)
-                                          26px minmax(135px, .9fr);
-                   gap: clamp(22px, 2.8vw, 40px) clamp(26px, 3.2vw, 52px); }
-.oe-plan--strang .oe-gruppe { gap: 6px; }
-/* Knoten und Dashboard stehen senkrecht in der Mitte, nicht oben buendig
-   mit den Quellen - sie sind die Mitte des Plans, nicht der erste Eintrag
-   einer Liste. */
-.oe-plan--strang .oe-mittelspalte { display: grid; gap: clamp(26px, 3.4vh, 44px);
-                                    align-content: center; align-self: center;
-                                    position: relative; z-index: 1; }
-.oe-plan--strang .oe-gruppe--dashboard { align-self: center; }
-.oe-plan--strang .oe-knoten--gross { max-width: none; }
-.oe-plan--strang .oe-gruppe--marken .oe-knoten { background: var(--ink); color: #fff;
-                                                 border-color: var(--ink); }
-.oe-plan--strang .oe-gruppe--marken .oe-knoten-unter { color: rgba(255,255,255,.6); }
-.oe-plan--strang .oe-gruppe--marken .oe-marke--bestand { color: rgba(255,255,255,.65);
-                                          box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
-.oe-plan--strang .oe-gruppe--marken .oe-knoten.is-offen { background: var(--hl);
-                                          border-color: var(--hl); color: var(--ink); }
+/* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
+   liefern nichts, sie bedienen. Deshalb tragen sie keine Kastenform,
+   sondern eine Pille mit gestricheltem Rand. */
+.oe-knoten--geraet { border-radius: 999px; border-style: dashed; background: #fff;
+                     padding: 7px 16px; }
+.oe-knoten--geraet .oe-knoten-unter { display: none; }
+.oe-knoten--geraet .oe-marke { background: none; color: var(--grey-50);
+                               box-shadow: inset 0 0 0 1px #ddd8d2; margin-top: 2px; }
+.oe-knoten--geraet:hover { border-style: solid; }
 
 /* ---- Die Legende der Strichstaerken ------------------------------------ */
 .oe-legende { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;
@@ -400,5 +380,19 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
                   color: rgba(255,255,255,.6); max-width: 46ch; }
 
 /* Die vierte Reihe im Plan faellt weg, dadurch rutscht alles enger. */
-.oe-plan--strang { grid-template-columns: minmax(150px, 1fr) minmax(175px, 1.15fr)
-                                          minmax(160px, 1fr) minmax(155px, 1fr); }
+
+
+/* ---- C "Strang": eine Spalte je Ebene ----------------------------------
+   Beim Umbau der Quellenseite ist die Spaltenregel verlorengegangen und
+   der Plan lief als eine Spalte ueber die ganze Breite. Fuenf Spalten:
+   Quellen, die Werkzeuge darauf, Ausfuehrung mit den Geraeten darunter,
+   Steuerung, Aktionen. */
+.oe-plan--strang { display: grid; align-items: center;
+                   grid-template-columns: minmax(135px, 1fr) minmax(150px, 1.05fr)
+                                          minmax(165px, 1.1fr) minmax(150px, 1fr)
+                                          minmax(140px, 1fr);
+                   gap: clamp(20px, 2.6vw, 34px) clamp(30px, 3.6vw, 58px); }
+.oe-plan--strang .oe-gruppe { align-self: start; }
+.oe-plan--strang .oe-gruppe--dashboard { align-self: center; }
+.oe-plan--strang .oe-mittelspalte { align-self: center; }
+.oe-plan--strang .oe-knoten { align-self: auto; }

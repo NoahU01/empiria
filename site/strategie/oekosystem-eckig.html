@@ -527,90 +527,118 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten" data-linien="eckig">
           <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"></svg>
-        <div class="oe-gruppe oe-gruppe--quellen">
-          <p class="oe-spalte-tag">Datenquellen &middot; was hereinkommt</p>
-            <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false">
+
+          <div class="oe-abschnitt">
+            <p class="oe-spalte-tag">Quellen und die Werkzeuge, die darauf zugreifen</p>
+            <div class="oe-quellen">
+            <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false" style="grid-column: 1; grid-row: 1;">
               <span class="oe-knoten-titel">E-Mail</span>
               <span class="oe-knoten-unter">Outlook 365</span>
               <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
             </button>
-            <button type="button" class="oe-knoten" data-baustein="homepages" aria-expanded="false">
-              <span class="oe-knoten-titel">Homepages</span>
-              <span class="oe-knoten-unter">Drei Marken</span>
-              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="analytics" aria-expanded="false">
-              <span class="oe-knoten-titel">Analytics</span>
-              <span class="oe-knoten-unter">Google</span>
-              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="search" aria-expanded="false">
-              <span class="oe-knoten-titel">Search Console</span>
-              <span class="oe-knoten-unter">Google</span>
-              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false">
-              <span class="oe-knoten-titel">LinkedIn</span>
-              <span class="oe-knoten-unter">Profil &amp; Sales Navigator</span>
-              <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="social" aria-expanded="false">
-              <span class="oe-knoten-titel">Social Media</span>
-              <span class="oe-knoten-unter">Alle Kanäle</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false">
+            <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false" style="grid-column: 2; grid-row: 1;">
               <span class="oe-knoten-titel">Nextcloud</span>
-              <span class="oe-knoten-unter">IONOS-Hosting</span>
+              <span class="oe-knoten-unter">Ablage bei IONOS</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
-            <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false">
+            <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false" style="grid-column: 3; grid-row: 1;">
               <span class="oe-knoten-titel">Dateisystem</span>
               <span class="oe-knoten-unter">Finder auf dem Mac</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
-            <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false">
+            <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false" style="grid-column: 4; grid-row: 1;">
               <span class="oe-knoten-titel">Chrome</span>
               <span class="oe-knoten-unter">Recherche im Netz</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
-        </div>
+            <button type="button" class="oe-knoten" data-baustein="homepages" aria-expanded="false" style="grid-column: 5 / 7; grid-row: 1;">
+              <span class="oe-knoten-titel">Homepages</span>
+              <span class="oe-knoten-unter">Drei Marken</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false" style="grid-column: 7; grid-row: 1;">
+              <span class="oe-knoten-titel">LinkedIn</span>
+              <span class="oe-knoten-unter">Profil und Netzwerk</span>
+              <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="facebook" aria-expanded="false" style="grid-column: 8; grid-row: 1;">
+              <span class="oe-knoten-titel">Facebook</span>
+              <span class="oe-knoten-unter">Seite</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="instagram" aria-expanded="false" style="grid-column: 9; grid-row: 1;">
+              <span class="oe-knoten-titel">Instagram</span>
+              <span class="oe-knoten-unter">Konto</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="analytics" aria-expanded="false" style="grid-column: 5; grid-row: 2;">
+              <span class="oe-knoten-titel">Google Analytics</span>
+              <span class="oe-knoten-unter">liest die Homepages</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="search" aria-expanded="false" style="grid-column: 6; grid-row: 2;">
+              <span class="oe-knoten-titel">Search Console</span>
+              <span class="oe-knoten-unter">liest die Homepages</span>
+              <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="salesnav" aria-expanded="false" style="grid-column: 7; grid-row: 2;">
+              <span class="oe-knoten-titel">Sales Navigator</span>
+              <span class="oe-knoten-unter">liest LinkedIn</span>
+              <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="buffer" aria-expanded="false" style="grid-column: 8 / 10; grid-row: 2;">
+              <span class="oe-knoten-titel">Buffer</span>
+              <span class="oe-knoten-unter">spielt aus und liest zurück</span>
+              <span class="oe-marke oe-marke--geplant">geplant</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="helper" aria-expanded="false" style="grid-column: 7; grid-row: 3;">
+              <span class="oe-knoten-titel">Linked Helper</span>
+              <span class="oe-knoten-unter">arbeitet auf dem Sales Navigator</span>
+              <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
+            </button>
+            </div>
+          </div>
+
           <div class="oe-mittelreihe">
-        <div class="oe-gruppe oe-gruppe--geraete">
-          <p class="oe-spalte-tag">Eingabegeräte</p>
-            <button type="button" class="oe-knoten" data-baustein="macbook" aria-expanded="false">
-              <span class="oe-knoten-titel">Haupt-MacBook</span>
-              <span class="oe-knoten-unter">Büro und unterwegs</span>
-              <span class="oe-marke oe-marke--entschieden">entschieden</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="ipad" aria-expanded="false">
-              <span class="oe-knoten-titel">iPad</span>
-              <span class="oe-knoten-unter">Zwei Geräte</span>
-              <span class="oe-marke oe-marke--entschieden">entschieden</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="iphone" aria-expanded="false">
-              <span class="oe-knoten-titel">iPhone</span>
-              <span class="oe-knoten-unter">Unterwegs</span>
-              <span class="oe-marke oe-marke--entschieden">entschieden</span>
-            </button>
-        </div>
-        <div class="oe-gruppe oe-gruppe--knoten">
+            <div class="oe-geraete">
+              <p class="oe-spalte-tag">Eingabegeräte</p>
+              <button type="button" class="oe-knoten oe-knoten--geraet" data-baustein="macbook" aria-expanded="false">
+                <span class="oe-knoten-titel">Haupt-MacBook</span>
+                <span class="oe-knoten-unter">Büro und unterwegs</span>
+                <span class="oe-marke oe-marke--entschieden">entschieden</span>
+              </button>
+              <button type="button" class="oe-knoten oe-knoten--geraet" data-baustein="ipad" aria-expanded="false">
+                <span class="oe-knoten-titel">iPad</span>
+                <span class="oe-knoten-unter">Zwei Geräte</span>
+                <span class="oe-marke oe-marke--entschieden">entschieden</span>
+              </button>
+              <button type="button" class="oe-knoten oe-knoten--geraet" data-baustein="iphone" aria-expanded="false">
+                <span class="oe-knoten-titel">iPhone</span>
+                <span class="oe-knoten-unter">Unterwegs</span>
+                <span class="oe-marke oe-marke--entschieden">entschieden</span>
+              </button>
+            </div>
+            <div class="oe-knotenplatz">
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="knoten" aria-expanded="false">
               <span class="oe-knoten-titel">Ausführungsknoten</span>
               <span class="oe-knoten-unter">Always-on-MacBook &middot; Claude Code</span>
               <span class="oe-marke oe-marke--entschieden">entschieden</span>
             </button>
-        </div>
+            </div>
+            <div></div>
           </div>
-        <div class="oe-gruppe oe-gruppe--dashboard">
+
+          <div class="oe-steuerung">
             <button type="button" class="oe-knoten oe-knoten--gross" data-baustein="dashboard" aria-expanded="false">
               <span class="oe-knoten-titel">Dashboard</span>
               <span class="oe-knoten-unter">Eigenes Repo &middot; eigenes Vercel-Projekt</span>
               <span class="oe-marke oe-marke--beauftragt">beauftragt</span>
             </button>
-        </div>
-        <div class="oe-gruppe oe-gruppe--aktionen">
-          <p class="oe-spalte-tag">Aktionen &middot; was herausgeht</p>
+          </div>
+
+          <div class="oe-abschnitt">
+            <p class="oe-spalte-tag">Aktionen &middot; was herausgeht</p>
+            <div class="oe-aktionen">
             <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false">
               <span class="oe-knoten-titel">Postings</span>
               <span class="oe-knoten-unter">über Buffer</span>
@@ -636,7 +664,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-unter">je Kundenprojekt</span>
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
-        </div>
+            </div>
+          </div>
         </div>
 
         <aside class="oe-feld" id="oeFeld">
@@ -703,7 +732,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "offen": []
   },
   "analytics": {
-    "satz": "Zeigt, welche Seiten gelesen werden und wo Besucher abspringen.",
+    "satz": "Google Analytics liest die Homepages aus: welche Seiten gelesen werden und wo Besucher abspringen.",
     "tools": [
       "Google Analytics"
     ],
@@ -713,7 +742,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "offen": []
   },
   "search": {
-    "satz": "Zeigt, mit welchen Suchanfragen Menschen auf die Seiten kommen – die Sprache der Zielgruppe im Original.",
+    "satz": "Die Search Console liest die Homepages aus: mit welchen Suchanfragen Menschen auf die Seiten kommen – die Sprache der Zielgruppe im Original.",
     "tools": [
       "Google Search Console"
     ],
@@ -723,19 +752,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "offen": []
   },
   "linkedin": {
-    "satz": "Hier liegen die Zielkunden und ihre Signale. Technisch ist das zusammen mit WhatsApp das schwächste Glied: saubere Schnittstellen gibt es nicht.",
+    "satz": "Das Netzwerk, in dem die Zielkunden sitzen. Zugegriffen wird nicht direkt, sondern über den Sales Navigator und über Buffer.",
     "tools": [
-      "LinkedIn-Profil",
-      "Sales Navigator"
+      "LinkedIn-Profil"
     ],
     "schritte": [
       "Benachrichtigung bei Posts von Zielkunden, dazu Antwortvorschläge"
     ],
     "offen": [
-      "Vollautomatisch wird das nie laufen – kein Showstopper, aber dauerhaft Handarbeit"
+      "Zusammen mit WhatsApp das schwächste Glied: keine saubere Schnittstelle"
     ]
   },
-  "social": {
+  "social_alt_unbenutzt": {
     "satz": "Alle weiteren Kanäle, auf denen die Marken sichtbar sind.",
     "tools": [
       "Buffer als gemeinsame Ausspielstelle"
@@ -904,6 +932,56 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "tools": [],
     "schritte": [],
     "offen": []
+  },
+  "facebook": {
+    "satz": "Die Seite der Marken auf Facebook. Gelesen und bespielt wird sie über Buffer, nicht direkt.",
+    "tools": [
+      "Buffer"
+    ],
+    "schritte": [],
+    "offen": []
+  },
+  "instagram": {
+    "satz": "Das Konto auf Instagram. Gelesen und bespielt wird es über Buffer.",
+    "tools": [
+      "Buffer"
+    ],
+    "schritte": [],
+    "offen": []
+  },
+  "salesnav": {
+    "satz": "Der Sales Navigator sitzt auf LinkedIn und ist dort das ausführende Werkzeug: Er findet Zielkunden nach Merkmalen und zeigt ihre Signale.",
+    "tools": [
+      "LinkedIn Sales Navigator"
+    ],
+    "schritte": [
+      "Zielkundenmerkmale festlegen, nach denen gesucht wird"
+    ],
+    "offen": [
+      "Saubere Schnittstelle gibt es nicht – bleibt Handarbeit"
+    ]
+  },
+  "helper": {
+    "satz": "Der Linked Helper setzt auf dem Sales Navigator auf und automatisiert, was dort von Hand liefe.",
+    "tools": [
+      "Linked Helper"
+    ],
+    "schritte": [],
+    "offen": [
+      "Automatisierung auf LinkedIn berührt die Nutzungsbedingungen – das ist vor dem Einsatz zu klären"
+    ]
+  },
+  "buffer": {
+    "satz": "Buffer liegt über allen Social-Kanälen. Es spielt Beiträge aus – und es liefert zurück, was dort passiert ist.",
+    "tools": [
+      "Buffer"
+    ],
+    "schritte": [
+      "Nach der Datenanbindung als erste Automatisierung"
+    ],
+    "offen": [
+      "Welche Kanäle tatsächlich bespielt werden, ist offen"
+    ]
   }
 };
 
@@ -1112,8 +1190,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["mail", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"]];
-    var STAND = {"mail": "zuerst", "homepages": "zuerst", "analytics": "zuerst", "search": "zuerst", "linkedin": "fragil", "social": "geplant", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "knoten": "entschieden", "dashboard": "beauftragt", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "empiria": "bestand", "sichtbar": "bestand", "ms": "bestand"};
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["linkedin", "buffer"], ["facebook", "buffer"], ["instagram", "buffer"], ["salesnav", "helper"], ["mail", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["buffer", "knoten"], ["helper", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"]];
+    var STAND = {"mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "homepages": "zuerst", "linkedin": "fragil", "facebook": "geplant", "instagram": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "buffer": "geplant", "helper": "fragil", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "knoten": "entschieden", "dashboard": "beauftragt"};
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
 
@@ -1130,11 +1208,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
        ein Stromlaufplan: nur senkrecht und waagerecht, dazwischen ein Knie
        mit kleinem Radius. Eckig ist bei vielen parallelen Leitungen
        klarer, weil gleiche Wege sich decken statt sich zu faechern. */
-    function pfad(a, b, quer) {
+    function pfad(a, b, quer, kanal) {
       if (plan.dataset.linien === 'eckig') {
         var r = 8;
+        /* Jede Leitung bekommt ihren eigenen Kanal. Ohne die Staffelung
+           liegen alle waagerechten Teilstuecke auf derselben Hoehe und
+           decken sich - dann sieht man zwar Linien, aber keine Wege. */
+        var v = (kanal % 7) * 11 - 33;
         if (quer) {
-          var mx = (a[0] + b[0]) / 2;
+          var mx = (a[0] + b[0]) / 2 + v;
           var sx = b[1] > a[1] ? 1 : -1;
           if (Math.abs(b[1] - a[1]) < 2) return 'M' + a[0] + ',' + a[1] + 'L' + b[0] + ',' + b[1];
           return 'M' + a[0] + ',' + a[1] + 'H' + (mx - r) +
@@ -1143,7 +1225,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                  'Q' + mx + ',' + b[1] + ' ' + (mx + r) + ',' + b[1] +
                  'H' + b[0];
         }
-        var my = (a[1] + b[1]) / 2;
+        var my = (a[1] + b[1]) / 2 + v;
         var sy = b[0] > a[0] ? 1 : -1;
         if (Math.abs(b[0] - a[0]) < 2) return 'M' + a[0] + ',' + a[1] + 'L' + b[0] + ',' + b[1];
         return 'M' + a[0] + ',' + a[1] + 'V' + (my - r) +
@@ -1168,7 +1250,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       svg.setAttribute('width', p.width);
       svg.setAttribute('height', p.height);
       var teile = [];
-      LEITUNGEN.forEach(function (l) {
+      LEITUNGEN.forEach(function (l, nummer) {
         var von = kasten(l[0]), nach = kasten(l[1]);
         if (!von || !nach) return;
         var vr = von.getBoundingClientRect(), nr = nach.getBoundingClientRect();
@@ -1199,13 +1281,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                      '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d + '"/>');
           return;
         }
-        /* Welche Kante genommen wird, entscheidet die Lage der beiden
-           Kaesten zueinander, nicht die Leserichtung des Plans. Stehen sie
-           nebeneinander, tritt die Leitung seitlich aus - die Geraete
-           links vom Knoten hatten sie sonst unten heraushaengen. */
+        /* Seitlich wird nur angeschlossen, wenn die beiden Kaesten
+           tatsaechlich nebeneinander stehen - also vertikal ueberlappen.
+           Vorher entschied der groessere Abstand, und dadurch lief der
+           Faecher vom Dashboard auf die Flanken der aeusseren Kaesten
+           statt auf ihre Oberkante. */
         var dx = (nr.left + nr.width / 2) - (vr.left + vr.width / 2);
         var dy = (nr.top + nr.height / 2) - (vr.top + vr.height / 2);
-        var quer = Math.abs(dx) > Math.abs(dy);
+        var ueberY = Math.min(vr.bottom, nr.bottom) - Math.max(vr.top, nr.top);
+        var ueberX = Math.min(vr.right, nr.right) - Math.max(vr.left, nr.left);
+        /* Die Eingabegeraete schliessen immer seitlich an: Sie bedienen
+           den Knoten von der Seite, sie liefern nichts von oben. */
+        var quer = (ueberY > 4 && ueberX < 4) || von.classList.contains('oe-knoten--geraet');
         var a, b;
         if (quer) {
           a = anker(von, dx > 0 ? 'rechts' : 'links');
@@ -1216,7 +1303,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         }
         teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
                    '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' +
-                   pfad(a, b, quer) + '"/>');
+                   pfad(a, b, quer, nummer) + '"/>');
       });
       svg.innerHTML = teile.join('');
     }
@@ -1247,7 +1334,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     /* Sichten: dieselbe Karte, eine andere Frage. Die Knoten einer Sicht
        bleiben stehen, alles andere blendet ab - samt der Leitungen, deren
        beide Enden nicht zur Sicht gehoeren. */
-    var SICHTEN = {"kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["analytics", "search", "homepages", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Beides bleibt dauerhaft Handarbeit – kein Showstopper, aber nichts, worauf sich etwas aufbauen lässt.", "knoten": ["linkedin", "kontakte", "social"]}};
+    var SICHTEN = {"kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "kontakte"]}};
     var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
     var satz = document.getElementById('oeSichtSatz');
 
