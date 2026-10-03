@@ -1000,3 +1000,16 @@
             align-items: center; margin-bottom: clamp(14px, 1.8vw, 20px); }
 .fl-modell { margin-top: 0; }
 @media (max-width: 900px) { .fl-logik { grid-template-columns: 1fr; } }
+
+/* ---- V5g: dieselbe Faltung auf hellem Grund ----------------------------
+   Wie in der Tool-Fassung traegt die Seite den Papierton des Hauses, die
+   Kaesten bleiben weiss. Dadurch heben sie sich ab, statt auf Weiss in
+   Weiss zu stehen. Mehr unterscheidet V5g nicht von V5. */
+.vt-falt--grau { background: #f4f2ef; }
+.vt-falt--grau .fl-ebene { background: #fff; border-color: #e4e1dd; }
+.vt-falt--grau .fl-ebene.is-offen { box-shadow: 0 16px 38px rgba(0,0,0,.06); }
+.vt-falt--grau .fl-kopf:hover { background: #faf9f7; }
+.vt-falt--grau .fl-ebene--werkzeug { background: #faf9f7; }
+.vt-falt--grau .fl-ebene--werkzeug .fl-kopf:hover { background: #f4f2ef; }
+.vt-falt--grau .mk--klein { background: #fff; }
+.vt-falt--grau .pj-standzeile { background: #fff; }
