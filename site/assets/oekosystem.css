@@ -253,14 +253,18 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 
 /* ---- B "Verdrahtung": von oben nach unten ------------------------------ */
 .oe-plan--verdrahtung { display: grid; gap: clamp(30px, 4vh, 54px); }
-.oe-plan--verdrahtung .oe-gruppe--quellen { grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+/* Feste Spaltenzahl statt auto-fit: mit minmax(0,1fr) legt auto-fit alle
+   neun Kaesten uebereinander, weil die Mindestbreite null ist. */
+.oe-plan--verdrahtung .oe-gruppe--quellen { grid-template-columns: repeat(9, minmax(0, 1fr));
                                             gap: 8px; }
 .oe-plan--verdrahtung .oe-mittelreihe { display: grid;
                                         grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
                                         gap: clamp(30px, 5vw, 80px); align-items: center;
                                         position: relative; z-index: 1; }
-.oe-plan--verdrahtung .oe-gruppe--geraete { grid-template-columns: repeat(3, minmax(0, 1fr));
-                                            gap: 8px; }
+/* Die drei Geraete stehen untereinander. Nebeneinander lief die Leitung
+   des linken quer durch die beiden anderen Kaesten. */
+.oe-plan--verdrahtung .oe-gruppe--geraete { grid-template-columns: minmax(0, 1fr);
+                                            gap: 7px; max-width: 260px; }
 .oe-plan--verdrahtung .oe-gruppe--knoten,
 .oe-plan--verdrahtung .oe-gruppe--dashboard { justify-items: center; }
 .oe-plan--verdrahtung .oe-gruppe--knoten .oe-knoten--gross,
@@ -278,11 +282,14 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
                                           border-color: var(--hl); color: var(--ink); }
 
 /* ---- C "Strang": von links nach rechts --------------------------------- */
+/* Sechs Spalten, nicht fuenf: Quellen, Ausfuehrung, Steuerung, Aktionen,
+   Sammelschiene, Marken. Mit fuenf rutschten die Marken in eine zweite
+   Zeile unter die Quellen und der Plan war nicht mehr zu lesen. */
 .oe-plan--strang { display: grid; align-items: start;
-                   grid-template-columns: minmax(150px, 1fr) minmax(170px, 1.15fr)
-                                          minmax(150px, 1fr) minmax(150px, 1fr)
-                                          minmax(140px, .95fr);
-                   gap: clamp(26px, 3.4vw, 54px) clamp(34px, 4.4vw, 76px); }
+                   grid-template-columns: minmax(140px, 1fr) minmax(165px, 1.1fr)
+                                          minmax(150px, 1fr) minmax(145px, 1fr)
+                                          26px minmax(135px, .9fr);
+                   gap: clamp(22px, 2.8vw, 40px) clamp(26px, 3.2vw, 52px); }
 .oe-plan--strang .oe-gruppe { gap: 6px; }
 .oe-plan--strang .oe-mittelspalte { display: grid; gap: clamp(26px, 3.4vh, 44px);
                                     align-content: start; position: relative; z-index: 1; }
@@ -317,3 +324,56 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
   .oe-plan--verdrahtung .oe-gruppe--aktionen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .oe-draehte { display: none; }
 }
+
+/* ---- Luft fuer die Leitungen -------------------------------------------
+   Der Plan stand neben dem Detailfeld und war damit nur 742px breit. Auf
+   dieser Breite liefen neun Zuleitungen und fuenf Abgaenge ineinander. In
+   den verdrahteten Fassungen nimmt der Plan jetzt die volle Breite, und
+   das Detailfeld legt sich beim Klick als Tafel rechts darueber - es
+   verdeckt nur, solange man liest. */
+.oe-raum:has(.oe-plan--verdrahtung), .oe-raum:has(.oe-plan--strang) {
+  grid-template-columns: 1fr; }
+.oe-raum:has(.oe-plan--verdrahtung) .oe-feld,
+.oe-raum:has(.oe-plan--strang) .oe-feld {
+  position: fixed; right: clamp(16px, 2vw, 32px); top: 96px; width: 340px;
+  max-height: calc(100vh - 128px); overflow-y: auto; z-index: 20;
+  box-shadow: 0 24px 60px rgba(0,0,0,.16); }
+.oe-raum:has(.oe-plan--verdrahtung) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))),
+.oe-raum:has(.oe-plan--strang) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))) {
+  display: none; }
+
+/* Mehr Abstand zwischen den Ebenen: die Leitungen brauchen einen Kanal,
+   sonst beruehren sie die Kaesten darueber und darunter. */
+.oe-plan--verdrahtung { gap: clamp(46px, 6vh, 76px); }
+.oe-plan--verdrahtung .oe-mittelreihe { gap: clamp(40px, 6vw, 110px); }
+
+/* Die Sammelschiene: eine Linie, auf die alle Aktionen treffen. */
+.oe-schiene { position: relative; z-index: 1; height: 2px; border-radius: 2px;
+              background: #cfc9c2; margin: 0 clamp(20px, 4vw, 70px); }
+.oe-plan--strang .oe-schiene { width: 2px; height: auto; align-self: stretch;
+                               margin: clamp(14px, 2vh, 26px) 0; justify-self: center; }
+
+/* Die Marken stehen unter der Schiene, nicht direkt unter den Aktionen. */
+.oe-plan--verdrahtung .oe-gruppe--marken { margin-top: clamp(26px, 4vh, 44px); }
+
+/* In C stehen Knoten und Geraete untereinander in einer Spalte, mit Luft
+   dazwischen - sonst stiess die Beschriftung der Geraete an den Knoten. */
+.oe-plan--strang .oe-mittelspalte { gap: clamp(34px, 5vh, 60px); }
+.oe-plan--strang .oe-gruppe--marken { grid-column: 6; }
+
+/* Die Beschriftung der Geraete bekommt einen weissen Grund: in C lief eine
+   Zuleitung genau durch die Schrift. */
+.oe-plan--strang .oe-gruppe--geraete .oe-spalte-tag,
+.oe-plan--verdrahtung .oe-gruppe--geraete .oe-spalte-tag {
+  background: #fff; display: inline-block; padding: 1px 6px; margin-left: 0;
+  border-radius: 4px; }
+
+/* ---- Sichten: dieselbe Karte, eine andere Frage ------------------------ */
+.oe-sichten { margin-top: clamp(18px, 2.2vw, 26px); margin-bottom: 12px; }
+.oe-sicht { cursor: pointer; font-family: inherit; }
+.oe-sicht-satz { margin: -4px 0 18px; max-width: 84ch; padding: 12px 16px;
+                 background: #faf9f7; border-left: 3px solid var(--ink);
+                 border-radius: 0 10px 10px 0;
+                 font-size: .92rem; line-height: 1.7; color: var(--grey-70); }
+.oe-knoten.ist-blass { opacity: .25; filter: grayscale(1); }
+.ist-sicht .oe-knoten:not(.ist-blass) { border-color: var(--ink); }

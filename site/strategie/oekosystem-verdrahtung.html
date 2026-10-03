@@ -487,6 +487,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <p class="lead oe-lead">Eine Steuerungszentrale führt empiria, sofort sichtbar und
         Müller&nbsp;&amp; Ströbel zusammen. Oben die Quellen, in der Mitte die Ausführung, unten die Aktionen. Jede Linie ist eine Leitung: Ihr Strich sagt, wie weit dieser Weg schon steht. Auf einen Kasten zeigen hebt seine Leitungen hervor.</p>
 
+      <div class="pv-wahl oe-sichten" role="group" aria-label="Sicht auf den Plan">
+        <span class="pv-wahl-tag">Sicht</span>
+        <button type="button" class="pv-pille oe-sicht is-aktiv" data-sicht="alles" aria-pressed="true">Alles</button>
+        <button type="button" class="pv-pille oe-sicht" data-sicht="kritisch" aria-pressed="false">Kritischer Pfad</button>
+        <button type="button" class="pv-pille oe-sicht" data-sicht="naechste" aria-pressed="false">Als Nächstes</button>
+        <button type="button" class="pv-pille oe-sicht" data-sicht="schnell" aria-pressed="false">Schnellster Nutzen</button>
+        <button type="button" class="pv-pille oe-sicht" data-sicht="fragil" aria-pressed="false">Schwache Glieder</button>
+      </div>
+      <p class="oe-sicht-satz" id="oeSichtSatz" hidden></p>
+
       <div class="oe-raum">
 
         <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten">
@@ -601,6 +611,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
         </div>
+          <div class="oe-schiene" data-baustein="schiene" aria-hidden="true"></div>
         <div class="oe-gruppe oe-gruppe--marken">
           <p class="oe-spalte-tag">Marken &middot; worauf alles einzahlt</p>
             <button type="button" class="oe-knoten" data-baustein="empiria" aria-expanded="false">
@@ -1092,8 +1103,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     var plan = document.querySelector('.oe-plan');
     var svg = document.getElementById('oeDraehte');
     if (!plan || !svg) return;
+    var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["mail", "knoten"], ["homepages", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "empiria"], ["postings", "sichtbar"], ["postings", "ms"], ["mails", "empiria"], ["mails", "sichtbar"], ["mails", "ms"], ["termine", "empiria"], ["termine", "sichtbar"], ["termine", "ms"], ["kontakte", "empiria"], ["kontakte", "sichtbar"], ["kontakte", "ms"], ["cockpits", "empiria"], ["cockpits", "sichtbar"], ["cockpits", "ms"]];
+    var LEITUNGEN = [["mail", "knoten"], ["homepages", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["linkedin", "knoten"], ["social", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "schiene"], ["mails", "schiene"], ["termine", "schiene"], ["kontakte", "schiene"], ["cockpits", "schiene"], ["schiene", "empiria"], ["schiene", "sichtbar"], ["schiene", "ms"]];
     var STAND = {"mail": "zuerst", "homepages": "zuerst", "analytics": "zuerst", "search": "zuerst", "linkedin": "fragil", "social": "geplant", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "knoten": "entschieden", "dashboard": "beauftragt", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "empiria": "bestand", "sichtbar": "bestand", "ms": "bestand"};
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
@@ -1128,6 +1140,33 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         var von = kasten(l[0]), nach = kasten(l[1]);
         if (!von || !nach) return;
         var vr = von.getBoundingClientRect(), nr = nach.getBoundingClientRect();
+        /* Die Sammelschiene ist breit. Ein Abgang trifft sie dort, wo der
+           Kasten steht - nicht in ihrer Mitte, sonst laufen alle Linien
+           auf denselben Punkt und das Bild wird zum Knoten. */
+        if (l[1] === 'schiene' || l[0] === 'schiene') {
+          var box = l[1] === 'schiene' ? von : nach;
+          var schiene = l[1] === 'schiene' ? nach : von;
+          var br = box.getBoundingClientRect();
+          var sr = schiene.getBoundingClientRect();
+          var p2 = plan.getBoundingClientRect();
+          var d;
+          if (richtung === 'rechts') {
+            /* Waagerechter Abgang: auf der Hoehe des Kastens bis zur
+               Schiene. Senkrecht gezeichnet laege die Linie quer im Bild. */
+            var y = br.top - p2.top + br.height / 2;
+            var xs = sr.left - p2.left + sr.width / 2;
+            var xb = l[1] === 'schiene' ? br.right - p2.left : br.left - p2.left;
+            d = 'M' + xb + ',' + y + 'L' + xs + ',' + y;
+          } else {
+            var x = br.left - p2.left + br.width / 2;
+            var ys = sr.top - p2.top + sr.height / 2;
+            var yb = l[1] === 'schiene' ? br.bottom - p2.top : br.top - p2.top;
+            d = 'M' + x + ',' + yb + 'L' + x + ',' + ys;
+          }
+          teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
+                     '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d + '"/>');
+          return;
+        }
         var quer = richtung === 'rechts';
         var a, b;
         if (quer) {
@@ -1164,8 +1203,55 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     plan.addEventListener('mouseout', function (e) {
       if (e.relatedTarget && plan.contains(e.relatedTarget) &&
           e.relatedTarget.closest('.oe-knoten')) return;
+      if (plan.classList.contains('ist-sicht')) return;
       svg.classList.remove('ist-gefiltert');
       svg.querySelectorAll('path').forEach(function (d) { d.classList.remove('ist-hell'); });
+    });
+
+    /* Sichten: dieselbe Karte, eine andere Frage. Die Knoten einer Sicht
+       bleiben stehen, alles andere blendet ab - samt der Leitungen, deren
+       beide Enden nicht zur Sicht gehoeren. */
+    var SICHTEN = {"kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["analytics", "search", "homepages", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Beides bleibt dauerhaft Handarbeit – kein Showstopper, aber nichts, worauf sich etwas aufbauen lässt.", "knoten": ["linkedin", "kontakte", "social"]}};
+    var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
+    var satz = document.getElementById('oeSichtSatz');
+
+    function sichtSetzen(name) {
+      pillen.forEach(function (b) {
+        var an = b.dataset.sicht === name;
+        b.classList.toggle('is-aktiv', an);
+        b.setAttribute('aria-pressed', an ? 'true' : 'false');
+      });
+      var s = SICHTEN[name];
+      plan.classList.toggle('ist-sicht', !!s);
+      svg.classList.toggle('ist-gefiltert', !!s);
+      if (satz) {
+        satz.hidden = !s;
+        if (s) satz.textContent = s.satz;
+      }
+      var menge = s ? s.knoten : null;
+      knoten.forEach(function (b) {
+        b.classList.toggle('ist-blass', !!menge && menge.indexOf(b.dataset.baustein) < 0);
+      });
+      svg.querySelectorAll('path').forEach(function (d) {
+        var dran = !!menge && menge.indexOf(d.dataset.von) > -1 &&
+                   (menge.indexOf(d.dataset.nach) > -1 || d.dataset.nach === 'schiene');
+        d.classList.toggle('ist-hell', dran);
+      });
+    }
+
+    pillen.forEach(function (b) {
+      b.addEventListener('click', function () {
+        sichtSetzen(b.classList.contains('is-aktiv') ? 'alles' : b.dataset.sicht);
+      });
+    });
+
+    /* Ein Klick neben die Kaesten loest die Markierung wieder - man soll
+       nicht denselben Kasten noch einmal treffen muessen. */
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.oe-knoten') || e.target.closest('.oe-feld') ||
+          e.target.closest('.oe-sicht') || e.target.closest('.pv-wahl')) return;
+      var offener = plan.querySelector('.oe-knoten.is-offen');
+      if (offener) offener.click();
     });
   })();
   </script>
