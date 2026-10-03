@@ -517,6 +517,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="pv-wahl oe-sichten" role="group" aria-label="Sicht auf den Plan">
         <span class="pv-wahl-tag">Sicht</span>
         <button type="button" class="pv-pille oe-sicht is-aktiv" data-sicht="alles" aria-pressed="true">Alles</button>
+        <button type="button" class="pv-pille oe-sicht" data-sicht="status" aria-pressed="false">Status</button>
         <button type="button" class="pv-pille oe-sicht" data-sicht="kritisch" aria-pressed="false">Kritischer Pfad</button>
         <button type="button" class="pv-pille oe-sicht" data-sicht="naechste" aria-pressed="false">Als Nächstes</button>
         <button type="button" class="pv-pille oe-sicht" data-sicht="schnell" aria-pressed="false">Schnellster Nutzen</button>
@@ -527,7 +528,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="oe-raum">
 
         <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten">
-          <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"><defs><marker id="oePunktCyan" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5"><circle cx="4" cy="4" r="3" fill="#0B9FBD"/></marker></defs></svg>
+          <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"><defs><marker id="oePunktCyan" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5"><circle cx="4" cy="4" r="3" fill="#b8b2ab"/></marker></defs></svg>
 
           <div class="oe-abschnitt">
             <p class="oe-spalte-tag">Quellen und die Werkzeuge, die darauf zugreifen</p>
@@ -545,12 +546,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <button type="button" class="oe-knoten" data-baustein="instagram" aria-expanded="false" style="grid-column: 4; grid-row: 1;">
               <span class="oe-knoten-titel">Instagram</span>
               <span class="oe-knoten-unter">Konto</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="facebook" aria-expanded="false" style="grid-column: 5; grid-row: 1;">
               <span class="oe-knoten-titel">Facebook</span>
               <span class="oe-knoten-unter">Seite</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false" style="grid-column: 6; grid-row: 1;">
               <span class="oe-knoten-titel">E-Mail</span>
@@ -560,17 +559,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false" style="grid-column: 7; grid-row: 1;">
               <span class="oe-knoten-titel">Nextcloud</span>
               <span class="oe-knoten-unter">Ablage bei IONOS</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false" style="grid-column: 8; grid-row: 1;">
               <span class="oe-knoten-titel">Dateisystem</span>
               <span class="oe-knoten-unter">Finder auf dem Mac</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false" style="grid-column: 9; grid-row: 1;">
               <span class="oe-knoten-titel">Chrome</span>
               <span class="oe-knoten-unter">Recherche im Netz</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="analytics" aria-expanded="false" style="grid-column: 1; grid-row: 2;">
               <span class="oe-knoten-titel">Google Analytics</span>
@@ -627,7 +623,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <button type="button" class="oe-knoten oe-knoten--speicher" data-baustein="kontakte_db" aria-expanded="false">
               <span class="oe-knoten-titel">Kontaktdatenbank</span>
               <span class="oe-knoten-unter">Kontakte und Bestandskunden &middot; wird gelesen und beschrieben</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             </div>
           </div>
@@ -646,48 +641,39 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             <button type="button" class="oe-knoten" data-baustein="postings" aria-expanded="false" style="grid-column: 1 / 4; grid-row: 1;">
               <span class="oe-knoten-titel">Postings</span>
               <span class="oe-knoten-unter">Beiträge für die Kanäle</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="buffer" aria-expanded="false" style="grid-column: 1 / 4; grid-row: 2;">
               <span class="oe-knoten-titel">Buffer</span>
               <span class="oe-knoten-unter">spielt aus und liest zurück</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="aus_linkedin" aria-expanded="false" style="grid-column: 1; grid-row: 3;">
               <span class="oe-knoten-titel">LinkedIn</span>
               <span class="oe-knoten-unter">Profil und Netzwerk</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="aus_instagram" aria-expanded="false" style="grid-column: 2; grid-row: 3;">
               <span class="oe-knoten-titel">Instagram</span>
               <span class="oe-knoten-unter">Konto</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <button type="button" class="oe-knoten" data-baustein="aus_facebook" aria-expanded="false" style="grid-column: 3; grid-row: 3;">
               <span class="oe-knoten-titel">Facebook</span>
               <span class="oe-knoten-unter">Seite</span>
-              <span class="oe-marke oe-marke--geplant">geplant</span>
             </button>
             <div class="oe-aktionen-rest">
               <button type="button" class="oe-knoten" data-baustein="mails" aria-expanded="false">
                 <span class="oe-knoten-titel">E-Mails</span>
                 <span class="oe-knoten-unter">Entwürfe und Antworten</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
               </button>
               <button type="button" class="oe-knoten" data-baustein="termine" aria-expanded="false">
                 <span class="oe-knoten-titel">Terminplanung</span>
                 <span class="oe-knoten-unter">im Sparring</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
               </button>
               <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false">
                 <span class="oe-knoten-titel">Kontaktpflege</span>
                 <span class="oe-knoten-unter">Frequenz je Person</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
               </button>
               <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false">
                 <span class="oe-knoten-titel">Projekt-Cockpits</span>
                 <span class="oe-knoten-unter">je Kundenprojekt</span>
-                <span class="oe-marke oe-marke--geplant">geplant</span>
               </button>
             </div>
             </div>
@@ -713,11 +699,13 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
         <div class="oe-legende">
           <span class="oe-legende-tag">Leitungen</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--entschieden"></i>entschieden</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--beauftragt"></i>beauftragt</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--zuerst"></i>zuerst dran</span>
+          <span class="oe-legende-posten"><i class="oe-strich oe-strich--eingerichtet"></i>eingerichtet</span>
           <span class="oe-legende-posten"><i class="oe-strich oe-strich--geplant"></i>geplant</span>
-          <span class="oe-legende-posten"><i class="oe-strich oe-strich--fragil"></i>schwaches Glied</span>
+          <span class="oe-legende-ampel">
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gruen"></i>läuft optimal</span>
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--gelb"></i>Optimierung möglich</span>
+            <span class="oe-legende-posten"><i class="oe-strich oe-strich--rot"></i>Handlungsbedarf</span>
+          </span>
           <span class="oe-legende-hinweis">Auf einen Kasten zeigen hebt seine Leitungen hervor.</span>
         </div>
 
@@ -1255,7 +1243,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
     var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["nextcloud", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "kontakte_db", "beide"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var STAND = {"homepages": "zuerst", "linkedin": "fragil", "instagram": "geplant", "facebook": "geplant", "mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "helper": "fragil", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "buffer": "geplant", "aus_linkedin": "geplant", "aus_instagram": "geplant", "aus_facebook": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "knoten": "entschieden", "dashboard": "beauftragt", "kontakte_db": "geplant", "schiene": "zuerst"};
+    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "nextcloud>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "eingerichtet", "ipad>knoten": "eingerichtet", "iphone>knoten": "eingerichtet", "knoten>kontakte_db": "geplant", "knoten>dashboard": "geplant", "dashboard>postings": "geplant", "dashboard>mails": "geplant", "dashboard>termine": "geplant", "dashboard>kontakte": "geplant", "dashboard>cockpits": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
+    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "nextcloud>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "gruen", "ipad>knoten": "gruen", "iphone>knoten": "gruen", "knoten>kontakte_db": "rot", "knoten>dashboard": "rot", "dashboard>postings": "rot", "dashboard>mails": "rot", "dashboard>termine": "rot", "dashboard>kontakte": "rot", "dashboard>cockpits": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
+
+    /* Die Klasse einer Leitung: ihr Zustand, nicht der Stand des Kastens
+       an ihrem Ende. Die Ampel kommt als zweite Klasse dazu und wird nur
+       in der Sicht "Status" sichtbar. */
+    function klasse(l) {
+      var k = l[0] + '>' + l[1];
+      return 'oe-draht oe-draht--' + (ZUSTAND[k] || 'geplant') +
+             ' oe-ampel--' + (AMPEL[k] || 'rot') +
+             (l[2] === 'beide' ? ' oe-draht--beide' : '');
+    }
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
 
@@ -1359,8 +1358,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             var yb = l[1] === 'schiene' ? box.bottom - p3.top : box.top - p3.top;
             d2 = 'M' + xx + ',' + yb + 'L' + xx + ',' + ys;
           }
-          teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
-                     '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d2 + '"/>');
+          teile.push('<path class="' + klasse(l) + '" data-von="' + l[0] +
+                     '" data-nach="' + l[1] + '" d="' + d2 + '"/>');
           return;
         }
         var ueberY = Math.min(vr.bottom, nr.bottom) - Math.max(vr.top, nr.top);
@@ -1386,9 +1385,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                  m = sammel[l[1]].mitteY; }
         }
         var d = eckig ? pfadEckig(a, b, quer, m) : pfadWeich(a, b, quer, m);
-        teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
-                   (kante === 'beide' ? ' oe-draht--beide' : '') +
-                   '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d + '"/>');
+        teile.push('<path class="' + klasse(l) + '" data-von="' + l[0] +
+                   '" data-nach="' + l[1] + '" d="' + d + '"/>');
       });
       /* Die Marker-Definition bleibt stehen, nur die Pfade werden neu
          geschrieben. */
@@ -1446,7 +1444,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     /* Sichten: dieselbe Karte, eine andere Frage. Die Knoten einer Sicht
        bleiben stehen, alles andere blendet ab - samt der Leitungen, deren
        beide Enden nicht zur Sicht gehoeren. */
-    var SICHTEN = {"kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "kontakte"]}};
+    var SICHTEN = {"status": {"name": "Status", "satz": "Wie gut läuft jeder Weg heute? Grün heißt: läuft optimal. Gelb heißt: läuft, lässt sich aber verbessern. Rot heißt Handlungsbedarf – entweder ist der Weg noch nicht eingerichtet, oder er läuft schlecht.", "ampel": true, "knoten": []}, "kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "kontakte"]}};
     var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
     var satz = document.getElementById('oeSichtSatz');
 
@@ -1463,14 +1461,38 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         satz.hidden = !s;
         if (s) satz.textContent = s.satz;
       }
-      var menge = s ? s.knoten : null;
+      /* Die Sicht "Status" faerbt die Leitungen, statt eine Auswahl
+         hervorzuheben - deshalb bleibt dort jeder Kasten normal. */
+      var ampel = !!(s && s.ampel);
+      plan.classList.toggle('ist-ampel', ampel);
+      document.body.classList.toggle('ist-ampel-seite', ampel);
+      svg.classList.toggle('ist-ampel', ampel);
+      if (ampel) svg.classList.remove('ist-gefiltert');
+      var menge = (s && !ampel) ? s.knoten : null;
       knoten.forEach(function (b) {
         b.classList.toggle('ist-blass', !!menge && menge.indexOf(b.dataset.baustein) < 0);
       });
+      /* Die Ampelfarbe setzt das Skript direkt auf die Leitung. Ueber das
+         Stylesheet war sie nicht zuverlaessig durchzusetzen, und eine
+         Farbe, die man sehen will, darf nicht an einer Spezifitaetsfrage
+         haengen. */
+      var FARBE = { gruen: '#2f8f4e', gelb: '#d9a400', rot: '#C51F5D' };
       svg.querySelectorAll('path').forEach(function (d) {
         var dran = !!menge && menge.indexOf(d.dataset.von) > -1 &&
                    (menge.indexOf(d.dataset.nach) > -1 || d.dataset.nach === 'schiene');
         d.classList.toggle('ist-hell', dran);
+        if (ampel) {
+          var art = (d.getAttribute('class') || '').match(/oe-ampel--(\w+)/);
+          if (art) {
+            d.style.stroke = FARBE[art[1]];
+            d.style.strokeWidth = '2.6';
+            d.style.strokeDasharray = 'none';
+          }
+        } else {
+          d.style.stroke = '';
+          d.style.strokeWidth = '';
+          d.style.strokeDasharray = '';
+        }
       });
     }
 

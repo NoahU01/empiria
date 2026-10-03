@@ -232,12 +232,20 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
               overflow: visible; pointer-events: none; z-index: 0; }
 .oe-draht { fill: none; stroke: #cfc9c2; stroke-width: 1.5;
             transition: stroke .15s ease, stroke-width .15s ease, opacity .15s ease; }
-.oe-draht--entschieden { stroke: var(--ink); stroke-width: 2; }
-.oe-draht--beauftragt  { stroke: #b8a900; stroke-width: 2; }
-.oe-draht--zuerst      { stroke: #8a8783; stroke-width: 1.8; }
-.oe-draht--geplant     { stroke: #cfc9c2; stroke-dasharray: 3 5; }
-.oe-draht--fragil      { stroke: #b4aea7; stroke-dasharray: 6 4; }
-.oe-draht--bestand     { stroke: #e0dcd7; }
+/* Zwei Zustaende, mehr braucht es nicht: Der Weg steht, oder er ist
+   geplant. Der Stand des Kastens am Ende sagt darueber nichts aus - dass
+   das Dashboard beauftragt ist, macht den Weg zur Terminplanung nicht
+   beauftragt. */
+.oe-draht--eingerichtet { stroke: #8a8783; stroke-width: 2; }
+.oe-draht--geplant      { stroke: #b8b2ab; stroke-width: 1.8; stroke-dasharray: 4 5; }
+
+/* Die Ampel der Sicht "Status" - sichtbar nur in dieser Sicht. */
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--gruen { stroke: #2f8f4e; stroke-width: 2.6;
+                                                  stroke-dasharray: none; }
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--gelb  { stroke: #d9a400; stroke-width: 2.6;
+                                                  stroke-dasharray: none; }
+.oe-draehte.ist-ampel .oe-draht.oe-ampel--rot   { stroke: #C51F5D; stroke-width: 2.6;
+                                                  stroke-dasharray: none; }
 .oe-draehte.ist-gefiltert .oe-draht { opacity: .12; }
 .oe-draehte.ist-gefiltert .oe-draht.ist-hell { opacity: 1; stroke: var(--ink);
                                                stroke-width: 2.6; stroke-dasharray: none; }
@@ -313,11 +321,16 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-legende-posten { display: inline-flex; align-items: center; gap: 8px;
                      font-size: .8rem; color: var(--grey-70); }
 .oe-strich { display: block; width: 26px; height: 0; border-top: 2px solid #cfc9c2; }
-.oe-strich--entschieden { border-color: var(--ink); }
-.oe-strich--beauftragt  { border-color: #b8a900; }
-.oe-strich--zuerst      { border-color: #8a8783; }
-.oe-strich--geplant     { border-top-style: dashed; }
-.oe-strich--fragil      { border-top-style: dashed; border-color: #b4aea7; }
+.oe-strich--eingerichtet { border-color: #8a8783; }
+.oe-strich--geplant      { border-top-style: dashed; border-color: #b8b2ab; }
+.oe-strich--gruen        { border-color: #2f8f4e; }
+.oe-strich--gelb         { border-color: #d9a400; }
+.oe-strich--rot          { border-color: #C51F5D; }
+
+/* Die Ampel steht nur in der Legende, wenn die Sicht "Status" laeuft. */
+.oe-legende-ampel { display: none; align-items: center; gap: 8px 20px; }
+.ist-ampel-seite .oe-legende-ampel { display: inline-flex; }
+.ist-ampel-seite .oe-legende > .oe-legende-posten { opacity: .35; }
 .oe-legende-hinweis { margin-left: auto; font-size: .78rem; color: var(--grey-50); }
 
 @media (max-width: 1100px) {
@@ -444,8 +457,10 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 
 /* Die Leitung zum Bestand laeuft in beide Richtungen - sie ist dicker und
    traegt an beiden Enden einen Punkt. */
-.oe-draht--beide { stroke: #0B9FBD; stroke-width: 2.4; stroke-dasharray: none;
-                   marker-start: url(#oePunktCyan); marker-end: url(#oePunktCyan); }
+/* Die Leitung zum Bestand laeuft in beide Richtungen. Sie traegt deshalb
+   an beiden Enden einen Punkt - aber keine eigene Farbe: Cyan hatte in der
+   Legende keine Bedeutung. */
+.oe-draht--beide { marker-start: url(#oePunktCyan); marker-end: url(#oePunktCyan); }
 
 /* Die Mittelreihe traegt jetzt drei Dinge: Geraete, Knoten, Bestand. */
 .oe-plan--strang .oe-speicherplatz { margin-top: clamp(16px, 2.4vh, 28px); }
@@ -498,10 +513,11 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan--gefasst .oe-geraete { max-width: 240px; }
 .oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(10, minmax(0, 1fr));
                                 gap: clamp(20px, 2.6vh, 32px) 8px; }
+/* Zwischen den Kaesten eine Linie in der Staerke ihrer Umrandung, kein
+   schwarzer Pfeil. Die Richtung ergibt sich aus der Anordnung. */
 .oe-plan--gefasst .oe-pfeil { height: 26px; }
-.oe-plan--gefasst .oe-pfeil::before { background: var(--ink); width: 3px; }
-.oe-plan--gefasst .oe-pfeil::after { border-color: var(--ink); border-width: 3px;
-                                     width: 11px; height: 11px; }
+.oe-plan--gefasst .oe-pfeil::before { background: #e4e1dd; width: 1px; }
+.oe-plan--gefasst .oe-pfeil::after { display: none; }
 @media (max-width: 1100px) {
 
 }
