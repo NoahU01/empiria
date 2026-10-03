@@ -259,8 +259,8 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    benannt, aber alle Kaesten standen in einer Reihe. Eine Querverbindung
    zwischen Nachbarn liest niemand als "greift darauf zu". */
 .oe-plan--verdrahtung { display: grid; gap: clamp(52px, 7vh, 88px); }
-.oe-quellen { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr));
-              grid-template-rows: auto auto auto;
+.oe-quellen { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
+              grid-template-rows: auto auto auto auto;
               gap: clamp(26px, 3.4vh, 44px) 8px; position: relative; z-index: 1; }
 /* Die Beschriftung steht vor dem Raster, nicht darin - als Rasterkind
    belegte sie eine vierte Zeile und riss den Abstand zum Knoten auf. */
@@ -327,15 +327,18 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    den verdrahteten Fassungen nimmt der Plan jetzt die volle Breite, und
    das Detailfeld legt sich beim Klick als Tafel rechts darueber - es
    verdeckt nur, solange man liest. */
-.oe-raum:has(.oe-plan--verdrahtung), .oe-raum:has(.oe-plan--strang) {
+.oe-raum:has(.oe-plan--verdrahtung), .oe-raum:has(.oe-plan--strang),
+.oe-raum:has(.oe-plan--gefasst) {
   grid-template-columns: 1fr; }
 .oe-raum:has(.oe-plan--verdrahtung) .oe-feld,
-.oe-raum:has(.oe-plan--strang) .oe-feld {
+.oe-raum:has(.oe-plan--strang) .oe-feld,
+.oe-raum:has(.oe-plan--gefasst) .oe-feld {
   position: fixed; right: clamp(16px, 2vw, 32px); top: 96px; width: 340px;
   max-height: calc(100vh - 128px); overflow-y: auto; z-index: 20;
   box-shadow: 0 24px 60px rgba(0,0,0,.16); }
 .oe-raum:has(.oe-plan--verdrahtung) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))),
-.oe-raum:has(.oe-plan--strang) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))) {
+.oe-raum:has(.oe-plan--strang) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))),
+.oe-raum:has(.oe-plan--gefasst) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))) {
   display: none; }
 
 /* Mehr Abstand zwischen den Ebenen: die Leitungen brauchen einen Kanal,
@@ -418,19 +421,90 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    angedeuteten Zylinderkante oben. */
 .oe-speicherplatz { display: flex; justify-content: flex-start;
                     position: relative; z-index: 1; }
-.oe-knoten--speicher { position: relative; max-width: 260px;
-                       border: 2px solid var(--ink); border-radius: 10px 10px 14px 14px;
-                       background: #fff; padding-top: 16px; }
-.oe-knoten--speicher::before { content: ""; position: absolute; left: 10px; right: 10px;
-                               top: 7px; height: 7px; border: 2px solid var(--ink);
-                               border-radius: 50%; background: #fff; }
-.oe-knoten--speicher .oe-knoten-titel { font-size: .92rem; }
-.oe-knoten--speicher.is-offen { background: var(--hl); }
+/* Das Oval als Zylinderandeutung sah aus wie ein Fehler. Der Bestand hebt
+   sich jetzt ueber die Farbe ab: Cyan aus dem Corporate Design, dieselbe
+   Farbe wie seine Leitung. Eine Farbe fuer eine Sache - mehr wird der Plan
+   nicht bunt. */
+.oe-knoten--speicher { max-width: 270px; border: 2px solid #0B9FBD;
+                       border-radius: 12px; background: #fff; }
+.oe-knoten--speicher .oe-knoten-titel { font-size: .92rem; color: #0B9FBD; }
+.oe-knoten--speicher .oe-marke { background: rgba(11,159,189,.12); color: #0B9FBD;
+                                 box-shadow: none; }
+.oe-knoten--speicher:hover { background: rgba(11,159,189,.06); }
+.oe-knoten--speicher.is-offen { background: #0B9FBD; border-color: #0B9FBD; }
+.oe-knoten--speicher.is-offen .oe-knoten-titel { color: #fff; }
+.oe-knoten--speicher.is-offen .oe-knoten-unter { color: rgba(255,255,255,.75); }
+.oe-knoten--speicher.is-offen .oe-marke { background: rgba(255,255,255,.2); color: #fff; }
 
 /* Die Leitung zum Bestand laeuft in beide Richtungen - sie ist dicker und
    traegt an beiden Enden einen Punkt. */
-.oe-draht--beide { stroke: var(--ink); stroke-width: 2.4; stroke-dasharray: none;
-                   marker-start: url(#oePunkt); marker-end: url(#oePunkt); }
+.oe-draht--beide { stroke: #0B9FBD; stroke-width: 2.4; stroke-dasharray: none;
+                   marker-start: url(#oePunktCyan); marker-end: url(#oePunktCyan); }
 
 /* Die Mittelreihe traegt jetzt drei Dinge: Geraete, Knoten, Bestand. */
 .oe-plan--strang .oe-speicherplatz { margin-top: clamp(16px, 2.4vh, 28px); }
+
+/* ---- Die Sammelschiene -------------------------------------------------
+   Alle Zuleitungen laufen senkrecht auf diese eine Linie, von ihr fuehrt
+   eine einzige Leitung in den Knoten. Das ist der Grund, warum sich jetzt
+   nichts mehr kreuzt: Vorher suchte sich jede Zuleitung ihren eigenen Weg
+   um die Eingabegeraete herum - und lief dabei durch sie hindurch. */
+.oe-schiene { position: relative; z-index: 1; height: 3px; border-radius: 2px;
+              background: var(--ink); margin: clamp(26px, 3.4vh, 44px) 0 0; }
+.oe-plan--strang .oe-schiene { width: 3px; height: auto; align-self: stretch;
+                               margin: 0; justify-self: center; }
+
+/* Unter der Schiene liegt der Bedienbereich: Geraete, Knoten, Bestand.
+   Hier verlaeuft keine Zuleitung mehr. */
+.oe-plan--verdrahtung .oe-mittelreihe { margin-top: clamp(26px, 3.4vh, 44px); }
+
+/* In C stehen die Geraete nebeneinander. Untereinander zielen ihre drei
+   Leitungen auf denselben Punkt und laufen dabei durch die Kaesten der
+   jeweils daruberliegenden Geraete. */
+.oe-geraete--quer { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.oe-geraete--quer .oe-spalte-tag { grid-column: 1 / -1; }
+
+/* ==========================================================================
+   B3 "Gefasst" - die Fassung aus A, die Verdrahtung aus B
+
+   Jede Ebene steht in einem eigenen Kasten. Innerhalb des Kastens sieht
+   man die Details - dass Analytics auf den Homepages sitzt, dass Buffer
+   ueber allen drei Kanaelen liegt. Was den Kasten verlaesst, sammelt sich
+   auf der Schiene an seinem unteren Rand; zwischen den Kaesten fuehrt ein
+   Pfeil. Aus acht Zuleitungen zum Knoten wird damit eine.
+   ========================================================================== */
+.oe-plan--gefasst { display: grid; position: relative; }
+.gf-kasten { position: relative; z-index: 1; padding: 14px 16px 16px;
+             background: #fff; border: 1px solid #e4e1dd;
+             border-radius: var(--radius-card); }
+.gf-tag { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+          margin: 0 0 11px 2px; font-size: .72rem; letter-spacing: .14em;
+          text-transform: uppercase; font-weight: 700; color: var(--ink); }
+.gf-tag span { letter-spacing: .02em; text-transform: none; font-weight: 500;
+               font-size: .78rem; color: var(--grey-50); }
+.oe-plan--gefasst .oe-quellen { gap: clamp(22px, 2.8vh, 36px) 8px; }
+.oe-plan--gefasst .oe-schiene { margin-top: clamp(20px, 2.6vh, 32px); }
+.oe-plan--gefasst .oe-mittelreihe { margin-top: 0; }
+.oe-plan--gefasst .oe-geraete { max-width: 240px; }
+.oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.oe-plan--gefasst .oe-pfeil { height: 26px; }
+.oe-plan--gefasst .oe-pfeil::before { background: var(--ink); width: 3px; }
+.oe-plan--gefasst .oe-pfeil::after { border-color: var(--ink); border-width: 3px;
+                                     width: 11px; height: 11px; }
+@media (max-width: 1100px) {
+  .oe-plan--gefasst .oe-aktionen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* In B3 steht die Ausfuehrung wie in B: Geraete links, Knoten mittig,
+   Bestand rechts. */
+.oe-plan--gefasst .oe-mittelreihe { display: grid;
+                                    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+                                    gap: clamp(20px, 3vw, 46px); align-items: center; }
+.oe-plan--gefasst .oe-geraete { justify-self: start; }
+.oe-plan--gefasst .oe-speicherplatz { justify-self: end; }
+
+/* Die Kaesten haben einen weissen Grund und lagen damit ueber den
+   Leitungen. Reihenfolge: Kasten, dann Leitungen, dann Knoten. */
+.oe-plan--gefasst .oe-draehte { z-index: 2; }
+.oe-plan--gefasst .oe-knoten { position: relative; z-index: 3; }
+.oe-plan--gefasst .oe-schiene { z-index: 3; }

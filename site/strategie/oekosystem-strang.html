@@ -496,6 +496,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <a class="pv-pille" href="/strategie/oekosystem.html">A <small>Bänder</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-verdrahtung.html">B <small>Verdrahtung</small></a>
         <a class="pv-pille" href="/strategie/oekosystem-eckig.html">B2 <small>Eckig</small></a>
+        <a class="pv-pille" href="/strategie/oekosystem-gefasst.html">B3 <small>Gefasst</small></a>
         <a class="pv-pille is-aktiv" href="/strategie/oekosystem-strang.html" aria-current="page">C <small>Strang</small></a>
       </div>
 
@@ -526,18 +527,13 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="oe-raum">
 
         <div class="oe-plan oe-plan--strang" data-richtung="rechts">
-          <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"><defs><marker id="oePunkt" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5"><circle cx="4" cy="4" r="3" fill="#1a1817"/></marker></defs></svg>
+          <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"><defs><marker id="oePunktCyan" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5"><circle cx="4" cy="4" r="3" fill="#0B9FBD"/></marker></defs></svg>
             <div class="oe-gruppe ">
               <p class="oe-spalte-tag">Quellen</p>
               <button type="button" class="oe-knoten" data-baustein="homepages" aria-expanded="false">
                 <span class="oe-knoten-titel">Homepages</span>
                 <span class="oe-knoten-unter">Drei Marken</span>
                 <span class="oe-marke oe-marke--zuerst">zuerst dran</span>
-              </button>
-              <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false">
-                <span class="oe-knoten-titel">LinkedIn</span>
-                <span class="oe-knoten-unter">Profil und Netzwerk</span>
-                <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
               </button>
               <button type="button" class="oe-knoten" data-baustein="facebook" aria-expanded="false">
                 <span class="oe-knoten-titel">Facebook</span>
@@ -548,6 +544,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                 <span class="oe-knoten-titel">Instagram</span>
                 <span class="oe-knoten-unter">Konto</span>
                 <span class="oe-marke oe-marke--geplant">geplant</span>
+              </button>
+              <button type="button" class="oe-knoten" data-baustein="linkedin" aria-expanded="false">
+                <span class="oe-knoten-titel">LinkedIn</span>
+                <span class="oe-knoten-unter">Profil und Netzwerk</span>
+                <span class="oe-marke oe-marke--fragil">schwaches Glied</span>
               </button>
               <button type="button" class="oe-knoten" data-baustein="mail" aria-expanded="false">
                 <span class="oe-knoten-titel">E-Mail</span>
@@ -594,10 +595,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               </button>
               <button type="button" class="oe-knoten" data-baustein="buffer" aria-expanded="false">
                 <span class="oe-knoten-titel">Buffer</span>
-                <span class="oe-knoten-unter">spielt auf allen Kanälen aus und liest zurück</span>
+                <span class="oe-knoten-unter">spielt auf allen drei Kanälen aus und liest zurück</span>
                 <span class="oe-marke oe-marke--geplant">geplant</span>
               </button>
             </div>
+          <div class="oe-schiene" data-baustein="schiene" aria-hidden="true"></div>
           <div class="oe-mittelspalte">
             <div class="oe-gruppe">
               <p class="oe-spalte-tag">Ausführung</p>
@@ -1207,8 +1209,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["linkedin", "buffer", "rechts"], ["facebook", "buffer"], ["instagram", "buffer"], ["mail", "knoten"], ["nextcloud", "knoten"], ["finder", "knoten"], ["chrome", "knoten"], ["analytics", "knoten"], ["search", "knoten"], ["buffer", "knoten"], ["helper", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "kontakte_db", "beide"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"]];
-    var STAND = {"homepages": "zuerst", "linkedin": "fragil", "facebook": "geplant", "instagram": "geplant", "mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "helper": "fragil", "buffer": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "knoten": "entschieden", "dashboard": "beauftragt", "kontakte_db": "geplant"};
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["linkedin", "buffer"], ["facebook", "buffer"], ["instagram", "buffer"], ["mail", "schiene"], ["nextcloud", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["buffer", "schiene"], ["helper", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "kontakte_db", "beide"], ["knoten", "dashboard"], ["dashboard", "postings"], ["dashboard", "mails"], ["dashboard", "termine"], ["dashboard", "kontakte"], ["dashboard", "cockpits"]];
+    var STAND = {"homepages": "zuerst", "facebook": "geplant", "instagram": "geplant", "linkedin": "fragil", "mail": "zuerst", "nextcloud": "geplant", "finder": "geplant", "chrome": "geplant", "analytics": "zuerst", "search": "zuerst", "salesnav": "fragil", "helper": "fragil", "buffer": "geplant", "macbook": "entschieden", "ipad": "entschieden", "iphone": "entschieden", "postings": "geplant", "mails": "geplant", "termine": "geplant", "kontakte": "geplant", "cockpits": "geplant", "knoten": "entschieden", "dashboard": "beauftragt", "kontakte_db": "geplant", "schiene": "zuerst"};
 
     function kasten(id) { return plan.querySelector('[data-baustein="' + id + '"]'); }
 
@@ -1230,6 +1232,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       LEITUNGEN.forEach(function (l) {
         var von = kasten(l[0]), nach = kasten(l[1]), kante = l[2];
         if (!von || !nach) return;
+        if (l[0] === 'schiene' || l[1] === 'schiene') return;
         var vr = von.getBoundingClientRect(), nr = nach.getBoundingClientRect();
         var p = plan.getBoundingClientRect();
         if (!s[l[1]]) s[l[1]] = { y: -1e9, x: 1e9, n: 0 };
@@ -1292,6 +1295,29 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         /* Die Leserichtung des Plans bestimmt die Kante. Nur wenn zwei
            Kaesten quer dazu beieinanderstehen, wird seitlich bzw. von oben
            angeschlossen - das betrifft die Eingabegeraete am Knoten. */
+        /* Die Schiene ist breit beziehungsweise hoch. Eine Leitung trifft
+           sie dort, wo ihr Kasten steht - nicht in ihrer Mitte. Dadurch
+           laufen alle Zuleitungen senkrecht und keine kreuzt eine andere. */
+        if (l[0] === 'schiene' || l[1] === 'schiene') {
+          var box = l[1] === 'schiene' ? vr : nr;
+          var sr = l[1] === 'schiene' ? nr : vr;
+          var p3 = plan.getBoundingClientRect();
+          var d2;
+          if (richtung === 'rechts') {
+            var yy = box.top - p3.top + box.height / 2;
+            var xs = sr.left - p3.left + sr.width / 2;
+            var xb = l[1] === 'schiene' ? box.right - p3.left : box.left - p3.left;
+            d2 = 'M' + xb + ',' + yy + 'L' + xs + ',' + yy;
+          } else {
+            var xx = box.left - p3.left + box.width / 2;
+            var ys = sr.top - p3.top + sr.height / 2;
+            var yb = l[1] === 'schiene' ? box.bottom - p3.top : box.top - p3.top;
+            d2 = 'M' + xx + ',' + yb + 'L' + xx + ',' + ys;
+          }
+          teile.push('<path class="oe-draht oe-draht--' + (STAND[l[0]] || 'geplant') +
+                     '" data-von="' + l[0] + '" data-nach="' + l[1] + '" d="' + d2 + '"/>');
+          return;
+        }
         var ueberY = Math.min(vr.bottom, nr.bottom) - Math.max(vr.top, nr.top);
         var ueberX = Math.min(vr.right, nr.right) - Math.max(vr.left, nr.left);
         var geraet = von.classList.contains('oe-knoten--geraet');

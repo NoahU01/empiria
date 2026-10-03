@@ -1019,10 +1019,21 @@
 
 /* V5g: die Modulkarten kommen aus V1. Innerhalb der Faltung braucht das
    Raster seine sechs Zeilen, damit die Kaesten auf einer Linie stehen. */
+/* Ohne Zeilenraster: V1 teilt seine Karten auf sechs Rasterzeilen auf,
+   damit sie ueber mehrere Abschnitte hinweg buendig stehen. Hier stehen
+   sie allein - das Raster liess dadurch 118px Luft unter den Karten
+   stehen, bevor die Projektplanung kam. */
 .vt-falt--grau .pj-felder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-                            grid-template-rows: repeat(6, auto);
-                            gap: clamp(12px, 1.6vw, 20px); }
-.vt-falt--grau .pj-felder + .pj-standzeile { margin-top: clamp(14px, 1.8vw, 22px); }
+                            gap: clamp(12px, 1.6vw, 20px); align-items: stretch; }
+.vt-falt--grau .pj-feld { grid-row: auto; grid-template-rows: none;
+                          display: flex; flex-direction: column; }
+.vt-falt--grau .pj-feld-fuss { margin-top: auto; }
+.vt-falt--grau .pj-felder + .pj-standzeile { margin-top: clamp(12px, 1.6vw, 18px); }
+/* Die Karten brauchen ihre sechs Rasterzeilen fuer die Ausrichtung, aber
+   die letzte darf nicht mitwachsen - sonst steht unter den Karten Luft,
+   bevor die Projektplanung kommt. */
+
+.vt-falt--grau .pj-feld { padding-bottom: clamp(16px, 1.8vw, 22px); }
 @media (max-width: 900px) {
   .vt-falt--grau .pj-felder { grid-template-columns: 1fr; grid-template-rows: none; }
   .vt-falt--grau .pj-feld { grid-row: auto; grid-template-rows: none; }
