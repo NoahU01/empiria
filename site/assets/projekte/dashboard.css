@@ -1122,3 +1122,12 @@
 .wk-kachel b { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 700;
                line-height: 1.3; }
 .wk-kachel small { font-size: .84rem; line-height: 1.5; color: var(--grey-70); }
+
+/* ---- Die Fusszeile sitzt unten, auch wenn die Seite kurz ist ----------
+   Sind alle drei Module zugeklappt, endet der Inhalt vor dem unteren
+   Fensterrand. Vorher endete dort auch der graue Grund und darunter stand
+   eine weisse Flaeche ueber der schwarzen Fusszeile. Jetzt traegt der
+   Koerper die volle Fensterhoehe: der graue Grund dehnt sich in den Rest,
+   die Fusszeile schliesst das Fenster ab. */
+body:has(> .vt-falt--grau) { min-height: 100vh; display: flex; flex-direction: column; }
+body:has(> .vt-falt--grau) > .vt-falt--grau { flex: 1 0 auto; }

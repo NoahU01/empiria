@@ -267,8 +267,11 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    benannt, aber alle Kaesten standen in einer Reihe. Eine Querverbindung
    zwischen Nachbarn liest niemand als "greift darauf zu". */
 .oe-plan--verdrahtung { display: grid; gap: clamp(52px, 7vh, 88px); }
+/* Drei Zeilen, nicht vier: Buffer ist zu den Aktionen gezogen, die vierte
+   Zeile blieb leer stehen und hat die Schiene um ihre Hoehe plus einen
+   Zeilenabstand nach unten geschoben. */
 .oe-quellen { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
-              grid-template-rows: auto auto auto auto;
+              grid-template-rows: auto auto auto;
               gap: clamp(26px, 3.4vh, 44px) 8px; position: relative; z-index: 1; }
 /* Die Beschriftung steht vor dem Raster, nicht darin - als Rasterkind
    belegte sie eine vierte Zeile und riss den Abstand zum Knoten auf. */
@@ -404,9 +407,11 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-raum:has(.oe-plan--gefasst) .oe-feld:not(:has(.oe-feld-inhalt:not([hidden]))) {
   display: none; }
 
-/* Mehr Abstand zwischen den Ebenen: die Leitungen brauchen einen Kanal,
-   sonst beruehren sie die Kaesten darueber und darunter. */
-.oe-plan--verdrahtung { gap: clamp(46px, 6vh, 76px); }
+/* Abstand zwischen den Ebenen: die Leitungen brauchen einen Kanal, sonst
+   beruehren sie die Kaesten darueber und darunter. Mehr als das schadet -
+   die gestrichelten Leitungen haben sonst eine lange leere Strecke zu
+   ueberbruecken, und der Plan faellt auseinander. */
+.oe-plan--verdrahtung { gap: clamp(30px, 4vh, 50px); }
 .oe-plan--verdrahtung .oe-mittelreihe { gap: clamp(40px, 6vw, 110px); }
 
 
@@ -499,13 +504,12 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    darauf ankommen. Vorher lief sie als Kasten ueber die ganze Breite und
    stand links und rechts ins Leere. */
 .oe-schiene { position: relative; z-index: 1; height: 2px; background: none;
-              margin: clamp(26px, 3.4vh, 44px) 0 0; }
-.oe-plan--strang .oe-schiene { width: 2px; height: auto; align-self: stretch;
-                               margin: 0; justify-self: center; }
+              margin: 0; }
 
 /* Unter der Schiene liegt der Bedienbereich: Geraete, Knoten, Bestand.
-   Hier verlaeuft keine Zuleitung mehr. */
-.oe-plan--verdrahtung .oe-mittelreihe { margin-top: clamp(26px, 3.4vh, 44px); }
+   Hier verlaeuft keine Zuleitung mehr. Den Abstand setzt allein das
+   Raster des Plans. */
+.oe-plan--verdrahtung .oe-mittelreihe { margin-top: 0; }
 
 /* In C stehen die Geraete nebeneinander. Untereinander zielen ihre drei
    Leitungen auf denselben Punkt und laufen dabei durch die Kaesten der
