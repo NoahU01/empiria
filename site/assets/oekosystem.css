@@ -266,7 +266,12 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    belegte sie eine vierte Zeile und riss den Abstand zum Knoten auf. */
 .oe-abschnitt { position: relative; z-index: 1; }
 .oe-abschnitt .oe-spalte-tag { margin: 0 0 9px 2px; }
-.oe-quellen .oe-knoten { align-self: start; }
+/* Gleichartige Kaesten sind gleich hoch. Mit align-self:start war
+   jeder so hoch wie sein Text, und die Reihe lief auseinander. */
+.oe-quellen .oe-knoten { align-self: stretch; }
+.oe-aktionen .oe-knoten, .oe-geraete .oe-knoten { align-self: stretch; }
+.oe-plan--strang .oe-gruppe { align-self: start; }
+.oe-plan--strang .oe-gruppe .oe-knoten { min-height: 76px; }
 
 /* Die Mittelreihe: Geraete ganz links, der Knoten in der Mitte des Plans. */
 .oe-plan--verdrahtung .oe-mittelreihe { display: grid;
@@ -276,17 +281,18 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-geraete { display: grid; gap: 7px; align-content: center; justify-self: start;
               max-width: 230px; }
 .oe-knotenplatz { display: flex; justify-content: center; }
-.oe-knotenplatz .oe-knoten--gross { max-width: 330px; }
+.oe-knotenplatz .oe-knoten--gross { width: 330px; max-width: 330px; }
 .oe-steuerung { display: flex; justify-content: center; position: relative; z-index: 1; }
-.oe-steuerung .oe-knoten--gross { max-width: 330px; }
+.oe-steuerung .oe-knoten--gross { width: 330px; max-width: 330px; }
 .oe-aktionen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;
                position: relative; z-index: 1; }
 
 /* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
    liefern nichts, sie bedienen. Deshalb tragen sie keine Kastenform,
    sondern eine Pille mit gestricheltem Rand. */
-.oe-knoten--geraet { border-radius: 999px; border-style: dashed; background: #fff;
-                     padding: 7px 16px; }
+/* Kasten mit runden Ecken, nicht Pille - rund wirkt sonst zu weich. Der
+   gestrichelte Rand bleibt: Geraete liefern nichts, sie bedienen. */
+.oe-knoten--geraet { border-radius: 12px; border-style: dashed; background: #fff; }
 .oe-knoten--geraet .oe-knoten-unter { display: none; }
 .oe-knoten--geraet .oe-marke { background: none; color: var(--grey-50);
                                box-shadow: inset 0 0 0 1px #ddd8d2; margin-top: 2px; }
@@ -394,5 +400,37 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
                    gap: clamp(20px, 2.6vw, 34px) clamp(30px, 3.6vw, 58px); }
 .oe-plan--strang .oe-gruppe { align-self: start; }
 .oe-plan--strang .oe-gruppe--dashboard { align-self: center; }
-.oe-plan--strang .oe-mittelspalte { align-self: center; }
+.oe-plan--strang .oe-mittelspalte { align-self: start; }
+/* Knoten und Dashboard beginnen auf derselben Hoehe - stehen sie
+   versetzt, laeuft die Leitung dazwischen schraeg und der Plan
+   wirkt verrutscht. */
+.oe-plan--strang .oe-mittelspalte .oe-gruppe:first-child,
+.oe-plan--strang .oe-gruppe--dashboard { margin-top: clamp(120px, 16vh, 210px); }
+.oe-plan--strang .oe-gruppe--dashboard { align-self: start; }
+.oe-plan--strang .oe-mittelspalte .oe-knoten--gross,
+.oe-plan--strang .oe-gruppe--dashboard .oe-knoten--gross { min-height: 92px; }
 .oe-plan--strang .oe-knoten { align-self: auto; }
+
+/* ---- Der Bestand hat eine eigene Form ----------------------------------
+   Die Kontaktdatenbank ist weder Quelle noch Aktion. Sie wird gelesen und
+   beschrieben - deshalb steht sie neben dem Ausfuehrungsknoten und traegt
+   als einziger Baustein die Form eines Speichers: ein Kasten mit einer
+   angedeuteten Zylinderkante oben. */
+.oe-speicherplatz { display: flex; justify-content: flex-start;
+                    position: relative; z-index: 1; }
+.oe-knoten--speicher { position: relative; max-width: 260px;
+                       border: 2px solid var(--ink); border-radius: 10px 10px 14px 14px;
+                       background: #fff; padding-top: 16px; }
+.oe-knoten--speicher::before { content: ""; position: absolute; left: 10px; right: 10px;
+                               top: 7px; height: 7px; border: 2px solid var(--ink);
+                               border-radius: 50%; background: #fff; }
+.oe-knoten--speicher .oe-knoten-titel { font-size: .92rem; }
+.oe-knoten--speicher.is-offen { background: var(--hl); }
+
+/* Die Leitung zum Bestand laeuft in beide Richtungen - sie ist dicker und
+   traegt an beiden Enden einen Punkt. */
+.oe-draht--beide { stroke: var(--ink); stroke-width: 2.4; stroke-dasharray: none;
+                   marker-start: url(#oePunkt); marker-end: url(#oePunkt); }
+
+/* Die Mittelreihe traegt jetzt drei Dinge: Geraete, Knoten, Bestand. */
+.oe-plan--strang .oe-speicherplatz { margin-top: clamp(16px, 2.4vh, 28px); }
