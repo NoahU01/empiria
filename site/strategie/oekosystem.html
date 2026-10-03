@@ -563,19 +563,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-unter">Outlook 365 &middot; drei Marken</span>
               <span class="oe-marke oe-marke--zuerst">next</span>
             </button>
-            <button type="button" class="oe-knoten" data-baustein="nextcloud" aria-expanded="false" style="grid-column: 8; grid-row: 1;">
-              <span class="oe-knoten-titel">Nextcloud</span>
-              <span class="oe-knoten-unter">Ablage bei IONOS</span>
+            <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false" style="grid-column: 8; grid-row: 1;">
+              <span class="oe-knoten-titel">Datei&shy;system</span>
+              <span class="oe-knoten-unter">Mac und Nextcloud</span>
             </button>
-            <button type="button" class="oe-knoten" data-baustein="finder" aria-expanded="false" style="grid-column: 9; grid-row: 1;">
-              <span class="oe-knoten-titel">Dateisystem</span>
-              <span class="oe-knoten-unter">Finder auf dem Mac</span>
-            </button>
-            <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false" style="grid-column: 10; grid-row: 1;">
+            <button type="button" class="oe-knoten" data-baustein="chrome" aria-expanded="false" style="grid-column: 9; grid-row: 1;">
               <span class="oe-knoten-titel">Chrome</span>
               <span class="oe-knoten-unter">Recherche im Netz</span>
             </button>
-            <button type="button" class="oe-knoten oe-knoten--speicher" data-baustein="kontakte_db" aria-expanded="false" style="grid-column: 11; grid-row: 1;">
+            <button type="button" class="oe-knoten oe-knoten--speicher" data-baustein="kontakte_db" aria-expanded="false" style="grid-column: 10; grid-row: 1;">
               <span class="oe-knoten-titel">Kontakte</span>
               <span class="oe-knoten-unter">wird gelesen und beschrieben</span>
             </button>
@@ -785,23 +781,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       "Ob Beiträge vom persönlichen Profil dort gespiegelt werden"
     ]
   },
-  "nextcloud": {
-    "satz": "Die Ablage für Projekte und Unterlagen. Liegt beim bestehenden IONOS-Vertrag.",
-    "tools": [
-      "Nextcloud auf IONOS"
-    ],
-    "schritte": [],
-    "offen": [
-      "Prüfen, ob der IONOS-Account einen echten Server mit SSH hergibt oder nur ein App-Hosting-Paket"
-    ]
-  },
   "finder": {
-    "satz": "Der direkte Zugriff auf Dateien ist der Grund, warum der Ausführungsknoten ein Mac mit allen Logins ist und kein nackter Server.",
+    "satz": "Alle Daten liegen im Dateisystem des Macs, und die Nextcloud ist dorthin synchronisiert – beides ist derselbe Zugriff. Dass Claude Code direkt an die Dateien kommt, ist der Grund, warum die Intelligenzschicht auf einem Mac mit allen Logins läuft und nicht auf einem nackten Server.",
     "tools": [
-      "Finder",
-      "lokale Projektordner"
+      "Finder und die lokalen Projektordner",
+      "Nextcloud bei IONOS, in den Finder synchronisiert"
     ],
-    "schritte": [],
+    "schritte": [
+      "Prüfen, dass die Ordner lokal vorliegen und nicht nur als Platzhalter – was nicht heruntergeladen ist, sieht Claude Code nicht"
+    ],
     "offen": []
   },
   "chrome": {
@@ -1078,15 +1066,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "art": "zuerst",
     "band": "Datenquellen"
   },
-  "nextcloud": {
-    "titel": "Nextcloud",
-    "unter": "Ablage bei IONOS",
-    "art": "geplant",
-    "band": "Datenquellen"
-  },
   "finder": {
-    "titel": "Dateisystem",
-    "unter": "Finder auf dem Mac",
+    "titel": "Datei&shy;system",
+    "unter": "Mac und Nextcloud",
     "art": "geplant",
     "band": "Datenquellen"
   },
@@ -1286,9 +1268,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["nextcloud", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "mails"], ["knoten", "termine"], ["knoten", "kontakte"], ["knoten", "cockpits"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "nextcloud>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>mails": "geplant", "knoten>termine": "geplant", "knoten>kontakte": "geplant", "knoten>cockpits": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
-    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "nextcloud>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>mails": "rot", "knoten>termine": "rot", "knoten>kontakte": "rot", "knoten>cockpits": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "mails"], ["knoten", "termine"], ["knoten", "kontakte"], ["knoten", "cockpits"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
+    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>mails": "geplant", "knoten>termine": "geplant", "knoten>kontakte": "geplant", "knoten>cockpits": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
+    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>mails": "rot", "knoten>termine": "rot", "knoten>kontakte": "rot", "knoten>cockpits": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
 
     /* Die Klasse einer Leitung: ihr Zustand, nicht der Stand des Kastens
        an ihrem Ende. Die Ampel kommt als zweite Klasse dazu und wird nur
