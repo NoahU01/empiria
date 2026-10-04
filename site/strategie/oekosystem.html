@@ -1503,15 +1503,49 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(zeichnen);
 
     /* Zeigen auf einen Kasten hebt seine Leitungen hervor - das ist die
-       Antwort auf "wo fliesst was hin". */
+       Antwort auf "wo fliesst was hin".
+
+       Die Schiene ist dabei ein Durchgang, kein Ziel. Eine Quelle endete
+       sonst dort, wo ihre Leitung die waagerechte Linie trifft, und der
+       Weg zur Intelligenzschicht blieb dunkel - obwohl er genau dort
+       weitergeht. Wer die Schiene beruehrt, bekommt deshalb auch ihre
+       Gegenseite und die Linie selbst mit. */
+    function wegeFuer(id) {
+      var direkt = LEITUNGEN.filter(function (l) {
+        return l[0] === id || l[1] === id; });
+      var anSchiene = direkt.filter(function (l) {
+        return l[0] === 'schiene' || l[1] === 'schiene'; });
+      if (!anSchiene.length) return { leitungen: direkt, schiene: false };
+      /* Laeuft die Leitung auf die Schiene zu, geht es auf ihrer anderen
+         Seite weiter - und umgekehrt. */
+      var seiten = anSchiene.map(function (l) {
+        return l[0] === 'schiene' ? 'ab' : 'an'; });
+      var weiter = LEITUNGEN.filter(function (l) {
+        if (l[0] !== 'schiene' && l[1] !== 'schiene') return false;
+        if (direkt.indexOf(l) > -1) return false;
+        return seiten.indexOf(l[0] === 'schiene' ? 'ab' : 'an') < 0;
+      });
+      return { leitungen: direkt.concat(weiter), schiene: true };
+    }
+
+    function leitungenHell(id) {
+      var w = wegeFuer(id);
+      var paare = w.leitungen.map(function (l) { return l[0] + '>' + l[1]; });
+      svg.querySelectorAll('path').forEach(function (d) {
+        if (!d.dataset.von) {
+          d.classList.toggle('ist-hell', w.schiene);
+          return;
+        }
+        d.classList.toggle('ist-hell',
+          paare.indexOf(d.dataset.von + '>' + d.dataset.nach) > -1);
+      });
+    }
+
     plan.addEventListener('mouseover', function (e) {
       var k = e.target.closest('.oe-knoten');
       if (!k) return;
-      var id = k.dataset.baustein;
       svg.classList.add('ist-gefiltert');
-      svg.querySelectorAll('path').forEach(function (d) {
-        d.classList.toggle('ist-hell', d.dataset.von === id || d.dataset.nach === id);
-      });
+      leitungenHell(k.dataset.baustein);
     });
     plan.addEventListener('mouseout', function (e) {
       if (e.relatedTarget && plan.contains(e.relatedTarget) &&
