@@ -48,13 +48,28 @@
 .dbx-karte { border: 1px solid #e4e1dd; border-left: 3px solid var(--hl);
              border-radius: var(--radius-card, 16px); background: #fff;
              padding: 16px 18px; }
+/* Zwei Zeilen Platz fuer die Kanalzeile, ob sie gebraucht werden oder
+   nicht. Sonst steht der Satz der dritten Karte tiefer als der der ersten
+   und die Reihe verliert ihre Linie. */
 .dbx-karte-kanal { margin: 0; font-size: .72rem; letter-spacing: .1em;
-                   text-transform: uppercase; font-weight: 700;
-                   color: var(--grey-50); }
-.dbx-karte-satz { margin: 8px 0 0; font-size: .95rem; line-height: 1.6; }
+                   line-height: 1.45; text-transform: uppercase;
+                   font-weight: 700; color: var(--grey-50);
+                   min-height: calc(.72rem * 1.45 * 2);
+                   display: flex; align-items: flex-start; }
+/* Vier Zeilen fuer den Satz - der laengste braucht drei, die Knoepfe
+   stehen damit in jeder Karte auf derselben Hoehe. */
+.dbx-karte-satz { margin: 10px 0 0; font-size: .95rem; line-height: 1.6;
+                  min-height: calc(.95rem * 1.6 * 3); }
+.dbx-karte { display: grid; grid-template-rows: auto auto 1fr; }
+.dbx-karte .dbx-wege { align-self: end; }
 
 /* ---- Die drei Wege ----------------------------------------------------- */
-.dbx-wege { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+/* Die drei Wege stehen in einer Zeile und teilen sie sich. Nebeneinander
+   gestreut sahen sie nach Zufall aus; so sind sie eine Leiste. */
+.dbx-wege { display: flex; gap: 6px; margin-top: 16px;
+            padding-top: 14px; border-top: 1px solid #efece8; }
+.dbx-wege > * { flex: 1 1 0; justify-content: center; white-space: nowrap;
+                padding-left: 10px; padding-right: 10px; }
 .dbx-ja, .dbx-weg { appearance: none; -webkit-appearance: none;
                     display: inline-flex; align-items: center; gap: 7px;
                     padding: 7px 14px; border-radius: 999px;
@@ -223,37 +238,74 @@ a.dbx-ez:hover { background: #faf9f7; }
                           color: rgba(255,255,255,.8); }
 .dbx-vorschlag .dbx-weg:hover { border-color: #fff; color: #fff; }
 
-/* ---- Die sechs Modi ---------------------------------------------------- */
+/* ---- Die sechs Modi -----------------------------------------------------
+   Das Mass der Projektmodule: schwarzer Kopf mit Zeichen, Name und Dauer,
+   darunter ein Satz. Was laenger ist, steht im Pop-up - die Karte soll
+   erkennen lassen, nicht erklaeren. */
 .dbx-modi { display: grid; gap: 10px; }
 .dbx-modus { border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
-             background: #fff; padding: 18px; display: grid;
-             align-content: start; }
-.dbx-modus-kopf { display: flex; align-items: baseline;
-                  justify-content: space-between; gap: 10px; }
-.dbx-modus h3 { margin: 0; font-family: var(--font-serif); font-weight: 700;
-                font-size: 1.1rem; line-height: 1.3; }
-.dbx-modus-dauer { margin: 0; font-size: .7rem; letter-spacing: .08em;
+             background: #fff; overflow: hidden;
+             display: grid; grid-template-rows: auto 1fr auto; }
+.dbx-modus-kopf { display: flex; align-items: center; gap: 10px;
+                  min-height: 52px; padding: 12px 16px;
+                  background: var(--ink); color: #fff; }
+.dbx-modus-zeichen { width: 20px; height: 20px; flex: 0 0 auto;
+                     border-radius: 50%; background: var(--hl);
+                     position: relative; }
+.dbx-modus-zeichen::before { content: ""; position: absolute;
+                             left: 50%; top: 50%; width: 6px; height: 6px;
+                             margin: -3px 0 0 -3px; border-radius: 50%;
+                             background: var(--ink); }
+.dbx-modus h3 { margin: 0; flex: 1 1 auto; font-family: var(--font-serif);
+                font-weight: 700; font-size: 1rem; line-height: 1.25; }
+.dbx-modus-dauer { flex: 0 0 auto; font-size: .68rem; letter-spacing: .08em;
                    text-transform: uppercase; font-weight: 700;
-                   color: var(--grey-50); white-space: nowrap; }
-.dbx-modus-wofuer { margin: 8px 0 0; font-size: .9rem; line-height: 1.55;
-                    color: var(--grey-70); }
-/* Die Regel ist das Eigentliche: Sie sagt, was dieser Modus nicht ist. */
-.dbx-modus-regel { margin: 12px 0 0; padding: 10px 12px;
-                   border-radius: 10px; background: #f4f2ef;
-                   font-size: .85rem; line-height: 1.5; }
-.dbx-modus-regel span { display: block; font-size: .64rem; letter-spacing: .1em;
-                        text-transform: uppercase; font-weight: 700;
-                        color: var(--grey-50); margin-bottom: 3px; }
-.dbx-modus-anlass { margin: 10px 0 14px; font-size: .78rem;
-                    color: var(--grey-50); }
-.dbx-modus-start { appearance: none; -webkit-appearance: none;
-                   justify-self: start; margin-top: auto;
-                   padding: 7px 16px; border-radius: 999px;
-                   border: 1px solid #ddd8d2; background: #fff;
-                   font-family: inherit; font-size: .82rem; font-weight: 600;
-                   color: var(--grey-70); cursor: pointer;
-                   transition: border-color .15s ease, color .15s ease; }
-.dbx-modus-start:hover { border-color: var(--ink); color: var(--ink); }
+                   color: var(--hl); white-space: nowrap; }
+/* Zwei Zeilen Platz, damit der Fuss in jeder Karte gleich hoch sitzt. */
+.dbx-modus-kurz { margin: 0; padding: 14px 16px 10px;
+                  font-size: .9rem; line-height: 1.5; color: var(--grey-70);
+                  min-height: calc(.9rem * 1.5 * 2 + 24px); }
+.dbx-modus-fuss { display: flex; gap: 6px; padding: 0 16px 14px; }
+.dbx-modus-start, .dbx-modus-mehr { appearance: none; -webkit-appearance: none;
+                   flex: 1 1 0; padding: 7px 10px; border-radius: 999px;
+                   font-family: inherit; font-size: .8rem; font-weight: 600;
+                   cursor: pointer; transition: border-color .15s ease,
+                   color .15s ease, background-color .15s ease; }
+.dbx-modus-start { border: 1px solid var(--ink); background: var(--ink);
+                   color: #fff; }
+.dbx-modus-start:hover { background: #000; }
+.dbx-modus-mehr { border: 1px solid #ddd8d2; background: #fff;
+                  color: var(--grey-70); }
+.dbx-modus-mehr:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ---- Das Pop-up zur Regel ---------------------------------------------- */
+.dbx-pop { position: fixed; inset: 0; z-index: 120;
+           background: rgba(26,24,23,.55);
+           display: grid; place-items: center; padding: 20px; }
+.dbx-pop[hidden] { display: none; }
+.dbx-pop-feld { position: relative; width: min(100%, 460px);
+                max-height: 86vh; overflow-y: auto;
+                border-radius: var(--radius-card, 16px); background: #fff;
+                padding: 26px 24px; }
+.dbx-pop-zu { position: absolute; right: 12px; top: 10px;
+              appearance: none; -webkit-appearance: none; border: 0;
+              background: none; font-size: 1.4rem; line-height: 1;
+              color: var(--grey-50); cursor: pointer; padding: 4px 8px; }
+.dbx-pop-zu:hover { color: var(--ink); }
+.dbx-pop-tag { margin: 0; font-size: .68rem; letter-spacing: .12em;
+               text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.dbx-pop-feld h3 { margin: 6px 0 0; font-family: var(--font-serif);
+                   font-weight: 700; font-size: 1.4rem; line-height: 1.25; }
+.dbx-pop-satz { margin: 14px 0 0; font-size: .95rem; line-height: 1.65;
+                color: var(--grey-70); }
+.dbx-pop-regel { margin: 16px 0 0; padding: 12px 14px; border-radius: 10px;
+                 background: var(--hl); font-size: .9rem; line-height: 1.5; }
+.dbx-pop-regel span { display: block; font-size: .64rem; letter-spacing: .1em;
+                      text-transform: uppercase; font-weight: 700;
+                      color: rgba(26,24,23,.6); margin-bottom: 3px; }
+.dbx-pop-anlass { margin: 14px 0 18px; font-size: .82rem; color: var(--grey-50); }
+.dbx-pop-feld .dbx-ja { width: 100%; justify-content: center; }
+body.hat-pop { overflow: hidden; }
 
 @media (min-width: 620px) {
   .dbx-modi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
