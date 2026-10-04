@@ -272,9 +272,12 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-plan.ist-ampel .oe-knoten.oe-ampel--rot   { border-color: #f0495a;
                                         background: rgba(240,73,90,.12); }
 .oe-plan.ist-ampel .oe-knoten[class*="oe-ampel--"] { border-width: 2px; }
-/* Die schwarzen Kaesten behalten ihre Flaeche - dort traegt nur der Rahmen
-   die Farbe, sonst verliert der Plan seine Mitte. */
-.oe-plan.ist-ampel .oe-knoten--gross[class*="oe-ampel--"] { background: var(--ink); }
+/* Auch die beiden grossen Kaesten tragen ihre Farbe in der Flaeche. Der
+   Text wechselt dafuer auf Dunkel - in dieser Sicht zaehlt der Stand, nicht
+   die Mitte des Plans. */
+.oe-plan.ist-ampel .oe-knoten--gross[class*="oe-ampel--"] { color: var(--ink); }
+.oe-plan.ist-ampel .oe-knoten--gross[class*="oe-ampel--"] .oe-knoten-unter {
+                     color: var(--grey-70); }
 .oe-draehte.ist-gefiltert .oe-draht { opacity: .12; }
 .oe-draehte.ist-gefiltert .oe-draht.ist-hell { opacity: 1; stroke: var(--ink);
                                                stroke-width: 2.6; stroke-dasharray: none; }
