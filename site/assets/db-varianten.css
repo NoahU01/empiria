@@ -1,0 +1,194 @@
+/* ===========================================================================
+   Dashboard - fuenf Layout-Varianten
+   ---------------------------------------------------------------------------
+   Mobile first: Alle Regeln gelten zuerst fuer das schmalste Geraet, danach
+   kommt hinzu, was mehr Platz erlaubt. Kein Layout faellt auf dem iPhone
+   auseinander, weil keines fuer den grossen Bildschirm gedacht ist und dort
+   abgeschnitten wird.
+
+   Farben nach Corporate Design: Weiss traegt, Schwarz fuehrt, Gelb markiert
+   genau eine Sache je Bildschirm. Magenta nur dort, wo etwas heute ansteht -
+   sonst wird die Dringlichkeit beliebig.
+
+   Schrift: Lora fuer die Ueberschriften, Poppins fuer alles andere. Zwei
+   Schnitte, mehr nicht.
+   ========================================================================== */
+
+.db-titel { font-family: var(--font-serif); font-weight: 500; line-height: 1.3;
+            letter-spacing: -.015em; font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+            margin: .3rem 0 0; }
+.db-lead { margin: .7rem 0 0; max-width: 62ch; font-size: .95rem;
+           line-height: 1.65; }
+
+/* ---- Die Wahl der Variante -------------------------------------------- */
+.db-wahl { margin-top: clamp(18px, 2.4vw, 26px); gap: 6px; }
+.db-pille { cursor: pointer; font-family: inherit; }
+
+.db-raum { margin-top: clamp(18px, 2.4vw, 26px); }
+
+/* Jede Variante nennt ihre Frage im selben Streifen - so vergleicht man
+   Haltungen und nicht Zufaelle. */
+.db-variantenkopf { display: flex; flex-wrap: wrap; align-items: baseline;
+                    gap: 4px 12px; margin: 0 0 16px; padding-bottom: 12px;
+                    border-bottom: 1px solid #e4e1dd; }
+.db-variantenkopf b { font-family: var(--font-serif); font-size: 1.1rem; }
+.db-variantenkopf span { font-size: .88rem; color: var(--grey-50); }
+
+/* ===========================================================================
+   A Tagesblatt - eine Spalte, nach Dringlichkeit
+   ========================================================================== */
+.db-stufe { display: flex; align-items: baseline; gap: 10px;
+            margin: 26px 0 10px; font-size: .7rem; letter-spacing: .14em;
+            text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.db-stufe:first-of-type { margin-top: 0; }
+.db-stufe span { display: inline-grid; place-items: center;
+                 min-width: 20px; height: 20px; padding: 0 6px;
+                 border-radius: 999px; background: #efece8;
+                 font-size: .72rem; letter-spacing: 0; color: var(--ink); }
+.db-blatt { list-style: none; margin: 0; padding: 0;
+            display: grid; gap: 1px; background: #e4e1dd;
+            border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+            overflow: hidden; }
+.db-blatt > li { background: #fff; padding: 16px 18px; }
+.db-blatt-kopf { display: flex; flex-wrap: wrap; align-items: baseline;
+                 gap: 4px 10px; margin: 0; }
+.db-blatt-kopf b { font-size: 1rem; line-height: 1.35; }
+.db-feld { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+           font-weight: 700; color: var(--grey-50); }
+.db-blatt-satz { margin: 6px 0 0; font-size: .92rem; line-height: 1.6;
+                 color: var(--grey-70); }
+.db-blatt-fuss { margin: 8px 0 0; font-size: .78rem; color: var(--grey-50); }
+
+/* Die erste Gruppe traegt den gelben Strich: Was heute ansteht, ist die
+   einzige Markierung auf dem Bildschirm. */
+.db-blatt:first-of-type > li { border-left: 3px solid var(--hl); }
+
+/* ===========================================================================
+   B Reviere - je Bereich eine Karte
+   ========================================================================== */
+.db-reviere { display: grid; gap: 10px; }
+.db-revier { border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+             background: #fff; padding: 16px 18px; }
+.db-revier header { display: flex; align-items: baseline;
+                    justify-content: space-between; gap: 12px; }
+.db-revier-name { margin: 0; font-family: var(--font-serif); font-weight: 700;
+                  font-size: 1.05rem; }
+.db-zahl { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+           font-weight: 700; color: var(--grey-50); white-space: nowrap; }
+.db-zahl--dringend { color: var(--ink); background: var(--hl);
+                     padding: 3px 9px; border-radius: 999px; }
+.db-revier-unter { margin: 2px 0 12px; font-size: .8rem; color: var(--grey-50); }
+.db-revier-liste { list-style: none; margin: 0; padding: 0;
+                   display: grid; gap: 9px; }
+.db-revier-liste li { display: grid; gap: 2px; padding-left: 12px;
+                      border-left: 2px solid #e4e1dd; }
+.db-revier-liste b { font-size: .92rem; font-weight: 600; line-height: 1.35; }
+.db-revier-liste small { font-size: .76rem; color: var(--grey-50); }
+.db-leer { color: var(--grey-50); font-size: .88rem; border-left-color: transparent; }
+
+/* ===========================================================================
+   C Postfach - Liste und Vorschlag
+   ========================================================================== */
+.db-postfach { display: grid; gap: 14px; }
+.db-liste { list-style: none; margin: 0; padding: 0;
+            display: grid; gap: 1px; background: #e4e1dd;
+            border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+            overflow: hidden; }
+.db-zeile { display: grid; gap: 3px; width: 100%; text-align: left;
+            padding: 13px 16px; border: 0; background: #fff;
+            font-family: inherit; cursor: pointer;
+            transition: background-color .15s ease; }
+.db-zeile:hover { background: #faf9f7; }
+.db-zeile.is-aktiv { background: var(--ink); color: #fff; }
+.db-zeile-feld { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+                 font-weight: 700; color: var(--grey-50); }
+.db-zeile.is-aktiv .db-zeile-feld { color: rgba(255,255,255,.6); }
+.db-zeile-titel { font-size: .94rem; font-weight: 600; line-height: 1.35; }
+.db-zeile-wann { font-size: .76rem; color: var(--grey-50); }
+.db-zeile.is-aktiv .db-zeile-wann { color: rgba(255,255,255,.6); }
+.db-karte { border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+            background: #faf9f7; padding: 20px; }
+.db-karte-feld { margin: 0; font-size: .68rem; letter-spacing: .12em;
+                 text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.db-karte h3 { margin: 8px 0 0; font-family: var(--font-serif); font-weight: 700;
+               font-size: 1.25rem; line-height: 1.3; }
+.db-karte-satz { margin: 12px 0 0; font-size: .95rem; line-height: 1.65;
+                 color: var(--grey-70); }
+.db-karte-fuss { margin: 14px 0 0; padding-top: 12px;
+                 border-top: 1px solid #e4e1dd;
+                 font-size: .8rem; color: var(--grey-50); }
+
+/* ===========================================================================
+   D Lagebild - die Form des Oekosystems
+   ========================================================================== */
+.db-lage { display: grid; gap: 0; }
+.db-lage-tag { margin: 0 0 8px; font-size: .68rem; letter-spacing: .14em;
+               text-transform: uppercase; font-weight: 700; color: var(--grey-50); }
+.db-lage-reihe { display: grid; gap: 8px; }
+.db-lage-pfeil { display: block; height: 22px; margin: 0 auto;
+                 width: 1px; background: #d8d3cd; }
+.db-knoten { border: 1px solid #e4e1dd; border-radius: 14px; background: #fff;
+             padding: 14px 16px; display: grid; gap: 1px; }
+.db-knoten.ist-dringend { border-color: var(--ink); border-width: 2px;
+                          padding: 13px 15px; }
+.db-knoten-zahl { margin: 0; font-family: var(--font-serif); font-weight: 700;
+                  font-size: 1.7rem; line-height: 1; }
+.db-knoten-name { margin: 4px 0 0; font-size: .95rem; font-weight: 600; }
+.db-knoten-unter { margin: 0; font-size: .78rem; color: var(--grey-50); }
+.db-knoten.ist-dringend .db-knoten-unter { color: var(--ink); font-weight: 600; }
+.db-lage-fuss { margin: 16px 0 0; font-size: .82rem; line-height: 1.6;
+                color: var(--grey-50); max-width: 68ch; }
+
+/* ===========================================================================
+   E Stapel - eine Karte nach der anderen
+   ========================================================================== */
+.db-stapelkarte { border: 1px solid #e4e1dd;
+                  border-radius: var(--radius-card, 16px);
+                  background: #fff; padding: 24px 20px;
+                  box-shadow: 0 14px 34px rgba(0,0,0,.05); }
+.db-stapel-zaehler { margin: 0; font-size: .72rem; letter-spacing: .1em;
+                     text-transform: uppercase; font-weight: 700;
+                     color: var(--grey-50); }
+.db-stapel-feld { margin: 14px 0 0; display: inline-block;
+                  padding: 3px 10px; border-radius: 999px; background: var(--hl);
+                  font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+                  font-weight: 700; }
+.db-stapelkarte h3 { margin: 12px 0 0; font-family: var(--font-serif);
+                     font-weight: 700; font-size: clamp(1.3rem, 4vw, 1.6rem);
+                     line-height: 1.28; }
+.db-stapel-satz { margin: 12px 0 0; font-size: 1rem; line-height: 1.68;
+                  color: var(--grey-70); }
+.db-stapel-fuss { margin: 18px 0 0; padding-top: 14px;
+                  border-top: 1px solid #e4e1dd;
+                  font-size: .82rem; color: var(--grey-50); }
+.db-stapel-steuerung { display: flex; gap: 8px; margin-top: 14px; }
+.db-stapel-steuerung .pv-pille { flex: 1; justify-content: center;
+                                 cursor: pointer; font-family: inherit; }
+.db-stapel-steuerung .pv-pille:disabled { opacity: .35; cursor: default; }
+
+/* ===========================================================================
+   Ab hier kommt Platz hinzu
+   ========================================================================== */
+
+/* iPad Mini hochkant und alles darueber: zwei Spalten, wo zwei sinnvoll sind. */
+@media (min-width: 600px) {
+  .db-reviere { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .db-lage-reihe { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .db-stapel-steuerung .pv-pille { flex: 0 0 auto; }
+  .db-blatt > li { padding: 18px 22px; }
+}
+
+/* iPad quer und Laptop: das Postfach wird zweispaltig, die Reviere dreispaltig. */
+@media (min-width: 900px) {
+  .db-postfach { grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+                 gap: 18px; align-items: start; }
+  .db-vorschlag { position: sticky; top: 100px; }
+  .db-reviere { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .db-stapelkarte { padding: 30px 32px; }
+}
+
+/* Grosser Monitor: Die Zeile bleibt lesbar, statt sich zu dehnen. */
+@media (min-width: 1300px) {
+  .db-blatt, .db-lage { max-width: 1000px; }
+  .db-liste { max-width: 400px; }
+}

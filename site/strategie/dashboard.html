@@ -3,45 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stoßrichtungen · SV Akademie – empiria</title>
-<meta name="description" content="Strategische Stoßrichtungen der SV Akademie.">
+<title>Dashboard &middot; Fünf Layout-Varianten &ndash; empiria</title>
+<meta name="description" content="Fünf Layout-Varianten des Dashboards: Tagesblatt, Reviere, Postfach, Lagebild, Stapel.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/projekte/projekte.css">
+<link rel="stylesheet" href="/assets/projekte/dashboard.css">
+<link rel="stylesheet" href="/assets/db-varianten.css">
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
-     (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
-     Leistungen des Hauses und sind belegt. -->
-<symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
-</symbol>
-<symbol id="mi-werkstatt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 19.5 10.5 13"/><path d="M14.5 3.5a4.5 4.5 0 0 0-3.9 6.7L4 16.8 7.2 20l6.6-6.6a4.5 4.5 0 0 0 6.7-3.9l-2.8 2.8-3.2-.9-.9-3.2z"/>
-</symbol>
-<symbol id="mi-protokoll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/>
-  <path d="M14.5 3.5V8h4.2"/><path d="M9 12.5h6M9 16h4"/>
-</symbol>
-</defs></svg>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="ic-forward" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
-      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
-    </symbol>
-<symbol id="ic-kreis" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/>
-    </symbol>
-<symbol id="ic-kreuz" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/>
-    </symbol>
-<symbol id="ic-raute" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M116.22,27.03l89.19,89.19-89.19,89.19L27.03,116.22,116.22,27.03M116.22,2.83c-2.53,0-5.06.96-6.99,2.89L5.73,109.23c-3.86,3.86-3.86,10.11,0,13.97l103.51,103.51c1.93,1.93,4.46,2.89,6.99,2.89s5.06-.96,6.99-2.89l103.51-103.51c3.86-3.86,3.86-10.11,0-13.97L123.21,5.73c-1.93-1.93-4.46-2.89-6.99-2.89h0Z"/>
-    </symbol>
-</defs></svg>
 
 <header class="site-header">
   <div class="container nav">
@@ -155,30 +125,30 @@
 </div>
 <p class="dev-dd-group dev-dd-group--sub">Projekte</p>
 <div class="dev-dd-sub">
-<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<a href="../projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
 <p class="dev-dd-group">Die Module</p>
-<a href="sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
-<a href="sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<a href="../projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="../projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
 <div class="dev-dd-sub">
-<a href="sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<a href="../projekte/sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
 <p class="dev-dd-group">Darunter</p>
-<a href="sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
-<a href="sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
-<a href="sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
-<a href="sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+<a href="../projekte/sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="../projekte/sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="../projekte/sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="../projekte/sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
 </div></div>
 </div>
 </div></div>
 </div>
-<a href="sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
-<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<a href="../projekte/sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+<a href="../projekte/sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
-<a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
-<a href="../strategie/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
-<a href="../strategie/oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
-<a href="../strategie/dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
+<a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
+<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
+<a href="oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
+<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -465,30 +435,30 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 <p class="dev-dd-group dev-dd-group--sub">Projekte</p>
 <div class="dev-dd-sub">
-<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<a href="../projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
 <p class="dev-dd-group">Die Module</p>
-<a href="sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
-<a href="sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<a href="../projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="../projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
 <div class="dev-dd-sub">
-<a href="sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<a href="../projekte/sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
 <div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
 <p class="dev-dd-group">Darunter</p>
-<a href="sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
-<a href="sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
-<a href="sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
-<a href="sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+<a href="../projekte/sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="../projekte/sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="../projekte/sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="../projekte/sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
 </div></div>
 </div>
 </div></div>
 </div>
-<a href="sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
-<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<a href="../projekte/sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+<a href="../projekte/sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Strategie</p>
-<a href="../strategie/zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
-<a href="../strategie/meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
-<a href="../strategie/oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
-<a href="../strategie/dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
+<a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
+<a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
+<a href="oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
+<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -520,112 +490,419 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <main>
 
-  <section class="hero pj-hero">
+  <section class="section section--eng">
     <div class="container">
-      <p class="pj-wo">
-        <a href="/projekte/sv-akademie.html">&#8592; SV Akademie</a>
-        <span class="pj-wo-trenner" aria-hidden="true">&rsaquo;</span>
-        <a href="/projekte/sv-strategie.html">Strategie</a>
-        <span class="pj-wo-trenner" aria-hidden="true">&rsaquo;</span>
-        <span aria-current="page">Stoßrichtungen</span>
-      </p>
-      <nav class="pj-reiter" aria-label="Die drei Module">
-        <a class="pj-reiter-knopf" href="/projekte/sv-selbstverstaendnis.html"><span class="pj-reiter-nr">1</span>Selbstverständnis</a>
-        <a class="pj-reiter-knopf" href="/projekte/sv-vision.html"><span class="pj-reiter-nr">2</span>Vision</a>
-        <a class="pj-reiter-knopf is-hier" href="/projekte/sv-strategie.html" aria-current="page"><span class="pj-reiter-nr">3</span>Strategie</a>
-      </nav>
-      <div class="pj-hero-grid pj-hero-grid--einspaltig">
-        <div class="pj-hero-text">
-          <p class="kicker">Stoßrichtungen</p>
-          <h1 class="h-serif">Wenige Richtungen, <span class="hl">klar begründet.</span></h1>
-          <p class="lead">Aus der Analyse der Ausgangslage entstehen wenige Stoßrichtungen. Jede benennt, was sie verändert, und die Kriterien, an denen sich ihre Wirkung erkennen lässt.</p>
-        </div>
+
+      <p class="kicker">Strategie &middot; Entwicklung</p>
+      <h1 class="h-serif db-titel">Das <span class="hl">Dashboard</span> in fünf Fassungen.</h1>
+      <p class="lead db-lead">Alle fünf zeigen dieselben Posten. Sie unterscheiden
+        sich darin, welche Frage sie zuerst beantworten – und wie schnell Du
+        danach mit Claude weiterreden kannst.</p>
+
+      <div class="pv-wahl db-wahl" role="group" aria-label="Variante">
+        <span class="pv-wahl-tag">Variante</span>
+        <button type="button" class="pv-pille db-pille is-aktiv" data-variante="a" aria-pressed="true">A <small>Tagesblatt</small></button>
+        <button type="button" class="pv-pille db-pille" data-variante="b" aria-pressed="false">B <small>Reviere</small></button>
+        <button type="button" class="pv-pille db-pille" data-variante="c" aria-pressed="false">C <small>Postfach</small></button>
+        <button type="button" class="pv-pille db-pille" data-variante="d" aria-pressed="false">D <small>Lagebild</small></button>
+        <button type="button" class="pv-pille db-pille" data-variante="e" aria-pressed="false">E <small>Stapel</small></button>
       </div>
+
+      <div class="db-raum">
+      <section class="db-tafel" data-variante="a">
+        <p class="db-variantenkopf"><b>Tagesblatt</b><span>Was ist heute dran?</span></p>
+        <p class="db-stufe">heute<span>3</span></p>
+        <ul class="db-blatt">
+          <li>
+            <p class="db-blatt-kopf"><b>Angebot Hauptabteilung Schaden</b>
+              <span class="db-feld">Korrespondenz</span></p>
+            <p class="db-blatt-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
+            <p class="db-blatt-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
+          </li>
+          <li>
+            <p class="db-blatt-kopf"><b>Rückfrage zur Akademie-Homepage</b>
+              <span class="db-feld">Korrespondenz</span></p>
+            <p class="db-blatt-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
+            <p class="db-blatt-fuss">K. Lindner &middot; seit 4 Stunden</p>
+          </li>
+          <li>
+            <p class="db-blatt-kopf"><b>Drei Rechnungen warten auf Freigabe</b>
+              <span class="db-feld">Dokumente</span></p>
+            <p class="db-blatt-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
+            <p class="db-blatt-fuss">aus dem Postfach &middot; seit gestern</p>
+          </li>
+        </ul>
+        <p class="db-stufe">diese Woche<span>3</span></p>
+        <ul class="db-blatt">
+          <li>
+            <p class="db-blatt-kopf"><b>Drei Kontakte sind überfällig</b>
+              <span class="db-feld">Kontakte</span></p>
+            <p class="db-blatt-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
+            <p class="db-blatt-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
+          </li>
+          <li>
+            <p class="db-blatt-kopf"><b>Zwei Änderungen stehen in der Vorschau</b>
+              <span class="db-feld">Webseiten</span></p>
+            <p class="db-blatt-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
+            <p class="db-blatt-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
+          </li>
+          <li>
+            <p class="db-blatt-kopf"><b>Beitrag zur Strategiearbeit liegt als Entwurf</b>
+              <span class="db-feld">Postings</span></p>
+            <p class="db-blatt-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
+            <p class="db-blatt-fuss">für alle drei Marken &middot; geplant für KW 41</p>
+          </li>
+        </ul>
+        <p class="db-stufe">wenn Zeit ist<span>2</span></p>
+        <ul class="db-blatt">
+          <li>
+            <p class="db-blatt-kopf"><b>Kommentar auf LinkedIn unbeantwortet</b>
+              <span class="db-feld">Korrespondenz</span></p>
+            <p class="db-blatt-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
+            <p class="db-blatt-fuss">Sales Navigator &middot; seit 3 Tagen</p>
+          </li>
+          <li>
+            <p class="db-blatt-kopf"><b>Recherche zu Vergleichsangeboten läuft</b>
+              <span class="db-feld">Assistenz</span></p>
+            <p class="db-blatt-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
+            <p class="db-blatt-fuss">Auftrag von gestern &middot; läuft</p>
+          </li>
+        </ul>
+      </section>
+      <section class="db-tafel" data-variante="b" hidden>
+        <p class="db-variantenkopf"><b>Reviere</b><span>Wie steht jedes Feld?</span></p>
+        <div class="db-reviere">
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Korrespondenz</p>
+              <span class="db-zahl db-zahl--dringend">2 heute</span>
+            </header>
+            <p class="db-revier-unter">Was hereinkommt und beantwortet wird</p>
+            <ul class="db-revier-liste">
+              <li><b>Angebot Hauptabteilung Schaden</b><small>M. Berger, SV &middot; seit 2 Tagen</small></li>
+              <li><b>Rückfrage zur Akademie-Homepage</b><small>K. Lindner &middot; seit 4 Stunden</small></li>
+              <li><b>Kommentar auf LinkedIn unbeantwortet</b><small>Sales Navigator &middot; seit 3 Tagen</small></li>
+            </ul>
+          </article>
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Kontakte</p>
+              <span class="db-zahl">ohne Eile</span>
+            </header>
+            <p class="db-revier-unter">Wer wieder gehört werden sollte</p>
+            <ul class="db-revier-liste">
+              <li><b>Drei Kontakte sind überfällig</b><small>aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</small></li>
+            </ul>
+          </article>
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Dokumente</p>
+              <span class="db-zahl db-zahl--dringend">1 heute</span>
+            </header>
+            <p class="db-revier-unter">Rechnungen und Ablage</p>
+            <ul class="db-revier-liste">
+              <li><b>Drei Rechnungen warten auf Freigabe</b><small>aus dem Postfach &middot; seit gestern</small></li>
+            </ul>
+          </article>
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Webseiten</p>
+              <span class="db-zahl">ohne Eile</span>
+            </header>
+            <p class="db-revier-unter">Was in der Vorschau steht</p>
+            <ul class="db-revier-liste">
+              <li><b>Zwei Änderungen stehen in der Vorschau</b><small>Daniel-Zweig &middot; seit 1 Tag</small></li>
+            </ul>
+          </article>
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Postings</p>
+              <span class="db-zahl">ohne Eile</span>
+            </header>
+            <p class="db-revier-unter">Was ausgespielt wird</p>
+            <ul class="db-revier-liste">
+              <li><b>Beitrag zur Strategiearbeit liegt als Entwurf</b><small>für alle drei Marken &middot; geplant für KW 41</small></li>
+            </ul>
+          </article>
+          <article class="db-revier">
+            <header>
+              <p class="db-revier-name">Assistenz</p>
+              <span class="db-zahl">ohne Eile</span>
+            </header>
+            <p class="db-revier-unter">Aufträge aller Art</p>
+            <ul class="db-revier-liste">
+              <li><b>Recherche zu Vergleichsangeboten läuft</b><small>Auftrag von gestern &middot; läuft</small></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <section class="db-tafel" data-variante="c" hidden>
+        <p class="db-variantenkopf"><b>Postfach</b><span>Was genau liegt an?</span></p>
+        <div class="db-postfach">
+          <ol class="db-liste">
+            <li><button type="button" class="db-zeile is-aktiv" data-posten="0">
+              <span class="db-zeile-feld">Korrespondenz</span>
+              <span class="db-zeile-titel">Angebot Hauptabteilung Schaden</span>
+              <span class="db-zeile-wann">seit 2 Tagen</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="1">
+              <span class="db-zeile-feld">Korrespondenz</span>
+              <span class="db-zeile-titel">Rückfrage zur Akademie-Homepage</span>
+              <span class="db-zeile-wann">seit 4 Stunden</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="2">
+              <span class="db-zeile-feld">Kontakte</span>
+              <span class="db-zeile-titel">Drei Kontakte sind überfällig</span>
+              <span class="db-zeile-wann">älteste seit 9 Wochen</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="3">
+              <span class="db-zeile-feld">Dokumente</span>
+              <span class="db-zeile-titel">Drei Rechnungen warten auf Freigabe</span>
+              <span class="db-zeile-wann">seit gestern</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="4">
+              <span class="db-zeile-feld">Webseiten</span>
+              <span class="db-zeile-titel">Zwei Änderungen stehen in der Vorschau</span>
+              <span class="db-zeile-wann">seit 1 Tag</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="5">
+              <span class="db-zeile-feld">Postings</span>
+              <span class="db-zeile-titel">Beitrag zur Strategiearbeit liegt als Entwurf</span>
+              <span class="db-zeile-wann">geplant für KW 41</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="6">
+              <span class="db-zeile-feld">Korrespondenz</span>
+              <span class="db-zeile-titel">Kommentar auf LinkedIn unbeantwortet</span>
+              <span class="db-zeile-wann">seit 3 Tagen</span>
+            </button></li>
+            <li><button type="button" class="db-zeile" data-posten="7">
+              <span class="db-zeile-feld">Assistenz</span>
+              <span class="db-zeile-titel">Recherche zu Vergleichsangeboten läuft</span>
+              <span class="db-zeile-wann">läuft</span>
+            </button></li>
+          </ol>
+          <div class="db-vorschlag">
+            <article class="db-karte" data-posten="0">
+              <p class="db-karte-feld">Korrespondenz &middot; heute</p>
+              <h3>Angebot Hauptabteilung Schaden</h3>
+              <p class="db-karte-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
+              <p class="db-karte-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
+            </article>
+            <article class="db-karte" data-posten="1" hidden>
+              <p class="db-karte-feld">Korrespondenz &middot; heute</p>
+              <h3>Rückfrage zur Akademie-Homepage</h3>
+              <p class="db-karte-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
+              <p class="db-karte-fuss">K. Lindner &middot; seit 4 Stunden</p>
+            </article>
+            <article class="db-karte" data-posten="2" hidden>
+              <p class="db-karte-feld">Kontakte &middot; diese Woche</p>
+              <h3>Drei Kontakte sind überfällig</h3>
+              <p class="db-karte-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
+              <p class="db-karte-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
+            </article>
+            <article class="db-karte" data-posten="3" hidden>
+              <p class="db-karte-feld">Dokumente &middot; heute</p>
+              <h3>Drei Rechnungen warten auf Freigabe</h3>
+              <p class="db-karte-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
+              <p class="db-karte-fuss">aus dem Postfach &middot; seit gestern</p>
+            </article>
+            <article class="db-karte" data-posten="4" hidden>
+              <p class="db-karte-feld">Webseiten &middot; diese Woche</p>
+              <h3>Zwei Änderungen stehen in der Vorschau</h3>
+              <p class="db-karte-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
+              <p class="db-karte-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
+            </article>
+            <article class="db-karte" data-posten="5" hidden>
+              <p class="db-karte-feld">Postings &middot; diese Woche</p>
+              <h3>Beitrag zur Strategiearbeit liegt als Entwurf</h3>
+              <p class="db-karte-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
+              <p class="db-karte-fuss">für alle drei Marken &middot; geplant für KW 41</p>
+            </article>
+            <article class="db-karte" data-posten="6" hidden>
+              <p class="db-karte-feld">Korrespondenz &middot; wenn Zeit ist</p>
+              <h3>Kommentar auf LinkedIn unbeantwortet</h3>
+              <p class="db-karte-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
+              <p class="db-karte-fuss">Sales Navigator &middot; seit 3 Tagen</p>
+            </article>
+            <article class="db-karte" data-posten="7" hidden>
+              <p class="db-karte-feld">Assistenz &middot; wenn Zeit ist</p>
+              <h3>Recherche zu Vergleichsangeboten läuft</h3>
+              <p class="db-karte-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
+              <p class="db-karte-fuss">Auftrag von gestern &middot; läuft</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="db-tafel" data-variante="d" hidden>
+        <p class="db-variantenkopf"><b>Lagebild</b><span>Wo im System liegt es?</span></p>
+        <div class="db-lage">
+          <div class="db-lage-ebene">
+            <p class="db-lage-tag">Was hereinkommt</p>
+            <div class="db-lage-reihe">
+              <article class="db-knoten ist-dringend">
+                <p class="db-knoten-zahl">3</p>
+                <p class="db-knoten-name">Korrespondenz</p>
+                <p class="db-knoten-unter">davon 2 heute</p>
+              </article>
+              <article class="db-knoten">
+                <p class="db-knoten-zahl">1</p>
+                <p class="db-knoten-name">Kontakte</p>
+                <p class="db-knoten-unter">nichts Dringendes</p>
+              </article>
+            </div>
+          </div>
+          <span class="db-lage-pfeil" aria-hidden="true"></span>
+          <div class="db-lage-ebene">
+            <p class="db-lage-tag">Was gearbeitet wird</p>
+            <div class="db-lage-reihe">
+              <article class="db-knoten">
+                <p class="db-knoten-zahl">1</p>
+                <p class="db-knoten-name">Assistenz</p>
+                <p class="db-knoten-unter">nichts Dringendes</p>
+              </article>
+              <article class="db-knoten">
+                <p class="db-knoten-zahl">1</p>
+                <p class="db-knoten-name">Webseiten</p>
+                <p class="db-knoten-unter">nichts Dringendes</p>
+              </article>
+            </div>
+          </div>
+          <span class="db-lage-pfeil" aria-hidden="true"></span>
+          <div class="db-lage-ebene">
+            <p class="db-lage-tag">Was herausgeht</p>
+            <div class="db-lage-reihe">
+              <article class="db-knoten">
+                <p class="db-knoten-zahl">1</p>
+                <p class="db-knoten-name">Postings</p>
+                <p class="db-knoten-unter">nichts Dringendes</p>
+              </article>
+              <article class="db-knoten ist-dringend">
+                <p class="db-knoten-zahl">1</p>
+                <p class="db-knoten-name">Dokumente</p>
+                <p class="db-knoten-unter">davon 1 heute</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <p class="db-lage-fuss">Die Form folgt dem Ökosystem: oben, was hereinkommt, in der Mitte, was gearbeitet wird, unten, was herausgeht. Die Zahl sagt, wie viel dort liegt.</p>
+      </section>
+      <section class="db-tafel" data-variante="e" hidden>
+        <p class="db-variantenkopf"><b>Stapel</b><span>Was ist das Nächste?</span></p>
+        <div class="db-stapel">
+          <article class="db-stapelkarte" data-karte="0">
+            <p class="db-stapel-zaehler">1 von 8 &middot; heute</p>
+            <p class="db-stapel-feld">Korrespondenz</p>
+            <h3>Angebot Hauptabteilung Schaden</h3>
+            <p class="db-stapel-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
+            <p class="db-stapel-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="1" hidden>
+            <p class="db-stapel-zaehler">2 von 8 &middot; heute</p>
+            <p class="db-stapel-feld">Korrespondenz</p>
+            <h3>Rückfrage zur Akademie-Homepage</h3>
+            <p class="db-stapel-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
+            <p class="db-stapel-fuss">K. Lindner &middot; seit 4 Stunden</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="2" hidden>
+            <p class="db-stapel-zaehler">3 von 8 &middot; heute</p>
+            <p class="db-stapel-feld">Dokumente</p>
+            <h3>Drei Rechnungen warten auf Freigabe</h3>
+            <p class="db-stapel-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
+            <p class="db-stapel-fuss">aus dem Postfach &middot; seit gestern</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="3" hidden>
+            <p class="db-stapel-zaehler">4 von 8 &middot; diese Woche</p>
+            <p class="db-stapel-feld">Kontakte</p>
+            <h3>Drei Kontakte sind überfällig</h3>
+            <p class="db-stapel-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
+            <p class="db-stapel-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="4" hidden>
+            <p class="db-stapel-zaehler">5 von 8 &middot; diese Woche</p>
+            <p class="db-stapel-feld">Webseiten</p>
+            <h3>Zwei Änderungen stehen in der Vorschau</h3>
+            <p class="db-stapel-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
+            <p class="db-stapel-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="5" hidden>
+            <p class="db-stapel-zaehler">6 von 8 &middot; diese Woche</p>
+            <p class="db-stapel-feld">Postings</p>
+            <h3>Beitrag zur Strategiearbeit liegt als Entwurf</h3>
+            <p class="db-stapel-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
+            <p class="db-stapel-fuss">für alle drei Marken &middot; geplant für KW 41</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="6" hidden>
+            <p class="db-stapel-zaehler">7 von 8 &middot; wenn Zeit ist</p>
+            <p class="db-stapel-feld">Korrespondenz</p>
+            <h3>Kommentar auf LinkedIn unbeantwortet</h3>
+            <p class="db-stapel-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
+            <p class="db-stapel-fuss">Sales Navigator &middot; seit 3 Tagen</p>
+          </article>
+          <article class="db-stapelkarte" data-karte="7" hidden>
+            <p class="db-stapel-zaehler">8 von 8 &middot; wenn Zeit ist</p>
+            <p class="db-stapel-feld">Assistenz</p>
+            <h3>Recherche zu Vergleichsangeboten läuft</h3>
+            <p class="db-stapel-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
+            <p class="db-stapel-fuss">Auftrag von gestern &middot; läuft</p>
+          </article>
+        </div>
+        <div class="db-stapel-steuerung">
+          <button type="button" class="pv-pille db-zurueck" aria-label="Zurück">&#8592; Zurück</button>
+          <button type="button" class="pv-pille db-weiter">Weiter &#8594;</button>
+        </div>
+      </section>
+      </div>
+
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Wie sie entstehen</p>
-        <h2 class="h-serif">Jede Richtung hat <span class="hl">eine Herkunft.</span></h2>
-        <p class="lead">Eine Stoßrichtung entsteht aus einer Kombination der SWOT-Felder: eine
-          Stärke, die auf eine Chance trifft – oder eine Schwäche, die ein Risiko verschärft.
-          Das macht nachvollziehbar, warum sie auf der Liste steht und warum andere nicht.</p>
-      </div>
+  <script>
+  /* Drei kleine Schalter: die Variante, die Zeile im Postfach, die Karte im
+     Stapel. Mehr Zustand hat diese Seite nicht. */
+  (function () {
+    var tafeln = document.querySelectorAll('.db-tafel');
+    document.querySelectorAll('.db-pille').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.db-pille').forEach(function (x) {
+          var an = x === b;
+          x.classList.toggle('is-aktiv', an);
+          x.setAttribute('aria-pressed', an ? 'true' : 'false');
+        });
+        tafeln.forEach(function (t) {
+          t.hidden = t.dataset.variante !== b.dataset.variante;
+        });
+      });
+    });
 
-      <div class="pj-bausteine">
-        <div class="pj-baustein">
-          <div class="pj-baustein-kopf">
-            <h3>Ableitung</h3>
-            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
-          </div>
-          <p>Trifft eine Stärke auf eine Chance, wird sie ausgebaut. Trifft eine Schwäche
-            auf ein Risiko, wird sie abgesichert. Aus diesen Kombinationen entstehen die
-            Kandidaten für die Auswahl.</p>
-        </div>
-        <div class="pj-baustein">
-          <div class="pj-baustein-kopf">
-            <h3>Auswahl</h3>
-            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
-          </div>
-          <p>Drei bis fünf Richtungen – mehr kann niemand gleichzeitig verfolgen. Was nicht
-            ausgewählt wird, wird nicht vergessen, sondern bewusst vertagt.</p>
-        </div>
-        <div class="pj-baustein">
-          <div class="pj-baustein-kopf">
-            <h3>Nachweis</h3>
-            <span class="pj-marke pj-marke--laeuft">In Arbeit</span>
-          </div>
-          <p>Zu jeder Richtung gehört ein Satz dazu, woran man in einem Jahr erkennt, dass sie
-            gewirkt hat. Ohne diesen Satz bleibt sie eine Absichtserklärung.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    document.querySelectorAll('.db-zeile').forEach(function (z) {
+      z.addEventListener('click', function () {
+        document.querySelectorAll('.db-zeile').forEach(function (x) {
+          x.classList.toggle('is-aktiv', x === z);
+        });
+        document.querySelectorAll('.db-karte').forEach(function (k) {
+          k.hidden = k.dataset.posten !== z.dataset.posten;
+        });
+      });
+    });
 
-  <section class="section">
-    <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Das Ergebnis</p>
-        <h2 class="h-serif">Die Richtungen <span class="hl">der SV Akademie.</span></h2>
-      </div>
+    var karten = document.querySelectorAll('.db-stapelkarte');
+    var i = 0;
+    function zeigen(n) {
+      i = Math.max(0, Math.min(karten.length - 1, n));
+      karten.forEach(function (k, j) { k.hidden = j !== i; });
+      document.querySelector('.db-zurueck').disabled = i === 0;
+      document.querySelector('.db-weiter').disabled = i === karten.length - 1;
+    }
+    var zur = document.querySelector('.db-zurueck');
+    var wei = document.querySelector('.db-weiter');
+    if (zur && wei) {
+      zur.addEventListener('click', function () { zeigen(i - 1); });
+      wei.addEventListener('click', function () { zeigen(i + 1); });
+      zeigen(0);
+    }
+  })();
+  </script>
 
-      <!-- STOSSRICHTUNGEN BITTE ERGAENZEN: Sobald die SWOT ausgewertet ist,
-           kommen hier die abgeleiteten Richtungen hinein. Aufbau je Richtung:
-           <div class="pj-baustein"><div class="pj-baustein-kopf"><h3>Titel</h3>
-           <span class="pj-marke pj-marke--laeuft">In Arbeit</span></div>
-           <p>Welche Luecke sie schliesst.</p></div> -->
-      <div class="pj-bausteine">
-        <div class="pj-baustein">
-          <div class="pj-baustein-kopf">
-            <h3>Noch offen</h3>
-            <span class="pj-marke pj-marke--offen">Offen</span>
-          </div>
-          <p class="pj-offen">Die Richtungen stehen fest, sobald die Ist-Analyse ausgewertet
-            ist. Danach stehen sie hier – jede mit Herkunft, Lücke und Nachweis.</p>
-        </div>
-        <div class="pj-baustein">
-          <div class="pj-baustein-kopf">
-            <h3>Reihenfolge</h3>
-            <span class="pj-marke pj-marke--offen">Offen</span>
-          </div>
-          <p class="pj-offen">Was zuerst, was danach, was bewusst später. Die Reihenfolge ist
-            Teil der Strategie, nicht ihre Umsetzung – die Termine dazu stehen im
-            Meilensteinplan.</p>
-        </div>
-      </div>
-
-      <a class="pj-weg-ziel" href="/projekte/sv-meilensteine.html">
-        <span class="pj-weg-ziel-pfeil" aria-hidden="true">&#8594;</span>
-        <span class="pj-weg-ziel-text"><b>Weiter zum Meilensteinplan.</b> Dort bekommen die
-          Richtungen Termine, Abhängigkeiten und Verantwortliche.</span>
-        <span class="pj-pfeil">&#8594;</span>
-      </a>
-    </div>
-  </section>
-
-</main>
 </main>
 
 <footer class="site-footer">
@@ -634,8 +911,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
   </div>
 </footer>
-
-
 
 <script src="/script.js"></script>
 </body>
