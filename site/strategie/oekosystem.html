@@ -676,10 +676,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-unter">Social Media</span>
             </button>
             <div class="oe-aktionen-rest">
-              <button type="button" class="oe-knoten" data-baustein="kontakte" aria-expanded="false">
-                <span class="oe-knoten-titel">Kontaktpflege</span>
-                <span class="oe-knoten-unter">Frequenz je Person</span>
-              </button>
               <button type="button" class="oe-knoten" data-baustein="cockpits" aria-expanded="false">
                 <span class="oe-knoten-titel">Assistenz</span>
                 <span class="oe-knoten-unter">Research, Code, Cockpits</span>
@@ -885,18 +881,28 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "offen": []
   },
   "korrespondenz": {
-    "satz": "Entwürfe und Antwortvorschläge auf Basis dessen, was im Postfach, in den Netzwerken und in den Kontakten steht. Geantwortet wird nicht nur per Mail – dieselbe Frage kommt über WhatsApp, als Direktnachricht oder als Kommentar.",
+    "satz": "Entwürfe und Antwortvorschläge auf Basis dessen, was im Postfach, in den Netzwerken und in den Kontakten steht. Geantwortet wird nicht nur per Mail – dieselbe Frage kommt über WhatsApp, als Direktnachricht oder als Kommentar. Korrespondenz entsteht aus drei Anlässen, und nur einer davon kommt von außen.",
+    "anlaesse": [
+      "<b>Es kommt etwas herein.</b> Der Posteingang wird gelesen und bewertet: Worauf muss reagiert werden, was kann warten, was erledigt sich von selbst. Zu jeder Nachricht, die eine Antwort braucht, liegt ein Vorschlag bereit.",
+      "<b>Die Kontaktpflege ist dran.</b> Zu jeder Person steht in den Kontakten, wie oft Kontakt sinnvoll ist. Läuft die Frist ab, entsteht der Anstoß von innen – mit einem Entwurf, der an das letzte Gespräch anknüpft.",
+      "<b>Im Netzwerk passiert etwas.</b> Die Zielkundenlisten im Sales Navigator zeigen, wer gerade etwas veröffentlicht. Darauf wird reagiert: ein Kommentar, eine Direktnachricht, ein Anschreiben über den Linked Helper. Sichtbarkeit entsteht dort, wo die Zielgruppe ohnehin liest."
+    ],
     "tools": [
       "Outlook 365",
       "LinkedIn, Instagram, Facebook",
-      "WhatsApp"
+      "WhatsApp",
+      "Sales Navigator für die Zielkundenlisten",
+      "Linked Helper für Anschreiben und Mailings",
+      "Die Kontakte mit der Frequenz je Person"
     ],
     "schritte": [
-      "Je Kanal festlegen, was als Entwurf vorgelegt wird und was gar nicht erst entstehen soll"
+      "Je Kanal festlegen, was als Entwurf vorgelegt wird und was gar nicht erst entstehen soll",
+      "Kontaktfrequenz je Person in den Kontakten hinterlegen"
     ],
     "offen": [
       "Welche Nachrichten automatisch entstehen dürfen und welche nicht",
-      "WhatsApp geht nur über den Browser – fragil und mit Risiko verbunden"
+      "WhatsApp geht nur über den Browser – fragil und mit Risiko verbunden",
+      "Der Linked Helper berührt die Nutzungsbedingungen von LinkedIn"
     ]
   },
   "aus_mail": {
@@ -937,19 +943,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     ],
     "schritte": [],
     "offen": []
-  },
-  "kontakte": {
-    "satz": "Eine Datenbank für Kontakte und Bestandskunden, mit einer Regel je Person, wie oft Kontakt sinnvoll ist.",
-    "tools": [
-      "Eigene Datenhaltung im Dashboard",
-      "WhatsApp für die Pflege"
-    ],
-    "schritte": [
-      "Kontaktfrequenz je Person festlegen"
-    ],
-    "offen": [
-      "WhatsApp geht nur über den Browser – fragil und mit Risiko gegenüber den Nutzungsbedingungen"
-    ]
   },
   "cockpits": {
     "satz": "Alles, was sonst anfällt und keine eigene Spur braucht: einen Termin setzen, ein Projekt-Cockpit anlegen, eine Homepage ändern oder neu bauen, im Netz recherchieren, Daten sammeln und aufbereiten. Die Spannweite ist offen – was eine Assistenz übernehmen würde, übernimmt hier Claude.",
@@ -1248,12 +1241,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "art": "geplant",
     "band": "Aktionen"
   },
-  "kontakte": {
-    "titel": "Kontaktpflege",
-    "unter": "Frequenz je Person",
-    "art": "geplant",
-    "band": "Aktionen"
-  },
   "cockpits": {
     "titel": "Assistenz",
     "unter": "Research, Code, Cockpits",
@@ -1285,6 +1272,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         ' <span class="oe-marke oe-marke--' + k.art + '">' + MARKEN[k.art] + '</span>';
       feld.querySelector('.oe-feld-satz').innerHTML = d.satz;
       feld.querySelector('.oe-feld-spalten').innerHTML =
+        liste('Anlässe', d.anlaesse) +
         liste('Dahinter steht', d.tools) +
         liste('Nächste Schritte', d.schritte) +
         liste('Noch offen', d.offen);
@@ -1336,9 +1324,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "korrespondenz"], ["knoten", "kontakte"], ["knoten", "cockpits"], ["korrespondenz", "aus_mail"], ["korrespondenz", "aus_whats"], ["korrespondenz", "aus_dm"], ["korrespondenz", "aus_komm"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>korrespondenz": "geplant", "knoten>kontakte": "geplant", "knoten>cockpits": "geplant", "korrespondenz>aus_mail": "geplant", "korrespondenz>aus_whats": "geplant", "korrespondenz>aus_dm": "geplant", "korrespondenz>aus_komm": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
-    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>korrespondenz": "rot", "knoten>kontakte": "rot", "knoten>cockpits": "rot", "korrespondenz>aus_mail": "rot", "korrespondenz>aus_whats": "rot", "korrespondenz>aus_dm": "rot", "korrespondenz>aus_komm": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "korrespondenz"], ["knoten", "cockpits"], ["korrespondenz", "aus_mail"], ["korrespondenz", "aus_whats"], ["korrespondenz", "aus_dm"], ["korrespondenz", "aus_komm"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
+    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>korrespondenz": "geplant", "knoten>cockpits": "geplant", "korrespondenz>aus_mail": "geplant", "korrespondenz>aus_whats": "geplant", "korrespondenz>aus_dm": "geplant", "korrespondenz>aus_komm": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
+    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "gelb", "salesnav>helper": "gelb", "mail>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>korrespondenz": "rot", "knoten>cockpits": "rot", "korrespondenz>aus_mail": "rot", "korrespondenz>aus_whats": "rot", "korrespondenz>aus_dm": "rot", "korrespondenz>aus_komm": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
 
     /* Die Klasse einer Leitung: ihr Zustand, nicht der Stand des Kastens
        an ihrem Ende. Die Ampel kommt als zweite Klasse dazu und wird nur
@@ -1538,8 +1526,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     /* Sichten: dieselbe Karte, eine andere Frage. Die Knoten einer Sicht
        bleiben stehen, alles andere blendet ab - samt der Leitungen, deren
        beide Enden nicht zur Sicht gehoeren. */
-    var SICHTEN = {"status": {"name": "Status", "satz": "Wie gut läuft jeder Weg heute? Grün heißt: läuft optimal. Gelb heißt: läuft, lässt sich aber verbessern. Rot heißt Handlungsbedarf – entweder ist der Weg noch nicht eingerichtet, oder er läuft schlecht.", "ampel": true, "knoten": []}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "kontakte"]}};
-    var AMPEL_KNOTEN = {"homepages": "gruen", "mail": "gruen", "nextcloud": "gruen", "finder": "gruen", "chrome": "gruen", "instagram": "gruen", "facebook": "gruen", "analytics": "gruen", "search": "gruen", "macbook": "gruen", "ipad": "gruen", "iphone": "gruen", "linkedin": "gelb", "salesnav": "gelb", "helper": "gelb", "li_marken": "gelb", "kontakte": "gelb", "kontakte_db": "gelb", "knoten": "rot", "dashboard": "rot", "postings": "rot", "buffer": "rot", "korrespondenz": "rot", "cockpits": "rot", "aus_linkedin": "rot", "aus_instagram": "rot", "aus_facebook": "rot", "aus_mail": "rot", "aus_whats": "rot", "aus_dm": "rot", "aus_komm": "rot"};
+    var SICHTEN = {"status": {"name": "Status", "satz": "Wie gut läuft jeder Weg heute? Grün heißt: läuft optimal. Gelb heißt: läuft, lässt sich aber verbessern. Rot heißt Handlungsbedarf – entweder ist der Weg noch nicht eingerichtet, oder er läuft schlecht.", "ampel": true, "knoten": []}, "naechste": {"name": "Als Nächstes", "satz": "Die Reihenfolge aus dem Briefing: zuerst Repository und Vercel-Projekt, dann der Always-on-Knoten, dann die drei Datenquellen, die sich einfach anbinden lassen – Mail, Analytics, Search Console.", "knoten": ["dashboard", "knoten", "mail", "analytics", "search"]}, "kritisch": {"name": "Kritischer Pfad", "satz": "Was alles andere blockiert, solange es nicht geklärt ist: Der Ausführungsknoten muss laufen und das Dashboard existieren, sonst steht nichts. Und sobald das Postfach angebunden ist, liegen Kundendaten im Spiel – das Rechte- und Sicherheitskonzept ist im Briefing als Showstopper benannt und noch nicht besprochen.", "knoten": ["knoten", "dashboard", "mail"]}, "schnell": {"name": "Schnellster Nutzen", "satz": "Der Weg mit dem geringsten Aufwand: Analytics, Search Console und die Homepages sind reine Lesezugriffe mit sauberen Schnittstellen. Keine Rechtefrage, keine Kundendaten – und am Ende steht ein Dashboard, das schon etwas zeigt.", "knoten": ["homepages", "analytics", "search", "knoten", "dashboard"]}, "fragil": {"name": "Schwache Glieder", "satz": "LinkedIn, der Sales Navigator, der Linked Helper und die Kontaktpflege über WhatsApp haben keine sauberen Schnittstellen. Der Linked Helper berührt zusätzlich die Nutzungsbedingungen. Alles davon bleibt Handarbeit.", "knoten": ["linkedin", "salesnav", "helper", "korrespondenz"]}};
+    var AMPEL_KNOTEN = {"homepages": "gruen", "mail": "gruen", "nextcloud": "gruen", "finder": "gruen", "chrome": "gruen", "instagram": "gruen", "facebook": "gruen", "analytics": "gruen", "search": "gruen", "macbook": "gruen", "ipad": "gruen", "iphone": "gruen", "linkedin": "gelb", "salesnav": "gelb", "helper": "gelb", "li_marken": "gelb", "kontakte_db": "gelb", "knoten": "rot", "dashboard": "rot", "postings": "rot", "buffer": "rot", "korrespondenz": "rot", "cockpits": "rot", "aus_linkedin": "rot", "aus_instagram": "rot", "aus_facebook": "rot", "aus_mail": "rot", "aus_whats": "rot", "aus_dm": "rot", "aus_komm": "rot"};
     var SATZ_ALLES = "Der ganze Plan: Was hereinkommt, wo gearbeitet wird und was herausgeht. Eine Sicht wählen beantwortet eine bestimmte Frage – wie es um jeden Weg steht, was zuerst drankommt, was alles andere blockiert.";
     var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
     var satz = document.getElementById('oeSichtSatz');
