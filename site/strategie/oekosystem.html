@@ -535,6 +535,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
       <div class="oe-raum">
 
+        <p class="oe-schiebehinweis">Zum Vergrößern aufziehen, zum Verschieben wischen.</p>
         <div class="oe-plan oe-plan--verdrahtung" data-richtung="unten" data-linien="eckig">
           <svg class="oe-draehte" id="oeDraehte" aria-hidden="true"><defs><marker id="oePunktCyan" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5"><circle cx="4" cy="4" r="3" fill="#b8b2ab"/></marker></defs></svg>
 
@@ -1484,7 +1485,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
          wem gehoert, und gezeichnet wird nur, was eine Ebene tiefer fuehrt.
          Die Wege zur Schiene entfallen: Welcher Abschnitt wohin laeuft,
          sagt dort die Ueberschrift. */
-      var baum = window.matchMedia('(max-width: 1100px)').matches;
+      var baum = false;  /* Das Baumlayout bleibt als Ventil im Code - fuer
+         eine Ebene, die zu voll wird. Fuer das schmale Fenster taugt es
+         nicht: Untereinander stehen dann alle Kaesten, aber der Plan
+         sagt nichts mehr. */
       var teile = [];
       LEITUNGEN.forEach(function (l) {
         var von = kasten(l[0]), nach = kasten(l[1]), kante = l[2];

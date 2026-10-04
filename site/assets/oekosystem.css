@@ -640,54 +640,30 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 }
 
 /* ===========================================================================
-   Schmales Fenster: der Plan wird zum Organigramm
+   Schmales Fenster: der Plan bleibt ein Plan
    ---------------------------------------------------------------------------
-   Nebeneinander hat eine Grenze. Bei zehn Quellen in einer Reihe bleiben
-   auf einem iPhone dreissig Pixel je Kasten - unlesbar. Unter 900px steht
-   deshalb alles untereinander, die Ebene zeigt der Einzug, und die
-   Leitungen laufen als Sammellinie links mit Stichen nach rechts. Am
-   Desktop aendert sich dadurch nichts.
+   Ein Schaltplan sagt seine Aussage in der Flaeche: oben die Quellen, in
+   der Mitte die Verarbeitung, unten die Aktionen, dazwischen die Wege. In
+   eine Spalte gepresst bleiben die Kaesten uebrig und der Zusammenhang
+   geht verloren - untereinander steht dann alles, aber nichts sagt mehr,
+   was wohin laeuft.
+
+   Deshalb behaelt der Plan seine Breite und wird geschoben wie eine Karte.
+   Aufziehen vergroessert, wischen verschiebt; beides kann das Telefon von
+   sich aus, die Seite verbietet es nicht. Die Form bleibt lesbar, auch
+   wenn man sie in zwei Zuegen abfahren muss.
    ========================================================================== */
+.oe-schiebehinweis { display: none; align-items: center; gap: 8px;
+                     margin: 0 0 10px; font-size: .78rem; color: var(--grey-50); }
+.oe-schiebehinweis::before { content: ""; width: 26px; height: 0;
+                             border-top: 1px dashed #b8b2ab; }
+
 @media (max-width: 1100px) {
-  /* Alle Raster werden zu einer Spalte. Die Spaltenangaben stehen als
-     Inline-Stil an den Kaesten und muessen deshalb hart ueberschrieben
-     werden. */
-  .oe-quellen, .oe-aktionen, .oe-aktionen-rest,
-  .oe-plan--verdrahtung .oe-mittelreihe, .oe-geraete {
-    display: flex; flex-direction: column; gap: 8px; }
-  /* Das Gegengewicht unter den Geraeten haelt im Schaltplan die Hoehe -
-     im Baum haelt es nichts und nimmt nur Platz. */
-  .oe-plan--verdrahtung .oe-geraete::after { display: none; }
-  /* Die drei Einzelaktionen stehen am Ende, nicht zwischen den beiden
-     Straengen - sonst reisst die Kette Postings-Buffer-Kanaele auseinander. */
-  .oe-aktionen-rest { order: 99; }
-  .oe-knotenplatz, .oe-leitstandplatz { display: block; }
-  .oe-leitstandplatz .oe-knoten--gross { width: auto; max-width: none; }
-  .oe-quellen > .oe-knoten, .oe-aktionen > .oe-knoten,
-  .oe-aktionen-rest > .oe-knoten {
-    grid-column: auto !important; grid-row: auto !important; }
-
-  /* Die Ebene zeigt der Einzug - wie in einem Organigramm. */
-  .oe-plan .oe-knoten[data-ebene="2"] { margin-left: 26px; }
-  .oe-plan .oe-knoten[data-ebene="3"] { margin-left: 52px; }
-
-  /* Die Kaesten nehmen die Breite, die da ist, und tragen ihren Text in
-     einer Zeile statt in fuenf. */
-  .oe-plan .oe-knoten { width: auto; max-width: none; align-self: stretch; }
-  .oe-knoten-titel { font-size: .9rem; }
-  .oe-knoten-unter { font-size: .78rem; }
-  .oe-knoten--gross { max-width: none; }
-  .oe-knoten--gross .oe-knoten-unter { min-height: 0; }
-
-  /* Die Geraete und der Bestand reihen sich ein. */
-  .oe-geraete { max-width: none; }
-  .oe-knoten--speicher { max-width: none; }
-
-  /* Die Sammelschiene ergibt ohne Nebeneinander keinen Sinn - im Baum
-     fuehrt jede Quelle ihre eigene Linie. */
-  .oe-schiene { display: none; }
-
-  /* Zwischen den Ebenen bleibt Luft fuer die Leitungen. */
-  .oe-plan--verdrahtung { gap: clamp(26px, 5vw, 40px); }
-  .oe-abschnitt .oe-spalte-tag { margin-bottom: 10px; }
+  .oe-raum { overflow-x: auto; overflow-y: hidden;
+             -webkit-overflow-scrolling: touch;
+             padding-bottom: 6px; }
+  .oe-plan { min-width: 1050px; }
+  /* Der Hinweis steht nur dort, wo geschoben werden muss. */
+  .oe-schiebehinweis { display: flex; }
 }
+
