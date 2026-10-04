@@ -197,3 +197,68 @@ a.dbx-ez:hover { background: #faf9f7; }
   .dbx-eingang, .dbx-fuss { max-width: 1000px; }
   .dbx-vorhaben { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* ===========================================================================
+   Der Vorschlag - was das System von sich aus anregt
+   ---------------------------------------------------------------------------
+   Steht oben, noch vor Startklar: Es ist eine Empfehlung, keine Liste, und
+   sie verfaellt. Deshalb traegt sie den schwarzen Grund - einmal auf der
+   Seite, sonst waere es keine Hervorhebung.
+   ========================================================================== */
+.dbx-vorschlag { margin-top: clamp(22px, 3vw, 30px);
+                 border-radius: var(--radius-card, 16px);
+                 background: var(--ink); color: #fff; padding: 20px; }
+.dbx-vorschlag-tag { margin: 0; font-size: .68rem; letter-spacing: .14em;
+                     text-transform: uppercase; font-weight: 700;
+                     color: var(--hl); }
+.dbx-vorschlag-satz { margin: 10px 0 0; font-size: 1rem; line-height: 1.6;
+                      color: rgba(255,255,255,.72); }
+.dbx-vorschlag-satz b { color: #fff; font-weight: 600; }
+.dbx-vorschlag-modus { margin: 12px 0 0; font-family: var(--font-serif);
+                       font-weight: 700; font-size: 1.15rem; line-height: 1.35; }
+.dbx-vorschlag .dbx-ja { background: var(--hl); border-color: var(--hl);
+                         color: var(--ink); }
+.dbx-vorschlag .dbx-ja:hover { background: #fff; border-color: #fff; }
+.dbx-vorschlag .dbx-weg { background: none; border-color: rgba(255,255,255,.28);
+                          color: rgba(255,255,255,.8); }
+.dbx-vorschlag .dbx-weg:hover { border-color: #fff; color: #fff; }
+
+/* ---- Die sechs Modi ---------------------------------------------------- */
+.dbx-modi { display: grid; gap: 10px; }
+.dbx-modus { border: 1px solid #e4e1dd; border-radius: var(--radius-card, 16px);
+             background: #fff; padding: 18px; display: grid;
+             align-content: start; }
+.dbx-modus-kopf { display: flex; align-items: baseline;
+                  justify-content: space-between; gap: 10px; }
+.dbx-modus h3 { margin: 0; font-family: var(--font-serif); font-weight: 700;
+                font-size: 1.1rem; line-height: 1.3; }
+.dbx-modus-dauer { margin: 0; font-size: .7rem; letter-spacing: .08em;
+                   text-transform: uppercase; font-weight: 700;
+                   color: var(--grey-50); white-space: nowrap; }
+.dbx-modus-wofuer { margin: 8px 0 0; font-size: .9rem; line-height: 1.55;
+                    color: var(--grey-70); }
+/* Die Regel ist das Eigentliche: Sie sagt, was dieser Modus nicht ist. */
+.dbx-modus-regel { margin: 12px 0 0; padding: 10px 12px;
+                   border-radius: 10px; background: #f4f2ef;
+                   font-size: .85rem; line-height: 1.5; }
+.dbx-modus-regel span { display: block; font-size: .64rem; letter-spacing: .1em;
+                        text-transform: uppercase; font-weight: 700;
+                        color: var(--grey-50); margin-bottom: 3px; }
+.dbx-modus-anlass { margin: 10px 0 14px; font-size: .78rem;
+                    color: var(--grey-50); }
+.dbx-modus-start { appearance: none; -webkit-appearance: none;
+                   justify-self: start; margin-top: auto;
+                   padding: 7px 16px; border-radius: 999px;
+                   border: 1px solid #ddd8d2; background: #fff;
+                   font-family: inherit; font-size: .82rem; font-weight: 600;
+                   color: var(--grey-70); cursor: pointer;
+                   transition: border-color .15s ease, color .15s ease; }
+.dbx-modus-start:hover { border-color: var(--ink); color: var(--ink); }
+
+@media (min-width: 620px) {
+  .dbx-modi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dbx-vorschlag { padding: 24px 26px; }
+}
+@media (min-width: 950px) {
+  .dbx-modi { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

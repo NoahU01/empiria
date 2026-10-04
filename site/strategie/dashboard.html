@@ -506,6 +506,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </div>
       </div>
 
+      <section class="dbx-vorschlag">
+        <p class="dbx-vorschlag-tag">Vorschlag</p>
+        <p class="dbx-vorschlag-satz"><b>Sieben Entscheidungen sind offen, die älteste seit vier Wochen.</b>
+          Drei davon blockieren die Vertriebsstrategie.</p>
+        <p class="dbx-vorschlag-modus">Entscheidungssprint &middot; 15 Minuten &middot;
+          heute, 16:30</p>
+        <div class="dbx-wege">
+          <button type="button" class="dbx-ja">Jetzt starten</button>
+          <button type="button" class="dbx-weg">heute, 16:30 eintragen</button>
+          <button type="button" class="dbx-weg">Später</button>
+        </div>
+      </section>
       <section class="dbx-block dbx-block--startklar">
         <header class="dbx-blockkopf">
           <p class="dbx-blocktitel">Startklar</p>
@@ -646,9 +658,80 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </li>
         </ul>
       </section>
+      <section class="dbx-block">
+        <header class="dbx-blockkopf">
+          <p class="dbx-blocktitel">Sparring</p>
+          <p class="dbx-blockzahl dbx-blockzahl--leise">6</p>
+        </header>
+        <p class="dbx-blocksatz">Sechs Arten zu reden. Jede hat eine Regel, die sagt, was in ihr nicht vorkommt.</p>
+        <div class="dbx-modi">
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>Entscheidungssprint</h3>
+              <p class="dbx-modus-dauer">15 Minuten</p>
+            </header>
+            <p class="dbx-modus-wofuer">Mehrere vorbereitete Entscheidungen am Stück treffen.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Kein Abschweifen. Was nicht entschieden werden kann, wird notiert und verlässt den Sprint.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen wenn sich Entscheidungen stapeln.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>Deep Dive</h3>
+              <p class="dbx-modus-dauer">60 bis 90 Minuten</p>
+            </header>
+            <p class="dbx-modus-wofuer">Volle Tiefe zu einem einzelnen Thema – ein Kundenprojekt, eine Frage.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Keine Randthemen. Was auftaucht und nicht dazugehört, wandert auf eine Liste für später.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen wenn ein Vorhaben seit Wochen nicht vorangeht.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>360-Grad-Meeting</h3>
+              <p class="dbx-modus-dauer">45 Minuten</p>
+            </header>
+            <p class="dbx-modus-wofuer">Ein Thema steht fest, der Blick geht auf die Zusammenhänge drumherum.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Keine Tiefe. Wer hier anfängt zu lösen, verliert die Übersicht, die der Modus bringen soll.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen vor einer Entscheidung mit Folgen in mehrere Richtungen.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>Ideen-Modus</h3>
+              <p class="dbx-modus-dauer">offen</p>
+            </header>
+            <p class="dbx-modus-wofuer">Kein fester Ausgangspunkt, kein Ergebnis, das herauskommen muss.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Kein Entscheidungsdruck. Nichts wird bewertet, solange gesammelt wird.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen wenn lange nichts Neues entstanden ist.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>Status-Check</h3>
+              <p class="dbx-modus-dauer">10 Minuten</p>
+            </header>
+            <p class="dbx-modus-wofuer">Kurzer Abgleich über alle drei Marken: Was liegt, was brennt.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Keine Lösungen. Es wird nur festgestellt, nicht gearbeitet.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen montags und wenn etwas liegen geblieben ist.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+          <article class="dbx-modus">
+            <header class="dbx-modus-kopf">
+              <h3>Review-Modus</h3>
+              <p class="dbx-modus-dauer">20 bis 30 Minuten</p>
+            </header>
+            <p class="dbx-modus-wofuer">Bewertung von Umgesetztem – von Noah oder von Claude Code gebaut.</p>
+            <p class="dbx-modus-regel"><span>Nicht in diesem Modus</span>Keine neuen Wünsche. Beurteilt wird, was da ist, nicht was fehlt.</p>
+            <p class="dbx-modus-anlass">Vorgeschlagen wenn etwas fertig geworden ist.</p>
+            <button type="button" class="dbx-modus-start">Starten</button>
+          </article>
+        </div>
+      </section>
 
       <p class="dbx-fuss">Alles, was ein Knopf nicht abdeckt, geht übers
-        Gespräch: „Bei der Mail an Berger den Termin auf KW 43 ändern.“</p>
+        Gespräch: „Bei der Mail an Berger den Termin auf KW 43 ändern.“
+        Ein Modus lässt sich auch so starten: „Lass uns einen
+        Entscheidungssprint machen.“</p>
 
     </div>
   </section>

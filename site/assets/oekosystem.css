@@ -361,26 +361,30 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-strang-kinder { display: grid; gap: clamp(22px, 2.8vh, 36px); }
 .oe-strang.ist-zu .oe-strang-kinder { display: none; }
 
+/* Der Pfeil liegt rechts im Kopfkasten, wie bei einem Akkordeon. Im
+   Markup steht er daneben und wird darueber gelegt - ein Knopf im Knopf
+   waere ungueltig, und der Kasten ist schon einer. */
+.oe-strang { position: relative; }
 .oe-falter { appearance: none; -webkit-appearance: none;
-             display: flex; align-items: center; gap: 8px;
-             width: fit-content; margin: 8px 0 0 14px; padding: 5px 12px 5px 4px;
-             border: 0; border-radius: 999px; background: none;
-             font-family: inherit; font-size: .72rem; letter-spacing: .06em;
-             font-weight: 600; color: var(--grey-50); cursor: pointer;
+             position: absolute; right: 6px; top: 6px; z-index: 2;
+             display: grid; place-items: center;
+             width: 34px; height: 34px; margin: 0; padding: 0;
+             border: 0; border-radius: 50%; background: none;
+             color: var(--grey-50); cursor: pointer;
              transition: color .15s ease, background-color .15s ease; }
-.oe-falter:hover { color: var(--ink); background: #efece8; }
-.oe-falter-pfeil { width: 16px; height: 16px; flex: 0 0 auto; position: relative; }
-.oe-falter-pfeil::before { content: ""; position: absolute; left: 4px; top: 5px;
+.oe-falter:hover { color: var(--ink); background: rgba(26,24,23,.06); }
+.oe-falter-pfeil { width: 14px; height: 14px; position: relative; }
+.oe-falter-pfeil::before { content: ""; position: absolute; left: 3px; top: 3px;
                            width: 7px; height: 7px;
-                           border-right: 1.5px solid currentColor;
-                           border-bottom: 1.5px solid currentColor;
+                           border-right: 1.6px solid currentColor;
+                           border-bottom: 1.6px solid currentColor;
                            transform: rotate(45deg);
                            transition: transform .15s ease; }
 .oe-strang.ist-zu .oe-falter-pfeil::before { transform: rotate(-45deg);
-                                             top: 7px; }
-/* Zugeklappt bleibt die Leiste stehen und traegt den Hinweis staerker. */
-.oe-strang.ist-zu .oe-falter { color: var(--ink); background: #f4f2ef; }
-/* Der Abstand zwischen Kopf und Kindern entsteht ueber die Leiste. */
+                                             top: 5px; }
+.oe-strang.ist-zu .oe-falter { color: var(--ink); }
+/* Der Titel endet vor dem Pfeil, damit er nicht darunter laeuft. */
+.oe-strang > .oe-knoten { padding-right: 40px; }
 .oe-strang .oe-strang-kinder { margin-top: clamp(16px, 2vh, 24px); }
 
 /* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
