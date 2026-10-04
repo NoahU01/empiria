@@ -1470,28 +1470,32 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       });
       /* Die Marker-Definition bleibt stehen, nur die Pfade werden neu
          geschrieben. */
-      /* Die Schiene selbst: Sie laeuft nur so weit, wie Leitungen auf ihr
-         ankommen - links von der ersten und rechts von der letzten hat sie
-         nichts zu suchen. Gezeichnet wird sie deshalb hier und nicht als
-         Kasten mit voller Breite. */
+      /* Die Schiene laeuft nur so weit, wie Leitungen auf ihr ankommen -
+         links von der ersten und rechts von der letzten hat sie nichts zu
+         suchen. Gezeichnet wird sie deshalb hier und nicht als Kasten mit
+         voller Breite.
+
+         Sie entsteht in Abschnitten, einer zwischen je zwei benachbarten
+         Anschluessen. Aneinandergesetzt ergeben sie dieselbe Linie - aber
+         beim Hervorheben laesst sich genau das Stueck zeigen, das den Weg
+         verbindet, statt der ganzen Breite. */
       var s = kasten('schiene');
       if (s) {
         var sr = s.getBoundingClientRect(), pp = plan.getBoundingClientRect();
-        var min = 1e9, max = -1e9, quer2 = richtung === 'rechts';
+        var punkte = [];
         LEITUNGEN.forEach(function (l) {
           if (l[0] !== 'schiene' && l[1] !== 'schiene') return;
           var k = kasten(l[0] === 'schiene' ? l[1] : l[0]);
           if (!k) return;
           var r = k.getBoundingClientRect();
-          var w = quer2 ? r.top - pp.top + r.height / 2 : r.left - pp.left + r.width / 2;
-          min = Math.min(min, w); max = Math.max(max, w);
+          punkte.push(r.left - pp.left + r.width / 2);
         });
-        if (min < max) {
-          var m2 = quer2 ? sr.left - pp.left + sr.width / 2
-                         : sr.top - pp.top + sr.height / 2;
-          var dS = quer2 ? 'M' + m2 + ',' + min + 'L' + m2 + ',' + max
-                         : 'M' + min + ',' + m2 + 'L' + max + ',' + m2;
-          teile.push('<path class="oe-draht oe-draht--schiene" d="' + dS + '"/>');
+        punkte.sort(function (a, b) { return a - b; });
+        var m2 = sr.top - pp.top + sr.height / 2;
+        for (var i = 0; i < punkte.length - 1; i++) {
+          teile.push('<path class="oe-draht oe-draht--schiene" data-x1="' +
+            punkte[i].toFixed(1) + '" data-x2="' + punkte[i + 1].toFixed(1) +
+            '" d="M' + punkte[i] + ',' + m2 + 'L' + punkte[i + 1] + ',' + m2 + '"/>');
         }
       }
       var defs = svg.querySelector('defs');
@@ -1531,11 +1535,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     function leitungenHell(id) {
       var w = wegeFuer(id);
       var paare = w.leitungen.map(function (l) { return l[0] + '>' + l[1]; });
+      /* Von welchem Anschluss bis zu welchem laeuft der Weg ueber die
+         Schiene? Nur die Abschnitte dazwischen gehoeren dazu. */
+      var lo = Infinity, hi = -Infinity;
+      if (w.schiene) {
+        var pp = plan.getBoundingClientRect();
+        w.leitungen.forEach(function (l) {
+          if (l[0] !== 'schiene' && l[1] !== 'schiene') return;
+          var k = kasten(l[0] === 'schiene' ? l[1] : l[0]);
+          if (!k) return;
+          var r = k.getBoundingClientRect();
+          var x = r.left - pp.left + r.width / 2;
+          lo = Math.min(lo, x); hi = Math.max(hi, x);
+        });
+      }
       svg.querySelectorAll('path').forEach(function (d) {
-        if (!d.dataset.von) {
-          d.classList.toggle('ist-hell', w.schiene);
+        if (d.dataset.x1) {
+          d.classList.toggle('ist-hell', w.schiene &&
+            +d.dataset.x1 >= lo - 0.5 && +d.dataset.x2 <= hi + 0.5);
           return;
         }
+        if (!d.dataset.von) { d.classList.remove('ist-hell'); return; }
         d.classList.toggle('ist-hell',
           paare.indexOf(d.dataset.von + '>' + d.dataset.nach) > -1);
       });
