@@ -1,0 +1,22 @@
+# Was auf Vercel hochgeladen wird.
+#
+# Die Website liegt vollstaendig in site/. Alles andere im Repo sind
+# Arbeitsdateien (Design-Manual, Logo-Rohlinge, Pop-up-Quelltexte als .docx,
+# PDF-Generator, Doku) -- die haben im Deployment nichts verloren: sie waren
+# unter www.empiria.de oeffentlich abrufbar und haben ~17 MB pro Deployment
+# gekostet.
+#
+# Darum Allowlist statt Einzelverbote: erst alles raus, dann gezielt rein.
+# Neue Arbeitsdateien im Repo-Root landen so gar nicht erst im Deployment.
+
+# 1. Alles auf oberster Ebene ausschliessen
+/*
+
+# 2. Nur das wieder reinholen, was die Seite braucht
+!/site
+!/vercel.json
+
+# 3. Innerhalb von site/: Build-/Arbeitskram, der nicht ausgeliefert wird
+#    (greift beim CLI-Deploy; ueber Git sind die ohnehin per .gitignore raus)
+site/node_modules
+site/_shots
