@@ -321,10 +321,7 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-aktionen > [data-baustein="cockpits"] { align-self: start; }
 /* Die Kanaele der Korrespondenz haengen an einer Linie, wie in einem
    Organigramm - deshalb stehen sie eingerueckt. */
-.oe-aktionen > [data-baustein^="aus_mail"],
-.oe-aktionen > [data-baustein="aus_whats"],
-.oe-aktionen > [data-baustein="aus_dm"],
-.oe-aktionen > [data-baustein="aus_komm"] { margin-left: 26px; }
+.oe-aktionen > [data-baustein^="aus_"] { margin-left: 26px; }
 .oe-plan--strang .oe-gruppe { align-self: start; }
 .oe-plan--strang .oe-gruppe .oe-knoten { min-height: 76px; }
 
@@ -354,7 +351,10 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 /* Drei Zeilen: die fuenf Aktionen, darunter Buffer, darunter die drei
    Kanaele. Damit laeuft der Weg eines Beitrags von oben nach unten durch
    und endet dort, wo er veroeffentlicht wird. */
-.oe-aktionen { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
+/* Zwanzig Spalten: Nur in einem feinen Raster passen zwei Kaesten
+   nebeneinander genau unter einen darueber. Der Abstand bleibt bei acht
+   Pixeln, damit die Kanaele so aussehen wie die Quellen oben. */
+.oe-aktionen { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr));
                grid-template-rows: auto auto auto auto auto;
                gap: clamp(22px, 2.8vh, 36px) 8px;
                position: relative; z-index: 1; }
