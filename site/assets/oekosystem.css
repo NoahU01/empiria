@@ -313,6 +313,11 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    jeder so hoch wie sein Text, und die Reihe lief auseinander. */
 .oe-quellen .oe-knoten { align-self: stretch; }
 .oe-aktionen .oe-knoten, .oe-geraete .oe-knoten { align-self: stretch; }
+/* Rechts stehen drei Aktionen untereinander. Ohne diese Ausnahme zoegen
+   sie die Koepfe der beiden Straenge auf ihre Hoehe mit. */
+.oe-aktionen > [data-baustein="postings"],
+.oe-aktionen > [data-baustein="korrespondenz"] { align-self: start; }
+.oe-aktionen-rest { align-content: start; }
 .oe-plan--strang .oe-gruppe { align-self: start; }
 .oe-plan--strang .oe-gruppe .oe-knoten { min-height: 76px; }
 
@@ -342,11 +347,10 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 /* Drei Zeilen: die fuenf Aktionen, darunter Buffer, darunter die drei
    Kanaele. Damit laeuft der Weg eines Beitrags von oben nach unten durch
    und endet dort, wo er veroeffentlicht wird. */
-.oe-aktionen { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr));
+.oe-aktionen { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
                grid-template-rows: auto auto auto;
                gap: clamp(22px, 2.8vh, 36px) 8px;
                position: relative; z-index: 1; }
-.oe-aktionen .oe-knoten { align-self: stretch; }
 
 /* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
    liefern nichts, sie bedienen. Deshalb tragen sie keine Kastenform,
@@ -630,8 +634,8 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 /* Die vier uebrigen Aktionen teilen sich den Platz rechts vom Strang zu
    gleichen Teilen - in einem eigenen Raster, damit sie nicht an die
    Spaltenteilung der Kanaele gebunden sind. */
-.oe-aktionen-rest { grid-column: 8 / 10; grid-row: 1; display: grid;
-                    grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 8px; }
+.oe-aktionen-rest { grid-column: 8 / 11; grid-row: 1; display: grid;
+                    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .oe-aktionen-rest .oe-knoten { align-self: stretch; }
 
 @media (max-width: 820px) {
