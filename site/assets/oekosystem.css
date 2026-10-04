@@ -313,15 +313,9 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    jeder so hoch wie sein Text, und die Reihe lief auseinander. */
 .oe-quellen .oe-knoten { align-self: stretch; }
 .oe-aktionen .oe-knoten, .oe-geraete .oe-knoten { align-self: stretch; }
-/* Die Kaesten der obersten Aktionsreihe bleiben oben, auch wenn ein Strang
-   darunter laenger wird. */
-.oe-aktionen > [data-baustein="postings"],
-.oe-aktionen > [data-baustein="korrespondenz"],
-.oe-aktionen > [data-baustein="webdev"],
-.oe-aktionen > [data-baustein="cockpits"] { align-self: start; }
 /* Die Kanaele der Korrespondenz haengen an einer Linie, wie in einem
    Organigramm - deshalb stehen sie eingerueckt. */
-.oe-aktionen > [data-baustein^="aus_"] { margin-left: 26px; }
+.oe-strang-kinder > [data-baustein^="aus_"] { margin-left: 26px; }
 .oe-plan--strang .oe-gruppe { align-self: start; }
 .oe-plan--strang .oe-gruppe .oe-knoten { min-height: 76px; }
 
@@ -355,9 +349,39 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
    nebeneinander genau unter einen darueber. Der Abstand bleibt bei acht
    Pixeln, damit die Kanaele so aussehen wie die Quellen oben. */
 .oe-aktionen { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr));
-               grid-template-rows: auto auto auto auto auto;
-               gap: clamp(22px, 2.8vh, 36px) 8px;
+               gap: 0 8px; align-items: start;
                position: relative; z-index: 1; }
+
+/* ---- Die vier Straenge --------------------------------------------------
+   Jeder Strang traegt seinen Kopf, darunter die Leiste zum Zuklappen und
+   dann, was zu ihm gehoert. Die Leiste sitzt am Austritt der Leitung, nicht
+   im Kasten: Der Kasten ist schon ein Knopf, und im zugeklappten Zustand
+   sagt die Leiste, was darunter liegt. */
+.oe-strang { display: grid; align-content: start; }
+.oe-strang-kinder { display: grid; gap: clamp(22px, 2.8vh, 36px); }
+.oe-strang.ist-zu .oe-strang-kinder { display: none; }
+
+.oe-falter { appearance: none; -webkit-appearance: none;
+             display: flex; align-items: center; gap: 8px;
+             width: fit-content; margin: 8px 0 0 14px; padding: 5px 12px 5px 4px;
+             border: 0; border-radius: 999px; background: none;
+             font-family: inherit; font-size: .72rem; letter-spacing: .06em;
+             font-weight: 600; color: var(--grey-50); cursor: pointer;
+             transition: color .15s ease, background-color .15s ease; }
+.oe-falter:hover { color: var(--ink); background: #efece8; }
+.oe-falter-pfeil { width: 16px; height: 16px; flex: 0 0 auto; position: relative; }
+.oe-falter-pfeil::before { content: ""; position: absolute; left: 4px; top: 5px;
+                           width: 7px; height: 7px;
+                           border-right: 1.5px solid currentColor;
+                           border-bottom: 1.5px solid currentColor;
+                           transform: rotate(45deg);
+                           transition: transform .15s ease; }
+.oe-strang.ist-zu .oe-falter-pfeil::before { transform: rotate(-45deg);
+                                             top: 7px; }
+/* Zugeklappt bleibt die Leiste stehen und traegt den Hinweis staerker. */
+.oe-strang.ist-zu .oe-falter { color: var(--ink); background: #f4f2ef; }
+/* Der Abstand zwischen Kopf und Kindern entsteht ueber die Leiste. */
+.oe-strang .oe-strang-kinder { margin-top: clamp(16px, 2vh, 24px); }
 
 /* Die Eingabegeraete haben eine andere Qualitaet als eine Datenquelle: Sie
    liefern nichts, sie bedienen. Deshalb tragen sie keine Kastenform,
