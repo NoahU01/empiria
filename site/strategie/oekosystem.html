@@ -674,18 +674,46 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               <span class="oe-knoten-titel">Kommentare</span>
               <span class="oe-knoten-unter">Social Media</span>
             </button>
+            <button type="button" class="oe-knoten" data-baustein="webdev" data-ebene="4" aria-expanded="false" style="grid-column: 1 / 4; grid-row: 4; order: 10;">
+              <span class="oe-knoten-titel">Webseiten</span>
+              <span class="oe-knoten-unter">VS Code bis Vercel</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="vscode" data-ebene="5" aria-expanded="false" style="grid-column: 1; grid-row: 5; order: 11;">
+              <span class="oe-knoten-titel">VS Code</span>
+              <span class="oe-knoten-unter">mit Claude</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="github" data-ebene="5" aria-expanded="false" style="grid-column: 2 / 4; grid-row: 5; order: 12;">
+              <span class="oe-knoten-titel">GitHub</span>
+              <span class="oe-knoten-unter">je Marke ein Repo</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="vercel" data-ebene="5" aria-expanded="false" style="grid-column: 4 / 6; grid-row: 5; order: 13;">
+              <span class="oe-knoten-titel">Vercel</span>
+              <span class="oe-knoten-unter">stellt ins Netz</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="gh_main" data-ebene="6" aria-expanded="false" style="grid-column: 2; grid-row: 6; order: 16;">
+              <span class="oe-knoten-titel">main</span>
+              <span class="oe-knoten-unter">der Stand, der live ist</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="gh_daniel" data-ebene="6" aria-expanded="false" style="grid-column: 3; grid-row: 6; order: 17;">
+              <span class="oe-knoten-titel">Daniel</span>
+              <span class="oe-knoten-unter">woran gearbeitet wird</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="vc_live" data-ebene="6" aria-expanded="false" style="grid-column: 4; grid-row: 6; order: 14;">
+              <span class="oe-knoten-titel">Produktion</span>
+              <span class="oe-knoten-unter">aus main</span>
+            </button>
+            <button type="button" class="oe-knoten" data-baustein="vc_vorschau" data-ebene="6" aria-expanded="false" style="grid-column: 5; grid-row: 6; order: 15;">
+              <span class="oe-knoten-titel">Vorschau</span>
+              <span class="oe-knoten-unter">aus Daniel</span>
+            </button>
             <div class="oe-aktionen-rest">
               <button type="button" class="oe-knoten" data-baustein="cockpits" data-ebene="1" aria-expanded="false">
                 <span class="oe-knoten-titel">Assistenz</span>
                 <span class="oe-knoten-unter">Aufträge aller Art</span>
               </button>
-              <button type="button" class="oe-knoten" data-baustein="webdev" data-ebene="1" aria-expanded="false">
-                <span class="oe-knoten-titel">Webseiten</span>
-                <span class="oe-knoten-unter">VS Code bis Vercel</span>
-              </button>
               <button type="button" class="oe-knoten" data-baustein="dokumente" data-ebene="1" aria-expanded="false">
                 <span class="oe-knoten-titel">Dokumente</span>
-                <span class="oe-knoten-unter">Rechnungen</span>
+                <span class="oe-knoten-unter">Rechnungen und Ablage</span>
               </button>
             </div>
             </div>
@@ -967,6 +995,56 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "offen": [
       "Ob das Dashboard ein eigenes Repository bekommt oder neben den Homepages liegt"
     ]
+  },
+  "vscode": {
+    "satz": "Hier entsteht die Änderung. Claude arbeitet direkt an den Dateien des Repositories und hat dabei den Zusammenhang der ganzen Seite vor Augen – nicht nur den Ausschnitt, über den gerade gesprochen wird.",
+    "tools": [
+      "VS Code mit Claude Code"
+    ],
+    "schritte": [],
+    "offen": []
+  },
+  "github": {
+    "satz": "Der Ort, an dem der Stand liegt. Je Thema und Marke ein eigenes Repository, darin zwei Zweige: Was fertig ist, und woran gearbeitet wird.",
+    "tools": [
+      "GitHub, je Marke ein Repository"
+    ],
+    "schritte": [],
+    "offen": [
+      "Ob das Dashboard ein eigenes Repository bekommt oder neben den Homepages liegt"
+    ]
+  },
+  "gh_main": {
+    "satz": "Der Zweig, der live ist. Was hier liegt, sehen Kunden – deshalb kommt nichts hinein, das nicht geprüft wurde.",
+    "tools": [],
+    "schritte": [],
+    "offen": []
+  },
+  "gh_daniel": {
+    "satz": "Der Zweig, auf dem gearbeitet wird. Jede Änderung ist ein Commit mit einer Begründung, die später noch lesbar ist.",
+    "tools": [],
+    "schritte": [],
+    "offen": []
+  },
+  "vercel": {
+    "satz": "Stellt ins Netz, was in GitHub liegt – automatisch, sobald ein Zweig sich ändert. Aus zwei Zweigen werden zwei Adressen.",
+    "tools": [
+      "Vercel, je Repository ein Projekt"
+    ],
+    "schritte": [],
+    "offen": []
+  },
+  "vc_live": {
+    "satz": "Die Seite, die Kunden sehen. Sie entsteht aus dem main-Zweig.",
+    "tools": [],
+    "schritte": [],
+    "offen": []
+  },
+  "vc_vorschau": {
+    "satz": "Die Vorschau zum Ansehen und Abstimmen, bevor etwas live geht. Sie entsteht aus dem Daniel-Zweig.",
+    "tools": [],
+    "schritte": [],
+    "offen": []
   },
   "dokumente": {
     "satz": "Rechnungen und Belege laufen über eine feste Routine, damit nichts liegen bleibt und nichts von Hand abgetippt wird.",
@@ -1285,21 +1363,63 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     "art": "geplant",
     "band": "Aktionen"
   },
-  "cockpits": {
-    "titel": "Assistenz",
-    "unter": "Aufträge aller Art",
-    "art": "geplant",
-    "band": "Aktionen"
-  },
   "webdev": {
     "titel": "Webseiten",
     "unter": "VS Code bis Vercel",
     "art": "geplant",
     "band": "Aktionen"
   },
+  "vscode": {
+    "titel": "VS Code",
+    "unter": "mit Claude",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "github": {
+    "titel": "GitHub",
+    "unter": "je Marke ein Repo",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "vercel": {
+    "titel": "Vercel",
+    "unter": "stellt ins Netz",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "gh_main": {
+    "titel": "main",
+    "unter": "der Stand, der live ist",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "gh_daniel": {
+    "titel": "Daniel",
+    "unter": "woran gearbeitet wird",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "vc_live": {
+    "titel": "Produktion",
+    "unter": "aus main",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "vc_vorschau": {
+    "titel": "Vorschau",
+    "unter": "aus Daniel",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
+  "cockpits": {
+    "titel": "Assistenz",
+    "unter": "Aufträge aller Art",
+    "art": "geplant",
+    "band": "Aktionen"
+  },
   "dokumente": {
     "titel": "Dokumente",
-    "unter": "Rechnungen",
+    "unter": "Rechnungen und Ablage",
     "art": "geplant",
     "band": "Aktionen"
   }
@@ -1380,9 +1500,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     if (!plan || !svg) return;
     var knoten = Array.prototype.slice.call(plan.querySelectorAll('.oe-knoten'));
     var richtung = plan.dataset.richtung || 'unten';
-    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "korrespondenz"], ["knoten", "cockpits"], ["knoten", "webdev"], ["knoten", "dokumente"], ["korrespondenz", "aus_mail"], ["korrespondenz", "aus_whats"], ["korrespondenz", "aus_dm"], ["korrespondenz", "aus_komm"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
-    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>korrespondenz": "geplant", "knoten>cockpits": "geplant", "knoten>webdev": "geplant", "knoten>dokumente": "geplant", "korrespondenz>aus_mail": "geplant", "korrespondenz>aus_whats": "geplant", "korrespondenz>aus_dm": "geplant", "korrespondenz>aus_komm": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
-    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "rot", "salesnav>helper": "rot", "mail>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>korrespondenz": "rot", "knoten>cockpits": "rot", "knoten>webdev": "rot", "knoten>dokumente": "rot", "korrespondenz>aus_mail": "rot", "korrespondenz>aus_whats": "rot", "korrespondenz>aus_dm": "rot", "korrespondenz>aus_komm": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
+    var LEITUNGEN = [["homepages", "analytics"], ["homepages", "search"], ["linkedin", "salesnav"], ["salesnav", "helper"], ["mail", "schiene"], ["finder", "schiene"], ["chrome", "schiene"], ["instagram", "schiene"], ["facebook", "schiene"], ["li_marken", "schiene"], ["analytics", "schiene"], ["search", "schiene"], ["helper", "schiene"], ["kontakte_db", "schiene"], ["schiene", "knoten"], ["macbook", "knoten"], ["ipad", "knoten"], ["iphone", "knoten"], ["knoten", "dashboard"], ["knoten", "postings"], ["knoten", "korrespondenz"], ["knoten", "cockpits"], ["knoten", "dokumente"], ["korrespondenz", "aus_mail"], ["korrespondenz", "aus_whats"], ["korrespondenz", "aus_dm"], ["korrespondenz", "aus_komm"], ["webdev", "vscode"], ["vscode", "github"], ["github", "vercel"], ["github", "gh_main"], ["github", "gh_daniel"], ["vercel", "vc_live"], ["vercel", "vc_vorschau"], ["postings", "buffer"], ["buffer", "aus_linkedin"], ["buffer", "aus_instagram"], ["buffer", "aus_facebook"]];
+    var ZUSTAND = {"homepages>analytics": "geplant", "homepages>search": "geplant", "linkedin>salesnav": "geplant", "salesnav>helper": "geplant", "mail>schiene": "geplant", "finder>schiene": "geplant", "chrome>schiene": "geplant", "instagram>schiene": "geplant", "facebook>schiene": "geplant", "li_marken>schiene": "geplant", "analytics>schiene": "geplant", "search>schiene": "geplant", "helper>schiene": "geplant", "kontakte_db>schiene": "geplant", "schiene>knoten": "geplant", "macbook>knoten": "geplant", "ipad>knoten": "geplant", "iphone>knoten": "geplant", "knoten>dashboard": "geplant", "knoten>postings": "geplant", "knoten>korrespondenz": "geplant", "knoten>cockpits": "geplant", "knoten>dokumente": "geplant", "korrespondenz>aus_mail": "geplant", "korrespondenz>aus_whats": "geplant", "korrespondenz>aus_dm": "geplant", "korrespondenz>aus_komm": "geplant", "webdev>vscode": "geplant", "vscode>github": "geplant", "github>vercel": "geplant", "github>gh_main": "geplant", "github>gh_daniel": "geplant", "vercel>vc_live": "geplant", "vercel>vc_vorschau": "geplant", "postings>buffer": "geplant", "buffer>aus_linkedin": "geplant", "buffer>aus_instagram": "geplant", "buffer>aus_facebook": "geplant"};
+    var AMPEL = {"homepages>analytics": "rot", "homepages>search": "rot", "linkedin>salesnav": "rot", "salesnav>helper": "rot", "mail>schiene": "rot", "finder>schiene": "rot", "chrome>schiene": "rot", "instagram>schiene": "rot", "facebook>schiene": "rot", "li_marken>schiene": "rot", "analytics>schiene": "rot", "search>schiene": "rot", "helper>schiene": "rot", "kontakte_db>schiene": "rot", "schiene>knoten": "rot", "macbook>knoten": "rot", "ipad>knoten": "rot", "iphone>knoten": "rot", "knoten>dashboard": "rot", "knoten>postings": "rot", "knoten>korrespondenz": "rot", "knoten>cockpits": "rot", "knoten>dokumente": "rot", "korrespondenz>aus_mail": "rot", "korrespondenz>aus_whats": "rot", "korrespondenz>aus_dm": "rot", "korrespondenz>aus_komm": "rot", "webdev>vscode": "rot", "vscode>github": "rot", "github>vercel": "rot", "github>gh_main": "rot", "github>gh_daniel": "rot", "vercel>vc_live": "rot", "vercel>vc_vorschau": "rot", "postings>buffer": "rot", "buffer>aus_linkedin": "rot", "buffer>aus_instagram": "rot", "buffer>aus_facebook": "rot"};
 
     /* Die Klasse einer Leitung: ihr Zustand, nicht der Stand des Kastens
        an ihrem Ende. Die Ampel kommt als zweite Klasse dazu und wird nur
@@ -1666,8 +1786,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     /* Sichten: dieselbe Karte, eine andere Frage. Die Knoten einer Sicht
        bleiben stehen, alles andere blendet ab - samt der Leitungen, deren
        beide Enden nicht zur Sicht gehoeren. */
-    var SICHTEN = {"status": {"name": "Status", "satz": "Zwei Fragen in einem Bild. Die Kästen sagen, ob es das schon gibt: grün steht, gelb ist in Arbeit, rot gibt es noch nicht. Die Leitungen sagen, ob der Weg dorthin eingerichtet ist – keiner ist es, deshalb sind sie alle rot. Deswegen hängen grüne Kästen an roten Leitungen: Der Dienst läuft, die Anbindung fehlt.", "ampel": true, "knoten": []}, "stufe1": {"name": "1 Logikblock", "satz": "Der Block, der als Erstes funktionieren muss: die Intelligenzschicht auf dem Always-on-MacBook, die drei Zugänge zu ihr und das Dashboard. Solange der nicht steht, steht nichts.", "knoten": ["knoten", "macbook", "ipad", "iphone", "dashboard"]}, "stufe2": {"name": "2 Anbinden", "satz": "Die Intelligenzschicht wird mit allem verbunden, was es schon gibt: Homepages, Analytics, Search Console, die LinkedIn-Konten mit Sales Navigator und Linked Helper, Instagram, Facebook, das Postfach, das Dateisystem und Chrome. Hier ist nichts neu zu bauen, nur anzuschließen.", "knoten": ["knoten", "homepages", "analytics", "search", "linkedin", "li_marken", "salesnav", "helper", "instagram", "facebook", "mail", "finder", "chrome"]}, "stufe3": {"name": "3 Aktionen", "satz": "Was sich mit den angebundenen Quellen bereits tun lässt: Beiträge über Buffer ausspielen, auf Eingänge und auf das Netzwerk reagieren, an den Webseiten arbeiten, Rechnungen ablegen, Aufträge aller Art übernehmen. Die Kontaktpflege fehlt noch – dafür braucht es Stufe 4.", "knoten": ["knoten", "postings", "buffer", "aus_linkedin", "aus_instagram", "aus_facebook", "korrespondenz", "aus_mail", "aus_whats", "aus_dm", "aus_komm", "cockpits", "webdev", "dokumente"]}, "stufe4": {"name": "4 Kontakte", "satz": "Die Kontakte werden zu einer sauberen Datenbank: Welche Felder je Person geführt werden, woher der Erstbestand kommt und wie oft Kontakt sinnvoll ist. Damit bekommt die Korrespondenz ihren dritten Anlass – den, der von innen kommt.", "knoten": ["kontakte_db", "korrespondenz", "knoten"]}};
-    var AMPEL_KNOTEN = {"homepages": "gruen", "mail": "gruen", "finder": "gruen", "chrome": "gruen", "instagram": "gruen", "facebook": "gruen", "analytics": "gruen", "search": "gruen", "macbook": "gruen", "ipad": "gruen", "iphone": "gruen", "linkedin": "gruen", "li_marken": "gruen", "salesnav": "gruen", "helper": "gruen", "kontakte_db": "gelb", "knoten": "rot", "dashboard": "rot", "postings": "rot", "buffer": "rot", "korrespondenz": "rot", "cockpits": "rot", "webdev": "rot", "dokumente": "rot", "aus_linkedin": "rot", "aus_instagram": "rot", "aus_facebook": "rot", "aus_mail": "rot", "aus_whats": "rot", "aus_dm": "rot", "aus_komm": "rot"};
+    var SICHTEN = {"status": {"name": "Status", "satz": "Zwei Fragen in einem Bild. Die Kästen sagen, ob es das schon gibt: grün steht, gelb ist in Arbeit, rot gibt es noch nicht. Die Leitungen sagen, ob der Weg dorthin eingerichtet ist – keiner ist es, deshalb sind sie alle rot. Deswegen hängen grüne Kästen an roten Leitungen: Der Dienst läuft, die Anbindung fehlt.", "ampel": true, "knoten": []}, "stufe1": {"name": "1 Logikblock", "satz": "Der Block, der als Erstes funktionieren muss: die Intelligenzschicht auf dem Always-on-MacBook, die drei Zugänge zu ihr und das Dashboard. Solange der nicht steht, steht nichts.", "knoten": ["knoten", "macbook", "ipad", "iphone", "dashboard"]}, "stufe2": {"name": "2 Anbinden", "satz": "Die Intelligenzschicht wird mit allem verbunden, was es schon gibt: Homepages, Analytics, Search Console, die LinkedIn-Konten mit Sales Navigator und Linked Helper, Instagram, Facebook, das Postfach, das Dateisystem und Chrome. Hier ist nichts neu zu bauen, nur anzuschließen.", "knoten": ["knoten", "homepages", "analytics", "search", "linkedin", "li_marken", "salesnav", "helper", "instagram", "facebook", "mail", "finder", "chrome"]}, "stufe3": {"name": "3 Aktionen", "satz": "Was sich mit den angebundenen Quellen bereits tun lässt: Beiträge über Buffer ausspielen, auf Eingänge und auf das Netzwerk reagieren, an den Webseiten arbeiten, Rechnungen ablegen, Aufträge aller Art übernehmen. Die Kontaktpflege fehlt noch – dafür braucht es Stufe 4.", "knoten": ["knoten", "postings", "buffer", "aus_linkedin", "aus_instagram", "aus_facebook", "korrespondenz", "aus_mail", "aus_whats", "aus_dm", "aus_komm", "cockpits", "webdev", "dokumente", "vscode", "github", "vercel", "gh_main", "gh_daniel", "vc_live", "vc_vorschau"]}, "stufe4": {"name": "4 Kontakte", "satz": "Die Kontakte werden zu einer sauberen Datenbank: Welche Felder je Person geführt werden, woher der Erstbestand kommt und wie oft Kontakt sinnvoll ist. Damit bekommt die Korrespondenz ihren dritten Anlass – den, der von innen kommt.", "knoten": ["kontakte_db", "korrespondenz", "knoten"]}};
+    var AMPEL_KNOTEN = {"homepages": "gruen", "mail": "gruen", "finder": "gruen", "chrome": "gruen", "instagram": "gruen", "facebook": "gruen", "analytics": "gruen", "search": "gruen", "macbook": "gruen", "ipad": "gruen", "iphone": "gruen", "linkedin": "gruen", "li_marken": "gruen", "salesnav": "gruen", "helper": "gruen", "kontakte_db": "gelb", "knoten": "rot", "dashboard": "rot", "postings": "rot", "buffer": "rot", "korrespondenz": "rot", "cockpits": "rot", "webdev": "rot", "dokumente": "rot", "vscode": "gruen", "github": "gruen", "gh_main": "gruen", "gh_daniel": "gruen", "vercel": "gruen", "vc_live": "gruen", "vc_vorschau": "gruen", "aus_linkedin": "rot", "aus_instagram": "rot", "aus_facebook": "rot", "aus_mail": "rot", "aus_whats": "rot", "aus_dm": "rot", "aus_komm": "rot"};
     var SATZ_ALLES = "Der ganze Plan: Was hereinkommt, wo gearbeitet wird und was herausgeht. Status zeigt, was davon heute schon steht. Die vier Stufen zeigen, in welcher Reihenfolge der Rest entsteht.";
     var pillen = Array.prototype.slice.call(document.querySelectorAll('.oe-sicht'));
     var satz = document.getElementById('oeSichtSatz');
