@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard &middot; Fünf Layout-Varianten &ndash; empiria</title>
-<meta name="description" content="Fünf Layout-Varianten des Dashboards: Tagesblatt, Reviere, Postfach, Lagebild, Stapel.">
+<title>Dashboard &ndash; empiria</title>
+<meta name="description" content="Die Steuerungszentrale: was startklar ist, woran gearbeitet wird und was hereingekommen ist.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/projekte/projekte.css">
-<link rel="stylesheet" href="/assets/projekte/dashboard.css">
-<link rel="stylesheet" href="/assets/db-varianten.css">
+<link rel="stylesheet" href="/assets/dashboard-neu.css">
 </head>
 <body>
 
@@ -148,7 +147,7 @@
 <a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
 <a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
 <a href="oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
-<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
+<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Die Steuerungszentrale</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -458,7 +457,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <a href="zielbild.html" class="dev-dd-link"><span class="dev-dd-tag">SZ</span><span class="dev-dd-txt"><b>Strategie und Zielbild</b><small>Wo wollen wir hin?</small></span></a>
 <a href="meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteine</b><small>Was sind die Schritte?</small></span></a>
 <a href="oekosystem.html" class="dev-dd-link"><span class="dev-dd-tag">ÖS</span><span class="dev-dd-txt"><b>Ökosystem</b><small>Schaltplan der Steuerungszentrale</small></span></a>
-<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Fünf Layout-Varianten</small></span></a>
+<a href="dashboard.html" class="dev-dd-link"><span class="dev-dd-tag">DB</span><span class="dev-dd-txt"><b>Dashboard</b><small>Die Steuerungszentrale</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
 <div class="dev-dd-sub">
 <a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Sieben Seiten</small></span></a>
@@ -493,415 +492,166 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="section section--eng">
     <div class="container">
 
-      <p class="kicker">Strategie &middot; Entwicklung</p>
-      <h1 class="h-serif db-titel">Das <span class="hl">Dashboard</span> in fünf Fassungen.</h1>
-      <p class="lead db-lead">Alle fünf zeigen dieselben Posten. Sie unterscheiden
-        sich darin, welche Frage sie zuerst beantworten – und wie schnell Du
-        danach mit Claude weiterreden kannst.</p>
-
-      <div class="pv-wahl db-wahl" role="group" aria-label="Variante">
-        <span class="pv-wahl-tag">Variante</span>
-        <button type="button" class="pv-pille db-pille is-aktiv" data-variante="a" aria-pressed="true">A <small>Tagesblatt</small></button>
-        <button type="button" class="pv-pille db-pille" data-variante="b" aria-pressed="false">B <small>Reviere</small></button>
-        <button type="button" class="pv-pille db-pille" data-variante="c" aria-pressed="false">C <small>Postfach</small></button>
-        <button type="button" class="pv-pille db-pille" data-variante="d" aria-pressed="false">D <small>Lagebild</small></button>
-        <button type="button" class="pv-pille db-pille" data-variante="e" aria-pressed="false">E <small>Stapel</small></button>
+      <div class="dbx-kopf">
+        <div>
+          <p class="kicker">Steuerungszentrale</p>
+          <h1 class="h-serif dbx-titel">Guten Morgen, Daniel.</h1>
+          <p class="lead dbx-lead">Drei Antworten liegen fertig. Vier Vorhaben
+            laufen. Elf Dinge sind hereingekommen.</p>
+        </div>
+        <div class="dbx-kennzahlen">
+          <div class="dbx-kennzahl"><b>3</b><span>startklar</span></div>
+          <div class="dbx-kennzahl"><b>11</b><span>Eingang</span></div>
+          <div class="dbx-kennzahl"><b>4</b><span>Vorhaben</span></div>
+        </div>
       </div>
 
-      <div class="db-raum">
-      <section class="db-tafel" data-variante="a">
-        <p class="db-variantenkopf"><b>Tagesblatt</b><span>Was ist heute dran?</span></p>
-        <p class="db-stufe">heute<span>3</span></p>
-        <ul class="db-blatt">
-          <li>
-            <p class="db-blatt-kopf"><b>Angebot Hauptabteilung Schaden</b>
-              <span class="db-feld">Korrespondenz</span></p>
-            <p class="db-blatt-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
-            <p class="db-blatt-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
+      <section class="dbx-block dbx-block--startklar">
+        <header class="dbx-blockkopf">
+          <p class="dbx-blocktitel">Startklar</p>
+          <p class="dbx-blockzahl">3</p>
+        </header>
+        <p class="dbx-blocksatz">Fertig formuliert, geprüft, wartet auf Dein Ja.</p>
+        <div class="dbx-karten">
+          <article class="dbx-karte">
+            <p class="dbx-karte-kanal">E-Mail &middot; M. Berger, SV</p>
+            <p class="dbx-karte-satz">Terminvorschlag KW 42 mit der Agenda aus dem letzten Workshop im Anhang. Ton wie in der bisherigen Korrespondenz.</p>
+            <div class="dbx-wege">
+              <button type="button" class="dbx-ja">Freigeben</button>
+              <button type="button" class="dbx-weg"><span aria-hidden="true">&#9679;</span> Besprechen</button>
+              <button type="button" class="dbx-weg">In Outlook öffnen &#8599;</button>
+            </div>
+          </article>
+          <article class="dbx-karte">
+            <p class="dbx-karte-kanal">E-Mail &middot; K. Lindner</p>
+            <p class="dbx-karte-satz">Antwort auf die Frage zum Launch: Verweis auf den Meilensteinplan, Link auf die Vorschau der Akademie-Seite.</p>
+            <div class="dbx-wege">
+              <button type="button" class="dbx-ja">Freigeben</button>
+              <button type="button" class="dbx-weg"><span aria-hidden="true">&#9679;</span> Besprechen</button>
+              <button type="button" class="dbx-weg">In Outlook öffnen &#8599;</button>
+            </div>
+          </article>
+          <article class="dbx-karte">
+            <p class="dbx-karte-kanal">Kommentar &middot; unter dem Beitrag von M. Weiss</p>
+            <p class="dbx-karte-satz">Zwei Sätze zur Frage nach dem Aufwand – ohne Zahlen, mit Angebot für ein Gespräch.</p>
+            <div class="dbx-wege">
+              <button type="button" class="dbx-ja">Freigeben</button>
+              <button type="button" class="dbx-weg"><span aria-hidden="true">&#9679;</span> Besprechen</button>
+              <button type="button" class="dbx-weg">In LinkedIn öffnen &#8599;</button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="dbx-block">
+        <header class="dbx-blockkopf">
+          <p class="dbx-blocktitel">Vorhaben</p>
+          <p class="dbx-blockzahl dbx-blockzahl--leise">4</p>
+        </header>
+        <p class="dbx-blocksatz">Woran Du arbeitest – und was der nächste Schritt wäre.</p>
+        <div class="dbx-vorhaben">
+          <article class="dbx-vorhabenkarte">
+            <header class="dbx-vk-kopf">
+              <p class="dbx-vk-art">Kundenprojekt</p>
+              <h3>SV Akademie</h3>
+            </header>
+            <div class="dbx-vk-koerper">
+              <ul class="dbx-vk-zahlen"><li><b>1 von 3</b><span>Module fertig</span></li><li><b>in 6 Tagen</b><span>nächster Termin</span></li></ul>
+              <p class="dbx-vk-stand">Modul 1 abgeschlossen, Vision und Strategie laufen.</p>
+              <p class="dbx-vk-schritt"><span>Nächster Schritt</span>Workshop Vision &amp; Strategie vorbereiten – Agenda steht, Protokoll fehlt.</p>
+            </div>
+          </article>
+          <article class="dbx-vorhabenkarte">
+            <header class="dbx-vk-kopf">
+              <p class="dbx-vk-art">Eigenes Vorhaben</p>
+              <h3>Steuerungszentrale</h3>
+            </header>
+            <div class="dbx-vk-koerper">
+              <ul class="dbx-vk-zahlen"><li><b>1 von 4</b><span>Stufe</span></li><li><b>0 von 36</b><span>Wege eingerichtet</span></li></ul>
+              <p class="dbx-vk-stand">Ökosystem beschrieben, vier Stufen festgelegt.</p>
+              <p class="dbx-vk-schritt"><span>Nächster Schritt</span>Stufe 1: Intelligenzschicht und Zugänge einrichten.</p>
+            </div>
+          </article>
+          <article class="dbx-vorhabenkarte">
+            <header class="dbx-vk-kopf">
+              <p class="dbx-vk-art">Vertriebsstrategie</p>
+              <h3>Vertrieb Hauptabteilungen</h3>
+            </header>
+            <div class="dbx-vk-koerper">
+              <ul class="dbx-vk-zahlen"><li><b>40</b><span>Zielkunden</span></li><li><b>6</b><span>im Gespräch</span></li></ul>
+              <p class="dbx-vk-stand">Zielkundenliste im Sales Navigator steht, 40 Personen.</p>
+              <p class="dbx-vk-schritt"><span>Nächster Schritt</span>Ansprache festlegen: Wer bekommt was, in welcher Reihenfolge.</p>
+            </div>
+          </article>
+          <article class="dbx-vorhabenkarte">
+            <header class="dbx-vk-kopf">
+              <p class="dbx-vk-art">Geschäftsmodell</p>
+              <h3>Drei Marken schärfen</h3>
+            </header>
+            <div class="dbx-vk-koerper">
+              <ul class="dbx-vk-zahlen"><li><b>3</b><span>Marken</span></li><li><b>4 Wochen</b><span>offen seit</span></li></ul>
+              <p class="dbx-vk-stand">Abgrenzung zwischen empiria und sofort sichtbar ist offen.</p>
+              <p class="dbx-vk-schritt"><span>Nächster Schritt</span>Entscheiden, welche Leistung zu welcher Marke gehört.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="dbx-block">
+        <header class="dbx-blockkopf">
+          <p class="dbx-blocktitel">Eingang</p>
+          <p class="dbx-blockzahl dbx-blockzahl--leise">6</p>
+        </header>
+        <p class="dbx-blocksatz">Hereingekommen, noch ohne fertigen Vorschlag.</p>
+        <ul class="dbx-eingang">
+          <li class="dbx-eingangszeile ist-dringend">
+            <a class="dbx-ez" href="/strategie/dashboard-korrespondenz.html">
+              <span class="dbx-ez-feld">Korrespondenz</span>
+              <span class="dbx-ez-titel">Anfrage zu einem Workshop im Januar</span>
+              <span class="dbx-ez-wann">unbekannter Absender &middot; vor 3 Stunden</span>
+            </a>
           </li>
-          <li>
-            <p class="db-blatt-kopf"><b>Rückfrage zur Akademie-Homepage</b>
-              <span class="db-feld">Korrespondenz</span></p>
-            <p class="db-blatt-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
-            <p class="db-blatt-fuss">K. Lindner &middot; seit 4 Stunden</p>
+          <li class="dbx-eingangszeile">
+            <a class="dbx-ez" href="/strategie/dashboard-korrespondenz.html">
+              <span class="dbx-ez-feld">Korrespondenz</span>
+              <span class="dbx-ez-titel">Vier Mails ohne klare Zuordnung</span>
+              <span class="dbx-ez-wann">Sammelposten &middot; heute</span>
+            </a>
           </li>
-          <li>
-            <p class="db-blatt-kopf"><b>Drei Rechnungen warten auf Freigabe</b>
-              <span class="db-feld">Dokumente</span></p>
-            <p class="db-blatt-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
-            <p class="db-blatt-fuss">aus dem Postfach &middot; seit gestern</p>
+          <li class="dbx-eingangszeile">
+            <div class="dbx-ez">
+              <span class="dbx-ez-feld">Kontakte</span>
+              <span class="dbx-ez-titel">Drei Kontakte sind überfällig</span>
+              <span class="dbx-ez-wann">nach hinterlegter Frequenz &middot; ältester seit 9 Wochen</span>
+            </div>
+          </li>
+          <li class="dbx-eingangszeile ist-dringend">
+            <div class="dbx-ez">
+              <span class="dbx-ez-feld">Dokumente</span>
+              <span class="dbx-ez-titel">Drei Rechnungen zur Freigabe</span>
+              <span class="dbx-ez-wann">aus dem Postfach &middot; seit gestern</span>
+            </div>
+          </li>
+          <li class="dbx-eingangszeile">
+            <div class="dbx-ez">
+              <span class="dbx-ez-feld">Webseiten</span>
+              <span class="dbx-ez-titel">Zwei Änderungen in der Vorschau</span>
+              <span class="dbx-ez-wann">Daniel-Zweig &middot; seit 1 Tag</span>
+            </div>
+          </li>
+          <li class="dbx-eingangszeile">
+            <div class="dbx-ez">
+              <span class="dbx-ez-feld">Netzwerk</span>
+              <span class="dbx-ez-titel">Zwei Zielkunden haben veröffentlicht</span>
+              <span class="dbx-ez-wann">Sales Navigator &middot; heute</span>
+            </div>
           </li>
         </ul>
-        <p class="db-stufe">diese Woche<span>3</span></p>
-        <ul class="db-blatt">
-          <li>
-            <p class="db-blatt-kopf"><b>Drei Kontakte sind überfällig</b>
-              <span class="db-feld">Kontakte</span></p>
-            <p class="db-blatt-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
-            <p class="db-blatt-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
-          </li>
-          <li>
-            <p class="db-blatt-kopf"><b>Zwei Änderungen stehen in der Vorschau</b>
-              <span class="db-feld">Webseiten</span></p>
-            <p class="db-blatt-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
-            <p class="db-blatt-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
-          </li>
-          <li>
-            <p class="db-blatt-kopf"><b>Beitrag zur Strategiearbeit liegt als Entwurf</b>
-              <span class="db-feld">Postings</span></p>
-            <p class="db-blatt-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
-            <p class="db-blatt-fuss">für alle drei Marken &middot; geplant für KW 41</p>
-          </li>
-        </ul>
-        <p class="db-stufe">wenn Zeit ist<span>2</span></p>
-        <ul class="db-blatt">
-          <li>
-            <p class="db-blatt-kopf"><b>Kommentar auf LinkedIn unbeantwortet</b>
-              <span class="db-feld">Korrespondenz</span></p>
-            <p class="db-blatt-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
-            <p class="db-blatt-fuss">Sales Navigator &middot; seit 3 Tagen</p>
-          </li>
-          <li>
-            <p class="db-blatt-kopf"><b>Recherche zu Vergleichsangeboten läuft</b>
-              <span class="db-feld">Assistenz</span></p>
-            <p class="db-blatt-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
-            <p class="db-blatt-fuss">Auftrag von gestern &middot; läuft</p>
-          </li>
-        </ul>
       </section>
-      <section class="db-tafel" data-variante="b" hidden>
-        <p class="db-variantenkopf"><b>Reviere</b><span>Wie steht jedes Feld?</span></p>
-        <div class="db-reviere">
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Korrespondenz</p>
-              <span class="db-zahl db-zahl--dringend">2 heute</span>
-            </header>
-            <p class="db-revier-unter">Was hereinkommt und beantwortet wird</p>
-            <ul class="db-revier-liste">
-              <li><b>Angebot Hauptabteilung Schaden</b><small>M. Berger, SV &middot; seit 2 Tagen</small></li>
-              <li><b>Rückfrage zur Akademie-Homepage</b><small>K. Lindner &middot; seit 4 Stunden</small></li>
-              <li><b>Kommentar auf LinkedIn unbeantwortet</b><small>Sales Navigator &middot; seit 3 Tagen</small></li>
-            </ul>
-          </article>
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Kontakte</p>
-              <span class="db-zahl">ohne Eile</span>
-            </header>
-            <p class="db-revier-unter">Wer wieder gehört werden sollte</p>
-            <ul class="db-revier-liste">
-              <li><b>Drei Kontakte sind überfällig</b><small>aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</small></li>
-            </ul>
-          </article>
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Dokumente</p>
-              <span class="db-zahl db-zahl--dringend">1 heute</span>
-            </header>
-            <p class="db-revier-unter">Rechnungen und Ablage</p>
-            <ul class="db-revier-liste">
-              <li><b>Drei Rechnungen warten auf Freigabe</b><small>aus dem Postfach &middot; seit gestern</small></li>
-            </ul>
-          </article>
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Webseiten</p>
-              <span class="db-zahl">ohne Eile</span>
-            </header>
-            <p class="db-revier-unter">Was in der Vorschau steht</p>
-            <ul class="db-revier-liste">
-              <li><b>Zwei Änderungen stehen in der Vorschau</b><small>Daniel-Zweig &middot; seit 1 Tag</small></li>
-            </ul>
-          </article>
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Postings</p>
-              <span class="db-zahl">ohne Eile</span>
-            </header>
-            <p class="db-revier-unter">Was ausgespielt wird</p>
-            <ul class="db-revier-liste">
-              <li><b>Beitrag zur Strategiearbeit liegt als Entwurf</b><small>für alle drei Marken &middot; geplant für KW 41</small></li>
-            </ul>
-          </article>
-          <article class="db-revier">
-            <header>
-              <p class="db-revier-name">Assistenz</p>
-              <span class="db-zahl">ohne Eile</span>
-            </header>
-            <p class="db-revier-unter">Aufträge aller Art</p>
-            <ul class="db-revier-liste">
-              <li><b>Recherche zu Vergleichsangeboten läuft</b><small>Auftrag von gestern &middot; läuft</small></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-      <section class="db-tafel" data-variante="c" hidden>
-        <p class="db-variantenkopf"><b>Postfach</b><span>Was genau liegt an?</span></p>
-        <div class="db-postfach">
-          <ol class="db-liste">
-            <li><button type="button" class="db-zeile is-aktiv" data-posten="0">
-              <span class="db-zeile-feld">Korrespondenz</span>
-              <span class="db-zeile-titel">Angebot Hauptabteilung Schaden</span>
-              <span class="db-zeile-wann">seit 2 Tagen</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="1">
-              <span class="db-zeile-feld">Korrespondenz</span>
-              <span class="db-zeile-titel">Rückfrage zur Akademie-Homepage</span>
-              <span class="db-zeile-wann">seit 4 Stunden</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="2">
-              <span class="db-zeile-feld">Kontakte</span>
-              <span class="db-zeile-titel">Drei Kontakte sind überfällig</span>
-              <span class="db-zeile-wann">älteste seit 9 Wochen</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="3">
-              <span class="db-zeile-feld">Dokumente</span>
-              <span class="db-zeile-titel">Drei Rechnungen warten auf Freigabe</span>
-              <span class="db-zeile-wann">seit gestern</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="4">
-              <span class="db-zeile-feld">Webseiten</span>
-              <span class="db-zeile-titel">Zwei Änderungen stehen in der Vorschau</span>
-              <span class="db-zeile-wann">seit 1 Tag</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="5">
-              <span class="db-zeile-feld">Postings</span>
-              <span class="db-zeile-titel">Beitrag zur Strategiearbeit liegt als Entwurf</span>
-              <span class="db-zeile-wann">geplant für KW 41</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="6">
-              <span class="db-zeile-feld">Korrespondenz</span>
-              <span class="db-zeile-titel">Kommentar auf LinkedIn unbeantwortet</span>
-              <span class="db-zeile-wann">seit 3 Tagen</span>
-            </button></li>
-            <li><button type="button" class="db-zeile" data-posten="7">
-              <span class="db-zeile-feld">Assistenz</span>
-              <span class="db-zeile-titel">Recherche zu Vergleichsangeboten läuft</span>
-              <span class="db-zeile-wann">läuft</span>
-            </button></li>
-          </ol>
-          <div class="db-vorschlag">
-            <article class="db-karte" data-posten="0">
-              <p class="db-karte-feld">Korrespondenz &middot; heute</p>
-              <h3>Angebot Hauptabteilung Schaden</h3>
-              <p class="db-karte-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
-              <p class="db-karte-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
-            </article>
-            <article class="db-karte" data-posten="1" hidden>
-              <p class="db-karte-feld">Korrespondenz &middot; heute</p>
-              <h3>Rückfrage zur Akademie-Homepage</h3>
-              <p class="db-karte-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
-              <p class="db-karte-fuss">K. Lindner &middot; seit 4 Stunden</p>
-            </article>
-            <article class="db-karte" data-posten="2" hidden>
-              <p class="db-karte-feld">Kontakte &middot; diese Woche</p>
-              <h3>Drei Kontakte sind überfällig</h3>
-              <p class="db-karte-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
-              <p class="db-karte-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
-            </article>
-            <article class="db-karte" data-posten="3" hidden>
-              <p class="db-karte-feld">Dokumente &middot; heute</p>
-              <h3>Drei Rechnungen warten auf Freigabe</h3>
-              <p class="db-karte-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
-              <p class="db-karte-fuss">aus dem Postfach &middot; seit gestern</p>
-            </article>
-            <article class="db-karte" data-posten="4" hidden>
-              <p class="db-karte-feld">Webseiten &middot; diese Woche</p>
-              <h3>Zwei Änderungen stehen in der Vorschau</h3>
-              <p class="db-karte-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
-              <p class="db-karte-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
-            </article>
-            <article class="db-karte" data-posten="5" hidden>
-              <p class="db-karte-feld">Postings &middot; diese Woche</p>
-              <h3>Beitrag zur Strategiearbeit liegt als Entwurf</h3>
-              <p class="db-karte-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
-              <p class="db-karte-fuss">für alle drei Marken &middot; geplant für KW 41</p>
-            </article>
-            <article class="db-karte" data-posten="6" hidden>
-              <p class="db-karte-feld">Korrespondenz &middot; wenn Zeit ist</p>
-              <h3>Kommentar auf LinkedIn unbeantwortet</h3>
-              <p class="db-karte-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
-              <p class="db-karte-fuss">Sales Navigator &middot; seit 3 Tagen</p>
-            </article>
-            <article class="db-karte" data-posten="7" hidden>
-              <p class="db-karte-feld">Assistenz &middot; wenn Zeit ist</p>
-              <h3>Recherche zu Vergleichsangeboten läuft</h3>
-              <p class="db-karte-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
-              <p class="db-karte-fuss">Auftrag von gestern &middot; läuft</p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="db-tafel" data-variante="d" hidden>
-        <p class="db-variantenkopf"><b>Lagebild</b><span>Wo im System liegt es?</span></p>
-        <div class="db-lage">
-          <div class="db-lage-ebene">
-            <p class="db-lage-tag">Was hereinkommt</p>
-            <div class="db-lage-reihe">
-              <article class="db-knoten ist-dringend">
-                <p class="db-knoten-zahl">3</p>
-                <p class="db-knoten-name">Korrespondenz</p>
-                <p class="db-knoten-unter">davon 2 heute</p>
-              </article>
-              <article class="db-knoten">
-                <p class="db-knoten-zahl">1</p>
-                <p class="db-knoten-name">Kontakte</p>
-                <p class="db-knoten-unter">nichts Dringendes</p>
-              </article>
-            </div>
-          </div>
-          <span class="db-lage-pfeil" aria-hidden="true"></span>
-          <div class="db-lage-ebene">
-            <p class="db-lage-tag">Was gearbeitet wird</p>
-            <div class="db-lage-reihe">
-              <article class="db-knoten">
-                <p class="db-knoten-zahl">1</p>
-                <p class="db-knoten-name">Assistenz</p>
-                <p class="db-knoten-unter">nichts Dringendes</p>
-              </article>
-              <article class="db-knoten">
-                <p class="db-knoten-zahl">1</p>
-                <p class="db-knoten-name">Webseiten</p>
-                <p class="db-knoten-unter">nichts Dringendes</p>
-              </article>
-            </div>
-          </div>
-          <span class="db-lage-pfeil" aria-hidden="true"></span>
-          <div class="db-lage-ebene">
-            <p class="db-lage-tag">Was herausgeht</p>
-            <div class="db-lage-reihe">
-              <article class="db-knoten">
-                <p class="db-knoten-zahl">1</p>
-                <p class="db-knoten-name">Postings</p>
-                <p class="db-knoten-unter">nichts Dringendes</p>
-              </article>
-              <article class="db-knoten ist-dringend">
-                <p class="db-knoten-zahl">1</p>
-                <p class="db-knoten-name">Dokumente</p>
-                <p class="db-knoten-unter">davon 1 heute</p>
-              </article>
-            </div>
-          </div>
-        </div>
-        <p class="db-lage-fuss">Die Form folgt dem Ökosystem: oben, was hereinkommt, in der Mitte, was gearbeitet wird, unten, was herausgeht. Die Zahl sagt, wie viel dort liegt.</p>
-      </section>
-      <section class="db-tafel" data-variante="e" hidden>
-        <p class="db-variantenkopf"><b>Stapel</b><span>Was ist das Nächste?</span></p>
-        <div class="db-stapel">
-          <article class="db-stapelkarte" data-karte="0">
-            <p class="db-stapel-zaehler">1 von 8 &middot; heute</p>
-            <p class="db-stapel-feld">Korrespondenz</p>
-            <h3>Angebot Hauptabteilung Schaden</h3>
-            <p class="db-stapel-satz">Antwort liegt als Entwurf bereit: Termin in KW 42 vorschlagen, Agenda aus dem letzten Workshop anhängen.</p>
-            <p class="db-stapel-fuss">M. Berger, SV &middot; seit 2 Tagen</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="1" hidden>
-            <p class="db-stapel-zaehler">2 von 8 &middot; heute</p>
-            <p class="db-stapel-feld">Korrespondenz</p>
-            <h3>Rückfrage zur Akademie-Homepage</h3>
-            <p class="db-stapel-satz">Die Frage betrifft den Launch-Termin. Vorschlag: auf den Meilensteinplan verweisen und den Stand der Vorschau zeigen.</p>
-            <p class="db-stapel-fuss">K. Lindner &middot; seit 4 Stunden</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="2" hidden>
-            <p class="db-stapel-zaehler">3 von 8 &middot; heute</p>
-            <p class="db-stapel-feld">Dokumente</p>
-            <h3>Drei Rechnungen warten auf Freigabe</h3>
-            <p class="db-stapel-satz">Benennung vorgeschlagen, Beträge erkannt. Nach der Freigabe gehen sie nach Papierkram.</p>
-            <p class="db-stapel-fuss">aus dem Postfach &middot; seit gestern</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="3" hidden>
-            <p class="db-stapel-zaehler">4 von 8 &middot; diese Woche</p>
-            <p class="db-stapel-feld">Kontakte</p>
-            <h3>Drei Kontakte sind überfällig</h3>
-            <p class="db-stapel-satz">Bei allen dreien ist die hinterlegte Frequenz abgelaufen. Zu jedem liegt ein Aufhänger aus dem letzten Gespräch bereit.</p>
-            <p class="db-stapel-fuss">aus der Kontaktdatenbank &middot; älteste seit 9 Wochen</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="4" hidden>
-            <p class="db-stapel-zaehler">5 von 8 &middot; diese Woche</p>
-            <p class="db-stapel-feld">Webseiten</p>
-            <h3>Zwei Änderungen stehen in der Vorschau</h3>
-            <p class="db-stapel-satz">Die Projektseite der SV Akademie und die Meilensteine. Vorschau geprüft, bereit für main.</p>
-            <p class="db-stapel-fuss">Daniel-Zweig &middot; seit 1 Tag</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="5" hidden>
-            <p class="db-stapel-zaehler">6 von 8 &middot; diese Woche</p>
-            <p class="db-stapel-feld">Postings</p>
-            <h3>Beitrag zur Strategiearbeit liegt als Entwurf</h3>
-            <p class="db-stapel-satz">Aus dem Workshop-Protokoll gezogen, auf 900 Zeichen gekürzt. Ausspielen über Buffer, Dienstag früh.</p>
-            <p class="db-stapel-fuss">für alle drei Marken &middot; geplant für KW 41</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="6" hidden>
-            <p class="db-stapel-zaehler">7 von 8 &middot; wenn Zeit ist</p>
-            <p class="db-stapel-feld">Korrespondenz</p>
-            <h3>Kommentar auf LinkedIn unbeantwortet</h3>
-            <p class="db-stapel-satz">Eine Rückfrage unter dem letzten Beitrag. Antwortvorschlag liegt bereit, zwei Sätze.</p>
-            <p class="db-stapel-fuss">Sales Navigator &middot; seit 3 Tagen</p>
-          </article>
-          <article class="db-stapelkarte" data-karte="7" hidden>
-            <p class="db-stapel-zaehler">8 von 8 &middot; wenn Zeit ist</p>
-            <p class="db-stapel-feld">Assistenz</p>
-            <h3>Recherche zu Vergleichsangeboten läuft</h3>
-            <p class="db-stapel-satz">Drei Wettbewerber im Netz erfasst, Zusammenfassung in Arbeit.</p>
-            <p class="db-stapel-fuss">Auftrag von gestern &middot; läuft</p>
-          </article>
-        </div>
-        <div class="db-stapel-steuerung">
-          <button type="button" class="pv-pille db-zurueck" aria-label="Zurück">&#8592; Zurück</button>
-          <button type="button" class="pv-pille db-weiter">Weiter &#8594;</button>
-        </div>
-      </section>
-      </div>
+
+      <p class="dbx-fuss">Alles, was ein Knopf nicht abdeckt, geht übers
+        Gespräch: „Bei der Mail an Berger den Termin auf KW 43 ändern.“</p>
 
     </div>
   </section>
-
-  <script>
-  /* Drei kleine Schalter: die Variante, die Zeile im Postfach, die Karte im
-     Stapel. Mehr Zustand hat diese Seite nicht. */
-  (function () {
-    var tafeln = document.querySelectorAll('.db-tafel');
-    document.querySelectorAll('.db-pille').forEach(function (b) {
-      b.addEventListener('click', function () {
-        document.querySelectorAll('.db-pille').forEach(function (x) {
-          var an = x === b;
-          x.classList.toggle('is-aktiv', an);
-          x.setAttribute('aria-pressed', an ? 'true' : 'false');
-        });
-        tafeln.forEach(function (t) {
-          t.hidden = t.dataset.variante !== b.dataset.variante;
-        });
-      });
-    });
-
-    document.querySelectorAll('.db-zeile').forEach(function (z) {
-      z.addEventListener('click', function () {
-        document.querySelectorAll('.db-zeile').forEach(function (x) {
-          x.classList.toggle('is-aktiv', x === z);
-        });
-        document.querySelectorAll('.db-karte').forEach(function (k) {
-          k.hidden = k.dataset.posten !== z.dataset.posten;
-        });
-      });
-    });
-
-    var karten = document.querySelectorAll('.db-stapelkarte');
-    var i = 0;
-    function zeigen(n) {
-      i = Math.max(0, Math.min(karten.length - 1, n));
-      karten.forEach(function (k, j) { k.hidden = j !== i; });
-      document.querySelector('.db-zurueck').disabled = i === 0;
-      document.querySelector('.db-weiter').disabled = i === karten.length - 1;
-    }
-    var zur = document.querySelector('.db-zurueck');
-    var wei = document.querySelector('.db-weiter');
-    if (zur && wei) {
-      zur.addEventListener('click', function () { zeigen(i - 1); });
-      wei.addEventListener('click', function () { zeigen(i + 1); });
-      zeigen(0);
-    }
-  })();
-  </script>
 
 </main>
 
