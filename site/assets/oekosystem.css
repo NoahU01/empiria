@@ -410,14 +410,17 @@ body .section--eng:has(.oe-plan) { padding-top: clamp(20px, 2.4vw, 34px); }
 .oe-pult-zeile { flex: 1 1 auto; display: grid;
                  grid-template-columns: 70px minmax(0, 1fr);
                  align-items: center; gap: 0 16px; padding: 9px 18px; }
-/* Die Sicht traegt sechs Pillen in drei Reihen zu zweit, alle gleich breit.
+/* Sichten und Stufen stehen in Reihen zu zweit, alle Pillen gleich breit.
    Ihr Tag steht oben, weil die Zeile hoch ist - mittig haengt das Wort
    sonst neben der zweiten Reihe und zeigt auf nichts. */
-.oe-pult-zeile--sicht { align-items: start; }
-.oe-pult-zeile--sicht .oe-pult-tag { padding-top: 6px; }
-.oe-pult-zeile--sicht .oe-pult-feld { display: grid; gap: 6px;
+.oe-pult-zeile--sicht, .oe-pult-zeile--stufen { align-items: start; }
+.oe-pult-zeile--sicht .oe-pult-tag,
+.oe-pult-zeile--stufen .oe-pult-tag { padding-top: 6px; }
+.oe-pult-zeile--sicht .oe-pult-feld,
+.oe-pult-zeile--stufen .oe-pult-feld { display: grid; gap: 6px;
                                       grid-template-columns: 1fr 1fr; }
-.oe-pult-zeile--sicht .pv-pille { width: 100%; justify-content: center;
+.oe-pult-zeile--sicht .pv-pille,
+.oe-pult-zeile--stufen .pv-pille { width: 100%; justify-content: center;
                                   text-align: center; }
 /* Im Kopf steht das Pult in einer schmalen Spalte - die Pillen tragen
    dort eine Nummer kleiner, sonst bricht die Sicht auf fuenf Zeilen um
