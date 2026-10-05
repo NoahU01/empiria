@@ -11,7 +11,7 @@ CSS-Zaehler fuer Druckseiten nicht.
 
 Aufruf:  python3 werkzeuge/pdf-agenda/agenda_pdf.py [zielordner]
 """
-import os, pathlib, subprocess, sys
+import os, pathlib, shutil, subprocess, sys, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from agenda_lesen import bloecke, kopf, BEGINN
@@ -327,6 +327,19 @@ def main():
         if not pdf.exists():
             raise SystemExit(f"Rendern fehlgeschlagen: {fassung}")
         print(f"{name}.pdf  ({pdf.stat().st_size // 1024} KB)  ->  {ziel}")
+
+        # Die kompakte Fassung haengt auch in der Terminuebersicht der
+        # Projektplanung - dorthin samt Vorschaubild der ersten Seite.
+        if fassung == "kompakt":
+            web = ROOT / "site" / "assets" / "projekte"
+            shutil.copy(pdf, web / "sv-agenda-vision-strategie.pdf")
+            sys.path.insert(0, str(ROOT / "werkzeuge" / "pdf-vorlage"))
+            from vorschaubilder import screenshot_pages, png_to_webp
+            with tempfile.TemporaryDirectory() as td:
+                shots = screenshot_pages(str(src), [1], td)
+                png_to_webp(shots[1],
+                            str(web / "sv-agenda-vision-strategie-vorschau.webp"))
+            print(f"{'':<4}-> site/assets/projekte/sv-agenda-vision-strategie.pdf + Vorschau")
 
 
 if __name__ == "__main__":
