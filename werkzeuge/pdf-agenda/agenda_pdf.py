@@ -326,7 +326,10 @@ def bauen(fassung):
         kl = "page eng" if eng else "page"
         inhalt = "".join(block_html(b, eng) for b in bl if int(b["nr"]) in gruppe)
         # Abstand unter dem Logo, damit der erste Block nicht daran klebt
-        luft = "4mm" if eng else "6mm"
+        # Das Logo reicht bis rund 20 mm unter die Oberkante. Mit nur
+        # wenigen Millimetern darunter steht die erste Ueberschrift auf
+        # seiner Hoehe und wirkt gedraengt.
+        luft = "14mm" if eng else "6mm"
         seiten.append(f'<div class="{kl}">{LOGO}<div style="height:{luft}"></div>'
                       f'{inhalt}{fuss(i, gesamt)}</div>')
 
