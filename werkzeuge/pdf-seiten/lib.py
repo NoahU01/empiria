@@ -135,7 +135,9 @@ body { font-family: var(--sans); font-weight: 300; color: var(--ink); -webkit-pr
 b, strong { font-weight: 600; }
 .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 20mm 22mm 18mm; background: #fff; }
 .page:last-child { page-break-after: auto; }
-.hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em; white-space: nowrap; }
+.hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em;
+      /* gleicht das Polster aus, damit das Wort in der Zeile flucht */
+      margin-inline: -.08em; white-space: nowrap; }
 .head { display:flex; justify-content: space-between; align-items:center; margin-bottom: 15mm; }
 .head img { height: 6mm; }
 .page-no { font-size: 6.6pt; color: var(--g50); font-weight: 500; }

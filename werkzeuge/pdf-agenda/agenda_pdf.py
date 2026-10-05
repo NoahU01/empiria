@@ -79,8 +79,14 @@ b, strong { font-weight: 600; }
    Kasten - sonst schneidet er die Unterlaengen der Zeile darueber ab. */
 h1 { font-family: var(--serif); font-weight: 600; font-size: 26pt;
      line-height: 1.42; letter-spacing: -.01em; max-width: 150mm; }
+/* Das Polster des gelben Kastens wird durch einen gleich grossen
+   negativen Aussenabstand ausgeglichen. Sonst rueckt das hervorgehobene
+   Wort nach rechts und flucht nicht mehr mit der Zeile darueber - der
+   Kasten darf links ueberstehen, der Text nicht. Genau so loest es die
+   Website in styles.css. */
 .hl { display: inline; color: var(--ink); font-weight: 700;
-      background: var(--hl); border-radius: 4px; padding: .5mm 1.6mm;
+      background: var(--hl); border-radius: .14em;
+      padding: .06em .12em; margin-inline: -.12em;
       -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .unterzeile { margin-top: 5mm; font-size: 10pt; color: var(--g70); }
 .unterzeile b { font-weight: 600; color: var(--ink); }
@@ -151,7 +157,7 @@ h2 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
              color: var(--g50); }
 .bkopf h3 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
             line-height: 1.3; }
-.block--kern .bkopf h3 .hl { padding: .4mm 1.4mm; }
+
 
 .aufmacher { font-size: 10.5pt; line-height: 1.58; color: var(--ink);
              margin-bottom: 3mm; }
