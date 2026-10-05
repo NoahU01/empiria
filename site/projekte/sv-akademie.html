@@ -580,12 +580,30 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </button>
           <div class="fl-koerper">
             <div class="fl-ziel">
-              <p>Je tiefer Künstliche Intelligenz in die Versicherungsbranche reicht, desto deutlicher tritt hervor, worüber ein Serviceversicherer sich unterscheidet: über seine Menschen. Der <b>USP Mensch</b> ist der Vorteil, der aus dem Unternehmen selbst wächst.</p>
-              <p>Damit wird die Zukunftsfähigkeit der Menschen zum Erfolgsfaktor des gesamten Geschäftsmodells – und die SV Akademie zu dem Ort, an dem dieser Erfolgsfaktor entsteht. Ausbildung und Weiterbildung tragen das Geschäft, nicht nur die Personalarbeit.</p>
-              <p>Deshalb wird die SV Akademie die beste Akademie der Versicherungsbranche. Das ist Überzeugung, kein Slogan. Dieses Projekt macht die Vision sichtbar und nimmt alle mit, die sie tragen: das Team der SV Akademie, ihre Führungskräfte und alle Beteiligten im Haus.</p>
-              <p>Dafür entstehen drei Bausteine: ein Selbstverständnis, das trägt. Ein Zielbild, das Richtung gibt. Und ein Weg, der zeigt, was jetzt zu tun ist.</p>
-              <p>Mit der letzten Abstimmung endet die Projektarbeit, nicht ihre Wirkung. Was hier entsteht, geht in den Führungsalltag über: als Maßstab für jede Entscheidung und als Klarheit darüber, woran jede Führungskraft den nächsten Schritt ausrichtet. So wird aus der Vision tägliche Führung – und der Anspruch, die beste Akademie der Branche zu sein, wird überprüfbar.</p>
-              <button type="button" class="db-leise" data-modal-target="ausgangslageModal">Womit das Projekt begonnen hat &#8594;</button>
+              <div class="fl-ziel-text">
+
+                <h3>Der Unterschied heißt Mensch</h3>
+                <p>Künstliche Intelligenz wird in den nächsten Jahren vieles übernehmen, was heute Menschen tun: rechnen, prüfen, sortieren, formulieren. Was sie nicht übernimmt, ist das Gespräch, in dem jemand merkt, dass er verstanden wird. Daran erkennt man einen Serviceversicherer.</p>
+                <p>Wer darauf setzt, muss seine Leute stark machen. Ausbildung und Weiterbildung werden damit zur Grundlage des Geschäfts. Hier entscheidet sich, ob die SV ihr Versprechen einlösen kann.</p>
+
+                <h3>Das Ziel</h3>
+                <p>Die SV Akademie wird die beste Akademie der Versicherungsbranche. Das meinen wir ernst, und wir trauen es dieser Akademie zu. Dafür braucht es ein gemeinsames Bild davon, wohin es geht: im Team, bei den Führungskräften und bei allen, die mit der Akademie arbeiten.</p>
+
+                <h3>Was entsteht</h3>
+                <ul class="fl-ziel-liste">
+                  <li><b>Ein Selbstverständnis</b> – wofür die Akademie steht.</li>
+                  <li><b>Ein Zielbild</b> – wie sie künftig arbeitet.</li>
+                  <li><b>Ein Weg</b> – was dafür jetzt zu tun ist.</li>
+                </ul>
+
+                <h3>Was danach bleibt</h3>
+                <p>Der eigentliche Teil beginnt, wenn die Abstimmungen vorbei sind. Was hier entsteht, nehmen die Führungskräfte mit in den Alltag: Es sagt ihnen, woran sie ihre Entscheidungen messen und was als Nächstes dran ist. So wird aus der Vision tägliche Arbeit – und am Ende lässt sich nachprüfen, ob die SV Akademie die beste der Branche geworden ist.</p>
+
+                <button type="button" class="db-leise" data-modal-target="ausgangslageModal">Womit das Projekt begonnen hat &#8594;</button>
+              </div>
+              <div class="fl-ziel-bild" aria-hidden="true">
+                <img src="/assets/projekte/sv-rakete.webp" alt="" width="300" height="420" loading="lazy" decoding="async">
+              </div>
             </div>
           </div>
         </section>
@@ -745,6 +763,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         </section>
 
       </div>
+
+      <script>
+      /* Auf schmalen Schirmen startet alles geschlossen: Auf dem Telefon
+         kostet ein offenes Modul den ganzen ersten Bildschirm, und man
+         sieht nicht mehr, dass es drei gibt. Am Schreibtisch bleibt
+         Modul 02 offen. Laeuft sofort, damit nichts aufblitzt. */
+      (function () {
+        if (window.matchMedia('(min-width: 700px)').matches) return;
+        document.querySelectorAll('.fl-ebene.is-offen').forEach(function (e) {
+          e.classList.remove('is-offen');
+          var k = e.querySelector('.fl-kopf');
+          if (k) k.setAttribute('aria-expanded', 'false');
+        });
+      })();
+      </script>
 
     </div>
   </section>
