@@ -66,6 +66,18 @@ var e = d.querySelector('.fl-ebene');
 if (e) { e.style.border = '0'; e.style.borderRadius = '0'; }
 """
 
+WERKZEUG_OFFEN = AKKORDEON % '["03"]' + """
+d.querySelectorAll('.fl-ebene').forEach(function (e) {
+  var nr = ((e.querySelector('.fl-kopf-nr') || {}).textContent || '').trim();
+  if (nr !== '03') e.remove();
+});
+var kz = d.querySelector('.fl-kopf-zeile');
+if (kz) kz.remove();
+d.querySelectorAll('.section, .container, main').forEach(function (e) {
+  e.style.paddingTop = '0'; e.style.marginTop = '0';
+});
+"""
+
 NUR_PROTOKOLL = """
 // Nur das Protokoll - der Rest der Seite bleibt auf dem Bildschirm.
 var pr = d.querySelector('#protokoll');
@@ -97,7 +109,8 @@ if (u) { var k = u.closest('.mk__box') || u.parentElement; (k || u).remove(); }
 AUFTRAEGE = {
     "projektmodule": dict(
         seite="sv-akademie", blatt="A3", quer=False, rand=10, breite=1040,
-        zustand=AKKORDEON % '["02"]',
+        zustand="", zustaende=[AKKORDEON % '["02"]', WERKZEUG_OFFEN],
+        seiten=2,
         datei="SV-Akademie-Projektmodule-A3",
         titel="SV Akademie – Projektmodule"),
     "werkzeugkasten": dict(
@@ -111,9 +124,9 @@ AUFTRAEGE = {
         datei="SV-Akademie-Selbstverstaendnis-A3",
         titel="SV Akademie – Selbstverständnis"),
     "protokoll": dict(
-        seite="sv-selbstverstaendnis", blatt="A3", quer=True, rand=12,
+        seite="sv-selbstverstaendnis", blatt="A3", quer=False, rand=12,
         breite=1240, zustand=NUR_PROTOKOLL,
-        datei="SV-Akademie-Weg-zum-Leitbild-A3-quer",
+        datei="SV-Akademie-Weg-zum-Leitbild-A3",
         titel="SV Akademie – Der Weg zum Leitbild"),
     "projektplanung": dict(
         seite="sv-projektplanung", blatt="A3", quer=False, rand=14,
@@ -163,30 +176,49 @@ header.site-header, footer.site-footer, .dev-dd, .dev-band,
 
 
 def quelle(a, zoom=1.0, hoehe=None):
+    """Druckquelle: je Zustand ein Blatt, jedes in einem Rahmen fester Breite.
+
+    Ein zoom auf html wuerde die Breakpoints mitverschieben - die Seite
+    faellt dann in ihr schmales Layout, obwohl das Blatt breit genug
+    waere. Im Rahmen behaelt sie den Viewport vom Schreibtisch.
+
+    Mehrere Blaetter brauchen mehrere Rahmen: Ein iframe bricht nicht
+    ueber eine Seitengrenze um.
+    """
     bmm, hmm, bpx, hpx = masse(a["blatt"], a["quer"], a["rand"])
     rb = a["breite"]
+    zustaende = a.get("zustaende") or [a["zustand"]]
     h = hoehe or round(hpx / zoom)
+    rahmen, skripte = [], []
+    for i, z in enumerate(zustaende):
+        rahmen.append(f'<div class="blatt"><div class="rahmen">'
+                      f'<iframe id="s{i}" src="/projekte/{a["seite"]}.html">'
+                      f'</iframe></div></div>')
+        skripte.append(f"""
+document.getElementById('s{i}').addEventListener('load', function () {{
+  var d = this.contentDocument;
+  var st = d.createElement('style');
+  st.textContent = {json.dumps(INNEN_CSS)};
+  d.head.appendChild(st);
+  {z}
+  fertig({i}, d);
+}});""")
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8">
 <title>{a['titel']}</title><style>
 @page {{ size: {bmm}mm {hmm}mm; margin: {a['rand']}mm; }}
 html, body {{ margin: 0; padding: 0; background: #fff; }}
-/* Bleibt Hoehe uebrig, steht der Inhalt mittig - sonst sieht es aus, als
-   waere unten etwas abgeschnitten. */
-body {{ display: flex; align-items: center; justify-content: center;
-        width: {round(bpx)}px; height: {round(hpx)}px; }}
+.blatt {{ display: flex; align-items: center; justify-content: center;
+          width: {round(bpx)}px; height: {round(hpx)}px; }}
+.blatt + .blatt {{ break-before: page; page-break-before: always; }}
 .rahmen {{ width: {round(rb * zoom)}px; height: {round(h * zoom)}px;
            overflow: hidden; flex: none; }}
 iframe {{ width: {rb}px; height: {h}px; border: 0; display: block;
           transform: scale({zoom:.4f}); transform-origin: top left; }}
 </style></head><body>
-<div class="rahmen"><iframe id="s" src="/projekte/{a['seite']}.html"></iframe></div>
+{"".join(rahmen)}
 <script>
-document.getElementById('s').addEventListener('load', function () {{
-  var d = this.contentDocument;
-  var st = d.createElement('style');
-  st.textContent = {json.dumps(INNEN_CSS)};
-  d.head.appendChild(st);
-  {a['zustand']}
+var masse = {{}}, offen = {len(zustaende)};
+function fertig(i, d) {{
   setTimeout(function () {{
     var unten = 0, breit = 0;
     d.querySelectorAll('body *').forEach(function (e) {{
@@ -196,9 +228,16 @@ document.getElementById('s').addEventListener('load', function () {{
         breit = Math.max(breit, b.right);
       }}
     }});
-    document.title = 'MASS|' + Math.ceil(breit) + '|' + Math.ceil(unten);
+    masse[i] = [Math.ceil(breit), Math.ceil(unten)];
+    if (Object.keys(masse).length === offen) {{
+      var mb = 0, mh = 0;
+      for (var k in masse) {{ mb = Math.max(mb, masse[k][0]);
+                              mh = Math.max(mh, masse[k][1]); }}
+      document.title = 'MASS|' + mb + '|' + mh;
+    }}
   }}, 800);
-}});
+}}
+{"".join(skripte)}
 </script></body></html>"""
 
 
@@ -265,7 +304,7 @@ def main(namen):
                     capture_output=True, timeout=240)
                 if not pdf.exists():
                     raise SystemExit(f"Rendern fehlgeschlagen: {name}")
-                if seitenzahl(pdf) <= 1:
+                if seitenzahl(pdf) <= a.get("seiten", 1):
                     break
                 zoom *= 0.96
             print(f"{name:20s} {a['blatt']}{'quer' if a['quer'] else 'hoch':>5s}"
