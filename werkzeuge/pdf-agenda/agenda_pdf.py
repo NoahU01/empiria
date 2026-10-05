@@ -29,6 +29,30 @@ DATUM = "06. Oktober 2026"
 VERTEILUNG = {"moderation": [[1, 2], [3, 4], [5]],
               "kompakt": [[1, 2], [3, 4, 5]]}
 
+# Die kompakte Fassung geht an die Teilnehmer, auch an den
+# Hauptabteilungsleiter. Wie wir vorgehen, gehoert dort in einen Satz -
+# die Einzelschritte sind Regie fuer uns und haben auf seinem Tisch
+# nichts zu suchen. Leitfragen und Abschluss bleiben unveraendert, sie
+# sind Gespraechsgegenstand, keine Taktik.
+OHNE_REGIE = {"Ergebnis", "Vorgehen", "Die Story"}
+TEILNEHMERSATZ = {
+    "01": "Wir steigen direkt ein, knüpfen an das Statement von M.\u00a0S. aus "
+          "dem letzten Termin an und legen Ziel und Ablauf der zwei Stunden "
+          "offen – einschließlich der Punkte, die heute bewusst offenbleiben.",
+    "02": "Wir greifen die Aussagen aus dem letzten Termin auf und hören, was "
+          "für M.\u00a0S. heute die beste Akademie der Versicherungsbranche "
+          "ausmacht.",
+    "03": "Wir führen beide Bilder zusammen: zuerst die Kriterien, an denen "
+          "sich die beste Akademie der Branche messen lässt, dann die Vision, "
+          "wie die SV Akademie künftig arbeitet, was sie anbietet und wie sie "
+          "auftritt.",
+    "04": "Wir stellen die entwickelten Stoßrichtungen vor und prüfen sie "
+          "gemeinsam auf der Ebene der Richtungen – die Ausarbeitung folgt "
+          "im Anschluss.",
+    "05": "Wir sprechen darüber, wie M.\u00a0S. die Akademie künftig "
+          "begleitet.",
+}
+
 CSS = r"""
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -129,6 +153,9 @@ h2 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
             line-height: 1.3; }
 .block--kern .bkopf h3 .hl { padding: .4mm 1.4mm; }
 
+.aufmacher { font-size: 10.5pt; line-height: 1.58; color: var(--ink);
+             margin-bottom: 3mm; }
+.eng .aufmacher { font-size: 9.8pt; line-height: 1.55; margin-bottom: 2.6mm; }
 .feld { margin-bottom: 3mm; }
 .feld:last-child { margin-bottom: 0; }
 .feld > dt { font-size: 7.6pt; font-weight: 600; letter-spacing: .12em;
@@ -164,24 +191,24 @@ h2 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
 .eng .logo { top: 15.5mm; right: 14mm; height: 5mm; }
 .eng .fuss { left: 14mm; right: 14mm; bottom: 9mm; }
 .eng .block { grid-template-columns: 16mm 1fr; gap: 4.5mm; }
-.eng .block + .block { padding-top: 3mm; margin-top: 3mm; }
-.eng .zeitspur .min { font-size: 16pt; }
-.eng .zeitspur .min small { font-size: 7pt; margin-top: .6mm; }
-.eng .zeitspur .uhr { font-size: 7.4pt; margin-top: 3mm; line-height: 1.45; }
-.eng .bkopf { margin-bottom: 2.4mm; gap: 3mm; }
-.eng .bkopf h3 { font-size: 11pt; }
-.eng .feld { margin-bottom: 1.7mm; }
-.eng .feld > dt { font-size: 6.6pt; margin-bottom: .8mm; }
-.eng .feld p, .eng .feld li { font-size: 8pt; line-height: 1.4; }
-.eng .feld li { margin-bottom: .5mm; padding-left: 3.6mm; }
-.eng .feld li::before { top: 1.6mm; width: 1.2mm; height: 1.2mm; }
+.eng .block + .block { padding-top: 5mm; margin-top: 5mm; }
+.eng .zeitspur .min { font-size: 19pt; }
+.eng .zeitspur .min small { font-size: 7.8pt; margin-top: .8mm; }
+.eng .zeitspur .uhr { font-size: 8.2pt; margin-top: 4mm; line-height: 1.5; }
+.eng .bkopf { margin-bottom: 3mm; gap: 3.2mm; }
+.eng .bkopf h3 { font-size: 12.5pt; }
+.eng .feld { margin-bottom: 2.6mm; }
+.eng .feld > dt { font-size: 7.2pt; margin-bottom: 1.2mm; }
+.eng .feld p, .eng .feld li { font-size: 9.2pt; line-height: 1.5; }
+.eng .feld li { margin-bottom: .9mm; padding-left: 4.2mm; }
+.eng .feld li::before { top: 1.9mm; width: 1.4mm; height: 1.4mm; }
 .eng .kette li { padding-left: 4.4mm; margin-bottom: .9mm; }
 .eng .kette li::before { font-size: 8pt; }
 .eng .kette b { font-size: 8pt; }
-.eng .rollen { gap: 1.6mm; }
-.eng .rolle { padding: 2mm 2.6mm; border-radius: 1.6mm; }
-.eng .rolle b { font-size: 7.8pt; margin-bottom: .3mm; }
-.eng .rolle span { font-size: 7.2pt; line-height: 1.35; }
+.eng .rollen { gap: 2.4mm; }
+.eng .rolle { padding: 2.8mm 3.2mm; border-radius: 2mm; }
+.eng .rolle b { font-size: 9pt; margin-bottom: .6mm; }
+.eng .rolle span { font-size: 8.2pt; line-height: 1.45; }
 .eng h1 { font-size: 18pt; }
 .eng .unterzeile { font-size: 9pt; margin-top: 3.5mm; }
 .eng .ziel b { font-size: 9pt; }
@@ -217,8 +244,13 @@ def feld_html(f):
     return ""
 
 
-def block_html(b):
-    felder = "".join(feld_html(f) for f in b["felder"])
+def block_html(b, teilnehmer=False):
+    if teilnehmer:
+        felder = (f'<p class="aufmacher">{TEILNEHMERSATZ[b["nr"]]}</p>'
+                  + "".join(feld_html(f) for f in b["felder"]
+                            if f["label"] not in OHNE_REGIE))
+    else:
+        felder = "".join(feld_html(f) for f in b["felder"])
     kern = " block--kern" if b["kern"] else ""
     return f'''<div class="block{kern}">
       <div class="zeitspur">
@@ -282,7 +314,7 @@ def bauen(fassung):
 
     if eng:
         erste = seite1(k, bl, True) + '<div style="height:6mm"></div>'
-        erste += "".join(block_html(b) for b in bl
+        erste += "".join(block_html(b, True) for b in bl
                          if int(b["nr"]) in verteilung[0])
         seiten.append(erste + fuss(1, gesamt) + "</div>")
         rest = verteilung[1:]
@@ -292,7 +324,7 @@ def bauen(fassung):
 
     for i, gruppe in enumerate(rest, start=2):
         kl = "page eng" if eng else "page"
-        inhalt = "".join(block_html(b) for b in bl if int(b["nr"]) in gruppe)
+        inhalt = "".join(block_html(b, eng) for b in bl if int(b["nr"]) in gruppe)
         # Abstand unter dem Logo, damit der erste Block nicht daran klebt
         luft = "4mm" if eng else "6mm"
         seiten.append(f'<div class="{kl}">{LOGO}<div style="height:{luft}"></div>'
