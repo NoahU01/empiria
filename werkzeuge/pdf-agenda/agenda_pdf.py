@@ -26,167 +26,171 @@ DATUM = "06. Oktober 2026"
 
 # Welche Bloecke auf welche Seite. Geprueft wird das ueber die Messung in
 # messen.py - bleibt unten Platz, passt mehr drauf.
-VERTEILUNG = {"moderation": [[1, 2], [3], [4], [5]],
+VERTEILUNG = {"moderation": [[1, 2], [3, 4], [5]],
               "kompakt": [[1, 2], [3, 4, 5]]}
 
 CSS = r"""
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --ink:#1a1817; --g70:#58564f; --g50:#8a8783; --g25:#d8d4cf;
-        --bg:#f4f3f1; --hl:#fff400; --warn:#b3262c;
+        --bg:#f4f3f1; --hl:#fff400;
         --serif:"Lora",Georgia,serif; --sans:"Poppins",sans-serif; }
 body { font-family: var(--sans); font-weight: 300; color: var(--ink);
        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 b, strong { font-weight: 600; }
 
 .page { width: 210mm; height: 297mm; position: relative; overflow: hidden;
-        page-break-after: always; padding: 16mm 15mm 16mm 18mm; }
+        padding: 16mm 15mm 16mm 18mm; page-break-after: always; }
 .page:last-child { page-break-after: auto; }
 
-/* Kopf- und Fusszeile tragen die Orientierung: Wer die Blaetter nach dem
-   Termin wieder einsammelt, findet die Reihenfolge ohne Lesen. */
-.kopf { display: flex; justify-content: space-between; align-items: baseline;
-        padding-bottom: 3mm; border-bottom: .4pt solid var(--ink);
-        margin-bottom: 7mm; }
-.kopf .wo { font-size: 8pt; font-weight: 500; letter-spacing: .06em;
-            text-transform: uppercase; }
-.kopf .wann { font-size: 8pt; color: var(--g50); }
-.fuss { position: absolute; left: 18mm; right: 15mm; bottom: 10mm;
+/* Das Logo steht auf jeder Seite an derselben Stelle: rechtsbuendig mit
+   dem Satzspiegel, Oberkante auf Hoehe der Ueberschrift. */
+.logo { position: absolute; top: 18mm; right: 15mm; height: 5.5mm; }
+.fuss { position: absolute; left: 18mm; right: 15mm; bottom: 11mm;
         display: flex; justify-content: space-between; align-items: baseline;
-        padding-top: 2.5mm; border-top: .4pt solid var(--g25);
         font-size: 7.6pt; color: var(--g50); }
 
-h1 { font-family: var(--serif); font-weight: 600; font-size: 27pt;
-     line-height: 1.14; letter-spacing: -.01em; }
-h1 .hl { background: var(--hl); padding: 0 1.5mm; }
-.unterzeile { margin-top: 4mm; font-size: 10pt; color: var(--g70); }
+/* Corporate Design: Das Gelb liegt hinter dem Wort, das Wort steht im
+   700er-Schnitt, die Ecken sind gerundet. Die Zeilenhoehe traegt den
+   Kasten - sonst schneidet er die Unterlaengen der Zeile darueber ab. */
+h1 { font-family: var(--serif); font-weight: 600; font-size: 26pt;
+     line-height: 1.42; letter-spacing: -.01em; max-width: 150mm; }
+.hl { display: inline; color: var(--ink); font-weight: 700;
+      background: var(--hl); border-radius: 4px; padding: .5mm 1.6mm;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.unterzeile { margin-top: 5mm; font-size: 10pt; color: var(--g70); }
 .unterzeile b { font-weight: 600; color: var(--ink); }
 
-.tag { font-size: 7.4pt; font-weight: 600; letter-spacing: .13em;
-       text-transform: uppercase; color: var(--g50); margin-bottom: 2.5mm; }
+.tag { font-size: 7.6pt; font-weight: 600; letter-spacing: .13em;
+       text-transform: uppercase; color: var(--g50); margin-bottom: 3mm; }
 h2 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
-     line-height: 1.25; margin-bottom: 4mm; }
+     line-height: 1.25; margin-bottom: 5mm; }
 
 /* ---- Seite 1: Ziel des Termins ---------------------------------------- */
-.ziele { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm;
-         margin-bottom: 6mm; }
-.ziel { border-top: 1.2pt solid var(--ink); padding-top: 2.5mm; }
+.ziele { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm;
+         margin-bottom: 7mm; }
+.ziel { border-top: 1.2pt solid var(--ink); padding-top: 3mm; }
 .ziel .nr { font-family: var(--serif); font-weight: 700; font-size: 9pt;
             color: var(--g50); }
-.ziel b { display: block; font-size: 9.6pt; line-height: 1.3; margin: 1mm 0 1.5mm; }
-.ziel p { font-size: 8.4pt; line-height: 1.55; color: var(--g70); }
+.ziel b { display: block; font-size: 10pt; line-height: 1.3; margin: 1.2mm 0 2mm; }
+.ziel p { font-size: 8.8pt; line-height: 1.55; color: var(--g70); }
 
-.zitat { background: var(--bg); padding: 5mm 6mm; margin-bottom: 5mm; }
-.zitat p { font-family: var(--serif); font-weight: 500; font-size: 11pt;
+.zitat { background: var(--bg); border-radius: 3mm; padding: 6mm;
+         margin-bottom: 6mm; }
+.zitat p { font-family: var(--serif); font-weight: 500; font-size: 11.5pt;
            line-height: 1.5; }
-.zitat span { display: block; margin-top: 2.5mm; font-size: 7.4pt;
+.zitat span { display: block; margin-top: 3mm; font-size: 7.6pt;
               font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
               color: var(--g50); }
-.nichtziel { border-left: 1.5pt solid var(--g25); padding-left: 4mm;
-             margin-bottom: 7mm; }
-.nichtziel span { display: block; font-size: 7.4pt; font-weight: 600;
+.nichtziel { margin-bottom: 8mm; }
+.nichtziel span { display: block; font-size: 7.6pt; font-weight: 600;
                   letter-spacing: .12em; text-transform: uppercase;
-                  color: var(--g50); margin-bottom: 1.5mm; }
-.nichtziel p { font-size: 8.8pt; line-height: 1.6; color: var(--g70); }
+                  color: var(--g50); margin-bottom: 2mm; }
+.nichtziel p { font-size: 9.2pt; line-height: 1.6; color: var(--g70); }
 
 /* ---- Ablauf auf einen Blick ------------------------------------------- */
-.uebersicht { border-top: .4pt solid var(--g25); }
-.uz { display: grid; grid-template-columns: 20mm 7mm 1fr 16mm;
+.uz { display: grid; grid-template-columns: 22mm 8mm 1fr 16mm;
       gap: 3mm; align-items: baseline;
-      padding: 2.6mm 0; border-bottom: .4pt solid var(--g25); }
-.uz .zeit { font-size: 9pt; font-weight: 500; }
+      padding: 3mm 0; border-bottom: .4pt solid var(--g25); }
+.uebersicht .uz:first-child { border-top: .4pt solid var(--g25); }
+.uz .zeit { font-size: 9.4pt; font-weight: 500; }
 .uz .nr { font-family: var(--serif); font-weight: 700; font-size: 9pt;
           color: var(--g50); }
-.uz .was { font-size: 9.6pt; }
-.uz .dau { font-size: 8.4pt; color: var(--g50); text-align: right; }
-/* Zwei der fuenf Bloecke sind der Kern des Termins. Zwei vollflaechig
-   gelbe Zeilen verschmelzen zu einem Klotz - ein Balken links markiert
-   dasselbe, ohne die Uebersicht zu ueberstrahlen. */
+.uz .was { font-size: 10pt; }
+.uz .dau { font-size: 8.8pt; color: var(--g50); text-align: right; }
 .uz--kern { position: relative; }
-.uz--kern::before { content: ""; position: absolute; left: -3.5mm; top: 1.4mm;
-                    bottom: 1.4mm; width: 1.6mm; background: var(--hl); }
+.uz--kern::before { content: ""; position: absolute; left: -4mm; top: 2mm;
+                    bottom: 2mm; width: 1.6mm; background: var(--hl); }
 .uz--kern .was { font-weight: 500; }
-.summe { display: flex; justify-content: space-between; margin-top: 3mm;
-         font-size: 8.6pt; color: var(--g50); }
+.summe { display: flex; justify-content: space-between; margin-top: 3.5mm;
+         font-size: 8.8pt; color: var(--g50); }
 
 /* ---- Die Bloecke ------------------------------------------------------ */
-.block { display: grid; grid-template-columns: 19mm 1fr; gap: 4.5mm;
-         padding-bottom: 4.5mm; margin-bottom: 4.5mm;
-         border-bottom: .4pt solid var(--g25); }
-.block:last-of-type { border-bottom: 0; }
-/* Die Minuten stehen gross, die Uhrzeit klein darunter: Beim Moderieren
-   zaehlt zuerst, wie lang der Block ist - dann, ob man in der Zeit liegt. */
-.zeitspur .min { font-family: var(--serif); font-weight: 700; font-size: 20pt;
+/* Einspaltig ueber die volle Breite: Bei 150 mm und 10,5 pt stehen rund
+   75 Zeichen in der Zeile - die Breite, die sich am schnellsten liest. */
+.block { display: grid; grid-template-columns: 20mm 1fr; gap: 6mm; }
+/* Die Linie trennt zwei Bloecke, sie schliesst keinen ab. Deshalb traegt
+   sie der folgende Block - :last-of-type greift hier nicht, weil die
+   Fusszeile als weiteres div dazwischenzaehlt. */
+.block + .block { border-top: .4pt solid var(--g25);
+                  padding-top: 5mm; margin-top: 5mm; }
+/* Die Minuten gross, die Uhrzeit mit Abstand darunter - ohne Striche. */
+.zeitspur .min { font-family: var(--serif); font-weight: 700; font-size: 22pt;
                  line-height: 1; }
 .zeitspur .min small { font-family: var(--sans); font-weight: 500;
-                       font-size: 8pt; display: block; margin-top: .6mm;
-                       letter-spacing: .04em; }
-.zeitspur .uhr { margin-top: 2mm; padding-top: 1.6mm;
-                 border-top: .4pt solid var(--g25);
-                 font-size: 8pt; color: var(--g50); line-height: 1.35; }
-.bkopf { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm; }
-.bkopf .nr { font-family: var(--serif); font-weight: 700; font-size: 10pt;
+                       font-size: 8.4pt; display: block; margin-top: 1mm;
+                       letter-spacing: .04em; color: var(--g70); }
+.zeitspur .uhr { display: block; margin-top: 5mm; font-size: 8.6pt;
+                 color: var(--g50); line-height: 1.5; }
+.bkopf { display: flex; align-items: baseline; gap: 3.5mm; margin-bottom: 3mm; }
+.bkopf .nr { font-family: var(--serif); font-weight: 700; font-size: 10.5pt;
              color: var(--g50); }
-.bkopf h3 { font-family: var(--serif); font-weight: 600; font-size: 13pt;
-            line-height: 1.22; }
-.block--kern .bkopf h3 { background: var(--hl); padding: 0 1.5mm; }
+.bkopf h3 { font-family: var(--serif); font-weight: 600; font-size: 14pt;
+            line-height: 1.3; }
+.block--kern .bkopf h3 .hl { padding: .4mm 1.4mm; }
 
-.feld { margin-bottom: 2.8mm; }
+.feld { margin-bottom: 3mm; }
 .feld:last-child { margin-bottom: 0; }
-.feld > dt { font-size: 7.4pt; font-weight: 600; letter-spacing: .12em;
-             text-transform: uppercase; color: var(--g50); margin-bottom: 1.2mm; }
-.feld p, .feld li { font-size: 9.4pt; line-height: 1.58; color: var(--g70); }
+.feld > dt { font-size: 7.6pt; font-weight: 600; letter-spacing: .12em;
+             text-transform: uppercase; color: var(--g50); margin-bottom: 1.6mm; }
+.feld p, .feld li { font-size: 10.5pt; line-height: 1.58; color: var(--g70); }
 .feld ul { list-style: none; }
-.feld li { position: relative; padding-left: 4mm; margin-bottom: .9mm; }
-.feld li::before { content: ""; position: absolute; left: 0; top: 1.9mm;
-                   width: 1.4mm; height: 1.4mm; background: var(--g50); }
+.feld li { position: relative; padding-left: 4.5mm; margin-bottom: 1.2mm; }
+.feld li::before { content: ""; position: absolute; left: 0; top: 2.1mm;
+                   width: 1.5mm; height: 1.5mm; background: var(--g50); }
 .feld--fragen li::before { background: var(--ink); }
 .feld--fragen li { font-style: italic; }
-.warnung { border-left: 1.5pt solid var(--warn); padding-left: 3mm; }
-.warnung p { color: var(--warn); }
+/* Die Kette traegt nur die Ziffer - ein gefuellter Kreis je Schritt macht
+   die Seite unruhig, ohne mehr zu sagen. */
 .kette { list-style: none; counter-reset: k; }
-.kette li { position: relative; padding-left: 7mm; margin-bottom: 1.8mm;
+.kette li { position: relative; padding-left: 6mm; margin-bottom: 2.4mm;
             counter-increment: k; }
-.kette li::before { content: counter(k); position: absolute; left: 0; top: 0;
-                    width: 4.6mm; height: 4.6mm; border-radius: 50%;
-                    background: var(--ink); color: #fff; font-size: 7pt;
-                    font-weight: 600; display: flex; align-items: center;
-                    justify-content: center; }
-.kette li.reserve::before { background: #fff; color: var(--g50);
-                            border: .6pt solid var(--g25); }
-.kette b { display: block; font-size: 9.4pt; color: var(--ink); }
-.rollen { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 5mm; }
-.rolle b { display: block; font-size: 9.2pt; }
-.rolle span { display: block; font-size: 8.4pt; line-height: 1.5; color: var(--g70); }
-
-/* ---- Notizspalte: nur in der Moderationsfassung ------------------------ */
-.mit-notiz .block { grid-template-columns: 20mm 1fr 42mm; }
-.notiz { border-left: .4pt dashed var(--g25); }
+/* Die Ziffer muss die Punkt-Regel der Listen oben zuruecknehmen - sonst
+   steht sie in einem 1,5-mm-Kaestchen und wird abgeschnitten. */
+.kette li::before { content: counter(k) "."; position: absolute; left: 0; top: 0;
+                    width: auto; height: auto; background: none;
+                    font-family: var(--serif); font-weight: 700;
+                    font-size: 10.5pt; line-height: 1.58; color: var(--g50); }
+.kette li.reserve::before { color: var(--g25); }
+.kette b { display: block; font-size: 10.5pt; color: var(--ink); }
+/* Vier Rollen, vier Felder: Der graue Grund grenzt sie voneinander ab. */
+.rollen { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.rolle { background: var(--bg); border-radius: 2.5mm; padding: 3.5mm 4mm; }
+.rolle b { display: block; font-size: 10pt; margin-bottom: 1mm; }
+.rolle span { display: block; font-size: 9pt; line-height: 1.5; color: var(--g70); }
 
 /* ---- Die kompakte Fassung zieht alles enger --------------------------- */
-.eng { padding: 12mm 12mm 14mm; }
-.eng .fuss { left: 12mm; right: 12mm; bottom: 7mm; }
-.eng .block { grid-template-columns: 17mm 1fr; gap: 4mm;
-              padding-bottom: 3.6mm; margin-bottom: 3.6mm; }
-.eng .zeitspur .min { font-size: 15pt; }
-.eng .zeitspur .min small { font-size: 6.6pt; }
-.eng .zeitspur .uhr { font-size: 6.8pt; margin-top: 1.2mm; padding-top: 1mm; }
-.eng .bkopf { margin-bottom: 1.8mm; }
-.eng .bkopf h3 { font-size: 10.5pt; }
-.eng .feld { margin-bottom: 1.8mm; }
-.eng .feld > dt { font-size: 6.4pt; margin-bottom: .6mm; }
-.eng .feld p, .eng .feld li { font-size: 7.6pt; line-height: 1.42; }
-.eng .feld li { margin-bottom: .3mm; padding-left: 3.2mm; }
-.eng .feld li::before { top: 1.4mm; width: 1.1mm; height: 1.1mm; }
-.eng .kette li { padding-left: 5.4mm; margin-bottom: .9mm; }
-.eng .kette li::before { width: 3.6mm; height: 3.6mm; font-size: 5.8pt; }
-.eng .kette b { font-size: 7.6pt; }
-.eng .rolle b { font-size: 7.6pt; }
-.eng .rolle span { font-size: 7pt; line-height: 1.38; }
-.eng h1 { font-size: 17pt; }
-.eng .uz { padding: 1.5mm 0; }
-.eng .uz .was { font-size: 8.2pt; }
-.eng .uz .zeit { font-size: 7.8pt; }
+.eng { padding: 14mm 14mm 14mm; }
+.eng .logo { top: 15.5mm; right: 14mm; height: 5mm; }
+.eng .fuss { left: 14mm; right: 14mm; bottom: 9mm; }
+.eng .block { grid-template-columns: 16mm 1fr; gap: 4.5mm; }
+.eng .block + .block { padding-top: 3mm; margin-top: 3mm; }
+.eng .zeitspur .min { font-size: 16pt; }
+.eng .zeitspur .min small { font-size: 7pt; margin-top: .6mm; }
+.eng .zeitspur .uhr { font-size: 7.4pt; margin-top: 3mm; line-height: 1.45; }
+.eng .bkopf { margin-bottom: 2.4mm; gap: 3mm; }
+.eng .bkopf h3 { font-size: 11pt; }
+.eng .feld { margin-bottom: 1.7mm; }
+.eng .feld > dt { font-size: 6.6pt; margin-bottom: .8mm; }
+.eng .feld p, .eng .feld li { font-size: 8pt; line-height: 1.4; }
+.eng .feld li { margin-bottom: .5mm; padding-left: 3.6mm; }
+.eng .feld li::before { top: 1.6mm; width: 1.2mm; height: 1.2mm; }
+.eng .kette li { padding-left: 4.4mm; margin-bottom: .9mm; }
+.eng .kette li::before { font-size: 8pt; }
+.eng .kette b { font-size: 8pt; }
+.eng .rollen { gap: 1.6mm; }
+.eng .rolle { padding: 2mm 2.6mm; border-radius: 1.6mm; }
+.eng .rolle b { font-size: 7.8pt; margin-bottom: .3mm; }
+.eng .rolle span { font-size: 7.2pt; line-height: 1.35; }
+.eng h1 { font-size: 18pt; }
+.eng .unterzeile { font-size: 9pt; margin-top: 3.5mm; }
+.eng .ziel b { font-size: 9pt; }
+.eng .ziel p { font-size: 8pt; line-height: 1.45; }
+.eng .uz { padding: 1.8mm 0; }
+.eng .uz .was { font-size: 8.6pt; }
+.eng .uz .zeit { font-size: 8.2pt; }
+.eng .uz .dau { font-size: 7.8pt; }
+.eng .summe { font-size: 7.8pt; }
 """
 
 
@@ -197,8 +201,7 @@ def feld_html(f):
         k = '<div class="warnung">' if False else ""
         return f'<div class="feld{kl}"><dt>{lab}</dt><p>{inhalt}</p></div>'
     if art == "warnung":
-        return (f'<div class="feld"><dt>{lab}</dt>'
-                f'<div class="warnung"><p>{inhalt}</p></div></div>')
+        return ""   # interne Arbeitsanweisung, nicht fuer den Ausdruck
     if art == "liste":
         li = "".join(f"<li>{x}</li>" for x in inhalt)
         return f'<div class="feld{kl}"><dt>{lab}</dt><ul>{li}</ul></div>'
@@ -214,9 +217,8 @@ def feld_html(f):
     return ""
 
 
-def block_html(b, notiz):
+def block_html(b):
     felder = "".join(feld_html(f) for f in b["felder"])
-    n = '<div class="notiz"></div>' if notiz else ""
     kern = " block--kern" if b["kern"] else ""
     return f'''<div class="block{kern}">
       <div class="zeitspur">
@@ -224,7 +226,7 @@ def block_html(b, notiz):
         <span class="uhr">{b["von"]}<br>bis {b["bis"]}</span>
       </div>
       <div class="inhalt"><div class="bkopf"><span class="nr">{b["nr"]}</span>
-        <h3>{b["titel"]}</h3></div>{felder}</div>{n}</div>'''
+        <h3>{b["titel"]}</h3></div>{felder}</div></div>'''
 
 
 def uebersicht_html(bl):
@@ -241,14 +243,12 @@ def uebersicht_html(bl):
     return "".join(z)
 
 
+LOGO = '<img class="logo" src="assets/empiria-logo.svg" alt="empiria">'
+
+
 def fuss(nr, von):
-    return (f'<div class="fuss"><span>empiria GmbH · SV Akademie</span>'
+    return (f'<div class="fuss"><span>Workshop Vision &amp; Strategie · {DATUM}</span>'
             f'<span>Seite {nr} von {von}</span></div>')
-
-
-def kopfzeile(wo):
-    return (f'<div class="kopf"><span class="wo">{wo}</span>'
-            f'<span class="wann">{TITEL.replace("&amp;", "&")} · {DATUM}</span></div>')
 
 
 def seite1(k, bl, eng):
@@ -258,12 +258,12 @@ def seite1(k, bl, eng):
     ziele = "".join(f'<div class="ziel"><span class="nr">{n}</span>'
                     f"<b>{h}</b><p>{p}</p></div>" for n, h, p in k["ziele"])
     if eng:
-        return (f'<div class="page eng">{titelblock}'
-                f'<div style="height:6mm"></div>'
+        return (f'<div class="page eng">{LOGO}{titelblock}'
+                f'<div style="height:7mm"></div>'
                 f'<p class="tag">Ziel des Termins</p><div class="ziele">{ziele}</div>'
                 f'<p class="tag">Der Ablauf</p>{uebersicht_html(bl)}')
-    return (f'<div class="page"><div style="height:2mm"></div>{titelblock}'
-            f'<div style="height:9mm"></div>'
+    return (f'<div class="page">{LOGO}{titelblock}'
+            f'<div style="height:11mm"></div>'
             f'<p class="tag">Ziel des Termins</p>'
             f'<h2>Gemeinsam vertreten wir die Vision und verwirklichen sie.</h2>'
             f'<div class="ziele">{ziele}</div>'
@@ -281,9 +281,8 @@ def bauen(fassung):
     seiten = []
 
     if eng:
-        # Seite 1 traegt Kopf und die ersten Bloecke zusammen
-        erste = seite1(k, bl, True) + '<div style="height:5mm"></div>'
-        erste += "".join(block_html(b, False) for b in bl
+        erste = seite1(k, bl, True) + '<div style="height:6mm"></div>'
+        erste += "".join(block_html(b) for b in bl
                          if int(b["nr"]) in verteilung[0])
         seiten.append(erste + fuss(1, gesamt) + "</div>")
         rest = verteilung[1:]
@@ -292,12 +291,12 @@ def bauen(fassung):
         rest = verteilung
 
     for i, gruppe in enumerate(rest, start=2):
-        kl = "page eng" if eng else "page mit-notiz"
-        wo = f"Block {' und '.join(f'{n:02d}' for n in gruppe)}"
-        inhalt = "".join(block_html(b, not eng) for b in bl
-                         if int(b["nr"]) in gruppe)
-        seiten.append(f'<div class="{kl}">{kopfzeile(wo)}{inhalt}'
-                      f"{fuss(i, gesamt)}</div>")
+        kl = "page eng" if eng else "page"
+        inhalt = "".join(block_html(b) for b in bl if int(b["nr"]) in gruppe)
+        # Abstand unter dem Logo, damit der erste Block nicht daran klebt
+        luft = "4mm" if eng else "6mm"
+        seiten.append(f'<div class="{kl}">{LOGO}<div style="height:{luft}"></div>'
+                      f'{inhalt}{fuss(i, gesamt)}</div>')
 
     titel = f"Agenda {DATUM} – Workshop Vision und Strategie"
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8">'

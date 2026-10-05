@@ -11,7 +11,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 JS = """
-<script>window.addEventListener('load',function(){
+<script>Promise.all([document.fonts.ready,new Promise(function(r){window.addEventListener('load',r)})]).then(function(){
 var mm=96/25.4,out=[];
 document.querySelectorAll('.page').forEach(function(pg,i){
   var r=pg.getBoundingClientRect(),unten=0,ueber=[];
