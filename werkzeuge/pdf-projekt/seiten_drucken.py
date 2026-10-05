@@ -58,6 +58,12 @@ d.querySelectorAll('.fl-ebene').forEach(function (e) {
 });
 var kz = d.querySelector('.fl-kopf-zeile');
 if (kz) kz.remove();
+// Die Abstaende der Seite weg: Der Kasten soll das Blatt fuellen.
+d.querySelectorAll('.section, .container, main').forEach(function (e) {
+  e.style.padding = '0'; e.style.margin = '0'; e.style.maxWidth = 'none';
+});
+var e = d.querySelector('.fl-ebene');
+if (e) { e.style.border = '0'; e.style.borderRadius = '0'; }
 """
 
 STRAHL_AUF = """
@@ -74,12 +80,12 @@ if (u) { var k = u.closest('.mk__box') || u.parentElement; (k || u).remove(); }
 
 AUFTRAEGE = {
     "projektmodule": dict(
-        seite="sv-akademie", blatt="A3", quer=False, rand=14, breite=1240,
+        seite="sv-akademie", blatt="A3", quer=False, rand=10, breite=1040,
         zustand=AKKORDEON % '["02"]',
         datei="SV-Akademie-Projektmodule-A3",
         titel="SV Akademie – Projektmodule"),
     "werkzeugkasten": dict(
-        seite="sv-akademie", blatt="A3", quer=True, rand=14, breite=1240,
+        seite="sv-akademie", blatt="A3", quer=True, rand=10, breite=980,
         zustand=NUR_WERKZEUG,
         datei="SV-Akademie-Werkzeugkasten-A3-quer",
         titel="SV Akademie – Werkzeugkasten"),
@@ -125,6 +131,13 @@ header.site-header, footer.site-footer, .dev-dd, .dev-band,
 /* Popups liegen auf dem Bildschirm ueber der Seite und sind zu; im Druck
    stehen sie im Fluss und machen die Seite ein Vielfaches hoeher. */
 .modal-overlay, .dbx-pop, .k-pop, [role="dialog"] { display: none !important; }
+/* Der graue Grund kostet im Druck nur Farbe. Dafuer bekommen die weissen
+   Kaesten eine Kante, damit sie nicht im Papier verschwinden. */
+.vt-falt--grau, main, .section { background: #fff !important; }
+.fl-ebene { border: .8pt solid #d8d4cf !important; box-shadow: none !important; }
+/* Der Lesecontainer darf die ganze Blattbreite nutzen. */
+.container { max-width: none !important; padding-left: 8px !important;
+             padding-right: 8px !important; }
 """
 
 
