@@ -66,6 +66,22 @@ var e = d.querySelector('.fl-ebene');
 if (e) { e.style.border = '0'; e.style.borderRadius = '0'; }
 """
 
+NUR_PROTOKOLL = """
+// Nur das Protokoll - der Rest der Seite bleibt auf dem Bildschirm.
+var pr = d.querySelector('#protokoll');
+d.querySelectorAll('main > *, body > main ~ *').forEach(function (e) {
+  if (e !== pr && !e.contains(pr)) e.remove();
+});
+d.querySelectorAll('main section').forEach(function (e) {
+  if (e !== pr) e.remove();
+});
+// Die Abstaende der Seite weg, damit der Abschnitt das Blatt fuellt.
+d.querySelectorAll('.section, .container, main').forEach(function (e) {
+  e.style.paddingTop = '0'; e.style.paddingBottom = '0';
+  e.style.marginTop = '0'; e.style.marginBottom = '0';
+});
+"""
+
 STRAHL_AUF = """
 // Der Zeitstrahl liegt in einem waagerecht scrollenden Streifen.
 d.querySelectorAll('[class*="__scroll"]').forEach(function (e) {
@@ -94,6 +110,11 @@ AUFTRAEGE = {
         breite=900, zustand="",
         datei="SV-Akademie-Selbstverstaendnis-A3",
         titel="SV Akademie – Selbstverständnis"),
+    "protokoll": dict(
+        seite="sv-selbstverstaendnis", blatt="A3", quer=True, rand=12,
+        breite=1240, zustand=NUR_PROTOKOLL,
+        datei="SV-Akademie-Weg-zum-Leitbild-A3-quer",
+        titel="SV Akademie – Der Weg zum Leitbild"),
     "projektplanung": dict(
         seite="sv-projektplanung", blatt="A3", quer=False, rand=14,
         breite=900, zustand="",
