@@ -5,30 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Visitenkarte Daniel Ströbel · Variante 1 – empiria</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="/assets/visitenkarte.css">
+
 <style>
 
-.v1-kopf { padding: 26px 24px 0; }
-.v1-hero { padding: 30px 24px 0; }
-.v1-hero h1 { font-family: var(--serif); font-weight: 500; font-size: 2.15rem; line-height: 1.14; margin: 0 0 14px; letter-spacing: -.01em; }
-.v1-hero p { font-weight: 300; line-height: 1.6; color: var(--grey-70); margin: 0 0 24px; font-size: .98rem; }
-.v1-hero p b { font-weight: 500; color: var(--ink); }
-.v1-bild { position: relative; margin: 30px 24px 0; height: 330px; border-radius: 24px; background: var(--grey-bg); overflow: hidden; }
-.v1-bild .kreis { position: absolute; width: 260px; height: 260px; right: -60px; bottom: -70px; color: var(--hl); }
-.v1-bild img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 112%; width: auto; max-width: none; object-fit: contain; }
-.v1-abschnitt { padding: 34px 24px 0; }
-.v1-abschnitt h2 { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; margin: 0 0 6px; }
-.v1-leist { display: grid; grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 0; }
-.v1-leist + .v1-leist { box-shadow: inset 0 1px 0 var(--line); }
-.v1-leist b { display: block; font-weight: 500; line-height: 1.35; margin-bottom: 4px; }
-.v1-leist span { font-size: .86rem; line-height: 1.55; color: var(--grey-70); font-weight: 300; }
-.v1-ort { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; margin-top: 10px; }
-.v1-ort p { margin: 0; font-size: .92rem; line-height: 1.55; }
-.v1-ort a { text-decoration: underline; text-underline-offset: 3px; font-size: .86rem; }
-.v1-mehr { margin: 34px 24px 0; padding: 22px; border-radius: 20px; background: var(--ink); color: #fff; }
-.v1-mehr p { margin: 0 0 14px; font-family: var(--serif); font-size: 1.25rem; line-height: 1.3; }
-.v1-mehr .vk-hl { color: var(--ink); }
+body { background: #fff; }
+.vk.v1 { max-width: none; margin: 0; border-radius: 0; box-shadow: none; overflow: hidden; }
+.v1-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; }
+.v1-top { display: flex; justify-content: space-between; align-items: center; padding: 26px 0 0; position: relative; z-index: 3; }
+.v1-top a { font-size: .82rem; color: var(--grey-70); }
+.v1-top a:hover { color: var(--ink); }
+.v1-buehne { display: grid; grid-template-columns: 1fr; gap: 26px; padding: 34px 0 0; position: relative; }
+.v1-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-70); margin: 0 0 18px; }
+.v1-h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 7.4vw, 4.6rem); line-height: 1.12; letter-spacing: -.015em; margin: 0 0 20px; }
+.v1-lead { font-weight: 300; font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.65; color: var(--grey-70); margin: 0 0 28px; max-width: 46ch; }
+.v1-lead b { font-weight: 500; color: var(--ink); }
+.v1-knoepfe { display: grid; gap: 10px; max-width: 420px; }
+.v1-knoepfe .vk-btn--rand { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.v1-foto { position: relative; height: 380px; }
+.v1-foto .kreis { position: absolute; width: 330px; height: 330px; left: 50%; bottom: 10px; transform: translateX(-50%); color: var(--hl); }
+.v1-foto img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 100%; width: auto; max-width: none; }
+.v1-foto .zettel { position: absolute; right: 4px; top: 34px; background: var(--ink); color: #fff; padding: 12px 16px; border-radius: 14px; font-family: var(--serif); font-size: 1.02rem; line-height: 1.25; transform: rotate(4deg); box-shadow: 0 14px 30px rgba(0,0,0,.18); }
+.v1-foto .zettel .vk-hl { color: var(--ink); }
+.v1-band { background: var(--black); color: #fff; margin-top: 0; padding: 30px 0; }
+.v1-band .v1-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.v1-kanal { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; background: rgba(255,255,255,.06); transition: background .2s; }
+.v1-kanal:hover { background: rgba(255,255,255,.12); }
+.v1-kanal svg { width: 22px; height: 22px; color: var(--hl); flex: 0 0 22px; }
+.v1-kanal b { display: block; font-weight: 500; font-size: .95rem; }
+.v1-kanal small { display: block; color: rgba(255,255,255,.55); font-size: .74rem; overflow-wrap: anywhere; }
+.v1-abschnitt { padding: 52px 0 0; }
+.v1-abschnitt h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3.4vw, 2.3rem); line-height: 1.12; margin: 0 0 22px; }
+.v1-karten { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.v1-karte { padding: 22px; border-radius: 20px; background: var(--grey-bg); }
+.v1-karte .ico { display: block; position: relative; width: 40px; height: 40px; margin-bottom: 18px; }
+.v1-karte .ico svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.v1-karte .ico .s { transform: translate(3px, 4px); color: var(--hl); }
+.v1-karte b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.25; margin-bottom: 8px; }
+.v1-karte p { margin: 0; font-size: .9rem; line-height: 1.6; color: var(--grey-70); font-weight: 300; }
+.v1-zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 46px 0 0; }
+.v1-zahlen b { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 5vw, 3.2rem); line-height: 1; }
+.v1-zahlen span { overflow-wrap: anywhere; hyphens: auto; }
+.v1-zahlen span { display: block; font-size: .78rem; line-height: 1.45; color: var(--grey-70); margin-top: 8px; }
+.v1-schluss { margin: 56px 0 0; padding: 30px 26px; border-radius: 24px; background: var(--hl); display: grid; gap: 18px; }
+.v1-schluss p { margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2; }
+.v1-schluss small { display: block; font-family: var(--sans); font-size: .9rem; margin-top: 8px; color: var(--ink); }
+.v1 .vk-fuss { padding-left: 0; padding-right: 0; }
+@media (min-width: 900px) {
+  .v1-wrap { padding: 0 48px; }
+  .v1-buehne { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 40px; padding: 60px 0 0; min-height: 560px; }
+  .v1-knoepfe { grid-template-columns: 1fr 1fr; max-width: 520px; }
+  .v1-foto { height: 560px; }
+  .v1-foto .kreis { width: 470px; height: 470px; bottom: 20px; }
+  .v1-foto .zettel { right: -10px; top: 90px; font-size: 1.2rem; }
+  .v1-band .v1-wrap { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .v1-karten { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .v1-karte { padding: 30px; }
+  .v1-schluss { grid-template-columns: 1fr auto; align-items: center; padding: 40px 44px; }
+  .v1-schluss .vk-btn { min-width: 280px; }
+}
 
 </style>
 </head>
@@ -39,6 +75,9 @@
       <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
     </symbol>
 <symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol>
+<symbol id="ic-kreuz" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/>
+    </symbol>
 <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -50,23 +89,37 @@
 <symbol id="i-teilen" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-kal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 </defs></svg>
-<main class="vk">
-<header class="v1-kopf"><img class="vk-logo" src="/assets/empiria-logo.svg" alt="empiria"></header>
-<section class="v1-hero">
- <h1>Hallo, ich bin <span class="vk-hl">Daniel</span> – schön, Dich kennenzulernen.</h1>
- <p>Ich bin <b>Daniel Ströbel</b>, Geschäftsführer der empiria GmbH. Ich begleite Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.</p>
- <a class="vk-btn" href="/kontakt/daniel-stroebel.vcf"><svg aria-hidden="true"><use href="#i-kontakt"/></svg> Kontakt speichern</a>
-</section>
-<div class="v1-bild"><svg class="kreis" aria-hidden="true"><use href="#ic-kreis"/></svg><img src="/assets/daniel.webp" alt="Daniel Ströbel" loading="lazy"></div>
-<section class="v1-abschnitt"><h2>So erreichst Du mich</h2><ul class="vk-liste"><li><a class="vk-zeile" href="tel:+4917631347217"><span class="vk-ic"><svg aria-hidden="true"><use href="#i-tel"/></svg></span><span><b>Anrufen</b><small>+49 176 3134 7217</small></span><svg class="vk-pfeil" aria-hidden="true"><use href="#i-weiter"/></svg></a></li><li><a class="vk-zeile" href="https://wa.me/4917631347217" target="_blank" rel="noopener"><span class="vk-ic"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><span><b>WhatsApp</b><small>Nachricht schreiben</small></span><svg class="vk-pfeil" aria-hidden="true"><use href="#i-weiter"/></svg></a></li><li><a class="vk-zeile" href="mailto:daniel.stroebel@empiria.de"><span class="vk-ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>E-Mail</b><small>daniel.stroebel@empiria.de</small></span><svg class="vk-pfeil" aria-hidden="true"><use href="#i-weiter"/></svg></a></li><li><a class="vk-zeile" href="https://www.linkedin.com/in/daniel-stroebel" target="_blank" rel="noopener"><span class="vk-ic"><svg aria-hidden="true"><use href="#i-li"/></svg></span><span><b>LinkedIn</b><small>Lass uns vernetzen</small></span><svg class="vk-pfeil" aria-hidden="true"><use href="#i-weiter"/></svg></a></li></ul></section>
-<section class="v1-abschnitt"><h2>Wobei ich helfe</h2>
- <div class="v1-leist"><span class="vk-fwd" style="width:30px;height:30px"><svg class="s"><use href="#ic-forward"/></svg><svg class="m"><use href="#ic-forward"/></svg></span><div><b>Strategie in den Alltag überführen</b><span>Deine Strategie ist da – wir machen sie für Deinen Verantwortungsbereich greifbar und wirksam.</span></div></div><div class="v1-leist"><span class="vk-fwd" style="width:30px;height:30px"><svg class="s"><use href="#ic-forward"/></svg><svg class="m"><use href="#ic-forward"/></svg></span><div><b>Komplexe Themen strukturieren &amp; kommunizieren</b><span>Im Vorstand, im Gremium oder beim Kunden: Dein Thema kommt an – inhaltlich und im Auftritt.</span></div></div><div class="v1-leist"><span class="vk-fwd" style="width:30px;height:30px"><svg class="s"><use href="#ic-forward"/></svg><svg class="m"><use href="#ic-forward"/></svg></span><div><b>Innovation &amp; Geschäftsmodell neu denken</b><span>Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit Dir.</span></div></div>
-</section>
-<section class="v1-abschnitt"><h2>Hier findest Du uns</h2>
- <div class="v1-ort"><span class="vk-ic"><svg aria-hidden="true"><use href="#i-ort"/></svg></span><p>empiria GmbH<br>Kapellengasse 6, 74564 Crailsheim<br><a href="https://maps.apple.com/?q=Kapellengasse+6,+74564+Crailsheim" target="_blank" rel="noopener">In Karten öffnen</a></p></div>
-</section>
-<div class="v1-mehr"><p>Strategie, die <span class="vk-hl">wirkt.</span></p><a class="vk-btn vk-btn--hell" href="https://www.empiria.de"><svg aria-hidden="true"><use href="#i-web"/></svg> Mehr über empiria</a></div>
-<footer class="vk-fuss">empiria GmbH · Kapellengasse 6 · 74564 Crailsheim<br><a href="https://www.empiria.de">www.empiria.de</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+<main class="vk v1">
+<div class="v1-wrap">
+ <header class="v1-top"><img class="vk-logo" src="/assets/empiria-logo.svg" alt="empiria"><a href="https://www.empiria.de">empiria.de</a></header>
+ <section class="v1-buehne">
+  <div>
+   <p class="v1-kicker"><span class="vk-fwd" style="width:22px;height:22px"><svg class="s"><use href="#ic-forward"/></svg><svg class="m"><use href="#ic-forward"/></svg></span> Digitale Visitenkarte</p>
+   <h1 class="v1-h1">Gute Strategien scheitern selten am Papier. Sondern am <span class="vk-hl">Alltag.</span></h1>
+   <p class="v1-lead">Ich bin <b>Daniel Ströbel</b>, Geschäftsführer der empiria GmbH. Seit über 25 Jahren sorge ich dafür, dass Strategien in der Versicherungsbranche dort ankommen, wo sie wirken müssen – im Vorstand, im Vertrieb, im Team.</p>
+   <div class="v1-knoepfe">
+    <a class="vk-btn" href="/kontakt/daniel-stroebel.vcf"><svg aria-hidden="true"><use href="#i-kontakt"/></svg> Kontakt speichern</a>
+    <a class="vk-btn vk-btn--rand" href="https://www.linkedin.com/in/daniel-stroebel" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-li"/></svg> Auf LinkedIn vernetzen</a>
+   </div>
+  </div>
+  <div class="v1-foto"><svg class="kreis" aria-hidden="true"><use href="#ic-kreis"/></svg><img src="/assets/daniel.webp" alt="Daniel Ströbel"><span class="zettel">Strategie,<br>die <span class="vk-hl">wirkt.</span></span></div>
+ </section>
+</div>
+<div class="v1-band"><div class="v1-wrap">
+ <a class="v1-kanal" href="tel:+4917631347217"><svg aria-hidden="true"><use href="#i-tel"/></svg><span><b>Anrufen</b><small>+49 176 3134 7217</small></span></a><a class="v1-kanal" href="https://wa.me/4917631347217" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span><b>WhatsApp</b><small>Kurz schreiben</small></span></a><a class="v1-kanal" href="mailto:daniel.stroebel@empiria.de"><svg aria-hidden="true"><use href="#i-mail"/></svg><span><b>E-Mail</b><small>daniel.stroebel@empiria.de</small></span></a><a class="v1-kanal" href="https://maps.apple.com/?q=Kapellengasse+6,+74564+Crailsheim" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ort"/></svg><span><b>Crailsheim</b><small>Kapellengasse 6</small></span></a>
+</div></div>
+<div class="v1-wrap">
+ <section class="v1-abschnitt"><h2>Wobei ich Dir helfe</h2>
+  <div class="v1-karten">
+   <div class="v1-karte"><span class="ico"><svg class="s"><use href="#ic-forward"/></svg><svg class="m"><use href="#ic-forward"/></svg></span><b>Strategie in den Alltag überführen</b><p>Deine Strategie ist da – wir machen sie für Deinen Verantwortungsbereich greifbar und wirksam.</p></div>
+   <div class="v1-karte"><span class="ico"><svg class="s"><use href="#ic-kreuz"/></svg><svg class="m"><use href="#ic-kreuz"/></svg></span><b>Komplexe Themen strukturieren &amp; kommunizieren</b><p>Im Vorstand, im Gremium oder beim Kunden: Dein Thema kommt an – inhaltlich und im Auftritt.</p></div>
+   <div class="v1-karte"><span class="ico"><svg class="s"><use href="#ic-kreis"/></svg><svg class="m"><use href="#ic-kreis"/></svg></span><b>Innovation &amp; Geschäftsmodell neu denken</b><p>Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit Dir.</p></div>
+  </div>
+ </section>
+ <div class="v1-zahlen"><div><b>25+</b><span>Jahre in der Versicherungsbranche</span></div><div><b>300+</b><span>erfolgreich durchgeführte Projekte</span></div><div><b>1:1</b><span>persönliche Begleitung auf Augenhöhe</span></div></div>
+ <div class="v1-schluss"><p>Lass uns weitersprechen.<small>Ein erstes Gespräch – 30 Minuten, unverbindlich, auf den Punkt.</small></p><a class="vk-btn" href="mailto:daniel.stroebel@empiria.de?subject=Erstes%20Gespr%C3%A4ch"><svg aria-hidden="true"><use href="#i-kal"/></svg> Gespräch vereinbaren</a></div>
+ <footer class="vk-fuss">empiria GmbH · Kapellengasse 6 · 74564 Crailsheim<br><a href="https://www.empiria.de">www.empiria.de</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+</div>
 </main>
 </body>
 </html>

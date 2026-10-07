@@ -1,0 +1,14 @@
+{
+  "name": "Daniel Ströbel – empiria",
+  "short_name": "Visitenkarte",
+  "description": "Digitale Visitenkarte von Daniel Ströbel, empiria GmbH",
+  "start_url": "/visitenkarte-5.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff400",
+  "theme_color": "#fff400",
+  "icons": [
+    { "src": "/assets/visitenkarte-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/visitenkarte-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
