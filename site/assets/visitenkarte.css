@@ -1,0 +1,59 @@
+/* Digitale Visitenkarte – gemeinsame Basis aller Varianten (Entwicklung, nicht live).
+   Gedacht für das Telefon: eine schmale Spalte, auf großen Schirmen mittig auf grauem Grund.
+   Farben und Schriften wie empiria.de: Schwarz, Weiß, Gelb #fff400, Grau; Lora + Poppins. */
+@import url("./fonts/fonts.local.css");
+
+:root {
+  --ink: #1a1817; --black: #000; --white: #fff; --hl: #fff400;
+  --grey-bg: #ededed; --grey-70: #555; --grey-50: #8a8580; --line: #e4e1dd;
+  --serif: "Lora", Georgia, serif; --sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --r: 18px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--sans); color: var(--ink); background: var(--grey-bg);
+       -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.vk { width: 100%; max-width: 480px; min-height: 100svh; margin: 0 auto; background: var(--white);
+      position: relative; overflow: hidden; }
+@media (min-width: 560px) { .vk { min-height: auto; margin: 32px auto; border-radius: 28px;
+                                  box-shadow: 0 30px 80px rgba(0,0,0,.12); } }
+
+.vk-hl { background: var(--hl); padding: 0 .14em; border-radius: 4px; box-decoration-break: clone;
+         -webkit-box-decoration-break: clone; }
+.vk-serif { font-family: var(--serif); }
+
+/* Kopf mit Logo */
+.vk-logo { height: 22px; width: auto; }
+
+/* Hauptknopf „Kontakt speichern“ */
+.vk-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+          min-height: 54px; padding: 0 22px; border-radius: 999px; font-weight: 500; font-size: 1rem;
+          background: var(--ink); color: var(--white); transition: transform .15s ease; }
+.vk-btn:active { transform: scale(.98); }
+.vk-btn svg { width: 18px; height: 18px; }
+.vk-btn--gelb { background: var(--hl); color: var(--ink); }
+.vk-btn--hell { background: var(--white); color: var(--ink); }
+
+/* Aktionszeilen (Anrufen, WhatsApp, E-Mail, LinkedIn) */
+.vk-liste { list-style: none; margin: 0; padding: 0; }
+.vk-zeile { display: grid; grid-template-columns: 44px 1fr 16px; align-items: center; gap: 14px;
+            padding: 14px 0; }
+.vk-liste li + li .vk-zeile { box-shadow: inset 0 1px 0 var(--line); }
+.vk-ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+         background: var(--grey-bg); }
+.vk-ic svg { width: 20px; height: 20px; }
+.vk-zeile b { display: block; font-weight: 500; font-size: .98rem; }
+.vk-zeile small { display: block; color: var(--grey-50); font-size: .8rem; margin-top: 1px; }
+.vk-pfeil { width: 16px; height: 16px; color: var(--grey-50); }
+
+/* Doppelpfeil mit gelbem Schatten (wie auf der Startseite) */
+.vk-fwd { position: relative; display: inline-block; width: 44px; height: 44px; }
+.vk-fwd svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.vk-fwd .s { transform: translate(3px, 4px); color: var(--hl); }
+.vk-fwd .m { color: var(--ink); }
+
+.vk-fuss { padding: 22px 24px 30px; font-size: .74rem; line-height: 1.6; color: var(--grey-50); }
+.vk-fuss a { text-decoration: underline; text-underline-offset: 2px; }

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visitenkarten · Varianten – empiria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Platzhalterseite: Einstieg zu den Varianten des Budget-Retters.
+   Selbst kein Inhalt, nur der Weg zu den Entwuerfen. */
+.bv { position: relative; min-height: 100svh; background: var(--black); color: #fff;
+      display: flex; flex-direction: column; }
+.bv a { border-bottom: 0; }
+.bv-wm { position: fixed; color: #181818; width: 58vmin; height: 58vmin;
+         right: -16vmin; bottom: -18vmin; pointer-events: none; z-index: 0; }
+.bv-kopf { position: relative; z-index: 2; padding: clamp(22px,3.4vw,40px) var(--pad-x) 0;
+           display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.bv-kopf img { height: 26px; }
+.bv-marke { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+.bv-raum { position: relative; z-index: 2; flex: 1 1 auto;
+           padding: clamp(26px,3.4vw,48px) var(--pad-x) clamp(28px,3.4vw,48px); }
+.bv-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--hl); font-weight: 500; margin: 0 0 .9rem; }
+.bv-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.06;
+         font-size: clamp(1.9rem,3.6vw,3rem); margin: 0 0 .9rem; }
+.bv-h1 .hl { color: var(--ink); }
+.bv-lead { font-size: clamp(.96rem,1.2vw,1.06rem); line-height: 1.68; font-weight: 300;
+           color: rgba(255,255,255,.72); margin: 0 0 clamp(24px,3vw,38px); max-width: 62ch; }
+.bv-gitter { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+             gap: clamp(14px,1.8vw,22px); }
+.bv-karte { display: flex; flex-direction: column; gap: 9px; padding: clamp(18px,2vw,26px);
+            border: 1px solid rgba(255,255,255,.16); border-radius: var(--radius-card);
+            background: rgba(255,255,255,.03); text-decoration: none; color: #fff;
+            transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.bv-karte:hover { border-color: var(--hl); background: rgba(255,244,0,.06); transform: translateY(-4px); }
+.bv-nr { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+         color: var(--hl); font-weight: 600; }
+.bv-karte h2 { font-family: var(--font-serif); font-weight: 700; font-size: 1.16rem;
+               line-height: 1.24; margin: 0; color: #fff; }
+.bv-karte p { font-size: .88rem; line-height: 1.6; font-weight: 300;
+              color: rgba(255,255,255,.62); margin: 0; }
+.bv-karte ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 5px; }
+.bv-karte li { position: relative; padding-left: 15px; font-size: .8rem; line-height: 1.45;
+               color: rgba(255,255,255,.55); }
+.bv-karte li::before { content: ""; position: absolute; left: 0; top: .52em; width: 5px;
+                       height: 5px; border-radius: 50%; background: var(--hl); }
+.bv-hinweis { margin-top: clamp(22px,2.6vw,34px); padding: 14px 18px; border-radius: 12px;
+              background: var(--hl); color: var(--ink); font-size: .86rem; line-height: 1.55;
+              max-width: 74ch; }
+.bv-hinweis b { font-weight: 600; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ic-kreis" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></symbol></defs></svg>
+<main class="bv">
+  <svg class="bv-wm" aria-hidden="true"><use href="#ic-kreis"/></svg>
+  <header class="bv-kopf"><img src="/assets/empiria-logo-white.svg" alt="empiria"><span class="bv-marke">Entwurfsstand</span></header>
+  <div class="bv-raum">
+    <p class="bv-kicker">Digitale Visitenkarte</p>
+    <h1 class="bv-h1">Fünf Varianten <span class="hl">zum Vergleichen.</span></h1>
+    <p class="bv-lead">Eine Seite für Menschen, die Dich gerade kennengelernt haben – per Link verschickt oder per QR-Code vom iPhone gescannt.
+      Jede Variante speichert den Kontakt mit einem Tipp (vCard), führt zu Telefon, WhatsApp, E-Mail und LinkedIn.
+      Am besten auf dem Telefon ansehen.</p>
+    <div class="bv-gitter"><a class="bv-karte" href="/visitenkarte-1.html"><span class="bv-nr">Variante 1</span><h2>Hallo</h2><p>Die Idee von Nexato im empiria-Look</p><ul><li>Persönliche Begrüßung mit gelbem Marker</li><li>Foto, Kontaktzeilen, Leistungen, Standort</li><li>Abschluss mit Claim und Link zur Homepage</li></ul></a><a class="bv-karte" href="/visitenkarte-2.html"><span class="bv-nr">Variante 2</span><h2>Schwarz</h2><p>Auftritt wie das Zahlenband der Startseite</p><ul><li>Runder Porträtausschnitt mit gelbem Ring</li><li>Vier Kacheln: Anrufen, WhatsApp, E-Mail, LinkedIn</li><li>Gelber Knopf „Kontakt speichern“, dazu 25+ · 300+ · 1:1</li></ul></a><a class="bv-karte" href="/visitenkarte-3.html"><span class="bv-nr">Variante 3</span><h2>Die Karte</h2><p>Eine echte Visitenkarte – zum Umdrehen</p><ul><li>Vorne Name und Claim, hinten alle Kontaktdaten</li><li>Tippen dreht die Karte</li><li>Darunter runde Schnellknöpfe</li></ul></a><a class="bv-karte" href="/visitenkarte-4.html"><span class="bv-nr">Variante 4</span><h2>Gesprächsstart</h2><p>Für Menschen, die man gerade kennengelernt hat</p><ul><li>„Damit aus unserem Gespräch etwas wird.“</li><li>Drei Schritte: speichern, vernetzen, Termin</li><li>Zahlen und Direktkontakt darunter</li></ul></a><a class="bv-karte" href="/visitenkarte-5.html"><span class="bv-nr">Variante 5</span><h2>Zeigen &amp; Teilen</h2><p>Die Ansicht für Dein eigenes iPhone</p><ul><li>Großer QR-Code auf Gelb – zum Scannenlassen</li><li>Teilen-Knopf für Messenger und Mail</li><li>Idee: als Sperrbildschirm verwenden</li></ul></a></div>
+    <p class="bv-hinweis"><b>Zum Weiterdenken:</b> Nexato baut eine Vorlage für alle Mitarbeitenden, die Daten kommen aus dem Link.
+      Das geht hier genauso – eine Seite, die für Kerstin, Rick oder Noah nur andere Angaben zieht. Der QR-Code zeigt auf die geplante Adresse <b>empiria.de/daniel</b>.</p>
+  </div>
+</main>
+</body>
+</html>
