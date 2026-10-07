@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signatur kopieren – empiria</title><meta name="robots" content="noindex, nofollow">
+<style>
+body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#ededed;color:#1a1817}
+.k{max-width:560px;margin:0 auto;padding:24px 18px}
+h1{font-size:1.2rem;margin:0 0 6px} p.h{font-size:.9rem;line-height:1.5;color:#555;margin:0 0 16px}
+.sig{background:#fff;border-radius:14px;padding:4px 20px 20px}
+button{margin-top:16px;width:100%;min-height:50px;border:0;border-radius:999px;background:#1a1817;color:#fff;font-size:1rem;font-weight:600}
+</style></head><body><div class="k">
+<h1>Signatur empiria – zum Kopieren</h1>
+<p class="h">Auf dem iPhone: Knopf tippen (oder im weißen Feld alles markieren und kopieren), dann in den Mail-Einstellungen bei „Signatur“ einfügen.</p>
+<div class="sig" id="sig"><p lang="zxx" spellcheck="false" style="margin:0;padding-top:34px;font-family:Georgia,'Times New Roman',serif;font-size:12pt;font-weight:bold;line-height:24px;color:#1a1817"><img src="https://www.empiria.de/assets/signatur/doppelpfeil.png" width="30" height="24" alt="" style="width:30px;height:24px;vertical-align:middle;border:0;margin-right:10px">Strategie, die <span lang="zxx" style="background:#ffff00;padding:0 3px">wirkt.</span></p><p style="margin:0;padding-top:16px;font-family:Georgia,'Times New Roman',serif;font-size:12pt;font-weight:bold;line-height:1.3;color:#1a1817">Daniel Ströbel</p><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:10pt;line-height:1.5;color:#58564f">Geschäftsführung</p><p style="margin:0;padding-top:12px;font-family:Arial,Helvetica,sans-serif;font-size:10pt;line-height:1.6;color:#1a1817"><a href="mailto:daniel.stroebel@empiria.de" style="color:#0563c1;text-decoration:underline">daniel.stroebel@empiria.de</a><br><a href="tel:+4917631347217" style="color:#0563c1;text-decoration:underline">+49 176 3134 7217</a><br><a href="https://www.linkedin.com/in/daniel-stroebel" style="color:#0563c1;text-decoration:underline">linkedin.com/in/daniel-stroebel</a></p><p style="margin:0;padding-top:12px;font-family:Arial,Helvetica,sans-serif;font-size:8pt;line-height:1.6;color:#58564f">empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · <a href="https://www.empiria.de" style="color:#58564f;text-decoration:none">www.empiria.de</a><br>Sitz der Gesellschaft: Crailsheim · Amtsgericht Ulm HRB 750146 · Geschäftsführer: Daniel Ströbel</p><p style="margin:0;padding-top:12px;font-family:Arial,Helvetica,sans-serif;font-size:8pt;line-height:1.6;color:#58564f"><a href="https://www.empiria.de/kontakt/daniel-stroebel.vcf" style="color:#0563c1;text-decoration:underline">Kontakt speichern</a></p></div>
+<button id="k">Signatur kopieren</button>
+</div>
+<script>
+document.getElementById('k').addEventListener('click', async function () {
+  var el = document.getElementById('sig'), html = el.innerHTML, txt = el.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({'text/html': new Blob([html], {type:'text/html'}), 'text/plain': new Blob([txt], {type:'text/plain'})})]);
+    this.textContent = 'Kopiert ✓';
+  } catch (e) {
+    var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    document.execCommand('copy'); this.textContent = 'Kopiert ✓';
+  }
+});
+</script></body></html>
