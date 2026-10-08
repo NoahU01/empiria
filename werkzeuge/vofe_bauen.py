@@ -8,6 +8,17 @@ SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 <symbol id="v-horaff" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="#fff400"/>
  <g transform="translate(28 27)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8v22a12 12 0 0 0 24 0V20M32 20v10a12 12 0 0 0 24 0V8" stroke="#1a1817" stroke-width="15"/><path d="M8 8v22a12 12 0 0 0 24 0V20M32 20v10a12 12 0 0 0 24 0V8" stroke="#fff" stroke-width="8.5"/></g>
  <text x="60" y="99" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#1a1817">2027</text></symbol>
+<symbol id="v-herz" viewBox="-16 -14 272 272">
+ <path d="M120 214C60 170 14 128 14 80 14 46 40 22 72 22c22 0 38 12 48 28 10-16 26-28 48-28 32 0 58 24 58 58 0 48-46 90-106 134z" fill="rgba(26,24,23,.2)" transform="translate(0 7)"/>
+ <path d="M120 214C60 170 14 128 14 80 14 46 40 22 72 22c22 0 38 12 48 28 10-16 26-28 48-28 32 0 58 24 58 58 0 48-46 90-106 134z" fill="#1a1817"/>
+ <path d="M120 214C60 170 14 128 14 80 14 46 40 22 72 22c22 0 38 12 48 28 10-16 26-28 48-28 32 0 58 24 58 58 0 48-46 90-106 134z" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-dasharray="0 2.5" pathLength="100" transform="translate(120 112) scale(0.88) translate(-120 -112)"/>
+ <path d="M120 214C60 170 14 128 14 80 14 46 40 22 72 22c22 0 38 12 48 28 10-16 26-28 48-28 32 0 58 24 58 58 0 48-46 90-106 134z" fill="none" stroke="#fff400" stroke-width="2" transform="translate(120 112) scale(0.78) translate(-120 -112)"/>
+ <g fill="#fff"><g transform="translate(62 74)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle r="2.6" fill="#fff400"/></g><g transform="translate(178 74)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle r="2.6" fill="#fff400"/></g></g>
+ <g fill="#fff400"><circle cx="48" cy="98" r="2.6"/><circle cx="192" cy="98" r="2.6"/><circle cx="78" cy="52" r="2.6"/><circle cx="162" cy="52" r="2.6"/></g>
+ <g transform="translate(81.6 58.4) scale(1.2)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8v22a12 12 0 0 0 24 0V20M32 20v10a12 12 0 0 0 24 0V8" stroke="#fff" stroke-width="8.5"/></g>
+ <text x="120" y="149" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="26" font-weight="700" letter-spacing="1" fill="#fff400">2027</text>
+ <g fill="#fff"><path d="M78 140l3.5 4.5-3.5 4.5-3.5-4.5zM162 140l3.5 4.5-3.5 4.5-3.5-4.5z"/></g>
+</symbol>
 <symbol id="v-horaff-pur" viewBox="-2 -2 68 56"><g transform="" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8v22a12 12 0 0 0 24 0V20M32 20v10a12 12 0 0 0 24 0V8" stroke="#1a1817" stroke-width="15"/><path d="M8 8v22a12 12 0 0 0 24 0V20M32 20v10a12 12 0 0 0 24 0V8" stroke="#fff" stroke-width="8.5"/></g></symbol>
 <symbol id="i-brezel" viewBox="0 0 24 24"><circle cx="15.5" cy="9" r="5.5" class="tupfer"/><path d="M12 20.2c-2 1-4.4 1-6.3-.2-2.8-1.8-3.6-5.6-1.8-8.7 1.7-3 5.6-4.6 7.6-2.4 1.6 1.8.9 4.6-.5 6.4"/><path d="M12 20.2c2 1 4.4 1 6.3-.2 2.8-1.8 3.6-5.6 1.8-8.7-1.7-3-5.6-4.6-7.6-2.4-1.6 1.8-.9 4.6.5 6.4"/><path d="m7 18.6 6.5-6.8M17 18.6l-6.5-6.8"/><path d="M8 6.2h.01M11 4.8h.01M14 5.3h.01" stroke-width="2.4"/></symbol>
 <symbol id="i-riesenrad" viewBox="0 0 24 24"><circle cx="12" cy="10" r="7.5" class="tupfer"/><circle cx="12" cy="10" r="7"/><circle cx="12" cy="10" r="1.3"/><path d="M12 3v5.7M12 11.3V17M5 10h5.7M13.3 10H19M7 5l4 4M13 11l4 4M17 5l-4 4M11 11l-4 4"/><path d="m8 22 4-10.5L16 22M6.5 22h11"/><rect x="10.8" y="1.4" width="2.4" height="2" rx=".6"/><rect x="3.6" y="9" width="2" height="2.4" rx=".6"/><rect x="18.4" y="9" width="2" height="2.4" rx=".6"/></symbol>
@@ -76,8 +87,8 @@ START = f'''<section class="held"><div class="wrap">
   <div class="held__fakten"><div><b>23</b>Wagen der Schulen</div><div><b>16</b>Schulen aus Crailsheim und Umgebung</div><div><b>2027</b>Umzug der Schulen</div></div>
 </div>
 <div class="held__bild" aria-hidden="true">
-  <svg class="held__zeichen"><use href="#v-horaff"/></svg>
-  <span class="schwebe schwebe--1">{i("brezel")}</span><span class="schwebe schwebe--2">{i("ballon")}</span><span class="schwebe schwebe--3">{i("riesenrad")}</span><span class="schwebe schwebe--4">{i("herz")}</span>
+  <svg class="held__zeichen"><use href="#v-herz"/></svg>
+  <span class="schwebe schwebe--1">{i("brezel")}</span><span class="schwebe schwebe--2">{i("ballon")}</span><span class="schwebe schwebe--3">{i("riesenrad")}</span><span class="schwebe schwebe--4">{i("bonbon")}</span>
 </div>
 </div></section>
 
