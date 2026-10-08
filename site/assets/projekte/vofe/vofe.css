@@ -6,7 +6,7 @@
 :root {
   --ink: #1a1817; --ink-2: #3d3a37; --grau: #6f6a64; --hell: #f6f5f2; --linie: #e7e4df;
   --gelb: #fff400; --gelb-2: #fff9a6; --weiss: #fff;
-  --head: "Bricolage Grotesque", system-ui, sans-serif; --text: Inter, system-ui, sans-serif;
+  --head: "Lora", Georgia, serif; --text: "Poppins", system-ui, sans-serif;
   --wrap: 72rem; --r: 18px;
 }
 * { box-sizing: border-box; }
@@ -227,3 +227,16 @@ details[open] .pfeil { transform: rotate(180deg); }
   .nav .knopf { display: none; }
   .held__fakten { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; font-size: .85rem; }
 }
+
+/* empiria-Schriften: Lora (Überschriften) + Poppins (Text) */
+h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
+.held h1 { line-height: 1.02; }
+.ico .tupfer { fill: var(--tupfer, #fff400); stroke: none; }
+.ico { stroke-width: 1.6; }
+.schritt__ico { background: var(--ink); color: var(--weiss); --tupfer: #fff400; }
+.sek--gelb .ico, .band .ico, .post__bild--gelb .ico, .knopf--gelb .ico { --tupfer: #fff; }
+.sek--schwarz .ico, .post__bild--schwarz .ico { --tupfer: #3a3632; }
+.nutzen .ico { color: var(--gelb); --tupfer: #3a3632; }
+.schwebe .ico { width: 2.4rem; height: 2.4rem; }
+.post__bild .ico { width: 5rem; height: 5rem; }
+.knopf .ico, .pfeil { --tupfer: transparent; }
