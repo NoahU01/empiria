@@ -4,7 +4,7 @@ Inhalte (Wagenliste) stehen hier; Gestaltung in site/assets/projekte/vofe/vofe.c
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent))
-from vofe_skyline import svg as skyline
+from vofe_umzug import svg as umzug
 Z = Path(__file__).resolve().parent.parent / "site" / "projekte"
 
 SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -90,14 +90,14 @@ START = f'''<section class="held"><div class="wrap">
   <h1>Süßes für den <em>Umzug.</em></h1>
   <p class="lead">Beim Fränkischen Volksfest 2027 sind wieder die Schulen dran: Übernehmt die Patenschaft für einen Wagen – damit die Kinder ihre Süßigkeiten nicht mehr selbst mitbringen müssen und am Straßenrand alle strahlen.</p>
   <div class="knoepfe"><a class="knopf" href="vofe-festzug.html">Wagen aussuchen {i("weiter")}</a><a class="knopf knopf--rand" href="#so-gehts">So funktioniert’s</a></div>
-  <div class="held__fakten"><div><b>23</b>Wagen der Schulen</div><div><b>16</b>Schulen aus Crailsheim und Umgebung</div><div><b>2027</b>Umzug der Schulen</div></div>
+  <div class="held__fakten"><div><b>23</b>Wagen der Schulen</div><div><b>16</b>Schulen aus Crailsheim</div><div><b>2027</b>Umzug der Schulen</div></div>
 </div>
 <div class="held__bild" aria-hidden="true">
   <svg class="held__zeichen"><use href="#v-herz"/></svg>
 </div>
 </div></section>
 
-{skyline()}
+{umzug()}
 <section class="sek sek--gelb"><div class="wrap idee">
 <div class="idee__text">
   <p class="kicker">Die Idee</p>
