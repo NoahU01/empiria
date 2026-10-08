@@ -2,6 +2,9 @@
 """Baut die Entwurfsseiten „Wagenpaten – Volksfestumzug der Schulen“ (site/projekte/vofe-*.html).
 Inhalte (Wagenliste) stehen hier; Gestaltung in site/assets/projekte/vofe/vofe.css. Nur Entwicklung."""
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from vofe_skyline import svg as skyline
 Z = Path(__file__).resolve().parent.parent / "site" / "projekte"
 
 SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -94,6 +97,7 @@ START = f'''<section class="held"><div class="wrap">
 </div>
 </div></section>
 
+{skyline()}
 <section class="sek sek--gelb"><div class="wrap idee">
 <div class="idee__text">
   <p class="kicker">Die Idee</p>
