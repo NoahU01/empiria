@@ -91,7 +91,6 @@ START = f'''<section class="held"><div class="wrap">
 </div>
 <div class="held__bild" aria-hidden="true">
   <svg class="held__zeichen"><use href="#v-herz"/></svg>
-  <span class="schwebe schwebe--1">{i("brezel")}</span><span class="schwebe schwebe--2">{i("ballon")}</span><span class="schwebe schwebe--3">{i("riesenrad")}</span><span class="schwebe schwebe--4">{i("bonbon")}</span>
 </div>
 </div></section>
 
