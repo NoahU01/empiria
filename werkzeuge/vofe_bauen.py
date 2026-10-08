@@ -17,6 +17,7 @@ SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 <symbol id="i-dirndl" viewBox="0 0 24 24"><path d="M9 3.5 8 8l-3.5 12.5h15L16 8l-1-4.5"/><path d="M8 8h8M9.3 3.5c.8 1.7 4.6 1.7 5.4 0"/><path d="M13.5 8.5 15 20.5" /><path d="M10 12.5h4"/></symbol>
 <symbol id="i-lederhose" viewBox="0 0 24 24"><path d="M6.5 9h11l1 11.5h-5L12 14l-1.5 6.5h-5z"/><path d="M8 9 6.5 2.5M16 9l1.5-6.5M7.4 5.2h9.2"/><circle cx="9.3" cy="12" r=".6"/><circle cx="14.7" cy="12" r=".6"/></symbol>
 <symbol id="i-wagen" viewBox="0 0 24 24"><path d="M3 15.5h15.5l1-6H5.5z" class="tupfer"/><path d="M3 15.5h15.5l1-6H5.5z"/><path d="M6 9.5 7.5 5.5h8l2 4M19.5 12.5H22"/><circle cx="7" cy="18" r="2.3"/><circle cx="16" cy="18" r="2.3"/><path d="M9.5 5.5 10.5 3l1.2 2.5L13 3l1.1 2.5"/></symbol>
+<symbol id="i-engel" viewBox="0 0 24 24"><path d="M10.2 11.4C7.8 8 4 6.3 1.8 7c-.1 4.7 2.5 8.6 6.8 9.7zM13.8 11.4C16.2 8 20 6.3 22.2 7c.1 4.7-2.5 8.6-6.8 9.7z" class="tupfer"/><path d="M10.2 11.4C7.8 8 4 6.3 1.8 7c-.1 4.7 2.5 8.6 6.8 9.7M13.8 11.4C16.2 8 20 6.3 22.2 7c.1 4.7-2.5 8.6-6.8 9.7"/><path d="M4.8 10.3c.9 1.7 2.3 3 4 3.8M19.2 10.3c-.9 1.7-2.3 3-4 3.8"/><ellipse cx="12" cy="2.3" rx="3.2" ry="1"/><circle cx="12" cy="6.4" r="2.1"/><path d="M10.3 9.7h3.4l3.4 11.3H6.9z"/></symbol>
 <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="16" cy="8" r="5" class="tupfer"/><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11M11 10.5V4a1.5 1.5 0 0 1 3 0v6.5M14 10.5V5.5a1.5 1.5 0 0 1 3 0V13c0 4.4-2.7 8-7 8-3.2 0-4.8-1.6-6.4-4.8L2.4 13.6a1.5 1.5 0 0 1 2.5-1.6L8 15"/></symbol>
 <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5" class="tupfer"/><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/><path d="M10.4 12.6c.9.9 2.3.9 3.2 0"/></symbol>
 <symbol id="i-handy" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" class="tupfer"/><rect x="6.5" y="2.5" width="11" height="19" rx="2.2"/><path d="M10.5 5h3M9.5 10.8l1.8 1.8 3.4-3.4"/><path d="M11 18.5h2"/></symbol>
@@ -84,11 +85,11 @@ START = f'''<section class="held"><div class="wrap">
 <div class="idee__text">
   <p class="kicker">Die Idee</p>
   <h2 class="h2">Damit die Kinder einfach nur Spaß haben.</h2>
-  <p style="margin-top:1.4rem">Beim Fränkischen Volksfest gestalten im Dreijahresrhythmus Gewerbe, Landwirtschaft und Schulen den großen Umzug. Wenn die Schulen dran sind, laufen Hunderte Kinder mit – und verteilen Süßigkeiten an die Zuschauer am Straßenrand.</p>
+  <p style="margin-top:1.4rem">Beim Fränkischen Volksfest 2027 gestalten wieder die Schulen den großen Umzug. Hunderte Kinder laufen mit und verteilen Süßigkeiten an die Zuschauer am Straßenrand.</p>
   <p>Bisher bringen die Kinder ihre Süßigkeiten selbst mit. Das wollen wir ändern: Unternehmen aus Crailsheim und Umgebung werden Wagenpaten – zum Wohl aller.</p>
   <p><b>Wagenengel</b> sorgen beim Umzug für die Sicherheit an den Wagen. <b>Wagenpaten</b> sorgen dafür, dass auf dem Wagen ordentlich was zum Verteilen ist.</p>
 </div>
-<div class="zitat">{i("wagen")}<p>„Als Wagenengel beim letzten Schulumzug habe ich gesehen, wie viel Freude die Kinder haben – dass sie dafür aber ihre eigenen Süßigkeiten mitbringen müssen.“</p><small>Daniel Ströbel, Initiator</small></div>
+<div class="zitat">{i("engel")}<p>„Als Wagenengel beim letzten Schulumzug habe ich gesehen, wie viel Freude die Kinder haben – dass sie dafür aber ihre eigenen Süßigkeiten mitbringen müssen.“</p><small>Daniel Ströbel, Initiator</small></div>
 </div></section>
 
 <section class="sek" id="so-gehts"><div class="wrap">
