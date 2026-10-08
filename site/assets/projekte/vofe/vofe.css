@@ -239,9 +239,3 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 .schwebe .ico { width: 2.4rem; height: 2.4rem; }
 .post__bild .ico { width: 5rem; height: 5rem; }
 .knopf .ico, .pfeil { --tupfer: transparent; }
-
-/* Festumzug: sitzt direkt auf der gelben Sektion */
-.held:has(+ .umzug) { padding-bottom: 2.5rem; }
-.umzug { overflow: hidden; line-height: 0; margin-bottom: -1px; }
-.umzug svg { display: block; width: min(100%, 84rem); height: auto; margin: 0 auto; }
-@media (max-width: 700px) { .umzug svg { width: 240vw; max-width: none; margin-left: -70vw; } }
