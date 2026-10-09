@@ -464,3 +464,17 @@
 .e2v-format__mehr { color: var(--e2-akzent) !important; }
 /* Strategie 2 Problem: mobil einspaltig */
 @media (max-width: 960px) { .e2-s2-problem .e2-s2-split { grid-template-columns: minmax(0, 1fr) !important; } }
+/* Strategie 2 (Runde 15): Perspektivwechsel oben bündig; Zusammenarbeit als offene Spalten ohne Kästen */
+.e2-seite--strategie-2 .e2-pv--ruhig .e2-pv__oben { align-items: start !important; }
+.e2-seite--strategie-2 .e2-pv--ruhig .e2-pv__browser { padding-top: 0 !important; margin-top: 0 !important; }
+.e2-seite--strategie-2 #zusammenarbeit { background: #fff !important; }
+.e2-s2-split--kopf { align-items: end !important; }
+.e2-s2-split--kopf .lead { margin: 0 !important; max-width: 34rem; }
+.e2-s2-spalten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4rem; margin-top: 3.2rem; }
+.e2-s2-za { padding-top: 1.6rem; border-top: 3px solid var(--e2-ink); }
+.e2-s2-za h3 { margin: 1.2rem 0 .7rem !important; font-family: var(--font-serif); font-size: 1.45rem; }
+.e2-s2-za p { font-size: 1rem; line-height: 1.6; color: var(--e2-ink-2); }
+.e2-s2-za p + p { margin-top: .7rem !important; }
+.e2-s2-mark { background: var(--e2-gelb); color: var(--e2-ink); font-weight: 600; padding: 0 .2em; border-radius: .2em; }
+@media (max-width: 960px) { .e2-s2-spalten { grid-template-columns: minmax(0, 1fr); } .e2-s2-split--kopf { grid-template-columns: minmax(0, 1fr) !important; gap: 1.2rem !important; } }
+.e2-seite--strategie-2 .e2-pv--ruhig .e2-pv__browser { margin-top: .55rem !important; }

@@ -84,9 +84,15 @@ def quelle():
     za_k, za_h = _eins(r'<p class="kicker">(.*?)</p>', za), _eins(r"<h2[^>]*>(.*?)</h2>", za)
     za_lead = re.findall(r'<p class="lead">(.*?)</p>', za, re.S)
     eintraege = re.findall(r'<summary><span>(.*?)</span></summary>\s*<div class="formate-acc-body">(.*?)</div>\s*</details>', za, re.S)
-    liste = "".join(f'<details class="produkt-faq-item" name="produkt-faq"><summary>{t}</summary>{b.strip()}</details>' for t, b in eintraege)
-    zusammen = f'''<section class="produkt-section produkt-faq" id="zusammenarbeit"><div class="container"><div class="produkt-section-head">
-<p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2>{"".join(f"<p>{p}</p>" for p in za_lead[:1])}</div><div class="produkt-faq-list">{liste}</div></div></section>'''
+    # Zusammenarbeit (Runde 15): drei offene Spalten statt grauer Aufklapp-Kästen, ein gelber Marker als Highlight
+    symbole = ["messages-square", "target", "refresh-cw"]
+    spalten = ""
+    for i, (t, b) in enumerate(eintraege):
+        b = b.replace("ein bis zwei Stunden pro Woche", '<mark class="e2-s2-mark">ein bis zwei Stunden pro Woche</mark>')
+        spalten += f'<div class="e2-s2-za"><span class="e2-s2-sym">{_sym(symbole[i])}</span><h3>{t}</h3>{b.strip()}</div>'
+    zusammen = f'''<section class="section e2-s2-zusammen" id="zusammenarbeit"><div class="container">
+<div class="e2-s2-split e2-s2-split--kopf"><div><p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2></div><p class="lead">{za_lead[0] if za_lead else ""}</p></div>
+<div class="e2-s2-spalten">{spalten}</div></div></section>'''
 
     main = "\n".join([kopf, problem, loesung, persp, ergebnis, zusammen, download, kontakt])
     i = st.index('<div class="modal-overlay" id="strategiemodellModal"')
