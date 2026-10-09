@@ -217,16 +217,6 @@ def s_greybox():
 ''', "Lo-Fi-Wireframe in Grau")
 
 
-def s_fallblatt():
-    """Fallblatt-Anzeige: 48:00 wie auf dem Bahnsteig – Typografie mit Mechanik."""
-    def blatt(x, z):
-        return (f'<rect x="{x}" y="120" width="76" height="120" rx="10" fill="{K}"/><path d="M{x} 180h76" stroke="#3d3a37" stroke-width="3"/>'
-                f'<circle cx="{x+4}" cy="180" r="3" fill="#3d3a37"/><circle cx="{x+72}" cy="180" r="3" fill="#3d3a37"/>' + t(x + 38, 210, z, 84, W, 600, "middle", SANS))
-    return svg(f'''
-{blatt(28, "4")}{blatt(110, "8")}{t(206, 206, ":", 70, K, 700, "middle")}{blatt(232, "0")}{blatt(314, "0")}
-{r(28, 268, 140, 34, M, 17)}{t(98, 290, "BIS LIVE", 12, ON, 700, "middle", SANS, 'letter-spacing="2"')}
-{t(186, 290, "Sprint Landingpage · Gleis 1", 12, "#6f6a64", 600)}
-''', "Fallblatt-Anzeige 48:00")
 
 
 
@@ -235,16 +225,6 @@ def s_fallblatt():
 
 
 
-def s_origami():
-    """Origami/Low-Poly: die Seite aus gefalteten Facetten."""
-    return svg(f'''
-<polygon points="60,80 300,60 280,320 70,330" fill="#f4f3f0"/>
-<polygon points="60,80 300,60 180,190" fill="#ffffff"/><polygon points="300,60 280,320 180,190" fill="#e3dfd8"/>
-<polygon points="70,330 280,320 180,190" fill="#ece9e4"/><polygon points="60,80 70,330 180,190" fill="#f7f6f3"/>
-<polygon points="96,120 250,110 236,170 104,176" fill="{M}"/><polygon points="96,120 250,110 170,150" fill="{M2}"/>
-<polygon points="300,240 380,200 400,290 330,330" fill="{M4}"/><polygon points="300,240 380,200 350,270" fill="{M}"/>
-<polygon points="380,200 400,290 350,270" fill="{M2}"/>
-''', "Origami: gefaltete Facetten")
 
 
 
@@ -343,14 +323,6 @@ def u_monolinie(th):
 ''', "Monolinie")
 
 
-def u_versatz(th):
-    """Linie + versetzte Farbfläche: dunkle Linie, dahinter leicht versetzt ein Farbfleck – wie die Wagenpaten-Symbole."""
-    def item(name, x, y, g, r_):
-        return f'<circle cx="{x + g*.62}" cy="{y + g*.6}" r="{r_}" fill="{M}"/>' + glyph(name, x, y, g, K, 24 / g * 4.6)
-    return svg(f'''
-{item(th["haupt"], 70, 80, 220, 72)}
-{item(th["neben"][0], 320, 64, 80, 30)}{item(th["neben"][1], 330, 190, 72, 26)}{item(th["neben"][2], 300, 300, 72, 26)}
-''', "Linie mit versetzter Farbfläche")
 
 
 def u_riso(th):
@@ -374,16 +346,6 @@ def u_duoton(th):
 ''', "Duoton in der Akzentfarbe")
 
 
-def u_karten(th):
-    """Schwebende Karten: jedes Symbol auf einer weißen Karte mit weichem Schatten, eine Karte in Akzentfarbe."""
-    defs = '<filter id="hvks" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="11" flood-color="#1a1817" flood-opacity=".14"/></filter>'
-    return svg(f'''
-<g filter="url(#hvks)"><rect x="70" y="70" width="210" height="210" rx="26" fill="{W}"/></g>{glyph(th["haupt"], 115, 115, 120, K, 1.8)}
-<g filter="url(#hvks)"><rect x="300" y="52" width="96" height="96" rx="20" fill="{M}"/></g>{glyph(th["neben"][0], 324, 76, 48, ON, 2.4)}
-<g filter="url(#hvks)"><rect x="296" y="182" width="96" height="96" rx="20" fill="{W}"/></g>{glyph(th["neben"][1], 320, 206, 48, K, 2.4)}
-<g filter="url(#hvks)"><rect x="160" y="300" width="200" height="64" rx="18" fill="{W}"/></g>{glyph(th["neben"][2], 178, 314, 36, MT, 2.6)}
-{t(226, 340, th["wort"], 20, K, 700, "start", SERIF)}
-''', "Schwebende Karten", defs)
 
 
 def u_pikto(th):
@@ -399,57 +361,24 @@ def u_pikto(th):
     return svg(k, "Piktogramm-System")
 
 
-def u_szene(th):
-    """Szene in Linien: Menschen am Tisch, an der Wand das Thema als einfaches Symbol – ohne Bildschirmdetails."""
-    def mensch(x, fill):
-        return (f'<g transform="translate({x} 300)"><path d="M-34 0v-16c0-20 15-32 34-32s34 12 34 32V0z" fill="{fill}" stroke="{K}" stroke-width="3.5" stroke-linejoin="round"/>'
-                f'<circle cy="-66" r="18" fill="{W}" stroke="{K}" stroke-width="3.5"/></g>')
-    return svg(f'''
-<circle cx="224" cy="112" r="92" fill="{M3}"/>
-<rect x="150" y="34" width="150" height="150" rx="18" fill="{W}" stroke="{K}" stroke-width="3.5"/>
-{glyph(th["haupt"], 177, 61, 96, K, 1.6)}
-<path d="M224 184v20" stroke="{K}" stroke-width="3.5"/>
-{mensch(104, M2)}{mensch(344, W)}
-<path d="M30 300h380" stroke="{K}" stroke-width="4.5" stroke-linecap="round"/><path d="M62 300l-12 80M378 300l12 80" stroke="{K}" stroke-width="3.5" stroke-linecap="round"/>
-<circle cx="160" cy="222" r="26" fill="{W}" stroke="{K}" stroke-width="3"/>{glyph(th["neben"][0], 146, 208, 28, MT, 2.4)}
-<circle cx="288" cy="222" r="26" fill="{W}" stroke="{K}" stroke-width="3"/>{glyph(th["neben"][1], 274, 208, 28, K, 2.4)}
-''', "Szene: Menschen und Thema")
 
 
-def u_foto(th):
-    """Foto-Collage: freigestelltes Schwarz-Weiß-Foto, Halbkreis in Akzentfarbe, Themen-Symbole als runde Plaketten."""
-    bild = "/assets/daniel-sparring.webp" if th["key"] in ("sparring", "strategie") else "/assets/team-portrait.webp"
-    return svg(f'''
-<path d="M50 400a170 170 0 0 1 340 0z" fill="{M}"/>
-<image href="{bild}" x="30" y="96" width="380" height="304" preserveAspectRatio="xMidYMax meet" style="filter:grayscale(1)"/>
-<circle cx="86" cy="96" r="52" fill="{W}" stroke="{K}" stroke-width="3"/>{glyph(th["haupt"], 58, 68, 56, K, 2)}
-<circle cx="372" cy="150" r="36" fill="{K}"/>{glyph(th["neben"][0], 352, 130, 40, W, 2.4)}
-<rect x="300" y="44" width="110" height="40" rx="20" fill="{W}" stroke="{K}" stroke-width="2.5"/>{t(355, 70, th["wort"], 16, K, 700, "middle", SERIF)}
-''', "Foto-Collage")
 
 
 UNIVERSAL = [
     (u_monolinie, "Monolinie", "ein großes Symbol, alles in einer Linie, ein Teil in Akzent"),
-    (u_versatz, "Linie + Farbfläche", "dunkle Linie, dahinter versetzt ein Farbfleck – wie die Wagenpaten-Symbole"),
-    (u_riso, "Riso: Akzent + Schwarz", "zwei Druckfarben leicht verrutscht, Rasterpunkte – statt Grau jetzt Schwarz"),
-    (u_duoton, "Duoton", "nur Töne der Akzentfarbe, ohne Punktekreis"),
-    (u_karten, "Schwebende Karten", "Symbole auf weißen Karten mit weichem Schatten (aus 21, ohne Verlauf)"),
-    (u_pikto, "Piktogramm-System", "neun Felder, Kennwort in der Mitte"),
-    (u_szene, "Szene in Linien", "neu gezeichnet: an der Wand nur das Themen-Symbol, keine Bildschirm-Details"),
-    (u_foto, "Foto-Collage", "freigestelltes Foto in Schwarz-Weiß, Halbkreis in Akzent, Symbole als Plaketten"),
+    (u_riso, "Riso: Akzent + Schwarz", "zwei Druckfarben leicht verrutscht, Rasterpunkte"),
+    (u_duoton, "Duoton", "nur Töne der Akzentfarbe"),
 ]
 # nur für Sprint gezeichnet, nicht als Stil über alle Themen tragfähig (bleiben zur Entscheidung im Raster)
 NUR_SPRINT = [
     (v2, "Isometrisch · Platten", "trägt Produkte und Aufbau, bei Beratung (Sparring) ohne Gegenstand schwach"),
     (v3, "Bauplan", "braucht beschriftbare Teile – die haben wir nicht überall"),
     (v5, "Prozess-Infografik", "Motiv „Ablauf“, kein Stil – alle Köpfe sähen gleich aus"),
-    (v7, "Typografisch", "braucht eine starke Zahl/ein Wort; bei Strategie fehlt sie"),
     (s_glas, "Glas", "braucht Geräte/Oberflächen"),
     (s_popart, "Pop-Art / Halbton", "sehr laut, prägt die Marke stark"),
-    (s_greybox, "Lo-Fi-Wireframe", "nur für Web-Produkte sinnvoll"),
-    (s_fallblatt, "Fallblatt-Anzeige", "nur wo es eine Zahl gibt"),
-    (s_origami, "Origami / Low-Poly", "unsicher – Stil ginge, Motive sind aufwendig"),
 ]
+# Piktogramm-System, Typografisch, Lo-Fi-Wireframe: gute Ideen für einzelne Stellen, nicht für den Kopf → Seite „Darstellungsideen“ (e2_ideen.py)
 
 OK = '<span class="hv-ok" title="für alle Unterseiten geeignet">✓</span>'
 
@@ -522,7 +451,7 @@ def main():
     eintraege = [(f(SPRINT), n, txt, True) for f, n, txt in UNIVERSAL] + [(f(), n, txt, False) for f, n, txt in NUR_SPRINT]
     zellen = "".join(f'<figure class="hv-zelle" data-name="{i} · {n}">{farbig(bild, "magenta", f"r{i}")}<figcaption><b>{i}</b>{n}{OK if ok else ""}<small>{txt}</small></figcaption></figure>'
                      for i, (bild, n, txt, ok) in enumerate(eintraege, 1))
-    vorschau = kopf.replace(bild_alt, farbig(eintraege[1][0], "magenta", "vs")).replace('id="intro"', 'id="vorschau"')
+    vorschau = kopf.replace(bild_alt, farbig(eintraege[0][0], "magenta", "vs")).replace('id="intro"', 'id="vorschau"')
     punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
     probe = '<div class="kopf leer"></div>' + "".join(f'<div class="kopf"><i style="background:{punkt[th["welt"]]}"></i>{th["titel"]}<small>{th["bereich"]}</small></div>' for th in THEMEN)
     for j, (f, n, _) in enumerate(UNIVERSAL, 1):
@@ -533,8 +462,8 @@ def main():
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
 {stufen_raster()}
-<div class="hv-vorschau"><div class="e2-wrap"><h2 class="hv-h2" style="margin-top:1rem!important">Darstellungsarten</h2><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 2 · Linie + Farbfläche</p></div>{vorschau}</div>
-<section><div class="e2-wrap"><h2 class="hv-h2">Alle Darstellungsarten</h2><p>Alle zeigen hier das Motiv „Sprint Landingpage“. 1–8 sind als Stil gebaut und tragen jedes Thema; 9–17 sind nur für Sprint gezeichnet und zur Entscheidung stehen geblieben.</p>
+<div class="hv-vorschau"><div class="e2-wrap"><h2 class="hv-h2" style="margin-top:1rem!important">Darstellungsarten</h2><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 1 · Monolinie</p></div>{vorschau}</div>
+<section><div class="e2-wrap"><h2 class="hv-h2">Alle Darstellungsarten</h2><p>Alle zeigen hier das Motiv „Sprint Landingpage“. 1–3 sind als Stil gebaut und tragen jedes Thema; 4–8 sind nur für Sprint gezeichnet und stehen noch zur Entscheidung. Piktogramm-System, Typografisch und Lo-Fi-Wireframe sind auf die Seite „Darstellungsideen“ umgezogen.</p>
 <div class="hv-raster">{zellen}</div>
 <h2 class="hv-h2">Probe: ein Stil, vier Themen</h2><p>Je ein Thema aus jedem Bereich der Live-Seite, jeweils in seiner Farbwelt: Strategiehandwerk (Gelb), Workshops (Magenta), Marketing 2.0 (Cyan), Training &amp; Sparring (Violett).</p>
 <div class="hv-probe">{probe}</div><div style="height:5rem"></div></div></section>'''
