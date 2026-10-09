@@ -103,6 +103,10 @@ def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf", h=None):
 
 
 def mit_strategie2(html):
+    return html   # Runde 23: Strategie 2 ist jetzt die Strategie-Seite
+
+
+def _alt_mit_strategie2(html):
     """Menüeinträge für „Strategie in den Alltag überführen 2“ (Entwurf im Workshop-Aufbau, Daniel Runde 12)."""
     l = '/projekte/empiria-2/strategie.html'
     html = html.replace(f'<a href="{l}">Strategie in den Alltag überführen</a>',
@@ -343,6 +347,8 @@ def unterseite(original, ziel, html=None):
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
     if name in ("strategie", "strategie-2"):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
+    if name == "innovation":
+        sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_inno(sek))
     if name == "komplexe-themen":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_kt(sek))
         sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_kt(sek))
@@ -491,8 +497,14 @@ def main():
         if orig != "index.html":
             (ZIEL / ziel).write_text(unterseite(orig, ziel), encoding="utf-8")
     import e2_strategie2
-    (ZIEL / "strategie-2.html").write_text(unterseite("ki-zum-anfassen.html", "strategie-2.html", e2_strategie2.quelle()), encoding="utf-8")
-    print("gebaut:", ", ".join(SEITEN.values()), "+ strategie-2.html")
+    # Runde 23 (Daniel): „Strategie 2“ ist die neue Strategie-Seite; die vorherige Fassung bleibt als strategie-alt.html
+    (ZIEL / "strategie-alt.html").write_text((ZIEL / "strategie.html").read_text(encoding="utf-8"), encoding="utf-8")
+    neu = unterseite("ki-zum-anfassen.html", "strategie-2.html", e2_strategie2.quelle())
+    (ZIEL / "strategie.html").write_text(neu, encoding="utf-8")
+    alt = ZIEL / "strategie-2.html"
+    if alt.exists():
+        alt.unlink()
+    print("gebaut:", ", ".join(SEITEN.values()), "+ strategie-alt.html")
 
 
 if __name__ == "__main__":

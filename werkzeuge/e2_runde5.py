@@ -68,6 +68,19 @@ def perspektive(sek, mit_schritten=True):
 </div></section>'''
 
 
+# ---------- Innovation: Problem wie Strategie 2 (Runde 23) ----------
+def problem_inno(sek):
+    kicker = _eins(r'<p class="kicker">(.*?)</p>', sek)
+    h2 = re.sub(r'<span class="hl">(.*?)</span>', r"\1", _eins(r"<h2[^>]*>(.*?)</h2>", sek))
+    ps = re.findall(r"<p>(.*?)</p>", sek, re.S)
+    lis = re.findall(r"<li>(.*?)</li>", sek, re.S)
+    return f'''<section class="section e2-s2-problem" id="problem"><div class="container"><div class="e2-s2-split">
+<div><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="e2-s2-text">{ps[0]}</p></div>
+<div class="e2-s2-kasten"><p class="e2-s2-kasten__label" style="margin-top:0!important;padding-top:0;border-top:0">Dabei bleibt offen:</p>
+<ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul><p class="e2-s2-kasten__label">{ps[-1]}</p></div>
+</div></div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""

@@ -583,3 +583,21 @@
 /* KI: mittlerer Format-Kasten in Magenta */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured { background: #C51F5D !important; border-color: #C51F5D !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured,html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured * { color: #fff !important; opacity: 1 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-features li::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured [class*="badge"] { background: #fff !important; color: #C51F5D !important; }
 /* Sprint: Struktur-Vorschau bleibt – als schwarze Karte auf Magenta; Rhythmus ohne zwei Graus hintereinander */html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .vorschau-facts-list li::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .sprint-structure-card { background: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .sprint-structure-thumb { background: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-price-note { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-faq { background: var(--e2-hell) !important; }
 html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-badge-slot { background: none !important; } html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-badge { display: inline-block !important; width: auto !important; border-radius: 999px !important; padding: .3rem .8rem !important; }
+
+/* ================= Runde 23: Komplexe Themen + Innovation im Layout von Strategie 2 ================= */
+html body .e2-alt.e2-alt.e2-seite--innovation #problem, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #problem { background: var(--e2-gelb) !important; }
+html body .e2-alt.e2-alt.e2-seite--innovation #problem .watermark, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #problem .watermark { display: none !important; }
+html body .e2-alt.e2-alt.e2-seite--innovation #problem .e2-s2-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; }
+html body .e2-alt.e2-alt.e2-seite--innovation #ergebnis, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #ergebnis { background: var(--e2-hell) !important; }
+html body .e2-alt.e2-alt.e2-seite--innovation #ergebnis *, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #ergebnis * { color: var(--e2-ink) !important; }
+html body .e2-alt.e2-alt.e2-seite--innovation #ergebnis .kicker::before, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #ergebnis .kicker::before { background: var(--e2-ink) !important; }
+html body .e2-alt.e2-alt.e2-seite--innovation .pdf-dl-section, html body .e2-alt.e2-alt.e2-seite--komplexe-themen .pdf-dl-section { background: #fff !important; }
+/* Komplexe Themen: Zwischenergebnis als schwarzes Band wie das Ergebnis-Band in Strategie */
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-zwischen { background: var(--e2-ink) !important; }
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-zwischen * { color: #fff !important; }
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-zwischen .e2-zwischen__tag { color: var(--e2-gelb) !important; }
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-zwischen b { color: var(--e2-gelb) !important; }
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen #problem .e2-kasten, html body .e2-alt.e2-alt.e2-seite--komplexe-themen #problem .e2-pkt2__kasten { background: var(--e2-ink) !important; }
+@media (max-width: 960px) { html body .e2-alt.e2-alt.e2-seite--innovation #problem .e2-s2-split { grid-template-columns: minmax(0, 1fr); } }
+/* Kopf der drei Strategiehandwerk-Seiten gleich groß wie Strategie */
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-kopf h1, html body .e2-alt.e2-alt.e2-seite--innovation .e2-kopf h1 { font-size: clamp(2.5rem, 4.6vw, 4rem) !important; }
