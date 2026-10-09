@@ -395,28 +395,35 @@ def startseite():
     AKZENT = {"magenta": "#C51F5D", "cyan": "#0B9FBD", "gruen": "#6e9a2c", "green": "#6e9a2c", "olive": "#8a9a3a", "lime": "#8613A1"}
     farben = ["gelb", "schwarz", "hell"]
 
+    # Runde 12 (Daniel): Aufbau wie die Volksfest-Seite – großer Kopf mit Kennzahlen und Doppelpfeil, Logo-Band,
+    # Problem auf Gelb mit schwarzem Kasten, Lösung als drei Schritte, Leistungen auf Schwarz, Formate, Kontakt wie live.
+    from e2_lucide import ICONS as LU
+    def lu(n, farbe="#1a1817"):
+        return f'<svg class="e2v-ico" viewBox="0 0 24 24" fill="none" stroke="{farbe}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU[n]}</svg>'
     m = []
-    m.append(f'''<section class="e2-held e2-kopf" id="hero"><div class="e2-wrap">
-  <div class="e2-kopf__raster">
-    <div class="e2-kopf__text"><h1>{h1}</h1>
-      <div class="e2-kopf__inhalt">{''.join(f'<p>{p}</p>' for p in texte)}</div>
-      <div class="e2-knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a></div></div>
-    <div class="e2-kopfbild e2-kopfbild--pfeil"><svg class="e2-bild" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
-  </div>
-  <div class="e2-logos">{marquee}</div>
+    m.append(f'''<section class="e2v-held" id="hero"><div class="e2-wrap e2v-held__raster">
+  <div><h1>{h1}</h1>
+    <div class="e2v-held__text">{''.join(f'<p>{p}</p>' for p in texte)}</div>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a><a class="e2-knopf e2-knopf--rand" href="#kontakt">Kontakt aufnehmen</a></div>
+    <div class="e2v-fakten">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b>{l}</div>' for z, l in zahlen)}</div></div>
+  <div class="e2v-held__pfeil"><svg viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
+</div><div class="e2-wrap"><div class="e2-logos">{marquee}</div></div></section>''')
+    m.append(f'''<section class="e2-sek e2-sek--gelb" id="problem"><div class="e2-wrap e2v-zwei">
+  <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2><p class="e2v-text">{pr_ps[0]}</p></div>
+  <div class="e2v-zitat"><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
 </div></section>''')
-    m.append(f'''<section class="e2-sek e2-sek--hell" id="problem"><div class="e2-wrap e2-zwei">
-  <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2></div>
-  <div class="e2-kasten"><p>{pr_ps[0]}</p><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
-</div></section>''')
-    m.append(f'''<section class="e2-sek e2-sek--gelb" id="loesung"><div class="e2-wrap e2-mitte">
+    schritte_t = [x.strip() for x in st_h2.split(".") if x.strip()]
+    schritte_p = ["Wir erkennen, wo der Schmerz sitzt.", "Wir ordnen Themen in das Gesamtgefüge des Geschäftsmodells ein.", "Wir sorgen für die notwendige Veränderung."]
+    m.append(f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
   <p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2><p class="e2-lead">{lo_p}</p>
-  <div class="e2-knoepfe"><button class="e2-knopf e2-knopf--rand link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a></div>
+  <div class="e2v-schritte">{''.join(f'<div class="e2v-schritt"><span class="e2v-schritt__ico">{lu(n)}</span><span class="e2v-schritt__nr">0{i+1}</span><h3>{t}</h3><p>{pp}</p></div>' for i, (n, t, pp) in enumerate(zip(("search", "puzzle", "trending-up"), schritte_t, schritte_p)))}</div>
+  <div class="e2-knoepfe"><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a><button class="e2-knopf e2-knopf--rand link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button></div>
 </div></section>''')
-    m.append(f'''<section class="e2-sek" id="leistungen"><div class="e2-wrap">
+    themen_form = ["forward", "kreuz", "kreis"]
+    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="leistungen"><div class="e2-wrap">
   <p class="e2-kicker">{le_kicker}</p><h2 class="e2-h2">{le_h2}</h2><p class="e2-lead">{le_lead}</p>
-  <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{p}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, p, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-unten"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
+  <div class="e2v-nutzen">{''.join(f'<a href="{link(hr)}"><svg class="e2v-form" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#fff400" color="#fff400">{FORM[themen_form[i]]}</svg><h3>{t}</h3><p>{pp}</p><span>{mehr} {PFEIL}</span></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
+  <div class="e2-knoepfe"><a class="e2-knopf e2-knopf--gelb" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>''')
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
@@ -439,10 +446,6 @@ def startseite():
 <div class="e2-fa__fuss"><a class="e2-knopf" href="{d['href']}">{d['knopf']} {PFEIL}</a></div></article>''' for i, d in enumerate(fo_daten))
     m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
   {fo_kopf}<div class="e2-formate-a">{va}</div></div></section>''')
-    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="arbeitsweise"><div class="e2-wrap">
-  <h2 class="e2-h2" style="max-width:none">{st_h2}</h2>
-  <div class="e2-zahlen">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b><span>{l}</span></div>' for z, l in zahlen)}</div>
-</div></section>''')
     m.append(kontakt_start(abschnitt(h, 'id="kontakt"')))
     return seite("index.html", "\n".join(m))
 
