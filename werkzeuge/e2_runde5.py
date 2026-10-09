@@ -174,6 +174,46 @@ def sparring_turbo(sek):
 </div></div></section>'''
 
 
+# ---------- Praxisfälle als Karten statt Akkordeon (Runde 32) ----------
+def faelle(sek, symbole, sonder=None, kurz=False):
+    from e2_lucide import ICONS
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    items = re.findall(r'<summary>(.*?)</summary>(.*?)</details>', sek, re.S)
+    def ic(n, farbe="#fff"):
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="{farbe}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    karten, sonder_html, j = "", "", 0
+    for i, (titel, body) in enumerate(items):
+        ps = re.findall(r"<p>(.*?)</p>", body, re.S)
+        if sonder is not None and i == sonder:
+            sonder_html = (f'<div class="e2-fall-sonder"><div><p class="e2-fall-sonder__tag">Sonderthema</p><h3>{titel.strip()}</h3></div>'
+                           f'<div><p>{ps[0]}</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs{i}">Mehr lesen →</button></div>'
+                           f'<dialog class="e2-dialog" id="fs{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog></div>')
+            continue
+        erster = re.split(r"(?<=[.!?])\s", ps[0])[0] if ps else ""
+        text = "".join(f"<p>{x}</p>" for x in ps) if kurz else f"<p>{erster}</p>"
+        mehr = "" if kurz else (f'<button type="button" class="e2-fall__mehr" data-e2-auf="fl{i}">Mehr lesen →</button>'
+                                f'<dialog class="e2-dialog" id="fl{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog>')
+        karten += f'<article class="e2-fall"><span class="e2-fall__sym">{ic(symbole[j % len(symbole)])}</span><h3>{titel.strip()}</h3>{text}{mehr}</article>'
+        j += 1
+    return f'''<section class="produkt-section e2-faelle"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <div class="e2-faelle__raster">{karten}</div>{sonder_html}
+</div></section>'''
+
+
+def preis_sprint(sek):
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    betrag = _eins(r'<span class="price-note-amount">(.*?)</span>', sek); einheit = _eins(r'<span class="price-note-unit">(.*?)</span>', sek)
+    lis = re.findall(r"<li>(.*?)</li>", sek, re.S); fuss = _eins(r'<p class="pricing-footnote[^"]*">(.*?)</p>', sek)
+    return f'''<section class="produkt-section e2-preis"><div class="container"><div class="e2-s2-split">
+  <div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p><p class="e2-preis__fuss">{fuss}</p></div>
+  <div class="e2-preis__box"><p class="e2-preis__label">{einheit}</p><p class="e2-preis__betrag">{betrag}</p>
+    <ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul></div>
+</div></div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""

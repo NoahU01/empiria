@@ -294,6 +294,9 @@ def kopf_neu(held, name):
         t = re.search(r'<div class="produkt-hero-text">(.*?)</div>\s*<div class="produkt-hero-visual">', held, re.S)
         if t:
             inhalt = re.sub(r'<p class="kicker"[^>]*>.*?</p>|<h1[^>]*>.*?</h1>', "", t.group(1), count=2, flags=re.S)
+            voll = re.search(r'<div class="produkt-hero-lead-full">(.*?)<div class="produkt-hero-actions', held, re.S)
+            if voll and not re.search(r"<p\b", inhalt):   # Text steht unter dem Bild (z. B. Marketing 2.0)
+                inhalt += voll.group(1)
         else:   # abweichende Köpfe (MES, Sparring): Texte und Pillen einsammeln
             pillen = re.search(r'<div class="produkt-pills">.*?</div>', held, re.S)
             inhalt = "".join(f"<p>{x}</p>" for x in re.findall(r'<p class="lead">(.*?)</p>', held, re.S)) + (pillen.group(0) if pillen else "")
@@ -423,6 +426,11 @@ def unterseite(original, ziel, html=None):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
     if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
         sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
+    if name == "sprint-landingpage":
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurz=True))
+        sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))
+    if name == "ki-zum-anfassen":
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2))
     if name == "sparring":
         sek = abschnitt(main, 'topics-compare'); main = main.replace(sek, e2_runde5.sparring_themen(sek))
         sek = abschnitt(main, 'usp-turbo-section'); main = main.replace(sek, e2_runde5.sparring_turbo(sek))

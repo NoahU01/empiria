@@ -817,3 +817,42 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card .media-box-foot
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card .media-box-title { padding: 0 !important; color: #fff !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card .btn { margin: 0 !important; background: #fff !important; color: #1a1817 !important; border-color: #fff !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card .media-box-footer { border-top: 0 !important; padding-top: .4rem !important; }
+
+/* ================= Praxisfälle als Karten + Preis (Runde 32) ================= */
+html body .e2-alt.e2-alt .e2-faelle { background: var(--e2-hell) !important; }
+.e2-faelle__kopf { align-items: end !important; }
+.e2-faelle__kopf .lead { margin: 0 !important; }
+.e2-faelle__raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+.e2-fall { display: flex; flex-direction: column; padding: 1.8rem 1.6rem 1.6rem; border-radius: var(--e2-r); background: #fff; }
+.e2-fall__sym { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--bf, #C51F5D); }
+.e2-fall__sym svg { width: 1.5rem; height: 1.5rem; }
+.e2-fall h3 { margin: 1.2rem 0 .6rem !important; font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.25; }
+.e2-fall p { font-size: .97rem; line-height: 1.6; color: var(--e2-ink-2); }
+.e2-fall__mehr { margin-top: auto; padding: 1.1rem 0 0; align-self: flex-start; border: 0; background: none; font: 600 .95rem/1.2 var(--font-sans); color: var(--e2-ink); cursor: pointer; }
+.e2-fall-sonder { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 2.4rem; align-items: center; margin-top: 1.2rem; padding: 2.2rem 2.4rem; border-radius: var(--e2-r); background: var(--e2-ink); }
+.e2-fall-sonder__tag { margin-bottom: .6rem !important; font-size: .78rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bf, #C51F5D) !important; filter: brightness(1.4); }
+.e2-fall-sonder h3 { font-family: var(--font-serif); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; color: #fff; }
+.e2-fall-sonder p { font-size: 1rem; line-height: 1.6; color: #cfcac3 !important; }
+.e2-fall__mehr--hell { color: #fff; }
+html body .e2-alt.e2-alt .e2-preis { background: #fff !important; }
+.e2-preis .e2-s2-split { align-items: center; }
+.e2-preis__fuss { margin-top: 1.4rem !important; font-size: .85rem; color: var(--e2-grau); max-width: 30rem; }
+.e2-preis__box { padding: 2.4rem; border-radius: var(--e2-r); background: var(--e2-ink); color: #fff; }
+.e2-preis__label { font-size: .8rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #bdb7af !important; }
+.e2-preis__betrag { margin-top: .4rem !important; font-family: var(--font-serif); font-weight: 700; font-size: clamp(3rem, 5vw, 4.2rem); line-height: 1; color: #fff !important; }
+.e2-preis__box ul { list-style: none; margin: 1.6rem 0 0; padding: 1.4rem 0 0; border-top: 2px solid var(--bf, #C51F5D); }
+.e2-preis__box li { position: relative; padding: .45rem 0 .45rem 1.6rem; font-size: .98rem; line-height: 1.5; color: #fff; }
+.e2-preis__box li::before { content: ""; position: absolute; left: 0; top: .9rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--bf, #C51F5D); }
+@media (max-width: 960px) { .e2-faelle__raster { grid-template-columns: minmax(0, 1fr); } .e2-fall-sonder { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1.4rem; } .e2-faelle__kopf { gap: 1.2rem !important; } }
+/* Praxisfälle: gleich gebaute Karten – Symbol, Titel, Text, Link je auf gleicher Höhe */
+.e2-faelle__raster { grid-auto-rows: auto auto 1fr auto; row-gap: 0 !important; }
+.e2-fall { display: grid !important; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; margin-bottom: 1.2rem; }
+.e2-fall h3 { align-self: start; }
+.e2-fall > p { align-self: start; }
+.e2-fall__mehr { align-self: end; }
+.e2-fall:not(:has(.e2-fall__mehr)) { grid-row: span 3; }
+.e2-faelle__raster:not(:has(.e2-fall__mehr)) { grid-auto-rows: auto auto 1fr; }
+.e2-fall-sonder { margin-top: 0 !important; }
+html body .e2-alt.e2-alt .e2-fall-sonder__tag { color: #fff !important; filter: none; opacity: .7; }
+@media (max-width: 960px) { .e2-fall { grid-row: auto !important; grid-template-rows: none; } .e2-faelle__raster { grid-auto-rows: auto !important; } }
+.e2-fall__mehr { justify-self: start; }
