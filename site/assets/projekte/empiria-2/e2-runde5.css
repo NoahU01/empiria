@@ -525,3 +525,12 @@
 .e2-pv__band-tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
 .e2-pv__band-satz { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.25; color: #fff !important; }
 @media (max-width: 760px) { .e2-pv__band { grid-template-columns: minmax(0, 1fr); gap: .8rem; padding: 1.5rem 1.3rem; } }
+/* Startseite: Variationen A/B */
+.e2-var-band--gross { font-size: .9rem; padding: .6rem 1.1rem; margin-bottom: 2.4rem !important; }
+.e2-sek--gelb .e2-var-band { background: #1a1817; color: #fff; }
+.e2v-loesung2__satz--hell { color: var(--e2-ink) !important; }
+.e2v-loesung2__text--hell { color: var(--e2-ink-2) !important; }
+.e2v-marker { background: var(--e2-gelb); padding: 0 .15em; border-radius: .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+#loesung-b .e2-karten { margin-top: 3rem; }
+#loesung-b .e2-knoepfe { margin-top: 2.4rem; }
+.e2v-marker { white-space: nowrap; }
