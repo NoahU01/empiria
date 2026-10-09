@@ -297,3 +297,34 @@
 .e2 .kontakt-standalone-text .lead { margin: 0 0 1rem !important; }
 .e2-pv--ruhig .e2-pv__oben { align-items: center !important; }
 .e2-pv--ruhig .e2-pv__browser { padding-top: 0 !important; }
+/* Startseite: großer Doppelpfeil der Marke statt Grafik (Daniel) */
+.e2-kopfbild--pfeil { align-self: center; width: min(100%, 22rem) !important; }
+@media (max-width: 960px) { .e2-kopfbild--pfeil { width: 9rem !important; } }
+
+/* ================= Runde 11 (Daniel) – Komplexe Themen ================= */
+/* Problem: ein schwarzer Kasten, Dramaturgie von oben nach unten (wie live) */
+.e2-pkt2 .e2-zwei { align-items: center; }
+.e2-pkt2__auftakt { color: #bdb7af !important; font-size: 1rem !important; }
+.e2-pkt2__kasten ul { margin: 1rem 0 1.4rem !important; }
+.e2-pkt2__folge { color: #fff !important; font-size: 1.08rem !important; line-height: 1.6 !important; padding-top: 1.2rem; border-top: 2px solid var(--e2-gelb); }
+.e2-pkt2__fragen { margin-top: .9rem !important; color: #bdb7af !important; font-size: 1rem !important; line-height: 1.6 !important; }
+
+/* Lösung: vier gleiche Schritte wie die Wagenpaten-Seite */
+.e2-schritte { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; margin-top: 2.6rem; }
+.e2-schritt { display: flex; flex-direction: column; padding: 1.4rem 1.3rem 1.3rem; border: 1px solid var(--e2-linie); border-radius: var(--e2-r); background: #fff; }
+.e2-schritt__kopf { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.4rem; }
+.e2-schritt__sym { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 10px; background: var(--e2-ink); }
+.e2-schritt__sym svg { width: 1.3rem; height: 1.3rem; }
+.e2-schritt__nr { font-family: var(--font-serif); font-weight: 700; font-size: .9rem; color: #b9b3ab; }
+.e2-schritt h3 { font-size: 1.3rem !important; margin: 0 0 .5rem !important; }
+.e2-schritt p { font-size: .95rem; line-height: 1.55; color: var(--e2-ink-2); }
+.e2-schritt__mehr { margin-top: auto; padding: 1rem 0 0; align-self: flex-start; border: 0; background: none; font: 600 .92rem/1.2 var(--font-sans); color: var(--e2-ink); cursor: pointer; display: inline-flex; gap: .4rem; align-items: center; }
+.e2-zwischen { margin-top: 1.6rem; padding: 1.8rem 2rem; border-radius: var(--e2-r); background: var(--e2-gelb); }
+.e2-zwischen__tag { margin-bottom: .5rem !important; font-size: .76rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.e2-zwischen h3 { font-size: clamp(1.5rem, 2.4vw, 2rem) !important; margin: 0 0 .6rem !important; }
+.e2-zwischen p { max-width: 52rem; font-size: 1rem; line-height: 1.6; }
+.e2-dialog--breit { width: min(46rem, calc(100vw - 2rem)); }
+.e2-dialog--breit .stufe-pdf-card, .e2-dialog--breit .medien-sketches { margin-top: 1.2rem; }
+@media (max-width: 1000px) { .e2-schritte { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .e2-schritte { grid-template-columns: minmax(0, 1fr); } .e2-zwischen { padding: 1.4rem 1.2rem; } }
+.e2-dialog--breit .e2-lk__inhalt { padding: 0 !important; }

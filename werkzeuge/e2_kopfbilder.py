@@ -36,21 +36,34 @@ def trio(haupt, akzent, neben):
     return _svg(marker(96, 168, 176, 150) + icon(haupt, 40, 104, 196) + icon(akzent, 316, 104, 84, MT) + icon(neben, 316, 216, 84))
 
 
-def reihe(icons, labels, pfeile=True, doppel=False):
-    o = ""
+def reihe(icons, labels, pfeile=True, doppel=False, oben="", y0=116):
+    o = oben
+    dy = y0 - 116
     for k, (n, l) in enumerate(zip(icons, labels)):
         cx = 80 + k * 140
         if k == (2 if pfeile else 0):
             o += marker(cx - 44, 158, 104, 84)
-        o += icon(n, cx - 50, 116, 100, MT if k == (2 if pfeile else 0) else K)
-        o += f'<text x="{cx}" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{l}</text>'
+        o += icon(n, cx - 50, 116 + dy, 100, MT if k == (2 if pfeile else 0) else K)
+        o += f'<text x="{cx}" y="{286 + dy}" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{l}</text>'
         if pfeile and k < 2:
             ax = cx + 58
             if doppel:   # Doppelpfeil der Marke statt einfachem Pfeil (Startseite, Daniel)
-                o += f'<path d="M{ax} 154l11 12-11 12M{ax+12} 154l11 12-11 12" fill="none" stroke="{K}" stroke-width="{STRICH}" stroke-linecap="round" stroke-linejoin="round"/>'
+                o += f'<path d="M{ax} {154+dy}l11 12-11 12M{ax+12} {154+dy}l11 12-11 12" fill="none" stroke="{K}" stroke-width="{STRICH}" stroke-linecap="round" stroke-linejoin="round"/>'
             else:
-                o += f'<path d="M{ax} 166h24m-8-8 8 8-8 8" fill="none" stroke="{G3}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
+                o += f'<path d="M{ax} {166+dy}h24m-8-8 8 8-8 8" fill="none" stroke="{G3}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
     return _svg(o)
+
+
+def zielgruppe(namen, icons, labels):
+    """Reihe mit Doppelpfeil, darüber die Zielgruppen als ruhiger Text – die Story beginnt bei der Zielgruppe (Komplexe Themen)."""
+    zeilen, z = [], ""
+    for n in namen:                       # Namen auf Zeilen verteilen (ca. 34 Zeichen je Zeile)
+        if len(z) + len(n) > 34 and z:
+            zeilen.append(z); z = ""
+        z = (z + "  ·  " if z else "") + n.upper()
+    zeilen.append(z)
+    o = "".join(f'<text x="220" y="{40 + i*22}" font-size="12.5" font-weight="600" letter-spacing="1.4" fill="#8a847c" text-anchor="middle" font-family="{SANS}">{t}</text>' for i, t in enumerate(zeilen))
+    return reihe(icons, labels, doppel=True, oben=o, y0=96 + len(zeilen) * 14)
 
 
 def zahl(wort, akzent):
@@ -64,7 +77,9 @@ def zahl(wort, akzent):
 SEITEN = [
     ("Startseite", "Startseite", "gelb", "Strategie, die wirkt.", "reihe_dp", (["search", "puzzle", "trending-up"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN"]), "Der Dreischritt der Startseite."),
     ("Strategie in den Alltag überführen", "Strategiehandwerk", "gelb", "Strategie in den Alltag überführen.", "trio", ("flag", "compass", "wrench"), "Ziel, Richtung, Handwerkszeug."),
-    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "reihe", (["layers", "filter", "target"], ["FOLIENBERG", "STRUKTUR", "BOTSCHAFT"]), "Vom Folienberg zur Botschaft."),
+    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "zielgruppe",
+     (["Vorstand", "Aufsichtsrat", "Lenkungsausschuss", "Vertriebstagung", "Betriebsrat", "Kooperationspartner", "Rückversicherer", "Kundenpitch"],
+      ["users", "puzzle", "trophy"], ["ZIELGRUPPE", "IHR PROBLEM", "IHR ERFOLG"]), "Die Story beginnt bei der Zielgruppe: ihr Problem lösen, sie erfolgreich machen."),
     ("Innovation & Geschäftsmodell neu denken", "Strategiehandwerk", "gelb", "Innovation & Geschäftsmodell neu denken.", "trio", ("lightbulb", "refresh-cw", "blocks"), "Die Idee, neu gedacht, neu zusammengesetzt."),
     ("Teams befähigen, professionell zu kommunizieren", "Strategiehandwerk / Training", "gelb", "Teams befähigen, professionell zu kommunizieren.", "trio", ("presentation", "users", "circle-check"), "Präsentieren, Team, Ergebnis."),
     ("Workshops", "Formate", "magenta", "Workshops, die wirken. Nicht nur Theorie.", "reihe_o", (["sparkles", "app-window", "messages-square"], ["KI", "LANDINGPAGE", "MODERATION"]), "Übersicht: die drei Formate."),
@@ -87,7 +102,7 @@ SEITEN = [
     ("Impulsvorträge", "Einzelseite", "violett", "Impulse, die nachwirken. Nicht nur unterhalten.", "trio", ("mic-vocal", "lightbulb", "users"), "Vortrag, These, Publikum."),
 ]
 
-NAMEN = {"reihe_dp": "Reihe mit Doppelpfeil", "trio": "Trio", "reihe": "Reihe (Prozess)", "reihe_o": "Reihe (Übersicht)", "zahl": "Zahl"}
+NAMEN = {"zielgruppe": "Zielgruppe zuerst", "reihe_dp": "Reihe mit Doppelpfeil", "trio": "Trio", "reihe": "Reihe (Prozess)", "reihe_o": "Reihe (Übersicht)", "zahl": "Zahl"}
 
 
 def bild(seite):
@@ -96,6 +111,8 @@ def bild(seite):
         return trio(*daten), NAMEN[aufbau]
     if aufbau == "reihe":
         return reihe(*daten), NAMEN[aufbau]
+    if aufbau == "zielgruppe":
+        return zielgruppe(*daten), NAMEN[aufbau]
     if aufbau == "reihe_dp":
         return reihe(*daten, doppel=True), NAMEN[aufbau]
     if aufbau == "reihe_o":

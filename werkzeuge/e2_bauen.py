@@ -216,6 +216,8 @@ def kopf_neu(held, name):
     m = re.search(r'<div class="hero-anlaesse".*?</div>', inhalt, re.S)
     if m:
         chips = m.group(0); inhalt = inhalt.replace(chips, "")
+    if name == "komplexe-themen":
+        chips = ""   # Zielgruppen stehen jetzt im Kopfbild (Daniel, Runde 11)
     return f'''<section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
   <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
     <div class="e2-kopf__inhalt">{inhalt}</div>
@@ -386,7 +388,7 @@ def startseite():
     <div class="e2-kopf__text"><h1>{h1}</h1>
       <div class="e2-kopf__inhalt">{''.join(f'<p>{p}</p>' for p in texte)}</div>
       <div class="e2-knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a></div></div>
-    {kopfbild("index")}
+    <div class="e2-kopfbild e2-kopfbild--pfeil"><svg class="e2-bild" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
   </div>
   <div class="e2-logos">{marquee}</div>
 </div></section>''')

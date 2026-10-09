@@ -58,68 +58,56 @@ def perspektive(sek):
 
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
+    """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""
     kicker = _eins(r'<p class="kicker">(.*?)</p>', sek)
     h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
     ps = re.findall(r"<p>(.*?)</p>", _eins(r'<div class="problem-card">(.*?)</div>', sek), re.S)
     reflexe = re.findall(r"<li>(.*?)</li>", sek, re.S)
-    # „Wer sitzt im Raum, wie gewinnst du …, in welchen Schritten …? Mit diesen Fragen …“ → drei Fragen + Schlusssatz
-    fragen_satz, schluss = ps[2].split("?", 1)
-    fragen = [f.strip() for f in fragen_satz.split(",")]
-    fragen = [f[0].upper() + f[1:] + "?" for f in fragen]
-    folien = "".join(f'<div class="e2-folie e2-folie--{i}"><span class="e2-folie__kopf"><i></i><i></i><i></i></span><p>{t}</p></div>' for i, t in enumerate(reflexe))
-    return f'''<section class="section section--grey e2-pkt" id="problem"><div class="container">
-  <div class="e2-pkt__raster">
-    <div class="e2-pkt__kopf"><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2></div>
-    <div class="e2-pkt__reflex"><p class="e2-pkt__label">{ps[0]}</p><div class="e2-folien">{folien}</div></div>
-  </div>
-  <div class="e2-pkt__folge">
-    <div class="e2-pkt__aber"><p>{ps[1]}</p></div>
-    <div class="e2-pkt__fragen"><ul>{"".join(f"<li><span>?</span>{f}</li>" for f in fragen)}</ul><p>{schluss.strip()}</p></div>
-  </div>
+    return f'''<section class="section section--grey e2-pkt2" id="problem"><div class="container e2-zwei">
+  <div><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2></div>
+  <div class="e2-kasten e2-pkt2__kasten"><p class="e2-pkt2__auftakt">{ps[0]}</p>
+    <ul>{"".join(f"<li>{r}</li>" for r in reflexe)}</ul>
+    <p class="e2-pkt2__folge">{ps[1]}</p><p class="e2-pkt2__fragen">{ps[2]}</p></div>
 </div></section>'''
 
 
 # ---------- Komplexe Themen: Lösung in zwei Phasen ----------
 def loesung_kt(sek):
+    """Runde 11 (Daniel): ruhig wie die Wagenpaten-Seite – vier gleiche Schritte mit Kurzsatz, Details zum Aufklappen (Fenster),
+    darunter das Zwischenergebnis."""
+    from e2_lucide import ICONS
     kopf = _eins(r'(<div class="leistung-stufen-head">.*?</div>)', sek)
     items = []
     for m in re.finditer(r'<div class="stufen-timeline-item', sek):
         block = div_block(sek, m.start())
         nr = _eins(r'<span class="stl-icon">(\d+)</span>', block)
-        inhalt = div_block(block, block.index('<div class="stufe-content'))
-        items.append((nr, inhalt))
-    assert len(items) == 4, len(items)
+        items.append((nr, div_block(block, block.index('<div class="stufe-content'))))
     pause = _eins(r'(<div class="stufe-break[^"]*">.*?</div>)\s*<div class="stufen-timeline stufen-timeline--bottom">', sek)
     p_tag = _eins(r'<p class="stufe-interim-tag">(.*?)</p>', pause)
     p_h = _ohne_tags(_eins(r"<h3>(.*?)</h3>", pause))
     p_ps = re.findall(r"<p>(.*?)</p>", pause, re.S)
-    spoiler_kopf, spoiler = p_ps[1].split("<br>", 1)
+    kurz = ["Welches Ergebnis willst Du – und welche Bedeutung hat Dein Thema für die Zielgruppe?",
+            "Warum? Wie? Was jetzt? – verdichtet zu einer klaren Kernbotschaft.",
+            "Aus der Business Story entstehen Medien – gezielt für den jeweiligen Einsatz.",
+            "Dein Vorgehen vor, während und nach dem Termin – bis zum Ergebnis."]
+    symbole = ["target", "message-square-text", "presentation", "clipboard-list"]
 
-    def karte(nr, inhalt):
-        h3 = _eins(r"<h3>(.*?)</h3>", inhalt)
-        rest = re.sub(r"<h3>.*?</h3>", "", inhalt, count=1, flags=re.S)
+    def sym(n):
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+
+    karten = ""
+    for i, (nr, inh) in enumerate(items):
+        h3 = _eins(r"<h3>(.*?)</h3>", inh)
+        rest = re.sub(r"<h3>.*?</h3>", "", inh, count=1, flags=re.S)
         rest = re.sub(r'^<div class="stufe-content[^"]*">|</div>$', "", rest.strip())
-        return f'<article class="e2-lk"><div class="e2-lk__kopf"><span class="e2-lk__nr">{nr}</span><h3>{h3}</h3></div><div class="e2-lk__inhalt">{rest}</div></article>'
-
-    # Business Story: Why / How / What next als drei Zeilen
-    def story(html):
-        if 'class="story-accordion"' not in html:
-            return html
-        alt = div_block(html, html.index('<div class="story-accordion"'))
-        neu = '<dl class="e2-story">' + "".join(f"<div><dt>{t}</dt><dd>{d}</dd></div>" for t, d in re.findall(r'<span class="story-acc-title">(.*?)</span>.*?<p>(.*?)</p>', alt, re.S)) + "</dl>"
-        return html.replace(alt, neu)
-
-    k = [karte(nr, story(inh)) for nr, inh in items]
-    return f'''<section class="section e2-lkt" id="loesung-baustein"><div class="container">
+        karten += (f'<article class="e2-schritt"><div class="e2-schritt__kopf"><span class="e2-schritt__sym">{sym(symbole[i])}</span><span class="e2-schritt__nr">{nr}</span></div>'
+                   f'<h3>{h3}</h3><p>{kurz[i]}</p><button type="button" class="e2-schritt__mehr" data-e2-auf="ls{i}">Mehr dazu {PFEIL}</button>'
+                   f'<dialog class="e2-dialog e2-dialog--breit" id="ls{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{h3}</h3><div class="e2-lk__inhalt">{rest}</div></dialog></article>')
+    spoiler_kopf, spoiler = p_ps[1].split("<br>", 1)
+    return f'''<section class="section e2-lkt2" id="loesung-baustein"><div class="container">
   <div class="e2-lkt__kopf">{kopf}</div>
-  <p class="e2-lkt__phase"><b>Erst klären</b> – bevor eine Folie entsteht</p>
-  <div class="e2-lkt__paar">{k[0]}{k[1]}</div>
-  <div class="e2-lkt__pause">
-    <div><p class="e2-lkt__tag">{p_tag}</p><h3>{p_h}</h3><p>{p_ps[0]}</p></div>
-    <div class="e2-lkt__spoiler"><b>{_ohne_tags(spoiler_kopf)}</b><span>{spoiler.strip()}</span></div>
-  </div>
-  <p class="e2-lkt__phase"><b>Dann umsetzen</b> – gezielt für den Termin</p>
-  <div class="e2-lkt__paar">{k[2]}{k[3]}</div>
+  <div class="e2-schritte">{karten}</div>
+  <div class="e2-zwischen"><p class="e2-zwischen__tag">{p_tag} · nach Schritt 2</p><h3>{p_h}</h3><p>{p_ps[0]} <b>{_ohne_tags(spoiler_kopf)}</b> {spoiler.strip()}</p></div>
 </div></section>'''
 
 
