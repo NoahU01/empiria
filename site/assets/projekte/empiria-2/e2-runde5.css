@@ -605,3 +605,50 @@ html body .e2-alt.e2-alt.e2-seite--komplexe-themen #intro.e2-kopf h1, html body 
 /* Komplexe Themen: Zielgruppen als dünne Pillen unter dem Kopftext */
 .e2-kopf__inhalt .e2-pillen { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.3rem; max-width: 36rem; }
 .e2-kopf__inhalt .e2-pillen .hero-anlass { padding: .22rem .7rem !important; border: 1px solid #d9d5ce !important; border-radius: 999px; background: transparent !important; font-size: .78rem !important; font-weight: 500; color: var(--e2-ink-2) !important; }
+
+/* ================= Runde 24: alle übrigen Seiten im durchgängigen Layout =================
+   Bereichsfarbe je Seite (--bf): Strategiehandwerk Gelb · Workshops Magenta · Marketing Cyan · Training & Sparring Violett.
+   Muster wie Strategie/Workshops: Kopf weiß · erste Inhaltssektion in Bereichsfarbe (Karten weiß) · danach Weiß/Hell · Download · Kontakt. */
+.e2-alt--magenta { --bf: #C51F5D; --bf-text: #fff; }
+.e2-alt--cyan { --bf: #0B9FBD; --bf-text: #fff; --e2-akzent: #0B9FBD; }
+.e2-alt--violett { --bf: #8613A1; --bf-text: #fff; --e2-akzent: #8613A1; }
+.e2-alt--gelb { --bf: #fff400; --bf-text: #1a1817; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) h1 .hl { --hl: var(--bf); color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-kopf .e2-kicker,
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .kicker { color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-kopf .e2-knopf,
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .produkt-cta .btn--dark { background: var(--bf) !important; border-color: var(--bf) !important; color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .media-box-thumb--mock { background: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-dl-hl { --hl: var(--bf); color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .pdf-dl .pdf-dl-kicker { color: var(--bf) !important; filter: brightness(1.35); }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon, html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon svg { color: var(--bf) !important; stroke: var(--bf) !important; }
+
+/* erste Inhaltssektion in Bereichsfarbe */
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(2) { background: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) :is(.kicker, h2, .produkt-section-head p, .lead, .vorschau-split-text, .vorschau-split-text p, .vorschau-split-text li, .problem-head *, .leistung-simple > p, .leistung-simple h2) { color: var(--bf-text) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .kicker::before { background: var(--bf-text) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) :is(.produkt-glass, .problem-card, .tools-row-item) { background: #fff !important; border: 0 !important; box-shadow: none !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass * { color: var(--e2-ink) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass .feature-icon svg { stroke: var(--bf) !important; color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .watermark { display: none !important; }
+/* danach keine zwei Grau hintereinander: Standard weiß, Fragen/Beispiele hell */
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq) { background: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:is(.produkt-faq, .pa-faq) { background: var(--e2-hell) !important; }
+/* Fremdfarben auf die Bereichsfarbe ziehen */
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.usp-highlight, .sprint-structure-card, .vergleich-rocket, .pa-pc, .price-card--featured) { background: var(--bf) !important; border-color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.sprint-structure-cta, .price-badge) { color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.vergleich-label--brand, .vergleich-label-logo, .step-num, .pa-check-result-kicker, .pa-check-info) { color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.pa-check-progress-bar, .yellow-pill, .usp-turbo-icon) { background-color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .paid-ads .step-num, html body .e2-alt.e2-alt.e2-seite--paid-ads .step-num { color: #fff !important; }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .step-num { background-color: var(--bf) !important; }
+html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar .vergleich-row svg, html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar [style*="8613A1"] { color: var(--bf) !important; }
+html body .e2-alt.e2-alt.e2-seite--teams #problem { background: var(--e2-gelb) !important; }
+html body .e2-alt.e2-alt.e2-seite--teams #problem .watermark { display: none !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) { background: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) .watermark { display: none !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) :is(p, li, h2, .kicker) { color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) .kicker::before { background: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--teams) .yellow-pill { display: none !important; }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check-section * { border-left-color: var(--e2-linie); }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check { border-left-color: var(--bf) !important; }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::before, html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::after { background: var(--bf) !important; }

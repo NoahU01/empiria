@@ -30,11 +30,28 @@ SEITEN = {
     "ki-zum-anfassen.html": "ki-zum-anfassen.html",
     "sprint-landingpage.html": "sprint-landingpage.html",
     "workshop-moderation.html": "workshop-moderation.html",
+    "leistungen/teams.html": "teams.html",
+    "der-beste-workshop.html": "der-beste-workshop.html",
+    "marketing.html": "marketing.html",
+    "dashboard-digitales-marketing.html": "dashboard-digitales-marketing.html",
+    "sofort-sichtbar.html": "sofort-sichtbar.html",
+    "paid-ads.html": "paid-ads.html",
+    "medien.html": "medien.html",
+    "powerpoint.html": "powerpoint.html",
+    "landingpage.html": "landingpage.html",
+    "rollup.html": "rollup.html",
+    "video.html": "video.html",
+    "digitale-tools.html": "digitale-tools.html",
+    "training-sparring.html": "training-sparring.html",
+    "praesentationsseminar.html": "praesentationsseminar.html",
+    "sparring.html": "sparring.html",
+    "impulsvortraege.html": "impulsvortraege.html",
 }
 LINKS = {"/": "index.html", "/index.html": "index.html", "/leistungen/strategie": "strategie.html",
          "/leistungen/komplexe-themen": "komplexe-themen.html", "/leistungen/innovation": "innovation.html",
          "/workshops": "workshops.html", "/ki-zum-anfassen": "ki-zum-anfassen.html",
-         "/sprint-landingpage": "sprint-landingpage.html", "/workshop-moderation": "workshop-moderation.html"}
+         "/sprint-landingpage": "sprint-landingpage.html", "/workshop-moderation": "workshop-moderation.html",
+         "/leistungen/teams": "teams.html", "/der-beste-workshop": "der-beste-workshop.html", "/marketing": "marketing.html", "/dashboard-digitales-marketing": "dashboard-digitales-marketing.html", "/sofort-sichtbar": "sofort-sichtbar.html", "/paid-ads": "paid-ads.html", "/medien": "medien.html", "/powerpoint": "powerpoint.html", "/landingpage": "landingpage.html", "/rollup": "rollup.html", "/video": "video.html", "/digitale-tools": "digitale-tools.html", "/training-sparring": "training-sparring.html", "/praesentationsseminar": "praesentationsseminar.html", "/sparring": "sparring.html", "/impulsvortraege": "impulsvortraege.html"}
 PFEIL = '<svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 
@@ -155,7 +172,7 @@ SYMBOL = {
     "landingpage": '<rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 6.5h7M8.5 9.5h4.5M8.5 13h7v3.5h-7z"/>',
     "rollup": '<path d="M6.5 3.5h11v15h-11zM12 18.5v2.5M7.5 21h9M9 7.5h6M9 10.5h4"/>',
 }
-AKZENT_SEITE = {"strategie": "gelb", "strategie-2": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
+AKZENT_SEITE = {"teams": "gelb", "der-beste-workshop": "magenta", "marketing": "cyan", "dashboard-digitales-marketing": "cyan", "sofort-sichtbar": "cyan", "paid-ads": "cyan", "medien": "cyan", "powerpoint": "cyan", "landingpage": "cyan", "rollup": "cyan", "video": "cyan", "digitale-tools": "cyan", "training-sparring": "violett", "praesentationsseminar": "violett", "sparring": "violett", "impulsvortraege": "violett", "strategie": "gelb", "strategie-2": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
                 "workshops": "magenta", "ki-zum-anfassen": "magenta", "sprint-landingpage": "magenta", "workshop-moderation": "magenta"}
 
 
@@ -205,7 +222,7 @@ def symbol(name, cls="e2-sym"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
 
 
-KOPFBILD_SEITE = {"index": "Startseite", "strategie": "Strategie in den Alltag überführen", "strategie-2": "Strategie in den Alltag überführen", "komplexe-themen": "Komplexe Themen strukturieren & kommunizieren",
+KOPFBILD_SEITE = {"teams": "Teams befähigen, professionell zu kommunizieren", "der-beste-workshop": "Der beste Workshop", "marketing": "Marketing 2.0", "dashboard-digitales-marketing": "MarketingEcoSystem (MES)", "sofort-sichtbar": "sofort sichtbar", "paid-ads": "Paid Ads", "medien": "Medien, die Ergebnisse liefern", "powerpoint": "PowerPoint", "landingpage": "Landingpage", "rollup": "Roll-up", "video": "Video", "digitale-tools": "Digitale Tools", "training-sparring": "Training & Sparring", "praesentationsseminar": "Teams befähigen, professionell zu kommunizieren", "sparring": "1:1 Sparring", "impulsvortraege": "Impulsvorträge", "index": "Startseite", "strategie": "Strategie in den Alltag überführen", "strategie-2": "Strategie in den Alltag überführen", "komplexe-themen": "Komplexe Themen strukturieren & kommunizieren",
                   "innovation": "Innovation & Geschäftsmodell neu denken", "workshops": "Workshops", "ki-zum-anfassen": "KI zum Anfassen",
                   "sprint-landingpage": "Sprint Landingpage", "workshop-moderation": "Moderation deines Workshops"}
 
@@ -228,8 +245,12 @@ def kopf_neu(held, name):
     if 'class="hero-copy' in held:
         inhalt = re.search(r'<div class="hero-copy[^"]*">(.*)</div>\s*</div>\s*<div class="hero-cta">', held, re.S).group(1)
     else:
-        t = re.search(r'<div class="produkt-hero-text">(.*?)</div>\s*<div class="produkt-hero-visual">', held, re.S).group(1)
-        inhalt = re.sub(r'<p class="kicker"[^>]*>.*?</p>|<h1[^>]*>.*?</h1>', "", t, count=2, flags=re.S)
+        t = re.search(r'<div class="produkt-hero-text">(.*?)</div>\s*<div class="produkt-hero-visual">', held, re.S)
+        if t:
+            inhalt = re.sub(r'<p class="kicker"[^>]*>.*?</p>|<h1[^>]*>.*?</h1>', "", t.group(1), count=2, flags=re.S)
+        else:   # abweichende Köpfe (MES, Sparring): Texte und Pillen einsammeln
+            pillen = re.search(r'<div class="produkt-pills">.*?</div>', held, re.S)
+            inhalt = "".join(f"<p>{x}</p>" for x in re.findall(r'<p class="lead">(.*?)</p>', held, re.S)) + (pillen.group(0) if pillen else "")
     knoepfe = re.findall(r'<a class="btn[^"]*" href="([^"]+)">(.*?)</a>', held)
     chips = ""
     m = re.search(r'<div class="hero-anlaesse".*?</div>', inhalt, re.S)
@@ -328,7 +349,7 @@ def unterseite(original, ziel, html=None):
     main = h[h.index("<main"):h.index("</main>")]
     main = main[main.index(">") + 1:]
     name = ziel[:-5]
-    held_marker = '<section class="hero leistung-hero"' if '<section class="hero leistung-hero"' in main else '<section class="produkt-hero"'
+    held_marker = '<section class="hero leistung-hero"' if '<section class="hero leistung-hero"' in main else ('<section class="produkt-hero"' if '<section class="produkt-hero"' in main else '<section class="produkt-hero ')
     held = abschnitt(main, held_marker)
     main = main.replace(held, kopf_neu(held, name))
     # Medien (Komplexe Themen): einfache Symbole statt Skizzen – je Kachel nur das Bild tauschen
@@ -343,7 +364,11 @@ def unterseite(original, ziel, html=None):
         return block[:a] + '<div class="medien-sketch-thumb">' + symbol(sym, "e2-medien-sym") + "</div>" + block[e:]
     main = re.sub(r'<div class="medien-sketch" tabindex="0">.*?<span class="medien-sketch-label">.*?</span>', medien, main, flags=re.S)
     if 'id="kontakt"' in main:
-        k = abschnitt(main, 'id="kontakt"'); main = main.replace(k, kontakt(k))
+        k = abschnitt(main, 'id="kontakt"')
+        try:
+            main = main.replace(k, kontakt(k))
+        except AssertionError:
+            pass   # abweichender Kontakt-Aufbau (z. B. Teams): Original bleibt
     if 'id="weitere-leistungen"' in main:
         w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
