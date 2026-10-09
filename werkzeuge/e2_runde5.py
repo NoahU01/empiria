@@ -175,7 +175,8 @@ def sparring_turbo(sek):
 
 
 # ---------- Praxisfälle als Karten statt Akkordeon (Runde 32) ----------
-def faelle(sek, symbole, sonder=None, kurz=False):
+def faelle(sek, symbole, sonder=None, kurz=False, kurztexte=None, sonder_kurz=None):
+    """kurztexte (Runde 34, Daniel): je Karte ein eigener kurzer Satz – „Mehr lesen“ öffnet den vollen Text im Fenster."""
     from e2_lucide import ICONS
     k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
     lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
@@ -187,10 +188,10 @@ def faelle(sek, symbole, sonder=None, kurz=False):
         ps = re.findall(r"<p>(.*?)</p>", body, re.S)
         if sonder is not None and i == sonder:
             sonder_html = (f'<div class="e2-fall-sonder"><div><p class="e2-fall-sonder__tag">Sonderthema</p><h3>{titel.strip()}</h3></div>'
-                           f'<div><p>{ps[0]}</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs{i}">Mehr lesen →</button></div>'
+                           f'<div><p>{sonder_kurz or ps[0]}</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs{i}">Mehr lesen →</button></div>'
                            f'<dialog class="e2-dialog" id="fs{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog></div>')
             continue
-        erster = re.split(r"(?<=[.!?])\s", ps[0])[0] if ps else ""
+        erster = kurztexte[j] if kurztexte else (re.split(r"(?<=[.!?])\s", ps[0])[0] if ps else "")
         text = "".join(f"<p>{x}</p>" for x in ps) if kurz else f"<p>{erster}</p>"
         mehr = "" if kurz else (f'<button type="button" class="e2-fall__mehr" data-e2-auf="fl{i}">Mehr lesen →</button>'
                                 f'<dialog class="e2-dialog" id="fl{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog>')
@@ -212,6 +213,18 @@ def preis_sprint(sek):
   <div class="e2-preis__box"><p class="e2-preis__label">{einheit}</p><p class="e2-preis__betrag">{betrag}</p>
     <ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul></div>
 </div></div></section>'''
+
+
+# ---------- Sprint: Ablauf + Vorteile in einer Sektion (Runde 34) ----------
+def ablauf_vorteile(ablauf, vorteile):
+    """Die drei Vorteils-Kästen stehen rechts neben der Zeitleiste statt verloren darunter."""
+    karten = [div_block(vorteile, m.start()) for m in re.finditer(r'<div class="produkt-glass', vorteile)]
+    rechts = "".join(re.sub(r'^<div class="[^"]*">', '<div class="e2-ablauf__vorteil">', k) for k in karten)
+    tl = ablauf.index('<div class="sprint-timeline')
+    tl_ende = div_block(ablauf, tl)
+    zeit = tl_ende.replace(' style="max-width:760px;margin:0 auto;"', "")
+    neu = f'<div class="e2-ablauf">{zeit}<div class="e2-ablauf__vorteile">{rechts}</div></div>'
+    return ablauf.replace(tl_ende, neu).replace('<section class="produkt-section">', '<section class="produkt-section e2-ablauf-sek">', 1)
 
 
 # ---------- Pakete als saubere Karten (Runde 34) ----------

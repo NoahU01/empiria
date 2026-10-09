@@ -439,10 +439,18 @@ def unterseite(original, ziel, html=None):
         main = main.replace('<svg viewBox="0 0 800 820" xmlns', '<svg viewBox="40 55 730 700" xmlns', 1)
         main = re.sub(r"Du konzentrierst Dich nicht auf Marketing,\s*sondern auf", "Du konzentrierst Dich auf", main, count=1)
     if name == "sprint-landingpage":
-        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurz=True))
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurztexte=[
+            "Ergebnisse aus dem Workshop sofort umsetzen.", "Marktchance nutzen, Vertrieb kurzfristig pushen.", "Wichtiger Termin – aber nichts vorbereitet.",
+            "Zeigen, dass es schnell und professionell geht.", "Die Methodik als Schulung fürs eigene Team.", "Eine fertige Lösung, die Partner überzeugt."]))
+        ab = abschnitt(main, 'class="sprint-timeline'); vt = abschnitt(main, 'class="produkt-grid-cards')
+        main = main.replace(vt, "").replace(ab, e2_runde5.ablauf_vorteile(ab, vt))
         sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))
     if name == "ki-zum-anfassen":
-        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2))
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2, kurztexte=[
+            "Zielgruppen und ihre Ansprache mit KI als Sparringspartner erarbeiten.", "Eingefahrene Denkmuster aufbrechen – im Auftrag des Vorstands.",
+            "Kampagnenideen mit KI testen – ganz ohne Unternehmensdaten.", "Text und Grafik mit KI – am Ende steht die Tool-Auswahl.",
+            "Homepage- und Intranetseiten mit KI bauen statt PDFs.", "Das eigene Geschäftsmodell mit guten Prompts hinterfragen."],
+            sonder_kurz="Wie Du als Führungskraft KI im Alltag schnell und klug nutzt – ganz ohne Unternehmensdaten preiszugeben."))
     if name == "sparring":
         sek = abschnitt(main, 'topics-compare'); main = main.replace(sek, e2_runde5.sparring_themen(sek))
         sek = abschnitt(main, 'usp-turbo-section'); main = main.replace(sek, e2_runde5.sparring_turbo(sek))
