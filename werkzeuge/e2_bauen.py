@@ -418,11 +418,14 @@ def startseite():
     themen_form = ["forward", "kreuz", "kreis"]
     pass  # Lösung auf Schwarz: gesichert in „Startseite alt 2“
     farben = ["gelb", "schwarz", "hell"]
+    # Runde 19 (Daniel): Lösung klar wie die Volksfest-Seite – Kopf einspaltig (Unterzeile, Überschrift, ein Satz),
+    # dann die Kästen, darunter das Ergebnis mit dem Kontakt-Knopf. Kein Pop-up-Link mehr.
     loesung_hell = f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
-  <div class="e2v-zwei e2v-loesung2"><div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
-    <div><p class="e2v-loesung2__satz e2v-loesung2__satz--hell">{le_lead.replace("sondern Handwerk", '<span class="e2v-marker">sondern Handwerk</span>')}</p><p class="e2v-loesung2__text e2v-loesung2__text--hell">{lo_p}</p></div></div>
+  <p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2 e2v-loesung3__h">{lo_h2.strip()} {lo_h2_2}</h2>
+  <p class="e2-lead e2v-loesung3__lead">{le_lead.replace("sondern Handwerk", "<b>sondern Handwerk</b>")}</p>
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-knoepfe"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a><button class="e2v-textlink link-more" type="button" data-modal="{lo_mehr.group(1)}">Was das für Dich bedeutet {PFEIL}</button></div>
+  <div class="e2v-ergebnis2"><div><p class="e2v-ergebnis2__tag">Das Ergebnis</p><p class="e2v-ergebnis2__satz">Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar – Deine Themen kommen voran.</p></div>
+    <a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>'''
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
@@ -452,7 +455,7 @@ def startseite():
     m.append(problem_html("problem", ""))
     m.append(loesung_hell)
     # Formate: zweite Ebene – schmal, ruhig, ohne Karten und Farbflächen; klar als „andere Qualität“ formuliert
-    links = "".join(f'<a href="{d["href"]}"><b>{d["titel"]}</b><span>{d["satz"]}</span>{PFEIL}</a>' for d in fo_daten)
+    links = "".join(f'<a href="{d["href"]}" style="--e2-akzent:{d["akz"]}"><i>{d["sym"]}</i><b>{d["titel"]}</b><span>{d["satz"]}</span>{PFEIL}</a>' for d in fo_daten)
     m.append(f'''<section class="e2v-formate-band" id="formate"><div class="e2-wrap e2v-zwei">
   <div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2v-formate-band__h">Außerdem: unsere Erfahrung als fertige Formate.</h2>
     <p class="e2v-formate-band__text">Seit 2012 haben wir mit Versicherern in zahlreichen Projekten gearbeitet. Was sich dabei bewährt hat, gibt es als klar umrissene Formate zum direkten Einsatz – kompakt, ohne langen Vorlauf.</p></div>

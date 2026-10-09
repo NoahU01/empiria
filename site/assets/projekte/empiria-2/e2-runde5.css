@@ -548,3 +548,18 @@
 .e2v-formate-band__links span { grid-column: 1; font-size: .92rem; color: var(--e2-grau); }
 .e2v-formate-band__links .e2-pfeil { grid-column: 2; grid-row: 1 / span 2; align-self: center; transition: transform .15s; }
 .e2v-formate-band__links a:hover .e2-pfeil { transform: translateX(4px); }
+/* Startseite Runde 19: Lösung klar; Formate-Band mit Symbol in Formatfarbe */
+.e2v-loesung3__h { max-width: 22ch !important; }
+.e2v-loesung3__lead { max-width: 44rem !important; font-size: 1.2rem !important; color: var(--e2-ink) !important; }
+.e2v-loesung3__lead b { font-weight: 700; }
+#loesung .e2-karten { margin-top: 3rem; }
+.e2v-ergebnis2 { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.4rem; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 3px solid var(--e2-ink); }
+.e2v-ergebnis2__tag { margin-bottom: .5rem !important; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.e2v-ergebnis2__satz { max-width: 44rem; font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.3; }
+@media (max-width: 760px) { .e2v-ergebnis2 { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; } }
+.e2v-formate-band__links a { grid-template-columns: 2.6rem minmax(0, 1fr) auto !important; }
+.e2v-formate-band__links i { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 2rem; height: 2rem; }
+.e2v-formate-band__links i svg { width: 100%; height: 100%; fill: none; stroke: var(--e2-akzent); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-formate-band__links b, .e2v-formate-band__links span { grid-column: 2 !important; }
+.e2v-formate-band__links .e2-pfeil { grid-column: 3 !important; }
+.e2v-formate-band__links a:hover b { color: var(--e2-akzent); }
