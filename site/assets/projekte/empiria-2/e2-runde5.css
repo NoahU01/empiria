@@ -328,3 +328,9 @@
 @media (max-width: 1000px) { .e2-schritte { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .e2-schritte { grid-template-columns: minmax(0, 1fr); } .e2-zwischen { padding: 1.4rem 1.2rem; } }
 .e2-dialog--breit .e2-lk__inhalt { padding: 0 !important; }
+
+/* ================= Strategie 2 (Aufbau der Workshop-Seiten) ================= */
+.e2-seite--strategie-2 .produkt-section-head p + p { margin-top: .9rem !important; }
+.e2-s2-notiz { margin-top: 1.4rem !important; max-width: 46rem; font-size: 1.02rem; color: var(--e2-ink-2); }
+.e2-seite--strategie-2 .feature-icon svg { width: 26px; height: 26px; }
+.e2-seite--strategie-2 .kicker { color: var(--e2-ink) !important; }

@@ -90,15 +90,28 @@ def links_umbiegen(html):
 
 
 # ---------- Seitenrahmen ----------
-def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf"):
-    h = (SITE / original).read_text(encoding="utf-8")
+def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf", h=None):
+    h = h or (SITE / original).read_text(encoding="utf-8")
     a, b = h.index("<main"), h.index("</main>") + 7
     kopf, fuss = h[:a], h[b:]
     kopf = kopf.replace('<link rel="stylesheet" href="/styles.css">', '<link rel="stylesheet" href="/styles.css">\n' + CSS, 1)
     kopf = re.sub(r"<body([^>]*)>", lambda m: (m.group(0).replace('class="', 'class="e2 ') if 'class="' in m.group(1) else f'<body{m.group(1)} class="e2">'), kopf, 1)
     kopf = re.sub(r"<title>(.*?)</title>", lambda m: f"<title>{m.group(1)} · {titel_zusatz}</title>", kopf, 1)
     kopf = kopf.replace('<meta name="robots" content="index', '<meta name="robots" content="noindex')
-    return links_umbiegen(absolut(kopf, original)) + "<main>\n" + links_umbiegen(main) + "\n</main>" + links_umbiegen(absolut(fuss, original))
+    out = links_umbiegen(absolut(kopf, original)) + "<main>\n" + links_umbiegen(main) + "\n</main>" + links_umbiegen(absolut(fuss, original))
+    return mit_strategie2(out)
+
+
+def mit_strategie2(html):
+    """Menüeinträge für „Strategie in den Alltag überführen 2“ (Entwurf im Workshop-Aufbau, Daniel Runde 12)."""
+    l = '/projekte/empiria-2/strategie.html'
+    html = html.replace(f'<a href="{l}">Strategie in den Alltag überführen</a>',
+                        f'<a href="{l}">Strategie in den Alltag überführen</a>\n<a href="/projekte/empiria-2/strategie-2.html">Strategie in den Alltag überführen 2</a>')
+    html = html.replace(f'<a href="{l}" class="mobile-submenu-link">Strategie in den Alltag überführen</a>',
+                        f'<a href="{l}" class="mobile-submenu-link">Strategie in den Alltag überführen</a>\n<a href="/projekte/empiria-2/strategie-2.html" class="mobile-submenu-link">Strategie in den Alltag überführen 2</a>')
+    html = re.sub(r'(<a href="[^"]*projekte/empiria-2/strategie\.html" class="dev-dd-link">.*?</a>\n)',
+                  lambda m: m.group(1) + m.group(1).replace("strategie.html", "strategie-2.html").replace("<b>Strategie in den Alltag überführen</b>", "<b>Strategie in den Alltag überführen 2</b>").replace(">1<", ">1b<").replace("<small>Strategiehandwerk</small>", "<small>im Aufbau der Workshop-Seiten</small>"), html, count=1)
+    return html
 
 
 
@@ -138,7 +151,7 @@ SYMBOL = {
     "landingpage": '<rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 6.5h7M8.5 9.5h4.5M8.5 13h7v3.5h-7z"/>',
     "rollup": '<path d="M6.5 3.5h11v15h-11zM12 18.5v2.5M7.5 21h9M9 7.5h6M9 10.5h4"/>',
 }
-AKZENT_SEITE = {"strategie": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
+AKZENT_SEITE = {"strategie": "gelb", "strategie-2": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
                 "workshops": "magenta", "ki-zum-anfassen": "magenta", "sprint-landingpage": "magenta", "workshop-moderation": "magenta"}
 
 
@@ -188,7 +201,7 @@ def symbol(name, cls="e2-sym"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
 
 
-KOPFBILD_SEITE = {"index": "Startseite", "strategie": "Strategie in den Alltag überführen", "komplexe-themen": "Komplexe Themen strukturieren & kommunizieren",
+KOPFBILD_SEITE = {"index": "Startseite", "strategie": "Strategie in den Alltag überführen", "strategie-2": "Strategie in den Alltag überführen", "komplexe-themen": "Komplexe Themen strukturieren & kommunizieren",
                   "innovation": "Innovation & Geschäftsmodell neu denken", "workshops": "Workshops", "ki-zum-anfassen": "KI zum Anfassen",
                   "sprint-landingpage": "Sprint Landingpage", "workshop-moderation": "Moderation deines Workshops"}
 
@@ -284,10 +297,10 @@ def ohne_hl_ausser_h1(html):
     return "".join(t if t.startswith("<h1") else re.sub(r'<span class="(?:hl|hl-acc)(?: [^"]*)?">(.*?)</span>', r"\1", t, flags=re.S) for t in teile)
 
 
-def unterseite(original, ziel):
+def unterseite(original, ziel, html=None):
     """Unterseiten: Originalinhalt bleibt vollständig erhalten, die Gestaltung übersetzt e2-seiten.css.
     Ersetzt werden nur Kontakt und „Weitere Leistungen“ durch die e2-Bausteine (gleicher Text)."""
-    h = (SITE / original).read_text(encoding="utf-8")
+    h = html or (SITE / original).read_text(encoding="utf-8")
     main = h[h.index("<main"):h.index("</main>")]
     main = main[main.index(">") + 1:]
     name = ziel[:-5]
@@ -310,7 +323,7 @@ def unterseite(original, ziel):
     if 'id="weitere-leistungen"' in main:
         w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
-    if name == "strategie":
+    if name in ("strategie", "strategie-2"):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek))
     if name == "komplexe-themen":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_kt(sek))
@@ -334,7 +347,7 @@ def unterseite(original, ziel):
         return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
     main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
     main += DIALOG_JS
-    return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]} e2-seite--{name}">{main}</div>')
+    return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]} e2-seite--{name}">{main}</div>', h=html)
 
 
 # ---------- Startseite ----------
@@ -440,7 +453,9 @@ def main():
     for orig, ziel in SEITEN.items():
         if orig != "index.html":
             (ZIEL / ziel).write_text(unterseite(orig, ziel), encoding="utf-8")
-    print("gebaut:", ", ".join(SEITEN.values()))
+    import e2_strategie2
+    (ZIEL / "strategie-2.html").write_text(unterseite("ki-zum-anfassen.html", "strategie-2.html", e2_strategie2.quelle()), encoding="utf-8")
+    print("gebaut:", ", ".join(SEITEN.values()), "+ strategie-2.html")
 
 
 if __name__ == "__main__":
