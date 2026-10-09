@@ -383,6 +383,15 @@ NUR_SPRINT = [
 OK = '<span class="hv-ok" title="für alle Unterseiten geeignet">✓</span>'
 
 CSS4 = """<style>
+.hv-kb-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.hv-kb { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 1.2rem; align-items: center; padding: 1.4rem 1.4rem 1.4rem 1.6rem; border: 1px solid #e3dfd8; border-radius: 18px; background: #fff; }
+.hv-kb__kicker { display: flex; align-items: center; gap: .5rem; margin: 0 0 .6rem !important; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6f6a64; }
+.hv-kb__kicker i { width: .7rem; height: .7rem; border-radius: 50%; flex: 0 0 auto; }
+.hv-kb h3 { font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.2; }
+.hv-kb__warum { margin-top: .8rem !important; font-size: .84rem; line-height: 1.5; color: #6f6a64; }
+.hv-kb__warum b { color: #1a1817; }
+@media (max-width: 1000px) { .hv-kb-raster { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .hv-kb { grid-template-columns: minmax(0, 1fr); } }
 .hv-va { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
 .hv-va-gruppe { grid-column: 1 / -1; margin: 0 !important; padding: .55rem .9rem; background: #1a1817; color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-right: 1px solid #e3dfd8; }
 .hv-va-titel { display: flex; align-items: center; gap: .6rem; margin: 2.6rem 0 1rem !important; font-family: var(--font-serif); font-size: 1.5rem; }
@@ -428,6 +437,21 @@ CSS4 = """<style>
 @media (max-width: 1100px) { .hv-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .hv-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hv-probe { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hv-probe .leer { display: none; } }
 </style>"""
+
+
+def kopfbilder():
+    """Runde 9: Mono für alle 23 Seiten, Aufbau je Seite gezielt gewählt (e2_kopfbilder.py) – im Kopf-Layout dargestellt."""
+    import e2_kopfbilder as kb
+    punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
+    karten = ""
+    for n, seite in enumerate(kb.SEITEN):
+        titel, bereich, welt, h1, aufbau, icons, labels, wort, warum = seite
+        b, name = kb.bild(seite)
+        karten += (f'<article class="hv-kb"><div class="hv-kb__text"><p class="hv-kb__kicker"><i style="background:{punkt[welt]}"></i>{titel}</p>'
+                   f'<h3>{h1}</h3><p class="hv-kb__warum"><b>{name}</b> – {warum}</p></div><div class="hv-kb__bild">{farbig(b, welt, "kb" + str(n))}</div></article>')
+    return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Kopfbilder – Mono, je Seite</h2>
+<p>Alle 23 Seiten der Live-Homepage in der Darstellungsart <b>Mono</b>. Der Aufbau ist je Seite nach dem Inhalt gewählt – darunter steht jeweils, warum. Sag mir einfach, welche Seite noch nicht passt.</p>
+<div class="hv-kb-raster">{karten}</div></div></section>'''
 
 
 def varianten3():
@@ -518,6 +542,7 @@ def main():
 <p>Wichtig ist die Trennung: Eine <b>Darstellungsart</b> ist die Bildsprache (Linie, Farbfläche, Druck, Karten, Foto …) und gilt für alle Seiten.
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
+{kopfbilder()}
 {varianten3()}
 {feinschliff()}
 {stufen_raster()}
