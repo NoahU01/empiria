@@ -83,7 +83,7 @@ SEITEN = [
     ("Teams befähigen, professionell zu kommunizieren", "Strategiehandwerk / Training", "gelb", "Teams befähigen, professionell zu kommunizieren.", "trio", ("presentation", "users", "circle-check"), "Präsentieren, Team, Ergebnis."),
     ("Workshops", "Formate", "magenta", "Workshops, die wirken. Nicht nur Theorie.", "reihe_o", (["sparkles", "app-window", "messages-square"], ["KI", "LANDINGPAGE", "MODERATION"]), "Übersicht: die drei Formate."),
     ("KI zum Anfassen", "Workshops", "magenta", "Deine KI. Zum Anfassen. Volle Wirkung.", "trio", ("message-square-text", "sparkles", "users"), "Eigener Fall, KI, Team."),
-    ("Sprint Landingpage", "Workshops", "magenta", "Live in nur 48 Stunden. Sauber gebaut, volle Wirkung.", "zahl", ("48h", "app-window"), "Die Zahl ist das Versprechen."),
+    ("Sprint Landingpage", "Workshops", "magenta", "Live in nur 48 Stunden. Sauber gebaut, volle Wirkung.", "zahl", ("48h", "timer"), "Die Zahl ist das Versprechen."),
     ("Moderation deines Workshops", "Workshops", "magenta", "Dein Workshop. Souverän moderiert. Volle Wirkung.", "trio", ("messages-square", "circle-check", "users"), "Gespräch, Klarheit, Team."),
     ("Der beste Workshop", "Workshops", "magenta", "Dein Workshop. Mit Ergebnis. Volle Wirkung.", "trio", ("goal", "star", "users"), "Ein Ziel, ausgezeichnet, alle dabei."),
     ("Marketing 2.0", "Formate", "cyan", "Marketing für Versicherer anders gedacht.", "reihe_o", (["layout-dashboard", "eye", "megaphone"], ["DASHBOARD", "SICHTBARKEIT", "KAMPAGNEN"]), "Übersicht: die Wege."),

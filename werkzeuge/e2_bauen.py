@@ -489,6 +489,10 @@ def unterseite(original, ziel, html=None):
     if name == "sofort-sichtbar":   # Logo statt Kicker: größer, ohne Strich, in Schwarz (Schwarz-Weiß-Gelb)
         main = re.sub(r'<p class="e2-kicker">\s*<img src="/assets/sofort-sichtbar-logo-violet.svg"', '<p class="e2-kicker e2-kicker--logo"><img src="/assets/sofort-sichtbar-logo-' + ("ink" if SCHWARZ_GELB else "violet") + '.svg"', main, count=1)
     if name == "sprint-landingpage":
+        # Runde 40 (Daniel): „48“ nur noch einmal – rechts im Bild. Überschrift dreizeilig ohne Zahl, Text ohne Zahl, keine Pills.
+        main = main.replace('<h1>Live in nur 48 Stunden. Sauber gebaut, <span class="hl">volle Wirkung.</span></h1>', '<h1><span class="hl">Schnell live.</span><br>Sauber gebaut.<br>Volle Wirkung.</h1>', 1)
+        main = main.replace("Wenn es schnell gehen muss: In nur 48 Stunden entwickeln wir Deine fokussierte Landingpage", "Wenn es schnell gehen muss: Im Sprint entwickeln wir Deine fokussierte Landingpage", 1)
+        a = main.index('<div class="produkt-pills">', main.index('class="e2-kopf"')); main = main.replace(e2_runde5.div_block(main, a), "", 1)
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurztexte=[
             "Ergebnisse aus dem Workshop sofort umsetzen.", "Marktchance nutzen, Vertrieb kurzfristig pushen.", "Wichtiger Termin – aber nichts vorbereitet.",
             "Zeigen, dass es schnell und professionell geht.", "Die Methodik als Schulung fürs eigene Team.", "Eine fertige Lösung, die Partner überzeugt."]))
