@@ -38,3 +38,10 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section .e2-s2-kasten.e2-s2-k
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc-report-rows i::after { background: #1a1817 !important; }
 /* Innovation · „Gilt als gegeben“: Trennlinie im hellen Kasten schwarz */
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .inno-stein-foot::before { background: #1a1817 !important; }
+/* QS 1 · Sprint-Preiskasten: Punkte gelb (wie alle schwarzen Kästen) */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt .e2-preis__box li::before { background: #fff400 !important; }
+/* QS 1 · Paid Ads Kanal-Check: kein Gelb auf Weiß – Kante und Fortschritt schwarz */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-check::before { background: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-check-progress-bar { background-color: #1a1817 !important; }
+/* QS 1 · Sparring-Themen: Hellgrau wie alle hellen Kacheln (kein blasses Gelb) */
+html body main .e2-alt.e2-alt.e2-alt .e2-sp2-worueber li:not(.e2-sp2-mehr) { background: #f3f1ee !important; }
