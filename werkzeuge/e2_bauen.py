@@ -403,11 +403,10 @@ def startseite():
         return f'<svg class="e2v-ico" viewBox="0 0 24 24" fill="none" stroke="{farbe}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU[n]}</svg>'
     m = []
     m.append(f'''<section class="e2v-held" id="hero"><div class="e2-wrap e2v-held__raster">
-  <div><h1>{h1}</h1>
-    <div class="e2v-held__text">{''.join(f'<p>{p}</p>' for p in texte)}</div>
-    <div class="e2-knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a><a class="e2-knopf e2-knopf--rand" href="#kontakt">Kontakt aufnehmen</a></div>
-    <div class="e2v-fakten">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b>{l}</div>' for z, l in zahlen)}</div></div>
+  <div class="e2v-held__text-oben"><h1>{h1}</h1>
+    <div class="e2v-held__text">{''.join(f'<p>{p}</p>' for p in texte)}</div></div>
   <div class="e2v-held__pfeil"><svg viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
+  <div class="e2-knoepfe e2v-held__knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a><a class="e2-knopf e2-knopf--rand" href="#kontakt">Kontakt aufnehmen</a></div>
 </div><div class="e2-wrap"><div class="e2-logos">{marquee}</div></div></section>''')
     m.append(f'''<section class="e2-sek e2-sek--gelb" id="problem"><div class="e2-wrap e2v-zwei">
   <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2><p class="e2v-text">{pr_ps[0]}</p></div>

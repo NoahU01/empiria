@@ -387,3 +387,10 @@
 /* Satzkante = Kante von Logo und Menü (wie live: --container + --pad-x) – gilt für alle 2.0-Seiten */
 .e2 .e2-wrap, .e2-alt .container, .e2 main .container { max-width: var(--container) !important; padding-left: var(--pad-x) !important; padding-right: var(--pad-x) !important; margin-left: auto !important; margin-right: auto !important; }
 .hv-st-scroll { margin: 0 var(--pad-x) !important; }
+/* Kopf Startseite (Daniel): ohne Kennzahlen; Doppelpfeil unten bündig mit dem Text; Knöpfe etwas tiefer; Logos näher */
+.e2v-held__raster { grid-template-rows: auto auto; row-gap: 0; align-items: end !important; }
+.e2v-held__text-oben { grid-column: 1; grid-row: 1; }
+.e2v-held__pfeil { grid-column: 2; grid-row: 1; align-self: end; }
+.e2v-held__knoepfe { grid-column: 1; grid-row: 2; margin-top: 3rem !important; }
+.e2v-held .e2-logos { margin-top: 2.6rem !important; }
+@media (max-width: 960px) { .e2v-held__pfeil { grid-column: 1; grid-row: auto; order: -1; } .e2v-held__text-oben, .e2v-held__knoepfe { grid-column: 1; grid-row: auto; } }
