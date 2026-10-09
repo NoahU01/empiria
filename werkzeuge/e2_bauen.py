@@ -161,6 +161,22 @@ FORMAT_SYM = {
 }
 
 
+FORMAT_GROSS = {  # weiße Linien-Symbole für die farbige Mitte (Variante A)
+    "Workshops": '<svg viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="11.5" rx="1.5"/><path d="M7 7.5h6M7 10.5h9M9 20.5l1.6-5.5M15 20.5l-1.6-5.5"/></svg>',
+    "Marketing 2.0": '<svg viewBox="0 0 24 24"><path d="M3.5 10v4h3l7 4.5v-13l-7 4.5z"/><path d="M17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>',
+    "Training & Sparring": '<svg viewBox="0 0 24 24"><path d="M3 5h11v7.5H8L4.5 15.5V12.5H3z"/><path d="M14 9h7v7.5h-1.5v3l-3.5-3H11v-3.5"/></svg>',
+}
+UNTER_LINK = {"KI": "/ki-zum-anfassen", "Sprint": "/sprint-landingpage", "Moderation": "/workshop-moderation", "Marketing": "/dashboard-digitales-marketing",
+              "sofort": "/sofort-sichtbar", "Paid": "/paid-ads", "Medien": "/medien", "Teams": "/praesentationsseminar", "1:1": "/sparring"}
+
+
+def unter_link(titel):
+    for k, v in UNTER_LINK.items():
+        if titel.startswith(k):
+            return link(v)
+    return "#"
+
+
 def format_sym(titel):
     for k, v in FORMAT_SYM.items():
         if titel.startswith(k):
@@ -199,6 +215,9 @@ def kopf_neu(held, name):
 </div></section>'''
 
 
+REITER_JS = """<script>document.addEventListener("click",function(e){var b=e.target.closest("[data-e2-reiter]");if(!b)return;var box=b.closest(".e2-formate-c");
+box.querySelectorAll(".ist-aktiv").forEach(function(x){x.classList.remove("ist-aktiv");});b.classList.add("ist-aktiv");document.getElementById(b.getAttribute("data-e2-reiter")).classList.add("ist-aktiv");});</script>"""
+
 DIALOG_JS = """<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
 var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script>"""
 
@@ -217,12 +236,14 @@ def kontakt_teile(ko):
 def kontakt_start(ko):
     """Startseite: Anordnung wie die bisherige Startseite (Text links, Kontaktwege + Logos rechts, Team darunter) – ohne Doppelpfeil."""
     k = kontakt_teile(ko)
-    return f'''<section class="e2-kontakt5" id="kontakt"><div class="e2-wrap">
+    # Runde 6: mehr Wärme – gelbe Hervorhebung wie live, gelber Halbkreis hinter dem Team, Mail als gelber Knopf
+    h2 = re.sub(r'<span class="hl">(.*?)</span>', r'<span class="e2-dl-hl">\1</span>', eins(r"<h2[^>]*>(.*?)</h2>", ko))
+    return f'''<section class="e2-kontakt5 e2-kontakt6" id="kontakt"><div class="e2-wrap">
   <div class="e2-kontakt5__oben">
-    <div class="e2-kontakt5__text"><p class="e2-kicker">{k["kicker"]}</p><h2 class="e2-h2">{k["h2"]}</h2><p class="e2-lead">{k["lead"]}</p><p class="e2-kontakt5__notiz">{k["notiz"]}</p></div>
+    <div class="e2-kontakt5__text"><p class="e2-kicker">{k["kicker"]}</p><h2 class="e2-h2">{h2}</h2><p class="e2-lead">{k["lead"]}</p><p class="e2-kontakt5__notiz">{k["notiz"]}</p></div>
     <div class="e2-kontakt5__seite"><div class="e2-kontakt5__wege">{k["wege"]}</div>{k["logos"]}</div>
   </div>
-  <div class="e2-kontakt5__team">{k["foto"]}</div>
+  <div class="e2-kontakt5__team"><span class="e2-kontakt6__sonne"></span>{k["foto"]}</div>
 </div></section>'''
 
 
@@ -384,33 +405,49 @@ def startseite():
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{p}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, p, hr, mehr) in enumerate(karten))}</div>
   <div class="e2-unten"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>''')
-    # Formate (Runde 5): je Karte Titel, ein Satz Kernaussage, die Formate mit Symbol, unten auf gleicher Höhe die Knöpfe.
-    # Die bisherigen Texte samt Skizzen der alten Startseite stehen im Fenster „Formate ansehen“.
-    spalten, fenster = [], []
-    for i, (farbe, titel, koerper) in enumerate(formate):
+    # Formate (Runde 6): drei Varianten zur Auswahl (Daniel). Symbole immer nur in der Akzentfarbe, ohne Fläche/Rahmen.
+    # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
+    fo_daten = []
+    for farbe, titel, koerper in formate:
         ps = alle(r"^\s*<p>(.*?)</p>", koerper, re.S | re.M)
-        eintraege = alle(r'<div class="formate-preview-title">(.*?)</div>', koerper)
+        karten = []
+        for stueck in koerper.split('<div class="formate-preview-card')[1:]:
+            bild = re.search(r'<svg.*?</svg>|<img[^>]*>', stueck, re.S).group(0).replace(' loading="lazy"', '').replace('class="formate-preview-card-photo" ', '')
+            karten.append((bild, eins(r'<div class="formate-preview-title">(.*?)</div>', stueck), eins(r'<p class="formate-preview-desc">(.*?)</p>', stueck)))
         btn = re.search(r'<a class="btn btn--dark btn--sm" href="([^"]+)">(.*?)</a>', koerper)
-        vorschau = eins(r'(<div class="formate-preview-grid.*)<a class="btn', koerper)
-        akz = AKZENT.get(farbe, "#1a1817")
-        spalten.append(f'<article class="e2-f3" style="--e2-akzent:{akz}"><div class="e2-f3__kopf"><h3>{titel}</h3></div>'
-                       f'<p class="e2-f3__satz">{FORMAT_SATZ.get(re.sub(r"&amp;", "&", titel), "")}</p>'
-                       f'<ul class="e2-f3__liste">{"".join(f"<li><i>{format_sym(t)}</i><b>{t}</b></li>" for t in eintraege)}</ul>'
-                       f'<div class="e2-f3__fuss"><a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a>'
-                       f'<button type="button" class="e2-f3__blick" data-e2-auf="fo{i}">Formate ansehen</button></div></article>')
-        fenster.append(f'<dialog class="e2-dialog e2-fdialog formate-acc--{ {"lime": "violet"}.get(farbe, farbe)}" id="fo{i}" style="--e2-akzent:{akz}"><div class="e2-fdialog__band"></div>'
-                       f'<button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel}</h3>{"".join(f"<p>{p}</p>" for p in ps)}{vorschau}'
-                       f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></dialog>')
-    m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
-  <div class="e2-kopfzeile"><div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2-h2">{fo_h2}</h2></div><div>{''.join(f'<p class="e2-lead">{p}</p>' for p in fo_leads)}</div></div>
-  <div class="e2-formate3">{''.join(spalten)}</div>{''.join(fenster)}
-</div></section>''')
+        fo_daten.append(dict(farbe=farbe, titel=titel, ps=ps, akz=AKZENT.get(farbe, "#1a1817"), href=link(btn.group(1)), knopf=btn.group(2),
+                             satz=FORMAT_SATZ.get(re.sub(r"&amp;", "&", titel), ""), sym=FORMAT_GROSS.get(re.sub(r"&amp;", "&", titel), ""),
+                             unter=[dict(skizze=sk, titel=t, text=d, href=unter_link(t)) for sk, t, d in karten]))
+    fo_kopf = f'''<div class="e2-kopfzeile"><div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2-h2">{fo_h2}</h2></div><div>{''.join(f'<p class="e2-lead">{p}</p>' for p in fo_leads)}</div></div>'''
+    def band(buchst, txt):
+        return f'<p class="e2-var-band"><b>Variante {buchst}</b> {txt}</p>'
+    # A – wie die Leistungs-Karten: weißer Kopf, farbige Mitte mit Symbol, weißer Fuß
+    va = "".join(f'''<article class="e2-fa" style="--e2-akzent:{d['akz']}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div>
+<div class="e2-fa__mitte"><span class="e2-fa__sym">{d['sym']}</span><h3>{d['titel']}</h3></div>
+<p class="e2-fa__satz">{d['satz']}</p>
+<ul class="e2-fa__liste">{"".join(f'<li><a href="{u["href"]}"><i>{format_sym(u["titel"])}</i>{u["titel"]}{PFEIL}</a></li>' for u in d['unter'])}</ul>
+<div class="e2-fa__fuss"><a class="e2-knopf" href="{d['href']}">{d['knopf']} {PFEIL}</a></div></article>''' for i, d in enumerate(fo_daten))
+    # B – drei Zeilen: links Format mit Kernsatz und Knopf, rechts die Unterformate als Linkfelder
+    vb = "".join(f'''<article class="e2-fb" style="--e2-akzent:{d['akz']}"><div class="e2-fb__links"><span class="e2-fb__strich"></span><h3>{d['titel']}</h3><p>{d['satz']}</p>
+<a class="e2-knopf e2-knopf--rand" href="{d['href']}">{d['knopf']} {PFEIL}</a></div>
+<div class="e2-fb__felder">{"".join(f'<a class="e2-fb__feld" href="{u["href"]}"><i>{format_sym(u["titel"])}</i><b>{u["titel"]}</b><small>{u["text"]}</small><span class="e2-fb__pfeil">{PFEIL}</span></a>' for u in d['unter'])}</div></article>''' for d in fo_daten)
+    # C – Reiter: ein Format zur Zeit, mit den Skizzen der bisherigen Startseite
+    vc_reiter = "".join(f'<button type="button" class="e2-fc__reiter{" ist-aktiv" if i == 0 else ""}" data-e2-reiter="fc{i}" style="--e2-akzent:{d["akz"]}">{d["titel"]}</button>' for i, d in enumerate(fo_daten))
+    vc_tafeln = "".join(f'''<div class="e2-fc__tafel{" ist-aktiv" if i == 0 else ""}" id="fc{i}" style="--e2-akzent:{d['akz']}"><div class="e2-fc__text"><h3>{d['titel']}</h3>{"".join(f"<p>{p}</p>" for p in d['ps'][:1])}
+<a class="e2-knopf" href="{d['href']}">{d['knopf']} {PFEIL}</a></div>
+<div class="e2-fc__karten">{"".join(f'<a class="e2-fc__karte" href="{u["href"]}"><div class="e2-fc__skizze">{u["skizze"]}</div><b>{u["titel"]}</b><small>{u["text"]}</small></a>' for u in d['unter'])}</div></div>''' for i, d in enumerate(fo_daten))
+    m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">{band("A", "wie die Leistungs-Karten: weißer Kopf, farbige Mitte mit Symbol, weißer Fuß")}
+  {fo_kopf}<div class="e2-formate-a">{va}</div></div></section>
+<section class="e2-sek" id="formate-b"><div class="e2-wrap">{band("B", "drei Zeilen: links das Format, rechts die Unterformate als direkte Links")}
+  {fo_kopf}<div class="e2-formate-b">{vb}</div></div></section>
+<section class="e2-sek e2-sek--hell" id="formate-c"><div class="e2-wrap">{band("C", "Reiter: ein Format zur Zeit, mit den Skizzen der bisherigen Startseite")}
+  {fo_kopf}<div class="e2-formate-c"><div class="e2-fc__leiste">{vc_reiter}</div>{vc_tafeln}</div></div></section>''')
     m.append(f'''<section class="e2-sek e2-sek--schwarz" id="arbeitsweise"><div class="e2-wrap">
   <h2 class="e2-h2" style="max-width:none">{st_h2}</h2>
   <div class="e2-zahlen">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b><span>{l}</span></div>' for z, l in zahlen)}</div>
 </div></section>''')
     m.append(kontakt_start(abschnitt(h, 'id="kontakt"')))
-    m.append(DIALOG_JS)
+    m.append(REITER_JS)
     return seite("index.html", "\n".join(m))
 
 

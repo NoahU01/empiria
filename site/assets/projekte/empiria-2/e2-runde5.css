@@ -205,3 +205,79 @@
 .e2 h1 { line-height: 1.22 !important; }
 .e2-alt .pdf-dl-h { line-height: 1.22 !important; }
 .e2 h1 .hl, .e2-alt h1 .hl, .e2-alt--magenta h1 .hl, .e2-dl-hl { --hl-t: .15em; padding-bottom: .07em !important; white-space: nowrap; }
+
+/* ================= Runde 6 (Daniel, 10.10.2026) ================= */
+/* Grundregel: Symbole nur in der Akzentfarbe – keine farbige Fläche, kein Rahmen dahinter. */
+.e2-var-band { display: inline-flex; gap: .6rem; align-items: center; margin: 0 0 2rem !important; padding: .45rem .9rem; border-radius: 999px; background: #1a1817; color: #fff; font-size: .82rem; }
+.e2-var-band b { color: #fff400; }
+.e2-formate-a i svg, .e2-formate-b i svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: var(--e2-akzent); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; display: block; }
+
+/* Variante A: Leistungs-Karten */
+.e2-formate-a { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr auto; column-gap: 1.4rem; margin-top: 3.2rem; }
+.e2-fa { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; border-radius: var(--e2-r); background: #fff; border: 1px solid var(--e2-linie); overflow: hidden; }
+.e2-fa__mitte { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 12rem; padding: 1.6rem; background: var(--e2-akzent); color: #fff; }
+.e2-fa__mitte h3 { font-size: clamp(1.6rem, 2.2vw, 2rem); color: #fff; }
+.e2-fa__sym { position: absolute; right: 1.4rem; top: 1.4rem; width: 3.4rem; height: 3.4rem; }
+.e2-fa__sym svg { width: 100%; height: 100%; fill: none; stroke: #fff; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.e2-fa__satz { padding: 1.3rem 1.4rem 0; font-size: .98rem; line-height: 1.55; color: var(--e2-ink-2); }
+.e2-fa__liste { list-style: none; margin: 1rem 1.4rem 0; padding: 0; align-self: start; }
+.e2-fa__liste a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .7rem 0; border-top: 1px solid var(--e2-linie); color: var(--e2-ink); font-weight: 600; font-size: .95rem; text-decoration: none; }
+.e2-fa__liste li:last-child a { border-bottom: 1px solid var(--e2-linie); }
+.e2-fa__liste .e2-pfeil { color: var(--e2-grau); transition: transform .15s; }
+.e2-fa__liste a:hover .e2-pfeil { transform: translateX(3px); color: var(--e2-akzent); }
+.e2-fa__fuss { padding: 1.6rem 1.4rem 1.5rem; }
+.e2-fa__fuss .e2-knopf { padding: .7rem 1.15rem; font-size: .92rem; }
+
+/* Variante B: Zeilen */
+.e2-formate-b { display: grid; gap: 1.2rem; margin-top: 3.2rem; }
+.e2-fb { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.4rem; padding: 2rem 2.2rem; border-radius: var(--e2-r); background: #fff; border: 1px solid var(--e2-linie); }
+.e2-fb__strich { display: block; width: 2.6rem; height: 5px; border-radius: 3px; margin-bottom: 1rem; background: var(--e2-akzent); }
+.e2-fb__links h3 { font-size: 1.9rem; }
+.e2-fb__links p { margin: .8rem 0 1.4rem !important; font-size: 1rem; line-height: 1.55; color: var(--e2-ink-2); }
+.e2-fb__links .e2-knopf { padding: .7rem 1.15rem; font-size: .92rem; }
+.e2-fb__felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--e2-linie); border-left: 1px solid var(--e2-linie); align-self: start; }
+.e2-fb__feld { position: relative; display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); column-gap: .7rem; padding: 1rem 2.4rem 1rem 1rem; border-right: 1px solid var(--e2-linie); border-bottom: 1px solid var(--e2-linie); color: var(--e2-ink); text-decoration: none; }
+.e2-fb__feld b { font-size: .95rem; }
+.e2-fb__feld small { grid-column: 2; margin-top: .2rem; font-size: .85rem; line-height: 1.4; color: var(--e2-grau); }
+.e2-fb__pfeil { position: absolute; right: .9rem; top: 1rem; color: var(--e2-grau); }
+.e2-fb__feld:hover { background: var(--e2-hell); }
+.e2-fb__feld:hover .e2-fb__pfeil { color: var(--e2-akzent); }
+
+/* Variante C: Reiter mit Skizzen */
+.e2-formate-c { margin-top: 3.2rem; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
+.e2-fc__leiste { display: flex; border-bottom: 1px solid var(--e2-linie); }
+.e2-fc__reiter { flex: 1; padding: 1.2rem 1rem; border: 0; border-bottom: 4px solid transparent; background: none; font: 600 1.05rem/1.2 var(--font-sans); color: var(--e2-grau); cursor: pointer; }
+.e2-fc__reiter.ist-aktiv { color: var(--e2-ink); border-bottom-color: var(--e2-akzent); }
+.e2-fc__tafel { display: none; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: 2.6rem; padding: 2.4rem; }
+.e2-fc__tafel.ist-aktiv { display: grid; }
+.e2-fc__text h3 { font-size: 2rem; }
+.e2-fc__text p { margin: .9rem 0 1.6rem !important; font-size: 1rem; line-height: 1.62; color: var(--e2-ink-2); }
+.e2-fc__karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; align-self: start; }
+.e2-fc__karte { display: flex; flex-direction: column; padding: 1rem; border-radius: 14px; background: var(--e2-hell); color: var(--e2-ink); text-decoration: none; transition: transform .15s; }
+.e2-fc__karte:hover { transform: translateY(-3px); }
+.e2-fc__skizze { height: 6.5rem; margin-bottom: .8rem; display: flex; align-items: center; justify-content: center; }
+.e2-fc__skizze .produkt-mock-sketch { width: 100%; height: 100%; opacity: 1 !important; transform: none !important; display: flex; align-items: center; justify-content: center; }
+.e2-fc__skizze svg { width: 100%; height: 100%; filter: invert(1) grayscale(1) contrast(1.2); }
+.e2-fc__karte b { font-size: .95rem; }
+.e2-fc__karte small { margin-top: .3rem; font-size: .84rem; line-height: 1.4; color: var(--e2-grau); }
+@media (max-width: 960px) {
+  .e2-formate-a { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 1.2rem; }
+  .e2-fa { grid-row: auto; grid-template-rows: auto; }
+  .e2-fb, .e2-fc__tafel.ist-aktiv { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  .e2-fb { padding: 1.6rem 1.3rem; }
+  .e2-fc__tafel { padding: 1.6rem 1.3rem; }
+  .e2-fc__reiter { font-size: .9rem; padding: 1rem .5rem; }
+}
+@media (max-width: 600px) { .e2-fb__felder { grid-template-columns: minmax(0, 1fr); } .e2-fa__fuss .e2-knopf, .e2-fb__links .e2-knopf { width: auto; } }
+
+/* Kontakt Startseite: wärmer – Hervorhebung, gelber Mail-Knopf, Team vor gelbem Halbkreis */
+.e2-kontakt6 .e2-h2 { line-height: 1.22 !important; max-width: 12ch !important; }
+.e2-kontakt6 .e2-kontakt5__wege .e2-pille:first-child { background: var(--e2-gelb); color: var(--e2-ink); }
+.e2-kontakt6 .e2-pille { transition: transform .15s ease, box-shadow .15s ease; }
+.e2-kontakt6 .e2-pille:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(26,24,23,.14); }
+.e2-kontakt6 .e2-kontakt5__team { position: relative; }
+.e2-kontakt6__sonne { position: absolute; left: 50%; bottom: 0; width: min(46rem, 96%); aspect-ratio: 2 / 1; transform: translateX(-50%); border-radius: 999px 999px 0 0; background: var(--e2-gelb); }
+.e2-kontakt6 .e2-kontakt5__team img { position: relative; }
+.e2-fc__skizze img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; filter: grayscale(1); }
+.e2-kontakt6 .e2-kontakt5__team { margin-top: 4rem; }
+.e2-kontakt6__sonne { width: min(36rem, 92%); }
