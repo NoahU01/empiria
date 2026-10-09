@@ -795,3 +795,4 @@ html body .e2-alt.e2-alt .e2-sp-turbo { background: var(--e2-hell) !important; }
 html body .e2-alt.e2-alt .e2-sp-turbo .e2-s2-kasten li::before { background: #fff !important; }
 .e2-sp-turbo__satz { margin-top: .8rem !important; font-weight: 600; color: #fff !important; }
 @media (max-width: 960px) { .e2-sp-wann { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .e2-sp-liste { columns: 1; } }
+@media (max-width: 600px) { .e2-sp-wann.e2-in-karten li { flex-direction: column !important; align-items: flex-start !important; padding: 1rem !important; } .e2-in-sym { flex-shrink: 0; } .e2-sp-wann b { font-size: 1.05rem !important; } }
