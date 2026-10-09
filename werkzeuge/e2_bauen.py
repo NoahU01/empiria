@@ -14,7 +14,7 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "site"
 ZIEL = SITE / "projekte" / "empiria-2"
-CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">'
+CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-seiten.css">'
 
 # Originalseite -> Seite im Entwurf; Links darauf werden im Entwurf auf die 2.0-Fassung umgebogen
 SEITEN = {
@@ -97,6 +97,62 @@ def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf"):
     return links_umbiegen(absolut(kopf, original)) + "<main>\n" + links_umbiegen(main) + "\n</main>" + links_umbiegen(absolut(fuss, original))
 
 
+
+# ---------- Bausteine, die auf mehreren Seiten vorkommen ----------
+def kontakt(ko):
+    ko_kicker = eins(r'<p class="kicker">(.*?)</p>', ko)
+    ko_h2 = ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", ko))
+    ko_lead = eins(r'<p class="lead">(.*?)</p>', ko)
+    ko_notiz = eins(r'<p class="kontakt-standalone-note">(.*?)</p>', ko)
+    wege = alle(r'<a class="ks-pill[^"]*" href="([^"]+)"([^>]*)>\s*<span class="ks-pill-icon">(.*?)</span>\s*(.*?)\s*</a>', ko)
+    foto = eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', '')
+    ko_logos = eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko)
+    return f'''<section class="e2-sek" id="kontakt"><div class="e2-wrap">
+  <div class="e2-kontakt">
+    <div><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p><p class="e2-kontakt__notiz">{ko_notiz}</p></div>
+    <div><ul class="e2-wege">{''.join(f'<li><a href="{hr}"{rest}><i>{ico}</i><span>{txt}</span>{PFEIL}</a></li>' for hr, rest, ico, txt in wege)}</ul><div class="e2-ks-logos">{ko_logos}</div></div>
+  </div>
+  <div class="e2-foto">{foto}</div>
+</div></section>'''
+
+
+FARBEN = ["gelb", "schwarz", "hell"]
+
+
+def weitere(se):
+    """„Weitere Leistungen“: die Kacheln als Karten mit weißem Kopf, farbiger Mitte, weißem Fuß."""
+    kicker = eins(r'<p class="kicker">(.*?)</p>', se)
+    h2 = ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", se))
+    kacheln = alle(r'<a class="related-leistung" href="([^"]+)">\s*<div class="related-leistung-face">\s*<div class="icon">(.*?)</div>\s*<h3>(.*?)</h3>\s*</div>\s*<div class="related-leistung-hover">\s*<p>(.*?)</p>\s*<span class="link-more">(.*?)</span>', se)
+    karten = "".join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><img src="/assets/empiria-logo.svg" alt="empiria"></div><div class="e2-karte__bild e2-karte__bild--{FARBEN[i % 3]}"><div class="e2-karte__ico e2-karte__ico--einfach">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{p}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (hr, ico, t, p, mehr) in enumerate(kacheln))
+    return f'''<section class="e2-sek e2-sek--hell" id="weitere-leistungen"><div class="e2-wrap">
+  <p class="e2-kicker">{kicker}</p><h2 class="e2-h2">{h2}</h2>
+  <div class="e2-karten">{karten}</div>
+</div></section>'''
+
+
+def ohne_hl_ausser_h1(html):
+    """Hervorhebungen nur im Kopfbereich (h1); in allen späteren Überschriften und Sätzen weg."""
+    teile = re.split(r"(<h1\b.*?</h1>)", html, flags=re.S)
+    return "".join(t if t.startswith("<h1") else re.sub(r'<span class="(?:hl|hl-acc)(?: [^"]*)?">(.*?)</span>', r"\1", t, flags=re.S) for t in teile)
+
+
+def unterseite(original, ziel):
+    """Unterseiten: Originalinhalt bleibt vollständig erhalten, die Gestaltung übersetzt e2-seiten.css.
+    Ersetzt werden nur Kontakt und „Weitere Leistungen“ durch die e2-Bausteine (gleicher Text)."""
+    h = (SITE / original).read_text(encoding="utf-8")
+    main = h[h.index("<main"):h.index("</main>")]
+    main = main[main.index(">") + 1:]
+    if 'id="kontakt"' in main:
+        k = abschnitt(main, 'id="kontakt"'); main = main.replace(k, kontakt(k))
+    if 'id="weitere-leistungen"' in main:
+        w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, weitere(w))
+    main = ohne_hl_ausser_h1(main)
+    # Zusammenarbeit/Formate: Akkordeons offen als Kartenreihe, damit alles auf einen Blick lesbar ist
+    main = re.sub(r'<details class="formate-acc-item([^"]*)"([^>]*)>', lambda m: '<details class="formate-acc-item' + m.group(1) + '"' + re.sub(r'\s*name="[^"]*"', '', m.group(2)) + ' open>', main)
+    return seite(original, f'<div class="e2-alt">{main}</div>')
+
+
 # ---------- Startseite ----------
 def startseite():
     h = (SITE / "index.html").read_text(encoding="utf-8")
@@ -139,15 +195,6 @@ def startseite():
     st_h2 = re.sub(r"<[^>]+>", "", eins(r"<h2[^>]*>(.*?)</h2>", st))
     zahlen = alle(r'<div class="num">(.*?)</div><div class="lbl">(.*?)</div>', st)
 
-    ko = abschnitt(h, 'id="kontakt"')
-    ko_kicker = eins(r'<p class="kicker">(.*?)</p>', ko)
-    ko_h2 = ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", ko))
-    ko_lead = eins(r'<p class="lead">(.*?)</p>', ko)
-    ko_notiz = eins(r'<p class="kontakt-standalone-note">(.*?)</p>', ko)
-    wege = alle(r'<a class="ks-pill[^"]*" href="([^"]+)"([^>]*)>\s*<span class="ks-pill-icon">(.*?)</span>\s*(.*?)\s*</a>', ko)
-    foto = eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', '')
-    ko_logos = eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko)
-
     AKZENT = {"magenta": "#C51F5D", "cyan": "#0B9FBD", "gruen": "#6e9a2c", "green": "#6e9a2c", "olive": "#8a9a3a"}
     farben = ["gelb", "schwarz", "hell"]
 
@@ -189,20 +236,17 @@ def startseite():
   <h2 class="e2-h2" style="max-width:none">{st_h2}</h2>
   <div class="e2-zahlen">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b><span>{l}</span></div>' for z, l in zahlen)}</div>
 </div></section>''')
-    m.append(f'''<section class="e2-sek" id="kontakt"><div class="e2-wrap">
-  <div class="e2-kontakt">
-    <div><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p><p class="e2-kontakt__notiz">{ko_notiz}</p></div>
-    <div><ul class="e2-wege">{''.join(f'<li><a href="{hr}"{rest}><i>{ico}</i><span>{txt}</span>{PFEIL}</a></li>' for hr, rest, ico, txt in wege)}</ul><div class="e2-ks-logos">{ko_logos}</div></div>
-  </div>
-  <div class="e2-foto">{foto}</div>
-</div></section>''')
+    m.append(kontakt(abschnitt(h, 'id="kontakt"')))
     return seite("index.html", "\n".join(m))
 
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
     (ZIEL / "index.html").write_text(startseite(), encoding="utf-8")
-    print("gebaut: index.html")
+    for orig, ziel in SEITEN.items():
+        if orig != "index.html":
+            (ZIEL / ziel).write_text(unterseite(orig, ziel), encoding="utf-8")
+    print("gebaut:", ", ".join(SEITEN.values()))
 
 
 if __name__ == "__main__":
