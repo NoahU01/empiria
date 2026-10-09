@@ -276,6 +276,7 @@ document.addEventListener("click", function (e) {
   if (ziel && bild) { ziel.replaceWith(bild.cloneNode(true)); }
   document.querySelectorAll(".hv-zelle.ist-aktiv").forEach(function (x) { x.classList.remove("ist-aktiv"); });
   z.classList.add("ist-aktiv");
+  var v = document.querySelector(".hv-vorschau"); if (v.getBoundingClientRect().bottom < 0 || v.getBoundingClientRect().top > innerHeight) v.scrollIntoView({ behavior: "smooth" });
   document.querySelector(".hv-vorschau-label").textContent = "Vorschau im Kopf: " + z.getAttribute("data-name");
 });
 </script>"""
@@ -467,7 +468,7 @@ CSS4 = """<style>
 .hv-zelle figcaption small { display: block; margin-top: .2rem; font-weight: 500; font-size: .76rem; line-height: 1.4; color: #8a847c; }
 .hv-ok { display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem; margin-left: .35rem; border-radius: 50%; background: #1f8a4c; color: #fff; font-size: .7rem; vertical-align: 1px; }
 .hv-bild { display: block; width: 100%; height: auto; }
-.hv-vorschau { position: sticky; top: 72px; z-index: 5; background: #fff; border-bottom: 1px solid #e3dfd8; }
+.hv-vorschau { background: #fff; border-bottom: 1px solid #e3dfd8; scroll-margin-top: 80px; }
 .hv-vorschau .e2-kopf { padding: 1.4rem 0 1.2rem !important; }
 .hv-vorschau .e2-kopf h1 { font-size: clamp(1.8rem, 3vw, 2.6rem) !important; }
 .hv-vorschau .e2-kopf__inhalt, .hv-vorschau .hero-anlaesse { display: none !important; }
@@ -501,12 +502,12 @@ def main():
 <p>Wichtig ist die Trennung: Eine <b>Darstellungsart</b> ist die Bildsprache (Linie, Farbfläche, Druck, Karten, Foto …) und gilt für alle Seiten.
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
-<div class="hv-vorschau"><div class="e2-wrap"><p class="hv-vorschau-label">Vorschau im Kopf (Klick auf ein Feld): 2 · Linie + Farbfläche</p></div>{vorschau}</div>
+<div class="hv-vorschau"><div class="e2-wrap"><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 2 · Linie + Farbfläche</p></div>{vorschau}</div>
 <section><div class="e2-wrap"><h2 class="hv-h2">Alle Darstellungsarten</h2><p>Alle zeigen hier das Motiv „Sprint Landingpage“. 1–8 sind als Stil gebaut und tragen jedes Thema; 9–17 sind nur für Sprint gezeichnet und zur Entscheidung stehen geblieben.</p>
 <div class="hv-raster">{zellen}</div>
 <h2 class="hv-h2">Probe: ein Stil, vier Themen</h2><p>Je ein Thema aus jedem Bereich der Live-Seite, jeweils in seiner Farbwelt: Strategiehandwerk (Gelb), Workshops (Magenta), Marketing 2.0 (Cyan), Training &amp; Sparring (Violett).</p>
 <div class="hv-probe">{probe}</div><div style="height:5rem"></div></div></section>'''
-    js = JS.replace('".hv-vorschau-label").textContent = "Vorschau im Kopf: "', '".hv-vorschau-label").textContent = "Vorschau im Kopf (Klick auf ein Feld): "')
+    js = JS.replace('".hv-vorschau-label").textContent = "Vorschau im Kopf: "', '".hv-vorschau-label").textContent = "Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: "')
     seite = h[:a] + "<main>\n" + CSS4 + '<div class="e2-alt e2-alt--magenta e2-seite--sprint-landingpage">' + inhalt + "</div>" + js + "\n</main>" + h[b:]
     seite = re.sub(r"<title>.*?</title>", "<title>Header-Varianten · Darstellungsarten · Entwicklung</title>", seite, count=1, flags=re.S)
     ZIEL.write_text(seite, encoding="utf-8")
