@@ -390,7 +390,7 @@ CSS4 = """<style>
 @media (max-width: 900px) { .hv-va { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 .hv-fs { grid-template-columns: 10rem repeat(4, minmax(240px, 1fr)) !important; min-width: 1120px !important; }
 .hv-st-scroll { overflow-x: auto; margin: 0 2rem; -webkit-overflow-scrolling: touch; }
-.hv-st-raster { display: grid; grid-template-columns: 10rem repeat(3, minmax(240px, 1fr)); min-width: 880px; border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
+.hv-st-raster { display: grid; grid-template-columns: 10rem repeat(2, minmax(260px, 1fr)); min-width: 680px; border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
 .hv-st-raster > div { padding: .6rem; border-right: 1px solid #e3dfd8; border-bottom: 1px solid #e3dfd8; background: #fff; }
 .hv-st-kopf { position: sticky; top: 0; z-index: 2; background: #f4f3f0 !important; }
 .hv-st-kopf b { display: block; font-family: var(--font-serif); font-size: 1rem; }
@@ -451,12 +451,9 @@ def varianten3():
         zellen += '<p class="hv-va-gruppe">Strichstärke &amp; Fläche</p>'
         for mo, name in (("mono_fein", "Mono fein"), ("mono_kraeftig", "Mono kräftig"), ("duo_flaeche", "Duo mit Kreis"), ("duo_kachel", "Duo mit Kachel")):
             zelle(va.a_trio(sz, mo), name + " · Trio")
-        zellen += '<p class="hv-va-gruppe">Isometrisch 3D</p>'
-        for f, name in va.ISO:
-            zelle(f(sz), name)
         out += (f'<h3 class="hv-va-titel"><i style="background:{punkt[sz["welt"]]}"></i>{sz["titel"]}</h3><div class="hv-raster hv-va">{zellen}</div>')
     return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Drei Szenen – viele Varianten</h2>
-<p>Medien, KI zum Anfassen und Sprint Landingpage in den drei Hauptrichtungen <b>Mono</b>, <b>Duo</b> und <b>Isometrisch 3D</b>. Bei Mono und Duo wechselt der Aufbau (ein Icon, Trio, Prozess, Raster, Rahmen, Kreis, Typo, beschriftet, gestapelt, auf einer Linie). Nenne mir einfach die Nummern, die Dir gefallen.</p>
+<p>Medien, KI zum Anfassen und Sprint Landingpage in den beiden Hauptrichtungen <b>Mono</b> und <b>Duo</b>. Bei Mono und Duo wechselt der Aufbau (ein Icon, Trio, Prozess, Raster, Rahmen, Kreis, Typo, beschriftet, gestapelt, auf einer Linie). Nenne mir einfach die Nummern, die Dir gefallen.</p>
 {out}</div></section>'''
 
 
@@ -499,7 +496,7 @@ def stufen_raster():
                    + "".join(f'<div class="hv-st-bild">{farbig(f(m), welt, "sp" + str(z) + "x" + str(k))}</div>' for k, (_, f) in enumerate(sp.STILE)))
     return f'''<section class="hv-st"><div class="e2-wrap hv-st-wrap"><h2 class="hv-h2">Spot-Illustration je Seite – in allen Darstellungsarten</h2>
 <p>Jede Zeile ist eine Seite der Live-Homepage mit ihrem Motiv als <b>Spot-Illustration</b> (ein Ausschnitt mit zwei bis vier Dingen, ohne Farbkreis dahinter).
-Jede Spalte zeichnet dasselbe Motiv in einer der verbliebenen Darstellungsarten (Monolinie, Duoton, Isometrisch 3D) – so siehst Du, welche Art über alle Themen trägt. Farbe je Bereich.</p></div>
+Jede Spalte zeichnet dasselbe Motiv in einer der verbliebenen Darstellungsarten (Monolinie, Duoton) – so siehst Du, welche Art über alle Themen trägt. Farbe je Bereich.</p></div>
 <div class="hv-st-scroll"><div class="hv-st-raster">{kopf}{zeilen}</div></div></section>'''
 
 

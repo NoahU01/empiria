@@ -436,7 +436,7 @@ def r_iso3d(m):
     return bild(_platte() + "".join(o for _, o in sorted(stuecke, key=lambda v: v[0])), "Isometrisch 3D")
 
 
-STILE = [("Monolinie", r_mono), ("Duoton", r_duo), ("Isometrisch 3D", r_iso3d)]
+STILE = [("Monolinie", r_mono), ("Duoton", r_duo)]
 
 # Seiten (Zeilen) – Titel, Bereich, Farbwelt, Motiv
 SEITEN = [
