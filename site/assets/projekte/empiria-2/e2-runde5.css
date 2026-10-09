@@ -782,3 +782,16 @@ html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual { justify-self: end;
 html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual .pa-ads { opacity: 1 !important; transform: none !important; }
 html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-rot { color: inherit; }
 @media (max-width: 960px) { html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual { order: 2; justify-self: stretch; width: 100%; } }
+/* 1:1 Sparring: Themen + Umsetzungsturbo */
+html body .e2-alt.e2-alt .e2-sp-themen { background: #fff !important; }
+.e2-sp-wann { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; margin-top: 0 !important; }
+html body .e2-alt.e2-alt .e2-sp-sym { background: var(--bf) !important; }
+.e2-sp-liste { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 3rem; }
+.e2-sp-liste li { break-inside: avoid; padding: .85rem 0; border-bottom: 1px solid var(--e2-linie); font-size: 1rem; color: var(--e2-ink); }
+.e2-sp-mehr { color: var(--e2-grau) !important; font-style: italic; }
+html body .e2-alt.e2-alt .e2-sp-turbo { background: var(--e2-hell) !important; }
+.e2-sp-turbo .e2-s2-split { align-items: center; }
+.e2-sp-turbo .e2-s2-kasten ul { margin-top: 0 !important; }
+html body .e2-alt.e2-alt .e2-sp-turbo .e2-s2-kasten li::before { background: #fff !important; }
+.e2-sp-turbo__satz { margin-top: .8rem !important; font-weight: 600; color: #fff !important; }
+@media (max-width: 960px) { .e2-sp-wann { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .e2-sp-liste { columns: 1; } }

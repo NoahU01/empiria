@@ -143,6 +143,37 @@ def loesung_teams(sek):
 </div></section>'''
 
 
+# ---------- 1:1 Sparring: Themen und Umsetzungsturbo im Volksfest-Aufbau (Runde 30) ----------
+def sparring_themen(sek):
+    from e2_lucide import ICONS
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    wann = re.findall(r'<div class="tc-row[^"]*">.*?<span>(.*?)</span>', sek, re.S)
+    worueber = re.findall(r'<li class="reveal"><svg.*?</svg><span>(.*?)</span></li>', sek, re.S)
+    sym = ["users", "map-pin", "phone", "message-circle"]
+    def ic(n):
+        n = n if n in ICONS else "message-circle"
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    karten = "".join(f'<li><span class="e2-in-sym e2-sp-sym">{ic(sym[i])}</span><b>{t}</b></li>' for i, t in enumerate(wann))
+    liste = "".join(f"<li>{t}</li>" for t in worueber)
+    return f'''<section class="produkt-section e2-sp-themen"><div class="container">
+  <div class="e2-s2-split e2-in-oben"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <p class="e2-in-label" style="margin-top:3.6rem!important">Wann wir sprechen</p><ul class="e2-in-karten e2-sp-wann">{karten}</ul>
+  <p class="e2-in-label" style="margin-top:3.6rem!important">Worüber wir sprechen</p><ul class="e2-sp-liste">{liste}<li class="e2-sp-mehr">… und vieles mehr</li></ul>
+</div></section>'''
+
+
+def sparring_turbo(sek):
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    ps = re.findall(r"<p>(.*?)</p>", sek, re.S)
+    lis = re.findall(r"<li><svg.*?</svg><span>(.*?)</span></li>", sek, re.S)
+    return f'''<section class="produkt-section e2-sp-turbo"><div class="container"><div class="e2-s2-split">
+  <div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2><p class="lead">{ps[0]}</p></div>
+  <div class="e2-s2-kasten"><ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul>
+    <p class="e2-s2-kasten__label">{ps[1]}</p><p class="e2-sp-turbo__satz">{ps[2] if len(ps) > 2 else ""}</p></div>
+</div></div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""

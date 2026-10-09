@@ -423,6 +423,9 @@ def unterseite(original, ziel, html=None):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
     if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
         sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
+    if name == "sparring":
+        sek = abschnitt(main, 'topics-compare'); main = main.replace(sek, e2_runde5.sparring_themen(sek))
+        sek = abschnitt(main, 'usp-turbo-section'); main = main.replace(sek, e2_runde5.sparring_turbo(sek))
     if name == "innovation":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_inno(sek))
         sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_inno(sek))
