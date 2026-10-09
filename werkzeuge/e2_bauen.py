@@ -527,8 +527,7 @@ def startseite():
     # dann die Kästen, darunter das Ergebnis mit dem Kontakt-Knopf. Kein Pop-up-Link mehr.
     loesung_hell = f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
   <p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2 e2v-loesung3__h">{lo_h2.strip()} {lo_h2_2}</h2>
-  <div class="e2v-zwei e2v-loesung3__kopf"><p class="e2-lead e2v-loesung3__lead">{le_lead.replace("sondern Handwerk", "<b>sondern Handwerk</b>")}</p>
-    <p class="e2v-loesung3__ergebnis"><span>Das Ergebnis</span>Du steuerst Deine Themen, statt auf Überraschungen zu reagieren – Deine Themen kommen voran.</p></div>
+  <p class="e2-lead e2v-loesung3__lead">{le_lead.replace("sondern Handwerk", "<b>sondern Handwerk</b>")} Du steuerst Deine Themen, statt auf Überraschungen zu reagieren – Deine Themen kommen voran.</p>
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
   <div class="e2-knoepfe e2v-loesung3__knopf"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>'''
