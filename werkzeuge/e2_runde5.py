@@ -214,6 +214,34 @@ def preis_sprint(sek):
 </div></div></section>'''
 
 
+# ---------- Pakete als saubere Karten (Runde 34) ----------
+def pakete(sek):
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    karten = ""
+    for m in re.finditer(r'<div class="produkt-glass price-card([^"]*)"', sek):
+        block = div_block(sek, m.start())
+        top = "price-card--featured" in m.group(1)
+        badge = re.search(r'<span class="price-badge">(.*?)</span>', block)
+        titel = _eins(r"<h3>(.*?)</h3>", block)
+        desc = _eins(r'<p class="price-desc[^"]*">(.*?)</p>', block)
+        betrag = _eins(r'<span class="price-amount">(.*?)</span>', block)
+        einheit = re.search(r'<span class="price-unit">(.*?)</span>', block).group(1).strip()
+        lis = re.findall(r"<li>(.*?)</li>", block, re.S)
+        ideal = re.sub(r"<br\s*/?>", " ", _eins(r'<p class="price-ideal">(.*?)</p>', block)) if "price-ideal" in block else ""
+        knopf = re.search(r'(<button type="button" class="btn[^"]*price-more-btn"[^>]*>.*?</button>)', block, re.S)
+        knopf = knopf.group(1).replace('class="btn btn--outline btn--sm price-more-btn"', 'class="e2-paket__mehr"') if knopf else ""
+        karten += (f'<article class="e2-paket{" e2-paket--top" if top else ""}">'
+                   f'<p class="e2-paket__badge">{badge.group(1) if badge else "&nbsp;"}</p><h3>{titel}</h3>'
+                   f'<p class="e2-paket__preis">{betrag}<small>{einheit}</small></p><p class="e2-paket__desc">{desc}</p>'
+                   f'<ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul><p class="e2-paket__ideal">{ideal}</p>{knopf}</article>')
+    fuss = re.search(r'<p class="pricing-footnote[^"]*">(.*?)</p>', sek, re.S)
+    return f'''<section class="produkt-grid e2-pakete" id="pakete"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <div class="e2-pakete__raster">{karten}</div>{f'<p class="e2-preis__fuss">{fuss.group(1)}</p>' if fuss else ""}
+</div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""

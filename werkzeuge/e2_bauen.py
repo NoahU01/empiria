@@ -430,6 +430,14 @@ def unterseite(original, ziel, html=None):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
     if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
         sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
+    if name == "dashboard-digitales-marketing":
+        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.pakete(sek))
+        main = main.replace('<span class="media-box-title">MES</span>', '<span class="media-box-title">MarketingEcoSystem (MES)</span>')
+        from e2_lucide import ICONS as LU
+        doku = f'<svg class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU["clipboard-list"]}</svg>'
+        main = re.sub(r'(data-modal-target="jobProfileModal"[^>]*>\s*<div class="media-box-thumb">).*?(</div>\s*</button>)', lambda m: m.group(1) + doku + m.group(2), main, count=1, flags=re.S)
+        main = main.replace('<svg viewBox="0 0 800 820" xmlns', '<svg viewBox="40 55 730 700" xmlns', 1)
+        main = re.sub(r"Du konzentrierst Dich nicht auf Marketing,\s*sondern auf", "Du konzentrierst Dich auf", main, count=1)
     if name == "sprint-landingpage":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurz=True))
         sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))

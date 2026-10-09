@@ -866,3 +866,45 @@ html body .e2-alt.e2-alt.e2-seite--marketing .media-box .sprint-structure-cta::a
 @media (max-width: 1000px) { html body .e2-alt.e2-alt.e2-seite--marketing .media-boxes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 @media (max-width: 600px) { html body .e2-alt.e2-alt.e2-seite--marketing .media-boxes-grid { grid-template-columns: minmax(0, 1fr) !important; } }
 html body .e2-alt.e2-alt.e2-seite--marketing .e2-wk-thumb { height: 11rem !important; padding: .4rem .8rem !important; }
+
+/* Runde 34 · MES: Vorschau-Karten, Erklär-Knöpfe, Pakete, Download-Titel */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-text p + p { margin-top: 1.1rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .mes-explainer-buttons { gap: .5rem !important; margin-top: 1.6rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .mes-explainer-buttons .btn { font-size: .8rem !important; padding: .45rem .95rem !important; min-height: 0 !important; border-width: 1.5px !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box { background: var(--bf) !important; border: 0 !important; border-radius: 22px !important; overflow: hidden; display: flex !important; flex-direction: column; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb-btn { background: transparent !important; border: 0 !important; padding: 0 !important; width: 100%; cursor: pointer; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb { background: transparent !important; height: auto !important; aspect-ratio: 1.25; display: grid !important; place-items: center; padding: 1.6rem 1.6rem .4rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb svg { width: 100% !important; height: 100% !important; max-width: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb svg.e2-doku-ico { width: 9rem !important; height: 9rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer { background: transparent !important; border: 0 !important; padding: 0 1.75rem 1.75rem !important; display: flex !important; flex-direction: column; align-items: stretch; gap: 1rem; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-title { color: #fff !important; font-family: var(--font-serif) !important; font-weight: 700 !important; font-size: 1.45rem !important; line-height: 1.2 !important; letter-spacing: -.01em; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .btn { background: #1a1817 !important; color: #fff !important; border-color: #1a1817 !important; width: 100%; justify-content: center; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-grid { align-items: center !important; }
+
+.e2-pakete__raster { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, auto); column-gap: 1.25rem; margin-top: 2.6rem; }
+.e2-paket { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 0; background: #fff; border: 1.5px solid #e4e0db; border-radius: 22px; padding: 1.9rem 1.75rem 1.75rem; }
+.e2-paket--top { background: #1a1817; border-color: #1a1817; color: #fff; }
+.e2-paket__badge { margin: 0 0 .9rem !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bf-text, var(--bf)) !important; min-height: 1em; }
+.e2-paket--top .e2-paket__badge { color: var(--bf) !important; }
+.e2-paket h3 { margin: 0 !important; font-family: var(--font-serif); font-weight: 700; font-size: 1.55rem !important; line-height: 1.15; color: inherit !important; }
+.e2-paket__preis { margin: .55rem 0 0 !important; font-size: 1.15rem !important; font-weight: 600; color: inherit !important; }
+.e2-paket__preis small { font-size: .78rem; font-weight: 400; margin-left: .25rem; opacity: .7; }
+.e2-paket__desc { margin: 1.1rem 0 0 !important; font-size: .95rem !important; line-height: 1.6 !important; color: inherit !important; opacity: .85; }
+.e2-paket ul { list-style: none; margin: 1.2rem 0 0 !important; padding: 1.2rem 0 0 !important; border-top: 1px solid #e4e0db; display: grid; gap: .55rem; align-content: start; }
+.e2-paket--top ul { border-top-color: rgba(255,255,255,.18); }
+.e2-paket li { position: relative; padding-left: 1.6rem; font-size: .9rem; line-height: 1.5; color: inherit !important; }
+.e2-paket li::before { content: ""; position: absolute; left: 0; top: .2rem; width: 1rem; height: 1rem; background: var(--bf); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; }
+.e2-paket__ideal { margin: 1.4rem 0 0 !important; font-size: .88rem !important; line-height: 1.5 !important; font-style: italic; opacity: .75; color: inherit !important; }
+.e2-paket__mehr { margin-top: 1.4rem; justify-self: stretch; font: 600 .92rem/1 var(--font-sans, Poppins, sans-serif); padding: .95rem 1.2rem; border-radius: 999px; border: 0; cursor: pointer; background: #1a1817; color: #fff; }
+.e2-paket--top .e2-paket__mehr { background: var(--bf); color: #1a1817; }
+.e2-pakete .e2-preis__fuss { margin-top: 1.4rem; font-size: .8rem; color: #8a847c; }
+@media (max-width: 900px) {
+  .e2-pakete__raster { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 1rem; }
+  .e2-paket { grid-row: auto; grid-template-rows: none; display: flex; flex-direction: column; }
+}
+html body .e2-alt.e2-alt.e2-seite--dashboard-digitales-marketing .pdf-dl-h { font-size: clamp(1.8rem, 3vw, 2.6rem) !important; max-width: none; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer > * { margin: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer { gap: 1.1rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer > * { padding-left: 0 !important; padding-right: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer > .btn { padding: .95rem 1.2rem !important; }
+@media (max-width: 900px) { .e2-paket:not(.e2-paket--top) .e2-paket__badge { display: none; } }
