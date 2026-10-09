@@ -776,3 +776,9 @@ html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .price-card--featur
 html body .e2-alt.e2-alt .e2-schritte--3 .e2-schritt__sym { background: var(--bf, #1a1817); }
 html body .e2-alt.e2-alt.e2-alt--gelb .e2-schritte--3 .e2-schritt__sym svg { stroke: #1a1817 !important; }
 @media (max-width: 960px) { .e2-phasen { grid-template-columns: repeat(2, minmax(0, 1fr)); } .e2-phasen li:nth-child(2)::after { display: none; } .e2-schritte--3 { grid-template-columns: minmax(0, 1fr) !important; } }
+/* Paid Ads: Überschrift kleiner (drei Zeilen), rotierende Anzeigen rechts */
+html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf h1 { font-size: clamp(2.2rem, 3.7vw, 3.3rem) !important; }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual { justify-self: end; width: min(100%, 30rem); }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual .pa-ads { opacity: 1 !important; transform: none !important; }
+html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-rot { color: inherit; }
+@media (max-width: 960px) { html body .e2-alt.e2-alt.e2-seite--paid-ads .e2-kopf-visual { order: 2; justify-self: stretch; width: 100%; } }

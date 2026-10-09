@@ -271,6 +271,17 @@ def kopf_kuerzen(inhalt, max_zeichen=230):
     return out
 
 
+def kopf_visual(held):
+    """Paid Ads: die rotierenden Anzeigen aus dem Original bleiben im Kopf (Daniel)."""
+    a = held.index('<div class="produkt-hero-visual">')
+    tiefe, i = 0, a
+    for m in re.finditer(r"<div\b|</div>", held[a:]):
+        tiefe += 1 if m.group(0) == "<div" else -1
+        if tiefe == 0:
+            return held[a:a + m.end()].replace('class="produkt-hero-visual"', 'class="produkt-hero-visual e2-kopf-visual"')
+    return ""
+
+
 def kopf_neu(held, name):
     """Kopfbereich der Unterseiten wie bei den Wagenpaten: links Kicker, Überschrift, Text, Chips, Knopf – rechts das Kopfbild."""
     kicker = re.search(r'<p class="kicker"[^>]*>(.*?)</p>', held, re.S)
@@ -298,7 +309,7 @@ def kopf_neu(held, name):
   <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
     <div class="e2-kopf__inhalt">{inhalt}</div>
     <div class="e2-knoepfe">{"".join(f'<a class="e2-knopf" href="{hr}">{tx} {PFEIL}</a>' for hr, tx in knoepfe)}</div></div>
-  {kopfbild(name, chips)}
+  {kopf_visual(held) if name == "paid-ads" else kopfbild(name, chips)}
 </div></section>'''
 
 
