@@ -197,3 +197,11 @@
 .e2 h1 { line-height: 1.18 !important; }
 .e2-alt .pdf-dl-h { line-height: 1.18 !important; }
 .e2 h1 .hl, .e2-alt h1 .hl, .e2-alt--magenta h1 .hl, .e2-dl-hl { --hl-t: .22em; padding-bottom: .03em !important; }
+
+/* ---------- Runde 5c: Kasten mit Luft, dafür nie über zwei Zeilen ----------
+   Ein Kasten mit Luft (oben ~.1em über den Oberlängen, unten ~.07em unter dem g) ist ~1.2em hoch.
+   Zwei solche Kästen in Folgezeilen bräuchten ~1.35 Zeilenabstand – zu luftig für den Rest.
+   Lösung: die Hervorhebung bleibt immer in einer Zeile (nowrap), dann reicht 1.22. */
+.e2 h1 { line-height: 1.22 !important; }
+.e2-alt .pdf-dl-h { line-height: 1.22 !important; }
+.e2 h1 .hl, .e2-alt h1 .hl, .e2-alt--magenta h1 .hl, .e2-dl-hl { --hl-t: .15em; padding-bottom: .07em !important; white-space: nowrap; }
