@@ -405,25 +405,32 @@ def startseite():
     m.append(f'''<section class="e2v-held" id="hero"><div class="e2-wrap e2v-held__raster">
   <div class="e2v-held__text-oben"><h1>{h1}</h1>
     <div class="e2v-held__text">{''.join(f'<p>{p}</p>' for p in texte)}</div></div>
-  <div class="e2v-held__pfeil"><svg viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
+  <div class="e2v-held__pfeil"><svg viewBox="2.83 31.08 226.78 170.29" aria-hidden="true" fill="#1a1817" color="#1a1817">{FORM["forward"]}</svg></div>
   <div class="e2-knoepfe e2v-held__knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a><a class="e2-knopf e2-knopf--rand" href="#kontakt">Kontakt aufnehmen</a></div>
 </div><div class="e2-wrap"><div class="e2-logos">{marquee}</div></div></section>''')
     m.append(f'''<section class="e2-sek e2-sek--gelb" id="problem"><div class="e2-wrap e2v-zwei">
   <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2><p class="e2v-text">{pr_ps[0]}</p></div>
   <div class="e2v-zitat"><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
 </div></section>''')
-    schritte_t = [x.strip() for x in st_h2.split(".") if x.strip()]
-    schritte_p = ["Wir erkennen, wo der Schmerz sitzt.", "Wir ordnen Themen in das Gesamtgefüge des Geschäftsmodells ein.", "Wir sorgen für die notwendige Veränderung."]
-    m.append(f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
-  <p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2><p class="e2-lead">{lo_p}</p>
-  <div class="e2v-schritte">{''.join(f'<div class="e2v-schritt"><span class="e2v-schritt__ico">{lu(n)}</span><span class="e2v-schritt__nr">0{i+1}</span><h3>{t}</h3><p>{pp}</p></div>' for i, (n, t, pp) in enumerate(zip(("search", "puzzle", "trending-up"), schritte_t, schritte_p)))}</div>
-  <div class="e2-knoepfe"><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a><button class="e2-knopf e2-knopf--rand link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button></div>
+    m.append(f'''<section class="e2-sek" id="loesung"><div class="e2-wrap e2v-zwei e2v-loesung">
+  <div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2><p class="e2v-text">{lo_p}</p>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a></div></div>
+  <div class="e2v-ergebnis"><p class="e2-kicker">Das Ergebnis</p>
+    <p class="e2v-ergebnis__satz">Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar. Deine Themen kommen voran.</p>
+    <p class="e2v-ergebnis__nach">Und irgendwann merkst Du, dass Dich auch die anderen längst als jemanden wahrnehmen, der seinen Verantwortungsbereich im Griff hat.</p></div>
 </div></section>''')
     themen_form = ["forward", "kreuz", "kreis"]
     m.append(f'''<section class="e2-sek e2-sek--schwarz" id="leistungen"><div class="e2-wrap">
+  <p class="e2-var-band"><b>Variante A</b> Leistungen auf Schwarz</p>
   <p class="e2-kicker">{le_kicker}</p><h2 class="e2-h2">{le_h2}</h2><p class="e2-lead">{le_lead}</p>
   <div class="e2v-nutzen">{''.join(f'<a href="{link(hr)}"><svg class="e2v-form" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#fff400" color="#fff400">{FORM[themen_form[i]]}</svg><h3>{t}</h3><p>{pp}</p><span>{mehr} {PFEIL}</span></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
   <div class="e2-knoepfe"><a class="e2-knopf e2-knopf--gelb" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
+</div></section>''')
+    m.append(f'''<section class="e2-sek" id="leistungen-b"><div class="e2-wrap">
+  <p class="e2-var-band"><b>Variante B</b> Leistungen als Kästen – oben weiß, Mitte farbig, unten weiß</p>
+  <p class="e2-kicker">{le_kicker}</p><h2 class="e2-h2">{le_h2}</h2><p class="e2-lead">{le_lead}</p>
+  <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
+  <div class="e2-unten"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>''')
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
