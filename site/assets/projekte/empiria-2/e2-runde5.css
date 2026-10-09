@@ -563,3 +563,6 @@
 .e2v-formate-band__links b, .e2v-formate-band__links span { grid-column: 2 !important; }
 .e2v-formate-band__links .e2-pfeil { grid-column: 3 !important; }
 .e2v-formate-band__links a:hover b { color: var(--e2-akzent); }
+/* Ergebnis ohne harten Strich: ruhige helle Fläche mit runden Ecken (Daniel, Runde 20) */
+.e2v-ergebnis2 { border-top: 0 !important; margin-top: 1.4rem !important; padding: 2rem 2.4rem !important; border-radius: var(--e2-r); background: var(--e2-hell); }
+@media (max-width: 760px) { .e2v-ergebnis2 { padding: 1.6rem 1.3rem !important; } }
