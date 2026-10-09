@@ -10,7 +10,10 @@ unverändert aus der jeweiligen Originalseite; nur <main> wird neu gesetzt (Gest
 """
 import posixpath
 import re
+import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+import e2_bilder
 
 SITE = Path(__file__).resolve().parent.parent / "site"
 ZIEL = SITE / "projekte" / "empiria-2"
@@ -142,11 +145,9 @@ def symbol(name, cls="e2-sym"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
 
 
-def kopfbild(name):
-    """Rechts im Kopfbereich: zwei Formen aus der empiria-Formensprache – groß in der Akzentfarbe, klein in Schwarz."""
-    gross, klein = KOMPOSITION[name]
-    return (f'<div class="e2-kopfbild e2-kopfbild--{AKZENT_SEITE[name]}" aria-hidden="true">'
-            f'{form(gross, "e2-kopfbild__gross")}{form(klein, "e2-kopfbild__klein")}</div>')
+def kopfbild(name, chips=""):
+    """Rechts im Kopfbereich: Illustration zum Thema (werkzeuge/e2_bilder.py), darunter ggf. die Anlass-Chips."""
+    return f'<div class="e2-kopfbild">{e2_bilder.BILDER[name](FORM)}{chips}</div>'
 
 
 def kopf_neu(held, name):
@@ -159,12 +160,20 @@ def kopf_neu(held, name):
         t = re.search(r'<div class="produkt-hero-text">(.*?)</div>\s*<div class="produkt-hero-visual">', held, re.S).group(1)
         inhalt = re.sub(r'<p class="kicker"[^>]*>.*?</p>|<h1[^>]*>.*?</h1>', "", t, count=2, flags=re.S)
     knoepfe = re.findall(r'<a class="btn[^"]*" href="([^"]+)">(.*?)</a>', held)
+    chips = ""
+    m = re.search(r'<div class="hero-anlaesse".*?</div>', inhalt, re.S)
+    if m:
+        chips = m.group(0); inhalt = inhalt.replace(chips, "")
     return f'''<section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
   <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
     <div class="e2-kopf__inhalt">{inhalt}</div>
     <div class="e2-knoepfe">{"".join(f'<a class="e2-knopf" href="{hr}">{tx} {PFEIL}</a>' for hr, tx in knoepfe)}</div></div>
-  {kopfbild(name)}
+  {kopfbild(name, chips)}
 </div></section>'''
+
+
+DIALOG_JS = """<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script>"""
 
 
 # ---------- Bausteine, die auf mehreren Seiten vorkommen ----------
@@ -176,13 +185,13 @@ def kontakt(ko):
     wege = alle(r'<a class="(ks-pill[^"]*)" href="([^"]+)"([^>]*)>\s*<span class="ks-pill-icon">(.*?)</span>\s*(.*?)\s*</a>', ko)
     foto = eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', '')
     ko_logos = eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko)
-    return f'''<section class="e2-kontakt-neu" id="kontakt"><div class="e2-wrap">
-  <div class="e2-kontakt-neu__oben">
-    <div><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2 e2-kontakt-neu__h">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p><p class="e2-kontakt-neu__notiz">{ko_notiz}</p></div>
-    <div class="e2-kontakt-neu__wege">{''.join(f'<a class="e2-pille{" e2-pille--rand" if "ghost" in cl else ""}" href="{hr}"{rest}><i>{ico}</i>{txt}</a>' for cl, hr, rest, ico, txt in wege)}<div class="e2-ks-logos">{ko_logos}</div></div>
-  </div>
-  <div class="e2-kontakt-neu__team">{form("forward", "e2-kontakt-neu__form")}{foto}</div>
-</div></section>'''
+    return f'''<section class="e2-kontakt3" id="kontakt"><div class="e2-wrap">
+  <div class="e2-kontakt3__text"><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p></div>
+  <div class="e2-kontakt3__wege">{''.join(f'<a class="e2-pille{" e2-pille--rand" if "ghost" in cl else ""}" href="{hr}"{rest}><i>{ico}</i>{txt}</a>' for cl, hr, rest, ico, txt in wege)}</div>
+  <p class="e2-kontakt3__notiz">{ko_notiz}</p>
+  <div class="e2-kontakt3__team">{form("forward", "e2-kontakt3__form")}{foto}</div>
+</div>
+<div class="e2-kontakt3__logos">{ko_logos}</div></section>'''
 
 
 FARBEN = ["gelb", "schwarz", "hell"]
@@ -216,10 +225,6 @@ def unterseite(original, ziel):
     held_marker = '<section class="hero leistung-hero"' if '<section class="hero leistung-hero"' in main else '<section class="produkt-hero"'
     held = abschnitt(main, held_marker)
     main = main.replace(held, kopf_neu(held, name))
-    # Workshop-Kacheln: filigrane Skizze raus, großes einfaches Symbol rein
-    for wz in ("ki-zum-anfassen", "sprint-landingpage", "workshop-moderation"):
-        main = re.sub(r'(<a class="media-box[^"]*" href="/' + wz + r'"[^>]*>\s*<div class="media-box-thumb[^"]*">).*?(</div>\s*<div class="media-box-footer">)',
-                      lambda m, wz=wz: m.group(1) + form(KOMPOSITION[wz][0], "e2-kachel-form") + form(KOMPOSITION[wz][1], "e2-kachel-klein") + m.group(2), main, flags=re.S)
     # Medien (Komplexe Themen): einfache Symbole statt Skizzen – je Kachel nur das Bild tauschen
     def medien(m):
         block = m.group(0)
@@ -234,15 +239,25 @@ def unterseite(original, ziel):
     if 'id="kontakt"' in main:
         k = abschnitt(main, 'id="kontakt"'); main = main.replace(k, kontakt(k))
     if 'id="weitere-leistungen"' in main:
-        w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, weitere(w))
+        w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
     main = ohne_hl_ausser_h1(main)
-    # Zusammenarbeit/Formate: Akkordeons offen als Kartenreihe, damit alles auf einen Blick lesbar ist
-    # Zusammenarbeit & Co.: Akkordeon als Karten – Form + Titel sichtbar, Text zum Aufklappen
-    zaehler = iter(range(100))
+    # Zusammenarbeit & Co.: gleich hohe Karten (Nummer + Titel), der Text öffnet sich in einem Fenster
+    zaehler = iter(range(1, 100))
     def karte_acc(m):
         i = next(zaehler)
-        return (m.group(0).replace("<summary><span>", f'<summary>{form(("quadrat", "raute", "kreis")[i % 3], "e2-acc-form")}<span>', 1))
-    main = re.sub(r'<details class="formate-acc-item[^"]*"[^>]*>\s*<summary><span>', karte_acc, main)
+        titel, koerper = m.group(1), m.group(2)
+        return (f'<article class="e2-zk"><span class="e2-zk__nr">0{i}</span><h3>{titel}</h3>'
+                f'<button type="button" class="e2-zk__mehr" data-e2-auf="zk{i}">Mehr lesen {PFEIL}</button>'
+                f'<dialog class="e2-dialog" id="zk{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel}</h3>{koerper}</dialog></article>')
+    main = re.sub(r'<details class="formate-acc-item[^"]*"[^>]*>\s*<summary><span>(.*?)</span></summary>\s*<div class="formate-acc-body">(.*?)</div>\s*</details>', karte_acc, main, flags=re.S)
+    main = main.replace('<div class="formate-accordion">', '<div class="e2-zk-raster">')
+    # Problem: Absätze als zwei Schritte statt Kasten
+    def problem(m):
+        teile = re.findall(r'<(p|ul)\b[^>]*>.*?</\1>', m.group(1), re.S)
+        bloecke = re.findall(r'(<(?:p|ul)\b[^>]*>.*?</(?:p|ul)>)', m.group(1), re.S)
+        return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
+    main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
+    main += DIALOG_JS
     return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]} e2-seite--{name}">{main}</div>')
 
 
@@ -288,15 +303,16 @@ def startseite():
     st_h2 = re.sub(r"<[^>]+>", "", eins(r"<h2[^>]*>(.*?)</h2>", st))
     zahlen = alle(r'<div class="num">(.*?)</div><div class="lbl">(.*?)</div>', st)
 
-    AKZENT = {"magenta": "#C51F5D", "cyan": "#0B9FBD", "gruen": "#6e9a2c", "green": "#6e9a2c", "olive": "#8a9a3a"}
+    AKZENT = {"magenta": "#C51F5D", "cyan": "#0B9FBD", "gruen": "#6e9a2c", "green": "#6e9a2c", "olive": "#8a9a3a", "lime": "#8613A1"}
     farben = ["gelb", "schwarz", "hell"]
 
     m = []
-    m.append(f'''<section class="e2-held" id="hero"><div class="e2-wrap">
-  <div class="e2-held__raster">
-    <div><h1>{h1}</h1><div class="e2-held__pfeil" aria-hidden="true">{pfeil}</div></div>
-    <div class="e2-held__text">{''.join(f'<p>{p}</p>' for p in texte)}
+    m.append(f'''<section class="e2-held e2-kopf" id="hero"><div class="e2-wrap">
+  <div class="e2-kopf__raster">
+    <div class="e2-kopf__text"><h1>{h1}</h1>
+      <div class="e2-kopf__inhalt">{''.join(f'<p>{p}</p>' for p in texte)}</div>
       <div class="e2-knoepfe"><a class="e2-knopf" href="{knopf.group(1)}">{knopf.group(2)} {PFEIL}</a></div></div>
+    {kopfbild("index")}
   </div>
   <div class="e2-logos">{marquee}</div>
 </div></section>''')
@@ -319,7 +335,7 @@ def startseite():
         eintraege = alle(r'<div class="formate-preview-title">(.*?)</div>\s*<p class="formate-preview-desc">(.*?)</p>', koerper)
         btn = re.search(r'<a class="btn btn--dark btn--sm" href="([^"]+)">(.*?)</a>', koerper)
         form_name = {"magenta": "quadrat", "cyan": "kreis", "gruen": "raute", "green": "raute", "olive": "raute"}.get(farbe, "raute")
-        spalten.append(f'<article class="e2-format2" style="--e2-akzent:{AKZENT.get(farbe, "#1a1817")}"><div class="e2-format2__kopf"><h3>{titel}</h3>{form(form_name, "e2-format2__form")}</div>'
+        spalten.append(f'<article class="e2-format2" style="--e2-akzent:{AKZENT.get(farbe, "#1a1817")}"><div class="e2-format2__kopf"><h3>{titel}</h3></div>'
                        f'<ul class="e2-liste">{"".join(f"<li><div><b>{t}</b><small>{d}</small></div></li>" for t, d in eintraege)}</ul>'
                        f'<details class="e2-mehr"><summary>Worum es geht</summary>{"".join(f"<p>{p}</p>" for p in ps)}</details>'
                        f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></article>')

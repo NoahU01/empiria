@@ -7,6 +7,10 @@ sys.path.insert(0, str(Path(__file__).parent)); from e2_bauen import SITE, ZIEL,
 
 def worte(t):
     t = t[t.index("<main"):t.index("</main>")]
+    # „Weitere Leistungen“ hat Daniel auf den Unterseiten gestrichen (10.10.2026)
+    a = t.find('id="weitere-leistungen"')
+    if a > 0:
+        a = t.rfind("<section", 0, a); t = t[:a] + t[t.index("</section>", a) + 10:]
     t = re.sub(r"<(svg|script|style|template)\b.*?</\1>", " ", t, flags=re.S)
     t = re.sub(r"<[^>]+>", " ", t)
     return Counter(w.lower() for w in re.findall(r"[\wÄÖÜäöüß+:&%€.-]+", html.unescape(t)) if w.strip(".-"))

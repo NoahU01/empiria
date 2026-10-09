@@ -1044,7 +1044,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         
       </div>
     <div class="e2-knoepfe"><a class="e2-knopf" href="#naechste-sektion">KI zum Anfassen kennenlernen <svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
-  <div class="e2-kopfbild e2-kopfbild--magenta" aria-hidden="true"><svg class="e2-kopfbild__gross" viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M116.22 6c9 64 46 101 110 110-64 9-101 46-110 110-9-64-46-101-110-110 64-9 101-46 110-110z"/></svg><svg class="e2-kopfbild__klein" viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></div>
+  <div class="e2-kopfbild"><svg class="e2-bild" viewBox="0 0 400 400" role="img" aria-label="KI im Gespräch">
+<rect x="40" y="96" width="290" height="244" rx="22" fill="#ffffff" stroke="#1a1817" stroke-width="10"/>
+<rect x="70" y="134" width="170" height="44" rx="22" fill="#ebe8e3"/>
+<rect x="132" y="196" width="170" height="44" rx="22" fill="#C51F5D"/>
+<rect x="70" y="258" width="130" height="44" rx="22" fill="#ebe8e3"/>
+<path d="M316 30c6 44 30 68 74 74-44 6-68 30-74 74-6-44-30-68-74-74 44-6 68-30 74-74z" fill="#C51F5D"/>
+<path d="M356 214c3 20 13 30 33 33-20 3-30 13-33 33-3-20-13-30-33-33 20-3 30-13 33-33z" fill="#fff400" stroke="#1a1817" stroke-width="5"/>
+</svg></div>
 </div></section>
 
   <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
@@ -1248,7 +1255,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
     </div>
   </section>
-</div>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script></div>
 </main>
 
 

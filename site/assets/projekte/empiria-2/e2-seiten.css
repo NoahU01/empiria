@@ -315,3 +315,79 @@
 .e2-alt--magenta h1 .hl { background: #C51F5D !important; color: #fff !important; }
 .e2-alt .formate-acc-item summary { align-items: flex-start; text-align: left; }
 .e2-alt .formate-acc-item summary::after { opacity: .85 !important; }
+
+/* ================= Runde 4 ================= */
+/* Problem: zwei Schritte statt Kasten – gelbe Nummern, keine Box */
+.e2-problem { list-style: none; margin: 0; padding: 0; counter-reset: pr; }
+.e2-problem > li { counter-increment: pr; position: relative; padding: 0 0 2rem 4rem; }
+.e2-problem > li:last-child { padding-bottom: 0; }
+.e2-problem > li::before { content: counter(pr, decimal-leading-zero); position: absolute; left: 0; top: -.2rem; display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 50%; background: var(--e2-gelb); font-family: var(--font-serif); font-weight: 700; color: var(--e2-ink); }
+.e2-problem > li:not(:last-child)::after { content: ""; position: absolute; left: 1.4rem; top: 2.9rem; bottom: .4rem; width: 2px; background: #dcd8d1; }
+.e2-problem p { font-size: 1.1rem; line-height: 1.65; color: var(--e2-ink); }
+.e2-problem ul { margin: .6rem 0 0; padding-left: 1.1rem; }
+.e2-problem li li { margin-top: .3rem; font-size: 1.05rem; }
+.e2-alt .problem-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
+
+/* Zusammenarbeit: gleich hohe Karten, Text im Fenster */
+.e2-zk-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+.e2-zk { display: flex; flex-direction: column; min-height: 15rem; padding: 1.8rem; border-radius: var(--e2-r); background: #fff; }
+.e2-zk:nth-child(1) { background: var(--e2-gelb); } .e2-zk:nth-child(2) { background: var(--e2-ink); color: #fff; }
+.e2-zk__nr { font-family: var(--font-serif); font-weight: 700; font-size: 2.4rem; line-height: 1; opacity: .35; }
+.e2-zk h3 { margin-top: 1rem !important; font-family: var(--font-serif); font-size: 1.55rem; line-height: 1.2; }
+.e2-zk__mehr { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: .45rem; padding: .6rem 1rem; border-radius: 999px; border: 1.5px solid currentColor; background: none; font: 600 .9rem var(--font-sans); color: inherit; cursor: pointer; }
+.e2-zk__mehr svg { width: 1rem; height: 1rem; }
+.e2-dialog { width: min(40rem, calc(100vw - 2rem)); padding: 2.4rem 2.4rem 2rem; border: 0; border-radius: var(--e2-r); color: var(--e2-ink); }
+.e2-dialog::backdrop { background: rgba(26,24,23,.55); }
+.e2-dialog h3 { margin: 0 2rem 1rem 0 !important; font-family: var(--font-serif); font-size: 1.7rem; }
+.e2-dialog p { font-size: 1.02rem; line-height: 1.65; color: var(--e2-ink-2); }
+.e2-dialog p + p { margin-top: .8rem; }
+.e2-dialog__zu { position: absolute; right: 1rem; top: 1rem; width: 2.4rem; height: 2.4rem; border: 0; border-radius: 50%; background: var(--e2-hell); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+@media (max-width: 960px) { .e2-zk-raster { grid-template-columns: minmax(0, 1fr); } .e2-zk { min-height: 0; } .e2-zk__mehr { margin-top: 1.4rem; } }
+
+/* Workshops: Kacheln mit den Originalskizzen, Linien etwas kräftiger */
+.e2-alt .media-box-thumb--mock { background: linear-gradient(160deg, #d0306d, #a3164b) !important; aspect-ratio: auto !important; }
+.e2-alt .media-box-thumb--mock svg [stroke] { stroke-width: 2.2; }
+.e2-alt .media-box-thumb--mock .produkt-mock-sketch { opacity: 1 !important; transform: none !important; }
+
+/* Abschnittsfolge Workshops: KI-Werkzeuge wieder hell, Moderation weiß mit klaren Karten */
+.e2-seite--ki-zum-anfassen .produkt-grid:not(.produkt-pricing), .e2-seite--workshop-moderation .produkt-grid, .e2-seite--sprint-landingpage .produkt-grid { background: #fff !important; }
+.e2-seite--ki-zum-anfassen .produkt-grid:not(.produkt-pricing) :is(h2, p, .kicker), .e2-seite--workshop-moderation .produkt-grid :is(h2, p) { color: inherit !important; }
+.e2-seite--ki-zum-anfassen .produkt-grid:not(.produkt-pricing) .kicker, .e2-seite--workshop-moderation .produkt-grid .kicker { color: #C51F5D !important; }
+.e2-seite--ki-zum-anfassen .produkt-grid:not(.produkt-pricing) h2, .e2-seite--workshop-moderation .produkt-grid h2 { color: var(--e2-ink) !important; }
+.e2-seite--ki-zum-anfassen .tools-row-label { color: var(--e2-ink) !important; }
+.e2-seite--ki-zum-anfassen .tools-row-icon, .e2-seite--ki-zum-anfassen .tools-row-icon svg { color: #C51F5D !important; stroke: currentColor !important; }
+.e2-seite--ki-zum-anfassen .produkt-grid .produkt-glass, .e2-seite--workshop-moderation .produkt-grid .produkt-glass, .e2-seite--sprint-landingpage .produkt-grid .produkt-glass { background: var(--e2-hell) !important; border: 0 !important; }
+
+/* Sprint: Preis neu – ein Kasten, links Preis auf Magenta, rechts die Leistungen */
+.e2-seite--sprint-landingpage .produkt-price-note { background: var(--e2-hell) !important; }
+.e2-seite--sprint-landingpage .produkt-price-note .produkt-section-head :is(h2, p) { color: inherit !important; }
+.e2-seite--sprint-landingpage .produkt-price-note .produkt-section-head h2 { color: var(--e2-ink) !important; }
+.e2-seite--sprint-landingpage .produkt-price-note .kicker { color: #C51F5D !important; }
+.e2-alt .price-note-card { display: grid !important; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 0 !important; padding: 0 !important; overflow: hidden; background: #fff !important; box-shadow: none !important; }
+.e2-alt .price-note-card * { color: var(--e2-ink) !important; }
+.e2-alt .price-note-card > .price-note-badge-wrap { display: none !important; }
+.e2-alt .price-note-value { grid-column: 1; display: flex; flex-direction: column; justify-content: center; gap: .6rem; padding: 2.8rem 2.6rem; background: #C51F5D; }
+.e2-alt .price-note-value * { color: #fff !important; }
+.e2-alt .price-note-amount { font-family: var(--font-serif); font-weight: 700; font-size: clamp(3rem, 5.4vw, 4.4rem) !important; line-height: 1; }
+.e2-alt .price-note-unit { font-size: 1rem; opacity: .9; }
+.e2-alt .price-note-card .price-note-list { grid-column: 2; grid-row: 1; list-style: none; margin: 0 !important; padding: 2.2rem 2.6rem !important; border: 0 !important; }
+.e2-alt .price-note-list li { position: relative; padding: .7rem 0 .7rem 2rem; border-bottom: 1px solid var(--e2-linie); font-size: 1rem; }
+.e2-alt .price-note-list li:last-child { border-bottom: 0; }
+.e2-alt .price-note-list li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: .9rem; height: .5rem; border-left: 2.5px solid #C51F5D; border-bottom: 2.5px solid #C51F5D; transform: rotate(-45deg); background: none !important; }
+@media (max-width: 760px) { .e2-alt .price-note-card { grid-template-columns: minmax(0, 1fr); } .e2-alt .price-note-card .price-note-list { grid-column: 1; grid-row: auto; } }
+.e2-alt #problem .watermark { left: auto !important; right: -6% !important; top: 50% !important; transform: translateY(-50%) !important; opacity: .7; }
+/* Helle Abschnitte auf Workshop-Seiten: Schrift dunkel, Karten auf Hellgrau (stärker als die Magenta-Regeln) */
+.e2-alt.e2-alt--magenta:is(.e2-seite--ki-zum-anfassen, .e2-seite--workshop-moderation, .e2-seite--sprint-landingpage) .produkt-grid:not(.produkt-pricing) .produkt-section-head :is(h2, p) { color: var(--e2-ink) !important; }
+.e2-alt.e2-alt--magenta:is(.e2-seite--ki-zum-anfassen, .e2-seite--workshop-moderation, .e2-seite--sprint-landingpage) .produkt-grid:not(.produkt-pricing) .produkt-section-head p { color: var(--e2-ink-2) !important; }
+.e2-alt.e2-alt--magenta:is(.e2-seite--ki-zum-anfassen, .e2-seite--workshop-moderation, .e2-seite--sprint-landingpage) .produkt-grid:not(.produkt-pricing) .kicker { color: #C51F5D !important; }
+.e2-alt.e2-alt--magenta:is(.e2-seite--ki-zum-anfassen, .e2-seite--workshop-moderation, .e2-seite--sprint-landingpage) .produkt-grid:not(.produkt-pricing) .produkt-glass { background: var(--e2-hell) !important; border: 0 !important; padding: 2rem 1.8rem !important; }
+.e2-alt .produkt-glass h3 { margin-top: .9rem; margin-bottom: .5rem; line-height: 1.25; }
+/* Preis: Magenta-Feld füllt die ganze Höhe */
+.e2-alt .price-note-card { align-items: stretch !important; border-radius: var(--e2-r) !important; }
+.e2-alt .price-note-value { align-self: stretch; text-align: left !important; align-items: flex-start; }
+.e2-alt .price-note-card { overflow: hidden !important; }
+.e2-alt .price-note-list li::before { border-radius: 0 !important; width: .85rem !important; height: .45rem !important; top: 1.1rem !important; }
+.e2-alt .price-note-card::before, .e2-alt .price-note-card::after { display: none !important; content: none !important; }
+.e2-alt .price-note-value, .e2-alt .price-note-value * { text-align: left !important; }
+.e2-alt .price-note-value { grid-row: 1 / -1; }
+.e2-alt .price-note-card > .price-note-value { margin: 0 !important; height: auto !important; min-height: 100%; }
