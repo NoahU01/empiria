@@ -14,10 +14,11 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import e2_bilder
+import e2_runde5
 
 SITE = Path(__file__).resolve().parent.parent / "site"
 ZIEL = SITE / "projekte" / "empiria-2"
-CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-seiten.css">'
+CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-seiten.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">'
 
 # Originalseite -> Seite im Entwurf; Links darauf werden im Entwurf auf die 2.0-Fassung umgebogen
 SEITEN = {
@@ -141,6 +142,32 @@ AKZENT_SEITE = {"strategie": "gelb", "komplexe-themen": "gelb", "innovation": "g
                 "workshops": "magenta", "ki-zum-anfassen": "magenta", "sprint-landingpage": "magenta", "workshop-moderation": "magenta"}
 
 
+# Formate auf der Startseite: Kernaussage je Format (aus den Originaltexten verdichtet) und ein Symbol je Unterformat
+FORMAT_SATZ = {
+    "Workshops": "Hands-on an echten Tools und Fällen aus Eurem Alltag – Ihr geht mit klaren Ergebnissen raus.",
+    "Marketing 2.0": "Deine digitalen Kanäle an einem Ort – als Marketingabteilung im Abo oder als einzelnes Format.",
+    "Training & Sparring": "Begleiten statt nur schulen – für Dein Team und für Dich als Führungskraft.",
+}
+FORMAT_SYM = {
+    "KI": '<path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+    "Sprint": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18M13 11l-3 4h3.5l-2.5 3.5"/>',
+    "Moderation": '<path d="M3.5 5h11v7.5H8.5L5 15.5V12.5H3.5z"/><path d="M14.5 9h6v7.5h-1.5v3l-3.5-3h-4.5v-4"/>',
+    "Marketing": '<rect x="3" y="3.5" width="18" height="17" rx="2"/><path d="M7 16v-3M11 16V9.5M15 16v-5"/>',
+    "sofort": '<path d="M3.5 10v4h3l6 4V6l-6 4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5M18.5 7a7 7 0 0 1 0 10"/>',
+    "Paid": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    "Medien": '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20.5h8M7 12.5l3-3 2.5 2 4-4"/>',
+    "Teams": '<circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M2.5 19.5c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5M14 14.6c.8-.4 1.6-.6 2.5-.6 2.4 0 4.2 1.9 4.8 5"/>',
+    "1:1": '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.8 3.2-6 6.5-6s5.9 2.2 6.5 6"/><path d="M15.5 4.5h6v4.5h-2l-2 2v-2h-2z"/>',
+}
+
+
+def format_sym(titel):
+    for k, v in FORMAT_SYM.items():
+        if titel.startswith(k):
+            return f'<svg viewBox="0 0 24 24" aria-hidden="true">{v}</svg>'
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/></svg>'
+
+
 def symbol(name, cls="e2-sym"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
 
@@ -177,21 +204,42 @@ var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();retur
 
 
 # ---------- Bausteine, die auf mehreren Seiten vorkommen ----------
-def kontakt(ko):
-    ko_kicker = eins(r'<p class="kicker">(.*?)</p>', ko)
-    ko_h2 = ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", ko))
-    ko_lead = eins(r'<p class="lead">(.*?)</p>', ko)
-    ko_notiz = eins(r'<p class="kontakt-standalone-note">(.*?)</p>', ko)
+def kontakt_teile(ko):
     wege = alle(r'<a class="(ks-pill[^"]*)" href="([^"]+)"([^>]*)>\s*<span class="ks-pill-icon">(.*?)</span>\s*(.*?)\s*</a>', ko)
-    foto = eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', '')
-    ko_logos = eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko)
-    return f'''<section class="e2-kontakt3" id="kontakt"><div class="e2-wrap">
-  <div class="e2-kontakt3__text"><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p></div>
-  <div class="e2-kontakt3__wege">{''.join(f'<a class="e2-pille{" e2-pille--rand" if "ghost" in cl else ""}" href="{hr}"{rest}><i>{ico}</i>{txt}</a>' for cl, hr, rest, ico, txt in wege)}</div>
-  <p class="e2-kontakt3__notiz">{ko_notiz}</p>
-  <div class="e2-kontakt3__team">{form("forward", "e2-kontakt3__form")}{foto}</div>
-</div>
-<div class="e2-kontakt3__logos">{ko_logos}</div></section>'''
+    return dict(
+        kicker=eins(r'<p class="kicker">(.*?)</p>', ko), h2=ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", ko)),
+        lead=eins(r'<p class="lead">(.*?)</p>', ko), notiz=eins(r'<p class="kontakt-standalone-note">(.*?)</p>', ko),
+        wege="".join(f'<a class="e2-pille{" e2-pille--rand" if "ghost" in cl else ""}" href="{hr}"{rest}><i>{ico}</i>{txt}</a>' for cl, hr, rest, ico, txt in wege),
+        foto=eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', ''),
+        logos=eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko))
+
+
+def kontakt_start(ko):
+    """Startseite: Anordnung wie die bisherige Startseite (Text links, Kontaktwege + Logos rechts, Team darunter) – ohne Doppelpfeil."""
+    k = kontakt_teile(ko)
+    return f'''<section class="e2-kontakt5" id="kontakt"><div class="e2-wrap">
+  <div class="e2-kontakt5__oben">
+    <div class="e2-kontakt5__text"><p class="e2-kicker">{k["kicker"]}</p><h2 class="e2-h2">{k["h2"]}</h2><p class="e2-lead">{k["lead"]}</p><p class="e2-kontakt5__notiz">{k["notiz"]}</p></div>
+    <div class="e2-kontakt5__seite"><div class="e2-kontakt5__wege">{k["wege"]}</div>{k["logos"]}</div>
+  </div>
+  <div class="e2-kontakt5__team">{k["foto"]}</div>
+</div></section>'''
+
+
+TEAM = [("daniel", "Daniel Ströbel", "Strategiehandwerker"), ("kerstin", "Kerstin Christ", "Expertin HR &amp; Weiterbildung"),
+        ("noah", "Noah Hermanns", "Experte Performance Marketing")]
+
+
+def kontakt(ko):
+    """Detailseiten: wie bei den Workshops – Personen im Kreis, darunter die direkten Kontaktwege."""
+    k = kontakt_teile(ko)
+    personen = "".join(f'<div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-{d}.webp" alt="{n}" width="132" height="132"></div>'
+                       f'<p class="ansprechpartner-name">{n}</p><p class="ansprechpartner-role">{r}</p></div>' for d, n, r in TEAM)
+    return f'''<section class="produkt-cta produkt-team-cta e2-kontakt-team" id="kontakt"><div class="container">
+  <p class="kicker">{k["kicker"]}</p><h2>{k["h2"]}</h2><p class="produkt-team-cta-sub">{k["lead"]}</p>
+  <div class="ansprechpartner-grid">{personen}</div>
+  <div class="e2-kontakt-team__wege">{k["wege"]}</div><p class="e2-kontakt-team__notiz">{k["notiz"]}</p>
+</div></section>'''
 
 
 FARBEN = ["gelb", "schwarz", "hell"]
@@ -240,6 +288,13 @@ def unterseite(original, ziel):
         k = abschnitt(main, 'id="kontakt"'); main = main.replace(k, kontakt(k))
     if 'id="weitere-leistungen"' in main:
         w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
+    # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
+    if name == "strategie":
+        sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek))
+    if name == "komplexe-themen":
+        sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_kt(sek))
+        sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_kt(sek))
+    main = e2_runde5.download_hl(main, AKZENT_SEITE[name] == "magenta")
     main = ohne_hl_ausser_h1(main)
     # Zusammenarbeit & Co.: gleich hohe Karten (Nummer + Titel), der Text öffnet sich in einem Fenster
     zaehler = iter(range(1, 100))
@@ -329,25 +384,33 @@ def startseite():
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{p}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, p, hr, mehr) in enumerate(karten))}</div>
   <div class="e2-unten"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>''')
-    spalten = []
-    for farbe, titel, koerper in formate:
+    # Formate (Runde 5): je Karte Titel, ein Satz Kernaussage, die Formate mit Symbol, unten auf gleicher Höhe die Knöpfe.
+    # Die bisherigen Texte samt Skizzen der alten Startseite stehen im Fenster „Formate ansehen“.
+    spalten, fenster = [], []
+    for i, (farbe, titel, koerper) in enumerate(formate):
         ps = alle(r"^\s*<p>(.*?)</p>", koerper, re.S | re.M)
-        eintraege = alle(r'<div class="formate-preview-title">(.*?)</div>\s*<p class="formate-preview-desc">(.*?)</p>', koerper)
+        eintraege = alle(r'<div class="formate-preview-title">(.*?)</div>', koerper)
         btn = re.search(r'<a class="btn btn--dark btn--sm" href="([^"]+)">(.*?)</a>', koerper)
-        form_name = {"magenta": "quadrat", "cyan": "kreis", "gruen": "raute", "green": "raute", "olive": "raute"}.get(farbe, "raute")
-        spalten.append(f'<article class="e2-format2" style="--e2-akzent:{AKZENT.get(farbe, "#1a1817")}"><div class="e2-format2__kopf"><h3>{titel}</h3></div>'
-                       f'<ul class="e2-liste">{"".join(f"<li><div><b>{t}</b><small>{d}</small></div></li>" for t, d in eintraege)}</ul>'
-                       f'<details class="e2-mehr"><summary>Worum es geht</summary>{"".join(f"<p>{p}</p>" for p in ps)}</details>'
-                       f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></article>')
+        vorschau = eins(r'(<div class="formate-preview-grid.*)<a class="btn', koerper)
+        akz = AKZENT.get(farbe, "#1a1817")
+        spalten.append(f'<article class="e2-f3" style="--e2-akzent:{akz}"><div class="e2-f3__kopf"><h3>{titel}</h3></div>'
+                       f'<p class="e2-f3__satz">{FORMAT_SATZ.get(re.sub(r"&amp;", "&", titel), "")}</p>'
+                       f'<ul class="e2-f3__liste">{"".join(f"<li><i>{format_sym(t)}</i><b>{t}</b></li>" for t in eintraege)}</ul>'
+                       f'<div class="e2-f3__fuss"><a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a>'
+                       f'<button type="button" class="e2-f3__blick" data-e2-auf="fo{i}">Formate ansehen</button></div></article>')
+        fenster.append(f'<dialog class="e2-dialog e2-fdialog formate-acc--{ {"lime": "violet"}.get(farbe, farbe)}" id="fo{i}" style="--e2-akzent:{akz}"><div class="e2-fdialog__band"></div>'
+                       f'<button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel}</h3>{"".join(f"<p>{p}</p>" for p in ps)}{vorschau}'
+                       f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></dialog>')
     m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
   <div class="e2-kopfzeile"><div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2-h2">{fo_h2}</h2></div><div>{''.join(f'<p class="e2-lead">{p}</p>' for p in fo_leads)}</div></div>
-  <div class="e2-formate">{''.join(spalten)}</div>
+  <div class="e2-formate3">{''.join(spalten)}</div>{''.join(fenster)}
 </div></section>''')
     m.append(f'''<section class="e2-sek e2-sek--schwarz" id="arbeitsweise"><div class="e2-wrap">
   <h2 class="e2-h2" style="max-width:none">{st_h2}</h2>
   <div class="e2-zahlen">{''.join(f'<div><b>{re.sub(r"<[^>]+>", "", z)}</b><span>{l}</span></div>' for z, l in zahlen)}</div>
 </div></section>''')
-    m.append(kontakt(abschnitt(h, 'id="kontakt"')))
+    m.append(kontakt_start(abschnitt(h, 'id="kontakt"')))
+    m.append(DIALOG_JS)
     return seite("index.html", "\n".join(m))
 
 

@@ -1,0 +1,191 @@
+/* ================= empiria 2.0 · Runde 5 (Daniel, 10.10.2026) ================= */
+
+/* ---------- Hauptüberschrift: Kasten darf keine Unterlängen der Zeile darüber berühren ----------
+   Zeilenabstand größer, Kasten oben um --hl-t gekürzt (Umlaut-Punkte bleiben drin),
+   unten etwas Luft, damit eigene Unterlängen (g, p) im Kasten bleiben. Runde Ecken oben per Verlauf. */
+.e2 h1 { line-height: 1.24 !important; text-wrap: balance; }
+.e2 h1 .hl, .e2-alt h1 .hl, .e2-alt--magenta h1 .hl, .e2-dl-hl {
+  --hl: var(--e2-gelb, #fff400); --hl-t: .1em; --hl-r: .14em;
+  padding: 0 .12em .06em !important; border-radius: 0 0 var(--hl-r) var(--hl-r) !important;
+  color: var(--e2-ink, #1a1817) !important; box-shadow: none !important;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  background:
+    radial-gradient(circle var(--hl-r) at 100% 100%, var(--hl) 96%, transparent 100%) left 0 top var(--hl-t) / var(--hl-r) var(--hl-r) no-repeat,
+    radial-gradient(circle var(--hl-r) at 0 100%, var(--hl) 96%, transparent 100%) right 0 top var(--hl-t) / var(--hl-r) var(--hl-r) no-repeat,
+    linear-gradient(var(--hl), var(--hl)) left calc(var(--hl-r) - 1px) top var(--hl-t) / calc(100% - 2 * var(--hl-r) + 2px) calc(var(--hl-r) + 1px) no-repeat,
+    linear-gradient(var(--hl), var(--hl)) left 0 bottom 0 / 100% calc(100% - var(--hl-t) - var(--hl-r) + 1.5px) no-repeat !important;
+}
+.e2-alt--magenta h1 .hl, .e2-dl-hl--magenta { --hl: #C51F5D; color: #fff !important; }
+
+/* ---------- Logo-Leiste: Verlauf genau an der Kante ---------- */
+.e2-logos .marquee::before { left: 0; }
+.e2-logos .marquee::after { right: 0; }
+
+/* ---------- Formate: drei gleich gebaute Karten, alles auf gleicher Höhe ---------- */
+.e2-formate3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem; margin-top: 3.2rem; }
+.e2-f3 { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
+.e2-f3__kopf { display: flex; flex-direction: column; justify-content: flex-end; min-height: 8.5rem; padding: 1.5rem 1.6rem 1.4rem; background: var(--e2-akzent); color: #fff; }
+.e2-f3__kopf h3 { font-size: 1.85rem; color: #fff; }
+.e2-f3__satz { padding: 1.3rem 1.6rem 0; font-size: 1rem; line-height: 1.55; color: var(--e2-ink); font-weight: 500; }
+.e2-f3__liste { list-style: none; margin: 1.1rem 1.6rem 0; padding: 0; align-self: start; }
+.e2-f3__liste li { display: grid; grid-template-columns: 2.3rem minmax(0, 1fr); gap: .8rem; align-items: center; padding: .6rem 0; border-top: 1px solid var(--e2-linie); }
+.e2-f3__liste li:last-child { border-bottom: 1px solid var(--e2-linie); }
+.e2-f3__liste i { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; border-radius: 10px; background: color-mix(in srgb, var(--e2-akzent) 12%, #fff); color: var(--e2-akzent); }
+.e2-f3__liste i svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.e2-f3__liste b { font-size: .95rem; font-weight: 600; line-height: 1.3; }
+.e2-f3__fuss { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; padding: 1.6rem; }
+.e2-f3__fuss .e2-knopf { padding: .7rem 1.15rem; font-size: .92rem; }
+.e2-f3__blick { padding: 0; border: 0; background: none; font: 600 .92rem/1.2 var(--font-sans); color: var(--e2-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--e2-akzent); text-decoration-thickness: 2px; cursor: pointer; }
+/* Fenster „Formate ansehen“: Text + die Skizzen der bisherigen Startseite */
+.e2-fdialog { width: min(52rem, calc(100vw - 2rem)); }
+.e2-fdialog .e2-fdialog__band { height: 6px; margin: -2.4rem -2.4rem 2rem; background: var(--e2-akzent); }
+.e2-fdialog .formate-preview-grid { margin-top: 1.6rem; }
+.e2-fdialog .formate-preview-grid--2x2 { max-width: none; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.e2-fdialog.formate-acc--violet .formate-preview-grid { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.e2-fdialog .formate-preview-card { opacity: 1 !important; transform: none !important; }
+.e2-fdialog .produkt-mock-sketch { opacity: 1 !important; transform: none !important; }
+.e2-fdialog .formate-preview-card p.formate-preview-desc { color: rgba(255,255,255,.88); }
+.e2-fdialog .e2-knopf { margin-top: 1.8rem; }
+@media (max-width: 960px) {
+  .e2-formate3 { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 1.2rem; }
+  .e2-f3 { grid-row: auto; grid-template-rows: auto; }
+  .e2-fdialog .formate-preview-grid--2x2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Kontakt Startseite: Anordnung wie die bisherige Startseite, ohne Doppelpfeil ---------- */
+.e2-kontakt5 { padding: 6.5rem 0 0; background: #fff; overflow: hidden; }
+.e2-kontakt5__oben { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 4rem; align-items: start; }
+.e2-kontakt5__text .e2-h2 { font-size: clamp(2.8rem, 6vw, 5rem); max-width: 11ch; line-height: 1.12; }
+.e2-kontakt5__text .e2-lead { max-width: 34rem; }
+.e2-kontakt5__notiz { margin-top: 1.2rem !important; font-weight: 600; }
+.e2-kontakt5__seite { padding-top: 4.6rem; }
+.e2-kontakt5__wege { display: flex; flex-direction: column; gap: .75rem; }
+.e2-kontakt5__seite .ks-marquee { margin-top: 3.2rem; }
+.e2-kontakt5__team { display: flex; justify-content: center; margin-top: 2.6rem; }
+.e2-kontakt5__team img { display: block; width: min(100%, 560px) !important; min-width: 0 !important; height: auto; opacity: 1 !important; transform: none !important; }
+@media (max-width: 960px) {
+  .e2-kontakt5__oben { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .e2-kontakt5__seite { padding-top: 0; }
+  .e2-kontakt5__seite .ks-marquee { margin-top: 1.6rem; }
+  .e2-kontakt5 { padding-top: 4.5rem; }
+}
+
+/* ---------- Kontakt Detailseiten: Personen im Kreis (wie Workshops), darunter die Kontaktwege ---------- */
+.e2-kontakt-team__wege { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; margin-top: 2.6rem; }
+.e2-kontakt-team__notiz { margin-top: 1.2rem !important; text-align: center; font-weight: 600; color: var(--e2-ink); }
+.e2-alt .e2-kontakt-team .ansprechpartner-grid { margin-bottom: 0 !important; }
+@media (max-width: 600px) { .e2-kontakt-team__wege .e2-pille { width: 100%; justify-content: center; } }
+
+/* ---------- Problem-Abschnitte allgemein: keine Nummern (Probleme sind keine Schritte) ---------- */
+.e2-problem > li::before { content: "" !important; top: .55rem !important; left: 1.05rem !important; width: .75rem !important; height: .75rem !important; border-radius: 50% !important; background: var(--e2-gelb) !important; box-shadow: 0 0 0 4px var(--e2-hell); }
+.e2-alt--magenta .e2-problem > li::before { background: #C51F5D !important; }
+.e2-problem > li:not(:last-child)::after { top: 1.6rem !important; }
+
+/* ---------- Strategie › Perspektivwechsel: kompakt, Kette Gedankenexperiment » Wirkung » Ergebnis ---------- */
+.e2-pv { background: var(--e2-gelb); padding: 5.5rem 0; }
+.e2-pv__oben { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+.e2-pv .h-serif { max-width: 14ch !important; }
+.e2-pv .lead { margin-top: 1.3rem; color: var(--e2-ink) !important; }
+.e2-pv__browser .perspektive-browser { margin: 0; max-width: none; width: 100%; }
+.e2-pv__kette { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.15fr); align-items: stretch; margin-top: 3.4rem; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
+.e2-pv__glied { padding: 1.8rem 1.6rem; }
+.e2-pv__glied p { font-size: 1rem; line-height: 1.6; color: var(--e2-ink-2); }
+.e2-pv__glied b { color: var(--e2-ink); }
+.e2-pv__tag { margin-bottom: .7rem !important; font-size: .74rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-grau) !important; }
+.e2-pv__pfeil { display: grid; place-items: center; width: 2.2rem; color: var(--e2-ink); }
+.e2-doppel { width: 1.6rem; height: 1.6rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.e2-pv__glied--ergebnis { display: flex; flex-direction: column; justify-content: center; background: var(--e2-ink); }
+.e2-pv__glied--ergebnis .e2-pv__tag { color: var(--e2-gelb) !important; }
+.e2-pv__punch { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important; line-height: 1.2 !important; color: #fff !important; }
+@media (max-width: 960px) {
+  .e2-pv__oben { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
+  .e2-pv__kette { grid-template-columns: minmax(0, 1fr); }
+  .e2-pv__pfeil { width: auto; height: 1.6rem; transform: rotate(90deg); }
+}
+
+/* ---------- Komplexe Themen › Problem: Folienstapel statt Nummern ---------- */
+.e2-pkt__raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+.e2-pkt__label { font-size: 1.1rem; font-weight: 600; color: var(--e2-ink); }
+.e2-folien { position: relative; height: 16rem; margin-top: 1.4rem; }
+.e2-folie { position: absolute; width: 74%; padding: 1rem 1.3rem 1.3rem; border-radius: 12px; background: #fff; border: 1.5px solid #d9d5ce; box-shadow: 0 14px 30px rgba(26,24,23,.08); }
+.e2-folie__kopf { display: flex; gap: .3rem; margin-bottom: .8rem; }
+.e2-folie__kopf i { width: .45rem; height: .45rem; border-radius: 50%; background: #d9d5ce; }
+.e2-folie p { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; line-height: 1.25; color: var(--e2-ink); }
+.e2-folie--0 { left: 0; top: 0; transform: rotate(-3deg); }
+.e2-folie--1 { left: 13%; top: 4.6rem; transform: rotate(2deg); }
+.e2-folie--2 { left: 26%; top: 9.4rem; transform: rotate(-1.5deg); border-color: var(--e2-ink); }
+.e2-pkt__folge { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.4rem; margin-top: 3.4rem; }
+.e2-pkt__aber { padding: 2rem; border-radius: var(--e2-r); background: var(--e2-ink); }
+.e2-pkt__aber p { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.4; color: #fff !important; }
+.e2-pkt__fragen { padding: 2rem; border-radius: var(--e2-r); background: #fff; }
+.e2-pkt__fragen ul { list-style: none; margin: 0; padding: 0; }
+.e2-pkt__fragen li { display: flex; align-items: center; gap: .8rem; padding: .55rem 0; font-weight: 600; font-size: 1.02rem; color: var(--e2-ink); }
+.e2-pkt__fragen li span { display: grid; place-items: center; flex: 0 0 auto; width: 1.8rem; height: 1.8rem; border-radius: 50%; border: 2px dashed #b9b3ab; font-weight: 700; font-size: .85rem; color: var(--e2-grau); }
+.e2-pkt__fragen p { margin-top: .9rem !important; color: var(--e2-ink-2); font-size: 1rem; line-height: 1.55; }
+@media (max-width: 960px) {
+  .e2-pkt__raster, .e2-pkt__folge { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .e2-folien { height: 15rem; }
+  .e2-folie { width: 80%; }
+  .e2-folie p { font-size: 1.1rem; }
+}
+
+/* ---------- Komplexe Themen › Lösung: zwei Phasen als Karten, dazwischen das Zwischenergebnis ---------- */
+.e2-lkt__kopf .leistung-stufen-head { margin-bottom: 3rem !important; }
+.e2-lkt__phase { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.1rem !important; font-size: .95rem; color: var(--e2-grau); }
+.e2-lkt__phase b { color: var(--e2-ink); font-weight: 700; }
+.e2-lkt__phase::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: var(--e2-ink); }
+.e2-lkt__paar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.4rem; }
+.e2-lk { display: flex; flex-direction: column; border-radius: var(--e2-r); border: 1px solid var(--e2-linie); background: #fff; overflow: hidden; }
+.e2-lk__kopf { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--e2-linie); }
+.e2-lk__nr { display: grid; place-items: center; flex: 0 0 auto; width: 2.8rem; height: 2.8rem; border-radius: 10px; background: var(--e2-gelb); font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; color: var(--e2-ink); }
+.e2-lk__kopf h3 { font-size: 1.6rem !important; margin: 0 !important; }
+.e2-lk__inhalt { flex: 1; padding: 1.5rem 1.8rem 1.8rem; }
+.e2-lk__inhalt > p { font-size: 1rem; line-height: 1.62; color: var(--e2-ink-2); }
+.e2-lk__inhalt > p + p { margin-top: .8rem; }
+.e2-lk .stufe-content-text p + p { margin-top: .8rem; }
+.e2-lk .stufe-content-text p { font-size: 1rem; line-height: 1.62; color: var(--e2-ink-2); }
+.e2-lk .stufe-content--with-pdf { display: block !important; }
+.e2-lk .stufe-pdf-card { margin-top: 1.4rem !important; max-width: none !important; }
+.e2-story { margin: 1.3rem 0 0; display: grid; gap: .6rem; }
+.e2-story > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .85rem 1rem; border-radius: 12px; background: var(--e2-hell); }
+.e2-story dt { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; color: var(--e2-ink); }
+.e2-story dd { margin: 0; font-size: .95rem; line-height: 1.45; color: var(--e2-ink-2); }
+.e2-lk .medien-sketches { margin-top: 1.3rem !important; }
+.e2-lk .medien-sketches-cta-wrap { margin-top: 1.2rem !important; text-align: left !important; }
+.e2-lk .stufe-note { margin-top: 1.3rem !important; padding-left: 1rem; border-left: 3px solid var(--e2-gelb); font-style: normal !important; font-size: .95rem !important; color: var(--e2-ink-2); }
+.e2-lk .stufe-bullets { list-style: none; margin: 1.3rem 0 0 !important; padding: 0 !important; display: grid; gap: .6rem; }
+.e2-lk .stufe-bullets li { padding: .95rem 1.1rem !important; border-radius: 12px; background: var(--e2-hell); font-size: .95rem; line-height: 1.5; color: var(--e2-ink-2); }
+.e2-lk .stufe-bullets li::before { display: none !important; }
+.e2-lk .stufe-bullets strong { display: block; margin-bottom: .2rem; font-family: var(--font-serif); font-size: 1.05rem; color: var(--e2-ink); }
+.e2-lkt__pause { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.4rem; align-items: center; margin: 2.2rem 0 3rem; padding: 2.4rem 2.6rem; border-radius: var(--e2-r); background: var(--e2-gelb); }
+.e2-lkt__tag { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: .8rem !important; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.e2-lkt__tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
+.e2-lkt__pause h3 { font-size: clamp(1.8rem, 3vw, 2.5rem) !important; margin: 0 0 .8rem !important; }
+.e2-lkt__pause p { font-size: 1.05rem; line-height: 1.6; color: var(--e2-ink); max-width: 40rem; }
+.e2-lkt__spoiler { width: 15rem; padding: 1.2rem 1.3rem; border-radius: 14px; background: var(--e2-ink); color: #fff; transform: rotate(2.5deg); box-shadow: 0 16px 30px rgba(26,24,23,.18); }
+.e2-lkt__spoiler b { display: block; margin-bottom: .4rem; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-gelb); }
+.e2-lkt__spoiler span { font-size: .98rem; line-height: 1.5; }
+@media (max-width: 960px) {
+  .e2-lkt__paar, .e2-lkt__pause { grid-template-columns: minmax(0, 1fr); }
+  .e2-lkt__spoiler { width: auto; transform: none; }
+}
+
+/* ---------- Download-Kästen: Kicker in der Farbe der Seite, Hervorhebung als Kasten ---------- */
+.e2-alt--gelb .pdf-dl .pdf-dl-kicker { color: var(--e2-gelb) !important; }
+.e2-alt--magenta .pdf-dl .pdf-dl-kicker { color: #e2457f !important; }
+.e2-alt .pdf-dl-h { line-height: 1.24 !important; }
+
+/* ---------- Kopf: Überschrift etwas kleiner, damit Zeilen sinnvoll umbrechen ---------- */
+.e2-kopf h1, .e2-alt .e2-kopf h1 { font-size: clamp(2.5rem, 5vw, 4.3rem) !important; }
+.e2-held.e2-kopf h1 { font-size: clamp(2.8rem, 6vw, 5.2rem) !important; }
+@media (max-width: 600px) {
+  .e2-folien { height: 18.5rem; }
+  .e2-folie { width: 78%; }
+  .e2-folie--1 { left: 11%; top: 6.2rem; }
+  .e2-folie--2 { left: 22%; top: 12.2rem; }
+}
+@media (max-width: 600px) {
+  .e2-story > div { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+  .e2-lk__kopf, .e2-lk__inhalt { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .e2-lkt__pause { padding: 1.8rem 1.4rem; }
+}
