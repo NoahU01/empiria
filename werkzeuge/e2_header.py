@@ -383,6 +383,7 @@ NUR_SPRINT = [
 OK = '<span class="hv-ok" title="für alle Unterseiten geeignet">✓</span>'
 
 CSS4 = """<style>
+.hv-fs { grid-template-columns: 10rem repeat(4, minmax(240px, 1fr)) !important; min-width: 1120px !important; }
 .hv-st-scroll { overflow-x: auto; margin: 0 2rem; -webkit-overflow-scrolling: touch; }
 .hv-st-raster { display: grid; grid-template-columns: 10rem repeat(4, minmax(240px, 1fr)); min-width: 1120px; border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
 .hv-st-raster > div { padding: .6rem; border-right: 1px solid #e3dfd8; border-bottom: 1px solid #e3dfd8; background: #fff; }
@@ -424,6 +425,33 @@ CSS4 = """<style>
 </style>"""
 
 
+def feinschliff():
+    """Runde 7: Monolinie/Duoton mit einer professionellen Icon-Familie (Phosphor, MIT) – sechs Strichstärken an vier Themen."""
+    from e2_phosphor import ICONS
+    themen = [("Strategie in den Alltag", "gelb", "flag-banner", "compass", "list-checks"), ("Sprint Landingpage", "magenta", "browser", "timer", "device-mobile"),
+              ("MarketingEcoSystem", "cyan", "presentation-chart", "trend-up", "megaphone"), ("1:1 Sparring", "violett", "chats-circle", "lightbulb", "handshake")]
+    staerken = [("thin", "Fein"), ("light", "Leicht"), ("regular", "Normal"), ("bold", "Kräftig"), ("fill", "Gefüllt"), ("duotone", "Zweitönig")]
+    punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
+
+    def ic(name, w, x, y, g, farbe):
+        inner = ICONS[name][w]
+        if w == "duotone":
+            inner = inner.replace('opacity="0.2"', f'fill="{M}" opacity=".28"')
+        return f'<g transform="translate({x} {y}) scale({g/256:.4f})" fill="{farbe}">{inner}</g>'
+
+    def spot(haupt, akzent, neben, w):
+        return svg(ic(haupt, w, 40, 96, 210, K) + ic(akzent, w, 286, 52, 104, MT) + ic(neben, w, 300, 240, 92, K), "Spot")
+
+    kopf = '<div class="hv-st-kopf hv-st-ecke"></div>' + "".join(f'<div class="hv-st-kopf"><b>{t}</b><small><i style="display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:{punkt[f]}"></i></small></div>' for t, f, *_ in themen)
+    zeilen = ""
+    for z, (w, name) in enumerate(staerken):
+        zeilen += f'<div class="hv-st-name"><b>{name}</b><small>Phosphor · {w}</small></div>'
+        zeilen += "".join(f'<div class="hv-st-bild">{farbig(spot(h, a, n, w), welt, "fs" + str(z) + str(k))}</div>' for k, (_, welt, h, a, n) in enumerate(themen))
+    return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Monolinie &amp; Duoton – mit Profi-Icons</h2>
+<p>Statt selbst gezeichneter Formen eine professionelle Icon-Familie (Phosphor, frei nutzbar). Je Zeile eine Strichstärke – <b>tippe die Zeile an, die Dir gefällt</b>. Danach baue ich damit alle 23 Seiten.</p></div>
+<div class="hv-st-scroll"><div class="hv-st-raster hv-fs">{kopf}{zeilen}</div></div></section>'''
+
+
 def stufen_raster():
     """Runde 6: je Seite der Live-Homepage eine Spot-Illustration – in jeder verbliebenen Darstellungsart (e2_spot.py)."""
     import e2_spot as sp
@@ -458,6 +486,7 @@ def main():
 <p>Wichtig ist die Trennung: Eine <b>Darstellungsart</b> ist die Bildsprache (Linie, Farbfläche, Druck, Karten, Foto …) und gilt für alle Seiten.
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
+{feinschliff()}
 {stufen_raster()}
 <div class="hv-vorschau"><div class="e2-wrap"><h2 class="hv-h2" style="margin-top:1rem!important">Darstellungsarten</h2><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 1 · Monolinie</p></div>{vorschau}</div>
 <section><div class="e2-wrap"><h2 class="hv-h2">Alle Darstellungsarten</h2><p>Alle zeigen hier das Motiv „Sprint Landingpage“. 1–3 sind als Stil gebaut und tragen jedes Thema; 4–8 sind nur für Sprint gezeichnet und stehen noch zur Entscheidung. Piktogramm-System, Typografisch und Lo-Fi-Wireframe sind auf die Seite „Darstellungsideen“ umgezogen.</p>
