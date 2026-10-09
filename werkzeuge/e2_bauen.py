@@ -412,22 +412,17 @@ def startseite():
   <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2><p class="e2v-text">{pr_ps[0]}</p></div>
   <div class="e2v-zitat"><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
 </div></section>'''
-    m.append(problem_html("problem", '<p class="e2-var-band e2-var-band--gross"><b>Variation A</b> Problem gelb · Lösung schwarz · Formate hell</p>'))
+    # Runde 18 (Daniel): Variation B gewählt – Problem gelb · Lösung hell · Formate als schmales Band vor dem Kontakt
     # Runde 16 (Daniel): Lösung und Leistungen gehören zusammen – eine Sektion auf Schwarz.
     # Unterzeile „Lösung“, Überschrift „Wir übersetzen Deine Strategie in Wirkung“, dazu der Handwerk-Satz und die Leitplanken.
     themen_form = ["forward", "kreuz", "kreis"]
-    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="loesung"><div class="e2-wrap">
-  <div class="e2v-zwei e2v-loesung2"><div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
-    <div><p class="e2v-loesung2__satz">{le_lead.replace("sondern Handwerk", '<span class="e2v-gelb">sondern Handwerk</span>')}</p><p class="e2v-loesung2__text">{lo_p}</p></div></div>
-  <div class="e2v-nutzen">{''.join(f'<a href="{link(hr)}"><svg class="e2v-form" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#fff400" color="#fff400">{FORM[themen_form[i]]}</svg><h3>{t}</h3><p>{pp}</p><span>{mehr} {PFEIL}</span></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-knoepfe"><a class="e2-knopf e2-knopf--gelb" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a><button class="e2-knopf e2-knopf--hell link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button></div>
-</div></section>''')
+    pass  # Lösung auf Schwarz: gesichert in „Startseite alt 2“
     farben = ["gelb", "schwarz", "hell"]
-    loesung_hell = f'''<section class="e2-sek" id="loesung-b"><div class="e2-wrap">
+    loesung_hell = f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
   <div class="e2v-zwei e2v-loesung2"><div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
     <div><p class="e2v-loesung2__satz e2v-loesung2__satz--hell">{le_lead.replace("sondern Handwerk", '<span class="e2v-marker">sondern Handwerk</span>')}</p><p class="e2v-loesung2__text e2v-loesung2__text--hell">{lo_p}</p></div></div>
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-knoepfe"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a><button class="e2-knopf e2-knopf--rand link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button></div>
+  <div class="e2-knoepfe"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a><button class="e2v-textlink link-more" type="button" data-modal="{lo_mehr.group(1)}">Was das für Dich bedeutet {PFEIL}</button></div>
 </div></section>'''
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
@@ -448,17 +443,21 @@ def startseite():
 <p class="e2-fa__satz">{d['satz']}</p>
 <ul class="e2-fa__liste">{"".join(f'<li><a href="{u["href"]}"><i>{format_sym(u["titel"])}</i>{u["titel"]}{PFEIL}</a></li>' for u in d['unter'])}</ul>
 <div class="e2-fa__fuss"><a class="e2-knopf" href="{d['href']}">{d['knopf']} {PFEIL}</a></div></article>''' for i, d in enumerate(fo_daten))
-    m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
-  {fo_kopf}<div class="e2-formate-a">{va}</div></div></section>''')
+    # Formate als große Kästen: gesichert in „Startseite alt 2“
     # Variante B (Daniel): Formate komplett schwarz wie die Leistungen in Variante A – Farbe nur im Symbol und Strich
     vb = "".join(f'''<article class="e2v-format" style="--e2-akzent:{d['akz']}"><span class="e2v-format__sym">{d['sym']}</span><h3>{d['titel']}</h3>
 <p>{d['satz']}</p>
 <ul>{"".join(f'<li><a href="{u["href"]}"><i>{format_sym(u["titel"])}</i>{u["titel"]}{PFEIL}</a></li>' for u in d['unter'])}</ul>
 <a class="e2v-format__mehr" href="{d['href']}">{d['knopf']} {PFEIL}</a></article>''' for d in fo_daten)
-    m.append(problem_html("problem-b", '<p class="e2-var-band e2-var-band--gross"><b>Variation B</b> Problem gelb · Lösung hell · Formate schwarz</p>'))
+    m.append(problem_html("problem", ""))
     m.append(loesung_hell)
-    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="formate-b"><div class="e2-wrap">
-  {fo_kopf}<div class="e2v-formate">{vb}</div></div></section>''')
+    # Formate: zweite Ebene – schmal, ruhig, ohne Karten und Farbflächen; klar als „andere Qualität“ formuliert
+    links = "".join(f'<a href="{d["href"]}"><b>{d["titel"]}</b><span>{d["satz"]}</span>{PFEIL}</a>' for d in fo_daten)
+    m.append(f'''<section class="e2v-formate-band" id="formate"><div class="e2-wrap e2v-zwei">
+  <div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2v-formate-band__h">Außerdem: unsere Erfahrung als fertige Formate.</h2>
+    <p class="e2v-formate-band__text">Seit 2012 haben wir mit Versicherern in zahlreichen Projekten gearbeitet. Was sich dabei bewährt hat, gibt es als klar umrissene Formate zum direkten Einsatz – kompakt, ohne langen Vorlauf.</p></div>
+  <nav class="e2v-formate-band__links" aria-label="Formate">{links}</nav>
+</div></section>''')
     m.append(kontakt_start(abschnitt(h, 'id="kontakt"')))
     return seite("index.html", "\n".join(m))
 
