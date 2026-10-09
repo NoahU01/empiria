@@ -12,7 +12,7 @@
   background:
     radial-gradient(circle var(--hl-r) at 100% 100%, var(--hl) 96%, transparent 100%) left 0 top var(--hl-t) / var(--hl-r) var(--hl-r) no-repeat,
     radial-gradient(circle var(--hl-r) at 0 100%, var(--hl) 96%, transparent 100%) right 0 top var(--hl-t) / var(--hl-r) var(--hl-r) no-repeat,
-    linear-gradient(var(--hl), var(--hl)) left calc(var(--hl-r) - 1px) top var(--hl-t) / calc(100% - 2 * var(--hl-r) + 2px) calc(var(--hl-r) + 1px) no-repeat,
+    linear-gradient(var(--hl), var(--hl)) left calc(var(--hl-r) - 3px) top var(--hl-t) / calc(100% - 2 * var(--hl-r) + 6px) calc(var(--hl-r) + 1px) no-repeat,
     linear-gradient(var(--hl), var(--hl)) left 0 bottom 0 / 100% calc(100% - var(--hl-t) - var(--hl-r) + 1.5px) no-repeat !important;
 }
 .e2-alt--magenta h1 .hl, .e2-dl-hl--magenta { --hl: #C51F5D; color: #fff !important; }
@@ -189,3 +189,11 @@
   .e2-lk__kopf, .e2-lk__inhalt { padding-left: 1.2rem; padding-right: 1.2rem; }
   .e2-lkt__pause { padding: 1.8rem 1.4rem; }
 }
+
+/* ---------- Runde 5b: Überschriften enger, Kästen hugging ----------
+   Lora: Oberkante Schriftbox 1.01em, Großbuchstaben/Oberlängen bis .76em, Unterlängen bis .27em.
+   Kasten: von .79em über bis .30em unter der Grundlinie (1.09em hoch). Zeilenabstand 1.18 →
+   zwei Kästen übereinander haben .09em Luft, Unterlängen der Zeile darüber .12em. */
+.e2 h1 { line-height: 1.18 !important; }
+.e2-alt .pdf-dl-h { line-height: 1.18 !important; }
+.e2 h1 .hl, .e2-alt h1 .hl, .e2-alt--magenta h1 .hl, .e2-dl-hl { --hl-t: .22em; padding-bottom: .03em !important; }
