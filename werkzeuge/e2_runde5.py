@@ -269,6 +269,30 @@ def teams_download(sek):
 </div></div></section>'''
 
 
+# ---------- Preise als „Post-Karten“ wie Social Media auf der Volksfest-Seite (Runde 39, Test KI zum Anfassen) ----------
+def preise_posts(sek, symbole):
+    """weißer Kopf (Kurzsatz + ggf. „Meistgewählt“) · Farbfläche (Dauer, Name, Preis, Symbol; grau – gelb – grau) · weißer Fuß (Beschreibung + Inhalte)."""
+    from e2_lucide import ICONS
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    karten = ""
+    for i, m in enumerate(re.finditer(r'<div class="produkt-glass price-card([^"]*)"', sek)):
+        b = div_block(sek, m.start()); top = "featured" in m.group(1)
+        name = _eins(r"<h3>(.*?)<span", b); dauer = _eins(r'<span class="price-name-sub">(.*?)</span>', b)
+        desc = _eins(r'<p class="price-desc[^"]*">(.*?)</p>', b); preis = _eins(r'<span class="price-amount">(.*?)</span>', b)
+        note = _eins(r'<p class="price-note">(.*?)</p>', b); lis = re.findall(r"<li>(.*?)</li>", b, re.S)
+        ico = f'<svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[symbole[i % len(symbole)]]}</svg>'
+        karten += (f'<article class="e2-post{" e2-post--top" if top else ""}">'
+                   f'<div class="e2-post__kopf"><span>{note}</span>{"<em>Meistgewählt</em>" if top else ""}</div>'
+                   f'<div class="e2-post__bild"><small>{dauer}</small><div class="e2-post__unten"><div><b>{name}</b><span class="e2-post__preis">{preis}</span></div>{ico}</div></div>'
+                   f'<div class="e2-post__text"><p>{desc}</p><ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul></div></article>')
+    fuss = re.search(r'<p class="pricing-footnote[^"]*">(.*?)</p>', sek, re.S)
+    return f'''<section class="produkt-grid produkt-pricing e2-posts-sek"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <div class="e2-posts">{karten}</div>{f'<p class="e2-preis__fuss e2-posts__fuss">{fuss.group(1)}</p>' if fuss else ""}
+</div></section>'''
+
+
 # ---------- Pakete als saubere Karten (Runde 34) ----------
 def pakete(sek):
     k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)

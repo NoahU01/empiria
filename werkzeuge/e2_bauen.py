@@ -505,6 +505,8 @@ def unterseite(original, ziel, html=None):
             "Eine Gesamtlogik statt Einzelmedien – damit klar ist, wofür das Unternehmen steht.", "Medien, die Vertriebspartner wirklich erfolgreich machen – statt 150 Detailfolien.",
             "Große Themen kompakt erzählt – auch für Gremien ohne Versicherungshintergrund.", "Die strategische Richtung so erzählt, dass sie im Gespräch trägt."],
             sonder_kurz="Ausschreibung gegen namhafte Wettbewerber: Medien, die zeigen, dass wir den Kunden verstanden haben."))
+    if name == "ki-zum-anfassen" and 'produkt-pricing' in main:   # Runde 39: Preise als Post-Karten (Versuch)
+        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["sparkles", "zap", "target"]))
     if name == "ki-zum-anfassen":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2, kurztexte=[
             "Zielgruppen und ihre Ansprache mit KI als Sparringspartner erarbeiten.", "Eingefahrene Denkmuster aufbrechen – im Auftrag des Vorstands.",

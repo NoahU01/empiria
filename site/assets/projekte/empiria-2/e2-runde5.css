@@ -1052,3 +1052,28 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pr
 html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards h3 { font-size: 1.3rem !important; margin: 0 0 .5rem !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards p { font-size: .95rem !important; line-height: 1.6 !important; color: #1a1817 !important; opacity: .85; }
 @media (max-width: 600px) { .e2-phasen { grid-template-columns: minmax(0, 1fr) !important; gap: .6rem; } .e2-phasen li { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: .9rem; padding: 1rem 1.1rem; } .e2-phasen li::after { display: none !important; } .e2-phasen small { flex-basis: 100%; padding-left: 2.9rem; } }
+
+/* Runde 39 · Preise als Post-Karten (wie Social Media auf der Volksfest-Seite): weiß – Farbfläche – weiß */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.e2-posts-sek { background: #fff !important; }
+.e2-posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: 1.4rem; margin-top: 3rem; }
+.e2-post { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; background: #fff; border: 1px solid #e4e0db; border-radius: 18px; overflow: hidden; }
+.e2-post__kopf { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .95rem 1.2rem; }
+.e2-post__kopf span { font-size: .84rem; font-weight: 600; color: #1a1817; }
+.e2-post__kopf em { font-style: normal; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: #1a1817; color: #fff; padding: .35rem .7rem; border-radius: 999px; white-space: nowrap; }
+.e2-post__bild { display: flex; flex-direction: column; justify-content: space-between; min-height: 20rem; padding: 1.5rem 1.5rem 1.6rem; background: #f3f1ee; color: #1a1817; }
+.e2-post--top .e2-post__bild { background: #fff400; }
+.e2-post__bild small { font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.e2-post__unten { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.e2-post__unten b { display: block; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; }
+.e2-post__preis { display: block; margin-top: .55rem; font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700; }
+.e2-post__ico { flex: 0 0 auto; width: 3.6rem; height: 3.6rem; color: #1a1817; }
+.e2-post__text { padding: 1.1rem 1.2rem 1.3rem; }
+html body .e2-alt .e2-post__text p { margin: 0 !important; font-size: .9rem !important; line-height: 1.55 !important; color: #3d3a37 !important; }
+.e2-post__text ul { list-style: none; margin: .8rem 0 0; padding: .8rem 0 0; border-top: 1px solid #ece9e5; display: grid; gap: .35rem; }
+.e2-post__text li { position: relative; padding-left: 1.2rem; font-size: .84rem; line-height: 1.45; color: #1a1817; }
+.e2-post__text li::before { content: ""; position: absolute; left: 0; top: .5rem; width: .4rem; height: .4rem; border-radius: 50%; background: #1a1817; }
+.e2-posts__fuss { margin-top: 1.6rem !important; }
+@media (max-width: 960px) { .e2-posts { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 1.2rem; max-width: 30rem; } .e2-post { grid-row: auto; grid-template-rows: none; display: flex; flex-direction: column; } .e2-post__bild { min-height: 15rem; } }
+.e2-post__kopf span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .8rem; }
+.e2-post__bild { min-height: 16.5rem; }
+.e2-post__preis { font-size: 1.7rem; }
