@@ -966,11 +966,4 @@ html body .e2-alt.e2-alt .e2-sp2-wann b { font-size: 1.2rem; }
 @media (max-width: 600px) { .e2-sp2-worueber ul { grid-template-columns: 1fr; } .e2-sp2-worueber li { min-height: 0; } }
 html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e2-pillen) { max-width: none !important; width: auto !important; }
 
-/* Runde 36b · Farbvorschlag (Test auf Workshops, Marketing 2.0, Training & Sparring):
-   nur Sektionen, deren ganzer Hintergrund die Bereichsfarbe ist, bekommen einen Verlauf von links oben nach rechts unten –
-   von derselben Farbe mit 60 % mehr Schwarzanteil (wie in CMYK nur K hochdrehen) zur Originalfarbe. Alles andere bleibt in der Originalfarbe. */
-html body .e2-alt.e2-alt.e2-seite--workshops { --bf-tief: #4F0C25; }            /* #C51F5D × 0,4 */
-html body .e2-alt.e2-alt.e2-seite--marketing { --bf-tief: #04404C; }            /* #0B9FBD × 0,4 */
-html body .e2-alt.e2-alt.e2-seite--training-sparring { --bf-tief: #360840; }    /* #8613A1 × 0,4 */
-html body main .e2-alt.e2-alt.e2-alt.e2-alt:is(.e2-seite--workshops, .e2-seite--marketing, .e2-seite--training-sparring) section.produkt-grid { background: linear-gradient(135deg, var(--bf-tief) 0%, var(--bf) 100%) !important; }
 .e2-wk-thumb .e2-wk-bild--eng { width: auto !important; height: 58% !important; max-width: 80%; margin: auto; display: block; }
