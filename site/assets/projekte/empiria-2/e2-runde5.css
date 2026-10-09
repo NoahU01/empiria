@@ -920,3 +920,48 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-foot
 @media (max-width: 900px) { .e2-ablauf { grid-template-columns: 1fr; gap: 2.4rem; } }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .pricing-footnote.pricing-footnote { margin-top: 2rem !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-fall-sonder { padding: 3.4rem 3rem !important; align-items: center; }
+
+/* Runde 35 · Kopf-Pills: gefüllt in der Bereichsfarbe (hell), in einer Reihe – statt dünner Rahmen untereinander */
+html body .e2-alt.e2-alt .e2-kopf__inhalt .produkt-pills, html body .e2-alt.e2-alt .e2-kopf__inhalt .hero-anlaesse, html body .e2-alt.e2-alt .e2-kopf__inhalt .e2-pillen { display: flex !important; flex-direction: row !important; flex-wrap: wrap; gap: .5rem !important; margin-top: 1.5rem !important; }
+html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pill, .hero-anlass) { display: inline-flex !important; width: auto !important; padding: .5rem 1rem !important; border: 0 !important; border-radius: 999px !important; background: color-mix(in srgb, var(--bf) 13%, #fff) !important; color: #1a1817 !important; font-size: .84rem !important; font-weight: 600 !important; letter-spacing: 0 !important; white-space: nowrap; }
+
+/* Runde 35 · 1:1 Sparring: „Ein Gegenüber“ ohne Kästen */
+.e2-gg__liste { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 3rem; row-gap: 2.8rem; }
+.e2-gg__liste li { border-top: 1.5px solid rgba(255,255,255,.35); padding-top: 1.6rem; }
+.e2-gg__sym { display: block; width: 2.4rem; height: 2.4rem; margin-bottom: 1.2rem; }
+.e2-gg__sym svg { width: 100%; height: 100%; }
+html body .e2-alt.e2-alt .e2-gg h3 { margin: 0 !important; color: #fff !important; font-family: var(--font-serif); font-size: 1.35rem !important; font-weight: 700; line-height: 1.2; }
+html body .e2-alt.e2-alt .e2-gg li p { margin: .6rem 0 0 !important; color: rgba(255,255,255,.86) !important; font-size: .95rem !important; line-height: 1.6 !important; }
+@media (max-width: 960px) { .e2-gg__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .e2-gg__liste { grid-template-columns: 1fr; row-gap: 2rem; } }
+
+/* Runde 35 · 1:1 Sparring: Wann (schwarzer Kasten) + Worüber (gefüllte Themen) */
+.e2-sp2-label { margin: 0 0 1.4rem !important; font-size: .74rem !important; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.e2-sp2-wann { margin-top: 3.2rem; background: #1a1817; border-radius: 22px; padding: 2.2rem 2.4rem 2.4rem; }
+.e2-sp2-wann .e2-sp2-label { color: var(--bf) !important; filter: brightness(1.6); }
+.e2-sp2-wann ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.e2-sp2-wann li { display: flex; flex-direction: column; gap: 1rem; padding: 0 1.6rem; border-left: 1px solid rgba(255,255,255,.18); }
+.e2-sp2-wann li:first-child { padding-left: 0; border-left: 0; }
+.e2-sp2-sym { width: 2.4rem; height: 2.4rem; color: #fff; }
+.e2-sp2-sym svg { width: 100%; height: 100%; }
+html body .e2-alt.e2-alt .e2-sp2-wann b { color: #fff !important; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; line-height: 1.2; }
+.e2-sp2-worueber { margin-top: 3.4rem; }
+.e2-sp2-worueber .e2-sp2-label { color: #1a1817; }
+.e2-sp2-worueber ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .65rem; }
+.e2-sp2-worueber li { padding: .8rem 1.25rem; border-radius: 999px; background: color-mix(in srgb, var(--bf) 11%, #fff); font-size: 1rem; font-weight: 500; color: #1a1817; line-height: 1.3; }
+.e2-sp2-worueber li.e2-sp2-mehr { background: transparent; font-style: italic; color: #8a847c; padding-left: .4rem; }
+@media (max-width: 960px) { .e2-sp2-wann ul { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.8rem; } .e2-sp2-wann li:nth-child(3) { padding-left: 0; border-left: 0; } }
+@media (max-width: 600px) { .e2-sp2-wann { padding: 1.8rem 1.5rem; } .e2-sp2-wann li { padding: 0 1rem; } .e2-sp2-wann li:nth-child(odd) { padding-left: 0; border-left: 0; } html body .e2-alt.e2-alt .e2-sp2-wann b { font-size: 1.1rem; } .e2-sp2-worueber li { font-size: .92rem; padding: .7rem 1.05rem; } }
+
+/* Runde 35 · Umsetzungsturbo: Linie in der Bereichsfarbe statt Gelb */
+html body .e2-alt.e2-alt.e2-seite--sparring .e2-sp-turbo .e2-s2-kasten__label { border-top-color: var(--bf) !important; }
+html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pill, .hero-anlass) { padding: .45rem .9rem !important; font-size: .8rem !important; }
+html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e2-pillen) { gap: .4rem !important; }
+.e2-sp2-wann .e2-sp2-label { color: rgba(255,255,255,.6) !important; filter: none; }
+html body .e2-alt.e2-alt .e2-sp2-wann b { font-size: 1.2rem; }
+.e2-sp2-worueber ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.e2-sp2-worueber li { display: flex; align-items: center; min-height: 4.6rem; border-radius: 16px; padding: 1rem 1.3rem; }
+.e2-sp2-worueber li.e2-sp2-mehr { background: var(--bf); color: #fff; font-style: normal; font-weight: 600; padding-left: 1.3rem; }
+@media (max-width: 960px) { .e2-sp2-worueber ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .e2-sp2-worueber ul { grid-template-columns: 1fr; } .e2-sp2-worueber li { min-height: 0; } }
+html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e2-pillen) { max-width: none !important; width: auto !important; }

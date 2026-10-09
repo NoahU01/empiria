@@ -150,16 +150,32 @@ def sparring_themen(sek):
     lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
     wann = re.findall(r'<div class="tc-row[^"]*">.*?<span>(.*?)</span>', sek, re.S)
     worueber = re.findall(r'<li class="reveal"><svg.*?</svg><span>(.*?)</span></li>', sek, re.S)
-    sym = ["users", "map-pin", "phone", "message-circle"]
+    sym = ["coffee", "mountain", "car", "message-circle"]
     def ic(n):
         n = n if n in ICONS else "message-circle"
-        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
-    karten = "".join(f'<li><span class="e2-in-sym e2-sp-sym">{ic(sym[i])}</span><b>{t}</b></li>' for i, t in enumerate(wann))
-    liste = "".join(f"<li>{t}</li>" for t in worueber)
-    return f'''<section class="produkt-section e2-sp-themen"><div class="container">
-  <div class="e2-s2-split e2-in-oben"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
-  <p class="e2-in-label" style="margin-top:3.6rem!important">Wann wir sprechen</p><ul class="e2-in-karten e2-sp-wann">{karten}</ul>
-  <p class="e2-in-label" style="margin-top:3.6rem!important">Worüber wir sprechen</p><ul class="e2-sp-liste">{liste}<li class="e2-sp-mehr">… und vieles mehr</li></ul>
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    wege = "".join(f'<li><span class="e2-sp2-sym">{ic(sym[i])}</span><b>{t}</b></li>' for i, t in enumerate(wann))
+    themen = "".join(f"<li>{t}</li>" for t in worueber)
+    return f'''<section class="produkt-section e2-sp-themen e2-sp2"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <div class="e2-sp2-wann"><p class="e2-sp2-label">Wann wir sprechen</p><ul>{wege}</ul></div>
+  <div class="e2-sp2-worueber"><p class="e2-sp2-label">Worüber wir sprechen</p><ul>{themen}<li class="e2-sp2-mehr">… und vieles mehr</li></ul></div>
+</div></section>'''
+
+
+def sparring_gegenueber(sek):
+    """Runde 35: sechs Eigenschaften ohne Kästen – weiße Icons, weiße Linien auf der Bereichsfarbe (wie die Volksfest-Seite)."""
+    from e2_lucide import ICONS
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
+    lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    items = re.findall(r"<h3>(.*?)</h3><p>(.*?)</p>", sek, re.S)
+    sym = ["lock", "award", "layers", "compass", "rocket", "megaphone"]
+    def ic(n):
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    li = "".join(f'<li><span class="e2-gg__sym">{ic(sym[i % 6])}</span><h3>{t}</h3><p>{x}</p></li>' for i, (t, x) in enumerate(items))
+    return f'''<section class="produkt-grid e2-gg"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
+  <ul class="e2-gg__liste">{li}</ul>
 </div></section>'''
 
 

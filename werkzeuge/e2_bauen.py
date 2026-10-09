@@ -454,6 +454,10 @@ def unterseite(original, ziel, html=None):
     if name == "sparring":
         sek = abschnitt(main, 'topics-compare'); main = main.replace(sek, e2_runde5.sparring_themen(sek))
         sek = abschnitt(main, 'usp-turbo-section'); main = main.replace(sek, e2_runde5.sparring_turbo(sek))
+        sek = abschnitt(main, 'class="produkt-grid-cards'); main = main.replace(sek, e2_runde5.sparring_gegenueber(sek))
+        for alt, neu in (("Für Führungskräfte in der Versicherungsbranche", "Versicherungsbranche"), ("Vom Abteilungsleiter bis zum Vorstand", "Abteilung bis Vorstand"),
+                         ("Strategie, Geschäftsmodell &amp; Führung", "Strategie &amp; Führung")):
+            main = main.replace(alt, neu, 1)
     if name == "innovation":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_inno(sek))
         sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_inno(sek))
