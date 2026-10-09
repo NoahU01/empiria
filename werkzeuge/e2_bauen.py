@@ -410,6 +410,8 @@ def unterseite(original, ziel, html=None):
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
     if name in ("strategie", "strategie-2"):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
+    if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
+        sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
     if name == "innovation":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_inno(sek))
         sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_inno(sek))

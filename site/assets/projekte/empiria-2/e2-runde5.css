@@ -762,3 +762,17 @@ html body .e2-alt.e2-alt.e2-alt.e2-alt .e2-kopf .e2-knopf.e2-knopf { background:
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is(.usp-highlight, .vergleich-rocket) { background: #1a1817 !important; border-color: #1a1817 !important; }
 /* Punkte/Marker in Bereichsfarb-Sektionen nie gelb auf Violett/Cyan/Magenta – weiß */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is([class*="dot"], [class*="punkt"], .problem-timeline-dot, li)::before { background: #fff !important; border-color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .price-card--featured :is(.btn, a.btn) { background: #fff !important; color: var(--bf) !important; border-color: #fff !important; }
+/* Teams befähigen: Phasen als Zeile, Inhalte als drei Karten */
+.e2-teams-loesung { background: #fff !important; }
+.e2-phasen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; counter-reset: none; }
+.e2-phasen li { position: relative; display: flex; flex-direction: column; gap: .2rem; padding: 1.2rem 1.3rem; border-radius: var(--e2-r); background: var(--e2-hell); }
+.e2-phasen li:not(:last-child)::after { content: ""; position: absolute; right: -.75rem; top: 50%; width: .5rem; height: .5rem; border-top: 2px solid #b9b3ab; border-right: 2px solid #b9b3ab; transform: translateY(-50%) rotate(45deg); }
+.e2-ph__nr { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; margin-bottom: .5rem; border-radius: 50%; background: var(--bf, #1a1817); color: var(--bf-text, #fff); font-family: var(--font-serif); font-weight: 700; font-size: .9rem; }
+.e2-phasen b { font-family: var(--font-serif); font-size: 1.15rem; }
+.e2-phasen small { font-size: .88rem; color: var(--e2-grau); }
+.e2-phasen__knopf { margin-top: 1.4rem !important; }
+.e2-schritte--3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; margin-top: 0 !important; }
+html body .e2-alt.e2-alt .e2-schritte--3 .e2-schritt__sym { background: var(--bf, #1a1817); }
+html body .e2-alt.e2-alt.e2-alt--gelb .e2-schritte--3 .e2-schritt__sym svg { stroke: #1a1817 !important; }
+@media (max-width: 960px) { .e2-phasen { grid-template-columns: repeat(2, minmax(0, 1fr)); } .e2-phasen li:nth-child(2)::after { display: none; } .e2-schritte--3 { grid-template-columns: minmax(0, 1fr) !important; } }

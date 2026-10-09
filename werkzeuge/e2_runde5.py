@@ -104,6 +104,45 @@ def loesung_inno(sek):
 </div></section>'''
 
 
+# ---------- Teams befähigen: lange Timeline → Phasen + drei Inhalts-Karten (Runde 29) ----------
+def loesung_teams(sek):
+    from e2_lucide import ICONS
+    kopf = div_block(sek, sek.index('<div class="leistung-stufen-head">'))
+    kopf = re.sub(r'<span class="hl">(.*?)</span>', r"\1", kopf)
+    leads = re.findall(r'<p class="lead">(.*?)</p>', kopf, re.S)
+    k = _eins(r'<p class="kicker">(.*?)</p>', kopf); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", kopf)
+    phasen = re.findall(r'<span class="onboarding-step-title">(.*?)</span>\s*<span class="onboarding-step-duration">(.*?)</span>', sek, re.S)
+    knopf = re.search(r'(<button type="button" class="btn btn--dark js-onboarding-open">.*?</button>)', sek, re.S)
+    items = []
+    for m in re.finditer(r'<div class="stufen-timeline-item', sek):
+        block = div_block(sek, m.start())
+        nr = _eins(r'<span class="stl-icon">(\d+)</span>', block)
+        inhalt = div_block(block, block.index('<div class="stufe-content'))
+        items.append((nr, inhalt))
+    sym = ["message-square-text", "presentation", "refresh-cw", "users"]
+    def ic(n, farbe="#fff"):
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="{farbe}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    phasen_html = "".join(f'<li><span class="e2-ph__nr">{i+1}</span><b>{t}</b><small>{d}</small></li>' for i, (t, d) in enumerate(phasen))
+    karten = ""
+    for i, (nr, inh) in enumerate(items):
+        h3 = _eins(r"<h3>(.*?)</h3>", inh)
+        ms = re.search(r"<h3>.*?</h3>.*?<p>(.*?)</p>", inh, re.S)
+        satz = ms.group(1) if ms else ""
+        rest = re.sub(r'^<div class="stufe-content[^"]*">|</div>$', "", inh.strip())
+        karten += (f'<article class="e2-schritt"><div class="e2-schritt__kopf"><span class="e2-schritt__sym">{ic(sym[i % 4])}</span><span class="e2-schritt__nr">{nr}</span></div>'
+                   f'<h3>{h3}</h3><p>{satz}</p><button type="button" class="e2-schritt__mehr" data-e2-auf="tm{i}">Module &amp; Ergebnis →</button>'
+                   f'<dialog class="e2-dialog e2-dialog--breit" id="tm{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><div class="e2-lk__inhalt">{rest}</div></dialog></article>')
+    return f'''<section class="section e2-teams-loesung" id="loesung-baustein"><div class="container">
+  <div class="e2-s2-split e2-in-oben"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2><p class="lead">{leads[0]}</p></div>
+    <div>{"".join(f'<p class="lead">{x}</p>' for x in leads[1:])}</div></div>
+  <p class="e2-in-label" style="margin-top:4rem!important">Ablauf</p>
+  <ol class="e2-phasen">{phasen_html}</ol>
+  {('<p class="e2-phasen__knopf">' + knopf.group(1) + '</p>') if knopf else ""}
+  <p class="e2-in-label" style="margin-top:4rem!important">Inhalte</p>
+  <div class="e2-schritte e2-schritte--3">{karten}</div>
+</div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""
