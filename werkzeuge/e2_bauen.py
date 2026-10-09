@@ -490,7 +490,7 @@ def unterseite(original, ziel, html=None):
         main = re.sub(r'<p class="e2-kicker">\s*<img src="/assets/sofort-sichtbar-logo-violet.svg"', '<p class="e2-kicker e2-kicker--logo"><img src="/assets/sofort-sichtbar-logo-' + ("ink" if SCHWARZ_GELB else "violet") + '.svg"', main, count=1)
     if name == "sprint-landingpage":
         # Runde 40 (Daniel): „48“ nur noch einmal – rechts im Bild. Überschrift dreizeilig ohne Zahl, Text ohne Zahl, keine Pills.
-        main = main.replace('<h1>Live in nur 48 Stunden. Sauber gebaut, <span class="hl">volle Wirkung.</span></h1>', '<h1><span class="hl">Schnell live.</span><br>Sauber gebaut.<br>Volle Wirkung.</h1>', 1)
+        main = main.replace('<h1>Live in nur 48 Stunden. Sauber gebaut, <span class="hl">volle Wirkung.</span></h1>', '<h1><span class="hl">Schnell live.</span><br>Klar im Fokus.<br>Volle Wirkung.</h1>', 1)
         main = main.replace("Wenn es schnell gehen muss: In nur 48 Stunden entwickeln wir Deine fokussierte Landingpage", "Wenn es schnell gehen muss: Im Sprint entwickeln wir Deine fokussierte Landingpage", 1)
         a = main.index('<div class="produkt-pills">', main.index('class="e2-kopf"')); main = main.replace(e2_runde5.div_block(main, a), "", 1)
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurztexte=[
@@ -510,7 +510,7 @@ def unterseite(original, ziel, html=None):
             "Große Themen kompakt erzählt – auch für Gremien ohne Versicherungshintergrund.", "Die strategische Richtung so erzählt, dass sie im Gespräch trägt."],
             sonder_kurz="Ausschreibung gegen namhafte Wettbewerber: Medien, die zeigen, dass wir den Kunden verstanden haben."))
     if name == "ki-zum-anfassen" and 'produkt-pricing' in main:   # Runde 39: Preise als Post-Karten (Versuch)
-        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["sparkles", "zap", "target"]).replace('Drei Formate', 'Drei Formate', 1).replace("kicker\">Formate<", "kicker\">Formate · Variante A<", 1) + "\n" + e2_runde5.preise_posts(sek, ["sparkles", "zap", "target"], "B"))
+        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["sparkles", "zap", "target"]))   # Daniel: Variante A
     if name == "ki-zum-anfassen":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2, kurztexte=[
             "Zielgruppen und ihre Ansprache mit KI als Sparringspartner erarbeiten.", "Eingefahrene Denkmuster aufbrechen – im Auftrag des Vorstands.",
