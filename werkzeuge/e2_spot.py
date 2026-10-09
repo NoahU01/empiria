@@ -46,14 +46,8 @@ class Stift:
 STIFT = {
     "mono": Stift(4.5, {"a": MT, "*": K}, {"a": M3, "h": W}, (K, K)),
     "duo": Stift(3, M4, {"a": M, "h": M3, "k": M4, "w": W}, (M4, M2), M4),
-    "riso_f": Stift(0, "none", {"a": M, "h": "url(#hvrr)", "w": "none", "k": M}, (M, "none"), M),
-    "riso_l": Stift(2.6, K, {"a": "none", "h": "none", "w": "none", "k": "none"}, (K, K)),
     "iso": Stift(2.5, K, {"a": M, "h": G, "k": K}, (K, G3)),
-    "iso_s": Stift(2.5, K, {"a": M4, "h": G2, "k": K, "w": G2}, ("none", "none"), "none"),
-    "plan": Stift(1.6, {"a": MT, "*": K}, {"a": W, "h": W, "k": K}, (K, G3)),
-    "prozess": Stift(3, K, {"a": M, "h": G}, (K, G3)),
     "glas": Stift(2, {"a": M, "*": "#ffffff"}, {"w": "rgba(255,255,255,.62)", "h": "rgba(255,255,255,.4)", "a": M, "k": K}, (K, "#8a847c"), K, schatten=True),
-    "pop": Stift(5.5, K, {"a": M, "h": M3}, (K, K)),
 }
 
 
@@ -327,49 +321,12 @@ def r_duo(m):
     return bild(_teile(STIFT["duo"], m), "Duoton")
 
 
-def r_riso(m):
-    defs = f'<pattern id="hvrr" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="3.5" cy="3.5" r="1.8" fill="{M}"/></pattern>'
-    return bild(f'<g style="mix-blend-mode:multiply">{_teile(STIFT["riso_f"], m, False)}</g>'
-                f'<g style="mix-blend-mode:multiply" transform="translate(-6 5)">{_teile(STIFT["riso_l"], m)}</g>', "Riso-Druck", defs)
 
 
-def r_iso(m):
-    tr = 'transform="translate(220 205) matrix(.66 .38 -.66 .38 0 0) translate(-220 -200)"'
-    return bild(f'<g transform="translate(0 14)"><g {tr}>{_teile(STIFT["iso_s"], m, False)}</g></g><g {tr}>{_teile(STIFT["iso"], m, False)}</g>', "Isometrisch")
 
 
-def r_plan(m):
-    o = '<g transform="translate(60 40) scale(.72)">' + _teile(STIFT["plan"], m, False) + "</g>"
-    beschr = [t for t in m["teile"] if t["label"]]
-    for i, t in enumerate(beschr):
-        x, y, w, h = _box(t)
-        x, y, w, h = 60 + x * .72, 40 + y * .72, w * .72, h * .72
-        cy = y + h * .3
-        if x + w / 2 < 220:
-            o += f'<path d="M{x:.1f} {cy:.1f}H40" stroke="{K}" stroke-width="1"/><circle cx="{x:.1f}" cy="{cy:.1f}" r="2.5" fill="{K}"/>' + f'<text x="38" y="{cy-6:.1f}" font-size="15" font-weight="700" fill="{K}" font-family="{SANS}">{t["label"]}</text>'
-        else:
-            o += f'<path d="M{x+w:.1f} {cy:.1f}H404" stroke="{K}" stroke-width="1"/><circle cx="{x+w:.1f}" cy="{cy:.1f}" r="2.5" fill="{K}"/>' + f'<text x="406" y="{cy-6:.1f}" font-size="15" font-weight="700" fill="{K}" text-anchor="end" font-family="{SANS}">{t["label"]}</text>'
-    o += f'<path d="M60 350H380M60 344v12M380 344v12" stroke="{MT}" stroke-width="1.6"/><text x="220" y="378" font-size="15" font-weight="700" fill="{MT}" text-anchor="middle" font-family="{SANS}" letter-spacing="2">{m["wort"].upper()}</text>'
-    return bild(o, "Bauplan")
 
 
-def r_prozess(m):
-    haupt = [t for t in m["teile"] if t["label"]][:3]
-    n = len(haupt)
-    o, slot = "", 400 / n
-    for i, t in enumerate(haupt):
-        x, y, w, h = _box(t)
-        k = min((slot - 30) / w, 150 / h)
-        cx = 20 + slot * (i + .5)
-        tx, ty = cx - (x + w / 2) * k, 190 - (y + h) * k
-        t2 = dict(t)
-        o += f'<g transform="translate({tx:.1f} {ty:.1f}) scale({k:.3f})">' + TEILE[t["teil"]](STIFT["prozess"], *t["args"], **t["kw"]) + "</g>"
-        fill = M if i == n - 1 else W
-        o += f'<circle cx="{cx:.1f}" cy="250" r="15" fill="{fill}" stroke="{K}" stroke-width="3"/><text x="{cx:.1f}" y="255" font-size="13" font-weight="700" fill="{ON if i == n-1 else K}" text-anchor="middle" font-family="{SERIF}">{i+1}</text>'
-        o += f'<text x="{cx:.1f}" y="294" font-size="14" font-weight="700" fill="{K}" text-anchor="middle" font-family="{SANS}">{t["label"]}</text>'
-    o = f'<path d="M30 250H410" stroke="{K}" stroke-width="3"/>' + o
-    o += f'<text x="220" y="356" font-size="30" font-weight="700" fill="{K}" text-anchor="middle" font-family="{SERIF}">{m["wort"]}</text>'
-    return bild(o, "Prozess-Infografik")
 
 
 def r_glas(m):
@@ -379,15 +336,107 @@ def r_glas(m):
                 + _teile(STIFT["glas"], m), "Glas", defs)
 
 
-def r_pop(m):
-    defs = f'<pattern id="hvpd" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3.2" fill="{M2}"/></pattern>'
-    st = " ".join(f"{366 + (62 if i % 2 == 0 else 42) * math.cos(math.radians(i*18-90)):.1f},{66 + (62 if i % 2 == 0 else 42) * math.sin(math.radians(i*18-90)):.1f}" for i in range(20))
-    gr = 22 if len(m["wort"]) <= 5 else (16 if len(m["wort"]) <= 8 else 12)
-    return bild(f'<rect x="10" y="10" width="420" height="380" fill="url(#hvpd)"/>' + _teile(STIFT["pop"], m)
-                + f'<polygon points="{st}" fill="{M}" stroke="{K}" stroke-width="5" stroke-linejoin="round"/><text x="366" y="{66 + gr * .36:.1f}" font-size="{gr}" font-weight="800" fill="{ON}" text-anchor="middle" font-family="{SANS}">{m["wort"].upper()}!</text>', "Pop-Art", defs)
 
 
-STILE = [("Monolinie", r_mono), ("Riso", r_riso), ("Duoton", r_duo), ("Isometrisch", r_iso), ("Bauplan", r_plan), ("Prozess", r_prozess), ("Glas", r_glas), ("Pop-Art", r_pop)]
+# ---------------------------------------------------------------- Isometrisch 3D: Grundplatte, darauf stehen die Dinge
+ISO_C, ISO_S, ISO_N = (220, 250), 27.0, 8   # Bildmitte der Platte, Länge einer Rastereinheit, Rastergröße der Platte
+
+
+def _p(x, y, z=0.0):
+    """Weltkoordinate (Raster 0–10 auf der Platte, z nach oben) → Bildpunkt."""
+    return ISO_C[0] + (x - y) * .866 * ISO_S, ISO_C[1] + (x + y - ISO_N) * .5 * ISO_S - z * ISO_S
+
+
+def _poly(pts, fill, sw=2.2):
+    return f'<polygon points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}" fill="{fill}" stroke="{K}" stroke-width="{sw}" stroke-linejoin="round"/>'
+
+
+def _platte():
+    t, n = .45, ISO_N
+    o = _poly([_p(0, n), _p(n, n), _p(n, n, -t), _p(0, n, -t)], G2) + _poly([_p(n, 0), _p(n, n), _p(n, n, -t), _p(n, 0, -t)], G3)
+    o += _poly([_p(0, 0), _p(n, 0), _p(n, n), _p(0, n)], G)
+    o += "".join(f'<path d="M{_p(i, 0)[0]:.1f} {_p(i, 0)[1]:.1f}L{_p(i, n)[0]:.1f} {_p(i, n)[1]:.1f}M{_p(0, i)[0]:.1f} {_p(0, i)[1]:.1f}L{_p(n, i)[0]:.1f} {_p(n, i)[1]:.1f}" stroke="{G2}" stroke-width="1.2"/>' for i in range(2, n, 2))
+    return o
+
+
+def _pflanze(x, y):
+    a, b = _p(x, y)
+    return (_poly([_p(x - .35, y - .35), _p(x + .35, y - .35), _p(x + .35, y + .35), _p(x - .35, y + .35)], G2)
+            + _poly([_p(x - .35, y + .35), _p(x + .35, y + .35), _p(x + .35, y + .35, .7), _p(x - .35, y + .35, .7)], W)
+            + _poly([_p(x + .35, y - .35), _p(x + .35, y + .35), _p(x + .35, y + .35, .7), _p(x + .35, y - .35, .7)], G2)
+            + f'<circle cx="{a:.1f}" cy="{b - 1.6*ISO_S:.1f}" r="{.9*ISO_S:.1f}" fill="{M3}" stroke="{K}" stroke-width="2.2"/>')
+
+
+def _schild(stift, t, px, py, breite, sockel=.35, fuss=True):
+    """Ein Bauteil als aufrechte Tafel auf einem Fuß: steht in der Ebene y = py, Vorderseite zum Betrachter."""
+    x0, y0, w, h = _box(t)
+    hoehe = breite * h / w
+    if hoehe > 4.4:                      # hohe Dinge (Roll-up) nicht aus dem Bild ragen lassen
+        breite, hoehe = 4.4 * w / h, 4.4
+    k = breite / w
+    a, b, d = .866 * ISO_S * k, .5 * ISO_S * k, ISO_S * k
+    ox, oy = _p(px, py, hoehe + sockel)
+    e, f = ox - (a * x0), oy - (b * x0 + d * y0)
+    rueck = [_p(px, py, sockel), _p(px + breite, py, sockel), _p(px + breite, py, sockel + hoehe), _p(px, py, sockel + hoehe)]
+    dick = .18
+    hinten = [(q[0] + .866 * dick * ISO_S, q[1] - .5 * dick * ISO_S) for q in rueck]
+    o = _poly([rueck[3], rueck[2], hinten[2], hinten[3]], G2) + _poly([rueck[1], rueck[2], hinten[2], hinten[1]], G3)
+    fx, fy = _p(px + breite / 2, py)
+    gx, gy = _p(px + breite / 2, py, sockel)
+    if fuss:
+        o += f'<ellipse cx="{fx:.1f}" cy="{fy:.1f}" rx="{.5*ISO_S:.1f}" ry="{.25*ISO_S:.1f}" fill="{G3}" opacity=".6"/><path d="M{fx:.1f} {fy:.1f}V{gy:.1f}" stroke="{K}" stroke-width="2.4"/>'
+    o += _poly(rueck, W)
+    o += f'<g transform="matrix({a:.4f} {b:.4f} 0 {d:.4f} {e:.2f} {f:.2f})">' + TEILE[t["teil"]](STIFT["iso"], *t["args"], **t["kw"]) + "</g>"
+    return o
+
+
+def _figur(px, py, rolle):
+    x, y = _p(px, py)
+    f = {"a": M, "w": W}.get(rolle, W)
+    s = ISO_S
+    return (f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{.6*s:.1f}" ry="{.3*s:.1f}" fill="{G3}" opacity=".6"/>'
+            + f'<path d="M{x-.2*s:.1f} {y:.1f}v{-1*s:.1f}M{x+.2*s:.1f} {y+.1*s:.1f}v{-1*s:.1f}" stroke="{K}" stroke-width="2.4" stroke-linecap="round"/>'
+            + f'<rect x="{x-.45*s:.1f}" y="{y-2.6*s:.1f}" width="{.9*s:.1f}" height="{1.7*s:.1f}" rx="{.4*s:.1f}" fill="{f}" stroke="{K}" stroke-width="2.4"/>'
+            + f'<circle cx="{x:.1f}" cy="{y-3.05*s:.1f}" r="{.42*s:.1f}" fill="{W}" stroke="{K}" stroke-width="2.4"/>')
+
+
+def _quader(x, y, w, d, h, oben=W):
+    return (_poly([_p(x, y + d), _p(x + w, y + d), _p(x + w, y + d, h), _p(x, y + d, h)], W)
+            + _poly([_p(x + w, y), _p(x + w, y + d), _p(x + w, y + d, h), _p(x + w, y, h)], G2)
+            + _poly([_p(x, y, h), _p(x + w, y, h), _p(x + w, y + d, h), _p(x, y + d, h)], oben))
+
+
+def _tisch(x, y, w, d, h):
+    beine = "".join(f'<path d="M{_p(a, b)[0]:.1f} {_p(a, b)[1]:.1f}L{_p(a, b, h)[0]:.1f} {_p(a, b, h)[1]:.1f}" stroke="{K}" stroke-width="2.4"/>' for a, b in ((x + .15, y + d - .15), (x + w - .15, y + d - .15), (x + w - .15, y + .15)))
+    return beine + _quader(x, y, w, d, .22, W).replace(f'{_p(x, y)[1]:.1f}', f'{_p(x, y)[1]:.1f}') if False else beine + "".join(
+        [_poly([_p(x, y + d, h - .22), _p(x + w, y + d, h - .22), _p(x + w, y + d, h), _p(x, y + d, h)], W),
+         _poly([_p(x + w, y, h - .22), _p(x + w, y + d, h - .22), _p(x + w, y + d, h), _p(x + w, y, h)], G2),
+         _poly([_p(x, y, h), _p(x + w, y, h), _p(x + w, y + d, h), _p(x, y + d, h)], W)])
+
+
+def r_iso3d(m):
+    """Kleine Bürosituation auf der Platte: großes Board hinten, Tisch mit dem zweiten Ding, weitere als Aufsteller, Menschen davor."""
+    teile = [t for t in m["teile"] if t["teil"] not in ("tasse", "pult")]
+    figuren = [t for t in teile if t["teil"] == "person"]
+    schilder = sorted([t for t in teile if t["teil"] != "person"], key=lambda t: -(_box(t)[2] * _box(t)[3]))
+    stuecke = [(15.0, _pflanze(7.2, .9))]
+    if schilder:
+        stuecke.append((2.6, _schild(STIFT["iso"], schilder[0], .5, 1.3, 4.6)))
+    if len(schilder) > 1:
+        t = schilder[1]; w, h = _box(t)[2], _box(t)[3]
+        breite = max(1.4, min(2.8, 2.8 * min(1, (w / h) * 1.1)))
+        stuecke.append((10.5, _tisch(4.0, 3.8, 3.2, 1.4, 1.1) + _schild(STIFT["iso"], t, 4.3, 4.4, breite, 1.15, False)))
+    for j, (t, (px, py, b)) in enumerate(zip(schilder[2:], ((.6, 5.2, 2.2), (2.6, 6.4, 1.8)))):
+        stuecke.append((px + py, _schild(STIFT["iso"], t, px, py, b)))
+    for j, t in enumerate(figuren[:2]):
+        px, py = ((4.8, 6.2), (6.4, 6.5))[j]
+        stuecke.append((px + py + 1, _figur(px, py, t["args"][3] if len(t["args"]) > 3 else "w")))
+    if not figuren:
+        stuecke.append((14.6, _figur(5.4, 6.4, "a")))
+    return bild(_platte() + "".join(o for _, o in sorted(stuecke, key=lambda v: v[0])), "Isometrisch 3D")
+
+
+STILE = [("Monolinie", r_mono), ("Duoton", r_duo), ("Isometrisch 3D", r_iso3d), ("Glas", r_glas)]
 
 # Seiten (Zeilen) – Titel, Bereich, Farbwelt, Motiv
 SEITEN = [
