@@ -48,6 +48,17 @@ def perspektive(sek, mit_schritten=True):
     ergebnis = "Jeder im Team versteht, wofür Dein Bereich da ist – und Du bestimmst seine Wahrnehmung."
     schritte = (f'<div class="e2-pv__schritt"><p class="e2-pv__tag">{tag}</p><p>{exp} <b>{frage}</b></p></div>'
                 f'<div class="e2-pv__schritt"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">{ergebnis}</p></div>') if mit_schritten else ""
+    if not mit_schritten:
+        # Strategie 2 (Runde 17): Gedankenexperiment gehört zum Perspektivwechsel – ohne die Frage zu wiederholen;
+        # das Ergebnis als schwarzes Band unten in derselben Sektion.
+        return f'''<section class="e2-pv e2-pv--ruhig e2-pv--s2" id="perspektive"><div class="container">
+  <div class="e2-pv__oben">
+    <div class="e2-pv__text"><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p>
+      <div class="e2-pv__schritt"><p class="e2-pv__tag">{tag}</p><p>{exp} Was stünde darauf – und würde jeder im Team dasselbe hineinschreiben?</p></div></div>
+    <div class="e2-pv__browser">{browser}</div>
+  </div>
+  <div class="e2-pv__band"><p class="e2-pv__band-tag">Ergebnis</p><p class="e2-pv__band-satz">{ergebnis}</p></div>
+</div></section>'''
     return f'''<section class="e2-pv e2-pv--ruhig" id="perspektive"><div class="container">
   <div class="e2-pv__oben">
     <div class="e2-pv__text"><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p>

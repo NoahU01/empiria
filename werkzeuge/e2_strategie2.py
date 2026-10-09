@@ -96,7 +96,7 @@ def quelle():
     eintraege = re.findall(r'<summary><span>(.*?)</span></summary>\s*<div class="formate-acc-body">(.*?)</div>\s*</details>', za, re.S)
     # Zusammenarbeit (Runde 16): wie die Schritte der Volksfest-Seite – je ein Satz, der volle Text im Fenster
     kurz = ["Du arbeitest direkt mit mir – und bekommst ehrliches, direktes Feedback.",
-            'Die Umsetzung bleibt Deine Aufgabe. Plane <mark class="e2-s2-mark">ein bis zwei Stunden pro Woche</mark> ein.',
+            "Die Umsetzung bleibt Deine Aufgabe. Plane ein bis zwei Stunden pro Woche ein.",
             "Regelmäßig abstimmen, flexibel umsteuern – und dann stringent umsetzen."]
     symbole = ["messages-square", "target", "refresh-cw"]
     karten = ""
@@ -108,7 +108,7 @@ def quelle():
 <p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2>
 <div class="e2-s2-karten">{karten}</div></div></section>'''
 
-    main = "\n".join([kopf, problem, loesung, persp, ergebnis, zusammen, download, kontakt])
+    main = "\n".join([kopf, problem, loesung, persp, zusammen, download, kontakt])   # Runde 17: Gedankenexperiment steckt im Perspektivwechsel
     i = st.index('<div class="modal-overlay" id="strategiemodellModal"')
     tiefe, j = 0, i
     for mm in re.finditer(r"<div\b|</div>", st[i:]):
