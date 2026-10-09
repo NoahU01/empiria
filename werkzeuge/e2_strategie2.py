@@ -48,12 +48,17 @@ def quelle():
 <p class="kicker">Strategiehandwerk</p><h1 class="h-serif">{h1}</h1><p class="lead">{lead}</p></div><div class="produkt-hero-visual"></div></div>
 <div class="produkt-hero-actions produkt-hero-actions--center"><a class="btn btn--dark" href="#problem">Mehr erfahren</a></div></div></section>'''
 
-    # Problem → Abschnitt mit Kopf und Text (wie „Das bekommst Du“, ohne Karten)
+    # Problem (Runde 14, wie die Idee-Sektion der Volksfest-Seite): links Aussage, rechts schwarzer Kasten – Texte aus dem Original
     pr = _abschnitt(sm, 'id="problem"')
-    pr_k, pr_h = _eins(r'<p class="kicker">(.*?)</p>', pr), _eins(r"<h2[^>]*>(.*?)</h2>", pr)
-    pr_ps = re.findall(r"<p>(.*?)</p>", pr, re.S)
-    problem = f'''<section class="produkt-grid" id="problem"><div class="container"><div class="produkt-section-head">
-<p class="kicker">{pr_k}</p><h2 class="h-serif">{pr_h}</h2>{"".join(f"<p>{p}</p>" for p in pr_ps)}</div></div></section>'''
+    pr_k = _eins(r'<p class="kicker">(.*?)</p>', pr)
+    pr_h = re.sub(r'<span class="hl">(.*?)</span>', r"\1", _eins(r"<h2[^>]*>(.*?)</h2>", pr))
+    problem = f'''<section class="section e2-s2-problem" id="problem"><div class="container"><div class="e2-s2-split">
+<div><p class="kicker">{pr_k}</p><h2 class="h-serif">{pr_h}</h2>
+<p class="e2-s2-text">Du bist Abteilungs- oder Bereichsleiter, weil du fachlich überzeugt hast. Was danach oft folgt, sind harte Gespräche mit dem eigenen Team.</p></div>
+<div class="e2-s2-kasten"><p class="e2-s2-kasten__satz">Strategisches Denken stand nie auf dem Lehrplan – trotzdem wird es ab dem ersten Tag vorausgesetzt.</p>
+<p class="e2-s2-kasten__label">Hart, weil das Fundament fehlt:</p>
+<ul><li>die klare Richtung</li><li>die eigene Rolle</li><li>das Handwerkszeug für den Alltag</li></ul></div>
+</div></div></section>'''
 
     # Lösung (Runde 13): links die drei Fragen als ruhige Zeilen mit Symbol, rechts groß das Strategiemodell (wie Original)
     lo = _abschnitt(sm, 'id="loesung-baustein"')
