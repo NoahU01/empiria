@@ -450,7 +450,7 @@ def kopfbilder():
         karten += (f'<article class="hv-kb"><div class="hv-kb__text"><p class="hv-kb__kicker"><i style="background:{punkt[welt]}"></i>{titel}</p>'
                    f'<h3>{h1}</h3><p class="hv-kb__warum"><b>{name}</b> – {warum}</p></div><div class="hv-kb__bild">{farbig(b, welt, "kb" + str(n))}</div></article>')
     return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Kopfbilder – Mono, je Seite</h2>
-<p>Alle 23 Seiten der Live-Homepage in der Darstellungsart <b>Mono</b>. Ein strenges System: eine Icon-Familie mit überall gleicher Strichstärke, nur drei Aufbauten (Trio, Reihe, Zahl) mit festem Raster, Akzent als Marker in Bereichsfarbe – wie die Hervorhebung in den Überschriften. Sag mir einfach, welche Seite noch nicht passt.</p>
+<p>Alle 23 Seiten der Live-Homepage in der Darstellungsart <b>Mono</b>. Ein strenges System: eine Icon-Familie mit überall gleicher Strichstärke, nur drei Aufbauten (Trio, Reihe, Zahl) mit festem Raster, nur Linien – Farbe nur über ein Icon in Akzentfarbe, keine Farbflächen. Sag mir einfach, welche Seite noch nicht passt.</p>
 <div class="hv-kb-raster">{karten}</div></div></section>'''
 
 

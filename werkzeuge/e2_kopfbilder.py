@@ -5,7 +5,7 @@ Regeln, die für jedes Bild gelten:
   · eine Icon-Familie (Lucide, Linien-Icons) mit IDENTISCHER Strichstärke – unabhängig von der Icon-Größe
   · nur drei Aufbauten mit festem Raster:  Trio (Kern + zwei Begleiter) · Reihe (drei Schritte/Teile) · Zahl (Kennzahl trägt)
   · nur zwei Icon-Größen je Bild, feste Positionen, gleiche Ränder
-  · Akzent = Marker in Bereichsfarbe hinter einem Element (wie die Hervorhebung in den Überschriften) + ein Icon in Akzentfarbe
+  · Mono: nur Linien, KEINE Farbflächen – Farbe nur über ein Icon in Akzentfarbe
   · Beschriftung nur in der Reihe, immer gleiche Schrift
 """
 from e2_lucide import ICONS
@@ -27,7 +27,8 @@ def icon(name, x, y, g, farbe=K):
 
 
 def marker(x, y, w, h):
-    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{MK}"/>'
+    """Mono: keine Farbflächen (Daniel) – Marker bleibt leer."""
+    return ""
 
 
 def trio(haupt, akzent, neben):
