@@ -375,7 +375,7 @@ def ohne_hl_ausser_h1(html):
     return "".join(t if t.startswith("<h1") else re.sub(r'<span class="(?:hl|hl-acc)(?: [^"]*)?">(.*?)</span>', r"\1", t, flags=re.S) for t in teile)
 
 
-def workshop_karten(main, welt="magenta"):
+def workshop_karten(main, welt="magenta", alle=False):
     """Übersichtsseiten (Daniel, Runde 21/33): statt filigraner Skizzen die Kopfbilder der jeweiligen Unterseite – weiß auf Bereichsfarbe."""
     import e2_kopfbilder as kb
     from e2_header import farbig
@@ -391,8 +391,11 @@ def workshop_karten(main, welt="magenta"):
             return block
         bild = kb.bild(seite)[0].replace("#1a1817", "#ffffff").replace("#C51F5E", akzent).replace("#b9b3ab", "#ffffff")
         bild = farbig(bild, welt, "wk" + name[:6]).replace('class="hv-bild"', 'class="e2-wk-bild"')
-        return re.sub(r'<div class="media-box-thumb media-box-thumb--mock">.*?</svg>\s*</div>\s*</div>',
-                      f'<div class="media-box-thumb e2-wk-thumb">{bild}</div>', block, count=1, flags=re.S)
+        if alle:   # enger Bildausschnitt, damit beide Bilder gleich groß und mittig stehen
+            bild = bild.replace('viewBox="0 0 440 400"', f'viewBox="{kb.eng(seite)}"', 1).replace('class="e2-wk-bild"', 'class="e2-wk-bild e2-wk-bild--eng"', 1)
+        muster = r'<div class="media-box-thumb[^"]*">' if alle else r'<div class="media-box-thumb media-box-thumb--mock">\s*<div class="produkt-mock-sketch'
+        return re.sub(muster + r'.*?(?=<div class="media-box-footer">)',
+                      lambda _: f'<div class="media-box-thumb e2-wk-thumb">{bild}</div>\n          ', block, count=1, flags=re.S)
     return re.sub(r'<a class="media-box sprint-structure-card media-box--icon".*?</a>', ersetze, main, flags=re.S)
 
 
@@ -482,8 +485,10 @@ def unterseite(original, ziel, html=None):
         bloecke = re.findall(r'(<(?:p|ul)\b[^>]*>.*?</(?:p|ul)>)', m.group(1), re.S)
         return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
     main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
-    if name in ("workshops", "marketing", "digitale-tools", "impulsvortraege"):
-        main = workshop_karten(main, AKZENT_SEITE[name])
+    if name in ("workshops", "marketing", "digitale-tools", "impulsvortraege", "training-sparring"):
+        main = workshop_karten(main, AKZENT_SEITE[name], alle=name == "training-sparring")
+    if name == "training-sparring":   # zwei Formate über die volle Breite, nicht schmal mittig
+        main = main.replace(' style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 714px; margin-left: auto; margin-right: auto;"', ' style="grid-template-columns: repeat(2, minmax(0, 1fr));"', 1)
     main += DIALOG_JS
     return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]} e2-seite--{name}">{main}</div>', h=html)
 

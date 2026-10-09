@@ -973,3 +973,4 @@ html body .e2-alt.e2-alt.e2-seite--marketing { --bf-flaeche: #0E4F5F; }
 html body .e2-alt.e2-alt.e2-seite--training-sparring { --bf-flaeche: #4A1A5E; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt:is(.e2-seite--workshops, .e2-seite--marketing, .e2-seite--training-sparring) section.produkt-grid { background: var(--bf-flaeche) !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt:is(.e2-seite--workshops, .e2-seite--marketing, .e2-seite--training-sparring) :is(.media-box-thumb, .media-box-thumb-btn) { background: var(--bf-flaeche) !important; }
+.e2-wk-thumb .e2-wk-bild--eng { width: auto !important; height: 58% !important; max-width: 80%; margin: auto; display: block; }
