@@ -383,9 +383,14 @@ NUR_SPRINT = [
 OK = '<span class="hv-ok" title="für alle Unterseiten geeignet">✓</span>'
 
 CSS4 = """<style>
+.hv-va { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+.hv-va-gruppe { grid-column: 1 / -1; margin: 0 !important; padding: .55rem .9rem; background: #1a1817; color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-right: 1px solid #e3dfd8; }
+.hv-va-titel { display: flex; align-items: center; gap: .6rem; margin: 2.6rem 0 1rem !important; font-family: var(--font-serif); font-size: 1.5rem; }
+.hv-va-titel i { width: .9rem; height: .9rem; border-radius: 50%; }
+@media (max-width: 900px) { .hv-va { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 .hv-fs { grid-template-columns: 10rem repeat(4, minmax(240px, 1fr)) !important; min-width: 1120px !important; }
 .hv-st-scroll { overflow-x: auto; margin: 0 2rem; -webkit-overflow-scrolling: touch; }
-.hv-st-raster { display: grid; grid-template-columns: 10rem repeat(4, minmax(240px, 1fr)); min-width: 1120px; border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
+.hv-st-raster { display: grid; grid-template-columns: 10rem repeat(3, minmax(240px, 1fr)); min-width: 880px; border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
 .hv-st-raster > div { padding: .6rem; border-right: 1px solid #e3dfd8; border-bottom: 1px solid #e3dfd8; background: #fff; }
 .hv-st-kopf { position: sticky; top: 0; z-index: 2; background: #f4f3f0 !important; }
 .hv-st-kopf b { display: block; font-family: var(--font-serif); font-size: 1rem; }
@@ -423,6 +428,36 @@ CSS4 = """<style>
 @media (max-width: 1100px) { .hv-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .hv-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hv-probe { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hv-probe .leer { display: none; } }
 </style>"""
+
+
+def varianten3():
+    """Runde 8: drei Szenen, sehr viele Varianten – Mono, Duo, Isometrisch 3D (e2_varianten.py)."""
+    import e2_varianten as va
+    punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
+    out = ""
+    for n, sz in enumerate(va.SZENEN):
+        zellen, nr = "", 0
+        def zelle(bild, name):
+            nonlocal zellen, nr
+            nr += 1
+            zellen += f'<figure class="hv-zelle" data-name="{sz["titel"]} · {name}">{farbig(bild, sz["welt"], "v" + str(n) + "x" + str(nr))}<figcaption><b>{nr}</b>{name}</figcaption></figure>'
+        zellen += '<p class="hv-va-gruppe">Mono</p>'
+        for f, name in va.AUFBAU:
+            zelle(f(sz, "mono"), "Mono · " + name)
+        zellen += '<p class="hv-va-gruppe">Duo</p>'
+        for k, (f, name) in enumerate(va.AUFBAU):
+            mo = ("duo", "duo_flaeche", "duo_kachel")[k % 3]
+            zelle(f(sz, mo), "Duo · " + name + {"duo": "", "duo_flaeche": " · Kreis", "duo_kachel": " · Kachel"}[mo])
+        zellen += '<p class="hv-va-gruppe">Strichstärke &amp; Fläche</p>'
+        for mo, name in (("mono_fein", "Mono fein"), ("mono_kraeftig", "Mono kräftig"), ("duo_flaeche", "Duo mit Kreis"), ("duo_kachel", "Duo mit Kachel")):
+            zelle(va.a_trio(sz, mo), name + " · Trio")
+        zellen += '<p class="hv-va-gruppe">Isometrisch 3D</p>'
+        for f, name in va.ISO:
+            zelle(f(sz), name)
+        out += (f'<h3 class="hv-va-titel"><i style="background:{punkt[sz["welt"]]}"></i>{sz["titel"]}</h3><div class="hv-raster hv-va">{zellen}</div>')
+    return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Drei Szenen – viele Varianten</h2>
+<p>Medien, KI zum Anfassen und Sprint Landingpage in den drei Hauptrichtungen <b>Mono</b>, <b>Duo</b> und <b>Isometrisch 3D</b>. Bei Mono und Duo wechselt der Aufbau (ein Icon, Trio, Prozess, Raster, Rahmen, Kreis, Typo, beschriftet, gestapelt, auf einer Linie). Nenne mir einfach die Nummern, die Dir gefallen.</p>
+{out}</div></section>'''
 
 
 def feinschliff():
@@ -464,7 +499,7 @@ def stufen_raster():
                    + "".join(f'<div class="hv-st-bild">{farbig(f(m), welt, "sp" + str(z) + "x" + str(k))}</div>' for k, (_, f) in enumerate(sp.STILE)))
     return f'''<section class="hv-st"><div class="e2-wrap hv-st-wrap"><h2 class="hv-h2">Spot-Illustration je Seite – in allen Darstellungsarten</h2>
 <p>Jede Zeile ist eine Seite der Live-Homepage mit ihrem Motiv als <b>Spot-Illustration</b> (ein Ausschnitt mit zwei bis vier Dingen, ohne Farbkreis dahinter).
-Jede Spalte zeichnet dasselbe Motiv in einer der verbliebenen Darstellungsarten (Monolinie, Duoton, Isometrisch 3D, Glas) – so siehst Du, welche Art über alle Themen trägt. Farbe je Bereich.</p></div>
+Jede Spalte zeichnet dasselbe Motiv in einer der verbliebenen Darstellungsarten (Monolinie, Duoton, Isometrisch 3D) – so siehst Du, welche Art über alle Themen trägt. Farbe je Bereich.</p></div>
 <div class="hv-st-scroll"><div class="hv-st-raster">{kopf}{zeilen}</div></div></section>'''
 
 
@@ -486,6 +521,7 @@ def main():
 <p>Wichtig ist die Trennung: Eine <b>Darstellungsart</b> ist die Bildsprache (Linie, Farbfläche, Druck, Karten, Foto …) und gilt für alle Seiten.
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
+{varianten3()}
 {feinschliff()}
 {stufen_raster()}
 <div class="hv-vorschau"><div class="e2-wrap"><h2 class="hv-h2" style="margin-top:1rem!important">Darstellungsarten</h2><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 1 · Monolinie</p></div>{vorschau}</div>
