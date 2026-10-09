@@ -383,3 +383,7 @@
 .e2-seite--strategie-2 #loesung-baustein { background: var(--e2-hell) !important; }
 .e2-seite--strategie-2 #loesung-baustein .produkt-glass { background: #fff !important; }
 .e2-seite--strategie-2 #zusammenarbeit { background: var(--e2-hell) !important; }
+
+/* Satzkante = Kante von Logo und Menü (wie live: --container + --pad-x) – gilt für alle 2.0-Seiten */
+.e2 .e2-wrap, .e2-alt .container, .e2 main .container { max-width: var(--container) !important; padding-left: var(--pad-x) !important; padding-right: var(--pad-x) !important; margin-left: auto !important; margin-right: auto !important; }
+.hv-st-scroll { margin: 0 var(--pad-x) !important; }
