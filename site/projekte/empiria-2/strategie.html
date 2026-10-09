@@ -838,9 +838,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </section>
 
   <!-- ===== Perspektivwechsel: Homepage Deiner Abteilung ===== -->
-  <section class="e2-pv" id="perspektive"><div class="container">
+  <section class="e2-pv e2-pv--ruhig" id="perspektive"><div class="container">
   <div class="e2-pv__oben">
-    <div><p class="kicker">Perspektivwechsel</p><h2 class="h-serif">Wie sieht die Homepage Deiner Abteilung aus?</h2><p class="lead">Ziemlich wahrscheinlich hast Du keine – die meisten haben keine. Also warum die Frage? Weil hier sofort klar wird, ob Du den Mehrwert Deines Bereichs sauber erklären kannst. Und wenn Du das nicht kannst, kann auch keiner in Deinem Team aktiv zu Deiner Strategie beitragen.</p></div>
+    <div class="e2-pv__text"><p class="kicker">Perspektivwechsel</p><h2 class="h-serif">Wie sieht die Homepage Deiner Abteilung aus?</h2><p class="lead">Ziemlich wahrscheinlich hast Du keine – die meisten haben keine. Also warum die Frage? Weil hier sofort klar wird, ob Du den Mehrwert Deines Bereichs sauber erklären kannst. Und wenn Du das nicht kannst, kann auch keiner in Deinem Team aktiv zu Deiner Strategie beitragen.</p>
+      <div class="e2-pv__schritt"><p class="e2-pv__tag">Gedankenexperiment</p><p>Stell Dir vor, wir gründen morgen Deine Abteilung als GmbH und verkaufen Eure Dienstleistungen an Deinen aktuellen Arbeitgeber. <b>Wie sähe die Homepage aus?</b></p></div>
+      <div class="e2-pv__schritt"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">Jeder im Team versteht, wofür Dein Bereich da ist – und Du bestimmst seine Wahrnehmung.</p></div></div>
     <div class="e2-pv__browser"><div class="perspektive-browser" role="img" aria-label="Skizze einer leeren Homepage Deiner Abteilung mit fünf offenen Fragen">
           <div class="pb-bar">
             <span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -856,13 +858,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
               </ol>
           </div>
         </div></div>
-  </div>
-  <div class="e2-pv__kette">
-    <div class="e2-pv__glied"><p class="e2-pv__tag">Gedankenexperiment</p><p>Stell Dir vor, wir gründen morgen Deine Abteilung als GmbH und verkaufen Eure Dienstleistungen an Deinen aktuellen Arbeitgeber. <b>Wie sähe die Homepage aus?</b></p></div>
-    <span class="e2-pv__pfeil"><svg class="e2-doppel" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5 11 12l-6.5 6.5M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-    <div class="e2-pv__glied"><p class="e2-pv__tag">Die Wirkung</p><p>Auf einmal versteht jeder im Team, wofür Dein Bereich da ist und wie das Zielbild aussieht. Dann kann auch jeder aktiv dazu beitragen.</p></div>
-    <span class="e2-pv__pfeil"><svg class="e2-doppel" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5 11 12l-6.5 6.5M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-    <div class="e2-pv__glied e2-pv__glied--ergebnis"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">Und Du bestimmst die Wahrnehmung Deines Bereichs.</p></div>
   </div>
 </div></section>
 
@@ -928,7 +923,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <section class="produkt-cta produkt-team-cta e2-kontakt-team" id="kontakt"><div class="container">
   <p class="kicker">Kontakt</p><h2>Wir sind für Dich da!</h2><p class="produkt-team-cta-sub">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
   <div class="ansprechpartner-grid"><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132"></div><p class="ansprechpartner-name">Daniel Ströbel</p><p class="ansprechpartner-role">Strategiehandwerker</p></div><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-kerstin.webp" alt="Kerstin Christ" width="132" height="132"></div><p class="ansprechpartner-name">Kerstin Christ</p><p class="ansprechpartner-role">Expertin HR &amp; Weiterbildung</p></div><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-noah.webp" alt="Noah Hermanns" width="132" height="132"></div><p class="ansprechpartner-name">Noah Hermanns</p><p class="ansprechpartner-role">Experte Performance Marketing</p></div></div>
-  <div class="e2-kontakt-team__wege"><a class="e2-pille" href="mailto:daniel.stroebel@empiria.de"><i><svg width="20" height="20"><use href="#ic-mail"/></svg></i>daniel.stroebel@empiria.de</a><a class="e2-pille" href="tel:+4917631347217"><i><svg width="20" height="20"><use href="#ic-phone"/></svg></i>+49 176 3134 7217</a><a class="e2-pille e2-pille--rand" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener"><i><svg width="20" height="20"><use href="#ic-in"/></svg></i>Auf LinkedIn vernetzen</a></div><p class="e2-kontakt-team__notiz">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
+  <div class="produkt-cta-actions"><a class="btn btn--dark" href="/kontakt.html">Kontakt aufnehmen</a></div>
 </div></section>
 
   <!-- ===== Weitere Leistungen ===== -->

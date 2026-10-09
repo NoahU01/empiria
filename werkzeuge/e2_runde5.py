@@ -44,17 +44,14 @@ def perspektive(sek):
     frage = _eins(r'<p class="pv-q">(.*?)</p>', sek)
     wirkung = _eins(r'<div class="pv-end[^"]*">\s*<p class="lead">(.*?)</p>', sek)
     punch = _ohne_tags(_eins(r'<p class="pv-punch[^"]*">(.*?)</p>', sek))
-    return f'''<section class="e2-pv" id="perspektive"><div class="container">
+    # Runde 10 (Daniel): ruhiger – keine Kästen, Wirkung und Ergebnis zu einem kurzen Satz zusammengefasst
+    ergebnis = "Jeder im Team versteht, wofür Dein Bereich da ist – und Du bestimmst seine Wahrnehmung."
+    return f'''<section class="e2-pv e2-pv--ruhig" id="perspektive"><div class="container">
   <div class="e2-pv__oben">
-    <div><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p></div>
+    <div class="e2-pv__text"><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p>
+      <div class="e2-pv__schritt"><p class="e2-pv__tag">{tag}</p><p>{exp} <b>{frage}</b></p></div>
+      <div class="e2-pv__schritt"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">{ergebnis}</p></div></div>
     <div class="e2-pv__browser">{browser}</div>
-  </div>
-  <div class="e2-pv__kette">
-    <div class="e2-pv__glied"><p class="e2-pv__tag">{tag}</p><p>{exp} <b>{frage}</b></p></div>
-    <span class="e2-pv__pfeil">{DOPPEL}</span>
-    <div class="e2-pv__glied"><p class="e2-pv__tag">Die Wirkung</p><p>{wirkung}</p></div>
-    <span class="e2-pv__pfeil">{DOPPEL}</span>
-    <div class="e2-pv__glied e2-pv__glied--ergebnis"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">{punch}</p></div>
   </div>
 </div></section>'''
 

@@ -281,3 +281,19 @@
 .e2-fc__skizze img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; filter: grayscale(1); }
 .e2-kontakt6 .e2-kontakt5__team { margin-top: 4rem; }
 .e2-kontakt6__sonne { width: min(36rem, 92%); }
+
+/* ================= Runde 10 (Daniel, 10.10.2026) ================= */
+/* Perspektivwechsel ruhig: links Text in klarer Folge, rechts die Abteilungs-Homepage – keine Kästen */
+.e2-pv--ruhig .e2-pv__oben { align-items: start; }
+.e2-pv__schritt { margin-top: 2rem; padding-top: 1.2rem; border-top: 2px solid var(--e2-ink); }
+.e2-pv__schritt p { font-size: 1.05rem; line-height: 1.6; color: var(--e2-ink); }
+.e2-pv--ruhig .e2-pv__tag { color: var(--e2-ink) !important; }
+.e2-pv--ruhig .e2-pv__punch { color: var(--e2-ink) !important; font-size: clamp(1.35rem, 2vw, 1.65rem) !important; line-height: 1.3 !important; }
+.e2-pv--ruhig .e2-pv__browser { padding-top: 2.4rem; }
+.e2-pv--ruhig .perspektive-browser { box-shadow: none !important; border: 2px solid var(--e2-ink) !important; }
+@media (max-width: 960px) { .e2-pv--ruhig .e2-pv__browser { padding-top: 0; } }
+/* Kontakt Startseite 1:1 wie live: 2.0-Typografie hier nicht anwenden */
+.e2 .kontakt-standalone-text h2 { font-weight: 500 !important; line-height: 1.22 !important; letter-spacing: -.015em !important; margin: .5rem 0 1.1rem !important; }
+.e2 .kontakt-standalone-text .lead { margin: 0 0 1rem !important; }
+.e2-pv--ruhig .e2-pv__oben { align-items: center !important; }
+.e2-pv--ruhig .e2-pv__browser { padding-top: 0 !important; }

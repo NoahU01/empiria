@@ -36,7 +36,7 @@ def trio(haupt, akzent, neben):
     return _svg(marker(96, 168, 176, 150) + icon(haupt, 40, 104, 196) + icon(akzent, 316, 104, 84, MT) + icon(neben, 316, 216, 84))
 
 
-def reihe(icons, labels, pfeile=True):
+def reihe(icons, labels, pfeile=True, doppel=False):
     o = ""
     for k, (n, l) in enumerate(zip(icons, labels)):
         cx = 80 + k * 140
@@ -46,7 +46,10 @@ def reihe(icons, labels, pfeile=True):
         o += f'<text x="{cx}" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{l}</text>'
         if pfeile and k < 2:
             ax = cx + 58
-            o += f'<path d="M{ax} 166h24m-8-8 8 8-8 8" fill="none" stroke="{G3}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
+            if doppel:   # Doppelpfeil der Marke statt einfachem Pfeil (Startseite, Daniel)
+                o += f'<path d="M{ax} 154l11 12-11 12M{ax+12} 154l11 12-11 12" fill="none" stroke="{K}" stroke-width="{STRICH}" stroke-linecap="round" stroke-linejoin="round"/>'
+            else:
+                o += f'<path d="M{ax} 166h24m-8-8 8 8-8 8" fill="none" stroke="{G3}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
     return _svg(o)
 
 
@@ -59,7 +62,7 @@ def zahl(wort, akzent):
 
 # (Titel, Bereich, Farbwelt, Überschrift live, Aufbau, Daten, Begründung)
 SEITEN = [
-    ("Startseite", "Startseite", "gelb", "Strategie, die wirkt.", "reihe", (["search", "puzzle", "trending-up"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN"]), "Der Dreischritt der Startseite."),
+    ("Startseite", "Startseite", "gelb", "Strategie, die wirkt.", "reihe_dp", (["search", "puzzle", "trending-up"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN"]), "Der Dreischritt der Startseite."),
     ("Strategie in den Alltag überführen", "Strategiehandwerk", "gelb", "Strategie in den Alltag überführen.", "trio", ("flag", "compass", "wrench"), "Ziel, Richtung, Handwerkszeug."),
     ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "reihe", (["layers", "filter", "target"], ["FOLIENBERG", "STRUKTUR", "BOTSCHAFT"]), "Vom Folienberg zur Botschaft."),
     ("Innovation & Geschäftsmodell neu denken", "Strategiehandwerk", "gelb", "Innovation & Geschäftsmodell neu denken.", "trio", ("lightbulb", "refresh-cw", "blocks"), "Die Idee, neu gedacht, neu zusammengesetzt."),
@@ -84,7 +87,7 @@ SEITEN = [
     ("Impulsvorträge", "Einzelseite", "violett", "Impulse, die nachwirken. Nicht nur unterhalten.", "trio", ("mic-vocal", "lightbulb", "users"), "Vortrag, These, Publikum."),
 ]
 
-NAMEN = {"trio": "Trio", "reihe": "Reihe (Prozess)", "reihe_o": "Reihe (Übersicht)", "zahl": "Zahl"}
+NAMEN = {"reihe_dp": "Reihe mit Doppelpfeil", "trio": "Trio", "reihe": "Reihe (Prozess)", "reihe_o": "Reihe (Übersicht)", "zahl": "Zahl"}
 
 
 def bild(seite):
@@ -93,6 +96,8 @@ def bild(seite):
         return trio(*daten), NAMEN[aufbau]
     if aufbau == "reihe":
         return reihe(*daten), NAMEN[aufbau]
+    if aufbau == "reihe_dp":
+        return reihe(*daten, doppel=True), NAMEN[aufbau]
     if aufbau == "reihe_o":
         return reihe(*daten, pfeile=False), NAMEN[aufbau]
     return zahl(*daten), NAMEN[aufbau]
