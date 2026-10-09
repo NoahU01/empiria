@@ -241,3 +241,77 @@
 .e2-alt .medien-sketch-thumb > * { background: none !important; box-shadow: none !important; border: 0 !important; }
 .e2-alt .medien-sketch { background: var(--e2-hell) !important; border: 0 !important; }
 .e2-alt .medien-sketch-thumb svg.e2-medien-sym { filter: none !important; position: static !important; width: 46% !important; height: auto !important; }
+
+/* ================= Runde 3 ================= */
+/* Kein Strich zwischen Kopf und Logo-Band */
+.e2-alt .marquee { border-top: 0 !important; }
+
+/* Abschnittsfolge je Seite – Abwechslung wie auf der Startseite */
+.e2-alt .section, .e2-alt .produkt-section, .e2-alt .produkt-grid, .e2-alt .produkt-cta { background: #fff !important; }
+.e2-alt #problem, .e2-alt #weitere-leistungen, .e2-alt .produkt-faq, .e2-alt .produkt-vorschau, .e2-seite--strategie #zusammenarbeit { background: var(--e2-hell) !important; }
+.e2-alt .perspektive { background: var(--e2-gelb) !important; }
+.e2-alt #ergebnis { background: var(--e2-ink) !important; }
+.e2-seite--workshops .produkt-grid, .e2-seite--ki-zum-anfassen .produkt-grid:not(.produkt-pricing), .e2-seite--workshop-moderation .produkt-grid { background: #C51F5D !important; }
+.e2-seite--sprint-landingpage .produkt-price-note { background: var(--e2-ink) !important; }
+
+/* Magenta-Abschnitte: Schrift weiß, Karten weiß */
+.e2-alt--magenta .produkt-grid:not(.produkt-pricing) .produkt-section-head :is(h2, p) { color: #fff !important; }
+.e2-alt--magenta .produkt-grid:not(.produkt-pricing) .kicker { color: #fff !important; }
+.e2-alt--magenta .produkt-grid:not(.produkt-pricing) .produkt-glass { background: #fff !important; border: 0 !important; }
+.e2-alt--magenta .tools-row-label { color: #fff !important; }
+.e2-alt--magenta .tools-row-icon, .e2-alt--magenta .tools-row-icon svg { color: #fff !important; stroke: #fff !important; }
+
+/* Problem: hell, Wasserzeichen der Seite, weißer Kasten mit gelbem Balken */
+.e2-alt #problem .watermark { display: block !important; color: #e4e1db; opacity: 1; }
+.e2-alt #problem { position: relative; overflow: hidden; }
+.e2-alt .problem-card { background: #fff !important; color: var(--e2-ink) !important; border-left: 6px solid var(--e2-gelb) !important; }
+.e2-alt .problem-card p { color: var(--e2-ink-2) !important; }
+.e2-alt .problem-card li { color: var(--e2-ink) !important; }
+.e2-alt .problem-card li::marker { color: var(--e2-ink); }
+
+/* Zusammenarbeit & Co.: Karten mit Form und Titel, Text klappt auf */
+.e2-alt .formate-acc-item { padding: 0 !important; border: 0 !important; overflow: hidden; background: #fff !important; align-self: start; }
+.e2-alt .formate-acc-item summary { pointer-events: auto !important; cursor: pointer; display: flex; flex-direction: column; gap: 1.1rem; min-height: 11rem; padding: 1.6rem 1.6rem 1.4rem !important; background: var(--e2-gelb) !important; font-size: 1.45rem !important; }
+.e2-alt .formate-acc-item:nth-child(2) summary { background: var(--e2-ink) !important; color: #fff !important; }
+.e2-alt .formate-acc-item:nth-child(3) summary { background: #e9e7e2 !important; }
+.e2-alt .formate-acc-item summary span { margin-top: auto; }
+.e2-alt .formate-acc-item summary::after { content: "Mehr lesen +" !important; display: block !important; font-family: var(--font-sans); font-size: .85rem; font-weight: 600; opacity: .7; position: static !important; transform: none !important; background: none !important; width: auto !important; height: auto !important; }
+.e2-alt .formate-acc-item[open] summary::after { content: "Weniger –" !important; }
+.e2-acc-form { width: 2.6rem; height: 2.6rem; color: var(--e2-ink); }
+.e2-alt .formate-acc-item:nth-child(2) .e2-acc-form { color: var(--e2-gelb); }
+.e2-alt .formate-acc-body { padding: 1.3rem 1.6rem 1.5rem !important; margin: 0 !important; }
+
+/* Komplexe Themen: Zwischenergebnis zentriert */
+.e2-alt .stufe-break--band { text-align: center !important; }
+.e2-alt .stufe-break--band h3, .e2-alt .stufe-break--band p { margin-left: auto !important; margin-right: auto !important; }
+.e2-alt .stufe-interim-tag { justify-content: center; }
+
+/* Workshop-Kacheln: Formen statt Linien */
+.e2-alt .media-box-thumb--mock { position: relative; overflow: hidden; }
+.e2-kachel-form { position: absolute; right: 12%; top: 14%; width: 46%; height: auto; color: #fff; }
+.e2-kachel-klein { position: absolute; left: 12%; bottom: 14%; width: 20%; height: auto; color: var(--e2-ink); }
+
+/* Sprint: Preis als breiter Kasten auf Schwarz */
+.e2-seite--sprint-landingpage .produkt-price-note .produkt-section-head :is(h2, p) { color: #fff !important; }
+.e2-seite--sprint-landingpage .produkt-price-note .kicker { color: #fff !important; }
+.e2-alt .price-note-card { max-width: none !important; display: grid !important; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.5rem; align-items: center; padding: 2.6rem !important; border-radius: var(--e2-r) !important; background: #C51F5D !important; border: 0 !important; margin-top: 2.5rem !important; }
+.e2-alt .price-note-card > :not(.price-note-list) { grid-column: 1; }
+.e2-alt .price-note-card .price-note-list { grid-column: 2; grid-row: 1 / span 4; margin: 0 !important; padding: 0 0 0 2.5rem !important; border-left: 1px solid rgba(255,255,255,.3); }
+.e2-alt .price-note-card * { color: #fff !important; }
+.e2-alt .price-note-amount { font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 4.6rem) !important; }
+@media (max-width: 760px) { .e2-alt .price-note-card { grid-template-columns: minmax(0, 1fr); } .e2-alt .price-note-card .price-note-list { grid-column: 1; grid-row: auto; padding: 1.4rem 0 0 !important; border-left: 0; border-top: 1px solid rgba(255,255,255,.3); } }
+
+/* „Jetzt loslegen“: aufgeräumt wie früher – mittig, weiß, Team mit Fotos */
+.e2-alt .produkt-team-cta, .e2-alt section.produkt-cta.produkt-team-cta { background: #fff !important; text-align: center !important; }
+.e2-alt .produkt-team-cta .container { display: block !important; }
+.e2-alt .produkt-team-cta h2 { margin: 0 auto !important; text-align: center !important; max-width: 18ch; }
+.e2-alt .produkt-team-cta .kicker { justify-content: center; }
+.e2-alt .produkt-team-cta-sub { margin: 1.2rem auto 0 !important; text-align: center !important; }
+.e2-alt .produkt-team-cta .ansprechpartner-grid { justify-content: center !important; margin: 2.8rem 0 0 !important; }
+.e2-alt .ansprechpartner-photo { box-shadow: 0 12px 28px rgba(26,24,23,.14) !important; }
+.e2-alt .produkt-team-cta .produkt-cta-actions { justify-content: center !important; margin-top: 2.6rem; }
+/* Hervorhebung im Kopf: voller Kasten (überschreibt die Unterstreichung von Runde 1/2) */
+.e2-alt h1 .hl, .e2-alt--magenta h1 .hl { background: var(--e2-gelb) !important; color: var(--e2-ink) !important; padding: 0 .14em !important; border-radius: .12em !important; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.e2-alt--magenta h1 .hl { background: #C51F5D !important; color: #fff !important; }
+.e2-alt .formate-acc-item summary { align-items: flex-start; text-align: left; }
+.e2-alt .formate-acc-item summary::after { opacity: .85 !important; }

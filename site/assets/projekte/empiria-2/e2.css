@@ -183,3 +183,56 @@ a.e2-karte:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(26,
 }
 @media (max-width: 600px) { .e2-kopf { padding: 3rem 0 3rem; } .e2-format { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding: 1.8rem 1.4rem; } }
 @media (max-width: 600px) { .e2-kopfbild { width: 62%; border-radius: 22px; } .e2-kopfbild__logo { left: 1rem; bottom: .9rem; height: 12px; } }
+
+/* ================= Runde 3 (Daniel, 09.10.2026) ================= */
+/* Hervorhebung: wie bisher bei empiria – voller Kasten mit runden Ecken, nur in der Hauptüberschrift */
+.e2 h1 .hl, .e2-held h1 .hl, .e2-kopf h1 .hl { background: var(--e2-gelb, #fff400) !important; color: var(--e2-ink, #1a1817) !important; padding: 0 .14em !important; border-radius: .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.e2-logos { border-top: 0; padding-top: .6rem; }
+
+/* Leistungen-Karten: Kopf nur mit Nummer */
+.e2-karte__nr { font-family: var(--font-serif); font-weight: 700; font-size: .95rem; color: #b9b3ab; }
+
+/* Formate: drei Karten – Formate sichtbar, Text aufklappbar */
+.e2-formate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+.e2-format2 { display: flex; flex-direction: column; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
+.e2-format2__kopf { position: relative; display: flex; align-items: flex-end; min-height: 9.5rem; padding: 1.5rem 1.6rem; background: var(--e2-akzent); color: #fff; overflow: hidden; }
+.e2-format2__kopf h3 { position: relative; z-index: 1; font-size: 1.8rem; color: #fff; }
+.e2-format2__form { position: absolute; right: -1.2rem; top: -1.2rem; width: 7.5rem; height: 7.5rem; color: rgba(255,255,255,.28); }
+.e2-format2 .e2-liste { margin: .4rem 1.6rem 0; border-top: 0; }
+.e2-format2 .e2-liste li { grid-template-columns: minmax(0, 1fr); }
+.e2-mehr { margin: 1rem 1.6rem 0; border-top: 1px solid var(--e2-linie); }
+.e2-mehr summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: .9rem 0; font-weight: 600; font-size: .92rem; }
+.e2-mehr summary::-webkit-details-marker { display: none; }
+.e2-mehr summary::after { content: "+"; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--e2-hell); font-weight: 600; }
+.e2-mehr[open] summary::after { content: "–"; }
+.e2-mehr p { padding-bottom: .8rem; font-size: .94rem; line-height: 1.6; color: var(--e2-ink-2); }
+.e2-format2 > .e2-knopf { margin: auto 1.6rem 1.6rem; margin-top: 1.4rem; align-self: flex-start; padding: .7rem 1.15rem; font-size: .92rem; }
+@media (max-width: 960px) { .e2-formate { grid-template-columns: minmax(0, 1fr); } }
+
+/* Kopfbild: zwei Formen aus der Formensprache der Startseite */
+.e2-kopfbild { position: relative; aspect-ratio: 1; width: min(100%, 26rem); justify-self: end; border-radius: 0; background: none !important; overflow: visible; display: block; }
+.e2-kopfbild__gross { position: absolute; right: 0; top: 0; width: 84%; height: 84%; }
+.e2-kopfbild__klein { position: absolute; left: 2%; bottom: 2%; width: 34%; height: 34%; color: var(--e2-ink); }
+.e2-kopfbild--gelb .e2-kopfbild__gross { color: var(--e2-gelb); }
+.e2-kopfbild--magenta .e2-kopfbild__gross { color: #C51F5D; }
+@media (max-width: 960px) { .e2-kopfbild { width: min(70%, 18rem); justify-self: start; } }
+
+/* Kontakt: weiß, große Überschrift, Kontaktwege als Pillen, Team mit dem Doppelpfeil */
+.e2-kontakt-neu { padding: 6.5rem 0 0; background: #fff; overflow: hidden; }
+.e2-kontakt-neu__oben { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 4rem; align-items: center; }
+.e2-kontakt-neu__h { font-size: clamp(2.6rem, 5.4vw, 4.6rem) !important; max-width: 12ch; }
+.e2-kontakt-neu__notiz { margin-top: 1.4rem !important; font-weight: 600; }
+.e2-kontakt-neu__wege { display: flex; flex-direction: column; gap: .75rem; }
+.e2-pille { display: flex; align-items: center; gap: .9rem; padding: .95rem 1.4rem; border-radius: 999px; background: var(--e2-ink); color: #fff; font-weight: 600; font-size: 1.02rem; text-decoration: none; transition: transform .15s ease; }
+.e2-pille:hover { transform: translateX(3px); }
+.e2-pille i { display: grid; place-items: center; width: 1.4rem; height: 1.4rem; }
+.e2-pille i svg { width: 1.2rem; height: 1.2rem; }
+.e2-pille--rand { background: #fff; color: var(--e2-ink); border: 1.5px solid var(--e2-linie); }
+.e2-kontakt-neu .e2-ks-logos { margin-top: 1.2rem; }
+.e2-kontakt-neu__team { position: relative; display: flex; justify-content: center; margin-top: 3.5rem; }
+.e2-kontakt-neu__form { position: absolute; left: 50%; bottom: -8%; width: min(30rem, 70vw); height: auto; transform: translateX(-50%); color: var(--e2-gelb); }
+.e2-kontakt-neu__team img { position: relative; display: block; width: min(100%, 560px) !important; min-width: 0 !important; height: auto; opacity: 1 !important; transform: none !important; }
+@media (max-width: 960px) { .e2-kontakt-neu__oben { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; } .e2-kontakt-neu { padding-top: 4.5rem; } }
+.e2-kontakt-neu__team { margin-top: 5rem; }
+.e2-kontakt-neu__form { bottom: -4%; width: min(26rem, 64vw); }
+@media (max-width: 600px) { .e2-format2 > .e2-knopf { width: auto; } }
