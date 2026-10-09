@@ -514,3 +514,8 @@
 .e2-s2-modal-erg__satz { font-size: 1.15rem; }
 .e2-s2-modal-erg .modal-structure-note { font-size: .86rem !important; }
 .modal--strategiemodell .modal-structure-note-wrap { padding-top: 1.6rem !important; }
+/* Startseite Runde 16: Lösung + Leistungen */
+.e2v-loesung2 { align-items: end !important; }
+.e2v-loesung2__satz { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1.3; color: #fff; }
+.e2v-loesung2__text { margin-top: 1rem !important; font-size: 1.05rem; line-height: 1.6; color: #cfcac3; }
+.e2v-gelb { color: var(--e2-gelb); }

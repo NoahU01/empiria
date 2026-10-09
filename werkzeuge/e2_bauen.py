@@ -412,24 +412,14 @@ def startseite():
   <div><p class="e2-kicker">{pr_kicker}</p><h2 class="e2-h2">{pr_h2}</h2><p class="e2v-text">{pr_ps[0]}</p></div>
   <div class="e2v-zitat"><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
 </div></section>''')
-    m.append(f'''<section class="e2-sek" id="loesung"><div class="e2-wrap e2v-zwei e2v-loesung">
-  <div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
-  <div class="e2v-loesung__text"><p>{lo_p}</p>
-    <p><b>Das Ergebnis:</b> Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar. Deine Themen kommen voran.</p>
-    <div class="e2-knoepfe"><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a></div></div>
-</div></section>''')
+    # Runde 16 (Daniel): Lösung und Leistungen gehören zusammen – eine Sektion auf Schwarz.
+    # Unterzeile „Lösung“, Überschrift „Wir übersetzen Deine Strategie in Wirkung“, dazu der Handwerk-Satz und die Leitplanken.
     themen_form = ["forward", "kreuz", "kreis"]
-    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="leistungen"><div class="e2-wrap">
-  <p class="e2-var-band"><b>Variante A</b> Leistungen auf Schwarz</p>
-  <p class="e2-kicker">{le_kicker}</p><h2 class="e2-h2">{le_h2}</h2><p class="e2-lead">{le_lead}</p>
+    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="loesung"><div class="e2-wrap">
+  <div class="e2v-zwei e2v-loesung2"><div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
+    <div><p class="e2v-loesung2__satz">{le_lead.replace("sondern Handwerk", '<span class="e2v-gelb">sondern Handwerk</span>')}</p><p class="e2v-loesung2__text">{lo_p}</p></div></div>
   <div class="e2v-nutzen">{''.join(f'<a href="{link(hr)}"><svg class="e2v-form" viewBox="0 0 232.44 232.44" aria-hidden="true" fill="#fff400" color="#fff400">{FORM[themen_form[i]]}</svg><h3>{t}</h3><p>{pp}</p><span>{mehr} {PFEIL}</span></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-knoepfe"><a class="e2-knopf e2-knopf--gelb" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
-</div></section>''')
-    m.append(f'''<section class="e2-sek" id="leistungen-b"><div class="e2-wrap">
-  <p class="e2-var-band"><b>Variante B</b> Leistungen als Kästen – oben weiß, Mitte farbig, unten weiß</p>
-  <p class="e2-kicker">{le_kicker}</p><h2 class="e2-h2">{le_h2}</h2><p class="e2-lead">{le_lead}</p>
-  <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2-unten"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
+  <div class="e2-knoepfe"><a class="e2-knopf e2-knopf--gelb" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a><button class="e2-knopf e2-knopf--hell link-more" type="button" data-modal="{lo_mehr.group(1)}">{lo_mehr.group(2)}</button></div>
 </div></section>''')
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
