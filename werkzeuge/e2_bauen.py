@@ -222,6 +222,8 @@ def kopfbild(name, chips=""):
 def kopf_neu(held, name):
     """Kopfbereich der Unterseiten wie bei den Wagenpaten: links Kicker, Überschrift, Text, Chips, Knopf – rechts das Kopfbild."""
     kicker = re.search(r'<p class="kicker"[^>]*>(.*?)</p>', held, re.S)
+    if not kicker and name in ("komplexe-themen", "innovation"):
+        kicker = re.search(r"(Strategiehandwerk)", "Strategiehandwerk")   # Unterzeile wie bei Strategie (Daniel)
     h1 = re.search(r"<h1[^>]*>(.*?)</h1>", held, re.S).group(1)
     if 'class="hero-copy' in held:
         inhalt = re.search(r'<div class="hero-copy[^"]*">(.*)</div>\s*</div>\s*<div class="hero-cta">', held, re.S).group(1)
