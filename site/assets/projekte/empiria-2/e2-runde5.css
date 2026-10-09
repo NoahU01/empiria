@@ -377,3 +377,9 @@
 .e2v-fakten > div { max-width: none; }
 .e2v-zitat li { font-size: 1.6rem !important; }
 @media (max-width: 600px) { .e2v-fakten { grid-template-columns: minmax(0, 1fr); } }
+/* Strategie 2: Hintergründe wie bei den Workshop-Seiten – Problem direkt weiß unter dem Kopf, Lösung grau, Zusammenarbeit grau */
+.e2-seite--strategie-2 #problem { background: #fff !important; padding-top: 2rem !important; }
+.e2-seite--strategie-2 #problem .watermark { display: none !important; }
+.e2-seite--strategie-2 #loesung-baustein { background: var(--e2-hell) !important; }
+.e2-seite--strategie-2 #loesung-baustein .produkt-glass { background: #fff !important; }
+.e2-seite--strategie-2 #zusammenarbeit { background: var(--e2-hell) !important; }

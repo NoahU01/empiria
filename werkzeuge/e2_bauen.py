@@ -257,6 +257,7 @@ def kontakt_teile(ko):
 def kontakt_start(ko):
     """Startseite: Kontakt 1:1 wie auf der Live-Startseite (Daniel, Runde 10) – nur die Unterzeile im 2.0-Stil mit Strich."""
     k = re.sub(r'<p class="kicker">(.*?)</p>', r'<p class="e2-kicker">\1</p>', ko, count=1)
+    k = k.replace("Wir sind <span class=\"hl\">", "Wir sind<br><span class=\"hl\" style=\"white-space:nowrap\">", 1)   # „für Dich“ in die zweite Zeile (Daniel)
     return k.replace(" reveal", "").replace('loading="lazy"', "")
 
 
