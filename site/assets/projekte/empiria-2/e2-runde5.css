@@ -692,3 +692,25 @@ html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::before, html body .e2-alt
 @media (max-width: 480px) { .e2-in-karten { grid-template-columns: minmax(0, 1fr); } }
 .e2-in-loesung .inno-stein-tag { margin-bottom: 1rem !important; } .e2-in-loesung .inno-stein li + li { margin-top: .5rem; }
 @media (max-width: 480px) { .e2-in-karten li { flex-direction: row; align-items: center; padding: 1rem 1.1rem; } .e2-in-karten { gap: .6rem; } }
+
+/* ================= Mobil-Kopf der Unterseiten (Runde 26) =================
+   Bild klein ÜBER die Überschrift (wie der Doppelpfeil der Startseite), bündig mit dem Text; Logos ruhiger. */
+@media (max-width: 960px) {
+  html body.e2 .e2-kopf__raster { display: flex !important; flex-direction: column; align-items: flex-start; gap: 0 !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild { order: -1; width: 11rem !important; max-width: 60%; margin: 0 0 1.4rem -6px !important; justify-self: auto !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild { width: 100%; height: auto; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .hero-anlaesse { display: none !important; }
+}
+@media (max-width: 640px) {
+  html body.e2 .marquee { padding-block: 10px 40px !important; }
+  html body.e2 .marquee-track { gap: 18px 22px !important; }
+  html body.e2 .marquee-track img { max-height: 22px !important; }
+  html body.e2 .marquee-track img:nth-child(n+10) { display: none !important; }
+}
+.e2-bild--mobil { display: none !important; }
+@media (max-width: 960px) {
+  /* mobil: eng geschnittenes Motiv, bündig mit der Textkante, feste Höhe */
+  html body.e2 .e2-kopf__raster > .e2-kopfbild { width: auto !important; max-width: 100%; margin: 0 0 1.8rem 0 !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--gross { display: none !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--mobil { display: block !important; height: 4.2rem; width: auto; }
+}

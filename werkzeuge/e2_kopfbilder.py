@@ -119,3 +119,15 @@ def bild(seite):
     if aufbau == "reihe_o":
         return reihe(*daten, pfeile=False), NAMEN[aufbau]
     return zahl(*daten), NAMEN[aufbau]
+
+
+def eng(seite):
+    """Enger Bildausschnitt (viewBox) ohne Rand – für die mobile Darstellung über der Überschrift."""
+    a = seite[4]
+    if a == "trio":
+        return "36 100 368 204"
+    if a == "zahl":
+        return "28 56 380 246"
+    if a == "zielgruppe":
+        return "26 108 392 190"
+    return "26 112 392 186"   # Reihen

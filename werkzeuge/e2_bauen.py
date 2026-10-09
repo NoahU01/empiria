@@ -232,8 +232,10 @@ def kopfbild(name, chips=""):
     import e2_kopfbilder as kb
     from e2_header import farbig
     seite = next(x for x in kb.SEITEN if x[0] == KOPFBILD_SEITE[name])
-    bild = farbig(kb.bild(seite)[0], seite[2], "kopf").replace('class="hv-bild"', 'class="e2-bild"')
-    return f'<div class="e2-kopfbild">{bild}{chips}</div>'
+    roh = farbig(kb.bild(seite)[0], seite[2], "kopf")
+    bild = roh.replace('class="hv-bild"', 'class="e2-bild e2-bild--gross"')
+    mobil = farbig(kb.bild(seite)[0], seite[2], "kopfm").replace('class="hv-bild"', 'class="e2-bild e2-bild--mobil"').replace('viewBox="0 0 440 400"', f'viewBox="{kb.eng(seite)}"', 1)
+    return f'<div class="e2-kopfbild">{bild}{mobil}{chips}</div>'
 
 
 def kopf_neu(held, name):
