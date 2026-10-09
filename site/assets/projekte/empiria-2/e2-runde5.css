@@ -796,3 +796,10 @@ html body .e2-alt.e2-alt .e2-sp-turbo .e2-s2-kasten li::before { background: #ff
 .e2-sp-turbo__satz { margin-top: .8rem !important; font-weight: 600; color: #fff !important; }
 @media (max-width: 960px) { .e2-sp-wann { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .e2-sp-liste { columns: 1; } }
 @media (max-width: 600px) { .e2-sp-wann.e2-in-karten li { flex-direction: column !important; align-items: flex-start !important; padding: 1rem !important; } .e2-in-sym { flex-shrink: 0; } .e2-sp-wann b { font-size: 1.05rem !important; } }
+/* Startseite Lösung (Runde 31): Ergebnis oben neben dem Handwerk-Satz, unter den Kästen nur der Knopf */
+.e2v-loesung3__kopf { align-items: start !important; margin-top: 1.3rem; }
+.e2v-loesung3__kopf .e2v-loesung3__lead { margin-top: 0 !important; }
+.e2v-loesung3__ergebnis { padding-left: 1.4rem; border-left: 3px solid var(--e2-gelb); font-family: var(--font-serif); font-weight: 700; font-size: 1.2rem; line-height: 1.35; color: var(--e2-ink); }
+.e2v-loesung3__ergebnis span { display: block; margin-bottom: .35rem; font-family: var(--font-sans); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-grau); }
+.e2v-loesung3__knopf { margin-top: 2.6rem !important; }
+@media (max-width: 960px) { .e2v-loesung3__kopf { gap: 1.4rem !important; } }

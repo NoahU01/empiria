@@ -527,10 +527,10 @@ def startseite():
     # dann die Kästen, darunter das Ergebnis mit dem Kontakt-Knopf. Kein Pop-up-Link mehr.
     loesung_hell = f'''<section class="e2-sek" id="loesung"><div class="e2-wrap">
   <p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2 e2v-loesung3__h">{lo_h2.strip()} {lo_h2_2}</h2>
-  <p class="e2-lead e2v-loesung3__lead">{le_lead.replace("sondern Handwerk", "<b>sondern Handwerk</b>")}</p>
+  <div class="e2v-zwei e2v-loesung3__kopf"><p class="e2-lead e2v-loesung3__lead">{le_lead.replace("sondern Handwerk", "<b>sondern Handwerk</b>")}</p>
+    <p class="e2v-loesung3__ergebnis"><span>Das Ergebnis</span>Du steuerst Deine Themen, statt auf Überraschungen zu reagieren – Deine Themen kommen voran.</p></div>
   <div class="e2-karten">{''.join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><span class="e2-karte__nr">0{i+1}</span></div><div class="e2-karte__bild e2-karte__bild--{farben[i]}"><div class="e2-karte__ico">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{pp}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (ico, t, pp, hr, mehr) in enumerate(karten))}</div>
-  <div class="e2v-ergebnis2"><div><p class="e2v-ergebnis2__tag">Das Ergebnis</p><p class="e2v-ergebnis2__satz">Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar – Deine Themen kommen voran.</p></div>
-    <a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
+  <div class="e2-knoepfe e2v-loesung3__knopf"><a class="e2-knopf" href="{le_btn.group(1)}">{le_btn.group(2)} {PFEIL}</a></div>
 </div></section>'''
     # Formate: Variante A (Daniel, Runde 10) – wie die Leistungs-Karten. Symbole nur in der Akzentfarbe, ohne Fläche/Rahmen.
     # Die Unterformate sind selbst die Links – kein zweiter „Formate ansehen“-Knopf mehr.
