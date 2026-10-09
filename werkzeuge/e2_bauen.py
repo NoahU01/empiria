@@ -38,7 +38,7 @@ PFEIL = '<svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M
 def abschnitt(html, marker):
     a = html.find(marker)
     assert a >= 0, marker
-    a = html.rfind("<section", 0, a)
+    a = html.rfind("<section", 0, a + 8)
     tiefe, i = 0, a
     while True:
         o, c = html.find("<section", i + 1), html.find("</section>", i + 1)
@@ -98,6 +98,54 @@ def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf"):
 
 
 
+
+# ---------- Einheitliche, einfache Symbole (eine Farbe, kräftiger Strich) ----------
+# Ersetzen die filigranen Zeichnungen der alten Seiten (Daniel, 09.10.2026).
+SYMBOL = {
+    "strategie": '<path d="M4.5 5.5 11 12l-6.5 6.5M12.5 5.5 19 12l-6.5 6.5"/>',
+    "komplexe-themen": '<path d="M6 6l12 12M18 6 6 18"/>',
+    "innovation": '<circle cx="12" cy="12" r="7.5"/>',
+    "workshops": '<rect x="3.5" y="3.5" width="17" height="11" rx="1.5"/><path d="M7.5 7.5h9M7.5 10.5h5.5M9 20.5l1.6-6M15 20.5l-1.6-6"/>',
+    "ki-zum-anfassen": '<path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+    "sprint-landingpage": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18M13 11l-3 4h3.5l-2.5 3.5"/>',
+    "workshop-moderation": '<path d="M3.5 5h11v7.5H8.5L5 15.5V12.5H3.5z"/><path d="M14.5 9h6v7.5h-1.5v3l-3.5-3h-4.5v-4"/>',
+    "powerpoint": '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20.5h8M7 12.5l3-3 2.5 2 4-4"/>',
+    "landingpage": '<rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 6.5h7M8.5 9.5h4.5M8.5 13h7v3.5h-7z"/>',
+    "rollup": '<path d="M6.5 3.5h11v15h-11zM12 18.5v2.5M7.5 21h9M9 7.5h6M9 10.5h4"/>',
+}
+AKZENT_SEITE = {"strategie": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
+                "workshops": "magenta", "ki-zum-anfassen": "magenta", "sprint-landingpage": "magenta", "workshop-moderation": "magenta"}
+
+
+def symbol(name, cls="e2-sym"):
+    return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
+
+
+def kopfbild(name):
+    """Rechts im Kopfbereich: immer dieselbe Bildsprache – Farbfläche, ein großes Symbol, empiria-Marke."""
+    farbe = AKZENT_SEITE[name]
+    return (f'<div class="e2-kopfbild e2-kopfbild--{farbe}" aria-hidden="true"><span class="e2-kopfbild__raster"></span>'
+            f'{symbol(name, "e2-kopfbild__sym")}<img class="e2-kopfbild__logo" src="/assets/empiria-logo{"-white" if farbe == "magenta" else ""}.svg" alt=""></div>')
+
+
+def kopf_neu(held, name):
+    """Kopfbereich der Unterseiten wie bei den Wagenpaten: links Kicker, Überschrift, Text, Chips, Knopf – rechts das Kopfbild."""
+    kicker = re.search(r'<p class="kicker"[^>]*>(.*?)</p>', held, re.S)
+    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", held, re.S).group(1)
+    if 'class="hero-copy' in held:
+        inhalt = re.search(r'<div class="hero-copy[^"]*">(.*)</div>\s*</div>\s*<div class="hero-cta">', held, re.S).group(1)
+    else:
+        t = re.search(r'<div class="produkt-hero-text">(.*?)</div>\s*<div class="produkt-hero-visual">', held, re.S).group(1)
+        inhalt = re.sub(r'<p class="kicker"[^>]*>.*?</p>|<h1[^>]*>.*?</h1>', "", t, count=2, flags=re.S)
+    knoepfe = re.findall(r'<a class="btn[^"]*" href="([^"]+)">(.*?)</a>', held)
+    return f'''<section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
+  <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
+    <div class="e2-kopf__inhalt">{inhalt}</div>
+    <div class="e2-knoepfe">{"".join(f'<a class="e2-knopf" href="{hr}">{tx} {PFEIL}</a>' for hr, tx in knoepfe)}</div></div>
+  {kopfbild(name)}
+</div></section>'''
+
+
 # ---------- Bausteine, die auf mehreren Seiten vorkommen ----------
 def kontakt(ko):
     ko_kicker = eins(r'<p class="kicker">(.*?)</p>', ko)
@@ -107,12 +155,12 @@ def kontakt(ko):
     wege = alle(r'<a class="ks-pill[^"]*" href="([^"]+)"([^>]*)>\s*<span class="ks-pill-icon">(.*?)</span>\s*(.*?)\s*</a>', ko)
     foto = eins(r'(<img class="ks-photo"[^>]*>)', ko).replace(' loading="lazy"', '')
     ko_logos = eins(r'(<div class="ks-marquee">.*?</div>\s*</div>\s*</div>)', ko)
-    return f'''<section class="e2-sek" id="kontakt"><div class="e2-wrap">
-  <div class="e2-kontakt">
-    <div><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p><p class="e2-kontakt__notiz">{ko_notiz}</p></div>
-    <div><ul class="e2-wege">{''.join(f'<li><a href="{hr}"{rest}><i>{ico}</i><span>{txt}</span>{PFEIL}</a></li>' for hr, rest, ico, txt in wege)}</ul><div class="e2-ks-logos">{ko_logos}</div></div>
-  </div>
-  <div class="e2-foto">{foto}</div>
+    return f'''<section class="e2-sek e2-kontakt-sek" id="kontakt"><div class="e2-wrap e2-kontakt">
+  <div class="e2-kontakt__text"><p class="e2-kicker">{ko_kicker}</p><h2 class="e2-h2">{ko_h2}</h2><p class="e2-lead">{ko_lead}</p>
+    <ul class="e2-wege">{''.join(f'<li><a href="{hr}"{rest}><i>{ico}</i><span>{txt}</span>{PFEIL}</a></li>' for hr, rest, ico, txt in wege)}</ul>
+    <p class="e2-kontakt__notiz">{ko_notiz}</p>
+    <div class="e2-ks-logos">{ko_logos}</div></div>
+  <div class="e2-kontakt__foto">{foto}</div>
 </div></section>'''
 
 
@@ -125,7 +173,7 @@ def weitere(se):
     h2 = ohne_hl(eins(r"<h2[^>]*>(.*?)</h2>", se))
     kacheln = alle(r'<a class="related-leistung" href="([^"]+)">\s*<div class="related-leistung-face">\s*<div class="icon">(.*?)</div>\s*<h3>(.*?)</h3>\s*</div>\s*<div class="related-leistung-hover">\s*<p>(.*?)</p>\s*<span class="link-more">(.*?)</span>', se)
     karten = "".join(f'<a class="e2-karte" href="{link(hr)}"><div class="e2-karte__kopf"><img src="/assets/empiria-logo.svg" alt="empiria"></div><div class="e2-karte__bild e2-karte__bild--{FARBEN[i % 3]}"><div class="e2-karte__ico e2-karte__ico--einfach">{ico}</div><h3>{t}</h3></div><div class="e2-karte__text"><p>{p}</p><span class="e2-karte__mehr">{mehr} {PFEIL}</span></div></a>' for i, (hr, ico, t, p, mehr) in enumerate(kacheln))
-    return f'''<section class="e2-sek e2-sek--hell" id="weitere-leistungen"><div class="e2-wrap">
+    return f'''<section class="e2-sek" id="weitere-leistungen"><div class="e2-wrap">
   <p class="e2-kicker">{kicker}</p><h2 class="e2-h2">{h2}</h2>
   <div class="e2-karten">{karten}</div>
 </div></section>'''
@@ -143,6 +191,25 @@ def unterseite(original, ziel):
     h = (SITE / original).read_text(encoding="utf-8")
     main = h[h.index("<main"):h.index("</main>")]
     main = main[main.index(">") + 1:]
+    name = ziel[:-5]
+    held_marker = '<section class="hero leistung-hero"' if '<section class="hero leistung-hero"' in main else '<section class="produkt-hero"'
+    held = abschnitt(main, held_marker)
+    main = main.replace(held, kopf_neu(held, name))
+    # Workshop-Kacheln: filigrane Skizze raus, großes einfaches Symbol rein
+    for wz in ("ki-zum-anfassen", "sprint-landingpage", "workshop-moderation"):
+        main = re.sub(r'(<a class="media-box[^"]*" href="/' + wz + r'"[^>]*>\s*<div class="media-box-thumb[^"]*">).*?(</div>\s*<div class="media-box-footer">)',
+                      lambda m, wz=wz: m.group(1) + symbol(wz, "e2-kachel-sym") + m.group(2), main, flags=re.S)
+    # Medien (Komplexe Themen): einfache Symbole statt Skizzen – je Kachel nur das Bild tauschen
+    def medien(m):
+        block = m.group(0)
+        label = re.search(r'<span class="medien-sketch-label">(.*?)</span>', block).group(1)
+        sym = {"PowerPoint": "powerpoint", "Landingpage": "landingpage", "Roll-up": "rollup"}.get(label)
+        if not sym:
+            return block
+        a = block.index('<div class="medien-sketch-thumb">'); e = block.index("</svg>", a) + 6
+        e = block.index("</div>", e) + 6
+        return block[:a] + '<div class="medien-sketch-thumb">' + symbol(sym, "e2-medien-sym") + "</div>" + block[e:]
+    main = re.sub(r'<div class="medien-sketch" tabindex="0">.*?<span class="medien-sketch-label">.*?</span>', medien, main, flags=re.S)
     if 'id="kontakt"' in main:
         k = abschnitt(main, 'id="kontakt"'); main = main.replace(k, kontakt(k))
     if 'id="weitere-leistungen"' in main:
@@ -150,7 +217,7 @@ def unterseite(original, ziel):
     main = ohne_hl_ausser_h1(main)
     # Zusammenarbeit/Formate: Akkordeons offen als Kartenreihe, damit alles auf einen Blick lesbar ist
     main = re.sub(r'<details class="formate-acc-item([^"]*)"([^>]*)>', lambda m: '<details class="formate-acc-item' + m.group(1) + '"' + re.sub(r'\s*name="[^"]*"', '', m.group(2)) + ' open>', main)
-    return seite(original, f'<div class="e2-alt">{main}</div>')
+    return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]}">{main}</div>')
 
 
 # ---------- Startseite ----------
@@ -225,9 +292,9 @@ def startseite():
         ps = alle(r"^\s*<p>(.*?)</p>", koerper, re.S | re.M)
         eintraege = alle(r'<div class="formate-preview-title">(.*?)</div>\s*<p class="formate-preview-desc">(.*?)</p>', koerper)
         btn = re.search(r'<a class="btn btn--dark btn--sm" href="([^"]+)">(.*?)</a>', koerper)
-        spalten.append(f'<div class="e2-format" style="--e2-akzent:{AKZENT.get(farbe, "#1a1817")}"><h3>{titel}</h3>{"".join(f"<p>{p}</p>" for p in ps)}'
-                       f'<ul class="e2-liste">{"".join(f"<li><div><b>{t}</b><small>{d}</small></div>{PFEIL}</li>" for t, d in eintraege)}</ul>'
-                       f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></div>')
+        spalten.append(f'<div class="e2-format" style="--e2-akzent:{AKZENT.get(farbe, "#1a1817")}"><div class="e2-format__text"><h3>{titel}</h3>{"".join(f"<p>{p}</p>" for p in ps)}</div>'
+                       f'<div class="e2-format__liste"><ul class="e2-liste">{"".join(f"<li><div><b>{t}</b><small>{d}</small></div>{PFEIL}</li>" for t, d in eintraege)}</ul>'
+                       f'<a class="e2-knopf" href="{link(btn.group(1))}">{btn.group(2)} {PFEIL}</a></div></div>')
     m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
   <div class="e2-kopfzeile"><div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2-h2">{fo_h2}</h2></div><div>{''.join(f'<p class="e2-lead">{p}</p>' for p in fo_leads)}</div></div>
   <div class="e2-formate">{''.join(spalten)}</div>

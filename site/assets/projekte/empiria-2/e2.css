@@ -128,3 +128,58 @@ a.e2-karte:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(26,
 }
 .e2-karte__bild--schwarz .lcard-icon .ico-main { color: #fff; }
 .e2-karte__bild--gelb .lcard-icon .ico-shadow { color: #fff; }
+
+/* ================= Runde 2 (Daniel, 09.10.2026) ================= */
+.e2 { --e2-magenta: #C51F5D; }
+/* Startseite: Text oben bündig mit der Überschrift */
+.e2-held__raster { align-items: start; }
+.e2-held__text { padding-top: .9rem; }
+
+/* Leistungen: Symbole einfarbig, kein doppelter Schatten */
+.e2-karte__ico .ico-shadow { display: none !important; }
+.e2-karte__bild--gelb .lcard-icon .ico-main, .e2-karte__bild--hell .lcard-icon .ico-main { color: var(--e2-ink) !important; }
+.e2-karte__bild--schwarz .lcard-icon .ico-main, .e2-karte__bild--schwarz .e2-karte__ico--einfach { color: var(--e2-gelb) !important; }
+
+/* Formate: Querkästen – links Titel und Text, rechts die Formate als Liste */
+.e2-formate { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+.e2-format { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 3rem; padding: 2.4rem 2.6rem; border-top: 0; border-left: 6px solid var(--e2-akzent, var(--e2-ink)); }
+.e2-format__text h3 { font-size: 2rem; }
+.e2-format__text p { margin-top: .9rem !important; font-size: .97rem; line-height: 1.62; color: var(--e2-ink-2); }
+.e2-format__liste { display: flex; flex-direction: column; }
+.e2-format__liste .e2-liste { margin-top: 0; }
+.e2-format .e2-knopf { margin-top: 1.4rem; }
+
+/* Kontakt: Personen freigestellt rechts, stehen auf der Unterkante */
+.e2-kontakt-sek { padding-bottom: 0; background: var(--e2-hell); }
+.e2-kontakt { align-items: end; }
+.e2-kontakt__text { padding-bottom: 5rem; }
+.e2-kontakt .e2-wege { margin-top: 2rem; background: transparent; }
+.e2-kontakt__notiz { margin-top: 1.4rem !important; }
+.e2-kontakt__foto { align-self: end; display: flex; justify-content: center; }
+.e2-kontakt__foto img { display: block; width: 100% !important; max-width: 560px !important; min-width: 0 !important; height: auto; opacity: 1 !important; transform: none !important; }
+.e2-foto { display: none; }
+@media (max-width: 960px) { .e2-kontakt__text { padding-bottom: 1rem; } }
+
+/* Kopfbild (Unterseiten): immer gleiche Bildsprache */
+.e2-kopf { padding: 5rem 0 4.5rem; }
+.e2-kopf__raster { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 4rem; align-items: center; }
+.e2-kopf h1 { font-family: var(--font-serif); font-size: clamp(2.8rem, 5.6vw, 4.8rem); line-height: .98; letter-spacing: -.02em; }
+.e2-kopf h1 .hl { background: linear-gradient(transparent 58%, var(--e2-gelb) 58%, var(--e2-gelb) 92%, transparent 92%); padding: 0 .06em; color: inherit; }
+.e2-kopf__inhalt { margin-top: 1.4rem; }
+.e2-kopf__inhalt p { font-size: 1.12rem; line-height: 1.62; color: var(--e2-ink-2); max-width: 36rem; }
+.e2-kopf__inhalt p + p { margin-top: .9rem; }
+.e2-kopf__inhalt .produkt-hero-lead-cols { display: block; }
+.e2-kopf__inhalt .hero-anlaesse, .e2-kopf__inhalt .produkt-pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.4rem; }
+.e2-kopf__inhalt .hero-anlass, .e2-kopf__inhalt .produkt-pill { padding: .35rem .8rem; border: 1px solid var(--e2-linie); border-radius: 999px; background: #fff; font-size: .82rem; font-weight: 500; color: var(--e2-ink); opacity: 1 !important; transform: none !important; }
+.e2-kopfbild { position: relative; aspect-ratio: 1; width: min(100%, 27rem); justify-self: end; border-radius: 28px; overflow: hidden; display: grid; place-items: center; }
+.e2-kopfbild--gelb { background: var(--e2-gelb); color: var(--e2-ink); }
+.e2-kopfbild--magenta { background: var(--e2-magenta); color: #fff; }
+.e2-kopfbild__raster { position: absolute; inset: 0; background-image: radial-gradient(currentColor 1.2px, transparent 1.3px); background-size: 22px 22px; opacity: .14; }
+.e2-kopfbild__sym { position: relative; width: 52%; height: 52%; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.e2-kopfbild__logo { position: absolute; left: 1.6rem; bottom: 1.4rem; height: 16px; width: auto; }
+@media (max-width: 960px) {
+  .e2-kopf__raster { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
+  .e2-kopfbild { justify-self: start; width: min(100%, 22rem); }
+}
+@media (max-width: 600px) { .e2-kopf { padding: 3rem 0 3rem; } .e2-format { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding: 1.8rem 1.4rem; } }
+@media (max-width: 600px) { .e2-kopfbild { width: 62%; border-radius: 22px; } .e2-kopfbild__logo { left: 1rem; bottom: .9rem; height: 12px; } }

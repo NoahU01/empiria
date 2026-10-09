@@ -189,3 +189,55 @@
   .e2-alt .ansprechpartner-name { font-size: .95rem !important; }
   .e2-alt .ansprechpartner-role { font-size: .75rem !important; }
 }
+
+/* ================= Runde 2 ================= */
+/* Download: kein Gelb mehr – dunkle Karte, weißer Knopf */
+.e2-alt .pdf-dl .pdf-dl-kicker { color: #cfcac3 !important; }
+.e2-alt .pdf-dl-btn { background: #fff !important; color: var(--e2-ink) !important; }
+
+/* Medien-Symbole und Workshop-Kacheln: einfache Symbole */
+.e2-medien-sym { width: 46%; height: auto; fill: none; stroke: var(--e2-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.e2-alt .medien-sketch-thumb { display: grid; place-items: center; background: var(--e2-hell) !important; }
+.e2-alt .media-box-thumb--mock { display: grid; place-items: center; background: var(--e2-magenta) !important; min-height: 13rem; }
+.e2-kachel-sym { width: 34%; height: auto; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.e2-alt .media-box--icon { background: #fff !important; border: 1px solid var(--e2-linie) !important; overflow: hidden; }
+.e2-alt .media-box--icon .media-box-footer { background: #fff !important; color: var(--e2-ink) !important; }
+.e2-alt .media-box--icon .media-box-title { color: var(--e2-ink) !important; font-family: var(--font-serif); font-size: 1.35rem; }
+.e2-alt .media-box--icon .media-box-desc { color: var(--e2-ink-2) !important; }
+.e2-alt .media-box--icon .sprint-structure-cta { background: var(--e2-ink) !important; color: #fff !important; border-color: var(--e2-ink) !important; }
+
+/* Workshop-Seiten: Magenta als durchgehende Akzentfarbe – auch die Markierung in der Überschrift */
+.e2-alt--magenta { --e2-akzent: var(--e2-magenta, #C51F5D); }
+.e2-alt--magenta .e2-kopf h1 .hl { background: linear-gradient(transparent 58%, rgba(197,31,93,.28) 58%, rgba(197,31,93,.28) 92%, transparent 92%); }
+.e2-alt--magenta .e2-kopf .e2-kicker, .e2-alt--magenta .kicker { color: #C51F5D !important; }
+.e2-alt--magenta .e2-kopf .e2-knopf { background: #C51F5D; border-color: #C51F5D; }
+.e2-alt--gelb .e2-kopf .e2-knopf { background: var(--e2-ink); }
+
+/* Preise: mittlere Karte lesbar (eigene Farbe), Karten mit mehr Struktur */
+.e2-alt .produkt-grid-cards > .price-card--featured { background: #C51F5D !important; border: 0 !important; color: #fff !important; }
+.e2-alt .price-card--featured * { color: #fff !important; }
+.e2-alt .price-card--featured .price-badge { background: #fff !important; color: #C51F5D !important; }
+.e2-alt .price-card--featured .price-features li::before { background: #fff !important; }
+.e2-alt .price-card { padding: 2rem 1.8rem !important; border-top: 6px solid var(--e2-ink) !important; }
+.e2-alt .price-card--featured { border-top-color: #8e1543 !important; }
+.e2-alt .price-card .price-value { margin: 1.2rem 0 .3rem; padding: 1rem 0; border-top: 1px solid var(--e2-linie); border-bottom: 1px solid var(--e2-linie); }
+.e2-alt .price-card--featured .price-value { border-color: rgba(255,255,255,.3); }
+.e2-alt .price-card .price-amount { font-family: var(--font-serif); font-size: 2.4rem !important; }
+.e2-alt .price-card h3 { font-family: var(--font-serif); font-size: 1.55rem !important; }
+
+/* „Jetzt loslegen“: hell, klar, lesbar – Text links, Team rechts */
+.e2-alt .produkt-team-cta, .e2-alt section.produkt-cta.produkt-team-cta { background: var(--e2-hell) !important; color: var(--e2-ink) !important; }
+.e2-alt .produkt-team-cta .kicker { color: var(--e2-akzent, var(--e2-ink)) !important; }
+.e2-alt .produkt-team-cta h2 { color: var(--e2-ink) !important; }
+.e2-alt .produkt-team-cta-sub { color: var(--e2-ink-2) !important; }
+.e2-alt .ansprechpartner-name { color: var(--e2-ink) !important; }
+.e2-alt .ansprechpartner-role { color: var(--e2-grau) !important; }
+.e2-alt .ansprechpartner-photo { border: 0 !important; background: #fff; }
+.e2-alt .produkt-team-cta .btn--dark { background: var(--e2-akzent, var(--e2-ink)) !important; color: #fff !important; border-color: transparent !important; }
+.e2-alt--magenta h1 .hl { background: linear-gradient(transparent 58%, rgba(197,31,93,.28) 58%, rgba(197,31,93,.28) 92%, transparent 92%) !important; }
+.e2-alt .media-box-thumb--mock { aspect-ratio: 16 / 10; min-height: 0 !important; height: auto !important; padding: 0 !important; }
+.e2-kachel-sym { width: auto !important; height: 42% !important; }
+.e2-alt .medien-sketch-thumb svg.e2-medien-sym, .e2-alt .medien-sketch-thumb svg.e2-medien-sym * { stroke: #1a1817 !important; fill: none !important; opacity: 1 !important; }
+.e2-alt .medien-sketch-thumb > * { background: none !important; box-shadow: none !important; border: 0 !important; }
+.e2-alt .medien-sketch { background: var(--e2-hell) !important; border: 0 !important; }
+.e2-alt .medien-sketch-thumb svg.e2-medien-sym { filter: none !important; position: static !important; width: 46% !important; height: auto !important; }
