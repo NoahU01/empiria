@@ -454,3 +454,13 @@
 .e2-s2-problem .e2-s2-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
 .e2-s2-problem h2.h-serif { max-width: 24ch !important; }
 .e2-seite--strategie-2 .pdf-dl-section { background: var(--e2-hell) !important; }
+/* Startseite Lösung (Runde 14): eine Überschrift links, Text + Ergebnis + Knopf rechts – wie die Idee-Sektion der Volksfest-Seite */
+.e2v-loesung { align-items: end !important; }
+.e2v-loesung__text p { font-size: 1.15rem; line-height: 1.65; color: var(--e2-ink); }
+.e2v-loesung__text p + p { margin-top: 1rem !important; }
+.e2v-loesung__text .e2-knoepfe { margin-top: 1.8rem; }
+/* Formate B: ohne farbigen Rand, „Mehr erfahren“ in der Farbe des Formats */
+.e2v-format { border-top: 0 !important; }
+.e2v-format__mehr { color: var(--e2-akzent) !important; }
+/* Strategie 2 Problem: mobil einspaltig */
+@media (max-width: 960px) { .e2-s2-problem .e2-s2-split { grid-template-columns: minmax(0, 1fr) !important; } }

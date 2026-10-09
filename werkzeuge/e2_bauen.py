@@ -413,11 +413,10 @@ def startseite():
   <div class="e2v-zitat"><ul>{''.join(f'<li>{x}</li>' for x in pr_lis)}</ul><p>{pr_ps[-1]}</p></div>
 </div></section>''')
     m.append(f'''<section class="e2-sek" id="loesung"><div class="e2-wrap e2v-zwei e2v-loesung">
-  <div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2><p class="e2v-text">{lo_p}</p>
+  <div><p class="e2-kicker">{lo_kicker}</p><h2 class="e2-h2">{lo_h2.strip()} {lo_h2_2}</h2></div>
+  <div class="e2v-loesung__text"><p>{lo_p}</p>
+    <p><b>Das Ergebnis:</b> Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar. Deine Themen kommen voran.</p>
     <div class="e2-knoepfe"><a class="e2-knopf" href="{lo_btn.group(1)}">{lo_btn.group(2)} {PFEIL}</a></div></div>
-  <div class="e2v-ergebnis"><p class="e2-kicker">Das Ergebnis</p>
-    <p class="e2v-ergebnis__satz">Du steuerst Deine Themen, statt auf Überraschungen zu reagieren. Die Zusammenhänge sind klar. Deine Themen kommen voran.</p>
-    <p class="e2v-ergebnis__nach">Und irgendwann merkst Du, dass Dich auch die anderen längst als jemanden wahrnehmen, der seinen Verantwortungsbereich im Griff hat.</p></div>
 </div></section>''')
     themen_form = ["forward", "kreuz", "kreis"]
     m.append(f'''<section class="e2-sek e2-sek--schwarz" id="leistungen"><div class="e2-wrap">
