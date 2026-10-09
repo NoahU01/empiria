@@ -235,8 +235,8 @@ def kopf_neu(held, name):
     m = re.search(r'<div class="hero-anlaesse".*?</div>', inhalt, re.S)
     if m:
         chips = m.group(0); inhalt = inhalt.replace(chips, "")
-    if name == "komplexe-themen":
-        chips = ""   # Zielgruppen stehen jetzt im Kopfbild (Daniel, Runde 11)
+    if name == "komplexe-themen" and chips:
+        inhalt += chips.replace('class="hero-anlaesse"', 'class="hero-anlaesse e2-pillen"'); chips = ""   # Zielgruppen als dünne Pillen unter dem Kopftext (Daniel)
     return f'''<section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
   <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
     <div class="e2-kopf__inhalt">{inhalt}</div>
