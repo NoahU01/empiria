@@ -965,3 +965,11 @@ html body .e2-alt.e2-alt .e2-sp2-wann b { font-size: 1.2rem; }
 @media (max-width: 960px) { .e2-sp2-worueber ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .e2-sp2-worueber ul { grid-template-columns: 1fr; } .e2-sp2-worueber li { min-height: 0; } }
 html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e2-pillen) { max-width: none !important; width: auto !important; }
+
+/* Runde 36 · Farbvorschlag (nur Übersichtsseiten Workshops, Marketing 2.0, Training & Sparring):
+   große Flächen in einer tiefen Variante der Bereichsfarbe, die kräftige Farbe bleibt Akzent (Highlight, Icons, Linien, Kicker) */
+html body .e2-alt.e2-alt.e2-seite--workshops { --bf-flaeche: #6E1838; }
+html body .e2-alt.e2-alt.e2-seite--marketing { --bf-flaeche: #0E4F5F; }
+html body .e2-alt.e2-alt.e2-seite--training-sparring { --bf-flaeche: #4A1A5E; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt:is(.e2-seite--workshops, .e2-seite--marketing, .e2-seite--training-sparring) section.produkt-grid { background: var(--bf-flaeche) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt:is(.e2-seite--workshops, .e2-seite--marketing, .e2-seite--training-sparring) :is(.media-box-thumb, .media-box-thumb-btn) { background: var(--bf-flaeche) !important; }
