@@ -227,7 +227,14 @@ KOPFBILD_SEITE = {"teams": "Teams befähigen, professionell zu kommunizieren", "
                   "sprint-landingpage": "Sprint Landingpage", "workshop-moderation": "Moderation deines Workshops"}
 
 
+THEMEN_ZEICHEN = {"strategie": "forward", "strategie-2": "forward", "komplexe-themen": "kreuz", "innovation": "kreis"}
+
+
 def kopfbild(name, chips=""):
+    if name in THEMEN_ZEICHEN:   # Strategiehandwerk: großes Themen-Zeichen wie auf der Startseite (Daniel, Runde 27)
+        z = FORM[THEMEN_ZEICHEN[name]]
+        vb = "2.83 31.08 226.78 170.29" if THEMEN_ZEICHEN[name] == "forward" else "2.83 2.83 226.78 226.78"   # eng geschnitten
+        return (f'<div class="e2-kopfbild e2-kopfbild--zeichen"><svg class="e2-bild e2-bild--zeichen" viewBox="{vb}" aria-hidden="true" fill="#1a1817" color="#1a1817">{z}</svg>{chips}</div>')
     """Rechts im Kopfbereich: das freigegebene Mono-Kopfbild der Seite (e2_kopfbilder.py, Daniel 10.10.2026), darunter ggf. die Anlass-Chips."""
     import e2_kopfbilder as kb
     from e2_header import farbig

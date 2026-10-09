@@ -714,3 +714,12 @@ html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::before, html body .e2-alt
   html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--gross { display: none !important; }
   html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--mobil { display: block !important; height: 4.2rem; width: auto; }
 }
+/* Strategiehandwerk: großes Themen-Zeichen rechts, unten bündig mit dem Text (wie Startseite) */
+html body.e2 .e2-kopf__raster:has(.e2-kopfbild--zeichen) { align-items: end !important; }
+html body.e2 .e2-kopfbild--zeichen { width: min(100%, 16rem) !important; justify-self: center !important; align-self: end !important; margin-bottom: calc(4.6rem + 12px); }
+html body.e2 .e2-kopfbild--zeichen .e2-bild--zeichen { display: block; width: 100%; height: auto; }
+@media (max-width: 960px) {
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { width: auto !important; margin: 0 0 1.6rem !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { width: auto; height: 3.6rem; }
+}
+@media (max-width: 960px) { html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { align-self: flex-start !important; justify-self: start !important; } }
