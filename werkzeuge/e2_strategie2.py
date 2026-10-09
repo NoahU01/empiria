@@ -108,7 +108,8 @@ def quelle():
 <p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2>
 <div class="e2-s2-karten">{karten}</div></div></section>'''
 
-    main = "\n".join([kopf, problem, loesung, persp, zusammen, download, kontakt])   # Runde 17: Gedankenexperiment steckt im Perspektivwechsel
+    logos = '''<div class="marquee" aria-label="Auswahl unserer Kunden"><div class="marquee-viewport"><div class="marquee-track" id="marqueeTrack"></div></div></div>'''   # Logo-Band wie Komplexe Themen/Innovation
+    main = "\n".join([kopf, logos, problem, loesung, persp, zusammen, download, kontakt])   # Runde 17: Gedankenexperiment steckt im Perspektivwechsel
     i = st.index('<div class="modal-overlay" id="strategiemodellModal"')
     tiefe, j = 0, i
     for mm in re.finditer(r"<div\b|</div>", st[i:]):

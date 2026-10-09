@@ -601,3 +601,4 @@ html body .e2-alt.e2-alt.e2-seite--komplexe-themen #problem .e2-kasten, html bod
 @media (max-width: 960px) { html body .e2-alt.e2-alt.e2-seite--innovation #problem .e2-s2-split { grid-template-columns: minmax(0, 1fr); } }
 /* Kopf der drei Strategiehandwerk-Seiten gleich groß wie Strategie */
 html body .e2-alt.e2-alt.e2-seite--komplexe-themen .e2-kopf h1, html body .e2-alt.e2-alt.e2-seite--innovation .e2-kopf h1 { font-size: clamp(2.5rem, 4.6vw, 4rem) !important; }
+html body .e2-alt.e2-alt.e2-seite--komplexe-themen #intro.e2-kopf h1, html body .e2-alt.e2-alt.e2-seite--innovation #intro.e2-kopf h1 { font-size: clamp(2.5rem, 4.6vw, 4rem) !important; }
