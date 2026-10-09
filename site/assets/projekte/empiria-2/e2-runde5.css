@@ -632,7 +632,7 @@ html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-best
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass .feature-icon svg { stroke: var(--bf) !important; color: var(--bf) !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .watermark { display: none !important; }
 /* danach keine zwei Grau hintereinander: Standard weiß, Fragen/Beispiele hell */
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq) { background: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq):not(.e2-faelle) { background: #fff !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:is(.produkt-faq, .pa-faq) { background: var(--e2-hell) !important; }
 /* Fremdfarben auf die Bereichsfarbe ziehen */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.usp-highlight, .sprint-structure-card, .vergleich-rocket, .pa-pc, .price-card--featured) { background: var(--bf) !important; border-color: var(--bf) !important; }
@@ -970,3 +970,85 @@ html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e
 /* Runde 37 · Kopf-Pills wieder ohne Farbe, nur leichte Umrandung (Daniel) – bleiben in einer Reihe */
 html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pill, .hero-anlass) { background: transparent !important; border: 1px solid #d9d5ce !important; font-weight: 500 !important; padding: .4rem .85rem !important; }
 .e2-gg__sym { color: #fff; }
+
+/* Runde 38 · Teams: Download als Text + schwarzer Kasten */
+html body .e2-alt.e2-alt .e2-teams-dl { background: #fff !important; }
+.e2-teams-dl .e2-s2-split { align-items: center; }
+.e2-teams-dl__kasten { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+.e2-teams-dl__ico { width: 2.6rem; height: 2.6rem; }
+.e2-teams-dl__ico svg { width: 100%; height: 100%; }
+html body .e2-alt .e2-teams-dl__titel { margin: 0 !important; color: #fff !important; font-family: var(--font-serif); font-size: 1.35rem !important; font-weight: 700; line-height: 1.25; }
+.e2-teams-dl__knopf { display: inline-flex; padding: .95rem 1.5rem; border-radius: 999px; background: #fff400; color: #1a1817 !important; font-weight: 600; font-size: .92rem; text-decoration: none; }
+html body .e2-alt .e2-teams-dl__tag { margin: 0 !important; font-size: .78rem !important; color: rgba(255,255,255,.55) !important; }
+
+/* Runde 38 · Download-Bereich überall auf Weiß (gleich auf allen Seiten) */
+html body .e2-alt.e2-alt section.pdf-dl-section { background: #fff !important; }
+.e2-faelle__raster--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .e2-faelle__raster--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .e2-faelle__raster--4 { grid-template-columns: minmax(0, 1fr); } }
+html body main .e2-alt.e2-alt.e2-alt .e2-fall-sonder__tag { color: #fff400 !important; opacity: 1; }   /* Label auf Schwarz gelb, wie „Zwischenergebnis“ */
+
+/* Runde 38 · FAQ/Akkordeon schlank (Daniel): keine Kästen, ruhige Zeilen mit Linie, kleiner Plus-Kreis – halbe Höhe */
+html body main .e2-alt.e2-alt .produkt-faq-list { gap: 0 !important; border-top: 1px solid #d9d5ce; }
+html body main .e2-alt.e2-alt .produkt-faq-item.produkt-faq-item { background: transparent !important; border: 0 !important; border-bottom: 1px solid #d9d5ce !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; }
+html body main .e2-alt.e2-alt .produkt-faq-item summary { padding: 1.05rem 0 !important; font-size: .98rem !important; font-weight: 600; color: #1a1817 !important; }
+html body main .e2-alt.e2-alt .produkt-faq-item summary::after { width: 26px !important; height: 26px !important; background:
+    linear-gradient(#1a1817, #1a1817) center / 11px 1.6px no-repeat, linear-gradient(#1a1817, #1a1817) center / 1.6px 11px no-repeat, #fff400 !important; }
+html body main .e2-alt.e2-alt .produkt-faq-item :is(p, ul, .formate-acc-body) { padding: 0 2.6rem 1.2rem 0 !important; margin: 0 !important; font-size: .93rem !important; line-height: 1.65 !important; color: #3d3a37 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.e2-faelle { background: var(--e2-hell, #f3f1ee) !important; }   /* Beispiele überall auf Hellgrau, weiße Karten */
+
+/* Runde 38 · Vorschau (PowerPoint, Landingpage, Roll-up): Text links, Karte rechts – wie „Alles greift ineinander“; Karte weiß auf der Farbfläche */
+html body main .e2-alt.e2-alt.e2-alt .produkt-vorschau:not(.produkt-vorschau--split) > .container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+html body main .e2-alt.e2-alt.e2-alt .produkt-vorschau:not(.produkt-vorschau--split) .produkt-section-head { margin: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt .produkt-vorschau:not(.produkt-vorschau--split) .produkt-vorschau-card { margin: 0 !important; max-width: none !important; width: 100%; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box,
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card :is(.media-box-thumb, .media-box-footer) { background: #fff !important; border: 0 !important; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box { border-radius: 22px !important; overflow: hidden; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-thumb { aspect-ratio: 1.5; height: auto !important; display: grid !important; place-items: center; padding: 1.8rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-thumb svg { width: 100% !important; height: 100% !important; max-height: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-footer { display: flex !important; flex-direction: column; align-items: stretch; gap: 1rem; padding: 0 1.75rem 1.75rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-title { color: #1a1817 !important; font-family: var(--font-serif) !important; font-weight: 700 !important; font-size: 1.45rem !important; }
+@media (max-width: 900px) { html body main .e2-alt.e2-alt.e2-alt .produkt-vorschau:not(.produkt-vorschau--split) > .container { grid-template-columns: 1fr; gap: 2.2rem; } }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-footer > * { margin: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-vorschau-card .media-box-footer > .btn { padding: .95rem 1.2rem !important; width: 100%; justify-content: center; }
+html body .e2-alt .e2-teams-dl__text { margin: -.4rem 0 .2rem !important; font-size: .92rem !important; line-height: 1.6 !important; color: rgba(255,255,255,.75) !important; }
+button.e2-teams-dl__knopf { border: 0; cursor: pointer; font-family: inherit; }
+/* MES „Alles greift ineinander“: Karte kleiner (Daniel) – sie zeigt nur, dass es etwas zum Ansehen gibt */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--dashboard-digitales-marketing .vorschau-split-card { max-width: 25rem; justify-self: end; width: 100%; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--dashboard-digitales-marketing .vorschau-split-card .media-box-title { font-size: 1.2rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--dashboard-digitales-marketing .vorschau-split-grid:has(.e2-teams-dl__kasten) .vorschau-split-card { max-width: none; }
+/* Runde 38 · schwarze Hinweis-Kästen (MES, sofort sichtbar): Label gelb, Symbol gelb ohne Kachel – wie alle Labels auf Schwarz */
+html body main .e2-alt.e2-alt.e2-alt .usp-highlight .usp-highlight-kicker { color: #fff400 !important; opacity: 1 !important; }
+html body main .e2-alt.e2-alt.e2-alt .usp-highlight .usp-highlight-icon { background: transparent !important; border: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt .usp-highlight .usp-highlight-icon :is(svg, use) { color: #fff400 !important; stroke: #fff400 !important; width: 2.2rem; height: 2.2rem; }
+/* Runde 38 · sofort sichtbar: Logo als Kicker (größer, ohne Strich), Original-Mockup im Kopf */
+html body .e2-alt .e2-kicker.e2-kicker--logo::before { display: none !important; }
+html body .e2-alt .e2-kicker.e2-kicker--logo { padding-left: 0 !important; }
+html body .e2-alt .e2-kicker--logo img { height: 1.7rem; width: auto; display: block; }
+.e2-kopfbild--foto img { width: 100%; height: auto; display: block; }
+@media (max-width: 900px) { .e2-kopfbild--foto { max-width: 26rem; } }
+/* Runde 38 · MES-Pakete wie alle Preiskarten: Hellgrau, die empfohlene in Gelb (wie KI-Formate, sofort sichtbar) */
+html body .e2-alt .e2-paket { background: #f3f1ee; border: 0; }
+html body .e2-alt .e2-paket--top { background: #fff400; color: #1a1817; }
+html body .e2-alt .e2-paket--top .e2-paket__badge { color: #1a1817 !important; }
+html body .e2-alt .e2-paket--top ul { border-top-color: rgba(26,24,23,.18); }
+html body .e2-alt .e2-paket ul { border-top-color: #dcd8d1; }
+html body .e2-alt .e2-paket--top .e2-paket__mehr { background: #1a1817; color: #fff; }
+html body main .e2-alt.e2-alt.e2-alt .e2-paket--top li::before { background: #1a1817 !important; }
+
+/* Runde 38 · Vorteils-Reihen ohne Überschrift (Video, Der beste Workshop, PowerPoint …): kein Kastenfeld, sondern ein ruhiges Band –
+   drei Punkte nebeneinander mit Linie oben, wie die Fakten-Zeilen der Volksfest-Seite */
+html body main .e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) .produkt-glass { background: transparent !important; border: 0 !important; border-top: 1.5px solid #1a1817 !important; border-radius: 0 !important; box-shadow: none !important; padding: 1.4rem 0 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) .produkt-grid-cards { column-gap: 3rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) .feature-icon { display: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) h3 { font-size: 1.5rem !important; margin: 0 0 .5rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(:has(.produkt-section-head)):not(.produkt-pricing) p { font-size: .98rem !important; color: #1a1817 !important; opacity: .85; }
+/* … und genauso in allen gelben Ansatz-Streifen mit Überschrift: Punkte mit Linie statt weißer Kästen (wie 1:1 Sparring „Ein Gegenüber“) */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards > .produkt-glass { background: transparent !important; border: 0 !important; border-top: 1.5px solid #1a1817 !important; border-radius: 0 !important; box-shadow: none !important; padding: 1.4rem 0 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards { column-gap: 3rem !important; row-gap: 2.6rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards .feature-icon { width: 2rem !important; height: 2rem !important; margin: 0 0 1rem !important; background: none !important; padding: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards .feature-icon :is(svg, use) { width: 2rem !important; height: 2rem !important; color: #1a1817 !important; stroke: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards h3 { font-size: 1.3rem !important; margin: 0 0 .5rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid:not(.produkt-pricing):not(.e2-pakete) .produkt-grid-cards p { font-size: .95rem !important; line-height: 1.6 !important; color: #1a1817 !important; opacity: .85; }
+@media (max-width: 600px) { .e2-phasen { grid-template-columns: minmax(0, 1fr) !important; gap: .6rem; } .e2-phasen li { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: .9rem; padding: 1rem 1.1rem; } .e2-phasen li::after { display: none !important; } .e2-phasen small { flex-basis: 100%; padding-left: 2.9rem; } }

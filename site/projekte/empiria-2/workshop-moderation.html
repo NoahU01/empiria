@@ -99,6 +99,7 @@
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-seiten.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "magenta" ===== */
   body.produktseite-clean { background: #fff; }
@@ -241,7 +242,7 @@
   .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
   .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
   .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
-  .produktseite-clean .vorschau-facts-list li::before { background: #fff400; }
+  .produktseite-clean .vorschau-facts-list li::before { background: #1a1817; }
   .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
   .produktseite-clean .produkt-glass h3 { color: var(--ink); }
@@ -249,7 +250,7 @@
   .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
   .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #1a1817; }
   .produktseite-clean .topics-list li { color: var(--ink); }
-  .produktseite-clean .topics-list li::before { background: #fff400; }
+  .produktseite-clean .topics-list li::before { background: #1a1817; }
 
   /* Preis-Hinweis-Karte (einzelner großer Preis) */
   .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
@@ -267,7 +268,7 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #fff400; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
   .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
@@ -302,14 +303,14 @@
     flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px;
     background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
   }
-  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #1a1817; }
+  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #fff; }
   .produktseite-clean .usp-highlight-body { flex: 1 1 320px; }
   .produktseite-clean .usp-highlight-kicker {
     font-family: var(--font-sans); font-weight: 700; font-size: .74rem; letter-spacing: .08em;
-    text-transform: uppercase; color: rgba(26,24,23,.72); margin: 0 0 8px;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin: 0 0 8px;
   }
-  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #1a1817; }
-  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(26,24,23,.88); line-height: 1.65; }
+  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #fff; }
+  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
 
   /* Prozess-Schritte */
   .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
@@ -1143,37 +1144,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
   <!-- ===== FAQ ===== -->
-  <section class="produkt-section produkt-faq">
-    <div class="container">
-      <div class="produkt-section-head reveal">
-        <p class="kicker">Beispiele</p>
-        <h2 class="h-serif">Konkrete Usecases aus der Praxis.</h2>
-        <p>Ein Ausschnitt möglicher Workshopmoderationen – so vielfältig wie die Themen, die uns Teams mitbringen.</p>
-      </div>
-      <div class="produkt-faq-list">
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Restrukturierung mit geteilter Führung</summary>
-          <p>Im Zuge der Neustrukturierung eines mittelständischen Unternehmens wurden komplett neue Rollen eingeführt – bis hin zu einer geteilten Führungsrolle. Der Workshop hat Rollen, Prozesse, Verantwortlichkeiten und Zuständigkeiten so konkret gemacht, dass sie sich direkt in den Arbeitsalltag übertragen ließen.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Klarheit nach zwei Strategieworkshops</summary>
-          <p>Eine Abteilung hatte bereits zwei interne Strategieworkshops hinter sich – und jede Menge Themen gesammelt, aber keinen klaren Weg mehr nach vorn. Der Workshop hat Struktur in die Themen gebracht: klare Schwerpunkte, klare Priorität, klares weiteres Vorgehen.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Einarbeitung einer neu geschaffenen Rolle</summary>
-          <p>Über mehrere Sequenzen hinweg wurde eine Führungskraft und ein neuer Mitarbeiter begleitet, dessen Stelle komplett neu geschaffen worden war. Die Rolle musste ins Gesamtgefüge integriert und nach außen an den Schnittstellen im Unternehmen geschärft werden – inklusive konkreter Methoden, mit denen der Mitarbeiter seine neue Spezialrolle ausfüllen konnte.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Neustart nach Führungswechsel</summary>
-          <p>Ein Wechsel der Führungskraft ging mit einer Neustrukturierung der Abteilung einher – eine komplexe Situation, die gemeinsam aufgelöst werden musste. Über mehrere Ebenen wurde zunächst Vertrauen aufgebaut, damit alle den Weg mitgehen, bevor es in die Inhalte ging. Ergebnis: eine Abteilung, die schlagkräftiger in die Zukunft startete als zuvor.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Prozess- und Strukturworkshop im Team</summary>
-          <p>In gewachsenen Strukturen verschieben sich Zuständigkeiten über die Jahre, und es kommen laufend neue Themen dazu – was fehlt, ist die systemische Müllabfuhr: die Frage, was künftig wegfallen oder deutlich anders laufen kann. Genau das lässt sich intern kaum beantworten, weil sich jede Veränderung wie das Aufgeben von etwas Etabliertem anfühlt, dessen Konsequenzen niemand absehen will. Deshalb stand am Anfang nicht die Optimierung einzelner Schritte, sondern die Klärung, wofür die Abteilung steht und wo sie hinwill. Erst danach entstanden Prozesse und Strukturen, die im Alltag tragen – weil der Mehrwert verstanden ist und für alle Klarheit herrscht, statt sauber dokumentiert abgelegt zu werden, wo niemand mehr hineinschaut.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  <section class="produkt-section e2-faelle"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">Beispiele</p><h2 class="h-serif">Konkrete Usecases aus der Praxis.</h2></div><p class="lead">Ein Ausschnitt möglicher Workshopmoderationen – so vielfältig wie die Themen, die uns Teams mitbringen.</p></div>
+  <div class="e2-faelle__raster e2-faelle__raster--4"><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></svg></span><h3>Restrukturierung mit geteilter Führung</h3><p>Neue Rollen bis zur geteilten Führung – direkt alltagstauglich gemacht.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl0">Mehr lesen →</button><dialog class="e2-dialog" id="fl0"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Restrukturierung mit geteilter Führung</h3><p>Im Zuge der Neustrukturierung eines mittelständischen Unternehmens wurden komplett neue Rollen eingeführt – bis hin zu einer geteilten Führungsrolle. Der Workshop hat Rollen, Prozesse, Verantwortlichkeiten und Zuständigkeiten so konkret gemacht, dass sie sich direkt in den Arbeitsalltag übertragen ließen.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></svg></span><h3>Klarheit nach zwei Strategieworkshops</h3><p>Viele Themen, kein Weg – danach klare Schwerpunkte und Prioritäten.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl1">Mehr lesen →</button><dialog class="e2-dialog" id="fl1"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Klarheit nach zwei Strategieworkshops</h3><p>Eine Abteilung hatte bereits zwei interne Strategieworkshops hinter sich – und jede Menge Themen gesammelt, aber keinen klaren Weg mehr nach vorn. Der Workshop hat Struktur in die Themen gebracht: klare Schwerpunkte, klare Priorität, klares weiteres Vorgehen.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /></svg></span><h3>Einarbeitung einer neu geschaffenen Rolle</h3><p>Eine neue Rolle ins Gefüge integriert und an den Schnittstellen geschärft.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl2">Mehr lesen →</button><dialog class="e2-dialog" id="fl2"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Einarbeitung einer neu geschaffenen Rolle</h3><p>Über mehrere Sequenzen hinweg wurde eine Führungskraft und ein neuer Mitarbeiter begleitet, dessen Stelle komplett neu geschaffen worden war. Die Rolle musste ins Gesamtgefüge integriert und nach außen an den Schnittstellen im Unternehmen geschärft werden – inklusive konkreter Methoden, mit denen der Mitarbeiter seine neue Spezialrolle ausfüllen konnte.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></svg></span><h3>Neustart nach Führungswechsel</h3><p>Erst Vertrauen, dann Inhalte – die Abteilung startet schlagkräftiger.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl3">Mehr lesen →</button><dialog class="e2-dialog" id="fl3"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Neustart nach Führungswechsel</h3><p>Ein Wechsel der Führungskraft ging mit einer Neustrukturierung der Abteilung einher – eine komplexe Situation, die gemeinsam aufgelöst werden musste. Über mehrere Ebenen wurde zunächst Vertrauen aufgebaut, damit alle den Weg mitgehen, bevor es in die Inhalte ging. Ergebnis: eine Abteilung, die schlagkräftiger in die Zukunft startete als zuvor.</p></dialog></article></div><div class="e2-fall-sonder"><div><p class="e2-fall-sonder__tag">Im Fokus</p><h3>Prozess- und Strukturworkshop im Team</h3></div><div><p>Was kann wegfallen? Erst klären, wofür die Abteilung steht – dann Prozesse, die im Alltag tragen.</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs4">Mehr lesen →</button></div><dialog class="e2-dialog" id="fs4"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Prozess- und Strukturworkshop im Team</h3><p>In gewachsenen Strukturen verschieben sich Zuständigkeiten über die Jahre, und es kommen laufend neue Themen dazu – was fehlt, ist die systemische Müllabfuhr: die Frage, was künftig wegfallen oder deutlich anders laufen kann. Genau das lässt sich intern kaum beantworten, weil sich jede Veränderung wie das Aufgeben von etwas Etabliertem anfühlt, dessen Konsequenzen niemand absehen will. Deshalb stand am Anfang nicht die Optimierung einzelner Schritte, sondern die Klärung, wofür die Abteilung steht und wo sie hinwill. Erst danach entstanden Prozesse und Strukturen, die im Alltag tragen – weil der Mehrwert verstanden ist und für alle Klarheit herrscht, statt sauber dokumentiert abgelegt zu werden, wo niemand mehr hineinschaut.</p></dialog></div>
+</div></section>
 
   <!-- ===== Download: PDF-Zusammenfassung ===== -->
   <section class="produkt-section pdf-dl-section">

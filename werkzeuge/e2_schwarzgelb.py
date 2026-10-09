@@ -19,7 +19,7 @@ _VAR = re.compile(r"var\(--(?:bf|e2-akzent|e2-magenta|hl)(?![-\w])(?:[^()]|\([^(
 _WEISS = re.compile(r"#fff\b|#ffffff\b|\bwhite\b", re.I)
 DUNKEL = re.compile(r"pdf-dl")          # Schrift auf Schwarz: Akzent wird Gelb statt Schwarz
 SCHRIFT = {"color", "stroke", "fill", "caret-color", "-webkit-text-fill-color", "text-decoration-color"}
-STREIFEN = re.compile(r"e2-alt--(magenta|cyan|violett)|produkt-grid|tools-row|e2-gg|section--grey|featured|vorschau-split-card|pa-pc|usp-highlight|vergleich-rocket")
+STREIFEN = re.compile(r"e2-alt--(magenta|cyan|violett)|produkt-grid|tools-row|e2-gg|section--grey|featured|vorschau-split-card|pa-pc|vergleich-rocket|produkt-vorschau")
 
 
 def _flaeche(v):
@@ -47,6 +47,9 @@ def _regel(sel, body):
             val = _flaeche(val)
         elif p in SCHRIFT:
             val = _flaeche(val) if DUNKEL.search(sel) else _schrift(val)
+        elif re.search(r"li::(before|after)|-foot::before|pa-check::before", sel) and p.startswith("background") and not re.search(r"--top|kasten|featured", sel):
+            neu = _schrift(val)   # Aufzählungspunkte auf Weiß/Hellgrau: schwarz statt gelb
+            val = neu
         else:
             neu = _flaeche(val)
             if p.startswith("background") and (neu != val or _VAR.search(val)):
@@ -56,7 +59,7 @@ def _regel(sel, body):
     if gelb_flaeche or (STREIFEN.search(sel) and not re.search(r"btn|knopf|e2-s2-kasten|__mehr", sel)):   # schwarze Knöpfe/Kästen behalten weiße Schrift
         decl = [re.sub(r"(^\s*(?:color|stroke|border(?:-top|-bottom|-left|-right)?(?:-color)?)\s*:\s*)([^;]*)",
                        lambda m: m.group(1) + re.sub(r"rgba\(\s*255\s*,\s*255\s*,\s*255", "rgba(26,24,23", _WEISS.sub(SCHWARZ, m.group(2))) if "color" in m.group(1) or "stroke" in m.group(1) or "rgba" in m.group(2) else m.group(0), d, flags=re.I) for d in decl]
-        if "featured" in sel and "::before" in sel:   # Aufzählungspunkte auf der gelben Karte
+        if re.search(r"::(before|after)", sel):   # Striche/Punkte auf gelber Fläche
             decl = [re.sub(r"(^\s*background(?:-color)?\s*:\s*)([^;]*)", lambda m: m.group(1) + _WEISS.sub(SCHWARZ, m.group(2)), d, flags=re.I) for d in decl]
     return "".join(decl)
 

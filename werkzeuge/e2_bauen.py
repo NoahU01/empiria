@@ -129,6 +129,7 @@ def mit_strategie2(html):
     if not SCHWARZ_GELB:
         return html
     import e2_schwarzgelb
+    html = html.replace('<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">', '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">', 1)
     html = html.replace('href="/styles.css"', 'href="/assets/projekte/empiria-2/sg/styles.css"').replace('href="/assets/projekte/empiria-2/e2', 'href="/assets/projekte/empiria-2/sg/e2')
     return e2_schwarzgelb.html(html)
 
@@ -253,6 +254,12 @@ KOPFBILD_SEITE = {"teams": "Teams befähigen, professionell zu kommunizieren", "
 THEMEN_ZEICHEN = {"strategie": "forward", "strategie-2": "forward", "komplexe-themen": "kreuz", "innovation": "kreis"}
 
 
+def kopf_foto(held):
+    """sofort sichtbar (Daniel, Runde 38): bewusster Logikbruch – rechts das Original-Mockup statt Kopfbild."""
+    img = re.search(r'<div class="produkt-hero-visual">.*?(<img [^>]*>)', held, re.S).group(1).replace(' loading="lazy"', '')
+    return f'<div class="e2-kopfbild e2-kopfbild--foto">{img}</div>'
+
+
 def kopfbild(name, chips=""):
     if name in THEMEN_ZEICHEN:   # Strategiehandwerk: großes Themen-Zeichen wie auf der Startseite (Daniel, Runde 27)
         z = FORM[THEMEN_ZEICHEN[name]]
@@ -335,7 +342,7 @@ def kopf_neu(held, name):
   <div class="e2-kopf__text">{f'<p class="e2-kicker">{kicker.group(1)}</p>' if kicker else ""}<h1>{h1}</h1>
     <div class="e2-kopf__inhalt">{inhalt}</div>
     <div class="e2-knoepfe">{"".join(f'<a class="e2-knopf" href="{hr}">{tx} {PFEIL}</a>' for hr, tx in knoepfe)}</div></div>
-  {kopf_visual(held) if name == "paid-ads" else kopfbild(name, chips)}
+  {kopf_visual(held) if name == "paid-ads" else (kopf_foto(held) if name == "sofort-sichtbar" else kopfbild(name, chips))}
 </div></section>'''
 
 
@@ -366,8 +373,13 @@ TEAM = [("daniel", "Daniel Ströbel", "Strategiehandwerker"), ("kerstin", "Kerst
 
 
 def kontakt(ko):
-    """Detailseiten: Aufbau wie bei KI zum Anfassen – Überschrift, Personen im Kreis, EIN Knopf zur Kontaktseite (Daniel, Runde 10)."""
-    k = kontakt_teile(ko)
+    """Detailseiten: Aufbau wie bei KI zum Anfassen – Überschrift, Personen im Kreis, EIN Knopf zur Kontaktseite (Daniel, Runde 10).
+    Runde 38: auch abweichende Kontakt-Blöcke (Teams) bekommen diesen Aufbau – fehlende Teile mit ruhigen Vorgaben."""
+    def such(m, vorgabe):
+        x = re.search(m, ko, re.S)
+        return x.group(1).strip() if x else vorgabe
+    k = dict(kicker=such(r'<p class="kicker">(.*?)</p>', "Kontakt"), h2=ohne_hl(such(r"<h2[^>]*>(.*?)</h2>", "Wir sind für Dich da!")),
+             lead=such(r'<p class="lead">(.*?)</p>', "") or such(r"<p>(.*?)</p>", ""))
     personen = "".join(f'<div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-{d}.webp" alt="{n}" width="132" height="132"></div>'
                        f'<p class="ansprechpartner-name">{n}</p><p class="ansprechpartner-role">{r}</p></div>' for d, n, r in TEAM)
     return f'''<section class="produkt-cta produkt-team-cta e2-kontakt-team" id="kontakt"><div class="container">
@@ -446,29 +458,36 @@ def unterseite(original, ziel, html=None):
     main = re.sub(r'<div class="medien-sketch" tabindex="0">.*?<span class="medien-sketch-label">.*?</span>', medien, main, flags=re.S)
     if 'id="kontakt"' in main:
         k = abschnitt(main, 'id="kontakt"')
-        try:
-            main = main.replace(k, kontakt(k))
-        except AssertionError:
-            pass   # abweichender Kontakt-Aufbau (z. B. Teams): Original bleibt
+        main = main.replace(k, kontakt(k))
     if 'id="weitere-leistungen"' in main:
         w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
     if name in ("strategie", "strategie-2"):
         sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
+    if name == "teams":   # Runde 38: Kicker wie alle Strategiehandwerk-Seiten, Pills unter den Text, Download als schwarzer Kasten
+        main = main.replace('<div class="e2-kopf__text"><h1>', '<div class="e2-kopf__text"><p class="e2-kicker">Strategiehandwerk</p><h1>', 1)
+        if 'class="hero-anlaesse"' in main:
+            a = main.index('<div class="hero-anlaesse"'); blk = e2_runde5.div_block(main, a)
+            main = main.replace(blk, "", 1).replace('</p></div>\n    <div class="e2-knoepfe">', '</p>' + blk + '</div>\n    <div class="e2-knoepfe">', 1)
+        if 'id="austausch"' in main:
+            sek = abschnitt(main, 'id="austausch"'); main = main.replace(sek, e2_runde5.teams_download(sek))
     if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
         sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
     if name == "dashboard-digitales-marketing":
         sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.pakete(sek))
         main = main.replace('<span class="media-box-title">MES</span>', '<span class="media-box-title">MarketingEcoSystem (MES)</span>')
+        # Runde 38: „Dein virtueller Marketingmitarbeiter“ – statt Kasten mit einsamem Icon ein schwarzer Download-Kasten (wie Teams)
         from e2_lucide import ICONS as LU
-        doku = f'<svg class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU["clipboard-list"]}</svg>'
-        main = re.sub(r'(data-modal-target="jobProfileModal"[^>]*>\s*<div class="media-box-thumb">).*?(</div>\s*</button>)', lambda m: m.group(1) + doku + m.group(2), main, count=1, flags=re.S)
+        a = main.index('data-modal-target="jobProfileModal"'); a = main.rfind('<div class="media-box sprint-structure-card">', 0, a)
+        blk = e2_runde5.div_block(main, a)
+        ico = f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU["clipboard-list"]}</svg>'
+        main = main.replace(blk, f'''<div class="e2-s2-kasten e2-teams-dl__kasten"><span class="e2-teams-dl__ico">{ico}</span><p class="e2-teams-dl__titel">Anforderungsprofil</p>
+  <p class="e2-teams-dl__text">Aufgaben, Fähigkeiten und Rahmen für Deinen Marketingmitarbeiter – als fertige Vorlage.</p>
+  <button type="button" class="e2-teams-dl__knopf" data-modal-target="jobProfileModal">Profil ansehen und herunterladen</button></div>''', 1)
         main = main.replace('<svg viewBox="0 0 800 820" xmlns', '<svg viewBox="40 55 730 700" xmlns', 1)
-        if SCHWARZ_GELB:   # Diagramm und Icon auf Gelb in Schwarz statt Weiß
-            a = main.index('<svg viewBox="40 55 730 700"'); e = main.index("</svg>", a)
-            main = main[:a] + main[a:e].replace("rgba(255,255,255,", "rgba(26,24,23,") + main[e:]
-            main = main.replace('class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#fff"', 'class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#1a1817"')
         main = re.sub(r"Du konzentrierst Dich nicht auf Marketing,\s*sondern auf", "Du konzentrierst Dich auf", main, count=1)
+    if name == "sofort-sichtbar":   # Logo statt Kicker: größer, ohne Strich, in Schwarz (Schwarz-Weiß-Gelb)
+        main = re.sub(r'<p class="e2-kicker">\s*<img src="/assets/sofort-sichtbar-logo-violet.svg"', '<p class="e2-kicker e2-kicker--logo"><img src="/assets/sofort-sichtbar-logo-' + ("ink" if SCHWARZ_GELB else "violet") + '.svg"', main, count=1)
     if name == "sprint-landingpage":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurztexte=[
             "Ergebnisse aus dem Workshop sofort umsetzen.", "Marktchance nutzen, Vertrieb kurzfristig pushen.", "Wichtiger Termin – aber nichts vorbereitet.",
@@ -476,6 +495,16 @@ def unterseite(original, ziel, html=None):
         ab = abschnitt(main, 'class="sprint-timeline'); vt = abschnitt(main, 'class="produkt-grid-cards')
         main = main.replace(vt, "").replace(ab, e2_runde5.ablauf_vorteile(ab, vt))
         sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))
+    if name == "workshop-moderation" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Usecases als Karten wie KI/Sprint
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["users", "target", "user-round", "refresh-cw"], sonder=4, sonder_label="Im Fokus", kurztexte=[
+            "Neue Rollen bis zur geteilten Führung – direkt alltagstauglich gemacht.", "Viele Themen, kein Weg – danach klare Schwerpunkte und Prioritäten.",
+            "Eine neue Rolle ins Gefüge integriert und an den Schnittstellen geschärft.", "Erst Vertrauen, dann Inhalte – die Abteilung startet schlagkräftiger."],
+            sonder_kurz="Was kann wegfallen? Erst klären, wofür die Abteilung steht – dann Prozesse, die im Alltag tragen."))
+    if name == "medien" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Beispiele als Karten, Pitch im Fokus
+        sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["compass", "rocket", "users", "handshake"], sonder=0, sonder_label="Im Fokus", kurztexte=[
+            "Eine Gesamtlogik statt Einzelmedien – damit klar ist, wofür das Unternehmen steht.", "Medien, die Vertriebspartner wirklich erfolgreich machen – statt 150 Detailfolien.",
+            "Große Themen kompakt erzählt – auch für Gremien ohne Versicherungshintergrund.", "Die strategische Richtung so erzählt, dass sie im Gespräch trägt."],
+            sonder_kurz="Ausschreibung gegen namhafte Wettbewerber: Medien, die zeigen, dass wir den Kunden verstanden haben."))
     if name == "ki-zum-anfassen":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["target", "lightbulb", "megaphone", "image", "code", "search"], sonder=2, kurztexte=[
             "Zielgruppen und ihre Ansprache mit KI als Sparringspartner erarbeiten.", "Eingefahrene Denkmuster aufbrechen – im Auftrag des Vorstands.",
@@ -513,6 +542,8 @@ def unterseite(original, ziel, html=None):
         bloecke = re.findall(r'(<(?:p|ul)\b[^>]*>.*?</(?:p|ul)>)', m.group(1), re.S)
         return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
     main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
+    if name == "praesentationsseminar" and '<ol class="e2-problem">' in main:   # Runde 38: Problem wie Strategie – Text links, schwarzer Kasten rechts
+        sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_kasten(sek))
     if name in ("workshops", "marketing", "digitale-tools", "impulsvortraege", "training-sparring"):
         main = workshop_karten(main, "gelb" if SCHWARZ_GELB else AKZENT_SEITE[name], alle=name == "training-sparring")
     if name == "training-sparring":   # zwei Formate über die volle Breite, nicht schmal mittig

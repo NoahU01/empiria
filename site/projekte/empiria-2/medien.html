@@ -99,6 +99,7 @@
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-seiten.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "cyan" ===== */
   body.produktseite-clean { background: #fff; }
@@ -241,7 +242,7 @@
   .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
   .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
   .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
-  .produktseite-clean .vorschau-facts-list li::before { background: #fff400; }
+  .produktseite-clean .vorschau-facts-list li::before { background: #1a1817; }
   .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
   .produktseite-clean .produkt-glass h3 { color: var(--ink); }
@@ -249,7 +250,7 @@
   .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
   .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #1a1817; }
   .produktseite-clean .topics-list li { color: var(--ink); }
-  .produktseite-clean .topics-list li::before { background: #fff400; }
+  .produktseite-clean .topics-list li::before { background: #1a1817; }
 
   /* Preis-Hinweis-Karte (einzelner großer Preis) */
   .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
@@ -267,7 +268,7 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #fff400; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
   .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
@@ -302,14 +303,14 @@
     flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px;
     background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;
   }
-  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #1a1817; }
+  .produktseite-clean .usp-highlight-icon svg { width: 30px; height: 30px; color: #fff; }
   .produktseite-clean .usp-highlight-body { flex: 1 1 320px; }
   .produktseite-clean .usp-highlight-kicker {
     font-family: var(--font-sans); font-weight: 700; font-size: .74rem; letter-spacing: .08em;
-    text-transform: uppercase; color: rgba(26,24,23,.72); margin: 0 0 8px;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin: 0 0 8px;
   }
-  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #1a1817; }
-  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(26,24,23,.88); line-height: 1.65; }
+  .produktseite-clean .usp-highlight h3 { font-family: var(--font-serif); font-size: 1.4rem; margin: 0 0 10px; color: #fff; }
+  .produktseite-clean .usp-highlight p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.65; }
 
   /* Prozess-Schritte */
   .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
@@ -1321,37 +1322,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </section>
   <!-- ===== FAQ ===== -->
-  <section class="produkt-section produkt-faq">
-    <div class="container">
-      <div class="produkt-section-head reveal">
-        <p class="kicker">Beispiele</p>
-        <h2 class="h-serif">Konkrete Use Cases aus der Praxis.</h2>
-        <p>Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien in der Praxis wirken.</p>
-      </div>
-      <div class="produkt-faq-list">
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Der entscheidende Pitch im Konsortium</summary>
-          <p>Eine Ausschreibung bei einem Großkunden, angetreten gemeinsam mit Kooperationspartnern gegen namhafte Wettbewerber. Statt Standardfolien mit Interpretationsspielraum liefern wir Medien, die zu 100&nbsp;% zeigen: Wir haben den Kunden verstanden – und die Lösung ist maßgeschneidert. Die Story wird so erzählt, dass sie im Raum sitzt und den Ausschlag gibt.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Die Neupositionierung eines Konzernunternehmens</summary>
-          <p>Ein kleineres Konzernunternehmen mit klarem Spezialsegment – etwa Pensionskasse, Schadenmanagement oder Ventilmakler – soll professioneller am Markt auftreten.<br><br>Dies gelingt nicht mit einer Homepage hier und einer intern zusammengestellten PowerPoint dort. Es braucht eine Gesamtlogik, die Kooperationspartnern, Vertriebspartnern und Kunden gleichermaßen verständlich macht, wofür das Unternehmen steht – aus einer Hand entwickelt und strategisch wie vertrieblich durchdacht.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Produktlaunch oder Produktrelaunch</summary>
-          <p>Klassisch wird hier in gedruckten Broschüren und PowerPoints mit 150 Detailfolien gedacht – Medien, mit denen kein Vertriebspartner etwas anfangen kann. Ein Vertriebsimpuls funktioniert nur, wenn er die Zielgruppe tatsächlich erfolgreich macht.<br><br>Deshalb entscheiden wir gezielt, welche Medien wirklich wirken, und setzen dafür oft auf eine durchdachte Kombination digitaler Formate statt auf das eine überladene Dokument.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Aufsichtsrats- und Gremientermine</summary>
-          <p>Hier zählt nicht das letzte Detail, sondern der Gesamtnutzen fürs Unternehmen – professionell vorgetragen und vertrauensbildend. Ob Markteintritt, strategisches Umsteuern im Risikoportfolio oder ein neues Bestandsführungssystem: Große Themen müssen kompakt und verständlich erzählt werden. Zumal im Gremium oft fachfremde Personen ohne Versicherungshintergrund sitzen – die Übersetzung in ihre Welt entscheidet, ob die Botschaft ankommt.</p>
-        </details>
-        <details class="produkt-faq-item reveal" name="produkt-faq">
-          <summary>Gespräche mit dem Rückversicherer</summary>
-          <p>Der Rückversicherer muss verstehen, wohin sich das Geschäftsmodell des Versicherers bewegt – stringent erzählt, nicht nur in harten Zahlen. Das gilt für die jährlichen Erneuerungsgespräche genauso wie für die Vorbereitung auf Monte Carlo oder Baden-Baden: Es geht darum, die strategische Richtung so darzulegen, dass sie im Gespräch trägt.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  <section class="produkt-section e2-faelle"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">Beispiele</p><h2 class="h-serif">Konkrete Use Cases aus der Praxis.</h2></div><p class="lead">Eine Auswahl realer Anwendungsfälle, die zeigen, wie unsere Medien in der Praxis wirken.</p></div>
+  <div class="e2-faelle__raster e2-faelle__raster--4"><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg></span><h3>Die Neupositionierung eines Konzernunternehmens</h3><p>Eine Gesamtlogik statt Einzelmedien – damit klar ist, wofür das Unternehmen steht.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl1">Mehr lesen →</button><dialog class="e2-dialog" id="fl1"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Die Neupositionierung eines Konzernunternehmens</h3><p>Ein kleineres Konzernunternehmen mit klarem Spezialsegment – etwa Pensionskasse, Schadenmanagement oder Ventilmakler – soll professioneller am Markt auftreten.<br><br>Dies gelingt nicht mit einer Homepage hier und einer intern zusammengestellten PowerPoint dort. Es braucht eine Gesamtlogik, die Kooperationspartnern, Vertriebspartnern und Kunden gleichermaßen verständlich macht, wofür das Unternehmen steht – aus einer Hand entwickelt und strategisch wie vertrieblich durchdacht.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /> <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" /> <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></svg></span><h3>Produktlaunch oder Produktrelaunch</h3><p>Medien, die Vertriebspartner wirklich erfolgreich machen – statt 150 Detailfolien.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl2">Mehr lesen →</button><dialog class="e2-dialog" id="fl2"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Produktlaunch oder Produktrelaunch</h3><p>Klassisch wird hier in gedruckten Broschüren und PowerPoints mit 150 Detailfolien gedacht – Medien, mit denen kein Vertriebspartner etwas anfangen kann. Ein Vertriebsimpuls funktioniert nur, wenn er die Zielgruppe tatsächlich erfolgreich macht.<br><br>Deshalb entscheiden wir gezielt, welche Medien wirklich wirken, und setzen dafür oft auf eine durchdachte Kombination digitaler Formate statt auf das eine überladene Dokument.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></svg></span><h3>Aufsichtsrats- und Gremientermine</h3><p>Große Themen kompakt erzählt – auch für Gremien ohne Versicherungshintergrund.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl3">Mehr lesen →</button><dialog class="e2-dialog" id="fl3"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Aufsichtsrats- und Gremientermine</h3><p>Hier zählt nicht das letzte Detail, sondern der Gesamtnutzen fürs Unternehmen – professionell vorgetragen und vertrauensbildend. Ob Markteintritt, strategisches Umsteuern im Risikoportfolio oder ein neues Bestandsführungssystem: Große Themen müssen kompakt und verständlich erzählt werden. Zumal im Gremium oft fachfremde Personen ohne Versicherungshintergrund sitzen – die Übersetzung in ihre Welt entscheidet, ob die Botschaft ankommt.</p></dialog></article><article class="e2-fall"><span class="e2-fall__sym"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3" /> <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /> <path d="m21 3 1 11h-2" /> <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /> <path d="M3 4h8" /></svg></span><h3>Gespräche mit dem Rückversicherer</h3><p>Die strategische Richtung so erzählt, dass sie im Gespräch trägt.</p><button type="button" class="e2-fall__mehr" data-e2-auf="fl4">Mehr lesen →</button><dialog class="e2-dialog" id="fl4"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Gespräche mit dem Rückversicherer</h3><p>Der Rückversicherer muss verstehen, wohin sich das Geschäftsmodell des Versicherers bewegt – stringent erzählt, nicht nur in harten Zahlen. Das gilt für die jährlichen Erneuerungsgespräche genauso wie für die Vorbereitung auf Monte Carlo oder Baden-Baden: Es geht darum, die strategische Richtung so darzulegen, dass sie im Gespräch trägt.</p></dialog></article></div><div class="e2-fall-sonder"><div><p class="e2-fall-sonder__tag">Im Fokus</p><h3>Der entscheidende Pitch im Konsortium</h3></div><div><p>Ausschreibung gegen namhafte Wettbewerber: Medien, die zeigen, dass wir den Kunden verstanden haben.</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs0">Mehr lesen →</button></div><dialog class="e2-dialog" id="fs0"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>Der entscheidende Pitch im Konsortium</h3><p>Eine Ausschreibung bei einem Großkunden, angetreten gemeinsam mit Kooperationspartnern gegen namhafte Wettbewerber. Statt Standardfolien mit Interpretationsspielraum liefern wir Medien, die zu 100&nbsp;% zeigen: Wir haben den Kunden verstanden – und die Lösung ist maßgeschneidert. Die Story wird so erzählt, dass sie im Raum sitzt und den Ausschlag gibt.</p></dialog></div>
+</div></section>
 
   <!-- ===== Download: PDF-Zusammenfassung ===== -->
   <section class="produkt-section pdf-dl-section">

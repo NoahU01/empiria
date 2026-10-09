@@ -1,0 +1,40 @@
+/* empiria 2.0 · Schwarz-Weiß-Gelb (Daniel, Runde 37) – Ergänzungen, die sich nicht automatisch umfärben lassen.
+   Grundregel: auf Gelb nur Schwarz, auf Weiß/Hellgrau kein Gelb als Schrift/Linie/Punkt, auf Schwarz Gelb als Akzent. */
+
+/* Skizzen in gelben Bildflächen: weiß gezeichnet → schwarz (Umkehrung, Abstufungen bleiben) */
+html body .e2-alt .media-box-thumb:not(.e2-wk-thumb):not(.loesung-modell-thumb) svg { filter: invert(1); }
+
+/* Symbol-Kacheln: gelbe Kachel, schwarzes Symbol */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt :is(.e2-fall__sym, .e2-schritt__sym, .e2-in-sym, .e2-sp-sym) :is(svg, svg *) { stroke: #1a1817 !important; }
+
+/* Haken auf der schwarzen Paketkarte gelb */
+/* (Haken auf der gelben Paketkarte: schwarz, siehe e2-runde5) */
+
+/* Paid Ads: Umriss-Knopf in der Anzeige schwarz */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt .pa-ad .pa-ad-btn.pa-ad-btn--outline { color: #1a1817 !important; border-color: #1a1817 !important; }
+
+/* Akzent ist überall Gelb – auch auf den Strategiehandwerk-Seiten, wo er bisher fehlte (Kontakt-Knopf, Symbol-Kacheln) */
+html body .e2-alt { --e2-akzent: #fff400; }
+/* Symbol-Kacheln überall gleich: gelbe Kachel, schwarzes Symbol (auch Komplexe Themen) */
+html body main .e2-alt.e2-alt.e2-alt .e2-schritt__sym { background: #fff400 !important; }
+
+/* sofort sichtbar · Ablauf: Rahmen schwarz statt gelb (kein Gelb als Linie auf Weiß), Markenlogo in Schwarz */
+html body main .e2-alt.e2-alt.e2-alt .vergleich-timeline--outline { border-color: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt .vergleich-label-logo { filter: brightness(0); }
+
+/* KI zum Anfassen · Tool-Logos (farbige Bilder) auf Gelb schwarz */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .tools-row-icon img { filter: brightness(0) !important; }
+/* Kicker auf schwarzen Sektionen gelb (Ergebnis-Streifen) */
+html body main .e2-alt.e2-alt.e2-alt .section--dark .kicker { color: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt .section--dark .kicker::before { background: #fff400 !important; }
+
+/* schwarze Kästen behalten weiße Schrift, auch auf früher farbigen Problem-Streifen */
+html body main .e2-alt.e2-alt.e2-alt :is(section, #problem) .e2-s2-kasten :is(p, li) { color: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section#problem .e2-s2-kasten.e2-s2-kasten :is(p, li) { color: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt .e2-s2-kasten .e2-s2-kasten__label { color: rgba(255,255,255,.7) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section#problem .e2-s2-kasten.e2-s2-kasten .e2-s2-kasten__label { color: rgba(255,255,255,.7) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section .e2-s2-kasten.e2-s2-kasten li::before { background: #fff400 !important; }   /* Punkte im schwarzen Kasten immer gelb */
+/* Paid Ads · Potentialcheck: Fortschrittsbalken auf der weißen Karte schwarz */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc-report-rows i::after { background: #1a1817 !important; }
+/* Innovation · „Gilt als gegeben“: Trennlinie im hellen Kasten schwarz */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .inno-stein-foot::before { background: #1a1817 !important; }

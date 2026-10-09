@@ -99,6 +99,7 @@
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-seiten.css">
 <link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "lime" ===== */
   body.produktseite-clean { background: #fff; }
@@ -226,7 +227,7 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #fff400; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
   .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
@@ -898,19 +899,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   <!-- ===== Problem (wie Startseite: Headline links vertikal zentriert + Icon-Wasserzeichen
        dahinter, Text rechts im dunklen Kasten) ===== -->
-  <section class="section section--grey" id="problem">
-    <svg class="watermark" width="330" height="330" viewBox="0 0 232.44 232.44" style="left:50%;top:50%;transform:translate(-50%,-50%)" aria-hidden="true"><use href="#ic-raute"/></svg>
-    <div class="container">
-      <div class="problem-grid">
-        <div class="problem-head">
-          <p class="kicker">Problem</p>
-          <h2 class="h-serif">Dein Team bereitet vor. Und erreicht das Ziel trotzdem nicht.</h2>
-        </div>
-        <ol class="e2-problem"><li><ul>
-            <li>Dein Team bereitet ein Thema für die Vorstandssitzung vor – und die Diskussion läuft ins Leere.</li>
-            <li>Dein Team präsentiert im Lenkungsausschuss oder beim Kunden und hinterher denkst Du: Das hätte besser laufen müssen.</li>
-            <li>Die Story trägt nicht, die Unterlagen überzeugen nicht und im Raum fehlt die Souveränität, auf Fragen zu reagieren.</li>
-          </ul></li><li><p>Es wird Zeit, bisherige Denkmuster mit einfachen Logiken zu durchbrechen.</p></li></ol></div></div></section>
+  <section class="section e2-s2-problem" id="problem"><div class="container"><div class="e2-s2-split">
+<div><p class="kicker">Problem</p><h2 class="h-serif">Dein Team bereitet vor. Und erreicht das Ziel trotzdem nicht.</h2></div>
+<div class="e2-s2-kasten"><ul><li>Dein Team bereitet ein Thema für die Vorstandssitzung vor – und die Diskussion läuft ins Leere.</li><li>Dein Team präsentiert im Lenkungsausschuss oder beim Kunden und hinterher denkst Du: Das hätte besser laufen müssen.</li><li>Die Story trägt nicht, die Unterlagen überzeugen nicht und im Raum fehlt die Souveränität, auf Fragen zu reagieren.</li></ul><p class="e2-s2-kasten__label">Es wird Zeit, bisherige Denkmuster mit einfachen Logiken zu durchbrechen.</p></div>
+</div></div></section>
 
   <!-- ===== Lösung / Konkreter Ablauf (vertikale Timeline) ===== -->
   <section class="section e2-teams-loesung" id="loesung-baustein"><div class="container">
