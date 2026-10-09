@@ -1077,3 +1077,17 @@ html body .e2-alt .e2-post__text p { margin: 0 !important; font-size: .9rem !imp
 .e2-post__kopf span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .8rem; }
 .e2-post__bild { min-height: 16.5rem; }
 .e2-post__preis { font-size: 1.7rem; }
+
+/* Runde 41 · Post-Karten Variante B: Farbe trägt alles, oben und unten nur ein dünner weißer Streifen */
+.e2-post--b .e2-post__kopf { padding: .7rem 1.1rem; }
+.e2-post--b .e2-post__bild { min-height: 0; justify-content: flex-start; gap: 2.4rem; padding: 1.4rem 1.5rem 1.6rem; }
+.e2-post__oben { display: flex; justify-content: space-between; align-items: flex-start; }
+.e2-post--b .e2-post__ico { width: 3rem; height: 3rem; }
+.e2-post__name { display: block; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; line-height: 1.1; }
+html body .e2-alt .e2-post__desc { margin: 1.1rem 0 0 !important; font-size: .92rem !important; line-height: 1.55 !important; color: #1a1817 !important; }
+.e2-post--b ul { list-style: none; margin: 1rem 0 0; padding: 1rem 0 0; border-top: 1px solid rgba(26,24,23,.18); display: grid; gap: .4rem; }
+.e2-post--b li { position: relative; padding-left: 1.2rem; font-size: .86rem; line-height: 1.45; color: #1a1817; }
+.e2-post--b li::before { content: ""; position: absolute; left: 0; top: .5rem; width: .4rem; height: .4rem; border-radius: 50%; background: #1a1817; }
+.e2-post__fuss { display: block; padding: .8rem 1.1rem; font-size: .84rem; font-weight: 600; color: #1a1817 !important; text-decoration: none; }
+.e2-post__fuss:hover { text-decoration: underline; }
+@media (max-width: 600px) { .e2-post__kopf span { white-space: normal; overflow: visible; } }
