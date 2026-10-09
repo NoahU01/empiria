@@ -77,9 +77,8 @@ def zahl(wort, akzent):
 SEITEN = [
     ("Startseite", "Startseite", "gelb", "Strategie, die wirkt.", "reihe_dp", (["search", "puzzle", "trending-up"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN"]), "Der Dreischritt der Startseite."),
     ("Strategie in den Alltag überführen", "Strategiehandwerk", "gelb", "Strategie in den Alltag überführen.", "trio", ("flag", "compass", "wrench"), "Ziel, Richtung, Handwerkszeug."),
-    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "zielgruppe",
-     (["Vorstand", "Aufsichtsrat", "Lenkungsausschuss", "Vertriebstagung", "Betriebsrat", "Kooperationspartner", "Rückversicherer", "Kundenpitch"],
-      ["users", "puzzle", "trophy"], ["ZIELGRUPPE", "IHR PROBLEM", "IHR ERFOLG"]), "Die Story beginnt bei der Zielgruppe: ihr Problem lösen, sie erfolgreich machen."),
+    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "reihe_pur",
+     (["users", "puzzle", "trophy"], ["", "", ""]), "Zielgruppe » ihr Problem » ihr Erfolg – nur Icons, einfache Pfeile (Daniel)."),
     ("Innovation & Geschäftsmodell neu denken", "Strategiehandwerk", "gelb", "Innovation & Geschäftsmodell neu denken.", "trio", ("lightbulb", "refresh-cw", "blocks"), "Die Idee, neu gedacht, neu zusammengesetzt."),
     ("Teams befähigen, professionell zu kommunizieren", "Strategiehandwerk / Training", "gelb", "Teams befähigen, professionell zu kommunizieren.", "trio", ("presentation", "users", "circle-check"), "Präsentieren, Team, Ergebnis."),
     ("Workshops", "Formate", "magenta", "Workshops, die wirken. Nicht nur Theorie.", "reihe_o", (["sparkles", "app-window", "messages-square"], ["KI", "LANDINGPAGE", "MODERATION"]), "Übersicht: die drei Formate."),
@@ -111,6 +110,8 @@ def bild(seite):
         return trio(*daten), NAMEN[aufbau]
     if aufbau == "reihe":
         return reihe(*daten), NAMEN[aufbau]
+    if aufbau == "reihe_pur":
+        return reihe(*daten), NAMEN.get(aufbau, "Reihe")
     if aufbau == "zielgruppe":
         return zielgruppe(*daten), NAMEN[aufbau]
     if aufbau == "reihe_dp":
