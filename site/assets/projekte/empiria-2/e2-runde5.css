@@ -723,3 +723,36 @@ html body.e2 .e2-kopfbild--zeichen .e2-bild--zeichen { display: block; width: 10
   html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { width: auto; height: 3.6rem; }
 }
 @media (max-width: 960px) { html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { align-self: flex-start !important; justify-self: start !important; } }
+
+/* Runde 28: Karten-Regeln der Workshop-Übersicht für alle Übersichtsseiten */
+/* Workshops-Übersicht (Runde 21): gleich gebaute Karten – Fläche, Titel, Text, Knopf je auf gleicher Höhe; Kopfbilder statt Skizzen */
+html body .e2-alt.e2-alt .media-boxes-grid { display: grid !important; grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem !important; row-gap: 0 !important; max-width: none !important; }
+html body .e2-alt.e2-alt .media-box { display: grid !important; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; padding: 0 !important; overflow: hidden; }
+html body .e2-alt.e2-alt .media-box-footer { display: contents !important; }
+html body .e2-alt.e2-alt .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: var(--bf, #C51F5D) !important; }
+.e2-wk-bild { width: auto; height: 100%; max-width: 100%; display: block; }
+html body .e2-alt.e2-alt .media-box-title { grid-row: 2; padding: 1.6rem 1.6rem 0; margin: 0 !important; font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.25; align-self: start; }
+html body .e2-alt.e2-alt .media-box-desc { grid-row: 3; padding: .8rem 1.6rem 0; margin: 0 !important; align-self: start; }
+html body .e2-alt.e2-alt .sprint-structure-cta { grid-row: 4; margin: 2rem 1.6rem 1.6rem !important; width: auto !important; }
+@media (max-width: 960px) { html body .e2-alt.e2-alt .media-boxes-grid { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none; row-gap: 1.2rem !important; } html body .e2-alt.e2-alt .media-box { grid-row: auto; grid-template-rows: auto auto auto auto; } }
+
+html body .e2-alt.e2-alt .media-box-thumb--mock { grid-row: 1; height: 15rem !important; min-height: 0 !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #C51F5D) !important; overflow: hidden; }
+html body .e2-alt.e2-alt .media-box-thumb--mock .produkt-mock-sketch { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1 !important; transform: none !important; }
+html body .e2-alt.e2-alt .media-box-thumb--mock svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; }
+/* Karte: Rahmen grau, nicht farbig; Knopf schwarz mit weißer Schrift */
+html body .e2-alt.e2-alt .media-box { border: 1px solid var(--e2-linie) !important; background: #fff !important; box-shadow: none !important; }
+html body .e2-alt.e2-alt .media-box .sprint-structure-cta { background: #1a1817 !important; border-color: #1a1817 !important; color: #fff !important; }
+/* Kopf-Knopf auf allen Unterseiten schwarz (Kontakt unten bleibt farbig) */
+html body .e2-alt.e2-alt .e2-kopf .e2-knopf { background: #1a1817 !important; border-color: #1a1817 !important; color: #fff !important; }
+/* Korrektur: nur die Bildfläche farbig, Karte weiß mit grauem Rand; Zeilenraster auch bei 2×2 */
+html body .e2-alt.e2-alt .media-boxes-grid .media-box.sprint-structure-card { background: #fff !important; border: 1px solid var(--e2-linie) !important; }
+html body .e2-alt.e2-alt .media-boxes-grid { grid-template-rows: none !important; grid-auto-rows: auto auto 1fr auto; row-gap: 0 !important; }
+html body .e2-alt.e2-alt .media-boxes-grid > .media-box { margin-bottom: 1.4rem; }
+html body .e2-alt.e2-alt .media-box-title { color: var(--e2-ink) !important; }
+html body .e2-alt.e2-alt .media-box-desc { color: var(--e2-ink-2) !important; }
+/* Medien: Karten mit Bild-Knopf – Bildfläche farbig, gleiche Höhe */
+html body .e2-alt.e2-alt .media-box-thumb-btn { grid-row: 1; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+html body .e2-alt.e2-alt .media-box-thumb-btn .media-box-thumb { height: 15rem !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #C51F5D) !important; border-radius: 0 !important; }
+html body .e2-alt.e2-alt .media-box-thumb-btn svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; }
+html body .e2-alt.e2-alt .media-box-thumb--photo { grid-row: 1; height: 15rem !important; padding: 0 !important; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--bf, #C51F5D) !important; }
+html body .e2-alt.e2-alt .media-box-thumb--photo img { height: 92%; width: auto; filter: grayscale(1); opacity: 1 !important; }
