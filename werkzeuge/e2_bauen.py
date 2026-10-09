@@ -298,6 +298,23 @@ def ohne_hl_ausser_h1(html):
     return "".join(t if t.startswith("<h1") else re.sub(r'<span class="(?:hl|hl-acc)(?: [^"]*)?">(.*?)</span>', r"\1", t, flags=re.S) for t in teile)
 
 
+def workshop_karten(main):
+    """Workshops-Übersicht (Daniel, Runde 21): statt der filigranen Skizzen die Kopfbilder der jeweiligen Unterseite – weiß auf Magenta."""
+    import e2_kopfbilder as kb
+    from e2_header import farbig
+    ziel = {"ki-zum-anfassen": "KI zum Anfassen", "sprint-landingpage": "Sprint Landingpage", "workshop-moderation": "Moderation deines Workshops"}
+
+    def ersetze(m):
+        block = m.group(0)
+        name = re.search(r'href="[^"]*?/?(ki-zum-anfassen|sprint-landingpage|workshop-moderation)(?:\.html)?"', block).group(1)
+        seite = next(x for x in kb.SEITEN if x[0] == ziel[name])
+        bild = kb.bild(seite)[0].replace("#1a1817", "#ffffff").replace("#C51F5E", "#ffd0e0").replace("#b9b3ab", "#f2a9c3")
+        bild = farbig(bild, "magenta", "wk" + name[:3]).replace('class="hv-bild"', 'class="e2-wk-bild"')
+        return re.sub(r'<div class="media-box-thumb media-box-thumb--mock">.*?</svg>\s*</div>\s*</div>',
+                      f'<div class="media-box-thumb e2-wk-thumb">{bild}</div>', block, count=1, flags=re.S)
+    return re.sub(r'<a class="media-box sprint-structure-card media-box--icon".*?</a>', ersetze, main, flags=re.S)
+
+
 def unterseite(original, ziel, html=None):
     """Unterseiten: Originalinhalt bleibt vollständig erhalten, die Gestaltung übersetzt e2-seiten.css.
     Ersetzt werden nur Kontakt und „Weitere Leistungen“ durch die e2-Bausteine (gleicher Text)."""
@@ -347,6 +364,8 @@ def unterseite(original, ziel, html=None):
         bloecke = re.findall(r'(<(?:p|ul)\b[^>]*>.*?</(?:p|ul)>)', m.group(1), re.S)
         return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
     main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
+    if name == "workshops":
+        main = workshop_karten(main)
     main += DIALOG_JS
     return seite(original, f'<div class="e2-alt e2-alt--{AKZENT_SEITE[name]} e2-seite--{name}">{main}</div>', h=html)
 

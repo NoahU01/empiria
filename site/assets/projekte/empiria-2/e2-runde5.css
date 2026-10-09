@@ -566,3 +566,13 @@
 /* Ergebnis ohne harten Strich: ruhige helle Fläche mit runden Ecken (Daniel, Runde 20) */
 .e2v-ergebnis2 { border-top: 0 !important; margin-top: 1.4rem !important; padding: 2rem 2.4rem !important; border-radius: var(--e2-r); background: var(--e2-hell); }
 @media (max-width: 760px) { .e2v-ergebnis2 { padding: 1.6rem 1.3rem !important; } }
+/* Workshops-Übersicht (Runde 21): gleich gebaute Karten – Fläche, Titel, Text, Knopf je auf gleicher Höhe; Kopfbilder statt Skizzen */
+.e2-seite--workshops .media-boxes-grid { display: grid !important; grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem !important; row-gap: 0 !important; max-width: none !important; }
+.e2-seite--workshops .media-box { display: grid !important; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; padding: 0 !important; overflow: hidden; }
+.e2-seite--workshops .media-box-footer { display: contents !important; }
+.e2-seite--workshops .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: #C51F5D !important; }
+.e2-wk-bild { width: auto; height: 100%; max-width: 100%; display: block; }
+.e2-seite--workshops .media-box-title { grid-row: 2; padding: 1.6rem 1.6rem 0; margin: 0 !important; font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.25; align-self: start; }
+.e2-seite--workshops .media-box-desc { grid-row: 3; padding: .8rem 1.6rem 0; margin: 0 !important; align-self: start; }
+.e2-seite--workshops .sprint-structure-cta { grid-row: 4; margin: 2rem 1.6rem 1.6rem !important; width: auto !important; }
+@media (max-width: 960px) { .e2-seite--workshops .media-boxes-grid { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none; row-gap: 1.2rem !important; } .e2-seite--workshops .media-box { grid-row: auto; grid-template-rows: auto auto auto auto; } }
