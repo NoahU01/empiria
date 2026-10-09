@@ -424,3 +424,18 @@
 .e2-seite--strategie-2 .loesung-modell-card, .e2-seite--strategie-2 .loesung-modell-card .media-box-thumb, .e2-seite--strategie-2 .loesung-modell-card .media-box-footer { background: var(--e2-ink) !important; }
 .e2-seite--strategie-2 .e2-kopf h1 { font-size: clamp(2.5rem, 4.6vw, 4rem) !important; }
 .e2-seite--strategie-2 .loesung-modell-card .btn { color: var(--e2-ink) !important; }
+/* Formate Variante B: komplett schwarz */
+.e2-sek--schwarz .e2-kopfzeile .e2-lead { color: #d8d3cc; }
+.e2v-formate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr auto; column-gap: 1.2rem; margin-top: 3.2rem; }
+.e2v-format { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; padding: 2rem 1.8rem 1.8rem; border-radius: var(--e2-r); background: #252220; border-top: 4px solid var(--e2-akzent); }
+.e2v-format__sym { width: 2.6rem; height: 2.6rem; }
+.e2v-format__sym svg { width: 100%; height: 100%; fill: none; stroke: var(--e2-akzent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-format h3 { margin-top: 1.2rem !important; font-size: 1.6rem; color: #fff; }
+.e2v-format > p { margin-top: .7rem !important; font-size: 1rem; line-height: 1.55; color: #cfcac3; }
+.e2v-format ul { list-style: none; margin: 1.2rem 0 0; padding: 0; align-self: start; }
+.e2v-format li a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .7rem 0; border-top: 1px solid rgba(255,255,255,.12); color: #fff; font-weight: 600; font-size: .95rem; text-decoration: none; }
+.e2v-format li:last-child a { border-bottom: 1px solid rgba(255,255,255,.12); }
+.e2v-format li i svg { width: 1.3rem; height: 1.3rem; display: block; fill: none; stroke: var(--e2-akzent); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-format li .e2-pfeil { color: #8a847c; }
+.e2v-format__mehr { margin-top: 1.6rem; display: inline-flex; gap: .4rem; align-items: center; font-weight: 600; color: var(--e2-gelb); text-decoration: none; }
+@media (max-width: 960px) { .e2v-formate { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 1.2rem; } .e2v-format { grid-row: auto; grid-template-rows: auto; } }

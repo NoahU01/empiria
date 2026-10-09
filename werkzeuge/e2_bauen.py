@@ -452,7 +452,16 @@ def startseite():
 <ul class="e2-fa__liste">{"".join(f'<li><a href="{u["href"]}"><i>{format_sym(u["titel"])}</i>{u["titel"]}{PFEIL}</a></li>' for u in d['unter'])}</ul>
 <div class="e2-fa__fuss"><a class="e2-knopf" href="{d['href']}">{d['knopf']} {PFEIL}</a></div></article>''' for i, d in enumerate(fo_daten))
     m.append(f'''<section class="e2-sek e2-sek--hell" id="formate"><div class="e2-wrap">
+  <p class="e2-var-band"><b>Variante A</b> Formate als farbige Kästen</p>
   {fo_kopf}<div class="e2-formate-a">{va}</div></div></section>''')
+    # Variante B (Daniel): Formate komplett schwarz wie die Leistungen in Variante A – Farbe nur im Symbol und Strich
+    vb = "".join(f'''<article class="e2v-format" style="--e2-akzent:{d['akz']}"><span class="e2v-format__sym">{d['sym']}</span><h3>{d['titel']}</h3>
+<p>{d['satz']}</p>
+<ul>{"".join(f'<li><a href="{u["href"]}"><i>{format_sym(u["titel"])}</i>{u["titel"]}{PFEIL}</a></li>' for u in d['unter'])}</ul>
+<a class="e2v-format__mehr" href="{d['href']}">{d['knopf']} {PFEIL}</a></article>''' for d in fo_daten)
+    m.append(f'''<section class="e2-sek e2-sek--schwarz" id="formate-b"><div class="e2-wrap">
+  <p class="e2-var-band"><b>Variante B</b> Formate auf Schwarz</p>
+  {fo_kopf}<div class="e2v-formate">{vb}</div></div></section>''')
     m.append(kontakt_start(abschnitt(h, 'id="kontakt"')))
     return seite("index.html", "\n".join(m))
 
