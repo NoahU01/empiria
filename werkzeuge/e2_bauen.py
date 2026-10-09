@@ -245,6 +245,32 @@ def kopfbild(name, chips=""):
     return f'<div class="e2-kopfbild">{bild}{mobil}{chips}</div>'
 
 
+def kopf_kuerzen(inhalt, max_zeichen=230):
+    """Kopftext knapp wie auf der Volksfest-Seite (Daniel, Runde 29): nur der erste Absatz, notfalls auf ganze Sätze gekürzt;
+    Pillen bleiben, höchstens drei."""
+    absaetze = re.findall(r"<p\b[^>]*>(.*?)</p>", inhalt, re.S)
+    pillen = re.search(r'<div class="(?:hero-anlaesse|produkt-pills)[^"]*".*?</div>', inhalt, re.S)
+    if not absaetze:
+        return inhalt
+    erster = absaetze[0].strip()
+    if len(re.sub(r"<[^>]+>", "", erster)) > max_zeichen:
+        saetze = re.split(r"(?<=[.!?:])\s+", erster)
+        neu = ""
+        for satz in saetze:
+            if len(re.sub(r"<[^>]+>", "", neu + " " + satz)) > max_zeichen and neu:
+                break
+            neu = (neu + " " + satz).strip()
+        erster = neu
+    out = f"<p>{erster}</p>"
+    if pillen:
+        p = pillen.group(0)
+        teile = re.findall(r"<span[^>]*>.*?</span>", p, re.S)
+        if len(teile) > 3 and "hero-anlaesse" not in p:
+            p = re.sub(r"(<div[^>]*>).*(</div>)", lambda m: m.group(1) + "".join(teile[:3]) + m.group(2), p, flags=re.S)
+        out += p
+    return out
+
+
 def kopf_neu(held, name):
     """Kopfbereich der Unterseiten wie bei den Wagenpaten: links Kicker, Überschrift, Text, Chips, Knopf – rechts das Kopfbild."""
     kicker = re.search(r'<p class="kicker"[^>]*>(.*?)</p>', held, re.S)
@@ -260,6 +286,7 @@ def kopf_neu(held, name):
         else:   # abweichende Köpfe (MES, Sparring): Texte und Pillen einsammeln
             pillen = re.search(r'<div class="produkt-pills">.*?</div>', held, re.S)
             inhalt = "".join(f"<p>{x}</p>" for x in re.findall(r'<p class="lead">(.*?)</p>', held, re.S)) + (pillen.group(0) if pillen else "")
+    inhalt = kopf_kuerzen(inhalt)
     knoepfe = re.findall(r'<a class="btn[^"]*" href="([^"]+)">(.*?)</a>', held)
     chips = ""
     m = re.search(r'<div class="hero-anlaesse".*?</div>', inhalt, re.S)

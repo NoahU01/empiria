@@ -756,3 +756,9 @@ html body .e2-alt.e2-alt .media-box-thumb-btn .media-box-thumb { height: 15rem !
 html body .e2-alt.e2-alt .media-box-thumb-btn svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; }
 html body .e2-alt.e2-alt .media-box-thumb--photo { grid-row: 1; height: 15rem !important; padding: 0 !important; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--bf, #C51F5D) !important; }
 html body .e2-alt.e2-alt .media-box-thumb--photo img { height: 92%; width: auto; filter: grayscale(1); opacity: 1 !important; }
+/* Kopf-Knopf schwarz – höhere Gewichtung als die Bereichsfarb-Regel */
+html body .e2-alt.e2-alt.e2-alt.e2-alt .e2-kopf .e2-knopf.e2-knopf { background: #1a1817 !important; border-color: #1a1817 !important; color: #fff !important; }
+/* Kein farbiger Kasten auf gleichfarbiger Fläche: Hervorhebungs-Kästen in Bereichsfarb-Sektionen werden schwarz */
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is(.usp-highlight, .vergleich-rocket) { background: #1a1817 !important; border-color: #1a1817 !important; }
+/* Punkte/Marker in Bereichsfarb-Sektionen nie gelb auf Violett/Cyan/Magenta – weiß */
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is([class*="dot"], [class*="punkt"], .problem-timeline-dot, li)::before { background: #fff !important; border-color: #fff !important; }
