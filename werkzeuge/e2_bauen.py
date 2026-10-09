@@ -188,9 +188,18 @@ def symbol(name, cls="e2-sym"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{SYMBOL[name]}</svg>'
 
 
+KOPFBILD_SEITE = {"index": "Startseite", "strategie": "Strategie in den Alltag überführen", "komplexe-themen": "Komplexe Themen strukturieren & kommunizieren",
+                  "innovation": "Innovation & Geschäftsmodell neu denken", "workshops": "Workshops", "ki-zum-anfassen": "KI zum Anfassen",
+                  "sprint-landingpage": "Sprint Landingpage", "workshop-moderation": "Moderation deines Workshops"}
+
+
 def kopfbild(name, chips=""):
-    """Rechts im Kopfbereich: Illustration zum Thema (werkzeuge/e2_bilder.py), darunter ggf. die Anlass-Chips."""
-    return f'<div class="e2-kopfbild">{e2_bilder.BILDER[name](FORM)}{chips}</div>'
+    """Rechts im Kopfbereich: das freigegebene Mono-Kopfbild der Seite (e2_kopfbilder.py, Daniel 10.10.2026), darunter ggf. die Anlass-Chips."""
+    import e2_kopfbilder as kb
+    from e2_header import farbig
+    seite = next(x for x in kb.SEITEN if x[0] == KOPFBILD_SEITE[name])
+    bild = farbig(kb.bild(seite)[0], seite[2], "kopf").replace('class="hv-bild"', 'class="e2-bild"')
+    return f'<div class="e2-kopfbild">{bild}{chips}</div>'
 
 
 def kopf_neu(held, name):
