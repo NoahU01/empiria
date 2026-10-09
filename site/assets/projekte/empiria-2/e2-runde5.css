@@ -652,3 +652,17 @@ html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--teams) .
 html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check-section * { border-left-color: var(--e2-linie); }
 html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check { border-left-color: var(--bf) !important; }
 html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::before, html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::after { background: var(--bf) !important; }
+
+/* ================= Mobil (Runde 24) ================= */
+@media (max-width: 600px) {
+  html body.e2 .e2-alt .section, html body.e2 .e2-alt .produkt-section, html body.e2 .e2-alt .produkt-grid, html body.e2 .e2-sek,
+  html body.e2 .e2-pv, html body.e2 .e2-s2-gedanke { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  html body.e2 .e2-kopf { padding: 2.6rem 0 2.4rem !important; }
+  html body.e2 .e2-kopf__raster { gap: 1.8rem !important; }
+  html body.e2 .e2-kopfbild { width: min(100%, 15rem) !important; justify-self: start !important; }
+  html body.e2 .e2-kopf h1, html body.e2 .e2-alt .e2-kopf h1 { font-size: 2.3rem !important; }
+  html body.e2 h2.h-serif, html body.e2 .e2-h2 { font-size: 1.9rem !important; }
+  html body.e2 .produkt-team-cta .ansprechpartner-grid { gap: .6rem !important; }
+  html body.e2 .e2-s2-kasten, html body.e2 .e2v-zitat, html body.e2 .e2-kasten { padding: 1.6rem 1.3rem !important; }
+}
+@media (max-width: 960px) { html body.e2 .e2v-held__raster .e2v-held__pfeil { width: 7.5rem !important; justify-self: start !important; margin-bottom: 1rem; } }
