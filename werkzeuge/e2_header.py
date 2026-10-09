@@ -454,6 +454,15 @@ NUR_SPRINT = [
 OK = '<span class="hv-ok" title="für alle Unterseiten geeignet">✓</span>'
 
 CSS4 = """<style>
+.hv-st-raster { display: grid; grid-template-columns: 12rem repeat(3, minmax(0, 1fr)); border-top: 1px solid #e3dfd8; border-left: 1px solid #e3dfd8; }
+.hv-st-raster > div { padding: .9rem; border-right: 1px solid #e3dfd8; border-bottom: 1px solid #e3dfd8; background: #fff; }
+.hv-st-kopf { position: sticky; top: 0; z-index: 1; background: #f4f3f0 !important; }
+.hv-st-kopf b { display: block; font-family: var(--font-serif); font-size: 1.05rem; }
+.hv-st-kopf small, .hv-st-name small { display: block; margin-top: .2rem; font-size: .76rem; line-height: 1.35; color: #8a847c; }
+.hv-st-name b { font-size: .9rem; line-height: 1.3; }
+.hv-st-name i { display: block; width: .8rem; height: .8rem; margin-bottom: .5rem; border-radius: 50%; }
+.hv-st-name--bsp { background: #1a1817 !important; color: #fff; } .hv-st-name--bsp small { color: #cfcac3; }
+@media (max-width: 760px) { .hv-st-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); } .hv-st-name { grid-column: 1 / -1; } .hv-st-kopf:first-child { display: none; } .hv-st-kopf { position: static; } }
 .hv-intro { padding: 4.5rem 0 1.4rem; }
 .hv-intro h1 { font-family: var(--font-serif); font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.15; }
 .hv-intro p { max-width: 48rem; margin-top: 1.1rem !important; font-size: 1.06rem; line-height: 1.6; color: #3d3a37; }
@@ -484,6 +493,27 @@ CSS4 = """<style>
 </style>"""
 
 
+def stufen_raster():
+    """Runde 5: je Seite der Live-Homepage drei Detaillierungsstufen – Icon, Spot-Illustration, Szene."""
+    import e2_stufen as st
+    punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
+    kopf = ('<div class="hv-st-kopf"></div><div class="hv-st-kopf"><b>1 · Icon</b><small>ein Zeichen, ein Gegenstand – sofort lesbar</small></div>'
+            '<div class="hv-st-kopf"><b>2 · Spot-Illustration</b><small>Vignette: ein Ausschnitt, zwei bis vier Dinge in Beziehung</small></div>'
+            '<div class="hv-st-kopf"><b>3 · Szene</b><small>Hero-Illustration: Menschen, Raum, Handlung</small></div>')
+    zeilen = ""
+    for n, (titel, bereich, welt, f) in enumerate(st.SEITEN):
+        bilder = f()
+        zeilen += (f'<div class="hv-st-name"><i style="background:{punkt[welt]}"></i><b>{titel}</b><small>{bereich}</small></div>'
+                   + "".join(f'<div class="hv-st-bild">{farbig(b, welt, "st" + str(n) + str(k))}</div>' for k, b in enumerate(bilder)))
+    iso = st.iso_stufen()
+    zeilen += ('<div class="hv-st-name hv-st-name--bsp"><b>Beispiel Darstellungsart</b><small>Sprint Landingpage, dieselben drei Stufen isometrisch</small></div>'
+               + "".join(f'<div class="hv-st-bild">{farbig(b, "magenta", "iso" + str(k))}</div>' for k, b in enumerate(iso)))
+    return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Detaillierungsstufen je Seite</h2>
+<p>Unabhängig von der Darstellungsart gibt es drei Stufen, wie viel ein Bild erzählt. In der Illustration heißen sie <b>Icon</b>, <b>Spot-Illustration</b> (auch Vignette) und <b>Szene</b> (Hero-Illustration).
+Jede Zeile ist eine Seite der Live-Homepage, gezeichnet nach dem, was die Seite transportiert – alle in einer Darstellungsart (dunkle Linie, Bereichsfarbe als Akzent), damit nur die Stufe verglichen wird. Die letzte Zeile zeigt dieselben Stufen in einer anderen Darstellungsart (isometrisch).</p>
+<div class="hv-st-raster">{kopf}{zeilen}</div></div></section>'''
+
+
 def main():
     h = QUELLE.read_text(encoding="utf-8")
     kopf = re.search(r'<section class="e2-kopf" id="intro">.*?</section>', h, re.S).group(0)
@@ -498,11 +528,12 @@ def main():
     for j, (f, n, _) in enumerate(UNIVERSAL, 1):
         probe += f'<div class="leer">{j} · {n}</div>' + "".join(f'<div>{farbig(f(th), th["welt"], "p" + str(j) + th["key"])}</div>' for th in THEMEN)
     inhalt = f'''<section class="hv-intro"><div class="e2-wrap"><p class="e2-kicker">Entwicklung · Header · Runde 4</p>
-<h1>Darstellungsarten, die über alle Themen tragen</h1>
+<h1>Kopfbilder: Detaillierung und Darstellungsart</h1>
 <p>Wichtig ist die Trennung: Eine <b>Darstellungsart</b> ist die Bildsprache (Linie, Farbfläche, Druck, Karten, Foto …) und gilt für alle Seiten.
 Das <b>Motiv</b> wechselt je Seite (Browser, Fahne, Dashboard, Sprechblasen …) – zusammen mit der Bereichsfarbe sorgt es dafür, dass es kein Einheitsbrei wird.
 Uhr, Netz und Wegkarte waren Motive, keine Darstellungsarten – sie sind deshalb raus. Ein grüner Haken heißt: als Stil für alle Unterseiten nutzbar und unten an vier Themen erprobt.</p></div></section>
-<div class="hv-vorschau"><div class="e2-wrap"><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 2 · Linie + Farbfläche</p></div>{vorschau}</div>
+{stufen_raster()}
+<div class="hv-vorschau"><div class="e2-wrap"><h2 class="hv-h2" style="margin-top:1rem!important">Darstellungsarten</h2><p class="hv-vorschau-label">Vorschau im Kopf – Klick auf ein Feld im Raster zeigt es hier: 2 · Linie + Farbfläche</p></div>{vorschau}</div>
 <section><div class="e2-wrap"><h2 class="hv-h2">Alle Darstellungsarten</h2><p>Alle zeigen hier das Motiv „Sprint Landingpage“. 1–8 sind als Stil gebaut und tragen jedes Thema; 9–17 sind nur für Sprint gezeichnet und zur Entscheidung stehen geblieben.</p>
 <div class="hv-raster">{zellen}</div>
 <h2 class="hv-h2">Probe: ein Stil, vier Themen</h2><p>Je ein Thema aus jedem Bereich der Live-Seite, jeweils in seiner Farbwelt: Strategiehandwerk (Gelb), Workshops (Magenta), Marketing 2.0 (Cyan), Training &amp; Sparring (Violett).</p>
