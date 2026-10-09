@@ -75,7 +75,17 @@ def quelle():
 
     # Perspektivwechsel, Ergebnis, Download, Kontakt: Originalabschnitte (werden von e2 wie auf der Strategie-Seite umgesetzt)
     persp = _abschnitt(sm, 'id="perspektive"')
-    ergebnis = _abschnitt(sm, 'id="ergebnis"')
+    alt_erg = _abschnitt(sm, 'id="ergebnis"')
+    erg_h = _eins(r"<h2[^>]*>(.*?)</h2>", alt_erg)
+    erg_p = " ".join(re.findall(r"<p>(.*?)</p>", alt_erg, re.S)) or _eins(r'<p class="lead">(.*?)</p>', alt_erg)
+    exp = _eins(r'<p class="pv-exp">(.*?)</p>', persp)
+    frage = _eins(r'<p class="pv-q">(.*?)</p>', persp)
+    tag = _eins(r'<p class="pv-tag">(.*?)</p>', persp)
+    # Schwarzer Streifen (Runde 16): Gedankenexperiment + sein Ergebnis
+    ergebnis = f'''<section class="e2-s2-gedanke" id="gedankenexperiment"><div class="container"><div class="e2-s2-split">
+<div><p class="e2-s2-gedanke__tag">{tag}</p><p class="e2-s2-gedanke__exp">{exp}</p><p class="e2-s2-gedanke__frage">{frage}</p></div>
+<div class="e2-s2-gedanke__erg"><p class="e2-s2-gedanke__tag">Ergebnis</p><p class="e2-s2-gedanke__satz">Jeder im Team versteht, wofür Dein Bereich da ist – und Du bestimmst seine Wahrnehmung.</p></div>
+</div></div></section>'''
     download = _abschnitt(sm, 'pdf-dl-section')
     kontakt = _abschnitt(sm, 'id="kontakt"')
 
@@ -84,15 +94,19 @@ def quelle():
     za_k, za_h = _eins(r'<p class="kicker">(.*?)</p>', za), _eins(r"<h2[^>]*>(.*?)</h2>", za)
     za_lead = re.findall(r'<p class="lead">(.*?)</p>', za, re.S)
     eintraege = re.findall(r'<summary><span>(.*?)</span></summary>\s*<div class="formate-acc-body">(.*?)</div>\s*</details>', za, re.S)
-    # Zusammenarbeit (Runde 15): drei offene Spalten statt grauer Aufklapp-Kästen, ein gelber Marker als Highlight
+    # Zusammenarbeit (Runde 16): wie die Schritte der Volksfest-Seite – je ein Satz, der volle Text im Fenster
+    kurz = ["Du arbeitest direkt mit mir – und bekommst ehrliches, direktes Feedback.",
+            'Die Umsetzung bleibt Deine Aufgabe. Plane <mark class="e2-s2-mark">ein bis zwei Stunden pro Woche</mark> ein.',
+            "Regelmäßig abstimmen, flexibel umsteuern – und dann stringent umsetzen."]
     symbole = ["messages-square", "target", "refresh-cw"]
-    spalten = ""
+    karten = ""
     for i, (t, b) in enumerate(eintraege):
-        b = b.replace("ein bis zwei Stunden pro Woche", '<mark class="e2-s2-mark">ein bis zwei Stunden pro Woche</mark>')
-        spalten += f'<div class="e2-s2-za"><span class="e2-s2-sym">{_sym(symbole[i])}</span><h3>{t}</h3>{b.strip()}</div>'
+        karten += (f'<article class="e2-s2-karte"><span class="e2-s2-sym">{_sym(symbole[i])}</span><span class="e2-s2-karte__nr">0{i+1}</span>'
+                   f'<h3>{t}</h3><p>{kurz[i]}</p><button type="button" class="e2-s2-karte__mehr" data-e2-auf="za{i}">Mehr lesen →</button>'
+                   f'<dialog class="e2-dialog" id="za{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{t}</h3>{b.strip()}</dialog></article>')
     zusammen = f'''<section class="section e2-s2-zusammen" id="zusammenarbeit"><div class="container">
-<div class="e2-s2-split e2-s2-split--kopf"><div><p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2></div><p class="lead">{za_lead[0] if za_lead else ""}</p></div>
-<div class="e2-s2-spalten">{spalten}</div></div></section>'''
+<p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2>
+<div class="e2-s2-karten">{karten}</div></div></section>'''
 
     main = "\n".join([kopf, problem, loesung, persp, ergebnis, zusammen, download, kontakt])
     i = st.index('<div class="modal-overlay" id="strategiemodellModal"')
@@ -102,6 +116,9 @@ def quelle():
         if tiefe == 0:
             j = i + mm.end(); break
     modal = st[i:j]
+    erg = (f'<div class="e2-s2-modal-erg"><p class="e2-s2-modal-erg__tag">Das Ergebnis</p><p class="e2-s2-modal-erg__satz">{erg_h}</p><p class="modal-structure-note">{erg_p}</p></div>')
+    k = modal.rindex("</div>\n      </div>\n    </div>")
+    modal = modal[:k] + erg + modal[k:]
     rahmen = rahmen.replace("</footer>", "</footer>\n" + modal, 1)
     a, b = rahmen.index("<main"), rahmen.index("</main>")
     html = rahmen[:a] + "<main>\n" + main + "\n" + rahmen[b:]

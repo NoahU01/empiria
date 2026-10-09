@@ -478,3 +478,39 @@
 .e2-s2-mark { background: var(--e2-gelb); color: var(--e2-ink); font-weight: 600; padding: 0 .2em; border-radius: .2em; }
 @media (max-width: 960px) { .e2-s2-spalten { grid-template-columns: minmax(0, 1fr); } .e2-s2-split--kopf { grid-template-columns: minmax(0, 1fr) !important; gap: 1.2rem !important; } }
 .e2-seite--strategie-2 .e2-pv--ruhig .e2-pv__browser { margin-top: .55rem !important; }
+
+/* ================= Strategie 2 · Runde 16 ================= */
+/* Schwarzer Streifen: Gedankenexperiment + Ergebnis */
+.e2-s2-gedanke { padding: 6.5rem 0; background: var(--e2-ink); color: #fff; }
+.e2-s2-gedanke .e2-s2-split { align-items: center; }
+.e2-s2-gedanke__tag { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.1rem !important; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-gelb) !important; }
+.e2-s2-gedanke__tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
+.e2-s2-gedanke__exp { font-size: 1.2rem; line-height: 1.6; color: #d8d3cc !important; max-width: 34rem; }
+.e2-s2-gedanke__frage { margin-top: 1.2rem !important; font-family: var(--font-serif); font-weight: 700; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.15; color: #fff !important; }
+.e2-s2-gedanke__erg { padding: 2.2rem; border-radius: var(--e2-r); background: var(--e2-gelb); }
+.e2-s2-gedanke__erg .e2-s2-gedanke__tag { color: var(--e2-ink) !important; }
+.e2-s2-gedanke__satz { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.5rem, 2.3vw, 1.9rem); line-height: 1.25; color: var(--e2-ink) !important; }
+/* Strategiemodell-Fenster: Text oben, darunter hervorgehoben das Ergebnis */
+.modal--strategiemodell .modal-structure-note-wrap { align-self: start !important; justify-content: flex-start !important; }
+.e2-s2-modal-erg { margin-top: 1.6rem; padding: 1.4rem 1.5rem; border-radius: 14px; background: var(--e2-gelb, #fff400); }
+.e2-s2-modal-erg__tag { margin: 0 0 .5rem !important; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1a1817 !important; }
+.e2-s2-modal-erg__satz { margin: 0 0 .6rem !important; font-family: var(--font-serif); font-weight: 700; font-size: 1.35rem; line-height: 1.25; color: #1a1817 !important; }
+.e2-s2-modal-erg .modal-structure-note { color: #3d3a37 !important; margin: 0 !important; }
+/* Zusammenarbeit: Schritte wie auf der Volksfest-Seite */
+.e2-seite--strategie-2 #zusammenarbeit { background: #fff !important; }
+.e2-s2-karten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+.e2-s2-karte { position: relative; display: flex; flex-direction: column; padding: 1.8rem 1.5rem 1.6rem; border-radius: var(--e2-r); border: 1px solid var(--e2-linie); background: #fff; }
+.e2-s2-karte .e2-s2-sym { width: 3.4rem; height: 3.4rem; border-radius: 14px; }
+.e2-s2-karte .e2-s2-sym svg { width: 1.8rem; height: 1.8rem; }
+.e2-s2-karte__nr { position: absolute; right: 1.3rem; top: 1.4rem; font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem; color: #cfcac3; }
+.e2-s2-karte h3 { margin: 1.3rem 0 .55rem !important; font-family: var(--font-serif); font-size: 1.4rem; }
+.e2-s2-karte p { font-size: 1rem; line-height: 1.55; color: var(--e2-ink-2); }
+.e2-s2-karte__mehr { margin-top: auto; padding: 1.1rem 0 0; align-self: flex-start; border: 0; background: none; font: 600 .95rem/1.2 var(--font-sans); color: var(--e2-ink); cursor: pointer; }
+@media (max-width: 960px) { .e2-s2-karten { grid-template-columns: minmax(0, 1fr); } }
+.modal--strategiemodell .modal-structure-layout { align-items: start !important; }
+.modal--strategiemodell .modal-structure-frame { width: min(90vw, calc(58vh * 0.849)) !important; }
+.modal--strategiemodell .modal-structure-note { font-size: .9rem !important; line-height: 1.5 !important; margin-bottom: .7rem !important; }
+.e2-s2-modal-erg { margin-top: 1rem; padding: 1rem 1.1rem; }
+.e2-s2-modal-erg__satz { font-size: 1.15rem; }
+.e2-s2-modal-erg .modal-structure-note { font-size: .86rem !important; }
+.modal--strategiemodell .modal-structure-note-wrap { padding-top: 1.6rem !important; }

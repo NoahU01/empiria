@@ -34,7 +34,7 @@ def div_block(html, a):
 
 
 # ---------- Strategie: Perspektivwechsel ----------
-def perspektive(sek):
+def perspektive(sek, mit_schritten=True):
     kicker = _eins(r'<p class="kicker">(.*?)</p>', sek)
     h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
     lead = _eins(r'<div class="pv-head">.*?<p class="lead">(.*?)</p>', sek)
@@ -46,11 +46,12 @@ def perspektive(sek):
     punch = _ohne_tags(_eins(r'<p class="pv-punch[^"]*">(.*?)</p>', sek))
     # Runde 10 (Daniel): ruhiger – keine Kästen, Wirkung und Ergebnis zu einem kurzen Satz zusammengefasst
     ergebnis = "Jeder im Team versteht, wofür Dein Bereich da ist – und Du bestimmst seine Wahrnehmung."
+    schritte = (f'<div class="e2-pv__schritt"><p class="e2-pv__tag">{tag}</p><p>{exp} <b>{frage}</b></p></div>'
+                f'<div class="e2-pv__schritt"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">{ergebnis}</p></div>') if mit_schritten else ""
     return f'''<section class="e2-pv e2-pv--ruhig" id="perspektive"><div class="container">
   <div class="e2-pv__oben">
     <div class="e2-pv__text"><p class="kicker">{kicker}</p><h2 class="h-serif">{h2}</h2><p class="lead">{lead}</p>
-      <div class="e2-pv__schritt"><p class="e2-pv__tag">{tag}</p><p>{exp} <b>{frage}</b></p></div>
-      <div class="e2-pv__schritt"><p class="e2-pv__tag">Ergebnis</p><p class="e2-pv__punch">{ergebnis}</p></div></div>
+      {schritte}</div>
     <div class="e2-pv__browser">{browser}</div>
   </div>
 </div></section>'''

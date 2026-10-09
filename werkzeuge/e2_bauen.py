@@ -325,7 +325,7 @@ def unterseite(original, ziel, html=None):
         w = abschnitt(main, 'id="weitere-leistungen"'); main = main.replace(w, "")  # Daniel: nicht mehr unter dem Kontakt
     # Runde 5: neu gedachte Sektionen und Download mit Hervorhebung
     if name in ("strategie", "strategie-2"):
-        sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek))
+        sek = abschnitt(main, 'id="perspektive"'); main = main.replace(sek, e2_runde5.perspektive(sek, name != "strategie-2"))
     if name == "komplexe-themen":
         sek = abschnitt(main, 'id="problem"'); main = main.replace(sek, e2_runde5.problem_kt(sek))
         sek = abschnitt(main, 'id="loesung-baustein"'); main = main.replace(sek, e2_runde5.loesung_kt(sek))
