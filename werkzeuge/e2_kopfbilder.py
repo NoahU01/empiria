@@ -1,92 +1,97 @@
-"""Kopfbilder für alle Seiten – Darstellungsart Mono (Daniel, 10.10.2026).
+"""Kopfbilder für alle Seiten – Darstellungsart Mono als strenges System (Daniel, 10.10.2026).
 
-Je Seite ist der Aufbau (1–10 aus e2_varianten.AUFBAU) gezielt nach dem Inhalt gewählt:
-  Prozess  → wenn die Seite einen Weg beschreibt     Raster → Übersichtsseiten mit mehreren Formaten
-  Kreis    → wenn Dinge ineinandergreifen             Typo   → wenn eine Zahl die Aussage trägt
-  Trio     → ein Kern mit zwei Begleitern             Rahmen → ein Ergebnis/Produkt im Mittelpunkt
-  Beschriftet → wenn drei Bausteine benannt werden    Gestapelt → ein Paket aus mehreren Teilen
-  Auf einer Linie → Dinge/Menschen nebeneinander      Ein Icon → eine einzige, klare Sache
+Warum ein System: Einzelstücke mit zehn Aufbauten und skalierten Strichen wirkten ungleich und unprofessionell.
+Regeln, die für jedes Bild gelten:
+  · eine Icon-Familie (Lucide, Linien-Icons) mit IDENTISCHER Strichstärke – unabhängig von der Icon-Größe
+  · nur drei Aufbauten mit festem Raster:  Trio (Kern + zwei Begleiter) · Reihe (drei Schritte/Teile) · Zahl (Kennzahl trägt)
+  · nur zwei Icon-Größen je Bild, feste Positionen, gleiche Ränder
+  · Akzent = Marker in Bereichsfarbe hinter einem Element (wie die Hervorhebung in den Überschriften) + ein Icon in Akzentfarbe
+  · Beschriftung nur in der Reihe, immer gleiche Schrift
 """
-import e2_varianten as va
+from e2_lucide import ICONS
 
-A = {f.__name__: (f, n) for f, n in va.AUFBAU}
+K, G3 = "#1a1817", "#b9b3ab"
+MT = "#C51F5E"            # Akzent als Linie (wird je Farbwelt ersetzt; bei Gelb → Schwarz)
+MK = "#C51F6A"            # Marker-Fläche (wird je Farbwelt ersetzt; bei Gelb → Gelb)
+SERIF, SANS = "Lora, Georgia, serif", "Poppins, Arial, sans-serif"
+STRICH = 5.2              # Strichstärke in Bildeinheiten – für ALLE Icons gleich
 
-# (Titel, Bereich, Farbwelt, Überschrift live, Aufbau, Icons [Haupt, Akzent, …], Beschriftungen, Kennwort, Begründung)
+
+def _svg(inhalt):
+    return f'<svg class="hv-bild" viewBox="0 0 440 400" role="img" font-family="{SANS}">{inhalt}</svg>'
+
+
+def icon(name, x, y, g, farbe=K):
+    return (f'<g transform="translate({x} {y}) scale({g/24:.4f})" fill="none" stroke="{farbe}" stroke-width="{STRICH*24/g:.3f}" '
+            f'stroke-linecap="round" stroke-linejoin="round">{ICONS[name]}</g>')
+
+
+def marker(x, y, w, h):
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{MK}"/>'
+
+
+def trio(haupt, akzent, neben):
+    # Kern 196 links, zwei Begleiter 84 rechts – oben/unten bündig mit dem Kern
+    return _svg(marker(96, 168, 176, 150) + icon(haupt, 40, 104, 196) + icon(akzent, 316, 104, 84, MT) + icon(neben, 316, 216, 84))
+
+
+def reihe(icons, labels, pfeile=True):
+    o = ""
+    for k, (n, l) in enumerate(zip(icons, labels)):
+        cx = 80 + k * 140
+        if k == (2 if pfeile else 0):
+            o += marker(cx - 44, 158, 104, 84)
+        o += icon(n, cx - 50, 116, 100, MT if k == (2 if pfeile else 0) else K)
+        o += f'<text x="{cx}" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{l}</text>'
+        if pfeile and k < 2:
+            ax = cx + 58
+            o += f'<path d="M{ax} 166h24m-8-8 8 8-8 8" fill="none" stroke="{G3}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
+    return _svg(o)
+
+
+def zahl(wort, akzent):
+    breite = len(wort) * 96
+    return _svg(marker(30, 214, breite + 20, 84)
+                + f'<text x="36" y="282" font-size="196" font-weight="700" letter-spacing="-6" fill="{K}" font-family="{SERIF}">{wort}</text>'
+                + icon(akzent, 320, 60, 84, MT))
+
+
+# (Titel, Bereich, Farbwelt, Überschrift live, Aufbau, Daten, Begründung)
 SEITEN = [
-    ("Startseite", "Strategie, die wirkt.", "gelb", "Strategie, die wirkt.", "a_reihe",
-     ["magnifying-glass", "puzzle-piece", "trend-up", "flag-banner"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN", ""], "Wirkung",
-     "Der Dreischritt der Startseite: Schmerz erkennen, ins Geschäftsmodell einordnen, Veränderung bewirken."),
-    ("Strategie in den Alltag überführen", "Strategiehandwerk", "gelb", "Strategie in den Alltag überführen.", "a_beschriftet",
-     ["flag-banner", "compass", "wrench", "user-focus"], ["ROLLE", "RICHTUNG", "HANDWERKSZEUG", ""], "Alltag",
-     "Die Lösung hat drei benannte Bausteine – Rolle, Richtung, Handwerkszeug – rund um das Ziel."),
-    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "a_reihe",
-     ["stack", "funnel", "target", "presentation"], ["FOLIENBERG", "STRUKTUR", "BOTSCHAFT", ""], "Botschaft",
-     "Ein Weg: vom Folienberg über die Struktur zu einer Botschaft, die ankommt."),
-    ("Innovation & Geschäftsmodell neu denken", "Strategiehandwerk", "gelb", "Innovation & Geschäftsmodell neu denken.", "a_trio",
-     ["lightbulb", "arrows-clockwise", "puzzle-piece", "cube"], ["", "", "", ""], "Neu",
-     "Ein Kern (die Idee) mit zwei Begleitern: neu denken, Bausteine neu zusammensetzen."),
-    ("Teams befähigen, professionell zu kommunizieren", "Strategiehandwerk / Training", "gelb", "Teams befähigen, professionell zu kommunizieren.", "a_boden",
-     ["chalkboard-teacher", "users-three", "check-circle", "chats-circle"], ["", "", "", ""], "Team",
-     "Menschen nebeneinander: wer präsentiert, das Team, das Ergebnis."),
-    ("Workshops", "Formate", "magenta", "Workshops, die wirken. Nicht nur Theorie.", "a_raster",
-     ["sparkle", "browser", "chats-circle", "check-circle"], ["KI ZUM ANFASSEN", "SPRINT LANDINGPAGE", "MODERATION", "ERGEBNIS"], "Workshops",
-     "Übersichtsseite: die drei Formate auf einen Blick, plus das gemeinsame Ziel Ergebnis."),
-    ("KI zum Anfassen", "Workshops", "magenta", "Deine KI. Zum Anfassen. Volle Wirkung.", "a_kreis",
-     ["chat-text", "sparkle", "cards", "users-three"], ["", "", "", ""], "KI",
-     "Im Zentrum der eigene Fall, ringsum Tools im Vergleich und das Team – alles greift ineinander."),
-    ("Sprint Landingpage", "Workshops", "magenta", "Live in nur 48 Stunden. Sauber gebaut, volle Wirkung.", "a_typo",
-     ["browser", "timer", "device-mobile", "rocket-launch"], ["", "", "", ""], "48h",
-     "Die Zahl ist das Versprechen – 48 Stunden trägt die Seite."),
-    ("Moderation deines Workshops", "Workshops", "magenta", "Dein Workshop. Souverän moderiert. Volle Wirkung.", "a_trio",
-     ["chats-circle", "check-circle", "kanban", "users-three"], ["", "", "", ""], "Klarheit",
-     "Ein Kern (das Gespräch) mit zwei Begleitern: das Board und die Handlungsklarheit."),
-    ("Der beste Workshop", "Workshops", "magenta", "Dein Workshop. Mit Ergebnis. Volle Wirkung.", "a_rahmen",
-     ["target", "star", "users-three", "check-circle"], ["EIN ZIEL", "", "", ""], "1 Ziel",
-     "Ein Ergebnis im Mittelpunkt: ein Ziel pro Workshop, ausgezeichnet."),
-    ("Marketing 2.0", "Formate", "cyan", "Marketing für Versicherer anders gedacht.", "a_raster",
-     ["presentation-chart", "eye", "target", "stack"], ["MES", "SOFORT SICHTBAR", "PAID ADS", "MEDIEN"], "Marketing",
-     "Übersichtsseite: die vier Wege auf einen Blick."),
-    ("MarketingEcoSystem (MES)", "Marketing 2.0", "cyan", "Du konzentrierst Dich nicht auf Marketing, sondern auf Dein Business.", "a_kreis",
-     ["presentation-chart", "trend-up", "browser", "megaphone"], ["", "", "", ""], "MES",
-     "Ein Ökosystem: das Dashboard in der Mitte, Seite, Kanäle und Wirkung greifen ineinander."),
-    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "a_gestapelt",
-     ["device-mobile", "browser", "envelope-simple", "eye"], ["", "", "", ""], "Sofort",
-     "Ein fertiges Paket aus drei Teilen: Postings, Landingpage, E-Mail-Funnel."),
-    ("Paid Ads", "Marketing 2.0", "cyan", "Google Ads für Deine Zielgruppe. Zur richtigen Zeit.", "a_reihe",
-     ["magnifying-glass", "megaphone", "envelope-simple", "target"], ["SUCHE", "ANZEIGE", "ANFRAGE", ""], "Anfragen",
-     "Ein Weg: jemand sucht, sieht die Anzeige, fragt an."),
-    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "a_boden",
-     ["presentation", "browser", "film-strip", "stack"], ["", "", "", ""], "Medien",
-     "Die Medien stehen nebeneinander: Präsentation, Landingpage, Video."),
-    ("PowerPoint", "Medien", "cyan", "Deine Folien. Ein Auftritt. Volle Wirkung.", "a_rahmen",
-     ["presentation", "star", "chalkboard-teacher", "check-circle"], ["EINE BOTSCHAFT JE FOLIE", "", "", ""], "Folie",
-     "Ein Produkt im Mittelpunkt: die eine Folie, die trägt."),
-    ("Landingpage", "Medien", "cyan", "Deine Botschaft. Eine Seite. Volle Wirkung.", "a_trio",
-     ["browser", "device-mobile", "lightning", "target"], ["", "", "", ""], "Eine Seite",
-     "Ein Kern (die Seite) mit zwei Begleitern: mobil zuerst, schnell geladen."),
-    ("Roll-up", "Medien", "cyan", "Dein Auftritt. Ein Blick. Volle Wirkung.", "a_boden",
-     ["image-square", "users-three", "chats-circle", "eye"], ["", "", "", ""], "Auftritt",
-     "Nebeneinander im Raum: das Roll-up, die Besucher, das Gespräch, das es eröffnet."),
-    ("Video", "Medien", "cyan", "Deine Botschaft. Bewegt. Volle Wirkung.", "a_einzel",
-     ["play-circle", "video-camera", "film-strip", "eye"], ["", "", "", ""], "Video",
-     "Eine einzige, klare Sache: das Video."),
-    ("Digitale Tools", "Marketing 2.0", "cyan", "Digitale Tools, die den Alltag einfacher machen.", "a_kreis",
-     ["squares-four", "presentation-chart", "device-mobile", "browser"], ["", "", "", ""], "Tools",
-     "Tools, die zusammenspielen: ein Ort in der Mitte, die Systeme ringsum."),
-    ("Training & Sparring", "Formate", "violett", "Begleitung, die wirkt. Kein Seminar von der Stange.", "a_trio",
-     ["handshake", "trend-up", "users-three", "chats-circle"], ["", "", "", ""], "Begleitung",
-     "Ein Kern (Begleitung) mit zwei Begleitern: Wirkung im Alltag und das Team."),
-    ("1:1 Sparring", "Training & Sparring", "violett", "Offen sprechen. Klar entscheiden. Volle Wirkung.", "a_typo",
-     ["chats-circle", "lightbulb", "handshake", "check-circle"], ["", "", "", ""], "1:1",
-     "Die Zahl ist das Format: eins zu eins, auf Augenhöhe."),
-    ("Impulsvorträge", "Einzelseite", "violett", "Impulse, die nachwirken. Nicht nur unterhalten.", "a_einzel",
-     ["microphone-stage", "lightbulb", "users-three", "chats-circle"], ["", "", "", ""], "Impuls",
-     "Eine einzige, klare Sache: der Vortrag mit einer These."),
+    ("Startseite", "Startseite", "gelb", "Strategie, die wirkt.", "reihe", (["search", "puzzle", "trending-up"], ["ERKENNEN", "EINORDNEN", "VERÄNDERN"]), "Der Dreischritt der Startseite."),
+    ("Strategie in den Alltag überführen", "Strategiehandwerk", "gelb", "Strategie in den Alltag überführen.", "trio", ("flag", "compass", "wrench"), "Ziel, Richtung, Handwerkszeug."),
+    ("Komplexe Themen strukturieren & kommunizieren", "Strategiehandwerk", "gelb", "Komplexe Themen strukturieren & kommunizieren.", "reihe", (["layers", "filter", "target"], ["FOLIENBERG", "STRUKTUR", "BOTSCHAFT"]), "Vom Folienberg zur Botschaft."),
+    ("Innovation & Geschäftsmodell neu denken", "Strategiehandwerk", "gelb", "Innovation & Geschäftsmodell neu denken.", "trio", ("lightbulb", "refresh-cw", "blocks"), "Die Idee, neu gedacht, neu zusammengesetzt."),
+    ("Teams befähigen, professionell zu kommunizieren", "Strategiehandwerk / Training", "gelb", "Teams befähigen, professionell zu kommunizieren.", "trio", ("presentation", "users", "circle-check"), "Präsentieren, Team, Ergebnis."),
+    ("Workshops", "Formate", "magenta", "Workshops, die wirken. Nicht nur Theorie.", "reihe_o", (["sparkles", "app-window", "messages-square"], ["KI", "LANDINGPAGE", "MODERATION"]), "Übersicht: die drei Formate."),
+    ("KI zum Anfassen", "Workshops", "magenta", "Deine KI. Zum Anfassen. Volle Wirkung.", "trio", ("message-square-text", "sparkles", "users"), "Eigener Fall, KI, Team."),
+    ("Sprint Landingpage", "Workshops", "magenta", "Live in nur 48 Stunden. Sauber gebaut, volle Wirkung.", "zahl", ("48h", "app-window"), "Die Zahl ist das Versprechen."),
+    ("Moderation deines Workshops", "Workshops", "magenta", "Dein Workshop. Souverän moderiert. Volle Wirkung.", "trio", ("messages-square", "circle-check", "users"), "Gespräch, Klarheit, Team."),
+    ("Der beste Workshop", "Workshops", "magenta", "Dein Workshop. Mit Ergebnis. Volle Wirkung.", "trio", ("goal", "star", "users"), "Ein Ziel, ausgezeichnet, alle dabei."),
+    ("Marketing 2.0", "Formate", "cyan", "Marketing für Versicherer anders gedacht.", "reihe_o", (["layout-dashboard", "eye", "megaphone"], ["DASHBOARD", "SICHTBARKEIT", "KAMPAGNEN"]), "Übersicht: die Wege."),
+    ("MarketingEcoSystem (MES)", "Marketing 2.0", "cyan", "Du konzentrierst Dich nicht auf Marketing, sondern auf Dein Business.", "trio", ("layout-dashboard", "trending-up", "megaphone"), "Dashboard, Wirkung, Kanäle."),
+    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "reihe", (["smartphone", "app-window", "mail"], ["POSTING", "LANDINGPAGE", "E-MAIL"]), "Das fertige Paket."),
+    ("Paid Ads", "Marketing 2.0", "cyan", "Google Ads für Deine Zielgruppe. Zur richtigen Zeit.", "reihe", (["search", "megaphone", "mail"], ["SUCHE", "ANZEIGE", "ANFRAGE"]), "Vom Suchen zur Anfrage."),
+    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "reihe_o", (["presentation", "app-window", "film"], ["POWERPOINT", "LANDINGPAGE", "VIDEO"]), "Übersicht: die Medien."),
+    ("PowerPoint", "Medien", "cyan", "Deine Folien. Ein Auftritt. Volle Wirkung.", "trio", ("presentation", "star", "users"), "Die Folie, die trägt."),
+    ("Landingpage", "Medien", "cyan", "Deine Botschaft. Eine Seite. Volle Wirkung.", "trio", ("app-window", "smartphone", "zap"), "Eine Seite, mobil, schnell."),
+    ("Roll-up", "Medien", "cyan", "Dein Auftritt. Ein Blick. Volle Wirkung.", "trio", ("image", "users", "message-circle"), "Auftritt, Besucher, Gespräch."),
+    ("Video", "Medien", "cyan", "Deine Botschaft. Bewegt. Volle Wirkung.", "trio", ("circle-play", "video", "film"), "Video, Dreh, Schnitt."),
+    ("Digitale Tools", "Marketing 2.0", "cyan", "Digitale Tools, die den Alltag einfacher machen.", "trio", ("layout-grid", "chart-column", "smartphone"), "Ein Ort, Zahlen, App."),
+    ("Training & Sparring", "Formate", "violett", "Begleitung, die wirkt. Kein Seminar von der Stange.", "trio", ("handshake", "trending-up", "users"), "Begleitung, Wirkung, Team."),
+    ("1:1 Sparring", "Training & Sparring", "violett", "Offen sprechen. Klar entscheiden. Volle Wirkung.", "zahl", ("1:1", "messages-square"), "Die Zahl ist das Format."),
+    ("Impulsvorträge", "Einzelseite", "violett", "Impulse, die nachwirken. Nicht nur unterhalten.", "trio", ("mic-vocal", "lightbulb", "users"), "Vortrag, These, Publikum."),
 ]
+
+NAMEN = {"trio": "Trio", "reihe": "Reihe (Prozess)", "reihe_o": "Reihe (Übersicht)", "zahl": "Zahl"}
 
 
 def bild(seite):
-    titel, bereich, welt, h1, aufbau, icons, labels, wort, warum = seite
-    f, name = A[aufbau]
-    sz = dict(titel=titel, icons=icons, labels=labels, wort=wort, welt=welt)
-    return f(sz, "mono"), name
+    titel, bereich, welt, h1, aufbau, daten, warum = seite
+    if aufbau == "trio":
+        return trio(*daten), NAMEN[aufbau]
+    if aufbau == "reihe":
+        return reihe(*daten), NAMEN[aufbau]
+    if aufbau == "reihe_o":
+        return reihe(*daten, pfeile=False), NAMEN[aufbau]
+    return zahl(*daten), NAMEN[aufbau]

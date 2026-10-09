@@ -235,10 +235,10 @@ def s_greybox():
 
 # ---------------------------------------------------------------- Farbwelten
 FARBWELT = {
-    "magenta": {"#C51F5D": "#C51F5D", "#C51F5E": "#C51F5D", "#FEFEFE": "#ffffff", "#e27fa3": "#e27fa3", "#f5d3df": "#f5d3df", "#7a1339": "#7a1339"},
-    "cyan":    {"#C51F5D": "#0B9FBD", "#C51F5E": "#0a8aa4", "#FEFEFE": "#ffffff", "#e27fa3": "#72c6d8", "#f5d3df": "#d4eef4", "#7a1339": "#06576a"},
-    "violett": {"#C51F5D": "#8613A1", "#C51F5E": "#8613A1", "#FEFEFE": "#ffffff", "#e27fa3": "#bb7bcc", "#f5d3df": "#ecd9f1", "#7a1339": "#4e0b5e"},
-    "gelb":    {"#C51F5D": "#fff400", "#C51F5E": "#1a1817", "#FEFEFE": "#1a1817", "#e27fa3": "#fff86b", "#f5d3df": "#fffbc7", "#7a1339": "#1a1817"},
+    "magenta": {"#C51F6A": "#f5d3df", "#C51F5D": "#C51F5D", "#C51F5E": "#C51F5D", "#FEFEFE": "#ffffff", "#e27fa3": "#e27fa3", "#f5d3df": "#f5d3df", "#7a1339": "#7a1339"},
+    "cyan":    {"#C51F6A": "#cdebf2", "#C51F5D": "#0B9FBD", "#C51F5E": "#0a8aa4", "#FEFEFE": "#ffffff", "#e27fa3": "#72c6d8", "#f5d3df": "#d4eef4", "#7a1339": "#06576a"},
+    "violett": {"#C51F6A": "#ead3f1", "#C51F5D": "#8613A1", "#C51F5E": "#8613A1", "#FEFEFE": "#ffffff", "#e27fa3": "#bb7bcc", "#f5d3df": "#ecd9f1", "#7a1339": "#4e0b5e"},
+    "gelb":    {"#C51F6A": "#fff400", "#C51F5D": "#fff400", "#C51F5E": "#1a1817", "#FEFEFE": "#1a1817", "#e27fa3": "#fff86b", "#f5d3df": "#fffbc7", "#7a1339": "#1a1817"},
 }
 
 
@@ -445,12 +445,12 @@ def kopfbilder():
     punkt = {"gelb": "#fff400", "magenta": "#C51F5D", "cyan": "#0B9FBD", "violett": "#8613A1"}
     karten = ""
     for n, seite in enumerate(kb.SEITEN):
-        titel, bereich, welt, h1, aufbau, icons, labels, wort, warum = seite
+        titel, bereich, welt, h1, aufbau, daten, warum = seite
         b, name = kb.bild(seite)
         karten += (f'<article class="hv-kb"><div class="hv-kb__text"><p class="hv-kb__kicker"><i style="background:{punkt[welt]}"></i>{titel}</p>'
                    f'<h3>{h1}</h3><p class="hv-kb__warum"><b>{name}</b> – {warum}</p></div><div class="hv-kb__bild">{farbig(b, welt, "kb" + str(n))}</div></article>')
     return f'''<section class="hv-st"><div class="e2-wrap"><h2 class="hv-h2">Kopfbilder – Mono, je Seite</h2>
-<p>Alle 23 Seiten der Live-Homepage in der Darstellungsart <b>Mono</b>. Der Aufbau ist je Seite nach dem Inhalt gewählt – darunter steht jeweils, warum. Sag mir einfach, welche Seite noch nicht passt.</p>
+<p>Alle 23 Seiten der Live-Homepage in der Darstellungsart <b>Mono</b>. Ein strenges System: eine Icon-Familie mit überall gleicher Strichstärke, nur drei Aufbauten (Trio, Reihe, Zahl) mit festem Raster, Akzent als Marker in Bereichsfarbe – wie die Hervorhebung in den Überschriften. Sag mir einfach, welche Seite noch nicht passt.</p>
 <div class="hv-kb-raster">{karten}</div></div></section>'''
 
 
