@@ -31,22 +31,6 @@ def t(x, y, txt, size=12, fill=K, weight=700, anchor="start", fam=SANS, extra=""
     return f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}" font-family="{fam}" {extra}>{txt}</text>'
 
 
-# ---------------------------------------------------------------- 1 · Flächig
-def v1():
-    """Reine Flächen, keine Linien – Seite aus Blöcken, die Zeit als großer Kreis."""
-    return svg(f'''
-<circle cx="300" cy="150" r="118" fill="{M}"/>
-<path d="M300 150V32A118 118 0 0 1 402 91z" fill="{W}" opacity=".9"/>
-{r(60, 96, 190, 270, G2, 18)}
-{r(80, 118, 70, 12, K, 6)}{r(196, 118, 34, 12, K, 6)}
-{r(80, 150, 150, 86, Y, 12)}
-{r(80, 252, 44, 44, K, 10)}{r(133, 252, 44, 44, W, 10)}{r(186, 252, 44, 44, W, 10)}
-{r(80, 316, 90, 28, M, 14)}
-{t(334, 232, "48h", 40, W, 700, "middle", SERIF)}
-''', "Flächig: Landingpage aus Blöcken, Zeit als Kreis")
-
-
-# ---------------------------------------------------------------- 2 · Isometrisch
 def _platte(tx, ty, w, h, d, oben, links, rechts, inhalt=""):
     A = (tx, ty); B = (tx + .866 * w, ty + .5 * w); C = (tx + .866 * (w - h), ty + .5 * (w + h)); D = (tx - .866 * h, ty + .5 * h)
     p = lambda *pts: " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
@@ -77,8 +61,6 @@ def v2():
 # ---------------------------------------------------------------- 3 · Bauplan
 def v3():
     """Bauplan: Wireframe mit Beschriftung und Maßlinie – viel Information, feine Linie, Magenta als Akzent."""
-    raster = "".join(f'<path d="M{x} 0v400" stroke="#ebe7e1" stroke-width="1"/>' for x in range(0, 441, 20)) + \
-             "".join(f'<path d="M0 {y}h440" stroke="#ebe7e1" stroke-width="1"/>' for y in range(0, 401, 20))
     ab = [(52, 48, "HEADER"), (104, 58, "PROBLEM"), (166, 46, "LÖSUNG"), (216, 40, "ABLAUF"), (260, 50, "KONTAKT")]
     wf = "".join(f'<rect x="150" y="{y}" width="140" height="{h}" fill="{W}" stroke="{K}" stroke-width="1.6"/>' for y, h, _ in ab)
     wf += (r(162, 60, 60, 7, K, 3) + r(162, 74, 90, 4, G3, 2) + f'<rect x="162" y="84" width="34" height="9" rx="4.5" fill="{M}"/>'
@@ -95,7 +77,6 @@ def v3():
         else:
             an += f'<path d="M290 {ym}H340" stroke="{K}" stroke-width="1"/><circle cx="290" cy="{ym}" r="2.5" fill="{K}"/>' + t(344, ym + 4, name, 10, K, 700)
     return svg(f'''
-{r(14, 14, 412, 372, "#faf9f6", 16)}<g opacity=".9">{raster}</g>{r(14, 14, 412, 372, "none", 16, f'stroke="{G2}" stroke-width="2"')}
 {wf}{an}
 <path d="M118 48v262" stroke="{M}" stroke-width="1.6"/><path d="M112 48h12M112 310h12" stroke="{M}" stroke-width="1.6"/>
 <g transform="rotate(-90 106 180)">{t(106, 184, "48 STUNDEN", 10, M, 700, "middle")}</g>
@@ -108,8 +89,6 @@ def v4():
     """Duoton Magenta mit Rasterpunkten: Desktop und Handy, nur Magenta-Töne."""
     defs = f'<pattern id="hv4p" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="{M}"/></pattern>'
     return svg(f'''
-<circle cx="230" cy="200" r="168" fill="{M3}"/>
-<circle cx="230" cy="200" r="168" fill="url(#hv4p)" opacity=".18"/>
 {r(52, 92, 270, 196, W, 14, f'stroke="{M4}" stroke-width="3"')}
 <path d="M52 122h270" stroke="{M4}" stroke-width="3"/><circle cx="72" cy="107" r="5" fill="{M2}"/><circle cx="88" cy="107" r="5" fill="{M2}"/>
 {r(72, 140, 120, 14, M4, 7)}{r(72, 164, 90, 9, M2, 4.5)}{r(72, 192, 72, 26, M, 13)}
@@ -147,26 +126,6 @@ def v5():
 ''', "Ablauf: Vorbereitung, Sprint-Workshop, Go-live")
 
 
-# ---------------------------------------------------------------- 6 · Papier
-OP45 = 'opacity=".45"'
-
-
-def v6():
-    """Papier & Schatten: Zettel aus dem Workshop werden zur fertigen Seite – haptisch, aber ruhig."""
-    defs = '<filter id="hv6s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1a1817" flood-opacity=".16"/></filter>'
-    z = lambda x, y, c, rot: f'<g transform="rotate({rot} {x+34} {y+32})" filter="url(#hv6s)">{r(x, y, 68, 64, c, 4)}{r(x+10, y+16, 44, 5, K, 2.5, OP45)}{r(x+10, y+28, 34, 5, K, 2.5, OP45)}</g>'
-    return svg(f'''
-{z(26, 60, Y, -8)}{z(70, 140, M3, 6)}{z(20, 226, W, -4)}{z(96, 300, Y, 9)}
-<path d="M120 120c40-6 60 0 80 20" fill="none" stroke="{K}" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round"/>
-<g transform="rotate(2 300 210)" filter="url(#hv6s)">{r(196, 40, 214, 320, W, 10)}
-{r(214, 60, 60, 8, K, 4)}{r(214, 84, 176, 92, M, 8)}{r(228, 106, 110, 10, W, 5)}{r(228, 124, 76, 7, W, 3.5, 'opacity=".8"')}{r(228, 146, 52, 18, W, 9)}
-{r(214, 194, 150, 8, K, 4)}{r(214, 210, 120, 6, G3, 3)}
-{r(214, 232, 54, 46, G, 6)}{r(275, 232, 54, 46, G, 6)}{r(336, 232, 54, 46, G, 6)}
-{r(214, 298, 176, 40, Y, 8)}{r(228, 312, 90, 8, K, 4)}</g>
-<g transform="rotate(-24 312 46)">{r(282, 36, 60, 18, "#fff7a8", 2, 'opacity=".85"')}</g>
-''', "Papier: Workshop-Zettel werden zur Landingpage", defs)
-
-
 # ---------------------------------------------------------------- 7 · Typografisch
 def v7():
     """Typografisch: die Zahl ist das Bild. Sehr wenige Elemente."""
@@ -179,81 +138,138 @@ def v7():
 ''', "48 Stunden – typografisch")
 
 
-# ---------------------------------------------------------------- 8 · Geräte
-def v8():
-    """Klare UI-Darstellung: echte Seite auf Laptop und Handy, dazu der erste Erfolg – am konkretesten."""
-    defs = '<filter id="hv8s" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#1a1817" flood-opacity=".18"/></filter>'
+# ================================================================ Runde 2 (Daniel, 10.10.2026): neue Stile
+MUL = 'style="mix-blend-mode:multiply"'
+
+
+# ---------------------------------------------------------------- Riso-Druck
+def v11():
+    """Riso-Druck: zwei Druckfarben (Gelb, Magenta), leicht versetzt übereinander gedruckt – grafisch, mit Charakter."""
+    defs = f'<pattern id="hv11p" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="3.5" cy="3.5" r="1.6" fill="{M}"/></pattern>'
+    gelb = (r(56, 70, 250, 290, Y, 14) + f'<circle cx="330" cy="292" r="74" fill="{Y}"/>')
+    mag = (f'<g transform="translate(9 -7)" {MUL}>'
+           + r(56, 70, 250, 290, "none", 14, f'stroke="{M}" stroke-width="5"') + f'<path d="M56 112h250" stroke="{M}" stroke-width="5"/>'
+           + f'<circle cx="80" cy="91" r="6" fill="{M}"/><circle cx="100" cy="91" r="6" fill="{M}"/>'
+           + r(80, 134, 202, 70, M, 8) + r(80, 222, 150, 10, M, 5) + r(80, 242, 110, 10, M, 5)
+           + r(80, 272, 92, 62, "url(#hv11p)", 8) + r(190, 272, 92, 62, "url(#hv11p)", 8)
+           + f'<circle cx="330" cy="292" r="74" fill="none" stroke="{M}" stroke-width="5"/><path d="M330 292V238M330 292l30 18" stroke="{M}" stroke-width="7" stroke-linecap="round"/>'
+           + f'<path d="M330 210v-16M314 192h32" stroke="{M}" stroke-width="6" stroke-linecap="round"/></g>')
+    return svg(f'''<g {MUL}>{gelb}</g>{mag}
+{t(118, 176, "LIVE", 30, Y, 700, "start", SANS, 'letter-spacing="4"')}
+''', "Riso-Druck: Landingpage und Stoppuhr in zwei Druckfarben", defs)
+
+
+# ---------------------------------------------------------------- Radial
+def v12():
+    """Uhr-Infografik: die 48 Stunden als Ring, Tag 1 und Tag 2 mit ihren Inhalten, in der Mitte die Seite."""
+    import math
+    cx, cy, R = 220, 196, 112
+    def bogen(a0, a1, rad):
+        p0 = (cx + rad * math.sin(math.radians(a0)), cy - rad * math.cos(math.radians(a0)))
+        p1 = (cx + rad * math.sin(math.radians(a1)), cy - rad * math.cos(math.radians(a1)))
+        gross = 1 if a1 - a0 > 180 else 0
+        return f'M{p0[0]:.1f} {p0[1]:.1f}A{rad} {rad} 0 {gross} 1 {p1[0]:.1f} {p1[1]:.1f}'
+    striche = ""
+    for h in range(0, 48, 3):
+        a = h / 48 * 360; lang = 16 if h % 12 == 0 else 8
+        x0, y0 = cx + (R + 18) * math.sin(math.radians(a)), cy - (R + 18) * math.cos(math.radians(a))
+        x1, y1 = cx + (R + 18 + lang) * math.sin(math.radians(a)), cy - (R + 18 + lang) * math.cos(math.radians(a))
+        striche += f'<path d="M{x0:.1f} {y0:.1f}L{x1:.1f} {y1:.1f}" stroke="{K}" stroke-width="{3 if lang == 16 else 2}" stroke-linecap="round"/>'
     return svg(f'''
-<g filter="url(#hv8s)">{r(28, 52, 330, 214, K, 14)}{r(38, 62, 310, 194, W, 6)}</g>
-<path d="M8 276h370l-18 16H26z" fill="{G2}"/>
-{r(52, 74, 46, 8, K, 4)}{r(250, 74, 26, 6, G3, 3)}{r(282, 74, 26, 6, G3, 3)}<rect x="314" y="70" width="26" height="14" rx="7" fill="{M}"/>
-{r(52, 102, 150, 14, K, 3)}{r(52, 122, 98, 14, Y, 3)}{r(56, 125, 88, 8, K, 2, 'opacity=".9"')}
-{r(52, 148, 140, 6, G3, 3)}{r(52, 160, 120, 6, G3, 3)}
-<rect x="52" y="180" width="86" height="24" rx="12" fill="{M}"/>{t(95, 196, "Termin sichern", 8.5, W, 600, "middle")}
-<defs><linearGradient id="hv8g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{M}"/><stop offset="1" stop-color="{V}"/></linearGradient></defs>
-{r(214, 100, 120, 104, "url(#hv8g)", 10)}<circle cx="274" cy="142" r="18" fill="{W}" opacity=".25"/><path d="M234 190l30-30 22 18 18-14 30 26z" fill="{W}" opacity=".35"/>
-{r(52, 222, 88, 22, G, 6)}{r(148, 222, 88, 22, G, 6)}{r(244, 222, 88, 22, G, 6)}
-<g filter="url(#hv8s)">{r(318, 150, 104, 200, K, 18)}{r(324, 156, 92, 188, W, 13)}</g>
-{r(334, 172, 40, 6, K, 3)}{r(334, 188, 70, 10, K, 3)}{r(334, 202, 50, 10, Y, 3)}{r(334, 222, 72, 50, "url(#hv8g)", 6)}{r(334, 282, 60, 5, G3, 2.5)}{r(334, 292, 48, 5, G3, 2.5)}<rect x="334" y="306" width="56" height="18" rx="9" fill="{M}"/>
-<g filter="url(#hv8s)">{r(120, 300, 186, 56, W, 14)}</g>
-<circle cx="146" cy="328" r="13" fill="{Y}"/><path d="M140 328l4 4 8-9" fill="none" stroke="{K}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-{t(168, 324, "Neue Anfrage", 12, K, 700)}{t(168, 340, "über Deine Landingpage", 10, "#6f6a64", 500)}
-''', "Landingpage auf Laptop und Handy, erste Anfrage", defs)
+<path d="{bogen(2, 178, R)}" fill="none" stroke="{M}" stroke-width="26" stroke-linecap="round"/>
+<path d="{bogen(182, 356, R)}" fill="none" stroke="{Y}" stroke-width="26" stroke-linecap="round"/>
+{striche}
+{t(cx, 38, "0 h", 11, K, 700, "middle")}{t(cx, 368, "24 h", 11, K, 700, "middle")}
+{t(372, 150, "TAG 1", 11, M, 700)}{t(372, 166, "Sparring &amp;", 10, K, 500)}{t(372, 180, "Rohversion", 10, K, 500)}
+{t(68, 214, "TAG 2", 11, K, 700, "end")}{t(68, 230, "Feinschliff", 10, K, 500, "end")}{t(68, 244, "&amp; Go-live", 10, K, 500, "end")}
+{r(184, 124, 72, 140, W, 14, f'stroke="{K}" stroke-width="4"')}{r(194, 140, 52, 32, M, 6)}{r(194, 182, 42, 6, K, 3)}{r(194, 194, 30, 6, G3, 3)}{r(194, 234, 36, 14, K, 7)}
+<circle cx="{cx - 8}" cy="{cy - R}" r="13" fill="{K}"/><path d="M{cx-13} {cy-R}l4 4 7-8" fill="none" stroke="{Y}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+''', "48 Stunden als Ring: Tag 1 und Tag 2")
 
 
-# ---------------------------------------------------------------- 9 · Dunkle Bühne
-def v9():
-    """Dunkle Bühne: helle Linien auf Schwarz, Magenta und Gelb leuchten – wirkt hochwertig, eher technisch."""
-    defs = '<filter id="hv9g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
-    L = 'fill="none" stroke="#f4f3f0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"'
+# ---------------------------------------------------------------- Piktogramm-Raster
+PIKTO = {
+    "ZIELGRUPPE": '<circle cx="0" cy="0" r="20" fill="none" stroke="{c}" stroke-width="4"/><circle cx="0" cy="0" r="10" fill="none" stroke="{c}" stroke-width="4"/><circle r="3" fill="{c}"/>',
+    "PROBLEM": '<path d="M0-21L22 18H-22z" fill="none" stroke="{c}" stroke-width="4" stroke-linejoin="round"/><path d="M0-6v10" stroke="{c}" stroke-width="4" stroke-linecap="round"/><circle cy="11" r="2.6" fill="{c}"/>',
+    "LÖSUNG": '<path d="M-14 0l9 9 19-20" fill="none" stroke="{c}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle r="22" fill="none" stroke="{c}" stroke-width="4"/>',
+    "TEXT": '<path d="M-20-12h40M-20 0h40M-20 12h26" stroke="{c}" stroke-width="4" stroke-linecap="round"/>',
+    "DESIGN": '<rect x="-21" y="-18" width="42" height="36" rx="4" fill="none" stroke="{c}" stroke-width="4"/><path d="M-21-6h42M-6-6v24" stroke="{c}" stroke-width="4"/>',
+    "MOBILE": '<rect x="-13" y="-22" width="26" height="44" rx="6" fill="none" stroke="{c}" stroke-width="4"/><path d="M-5 15h10" stroke="{c}" stroke-width="4" stroke-linecap="round"/>',
+    "FEEDBACK": '<path d="M-20-16h40v24H-2l-12 10V8h-6z" fill="none" stroke="{c}" stroke-width="4" stroke-linejoin="round"/>',
+    "GO-LIVE": '<path d="M-6 20V-20" stroke="{c}" stroke-width="4" stroke-linecap="round"/><path d="M-6-20l24 8-24 9" fill="{c}"/>',
+}
+
+
+def v13():
+    """Piktogramm-System: neun Kacheln, jede ein Baustein des Sprints – modular, sachlich, gut übertragbar."""
+    namen = ["ZIELGRUPPE", "PROBLEM", "LÖSUNG", "TEXT", None, "DESIGN", "MOBILE", "FEEDBACK", "GO-LIVE"]
+    k = ""
+    for i, n in enumerate(namen):
+        x, y = 34 + (i % 3) * 128, 18 + (i // 3) * 128
+        if n is None:
+            k += r(x, y, 116, 116, M, 18) + t(x + 58, y + 68, "48h", 34, W, 700, "middle", SERIF) + t(x + 58, y + 92, "SPRINT", 9, W, 700, "middle", SANS, 'letter-spacing="2"')
+        else:
+            k += r(x, y, 116, 116, G, 18) + f'<g transform="translate({x+58} {y+50})">{PIKTO[n].format(c=K)}</g>' + t(x + 58, y + 100, n, 9, K, 700, "middle", SANS, 'letter-spacing="1.4"')
+    return svg(k, "Neun Bausteine des Sprints als Piktogramme")
+
+
+# ---------------------------------------------------------------- Fortschrittskurve
+def v14():
+    """Datengrafik: Fortschritt über 48 Stunden als Kurve mit Meilensteinen – wirkt analytisch, wie ein Chart."""
+    X0, Y0, X1, Y1 = 58, 320, 410, 70   # Achsen
+    px = lambda h: X0 + (X1 - X0) * h / 48
+    py = lambda v: Y0 - (Y0 - Y1) * v / 100
+    kurve = f"M{px(0)} {py(0)}C{px(10)} {py(4)} {px(14)} {py(38)} {px(24)} {py(58)}S{px(38)} {py(86)} {px(48)} {py(100)}"
+    ms = [(0, 0, "Briefing"), (18, 46, "Rohversion"), (32, 76, "Feedback"), (48, 100, "Live")]
+    gitter = "".join(f'<path d="M{X0} {py(v)}H{X1}" stroke="{G2}" stroke-width="1.5"/>' + t(X0 - 10, py(v) + 4, f"{v}%", 10, "#8a847c", 600, "end") for v in (0, 50, 100))
+    xs = "".join(t(px(h), Y0 + 22, f"{h}h", 10, "#8a847c", 600, "middle") for h in (0, 12, 24, 36, 48))
+    punkte = "".join(f'<circle cx="{px(h)}" cy="{py(v)}" r="7" fill="{W}" stroke="{K}" stroke-width="3"/>' + t(px(h) + (12 if h == 0 else -12), py(v) - 12, n, 11, K, 700, "start" if h == 0 else "end") for h, v, n in ms)
     return svg(f'''
-{r(10, 10, 420, 380, K, 26)}
-<g opacity=".08">{"".join(f'<circle cx="{x}" cy="{y}" r="1.4" fill="#fff"/>' for x in range(30, 430, 24) for y in range(30, 390, 24))}</g>
-<rect x="56" y="66" width="200" height="270" rx="12" {L}/><path d="M56 96h200" {L}/>
-<rect x="74" y="114" width="164" height="60" rx="8" fill="none" stroke="{M}" stroke-width="3" filter="url(#hv9g)"/>
-<path d="M88 136h96M88 152h60" {L}/><path d="M74 196h140M74 212h100" {L} opacity=".6"/>
-<rect x="74" y="236" width="74" height="44" rx="6" {L} opacity=".6"/><rect x="164" y="236" width="74" height="44" rx="6" {L} opacity=".6"/>
-<rect x="74" y="298" width="80" height="22" rx="11" fill="{M}" filter="url(#hv9g)"/>
-<circle cx="320" cy="170" r="74" fill="none" stroke="#3a3735" stroke-width="10"/>
-<circle cx="320" cy="170" r="74" fill="none" stroke="{Y}" stroke-width="10" stroke-linecap="round" stroke-dasharray="420 465" transform="rotate(-90 320 170)" filter="url(#hv9g)"/>
-{t(320, 168, "48:00", 30, W, 600, "middle")}{t(320, 192, "STUNDEN BIS LIVE", 9, "#bdb7af", 700, "middle", SANS, 'letter-spacing="2"')}
-<circle cx="296" cy="300" r="6" fill="{M}" filter="url(#hv9g)"/>{t(310, 305, "LIVE", 14, W, 700)}
-''', "Dunkle Bühne: Countdown bis zum Go-live", defs)
+{gitter}{xs}
+<path d="{kurve}L{px(48)} {Y0}L{px(0)} {Y0}z" fill="{M3}"/>
+<path d="{kurve}" fill="none" stroke="{M}" stroke-width="5" stroke-linecap="round"/>
+<path d="M{X0} {Y0}H{X1}" stroke="{K}" stroke-width="2.5"/>
+<path d="M{px(24)} {Y1 - 6}V{Y0}" stroke="{K}" stroke-width="1.5" stroke-dasharray="4 5"/>{t(px(24) - 6, Y1 + 4, "Tag 2", 10, "#8a847c", 600, "end")}
+{punkte}
+{r(X0, 352, 150, 30, K, 15)}{t(X0 + 75, 372, "fertig in 48 Stunden", 11, W, 600, "middle")}
+''', "Fortschritt über 48 Stunden als Kurve")
 
 
-# ---------------------------------------------------------------- 10 · Fokus
-def v10():
-    """Konzeptbild: aus dem Sammelsurium einer Homepage wird eine fokussierte Seite – erklärt das Prinzip."""
-    streu = [(40, 70, "r"), (92, 52, "c"), (60, 120, "l"), (118, 100, "r"), (30, 170, "c"), (86, 166, "l"), (130, 150, "r"), (50, 226, "l"), (104, 214, "c"), (36, 280, "r"), (90, 272, "l"), (138, 252, "r"), (70, 330, "c"), (124, 312, "l")]
-    def e(x, y, k):
-        if k == "r": return r(x, y, 30, 22, G2, 4, f'stroke="{G3}" stroke-width="2"')
-        if k == "c": return f'<circle cx="{x+12}" cy="{y+12}" r="12" fill="{G2}" stroke="{G3}" stroke-width="2"/>'
-        return r(x, y + 8, 40, 7, G3, 3.5)
+# ---------------------------------------------------------------- Szene
+def v15():
+    """Szene in Linien: Zwei Tage vor Ort – Beraterin, Kunde, Laptop, an der Wand entsteht die Seite."""
+    def person(x, y, fill, s=1):
+        return (f'<g transform="translate({x} {y}) scale({s})"><path d="M-34 0v-16c0-20 15-32 34-32s34 12 34 32V0z" fill="{fill}" stroke="{K}" stroke-width="4" stroke-linejoin="round"/>'
+                f'<circle cy="-66" r="18" fill="{W}" stroke="{K}" stroke-width="4"/></g>')
     return svg(f'''
-{"".join(e(*s) for s in streu)}
-<path d="M176 60C214 130 226 170 232 200C226 230 214 270 176 340" fill="none" stroke="{K}" stroke-width="3" stroke-linecap="round"/>
-<path d="M176 60L232 200L176 340" fill="{G}" opacity=".6"/>
-<path d="M234 200h22" stroke="{K}" stroke-width="3" stroke-linecap="round"/><path d="M250 192l10 8-10 8" fill="none" stroke="{K}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-{r(276, 66, 140, 268, W, 18, f'stroke="{K}" stroke-width="4"')}
-{r(292, 92, 108, 74, M, 10)}{r(304, 110, 70, 9, W, 4.5)}{r(304, 126, 48, 7, W, 3.5, 'opacity=".8"')}
-{r(292, 182, 96, 8, K, 4)}{r(292, 198, 76, 7, G3, 3.5)}{r(292, 212, 86, 7, G3, 3.5)}
-<rect x="292" y="250" width="108" height="34" rx="17" fill="{K}"/>{t(346, 271, "1 Ziel", 12, W, 700, "middle")}
-{t(110, 376, "Homepage: alles", 11, "#8a847c", 600, "middle")}{t(346, 360, "Landingpage: eins", 11, K, 700, "middle")}
-''', "Fokus: von vielen Themen zu einem klaren Ziel")
+<circle cx="250" cy="110" r="96" fill="{M3}"/>
+{r(150, 30, 220, 150, W, 12, f'stroke="{K}" stroke-width="4"')}<path d="M150 56h220" stroke="{K}" stroke-width="4"/>
+{r(170, 72, 180, 46, M, 6)}{r(184, 86, 90, 8, W, 4)}{r(184, 100, 60, 6, W, 3)}
+{r(170, 130, 82, 34, "none", 6, f'stroke="{K}" stroke-width="2.5" stroke-dasharray="5 5"')}{r(266, 130, 84, 34, G, 6, f'stroke="{K}" stroke-width="2.5"')}
+<path d="M260 180v18" stroke="{K}" stroke-width="4"/>
+{person(110, 300, Y)}{person(330, 300, W)}
+<path d="M30 300h380" stroke="{K}" stroke-width="5" stroke-linecap="round"/>
+<path d="M60 300l-12 80M380 300l12 80" stroke="{K}" stroke-width="4" stroke-linecap="round"/>
+<path d="M176 298l12-52h86l-10 52z" fill="{W}" stroke="{K}" stroke-width="4" stroke-linejoin="round"/><circle cx="226" cy="272" r="5" fill="{K}"/>
+{r(126, 210, 54, 34, W, 17, f'stroke="{K}" stroke-width="3"')}<path d="M140 244l-6 10 14-10" fill="{W}" stroke="{K}" stroke-width="3" stroke-linejoin="round"/>{r(138, 222, 30, 5, K, 2.5)}{r(138, 232, 20, 5, G3, 2.5)}
+{r(330, 330, 84, 30, K, 15)}{t(372, 350, "TAG 2", 11, W, 700, "middle")}
+''', "Zwei Tage vor Ort: gemeinsam entsteht die Landingpage")
 
 
 VARIANTEN = [
-    (v1, "Flächig", "Nur Farbflächen, keine Linien. Ruhig, grafisch, sehr reduziert.", "niedrig", "wenige"),
-    (v2, "Isometrisch", "Die Seite als Platten, die zusammengesetzt werden. Räumlich, aber nicht realistisch.", "mittel", "mittel"),
-    (v3, "Bauplan", "Wireframe mit Beschriftung und Maßlinie. Fein, sachlich, viel Information.", "hoch", "viele"),
-    (v4, "Duoton Magenta", "Nur Magenta-Töne mit Rasterpunkten. Desktop und Handy.", "mittel", "mittel"),
-    (v5, "Prozess-Infografik", "Die drei Etappen des Sprints auf einer Zeitachse – erklärt den Ablauf.", "hoch", "viele"),
-    (v6, "Papier & Schatten", "Workshop-Zettel werden zur fertigen Seite. Haptisch, leicht gedreht.", "mittel", "mittel"),
-    (v7, "Typografisch", "Die Zahl ist das Bild. Lora in groß, ein Handy als Akzent.", "niedrig", "sehr wenige"),
-    (v8, "Geräte-UI", "Echte Seite auf Laptop und Handy, dazu die erste Anfrage. Am konkretesten.", "hoch", "viele"),
-    (v9, "Dunkle Bühne", "Helle Linien auf Schwarz, Countdown leuchtet. Hochwertig, technisch.", "mittel", "mittel"),
-    (v10, "Fokus-Prinzip", "Vom Sammelsurium der Homepage zur fokussierten Seite. Erklärt das Warum.", "mittel", "viele"),
+    (v2, "Isometrisch", "Die Seite als Platten, die zusammengesetzt werden. Räumlich, aber nicht realistisch.", "mittel", "mittel", False),
+    (v3, "Bauplan", "Wireframe mit Beschriftung und Maßlinie – jetzt frei auf Weiß, ohne Karopapier.", "hoch", "viele", False),
+    (v4, "Duoton Magenta", "Nur Magenta-Töne, Desktop und Handy – jetzt ohne gepunkteten Kreis.", "mittel", "mittel", False),
+    (v5, "Prozess-Infografik", "Die drei Etappen des Sprints auf einer Zeitachse – erklärt den Ablauf.", "hoch", "viele", False),
+    (v7, "Typografisch", "Die Zahl ist das Bild. Lora in groß, ein Handy als Akzent.", "niedrig", "sehr wenige", False),
+    (v11, "Riso-Druck", "Zwei Druckfarben leicht versetzt übereinander – grafisch, mit Charakter, ohne Schwarz.", "mittel", "mittel", True),
+    (v12, "Uhr-Infografik", "Die 48 Stunden als Ring: Tag 1 Sparring & Rohversion, Tag 2 Feinschliff & Go-live.", "hoch", "mittel", True),
+    (v13, "Piktogramm-System", "Neun Kacheln, jede ein Baustein des Sprints. Modular, sachlich, gut auf andere Seiten übertragbar.", "mittel", "viele", True),
+    (v14, "Fortschrittskurve", "Fortschritt über 48 Stunden als Chart mit Meilensteinen. Analytisch.", "mittel", "mittel", True),
+    (v15, "Szene in Linien", "Zwei Tage vor Ort: Menschen am Tisch, an der Wand entsteht die Seite.", "mittel", "mittel", True),
 ]
+
+NEU = '<span class="hv-chip hv-chip--neu">neu</span>'
 
 CSS = """<style>
 .hv-intro { padding: 4.5rem 0 1rem; }
@@ -267,10 +283,12 @@ CSS = """<style>
 .hv-nr { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 10px; background: #1a1817; color: #fff; font-family: var(--font-serif); font-weight: 700; }
 .hv-name { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem; }
 .hv-chip { padding: .25rem .7rem; border-radius: 999px; background: #f4f3f0; font-size: .8rem; font-weight: 600; color: #3d3a37; }
+.hv-chip--neu { background: #C51F5D; color: #fff; }
 .hv-text { flex-basis: 100%; margin: .2rem 0 0 3.6rem; color: #6f6a64; font-size: .98rem; }
 .hv-var .e2-kopf { padding-top: 2.6rem; }
 .hv-bild { display: block; width: 100%; height: auto; }
-@media (max-width: 600px) { .hv-text { margin-left: 0; } }
+@media (max-width: 600px) { .hv-chip--neu { background: #C51F5D; color: #fff; }
+.hv-text { margin-left: 0; } }
 </style>"""
 
 
@@ -280,15 +298,15 @@ def main():
     bild_alt = re.search(r'<svg class="e2-bild".*?</svg>', kopf, re.S).group(0)
     a, b = h.index("<main>"), h.index("</main>") + 7
     teile = []
-    for i, (f, name, text, detail, menge) in enumerate(VARIANTEN, 1):
+    for i, (f, name, text, detail, menge, neu) in enumerate(VARIANTEN, 1):
         k = kopf.replace(bild_alt, f()).replace('id="intro"', f'id="kopf-{i}"')
         teile.append(f'<div class="hv-var" id="v{i}"><div class="e2-wrap"><div class="hv-band"><span class="hv-nr">{i}</span>'
-                     f'<span class="hv-name">{name}</span><span class="hv-chip">Detailgrad: {detail}</span><span class="hv-chip">Elemente: {menge}</span>'
+                     f'<span class="hv-name">{name}</span><span class="hv-chip">Detailgrad: {detail}</span><span class="hv-chip">Elemente: {menge}</span>{NEU if neu else ""}'
                      f'<p class="hv-text">{text}</p></div></div>{k}</div>')
     links = "".join(f'<a href="#v{i}">{i} · {v[1]}</a>' for i, v in enumerate(VARIANTEN, 1))
     intro = (f'<section class="hv-intro"><div class="e2-wrap"><p class="e2-kicker">Entwicklung · Header</p>'
-             f'<h1>Zehn Stile für den Kopf von „Sprint Landingpage“</h1>'
-             f'<p>Gleicher Text, gleiche Aufteilung – nur die Illustration rechts wechselt. Die Stile unterscheiden sich bewusst stark in Bildsprache, '
+             f'<h1>Header-Stile für „Sprint Landingpage“ · Runde 2</h1>'
+             f'<p>Gleicher Text, gleiche Aufteilung – nur die Illustration rechts wechselt. Fünf Stile aus Runde 1 sind geblieben (Bauplan und Duoton bereinigt), fünf sind neu. Die Stile unterscheiden sich bewusst stark in Bildsprache, '
              f'Detailgrad und Anzahl der Elemente. Wähle aus, was zu empiria passt; danach übertragen wir den Stil auf alle Seiten.</p>'
              f'<div class="hv-index">{links}</div></div></section>')
     seite = h[:a] + "<main>\n" + CSS + '<div class="e2-alt e2-alt--magenta e2-seite--sprint-landingpage">' + intro + "".join(teile) + "</div>\n</main>" + h[b:]
