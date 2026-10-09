@@ -405,3 +405,22 @@
 .e2-sek--schwarz .e2-var-band { background: #fff; color: #1a1817; }
 .e2-var-band { display: flex !important; width: fit-content; }
 .e2-sek--schwarz .e2-var-band b { color: #1a1817; }
+/* Strategie 2 (Runde 13): Problem auf Gelb wie die Bereichsfarbe, Lösung mit Strategiemodell, Ergebnis mit gelber Unterzeile */
+.e2-seite--strategie-2 #problem { background: var(--e2-gelb) !important; padding-top: 6.5rem !important; }
+.e2-seite--strategie-2 #problem .produkt-section-head p { color: var(--e2-ink) !important; }
+.e2-seite--strategie-2 #loesung-baustein { background: #fff !important; }
+.e2-seite--strategie-2 .section--dark .kicker { color: var(--e2-gelb) !important; }
+.e2-s2-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+.e2-s2-liste { list-style: none; margin: 1.6rem 0 0; padding: 0; border-top: 1px solid var(--e2-linie); }
+.e2-s2-liste li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--e2-linie); }
+.e2-s2-sym { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--e2-gelb); }
+.e2-s2-sym svg { width: 1.5rem; height: 1.5rem; }
+.e2-s2-liste b { display: block; font-family: var(--font-serif); font-size: 1.3rem; }
+.e2-s2-liste span { font-size: 1rem; color: var(--e2-ink-2); }
+.e2-s2-schluss { margin-top: 1.4rem !important; }
+.e2-s2-loesung .loesung-modell { margin: 0 !important; }
+.e2-s2-loesung .loesung-modell-card { max-width: none !important; width: 100% !important; }
+@media (max-width: 960px) { .e2-s2-split { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; } }
+.e2-seite--strategie-2 .loesung-modell-card, .e2-seite--strategie-2 .loesung-modell-card .media-box-thumb, .e2-seite--strategie-2 .loesung-modell-card .media-box-footer { background: var(--e2-ink) !important; }
+.e2-seite--strategie-2 .e2-kopf h1 { font-size: clamp(2.5rem, 4.6vw, 4rem) !important; }
+.e2-seite--strategie-2 .loesung-modell-card .btn { color: var(--e2-ink) !important; }

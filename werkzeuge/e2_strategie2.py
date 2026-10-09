@@ -55,17 +55,18 @@ def quelle():
     problem = f'''<section class="produkt-grid" id="problem"><div class="container"><div class="produkt-section-head">
 <p class="kicker">{pr_k}</p><h2 class="h-serif">{pr_h}</h2>{"".join(f"<p>{p}</p>" for p in pr_ps)}</div></div></section>'''
 
-    # Lösung → „Das bekommst Du“-Karten: Rolle · Richtung · Handwerkszeug mit ihren Fragen
+    # Lösung (Runde 13): links die drei Fragen als ruhige Zeilen mit Symbol, rechts groß das Strategiemodell (wie Original)
     lo = _abschnitt(sm, 'id="loesung-baustein"')
-    lo_k, lo_h = _eins(r'<p class="kicker">(.*?)</p>', lo), _eins(r"<h2[^>]*>(.*?)</h2>", lo)
-    lo_ps = re.findall(r"<p(?: class=\"lead\")?>(.*?)</p>", lo, re.S)
+    lo_k, lo_h = _eins(r'<p class="kicker">(.*?)</p>', lo), re.sub(r'<span class="hl">(.*?)</span>', r"\1", _eins(r"<h2[^>]*>(.*?)</h2>", lo))
+    lo_ps = re.findall(r'<p class="lead">(.*?)</p>', lo, re.S)
     fragen = [re.sub(r"<[^>]+>", "", f).strip() for f in re.findall(r"<li[^>]*>(.*?)</li>", lo, re.S)]
+    modell = _eins(r'(<div class="loesung-modell">.*?</div>\s*</div>\s*</div>)\s*</div>\s*</div>', lo)
     titel = ["Rolle", "Richtung", "Handwerkszeug"]
     symbole = ["flag", "compass", "wrench"]
-    karten = "".join(f'<div class="produkt-glass"><div class="feature-icon">{_sym(symbole[i])}</div><h3>{titel[i]}</h3><p>{fragen[i]}</p></div>' for i in range(3))
-    loesung = f'''<section class="produkt-grid" id="loesung-baustein"><div class="container"><div class="produkt-section-head">
-<p class="kicker">{lo_k}</p><h2 class="h-serif">{lo_h}</h2><p>{lo_ps[0] if lo_ps else ""}</p></div>
-<div class="produkt-grid-cards">{karten}</div>{f'<p class="e2-s2-notiz">{lo_ps[-1]}</p>' if len(lo_ps) > 1 else ""}</div></section>'''
+    zeilen = "".join(f'<li><span class="e2-s2-sym">{_sym(symbole[i])}</span><div><b>{titel[i]}</b><span>{fragen[i]}</span></div></li>' for i in range(3))
+    loesung = f'''<section class="section e2-s2-loesung" id="loesung-baustein"><div class="container"><div class="e2-s2-split">
+<div><p class="kicker">{lo_k}</p><h2 class="h-serif">{lo_h}</h2><p class="lead">{lo_ps[0]}</p><ul class="e2-s2-liste">{zeilen}</ul><p class="lead e2-s2-schluss">{lo_ps[-1]}</p></div>
+{modell}</div></div></section>'''
 
     # Perspektivwechsel, Ergebnis, Download, Kontakt: Originalabschnitte (werden von e2 wie auf der Strategie-Seite umgesetzt)
     persp = _abschnitt(sm, 'id="perspektive"')
@@ -83,6 +84,14 @@ def quelle():
 <p class="kicker">{za_k}</p><h2 class="h-serif">{za_h}</h2>{"".join(f"<p>{p}</p>" for p in za_lead[:1])}</div><div class="produkt-faq-list">{liste}</div></div></section>'''
 
     main = "\n".join([kopf, problem, loesung, persp, ergebnis, zusammen, download, kontakt])
+    i = st.index('<div class="modal-overlay" id="strategiemodellModal"')
+    tiefe, j = 0, i
+    for mm in re.finditer(r"<div\b|</div>", st[i:]):
+        tiefe += 1 if mm.group(0) == "<div" else -1
+        if tiefe == 0:
+            j = i + mm.end(); break
+    modal = st[i:j]
+    rahmen = rahmen.replace("</footer>", "</footer>\n" + modal, 1)
     a, b = rahmen.index("<main"), rahmen.index("</main>")
     html = rahmen[:a] + "<main>\n" + main + "\n" + rahmen[b:]
     html = re.sub(r"<title>.*?</title>", "<title>Strategie in den Alltag überführen 2 · empiria</title>", html, count=1, flags=re.S)
