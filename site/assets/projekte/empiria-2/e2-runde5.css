@@ -666,3 +666,29 @@ html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check::before, html body .e2-alt
   html body.e2 .e2-s2-kasten, html body.e2 .e2v-zitat, html body.e2 .e2-kasten { padding: 1.6rem 1.3rem !important; }
 }
 @media (max-width: 960px) { html body.e2 .e2v-held__raster .e2v-held__pfeil { width: 7.5rem !important; justify-self: start !important; margin-bottom: 1rem; } }
+
+/* Innovation · Lösung (Runde 25): Volksfest-Aufbau – Text + Kasten, fünf gleiche Karten, Methoden + schwarzer Ansatz-Kasten ohne Bilder */
+.e2-in-loesung { background: #fff !important; }
+.e2-in-oben { align-items: center !important; }
+.e2-in-oben .lead + .lead, .e2-in-methode .lead + .lead { margin-top: .9rem !important; }
+.e2-in-loesung .inno-stein { margin: 0 !important; border-radius: var(--e2-r) !important; background: var(--e2-hell) !important; padding: 2.2rem !important; }
+.e2-in-label { display: inline-flex; align-items: center; gap: .55rem; margin: 0 0 .9rem !important; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.e2-in-label::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
+.e2-in-einsatz { margin-top: 5rem; }
+.e2-in-einsatz .lead { max-width: 44rem; }
+.e2-in-karten { list-style: none; margin: 2.2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.e2-in-karten li { display: flex; flex-direction: column; gap: 1.1rem; padding: 1.5rem 1.3rem; border-radius: var(--e2-r); border: 1px solid var(--e2-linie); background: #fff; }
+.e2-in-sym { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--e2-gelb); }
+.e2-in-sym svg { width: 1.5rem; height: 1.5rem; }
+.e2-in-karten b { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.25; }
+.e2-in-scope { margin-top: 1.2rem !important; font-size: .95rem; color: var(--e2-grau); }
+.e2-in-methode { margin-top: 5rem; align-items: center !important; }
+.e2-in-ansatz { padding: 2.4rem; border-radius: var(--e2-r); background: var(--e2-ink); }
+.e2-in-ansatz__tag { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1rem !important; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-gelb) !important; }
+.e2-in-ansatz__tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
+.e2-in-ansatz__satz { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.25; color: #fff !important; }
+.e2-gelb-text { color: var(--e2-gelb); }
+@media (max-width: 960px) { .e2-in-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } .e2-in-einsatz, .e2-in-methode { margin-top: 3.2rem; } }
+@media (max-width: 480px) { .e2-in-karten { grid-template-columns: minmax(0, 1fr); } }
+.e2-in-loesung .inno-stein-tag { margin-bottom: 1rem !important; } .e2-in-loesung .inno-stein li + li { margin-top: .5rem; }
+@media (max-width: 480px) { .e2-in-karten li { flex-direction: row; align-items: center; padding: 1rem 1.1rem; } .e2-in-karten { gap: .6rem; } }

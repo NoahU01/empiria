@@ -81,6 +81,29 @@ def problem_inno(sek):
 </div></div></section>'''
 
 
+# ---------- Innovation: Lösung im Volksfest-Aufbau (Runde 25) ----------
+def loesung_inno(sek):
+    from e2_lucide import ICONS
+    k = _eins(r'<p class="kicker">(.*?)</p>', sek)
+    h2 = re.sub(r'<span class="hl">(.*?)</span>', r"\1", _eins(r"<h2[^>]*>(.*?)</h2>", sek))
+    leads = re.findall(r'<p class="lead">(.*?)</p>', sek, re.S)
+    stein = _eins(r'(<div class="inno-stein[^"]*"[^>]*>.*?</div>)', sek)
+    titel = [re.sub(r"<br>", " ", t) for t in re.findall(r'<span class="inno-einsatz-title">(.*?)</span>', sek, re.S)]
+    scope = _eins(r'<p class="inno-scope">(.*?)</p>', sek)
+    ansatz_tag = _eins(r'<p class="inno-greenfield-tag">(.*?)</p>', sek)
+    ansatz = re.sub(r'<span class="hl">(.*?)</span>', r'<span class="e2-gelb-text">\1</span>', _eins(r'<p class="inno-greenfield-text">(.*?)</p>', sek))
+    sym = ["trending-up", "handshake", "blocks", "puzzle", "sparkles"]
+    def ic(n):
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+    karten = "".join(f'<li><span class="e2-in-sym">{ic(sym[i])}</span><b>{t}</b></li>' for i, t in enumerate(titel))
+    return f'''<section class="section e2-in-loesung" id="loesung-baustein"><div class="container">
+  <div class="e2-s2-split e2-in-oben"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2><p class="lead">{leads[0]}</p><p class="lead">{leads[1]}</p></div>{stein}</div>
+  <div class="e2-in-einsatz"><p class="e2-in-label">Einsatzmöglichkeiten</p><p class="lead">{leads[2]}</p><ul class="e2-in-karten">{karten}</ul><p class="e2-in-scope">{scope}</p></div>
+  <div class="e2-s2-split e2-in-methode"><div><p class="e2-in-label">Unsere Methoden</p><p class="lead">{leads[3]}</p><p class="lead">{leads[4]}</p></div>
+    <div class="e2-in-ansatz"><p class="e2-in-ansatz__tag">{ansatz_tag}</p><p class="e2-in-ansatz__satz">{ansatz}</p></div></div>
+</div></section>'''
+
+
 # ---------- Komplexe Themen: Problem ohne Nummern ----------
 def problem_kt(sek):
     """Runde 11 (Daniel): Dramaturgie wie im schwarzen Kasten der Live-Seite – ein Kasten, von oben nach unten lesbar."""
