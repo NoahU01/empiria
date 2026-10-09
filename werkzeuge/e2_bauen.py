@@ -119,8 +119,27 @@ def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf", h=None):
     return mit_strategie2(out)
 
 
+SEKUNDAER_ZU_GELB = {"#c51f5d": "#fff400", "#0b9fbd": "#fff400", "#8613a1": "#fff400",       # Magenta, Cyan, Lila
+                     "#7a1339": "#fff400", "#086a80": "#fff400", "#5c0d70": "#fff400", "#0a8aa4": "#f0e400"}   # ihre dunklen Verlaufs-/Hover-Töne
+
+
 def mit_strategie2(html):
-    return html   # Runde 23: Strategie 2 ist jetzt die Strategie-Seite
+    """Runde 23: Strategie 2 ist jetzt die Strategie-Seite (nichts mehr zu tun).
+    Runde 37: bei SCHWARZ_GELB alle fest eingebauten Sekundärfarben der Seite auf Gelb – das Entwicklungsmenü bleibt unberührt."""
+    if not SCHWARZ_GELB:
+        return html
+    import e2_schwarzgelb
+    html = html.replace('href="/styles.css"', 'href="/assets/projekte/empiria-2/sg/styles.css"').replace('href="/assets/projekte/empiria-2/e2', 'href="/assets/projekte/empiria-2/sg/e2')
+    return e2_schwarzgelb.html(html)
+
+
+def schwarzgelb_css():
+    """Umgefärbte Kopien der Stylesheets für den Schwarz-Gelb-Versuch (Originale bleiben unverändert)."""
+    import e2_schwarzgelb
+    ziel = SITE / "assets/projekte/empiria-2/sg"; ziel.mkdir(exist_ok=True)
+    for quelle in [SITE / "styles.css"] + [SITE / f"assets/projekte/empiria-2/{n}.css" for n in ("e2", "e2-seiten", "e2-runde5")]:
+        text = quelle.read_text(encoding="utf-8").replace('url("./assets/', 'url("/assets/')
+        (ziel / quelle.name).write_text(e2_schwarzgelb.css(text), encoding="utf-8")
 
 
 def _alt_mit_strategie2(html):
@@ -174,6 +193,10 @@ SYMBOL = {
 }
 AKZENT_SEITE = {"teams": "gelb", "der-beste-workshop": "magenta", "marketing": "cyan", "dashboard-digitales-marketing": "cyan", "sofort-sichtbar": "cyan", "paid-ads": "cyan", "medien": "cyan", "powerpoint": "cyan", "landingpage": "cyan", "rollup": "cyan", "video": "cyan", "digitale-tools": "cyan", "training-sparring": "violett", "praesentationsseminar": "violett", "sparring": "violett", "impulsvortraege": "violett", "strategie": "gelb", "strategie-2": "gelb", "komplexe-themen": "gelb", "innovation": "gelb",
                 "workshops": "magenta", "ki-zum-anfassen": "magenta", "sprint-landingpage": "magenta", "workshop-moderation": "magenta"}
+
+# Runde 37 (Daniel): Versuch „alles Schwarz-Weiß-Gelb“ – alle Bereiche in der Farbwelt Gelb, Sekundärfarben aus.
+# Zurück zu den Bereichsfarben: SCHWARZ_GELB = False setzen und neu bauen.
+SCHWARZ_GELB = True   # Umfärben übernimmt e2_schwarzgelb (Seitenklassen bleiben, damit alle Regeln greifen)
 
 
 # Formate auf der Startseite: Kernaussage je Format (aus den Originaltexten verdichtet) und ein Symbol je Unterformat
@@ -239,9 +262,9 @@ def kopfbild(name, chips=""):
     import e2_kopfbilder as kb
     from e2_header import farbig
     seite = next(x for x in kb.SEITEN if x[0] == KOPFBILD_SEITE[name])
-    roh = farbig(kb.bild(seite)[0], seite[2], "kopf")
+    roh = farbig(kb.bild(seite)[0], "gelb" if SCHWARZ_GELB else seite[2], "kopf")
     bild = roh.replace('class="hv-bild"', 'class="e2-bild e2-bild--gross"')
-    mobil = farbig(kb.bild(seite)[0], seite[2], "kopfm").replace('class="hv-bild"', 'class="e2-bild e2-bild--mobil"').replace('viewBox="0 0 440 400"', f'viewBox="{kb.eng(seite)}"', 1)
+    mobil = farbig(kb.bild(seite)[0], "gelb" if SCHWARZ_GELB else seite[2], "kopfm").replace('class="hv-bild"', 'class="e2-bild e2-bild--mobil"').replace('viewBox="0 0 440 400"', f'viewBox="{kb.eng(seite)}"', 1)
     return f'<div class="e2-kopfbild">{bild}{mobil}{chips}</div>'
 
 
@@ -379,7 +402,8 @@ def workshop_karten(main, welt="magenta", alle=False):
     """Übersichtsseiten (Daniel, Runde 21/33): statt filigraner Skizzen die Kopfbilder der jeweiligen Unterseite – weiß auf Bereichsfarbe."""
     import e2_kopfbilder as kb
     from e2_header import farbig
-    akzent = {"magenta": "#ffd0e0", "cyan": "#c9eef6", "violett": "#ecd2f3"}[welt]
+    akzent = {"magenta": "#ffd0e0", "cyan": "#c9eef6", "violett": "#ecd2f3", "gelb": "#1a1817"}[welt]
+    strich = "#1a1817" if welt == "gelb" else "#ffffff"   # auf Gelb schwarz, sonst weiß
 
     def ersetze(m):
         block = m.group(0)
@@ -389,7 +413,7 @@ def workshop_karten(main, welt="magenta", alle=False):
         seite = next((x for x in kb.SEITEN if x[0] == titel), None)
         if not seite:
             return block
-        bild = kb.bild(seite)[0].replace("#1a1817", "#ffffff").replace("#C51F5E", akzent).replace("#b9b3ab", "#ffffff")
+        bild = kb.bild(seite)[0].replace("#1a1817", strich).replace("#C51F5E", akzent).replace("#b9b3ab", strich)
         bild = farbig(bild, welt, "wk" + name[:6]).replace('class="hv-bild"', 'class="e2-wk-bild"')
         if alle:   # enger Bildausschnitt, damit beide Bilder gleich groß und mittig stehen
             bild = bild.replace('viewBox="0 0 440 400"', f'viewBox="{kb.eng(seite)}"', 1).replace('class="e2-wk-bild"', 'class="e2-wk-bild e2-wk-bild--eng"', 1)
@@ -440,6 +464,10 @@ def unterseite(original, ziel, html=None):
         doku = f'<svg class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU["clipboard-list"]}</svg>'
         main = re.sub(r'(data-modal-target="jobProfileModal"[^>]*>\s*<div class="media-box-thumb">).*?(</div>\s*</button>)', lambda m: m.group(1) + doku + m.group(2), main, count=1, flags=re.S)
         main = main.replace('<svg viewBox="0 0 800 820" xmlns', '<svg viewBox="40 55 730 700" xmlns', 1)
+        if SCHWARZ_GELB:   # Diagramm und Icon auf Gelb in Schwarz statt Weiß
+            a = main.index('<svg viewBox="40 55 730 700"'); e = main.index("</svg>", a)
+            main = main[:a] + main[a:e].replace("rgba(255,255,255,", "rgba(26,24,23,") + main[e:]
+            main = main.replace('class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#fff"', 'class="e2-doku-ico" viewBox="0 0 24 24" fill="none" stroke="#1a1817"')
         main = re.sub(r"Du konzentrierst Dich nicht auf Marketing,\s*sondern auf", "Du konzentrierst Dich auf", main, count=1)
     if name == "sprint-landingpage":
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["sparkles", "zap", "life-buoy", "bell-ring", "graduation-cap", "heart-handshake"], kurztexte=[
@@ -486,7 +514,7 @@ def unterseite(original, ziel, html=None):
         return '<ol class="e2-problem">' + "".join(f"<li>{x}</li>" for x in bloecke) + "</ol>"
     main = re.sub(r'<div class="problem-card[^"]*">(.*?)</div>\s*</div>\s*</div>\s*</section>', lambda m: problem(m) + "</div></div></section>", main, count=1, flags=re.S)
     if name in ("workshops", "marketing", "digitale-tools", "impulsvortraege", "training-sparring"):
-        main = workshop_karten(main, AKZENT_SEITE[name], alle=name == "training-sparring")
+        main = workshop_karten(main, "gelb" if SCHWARZ_GELB else AKZENT_SEITE[name], alle=name == "training-sparring")
     if name == "training-sparring":   # zwei Formate über die volle Breite, nicht schmal mittig
         main = main.replace(' style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 714px; margin-left: auto; margin-right: auto;"', ' style="grid-template-columns: repeat(2, minmax(0, 1fr));"', 1)
     main += DIALOG_JS
@@ -578,7 +606,7 @@ def startseite():
             bild = re.search(r'<svg.*?</svg>|<img[^>]*>', stueck, re.S).group(0).replace(' loading="lazy"', '').replace('class="formate-preview-card-photo" ', '')
             karten.append((bild, eins(r'<div class="formate-preview-title">(.*?)</div>', stueck), eins(r'<p class="formate-preview-desc">(.*?)</p>', stueck)))
         btn = re.search(r'<a class="btn btn--dark btn--sm" href="([^"]+)">(.*?)</a>', koerper)
-        fo_daten.append(dict(farbe=farbe, titel=titel, ps=ps, akz=AKZENT.get(farbe, "#1a1817"), href=link(btn.group(1)), knopf=btn.group(2),
+        fo_daten.append(dict(farbe=farbe, titel=titel, ps=ps, akz="#1a1817" if SCHWARZ_GELB else AKZENT.get(farbe, "#1a1817"), href=link(btn.group(1)), knopf=btn.group(2),
                              satz=FORMAT_SATZ.get(re.sub(r"&amp;", "&", titel), ""), sym=FORMAT_GROSS.get(re.sub(r"&amp;", "&", titel), ""),
                              unter=[dict(skizze=sk, titel=t, text=d, href=unter_link(t)) for sk, t, d in karten]))
     fo_kopf = f'''<div class="e2-kopfzeile"><div><p class="e2-kicker">{fo_kicker}</p><h2 class="e2-h2">{fo_h2}</h2></div><div>{''.join(f'<p class="e2-lead">{p}</p>' for p in fo_leads)}</div></div>'''
@@ -608,6 +636,8 @@ def startseite():
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
+    if SCHWARZ_GELB:
+        schwarzgelb_css()
     (ZIEL / "index.html").write_text(startseite(), encoding="utf-8")
     for orig, ziel in SEITEN.items():
         if orig != "index.html":

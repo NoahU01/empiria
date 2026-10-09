@@ -171,7 +171,7 @@ def sparring_gegenueber(sek):
     items = re.findall(r"<h3>(.*?)</h3><p>(.*?)</p>", sek, re.S)
     sym = ["lock", "award", "layers", "compass", "rocket", "megaphone"]
     def ic(n):
-        return f'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
+        return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
     li = "".join(f'<li><span class="e2-gg__sym">{ic(sym[i % 6])}</span><h3>{t}</h3><p>{x}</p></li>' for i, (t, x) in enumerate(items))
     return f'''<section class="produkt-grid e2-gg"><div class="container">
   <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>

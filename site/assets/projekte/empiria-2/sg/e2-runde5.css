@@ -15,7 +15,7 @@
     linear-gradient(var(--hl), var(--hl)) left calc(var(--hl-r) - 3px) top var(--hl-t) / calc(100% - 2 * var(--hl-r) + 6px) calc(var(--hl-r) + 1px) no-repeat,
     linear-gradient(var(--hl), var(--hl)) left 0 bottom 0 / 100% calc(100% - var(--hl-t) - var(--hl-r) + 1.5px) no-repeat !important;
 }
-.e2-alt--magenta h1 .hl, .e2-dl-hl--magenta { --hl: #C51F5D; color: #fff !important; }
+.e2-alt--magenta h1 .hl, .e2-dl-hl--magenta { --hl: #fff400; color: #1a1817 !important; }
 
 /* ---------- Logo-Leiste: Verlauf genau an der Kante ---------- */
 .e2-logos .marquee::before { left: 0; }
@@ -24,18 +24,18 @@
 /* ---------- Formate: drei gleich gebaute Karten, alles auf gleicher Höhe ---------- */
 .e2-formate3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem; margin-top: 3.2rem; }
 .e2-f3 { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
-.e2-f3__kopf { display: flex; flex-direction: column; justify-content: flex-end; min-height: 8.5rem; padding: 1.5rem 1.6rem 1.4rem; background: var(--e2-akzent); color: #fff; }
+.e2-f3__kopf { display: flex; flex-direction: column; justify-content: flex-end; min-height: 8.5rem; padding: 1.5rem 1.6rem 1.4rem; background: var(--e2-akzent); color: #1a1817; }
 .e2-f3__kopf h3 { font-size: 1.85rem; color: #fff; }
 .e2-f3__satz { padding: 1.3rem 1.6rem 0; font-size: 1rem; line-height: 1.55; color: var(--e2-ink); font-weight: 500; }
 .e2-f3__liste { list-style: none; margin: 1.1rem 1.6rem 0; padding: 0; align-self: start; }
 .e2-f3__liste li { display: grid; grid-template-columns: 2.3rem minmax(0, 1fr); gap: .8rem; align-items: center; padding: .6rem 0; border-top: 1px solid var(--e2-linie); }
 .e2-f3__liste li:last-child { border-bottom: 1px solid var(--e2-linie); }
-.e2-f3__liste i { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; border-radius: 10px; background: color-mix(in srgb, var(--e2-akzent) 12%, #fff); color: var(--e2-akzent); }
+.e2-f3__liste i { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; border-radius: 10px; background: color-mix(in srgb, var(--e2-akzent) 12%, #fff); color: #1a1817; }
 .e2-f3__liste i svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .e2-f3__liste b { font-size: .95rem; font-weight: 600; line-height: 1.3; }
 .e2-f3__fuss { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; padding: 1.6rem; }
 .e2-f3__fuss .e2-knopf { padding: .7rem 1.15rem; font-size: .92rem; }
-.e2-f3__blick { padding: 0; border: 0; background: none; font: 600 .92rem/1.2 var(--font-sans); color: var(--e2-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--e2-akzent); text-decoration-thickness: 2px; cursor: pointer; }
+.e2-f3__blick { padding: 0; border: 0; background: none; font: 600 .92rem/1.2 var(--font-sans); color: var(--e2-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #1a1817; text-decoration-thickness: 2px; cursor: pointer; }
 /* Fenster „Formate ansehen“: Text + die Skizzen der bisherigen Startseite */
 .e2-fdialog { width: min(52rem, calc(100vw - 2rem)); }
 .e2-fdialog .e2-fdialog__band { height: 6px; margin: -2.4rem -2.4rem 2rem; background: var(--e2-akzent); }
@@ -78,7 +78,7 @@
 
 /* ---------- Problem-Abschnitte allgemein: keine Nummern (Probleme sind keine Schritte) ---------- */
 .e2-problem > li::before { content: "" !important; top: .55rem !important; left: 1.05rem !important; width: .75rem !important; height: .75rem !important; border-radius: 50% !important; background: var(--e2-gelb) !important; box-shadow: 0 0 0 4px var(--e2-hell); }
-.e2-alt--magenta .e2-problem > li::before { background: #C51F5D !important; }
+.e2-alt--magenta .e2-problem > li::before { background: #fff400 !important; }
 .e2-problem > li:not(:last-child)::after { top: 1.6rem !important; }
 
 /* ---------- Strategie › Perspektivwechsel: kompakt, Kette Gedankenexperiment » Wirkung » Ergebnis ---------- */
@@ -172,7 +172,7 @@
 
 /* ---------- Download-Kästen: Kicker in der Farbe der Seite, Hervorhebung als Kasten ---------- */
 .e2-alt--gelb .pdf-dl .pdf-dl-kicker { color: var(--e2-gelb) !important; }
-.e2-alt--magenta .pdf-dl .pdf-dl-kicker { color: #e2457f !important; }
+.e2-alt--magenta .pdf-dl .pdf-dl-kicker { color: #fff400 !important; }
 .e2-alt .pdf-dl-h { line-height: 1.24 !important; }
 
 /* ---------- Kopf: Überschrift etwas kleiner, damit Zeilen sinnvoll umbrechen ---------- */
@@ -210,12 +210,12 @@
 /* Grundregel: Symbole nur in der Akzentfarbe – keine farbige Fläche, kein Rahmen dahinter. */
 .e2-var-band { display: inline-flex; gap: .6rem; align-items: center; margin: 0 0 2rem !important; padding: .45rem .9rem; border-radius: 999px; background: #1a1817; color: #fff; font-size: .82rem; }
 .e2-var-band b { color: #fff400; }
-.e2-formate-a i svg, .e2-formate-b i svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: var(--e2-akzent); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; display: block; }
+.e2-formate-a i svg, .e2-formate-b i svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: #1a1817; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; display: block; }
 
 /* Variante A: Leistungs-Karten */
 .e2-formate-a { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr auto; column-gap: 1.4rem; margin-top: 3.2rem; }
 .e2-fa { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; border-radius: var(--e2-r); background: #fff; border: 1px solid var(--e2-linie); overflow: hidden; }
-.e2-fa__mitte { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 12rem; padding: 1.6rem; background: var(--e2-akzent); color: #fff; }
+.e2-fa__mitte { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 12rem; padding: 1.6rem; background: var(--e2-akzent); color: #1a1817; }
 .e2-fa__mitte h3 { font-size: clamp(1.6rem, 2.2vw, 2rem); color: #fff; }
 .e2-fa__sym { position: absolute; right: 1.4rem; top: 1.4rem; width: 3.4rem; height: 3.4rem; }
 .e2-fa__sym svg { width: 100%; height: 100%; fill: none; stroke: #fff; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -224,7 +224,7 @@
 .e2-fa__liste a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .7rem 0; border-top: 1px solid var(--e2-linie); color: var(--e2-ink); font-weight: 600; font-size: .95rem; text-decoration: none; }
 .e2-fa__liste li:last-child a { border-bottom: 1px solid var(--e2-linie); }
 .e2-fa__liste .e2-pfeil { color: var(--e2-grau); transition: transform .15s; }
-.e2-fa__liste a:hover .e2-pfeil { transform: translateX(3px); color: var(--e2-akzent); }
+.e2-fa__liste a:hover .e2-pfeil { transform: translateX(3px); color: #1a1817; }
 .e2-fa__fuss { padding: 1.6rem 1.4rem 1.5rem; }
 .e2-fa__fuss .e2-knopf { padding: .7rem 1.15rem; font-size: .92rem; }
 
@@ -241,7 +241,7 @@
 .e2-fb__feld small { grid-column: 2; margin-top: .2rem; font-size: .85rem; line-height: 1.4; color: var(--e2-grau); }
 .e2-fb__pfeil { position: absolute; right: .9rem; top: 1rem; color: var(--e2-grau); }
 .e2-fb__feld:hover { background: var(--e2-hell); }
-.e2-fb__feld:hover .e2-fb__pfeil { color: var(--e2-akzent); }
+.e2-fb__feld:hover .e2-fb__pfeil { color: #1a1817; }
 
 /* Variante C: Reiter mit Skizzen */
 .e2-formate-c { margin-top: 3.2rem; border-radius: var(--e2-r); background: #fff; overflow: hidden; }
@@ -429,13 +429,13 @@
 .e2v-formate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr auto; column-gap: 1.2rem; margin-top: 3.2rem; }
 .e2v-format { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; padding: 2rem 1.8rem 1.8rem; border-radius: var(--e2-r); background: #252220; border-top: 4px solid var(--e2-akzent); }
 .e2v-format__sym { width: 2.6rem; height: 2.6rem; }
-.e2v-format__sym svg { width: 100%; height: 100%; fill: none; stroke: var(--e2-akzent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-format__sym svg { width: 100%; height: 100%; fill: none; stroke: #1a1817; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .e2v-format h3 { margin-top: 1.2rem !important; font-size: 1.6rem; color: #fff; }
 .e2v-format > p { margin-top: .7rem !important; font-size: 1rem; line-height: 1.55; color: #cfcac3; }
 .e2v-format ul { list-style: none; margin: 1.2rem 0 0; padding: 0; align-self: start; }
 .e2v-format li a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .7rem 0; border-top: 1px solid rgba(255,255,255,.12); color: #fff; font-weight: 600; font-size: .95rem; text-decoration: none; }
 .e2v-format li:last-child a { border-bottom: 1px solid rgba(255,255,255,.12); }
-.e2v-format li i svg { width: 1.3rem; height: 1.3rem; display: block; fill: none; stroke: var(--e2-akzent); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-format li i svg { width: 1.3rem; height: 1.3rem; display: block; fill: none; stroke: #1a1817; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .e2v-format li .e2-pfeil { color: #8a847c; }
 .e2v-format__mehr { margin-top: 1.6rem; display: inline-flex; gap: .4rem; align-items: center; font-weight: 600; color: var(--e2-gelb); text-decoration: none; }
 @media (max-width: 960px) { .e2v-formate { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 1.2rem; } .e2v-format { grid-row: auto; grid-template-rows: auto; } }
@@ -461,7 +461,7 @@
 .e2v-loesung__text .e2-knoepfe { margin-top: 1.8rem; }
 /* Formate B: ohne farbigen Rand, „Mehr erfahren“ in der Farbe des Formats */
 .e2v-format { border-top: 0 !important; }
-.e2v-format__mehr { color: var(--e2-akzent) !important; }
+.e2v-format__mehr { color: #1a1817 !important; }
 /* Strategie 2 Problem: mobil einspaltig */
 @media (max-width: 960px) { .e2-s2-problem .e2-s2-split { grid-template-columns: minmax(0, 1fr) !important; } }
 /* Strategie 2 (Runde 15): Perspektivwechsel oben bündig; Zusammenarbeit als offene Spalten ohne Kästen */
@@ -559,10 +559,10 @@
 @media (max-width: 760px) { .e2v-ergebnis2 { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; } }
 .e2v-formate-band__links a { grid-template-columns: 2.6rem minmax(0, 1fr) auto !important; }
 .e2v-formate-band__links i { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 2rem; height: 2rem; }
-.e2v-formate-band__links i svg { width: 100%; height: 100%; fill: none; stroke: var(--e2-akzent); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.e2v-formate-band__links i svg { width: 100%; height: 100%; fill: none; stroke: #1a1817; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .e2v-formate-band__links b, .e2v-formate-band__links span { grid-column: 2 !important; }
 .e2v-formate-band__links .e2-pfeil { grid-column: 3 !important; }
-.e2v-formate-band__links a:hover b { color: var(--e2-akzent); }
+.e2v-formate-band__links a:hover b { color: #1a1817; }
 /* Ergebnis ohne harten Strich: ruhige helle Fläche mit runden Ecken (Daniel, Runde 20) */
 .e2v-ergebnis2 { border-top: 0 !important; margin-top: 1.4rem !important; padding: 2rem 2.4rem !important; border-radius: var(--e2-r); background: var(--e2-hell); }
 @media (max-width: 760px) { .e2v-ergebnis2 { padding: 1.6rem 1.3rem !important; } }
@@ -570,7 +570,7 @@
 .e2-seite--workshops .media-boxes-grid { display: grid !important; grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem !important; row-gap: 0 !important; max-width: none !important; }
 .e2-seite--workshops .media-box { display: grid !important; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; padding: 0 !important; overflow: hidden; }
 .e2-seite--workshops .media-box-footer { display: contents !important; }
-.e2-seite--workshops .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: #C51F5D !important; }
+.e2-seite--workshops .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: #fff400 !important; }
 .e2-wk-bild { width: auto; height: 100%; max-width: 100%; display: block; }
 .e2-seite--workshops .media-box-title { grid-row: 2; padding: 1.6rem 1.6rem 0; margin: 0 !important; font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.25; align-self: start; }
 .e2-seite--workshops .media-box-desc { grid-row: 3; padding: .8rem 1.6rem 0; margin: 0 !important; align-self: start; }
@@ -578,9 +578,9 @@
 @media (max-width: 960px) { .e2-seite--workshops .media-boxes-grid { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none; row-gap: 1.2rem !important; } .e2-seite--workshops .media-box { grid-row: auto; grid-template-rows: auto auto auto auto; } }
 
 /* ================= Workshop-Unterseiten (Runde 22): gemeinsames Farbsystem wie Strategie 2 =================
-   Weiß (Kopf) · Magenta (erste Inhaltssektion, Karten weiß) · Weiß · Hell · Download · Kontakt weiß */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing),html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing),html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau { background: #C51F5D !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .produkt-section-head *,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .produkt-section-head *,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .vorschau-split-text,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .vorschau-split-text * { color: #fff !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .kicker::before,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .kicker::before,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .kicker::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .produkt-glass,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .produkt-glass { background: #fff !important; border: 0 !important; box-shadow: none !important; }
-/* KI: Tool-Logos weiß auf Magenta */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .tools-row-icon img { filter: brightness(0) invert(1) !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .tools-row-label { color: #fff !important; }
-/* KI: mittlerer Format-Kasten in Magenta */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured { background: #C51F5D !important; border-color: #C51F5D !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured,html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured * { color: #fff !important; opacity: 1 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-features li::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured [class*="badge"] { background: #fff !important; color: #C51F5D !important; }
+   Weiß (Kopf) · Magenta (erste Inhaltssektion, Karten weiß) · Weiß · Hell · Download · Kontakt weiß */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing),html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing),html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau { background: #fff400 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .produkt-section-head *,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .produkt-section-head *,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .vorschau-split-text,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .vorschau-split-text * { color: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .kicker::before,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .kicker::before,html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-vorschau .kicker::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen.e2-seite--ki-zum-anfassen section.produkt-grid:not(.produkt-pricing) .produkt-glass,html body .e2-alt.e2-alt.e2-seite--workshop-moderation.e2-seite--workshop-moderation section.produkt-grid:not(.produkt-pricing) .produkt-glass { background: #fff !important; border: 0 !important; box-shadow: none !important; }
+/* KI: Tool-Logos weiß auf Magenta */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .tools-row-icon img { filter: brightness(0) invert(1) !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .tools-row-label { color: #1a1817 !important; }
+/* KI: mittlerer Format-Kasten in Magenta */html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured { background: #fff400 !important; border-color: #fff400 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured,html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured * { color: #1a1817 !important; opacity: 1 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-features li::before { background: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured [class*="badge"] { background: #fff !important; color: #1a1817 !important; }
 /* Sprint: Struktur-Vorschau bleibt – als schwarze Karte auf Magenta; Rhythmus ohne zwei Graus hintereinander */html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .vorschau-facts-list li::before { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .sprint-structure-card { background: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .sprint-structure-thumb { background: #1a1817 !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-price-note { background: #fff !important; }html body .e2-alt.e2-alt.e2-seite--sprint-landingpage .produkt-faq { background: var(--e2-hell) !important; }
 html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-badge-slot { background: none !important; } html body .e2-alt.e2-alt.e2-seite--ki-zum-anfassen .price-card--featured .price-badge { display: inline-block !important; width: auto !important; border-radius: 999px !important; padding: .3rem .8rem !important; }
 
@@ -609,19 +609,19 @@ html body .e2-alt.e2-alt.e2-seite--komplexe-themen #intro.e2-kopf h1, html body 
 /* ================= Runde 24: alle übrigen Seiten im durchgängigen Layout =================
    Bereichsfarbe je Seite (--bf): Strategiehandwerk Gelb · Workshops Magenta · Marketing Cyan · Training & Sparring Violett.
    Muster wie Strategie/Workshops: Kopf weiß · erste Inhaltssektion in Bereichsfarbe (Karten weiß) · danach Weiß/Hell · Download · Kontakt. */
-.e2-alt--magenta { --bf: #C51F5D; --bf-text: #fff; }
-.e2-alt--cyan { --bf: #0B9FBD; --bf-text: #fff; --e2-akzent: #0B9FBD; }
-.e2-alt--violett { --bf: #8613A1; --bf-text: #fff; --e2-akzent: #8613A1; }
+.e2-alt--magenta { --bf: #fff400; --bf-text: #1a1817; }
+.e2-alt--cyan { --bf: #fff400; --bf-text: #1a1817; --e2-akzent: #fff400; }
+.e2-alt--violett { --bf: #fff400; --bf-text: #1a1817; --e2-akzent: #fff400; }
 .e2-alt--gelb { --bf: #fff400; --bf-text: #1a1817; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) h1 .hl { --hl: var(--bf); color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) h1 .hl { --hl: var(--bf); color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-kopf .e2-kicker,
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .kicker { color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .kicker { color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-kopf .e2-knopf,
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .produkt-cta .btn--dark { background: var(--bf) !important; border-color: var(--bf) !important; color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .produkt-cta .btn--dark { background: var(--bf) !important; border-color: var(--bf) !important; color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .media-box-thumb--mock { background: var(--bf) !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-dl-hl { --hl: var(--bf); color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .e2-dl-hl { --hl: var(--bf); color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .pdf-dl .pdf-dl-kicker { color: var(--bf) !important; filter: brightness(1.35); }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon, html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon svg { color: var(--bf) !important; stroke: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon, html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .feature-icon svg { color: #1a1817 !important; stroke: #1a1817 !important; }
 
 /* erste Inhaltssektion in Bereichsfarbe */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(2) { background: var(--bf) !important; }
@@ -629,24 +629,24 @@ html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-best
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .kicker::before { background: var(--bf-text) !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) :is(.produkt-glass, .problem-card, .tools-row-item) { background: #fff !important; border: 0 !important; box-shadow: none !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass * { color: var(--e2-ink) !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass .feature-icon svg { stroke: var(--bf) !important; color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass .feature-icon svg { stroke: #1a1817 !important; color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .watermark { display: none !important; }
 /* danach keine zwei Grau hintereinander: Standard weiß, Fragen/Beispiele hell */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq) { background: #fff !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:is(.produkt-faq, .pa-faq) { background: var(--e2-hell) !important; }
 /* Fremdfarben auf die Bereichsfarbe ziehen */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.usp-highlight, .sprint-structure-card, .vergleich-rocket, .pa-pc, .price-card--featured) { background: var(--bf) !important; border-color: var(--bf) !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.sprint-structure-cta, .price-badge) { color: var(--bf) !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.vergleich-label--brand, .vergleich-label-logo, .step-num, .pa-check-result-kicker, .pa-check-info) { color: var(--bf) !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.sprint-structure-cta, .price-badge) { color: #1a1817 !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.vergleich-label--brand, .vergleich-label-logo, .step-num, .pa-check-result-kicker, .pa-check-info) { color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.pa-check-progress-bar, .yellow-pill, .usp-turbo-icon) { background-color: var(--bf) !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .paid-ads .step-num, html body .e2-alt.e2-alt.e2-seite--paid-ads .step-num { color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .paid-ads .step-num, html body .e2-alt.e2-alt.e2-seite--paid-ads .step-num { color: #1a1817 !important; }
 html body .e2-alt.e2-alt.e2-seite--paid-ads .step-num { background-color: var(--bf) !important; }
-html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar .vergleich-row svg, html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar [style*="8613A1"] { color: var(--bf) !important; }
+html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar .vergleich-row svg, html body .e2-alt.e2-alt.e2-seite--sofort-sichtbar [style*="8613A1"] { color: #1a1817 !important; }
 html body .e2-alt.e2-alt.e2-seite--teams #problem { background: var(--e2-gelb) !important; }
 html body .e2-alt.e2-alt.e2-seite--teams #problem .watermark { display: none !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) { background: var(--bf) !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) .watermark { display: none !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) :is(p, li, h2, .kicker) { color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) :is(p, li, h2, .kicker) { color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) > section#problem:nth-of-type(2) .kicker::before { background: #fff !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--teams) .yellow-pill { display: none !important; }
 html body .e2-alt.e2-alt.e2-seite--paid-ads .pa-check-section * { border-left-color: var(--e2-linie); }
@@ -729,14 +729,14 @@ html body.e2 .e2-kopfbild--zeichen .e2-bild--zeichen { display: block; width: 10
 html body .e2-alt.e2-alt .media-boxes-grid { display: grid !important; grid-template-rows: auto auto 1fr auto; column-gap: 1.4rem !important; row-gap: 0 !important; max-width: none !important; }
 html body .e2-alt.e2-alt .media-box { display: grid !important; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; padding: 0 !important; overflow: hidden; }
 html body .e2-alt.e2-alt .media-box-footer { display: contents !important; }
-html body .e2-alt.e2-alt .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: var(--bf, #C51F5D) !important; }
+html body .e2-alt.e2-alt .e2-wk-thumb { grid-row: 1; height: 15rem !important; aspect-ratio: auto !important; display: grid; place-items: center; padding: 1.4rem 2rem !important; background: var(--bf, #fff400) !important; }
 .e2-wk-bild { width: auto; height: 100%; max-width: 100%; display: block; }
 html body .e2-alt.e2-alt .media-box-title { grid-row: 2; padding: 1.6rem 1.6rem 0; margin: 0 !important; font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.25; align-self: start; }
 html body .e2-alt.e2-alt .media-box-desc { grid-row: 3; padding: .8rem 1.6rem 0; margin: 0 !important; align-self: start; }
 html body .e2-alt.e2-alt .sprint-structure-cta { grid-row: 4; margin: 2rem 1.6rem 1.6rem !important; width: auto !important; }
 @media (max-width: 960px) { html body .e2-alt.e2-alt .media-boxes-grid { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none; row-gap: 1.2rem !important; } html body .e2-alt.e2-alt .media-box { grid-row: auto; grid-template-rows: auto auto auto auto; } }
 
-html body .e2-alt.e2-alt .media-box-thumb--mock { grid-row: 1; height: 15rem !important; min-height: 0 !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #C51F5D) !important; overflow: hidden; }
+html body .e2-alt.e2-alt .media-box-thumb--mock { grid-row: 1; height: 15rem !important; min-height: 0 !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #fff400) !important; overflow: hidden; }
 html body .e2-alt.e2-alt .media-box-thumb--mock .produkt-mock-sketch { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 1 !important; transform: none !important; }
 html body .e2-alt.e2-alt .media-box-thumb--mock svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; }
 /* Karte: Rahmen grau, nicht farbig; Knopf schwarz mit weißer Schrift */
@@ -752,23 +752,23 @@ html body .e2-alt.e2-alt .media-box-title { color: var(--e2-ink) !important; }
 html body .e2-alt.e2-alt .media-box-desc { color: var(--e2-ink-2) !important; }
 /* Medien: Karten mit Bild-Knopf – Bildfläche farbig, gleiche Höhe */
 html body .e2-alt.e2-alt .media-box-thumb-btn { grid-row: 1; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
-html body .e2-alt.e2-alt .media-box-thumb-btn .media-box-thumb { height: 15rem !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #C51F5D) !important; border-radius: 0 !important; }
+html body .e2-alt.e2-alt .media-box-thumb-btn .media-box-thumb { height: 15rem !important; display: grid; place-items: center; padding: 1.2rem 1.6rem !important; background: var(--bf, #fff400) !important; border-radius: 0 !important; }
 html body .e2-alt.e2-alt .media-box-thumb-btn svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; }
-html body .e2-alt.e2-alt .media-box-thumb--photo { grid-row: 1; height: 15rem !important; padding: 0 !important; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--bf, #C51F5D) !important; }
+html body .e2-alt.e2-alt .media-box-thumb--photo { grid-row: 1; height: 15rem !important; padding: 0 !important; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--bf, #fff400) !important; }
 html body .e2-alt.e2-alt .media-box-thumb--photo img { height: 92%; width: auto; filter: grayscale(1); opacity: 1 !important; }
 /* Kopf-Knopf schwarz – höhere Gewichtung als die Bereichsfarb-Regel */
 html body .e2-alt.e2-alt.e2-alt.e2-alt .e2-kopf .e2-knopf.e2-knopf { background: #1a1817 !important; border-color: #1a1817 !important; color: #fff !important; }
 /* Kein farbiger Kasten auf gleichfarbiger Fläche: Hervorhebungs-Kästen in Bereichsfarb-Sektionen werden schwarz */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is(.usp-highlight, .vergleich-rocket) { background: #1a1817 !important; border-color: #1a1817 !important; }
 /* Punkte/Marker in Bereichsfarb-Sektionen nie gelb auf Violett/Cyan/Magenta – weiß */
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is([class*="dot"], [class*="punkt"], .problem-timeline-dot, li)::before { background: #fff !important; border-color: #fff !important; }
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .price-card--featured :is(.btn, a.btn) { background: #fff !important; color: var(--bf) !important; border-color: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-alt--magenta) > section:nth-of-type(2) :is([class*="dot"], [class*="punkt"], .problem-timeline-dot, li)::before { background: #fff !important; border-color: #1a1817 !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) .price-card--featured :is(.btn, a.btn) { background: #fff !important; color: #1a1817 !important; border-color: #fff !important; }
 /* Teams befähigen: Phasen als Zeile, Inhalte als drei Karten */
 .e2-teams-loesung { background: #fff !important; }
 .e2-phasen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; counter-reset: none; }
 .e2-phasen li { position: relative; display: flex; flex-direction: column; gap: .2rem; padding: 1.2rem 1.3rem; border-radius: var(--e2-r); background: var(--e2-hell); }
 .e2-phasen li:not(:last-child)::after { content: ""; position: absolute; right: -.75rem; top: 50%; width: .5rem; height: .5rem; border-top: 2px solid #b9b3ab; border-right: 2px solid #b9b3ab; transform: translateY(-50%) rotate(45deg); }
-.e2-ph__nr { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; margin-bottom: .5rem; border-radius: 50%; background: var(--bf, #1a1817); color: var(--bf-text, #fff); font-family: var(--font-serif); font-weight: 700; font-size: .9rem; }
+.e2-ph__nr { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; margin-bottom: .5rem; border-radius: 50%; background: var(--bf, #1a1817); color: var(--bf-text, #1a1817); font-family: var(--font-serif); font-weight: 700; font-size: .9rem; }
 .e2-phasen b { font-family: var(--font-serif); font-size: 1.15rem; }
 .e2-phasen small { font-size: .88rem; color: var(--e2-grau); }
 .e2-phasen__knopf { margin-top: 1.4rem !important; }
@@ -804,10 +804,10 @@ html body .e2-alt.e2-alt .e2-sp-turbo .e2-s2-kasten li::before { background: #ff
 .e2v-loesung3__knopf { margin-top: 2.6rem !important; }
 @media (max-width: 960px) { .e2v-loesung3__kopf { gap: 1.4rem !important; } }
 /* Symbole in Karten immer in der Bereichsfarbe (wie Workshops) – überall gleich */
-html body .e2-alt.e2-alt.e2-alt .produkt-glass .feature-icon, html body .e2-alt.e2-alt.e2-alt .produkt-glass .feature-icon * { color: var(--bf, #C51F5D) !important; }
+html body .e2-alt.e2-alt.e2-alt .produkt-glass .feature-icon, html body .e2-alt.e2-alt.e2-alt .produkt-glass .feature-icon * { color: #1a1817 !important; }
 html body .e2-alt.e2-alt.e2-alt .produkt-glass .feature-icon svg :is(path, line, polyline, circle, rect, polygon) { stroke: currentColor; }
 html body .e2-alt.e2-alt.e2-alt.e2-alt--gelb .produkt-glass .feature-icon, html body .e2-alt.e2-alt.e2-alt.e2-alt--gelb .produkt-glass .feature-icon * { color: var(--e2-ink) !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt section .produkt-glass.produkt-glass .feature-icon.feature-icon :is(svg, use) { color: var(--bf, #C51F5D) !important; } html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt--gelb section .produkt-glass.produkt-glass .feature-icon.feature-icon :is(svg, use) { color: var(--e2-ink) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section .produkt-glass.produkt-glass .feature-icon.feature-icon :is(svg, use) { color: #1a1817 !important; } html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt--gelb section .produkt-glass.produkt-glass .feature-icon.feature-icon :is(svg, use) { color: var(--e2-ink) !important; }
 /* Strategiemodell-Karte: bleibt schwarz und groß (nicht von den Format-Karten-Regeln betroffen) */
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card.loesung-modell-card { display: block !important; background: #1a1817 !important; border: 0 !important; overflow: hidden; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .loesung-modell-card .media-box-thumb-btn { display: block; }
@@ -824,13 +824,13 @@ html body .e2-alt.e2-alt .e2-faelle { background: var(--e2-hell) !important; }
 .e2-faelle__kopf .lead { margin: 0 !important; }
 .e2-faelle__raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
 .e2-fall { display: flex; flex-direction: column; padding: 1.8rem 1.6rem 1.6rem; border-radius: var(--e2-r); background: #fff; }
-.e2-fall__sym { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--bf, #C51F5D); }
+.e2-fall__sym { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--bf, #fff400); }
 .e2-fall__sym svg { width: 1.5rem; height: 1.5rem; }
 .e2-fall h3 { margin: 1.2rem 0 .6rem !important; font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.25; }
 .e2-fall p { font-size: .97rem; line-height: 1.6; color: var(--e2-ink-2); }
 .e2-fall__mehr { margin-top: auto; padding: 1.1rem 0 0; align-self: flex-start; border: 0; background: none; font: 600 .95rem/1.2 var(--font-sans); color: var(--e2-ink); cursor: pointer; }
 .e2-fall-sonder { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 2.4rem; align-items: center; margin-top: 1.2rem; padding: 2.2rem 2.4rem; border-radius: var(--e2-r); background: var(--e2-ink); }
-.e2-fall-sonder__tag { margin-bottom: .6rem !important; font-size: .78rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bf, #C51F5D) !important; filter: brightness(1.4); }
+.e2-fall-sonder__tag { margin-bottom: .6rem !important; font-size: .78rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1a1817 !important; filter: brightness(1.4); }
 .e2-fall-sonder h3 { font-family: var(--font-serif); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; color: #fff; }
 .e2-fall-sonder p { font-size: 1rem; line-height: 1.6; color: #cfcac3 !important; }
 .e2-fall__mehr--hell { color: #fff; }
@@ -840,9 +840,9 @@ html body .e2-alt.e2-alt .e2-preis { background: #fff !important; }
 .e2-preis__box { padding: 2.4rem; border-radius: var(--e2-r); background: var(--e2-ink); color: #fff; }
 .e2-preis__label { font-size: .8rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #bdb7af !important; }
 .e2-preis__betrag { margin-top: .4rem !important; font-family: var(--font-serif); font-weight: 700; font-size: clamp(3rem, 5vw, 4.2rem); line-height: 1; color: #fff !important; }
-.e2-preis__box ul { list-style: none; margin: 1.6rem 0 0; padding: 1.4rem 0 0; border-top: 2px solid var(--bf, #C51F5D); }
+.e2-preis__box ul { list-style: none; margin: 1.6rem 0 0; padding: 1.4rem 0 0; border-top: 2px solid var(--bf, #fff400); }
 .e2-preis__box li { position: relative; padding: .45rem 0 .45rem 1.6rem; font-size: .98rem; line-height: 1.5; color: #fff; }
-.e2-preis__box li::before { content: ""; position: absolute; left: 0; top: .9rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--bf, #C51F5D); }
+.e2-preis__box li::before { content: ""; position: absolute; left: 0; top: .9rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--bf, #fff400); }
 @media (max-width: 960px) { .e2-faelle__raster { grid-template-columns: minmax(0, 1fr); } .e2-fall-sonder { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; padding: 1.8rem 1.4rem; } .e2-faelle__kopf { gap: 1.2rem !important; } }
 /* Praxisfälle: gleich gebaute Karten – Symbol, Titel, Text, Link je auf gleicher Höhe */
 .e2-faelle__raster { grid-auto-rows: auto auto 1fr auto; row-gap: 0 !important; }
@@ -877,15 +877,15 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thum
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb svg { width: 100% !important; height: 100% !important; max-width: none !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-thumb svg.e2-doku-ico { width: 9rem !important; height: 9rem !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-footer { background: transparent !important; border: 0 !important; padding: 0 1.75rem 1.75rem !important; display: flex !important; flex-direction: column; align-items: stretch; gap: 1rem; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-title { color: #fff !important; font-family: var(--font-serif) !important; font-weight: 700 !important; font-size: 1.45rem !important; line-height: 1.2 !important; letter-spacing: -.01em; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-title { color: #1a1817 !important; font-family: var(--font-serif) !important; font-weight: 700 !important; font-size: 1.45rem !important; line-height: 1.2 !important; letter-spacing: -.01em; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .btn { background: #1a1817 !important; color: #fff !important; border-color: #1a1817 !important; width: 100%; justify-content: center; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-grid { align-items: center !important; }
 
 .e2-pakete__raster { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, auto); column-gap: 1.25rem; margin-top: 2.6rem; }
 .e2-paket { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 0; background: #fff; border: 1.5px solid #e4e0db; border-radius: 22px; padding: 1.9rem 1.75rem 1.75rem; }
 .e2-paket--top { background: #1a1817; border-color: #1a1817; color: #fff; }
-.e2-paket__badge { margin: 0 0 .9rem !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bf-text, var(--bf)) !important; min-height: 1em; }
-.e2-paket--top .e2-paket__badge { color: var(--bf) !important; }
+.e2-paket__badge { margin: 0 0 .9rem !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bf-text, #1a1817) !important; min-height: 1em; }
+.e2-paket--top .e2-paket__badge { color: #1a1817 !important; }
 .e2-paket h3 { margin: 0 !important; font-family: var(--font-serif); font-weight: 700; font-size: 1.55rem !important; line-height: 1.15; color: inherit !important; }
 .e2-paket__preis { margin: .55rem 0 0 !important; font-size: 1.15rem !important; font-weight: 600; color: inherit !important; }
 .e2-paket__preis small { font-size: .78rem; font-weight: 400; margin-left: .25rem; opacity: .7; }
@@ -914,7 +914,7 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt .vorschau-split-card .media-box-foot
 .e2-ablauf__vorteile { display: grid; gap: 1rem; }
 .e2-ablauf__vorteil { display: grid; grid-template-columns: 2.2rem 1fr; column-gap: 1rem; align-items: start; background: #f3f1ee; border-radius: 18px; padding: 1.4rem 1.5rem; }
 .e2-ablauf__vorteil .feature-icon { grid-row: span 2; width: 2.2rem !important; height: 2.2rem !important; margin: 0 !important; background: none !important; padding: 0 !important; }
-.e2-ablauf__vorteil .feature-icon svg { width: 1.6rem; height: 1.6rem; color: var(--bf); stroke: var(--bf); }
+.e2-ablauf__vorteil .feature-icon svg { width: 1.6rem; height: 1.6rem; color: #1a1817; stroke: #1a1817; }
 .e2-ablauf__vorteil h3 { margin: 0 !important; font-family: var(--font-serif); font-size: 1.1rem !important; font-weight: 700; }
 .e2-ablauf__vorteil p { margin: .35rem 0 0 !important; font-size: .9rem !important; line-height: 1.55 !important; }
 @media (max-width: 900px) { .e2-ablauf { grid-template-columns: 1fr; gap: 2.4rem; } }
@@ -927,18 +927,18 @@ html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pill, .hero-anlass) { dis
 
 /* Runde 35 · 1:1 Sparring: „Ein Gegenüber“ ohne Kästen */
 .e2-gg__liste { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 3rem; row-gap: 2.8rem; }
-.e2-gg__liste li { border-top: 1.5px solid rgba(255,255,255,.35); padding-top: 1.6rem; }
-.e2-gg__sym { color: #fff; display: block; width: 2.4rem; height: 2.4rem; margin-bottom: 1.2rem; }
+.e2-gg__liste li { border-top: 1.5px solid rgba(26,24,23,.35); padding-top: 1.6rem; }
+.e2-gg__sym { color: #1a1817; display: block; width: 2.4rem; height: 2.4rem; margin-bottom: 1.2rem; }
 .e2-gg__sym svg { width: 100%; height: 100%; }
-html body .e2-alt.e2-alt .e2-gg h3 { margin: 0 !important; color: #fff !important; font-family: var(--font-serif); font-size: 1.35rem !important; font-weight: 700; line-height: 1.2; }
-html body .e2-alt.e2-alt .e2-gg li p { margin: .6rem 0 0 !important; color: rgba(255,255,255,.86) !important; font-size: .95rem !important; line-height: 1.6 !important; }
+html body .e2-alt.e2-alt .e2-gg h3 { margin: 0 !important; color: #1a1817 !important; font-family: var(--font-serif); font-size: 1.35rem !important; font-weight: 700; line-height: 1.2; }
+html body .e2-alt.e2-alt .e2-gg li p { margin: .6rem 0 0 !important; color: rgba(26,24,23,.86) !important; font-size: .95rem !important; line-height: 1.6 !important; }
 @media (max-width: 960px) { .e2-gg__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .e2-gg__liste { grid-template-columns: 1fr; row-gap: 2rem; } }
 
 /* Runde 35 · 1:1 Sparring: Wann (schwarzer Kasten) + Worüber (gefüllte Themen) */
 .e2-sp2-label { margin: 0 0 1.4rem !important; font-size: .74rem !important; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .e2-sp2-wann { margin-top: 3.2rem; background: #1a1817; border-radius: 22px; padding: 2.2rem 2.4rem 2.4rem; }
-.e2-sp2-wann .e2-sp2-label { color: var(--bf) !important; filter: brightness(1.6); }
+.e2-sp2-wann .e2-sp2-label { color: #1a1817 !important; filter: brightness(1.6); }
 .e2-sp2-wann ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .e2-sp2-wann li { display: flex; flex-direction: column; gap: 1rem; padding: 0 1.6rem; border-left: 1px solid rgba(255,255,255,.18); }
 .e2-sp2-wann li:first-child { padding-left: 0; border-left: 0; }
@@ -961,7 +961,7 @@ html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e
 html body .e2-alt.e2-alt .e2-sp2-wann b { font-size: 1.2rem; }
 .e2-sp2-worueber ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
 .e2-sp2-worueber li { display: flex; align-items: center; min-height: 4.6rem; border-radius: 16px; padding: 1rem 1.3rem; }
-.e2-sp2-worueber li.e2-sp2-mehr { background: var(--bf); color: #fff; font-style: normal; font-weight: 600; padding-left: 1.3rem; }
+.e2-sp2-worueber li.e2-sp2-mehr { background: var(--bf); color: #1a1817; font-style: normal; font-weight: 600; padding-left: 1.3rem; }
 @media (max-width: 960px) { .e2-sp2-worueber ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .e2-sp2-worueber ul { grid-template-columns: 1fr; } .e2-sp2-worueber li { min-height: 0; } }
 html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e2-pillen) { max-width: none !important; width: auto !important; }
@@ -969,4 +969,4 @@ html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pills, .hero-anlaesse, .e
 .e2-wk-thumb .e2-wk-bild--eng { width: auto !important; height: 58% !important; max-width: 80%; margin: auto; display: block; }
 /* Runde 37 · Kopf-Pills wieder ohne Farbe, nur leichte Umrandung (Daniel) – bleiben in einer Reihe */
 html body .e2-alt.e2-alt .e2-kopf__inhalt :is(.produkt-pill, .hero-anlass) { background: transparent !important; border: 1px solid #d9d5ce !important; font-weight: 500 !important; padding: .4rem .85rem !important; }
-.e2-gg__sym { color: #fff; }
+.e2-gg__sym { color: #1a1817; }
