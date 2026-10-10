@@ -1149,3 +1149,20 @@ html body .e2-alt .e2-zeitstrahl .lead { color: #1a1817 !important; }
   html body.e2 .e2v-held__raster .e2v-held__pfeil.e2v-held__pfeil { position: absolute; top: .5rem; right: var(--pad-x, 20px); width: 3.4rem !important; margin: 0 !important; }
   html body.e2 .e2v-held__text-oben h1 { padding-right: 4rem; }
 }
+
+/* Runde 44 (Daniel): mobil kleine Kopfbilder nur auf Strategiehandwerk-Seiten und der Startseite */
+@media (max-width: 960px) {
+  html body.e2 .e2-alt:not(:is(.e2-seite--strategie, .e2-seite--strategie-2, .e2-seite--komplexe-themen, .e2-seite--innovation, .e2-seite--teams)) .e2-kopf__raster > .e2-kopfbild { display: none !important; }
+  html body.e2 .e2-alt:not(:is(.e2-seite--strategie, .e2-seite--strategie-2, .e2-seite--komplexe-themen, .e2-seite--innovation, .e2-seite--teams)) .e2-kopf__text > .e2-kicker { padding-right: 0; min-height: 0; }
+}
+/* Startseite mobil: früher anfangen, ein Absatz, Knöpfe nebeneinander, Logos dichter – damit der gelbe Streifen schon im ersten Bild auftaucht */
+@media (max-width: 600px) {
+  html body.e2 section.e2v-held { padding-top: 40px !important; padding-bottom: 36px !important; }
+  html body.e2 .e2v-held__text p + p { display: none !important; }
+  html body.e2 .e2v-held__text p { font-size: 1.05rem !important; line-height: 1.6 !important; }
+  html body.e2 .e2v-held__knoepfe { display: grid !important; grid-template-columns: 1fr 1fr; gap: .6rem !important; margin-top: 1.6rem !important; }
+  html body.e2 .e2v-held__knoepfe .e2-knopf { width: auto !important; padding-left: .8rem !important; padding-right: .8rem !important; font-size: .9rem !important; min-height: 3rem; justify-content: center; }
+  html body.e2 .e2v-held__knoepfe .e2-knopf .e2-pfeil { display: none; }
+  html body.e2 section.e2v-held .e2-logos { margin-top: 2.2rem !important; padding-top: 0 !important; border-top: 0 !important; }
+}
+@media (max-width: 600px) { html body.e2 .e2v-held__knoepfe .e2-knopf { white-space: nowrap; font-size: .86rem !important; padding-left: .5rem !important; padding-right: .5rem !important; } }
