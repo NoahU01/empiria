@@ -1131,3 +1131,21 @@ html body .e2-alt .e2-zeitstrahl .lead { color: #1a1817 !important; }
 .e2-post--baustein .e2-post__ico { width: 3rem; height: 3rem; }
 .e2-post--baustein .e2-post__unten b { hyphens: manual !important; }
 @media (max-width: 600px) { .e2-post--baustein .e2-post__unten b { font-size: 1.25rem !important; } .e2-post__unten b { font-size: 1.5rem !important; } }
+
+/* Runde 43 (Daniel): mobil das Kopfbild klein rechts neben der Unterzeile (Kicker) – statt groß oben links */
+@media (max-width: 960px) {
+  html body.e2 .e2-kopf__raster:has(> .e2-kopfbild) { position: relative; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild:not(.e2-kopfbild--foto) { position: absolute !important; top: -.85rem; right: var(--pad-x, 20px); margin: 0 !important; max-width: 5.5rem; width: auto !important; z-index: 1; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--mobil { height: 2.6rem !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { height: 2.4rem !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .hero-anlaesse { display: none !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--foto { display: none !important; }
+  html body.e2 .e2-kopf__text > .e2-kicker { padding-right: 6rem; min-height: 2.6rem; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild .e2-bild--mobil, html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { max-width: 5.5rem; width: auto; }
+}
+/* Startseite mobil: Doppelpfeil klein rechts oben, auf Höhe der ersten Überschriftenzeile */
+@media (max-width: 960px) {
+  html body.e2 .e2v-held__raster { position: relative; }
+  html body.e2 .e2v-held__raster .e2v-held__pfeil.e2v-held__pfeil { position: absolute; top: .5rem; right: var(--pad-x, 20px); width: 3.4rem !important; margin: 0 !important; }
+  html body.e2 .e2v-held__text-oben h1 { padding-right: 4rem; }
+}
