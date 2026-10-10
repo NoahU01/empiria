@@ -316,8 +316,9 @@ def css_blatt(w, rand, h1):
     return masse(f"""
 .op--blatt-{f} {{ aspect-ratio: {w} / {297 if w == 420 else 420}; }}
 .op--blatt-{f} .ab-in {{ position: absolute; inset: 0; display: flex; flex-direction: column; padding: [16] [{rand}] [12]; }}
-.op--blatt-{f} .oi-logo {{ height: [7]; margin-left: [-1.5]; }}
-.op--blatt-{f} .ab-titel {{ margin-top: [14]; }}
+.op--blatt-{f} .ab-kopf {{ position: absolute; right: [{rand}]; top: [16]; }}
+.op--blatt-{f} .oi-logo {{ height: [7]; margin: 0; }}
+.op--blatt-{f} .ab-titel {{ margin-top: 0; padding-right: [40]; }}
 .op--blatt-{f} .op-k {{ font-size: [8pt]; margin-bottom: [4]; }}
 .op--blatt-{f} h1 {{ font-size: [{h1}pt]; line-height: 1.3; }}
 .op--blatt-{f} .op-lead {{ margin-top: [4]; font-size: [11pt]; max-width: [200]; }}
