@@ -127,6 +127,8 @@ def loesung_teams(sek):
     karten = ""
     for i, (nr, inh) in enumerate(items):
         h3 = _eins(r"<h3>(.*?)</h3>", inh)
+        if h3.strip() == "Umsetzungsbegleitung":   # Daniel 10.10.
+            h3 = "Begleitung Umsetzung"
         ms = re.search(r"<h3>.*?</h3>.*?<p>(.*?)</p>", inh, re.S)
         satz = ms.group(1) if ms else ""
         rest = re.sub(r'^<div class="stufe-content[^"]*">|</div>$', "", inh.strip())

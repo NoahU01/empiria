@@ -40,7 +40,7 @@ def bauen():
         + '<p class="lead">Wir bringen Deinem Team bei, wie das geht – und lassen es danach nicht allein.</p>'
         + punkte([("message-square-text", "Story", "Business Storytelling &amp; Gesprächstaktik: Wer sitzt im Raum, und welches Ergebnis wird gebraucht?"),
                   ("presentation", "Folien", "Visualisierung &amp; Nutzung Standards: klare Visualisierung statt Informationsüberladung."),
-                  ("refresh-cw", "Alltag", "Umsetzungsbegleitung: Anwendung bei echten Themen, abgestimmt auf die Termine Deines Teams.")])
+                  ("refresh-cw", "Alltag", "Begleitung Umsetzung: Anwendung bei echten Themen, abgestimmt auf die Termine Deines Teams.")])
         + '</div>', 2, N)
 
     module = [
@@ -89,7 +89,7 @@ def bauen():
 
     s5 = seite(
         kopf(T) + '<div class="rand weiss" style="padding-top:16mm">' + kicker("Baustein 03 · Alltag · 3–6 Monate")
-        + '<h2><span class="hl">Umsetzungsbegleitung.</span></h2>'
+        + '<h2><span class="hl">Begleitung Umsetzung.</span></h2>'
         + '<p class="lead">Die Seminarinhalte werden konsequent in den Arbeitsalltag überführt. Erfolg entsteht nicht im Training, sondern in der Anwendung bei echten Themen – '
           'individuell abgestimmt auf die konkreten Projekte und Termine Deines Teams.</p>'
         + kicker("Vorgehen – schlank und fokussiert").replace('class="kicker"', 'class="kicker" style="margin-top:10mm"')

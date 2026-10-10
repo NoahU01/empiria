@@ -117,7 +117,7 @@ def bauen():
         ("Baustein 02 · Folien", "Visualisierung &amp; Nutzung Standards",
          "Aus der Business Story entstehen professionelle Folien – Vortragsfolien für den Auftritt und Beraterfolien für die Projektarbeit.",
          "Dein Team erstellt auf Basis einer klaren Story schnell professionelle, überzeugende Folien."),
-        ("Baustein 03 · Alltag", "Umsetzungsbegleitung",
+        ("Baustein 03 · Alltag", "Begleitung Umsetzung",
          "3–6 Monate an echten Themen, nach der 70-20-10-Regel: Auftrag klären, Storyboard, Präsentation, Gesprächstaktik für den Termin, anschließendes Review.",
          "Dein Team setzt die Inhalte sicher bei echten Themen um und geht strukturiert in entscheidende Termine."),
     ]
