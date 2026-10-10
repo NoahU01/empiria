@@ -205,12 +205,12 @@ def quer_inhalt(d, mit_bild, png=None):
 CSS_INHALT = masse("""
 .op--inhalt { aspect-ratio: 420 / 297; display: flex; flex-direction: column; }
 .op--inhalt > header, .op--inhalt > section, .op--inhalt > footer { padding: 0 [22]; }
-.op--inhalt > .oi-kopf { padding-top: [16]; }
-.oi-titel { display: flex; justify-content: space-between; align-items: flex-end; gap: [16]; margin-top: [14]; }
+.op--inhalt > .oi-kopf { position: relative; padding-top: [16]; }
+.oi-titel { display: flex; justify-content: space-between; align-items: flex-end; gap: [16]; margin-top: 0; }
 .op--inhalt h1 { font-size: [38pt]; line-height: 1.2; white-space: nowrap; }
 .op--inhalt .op-lead { margin-top: [5]; font-size: [12pt]; max-width: [230]; }
-.oi-logo { display: block; height: [8]; width: auto; margin-left: [-1.7]; }
-.oi-pfeil { flex: 0 0 [40]; margin-bottom: [2]; }
+.oi-logo { position: absolute; right: [22]; top: [16]; display: block; height: [8]; width: auto; margin: 0; }
+.oi-pfeil { flex: 0 0 [30]; margin-bottom: [2]; }
 .oi-pfeil svg { display: block; width: 100%; height: auto; }
 .op--inhalt .op-k { font-size: [8pt]; margin-bottom: [4]; }
 .oi-spalten { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: [14]; margin-top: [16]; }
@@ -255,8 +255,8 @@ CSS_INHALT_HOCH = masse("""
 .op--inhalt-hoch { aspect-ratio: 297 / 420; }
 .op--inhalt-hoch > header, .op--inhalt-hoch > section, .op--inhalt-hoch > footer { padding-left: [20]; padding-right: [20]; }
 .op--inhalt-hoch > .oi-kopf { padding-top: [16]; }
-.op--inhalt-hoch .oi-logo { height: [7]; margin-left: [-1.5]; }
-.op--inhalt-hoch .oi-titel { margin-top: [18]; gap: [12]; }
+.op--inhalt-hoch .oi-logo { height: [7]; right: [20]; }
+.op--inhalt-hoch .oi-titel { margin-top: 0; gap: [12]; }
 .op--inhalt-hoch h1 { font-size: [40pt]; line-height: 1.3; white-space: normal; }
 .op--inhalt-hoch .op-lead { margin-top: [7]; font-size: [12pt]; max-width: [170]; }
 .op--inhalt-hoch .oi-pfeil { flex-basis: [42]; }
@@ -317,7 +317,7 @@ def css_blatt(w, rand, h1):
 .op--blatt-{f} {{ aspect-ratio: {w} / {297 if w == 420 else 420}; }}
 .op--blatt-{f} .ab-in {{ position: absolute; inset: 0; display: flex; flex-direction: column; padding: [16] [{rand}] [12]; }}
 .op--blatt-{f} .ab-kopf {{ position: absolute; right: [{rand}]; top: [16]; }}
-.op--blatt-{f} .oi-logo {{ height: [7]; margin: 0; }}
+.op--blatt-{f} .oi-logo {{ position: static; height: [7]; margin: 0; }}
 .op--blatt-{f} .ab-titel {{ margin-top: 0; padding-right: [40]; }}
 .op--blatt-{f} .op-k {{ font-size: [8pt]; margin-bottom: [4]; }}
 .op--blatt-{f} h1 {{ font-size: [{h1}pt]; line-height: 1.3; }}
@@ -342,14 +342,14 @@ CSS_HOCH = masse("""
 .op--hoch { aspect-ratio: 297 / 420; display: grid; grid-template-rows: 36% 22% 22% 20%; }
 .op section { position: relative; padding: [20] [24]; }
 .op-logo { display: block; height: [7]; width: auto; }
-.op-logo--kopf { position: absolute; top: [16]; left: [24]; }
+.op-logo--kopf { position: absolute; top: [16]; right: [24]; left: auto; }
 .op-k { display: flex; align-items: center; gap: [3]; margin: 0 0 [5]; font: 700 [9pt]/1 'Poppins', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
 .op-k::before { content: ""; width: [8]; height: [0.6]; background: currentColor; }
 .op h1 { margin: 0; font: 700 [56pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
 .op h2 { margin: 0; font: 700 [26pt]/1.25 'Lora', Georgia, serif; letter-spacing: -.015em; }
 .op .hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; white-space: nowrap; }
 .op-lead { margin: [7] 0 0; max-width: [160]; font: 300 [14pt]/1.55 'Poppins', sans-serif; color: #3d3a37; }
-.op-kopf { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: [22] !important; }
+.op-kopf { display: flex; flex-direction: column; justify-content: flex-start; padding-top: [16] !important; padding-bottom: [22] !important; }
 .op-kopf > :not(.op-logo):not(.op-pfeil) { max-width: [190]; }
 .op-pfeil { position: absolute; right: [24]; bottom: [22]; width: [52]; }
 .op-pfeil svg { display: block; width: 100%; height: auto; }
