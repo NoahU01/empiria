@@ -76,11 +76,12 @@ def paar(icons, labels):
     return _svg(o)
 
 
-def zahl(wort, akzent):
+def zahl(wort, akzent, label=""):
     breite = len(wort) * 96
     return _svg(marker(30, 214, breite + 20, 84)
                 + f'<text x="36" y="282" font-size="196" font-weight="700" letter-spacing="-6" fill="{K}" font-family="{SERIF}">{wort}</text>'
-                + icon(akzent, 320, 60, 84, MT))
+                + icon(akzent, 320, 60, 84, MT)
+                + (f'<text x="40" y="330" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" font-family="{SANS}">{label}</text>' if label else ""))
 
 
 # (Titel, Bereich, Farbwelt, Überschrift live, Aufbau, Daten, Begründung)
@@ -98,9 +99,9 @@ SEITEN = [
     ("Der beste Workshop", "Workshops", "magenta", "Dein Workshop. Mit Ergebnis. Volle Wirkung.", "trio", ("goal", "star", "users"), "Ein Ziel, ausgezeichnet, alle dabei."),
     ("Marketing 2.0", "Formate", "cyan", "Marketing für Versicherer anders gedacht.", "reihe_o", (["layout-dashboard", "eye", "megaphone"], ["DASHBOARD", "SICHTBARKEIT", "KAMPAGNEN"]), "Übersicht: die Wege."),
     ("MarketingEcoSystem (MES)", "Marketing 2.0", "cyan", "Du konzentrierst Dich nicht auf Marketing, sondern auf Dein Business.", "trio", ("layout-dashboard", "trending-up", "megaphone"), "Dashboard, Wirkung, Kanäle."),
-    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "reihe", (["smartphone", "app-window", "mail"], ["POSTING", "LANDINGPAGE", "E-MAIL"]), "Das fertige Paket."),
+    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "zahl", ("20", "package", "FERTIGE ZIELGRUPPENPAKETE"), "Kern: komplette Zielgruppenpakete (Daniel 10.10.)."),
     ("Paid Ads", "Marketing 2.0", "cyan", "Google Ads für Deine Zielgruppe. Zur richtigen Zeit.", "reihe", (["search", "megaphone", "mail"], ["SUCHE", "ANZEIGE", "ANFRAGE"]), "Vom Suchen zur Anfrage."),
-    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "reihe_o", (["presentation", "app-window", "rollup"], ["POWERPOINT", "LANDINGPAGE", "ROLL-UP"]), "Übersicht: die Medien."),
+    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "trio", ("presentation", "app-window", "rollup"), "Übersicht: die Medien."),
     ("PowerPoint", "Medien", "cyan", "Deine Folien. Ein Auftritt. Volle Wirkung.", "trio", ("presentation", "star", "users"), "Die Folie, die trägt."),
     ("Landingpage", "Medien", "cyan", "Deine Botschaft. Eine Seite. Volle Wirkung.", "trio", ("app-window", "smartphone", "zap"), "Eine Seite, mobil, schnell."),
     ("Roll-up", "Medien", "cyan", "Dein Auftritt. Ein Blick. Volle Wirkung.", "trio", ("image", "users", "message-circle"), "Auftritt, Besucher, Gespräch."),
@@ -141,7 +142,7 @@ def eng(seite):
     if a == "paar":
         return "60 100 320 200"
     if a == "zahl":
-        return "28 56 380 246"
+        return "28 56 380 290"
     if a == "zielgruppe":
         return "26 108 392 190"
     return "26 112 392 186"   # Reihen

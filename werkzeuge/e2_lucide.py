@@ -62,4 +62,5 @@ ICONS = {
 "mountain": "<path d=\"m8 3 4 8 5-5 5 15H2L8 3z\" />",
 "calendar": "<path d=\"M8 2v3\" /> <path d=\"M16 2v3\" /> <rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" /> <path d=\"M3 9h18\" />",
 "rollup": "<rect x=\"6.5\" y=\"2.5\" width=\"11\" height=\"15\" rx=\"1\" /> <path d=\"M9.5 6.5h5\" /> <path d=\"M9.5 9.5h3\" /> <path d=\"M12 17.5v3\" /> <path d=\"M8 21h8\" />",
+"package": "<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\" /> <path d=\"M12 22V12\" /> <polyline points=\"3.29 7 12 12 20.71 7\" /> <path d=\"m7.5 4.27 9 5.15\" />",
 }
