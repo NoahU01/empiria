@@ -553,6 +553,7 @@ def unterseite(original, ziel, html=None):
         main = main.replace("Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.",
                             "Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.", 1)
         main = main.replace(">1:1 Sparring kennenlernen <", ">Sparring kennenlernen <", 1)
+    main = main.replace("So flexibel wie es für Dich passt.", "So flexibel, wie es für Dich passt.").replace("nicht um Medien sondern um Deine Ziele.", "nicht um Medien, sondern um Deine Ziele.")   # Kommas (Daniel 10.10.)
     if name == "marketing":   # Feedback 10.10.: Paid-Ads-Text auf vier Zeilen wie die anderen Karten
         main = main.replace("Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.", "Kampagnen auf Google, Meta und LinkedIn, die Anfragen bringen – klar ausgewertet statt Blackbox.")
     if name == "workshop-moderation" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Usecases als Karten wie KI/Sprint
