@@ -17,7 +17,8 @@ import e2_bilder
 import e2_runde5
 
 SITE = Path(__file__).resolve().parent.parent / "site"
-ZIEL = SITE / "projekte" / "empiria-2"
+ZIEL = SITE.parent / "werkzeuge" / "_e2_build"   # Arbeitsordner (nicht veröffentlicht); seit 10.10. sind die echten Seiten die 2.0-Fassung
+ENTWICKLUNG = SITE / "projekte" / "empiria-2"     # nur noch frühere Fassungen (Startseite alt, alt 2, Strategie alt)
 QUELLE = SITE.parent / "werkzeuge" / "e2_quelle"   # Originalseiten (seit 10.10. sind die echten Seiten auf Daniel die 2.0-Fassung)
 
 
@@ -477,7 +478,7 @@ def workshop_karten(main, welt="magenta", alle=False):
 def unterseite(original, ziel, html=None):
     """Unterseiten: Originalinhalt bleibt vollständig erhalten, die Gestaltung übersetzt e2-seiten.css.
     Ersetzt werden nur Kontakt und „Weitere Leistungen“ durch die e2-Bausteine (gleicher Text)."""
-    h = html or (SITE / original).read_text(encoding="utf-8")
+    h = html or original_lesen(original)
     main = h[h.index("<main"):h.index("</main>")]
     main = main[main.index(">") + 1:]
     name = ziel[:-5]
@@ -755,13 +756,24 @@ def main():
             (ZIEL / ziel).write_text(unterseite(orig, ziel), encoding="utf-8")
     import e2_strategie2
     # Runde 23 (Daniel): „Strategie 2“ ist die neue Strategie-Seite; die vorherige Fassung bleibt als strategie-alt.html
-    (ZIEL / "strategie-alt.html").write_text((ZIEL / "strategie.html").read_text(encoding="utf-8"), encoding="utf-8")
+    (ENTWICKLUNG / "strategie-alt.html").write_text(echte_links((ZIEL / "strategie.html").read_text(encoding="utf-8")), encoding="utf-8")
     neu = unterseite("ki-zum-anfassen.html", "strategie-2.html", e2_strategie2.quelle())
     (ZIEL / "strategie.html").write_text(neu, encoding="utf-8")
     alt = ZIEL / "strategie-2.html"
     if alt.exists():
         alt.unlink()
     print("gebaut:", ", ".join(SEITEN.values()), "+ strategie-alt.html")
+
+
+def echte_links(html):
+    """Links auf die 2.0-Fassungen zeigen auf die echten Adressen (außerhalb des Entwicklungsmenüs)."""
+    zurueck = {}
+    for live, ziel in LINKS.items():
+        if live != "/index.html" and ziel not in zurueck:
+            zurueck[ziel] = live
+    teile = re.split(r"(<!-- ENTWICKLUNG:START -->.*?<!-- ENTWICKLUNG:END -->)", html, flags=re.S)
+    return "".join(t if t.startswith("<!-- ENTWICKLUNG:START") else
+                   re.sub(r'(href|action)="/projekte/empiria-2/([a-z0-9-]+\.html)', lambda m: f'{m.group(1)}="{zurueck.get(m.group(2), "/projekte/empiria-2/" + m.group(2))}', t) for t in teile)
 
 
 # ---------- Veröffentlichen auf dem Daniel-Branch (10.10.2026) ----------

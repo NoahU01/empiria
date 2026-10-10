@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "site"
-QUELLE = SITE / "projekte" / "empiria-2" / "sprint-landingpage.html"
+QUELLE = SITE / "sprint-landingpage.html"   # seit 10.10. die 2.0-Fassung unter der echten Adresse
 ZIEL = SITE / "projekte" / "header.html"
 
 K, M, Y, V, C, W = "#1a1817", "#C51F5D", "#fff400", "#8613A1", "#0B9FBD", "#ffffff"
@@ -525,6 +525,7 @@ Jede Spalte zeichnet dasselbe Motiv in einer der verbliebenen Darstellungsarten 
 
 
 def main():
+    """Hinweis 10.10.: Archivseite – baut nicht mehr neu (Quelle hat sich geändert); header.html bleibt als Archiv stehen."""
     h = QUELLE.read_text(encoding="utf-8")
     kopf = re.search(r'<section class="e2-kopf" id="intro">.*?</section>', h, re.S).group(0)
     bild_alt = re.search(r'<svg class="e2-bild".*?</svg>', kopf, re.S).group(0)
