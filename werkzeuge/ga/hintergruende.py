@@ -193,7 +193,7 @@ def hintergrund(motiv, fmt):
                 teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .35 * b * PFEIL_VERH, pf))
             elif art == "iphone":
                 gr = .11 * w
-                teile.append(claim_h2(p, .1 * w, .36 * h, gr, motiv))
+                teile.append(claim_h2(p, .1 * w, .52 * h, gr, motiv))
                 b = .78 * w
                 teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .38 * b * PFEIL_VERH, pf))
             else:
