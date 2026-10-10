@@ -29,20 +29,46 @@ PERSONEN = {
 # Schlüssel: Name, Beschreibung
 VARIANTEN = {
     "weiss": ("Weiß", "Ruhig wie die Startseite: weiße Fläche, der Claim mit gelbem Highlight, rechts der Doppelpfeil."),
-    "gelb": ("Gelb mit Anschnitt", "Vollfläche Gelb, der Claim zweizeilig wie auf der Homepage, rechts läuft der Doppelpfeil groß aus dem Bild."),
-    "schwarz": ("Schwarz mit Anschnitt", "Dieselbe Geste auf Schwarz: weißer Claim, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
-    "logos-start": ("Kundenlogos · Startseite", "Claim mit Highlight und darunter alle 14 Kundenlogos in Originalfarbe auf Weiß – wie Kopf und Logoleiste der Startseite. "
+    "schwarz": ("Schwarz mit Anschnitt", "Weißer Claim auf Schwarz, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
+    "logos-start": ("Kundenlogos · Claim oben", "Der Claim groß, darunter alle 14 Kundenlogos in Originalfarbe auf Weiß. "
                     "Rechts läuft ein großer schwarzer Doppelpfeil aus dem Bild."),
-    "logos-wand": ("Kundenlogos · Logowand", "Die Überschrift der Website „Wir arbeiten unter anderem für diese Unternehmen.“ und alle 14 Logos "
-                   "in Originalfarbe, größer und in zwei Reihen."),
+    "logos-unten": ("Kundenlogos · Claim unten", "Umgekehrt: oben die Logoleiste wie auf der Startseite, darunter groß der Claim – "
+                    "der Doppelpfeil steht klein am Ende der Zeile."),
+    "treppe": ("Treppe", "Der Claim links, rechts steigen die drei Zeichen der Leistungen als Kacheln ab – Gelb, Schwarz, Grau."),
+    "muster": ("Muster", "Schwarz, rechts ein ruhiges Raster aus Doppelpfeilen – einer leuchtet gelb. Links der weiße Claim."),
 }
-FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil, Logo weiß?
+FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil
     "weiss": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
-    "gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
     "schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
     "logos-start": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
-    "logos-wand": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
+    "logos-unten": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
+    "treppe": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
+    "muster": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
 }
+
+
+def treppe(p, W, H, groesse, rechts, oben, versatz_x, versatz_y):
+    kacheln = [(GELB, "forward", SCHWARZ), (SCHWARZ, "kreuz", GELB), ("#f3f1ee", "kreis", SCHWARZ)]
+    x0 = W - rechts - groesse - 2 * versatz_x
+    out = ""
+    for i, (bg, z, f) in enumerate(kacheln):
+        out += (f'<div style="left:{p(x0 + i * versatz_x)};top:{p(oben + i * versatz_y)};width:{p(groesse)};height:{p(groesse)};'
+                f'background:{bg};border-radius:{p(groesse * .12)};display:flex;align-items:center;justify-content:center">'
+                f'<span style="display:block;width:{p(groesse * .52)}">{form(z, f)}</span></div>')
+    return out
+
+
+def muster(p, W, H, x_start, zelle, breite):
+    out = ""
+    spalten = int((W - x_start) // zelle)
+    zeilen = int(H // zelle)
+    oy = (H - zeilen * zelle) / 2
+    for r in range(zeilen):
+        for c in range(spalten):
+            an = (c, r) == (spalten - 3, zeilen // 2)
+            out += pfeil(p, breite, x_start + (c + .5) * zelle, oy + (r + .5) * zelle, GELB if an else "#2e2b28")
+    return out
+
 
 CSS = """
 .lb { position: relative; width: 100%; container-type: inline-size; overflow: hidden; background: var(--bg); color: var(--fg); font-family: 'Poppins', sans-serif; }
@@ -128,10 +154,16 @@ def person_banner(var):
     if var == "weiss":
         inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 70)}</div>'
                   + pfeil(p, 210, W - 110 - 105, H / 2, pf))
-    elif var in ("gelb", "schwarz"):
+    elif var == "schwarz":
         b = .9 * H / PFEIL_VERH
         inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 72, True)}</div>'
                   + pfeil(p, b, W - .3 * b, H / 2, pf))
+    elif var == "treppe":
+        inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 72, True)}</div>'
+                  + treppe(p, W, H, 104, 84, 46, 124, 100))
+    elif var == "muster":
+        inhalt = (muster(p, W, H, 1000, 112, 66)
+                  + f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 72, True)}</div>')
     else:  # wechsel
         g = .62 * H
         b = 1.5 * (H - g) / PFEIL_VERH
@@ -151,9 +183,15 @@ def firma_banner(var):
         return rahmen("", var, W, H, firma_logos(var.split("-")[1]))
     if var == "weiss":
         inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, 112, W - 64 - 56, H / 2, pf)
-    elif var in ("gelb", "schwarz"):
+    elif var == "schwarz":
         b = .9 * H / PFEIL_VERH
         inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, b, W - .3 * b, H / 2, pf)
+    elif var == "treppe":
+        inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>'
+                  + treppe(p, W, H, 50, 56, 22, 60, 48))
+    elif var == "muster":
+        inhalt = (muster(p, W, H, 760, 62, 36)
+                  + f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>')
     else:
         g = .64 * H
         b = 1.5 * (H - g) / PFEIL_VERH
@@ -216,17 +254,19 @@ def person_logos(art):
     """Personenbanner mit Logos (ab x 470, rechts 84). start: Claim + Doppelpfeil + Logoleiste; wand: Website-Überschrift + große Logos."""
     W = 1584
     p = px_fn(W)
+    H = 396
     if art == "start":  # rechts läuft ein großer schwarzer Doppelpfeil aus dem Bild – die Logos bleiben auf Weiß
-        H = 396
         b = .8 * H / PFEIL_VERH
         logos, raster = logo_raster(p, 30, 56, 16)
         return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
-                + f'<div style="left:{p(470)};top:{p(48)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(14) + ";")}'
-                f'{claim(p, 56)}</div>'
-                + f'<div class="lb-logos" style="left:{p(470)};right:{p(W - (W - .3 * b - b / 2) + 60)};top:{p(212)};{raster}">{logos}</div>')
-    logos, raster = logo_raster(p, 42, 74, 22)
-    return (f'<h2 style="left:{p(470)};top:{p(52)};font-size:{p(40)}">{WAND_H2}</h2>'
-            f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(150)};{raster}">{logos}</div>')
+                + f'<div style="left:{p(470)};top:{p(40)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(12) + ";")}'
+                f'{claim(p, 70)}</div>'
+                + f'<div class="lb-logos" style="left:{p(470)};right:{p(W - (W - .3 * b - b / 2) + 60)};top:{p(222)};{raster}">{logos}</div>')
+    # unten: Logoleiste oben, Claim groß darunter
+    logos, raster = logo_raster(p, 28, 50, 12)
+    return (f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(36)};{raster}">{logos}</div>'
+            f'<div style="left:{p(470)};bottom:{p(40)}">{claim(p, 76)}</div>'
+            + pfeil(p, 150, W - 84 - 75, H - 40 - 76 * .65, SCHWARZ))
 
 
 def firma_logos(art):
@@ -239,11 +279,13 @@ def firma_logos(art):
         links_pfeil = W - .3 * b - b / 2
         logos, raster = logo_raster(p, 18, 34, 8)
         return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
-                + f'<h2 style="left:{p(250)};top:{p(22)};font-size:{p(32)}">Strategie, die <span class="hl">wirkt.</span></h2>'
-                + f'<div class="lb-logos" style="left:{p(250)};right:{p(W - links_pfeil + 36)};top:{p(88)};{raster}">{logos}</div>')
-    logos, raster = logo_raster(p, 22, 40, 10)
-    return (f'<h2 style="left:{p(250)};top:{p(20)};font-size:{p(24)}">{WAND_H2}</h2>'
-            f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(80)};{raster}">{logos}</div>')
+                + f'<h2 style="left:{p(250)};top:{p(16)};font-size:{p(38)}">Strategie, die <span class="hl">wirkt.</span></h2>'
+                + f'<div class="lb-logos" style="left:{p(250)};right:{p(W - links_pfeil + 36)};top:{p(92)};{raster}">{logos}</div>')
+    H = 191
+    logos, raster = logo_raster(p, 16, 30, 6)
+    return (f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(16)};{raster}">{logos}</div>'
+            f'<div style="left:{p(250)};bottom:{p(18)}">{claim(p, 40)}</div>'
+            + pfeil(p, 70, W - 56 - 35, H - 18 - 40 * .65, SCHWARZ))
 
 
 def schutzzone():
@@ -282,7 +324,7 @@ def main_html():
                      f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn-<span class="hl">Banner</span>',
-                   'Fünf Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
+                   'Sechs Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
                    'Erst wenn die Gestaltung steht, folgen Kerstin und Noah.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{LOGO_CSS}{SEITE_EXTRA}</style>\n</main>')
