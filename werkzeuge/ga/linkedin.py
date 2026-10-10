@@ -57,7 +57,7 @@ CSS = """
 # ----- LinkedIn-Attrappe (nur Seite) -----
 SEITE_EXTRA = """
 .li { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px #e4e0db, 0 12px 30px rgba(26,24,23,.06); container-type: inline-size; font-family: -apple-system, 'Segoe UI', 'Poppins', sans-serif; }
-.li-banner { position: relative; }
+.li-banner { position: relative; border-bottom: 1px solid #e4e0db; }
 .li-foto { position: absolute; left: 3cqw; top: 11cqw; width: 18.9cqw; aspect-ratio: 1; border-radius: 50%; border: .55cqw solid #fff; background: #ddd center/cover; }
 .li-logo { position: absolute; left: 2.6cqw; top: 9.6cqw; width: 12cqw; aspect-ratio: 1; border-radius: .8cqw; border: .45cqw solid #fff; background: #fff; box-shadow: 0 0 0 1px #e4e0db; display: flex; align-items: center; justify-content: center; }
 .li-logo img { width: 78%; height: auto; }
@@ -79,7 +79,8 @@ SEITE_EXTRA = """
 .lg-raster .lb { box-shadow: 0 0 0 1px #e4e0db; border-radius: 6px; }
 .lg-gross { margin-top: 1.4rem; max-width: 860px; }
 .lg-gross > .lb { box-shadow: 0 0 0 1px #e4e0db; border-radius: 6px; }
-@media (max-width: 800px) { .lg-raster { grid-template-columns: 1fr; } }
+.lg-raster--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.4rem; }
+@media (max-width: 800px) { .lg-raster, .lg-raster--2 { grid-template-columns: 1fr; } }
 """
 
 
@@ -91,9 +92,9 @@ def person_banner(var, wer):
     kicker = PERSONEN[wer][2]
     logo = f'/assets/empiria-logo{"-weiss" if hell else ""}.svg'
     text = (f'<div class="lb-text" style="left:{p(470)}">'
-            f'<p class="lb-kicker" style="font-size:{p(15)};gap:{p(14)};margin-bottom:{p(24)}">{kicker}</p>'
-            f'<h2 style="font-size:{p(86)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>'
-            f'<p class="lb-fuss" style="margin-top:{p(30)};gap:{p(16)};font-size:{p(16)}"><img src="{logo}" alt="empiria" style="height:{p(30)}">www.empiria.de</p>'
+            f'<p class="lb-kicker" style="font-size:{p(22)};gap:{p(16)};margin-bottom:{p(22)}">{kicker}</p>'
+            f'<h2 style="font-size:{p(78)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>'
+            f'<p class="lb-fuss" style="margin-top:{p(24)};gap:{p(22)};font-size:{p(22)}"><img src="{logo}" alt="empiria" style="height:{p(36)}">www.empiria.de</p>'
             f'</div>')
     if var == "formen":
         zelle, gap = 104, 16
@@ -107,7 +108,7 @@ def person_banner(var, wer):
     else:
         pb = 280
         rechts = f'<div style="right:{p(110)};top:{p((H - pb * PFEIL_VERH) / 2)};width:{p(pb)}">{form("forward", pf)}</div>'
-    kstrich = f'<style>.lb-k-{var}-{wer} .lb-kicker::before{{width:{p(30)};height:{p(3)}}}</style>'
+    kstrich = f'<style>.lb-k-{var}-{wer} .lb-kicker::before{{width:{p(40)};height:{p(4)}}}</style>'
     return (f'{kstrich}<div class="lb lb-k-{var}-{wer}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
             f'{text}{rechts}</div>')
 
@@ -118,7 +119,7 @@ def firma_banner(var):
     W, H = 1128, 191
     p = px_fn(W)
     text = (f'<div class="lb-text" style="left:{p(250)}">'
-            f'<p class="lb-kicker" style="font-size:{p(12)};gap:{p(11)};margin-bottom:{p(16)}">Strategiehandwerk · Crailsheim</p>'
+            f'<p class="lb-kicker" style="font-size:{p(14)};gap:{p(12)};margin-bottom:{p(14)}">Strategiehandwerk · Crailsheim</p>'
             f'<h2 style="font-size:{p(52 if var != "formen" else 46)}">Strategie, die <span class="hl">wirkt.</span></h2>'
             f'</div>')
     if var == "formen":
@@ -132,7 +133,7 @@ def firma_banner(var):
     else:
         pb = 136
         rechts = f'<div style="right:{p(72)};top:{p((H - pb * PFEIL_VERH) / 2)};width:{p(pb)}">{form("forward", pf)}</div>'
-    kstrich = f'<style>.lb-f-{var} .lb-kicker::before{{width:{p(24)};height:{p(2.4)}}}</style>'
+    kstrich = f'<style>.lb-f-{var} .lb-kicker::before{{width:{p(28)};height:{p(2.8)}}}</style>'
     return (f'{kstrich}<div class="lb lb-f-{var}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
             f'{text}{rechts}</div>')
 
@@ -144,7 +145,7 @@ def attrappe_person(var, wer):
             f'<div class="li-info"><div><p class="li-name">{name}</p><p class="li-rolle">{rolle} · empiria GmbH</p>'
             f'<p class="li-ort">Crailsheim, Baden-Württemberg</p>'
             f'<div class="li-knoepfe"><span>Vernetzen</span><span>Nachricht</span></div></div>'
-            f'<div class="li-firma"><i><img src="/assets/empiria-logo.svg" alt=""></i>empiria GmbH</div></div></div>')
+            f'<div class="li-firma"><i><span style="display:block;width:64%">{form("forward", SCHWARZ)}</span></i>empiria GmbH</div></div></div>')
 
 
 def attrappe_firma(var):
@@ -163,7 +164,7 @@ def schutzzone():
                 f'<span class="lz-foto" style="left:{l / w * 100}%;top:{t / h * 100}%;width:{d / w * 100}%;aspect-ratio:1;{"" if rund else "border-radius:10%"}"></span>'
                 f'<span class="lz-text" style="left:{(l + d + 24) / w * 100}%;bottom:12%">{text}</span></div>'
                 f'<p class="pm-label">{label}</p></figure>')
-    return (f'<div class="lg-raster" style="grid-template-columns:repeat(2,minmax(0,1fr))">'
+    return (f'<div class="lg-raster lg-raster--2">'
             + zone(1584, 396, (47, 175, 300, True), "Profilfoto – hier nichts Wichtiges", "Personenprofil · 1584 × 396 px · Schutzzone")
             + zone(1128, 191, (30, 110, 136, False), "Firmenlogo", "Firmenprofil · 1128 × 191 px · Schutzzone")
             + '</div>')
@@ -198,12 +199,11 @@ def main_html():
     # Firmenprofil
     teile.append('<div class="pm-abschnitt"><h2>2 · Firmenprofil</h2>'
                  '<p class="pm-text">Banner 1128 × 191 px mit dem Claim „Strategie, die wirkt.“ – sehr flach, deshalb einzeilig. Links unten liegt das Firmenlogo.</p>')
-    for i, (var, v) in enumerate(VARIANTEN.items()):
-        buchst = "ABCD"[i]
-        teile.append(f'<h3>Variante {buchst} · {v[0]}</h3>'
-                     f'<div class="lg-gross">{attrappe_firma(var)}<p class="pm-label">Attrappe Unternehmensseite</p></div>'
-                     f'<div class="lg-gross">{firma_banner(var)}<p class="pm-label">Firmenbanner {v[0]} · 1128 × 191 px</p>'
-                     f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></div>')
+    teile.append('<div class="lg-raster lg-raster--2">'
+                 + "".join(f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Variante {"ABCD"[i]} · {v[0]} · 1128 × 191 px</p>'
+                           f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></figure>'
+                           for i, (var, v) in enumerate(VARIANTEN.items()))
+                 + '</div>')
     teile.append('</div>')
 
     return (f'<main>\n<section class="pm"><div class="container">'
