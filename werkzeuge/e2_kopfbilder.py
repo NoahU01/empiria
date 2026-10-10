@@ -76,6 +76,15 @@ def paar(icons, labels):
     return _svg(o)
 
 
+def paket(klein, gross, label):
+    """Zielgruppe → fertiges Paket: kleines Icon, Pfeil, großes Icon – ohne Zahl (sofort sichtbar, Daniel 10.10.)."""
+    o = icon(klein, 40, 150, 96)
+    o += f'<path d="M156 198h44m-14-14 14 14-14 14" fill="none" stroke="{K}" stroke-width="{STRICH}" stroke-linecap="round" stroke-linejoin="round"/>'
+    o += icon(gross, 220, 92, 190)
+    o += f'<text x="315" y="306" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{label}</text>'
+    return _svg(o)
+
+
 def zahl(wort, akzent, label=""):
     breite = len(wort) * 96
     return _svg(marker(30, 214, breite + 20, 84)
@@ -99,7 +108,7 @@ SEITEN = [
     ("Der beste Workshop", "Workshops", "magenta", "Dein Workshop. Mit Ergebnis. Volle Wirkung.", "trio", ("goal", "star", "users"), "Ein Ziel, ausgezeichnet, alle dabei."),
     ("Marketing 2.0", "Formate", "cyan", "Marketing für Versicherer anders gedacht.", "reihe_o", (["layout-dashboard", "eye", "megaphone"], ["DASHBOARD", "SICHTBARKEIT", "KAMPAGNEN"]), "Übersicht: die Wege."),
     ("MarketingEcoSystem (MES)", "Marketing 2.0", "cyan", "Du konzentrierst Dich nicht auf Marketing, sondern auf Dein Business.", "trio", ("layout-dashboard", "trending-up", "megaphone"), "Dashboard, Wirkung, Kanäle."),
-    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "zahl", ("20", "package", "FERTIGE ZIELGRUPPENPAKETE"), "Kern: komplette Zielgruppenpakete (Daniel 10.10.)."),
+    ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "paket", ("users", "package", "ZIELGRUPPENPAKET"), "Kern: komplette Zielgruppenpakete (Daniel 10.10.)."),
     ("Paid Ads", "Marketing 2.0", "cyan", "Google Ads für Deine Zielgruppe. Zur richtigen Zeit.", "reihe", (["search", "megaphone", "mail"], ["SUCHE", "ANZEIGE", "ANFRAGE"]), "Vom Suchen zur Anfrage."),
     ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "trio", ("presentation", "app-window", "rollup"), "Übersicht: die Medien."),
     ("PowerPoint", "Medien", "cyan", "Deine Folien. Ein Auftritt. Volle Wirkung.", "trio", ("presentation", "star", "users"), "Die Folie, die trägt."),
@@ -127,6 +136,8 @@ def bild(seite):
         return zielgruppe(*daten), NAMEN[aufbau]
     if aufbau == "reihe_dp":
         return reihe(*daten, doppel=True), NAMEN[aufbau]
+    if aufbau == "paket":
+        return paket(*daten), "Paket"
     if aufbau == "paar":
         return paar(*daten), "Paar"
     if aufbau == "reihe_o":
@@ -139,6 +150,8 @@ def eng(seite):
     a = seite[4]
     if a == "trio":
         return "36 100 368 204"
+    if a == "paket":
+        return "30 84 390 260"
     if a == "paar":
         return "60 100 320 200"
     if a == "zahl":
