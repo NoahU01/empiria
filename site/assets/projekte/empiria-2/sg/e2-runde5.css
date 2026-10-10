@@ -632,7 +632,7 @@ html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-best
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .produkt-glass .feature-icon svg { stroke: #1a1817 !important; color: #1a1817 !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop) > section:nth-of-type(2) .watermark { display: none !important; }
 /* danach keine zwei Grau hintereinander: Standard weiß, Fragen/Beispiele hell */
-html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq):not(.e2-faelle) { background: #fff !important; }
+html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:nth-of-type(n+3):not(.section--dark):not(.produkt-faq):not(.pa-faq):not(.e2-faelle):not(.e2-zeitstrahl) { background: #fff !important; }
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett, .e2-seite--der-beste-workshop, .e2-seite--teams) > section:is(.produkt-faq, .pa-faq) { background: var(--e2-hell) !important; }
 /* Fremdfarben auf die Bereichsfarbe ziehen */
 html body .e2-alt.e2-alt:is(.e2-alt--cyan, .e2-alt--violett) :is(.usp-highlight, .sprint-structure-card, .vergleich-rocket, .pa-pc, .price-card--featured) { background: var(--bf) !important; border-color: var(--bf) !important; }
@@ -1103,3 +1103,31 @@ html body .e2-alt .e2-post__text .e2-post__hinweis { margin-top: .8rem !importan
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-medien-ico svg { width: 5.5rem !important; height: 5.5rem !important; filter: none !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-medien-ico { display: grid !important; place-items: center; }
 .e2-fall { min-width: 0; } .e2-fall h3 { overflow-wrap: break-word; hyphens: auto; }
+
+/* Feedback 10.10. · Teams befähigen: Inhalte als Post-Karten, Ablauf als gelbes Band mit Zeitstrahl */
+.e2-posts--bausteine { margin-top: 3.4rem; }
+.e2-post--baustein .e2-post__bild { min-height: 14rem; }
+.e2-post--baustein .e2-post__unten b { font-size: 1.55rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.e2-zeitstrahl { background: #fff400 !important; }
+.e2-zs { list-style: none; margin: 3.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; }
+.e2-zs::before { content: ""; position: absolute; left: 0; right: 0; top: .55rem; height: 2px; background: #1a1817; }
+.e2-zs li { position: relative; display: flex; flex-direction: column; gap: .35rem; padding-right: 1.5rem; }
+.e2-zs__punkt { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #1a1817; border: 3px solid #fff400; box-shadow: 0 0 0 2px #1a1817; margin-bottom: 1.4rem; position: relative; z-index: 1; }
+.e2-zs li:last-child .e2-zs__punkt { width: 1.4rem; height: 1.4rem; margin-top: -.15rem; }
+.e2-zs__nr { font-size: .74rem; font-weight: 700; letter-spacing: .16em; color: #1a1817; }
+.e2-zs b { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; line-height: 1.15; color: #1a1817; }
+.e2-zs small { font-size: .95rem; color: #1a1817; opacity: .8; }
+.e2-zs__fuss { margin-top: 2.8rem !important; }
+.e2-zs__knopf { display: inline-flex; padding: .95rem 1.5rem; border-radius: 999px; border: 0; background: #1a1817; color: #fff; font: 600 .95rem/1 var(--font-sans, Poppins, sans-serif); cursor: pointer; }
+html body .e2-alt .e2-zeitstrahl .lead { color: #1a1817 !important; }
+@media (max-width: 900px) {
+  .e2-zs { grid-template-columns: 1fr; row-gap: 1.6rem; padding-left: 2rem; }
+  .e2-zs::before { left: .5rem; right: auto; top: .3rem; bottom: .3rem; width: 2px; height: auto; }
+  .e2-zs li { padding: 0; }
+  .e2-zs__punkt { position: absolute; left: -2rem; top: .1rem; margin: 0; }
+}
+.e2-zs li:last-child .e2-zs__punkt { width: 1.1rem; height: 1.1rem; margin-top: 0; }
+.e2-post--baustein .e2-post__unten b { font-size: 1.4rem !important; hyphens: auto !important; overflow-wrap: break-word !important; }
+.e2-post--baustein .e2-post__ico { width: 3rem; height: 3rem; }
+.e2-post--baustein .e2-post__unten b { hyphens: manual !important; }
+@media (max-width: 600px) { .e2-post--baustein .e2-post__unten b { font-size: 1.25rem !important; } .e2-post__unten b { font-size: 1.5rem !important; } }

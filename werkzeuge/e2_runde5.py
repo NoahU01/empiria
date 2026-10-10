@@ -122,24 +122,32 @@ def loesung_teams(sek):
     sym = ["message-square-text", "presentation", "refresh-cw", "users"]
     def ic(n, farbe="#fff"):
         return f'<svg viewBox="0 0 24 24" fill="none" stroke="{farbe}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>'
-    phasen_html = "".join(f'<li><span class="e2-ph__nr">{i+1}</span><b>{t}</b><small>{d}</small></li>' for i, (t, d) in enumerate(phasen))
+    # Feedback 10.10. (Daniel): Ablauf und Inhalte neu gedacht – Inhalte als Post-Karten (grau/gelb/grau, wie Formate),
+    # Ablauf als eigenes gelbes Band mit Zeitstrahl (wie die Stationen der Volksfest-Seite).
     karten = ""
     for i, (nr, inh) in enumerate(items):
         h3 = _eins(r"<h3>(.*?)</h3>", inh)
         ms = re.search(r"<h3>.*?</h3>.*?<p>(.*?)</p>", inh, re.S)
         satz = ms.group(1) if ms else ""
         rest = re.sub(r'^<div class="stufe-content[^"]*">|</div>$', "", inh.strip())
-        karten += (f'<article class="e2-schritt"><div class="e2-schritt__kopf"><span class="e2-schritt__sym">{ic(sym[i % 4])}</span><span class="e2-schritt__nr">{nr}</span></div>'
-                   f'<h3>{h3}</h3><p>{satz}</p><button type="button" class="e2-schritt__mehr" data-e2-auf="tm{i}">Module &amp; Ergebnis →</button>'
+        ico = f'<svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[sym[i % 4]]}</svg>'
+        karten += (f'<article class="e2-post e2-post--baustein{" e2-post--top" if i == 1 else ""}">'
+                   f'<div class="e2-post__kopf"><span>Baustein {nr}</span></div>'
+                   f'<div class="e2-post__bild"><small>{["Story", "Folien", "Alltag"][i % 3]}</small><div class="e2-post__unten"><div><b>{h3}</b></div>{ico}</div></div>'
+                   f'<div class="e2-post__text"><p>{satz}</p><button type="button" class="e2-post__mehr" data-e2-auf="tm{i}">Module &amp; Ergebnis →</button></div>'
                    f'<dialog class="e2-dialog e2-dialog--breit" id="tm{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><div class="e2-lk__inhalt">{rest}</div></dialog></article>')
+    stationen = "".join(f'<li><span class="e2-zs__punkt"></span><span class="e2-zs__nr">0{i+1}</span><b>{t}</b><small>{d}</small></li>' for i, (t, d) in enumerate(phasen))
+    knopf_html = knopf.group(1).replace('class="btn btn--dark js-onboarding-open"', 'class="e2-zs__knopf js-onboarding-open"') if knopf else ""
     return f'''<section class="section e2-teams-loesung" id="loesung-baustein"><div class="container">
   <div class="e2-s2-split e2-in-oben"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2><p class="lead">{leads[0]}</p></div>
     <div>{"".join(f'<p class="lead">{x}</p>' for x in leads[1:])}</div></div>
-  <p class="e2-in-label" style="margin-top:4rem!important">Ablauf</p>
-  <ol class="e2-phasen">{phasen_html}</ol>
-  {('<p class="e2-phasen__knopf">' + knopf.group(1) + '</p>') if knopf else ""}
-  <p class="e2-in-label" style="margin-top:4rem!important">Inhalte</p>
-  <div class="e2-schritte e2-schritte--3">{karten}</div>
+  <div class="e2-posts e2-posts--bausteine">{karten}</div>
+</div></section>
+<section class="section e2-zeitstrahl" id="ablauf"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">Ablauf</p><h2 class="h-serif">Vom Onboarding bis in den Alltag.</h2></div>
+    <p class="lead">Kurz vorbereiten, intensiv trainieren – und dann über Monate dort begleiten, wo es zählt: bei Deinen echten Terminen.</p></div>
+  <ol class="e2-zs">{stationen}</ol>
+  {('<p class="e2-zs__fuss">' + knopf_html + '</p>') if knopf_html else ""}
 </div></section>'''
 
 
