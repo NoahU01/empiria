@@ -42,7 +42,7 @@ def logo(hell):
     return f'<img class="f-logo" src="/assets/empiria-logo{"-weiss" if hell else ""}.svg" alt="empiria">'
 
 
-def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", fuss=True, cls="", label=None):
+def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", fuss=True, cls="", label=None, ohne_nr=False):
     name, bg, fg, akz = FARBEN[farbe]
     hell = fg == "#ffffff"
     kopf = {
@@ -58,7 +58,7 @@ def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", f
     fussz = ""
     if fuss:
         links = logo(hell) if header in ("C", "C0") else '<span class="f-strich"></span>'
-        fussz = f'<div class="f-fuss">{links}<span>empiria GmbH</span><span>{nr}</span></div>'
+        fussz = f'<div class="f-fuss">{links}<span>empiria GmbH</span><span>{"" if ohne_nr else nr}</span></div>'
     if header == "C0":
         cls += " f--c0"
     return (f'<figure class="f-wrap"><div class="folie {cls}" style="--bg:{bg};--fg:{fg};--akz:{akz}"><div class="f-innen">{kopf}{inhalt}</div>{fussz}</div>'
@@ -86,6 +86,43 @@ def festgelegt():
               folie("weiss", mit_flaeche + hilfslinien, header="C0", label="Mit Inhaltsfläche und gleichen Rändern (Hilfslinien)"),
               folie("weiss", mass, header="C0", label="Beispiel mit Inhalt"),
               folie("grau", mass, header="C0", label="Beispiel auf Grau")])]
+
+
+def stufe2():
+    """Daniel 10.10.: Folientypen auf Basis der festgelegten Inhaltsfolie (Idee C) – nur Inhalt, keine Deko."""
+    k = kicker
+    f = lambda farbe, inhalt, label, fuss=True: folie(farbe, inhalt, header="C0", label=label, fuss=fuss,
+                                                      ohne_nr=label.startswith(("01", "12", "03")))   # Titel, Kapitel, Abschluss ohne Seitenzahl
+    agenda = "".join(f'<li><small>0{i+1}</small><b>{t}</b></li>' for i, t in enumerate(["Ausgangslage", "Lösung", "Vorgehen", "Zusammenarbeit", "Nächste Schritte"]))
+    folien = [
+        f("weiss", '<div class="t-titel">' + k("Präsentationstitel") + '<h1>Strategie in den Alltag <span class="hl">überführen.</span></h1>'
+                   '<p class="t-meta">Kunde · Anlass · 10. Oktober 2026</p></div>', "01 · Titel"),
+        f("schwarz", '<div class="t-titel">' + k("Präsentationstitel") + '<h1>Strategie in den Alltag <span class="hl">überführen.</span></h1>'
+                     '<p class="t-meta">Kunde · Anlass · 10. Oktober 2026</p></div>', "01b · Titel auf Schwarz"),
+        f("weiss", k("Agenda") + '<h2>Worüber wir heute sprechen.</h2><ol class="t-agenda">' + agenda + '</ol>', "02 · Agenda"),
+        f("gelb", '<div class="t-kapitel"><span>01</span><h1>Ausgangslage.</h1></div>', "03 · Kapitel (Gelb, Schwarz, Grau oder Themenfarbe)"),
+        f("weiss", k("Text") + '<h2>Eine Aussage, die <span class="hl">trägt.</span></h2><div class="t-text"><p>Fließtext für Erläuterungen. Kurze Absätze, klare Sätze – die Folie erklärt eine Aussage, nicht alles auf einmal.</p>'
+                   '<p>Ein zweiter Absatz, wenn nötig. Mehr Text gehört in die Notizen oder in ein Begleitdokument.</p></div>', "04 · Text"),
+        f("weiss", k("Zweispalter") + '<h2>Zwei Seiten einer <span class="hl">Entscheidung.</span></h2><div class="t-zwei">'
+                   '<div><b>Heute</b><p>Viele Themen gleichzeitig, wenig Priorität, Entscheidungen werden vertagt.</p></div>'
+                   '<div><b>Morgen</b><p>Drei klare Schwerpunkte, feste Termine, sichtbare Fortschritte.</p></div></div>', "05 · Zweispalter"),
+        f("weiss", '<div class="t-bild">' + '<div class="t-bild__text">' + k("Bild + Text") + '<h2>Ein Bild sagt, worum es <span class="hl">geht.</span></h2>'
+                   '<p>Bild rechts, randabfallend. Text links mit derselben Kante wie alle anderen Folien.</p></div><div class="t-bild__bild"><span>Bild</span></div></div>', "06 · Bild + Text"),
+        f("weiss", k("Zahlen") + '<h2>Was sich messbar <span class="hl">verändert.</span></h2><div class="t-zahlen">'
+                   + "".join(f'<div><b>00</b><p>{t}</p></div>' for t in ["Platzhalter Kennzahl 1", "Platzhalter Kennzahl 2", "Platzhalter Kennzahl 3"]) + '</div>', "07 · Zahlen"),
+        f("weiss", k("Tabelle") + '<h2>Drei Formate im <span class="hl">Vergleich.</span></h2><table class="t-tab"><thead><tr><th></th><th>Einstieg</th><th class="t-mitte">Sprint</th><th>Deep-Dive</th></tr></thead>'
+                   '<tbody><tr><td>Dauer</td><td>½ Tag</td><td class="t-mitte">1 Tag</td><td>2 Tage</td></tr><tr><td>Ziel</td><td>Ausprobieren</td><td class="t-mitte">Fragestellung bearbeiten</td><td>Usecase umsetzen</td></tr>'
+                   '<tr><td>Ergebnis</td><td>Erste Erfahrungen</td><td class="t-mitte">Kompaktes Ergebnis</td><td>Konkreter Usecase</td></tr></tbody></table>', "08 · Tabelle"),
+        f("weiss", k("Ablauf") + '<h2>In vier Schritten zum <span class="hl">Ergebnis.</span></h2><ol class="f-zs t-zs">'
+                   + "".join(f'<li><span></span><small>0{i+1}</small><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "09 · Ablauf"),
+        f("weiss", k("Team") + '<h2>Dein direkter Draht zu <span class="hl">uns.</span></h2><div class="t-team">'
+                   + "".join(f'<div><img src="/assets/ansprechpartner-{d}.webp" alt=""><b>{n}</b><p>{r}</p></div>' for d, n, r in [("daniel", "Daniel Ströbel", "Strategiehandwerker"), ("kerstin", "Kerstin Christ", "HR &amp; Weiterbildung"), ("noah", "Noah Hermanns", "Performance Marketing")]) + '</div>', "10 · Team"),
+        f("schwarz", k("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="t-meta">Daniel Ströbel</p>', "11 · Zitat"),
+        f("gelb", '<div class="t-titel">' + k("Vielen Dank") + '<h1>Aus Gespräch wird Klarheit.</h1>'
+                  '<p class="t-meta">daniel.stroebel@empiria.de · +49 176 3134 7217 · www.empiria.de</p></div>', "12 · Abschluss", fuss=True),
+    ]
+    return [("Stufe 2 · Folientypen", "Alle Folientypen auf der festgelegten Inhaltsfolie: gleiche Ränder, Headline oben, Logo links unten, keine Deko. "
+             "Kapitelfolien gibt es in Gelb, Schwarz, Grau und den Themenfarben. Texte sind Platzhalter.", folien)]
 
 
 def stufe1():
@@ -177,6 +214,41 @@ CSS = """
 .f--c0 .f-kicker { margin-bottom: 1.2cqw; line-height: 1; }
 .f-inhaltsflaeche { position: absolute; left: 6cqw; right: 6cqw; top: 17cqw; bottom: 8.2cqw; border: .14cqw dashed #c9c4bd; border-radius: .6cqw; display: grid; place-items: center; }
 .f-inhaltsflaeche span { font: 600 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #a9a39b; }
+/* Stufe 2 · Folientypen */
+.t-titel { position: absolute; left: 6cqw; right: 20cqw; top: 50%; transform: translateY(-58%); }
+.t-titel h1 { font-size: 5.4cqw; }
+.t-meta { margin: 2.4cqw 0 0; font-size: 1.4cqw; opacity: .7; }
+.t-agenda { list-style: none; margin: 3cqw 0 0; padding: 0; max-width: 60cqw; border-top: .14cqw solid currentColor; }
+.t-agenda li { display: flex; align-items: baseline; gap: 3cqw; padding: 1.3cqw 0; border-bottom: .1cqw solid #e4e0db; }
+.t-agenda small { font: 700 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; width: 3cqw; }
+.t-agenda b { font: 700 2.1cqw/1.2 'Lora', serif; }
+.t-kapitel { position: absolute; left: 6cqw; bottom: 9cqw; }
+.t-kapitel span { display: block; font: 700 9cqw/1 'Lora', serif; letter-spacing: -.03em; margin-bottom: 1.4cqw; }
+.t-text { margin-top: 3cqw; max-width: 56cqw; }
+.t-text p { margin: 0 0 1.4cqw; font-size: 1.6cqw; line-height: 1.6; }
+.t-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 5cqw; margin-top: 3.4cqw; }
+.t-zwei > div { border-top: .16cqw solid currentColor; padding-top: 1.6cqw; }
+.t-zwei b { font: 700 2.2cqw/1.2 'Lora', serif; }
+.t-zwei p { margin: 1cqw 0 0; font-size: 1.5cqw; line-height: 1.55; }
+.t-bild { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+.t-bild__text { padding: 3.6cqw 4cqw 8cqw 6cqw; }
+.t-bild__text p { margin: 2cqw 0 0; font-size: 1.5cqw; line-height: 1.55; }
+.t-bild__bild { background: #e4e0db; display: grid; place-items: center; }
+.t-bild__bild span { font: 600 1.2cqw/1 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #8a847c; }
+.t-zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4cqw; margin-top: 4cqw; }
+.t-zahlen b { display: block; font: 700 7cqw/1 'Lora', serif; }
+.t-zahlen p { margin: 1cqw 0 0; padding-top: 1cqw; border-top: .14cqw solid currentColor; font-size: 1.4cqw; }
+.t-tab { width: 100%; margin-top: 3cqw; border-collapse: collapse; font-size: 1.4cqw; }
+.t-tab th, .t-tab td { padding: 1.2cqw 1.6cqw; text-align: left; border-bottom: .1cqw solid #e4e0db; }
+.t-tab th { font: 700 1.9cqw/1.2 'Lora', serif; }
+.t-tab td:first-child { font: 700 1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; width: 14cqw; }
+.t-tab .t-mitte { background: #fff400; }
+.t-zs { margin-top: 5cqw; }
+.t-zs p { margin: .8cqw 0 0; padding-right: 2cqw; font-size: 1.35cqw; line-height: 1.5; }
+.t-team { display: flex; gap: 6cqw; margin-top: 4cqw; }
+.t-team img { width: 12cqw; height: 12cqw; border-radius: 50%; object-fit: cover; filter: grayscale(1); background: #f3f1ee; }
+.t-team b { display: block; margin-top: 1.4cqw; font: 700 1.8cqw/1.2 'Lora', serif; }
+.t-team p { margin: .4cqw 0 0; font-size: 1.2cqw; opacity: .7; }
 .f-mass { position: absolute; left: 2.4cqw; width: 1.2cqw; height: 3.6cqw; background: #fff400; }
 .f-mass--oben { top: 0; } .f-mass--unten { bottom: 0; }
 .f-wrap { margin: 0; }
@@ -240,13 +312,13 @@ def bauen():
     rahmen = (SITE / "projekte" / "corporate-design.html").read_text(encoding="utf-8")
     a, b = rahmen.index("<main"), rahmen.index("</main>") + 7
     abschnitte = "".join(
-        f'<div class="pm-abschnitt"><h2>{t}</h2><p>{p}</p><div class="pm-raster">{"".join(f)}</div></div>' for t, p, f in festgelegt() + stufe1())
+        f'<div class="pm-abschnitt"><h2>{t}</h2><p>{p}</p><div class="pm-raster">{"".join(f)}</div></div>' for t, p, f in festgelegt() + stufe2() + stufe1())
     main = f'''<main>
 <section class="pm"><div class="container">
   <p class="pm-kicker">Geschäftsausstattung</p>
   <h1>PowerPoint- &amp; Keynote-<span class="hl">Master</span></h1>
   <p class="pm-lead">Wir arbeiten uns in Stufen heran. Erst das Grundsystem – Hintergründe, Header, Schriften, Farben und Designelemente –, dann die einzelnen Folientypen, dann die Darstellungsvarianten. Am Ende entstehen daraus die echten Vorlagen in PowerPoint und Keynote.</p>
-  <div class="pm-stufen"><span class="aktiv">Stufe 1 · Grundsystem ✓ Hintergründe, Idee C</span><span>Stufe 2 · Folientypen</span><span>Stufe 3 · Darstellungsvarianten</span><span>Stufe 4 · PowerPoint &amp; Keynote</span></div>
+  <div class="pm-stufen"><span class="aktiv">Stufe 1 · Grundsystem ✓ Hintergründe, Idee C</span><span class="aktiv">Stufe 2 · Folientypen</span><span>Stufe 3 · Darstellungsvarianten</span><span>Stufe 4 · PowerPoint &amp; Keynote</span></div>
   {abschnitte}
 </div></section>
 <style>{CSS}</style>

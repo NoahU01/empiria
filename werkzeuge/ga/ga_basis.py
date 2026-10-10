@@ -19,6 +19,8 @@ sys.path.insert(0, str(WERKZEUGE))
 from e2_bauen import FORM  # noqa: E402
 from e2_lucide import ICONS  # noqa: E402
 
+ICONS = dict(ICONS, globe='<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>')
+
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PUPPETEER = SITE / "node_modules" / "puppeteer-core"
 SERVER = "http://localhost:4599"
@@ -125,7 +127,8 @@ def abschnitt(titel, text, inhalt):
 def seite_schreiben(datei, titel, h1, lead, chips, inhalt, css):
     rahmen = (PROJEKTE / "powerpoint-master.html").read_text(encoding="utf-8")
     a, b = rahmen.index("<main"), rahmen.index("</main>") + 7
-    chips_html = "".join(f'<span{" class=\"aktiv\"" if i == 0 else ""}>{c}</span>' for i, c in enumerate(chips))
+    akt = ' class="aktiv"'
+    chips_html = "".join(f'<span{akt if i == 0 else ""}>{c}</span>' for i, c in enumerate(chips))
     main = f'''<main>
 <section class="ga"><div class="container">
   <p class="ga-kicker">Geschäftsausstattung</p>
