@@ -197,6 +197,68 @@ CSS_HOCH = masse("""
 """, 55)
 
 
+# ---------- QR-Code (vCard: Kontakt direkt ins Telefon speichern) ----------
+import segno  # noqa: E402
+
+VCARD = ("BEGIN:VCARD\nVERSION:3.0\nN:Ströbel;Daniel\nFN:Daniel Ströbel\nORG:empiria GmbH\nTITLE:Geschäftsführer\n"
+         "TEL;TYPE=CELL:+4917631347217\nEMAIL:daniel.stroebel@empiria.de\nURL:https://www.empiria.de\n"
+         "ADR;TYPE=WORK:;;Kapellengasse 6;Crailsheim;;74564;Deutschland\nEND:VCARD")
+
+
+def qr_svg(farbe=SCHWARZ):
+    qr = segno.make(VCARD, error="m", micro=False)
+    m = list(qr.matrix)
+    n = len(m)
+    pfad = "".join(f"M{x} {y}h1v1h-1z" for y, zeile in enumerate(m) for x, v in enumerate(zeile) if v)
+    return (f'<svg viewBox="0 0 {n} {n}" shape-rendering="crispEdges" style="display:block;width:100%;height:auto" aria-hidden="true">'
+            f'<path fill="{farbe}" d="{pfad}"/></svg>')
+
+
+def mit_qr(fn, kachel=None):
+    """Vorderseite + QR-Code unten rechts. kachel: Hintergrund hinter dem Code (auf Schwarz nötig, damit er sicher lesbar ist)."""
+    def f(p, png=None):
+        html = fn(p, png)
+        stil = f' style="background:{kachel}"' if kachel else ""
+        q = f'<span class="vkq{" vkq--kachel" if kachel else ""}"{stil}>{qr_svg()}</span>'
+        return html.replace('<div class="vk-in">', '<div class="vk-in">' + q, 1)
+    return f
+
+
+def rq_gelb(png=None):
+    return karte(logo(cls="vk2-logo") + f'<span class="vkq vkq--gross">{qr_svg()}</span>'
+                 '<p class="vkq-text">Kontakt<br>speichern</p>', GELB, SCHWARZ, "vk2 vk2--rq", png)
+
+
+def rq_weiss(png=None):
+    return karte('<p class="vk2-claim vkq-claim">Strategie,<br>die <span class="vk-hl">wirkt.</span></p>' +
+                 f'<span class="vkq vkq--gross">{qr_svg()}</span>' + logo(cls="vk2-logo vkq-logo"), "#fff", SCHWARZ, "vk2 vk2--rq", png)
+
+
+def hq_vorne(p, png=None):
+    html = vorne_h("weiss")(p, png).replace('class="vkh ga-blatt ', 'class="vkh ga-blatt vkh--qr ', 1)
+    return html.replace('<div class="vk-in">', f'<div class="vk-in"><span class="vkhq">{qr_svg()}</span>', 1)
+
+
+def hq_gelb(png=None):
+    return karte_hoch(logo(cls="vkh-logo") + f'<span class="vkhq vkhq--mitte">{qr_svg()}</span><p class="vkhq-text">Kontakt speichern</p>',
+                      GELB, SCHWARZ, "vkh--rq", png)
+
+
+CSS_QR = masse("""
+.vkq { position: absolute; right: [6]; bottom: [5.6]; width: [16]; }
+.vkq--kachel { right: [5]; bottom: [4.6]; width: [18]; padding: [1.6]; border-radius: [1.6]; }
+.vkq--gross { width: [21]; bottom: [6]; right: [6]; }
+.vkq-text { position: absolute; left: [6]; bottom: [6]; font: 600 [5.4pt]/1.4 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vkq-claim { position: absolute; left: [6]; top: [6.4]; font-size: [13pt] !important; }
+.vkq-logo { top: auto !important; bottom: [6]; }
+""", 85) + masse("""
+.vkhq { position: absolute; left: [6]; bottom: [6.5]; width: [15]; }
+.vkh--qr .vk2-kontakt { bottom: [25]; }
+.vkhq--mitte { left: 50%; right: auto; bottom: auto; top: [27]; transform: translateX(-50%); width: [26]; }
+.vkhq-text { position: absolute; left: 0; right: 0; top: [57]; text-align: center; font: 600 [5.4pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+""", 55)
+
+
 VARIANTEN = [
     ("a", "Variante A · Weiß", "Ruhig und klassisch. Vorderseite: Logo oben, Name und Rolle in der Mitte, Kontakt unten in zwei Spalten. "
      "Rückseite weiß mit dem Claim und dem gelben Highlight – wie die Startseite der Website.", vorne_a, hinten_a),
@@ -231,6 +293,20 @@ def inhalt():
                            "Bei den Anschnitt-Varianten läuft der Doppelpfeil oben rechts aus der Karte.",
                            f'<div class="ga-raster ga-raster--vkh">{"".join(hoch)}</div>'
                            f'<p class="ga-unter">Rückseiten hoch</p><div class="ga-raster ga-raster--vkh">{"".join(hoch_r)}</div>'))
+    hx = lambda n: dl(n).replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")
+    qr = raster([
+        figur(mit_qr(vorne_q("weiss"))(d, "qr-vorne-weiss"), "<b>Vorderseite Weiß</b> · QR unten rechts", dl("qr-vorne-weiss")),
+        figur(mit_qr(vorne_q("schwarz"), GELB)(d, "qr-vorne-schwarz"), "<b>Vorderseite Schwarz</b> · QR auf gelber Fläche", dl("qr-vorne-schwarz")),
+        figur(rq_gelb("qr-hinten-gelb"), "<b>Rückseite Gelb</b> · QR statt Doppelpfeil", dl("qr-hinten-gelb")),
+        figur(rq_weiss("qr-hinten-weiss"), "<b>Rückseite Weiß</b> · Claim und QR", dl("qr-hinten-weiss")),
+    ], 2, 1)
+    qr_h = (f'<div class="ga-raster ga-raster--vkh">'
+            + figur(hq_vorne(d, "qr-hoch-vorne"), "<b>Hoch · Vorderseite Weiß</b>", hx("qr-hoch-vorne"))
+            + figur(hq_gelb("qr-hoch-hinten-gelb"), "<b>Hoch · Rückseite Gelb</b>", hx("qr-hoch-hinten-gelb")) + '</div>')
+    teile.append(abschnitt("Mit QR-Code", "Der Code enthält Deine Kontaktdaten als digitale Visitenkarte (vCard): scannen, und Name, Funktion, "
+                           "Telefon, E-Mail, Adresse und Website landen direkt im Adressbuch. Schwarz auf Weiß oder Gelb – so ist er sicher lesbar; "
+                           "auf der schwarzen Karte steht er deshalb auf einer kleinen gelben Fläche. Mindestgröße im Druck 15 mm.",
+                           qr + '<p class="ga-unter">Hochformat</p>' + qr_h))
     teile.append(abschnitt("Rückseiten", "Unverändert aus Entwurf 1 – jede Vorderseite lässt sich mit jeder Rückseite kombinieren.", rueck))
     return "".join(teile)
 
@@ -311,7 +387,7 @@ def bauen(mit_png=True):
                     "Fünf Vorderseiten im Format 85 × 55 mm – nur Name, Funktion und Kontakt, ohne Icons und ohne Foto. "
                     "Neben jeder Vorderseite die vorgeschlagene Rückseite. Erst wenn die Gestaltung steht, folgen die weiteren Personen.",
                     ["Entwurf 2", "quer 85 × 55 mm", "hoch 55 × 85 mm", "nur Text vorne"],
-                    inhalt(), CSS + CSS_HOCH)
+                    inhalt(), CSS + CSS_HOCH + CSS_QR)
     if mit_png:
         png_export(DATEI, "visitenkarten")
 
