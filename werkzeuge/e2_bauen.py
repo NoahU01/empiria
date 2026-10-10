@@ -139,6 +139,13 @@ def pdf_2_0(html):
                 seiten = len(re.findall(rb"/Type\s*/Page[^s]", neu.read_bytes()))
             html = re.sub(r'(<div class="pdf-dl-meta">.*?)<span>[\d,]+ MB</span>', lambda m: m.group(1) + f"<span>{mb} MB</span>", html, count=1, flags=re.S)
             html = re.sub(r'(<div class="pdf-dl-meta">.*?)<span>\d+ Seiten</span>', lambda m: m.group(1) + f"<span>{seiten} Seiten</span>", html, count=1, flags=re.S)
+    # alle übrigen PDFs (z. B. Anforderungsprofil, Roll-up-Regeln): gleicher Dateiname im Ordner 2.0
+    def andere(m):
+        pfad = m.group(1); name = pfad.rsplit("/", 1)[-1]
+        return m.group(0).replace(pfad, f"/assets/downloads/2.0/{name}") if "/2.0/" not in pfad and (SITE / "assets/downloads/2.0" / name).exists() else m.group(0)
+    html = re.sub(r'href="(/assets/[^"]+\.pdf)"', andere, html)
+    if (SITE / "assets/downloads/2.0/EMP_01_rollup_golden_rules-1.png").exists():   # Vorschau der goldenen Regeln im Fenster
+        html = html.replace("/assets/downloads/rollup-golden-rules-thumb.jpg", "/assets/downloads/2.0/EMP_01_rollup_golden_rules-1.png")
     return html
 
 

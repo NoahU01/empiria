@@ -280,6 +280,7 @@ def seite(inhalt, nr=None, gesamt=None, hell_fuss=False, klasse=""):
     return f'<section class="seite {klasse}">{inhalt}{f}</section>'
 
 
-def dokument(titel, seiten):
+def dokument(titel, seiten, extra_css=""):
+    """extra_css: zusätzliche Regeln nur für dieses PDF (lib.py bleibt für alle gleich)."""
     return (f'<!doctype html><html lang="de"><head><meta charset="utf-8"><title>{_h.escape(titel)}</title>'
-            f'<link rel="stylesheet" href="assets/fonts/fonts.local.css"><style>{CSS}</style></head><body>{"".join(seiten)}</body></html>')
+            f'<link rel="stylesheet" href="assets/fonts/fonts.local.css"><style>{CSS}{extra_css}</style></head><body>{"".join(seiten)}</body></html>')
