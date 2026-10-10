@@ -157,69 +157,75 @@ def attrappe_firma(var):
 
 
 # ----- Mit Kundenlogos -----
-KUNDEN = [("logo-01-sv.svg", "SV SparkassenVersicherung"), ("logo-02-vgh.svg", "VGH"), ("logo-03-devk-re.svg", "DEVK"),
-          ("logo-04-vh.svg", "Vereinigte Hagelversicherung"), ("logo-09-oerag.svg", "ÖRAG Rechtsschutz"),
-          ("logo-06-gartenbau.svg", "Gartenbau-Versicherung")]
+# Alle Kundenlogos in der Reihenfolge der Website (site/script.js)
+KUNDEN = [("logo-01-sv.svg", "SV SparkassenVersicherung"), ("logo-02-vgh.svg", "VGH"), ("logo-03-devk-re.svg", "DEVK RE"),
+          ("logo-04-vh.svg", "Vereinigte Hagelversicherung"), ("logo-05-svs.svg", "SV SparkassenVersicherung Sachsen"),
+          ("logo-msk.svg", "Meyerthole Siems Kohlruss"), ("logo-voev.jpg", "Verband öffentlicher Versicherer"),
+          ("logo-06-gartenbau.svg", "Gartenbau-Versicherung"), ("logo-07-sv-bav.svg", "SV bAV Consulting"),
+          ("logo-08-devk-am.svg", "DEVK AM"), ("logo-09-oerag.svg", "ÖRAG Rechtsschutz"), ("logo-10-svp.svg", "SV Pensionsfonds"),
+          ("logo-11-cominia.svg", "cominia"), ("logo-12-zeitsprung.svg", "zeitsprung")]
+# Logos einfarbig: Schwellwert (Weiß bleibt weiß, alles andere wird schwarz), dann per Mischmodus auf die Fläche gelegt –
+# auf Gelb verschwindet das Weiß (multiply), auf Schwarz wird invertiert und das Schwarz verschwindet (screen).
+LOGO_VAR = {
+    "gelb": ("Gelb", GELB, SCHWARZ, SCHWARZ, GELB, "grayscale(1) brightness(.62) contrast(12)", "multiply",
+             "Vollfläche Gelb, alle Kundenlogos einfarbig schwarz direkt auf der Fläche – wie die Logoleiste der Website."),
+    "schwarz": ("Schwarz", SCHWARZ, WEISS, GELB, SCHWARZ, "grayscale(1) brightness(.62) contrast(12) invert(1)", "screen",
+                "Schwarze Fläche, alle Kundenlogos einfarbig weiß, Gelb nur im Highlight."),
+}
+# Optischer Ausgleich je Logo (Faktor auf die Grundhöhe) – die Dateien haben unterschiedlich viel Weißraum und Gewicht
+LOGO_SKALA = {"logo-01-sv.svg": 1.0, "logo-02-vgh.svg": .78, "logo-03-devk-re.svg": .82, "logo-04-vh.svg": .9,
+              "logo-05-svs.svg": 1.05, "logo-msk.svg": 1.75, "logo-voev.jpg": 1.0, "logo-06-gartenbau.svg": .95,
+              "logo-07-sv-bav.svg": 1.45, "logo-08-devk-am.svg": .82, "logo-09-oerag.svg": 1.1, "logo-10-svp.svg": 1.45,
+              "logo-11-cominia.svg": .72, "logo-12-zeitsprung.svg": 1.0}
 LOGO_CSS = """
-.lb-band { background: #fff; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; }
-.lb-band img, .lb-kacheln img { display: block; width: auto; }
-.lb-kacheln { display: grid; }
-.lb-kacheln > span { display: flex; align-items: center; justify-content: center; background: #fff; }
+.lb-logos { display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; justify-items: center; }
+.lb-logos img { display: block; width: auto; object-fit: contain; }
+.lb-logos img:nth-child(7n+1) { justify-self: start; }
+.lb-logos img:nth-child(7n) { justify-self: end; }
 """
 
 
-def kundenlogos(p, hoehe):
-    return "".join(f'<img src="/assets/logos/{d}" alt="{n}" style="height:{p(hoehe)}">' for d, n in KUNDEN)
+def logo_raster(p, var, hoehe, zeile, gap_y):
+    _, _, _, _, _, filt, blend, _ = LOGO_VAR[var]
+    return "".join(f'<img src="/assets/logos/{d}" alt="{n}" style="height:{p(hoehe * LOGO_SKALA[d])};max-width:86%;filter:{filt};mix-blend-mode:{blend}">'
+                   for d, n in KUNDEN), f"grid-auto-rows:{p(zeile)};row-gap:{p(gap_y)}"
 
 
-def person_logos(wer):
-    """Personenbanner mit Logoband: oben Gelb mit Claim, unten ein weißes Band mit Kundenlogos.
-    Das Profilfoto liegt links über dem Band – die Logos beginnen rechts davon (x 470)."""
+def person_logos(var, wer):
+    """Personenbanner 1584 × 396: oben Kicker + Claim, darunter alle 14 Kundenlogos in zwei Reihen. Inhalt ab x 470 (Profilfoto links)."""
+    _, bg, fg, hlbg, hlfg, _, _, _ = LOGO_VAR[var]
     W, H = 1584, 396
     p = px_fn(W)
-    band, unten, rechts = 104, 40, 84
-    oben = H - band - unten
-    text = (f'<div style="left:{p(470)};top:{p(oben / 2)};transform:translateY(-50%)">'
-            f'<p class="lb-kicker" style="font-size:{p(20)};gap:{p(16)};margin-bottom:{p(18)}">{PERSONEN[wer][2]}</p>'
-            f'<h2 style="font-size:{p(64)}">Strategie, die <span class="hl">wirkt.</span></h2></div>')
-    pfeil = f'<div style="right:{p(84)};top:{p((oben - 150 * PFEIL_VERH) / 2)};width:{p(150)}">{form("forward", SCHWARZ)}</div>'
-    logos = (f'<div class="lb-band" style="left:{p(470)};right:{p(rechts)};bottom:{p(unten)};height:{p(band)};'
-             f'border-radius:{p(16)};padding:0 {p(48)}">{kundenlogos(p, 40)}</div>')
-    kstrich = f'<style>.lb-pl-{wer} .lb-kicker::before{{width:{p(40)};height:{p(4)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-pl-{wer}" style="aspect-ratio:{W}/{H};--bg:{GELB};--fg:{SCHWARZ};--hlbg:{SCHWARZ};--hlfg:{GELB}">'
-            f'{text}{pfeil}{logos}</div>')
-
-
-def firma_logos(art):
-    """Firmenbanner mit Kundenlogos. band: Gelb mit Claim oben, weißes Logoband unten. kacheln: Gelb, Logos in weißen Kacheln."""
-    W, H = 1128, 191
-    p = px_fn(W)
-    if art == "band":
-        band, unten = 62, 22
-        oben = H - band - unten
-        inhalt = (f'<h2 style="left:{p(250)};top:{p(oben / 2)};transform:translateY(-50%);font-size:{p(40)}">Strategie, die <span class="hl">wirkt.</span></h2>'
-                  f'<div style="right:{p(56)};top:{p((oben - 64 * PFEIL_VERH) / 2)};width:{p(64)}">{form("forward", SCHWARZ)}</div>'
-                  f'<div class="lb-band" style="left:{p(250)};right:{p(56)};bottom:{p(unten)};height:{p(band)};border-radius:{p(12)};padding:0 {p(30)}">{kundenlogos(p, 24)}</div>')
-    else:
-        zelle_h, gap = 78, 12
-        breite = W - 250 - 56
-        kacheln = "".join(f'<span style="border-radius:{p(12)}"><img src="/assets/logos/{d}" alt="{n}" style="height:{p(30)};max-width:78%;object-fit:contain"></span>'
-                          for d, n in KUNDEN)
-        inhalt = (f'<p class="lb-kicker" style="left:{p(250)};top:{p(40)};font-size:{p(13)};gap:{p(12)}">Wir arbeiten unter anderem für</p>'
-                  f'<div class="lb-kacheln" style="left:{p(250)};top:{p(70)};width:{p(breite)};grid-template-columns:repeat({len(KUNDEN)},1fr);'
-                  f'gap:{p(gap)};grid-auto-rows:{p(zelle_h)}">{kacheln}</div>')
-    kstrich = f'<style>.lb-fl-{art} .lb-kicker::before{{width:{p(28)};height:{p(2.8)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-fl-{art}" style="aspect-ratio:{W}/{H};--bg:{GELB};--fg:{SCHWARZ};--hlbg:{SCHWARZ};--hlfg:{GELB}">'
+    links, rechts = 470, 84
+    logos, raster = logo_raster(p, var, 34, 60, 18)
+    inhalt = (f'<div style="left:{p(links)};top:{p(46)}">'
+              f'<p class="lb-kicker" style="font-size:{p(18)};gap:{p(14)};margin-bottom:{p(14)}">{PERSONEN[wer][2]}</p>'
+              f'<h2 style="font-size:{p(54)}">Strategie, die <span class="hl">wirkt.</span></h2></div>'
+              f'<div class="lb-logos" style="left:{p(links)};right:{p(rechts)};top:{p(206)};{raster}">{logos}</div>')
+    kstrich = f'<style>.lb-pl-{var}-{wer} .lb-kicker::before{{width:{p(36)};height:{p(3.5)}}}</style>'
+    return (f'{kstrich}<div class="lb lb-pl-{var}-{wer}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
             f'{inhalt}</div>')
 
 
-def attrappe_person_logos(wer):
-    name, rolle, _ = PERSONEN[wer]
-    return attrappe_person("weiss", wer).replace(person_banner("weiss", wer), person_logos(wer))
+def firma_logos(var):
+    """Firmenbanner 1128 × 191: Kicker und alle 14 Kundenlogos in zwei Reihen. Inhalt ab x 250 (Firmenlogo links unten)."""
+    _, bg, fg, hlbg, hlfg, _, _, _ = LOGO_VAR[var]
+    W, H = 1128, 191
+    p = px_fn(W)
+    logos, raster = logo_raster(p, var, 22, 42, 10)
+    inhalt = (f'<p class="lb-kicker" style="left:{p(250)};top:{p(30)};font-size:{p(12)};gap:{p(10)}">Wir arbeiten unter anderem für</p>'
+              f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(60)};{raster}">{logos}</div>')
+    kstrich = f'<style>.lb-fl-{var} .lb-kicker::before{{width:{p(24)};height:{p(2.4)}}}</style>'
+    return (f'{kstrich}<div class="lb lb-fl-{var}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
+            f'{inhalt}</div>')
 
 
-def attrappe_firma_logos(art):
-    return attrappe_firma("weiss").replace(firma_banner("weiss"), firma_logos(art))
+def attrappe_person_logos(var, wer):
+    return attrappe_person("weiss", wer).replace(person_banner("weiss", wer), person_logos(var, wer))
+
+
+def attrappe_firma_logos(var):
+    return attrappe_firma("weiss").replace(firma_banner("weiss"), firma_logos(var))
 
 
 def schutzzone():
@@ -242,10 +248,10 @@ def jobs():
         for wer in PERSONEN:
             j.append({"html": person_banner(var, wer), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-{var}-{wer}.png"})
         j.append({"html": firma_banner(var), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
-    for wer in PERSONEN:
-        j.append({"html": person_logos(wer), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-logos-{wer}.png"})
-    for art in ("band", "kacheln"):
-        j.append({"html": firma_logos(art), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-logos-{art}.png"})
+    for var in LOGO_VAR:
+        for wer in PERSONEN:
+            j.append({"html": person_logos(var, wer), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-logos-{var}-{wer}.png"})
+        j.append({"html": firma_logos(var), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-logos-{var}.png"})
     return j
 
 
@@ -277,22 +283,20 @@ def main_html():
     teile.append('</div>')
     # Mit Kundenlogos
     teile.append('<div class="pm-abschnitt"><h2>3 · Mit Kundenlogos</h2>'
-                 '<p class="pm-text">Gelb mit dem Claim, darunter die Kundenlogos auf einer weißen Fläche – wie die Unternehmens-Kacheln auf der Volksfest-Seite. '
-                 '<b>Empfehlung:</b> Auf der Unternehmensseite ja, denn dort sind die Referenzen das stärkste Argument. Bei Personenprofilen eher nicht: '
-                 'Dort soll die Person im Mittelpunkt stehen, und Logos wirken schnell wie Werbung. Zum Vergleich gibt es trotzdem beide.</p>'
-                 '<h3>Unternehmensseite</h3><p class="pm-text">A mit Claim und Logoband, B nur Logos in weißen Kacheln auf Gelb.</p>'
-                 '<div class="lg-raster lg-raster--2">'
-                 + "".join(f'<figure style="margin:0">{attrappe_firma_logos(art)}<p class="pm-label">Variante {b} · {t} · 1128 × 191 px</p>'
-                           f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-logos-{art}.png", "PNG laden")}</div></figure>'
-                           for art, b, t in (("band", "A", "Claim und Logoband"), ("kacheln", "B", "Logo-Kacheln")))
-                 + '</div>'
-                 '<h3>Personenprofil</h3>'
-                 f'<div class="lg-gross">{attrappe_person_logos("daniel")}<p class="pm-label">Attrappe Personenprofil · Daniel Ströbel</p></div>'
-                 '<div class="lg-raster">'
-                 + "".join(f'<figure style="margin:0">{person_logos(wer)}<p class="pm-label">{PERSONEN[wer][0]} · 1584 × 396 px</p>'
-                           f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-logos-{wer}.png", "PNG laden")}</div></figure>'
-                           for wer in PERSONEN)
-                 + '</div></div>')
+                 '<p class="pm-text">Alle 14 Kundenlogos, einfarbig und direkt auf der Fläche – schwarz auf Gelb oder weiß auf Schwarz, '
+                 'in zwei Reihen im Raster. Für die Unternehmensseite und für die Personenprofile.</p>')
+    for i, (var, v) in enumerate(LOGO_VAR.items()):
+        teile.append(f'<h3>Variante {"AB"[i]} · {v[0]}</h3><p class="pm-text">{v[7]}</p>'
+                     f'<div class="lg-raster lg-raster--2"><figure style="margin:0">{attrappe_firma_logos(var)}'
+                     f'<p class="pm-label">Unternehmensseite · 1128 × 191 px</p>'
+                     f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-logos-{var}.png", "PNG laden")}</div></figure>'
+                     f'<figure style="margin:0">{attrappe_person_logos(var, "daniel")}<p class="pm-label">Personenprofil · Daniel Ströbel</p></figure></div>'
+                     '<div class="lg-raster">'
+                     + "".join(f'<figure style="margin:0">{person_logos(var, wer)}<p class="pm-label">{PERSONEN[wer][0]} · 1584 × 396 px</p>'
+                               f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-logos-{var}-{wer}.png", "PNG laden")}</div></figure>'
+                               for wer in PERSONEN)
+                     + '</div>')
+    teile.append('</div>')
 
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn-<span class="hl">Banner</span>',
