@@ -310,7 +310,13 @@ def kopf_kuerzen(inhalt, max_zeichen=230):
             if len(re.sub(r"<[^>]+>", "", neu + " " + satz)) > max_zeichen and neu:
                 break
             neu = (neu + " " + satz).strip()
+        # nie mit einem Doppelpunkt enden lassen (z. B. „Schluss damit:“) – dann den angefangenen Satz weglassen
+        while neu.endswith(":") and " " in neu:
+            neu = re.split(r"(?<=[.!?])\s+", neu)
+            neu = " ".join(neu[:-1]) if len(neu) > 1 else neu[0].rstrip(":") + "."
         erster = neu
+    if re.sub(r"<[^>]+>", "", erster).rstrip().endswith(":"):
+        erster = erster.rstrip().rstrip(":") + "."
     out = f"<p>{erster}</p>"
     if pillen:
         p = pillen.group(0)
