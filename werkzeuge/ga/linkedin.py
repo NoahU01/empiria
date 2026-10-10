@@ -32,16 +32,18 @@ VARIANTEN = {
     "gelb": ("Gelb mit Anschnitt", "Vollfläche Gelb, der Claim zweizeilig wie auf der Homepage, rechts läuft der Doppelpfeil groß aus dem Bild."),
     "schwarz": ("Schwarz mit Anschnitt", "Dieselbe Geste auf Schwarz: weißer Claim, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
     "wechsel": ("Flächenwechsel", "Oben Gelb, unten Schwarz – der Doppelpfeil sitzt auf der Kante und wechselt mit der Fläche die Farbe."),
-    "logos-gelb": ("Kundenlogos auf Gelb", "Alle 14 Kundenlogos einfarbig schwarz direkt auf Gelb, darüber der Claim."),
-    "logos-schwarz": ("Kundenlogos auf Schwarz", "Alle 14 Kundenlogos einfarbig weiß auf Schwarz, Gelb nur im Highlight."),
+    "logos-start": ("Kundenlogos · Startseite", "Claim mit Highlight und darunter alle 14 Kundenlogos in Originalfarbe auf Weiß – wie Kopf und Logoleiste der Startseite. "
+                    "Rechts eine schwarze Fläche mit dem gelben Doppelpfeil."),
+    "logos-wand": ("Kundenlogos · Logowand", "Die Überschrift der Website „Wir arbeiten unter anderem für diese Unternehmen.“ und alle 14 Logos "
+                   "in Originalfarbe, größer und in zwei Reihen."),
 }
 FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil, Logo weiß?
     "weiss": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
     "gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
     "schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
     "wechsel": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
-    "logos-gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
-    "logos-schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
+    "logos-start": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
+    "logos-wand": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
 }
 
 CSS = """
@@ -190,12 +192,7 @@ KUNDEN = [("logo-01-sv.svg", "SV SparkassenVersicherung"), ("logo-02-vgh.svg", "
           ("logo-11-cominia.svg", "cominia"), ("logo-12-zeitsprung.svg", "zeitsprung")]
 # Logos einfarbig: Schwellwert (Weiß bleibt weiß, alles andere wird schwarz), dann per Mischmodus auf die Fläche gelegt –
 # auf Gelb verschwindet das Weiß (multiply), auf Schwarz wird invertiert und das Schwarz verschwindet (screen).
-LOGO_VAR = {
-    "gelb": ("Gelb", GELB, SCHWARZ, SCHWARZ, GELB, "grayscale(1) brightness(.62) contrast(12)", "multiply",
-             "Vollfläche Gelb, alle Kundenlogos einfarbig schwarz direkt auf der Fläche – wie die Logoleiste der Website."),
-    "schwarz": ("Schwarz", SCHWARZ, WEISS, GELB, SCHWARZ, "grayscale(1) brightness(.62) contrast(12) invert(1)", "screen",
-                "Schwarze Fläche, alle Kundenlogos einfarbig weiß, Gelb nur im Highlight."),
-}
+# Die Logos stehen immer in ihren Originalfarben (Vorgabe der Unternehmen) – deshalb nur auf Weiß.
 # Optischer Ausgleich je Logo (Faktor auf die Grundhöhe) – die Dateien haben unterschiedlich viel Weißraum und Gewicht
 LOGO_SKALA = {"logo-01-sv.svg": 1.0, "logo-02-vgh.svg": .78, "logo-03-devk-re.svg": .82, "logo-04-vh.svg": .9,
               "logo-05-svs.svg": 1.05, "logo-msk.svg": 1.75, "logo-voev.jpg": 1.0, "logo-06-gartenbau.svg": .95,
@@ -209,29 +206,45 @@ LOGO_CSS = """
 """
 
 
-def logo_raster(p, var, hoehe, zeile, gap_y):
-    _, _, _, _, _, filt, blend, _ = LOGO_VAR[var]
-    return "".join(f'<img src="/assets/logos/{d}" alt="{n}" style="height:{p(hoehe * LOGO_SKALA[d])};max-width:86%;filter:{filt};mix-blend-mode:{blend}">'
+def logo_raster(p, hoehe, zeile, gap_y):
+    return "".join(f'<img src="/assets/logos/{d}" alt="{n}" style="height:{p(hoehe * LOGO_SKALA[d])};max-width:86%">'
                    for d, n in KUNDEN), f"grid-auto-rows:{p(zeile)};row-gap:{p(gap_y)}"
 
 
-def person_logos(var):
-    """Inhalt Personenbanner mit Logos: oben Kicker + Claim, darunter alle 14 Kundenlogos in zwei Reihen (ab x 470)."""
+WAND_H2 = 'Wir arbeiten unter anderem für diese <span class="hl">Unternehmen.</span>'
+
+
+def person_logos(art):
+    """Personenbanner mit Logos (ab x 470, rechts 84). start: Claim + Doppelpfeil + Logoleiste; wand: Website-Überschrift + große Logos."""
     W = 1584
     p = px_fn(W)
-    logos, raster = logo_raster(p, var, 34, 60, 18)
-    return (f'<div style="left:{p(470)};top:{p(46)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(14) + ";")}'
-            f'{claim(p, 54)}</div>'
-            f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(206)};{raster}">{logos}</div>')
+    if art == "start":  # rechts eine schwarze Fläche mit gelbem Doppelpfeil – die Logos bleiben auf Weiß
+        H, panel = 396, 300
+        logos, raster = logo_raster(p, 30, 56, 16)
+        return (f'<div style="left:{p(W - panel)};top:0;width:{p(panel)};height:100%;background:{SCHWARZ}"></div>'
+                + pfeil(p, 170, W - panel / 2, H / 2, GELB)
+                + f'<div style="left:{p(470)};top:{p(48)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(14) + ";")}'
+                f'{claim(p, 56)}</div>'
+                + f'<div class="lb-logos" style="left:{p(470)};right:{p(panel + 60)};top:{p(212)};{raster}">{logos}</div>')
+    logos, raster = logo_raster(p, 42, 74, 22)
+    return (f'<h2 style="left:{p(470)};top:{p(52)};font-size:{p(40)}">{WAND_H2}</h2>'
+            f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(150)};{raster}">{logos}</div>')
 
 
-def firma_logos(var):
-    """Inhalt Firmenbanner mit Logos: Kicker und alle 14 Kundenlogos in zwei Reihen (ab x 250)."""
+def firma_logos(art):
+    """Firmenbanner mit Logos (ab x 250, rechts 56)."""
     W = 1128
     p = px_fn(W)
-    logos, raster = logo_raster(p, var, 22, 42, 10)
-    return (f'<div style="left:{p(250)};top:{p(30)}">{kicker_html(p, "Wir arbeiten unter anderem für", 12, 10, 24, 2.4)}</div>'
-            f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(60)};{raster}">{logos}</div>')
+    if art == "start":
+        H, panel = 191, 180
+        logos, raster = logo_raster(p, 18, 34, 8)
+        return (f'<div style="left:{p(W - panel)};top:0;width:{p(panel)};height:100%;background:{SCHWARZ}"></div>'
+                + pfeil(p, 92, W - panel / 2, H / 2, GELB)
+                + f'<h2 style="left:{p(250)};top:{p(22)};font-size:{p(32)}">Strategie, die <span class="hl">wirkt.</span></h2>'
+                + f'<div class="lb-logos" style="left:{p(250)};right:{p(panel + 36)};top:{p(88)};{raster}">{logos}</div>')
+    logos, raster = logo_raster(p, 22, 40, 10)
+    return (f'<h2 style="left:{p(250)};top:{p(20)};font-size:{p(24)}">{WAND_H2}</h2>'
+            f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(80)};{raster}">{logos}</div>')
 
 
 def schutzzone():
