@@ -46,7 +46,29 @@ MOTIVE = {
                     "Dasselbe Raster auf Gelb, Ton in Ton – der eine Doppelpfeil ist schwarz."),
     "startseite": ("Startseite", WEISS, SCHWARZ, False,
                    "Der Kopf der Homepage als Bild: „Strategie, die wirkt.“ groß mit gelbem Highlight, daneben der Doppelpfeil."),
+    "claim-schwarz": ("Claim Schwarz", SCHWARZ, GELB, True,
+                      "Dieselbe Komposition dunkel: weißer Claim, „wirkt.“ im gelben Highlight, gelber Doppelpfeil."),
+    "claim-anschnitt-weiss": ("Claim · Anschnitt Weiß", WEISS, SCHWARZ, False,
+                              "Claim oben links, ein riesiger schwarzer Doppelpfeil läuft unten rechts aus dem Bild."),
+    "claim-anschnitt-schwarz": ("Claim · Anschnitt Schwarz", SCHWARZ, GELB, True,
+                                "Claim weiß auf Schwarz, der riesige Doppelpfeil gelb im Anschnitt – die kräftigste Variante."),
+    "claim-gelb": ("Claim Gelb", GELB, SCHWARZ, False,
+                   "Vollfläche Gelb: Claim schwarz, „wirkt.“ als schwarzer Kasten mit gelber Schrift, schwarzer Doppelpfeil im Anschnitt."),
 }
+# Claim-Motive: Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil, Anschnitt?
+CLAIM = {
+    "startseite": ("#1a1817", GELB, "#1a1817", SCHWARZ, False),
+    "claim-schwarz": ("#ffffff", GELB, "#1a1817", GELB, False),
+    "claim-anschnitt-weiss": ("#1a1817", GELB, "#1a1817", SCHWARZ, True),
+    "claim-anschnitt-schwarz": ("#ffffff", GELB, "#1a1817", GELB, True),
+    "claim-gelb": ("#1a1817", SCHWARZ, GELB, SCHWARZ, True),
+}
+
+
+def claim_h2(p, x, y, gr, motiv, extra=""):
+    fgt, hlbg, hlfg, _, _ = CLAIM[motiv]
+    return (f'<h2 style="left:{p(x)};top:{p(y)};font-size:{p(gr)};color:{fgt};{extra}">Strategie,<br>die '
+            f'<span class="hl" style="background:{hlbg};color:{hlfg}">wirkt.</span></h2>')
 GRAU_FL = "#f3f1ee"
 
 CSS = """
@@ -98,10 +120,16 @@ def hintergrund(motiv, fmt):
                 for c in range(n):
                     an = (c, r) == (5, 3)
                     teile.append(zeichen_html(p, "forward", zelle * .52, (c + .5) * zelle, (r + .5) * zelle, fg if an else ton))
-        else:  # startseite
+        else:  # Claim-Motive
+            pf, an = CLAIM[motiv][3], CLAIM[motiv][4]
             gr = .1 * w
-            teile.append(f'<h2 style="left:{p(s0 + .05 * w)};top:{p(.3 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .26 * w, s0 + .05 * w + .13 * w, .3 * h + 2 * gr * 1.32 + .1 * h, SCHWARZ))
+            if an:
+                teile.append(claim_h2(p, s0 + .05 * w, .2 * h, gr, motiv))
+                b = .5 * w  # Anschnitt an der sichtbaren Kante (unten 87,5 %, rechts 87,5 %) – quer und hoch gleich
+                teile.append(zeichen_html(p, "forward", b, .875 * w - .3 * b, .875 * h - .35 * b * PFEIL_VERH, pf))
+            else:
+                teile.append(claim_h2(p, s0 + .05 * w, .3 * h, gr, motiv))
+                teile.append(zeichen_html(p, "forward", .26 * w, s0 + .05 * w + .13 * w, .3 * h + 2 * gr * 1.32 + .1 * h, pf))
         return f'<div class="hg" style="aspect-ratio:1/1;--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
 
     if motiv == "leistungen":
@@ -153,24 +181,37 @@ def hintergrund(motiv, fmt):
         elif art != "iphone":
             teile.append(logo(p, hell, rand, rand, lh, unten=True))
 
-    elif motiv == "startseite":
-        if art == "video":
+    else:  # Claim-Motive
+        pf, an = CLAIM[motiv][3], CLAIM[motiv][4]
+        if an:
+            if art == "video":
+                gr = .05 * w
+                teile.append(claim_h2(p, .045 * w, .08 * h, gr, motiv))
+                b = .26 * w
+                teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .35 * b * PFEIL_VERH, pf))
+            elif art == "iphone":
+                gr = .15 * w
+                teile.append(claim_h2(p, .085 * w, .33 * h, gr, motiv))
+                b = 1.1 * w
+                teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .38 * b * PFEIL_VERH, pf))
+            else:
+                gr = .085 * w
+                teile.append(claim_h2(p, .08 * w, .12 * h, gr, motiv))
+                b = .55 * w
+                teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .35 * b * PFEIL_VERH, pf))
+                teile.append(logo(p, hell, rand, rand, lh, unten=True))
+        elif art == "video":
             gr = .05 * w
-            teile.append(f'<h2 style="left:{p(.045 * w)};top:{p(.08 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .17 * w, w - .045 * w - .085 * w, .2 * h, SCHWARZ))
+            teile.append(claim_h2(p, .045 * w, .08 * h, gr, motiv))
+            teile.append(zeichen_html(p, "forward", .17 * w, w - .045 * w - .085 * w, .2 * h, pf))
         elif art == "iphone":
             gr = .15 * w
-            teile.append(f'<h2 style="left:{p(.085 * w)};top:{p(.5 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .34 * w, .085 * w + .17 * w, .5 * h + 2 * gr * 1.32 + .1 * h, SCHWARZ))
-        elif hoch:
-            gr = .12 * w
-            teile.append(f'<h2 style="left:{p(.09 * w)};top:{p(.36 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .32 * w, .09 * w + .16 * w, .36 * h + 2 * gr * 1.32 + .12 * h, SCHWARZ))
-            teile.append(logo(p, hell, rand, rand, lh, unten=True))
+            teile.append(claim_h2(p, .085 * w, .5 * h, gr, motiv))
+            teile.append(zeichen_html(p, "forward", .34 * w, .085 * w + .17 * w, .5 * h + 2 * gr * 1.32 + .1 * h, pf))
         else:
             gr = .085 * w
-            teile.append(f'<h2 style="left:{p(.08 * w)};top:50%;transform:translateY(-55%);font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .24 * w, w - .1 * w - .12 * w, .48 * h, SCHWARZ))
+            teile.append(claim_h2(p, .08 * w, 0, gr, motiv, "top:50%;transform:translateY(-55%)"))
+            teile.append(zeichen_html(p, "forward", .24 * w, w - .1 * w - .12 * w, .48 * h, pf))
             teile.append(logo(p, hell, rand, rand, lh, unten=True))
 
     return f'<div class="hg" style="aspect-ratio:{w}/{h};--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
@@ -280,7 +321,7 @@ def main_html():
                      + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
-                   'Vier Motive aus der Bildsprache der Homepage – Für MacBook, iPad, iPhone und Videokonferenzen. Beim iPad gibt es je ein quadratisches Bild für quer und hoch – iPadOS schneidet daraus selbst die Mitte aus; gezeigt ist, was in beiden Lagen zu sehen ist. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
+                   'Motive aus der Bildsprache der Homepage – Für MacBook, iPad, iPhone und Videokonferenzen. Beim iPad gibt es je ein quadratisches Bild für quer und hoch – iPadOS schneidet daraus selbst die Mitte aus; gezeigt ist, was in beiden Lagen zu sehen ist. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
                    'Auf dem iPhone bleiben Uhr und Widgets oben sowie die Knöpfe unten frei; bei Teams und Zoom sitzt die Person in der Mitte – alles Wichtige liegt am Rand.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n</main>')
