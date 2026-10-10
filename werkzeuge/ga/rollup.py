@@ -92,43 +92,20 @@ def var_i(png=None):
                   SCHWARZ, "#fff", "ru--i", png)
 
 
-def var_m(png=None):
-    """Referenzen – Claim und alle 14 Kundenlogos in Originalfarbe auf Weiß."""
-    from linkedin import KUNDEN, LOGO_SKALA
-    logos = "".join(f'<span><img src="/assets/logos/{d}" alt="{n}" style="height:{50 * LOGO_SKALA[d] / 8.5:.3f}cqw"></span>' for d, n in KUNDEN)
-    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
-                  '<p class="ru-h">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>'
-                  f'<p class="ru-kicker ru-ref-k">Wir arbeiten unter anderem für</p><div class="ru-ref">{logos}</div>'
-                  f'<p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--m", png)
-
-
-def var_n(png=None):
-    """Problem – der Problem-Abschnitt der Homepage: Aussage und schwarzer Kasten mit den drei Fragen."""
-    fragen = ["Warum bewegt sich da nichts?", "Warum zieht mein Team nicht mit?", "Warum kommt meine Strategie im Alltag nicht an?"]
-    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Problem") +
-                  '<p class="ru-h">Die Strategie steht.<br>Trotzdem passiert<br>zu <span class="ru-hl">wenig.</span></p></div>'
-                  '<div class="ru-kasten">' + "".join(f'<p class="ru-kfrage">{f}</p>' for f in fragen) +
-                  '<p class="ru-kantwort">Die Antwort liegt selten an der Strategie selbst. Es liegt daran, dass sie niemand in den Alltag übersetzt hat.</p></div>'
-                  f'<p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--n", png)
-
-
 VARIANTEN = [
     ("a", "A · Claim", "weiß", var_a), ("b", "B · Leistungen", "schwarz", var_b),
     ("c", "C · Drei Leistungen", "weiß · gelb · schwarz · grau", var_c), ("d", "D · Muster", "schwarz", var_d),
     ("e", "E · Anschnitt", "schwarz", var_e), ("i", "F · Zitat", "schwarz", var_i),
-    ("m", "G · Referenzen", "weiß · Logos in Originalfarbe", var_m), ("n", "H · Problem", "weiß · schwarzer Kasten", var_n),
 ]
 
 
 def inhalt():
     figuren = [figur(fn(f"rollup-{k}"), f"<b>{t}</b> · {farbe} · 100 × 200 cm",
                      download(f"ga/rollup/rollup-{k}.png", f"PNG-Vorschau · {PX[0]} × {PX[1]} px")) for k, t, farbe, fn in VARIANTEN]
-    teile = [abschnitt("Acht Varianten", "<b>A</b> Claim und Doppelpfeil. <b>B</b> die drei Leistungen mit ihren Zeichen. "
+    teile = [abschnitt("Sechs Varianten", "<b>A</b> Claim und Doppelpfeil. <b>B</b> die drei Leistungen mit ihren Zeichen. "
                        "<b>C</b> die Leistungskarten als Bänder. <b>D</b> ein Raster aus Doppelpfeilen, einer leuchtet. "
-                       "<b>E</b> der Doppelpfeil im Anschnitt. <b>F</b> der Leitsatz als Zitat. "
-                       "<b>G</b> Referenzen: Claim und alle 14 Kundenlogos in Originalfarbe – für Messen in der Versicherungsbranche. "
-                       "<b>H</b> der Problem-Abschnitt der Homepage: Aussage und schwarzer Kasten mit den drei Fragen, die jede Führungskraft kennt.",
-                       raster(figuren, 4, 2, "gap:2.4rem 1.4rem"))]
+                       "<b>E</b> der Doppelpfeil im Anschnitt. <b>F</b> der Leitsatz als Zitat.",
+                       raster(figuren, 3, 2, "gap:2.4rem 1.6rem"))]
     zonen = ('<div class="ru-zonen">'
              '<div class="ru-z" style="top:0;height:15%"><span>Kopfzone · 170–200 cm</span><small>Logo – sichtbar über Köpfe hinweg</small></div>'
              '<div class="ru-z ru-z--auge" style="top:15%;height:40%"><span>Augenhöhe · 90–170 cm</span><small>Botschaft – hier wird gelesen</small></div>'
@@ -201,18 +178,6 @@ CSS = masse("""
 .ru-pfeil-e { position: absolute; right: [-180]; top: [960]; width: [640]; }
 .ru-pfeil-e svg { display: block; width: 100%; height: auto; }
 .ru--e .ru-web, .ru--d .ru-web { color: #fff; }
-/* G · Referenzen */
-.ru--m .ru-h { font-size: [100]; }
-.ru-ref-k { position: absolute; left: [80]; top: [800]; }
-.ru-ref { position: absolute; left: [80]; right: [80]; top: [880]; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: [92]; column-gap: [50]; }
-.ru-ref span { display: flex; align-items: center; }
-.ru-ref img { display: block; width: auto; max-width: 92%; object-fit: contain; }
-/* H · Problem */
-.ru--n .ru-h { font-size: [64]; }
-.ru-kasten { position: absolute; left: [80]; right: [80]; top: [780]; background: #1a1817; color: #fff; border-radius: [22]; padding: [58] [54]; }
-.ru-kfrage { font: 700 [40]/1.3 'Lora', Georgia, serif; letter-spacing: -.01em; }
-.ru-kfrage + .ru-kfrage { margin-top: [30] !important; }
-.ru-kantwort { margin-top: [46] !important; padding-top: [40]; border-top: [4] solid #fff400; font: 300 [28]/1.55 'Poppins', sans-serif; color: rgba(255,255,255,.8); }
 .ru-stufe svg, .ru-pfeil-i svg, .ru-pfeil-k svg, .ru-zz__z svg { display: block; width: 100%; height: auto; }
 /* H · Zitat */
 .ru-block--i { top: [380]; }
@@ -240,9 +205,9 @@ CSS = masse("""
 def bauen(mit_png=True):
     seite_schreiben(DATEI, "Roll-up",
                     'Roll-<span class="hl">up</span>',
-                    "Acht Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
+                    "Sechs Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
                     "die Botschaft auf Augenhöhe. Alle Entwürfe sind maßstäblich; die PNGs sind Vorschauen, keine Druckdaten.",
-                    ["Entwurf 2", "100 × 200 cm", "8 Varianten", "Sichtzonen"], inhalt(), CSS)
+                    ["Entwurf 2", "100 × 200 cm", "6 Varianten", "Sichtzonen"], inhalt(), CSS)
     if mit_png:
         png_export(DATEI, "rollup")
 
