@@ -61,6 +61,13 @@ def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", f
         fussz = f'<div class="f-fuss">{links}<span>empiria GmbH</span><span>{"" if ohne_nr else nr}</span></div>'
     if header == "C0":
         cls += " f--c0"
+        # Daniel 10.10.: Inhaltsfolien ohne Subheadline über der Headline – einzeilige Headline ganz oben,
+        # darunter optional eine Subheadline ohne Strich. Titel/Kapitel/Zitat behalten ihren Kicker.
+        if not re.search(r't-titel|t-kapitel|f-zitat|t-bild', inhalt):
+            m = re.match(r'\s*<p class="f-kicker">(.*?)</p>(<h2>.*?</h2>)', inhalt, re.S)
+            if m:
+                sub = SUBLINE.get(re.sub(r"<[^>]+>", "", m.group(2)), "")
+                inhalt = m.group(2) + (f'<p class="f-subline">{sub}</p>' if sub else "") + inhalt[m.end():]
     return (f'<figure class="f-wrap"><div class="folie {cls}" style="--bg:{bg};--fg:{fg};--akz:{akz}"><div class="f-innen">{kopf}{inhalt}</div>{fussz}</div>'
             f'<figcaption class="f-label">{label or name}</figcaption></figure>')
 
@@ -69,10 +76,20 @@ def kicker(t):
     return f'<p class="f-kicker">{t}</p>'
 
 
+# Beispiel-Subheadlines (optional – auf manchen Folien bewusst leer, um beide Fälle zu zeigen)
+SUBLINE = {
+    "Die Headline steht oben – Platz für den Inhalt.": "",
+    "Die Headline steht oben – darunter viel Platz.": "Optionale Subheadline – einzeilig, darf auch leer bleiben.",
+    "Drei Fragen, die jede Führungskraft kennt.": "Und warum sie im Alltag so selten beantwortet werden.",
+    "Eine Aussage, die trägt.": "Optionale Subheadline für den Kontext.",
+    "Zwei Seiten einer Entscheidung.": "Heute und morgen im direkten Vergleich.",
+}
+
+
 def festgelegt():
     """Daniel 10.10.: Inhaltsfolie nach Idee C – Überschrift oben, viel Platz für den Inhalt, gleiche Ränder oben und unten."""
-    leer = kicker("Subheadline") + '<h2>Die Headline steht oben – darunter ist <span class="hl">Platz für den Inhalt.</span></h2>'
-    mit_flaeche = leer + '<div class="f-inhaltsflaeche"><span>Inhaltsfläche</span></div>'
+    leer = kicker("x") + '<h2>Die Headline steht oben – <span class="hl">Platz für den Inhalt.</span></h2>'
+    mit_flaeche = kicker("x") + '<h2>Die Headline steht oben – <span class="hl">darunter viel Platz.</span></h2><div class="f-inhaltsflaeche"><span>Inhaltsfläche</span></div>'
     mass = (kicker("Ausgangslage") + '<h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2>'
             '<div class="f-punkte">' + "".join(f'<div>{ico(i)}<b>{t}</b><p>{p}</p></div>' for i, t, p in
                                                [("flag", "Rolle", "Was erwartet man von mir – und was nicht?"),
@@ -80,8 +97,8 @@ def festgelegt():
                                                 ("wrench", "Handwerk", "Wie übersetze ich das in den Alltag?")]) + '</div>')
     hilfslinien = '<span class="f-mass f-mass--oben"></span><span class="f-mass f-mass--unten"></span>'
     return [("Festgelegt · Inhaltsfolie (Idee C)",
-             "Format 16:9 (wie in PowerPoint: 33,867 × 19,05 cm). Kein Kopf, kein Doppelpfeil – nur Inhalt. Subheadline und Headline stehen weit oben, "
-             "das Logo links unten im Fuß, Seitenzahl rechts. Der Abstand Oberkante → Subheadline ist genau so groß wie Fuß → Unterkante (gelbe Markierung).",
+             "Format 16:9 (wie in PowerPoint: 33,867 × 19,05 cm). Kein Kopf, kein Doppelpfeil – nur Inhalt. Die Headline ist einzeilig, steht ganz oben und ist so breit wie die Inhaltsfläche; "
+             "darunter optional eine Subheadline ohne Strich. Logo links unten, Seitenzahl rechts. Der Abstand Oberkante → Headline ist genau so groß wie Fuß → Unterkante (gelbe Markierung).",
              [folie("weiss", leer, header="C0", label="Leere Inhaltsfolie"),
               folie("weiss", mit_flaeche + hilfslinien, header="C0", label="Mit Inhaltsfläche und gleichen Rändern (Hilfslinien)"),
               folie("weiss", mass, header="C0", label="Beispiel mit Inhalt"),
@@ -99,7 +116,7 @@ def stufe2():
                    '<p class="t-meta">Kunde · Anlass · 10. Oktober 2026</p></div>', "01 · Titel"),
         f("schwarz", '<div class="t-titel">' + k("Präsentationstitel") + '<h1>Strategie in den Alltag <span class="hl">überführen.</span></h1>'
                      '<p class="t-meta">Kunde · Anlass · 10. Oktober 2026</p></div>', "01b · Titel auf Schwarz"),
-        f("weiss", k("Agenda") + '<h2>Worüber wir heute sprechen.</h2><ol class="t-agenda">' + agenda + '</ol>', "02 · Agenda"),
+        f("weiss", k("Agenda") + '<h2>Worüber wir heute <span class="hl">sprechen.</span></h2><ol class="t-agenda">' + agenda + '</ol>', "02 · Agenda"),
         f("gelb", '<div class="t-kapitel"><span>01</span><h1>Ausgangslage.</h1></div>', "03 · Kapitel (Gelb, Schwarz, Grau oder Themenfarbe)"),
         f("weiss", k("Text") + '<h2>Eine Aussage, die <span class="hl">trägt.</span></h2><div class="t-text"><p>Fließtext für Erläuterungen. Kurze Absätze, klare Sätze – die Folie erklärt eine Aussage, nicht alles auf einmal.</p>'
                    '<p>Ein zweiter Absatz, wenn nötig. Mehr Text gehört in die Notizen oder in ein Begleitdokument.</p></div>', "04 · Text"),
@@ -214,6 +231,10 @@ CSS = """
 .f--c0 .f-kicker { margin-bottom: 1.2cqw; line-height: 1; }
 .f-inhaltsflaeche { position: absolute; left: 6cqw; right: 6cqw; top: 17cqw; bottom: 8.2cqw; border: .14cqw dashed #c9c4bd; border-radius: .6cqw; display: grid; place-items: center; }
 .f-inhaltsflaeche span { font: 600 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #a9a39b; }
+/* Daniel 10.10.: einzeilige Headline ganz oben, volle Breite der Inhaltsfläche; Subheadline optional, ohne Strich */
+.f--c0 h2 { max-width: none; font-size: 3.1cqw; line-height: 1.2; white-space: nowrap; margin-top: -.5cqw; }
+.f-subline { margin: 1cqw 0 0; font: 400 1.55cqw/1.3 'Poppins', sans-serif; color: var(--fg); opacity: .65; white-space: nowrap; }
+.f--c0 .f-inhaltsflaeche { top: 12cqw; }
 /* Stufe 2 · Folientypen */
 .t-titel { position: absolute; left: 6cqw; right: 20cqw; top: 50%; transform: translateY(-58%); }
 .t-titel h1 { font-size: 5.4cqw; }
