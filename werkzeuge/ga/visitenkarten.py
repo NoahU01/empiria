@@ -100,9 +100,6 @@ def v_schwarz(p, png=None):
     return karte(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vk2 vk2--schwarz", png)
 
 
-def v_wechsel(p, png=None):
-    return karte(f'<div class="vk2-oben">{kicker(p)}{name_zwei(p, False)}</div>' + kontakt_text(p), "#fff", SCHWARZ, "vk2 vk2--wechsel", png)
-
 
 def v_logo(p, png=None):
     return karte(logo(cls="vk2-logo") + f'<div class="vk2-unten"><div><p class="vk2-name vk2-name--eins">{p["name"]}</p>{kicker(p)}</div>'
@@ -116,9 +113,7 @@ FRONTEN = [
      v_gelb, hinten_a, "Rückseite Weiß"),
     ("schwarz", "3 · Schwarz", "Schwarze Karte, weißer Name, der Nachname im gelben Highlight. Kräftig und edel – dazu die gelbe Rückseite.",
      v_schwarz, hinten_c, "Rückseite Gelb"),
-    ("wechsel", "4 · Flächenwechsel", "Oben Gelb mit Funktion und Name, unten Weiß mit dem Kontakt – der Flächenwechsel der Website im Kleinen.",
-     v_wechsel, hinten_b, "Rückseite Schwarz"),
-    ("logo", "5 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts. Für alle, die das Logo vorne möchten.",
+    ("logo", "4 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts. Für alle, die das Logo vorne möchten.",
      v_logo, hinten_b, "Rückseite Schwarz"),
 ]
 
@@ -145,9 +140,6 @@ def h_schwarz(p, png=None):
     return karte_hoch(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vkh--schwarz", png)
 
 
-def h_wechsel(p, png=None):
-    return karte_hoch(f'<div class="vkh-oben">{kicker(p)}{name_zwei(p, False)}</div>' + kontakt_text(p), "#fff", SCHWARZ, "vkh--wechsel", png)
-
 
 def hh_schwarz(png=None):
     return karte_hoch(f'<span class="vkh-pfeil-r">{zeichen("forward", GELB)}</span>' + logo(True, "vkh-logo"), SCHWARZ, "#fff", "vkh--rs", png)
@@ -159,7 +151,7 @@ def hh_gelb(png=None):
 
 FRONTEN_HOCH = [
     ("highlight", "Highlight", h_highlight, hh_schwarz), ("gelb", "Gelb mit Anschnitt", h_gelb, hh_schwarz),
-    ("schwarz", "Schwarz", h_schwarz, hh_gelb), ("wechsel", "Flächenwechsel", h_wechsel, hh_schwarz),
+    ("schwarz", "Schwarz", h_schwarz, hh_gelb),
 ]
 
 CSS_HOCH = masse("""
@@ -179,9 +171,6 @@ CSS_HOCH = masse("""
 .vkh--gelb .vk2-name { top: [42]; }
 .vkh-pfeil { position: absolute; right: [-10]; top: [6.5]; width: [36]; }
 .vkh-pfeil svg, .vkh-pfeil-r svg, .vkh-pfeil-m svg { display: block; width: 100%; height: auto; }
-.vkh--wechsel .vkh-oben { position: absolute; left: 0; right: 0; top: 0; height: [52]; background: #fff400; }
-.vkh--wechsel .vk2-kicker { top: auto; bottom: [26]; }
-.vkh--wechsel .vk2-name { top: auto; bottom: [6]; }
 .vkh-pfeil-r { position: absolute; left: [6]; bottom: [-10]; width: [62]; }
 .vkh-logo { position: absolute; left: [5]; top: [7]; height: [5.2]; width: auto; display: block; }
 .vkh-pfeil-m { position: absolute; left: 50%; top: [30]; transform: translateX(-50%); width: [26]; }
@@ -222,7 +211,7 @@ def inhalt():
     hoch_r = [figur(hh_schwarz("hoch-hinten-schwarz"), "<b>Rückseite Schwarz</b>", dl("hoch-hinten-schwarz").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")),
               figur(hh_gelb("hoch-hinten-gelb"), "<b>Rückseite Gelb</b>", dl("hoch-hinten-gelb").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}"))]
     teile.append(abschnitt("Hochformat · 55 × 85 mm", "Dieselben Ideen hochkant: Name groß oben, Kontakt unten. Beim Gelb läuft der Doppelpfeil oben rechts "
-                           "aus der Karte, beim Flächenwechsel steht der Name auf der Kante zwischen Gelb und Weiß.",
+                           "aus der Karte.",
                            f'<div class="ga-raster ga-raster--vkh">{"".join(hoch)}</div>'
                            f'<p class="ga-unter">Rückseiten hoch</p><div class="ga-raster ga-raster--vkh">{"".join(hoch_r)}</div>'))
     teile.append(abschnitt("Rückseiten", "Unverändert aus Entwurf 1 – jede Vorderseite lässt sich mit jeder Rückseite kombinieren.", rueck))
@@ -284,8 +273,6 @@ CSS = masse("""
 .vk2--schwarz .vk2-kontakt { color: rgba(255,255,255,.85); }
 .vk2-pfeil { position: absolute; right: [-13]; top: 50%; transform: translateY(-50%); width: [48]; }
 .vk2-pfeil svg { display: block; width: 100%; height: auto; }
-.vk2--wechsel .vk2-oben { position: absolute; left: 0; right: 0; top: 0; height: [33]; background: #fff400; padding: [6.4] [6] 0; }
-.vk2--wechsel .vk2-name { font-size: [17pt]; }
 .vk2-logo { position: absolute; left: [4.9]; top: [6]; height: [5.2]; width: auto; display: block; }
 .vk2-unten { position: absolute; left: [6]; right: [6]; bottom: [5.6]; display: flex; justify-content: space-between; align-items: flex-end; }
 .vk2--logo .vk2-kontakt { position: static; text-align: right; }

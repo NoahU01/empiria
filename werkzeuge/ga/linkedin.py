@@ -31,7 +31,6 @@ VARIANTEN = {
     "weiss": ("Weiß", "Ruhig wie die Startseite: weiße Fläche, der Claim mit gelbem Highlight, rechts der Doppelpfeil."),
     "gelb": ("Gelb mit Anschnitt", "Vollfläche Gelb, der Claim zweizeilig wie auf der Homepage, rechts läuft der Doppelpfeil groß aus dem Bild."),
     "schwarz": ("Schwarz mit Anschnitt", "Dieselbe Geste auf Schwarz: weißer Claim, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
-    "wechsel": ("Flächenwechsel", "Oben Gelb, unten Schwarz – der Doppelpfeil sitzt auf der Kante und wechselt mit der Fläche die Farbe."),
     "logos-start": ("Kundenlogos · Startseite", "Claim mit Highlight und darunter alle 14 Kundenlogos in Originalfarbe auf Weiß – wie Kopf und Logoleiste der Startseite. "
                     "Rechts eine schwarze Fläche mit dem gelben Doppelpfeil."),
     "logos-wand": ("Kundenlogos · Logowand", "Die Überschrift der Website „Wir arbeiten unter anderem für diese Unternehmen.“ und alle 14 Logos "
@@ -41,7 +40,6 @@ FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil,
     "weiss": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
     "gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
     "schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
-    "wechsel": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
     "logos-start": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
     "logos-wand": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
 }
@@ -283,7 +281,7 @@ def main_html():
                      f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn-<span class="hl">Banner</span>',
-                   'Sechs Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
+                   'Fünf Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
                    'Erst wenn die Gestaltung steht, folgen Kerstin und Noah.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{LOGO_CSS}{SEITE_EXTRA}</style>\n</main>')
