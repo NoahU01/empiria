@@ -474,7 +474,8 @@ def unterseite(original, ziel, html=None):
     if name in ("teams", "praesentationsseminar") and 'class="stufen-timeline' in main:
         sek = abschnitt(main, 'leistung-stufen-section'); main = main.replace(sek, e2_runde5.loesung_teams(sek))
     if name == "dashboard-digitales-marketing":
-        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.pakete(sek))
+        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["layout-dashboard", "handshake", "rocket"],   # Feedback 10.10.: wie KI zum Anfassen
+            kopf=["Du setzt selbst um", "Wir übernehmen alles", "Wir wachsen gemeinsam"], label=["Monatlich", "Monatlich", "Partnerschaft"], sektion_id="pakete"))
         main = main.replace('<span class="media-box-title">MES</span>', '<span class="media-box-title">MarketingEcoSystem (MES)</span>')
         # Runde 38: „Dein virtueller Marketingmitarbeiter“ – statt Kasten mit einsamem Icon ein schwarzer Download-Kasten (wie Teams)
         from e2_lucide import ICONS as LU
@@ -486,6 +487,9 @@ def unterseite(original, ziel, html=None):
   <button type="button" class="e2-teams-dl__knopf" data-modal-target="jobProfileModal">Profil ansehen und herunterladen</button></div>''', 1)
         main = main.replace('<svg viewBox="0 0 800 820" xmlns', '<svg viewBox="40 55 730 700" xmlns', 1)
         main = re.sub(r"Du konzentrierst Dich nicht auf Marketing,\s*sondern auf", "Du konzentrierst Dich auf", main, count=1)
+    if name == "sofort-sichtbar" and 'produkt-pricing' in main:   # Feedback 10.10.: Preise wie KI zum Anfassen
+        sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["target", "users", "trending-up"],
+            kopf=["Eine Zielgruppe", "Mehrere Zielgruppen", "Planbare Neukontakte"], label=["1 Vertriebsstrecke", "3 Vertriebsstrecken", "10 Vertriebsstrecken"]))
     if name == "sofort-sichtbar":   # Logo statt Kicker: größer, ohne Strich, in Schwarz (Schwarz-Weiß-Gelb)
         main = re.sub(r'<p class="e2-kicker">\s*<img src="/assets/sofort-sichtbar-logo-violet.svg"', '<p class="e2-kicker e2-kicker--logo"><img src="/assets/sofort-sichtbar-logo-' + ("ink" if SCHWARZ_GELB else "violet") + '.svg"', main, count=1)
     if name == "sprint-landingpage":
@@ -499,11 +503,26 @@ def unterseite(original, ziel, html=None):
         ab = abschnitt(main, 'class="sprint-timeline'); vt = abschnitt(main, 'class="produkt-grid-cards')
         main = main.replace(vt, "").replace(ab, e2_runde5.ablauf_vorteile(ab, vt))
         sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))
+    if name == "workshop-moderation":   # Feedback 10.10.: „unzählig“ klingt übertrieben
+        main = main.replace("Erfahrung aus unzähligen Workshops.", "Erfahrung aus zahlreichen Workshops.")
+    if name == "marketing":   # Feedback 10.10.: Paid-Ads-Text auf vier Zeilen wie die anderen Karten
+        main = main.replace("Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.", "Kampagnen auf Google und Meta, die Anfragen bringen – klar ausgewertet statt Blackbox.")
     if name == "workshop-moderation" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Usecases als Karten wie KI/Sprint
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["users", "target", "user-round", "refresh-cw"], sonder=4, sonder_label="Im Fokus", kurztexte=[
             "Neue Rollen bis zur geteilten Führung – direkt alltagstauglich gemacht.", "Viele Themen, kein Weg – danach klare Schwerpunkte und Prioritäten.",
             "Eine neue Rolle ins Gefüge integriert und an den Schnittstellen geschärft.", "Erst Vertrauen, dann Inhalte – die Abteilung startet schlagkräftiger."],
             sonder_kurz="Was kann wegfallen? Erst klären, wofür die Abteilung steht – dann Prozesse, die im Alltag tragen."))
+    if name == "medien":   # Feedback 10.10.: statt filigraner Skizzen klare Icons (Linien-Icons wie im Kopf)
+        from e2_lucide import ICONS as LU
+        def medien_icon(m):
+            n = {"medienModalPowerpoint": "presentation", "medienModalLandingpage": "app-window", "medienModalRollup": "rollup"}.get(m.group(1))
+            if not n:
+                return m.group(0)
+            return (m.group(0).split('<div class="media-box-thumb">')[0] + '<div class="media-box-thumb e2-wk-thumb e2-medien-ico">'
+                    f'<svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LU[n]}</svg></div>\n          </button>')
+        main = re.sub(r'<button type="button" class="media-box-thumb-btn" data-modal-target="(medienModal\w+)".*?</button>', medien_icon, main, flags=re.S)
+    if name == "medien":
+        main = main.replace("Die Neupositionierung eines Konzernunternehmens", "Positionierung eines Unternehmens neu ausrichten")
     if name == "medien" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Beispiele als Karten, Pitch im Fokus
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["compass", "rocket", "users", "handshake"], sonder=0, sonder_label="Im Fokus", kurztexte=[
             "Eine Gesamtlogik statt Einzelmedien – damit klar ist, wofür das Unternehmen steht.", "Medien, die Vertriebspartner wirklich erfolgreich machen – statt 150 Detailfolien.",

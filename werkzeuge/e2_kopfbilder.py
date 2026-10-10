@@ -90,7 +90,7 @@ SEITEN = [
     ("MarketingEcoSystem (MES)", "Marketing 2.0", "cyan", "Du konzentrierst Dich nicht auf Marketing, sondern auf Dein Business.", "trio", ("layout-dashboard", "trending-up", "megaphone"), "Dashboard, Wirkung, Kanäle."),
     ("sofort sichtbar", "Marketing 2.0", "cyan", "Digital sichtbar. Ohne Briefing. Sofort einsatzbereit.", "reihe", (["smartphone", "app-window", "mail"], ["POSTING", "LANDINGPAGE", "E-MAIL"]), "Das fertige Paket."),
     ("Paid Ads", "Marketing 2.0", "cyan", "Google Ads für Deine Zielgruppe. Zur richtigen Zeit.", "reihe", (["search", "megaphone", "mail"], ["SUCHE", "ANZEIGE", "ANFRAGE"]), "Vom Suchen zur Anfrage."),
-    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "reihe_o", (["presentation", "app-window", "film"], ["POWERPOINT", "LANDINGPAGE", "VIDEO"]), "Übersicht: die Medien."),
+    ("Medien, die Ergebnisse liefern", "Marketing 2.0", "cyan", "Deine Botschaft. Auf den Punkt. Volle Wirkung.", "reihe_o", (["presentation", "app-window", "rollup"], ["POWERPOINT", "LANDINGPAGE", "ROLL-UP"]), "Übersicht: die Medien."),
     ("PowerPoint", "Medien", "cyan", "Deine Folien. Ein Auftritt. Volle Wirkung.", "trio", ("presentation", "star", "users"), "Die Folie, die trägt."),
     ("Landingpage", "Medien", "cyan", "Deine Botschaft. Eine Seite. Volle Wirkung.", "trio", ("app-window", "smartphone", "zap"), "Eine Seite, mobil, schnell."),
     ("Roll-up", "Medien", "cyan", "Dein Auftritt. Ein Blick. Volle Wirkung.", "trio", ("image", "users", "message-circle"), "Auftritt, Besucher, Gespräch."),

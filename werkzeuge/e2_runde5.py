@@ -191,6 +191,22 @@ def sparring_turbo(sek):
 
 
 # ---------- Praxisfälle als Karten statt Akkordeon (Runde 32) ----------
+def absaetze(ps, laenge=260):
+    """Lange Absätze in Fenstern sinnvoll gliedern (Daniel 10.10.): an Satzgrenzen, ca. zwei Sätze je Absatz."""
+    aus = []
+    for x in ps:
+        saetze = re.split(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ„])", x.strip())
+        teil = ""
+        for st in saetze:
+            if teil and len(teil) + len(st) > laenge:
+                aus.append(teil); teil = st
+            else:
+                teil = (teil + " " + st).strip()
+        if teil:
+            aus.append(teil)
+    return "".join(f"<p>{x}</p>" for x in aus)
+
+
 def faelle(sek, symbole, sonder=None, kurz=False, kurztexte=None, sonder_kurz=None, sonder_label="Sonderthema"):
     """kurztexte (Runde 34, Daniel): je Karte ein eigener kurzer Satz – „Mehr lesen“ öffnet den vollen Text im Fenster."""
     from e2_lucide import ICONS
@@ -205,12 +221,12 @@ def faelle(sek, symbole, sonder=None, kurz=False, kurztexte=None, sonder_kurz=No
         if sonder is not None and i == sonder:
             sonder_html = (f'<div class="e2-fall-sonder"><div><p class="e2-fall-sonder__tag">{sonder_label}</p><h3>{titel.strip()}</h3></div>'
                            f'<div><p>{sonder_kurz or ps[0]}</p><button type="button" class="e2-fall__mehr e2-fall__mehr--hell" data-e2-auf="fs{i}">Mehr lesen →</button></div>'
-                           f'<dialog class="e2-dialog" id="fs{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog></div>')
+                           f'<dialog class="e2-dialog" id="fs{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{absaetze(ps)}</dialog></div>')
             continue
         erster = kurztexte[j] if kurztexte else (re.split(r"(?<=[.!?])\s", ps[0])[0] if ps else "")
         text = "".join(f"<p>{x}</p>" for x in ps) if kurz else f"<p>{erster}</p>"
         mehr = "" if kurz else (f'<button type="button" class="e2-fall__mehr" data-e2-auf="fl{i}">Mehr lesen →</button>'
-                                f'<dialog class="e2-dialog" id="fl{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{"".join(f"<p>{x}</p>" for x in ps)}</dialog>')
+                                f'<dialog class="e2-dialog" id="fl{i}"><button type="button" class="e2-dialog__zu" aria-label="Schließen">×</button><h3>{titel.strip()}</h3>{absaetze(ps)}</dialog>')
         karten += f'<article class="e2-fall"><span class="e2-fall__sym">{ic(symbole[j % len(symbole)])}</span><h3>{titel.strip()}</h3>{text}{mehr}</article>'
         j += 1
     return f'''<section class="produkt-section e2-faelle"><div class="container">
@@ -270,34 +286,38 @@ def teams_download(sek):
 
 
 # ---------- Preise als „Post-Karten“ wie Social Media auf der Volksfest-Seite (Runde 39, Test KI zum Anfassen) ----------
-def preise_posts(sek, symbole, variante="A"):
-    """weißer Kopf (Kurzsatz + ggf. „Meistgewählt“) · Farbfläche (Dauer, Name, Preis, Symbol; grau – gelb – grau) · weißer Fuß (Beschreibung + Inhalte)."""
+def preise_posts(sek, symbole, kopf=None, label=None, sektion_id=""):
+    """Preise als Post-Karten wie Social Media auf der Volksfest-Seite (Runde 39/42, Vorlage: KI zum Anfassen, Variante A):
+    weißer Kopf (Kurzsatz + ggf. Badge) · Farbfläche grau/gelb/grau (Label, Name, Preis, Symbol) · weißer Fuß (Beschreibung, Inhalte, Hinweis, Knopf)."""
     from e2_lucide import ICONS
     k = _eins(r'<p class="kicker">(.*?)</p>', sek); h2 = _eins(r"<h2[^>]*>(.*?)</h2>", sek)
     lead = _eins(r'<div class="produkt-section-head[^"]*">.*?<p>(.*?)</p>', sek)
+    def such(m, b, vorgabe=""):
+        x = re.search(m, b, re.S)
+        return x.group(1).strip() if x else vorgabe
     karten = ""
     for i, m in enumerate(re.finditer(r'<div class="produkt-glass price-card([^"]*)"', sek)):
         b = div_block(sek, m.start()); top = "featured" in m.group(1)
-        name = _eins(r"<h3>(.*?)<span", b); dauer = _eins(r'<span class="price-name-sub">(.*?)</span>', b)
-        desc = _eins(r'<p class="price-desc[^"]*">(.*?)</p>', b); preis = _eins(r'<span class="price-amount">(.*?)</span>', b)
-        note = _eins(r'<p class="price-note">(.*?)</p>', b); lis = re.findall(r"<li>(.*?)</li>", b, re.S)
+        h3 = such(r"<h3>(.*?)</h3>", b); name = re.sub(r"<span.*", "", h3).strip()
+        dauer = (label[i] if label else "") or such(r'<span class="price-name-sub">(.*?)</span>', b)
+        desc = such(r'<p class="price-desc[^"]*">(.*?)</p>', b)
+        betrag = such(r'<span class="price-amount">(.*?)</span>', b); einheit = such(r'<span class="price-unit">(.*?)</span>', b)
+        note = such(r'<p class="price-note">(.*?)</p>', b); badge = such(r'<span class="price-badge">(.*?)</span>', b)
+        ideal = re.sub(r"<br\s*/?>", " ", such(r'<p class="price-ideal">(.*?)</p>', b))
+        lis = re.findall(r"<li>(.*?)</li>", b, re.S)
+        knopf = re.search(r'<button type="button" class="btn[^"]*price-more-btn"([^>]*)>(.*?)</button>', b, re.S)
+        oben = kopf[i] if kopf else note
+        unten_note = note if kopf and note else ""
         ico = f'<svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[symbole[i % len(symbole)]]}</svg>'
-        if variante == "B":   # Runde 41: fast alles in der Farbfläche, oben und unten nur ein dünner weißer Streifen
-            karten += (f'<article class="e2-post e2-post--b{" e2-post--top" if top else ""}">'
-                       f'<div class="e2-post__kopf"><span>{note}</span>{"<em>Meistgewählt</em>" if top else ""}</div>'
-                       f'<div class="e2-post__bild"><div class="e2-post__oben"><small>{dauer}</small>{ico}</div>'
-                       f'<div><b class="e2-post__name">{name}</b><span class="e2-post__preis">{preis}</span><p class="e2-post__desc">{desc}</p>'
-                       f'<ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul></div></div>'
-                       f'<a class="e2-post__fuss" href="#kontakt">{name} anfragen →</a></article>')
-            continue
         karten += (f'<article class="e2-post{" e2-post--top" if top else ""}">'
-                   f'<div class="e2-post__kopf"><span>{note}</span>{"<em>Meistgewählt</em>" if top else ""}</div>'
-                   f'<div class="e2-post__bild"><small>{dauer}</small><div class="e2-post__unten"><div><b>{name}</b><span class="e2-post__preis">{preis}</span></div>{ico}</div></div>'
-                   f'<div class="e2-post__text"><p>{desc}</p><ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul></div></article>')
+                   f'<div class="e2-post__kopf"><span>{oben}</span>{f"<em>{badge}</em>" if badge else ""}</div>'
+                   f'<div class="e2-post__bild"><small>{dauer}</small><div class="e2-post__unten"><div><b>{name}</b>'
+                   f'<span class="e2-post__preis">{betrag}{f" <small>{einheit}</small>" if einheit else ""}</span></div>{ico}</div></div>'
+                   f'<div class="e2-post__text"><p>{desc}</p><ul>{"".join(f"<li>{x}</li>" for x in lis)}</ul>'
+                   f'{f"<p class=e2-post__hinweis>{unten_note}</p>" if unten_note else ""}'
+                   f'{f"<button type=button class=e2-post__mehr{knopf.group(1)}>{knopf.group(2)} →</button>" if knopf else ""}</div></article>')
     fuss = re.search(r'<p class="pricing-footnote[^"]*">(.*?)</p>', sek, re.S)
-    if variante == "B":
-        k += " · Variante B"
-    return f'''<section class="produkt-grid produkt-pricing e2-posts-sek"><div class="container">
+    return f'''<section class="produkt-grid produkt-pricing e2-posts-sek"{f' id="{sektion_id}"' if sektion_id else ""}><div class="container">
   <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">{k}</p><h2 class="h-serif">{h2}</h2></div><p class="lead">{lead}</p></div>
   <div class="e2-posts">{karten}</div>{f'<p class="e2-preis__fuss e2-posts__fuss">{fuss.group(1)}</p>' if fuss else ""}
 </div></section>'''

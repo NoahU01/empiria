@@ -1091,3 +1091,15 @@ html body .e2-alt .e2-post__desc { margin: 1.1rem 0 0 !important; font-size: .92
 .e2-post__fuss { display: block; padding: .8rem 1.1rem; font-size: .84rem; font-weight: 600; color: #1a1817 !important; text-decoration: none; }
 .e2-post__fuss:hover { text-decoration: underline; }
 @media (max-width: 600px) { .e2-post__kopf span { white-space: normal; overflow: visible; } }
+/* Runde 42 · Post-Karten: Einheit, Hinweis, Knopf im Fuß */
+.e2-post__preis small { font-family: var(--font-sans, Poppins, sans-serif); font-size: .8rem; font-weight: 500; margin-left: .2rem; }
+html body .e2-alt .e2-post__text .e2-post__hinweis { margin-top: .8rem !important; font-size: .78rem !important; line-height: 1.45 !important; color: #8a847c !important; }
+.e2-post__text { display: flex; flex-direction: column; }
+.e2-post__mehr { margin-top: auto; align-self: flex-start; padding: 1rem 0 0; border: 0; background: none; cursor: pointer; font: 600 .86rem/1 var(--font-sans, Poppins, sans-serif); color: #1a1817; }
+.e2-post__mehr:hover { text-decoration: underline; }
+.e2-post, .e2-post__unten > div, .e2-post__text { min-width: 0; }
+.e2-post__unten b { font-size: clamp(1.5rem, 2.2vw, 2rem); overflow-wrap: anywhere; hyphens: auto; }
+.e2-post__unten b { font-size: 1.7rem !important; hyphens: manual !important; overflow-wrap: normal !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-medien-ico svg { width: 5.5rem !important; height: 5.5rem !important; filter: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-medien-ico { display: grid !important; place-items: center; }
+.e2-fall { min-width: 0; } .e2-fall h3 { overflow-wrap: break-word; hyphens: auto; }

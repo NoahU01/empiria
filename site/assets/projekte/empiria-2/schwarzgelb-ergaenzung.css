@@ -51,3 +51,29 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sprint-landingpage .vorsch
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sprint-landingpage .vorschau-split-card :is(.btn, .sprint-structure-cta) { background: #fff400 !important; color: #1a1817 !important; border-color: #fff400 !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sprint-landingpage .vorschau-split-card .sprint-structure-footer { border-top: 0 !important; background: transparent !important; display: flex !important; flex-direction: column; align-items: flex-start; gap: 1rem; padding: 0 1.9rem 1.9rem !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sprint-landingpage .vorschau-split-card .sprint-structure-footer > * { margin: 0 !important; }
+
+/* Feedback 10.10. · Vorschau-Fenster überall Schwarz statt Dunkelblau */
+html body .modal.modal--structure { background: #1a1817 !important; }
+html body .modal.modal--structure :is(.sprint-structure-thumb, .media-box-thumb) { background: transparent !important; }
+/* Fenster aus schwarzen Bändern („Im Fokus“): Text dunkel und gut lesbar */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-fall-sonder .e2-dialog h3 { color: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-fall-sonder .e2-dialog p { color: #3d3a37 !important; opacity: 1 !important; font-size: 1rem !important; line-height: 1.7 !important; margin: 0 0 1rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .e2-dialog p + p { margin-top: 1rem !important; }
+
+/* Feedback 10.10. · Anforderungsprofil (MES) im Stil der Volksfest-Seite: klare Kopfzeile, drei Spalten mit Linie, schwarzes Band, gelber Knopf */
+html body .modal--jobprofile { border-radius: 22px !important; padding: 2.6rem 2.8rem 2.4rem !important; }
+html body .modal--jobprofile .jobprofile-header { border-bottom: 0 !important; padding-bottom: 0 !important; margin-bottom: 2.2rem !important; }
+html body .modal--jobprofile .jobprofile-header .kicker { display: inline-flex; align-items: center; gap: .6rem; font-size: .72rem !important; font-weight: 700 !important; letter-spacing: .16em !important; text-transform: uppercase; color: #1a1817 !important; }
+html body .modal--jobprofile .jobprofile-header .kicker::before { content: ""; width: 1.3rem; height: 2px; background: #1a1817; }
+html body .modal--jobprofile .jobprofile-header h2, html body .modal--jobprofile .jobprofile-header h3 { font-size: clamp(1.8rem, 3vw, 2.4rem) !important; margin: .5rem 0 .8rem !important; }
+html body .modal--jobprofile .jobprofile-header p { max-width: 62ch; font-size: 1rem !important; line-height: 1.65 !important; color: #3d3a37 !important; }
+html body .modal--jobprofile .jobprofile-columns { gap: 2.4rem !important; }
+html body .modal--jobprofile .jobprofile-section { border-top: 1.5px solid #1a1817; padding-top: 1.2rem; }
+html body .modal--jobprofile .jobprofile-section h4, html body .modal--jobprofile .jobprofile-section h3 { font-size: 1.15rem !important; margin: 0 0 .9rem !important; }
+html body .modal--jobprofile .jobprofile-list li { font-size: .88rem !important; line-height: 1.5 !important; color: #3d3a37 !important; }
+html body .modal--jobprofile .jobprofile-list li::marker { color: #1a1817; }
+html body .modal--jobprofile .jobprofile-callout { background: #1a1817 !important; border: 0 !important; border-radius: 18px !important; padding: 1.6rem 1.9rem !important; margin-top: 2.4rem !important; }
+html body .modal--jobprofile .jobprofile-callout, html body .modal--jobprofile .jobprofile-callout * { color: #fff !important; }
+html body .modal--jobprofile .jobprofile-download { margin-top: 2rem !important; }
+html body .modal--jobprofile .jobprofile-download-item :is(svg, use) { color: #1a1817 !important; stroke: #1a1817 !important; }
+html body .modal--jobprofile .jobprofile-download .btn { background: #fff400 !important; color: #1a1817 !important; border-color: #fff400 !important; }
