@@ -136,8 +136,6 @@ FRONTEN = [
      vorne_q("schwarz-pfeil"), hinten_c, "Rückseite Gelb"),
     ("claim", "5 · Weiß mit Claim", "Oben „Strategie, die wirkt.“ mit dem gelben Highlight auf „wirkt.“, darunter Name und Funktion, unten der Kontakt.",
      vorne_q("claim"), hinten_b, "Rückseite Schwarz"),
-    ("logo", "6 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts.",
-     v_logo, hinten_c, "Rückseite Gelb"),
 ]
 
 

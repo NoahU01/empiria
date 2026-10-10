@@ -32,7 +32,7 @@ VARIANTEN = {
     "gelb": ("Gelb mit Anschnitt", "Vollfläche Gelb, der Claim zweizeilig wie auf der Homepage, rechts läuft der Doppelpfeil groß aus dem Bild."),
     "schwarz": ("Schwarz mit Anschnitt", "Dieselbe Geste auf Schwarz: weißer Claim, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
     "logos-start": ("Kundenlogos · Startseite", "Claim mit Highlight und darunter alle 14 Kundenlogos in Originalfarbe auf Weiß – wie Kopf und Logoleiste der Startseite. "
-                    "Rechts eine schwarze Fläche mit dem gelben Doppelpfeil."),
+                    "Rechts läuft ein großer schwarzer Doppelpfeil aus dem Bild."),
     "logos-wand": ("Kundenlogos · Logowand", "Die Überschrift der Website „Wir arbeiten unter anderem für diese Unternehmen.“ und alle 14 Logos "
                    "in Originalfarbe, größer und in zwei Reihen."),
 }
@@ -216,14 +216,14 @@ def person_logos(art):
     """Personenbanner mit Logos (ab x 470, rechts 84). start: Claim + Doppelpfeil + Logoleiste; wand: Website-Überschrift + große Logos."""
     W = 1584
     p = px_fn(W)
-    if art == "start":  # rechts eine schwarze Fläche mit gelbem Doppelpfeil – die Logos bleiben auf Weiß
-        H, panel = 396, 300
+    if art == "start":  # rechts läuft ein großer schwarzer Doppelpfeil aus dem Bild – die Logos bleiben auf Weiß
+        H = 396
+        b = .8 * H / PFEIL_VERH
         logos, raster = logo_raster(p, 30, 56, 16)
-        return (f'<div style="left:{p(W - panel)};top:0;width:{p(panel)};height:100%;background:{SCHWARZ}"></div>'
-                + pfeil(p, 170, W - panel / 2, H / 2, GELB)
+        return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
                 + f'<div style="left:{p(470)};top:{p(48)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(14) + ";")}'
                 f'{claim(p, 56)}</div>'
-                + f'<div class="lb-logos" style="left:{p(470)};right:{p(panel + 60)};top:{p(212)};{raster}">{logos}</div>')
+                + f'<div class="lb-logos" style="left:{p(470)};right:{p(W - (W - .3 * b - b / 2) + 60)};top:{p(212)};{raster}">{logos}</div>')
     logos, raster = logo_raster(p, 42, 74, 22)
     return (f'<h2 style="left:{p(470)};top:{p(52)};font-size:{p(40)}">{WAND_H2}</h2>'
             f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(150)};{raster}">{logos}</div>')
@@ -234,12 +234,13 @@ def firma_logos(art):
     W = 1128
     p = px_fn(W)
     if art == "start":
-        H, panel = 191, 180
+        H = 191
+        b = .8 * H / PFEIL_VERH
+        links_pfeil = W - .3 * b - b / 2
         logos, raster = logo_raster(p, 18, 34, 8)
-        return (f'<div style="left:{p(W - panel)};top:0;width:{p(panel)};height:100%;background:{SCHWARZ}"></div>'
-                + pfeil(p, 92, W - panel / 2, H / 2, GELB)
+        return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
                 + f'<h2 style="left:{p(250)};top:{p(22)};font-size:{p(32)}">Strategie, die <span class="hl">wirkt.</span></h2>'
-                + f'<div class="lb-logos" style="left:{p(250)};right:{p(panel + 36)};top:{p(88)};{raster}">{logos}</div>')
+                + f'<div class="lb-logos" style="left:{p(250)};right:{p(W - links_pfeil + 36)};top:{p(88)};{raster}">{logos}</div>')
     logos, raster = logo_raster(p, 22, 40, 10)
     return (f'<h2 style="left:{p(250)};top:{p(20)};font-size:{p(24)}">{WAND_H2}</h2>'
             f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(80)};{raster}">{logos}</div>')
