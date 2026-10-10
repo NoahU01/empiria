@@ -52,18 +52,40 @@ def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", f
         "B": f'<div class="f-kopf f-kopf--b"><span class="f-balken"></span><span class="f-thema">{thema}</span>{logo(hell)}</div>',
         # C: kein Kopf – Doppelpfeil klein rechts oben, Logo im Fuß
         "C": f'<div class="f-kopf f-kopf--c"><span class="f-mini">{zeichen("forward", fg if farbe != "weiss" else "#1a1817")}</span></div>',
+        "C0": "",   # Daniel 10.10.: Idee C ohne Doppelpfeil – nichts lenkt vom Inhalt ab
         "-": "",
     }[header]
     fussz = ""
     if fuss:
-        links = logo(hell) if header == "C" else '<span class="f-strich"></span>'
+        links = logo(hell) if header in ("C", "C0") else '<span class="f-strich"></span>'
         fussz = f'<div class="f-fuss">{links}<span>empiria GmbH</span><span>{nr}</span></div>'
+    if header == "C0":
+        cls += " f--c0"
     return (f'<figure class="f-wrap"><div class="folie {cls}" style="--bg:{bg};--fg:{fg};--akz:{akz}"><div class="f-innen">{kopf}{inhalt}</div>{fussz}</div>'
             f'<figcaption class="f-label">{label or name}</figcaption></figure>')
 
 
 def kicker(t):
     return f'<p class="f-kicker">{t}</p>'
+
+
+def festgelegt():
+    """Daniel 10.10.: Inhaltsfolie nach Idee C – Überschrift oben, viel Platz für den Inhalt, gleiche Ränder oben und unten."""
+    leer = kicker("Subheadline") + '<h2>Die Headline steht oben – darunter ist <span class="hl">Platz für den Inhalt.</span></h2>'
+    mit_flaeche = leer + '<div class="f-inhaltsflaeche"><span>Inhaltsfläche</span></div>'
+    mass = (kicker("Ausgangslage") + '<h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2>'
+            '<div class="f-punkte">' + "".join(f'<div>{ico(i)}<b>{t}</b><p>{p}</p></div>' for i, t, p in
+                                               [("flag", "Rolle", "Was erwartet man von mir – und was nicht?"),
+                                                ("compass", "Richtung", "Wohin entwickelt sich mein Bereich?"),
+                                                ("wrench", "Handwerk", "Wie übersetze ich das in den Alltag?")]) + '</div>')
+    hilfslinien = '<span class="f-mass f-mass--oben"></span><span class="f-mass f-mass--unten"></span>'
+    return [("Festgelegt · Inhaltsfolie (Idee C)",
+             "Format 16:9 (wie in PowerPoint: 33,867 × 19,05 cm). Kein Kopf, kein Doppelpfeil – nur Inhalt. Subheadline und Headline stehen weit oben, "
+             "das Logo links unten im Fuß, Seitenzahl rechts. Der Abstand Oberkante → Subheadline ist genau so groß wie Fuß → Unterkante (gelbe Markierung).",
+             [folie("weiss", leer, header="C0", label="Leere Inhaltsfolie"),
+              folie("weiss", mit_flaeche + hilfslinien, header="C0", label="Mit Inhaltsfläche und gleichen Rändern (Hilfslinien)"),
+              folie("weiss", mass, header="C0", label="Beispiel mit Inhalt"),
+              folie("grau", mass, header="C0", label="Beispiel auf Grau")])]
 
 
 def stufe1():
@@ -148,6 +170,15 @@ CSS = """
 .folie { position: relative; aspect-ratio: 16 / 9; container-type: inline-size; background: var(--bg); color: var(--fg); border-radius: 10px; overflow: hidden;
   box-shadow: 0 0 0 1px #e4e0db, 0 12px 30px rgba(26,24,23,.06); font-family: 'Poppins', sans-serif; }
 .f-innen { position: absolute; inset: 0; padding: 9.5cqw 6cqw 8cqw; }
+/* Gewählte Inhaltsfolie: Rand oben (bis Subheadline) = Rand unten (Fuß bis Unterkante) = 3.6cqw */
+.f--c0 .f-innen { padding: 3.6cqw 6cqw 8cqw; }
+.f--c0 .f-fuss { bottom: 3.6cqw; line-height: 1; opacity: 1; }
+.f--c0 .f-fuss > span:nth-child(2) { display: none; }
+.f--c0 .f-kicker { margin-bottom: 1.2cqw; line-height: 1; }
+.f-inhaltsflaeche { position: absolute; left: 6cqw; right: 6cqw; top: 17cqw; bottom: 8.2cqw; border: .14cqw dashed #c9c4bd; border-radius: .6cqw; display: grid; place-items: center; }
+.f-inhaltsflaeche span { font: 600 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #a9a39b; }
+.f-mass { position: absolute; left: 2.4cqw; width: 1.2cqw; height: 3.6cqw; background: #fff400; }
+.f-mass--oben { top: 0; } .f-mass--unten { bottom: 0; }
 .f-wrap { margin: 0; }
 .f-label { margin-top: .7rem; font: 600 .72rem/1.4 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #8a847c; }
 .f-logo { height: 2.2cqw; width: auto; display: block; }
@@ -209,13 +240,13 @@ def bauen():
     rahmen = (SITE / "projekte" / "corporate-design.html").read_text(encoding="utf-8")
     a, b = rahmen.index("<main"), rahmen.index("</main>") + 7
     abschnitte = "".join(
-        f'<div class="pm-abschnitt"><h2>{t}</h2><p>{p}</p><div class="pm-raster">{"".join(f)}</div></div>' for t, p, f in stufe1())
+        f'<div class="pm-abschnitt"><h2>{t}</h2><p>{p}</p><div class="pm-raster">{"".join(f)}</div></div>' for t, p, f in festgelegt() + stufe1())
     main = f'''<main>
 <section class="pm"><div class="container">
   <p class="pm-kicker">Geschäftsausstattung</p>
   <h1>PowerPoint- &amp; Keynote-<span class="hl">Master</span></h1>
   <p class="pm-lead">Wir arbeiten uns in Stufen heran. Erst das Grundsystem – Hintergründe, Header, Schriften, Farben und Designelemente –, dann die einzelnen Folientypen, dann die Darstellungsvarianten. Am Ende entstehen daraus die echten Vorlagen in PowerPoint und Keynote.</p>
-  <div class="pm-stufen"><span class="aktiv">Stufe 1 · Grundsystem</span><span>Stufe 2 · Folientypen</span><span>Stufe 3 · Darstellungsvarianten</span><span>Stufe 4 · PowerPoint &amp; Keynote</span></div>
+  <div class="pm-stufen"><span class="aktiv">Stufe 1 · Grundsystem ✓ Hintergründe, Idee C</span><span>Stufe 2 · Folientypen</span><span>Stufe 3 · Darstellungsvarianten</span><span>Stufe 4 · PowerPoint &amp; Keynote</span></div>
   {abschnitte}
 </div></section>
 <style>{CSS}</style>
