@@ -1182,3 +1182,5 @@ html body .e2-alt .e2-zeitstrahl .lead { color: #1a1817 !important; }
   html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { height: 2.7rem !important; }
   html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { right: 20px !important; }
 }
+/* Daniel 10.10.: Doppelpfeil der Startseite kleiner – er soll nicht alles erschlagen */
+@media (min-width: 961px) { html body.e2 .e2v-held__raster .e2v-held__pfeil.e2v-held__pfeil { width: min(100%, 14rem) !important; justify-self: center; } }

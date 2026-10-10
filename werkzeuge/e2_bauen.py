@@ -530,6 +530,8 @@ def unterseite(original, ziel, html=None):
     if name == "sofort-sichtbar" and 'produkt-pricing' in main:   # Feedback 10.10.: Preise wie KI zum Anfassen
         sek = abschnitt(main, 'produkt-pricing'); main = main.replace(sek, e2_runde5.preise_posts(sek, ["target", "users", "trending-up"],
             kopf=["Eine Zielgruppe", "Mehrere Zielgruppen", "Planbare Neukontakte"], label=["1 Vertriebsstrecke", "3 Vertriebsstrecken", "10 Vertriebsstrecken"]))
+    if name == "sofort-sichtbar":   # Daniel 10.10.: Logo im Vergleich „Monate werden zu Tagen“ gelb auf Schwarz
+        main = main.replace('src="/assets/sofort-sichtbar-logo-stacked-violet.svg" alt="sofort sichtbar" class="vergleich-label-logo"', 'src="/assets/sofort-sichtbar-logo-stacked-gelb.svg" alt="sofort sichtbar" class="vergleich-label-logo"')
     if name == "sofort-sichtbar":   # Logo statt Kicker: größer, ohne Strich, in Schwarz (Schwarz-Weiß-Gelb)
         main = re.sub(r'<p class="e2-kicker">\s*<img src="/assets/sofort-sichtbar-logo-violet.svg"', '<p class="e2-kicker e2-kicker--logo"><img src="/assets/sofort-sichtbar-logo-' + ("ink" if SCHWARZ_GELB else "violet") + '.svg"', main, count=1)
     if name == "sprint-landingpage":

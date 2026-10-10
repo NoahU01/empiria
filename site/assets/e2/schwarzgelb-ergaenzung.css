@@ -20,7 +20,7 @@ html body main .e2-alt.e2-alt.e2-alt .e2-schritt__sym { background: #fff400 !imp
 
 /* sofort sichtbar · Ablauf: Rahmen schwarz statt gelb (kein Gelb als Linie auf Weiß), Markenlogo in Schwarz */
 html body main .e2-alt.e2-alt.e2-alt .vergleich-timeline--outline { border-color: #1a1817 !important; }
-html body main .e2-alt.e2-alt.e2-alt .vergleich-label-logo { filter: brightness(0); }
+/* (Logo im Vergleich: gelbe Datei, siehe unten) */
 
 /* KI zum Anfassen · Tool-Logos (farbige Bilder) auf Gelb schwarz */
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .tools-row-icon img { filter: brightness(0) !important; }
@@ -99,12 +99,12 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid.produkt-
 
 /* Feedback 10.10. · sofort sichtbar „Monate werden zu Tagen“: mehr Wirkung – Sektion auf Gelb, Vergleich in einer weißen Bühne, Raketen-Kacheln schwarz mit gelber Rakete */
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar > section.produkt-section.produkt-process:nth-of-type(n) { background: #fff400 !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bild { background: #fff !important; border: 0 !important; box-shadow: none !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline { background: #f3f1ee !important; border-color: transparent !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline--outline { background: #fff !important; border: 2px solid #1a1817 !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket { background: #1a1817 !important; }
+
+
+
+
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket :is(svg, use, path) { color: #fff400 !important; stroke: #fff400 !important; }
-html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-pill { background: #fff !important; }
+
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .produkt-process-step.produkt-process-step { background: #fff !important; border: 0 !important; border-radius: 18px !important; box-shadow: none !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .step-num { background: #fff400 !important; color: #1a1817 !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .produkt-section-head p { color: #1a1817 !important; opacity: .85; }
@@ -122,3 +122,18 @@ html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc input:not([type=hidden]):not(
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc .pa-pc-note { margin-top: 1.4rem !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc-report { box-shadow: none !important; }
 html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid :is(.produkt-grid-cta, .pa-leist-cta) { justify-content: flex-start !important; text-align: left !important; }
+
+/* Daniel 10.10.: „Monate werden zu Tagen“ wie im PDF – schwarzer Kasten, Logo gelb, sofort-sichtbar-Zeile mit gelbem Rahmen */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bild { background: #1a1817 !important; border: 0 !important; box-shadow: none !important; border-radius: 22px !important; padding: 2rem 2.2rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bild .vergleich-label { color: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline { background: rgba(255,255,255,.06) !important; border: 1px solid transparent !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline--outline { background: rgba(255,255,255,.06) !important; border: 1.5px solid rgba(255,244,0,.7) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-pill { background: rgba(255,255,255,.12) !important; color: #fff !important; border: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket { background: transparent !important; border: 1px solid rgba(255,255,255,.4) !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket :is(svg, use, path) { color: #fff !important; stroke: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline--outline .vergleich-rocket { border-color: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline--outline .vergleich-rocket :is(svg, use, path) { color: #fff400 !important; stroke: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bonus { color: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bonus :is(svg, use, path) { color: #fff400 !important; stroke: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-label-logo { filter: none !important; }
+@media (max-width: 600px) { html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bild { padding: 1.4rem 1.1rem !important; } }

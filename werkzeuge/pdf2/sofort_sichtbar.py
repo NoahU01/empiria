@@ -66,7 +66,7 @@ def bauen():
         '<div class="v-zeile"><span class="v-label">Klassische Agentur</span><div class="v-bahn">'
         + "".join(f'<span class="v-pill v-pill--voll">{x}</span>' for x in ["Auftragsklärung", "Konzeption", "Umsetzung", "Optimierung"])
         + f'<span class="v-ico">{ico("rocket")}</span></div></div>'
-        '<div class="v-zeile"><span class="v-label">sofort sichtbar</span><div class="v-bahn v-bahn--ss">'
+        '<div class="v-zeile"><span class="v-label"><img class="v-logo" src="assets/sofort-sichtbar-logo-gelb.svg" alt="sofort sichtbar"></span><div class="v-bahn v-bahn--ss">'
         '<span class="v-pill">Auftragsklärung</span>'
         f'<span class="v-ico v-ico--gelb">{ico("rocket")}</span>'
         f'<span class="v-bonus">{ico("timer")}Mehr Zeit für Kundengespräche</span></div></div></div>')
@@ -106,7 +106,10 @@ def bauen():
         + '</div>' + mt.draht(extra), 6, n)
 
     css = mt.CSS + """
-.ss-kicker img.ss-logo { height: 4.6mm; width: auto; display: block; }
+.ss-kicker img.ss-logo { height: 3.9mm; width: auto; display: block; }
+.ss-kicker::before { display: none !important; }
+.ss-kicker { gap: 0 !important; }
+.v-logo { height: 3.4mm; width: auto; display: block; }
 .vergleich { margin-top: 9mm; padding: 6mm 6mm; display: grid; gap: 3.5mm; }
 .v-zeile { display: grid; grid-template-columns: 30mm 1fr; align-items: center; gap: 4mm; }
 .v-label { font-size: 7pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
