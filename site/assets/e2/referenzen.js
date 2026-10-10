@@ -14,7 +14,7 @@
     dlg.className = "e2-ref-dialog";
     dlg.setAttribute("aria-label", "Alle Referenzen");
     dlg.innerHTML = '<button type="button" class="e2-ref-dialog__zu" aria-label="Schließen">×</button>' +
-      '<p class="e2-ref-dialog__kicker">Referenzen</p><h3>Für diese Unternehmen arbeiten wir.</h3>' +
+      '<p class="e2-ref-dialog__kicker">Referenzen</p><h3>Wir arbeiten unter anderem für diese Unternehmen.</h3>' +
       '<div class="e2-ref-dialog__raster">' + alle.map(function (l) {
         return '<span><img src="' + l[0] + '" alt="' + l[1] + '" loading="lazy"></span>';
       }).join("") + "</div>";
