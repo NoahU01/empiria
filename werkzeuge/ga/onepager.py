@@ -294,52 +294,41 @@ CSS_INHALT_HOCH = masse("""
 """, 297)
 
 
-# ---------- Arbeitsblatt: druckerfreundlich, nur Weiß, Schreibfelder ----------
+# ---------- Arbeitsblatt: druckerfreundlich, nur Weiß – Kopf und eine angedeutete Inhaltsfläche ----------
 BLATT = dict(
-    kicker="Workshop · Strategiehandwerk",
-    h1='Wie sähe die Homepage Deines <span class="hl">Bereichs</span> aus?',
-    lead="Stell Dir vor, Dein Bereich wäre ein eigenes Unternehmen. Beantworte die Fragen in Stichworten – so, wie es auf seiner Homepage stünde.",
-    felder=["Welche Zielgruppe sprechen wir an?", "Welches Problem lösen wir für sie?", "Welcher Nutzen entsteht daraus?",
-            "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit mit uns ab?", "Was ich mitnehme"],
+    kicker="Workshop",
+    h1='Hier steht die <span class="hl">Überschrift.</span>',
+    lead="Ein Satz, worum es auf diesem Blatt geht.",
 )
 
 
 def arbeitsblatt(d, fmt, png=None):
     attr = f' data-png="ga/onepager/{png}.png" data-pw="{PX[fmt][0]}"' if png else ""
-    linien = "<i></i>" * (6 if fmt == "quer" else 7)
-    felder = "".join(f'<div class="ab-feld"><p class="ab-frage"><span class="oi-nr">0{i + 1}</span>{f}</p><div class="ab-linien">{linien}</div></div>'
-                     for i, f in enumerate(d["felder"]))
     return (f'<div class="op op--blatt op--blatt-{fmt}"{attr}><div class="ab-in">'
-            f'<header class="ab-kopf">{logo(cls="oi-logo")}<div class="ab-name"><span>Name</span><span>Datum</span></div></header>'
+            f'<header class="ab-kopf">{logo(cls="oi-logo")}</header>'
             f'<div class="ab-titel">{k(d["kicker"])}<h1>{d["h1"]}</h1><p class="op-lead">{d["lead"]}</p></div>'
-            f'<div class="ab-felder">{felder}</div>'
-            f'<footer class="ab-fuss"><span>Arbeitsblatt</span><span>{FIRMA["web"]}</span></footer></div></div>')
+            f'<div class="ab-flaeche"><span>Inhaltsfläche</span></div>'
+            f'<footer class="ab-fuss"><span>{FIRMA["web"]}</span></footer></div></div>')
 
 
-def css_blatt(w, rand, h1, spalten, zeile):
+def css_blatt(w, rand, h1):
+    f = 'hoch' if w == 297 else 'quer'
     return masse(f"""
-.op--blatt-{'hoch' if w == 297 else 'quer'} {{ aspect-ratio: {w} / {297 if w == 420 else 420}; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-in {{ position: absolute; inset: 0; display: flex; flex-direction: column; padding: [16] [{rand}] [12]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .oi-logo {{ height: [7]; margin-left: [-1.5]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-kopf {{ display: flex; justify-content: space-between; align-items: flex-end; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name {{ display: flex; gap: [8]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name span {{ width: [48]; padding-bottom: [1.5]; border-bottom: [0.3] solid #1a1817; font: 400 [8pt]/1 'Poppins', sans-serif; color: #6b6762; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name span + span {{ width: [32]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-titel {{ margin-top: [14]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .op-k {{ font-size: [8pt]; margin-bottom: [4]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} h1 {{ font-size: [{h1}pt]; line-height: 1.28; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .op-lead {{ margin-top: [4]; font-size: [11pt]; max-width: [200]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-felder {{ flex: 1; min-height: 0; display: grid; grid-template-columns: repeat({spalten}, 1fr); grid-auto-rows: 1fr; gap: [9] [12]; margin-top: [12]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-feld {{ display: flex; flex-direction: column; min-height: 0; border-top: [0.6] solid #1a1817; padding-top: [3]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-frage {{ display: flex; gap: [3]; align-items: baseline; margin: 0; font: 700 [11pt]/1.3 'Lora', serif; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-frage .oi-nr {{ flex: 0 0 auto; font-size: [7.5pt]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-linien {{ flex: 1; display: flex; flex-direction: column; margin-top: [2]; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-linien i {{ flex: 1; border-bottom: [0.25] solid #d4cfc8; }}
-.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-fuss {{ display: flex; justify-content: space-between; margin-top: [8]; padding-top: [3]; border-top: [0.3] solid #d4cfc8; font: 400 [7.5pt]/1 'Poppins', sans-serif; color: #6b6762; letter-spacing: .04em; }}
+.op--blatt-{f} {{ aspect-ratio: {w} / {297 if w == 420 else 420}; }}
+.op--blatt-{f} .ab-in {{ position: absolute; inset: 0; display: flex; flex-direction: column; padding: [16] [{rand}] [12]; }}
+.op--blatt-{f} .oi-logo {{ height: [7]; margin-left: [-1.5]; }}
+.op--blatt-{f} .ab-titel {{ margin-top: [14]; }}
+.op--blatt-{f} .op-k {{ font-size: [8pt]; margin-bottom: [4]; }}
+.op--blatt-{f} h1 {{ font-size: [{h1}pt]; line-height: 1.3; }}
+.op--blatt-{f} .op-lead {{ margin-top: [4]; font-size: [11pt]; max-width: [200]; }}
+.op--blatt-{f} .ab-flaeche {{ flex: 1; min-height: 0; margin-top: [12]; border: [0.3] dashed #cfc9c1; border-radius: [2];
+  display: flex; align-items: center; justify-content: center; }}
+.op--blatt-{f} .ab-flaeche span {{ font: 600 [8pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #b3ada5; }}
+.op--blatt-{f} .ab-fuss {{ display: flex; justify-content: flex-end; margin-top: [6]; font: 400 [7.5pt]/1 'Poppins', sans-serif; color: #6b6762; letter-spacing: .04em; }}
 """, w)
 
 
-CSS_BLATT = css_blatt(297, 20, 30, 2, 9) + css_blatt(420, 22, 32, 3, 9)
+CSS_BLATT = css_blatt(297, 20, 30) + css_blatt(420, 22, 32)
 
 
 CSS_HOCH = masse("""
@@ -461,8 +450,8 @@ def inhalt(mit_png):
                         "Wenig Text: schwarze Titelspalte links, rechts eine offene weiße Fläche mit Problem, Lösung und Ergebnis.",
                         f'<div class="op-reihe op-reihe--quer">{"".join(qk)}</div>')
             + abschnitt("Arbeitsblatt · hoch und quer",
-                        "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Name und Datum, "
-                        "darunter Schreibfelder mit Linien – je Feld eine Frage.",
+                        "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Logo, Überschrift und ein Satz, "
+                        "darunter die freie Fläche für den Inhalt (gestrichelt angedeutet, wird nicht gedruckt).",
                         f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>'))
 
 

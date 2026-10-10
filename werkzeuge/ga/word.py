@@ -3,8 +3,8 @@
 
 Briefbogen A4 nach DIN 5008 (Form B) mit erster Seite und Folgeseite sowie Dokumentvorlage mit Titel- und Inhaltsseite
 (Formatvorlagen H1–H3, Text, Liste, Tabelle, Zitat). Je zwei Varianten:
-  Brief A · Ruhig    – Logo rechts, Fußzeile in vier Spalten mit feiner Linie
-  Brief B · Akzent   – Logo links, Claim rechts, Fußzeile auf grauer Fläche
+  Brief A · Ruhig    – Logo rechts, Fußzeile in zwei Zeilen
+  Brief B · Akzent   – Logo links, Claim rechts, Fußzeile in zwei Zeilen
   Dokument A · Weiß  – helle Titelseite, Tabellenkopf schwarz
   Dokument B · Schwarz – schwarze Titelseite mit angeschnittenem Doppelpfeil, Tabellenkopf gelb
 Die Seiten sind HTML-Attrappen in echten Maßen; daraus werden später die .dotx-Vorlagen gebaut.
@@ -101,7 +101,7 @@ def brief_erste(var):
                  '<div class="wd-brieftext">'
                  '<p class="wd-betreff">Strategie in den Alltag überführen – unser Vorschlag</p>'
                  f'<p>Sehr geehrte Frau {ph("Mustermann")},</p>{text}</div>' +
-                 (fusszeile_a() if var == "a" else fusszeile_b()), f"wd--brief wd--{var}")
+                 fusszeile_b(), f"wd--brief wd--{var}")
 
 
 def brief_folge(var):
@@ -169,9 +169,9 @@ def inhalt():
     teile = []
     for var, titel, text in [
         ("a", "Briefbogen · Variante A · Ruhig", "Logo rechts oben, darunter nichts als Anschrift und Informationsblock. Die Fußzeile trägt alle "
-         "Pflichtangaben in vier Spalten über einer feinen Linie. Druckt auf jedem Bürodrucker sauber."),
-        ("b", "Briefbogen · Variante B · Akzent", "Logo links, rechts der Claim mit gelbem Highlight. Die Fußzeile steht auf einer grauen Fläche "
-         "bis zum Rand – wirkt hochwertiger, braucht aber vorgedrucktes Papier oder randlosen Druck. Folgeseite mit kleinem Doppelpfeil."),
+         "Pflichtangaben in zwei Zeilen, ohne Linie. Druckt auf jedem Bürodrucker sauber."),
+        ("b", "Briefbogen · Variante B · Akzent", "Logo links, rechts der Claim mit gelbem Highlight. Fußzeile wie bei A in zwei Zeilen. "
+         "Folgeseite mit kleinem Doppelpfeil."),
     ]:
         teile.append(abschnitt(titel, text, schalter(f"din{var}", "DIN-5008-Raster einblenden", False) + raster([
             figur(brief_erste(var), "<b>Erste Seite</b> · A4 · DIN 5008 Form B"),
@@ -217,7 +217,7 @@ CSS = masse("""
 .wd-loch { top: [148.5]; width: [7]; }
 .wd-anschrift { position: absolute; left: [25]; top: [45]; width: [80]; height: [45]; }
 .wd-ruecksende { position: absolute; top: [10.5]; left: 0; font: 400 [6.5pt]/1 'Poppins', sans-serif; color: #6f6a64; white-space: nowrap; }
-.wd-ruecksende::after { content: ""; display: block; margin-top: [1.4]; width: [12]; height: [0.4]; background: #fff400; }
+.wd-ruecksende::after { content: none; }
 .wd-adresse { position: absolute; top: [17.7]; left: 0; }
 .wd-adresse p { line-height: 1.45; }
 .wd-info { position: absolute; left: [125]; top: [50]; width: [65]; font-size: [8pt]; line-height: 1.55; }
@@ -233,9 +233,8 @@ CSS = masse("""
 .wd-fuss { position: absolute; left: [25]; right: [20]; bottom: [10]; font: 400 [6.5pt]/1.55 'Poppins', sans-serif; color: #3d3a37; }
 .wd-fuss--a { display: grid; grid-template-columns: 1fr 1.15fr 1.35fr 1.1fr; gap: [4]; padding-top: [3.2]; border-top: [0.25] solid #1a1817; }
 .wd-fuss--a div:first-child p:first-child { font-weight: 600; color: #1a1817; }
-.wd-fuss--b { left: 0; right: 0; bottom: 0; padding: [5.5] [20] [7] [25]; background: #f3f1ee; }
+.wd-fuss--b { left: [25]; right: [20]; bottom: [10]; }
 .wd-fuss--b b { font-weight: 600; color: #1a1817; }
-.wd--b .wd-anschrift .wd-ruecksende::after { background: #1a1817; }
 /* DIN-Raster (Ansicht) */
 .wd-din { display: none; position: absolute; inset: 0; pointer-events: none; z-index: 3; }
 .wd-din-box { position: absolute; border: 1px dashed #0B9FBD; background: rgba(11,159,189,.05); }
@@ -245,10 +244,10 @@ CSS = masse("""
 .wd-titel { position: absolute; left: [25]; right: [25]; top: [92]; }
 .wd-kicker { display: flex; align-items: center; gap: [3]; margin-bottom: [7] !important; font: 700 [8pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .wd-kicker::before { content: ""; width: [8]; height: [0.6]; background: currentColor; }
-.wd-h-titel { font: 700 [40pt]/1.15 'Lora', Georgia, serif; letter-spacing: -.02em; color: inherit; }
+.wd-h-titel { font: 700 [40pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; color: inherit; }
 .wd-untertitel { margin-top: [7] !important; font: 300 [13pt]/1.45 'Poppins', sans-serif; max-width: [120]; }
 .wd-titelpfeil { position: absolute; right: [25]; bottom: [46]; width: [40]; }
-.wd-meta { position: absolute; left: [25]; right: [25]; bottom: [24]; border-top: [0.3] solid currentColor; padding-top: [4]; font-size: [8.5pt]; line-height: 1.7; }
+.wd-meta { position: absolute; left: [25]; right: [25]; bottom: [24]; font-size: [8.5pt]; line-height: 1.7; }
 .wd-meta p { display: grid; grid-template-columns: [20] 1fr; }
 .wd-meta span { font: 700 [7pt]/2 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .6; }
 .wd--titel-b .wd-kicker { color: #fff400; }
@@ -280,8 +279,8 @@ CSS = masse("""
 .wd--ib .wd-zitat { border-left-color: #1a1817; }
 .wd-zitat p { margin: 0 !important; font: 700 [13pt]/1.35 'Lora', Georgia, serif; }
 .wd-zitat cite { display: block; margin-top: [2]; font: 400 [7.5pt]/1 'Poppins', sans-serif; font-style: normal; color: #6f6a64; }
-.wd-dfuss { position: absolute; left: [25]; right: [20]; bottom: [12]; display: flex; justify-content: space-between; padding-top: [2.5];
-  border-top: [0.25] solid #d9d5ce; font-size: [7pt]; color: #6f6a64; }
+.wd-dfuss { position: absolute; left: [25]; right: [20]; bottom: [12]; display: flex; justify-content: space-between;
+  font-size: [7pt]; color: #6f6a64; }
 .wd .ga-ph { outline-offset: 0; }
 .wd-fv { display: none; position: absolute; right: calc(100% + [3]); top: [0.6]; white-space: nowrap; font: 500 [5.5pt]/1 'Poppins', sans-serif;
   color: #fff; background: #0B9FBD; padding: [0.8] [1.2]; border-radius: [0.6]; }
