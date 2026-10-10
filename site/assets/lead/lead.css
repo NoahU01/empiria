@@ -1,0 +1,70 @@
+/* ===== Lead-Dialog der Weihnachtsseiten ======================================
+   Ein Klick auf einen Vorsatz fuehrt nicht auf die Unterseite, sondern hierhin:
+   E-Mail hinterlassen, PDF bekommen. Einmal zentral, damit die Varianten nicht
+   auseinanderlaufen. Eingebunden von xmas-11/12/13. */
+
+.lead-bg { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
+           padding: 20px; background: rgba(6,6,6,.82); backdrop-filter: blur(4px);
+           opacity: 0; visibility: hidden; transition: opacity .22s ease, visibility .22s ease; }
+.lead-bg.auf { opacity: 1; visibility: visible; }
+
+.lead-karte { position: relative; width: min(100%, 520px); max-height: calc(100svh - 40px);
+              overflow: auto; background: #fff; color: var(--ink);
+              border-radius: 20px; padding: clamp(24px,3.4vw,38px);
+              box-shadow: 0 44px 100px rgba(0,0,0,.5);
+              transform: translateY(14px) scale(.98);
+              transition: transform .26s cubic-bezier(.2,.8,.3,1); }
+.lead-bg.auf .lead-karte { transform: none; }
+
+.lead-zu { position: absolute; right: 14px; top: 14px; width: 36px; height: 36px;
+           display: grid; place-items: center; border-radius: 50%; border: 0; cursor: pointer;
+           background: var(--grey-bg); color: var(--ink); font-size: 18px; line-height: 1;
+           transition: background .18s ease; }
+.lead-zu:hover { background: #e0dcd8; }
+
+.lead-kopf { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 20px; }
+.lead-bild { flex: 0 0 82px; width: 82px; border-radius: 8px; display: block;
+             border: 1px solid var(--grey-bg); box-shadow: 0 10px 24px rgba(0,0,0,.14); }
+.lead-kicker { margin: 0 0 4px; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+               font-weight: 600; color: var(--grey-50); }
+.lead-h { font-family: var(--font-serif); font-weight: 700; margin: 0 0 6px;
+          font-size: clamp(1.08rem,1.7vw,1.32rem); line-height: 1.2; }
+.lead-txt { margin: 0; font-size: .88rem; line-height: 1.58; color: var(--grey-70); }
+
+.lead-feld { display: block; margin-bottom: 10px; }
+.lead-feld span { display: block; font-size: .78rem; font-weight: 600; margin-bottom: 6px; }
+.lead-feld input { width: 100%; font: inherit; font-size: .95rem; padding: 13px 15px;
+                   border: 1.5px solid #ddd8d3; border-radius: 11px; background: #fbfaf9;
+                   color: var(--ink); transition: border-color .18s ease, background .18s ease; }
+.lead-feld input:focus { outline: none; border-color: var(--ink); background: #fff; }
+.lead-feld input:invalid:not(:placeholder-shown) { border-color: #c0392b; }
+
+.lead-knopf { width: 100%; margin-top: 4px; padding: 14px 18px; border: 0; border-radius: 11px;
+              background: var(--ink); color: #fff; font: inherit; font-weight: 600; font-size: .95rem;
+              cursor: pointer; transition: background .18s ease, transform .18s ease; }
+.lead-knopf:hover { background: #000; transform: translateY(-2px); }
+.lead-knopf[disabled] { opacity: .55; cursor: default; transform: none; }
+
+.lead-klein { margin: 12px 0 0; font-size: .74rem; line-height: 1.5; color: var(--grey-50); }
+.lead-klein a { color: var(--grey-70); }
+
+/* Zustand nach dem Absenden */
+.lead-fertig { display: none; text-align: center; padding: 6px 0 2px; }
+.lead-karte.fertig .lead-form, .lead-karte.fertig .lead-kopf { display: none; }
+.lead-karte.fertig .lead-fertig { display: block; }
+.lead-haken { width: 56px; height: 56px; margin: 0 auto 14px; border-radius: 50%;
+              background: var(--hl); display: grid; place-items: center; }
+.lead-haken svg { width: 28px; height: 28px; stroke: var(--ink); stroke-width: 3;
+                  fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.lead-fertig h4 { font-family: var(--font-serif); font-weight: 700; font-size: 1.15rem;
+                  margin: 0 0 8px; }
+.lead-fertig p { margin: 0 0 18px; font-size: .88rem; line-height: 1.58; color: var(--grey-70); }
+.lead-dl { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px;
+           border-radius: 11px; background: var(--ink); color: #fff; text-decoration: none;
+           font-weight: 600; font-size: .92rem; border-bottom: 0; }
+.lead-dl:hover { background: #000; color: #fff; }
+
+@media (max-width: 520px) {
+  .lead-kopf { gap: 14px; }
+  .lead-bild { flex-basis: 64px; width: 64px; }
+}

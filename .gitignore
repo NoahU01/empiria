@@ -16,3 +16,4 @@ werkzeuge/**/_vorschau/
 werkzeuge/**/__pycache__/
 __pycache__/
 *.pyc
+werkzeuge/_e2_build/

@@ -377,7 +377,7 @@ P["workshop-moderation"] = ("magenta", "Moderation Deines Workshops – empiria"
 ])
 
 # ---------------------------------------------------------------- Marketing
-P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
+P["marketing"] = ("violet", "Marketing 2.0 – empiria", [
   cover("Marketing 2.0", 'Marketing für Versicherer <span class="hl">anders gedacht.</span>',
         ["Wir sind keine klassische Medienagentur. Neben Kommunikation verstehen wir vor allem Strategie und das Geschäftsmodell Versicherung – und somit Dich und Dein Gegenüber."],
         S.load("marketing"),
@@ -487,7 +487,7 @@ P["marketing"] = ("cyan", "Marketing 2.0 – empiria", [
 ])
 
 # ---------------------------------------------------------------- MES
-P["dashboard-digitales-marketing"] = ("cyan", "MarketingEcoSystem (MES) – empiria", [
+P["dashboard-digitales-marketing"] = ("violet", "MarketingEcoSystem (MES) – empiria", [
   cover("MarketingEcoSystem (MES)", 'Du konzentrierst Dich nicht auf Marketing, sondern auf <span class="hl">Dein Business.</span>',
         "Unser MarketingEcoSystem führt Homepage, digitale Kanäle und zentrales Dashboard an einem Ort zusammen – inklusive laufender Schwachstellenanalyse und direkter Optimierung.",
         S.mes(),
@@ -628,7 +628,7 @@ P["sofort-sichtbar"] = ("violet", "sofort sichtbar – empiria", [
 ])
 
 # ---------------------------------------------------------------- Paid Ads
-P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
+P["paid-ads"] = ("violet", "Paid Ads – empiria", [
   cover("Performance Marketing", 'Google, Meta &amp; LinkedIn Ads <span class="hl">für Deine Zielgruppe.</span>',
         "Auf dem passenden Kanal erreichen wir genau die Menschen, die zu Deiner Branche und Deinem Angebot passen. Du weißt bei jedem Euro, wohin er fließt und was er auslöst.",
         S.paid_ads(),
@@ -686,7 +686,7 @@ P["paid-ads"] = ("cyan", "Paid Ads – empiria", [
 ])
 
 # ---------------------------------------------------------------- Medien
-P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
+P["medien"] = ("violet", "Medien, die Ergebnisse liefern – empiria", [
   cover("Medien, die Ergebnisse liefern", 'Deine Botschaft. <span class="hl">Auf den Punkt.</span> Volle Wirkung.',
         "Wir sind keine typische Medienagentur. Wir sind Profis in den Themen Geschäftsmodell Versicherung, Strategie und Kommunikation – und übersetzen Deine Themen in die Welt Deiner Zielgruppe.",
         S.medien(),
@@ -738,7 +738,7 @@ P["medien"] = ("cyan", "Medien, die Ergebnisse liefern – empiria", [
 ])
 
 # ---------------------------------------------------------------- Training & Sparring
-P["training-sparring"] = ("green", "Training & Sparring – empiria", [
+P["training-sparring"] = ("cyan", "Training & Sparring – empiria", [
   cover("Training &amp; Sparring", 'Begleitung, <span class="hl">die wirkt.</span> Kein Seminar von der Stange.',
         "Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen – zugeschnitten auf die Versicherungsbranche und Deinen Alltag.",
         S.training_sparring(),
@@ -816,7 +816,7 @@ P["training-sparring"] = ("green", "Training & Sparring – empiria", [
 ])
 
 # ---------------------------------------------------------------- Präsentationsseminar
-P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommunizieren – empiria", [
+P["praesentationsseminar"] = ("cyan", "Teams befähigen, professionell zu kommunizieren – empiria", [
   cover("Befähigung und Begleitung, kein Seminar", 'Teams befähigen, professionell zu <span class="hl">kommunizieren.</span>',
         ["Du bist Führungskraft in der Versicherungsbranche und Dein Team bereitet Themen und Präsentationen vor, die nicht überzeugen?", "Dann braucht Dein Team kein Seminar, sondern <b>professionelle Begleitung bei der Umsetzung.</b>"],
         S.praesentation(),
@@ -911,7 +911,7 @@ P["praesentationsseminar"] = ("green", "Teams befähigen, professionell zu kommu
 ])
 
 # ---------------------------------------------------------------- Sparring
-P["sparring"] = ("green", "1:1 Sparring – empiria", [
+P["sparring"] = ("cyan", "1:1 Sparring – empiria", [
   cover("1:1 Sparring", 'Offen sprechen. <span class="hl">Klar entscheiden.</span> Volle Wirkung.',
         "Seit vielen Jahren begleitet Daniel Ströbel Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.",
         S.sparring(),
@@ -943,6 +943,60 @@ P["sparring"] = ("green", "1:1 Sparring – empiria", [
     '<div class="two" style="margin-top:6mm"><div><p class="label" style="margin-bottom:2mm">Wann wir sprechen</p>' + chips(["Persönliches Treffen", "Offsite", "Telefonat aus dem Auto", "Kurznachricht"], style="margin-top:0") + '</div>' +
     '<div><p class="label" style="margin-bottom:1mm">Worüber wir sprechen</p>' + dots(["Strategie und Geschäftsmodellfragen", "Führungsfragen", "Lösungswege und Vorgehensweisen abwägen", "Positionierung gegenüber dem Vorstand", "Umgang mit dem Aufsichtsrat", "Steuerung von Konzernunternehmen", "… und vieles mehr"], "sm") + '</div></div>',
     contact_html=contact("Worüber willst Du offen sprechen?", ["daniel", "kerstin_hr"])),
+])
+
+# ---------------------------------------------------------------- Budget-Retter (One-Pager)
+# Zwei einseitige PDFs fuer die Landingpage /budget-retter. Bewusst je EINE
+# Seite: sie sind der Gegenwert fuer die E-Mail-Adresse, kein Prospekt.
+P["budget-ki"] = ("strategie", "KI im Alltag anwenden – BudgetRetter – empiria", [
+  page(
+    sec("BudgetRetter", 'KI im Alltag <span class="hl">anwenden.</span>',
+        "Dein Team arbeitet mit echten Werkzeugen an echten Aufgaben aus Eurem Alltag und weiß danach, wo Künstliche Intelligenz trägt und wo nicht.",
+        "Wie tief Ihr geht, entscheidet Ihr. Vor- und Nachbereitung sind enthalten.",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    # Die drei Formate stehen dort, wo im Strategie-Pager der Ablauf steht.
+    # Beides zusammen passt nicht auf eine Seite, und der One-Pager bleibt
+    # bewusst einseitig - er ist der Gegenwert fuer die E-Mail-Adresse.
+    stage("Die Formate", "Drei Tiefen, ein Aufbau.",
+          "Jedes Format beginnt mit denselben Werkzeugen. Der Unterschied liegt darin, wie weit Ihr damit kommt.",
+          wm="wecker", boden=True,
+          inhalt=rows([("½ Tag · KI-Einstieg — 2.500 €", "Die Werkzeuge ausprobieren und erste eigene Erfahrungen sammeln. Ohne Vorkenntnisse startklar."),
+                       ("1 Tag · KI-Sprint — 3.900 €", "Werkzeuge kennenlernen und eine kompakte Fragestellung aus Eurem Haus bearbeiten. Das meistgewählte Format."),
+                       ("2 Tage · KI-Deep-Dive — 7.350 €", "Direkter Einstieg in einen konkreten Anwendungsfall Eures Unternehmens – mit Abschlussbesprechung zum weiteren Vorgehen.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
+])
+
+P["budget-strategie"] = ("strategie", "Strategie in den Alltag überführen – BudgetRetter – empiria", [
+  page(
+    sec("BudgetRetter", 'Strategie in den Alltag <span class="hl">überführen.</span>',
+        "Die Strategie steht. Aber was heißt sie für Deinen Bereich? Wir übersetzen sie in ein Zielbild, mit dem Dein Team wirklich arbeiten kann – in ein bis zwei Tagen, moderiert.",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    stage("Der Ablauf", "Kompakt und moderiert.",
+          "Ein Vorgespräch, ein bis zwei Arbeitstage, eine saubere Dokumentation. Mehr braucht es nicht.",
+          wm="wecker", boden=True,
+          inhalt=rows([("Vorgespräch", "Wo steht Ihr, was ist schon entschieden und wo hakt es? Rund eine Stunde, telefonisch."),
+                       ("Arbeitstag", "Das Zielbild für Deinen Bereich entsteht gemeinsam mit Deinem Team – nicht im stillen Kämmerlein."),
+                       ("Übersetzung", "Was bedeutet das für die einzelnen Rollen, Termine und Entscheidungen?"),
+                       ("Dokumentation", "Ein Ergebnisdokument, mit dem Du im Haus weiterarbeiten und argumentieren kannst.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
+])
+
+P["budget-innovation"] = ("strategie", "Innovation für Deinen Bereich – BudgetRetter – empiria", [
+  page(
+    sec("BudgetRetter", 'Innovation für <span class="hl">Deinen Bereich.</span>',
+        "Der Auftakt zum Neudenken, bevor 2027 mit voller Fahrt losgeht. Ein bis zwei Tage, moderiert, für einen Bereich und ein Thema.",
+        "Vieles gilt als gesetzt, nur weil es schon immer so war. Die Frage dahinter: Was davon trägt in fünf Jahren noch?",
+        "<b>Lieferbar bis zum 31.12. – und damit im laufenden Jahr abrechenbar.</b>"),
+    stage("Der Ablauf", "Ein Tag zum Öffnen, einer zum Schärfen.",
+          "Davor steht ein telefonisches Vorgespräch: welcher Bereich, welches Thema, wer sitzt mit am Tisch.",
+          wm="wecker", boden=True,
+          inhalt=rows([("Öffnen", "Wir nehmen auseinander, was als gegeben gilt – mit Methoden, die auch Ungewohntes aushalten."),
+                       ("Schärfen", "Aus den Ideen werden wenige, die tragen: bewertet nach Wirkung und Aufwand."),
+                       ("Was bleibt", "Die Ideen, an denen Ihr 2027 weiterarbeitet – dokumentiert, mit klarem nächsten Schritt.")],
+                      style="margin-top:6mm")),
+    contact_html=contact("Noch Budget im Topf? Dann schnell.", ["daniel"])),
 ])
 
 # ---------------------------------------------------------------- Impulsvorträge

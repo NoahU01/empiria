@@ -19,6 +19,176 @@
       "source": "/datenschutz/",
       "destination": "/datenschutz.html",
       "permanent": true
+    },
+    {
+      "source": "/leistungen/teams",
+      "destination": "/praesentationsseminar",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/teams.html",
+      "destination": "/praesentationsseminar",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/teams/",
+      "destination": "/praesentationsseminar",
+      "permanent": true
+    },
+    {
+      "source": "/der-beste-workshop",
+      "destination": "/workshops",
+      "permanent": true
+    },
+    {
+      "source": "/der-beste-workshop.html",
+      "destination": "/workshops",
+      "permanent": true
+    },
+    {
+      "source": "/der-beste-workshop/",
+      "destination": "/workshops",
+      "permanent": true
+    },
+    {
+      "source": "/impulsvortraege",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/impulsvortraege.html",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/impulsvortraege/",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-1",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-1.html",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-1/",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-2",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-2.html",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-2/",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-3",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-3.html",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/vortrag-3/",
+      "destination": "/training-sparring",
+      "permanent": true
+    },
+    {
+      "source": "/digitale-tools",
+      "destination": "/marketing",
+      "permanent": true
+    },
+    {
+      "source": "/digitale-tools.html",
+      "destination": "/marketing",
+      "permanent": true
+    },
+    {
+      "source": "/digitale-tools/",
+      "destination": "/marketing",
+      "permanent": true
+    },
+    {
+      "source": "/powerpoint",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/powerpoint.html",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/powerpoint/",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/landingpage",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/landingpage.html",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/landingpage/",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/rollup",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/rollup.html",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/rollup/",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/video",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/video.html",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/video/",
+      "destination": "/medien",
+      "permanent": true
+    },
+    {
+      "source": "/archiv/:pfad*",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -39,16 +209,8 @@
       "destination": "/site/leistungen/innovation.html"
     },
     {
-      "source": "/leistungen/teams",
-      "destination": "/site/leistungen/teams.html"
-    },
-    {
       "source": "/workshops",
       "destination": "/site/workshops.html"
-    },
-    {
-      "source": "/digitale-tools",
-      "destination": "/site/digitale-tools.html"
     },
     {
       "source": "/marketing",
@@ -57,10 +219,6 @@
     {
       "source": "/training-sparring",
       "destination": "/site/training-sparring.html"
-    },
-    {
-      "source": "/impulsvortraege",
-      "destination": "/site/impulsvortraege.html"
     },
     {
       "source": "/ki-zum-anfassen",
@@ -91,18 +249,6 @@
       "destination": "/site/medien.html"
     },
     {
-      "source": "/powerpoint",
-      "destination": "/site/powerpoint.html"
-    },
-    {
-      "source": "/landingpage",
-      "destination": "/site/landingpage.html"
-    },
-    {
-      "source": "/rollup",
-      "destination": "/site/rollup.html"
-    },
-    {
       "source": "/praesentationsseminar",
       "destination": "/site/praesentationsseminar.html"
     },
@@ -111,64 +257,27 @@
       "destination": "/site/sparring.html"
     },
     {
-      "source": "/vortrag-1",
-      "destination": "/site/vortrag-1.html"
-    },
-    {
-      "source": "/vortrag-2",
-      "destination": "/site/vortrag-2.html"
-    },
-    {
-      "source": "/vortrag-3",
-      "destination": "/site/vortrag-3.html"
-    },
-    {
-      "source": "/der-beste-workshop",
-      "destination": "/site/der-beste-workshop.html"
-    },
-    {
-      "source": "/archiv/startseite-v1",
-      "destination": "/site/archiv/startseite-v1.html"
-    },
-    {
-      "source": "/archiv/sofort-sichtbar-problem",
-      "destination": "/site/archiv/sofort-sichtbar-problem.html"
-    },
-    {
-      "source": "/archiv/digitale-tools-1-0",
-      "destination": "/site/archiv/digitale-tools-1-0.html"
-    },
-    {
-      "source": "/archiv/marketing-1-0",
-      "destination": "/site/archiv/marketing-1-0.html"
-    },
-    {
-      "source": "/archiv/medien",
-      "destination": "/site/archiv/medien.html"
-    },
-    {
-      "source": "/archiv/powerpoint",
-      "destination": "/site/archiv/powerpoint.html"
-    },
-    {
-      "source": "/archiv/landingpage",
-      "destination": "/site/archiv/landingpage.html"
-    },
-    {
-      "source": "/archiv/rollup",
-      "destination": "/site/archiv/rollup.html"
-    },
-    {
       "source": "/kontakt",
       "destination": "/site/kontakt.html"
     },
     {
-      "source": "/video",
-      "destination": "/site/video.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/site/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/kontakt/(.*)\\.vcf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"Daniel-Stroebel-empiria.vcf\""
+        }
+      ]
     }
   ]
 }

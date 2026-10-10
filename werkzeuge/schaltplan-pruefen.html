@@ -1,0 +1,74 @@
+<!doctype html><meta charset="utf-8">
+<!--
+  Prueft die Schaltplaene des Oekosystems auf das, was ein Mensch sieht:
+  Laeuft eine Leitung durch einen Kasten, und kreuzen sich zwei Leitungen?
+  Beides als Zahl, nicht als Eindruck.
+
+  Aufruf: Datei nach site/ kopieren, Server starten
+          (python3 -m http.server 8765 -d site) und im Browser oeffnen.
+          Ziel ist 0 Kreuzungen und 0 Durchquerungen.
+--><pre id="o">laeuft</pre>
+<div id="r"></div>
+<script>
+/* Prueft, was ein Mensch sieht: laeuft eine Leitung durch einen Kasten,
+   und kreuzen sich zwei Leitungen? Beides als Zahl, nicht als Eindruck. */
+function punkte(path, n){
+  var l=path.getTotalLength(), p=[];
+  for(var i=0;i<=n;i++){ var q=path.getPointAtLength(l*i/n); p.push([q.x,q.y]); }
+  return p;
+}
+function schneidet(a,b,c,d){
+  function kreuz(o,p,q){ return (q[1]-o[1])*(p[0]-o[0]) > (p[1]-o[1])*(q[0]-o[0]); }
+  return kreuz(a,c,d)!==kreuz(b,c,d) && kreuz(a,b,c)!==kreuz(a,b,d);
+}
+var seiten=['oekosystem'], z=[], i=0;
+function n(){
+  if(i>=seiten.length){document.getElementById('o').textContent=z.join('\n');return;}
+  var f=document.createElement('iframe');
+  f.style.cssText='width:1440px;height:1800px;border:0';
+  f.src='/strategie/'+seiten[i]+'.html';
+  document.getElementById('r').appendChild(f);
+  f.addEventListener('load',function(){
+    setTimeout(function(){
+      var d=f.contentDocument, plan=d.querySelector('.oe-plan').getBoundingClientRect();
+      var kaesten=[].map.call(d.querySelectorAll('.oe-knoten'),function(k){
+        var r=k.getBoundingClientRect();
+        return {id:k.dataset.baustein, x1:r.left-plan.left+3, y1:r.top-plan.top+3,
+                x2:r.right-plan.left-3, y2:r.bottom-plan.top-3};
+      });
+      /* Die Sammelschiene selbst ist keine Leitung zwischen zwei Kaesten -
+         sie wird von jeder Zuleitung beruehrt und zaehlt deshalb nicht mit. */
+      var pfade=[].filter.call(d.querySelectorAll('.oe-draht'),function(p){
+        return p.dataset.von && p.dataset.nach;
+      }).map(function(p){
+        return {von:p.dataset.von, nach:p.dataset.nach, p:punkte(p,40)};
+      });
+      var durch=[], kreuzungen=0, kreuzListe=[];
+      pfade.forEach(function(pf){
+        kaesten.forEach(function(k){
+          if(k.id===pf.von||k.id===pf.nach) return;
+          var drin=pf.p.some(function(q){
+            return q[0]>k.x1&&q[0]<k.x2&&q[1]>k.y1&&q[1]<k.y2; });
+          if(drin) durch.push(pf.von+'->'+pf.nach+' durch '+k.id);
+        });
+      });
+      for(var a=0;a<pfade.length;a++) for(var b=a+1;b<pfade.length;b++){
+        var gemeinsam = pfade[a].von===pfade[b].von||pfade[a].nach===pfade[b].nach||
+                        pfade[a].von===pfade[b].nach||pfade[a].nach===pfade[b].von;
+        if(gemeinsam) continue;
+        var gefunden=false;
+        for(var u=0;u<pfade[a].p.length-1&&!gefunden;u++)
+          for(var v=0;v<pfade[b].p.length-1&&!gefunden;v++)
+            if(schneidet(pfade[a].p[u],pfade[a].p[u+1],pfade[b].p[v],pfade[b].p[v+1])) gefunden=true;
+        if(gefunden){ kreuzungen++; kreuzListe.push(pfade[a].von+'->'+pfade[a].nach+' x '+pfade[b].von+'->'+pfade[b].nach); }
+      }
+      z.push(seiten[i]+': '+pfade.length+' Leitungen | Kreuzungen '+kreuzungen
+        +' | durch Kaesten '+durch.length);
+      durch.slice(0,4).forEach(function(x){ z.push('    durch: '+x); });
+      kreuzListe.slice(0,4).forEach(function(x){ z.push('    kreuzt: '+x); });
+      f.remove(); i++; n();
+    },900);
+  });
+}
+n();
+</script>

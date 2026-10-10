@@ -95,18 +95,22 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/e2/sg/styles.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2-seiten.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "cyan" ===== */
   body.produktseite-clean { background: #fff; }
   .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
-  .produktseite-clean .produkt-hero .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-hero .kicker { color: #1a1817; }
   .produktseite-clean .produkt-hero h1 { color: var(--ink); }
   .produktseite-clean .produkt-hero .hl { color: #fff; }
-  .produktseite-clean .produkt-hero .hl::before { background: #0B9FBD; }
+  .produktseite-clean .produkt-hero .hl { background-image: linear-gradient(#fff400, #fff400); }
   .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
   .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
-  .produktseite-clean .produkt-hero .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .produkt-hero .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
   .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
   .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
@@ -116,12 +120,12 @@
 
   /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
      dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
-  .usp-turbo-icon { background: #0B9FBD; color: #fff; }
+  .usp-turbo-icon { background: #fff400; color: #1a1817; }
 
   /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
      Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
   .produktseite-clean .sprint-structure-card {
-    background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%);
+    background: linear-gradient(155deg, #fff400 0%, #fff400 100%);
     border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
   }
   .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
@@ -129,12 +133,12 @@
   .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
   .produktseite-clean .media-box-title,
   .produktseite-clean .sprint-structure-title { color: #fff; }
-  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #086a80; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #1a1817; }
 
   /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
   .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
   .produktseite-clean .produkt-mock-icon { background: none; }
-  .produktseite-clean .produkt-mock-icon svg { color: #0B9FBD; filter: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #1a1817; filter: none; }
   .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
 
   /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
@@ -144,12 +148,12 @@
   .produktseite-clean .dash-kpi .val { color: var(--ink); }
   .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
   .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
-  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #0B9FBD, #086a80); }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #fff400, #fff400); }
   .produktseite-clean .dash-caption { color: var(--grey-50); }
   .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
-  .produktseite-clean .tool-dash-logo { background: #0B9FBD; }
+  .produktseite-clean .tool-dash-logo { background: #fff400; }
   .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
-  .produktseite-clean .tool-dash-nav-item--active { background: #0B9FBD; }
+  .produktseite-clean .tool-dash-nav-item--active { background: #fff400; }
 
   /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
      ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
@@ -206,7 +210,7 @@
      Header (mit Invertierung) automatisch weiß wird. */
   .produktseite-clean .media-box-thumb .mock-phone-body,
   .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
-  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); }
   @media (max-width: 900px) {
     .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
     .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
@@ -221,36 +225,36 @@
 
   /* Sprint-Landingpage: Timeline */
   .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
-  .produktseite-clean .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
   .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
-  .produktseite-clean .sprint-substep-tag { color: #fff; background: #0B9FBD; border-color: #0B9FBD; }
+  .produktseite-clean .sprint-substep-tag { color: #1a1817; background: #fff400; border-color: #fff400; }
   .produktseite-clean .sprint-substep p { color: var(--grey-70); }
 
   /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
-  .produktseite-clean .produkt-section-head .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-section-head .kicker { color: #1a1817; }
   .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
   .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
 
   /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
-  .produktseite-clean .vorschau-split-text .kicker { color: #0B9FBD; }
+  .produktseite-clean .vorschau-split-text .kicker { color: #1a1817; }
   .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
   .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
   .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
   .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
-  .produktseite-clean .vorschau-facts-list li::before { background: #0B9FBD; }
+  .produktseite-clean .vorschau-facts-list li::before { background: #1a1817; }
   .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
   .produktseite-clean .produkt-glass h3 { color: var(--ink); }
   .produktseite-clean .produkt-glass p { color: var(--grey-70); }
   .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
-  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #0B9FBD; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #1a1817; }
   .produktseite-clean .topics-list li { color: var(--ink); }
-  .produktseite-clean .topics-list li::before { background: #0B9FBD; }
+  .produktseite-clean .topics-list li::before { background: #1a1817; }
 
   /* Preis-Hinweis-Karte (einzelner großer Preis) */
   .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
   .produktseite-clean .price-note-amount { color: #fff; }
   .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
   .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
@@ -264,35 +268,35 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #0B9FBD; }
-  .produktseite-clean .price-badge { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
-  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
-  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
-  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-features li { color: #1a1817; }
   .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
-  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
-  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
-  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
-  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #086a80; border-color: #fff; }
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(26,24,23,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(26,24,23,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #1a1817; border-color: #1a1817; }
   .produktseite-clean .pricing-footnote { color: var(--grey-50); }
   .produktseite-clean .price-more-btn { margin-top: 30px; align-self: center; }
-  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #086a80; border-color: #fff; }
-  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #086a80; opacity: .92; }
+  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #1a1817; border-color: #fff; }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #1a1817; opacity: .92; }
   .produktseite-clean .price-ideal-band { background: var(--grey-bg); }
   .produktseite-clean .price-ideal { color: var(--ink); }
   .produktseite-clean .price-card--featured .price-ideal-band { background: rgba(0,0,0,.16); }
-  .produktseite-clean .price-card--featured .price-ideal { color: #fff; }
+  .produktseite-clean .price-card--featured .price-ideal { color: #1a1817; }
 
   /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
-  .produktseite-clean .modal .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .modal .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
      bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
   .produktseite-clean .usp-highlight {
     margin-top: 28px; padding: clamp(28px, 4vw, 44px);
-    border-radius: 22px; background: linear-gradient(150deg, #0B9FBD 0%, #086a80 100%);
-    color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    border-radius: 22px; background: linear-gradient(150deg, #fff400 0%, #fff400 100%);
+    color: #1a1817; box-shadow: 0 30px 70px rgba(0,0,0,.18);
     display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
   }
   .produktseite-clean .usp-highlight-icon {
@@ -311,7 +315,7 @@
   /* Prozess-Schritte */
   .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
-  .produktseite-clean .produkt-process-step .step-num { color: #0B9FBD; }
+  .produktseite-clean .produkt-process-step .step-num { color: #1a1817; }
   .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
   .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
 
@@ -320,35 +324,35 @@
      statt weißer Schrift (sonst unlesbar auf hellem Grund). */
   .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
   .produktseite-clean .vergleich-label { color: var(--ink); }
-  .produktseite-clean .vergleich-label--brand { color: #0B9FBD; }
+  .produktseite-clean .vergleich-label--brand { color: #1a1817; }
   .produktseite-clean .vergleich-timeline { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .vergleich-timeline--outline { border-color: #0B9FBD; }
+  .produktseite-clean .vergleich-timeline--outline { border-color: #fff400; }
   .produktseite-clean .vergleich-pill { background: var(--grey-bg); border: 1px solid #e7e2df; color: var(--ink); }
-  .produktseite-clean .vergleich-rocket { border-color: rgba(255,255,255,.5); }
+  .produktseite-clean .vergleich-rocket { border-color: rgba(26,24,23,.5); }
   .produktseite-clean .vergleich-bonus { color: var(--ink); }
-  .produktseite-clean .vergleich-bonus svg { color: #0B9FBD; }
+  .produktseite-clean .vergleich-bonus svg { color: #1a1817; }
 
   /* FAQ */
   .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
   .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
-  .produktseite-clean .produkt-faq-item summary::after { color: #0B9FBD; }
+  .produktseite-clean .produkt-faq-item summary::after { color: #1a1817; }
   .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
 
   /* Ansprechpartner + finaler CTA */
   .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
-  .produktseite-clean .produkt-team-cta .kicker { color: #0B9FBD; }
+  .produktseite-clean .produkt-team-cta .kicker { color: #1a1817; }
   .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
   .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
   .produktseite-clean .ansprechpartner-name { color: var(--ink); }
   .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
-  .produktseite-clean .produkt-cta .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #fff; }
+  .produktseite-clean .produkt-cta .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   body.produktseite-clean .site-footer { background: var(--black); }
 </style>
 <style>.produktseite--dashboard-digitales-marketing .produkt-cta h2 { max-width: 27ch; }</style>
 </head>
-<body class="produktseite produktseite-clean produktseite--dashboard-digitales-marketing produktseite--keep-visual">
+<body class="e2 produktseite produktseite-clean produktseite--dashboard-digitales-marketing produktseite--keep-visual">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -525,7 +529,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+    <a class="brand" href="/" aria-label="empiria Startseite">
       <img src="/assets/empiria-logo.svg" alt="empiria">
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
@@ -653,101 +657,14 @@
 </header>
 
 <main>
+<div class="e2-alt e2-alt--cyan e2-seite--dashboard-digitales-marketing">
   <!-- ===== Hero ===== -->
-  <section class="produkt-hero">
-    <div class="container">
-    <div class="produkt-hero-image-grid">
-      <div class="produkt-hero-image-head">
-        <p class="kicker">MarketingEcoSystem (MES)</p>
-        <h1 class="h-serif">Du konzentrierst Dich nicht auf Marketing, sondern auf <span class="hl">Dein Business.</span></h1>
-      </div>
-      <div class="produkt-hero-visual produkt-hero-image-visual">
-              <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts">
-          <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
-          <rect x="216.0" y="307.0" width="103.6" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
-          <rect x="216.0" y="324.0" width="52.0" height="14.0" rx="7" fill="rgba(255,255,255,.5)"/>
-          <text x="290.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Landingpage</text>
-          <rect x="420.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <rect x="434.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
-          <rect x="487.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
-          <rect x="540.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
-          <rect x="434.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
-          <rect x="487.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
-          <rect x="540.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
-          <text x="510.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Social-Media-Kanäle</text>
-          <rect x="305.0" y="460.0" width="190.0" height="95.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <rect x="319.0" y="471.0" width="64.6" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
-          <circle cx="481.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
-          <circle cx="469.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
-          <circle cx="457.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
-          <line x1="305.0" y1="484.0" x2="495.0" y2="484.0" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <rect x="319.0" y="528.3" width="21.0" height="14.7" rx="2" fill="rgba(255,255,255,.26)"/>
-          <rect x="346.0" y="516.0" width="21.0" height="27.0" rx="2" fill="rgba(255,255,255,.26)"/>
-          <rect x="373.0" y="523.4" width="21.0" height="19.6" rx="2" fill="rgba(255,255,255,.26)"/>
-          <rect x="400.0" y="506.2" width="21.0" height="36.8" rx="2" fill="rgba(255,255,255,.26)"/>
-          <rect x="427.0" y="518.5" width="21.0" height="24.5" rx="2" fill="rgba(255,255,255,.26)"/>
-          <rect x="454.0" y="511.1" width="21.0" height="31.9" rx="2" fill="rgba(255,255,255,.26)"/>
-          <line x1="319.0" y1="543.0" x2="481.0" y2="543.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
-          <polyline points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/>
-          <circle cx="329.5" cy="523.3" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <circle cx="356.5" cy="511.0" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <circle cx="383.5" cy="518.4" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <circle cx="410.5" cy="501.2" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <circle cx="437.5" cy="513.5" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <circle cx="464.5" cy="506.1" r="2.1" fill="rgba(255,255,255,.8)"/>
-          <text x="400.0" y="448.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Dashboard</text>
-          <line x1="304.3" y1="351.8" x2="326.6" y2="440.5" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
-          <path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"/>
-          <text x="288.1" y="406.8" text-anchor="end" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Daten</text>
-          <line x1="346.5" y1="458.2" x2="324.2" y2="369.5" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
-          <path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"/>
-          <line x1="481.1" y1="348.2" x2="458.9" y2="436.8" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
-          <path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"/>
-          <line x1="468.1" y1="461.8" x2="490.3" y2="373.2" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
-          <path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"/>
-          <text x="511.9" y="406.8" text-anchor="start" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Optimierung</text>
-          <path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
-          <path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"/>
-          <path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
-          <path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"/>
-          <path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
-          <path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"/>
-          <text x="400.0" y="75.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Konzeption &amp;</text>
-          <text x="400.0" y="93.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Umsetzung</text>
-          <text x="693.8" y="587.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Tracking &amp;</text>
-          <text x="693.8" y="605.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Analyse</text>
-          <text x="106.2" y="587.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Ableitung</text>
-          <text x="106.2" y="605.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Next Step</text>
-        </svg>
-      </div>
-      </div>
-      <div class="produkt-hero-image-text">
-          <p class="lead">Unser MarketingEcoSystem (MES) führt Homepage, digitale Kanäle und zentrales Dashboard an einem Ort zusammen – damit alles ineinandergreift, statt nebeneinanderher zu laufen.</p>
-          <p class="lead">Inklusive laufender Schwachstellenanalyse und direkter Optimierung – nicht nur bewertet, sondern auch umgesetzt.</p>
-      </div>
-      <div class="produkt-hero-image-text produkt-hero-image-text--right">
-          <p class="lead">Ob Versicherer, Maklerunternehmen oder Versicherungsbüro mit mehreren Mitarbeitenden:</p>
-          <p class="lead">Du siehst auf einen Blick, wie Dein Marketing wirklich wirkt – und wir setzen auf Wunsch die nächsten Schritte direkt um.</p>
-      </div>
-    </div>
-    <div class="produkt-hero-image-pills">
-            <div class="produkt-pills">
-        <span class="produkt-pill reveal">Für Versicherer &amp; Makler</span>
-        <span class="produkt-pill reveal">Alle Kanäle auf einen Blick</span>
-        <span class="produkt-pill reveal">Schwachstellen inkl. Lösungsvorschlag</span>
-        <span class="produkt-pill reveal">DSGVO-konform</span>
-      </div>
-
-    </div>
-    <div class="produkt-hero-actions produkt-hero-actions--center">
-      <a class="btn btn--dark" href="#naechste-sektion">MarketingEcoSystem kennenlernen</a>
-      
-    </div>
-    </div>
-  </section>
+  <section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
+  <div class="e2-kopf__text"><p class="e2-kicker">MarketingEcoSystem (MES)</p><h1>Du konzentrierst Dich auf <span class="hl">Dein Business.</span></h1>
+    <div class="e2-kopf__inhalt"><p>Unser MarketingEcoSystem (MES) führt Homepage, digitale Kanäle und zentrales Dashboard an einem Ort zusammen – damit alles ineinandergreift, statt nebeneinanderher zu laufen.</p><div class="produkt-pills"><span class="produkt-pill reveal">Für Versicherer &amp; Makler</span><span class="produkt-pill reveal">Alle Kanäle auf einen Blick</span><span class="produkt-pill reveal">Schwachstellen inkl. Lösungsvorschlag</span></div></div>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="#naechste-sektion">MarketingEcoSystem kennenlernen <svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="e2-kopfbild"><svg class="e2-bild e2-bild--gross" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#1a1817" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" /> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" /> <path d="M8 6v8" /></g></svg><svg class="e2-bild e2-bild--mobil" viewBox="36 100 368 204" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#1a1817" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" /> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" /> <path d="M8 6v8" /></g></svg></div>
+</div></section>
 
   <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
   <!-- ===== Vorteile ===== -->
@@ -803,7 +720,7 @@
           <div class="media-box sprint-structure-card">
           <button type="button" class="media-box-thumb-btn" data-modal-target="mesStructureModal" aria-label="Vorschau öffnen: Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts">
             <div class="media-box-thumb">
-              <svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg viewBox="40 55 730 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
           <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
           <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
@@ -865,7 +782,7 @@
             </div>
           </button>
           <div class="media-box-footer">
-            <span class="media-box-title">MES</span>
+            <span class="media-box-title">MarketingEcoSystem (MES)</span>
             <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="mesStructureModal">Vorschau ansehen</button>
           </div>
         </div>
@@ -875,78 +792,10 @@
   </section>
 
   <!-- ===== Pricing ===== -->
-  <section class="produkt-grid produkt-pricing">
-    <div class="container">
-      <div class="produkt-section-head reveal">
-        <p class="kicker">Pakete</p>
-        <h2 class="h-serif">Drei Wege, uns zu buchen.</h2>
-        <p>Vom Dashboard in Eigenregie bis zur vollständigen Betreuung – wähle den Umfang, der wirklich zu Deinem Business passt.</p>
-      </div>
-      <div class="produkt-grid-cards produkt-pricing-grid">
-      <div class="produkt-glass price-card reveal">
-        <div class="price-badge-slot"></div>
-        <h3>Eigenregie</h3>
-        <p class="price-desc">Wir verknüpfen Deine Homepage und digitalen Kanäle mit unserem Dashboard inkl. Reporting – die Optimierung übernimmst Du selbst.</p>
-        <div class="price-value">
-          <span class="price-amount">ab 399 €</span>
-          <span class="price-unit">mtl.</span>
-        </div>
-        <p class="price-note">Der Preis richtet sich nach dem vereinbarten Umfang.</p>
-        <ul class="price-features">
-          <li>Mindestlaufzeit drei Monate zzgl. einmaliger Setup-Kosten</li>
-          <li>Anbindung an unser Dashboard &amp; Reporting – ohne Eingriff in Homepage oder Kanäle</li>
-          <li>Regelmäßiges Reporting zum Status und zu Optimierungsmöglichkeiten</li>
-        </ul>
-        <button type="button" class="btn btn--outline btn--sm price-more-btn" data-modal-target="maasModalSetup">Mehr erfahren</button>
-      <div class="price-ideal-band">
-        <p class="price-ideal">Wenn Du das Ecosystem<br>nutzen, die Umsetzung aber<br>in der Hand behalten willst.</p>
-      </div>
-      </div>
-      <div class="produkt-glass price-card price-card--featured reveal">
-        <div class="price-badge-slot"><span class="price-badge">Meistgewählt</span></div>
-        <h3>Marketing as a Service</h3>
-        <p class="price-desc">Wir übernehmen die laufende Betreuung und Optimierung von Homepage, Social-Media-Kanälen und Reporting.</p>
-        <div class="price-value">
-          <span class="price-amount">ab 3.500 €</span>
-          <span class="price-unit">mtl.</span>
-        </div>
-        <p class="price-note">Der Preis richtet sich nach dem vereinbarten Umfang.</p>
-        <ul class="price-features">
-          <li>Mindestlaufzeit zwölf Monate, keine einmaligen Setup-Kosten</li>
-          <li>Homepage – von uns betreut &amp; laufend optimiert</li>
-          <li>Firmenaccounts &amp; Profile: LinkedIn, Facebook, Instagram</li>
-          <li>Content-Kalender, Postings &amp; Umsetzung aus einer Hand</li>
-          <li>Monatlicher Austausch plus wöchentliches Reporting</li>
-        </ul>
-        <button type="button" class="btn btn--outline btn--sm price-more-btn" data-modal-target="maasModalRundum">Mehr erfahren</button>
-      <div class="price-ideal-band">
-        <p class="price-ideal">Für alle, die ihr Marketing<br>nicht mehr selbst stemmen,<br>sondern uns anvertrauen wollen.</p>
-      </div>
-      </div>
-      <div class="produkt-glass price-card reveal">
-        <div class="price-badge-slot"></div>
-        <h3>Unternehmertum</h3>
-        <p class="price-desc">Wir suchen unternehmerische Partnerschaften – wenn die Voraussetzungen für beide Seiten stimmen.</p>
-        <div class="price-value">
-          <span class="price-amount">Auf Anfrage</span>
-          <span class="price-unit"></span>
-        </div>
-        <p class="price-note">Gemeinsames Gespräch zur Prüfung, ob eine Beteiligung zueinander passt.</p>
-        <ul class="price-features">
-          <li>Wir werden Teil des Teams statt nur Dienstleister</li>
-          <li>Kein laufendes Honorar, sondern Beteiligung am Erfolg</li>
-          <li>Für Unternehmen mit Potenzial, das wir mit aufbauen wollen</li>
-          <li>Langfristig, partnerschaftlich, auf Augenhöhe</li>
-        </ul>
-        <button type="button" class="btn btn--outline btn--sm price-more-btn" data-modal-target="maasModalIndividuell">Mehr erfahren</button>
-      <div class="price-ideal-band">
-        <p class="price-ideal">Wenn Du mit einem erfahrenen<br>Partner wachsen und den<br>Markt erobern willst.</p>
-      </div>
-      </div>
-      </div>
-<p class="pricing-footnote reveal">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>
-    </div>
-  </section>
+  <section class="produkt-grid produkt-pricing e2-posts-sek" id="pakete"><div class="container">
+  <div class="e2-s2-split e2-faelle__kopf"><div><p class="kicker">Pakete</p><h2 class="h-serif">Drei Wege, uns zu buchen.</h2></div><p class="lead">Vom Dashboard in Eigenregie bis zur vollständigen Betreuung – wähle den Umfang, der wirklich zu Deinem Business passt.</p></div>
+  <div class="e2-posts"><article class="e2-post"><div class="e2-post__kopf"><span>Du setzt selbst um</span></div><div class="e2-post__bild"><small>Monatlich</small><div class="e2-post__unten"><div><b>Eigenregie</b><span class="e2-post__preis">ab 399 € <small>mtl.</small></span></div><svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /></svg></div></div><div class="e2-post__text"><p>Wir verknüpfen Deine Homepage und digitalen Kanäle mit unserem Dashboard inkl. Reporting – die Optimierung übernimmst Du selbst.</p><ul><li>Mindestlaufzeit drei Monate zzgl. einmaliger Setup-Kosten</li><li>Anbindung an unser Dashboard &amp; Reporting – ohne Eingriff in Homepage oder Kanäle</li><li>Regelmäßiges Reporting zum Status und zu Optimierungsmöglichkeiten</li></ul><p class=e2-post__hinweis>Der Preis richtet sich nach dem vereinbarten Umfang.</p><button type=button class=e2-post__mehr data-modal-target="maasModalSetup">Mehr erfahren →</button></div></article><article class="e2-post e2-post--top"><div class="e2-post__kopf"><span>Wir übernehmen alles</span><em>Meistgewählt</em></div><div class="e2-post__bild"><small>Monatlich</small><div class="e2-post__unten"><div><b>Marketing as a Service</b><span class="e2-post__preis">ab 3.500 € <small>mtl.</small></span></div><svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3" /> <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /> <path d="m21 3 1 11h-2" /> <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /> <path d="M3 4h8" /></svg></div></div><div class="e2-post__text"><p>Wir übernehmen die laufende Betreuung und Optimierung von Homepage, Social-Media-Kanälen und Reporting.</p><ul><li>Mindestlaufzeit zwölf Monate, keine einmaligen Setup-Kosten</li><li>Homepage – von uns betreut &amp; laufend optimiert</li><li>Firmenaccounts &amp; Profile: LinkedIn, Facebook, Instagram</li><li>Content-Kalender, Postings &amp; Umsetzung aus einer Hand</li><li>Monatlicher Austausch plus wöchentliches Reporting</li></ul><p class=e2-post__hinweis>Der Preis richtet sich nach dem vereinbarten Umfang.</p><button type=button class=e2-post__mehr data-modal-target="maasModalRundum">Mehr erfahren →</button></div></article><article class="e2-post"><div class="e2-post__kopf"><span>Wir wachsen gemeinsam</span></div><div class="e2-post__bild"><small>Partnerschaft</small><div class="e2-post__unten"><div><b>Unternehmertum</b><span class="e2-post__preis">Auf Anfrage</span></div><svg class="e2-post__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /> <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" /> <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></svg></div></div><div class="e2-post__text"><p>Wir suchen unternehmerische Partnerschaften – wenn die Voraussetzungen für beide Seiten stimmen.</p><ul><li>Wir werden Teil des Teams statt nur Dienstleister</li><li>Kein laufendes Honorar, sondern Beteiligung am Erfolg</li><li>Für Unternehmen mit Potenzial, das wir mit aufbauen wollen</li><li>Langfristig, partnerschaftlich, auf Augenhöhe</li></ul><p class=e2-post__hinweis>Gemeinsames Gespräch zur Prüfung, ob eine Beteiligung zueinander passt.</p><button type=button class=e2-post__mehr data-modal-target="maasModalIndividuell">Mehr erfahren →</button></div></article></div><p class="e2-preis__fuss e2-posts__fuss">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe.</p>
+</div></section>
   <!-- ===== Dein virtueller Marketingmitarbeiter ===== -->
   <section class="produkt-section produkt-vorschau produkt-vorschau--split">
     <div class="container">
@@ -958,33 +807,9 @@
           <p>Nur: Wie müsste diese Person eigentlich aufgestellt sein, um alles das abzudecken, was wir hier übernehmen? Wir haben das Anforderungsprofil aufgeschrieben – als fertiges Konkurrenzprodukt zu uns, das Du Dir direkt herunterladen kannst.</p>
         </div>
         <div class="vorschau-split-card reveal">
-          <div class="media-box sprint-structure-card">
-            <button type="button" class="media-box-thumb-btn" data-modal-target="jobProfileModal" aria-label="Anforderungsprofil ansehen: Vorschau eines zweiseitigen Anforderungsprofils">
-              <div class="media-box-thumb">
-                <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="34.0" y="26.0" width="176.0" height="234.0" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.28)" stroke-width="1.4"/>
-          <rect x="20.0" y="14.0" width="176.0" height="234.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.45)" stroke-width="1.6"/>
-          <rect x="38.0" y="34.0" width="105.6" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="38.0" y="52.0" width="70.4" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <line x1="38.0" y1="72.0" x2="178.0" y2="72.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
-          <rect x="38.0" y="90.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="106.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="122.0" width="98.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="138.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="154.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <line x1="38.0" y1="182.0" x2="178.0" y2="182.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
-          <rect x="38.0" y="198.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="214.0" width="77.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="230.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-          <rect x="38.0" y="246.0" width="140.0" height="6.0" rx="2" fill="rgba(255,255,255,.24)"/>
-                </svg>
-              </div>
-            </button>
-            <div class="media-box-footer">
-              <span class="media-box-title">Anforderungsprofil</span>
-              <button type="button" class="btn btn--dark btn--sm sprint-structure-cta" data-modal-target="jobProfileModal">Profil ansehen und herunterladen</button>
-            </div>
-          </div>
+          <div class="e2-s2-kasten e2-teams-dl__kasten"><span class="e2-teams-dl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></svg></span><p class="e2-teams-dl__titel">Anforderungsprofil</p>
+  <p class="e2-teams-dl__text">Aufgaben, Fähigkeiten und Rahmen für Deinen Marketingmitarbeiter – als fertige Vorlage.</p>
+  <button type="button" class="e2-teams-dl__knopf" data-modal-target="jobProfileModal">Profil ansehen und herunterladen</button></div>
         </div>
       </div>
     </div>
@@ -992,17 +817,17 @@
   <!-- ===== Download: PDF-Zusammenfassung ===== -->
   <section class="produkt-section pdf-dl-section">
     <div class="container">
-      <div class="pdf-dl pdf-dl--mist reveal" id="download" style="--dl-acc:#0B9FBD;">
+      <div class="pdf-dl pdf-dl--mist reveal" id="download" style="--dl-acc:#fff400;">
         <div class="pdf-dl-visual" aria-hidden="true">
-          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/empiria-dashboard-digitales-marketing-2.webp" alt="" loading="lazy">
-          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/empiria-dashboard-digitales-marketing-1.webp" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/2.0/empiria-dashboard-digitales-marketing-2.png" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/2.0/empiria-dashboard-digitales-marketing-1.png" alt="" loading="lazy">
         </div>
         <div class="pdf-dl-text">
           <p class="pdf-dl-kicker">Download</p>
-          <h2 class="pdf-dl-h">Das MarketingEcoSystem auf <span class="hl-acc">einen Blick.</span></h2>
+          <h2 class="pdf-dl-h">Das MarketingEcoSystem auf <span class="e2-dl-hl">einen Blick.</span></h2>
           <p class="pdf-dl-lead">Das Wichtigste kompakt zusammengefasst. Zum Nachlesen und Weitergeben an Dein Team oder Deine Entscheider.</p>
-          <div class="pdf-dl-meta"><span>PDF</span><span>5 Seiten</span><span>0,8 MB</span></div>
-          <a class="pdf-dl-btn" href="/assets/downloads/empiria-dashboard-digitales-marketing.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="pdf-dl-meta"><span>PDF</span><span>7 Seiten</span><span>0,5 MB</span></div>
+          <a class="pdf-dl-btn" href="/assets/downloads/2.0/empiria-dashboard-digitales-marketing.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -1037,6 +862,8 @@
       </div>
     </div>
   </section>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script></div>
 </main>
 
 <!-- ===== Ablauf-Modal: Eigenregie – so läuft es ab ===== -->
@@ -1386,7 +1213,7 @@
             <span>Postingbilder</span>
           </div>
         </div>
-        <a class="btn btn--dark" href="/assets/anforderungsprofil-marketingmanager.pdf" target="_blank" rel="noopener">Profil herunterladen (PDF)</a>
+        <a class="btn btn--dark" href="/assets/downloads/2.0/anforderungsprofil-marketingmanager.pdf" target="_blank" rel="noopener">Profil herunterladen (PDF)</a>
         <p class="jobprofile-download-note">Damit kannst Du sofort Deine Mitarbeiter suchen.</p>
       </div>
     </div>
@@ -1402,5 +1229,6 @@
 
 <script src="/script.js"></script>
 <script src="/tracking.js"></script>
+<script src="/assets/e2/referenzen.js" defer></script>
 </body>
 </html>

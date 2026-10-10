@@ -55,7 +55,14 @@ body {
 }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; }
+/* Safari auf dem iPad gibt einem <button> ohne eigene Farbe die System-
+   Akzentfarbe: Die Modulueberschriften der SV-Akademie standen dort blau,
+   auf dem Mac schwarz. Ein Knopf erbt die Textfarbe seiner Umgebung, wie
+   jeder andere Text auch - wer eine eigene Farbe braucht, setzt sie.
+   -webkit-text-fill-color haelt auch die Fuellung fest, die iOS sonst
+   getrennt bestimmt. */
+button { font-family: inherit; cursor: pointer; color: inherit;
+         -webkit-text-fill-color: currentColor; }
 
 .container {
   width: 100%;
@@ -64,24 +71,23 @@ button { font-family: inherit; cursor: pointer; }
   padding-inline: var(--pad-x);
 }
 
-/* highlight marker — tight, rounded band behind the text (single line) */
+/* Markierung: ein enges Band hinter dem Text.
+   Erst war es ein inline-block mit absolutem ::before - das konnte nur eine
+   Zeile. Dann ein eingerueckter Verlauf - der konnte zwei Zeilen, aber keine
+   runden Ecken, und das kleine g hing unten heraus.
+   Jetzt ist das Band der Hintergrund des Elements selbst: er fuellt die
+   Schriftbox samt Ober- und Unterlaengen, die Ecken lassen sich runden, und
+   box-decoration-break: clone gibt jedem Zeilenstueck ein eigenes Band. */
 .hl {
-  position: relative;
-  display: inline-block;
-  z-index: 0;
+  display: inline;
   color: var(--ink);
   font-weight: 700;
-}
-.hl::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: -0.1em;
-  right: -0.1em;
-  top: 0.02em;
-  bottom: -0.04em;
-  background: var(--hl);
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
+  background-image: linear-gradient(var(--hl), var(--hl));
   border-radius: 0.14em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* section labels (kicker) */
@@ -334,7 +340,6 @@ a.nav-dropdown-leaf:hover { background: var(--grey-bg); color: var(--ink); }
 }
 .hero-head { width: max-content; max-width: 100%; }
 .hero h1 .hl { font-weight: 700; margin-left: 0.02em; }
-.hero h1 .hl::before { top: 0.07em; bottom: 0.01em; }
 .hero-arrow { margin-top: -0.9rem; color: var(--ink); text-align: right; }
 .hero-arrow svg { width: clamp(70px, 7vw, 96px); height: auto; display: inline-block; }
 .hero-copy { padding-top: calc(0.6rem + 5px); }
@@ -1741,7 +1746,7 @@ body.produktseite--sofortsichtbar {
 .produkt-hero { padding-block: clamp(90px, 12vw, 150px); color: #fff; }
 .produkt-hero .kicker { color: rgba(255,255,255,.8); }
 .produkt-hero h1 { color: #fff; font-size: clamp(2.3rem, 4.6vw, 3.8rem); max-width: 16ch; }
-.produkt-hero .hl::before { background: #fff; }
+.produkt-hero .hl { background-image: linear-gradient(#fff, #fff); }
 .produkt-hero p.lead { color: rgba(255,255,255,.82); max-width: 44ch; margin-top: 1.1rem; }
 .produkt-hero-lead-cols {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px;
@@ -2444,7 +2449,9 @@ body.produktseite--sofortsichtbar {
 .vorschau-split-grid {
   display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 64px); align-items: center;
 }
-.vorschau-split-text .kicker { color: rgba(255,255,255,.75); }
+/* Wie bei .produkt-section-head: der Kicker ist ein <p> und faengt sich
+   sonst die Absatzregel dieser Spalte ein. */
+.vorschau-split-text .kicker { color: rgba(255,255,255,.75); font-size: 1rem; }
 .vorschau-split-text h2 {
   font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2.1rem); color: #fff; margin: .5rem 0 1rem;
 }
@@ -2488,7 +2495,12 @@ body.produktseite--sofortsichtbar {
 .produkt-section-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
 .produkt-section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
 .produkt-section-head--center p { margin-left: auto; margin-right: auto; }
-.produkt-section-head .kicker { color: rgba(255,255,255,.75); }
+/* Der Kicker ist ein <p> und faengt sich sonst die Absatzregel direkt
+   darunter ein - die ist spezifischer als .kicker und setzt ihn auf
+   .95rem. Dadurch standen die Abschnitts-Kicker auf allen Produktseiten
+   eine Stufe kleiner als der Kicker im Aufmacher und in der Kontaktsektion
+   derselben Seite. Groesse hier zurueckholen. */
+.produkt-section-head .kicker { color: rgba(255,255,255,.75); font-size: 1rem; }
 .produkt-section-head h2 {
   font-family: var(--font-serif); font-weight: 700; color: #fff;
   font-size: clamp(1.6rem, 3vw, 2.3rem); max-width: 24ch; margin: .3rem 0 0;
@@ -3082,7 +3094,6 @@ body.produktseite--sofortsichtbar {
 /* Produktseiten-Hero: weisse Schrift im farbigen Marker. Der Kasten endete an der
    Grundlinie, Unterlaengen (g, p) standen weiss auf weiss und wirkten abgeschnitten.
    Kasten reicht jetzt bis unter die Unterlaengen. */
-.produktseite-clean .produkt-hero .hl::before { bottom: -0.13em; }
 
 /* Produktseiten-Hero: Zeilenhoehe 1.06 war enger als die Glyphen, der Marker-Kasten
    ueberdeckte Unter-/Oberlaengen der Nachbarzeilen. 1.2 wie Startseite/Leistungsseiten. */

@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>empiria – Strategie, die wirkt.</title>
+<meta name="description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<link rel="canonical" href="https://www.empiria.de/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/">
+<meta property="og:title" content="empiria – Strategie, die wirkt.">
+<meta property="og:description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:description" content="empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2: ALLES denied, bevor irgendein Tag lädt. =====
+     data-cookieconsent="ignore" hält Cookiebots Auto-Blocking von den
+     Google-Tags fern — sonst würde gtag.js komplett blockiert und Consent
+     Mode könnte gar nicht erst greifen. -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+
+<!-- ===== Cookiebot CMP (manuell implementiert, NICHT über GTM) =====
+     Sendet das consent-update an den Google Tag automatisch. -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
+
+<!-- ===== Google Tag (GA4) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  // GA4 NUR auf der Produktions-Domain konfigurieren. Ohne diese Sperre
+  // schicken Vercel-Preview-Deployments (*.vercel.app) und lokale Tests ihre
+  // Klicks in dieselbe Property und verfaelschen die Zahlen dauerhaft --
+  // herausrechnen laesst sich das hinterher nicht mehr.
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.empiria.de/#organization",
+  "name": "empiria GmbH",
+  "alternateName": "empiria",
+  "url": "https://www.empiria.de/",
+  "logo": "https://www.empiria.de/assets/og-image.png",
+  "image": "https://www.empiria.de/assets/og-image.png",
+  "description": "empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.",
+  "email": "daniel.stroebel@empiria.de",
+  "telephone": "+49 176 31347217",
+  "vatID": "DE281217286",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kapellengasse 6",
+    "postalCode": "74564",
+    "addressLocality": "Crailsheim",
+    "addressCountry": "DE"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Daniel Ströbel",
+    "jobTitle": "Geschäftsführer",
+    "sameAs": "https://www.linkedin.com/in/daniel-stroebel/"
+  },
+  "areaServed": "DE",
+  "knowsAbout": [
+    "Strategieberatung",
+    "Versicherungswirtschaft",
+    "Strategieumsetzung",
+    "Geschäftsmodellentwicklung"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-kreis" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/>
+    </symbol>
+    <symbol id="ic-kreuz" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/>
+    </symbol>
+    <symbol id="ic-quadrat" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M209.61,22.83v186.77H22.83V22.83h186.77M216.12,2.83H16.32c-7.45,0-13.49,6.04-13.49,13.49v199.8c0,7.45,6.04,13.49,13.49,13.49h199.8c7.45,0,13.49-6.04,13.49-13.49V16.32c0-7.45-6.04-13.49-13.49-13.49h0Z"/>
+    </symbol>
+    <symbol id="ic-raute" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M116.22,27.03l89.19,89.19-89.19,89.19L27.03,116.22,116.22,27.03M116.22,2.83c-2.53,0-5.06.96-6.99,2.89L5.73,109.23c-3.86,3.86-3.86,10.11,0,13.97l103.51,103.51c1.93,1.93,4.46,2.89,6.99,2.89s5.06-.96,6.99-2.89l103.51-103.51c3.86-3.86,3.86-10.11,0-13.97L123.21,5.73c-1.93-1.93-4.46-2.89-6.99-2.89h0Z"/>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-talk" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="30" y="10" width="20" height="32" rx="10"/>
+        <path d="M20,36c0,11,9,20,20,20s20-9,20-20"/>
+        <path d="M40,56v14"/>
+        <path d="M28,70h24"/>
+      </g>
+    </symbol>
+    <symbol id="ic-visibility" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6,40c6-14,20-22,34-22s28,8,34,22c-6,14-20,22-34,22S12,54,6,40Z"/>
+        <circle cx="40" cy="40" r="10"/>
+      </g>
+    </symbol>
+    <symbol id="ic-ads" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <circle cx="40" cy="40" r="16"/>
+        <circle cx="40" cy="40" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header" id="top">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#problem">Problem</a>
+      <a href="#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="#leistungen" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--desktop" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<div class="dev-dd-sub">
+<a href="designideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Ideen</p>
+<a href="designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Module</p>
+<a href="projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<div class="dev-dd-sub">
+<a href="projekte/sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Darunter</p>
+<a href="projekte/sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="projekte/sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="projekte/sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="projekte/sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+</div></div>
+</div>
+<a href="projekte/sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+</div></div>
+</div>
+<a href="projekte/sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<div class="dev-dd-sub">
+<a href="projekte/vofe-umzug-schulen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VF</span><span class="dev-dd-txt"><b>Homepage VoFe Umzug</b><small>Patenwagen &middot; Entwurf Startseite</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="projekte/vofe-festzug.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Der Festzug</b><small>Alle Wagen der Schulen &middot; Patenschaft übernehmen</small></span></a>
+<a href="projekte/vofe-ueber-uns.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Über uns</b><small>Motivation &middot; wer dahintersteckt</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="projekte/empiria-2/index.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">2.0</span><span class="dev-dd-txt"><b>empiria 2.0</b><small>Alle Seiten im neuen Layout</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="projekte/empiria-2/index.html" class="dev-dd-link"><span class="dev-dd-tag">S</span><span class="dev-dd-txt"><b>Startseite</b><small>Strategie, die wirkt.</small></span></a>
+<a href="projekte/empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="projekte/empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="projekte/empiria-2/strategie.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Strategie in den Alltag überführen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+<a href="projekte/empiria-2/komplexe-themen.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Komplexe Themen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/innovation.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Innovation &amp; Geschäftsmodell</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/teams.html" class="dev-dd-link"><span class="dev-dd-tag">4</span><span class="dev-dd-txt"><b>Teams befähigen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/workshops.html" class="dev-dd-link"><span class="dev-dd-tag">W</span><span class="dev-dd-txt"><b>Workshops</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/ki-zum-anfassen.html" class="dev-dd-link"><span class="dev-dd-tag">W1</span><span class="dev-dd-txt"><b>KI zum Anfassen</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/sprint-landingpage.html" class="dev-dd-link"><span class="dev-dd-tag">W2</span><span class="dev-dd-txt"><b>Sprint Landingpage</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/workshop-moderation.html" class="dev-dd-link"><span class="dev-dd-tag">W3</span><span class="dev-dd-txt"><b>Moderation deines Workshops</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/der-beste-workshop.html" class="dev-dd-link"><span class="dev-dd-tag">W4</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/marketing.html" class="dev-dd-link"><span class="dev-dd-tag">M</span><span class="dev-dd-txt"><b>Marketing 2.0</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/dashboard-digitales-marketing.html" class="dev-dd-link"><span class="dev-dd-tag">M1</span><span class="dev-dd-txt"><b>MarketingEcoSystem</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/sofort-sichtbar.html" class="dev-dd-link"><span class="dev-dd-tag">M2</span><span class="dev-dd-txt"><b>sofort sichtbar</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/paid-ads.html" class="dev-dd-link"><span class="dev-dd-tag">M3</span><span class="dev-dd-txt"><b>Paid Ads</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/medien.html" class="dev-dd-link"><span class="dev-dd-tag">M4</span><span class="dev-dd-txt"><b>Medien</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/powerpoint.html" class="dev-dd-link"><span class="dev-dd-tag">M5</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/landingpage.html" class="dev-dd-link"><span class="dev-dd-tag">M6</span><span class="dev-dd-txt"><b>Landingpage</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/rollup.html" class="dev-dd-link"><span class="dev-dd-tag">M7</span><span class="dev-dd-txt"><b>Roll-up</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/video.html" class="dev-dd-link"><span class="dev-dd-tag">M8</span><span class="dev-dd-txt"><b>Video</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/digitale-tools.html" class="dev-dd-link"><span class="dev-dd-tag">M9</span><span class="dev-dd-txt"><b>Digitale Tools</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/training-sparring.html" class="dev-dd-link"><span class="dev-dd-tag">T</span><span class="dev-dd-txt"><b>Training &amp; Sparring</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/praesentationsseminar.html" class="dev-dd-link"><span class="dev-dd-tag">T1</span><span class="dev-dd-txt"><b>Teams befähigen (Seminar)</b><small>Training</small></span></a>
+<a href="projekte/empiria-2/sparring.html" class="dev-dd-link"><span class="dev-dd-tag">T2</span><span class="dev-dd-txt"><b>1:1 Sparring</b><small>Training</small></span></a>
+<a href="projekte/empiria-2/impulsvortraege.html" class="dev-dd-link"><span class="dev-dd-tag">T3</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Einzelseite</small></span></a>
+</div></div>
+</div>
+<a href="projekte/kopfbilder.html" class="dev-dd-link"><span class="dev-dd-tag">KB</span><span class="dev-dd-txt"><b>Kopfbilder</b><small>Die 23 Kopfbilder &middot; aktueller Stand</small></span></a>
+<a href="projekte/pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<a href="projekte/header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<a href="projekte/darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-flex;align-items:center;margin-left:auto}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:inherit;font-size:.95rem;font-weight:400;line-height:1.4;color:var(--grey-50);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;transition:color .18s ease}
+.dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
+.dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.dev-dd-group{margin:4px 8px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-50);font-weight:600}
+.dev-dd-group--sub{margin-top:14px;padding-top:12px;border-top:1px solid var(--grey-bg)}
+a.dev-dd-link{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:var(--ink);text-decoration:none;border-bottom:0;font-size:inherit;min-height:0;white-space:normal}
+a.dev-dd-link:hover,a.dev-dd-link.is-current{background:var(--grey-bg);color:var(--ink)}
+a.dev-dd-link--indent{padding-left:30px}
+.dev-dd-tag{flex:0 0 32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12px}
+.dev-dd-link--muted .dev-dd-tag{background:var(--grey-bg);color:var(--grey-70)}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dev-dd-txt b{font-weight:500;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:var(--grey-50);margin-top:1px}
+/* ---- Zweite Ebene: oeffnet nach rechts, wie im Leistungen-Menue -----------
+   Das Panel sitzt am rechten Rand; gemessen bleiben dort auch bei 1280 px
+   Fensterbreite noch 277 px frei, das reicht fuer das Flyout. */
+.dev-dd-sub{position:relative}
+a.dev-dd-link--parent::after{content:"";width:6px;height:6px;margin-left:auto;flex:0 0 auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.45}
+.dev-dd-sub:hover>a.dev-dd-link--parent,.dev-dd-sub:focus-within>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout{position:absolute;left:100%;top:-10px;padding-left:10px;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;z-index:81}
+.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout,.dev-dd-flyout.is-auf{opacity:1;visibility:visible}
+.dev-dd-sub.is-auf>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout-panel{width:262px;padding:10px;background:#fff;border:1px solid var(--grey-bg);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.dev-dd-flyout-panel .dev-dd-group{margin:2px 8px 6px}
+.dev-dd--mobile{display:none}
+.dev-dd-short{display:none}
+@media (min-width:901px) and (max-width:1140px){
+.dev-dd--desktop .dev-dd-long{display:none}
+.dev-dd--desktop .dev-dd-short{display:inline}
+.dev-dd--desktop ~ .nav-cta{margin-left:1.1rem;padding-left:1.6rem;padding-right:1.6rem}
+}
+@media (max-width:900px){
+.nav .dev-dd--desktop{display:none}
+.mobile-menu .dev-dd--mobile{display:block;margin:0}
+.mobile-menu .dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 0;font-size:1.15rem;border-bottom:1px solid #f2f2f2}
+.mobile-menu .dev-dd-panel{position:static;width:auto;max-height:none;overflow:visible;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;margin:10px 0 6px;padding:0 0 0 12px}
+.mobile-menu .dev-dd-panel::before{display:none}
+.mobile-menu .dev-dd.is-open .dev-dd-panel{display:block}
+.mobile-menu a.dev-dd-link{padding:9px 8px;font-size:inherit;border-bottom:0}
+.mobile-menu a.dev-dd-link--indent{padding-left:30px}
+.mobile-menu .dev-dd-panel{overflow:auto}
+.mobile-menu .dev-dd-flyout{position:static;opacity:1;visibility:visible;padding-left:0}
+.mobile-menu .dev-dd-flyout-panel{width:auto;padding:0 0 0 12px;margin:2px 0 6px 20px;background:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;box-shadow:none}
+.mobile-menu a.dev-dd-link--parent::after{display:none}
+}
+</style>
+<script>
+(function(){
+function init(){
+var here=location.href.split('#')[0].split('?')[0];
+document.querySelectorAll('[data-dev-dd]').forEach(function(d){
+var b=d.querySelector('.dev-dd-toggle'),t;
+function desk(){return window.innerWidth>900;}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
+d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href&&a.href.split('#')[0]===here)a.classList.add('is-current');});
+
+var panel=d.querySelector('.dev-dd-panel');
+
+// ---- Zweite Ebene -------------------------------------------------------
+// Das Panel muss scrollen, seit es vier Kategorien hat (gemessen: 834px
+// Inhalt bei 680px Platz auf einem 900er Bildschirm). Ein Flyout darin wuerde
+// mitgeschnitten. position:fixed hilft nicht - die Kopfzeile hat einen
+// backdrop-filter und wird dadurch zum Bezugsrahmen fuer fixed. Das Flyout
+// haengt sich beim Oeffnen deshalb unter .dev-dd um: dort ist es absolut
+// positioniert, aber ausserhalb des scrollenden Panels.
+// Weil :hover dort nicht mehr traegt, steuert eine Klasse die Sichtbarkeit.
+panel&&panel.querySelectorAll(':scope>.dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+var heim=f.parentNode,nachbar=f.nextSibling,t2;
+function heimholen(){
+clearTimeout(t2);f.classList.remove('is-auf');s.classList.remove('is-auf');
+if(f.parentNode!==heim){heim.insertBefore(f,nachbar);f.removeAttribute('style');}
+}
+function auf(){
+if(!desk()){heimholen();return;}
+clearTimeout(t2);
+if(f.parentNode!==d)d.appendChild(f);
+var z=s.getBoundingClientRect(),dr=d.getBoundingClientRect(),
+    k=f.firstElementChild.getBoundingClientRect();
+// Rechts daneben, wenn Platz ist - sonst nach links gekippt.
+if(z.right+10+k.width>window.innerWidth-12){
+f.style.left=(z.left-dr.left-10-k.width)+'px';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}else{
+f.style.left=(z.right-dr.left)+'px';
+f.style.paddingLeft='';f.style.paddingRight='';
+}
+// Senkrecht an der Zeile, aber nie unter den Fensterrand.
+var oben=z.top-dr.top-10,grenze=window.innerHeight-12-k.height-dr.top;
+f.style.top=Math.max(-dr.top+12,Math.min(oben,grenze))+'px';
+f.classList.add('is-auf');s.classList.add('is-auf');
+}
+function zu(){t2=setTimeout(function(){f.classList.remove('is-auf');s.classList.remove('is-auf');},180);}
+s.addEventListener('mouseenter',auf);
+s.addEventListener('focusin',auf);
+s.addEventListener('mouseleave',zu);
+f.addEventListener('mouseenter',function(){clearTimeout(t2);});
+f.addEventListener('mouseleave',zu);
+panel.addEventListener('scroll',function(){if(f.classList.contains('is-auf'))auf();});
+window.addEventListener('resize',heimholen);
+});
+
+// ---- Dritte Ebene -------------------------------------------------------
+// Die bleibt, wo sie ist: ihr Elternteil ist bereits aus dem Panel heraus,
+// dort wird nichts mehr abgeschnitten. Sie braucht nur die Kippung nach
+// links, weil rechts neben der zweiten Ebene kein Platz mehr ist.
+d.querySelectorAll('.dev-dd-flyout .dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+function platzieren(){
+f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';
+if(!desk())return;
+f.style.top='-10px';
+var r=f.firstElementChild.getBoundingClientRect(),z=s.getBoundingClientRect();
+if(z.right+10+r.width>window.innerWidth-12){
+f.style.left='auto';f.style.right='100%';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}
+var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+if(u>0)f.style.top=(-10-u)+'px';
+}
+s.addEventListener('mouseenter',platzieren);
+s.addEventListener('focusin',platzieren);
+window.addEventListener('resize',function(){f.removeAttribute('style');});
+});
+});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark btn--sm nav-cta" href="#kontakt">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="#problem">Problem</a>
+    <a href="#loesung">Lösung</a>
+    <a href="#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="#leistungen">Strategiehandwerk</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Strategiehandwerk anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Workshops anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Training & Sparring anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+    </div>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--mobile" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<div class="dev-dd-sub">
+<a href="designideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Ideen</p>
+<a href="designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="projekte/sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Module</p>
+<a href="projekte/sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="projekte/sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<div class="dev-dd-sub">
+<a href="projekte/sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Darunter</p>
+<a href="projekte/sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="projekte/sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="projekte/sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="projekte/sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+</div></div>
+</div>
+<a href="projekte/sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+</div></div>
+</div>
+<a href="projekte/sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<div class="dev-dd-sub">
+<a href="projekte/vofe-umzug-schulen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VF</span><span class="dev-dd-txt"><b>Homepage VoFe Umzug</b><small>Patenwagen &middot; Entwurf Startseite</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="projekte/vofe-festzug.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Der Festzug</b><small>Alle Wagen der Schulen &middot; Patenschaft übernehmen</small></span></a>
+<a href="projekte/vofe-ueber-uns.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Über uns</b><small>Motivation &middot; wer dahintersteckt</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="projekte/empiria-2/index.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">2.0</span><span class="dev-dd-txt"><b>empiria 2.0</b><small>Alle Seiten im neuen Layout</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="projekte/empiria-2/index.html" class="dev-dd-link"><span class="dev-dd-tag">S</span><span class="dev-dd-txt"><b>Startseite</b><small>Strategie, die wirkt.</small></span></a>
+<a href="projekte/empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="projekte/empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="projekte/empiria-2/strategie.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Strategie in den Alltag überführen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+<a href="projekte/empiria-2/komplexe-themen.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Komplexe Themen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/innovation.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Innovation &amp; Geschäftsmodell</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/teams.html" class="dev-dd-link"><span class="dev-dd-tag">4</span><span class="dev-dd-txt"><b>Teams befähigen</b><small>Strategiehandwerk</small></span></a>
+<a href="projekte/empiria-2/workshops.html" class="dev-dd-link"><span class="dev-dd-tag">W</span><span class="dev-dd-txt"><b>Workshops</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/ki-zum-anfassen.html" class="dev-dd-link"><span class="dev-dd-tag">W1</span><span class="dev-dd-txt"><b>KI zum Anfassen</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/sprint-landingpage.html" class="dev-dd-link"><span class="dev-dd-tag">W2</span><span class="dev-dd-txt"><b>Sprint Landingpage</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/workshop-moderation.html" class="dev-dd-link"><span class="dev-dd-tag">W3</span><span class="dev-dd-txt"><b>Moderation deines Workshops</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/der-beste-workshop.html" class="dev-dd-link"><span class="dev-dd-tag">W4</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Workshop</small></span></a>
+<a href="projekte/empiria-2/marketing.html" class="dev-dd-link"><span class="dev-dd-tag">M</span><span class="dev-dd-txt"><b>Marketing 2.0</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/dashboard-digitales-marketing.html" class="dev-dd-link"><span class="dev-dd-tag">M1</span><span class="dev-dd-txt"><b>MarketingEcoSystem</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/sofort-sichtbar.html" class="dev-dd-link"><span class="dev-dd-tag">M2</span><span class="dev-dd-txt"><b>sofort sichtbar</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/paid-ads.html" class="dev-dd-link"><span class="dev-dd-tag">M3</span><span class="dev-dd-txt"><b>Paid Ads</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/medien.html" class="dev-dd-link"><span class="dev-dd-tag">M4</span><span class="dev-dd-txt"><b>Medien</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/powerpoint.html" class="dev-dd-link"><span class="dev-dd-tag">M5</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/landingpage.html" class="dev-dd-link"><span class="dev-dd-tag">M6</span><span class="dev-dd-txt"><b>Landingpage</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/rollup.html" class="dev-dd-link"><span class="dev-dd-tag">M7</span><span class="dev-dd-txt"><b>Roll-up</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/video.html" class="dev-dd-link"><span class="dev-dd-tag">M8</span><span class="dev-dd-txt"><b>Video</b><small>Medien</small></span></a>
+<a href="projekte/empiria-2/digitale-tools.html" class="dev-dd-link"><span class="dev-dd-tag">M9</span><span class="dev-dd-txt"><b>Digitale Tools</b><small>Marketing 2.0</small></span></a>
+<a href="projekte/empiria-2/training-sparring.html" class="dev-dd-link"><span class="dev-dd-tag">T</span><span class="dev-dd-txt"><b>Training &amp; Sparring</b><small>Übersicht</small></span></a>
+<a href="projekte/empiria-2/praesentationsseminar.html" class="dev-dd-link"><span class="dev-dd-tag">T1</span><span class="dev-dd-txt"><b>Teams befähigen (Seminar)</b><small>Training</small></span></a>
+<a href="projekte/empiria-2/sparring.html" class="dev-dd-link"><span class="dev-dd-tag">T2</span><span class="dev-dd-txt"><b>1:1 Sparring</b><small>Training</small></span></a>
+<a href="projekte/empiria-2/impulsvortraege.html" class="dev-dd-link"><span class="dev-dd-tag">T3</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Einzelseite</small></span></a>
+</div></div>
+</div>
+<a href="projekte/kopfbilder.html" class="dev-dd-link"><span class="dev-dd-tag">KB</span><span class="dev-dd-txt"><b>Kopfbilder</b><small>Die 23 Kopfbilder &middot; aktueller Stand</small></span></a>
+<a href="projekte/pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<a href="projekte/header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<a href="projekte/darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark" href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-head">
+          <h1>Strategie,<br>die <span class="hl">wirkt.</span></h1>
+          <div class="hero-arrow"><svg><use href="#ic-forward"/></svg></div>
+        </div>
+        <div class="hero-copy lead">
+          <p>empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, die schnelle Klarheit und wirksame Umsetzung erfordern.</p>
+          <p>Wir erkennen, wo der Schmerz sitzt, ordnen Themen in das Gesamtgefüge des Geschäftsmodells ein – und sorgen für die notwendige Veränderung.</p>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn--dark" href="#problem">mehr erfahren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Marquee ===== -->
+  <div class="marquee" aria-label="Auswahl unserer Kunden">
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </div>
+
+  <!-- ===== Problem ===== -->
+  <section class="section section--grey" id="problem">
+    <svg class="watermark" width="330" height="330" viewBox="0 0 232.44 232.44" style="left:50%;top:calc(36% - 15px);transform:translateX(-50%)" aria-hidden="true"><use href="#ic-kreuz"/></svg>
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-head">
+          <p class="kicker">Problem</p>
+          <h2 class="h-serif">Die Strategie steht.<br>Trotzdem passiert<br><span class="hl">zu wenig.</span></h2>
+        </div>
+        <div class="problem-card">
+          <p>Die Themen, auf die es wirklich ankommt, kennst du genau. Trotzdem fragst Du Dich:</p>
+          <ul>
+            <li>Warum bewegt sich da nichts?</li>
+            <li>Warum zieht mein Team nicht mit?</li>
+            <li>Warum kommt meine Strategie im Alltag nicht an?</li>
+          </ul>
+          <p>Die Antwort liegt selten an der Strategie selbst. Es liegt daran, dass sie niemand in den Alltag übersetzt hat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Lösung ===== -->
+  <section class="section loesung" id="loesung">
+    <div class="container">
+      <p class="kicker" style="text-align:center">Lösung</p>
+      <h2 class="h-serif">Wir übersetzen<br>Deine Strategie
+        <span class="wirkung"><span class="yellow-pill"></span><span class="txt">in <strong>Wirkung</strong></span></span>
+      </h2>
+      <div class="loesung-copy lead">
+        <p>Wir nehmen Deine Strategie und machen aus ihr das, was im Alltag zählt. Klare Leitplanken für Deine Schwerpunktthemen, verständlich für Dein Team, wirksam in den Gremien und sichtbar im Ergebnis.</p>
+      </div>
+      <div class="loesung-actions">
+        <button class="link-more" data-modal="loesung">mehr anzeigen</button>
+        <a class="btn btn--dark" href="#leistungen">konkrete Lösungen anzeigen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Leistungen ===== -->
+  <section class="section leistungen" id="leistungen">
+    <svg class="watermark wm-kreis" width="820" height="820" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-kreis"/></svg>
+    <div class="container">
+      <div class="leistungen-head leistungen-head--center">
+        <p class="kicker">Leistungen</p>
+        <h2 class="h-serif">Was wir<br>konkret <span class="hl">lösen.</span></h2>
+        <p class="lead">Strategie ist keine Zauberei, sondern Handwerk – und genau dieses Handwerk bringen wir in Deinen Alltag.</p>
+      </div>
+      <div class="cards-3col">
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-forward"/></svg>
+            <svg class="ico-main"><use href="#ic-forward"/></svg>
+          </div>
+          <h3>Strategie in den<br>Alltag überführen</h3>
+          <div class="lcard-body">
+            <p>Deine Strategie ist da – aber was bedeutet sie für deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam.</p>
+            <a class="link-more" href="/leistungen/strategie">mehr erfahren</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-kreuz"/></svg>
+            <svg class="ico-main"><use href="#ic-kreuz"/></svg>
+          </div>
+          <h3>Komplexe Themen strukturieren &amp; kommunizieren</h3>
+          <div class="lcard-body">
+            <p>Ob im Vorstand, im Gremium oder beim Kunden: Wir sorgen dafür, dass dein Thema ankommt – inhaltlich und im Auftritt.</p>
+            <a class="link-more" href="/leistungen/komplexe-themen">mehr erfahren</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard-icon">
+            <svg class="ico-shadow"><use href="#ic-kreis"/></svg>
+            <svg class="ico-main"><use href="#ic-kreis"/></svg>
+          </div>
+          <h3>Innovation &amp; Geschäftsmodell neu denken</h3>
+          <div class="lcard-body">
+            <p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p>
+            <a class="link-more" href="/leistungen/innovation">mehr erfahren</a>
+          </div>
+        </article>
+      </div>
+      <div class="leistungen-cta">
+        <a class="btn btn--dark" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Formate ===== -->
+  <section class="section formate" id="formate">
+    <div class="container">
+      <div class="formate-grid">
+        <div class="formate-head">
+          <p class="kicker">Formate</p>
+          <h2 class="h-serif">Projekterfahrung,<br><span class="hl">direkt einsetzbar.</span></h2>
+          <p class="lead">Uns gibt es seit 2012 – seitdem haben wir mit Versicherern in zahlreichen Projekten gearbeitet.</p>
+          <p class="lead">Diese Erfahrung haben wir in direkt einsetzbare Tools und Methoden überführt: drei Formate, die Du ohne langen Vorlauf buchen kannst.</p>
+        </div>
+        <div class="formate-accordion">
+          <details class="formate-acc-item formate-acc--magenta" name="formate-acc">
+            <summary><span>Workshops</span></summary>
+            <div class="formate-acc-body">
+              <p>Aus über einem Jahrzehnt Projekterfahrung sind Workshop-Formate entstanden, die Dein Team genau dort abholen, wo es steht – ob bei Künstlicher Intelligenz, einer neuen Landingpage oder der Moderation eines eigenen Workshops.</p>
+              <p>Jeder Workshop ist hands-on: Ihr arbeitet an echten Tools und echten Fällen aus eurem Alltag statt an Theorie – und geht mit klaren Ergebnissen raus, mit denen sich sofort weiterarbeiten lässt.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines MacBooks mit einer stilisierten KI-Eingabemaske, überlagert von einem kleineren Smartphone mit derselben Eingabemaske">
+          <rect x="20.0" y="16.0" width="300.0" height="190.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="30.0" y="26.0" width="280.0" height="170.0" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+          <rect x="46.0" y="50.0" width="198.4" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.4)"/>
+          <rect x="46.0" y="66.1" width="148.8" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.25)"/>
+          <rect x="46.0" y="93.7" width="248.0" height="25.3" rx="12.649999999999999" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="1.4949999999999999"/>
+          <rect x="57.5" y="104.0" width="104.2" height="4.6" rx="2.3" fill="rgba(255,255,255,.3)"/>
+          <circle cx="281.4" cy="106.3" r="8.1" fill="rgba(255,255,255,.55)"/>
+          <path d="M278.1,102.7 L285.8,106.3 L278.1,110.0 Z" fill="rgba(0,0,0,.55)"/>
+          <path d="M4.0,220.0 L336.0,220.0 L314.0,206.0 L26.0,206.0 Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.32)" stroke-width="1.4"/>
+          <rect x="146.0" y="211.0" width="48.0" height="4.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <g transform="rotate(5 304.0 198.0)">
+          <rect class="mock-phone-body" x="250.0" y="110.0" width="108.0" height="176.0" rx="20" fill="rgba(10,10,14,.92)" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/>
+          <rect x="258.0" y="118.0" width="92.0" height="160.0" rx="13" fill="rgba(255,255,255,.05)"/>
+          <rect x="266.0" y="144.0" width="60.8" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.4)"/>
+          <rect x="266.0" y="152.7" width="45.6" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.25)"/>
+          <rect x="266.0" y="167.6" width="76.0" height="13.6" rx="6.82" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="0.806"/>
+          <rect x="272.2" y="173.1" width="31.9" height="2.5" rx="1.24" fill="rgba(255,255,255,.3)"/>
+          <circle cx="335.2" cy="174.4" r="4.4" fill="rgba(255,255,255,.55)"/>
+          <path d="M333.4,172.4 L337.6,174.4 L333.4,176.3 Z" fill="rgba(0,0,0,.55)"/>
+          <rect x="288.0" y="276.0" width="32.0" height="3.4" rx="1.7" fill="rgba(255,255,255,.4)"/>
+          </g>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">KI zum Anfassen</div>
+              <p class="formate-preview-desc">Echte KI-Tools, echte Usecases aus der Versicherungsbranche.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Sprint Landingpage</div>
+              <p class="formate-preview-desc">Deine Landingpage in 48 Stunden live.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Metaplanwand auf einem Stellwand-Gestell mit angepinnten Moderationskarten in Clustern">
+          <rect x="54.0" y="14.0" width="252.0" height="178.0" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <circle cx="180.0" cy="22.0" r="3.0" fill="rgba(255,255,255,.6)"/>
+          <rect x="70.0" y="28.0" width="220.0" height="26.0" rx="3" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.5)" stroke-width="1.3"/>
+          <rect x="84.0" y="38.0" width="192.0" height="6.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <circle cx="104.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="70.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="78.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="78.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="180.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="146.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="154.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="154.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="256.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="222.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="230.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="230.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="104.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="70.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="78.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="78.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="180.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="146.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="154.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="154.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <circle cx="256.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
+          <rect x="222.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
+          <rect x="230.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
+          <rect x="230.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
+          <line x1="78.0" y1="192.0" x2="52.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="78.0" y1="192.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="52.0" y1="260.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="282.0" y1="192.0" x2="256.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="282.0" y1="192.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="256.0" y1="260.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <line x1="20.0" y1="268.0" x2="340.0" y2="268.0" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Moderation deines Workshops</div>
+              <p class="formate-preview-desc">Gezielte Aktivierung, Perspektivwechsel, Handlungsklarheit.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/workshops">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--cyan" name="formate-acc">
+            <summary><span>Marketing 2.0</span></summary>
+            <div class="formate-acc-body">
+              <p>Marketing 2.0 bündelt Deine digitalen Kanäle an einem Ort: ein zentrales Dashboard für Deine wichtigsten Kennzahlen, ein fertiges System für sofortige Sichtbarkeit, Kampagnen, die tatsächlich Anfragen bringen, und Medien wie Präsentation, Landingpage oder Roll-up aus einer Hand.</p>
+              <p>Ob als komplette Marketingabteilung im Abo oder als einzelnes Format: Wir übernehmen, wofür Dir sonst die Zeit fehlt – ohne langes Briefing, klar ausgewertet statt Blackbox, und professionell umgesetzt, damit Du Dich um Deine digitalen Kanäle nicht mehr kümmern musst.</p>
+                          <div class="formate-preview-grid formate-preview-grid--2x2 formate-preview-grid--center">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 800 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramm des MarketingEcoSystems: Landingpage und Social-Media-Kanäle liefern Daten an ein Dashboard, das Optimierungsempfehlungen zurück in die Kanäle gibt – als fortlaufender Kreislauf aus Konzeption &amp; Umsetzung, Tracking &amp; Analyse und Ableitung des nächsten Schritts">
+          <rect x="200.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="216.0" y="274.0" width="75.6" height="8.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="216.0" y="292.0" width="148.0" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="307.0" width="103.6" height="8.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="216.0" y="324.0" width="52.0" height="14.0" rx="7" fill="rgba(255,255,255,.5)"/>
+          <text x="290.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Landingpage</text>
+          <rect x="420.0" y="260.0" width="180.0" height="90.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="434.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="487.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="540.0" y="274.0" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="434.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <rect x="487.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.22)"/>
+          <rect x="540.0" y="308.5" width="46.0" height="27.5" rx="5" fill="rgba(255,255,255,0.13)"/>
+          <text x="510.0" y="248.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Social-Media-Kanäle</text>
+          <rect x="305.0" y="460.0" width="190.0" height="95.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="319.0" y="471.0" width="64.6" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <circle cx="481.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="469.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <circle cx="457.0" cy="474.5" r="2.6" fill="rgba(255,255,255,.32)"/>
+          <line x1="305.0" y1="484.0" x2="495.0" y2="484.0" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <rect x="319.0" y="528.3" width="21.0" height="14.7" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="346.0" y="516.0" width="21.0" height="27.0" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="373.0" y="523.4" width="21.0" height="19.6" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="400.0" y="506.2" width="21.0" height="36.8" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="427.0" y="518.5" width="21.0" height="24.5" rx="2" fill="rgba(255,255,255,.26)"/>
+          <rect x="454.0" y="511.1" width="21.0" height="31.9" rx="2" fill="rgba(255,255,255,.26)"/>
+          <line x1="319.0" y1="543.0" x2="481.0" y2="543.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <polyline points="329.5,523.3 356.5,511.0 383.5,518.4 410.5,501.2 437.5,513.5 464.5,506.1" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8"/>
+          <circle cx="329.5" cy="523.3" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="356.5" cy="511.0" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="383.5" cy="518.4" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="410.5" cy="501.2" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="437.5" cy="513.5" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <circle cx="464.5" cy="506.1" r="2.1" fill="rgba(255,255,255,.8)"/>
+          <text x="400.0" y="448.0" text-anchor="middle" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Dashboard</text>
+          <line x1="304.3" y1="351.8" x2="326.6" y2="440.5" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M328.5,448.2 L322.3,441.6 L330.8,439.4 Z" fill="rgba(255,255,255,.62)"/>
+          <text x="288.1" y="406.8" text-anchor="end" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Daten</text>
+          <line x1="346.5" y1="458.2" x2="324.2" y2="369.5" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M322.3,361.8 L328.5,368.4 L320.0,370.6 Z" fill="rgba(255,255,255,.4)"/>
+          <line x1="481.1" y1="348.2" x2="458.9" y2="436.8" stroke="rgba(255,255,255,.62)" stroke-width="2.1"/>
+          <path d="M456.9,444.6 L454.6,435.8 L463.1,437.9 Z" fill="rgba(255,255,255,.62)"/>
+          <line x1="468.1" y1="461.8" x2="490.3" y2="373.2" stroke="rgba(255,255,255,.4)" stroke-width="1.7" stroke-dasharray="4,5"/>
+          <path d="M492.3,365.4 L494.6,374.2 L486.1,372.1 Z" fill="rgba(255,255,255,.4)"/>
+          <text x="511.9" y="406.8" text-anchor="start" font-family="var(--font-sans)" font-size="11" font-weight="600" fill="rgba(255,255,255,.72)">Optimierung</text>
+          <path d="M512.9,109.9 A330.0,330.0 0 0,1 727.2,463.2" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M725.0,477.3 L720.4,465.6 L732.4,467.2 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M612.1,672.8 A330.0,330.0 0 0,1 199.0,681.7" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M187.9,672.8 L200.3,674.7 L192.9,684.3 Z" fill="rgba(255,255,255,.55)"/>
+          <path d="M75.0,477.3 A330.0,330.0 0 0,1 273.8,115.1" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4"/>
+          <path d="M287.1,109.9 L279.3,119.7 L274.7,108.5 Z" fill="rgba(255,255,255,.55)"/>
+          <text x="400.0" y="75.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Konzeption &amp;</text>
+          <text x="400.0" y="93.0" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="700" fill="rgba(255,255,255,.92)">Umsetzung</text>
+          <text x="693.8" y="587.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Tracking &amp;</text>
+          <text x="693.8" y="605.0" text-anchor="start" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Analyse</text>
+          <text x="106.2" y="587.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Ableitung</text>
+          <text x="106.2" y="605.0" text-anchor="end" font-family="var(--font-serif)" font-size="13" font-weight="700" fill="rgba(255,255,255,.92)">Next Step</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">MarketingEcoSystem (MES)</div>
+              <p class="formate-preview-desc">Ein zentrales Dashboard für alle Deine Kennzahlen.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines MacBook-Bildschirms mit Website und drei gefächerten Posting-Vorschauen, daneben ein iPhone mit einer Vergleichstabelle klassische Agentur gegen sofort sichtbar – Symbol für sofortige digitale Sichtbarkeit">
+          <rect x="20.0" y="14.0" width="330.0" height="208.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
+          <rect x="30.0" y="24.0" width="310.0" height="188.0" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+          <circle cx="44.0" cy="40.0" r="5.0" fill="rgba(255,255,255,.55)"/>
+          <rect x="56.0" y="36.0" width="46.0" height="7.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="244.0" y="37.0" width="20.0" height="5.0" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="270.0" y="37.0" width="20.0" height="5.0" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="300.0" y="34.0" width="34.0" height="12.0" rx="6" fill="rgba(255,255,255,.5)"/>
+          <rect x="115.0" y="62.0" width="140.0" height="9.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="139.0" y="78.0" width="92.0" height="9.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <g transform="rotate(-9 125.0 176.0)">
+          <rect x="89.0" y="130.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="103.0" cy="144.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="99.0" y="160.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="99.0" y="170.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g transform="rotate(0 185.0 164.0)">
+          <rect x="149.0" y="118.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="163.0" cy="132.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="159.0" y="148.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="159.0" y="158.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g transform="rotate(9 251.0 176.0)">
+          <rect x="215.0" y="130.0" width="72.0" height="92.0" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.32)" stroke-width="1.3"/>
+          <circle cx="229.0" cy="144.0" r="6.0" fill="rgba(255,255,255,.4)"/>
+          <rect x="225.0" y="160.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="225.0" y="170.0" width="42.0" height="5.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <path d="M4.0,236.0 L366.0,236.0 L344.0,222.0 L26.0,222.0 Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.32)" stroke-width="1.4"/>
+          <rect x="161.0" y="227.0" width="48.0" height="4.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <g transform="rotate(6 331.0 209.0)">
+          <rect class="mock-phone-body" x="272.0" y="114.0" width="118.0" height="190.0" rx="20" fill="rgba(10,10,14,.92)" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/>
+          <rect x="280.0" y="122.0" width="102.0" height="174.0" rx="13" fill="rgba(255,255,255,.05)"/>
+          <rect x="288.0" y="136.0" width="86.0" height="7.0" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="288.0" y="148.0" width="68.0" height="6.0" rx="2" fill="rgba(255,255,255,.28)"/>
+          <rect x="288.0" y="172.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="181.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="172.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="181.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="288.0" y="202.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="211.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="202.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="211.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="288.0" y="232.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <rect x="294.0" y="241.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.24)"/>
+          <rect x="335.0" y="232.0" width="39.0" height="22.0" rx="5" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+          <rect x="341.0" y="241.0" width="27.0" height="5.0" rx="2" fill="rgba(255,255,255,.62)"/>
+          <rect x="315.0" y="294.0" width="32.0" height="3.4" rx="1.7" fill="rgba(255,255,255,.4)"/>
+          </g>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">sofort sichtbar</div>
+              <p class="formate-preview-desc">Postings, Landingpage und E-Mail-Funnel – fertig aufgesetzt.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze: drei KPI-Kästen mit Trendpfeilen für ROAS, Anfragen und CPA, darunter ein Balkendiagramm der Kampagnen-Performance">
+          <rect x="24.0" y="18.0" width="88.0" height="56.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <polyline points="55.7,50.8 65.2,47.2 73.6,48.9 83.7,41.7" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/>
+          <line x1="73.6" y1="48.9" x2="78.0" y2="45.7" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/>
+          <path d="M82.9,42.3 L79.9,48.4 L76.1,43.1 Z" fill="rgba(255,255,255,.85)"/>
+          <rect x="126.0" y="18.0" width="88.0" height="56.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <polyline points="157.7,50.8 167.2,47.2 175.6,48.9 185.7,41.7" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/>
+          <line x1="175.6" y1="48.9" x2="180.0" y2="45.7" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/>
+          <path d="M184.9,42.3 L181.9,48.4 L178.1,43.1 Z" fill="rgba(255,255,255,.85)"/>
+          <rect x="228.0" y="18.0" width="88.0" height="56.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <polyline points="259.7,41.7 269.2,46.0 277.6,44.1 287.7,50.3" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/>
+          <line x1="277.6" y1="44.1" x2="281.7" y2="46.6" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/>
+          <path d="M286.8,49.8 L280.0,49.4 L283.5,43.8 Z" fill="rgba(255,255,255,.85)"/>
+          <line x1="68.0" y1="74.0" x2="92.0" y2="108.0" stroke="rgba(255,255,255,.3)" stroke-width="1.3"/>
+          <line x1="170.0" y1="74.0" x2="170.0" y2="108.0" stroke="rgba(255,255,255,.3)" stroke-width="1.3"/>
+          <line x1="272.0" y1="74.0" x2="248.0" y2="108.0" stroke="rgba(255,255,255,.3)" stroke-width="1.3"/>
+          <rect x="40.0" y="108.0" width="260.0" height="92.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
+          <rect x="54.0" y="166.2" width="24.0" height="19.8" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="83.0" y="158.7" width="24.0" height="27.3" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="112.0" y="161.2" width="24.0" height="24.8" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="141.0" y="150.0" width="24.0" height="36.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="170.0" y="153.8" width="24.0" height="32.2" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="199.0" y="141.4" width="24.0" height="44.6" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="228.0" y="143.8" width="24.0" height="42.2" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="257.0" y="131.4" width="24.0" height="54.6" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="54.0" y1="186.0" x2="286.0" y2="186.0" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Paid Ads</div>
+              <p class="formate-preview-desc">Kampagnen, die Anfragen bringen statt nur Reichweite.</p>
+            </div>
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+      <div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
+          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
+          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
+          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
+          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
+          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
+          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
+          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
+          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
+          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
+          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
+          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
+          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
+          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
+          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
+          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
+          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
+          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
+          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
+          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
+          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
+          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
+          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
+          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
+          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
+          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
+          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
+          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
+          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
+          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
+          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
+          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
+          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
+          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Medien, die Ergebnisse liefern</div>
+              <p class="formate-preview-desc">PowerPoint, Landingpage und Roll-up aus einer Hand.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/marketing">Mehr erfahren</a>
+            </div>
+          </details>
+          <details class="formate-acc-item formate-acc--lime" name="formate-acc">
+            <summary><span>Training &amp; Sparring</span></summary>
+            <div class="formate-acc-body">
+              <p>Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen – zugeschnitten auf die Versicherungsbranche und Deinen konkreten Alltag.</p>
+              <p>Dein Team bekommt Begleitung bei der Umsetzung statt Theorie von der Stange, Du als Führungskraft ein vertrauliches Sparring auf Augenhöhe – beides zugeschnitten auf Eure echten Themen statt auf Fallbeispiele von der Stange.</p>
+                          <div class="formate-preview-grid">
+            <div class="formate-preview-card">
+              <div class="formate-preview-thumb">
+<div class="produkt-mock-sketch reveal">
+        <svg viewBox="0 0 880 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines Trainingsplans: Standortbestimmung, Live-Übung, Video-Feedback, Wiederholen &amp; schärfen, Transfer in den Alltag">
+          <rect x="300.0" y="30.0" width="280.0" height="540.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <rect x="318.0" y="43.0" width="92.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
+          <rect x="318.0" y="58.0" width="58.0" height="6.0" rx="2" fill="rgba(255,255,255,.26)"/>
+          <circle cx="554.0" cy="50.0" r="9.0" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <line x1="554.0" y1="44.0" x2="554.0" y2="50.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <line x1="554.0" y1="50.0" x2="558.0" y2="53.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
+          <circle cx="342.0" cy="100.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+          <rect x="376.0" y="84.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="376.0" y="100.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="376.0" y="116.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="120.0" x2="299.0" y2="120.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="120.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="108.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Standortbestimmung</text>
+          <text x="276.0" y="127.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wo Dein Team heute steht,</text>
+          <text x="276.0" y="142.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">bevor es losgeht</text>
+          <rect x="300.0" y="170.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="170.0" x2="580.0" y2="170.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="340.0" y1="198.0" x2="340.0" y2="236.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+          <rect x="333.0" y="184.0" width="14.0" height="22.0" rx="7" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <line x1="330.0" y1="248.0" x2="550.0" y2="248.0" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+          <circle cx="378.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="394.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="410.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="426.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="442.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="458.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
+          <circle cx="378.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="394.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="410.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="426.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="442.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="458.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
+          <line x1="581.0" y1="220.0" x2="594.0" y2="220.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="220.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="208.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Live-Übung</text>
+          <text x="604.0" y="227.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Präsentieren im</text>
+          <text x="604.0" y="242.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">geschützten Rahmen</text>
+          <line x1="300.0" y1="270.0" x2="580.0" y2="270.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="276.0" width="144.0" height="46.0" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>
+          <circle cx="392.0" cy="299.0" r="15.0" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <path d="M387.0,291.0 L387.0,307.0 L401.0,299.0 Z" fill="rgba(255,255,255,.6)"/>
+          <rect x="320.0" y="332.0" width="144.0" height="5.0" rx="2.5" fill="rgba(255,255,255,.14)"/>
+          <rect x="320.0" y="332.0" width="57.6" height="5.0" rx="2.5" fill="rgba(255,255,255,.55)"/>
+          <line x1="286.0" y1="320.0" x2="299.0" y2="320.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="320.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="308.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Video-Feedback</text>
+          <text x="276.0" y="327.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Direkt sehen, was</text>
+          <text x="276.0" y="342.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich ankommt</text>
+          <rect x="300.0" y="370.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
+          <line x1="300.0" y1="370.0" x2="580.0" y2="370.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="333.0" y1="412.0" x2="547.0" y2="412.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+          <circle cx="333.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="333.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
+          <circle cx="404.3" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="404.3" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
+          <circle cx="475.7" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="475.7" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
+          <circle cx="547.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+          <text x="547.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
+          <line x1="581.0" y1="420.0" x2="594.0" y2="420.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="580.0" cy="420.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="604.0" y="408.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Wiederholen &amp; schärfen</text>
+          <text x="604.0" y="427.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Üben, verbessern,</text>
+          <text x="604.0" y="442.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">erneut testen</text>
+          <line x1="300.0" y1="470.0" x2="580.0" y2="470.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="320.0" y="476.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
+          <path d="M323.0,484.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="346.0" y="480.0" width="206.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
+          <rect x="320.0" y="502.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
+          <path d="M323.0,510.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.63)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="346.0" y="506.0" width="168.9" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
+          <rect x="320.0" y="528.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
+          <path d="M323.0,536.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.51)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="346.0" y="532.0" width="131.8" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
+          <line x1="286.0" y1="520.0" x2="299.0" y2="520.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+          <circle cx="300.0" cy="520.0" r="2.6" fill="rgba(255,255,255,.75)"/>
+          <text x="276.0" y="508.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Transfer in den Alltag</text>
+          <text x="276.0" y="527.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Damit es im Arbeitsalltag</text>
+          <text x="276.0" y="542.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich hängen bleibt</text>
+        </svg>
+      </div>
+              </div>
+              <div class="formate-preview-title">Teams befähigen</div>
+              <p class="formate-preview-desc">Begleitung statt Theorie von der Stange.</p>
+            </div>
+            <div class="formate-preview-card formate-preview-card--photo">
+              <img class="formate-preview-card-photo" src="/assets/daniel-sparring.webp" alt="" loading="lazy">
+              <div class="formate-preview-title">1:1 Sparring</div>
+              <p class="formate-preview-desc">Vertrauliches Sparring für Führungskräfte.</p>
+            </div>
+            </div>
+              <a class="btn btn--dark btn--sm" href="/training-sparring">Mehr erfahren</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Stats / Arbeitsweise ===== -->
+  <section class="section section--dark stats" id="arbeitsweise">
+    <div class="container">
+      <h2>Verstehen. Strukturieren. <b>Umsetzen.</b></h2>
+      <div class="stats-row">
+        <div class="stat"><div class="num">25+</div><div class="lbl">Jahre Erfahrung in der Versicherungsbranche</div></div>
+        <div class="stat"><div class="num">300+</div><div class="lbl">erfolgreich durchgeführte Projekte</div></div>
+        <div class="stat"><div class="num">1:1</div><div class="lbl">persönliche Begleitung auf Augenhöhe</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Kontakt ===== -->
+  <section class="kontakt-standalone" id="kontakt">
+    <div class="container kontakt-standalone-top">
+      <div class="kontakt-standalone-text reveal">
+        <p class="kicker">Kontakt</p>
+        <h2 class="h-serif">Wir sind <span class="hl">für Dich</span> da!</h2>
+        <p class="lead">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
+        <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
+      </div>
+      <div class="kontakt-standalone-side reveal">
+        <div class="ks-actions">
+          <a class="ks-pill" href="mailto:daniel.stroebel@empiria.de">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-mail"/></svg></span>
+            daniel.stroebel@empiria.de
+          </a>
+          <a class="ks-pill" href="tel:+4917631347217">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-phone"/></svg></span>
+            +49 176 3134 7217
+          </a>
+          <a class="ks-pill ks-pill--ghost" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
+            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
+            Auf LinkedIn vernetzen
+          </a>
+        </div>
+        <div class="ks-marquee">
+          <div class="marquee-viewport">
+            <div class="marquee-track"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="kontakt-standalone-media reveal">
+      <svg class="ks-media-icon" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
+      <img class="ks-photo" src="/assets/team-portrait.webp" alt="Das Team von empiria GmbH" width="759" height="411" loading="lazy">
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+<!-- ===== Modal ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-wrap">
+    <button class="modal-close" id="modalClose" aria-label="Schließen">&times;</button>
+    <div class="modal">
+      <div class="modal-icon"><svg id="modalIcon"><use href="#ic-forward"/></svg></div>
+      <h3 id="modalTitle"></h3>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>

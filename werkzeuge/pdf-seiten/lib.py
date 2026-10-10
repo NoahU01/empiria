@@ -98,7 +98,19 @@ def cd_icon(n):
             f'aria-hidden="true">{CD_ICONS[n]}</svg>')
 
 
+# Der Wecker des BudgetRetters - dasselbe Zeichen wie auf der Landingpage
+# und in der App-Kachel. Die Strichstaerke steht an den Pfaden selbst, damit
+# die Wasserzeichen-Regel (.stage-wm svg { stroke-width:.9 }) sie nicht
+# ueberschreibt - vererbt wird nur, was am Kind nicht gesetzt ist.
+WECKER = ('<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true">'
+          '<circle cx="50" cy="54" r="33" stroke-width="9"/>'
+          '<path d="M50 37v17l9 9" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>'
+          '<path d="M21 13 8 26" stroke-width="9" stroke-linecap="round"/>'
+          '<path d="M79 13 92 26" stroke-width="9" stroke-linecap="round"/></svg>')
+
 def icon(n):
+    if n == "wecker":
+        return WECKER
     if n in SEITEN_ICONS:
         return seiten_icon(n)
     if n in CD_ICONS:
@@ -123,7 +135,9 @@ body { font-family: var(--sans); font-weight: 300; color: var(--ink); -webkit-pr
 b, strong { font-weight: 600; }
 .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 20mm 22mm 18mm; background: #fff; }
 .page:last-child { page-break-after: auto; }
-.hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em; white-space: nowrap; }
+.hl { position: relative; z-index: 0; display: inline; color: var(--hl-fg); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: var(--hl-bg); border-radius: 4px; padding: 0 .08em;
+      /* gleicht das Polster aus, damit das Wort in der Zeile flucht */
+      margin-inline: -.08em; white-space: nowrap; }
 .head { display:flex; justify-content: space-between; align-items:center; margin-bottom: 15mm; }
 .head img { height: 6mm; }
 .page-no { font-size: 6.6pt; color: var(--g50); font-weight: 500; }

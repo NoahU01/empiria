@@ -95,9 +95,13 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/e2/sg/styles.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2-seiten.css">
+<link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 </head>
-<body>
+<body class="e2">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -139,7 +143,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+    <a class="brand" href="/" aria-label="empiria Startseite">
       <img src="/assets/empiria-logo.svg" alt="empiria">
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
@@ -267,23 +271,14 @@
 </header>
 
 <main>
+<div class="e2-alt e2-alt--gelb e2-seite--innovation">
   <!-- ===== Intro ===== -->
-  <section class="hero leistung-hero" id="intro">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-head">
-          <h1 class="h-serif" style="font-size:clamp(2.3rem, 4.4vw, 3.6rem)">Innovation &amp; Geschäftsmodell <span class="hl">neu denken.</span></h1>
-          <div class="hero-arrow"><svg><use href="#ic-kreis"/></svg></div>
-        </div>
-        <div class="hero-copy lead">
-          <p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p>
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn btn--dark" href="#inhalt">mehr erfahren</a>
-      </div>
-    </div>
-  </section>
+  <section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
+  <div class="e2-kopf__text"><p class="e2-kicker">Strategiehandwerk</p><h1>Innovation &amp; Geschäftsmodell <span class="hl">neu denken.</span></h1>
+    <div class="e2-kopf__inhalt"><p>Neue Ideen, neues Geschäftsmodell: Was davon hat in zehn Jahren noch Bestand? Wir hinterfragen und strukturieren es mit dir.</p></div>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="#inhalt">mehr erfahren <svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="e2-kopfbild e2-kopfbild--zeichen"><svg class="e2-bild e2-bild--zeichen" viewBox="2.83 2.83 226.78 226.78" aria-hidden="true" fill="#1a1817" color="#1a1817"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></div>
+</div></section>
 
   <!-- ===== Marquee ===== -->
   <div class="marquee" aria-label="Auswahl unserer Kunden">
@@ -293,40 +288,15 @@
   </div>
 
   <!-- ===== Problem ===== -->
-  <section class="section section--grey" id="problem">
-    <svg class="watermark" width="330" height="330" viewBox="0 0 232.44 232.44" style="left:50%;top:50%;transform:translate(-50%,-50%)" aria-hidden="true"><use href="#ic-kreis"/></svg>
-    <div class="container">
-      <div class="problem-grid">
-        <div class="problem-head">
-          <p class="kicker">Problem</p>
-          <h2 class="h-serif">Du entwickelst weiter. Bevor die Grundfrage <span class="hl">geklärt ist.</span></h2>
-        </div>
-        <div class="problem-card">
-          <p>Eine Idee für ein neues Geschäftsmodell oder Produkt entsteht, und sofort wird an Features, Prozessen und der Umsetzung gefeilt.</p>
-          <ul>
-            <li>Welches Problem der Kunde eigentlich hat,</li>
-            <li>wie Du dies löst und</li>
-            <li>ob er überhaupt bereit ist, es zu lösen,...</li>
-          </ul>
-          <p>...diese Fragen bleiben unbeantwortet, während längst weitergebaut wird.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="section e2-s2-problem" id="problem"><div class="container"><div class="e2-s2-split">
+<div><p class="kicker">Problem</p><h2 class="h-serif">Du entwickelst weiter. Bevor die Grundfrage geklärt ist.</h2><p class="e2-s2-text">Eine Idee für ein neues Geschäftsmodell oder Produkt entsteht, und sofort wird an Features, Prozessen und der Umsetzung gefeilt.</p></div>
+<div class="e2-s2-kasten"><p class="e2-s2-kasten__label" style="margin-top:0!important;padding-top:0;border-top:0">Dabei bleibt offen:</p>
+<ul><li>Welches Problem der Kunde eigentlich hat,</li><li>wie Du dies löst und</li><li>ob er überhaupt bereit ist, es zu lösen,...</li></ul><p class="e2-s2-kasten__label">...diese Fragen bleiben unbeantwortet, während längst weitergebaut wird.</p></div>
+</div></div></section>
 
   <!-- ===== Lösung: Neu gründen, ohne Altlasten ===== -->
-  <section class="section inno-loesung" id="loesung-baustein">
-    <div class="container">
-
-      <!-- 1) Einstieg + "In Stein gemeißelt?" -->
-      <div class="inno-intro">
-        <div class="inno-intro-text">
-          <p class="kicker">Lösung</p>
-          <h2 class="h-serif">Nichts davon ist <span class="hl">in Stein gemeißelt.</span></h2>
-          <p class="lead">Wer sein Geschäftsmodell wirklich hinterfragt, stößt schnell an eine Grenze: Vieles gilt als gegeben, nur weil es schon immer so war – dabei ist es oft längst nicht mehr in Stein gemeißelt.</p>
-          <p class="lead">Genau hier gehen wir mit dir grundlegend ran, sei es für das gesamte Unternehmen oder für einzelne Bereiche.</p>
-        </div>
-        <div class="inno-stein reveal" aria-label="Typische Denkmuster, die wir gemeinsam hinterfragen">
+  <section class="section e2-in-loesung" id="loesung-baustein"><div class="container">
+  <div class="e2-s2-split e2-in-oben"><div><p class="kicker">Lösung</p><h2 class="h-serif">Nichts davon ist in Stein gemeißelt.</h2><p class="lead">Wer sein Geschäftsmodell wirklich hinterfragt, stößt schnell an eine Grenze: Vieles gilt als gegeben, nur weil es schon immer so war – dabei ist es oft längst nicht mehr in Stein gemeißelt.</p><p class="lead">Genau hier gehen wir mit dir grundlegend ran, sei es für das gesamte Unternehmen oder für einzelne Bereiche.</p></div><div class="inno-stein reveal" aria-label="Typische Denkmuster, die wir gemeinsam hinterfragen">
           <p class="inno-stein-tag">Gilt als gegeben</p>
           <ul>
             <li><span class="inno-strike">„Das war schon immer so.“</span></li>
@@ -334,144 +304,18 @@
             <li><span class="inno-strike">„Das macht man in unserer Branche nicht.“</span></li>
           </ul>
           <p class="inno-stein-foot">Und was, wenn nicht?</p>
-        </div>
-      </div>
-
-      <!-- 2) Einsatzmöglichkeiten -->
-      <div class="inno-einsatz">
-        <div class="inno-einsatz-head">
-          <p class="inno-label">Einsatzmöglichkeiten</p>
-          <p class="lead">Dies gilt für die Zukunft eures Geschäftsmodells genauso wie für konkrete Fragen zu Kooperationen, Fusionen, Beteiligungen oder neuen Zusatzservices.</p>
-        </div>
-        <ul class="inno-einsatz-grid">
-          <li class="inno-einsatz-item inno-einsatz-item--main"><span class="inno-einsatz-num">01</span><span class="inno-einsatz-title">Zukunft des<br>Geschäftsmodells</span></li>
-          <li class="inno-einsatz-item"><span class="inno-einsatz-num">02</span><span class="inno-einsatz-title">Kooperationen</span></li>
-          <li class="inno-einsatz-item"><span class="inno-einsatz-num">03</span><span class="inno-einsatz-title">Fusionen</span></li>
-          <li class="inno-einsatz-item"><span class="inno-einsatz-num">04</span><span class="inno-einsatz-title">Beteiligungen</span></li>
-          <li class="inno-einsatz-item"><span class="inno-einsatz-num">05</span><span class="inno-einsatz-title">Neue<br>Zusatzservices</span></li>
-        </ul>
-        <p class="inno-scope">Für das gesamte Unternehmen oder für einzelne Bereiche.</p>
-      </div>
-
-      <!-- 3) Methoden: Fokus auf den bewährten Ansatz, Canvas + Pitch nur als grafische Auflockerung -->
-      <div class="inno-methode">
-        <div class="inno-methode-text">
-          <p class="inno-label">Unsere Methoden</p>
-          <p class="lead">Wir bringen dafür eigene Methoden und Frameworks mit und helfen dir, dich von genau diesen alten Denkmustern zu lösen.</p>
-          <p class="lead">Wir nutzen Methoden, um Erkenntnisse zu schaffen. Wir wenden sie nicht unreflektiert an.</p>
-        </div>
-        <div class="inno-greenfield">
-<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="inno-deco inno-deco--bmc" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo5OWE5ZDIwNy1hZDZjLTQ4M2YtYTZiMy00NjIyNTFiNGVmNGUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaM9u/d6f7Nu2fq9M4D93C14AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo2YTk1NDAyOC0xNjJmLTRiODYtODc5NS05MTgyYWIyODU3MjVscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoVB4SxYxjceUFe06oMU37uAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggSE3ews8HG9XfB2fDz3kh13jSxZ8Fnha1jkObbhN0+iekZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaOvewA+o/F4aWwNTIA2ZliwAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCAaPhf0IKZL4AIEm75i7LLYBQM2kJoczcSFiAKl+cMKhWRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBixZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjk5YTlkMjA3LWFkNmMtNDgzZi1hNmIzLTQ2MjI1MWI0ZWY0ZS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjc1ODhlOWRmLTNjNjAtNGEzOS05YTk2LTY3NTU4ZjE4MWE2MHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBITd7Czwcb1d8HZ8PPeSHXeNLFnwWeFrWOQ5tuE3T6J6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggnBicH0uTEqMnVWBnu5yjocwV70Ullr/k8ymRvK/Z83iiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg/bKByjCWD1fZ3ASSE3o4vAm3tTXiZB5G02+Puy+1o5B0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQFb4cTE6ilVkWUngTC5e9u6T6eG7wb5ELQxqHJdSxWER9CLHh+D6OZ0QAEmefQbKt3smBju4UoXVvPeaxYTMudU=</c2pa:manifest></metadata>
-<rect x="20.0" y="20" width="164.0" height="380" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="34.0" y="90" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="40.0" y="98" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="76.0" y="130" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="82.0" y="138" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="34.0" y="170" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="40.0" y="178" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="194.0" y="20" width="164.0" height="185.0" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="208.0" y="90" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="214.0" y="98" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="254.0" y="140" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="260.0" y="148" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="194.0" y="215.0" width="164.0" height="185.0" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="208.0" y="285.0" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="214.0" y="293.0" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="368.0" y="20" width="164.0" height="380" rx="8" fill="rgba(255,255,255,0.07)" stroke="#fff400" stroke-width="2.2"/>
-<rect x="382.0" y="100" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="388.0" y="108" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="430.0" y="150" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="436.0" y="158" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="392.0" y="210" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="398.0" y="218" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="438.0" y="270" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="444.0" y="278" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="542.0" y="20" width="164.0" height="185.0" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="556.0" y="90" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="562.0" y="98" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="542.0" y="215.0" width="164.0" height="185.0" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="556.0" y="271.0" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="562.0" y="279.0" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="602.0" y="325.0" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="608.0" y="333.0" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="716.0" y="20" width="164.0" height="380" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="730.0" y="90" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="736.0" y="98" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="776.0" y="140" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="782.0" y="148" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="736.0" y="190" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="742.0" y="198" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="20" y="410" width="425.0" height="130" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="40" y="462" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="46" y="470" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="100" y="480" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="106" y="488" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="170" y="458" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="176" y="466" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="455.0" y="410" width="425.0" height="130" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.35)" stroke-width="1.3"/>
-<rect x="475.0" y="462" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="481.0" y="470" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-<rect x="545.0" y="476" width="34" height="22" rx="3" fill="none" stroke="rgba(255,244,0,.55)" stroke-width="1.4"/><rect x="551.0" y="484" width="22" height="3" rx="1.5" fill="rgba(255,244,0,.55)"/>
-</svg>
-<svg viewBox="0 0 910 470" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="inno-deco inno-deco--pitch" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMjFmYTljYi05NWFjLTQ1NzktYjljOS01NzUwMWY2ZGJlNjcAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaPP5gxWJMBDwM6Pyucl53qEAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpmOTk0ZGU5ZC1lMWE0LTQ4YWMtOWMwZi02NDgxM2VjMWQ1ZjZscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoGwbzDMgukdKZSVlvxGnstwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggDJ/emJ1vSbG1x8HXDu4erlJVhYX1Vl5OsskVb9zswoWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaAdhI1fJV/Mf3DI6y4DlZpkAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCCVGVWPF1enNu8xjQffjdtMtZ7Omneo4Tpiq22d38Lye2RuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBizZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMyMWZhOWNiLTk1YWMtNDU3OS1iOWM5LTU3NTAxZjZkYmU2Ny9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjY0NTY0MDgyLTFkZDItNGQxNC05NmQwLTRmYTg4ZTdlMmZkZnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAMn96YnW9JsbXHwdcO7h6uUlWFhfVWXk6yyRVv3OzChaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg5t5f+2TEpNiBascrhjEiNr2eiTePq8Yq3FglygUW67aiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggQIIlOAyRgPS21tVuWy7TGF5tKLGptyoUNr5zrsI3F7d0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQHooNkSuieYbnxgezi9/az8aozaYuLwzsKoWZB9AhxPQcWXd/ycRhYL52I/OcOTsyBvgV3Sj45TlJInaxFTd6NE=</c2pa:manifest></metadata>
-<path d="M94.0,102.0 L274.5,102.0 L455.0,102.0 L635.5,102.0 L816.0,102.0 L902.0,102.0 L902.0,332.0 L816.0,332.0 L635.5,332.0 L455.0,332.0 L274.5,332.0 L94.0,332.0" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6" stroke-dasharray="6 5"/>
-<rect x="20.0" y="60" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="20.0" y="60" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="42.0" cy="90" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="64.0" y="84" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="64.0" y="93" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="34.0" y="114" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="200.5" y="60" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="200.5" y="60" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="222.5" cy="90" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="244.5" y="84" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="244.5" y="93" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="214.5" y="114" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="381.0" y="60" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="381.0" y="60" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="403.0" cy="90" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="425.0" y="84" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="425.0" y="93" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="395.0" y="114" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="561.5" y="60" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="561.5" y="60" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="583.5" cy="90" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="605.5" y="84" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="605.5" y="93" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="575.5" y="114" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="742.0" y="60" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="742.0" y="60" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="764.0" cy="90" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="786.0" y="84" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="786.0" y="93" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="756.0" y="114" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="742.0" y="290" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="742.0" y="290" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="764.0" cy="320" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="786.0" y="314" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="786.0" y="323" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="756.0" y="344" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="561.5" y="290" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="561.5" y="290" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="583.5" cy="320" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="605.5" y="314" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="605.5" y="323" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="575.5" y="344" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="381.0" y="290" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="381.0" y="290" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="403.0" cy="320" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="425.0" y="314" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="425.0" y="323" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="395.0" y="344" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="200.5" y="290" width="148" height="84" rx="7" fill="#000" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-<rect x="200.5" y="290" width="148" height="6" rx="3" fill="rgba(255,255,255,.45)"/>
-<circle cx="222.5" cy="320" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="244.5" y="314" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="244.5" y="323" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="214.5" y="344" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-<rect x="20.0" y="290" width="148" height="84" rx="7" fill="#000" stroke="#fff400" stroke-width="2"/>
-<rect x="20.0" y="290" width="148" height="6" rx="3" fill="#fff400"/>
-<circle cx="42.0" cy="320" r="13" fill="none" stroke="#fff400" stroke-width="2"/>
-<rect x="64.0" y="314" width="88" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-<rect x="64.0" y="323" width="52.8" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
-<rect x="34.0" y="344" width="120" height="16" rx="3" fill="rgba(255,255,255,.06)"/>
-</svg>
-          <div class="inno-greenfield-inner">
-            <p class="inno-greenfield-tag">Ein bewährter Ansatz</p>
-            <p class="inno-greenfield-text">Wir denken mit dir so, als würdet ihr euer Thema morgen als eigenes Unternehmen neu gründen – <span class="hl">ganz ohne Altlasten.</span></p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
+        </div></div>
+  <div class="e2-in-einsatz"><p class="e2-in-label">Einsatzmöglichkeiten</p><p class="lead">Dies gilt für die Zukunft eures Geschäftsmodells genauso wie für konkrete Fragen zu Kooperationen, Fusionen, Beteiligungen oder neuen Zusatzservices.</p><ul class="e2-in-karten"><li><span class="e2-in-sym"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></svg></span><b>Zukunft des Geschäftsmodells</b></li><li><span class="e2-in-sym"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3" /> <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" /> <path d="m21 3 1 11h-2" /> <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /> <path d="M3 4h8" /></svg></span><b>Kooperationen</b></li><li><span class="e2-in-sym"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" /> <rect x="14" y="2" width="8" height="8" rx="1" /></svg></span><b>Fusionen</b></li><li><span class="e2-in-sym"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></svg></span><b>Beteiligungen</b></li><li><span class="e2-in-sym"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></svg></span><b>Neue Zusatzservices</b></li></ul><p class="e2-in-scope">Für das gesamte Unternehmen oder für einzelne Bereiche.</p></div>
+  <div class="e2-s2-split e2-in-methode"><div><p class="e2-in-label">Unsere Methoden</p><p class="lead">Wir bringen dafür eigene Methoden und Frameworks mit und helfen dir, dich von genau diesen alten Denkmustern zu lösen.</p><p class="lead">Wir nutzen Methoden, um Erkenntnisse zu schaffen. Wir wenden sie nicht unreflektiert an.</p></div>
+    <div class="e2-in-ansatz"><p class="e2-in-ansatz__tag">Ein bewährter Ansatz</p><p class="e2-in-ansatz__satz">Wir denken mit dir so, als würdet ihr euer Thema morgen als eigenes Unternehmen neu gründen – <span class="e2-gelb-text">ganz ohne Altlasten.</span></p></div></div>
+</div></section>
 
   <!-- ===== Ergebnis ===== -->
   <section class="section section--dark leistung-simple-section leistung-simple-section--center" id="ergebnis">
     <div class="container">
       <div class="leistung-simple">
         <p class="kicker">Ergebnis</p>
-        <h2 class="h-serif">Du weißt, ob die Idee <span class="hl">trägt.</span></h2>
+        <h2 class="h-serif">Du weißt, ob die Idee trägt.</h2>
         <p class="lead">Du verstehst, worauf es in eurem Geschäftsmodell wirklich ankommt – heute und in Zukunft. Ihr trefft Entscheidungen zu Innovation, Kooperationen oder Investitionen mit echter Substanz dahinter.</p>
         <p class="lead">Und ihr traut euch, auch mal ganz neu zu denken.</p>
       </div>
@@ -483,96 +327,31 @@
     <div class="container">
       <div class="pdf-dl pdf-dl--mist pdf-dl--yellow reveal" id="download" style="--dl-acc:#fff400; --dl-hl-fg:#1a1817;">
         <div class="pdf-dl-visual" aria-hidden="true">
-          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/empiria-innovation-2.webp" alt="" loading="lazy">
-          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/empiria-innovation-1.webp" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/2.0/empiria-innovation-2.png" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/2.0/empiria-innovation-1.png" alt="" loading="lazy">
         </div>
         <div class="pdf-dl-text">
           <p class="pdf-dl-kicker">Download</p>
-          <h2 class="pdf-dl-h">Innovation &amp; Geschäftsmodell auf <span class="hl-acc">einen Blick.</span></h2>
+          <h2 class="pdf-dl-h">Innovation &amp; Geschäftsmodell auf <span class="e2-dl-hl">einen Blick.</span></h2>
           <p class="pdf-dl-lead">Das Wichtigste kompakt zusammengefasst. Zum Nachlesen und Weitergeben an Dein Team oder Deine Entscheider.</p>
-          <div class="pdf-dl-meta"><span>PDF</span><span>4 Seiten</span><span>0,4 MB</span></div>
-          <a class="pdf-dl-btn" href="/assets/downloads/empiria-innovation.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="pdf-dl-meta"><span>PDF</span><span>5 Seiten</span><span>0,4 MB</span></div>
+          <a class="pdf-dl-btn" href="/assets/downloads/2.0/empiria-innovation.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Kontakt ===== -->
-  <section class="kontakt-standalone" id="kontakt">
-    <div class="container kontakt-standalone-top">
-      <div class="kontakt-standalone-text reveal">
-        <p class="kicker">Kontakt</p>
-        <h2 class="h-serif">Wir sind <span class="hl">für Dich</span> da!</h2>
-        <p class="lead">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
-        <p class="kontakt-standalone-note">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p>
-      </div>
-      <div class="kontakt-standalone-side reveal">
-        <div class="ks-actions">
-          <a class="ks-pill" href="mailto:daniel.stroebel@empiria.de">
-            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-mail"/></svg></span>
-            daniel.stroebel@empiria.de
-          </a>
-          <a class="ks-pill" href="tel:+4917631347217">
-            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-phone"/></svg></span>
-            +49 176 3134 7217
-          </a>
-          <a class="ks-pill ks-pill--ghost" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">
-            <span class="ks-pill-icon"><svg width="20" height="20"><use href="#ic-in"/></svg></span>
-            Auf LinkedIn vernetzen
-          </a>
-        </div>
-        <div class="ks-marquee">
-          <div class="marquee-viewport">
-            <div class="marquee-track"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="kontakt-standalone-media reveal">
-      <svg class="ks-media-icon" viewBox="0 0 232.44 232.44" aria-hidden="true"><use href="#ic-forward"/></svg>
-      <img class="ks-photo" src="/assets/team-portrait.webp" alt="Das Team von empiria GmbH" width="759" height="411" loading="lazy">
-    </div>
-  </section>
+  <section class="produkt-cta produkt-team-cta e2-kontakt-team" id="kontakt"><div class="container">
+  <p class="kicker">Kontakt</p><h2>Wir sind für Dich da!</h2><p class="produkt-team-cta-sub">Lass uns darüber sprechen, welche Themen Dich aktuell bewegen. Gemeinsam klären wir, ob und wie wir Dir weiterhelfen können.</p>
+  <div class="ansprechpartner-grid"><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-daniel.webp" alt="Daniel Ströbel" width="132" height="132"></div><p class="ansprechpartner-name">Daniel Ströbel</p><p class="ansprechpartner-role">Strategiehandwerker</p></div><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-kerstin.webp" alt="Kerstin Christ" width="132" height="132"></div><p class="ansprechpartner-name">Kerstin Christ</p><p class="ansprechpartner-role">Expertin HR &amp; Weiterbildung</p></div><div class="ansprechpartner-card"><div class="ansprechpartner-photo"><img src="/assets/ansprechpartner-noah.webp" alt="Noah Hermanns" width="132" height="132"></div><p class="ansprechpartner-name">Noah Hermanns</p><p class="ansprechpartner-role">Experte Performance Marketing</p></div></div>
+  <div class="produkt-cta-actions"><a class="btn btn--dark" href="/kontakt.html">Kontakt aufnehmen</a></div>
+</div></section>
 
   <!-- ===== Weitere Leistungen ===== -->
-  <section class="section section--dark leistung-related-section" id="weitere-leistungen">
-    <div class="container">
-      <p class="kicker">Weitere Leistungen</p>
-      <h2 class="h-serif">Finde weitere Themen,<br>die zu <span class="hl">Dir passen.</span></h2>
-      <div class="leistung-related-grid">
-        <a class="related-leistung" href="/leistungen/strategie">
-          <div class="related-leistung-face">
-            <div class="icon"><svg><use href="#ic-forward"/></svg></div>
-            <h3>Strategie in den Alltag überführen</h3>
-          </div>
-          <div class="related-leistung-hover">
-            <p>Deine Strategie ist da – aber was bedeutet sie für deinen Verantwortungsbereich? Wir machen sie greifbar und wirksam.</p>
-            <span class="link-more">mehr erfahren</span>
-          </div>
-        </a>
-        <a class="related-leistung" href="/leistungen/komplexe-themen">
-          <div class="related-leistung-face">
-            <div class="icon"><svg><use href="#ic-kreuz"/></svg></div>
-            <h3>Komplexe Themen strukturieren &amp; kommunizieren</h3>
-          </div>
-          <div class="related-leistung-hover">
-            <p>Ob im Vorstand, im Gremium oder beim Kunden: Wir sorgen dafür, dass dein Thema ankommt – inhaltlich und im Auftritt.</p>
-            <span class="link-more">mehr erfahren</span>
-          </div>
-        </a>
-        <a class="related-leistung" href="/praesentationsseminar">
-          <div class="related-leistung-face">
-            <div class="icon"><svg><use href="#ic-raute"/></svg></div>
-            <h3>Teams befähigen, professionell zu kommunizieren</h3>
-          </div>
-          <div class="related-leistung-hover">
-            <p>Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es dabei, wenn es zählt.</p>
-            <span class="link-more">mehr erfahren</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+  
+<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script></div>
 </main>
 
 <!-- ===== Footer ===== -->
@@ -585,5 +364,6 @@
 
 <script src="/script.js"></script>
 <script src="/tracking.js"></script>
+<script src="/assets/e2/referenzen.js" defer></script>
 </body>
 </html>

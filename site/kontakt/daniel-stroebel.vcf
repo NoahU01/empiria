@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Ströbel;Daniel;;;
+FN:Daniel Ströbel
+ORG:empiria GmbH
+TITLE:Geschäftsführung
+EMAIL;TYPE=INTERNET,WORK:daniel.stroebel@empiria.de
+TEL;TYPE=CELL,VOICE:+49 176 3134 7217
+ADR;TYPE=WORK:;;Kapellengasse 6;Crailsheim;;74564;Deutschland
+URL:https://www.empiria.de
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/daniel-stroebel
+END:VCARD
