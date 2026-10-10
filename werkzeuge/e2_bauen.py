@@ -123,9 +123,29 @@ SEKUNDAER_ZU_GELB = {"#c51f5d": "#fff400", "#0b9fbd": "#fff400", "#8613a1": "#ff
                      "#7a1339": "#fff400", "#086a80": "#fff400", "#5c0d70": "#fff400", "#0a8aa4": "#f0e400"}   # ihre dunklen Verlaufs-/Hover-Töne
 
 
+def pdf_2_0(html):
+    """Ist für eine Seite schon das neue 2.0-PDF gebaut (werkzeuge/pdf2), verlinken Download-Kasten und Vorschau darauf."""
+    for slug in re.findall(r'/assets/downloads/empiria-([a-z0-9-]+)\.pdf', html):
+        if (SITE / "assets/downloads/2.0" / f"empiria-{slug}.pdf").exists():
+            html = html.replace(f"/assets/downloads/empiria-{slug}.pdf", f"/assets/downloads/2.0/empiria-{slug}.pdf")
+            for i in (1, 2):
+                html = html.replace(f"/assets/downloads/empiria-{slug}-{i}.webp", f"/assets/downloads/2.0/empiria-{slug}-{i}.png")
+            neu = SITE / "assets/downloads/2.0" / f"empiria-{slug}.pdf"
+            mb = f"{neu.stat().st_size / 1048576:.1f}".replace(".", ",")
+            try:
+                from pypdf import PdfReader
+                seiten = len(PdfReader(str(neu)).pages)
+            except Exception:
+                seiten = len(re.findall(rb"/Type\s*/Page[^s]", neu.read_bytes()))
+            html = re.sub(r'(<div class="pdf-dl-meta">.*?)<span>[\d,]+ MB</span>', lambda m: m.group(1) + f"<span>{mb} MB</span>", html, count=1, flags=re.S)
+            html = re.sub(r'(<div class="pdf-dl-meta">.*?)<span>\d+ Seiten</span>', lambda m: m.group(1) + f"<span>{seiten} Seiten</span>", html, count=1, flags=re.S)
+    return html
+
+
 def mit_strategie2(html):
     """Runde 23: Strategie 2 ist jetzt die Strategie-Seite (nichts mehr zu tun).
     Runde 37: bei SCHWARZ_GELB alle fest eingebauten Sekundärfarben der Seite auf Gelb – das Entwicklungsmenü bleibt unberührt."""
+    html = pdf_2_0(html)
     if not SCHWARZ_GELB:
         return html
     import e2_schwarzgelb
