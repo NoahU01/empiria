@@ -31,7 +31,7 @@ def seite2_b(nr):
         + '</div></div>', nr, 5)
 
 
-def formate_tabelle(nr):
+def formate_tabelle(nr, kasten=""):
     cols = [("½ Tag", "KI-Einstieg", "2.500 €", False), ("1 Tag", "KI-Sprint", "3.900 €", True), ("2 Tage", "KI-Deep-Dive", "7.350 €", False)]
     head = '<th></th>' + "".join(f'<th class="{"mitte" if m else ""}">{"<em>Meistgewählt</em><br>" if m else ""}<small>{d}</small><b>{n}</b></th>' for d, n, _, m in cols)
     def zeile(label, werte, cls=""):
@@ -46,7 +46,9 @@ def formate_tabelle(nr):
     return seite(kopf(T) + '<div class="rand" style="padding-top:16mm">' + kicker("Formate")
         + '<h2>Drei Formate für jeden Anspruch.</h2><p class="lead">Vom ersten Ausprobieren bis zur konkreten Fallbearbeitung – wähle die Tiefe, die zu Deinem Team passt.</p>'
         + f'<table class="tabelle"><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>'
-        + '<p class="notiz">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen – inklusive Vorbereitung und Dokumentation der Ergebnisse.</p></div>', nr, 5)
+        + ('<p class="notiz">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen.</p>' + kasten if kasten else
+           '<p class="notiz">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen – inklusive Vorbereitung und Dokumentation der Ergebnisse.</p>')
+        + '</div>', nr, 5)
 
 
 def formate_ohne_kasten(nr):
@@ -97,8 +99,4 @@ def bauen_b():
 
 def bauen_kopffuss():
     import ki_zum_anfassen
-    lib.KOPF_FUSS_B = True
-    try:
-        return ki_zum_anfassen.bauen()
-    finally:
-        lib.KOPF_FUSS_B = False
+    return ki_zum_anfassen.bauen()

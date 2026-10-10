@@ -195,7 +195,7 @@ def ico(name, farbe="currentColor", strich=1.5):
 
 
 # Variante „Kopf/Fuß B“ (Punkt 7): oben nur das Logo, unten Thema + Seitenzahl
-KOPF_FUSS_B = False
+KOPF_FUSS_B = True   # Daniel 10.10.: oben nur Logo, unten Thema + Seitenzahl
 _THEMA = ""
 
 

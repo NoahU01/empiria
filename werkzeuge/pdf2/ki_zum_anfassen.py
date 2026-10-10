@@ -30,41 +30,15 @@ def bauen():
                  "Marketing und Kommunikation für schnellere Inhalte", "Führungskräfte, die selbst schlagkräftiger werden wollen"])
         + '</div>', 2, n)
 
-    s3 = seite(
-        kopf("KI zum Anfassen") + '<div class="rand" style="padding-top:16mm">' + kicker("Formate")
-        + '<h2>Drei Formate für jeden Anspruch.</h2><p class="lead">Vom ersten Ausprobieren bis zur konkreten Fallbearbeitung – wähle die Tiefe, die zu Deinem Team passt.</p>'
-        + posts([
-            dict(kopf="Ohne Vorkenntnisse startklar", label="½ Tag", name="KI-Einstieg", preis="2.500 €", ico="sparkles",
-                 text="KI-Tools ausprobieren und erste eigene Erfahrungen sammeln.",
-                 liste=["Ausprobieren verschiedener KI-Tools", "Erste eigene Erfahrungen sammeln"]),
-            dict(kopf="Kompakter Fall", badge="Meistgewählt", top=True, label="1 Tag", name="KI-Sprint", preis="3.900 €", ico="zap",
-                 text="Tools kennenlernen und eine kompakte Fragestellung bearbeiten.",
-                 liste=["Kennenlernen verschiedener Tools", "Bearbeitung einer kompakten Fragestellung des Unternehmens", "Abschlussbesprechung zum weiteren Vorgehen"]),
-            dict(kopf="Konkreter Usecase", label="2 Tage", name="KI-Deep-Dive", preis="7.350 €", ico="target",
-                 text="Direkter Einstieg in einen konkreten Usecase Eures Unternehmens.",
-                 liste=["Kennenlernen der Tools", "Bearbeitung eines konkreten Usecases des Unternehmens", "Abschlussbesprechung zum weiteren Vorgehen"]),
-        ])
-        + '<p class="notiz">Alle Preise zzgl. Umsatzsteuer in gesetzlicher Höhe und zzgl. Spesen.</p>'
-        + '<div class="kasten" style="margin-top:7mm"><p class="label">In jedem Format enthalten</p>'
-        + punkte([("clipboard-list", "Vorbereitung", "Wir stimmen Fragestellung und Teilnehmende vorab mit Dir ab."),
-                  ("layers", "Mehrere Tools", "Ihr arbeitet live mit verschiedenen KI-Tools an Euren Fällen."),
-                  ("file-text", "Dokumentation", "Die Ergebnisse bekommst Du sauber dokumentiert für das weitere Vorgehen.")]).replace('<div class="punkte" style="', '<div class="punkte" style="margin-top:5mm;')
-        + '</div></div>', 3, n)
-
-    s4 = seite(
-        kopf("KI zum Anfassen") + '<div class="band wachsen" style="padding-top:16mm">' + kicker("Beispiele")
-        + '<h2>Konkrete Use Cases aus der Praxis.</h2><p class="lead">Eine Auswahl der Themen, die wir mit unseren Kunden bereits umsetzen durften.</p>'
-        + faelle([
-            ("target", "Sparring zu Zielgruppen", "Zielgruppen und ihre Ansprache mit KI als Sparringspartner erarbeiten."),
-            ("lightbulb", "Generierung von Produktideen", "Eingefahrene Denkmuster aufbrechen – im Auftrag des Vorstands."),
-            ("megaphone", "Ideen für Marketingkampagnen", "Kampagnenideen mit KI testen – ganz ohne Unternehmensdaten."),
-            ("image", "Content für Social Media", "Text und Grafik mit KI – am Ende steht die Tool-Auswahl."),
-            ("code", "HTML-Seiten statt PDFs", "Homepage- und Intranetseiten mit KI bauen."),
-            ("search", "Geschäftsmodell hinterfragen", "Das eigene Geschäftsmodell mit guten Prompts hinterfragen."),
-        ])
-        + '<div class="kasten" style="margin-top:6mm"><div class="zwei"><div><p class="label">Sonderthema</p><h3>Persönliche KI-Nutzung für Führungskräfte im Alltag</h3></div>'
-        + '<p>Wie Du als Führungskraft KI im Alltag schnell und klug nutzt – welche Tools sich wofür eignen und welche Tipps wirklich weiterhelfen, ganz ohne Unternehmensdaten preiszugeben.</p></div></div>'
-        + '</div>', 4, n, klasse="seite--hell")
+    # Daniel 10.10.: Formate als Vergleichstabelle (B) mit schwarzem Kasten (A), Beispiele als Liste (B)
+    import ki_varianten
+    kasten = ('<div class="kasten" style="margin-top:7mm"><p class="label">In jedem Format enthalten</p>'
+              + punkte([("clipboard-list", "Vorbereitung", "Wir stimmen Fragestellung und Teilnehmende vorab mit Dir ab."),
+                        ("layers", "Mehrere Tools", "Ihr arbeitet live mit verschiedenen KI-Tools an Euren Fällen."),
+                        ("file-text", "Dokumentation", "Die Ergebnisse bekommst Du sauber dokumentiert für das weitere Vorgehen.")]).replace('<div class="punkte" style="', '<div class="punkte" style="margin-top:5mm;')
+              + '</div>')
+    s3 = ki_varianten.formate_tabelle(3, kasten)
+    s4 = ki_varianten.beispiele_liste(4)
 
     s5 = seite(
         kopf("KI zum Anfassen") + '<div class="rand weiss" style="padding-top:16mm">' + kicker("Jetzt loslegen")
