@@ -3,7 +3,7 @@
 (function () {
   "use strict";
   function bauen() {
-    var spuren = document.querySelectorAll("main .marquee .marquee-track");
+    var spuren = document.querySelectorAll("main .marquee .marquee-track, main .ks-marquee .marquee-track");
     if (!spuren.length) return;
     var alle = [], gesehen = {};
     spuren[0].querySelectorAll("img").forEach(function (img) {
@@ -21,8 +21,8 @@
     document.body.appendChild(dlg);
     dlg.querySelector(".e2-ref-dialog__zu").addEventListener("click", function () { dlg.close(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
-    document.querySelectorAll("main .marquee").forEach(function (m) {
-      if (m.parentNode.querySelector(".e2-ref-knopf")) return;
+    document.querySelectorAll("main .marquee, main .ks-marquee").forEach(function (m) {
+      if (m.nextElementSibling && m.nextElementSibling.classList.contains("e2-ref-knopf")) return;
       m.classList.add("e2-ref-reihe");
       var k = document.createElement("button");
       k.type = "button"; k.className = "e2-ref-knopf";
