@@ -813,3 +813,5 @@ def veroeffentlichen():
 if __name__ == "__main__":
     main()
     veroeffentlichen()
+    import entwicklung_menu_erneuern   # Entwicklungsmenü auf den veröffentlichten Seiten aktuell halten (Quellen haben den alten Stand)
+    entwicklung_menu_erneuern.main()
