@@ -554,7 +554,7 @@ def unterseite(original, ziel, html=None):
                             "Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.", 1)
         main = main.replace(">1:1 Sparring kennenlernen <", ">Sparring kennenlernen <", 1)
     if name == "marketing":   # Feedback 10.10.: Paid-Ads-Text auf vier Zeilen wie die anderen Karten
-        main = main.replace("Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.", "Kampagnen auf Google und Meta, die Anfragen bringen – klar ausgewertet statt Blackbox.")
+        main = main.replace("Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.", "Kampagnen auf Google, Meta und LinkedIn, die Anfragen bringen – klar ausgewertet statt Blackbox.")
     if name == "workshop-moderation" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Usecases als Karten wie KI/Sprint
         sek = abschnitt(main, 'class="produkt-section produkt-faq'); main = main.replace(sek, e2_runde5.faelle(sek, ["users", "target", "user-round", "refresh-cw"], sonder=4, sonder_label="Im Fokus", kurztexte=[
             "Neue Rollen bis zur geteilten Führung – direkt alltagstauglich gemacht.", "Viele Themen, kein Weg – danach klare Schwerpunkte und Prioritäten.",
