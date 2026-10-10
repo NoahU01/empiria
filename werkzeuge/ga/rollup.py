@@ -3,7 +3,7 @@
 
 Vier Varianten:
   A · Claim       – weiß, „Strategie, die wirkt.“ + großer Doppelpfeil
-  B · Leistungen  – schwarz, die drei Leistungen + Formate
+  B · Leistungen  – schwarz, die drei Leistungen
   C · Team        – weiß, Teamfoto, Namen und Rollen
   D · Frage       – gelb, die Leitfrage der Startseite
 Dazu eine Aufbau-Ansicht mit Sichtzonen. PNG-Vorschau (1000 × 2353 px) nach site/projekte/ga/rollup/.
@@ -36,21 +36,18 @@ def fuss(bg, fg, pfeil=True, text=None):
 
 def var_a(png=None):
     return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
-                  '<p class="ru-h ru-h--gross">Strategie,<br>die <span class="ru-hl">wirkt.</span></p>'
-                  '<p class="ru-text">empiria begleitet Führungskräfte in der Versicherungsbranche bei strategischen Fragen, '
-                  'die schnelle Klarheit und wirksame Umsetzung erfordern.</p></div>'
+                  '<p class="ru-h ru-h--gross">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>'
                   f'<span class="ru-pfeil-a">{zeichen("forward", SCHWARZ)}</span>' + fuss(GELB, SCHWARZ, False),
                   "#fff", SCHWARZ, "ru--a", png)
 
 
 def var_b(png=None):
-    leist = [("01", "Strategie in den Alltag überführen"), ("02", "Komplexe Themen strukturieren &amp; kommunizieren"),
-             ("03", "Innovation &amp; Geschäftsmodell neu denken")]
-    liste = "".join(f'<li><small>{n}</small><b>{t}</b></li>' for n, t in leist)
-    return rollup(logo(True, "ru-logo") + '<div class="ru-block">' + kicker("Lösung") +
+    leist = [("forward", "Strategie in den Alltag überführen"), ("kreuz", "Komplexe Themen strukturieren &amp; kommunizieren"),
+             ("kreis", "Innovation &amp; Geschäftsmodell neu denken")]
+    liste = "".join(f'<li><i class="ru-zeichen ru-zeichen--{n}">{zeichen(n, GELB)}</i><b>{t}</b></li>' for n, t in leist)
+    return rollup(logo(True, "ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
                   '<p class="ru-h">Wir übersetzen Deine Strategie in <span class="ru-hl">Wirkung.</span></p>'
-                  f'<ol class="ru-liste">{liste}</ol>'
-                  '<p class="ru-formate"><span>Formate</span>Workshops · Marketing 2.0 · Training &amp; Sparring</p></div>' +
+                  f'<ol class="ru-liste">{liste}</ol></div>' +
                   fuss(GELB, SCHWARZ), SCHWARZ, "#fff", "ru--b", png)
 
 
@@ -132,9 +129,11 @@ CSS = masse("""
 .ru--b .ru-h { font-size: [80]; }
 .ru--b .ru-kicker { color: #fff400; }
 .ru-liste { list-style: none; padding: 0; margin-top: [70] !important; border-top: [3] solid rgba(255,255,255,.35); }
-.ru-liste li { padding: [32] 0; border-bottom: [3] solid rgba(255,255,255,.35); }
+.ru-liste li { display: grid; grid-template-columns: [70] 1fr; align-items: center; padding: [32] 0; border-bottom: [3] solid rgba(255,255,255,.35); }
+.ru-zeichen { display: block; width: [46]; }
+.ru-zeichen svg { display: block; width: 100%; height: auto; }
 .ru-liste small { display: block; font: 700 [24]/1 'Poppins', sans-serif; letter-spacing: .14em; color: #fff400; }
-.ru-liste b { display: block; margin-top: [16]; font: 700 [40]/1.22 'Lora', serif; }
+.ru-liste b { display: block; font: 700 [40]/1.22 'Lora', serif; }
 .ru-formate { margin-top: [56] !important; font: 300 [30]/1.5 'Poppins', sans-serif; }
 .ru-formate span { display: block; margin-bottom: [10]; font: 700 [22]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
 /* C */
