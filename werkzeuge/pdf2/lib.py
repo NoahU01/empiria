@@ -52,6 +52,9 @@ h3 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 12.5pt; l
 .wachsen { flex: 1; padding-bottom: 24mm; display: flex; flex-direction: column; }
 .mitte { justify-content: center; }
 .seite--hell { background: #f3f1ee; }
+.seite--gelb { background: #fff400; }
+.posts--hoch .post__bild { min-height: 62mm; }
+.posts--hoch { margin-top: 12mm; }
 .post__unten b { font-size: 13.5pt; white-space: nowrap; }
 .check { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 9mm; margin-top: 6mm; list-style: none; }
 .check li { position: relative; padding: 2.4mm 0 2.4mm 7mm; border-bottom: 1px solid #dcd8d1; font-size: 9.4pt; }
@@ -129,7 +132,44 @@ h3 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 12.5pt; l
 .zs h3 { margin-top: 1.2mm; }
 .zs p { margin-top: 1.6mm; font-size: 8.6pt; line-height: 1.5; }
 
+.fuss__thema { display: flex; align-items: center; gap: 2.6mm; font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.fuss__thema::before { content: ""; width: 6mm; height: 1.5px; background: currentColor; }
+
+/* Variante B · Titel mit gelbem Fuß-Band */
+.titel-b { display: flex; flex-direction: column; flex: 1; }
+.titel-b .oben { padding: 14mm 18mm 0; }
+.titel-b .oben .logo { height: 5.6mm; }
+.titel-b .oben .kicker { margin-top: 26mm; }
+.titel-b .oben .sub { font-size: 11pt; line-height: 1.6; margin-top: 6mm; max-width: 130mm; color: #3d3a37; }
+.titel-b .unten { margin-top: auto; background: #fff400; padding: 12mm 18mm 14mm; display: flex; flex-direction: column; gap: 10mm; }
+.titel-b .unten .bild { display: flex; justify-content: center; }
+.titel-b .unten .bild svg { width: 105mm; height: auto; }
+.titel-b .fakten { margin: 0; }
+
+/* Variante B · Vergleichstabelle */
+.tabelle { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 9mm; font-size: 8.6pt; }
+.tabelle th, .tabelle td { padding: 3.4mm 4mm; text-align: left; vertical-align: top; border-bottom: 1px solid #e4e0db; }
+.tabelle thead th { border-bottom: 0; padding-top: 5mm; padding-bottom: 5mm; vertical-align: bottom; }
+.tabelle thead th b { display: block; font-family: 'Lora', Georgia, serif; font-size: 14pt; }
+.tabelle thead th small { font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.tabelle thead th em { display: inline-block; margin-bottom: 2mm; font-style: normal; font-size: 5.6pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: #1a1817; color: #fff; padding: 1mm 2mm; border-radius: 9mm; }
+.tabelle .zeile { width: 26mm; font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1a1817; }
+.tabelle .mitte { background: #fff400; }
+.tabelle thead .mitte { border-radius: 4mm 4mm 0 0; }
+.tabelle tbody tr:last-child .mitte { border-radius: 0 0 4mm 4mm; border-bottom: 0; }
+.tabelle .preis { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 13pt; }
+.tabelle .ja { display: inline-block; width: 3mm; height: 1.6mm; border-left: 1.6px solid #1a1817; border-bottom: 1.6px solid #1a1817; transform: rotate(-45deg); margin: 0 0 .6mm 1mm; }
+.tabelle .nein { color: #b9b3ab; }
+
+/* Variante B · Beispiele als Liste */
+.liste { margin-top: 8mm; border-top: 1.6px solid #1a1817; }
+.liste > div { display: grid; grid-template-columns: 56mm 1fr; gap: 8mm; padding: 4.2mm 0; border-bottom: 1px solid #dcd8d1; }
+.liste h3 { font-size: 11.5pt; }
+.liste p { font-size: 8.8pt; line-height: 1.55; color: #3d3a37; }
+
 /* Personen */
+.seite--gelb .person span, .band--gelb .person span { color: #1a1817 !important; opacity: .75; }
+.tabelle thead th b { white-space: nowrap; }
 .team { display: flex; gap: 9mm; margin-top: 8mm; }
 .person { text-align: center; width: 36mm; }
 .person img { width: 26mm; height: 26mm; border-radius: 50%; object-fit: cover; background: #f3f1ee; filter: grayscale(1); }
@@ -154,12 +194,22 @@ def ico(name, farbe="currentColor", strich=1.5):
             f'stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
 
 
+# Variante „Kopf/Fuß B“ (Punkt 7): oben nur das Logo, unten Thema + Seitenzahl
+KOPF_FUSS_B = False
+_THEMA = ""
+
+
 def kopf(rechts=""):
+    global _THEMA
+    _THEMA = rechts or _THEMA
+    if KOPF_FUSS_B:
+        rechts = ""
     return f'<div class="kopf"><img src="assets/empiria-logo.svg" alt="empiria"><span>{rechts}</span></div>'
 
 
 def fuss(nr, gesamt, hell=False):
-    return f'<div class="fuss{" fuss--hell" if hell else ""}"><span class="strich"></span><span>{nr:02d} / {gesamt:02d}</span></div>'
+    links = f'<span class="fuss__thema">{_THEMA}</span>' if KOPF_FUSS_B else '<span class="strich"></span>'
+    return f'<div class="fuss{" fuss--hell" if hell else ""}">{links}<span>{nr:02d} / {gesamt:02d}</span></div>'
 
 
 def kicker(t):
