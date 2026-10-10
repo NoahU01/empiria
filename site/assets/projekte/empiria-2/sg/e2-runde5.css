@@ -1166,3 +1166,19 @@ html body .e2-alt .e2-zeitstrahl .lead { color: #1a1817 !important; }
   html body.e2 section.e2v-held .e2-logos { margin-top: 2.2rem !important; padding-top: 0 !important; border-top: 0 !important; }
 }
 @media (max-width: 600px) { html body.e2 .e2v-held__knoepfe .e2-knopf { white-space: nowrap; font-size: .86rem !important; padding-left: .5rem !important; padding-right: .5rem !important; } }
+/* iPad hochkant & mobil (Daniel 10.10.): Kopftext bündig links an der Satzkante, Themen-Zeichen größer */
+@media (max-width: 960px) {
+  html body.e2 .e2-kopf__raster:has(.e2-kopfbild--zeichen) { align-items: stretch !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { max-width: none !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { height: 3.4rem !important; max-width: none !important; width: auto !important; }
+  html body.e2 .e2-kopf__text > .e2-kicker { padding-right: 7rem; }
+}
+@media (min-width: 601px) and (max-width: 960px) {
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { height: 4.6rem !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { top: -1.4rem !important; }
+  html body.e2 .e2v-held__raster .e2v-held__pfeil.e2v-held__pfeil { width: 5.6rem !important; }
+}
+@media (max-width: 600px) {
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen .e2-bild--zeichen { height: 2.7rem !important; }
+  html body.e2 .e2-kopf__raster > .e2-kopfbild--zeichen { right: 20px !important; }
+}
