@@ -122,6 +122,7 @@ def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf", h=None):
     kopf = re.sub(r"<body([^>]*)>", lambda m: (m.group(0).replace('class="', 'class="e2 ') if 'class="' in m.group(1) else f'<body{m.group(1)} class="e2">'), kopf, 1)
     kopf = re.sub(r"<title>(.*?)</title>", lambda m: f"<title>{m.group(1)} · {titel_zusatz}</title>", kopf, 1)
     kopf = kopf.replace('<meta name="robots" content="index', '<meta name="robots" content="noindex')
+    fuss = fuss.replace("</body>", '<script src="/assets/e2/referenzen.js" defer></script>\n</body>', 1)   # Kundenlogos mobil (Daniel 10.10.)
     out = links_umbiegen(absolut(kopf, original)) + "<main>\n" + links_umbiegen(main) + "\n</main>" + links_umbiegen(absolut(fuss, original))
     return mit_strategie2(out)
 
