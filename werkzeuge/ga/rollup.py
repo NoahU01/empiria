@@ -83,38 +83,6 @@ def var_e(png=None):
                   f'<span class="ru-pfeil-e">{zeichen("forward", GELB)}</span><p class="ru-web">{FIRMA["web"]}</p>', SCHWARZ, "#fff", "ru--e", png)
 
 
-def var_j(png=None):
-    """Steigerung – Doppelpfeile werden von oben nach unten größer, der letzte gelb und im Anschnitt."""
-    stufen = [(90, "#d9d5cf"), (140, "#8f8a84"), (200, SCHWARZ)]
-    y, out = 880, ""
-    for b, f in stufen:
-        out += f'<span class="ru-stufe" style="top:{y / 8.5:.3f}cqw;width:{b / 8.5:.3f}cqw">{zeichen("forward", f)}</span>'
-        y += b * .75 + 60
-    out += f'<span class="ru-stufe ru-stufe--letzte" style="top:{y / 8.5:.3f}cqw;width:{400 / 8.5:.3f}cqw">{zeichen("forward", GELB)}</span>'
-    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
-                  '<p class="ru-h ru-h--gross">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>' +
-                  f'<div class="ru-stufen">{out}</div><p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--j", png)
-
-
-def var_k(png=None):
-    """Senkrecht – „wirkt.“ riesig, um 90° gedreht, läuft über die ganze Höhe."""
-    return rollup(logo(True, "ru-logo") + '<div class="ru-block ru-block--k">' + kicker("Strategiehandwerk") +
-                  '<p class="ru-h">Strategie,<br>die</p></div>'
-                  '<p class="ru-senkrecht"><span class="ru-hl">wirkt.</span></p>'
-                  f'<span class="ru-pfeil-k">{zeichen("forward", GELB)}</span><p class="ru-web">{FIRMA["web"]}</p>', SCHWARZ, "#fff", "ru--k", png)
-
-
-def var_l(png=None):
-    """Drei Zeichen – Pfeil, Kreuz und Kreis groß untereinander, je in ihrer Farbe, ohne Kacheln."""
-    z = [("forward", SCHWARZ, "Strategie in den Alltag überführen"), ("kreuz", SCHWARZ, "Komplexe Themen strukturieren"),
-         ("kreis", SCHWARZ, "Innovation neu denken")]
-    zeilen = "".join(f'<div class="ru-zz"><span class="ru-zz__z{" ru-zz__z--gelb" if i == 0 else ""}">{zeichen(n, f)}</span><b>{t}</b></div>'
-                     for i, (n, f, t) in enumerate(z))
-    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
-                  '<p class="ru-h">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>' +
-                  f'<div class="ru-zzs">{zeilen}</div><p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--l", png)
-
-
 def var_i(png=None):
     """Zitat – der Leitsatz groß, Gelb nur auf „Handwerk.“."""
     return rollup(logo(True, "ru-logo") + '<div class="ru-block ru-block--i">'
@@ -124,24 +92,43 @@ def var_i(png=None):
                   SCHWARZ, "#fff", "ru--i", png)
 
 
+def var_m(png=None):
+    """Referenzen – Claim und alle 14 Kundenlogos in Originalfarbe auf Weiß."""
+    from linkedin import KUNDEN, LOGO_SKALA
+    logos = "".join(f'<span><img src="/assets/logos/{d}" alt="{n}" style="height:{50 * LOGO_SKALA[d] / 8.5:.3f}cqw"></span>' for d, n in KUNDEN)
+    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
+                  '<p class="ru-h">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>'
+                  f'<p class="ru-kicker ru-ref-k">Wir arbeiten unter anderem für</p><div class="ru-ref">{logos}</div>'
+                  f'<p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--m", png)
+
+
+def var_n(png=None):
+    """Problem – der Problem-Abschnitt der Homepage: Aussage und schwarzer Kasten mit den drei Fragen."""
+    fragen = ["Warum bewegt sich da nichts?", "Warum zieht mein Team nicht mit?", "Warum kommt meine Strategie im Alltag nicht an?"]
+    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Problem") +
+                  '<p class="ru-h">Die Strategie steht.<br>Trotzdem passiert<br>zu <span class="ru-hl">wenig.</span></p></div>'
+                  '<div class="ru-kasten">' + "".join(f'<p class="ru-kfrage">{f}</p>' for f in fragen) +
+                  '<p class="ru-kantwort">Die Antwort liegt selten an der Strategie selbst. Es liegt daran, dass sie niemand in den Alltag übersetzt hat.</p></div>'
+                  f'<p class="ru-web">{FIRMA["web"]}</p>', "#fff", SCHWARZ, "ru--n", png)
+
+
 VARIANTEN = [
     ("a", "A · Claim", "weiß", var_a), ("b", "B · Leistungen", "schwarz", var_b),
     ("c", "C · Drei Leistungen", "weiß · gelb · schwarz · grau", var_c), ("d", "D · Muster", "schwarz", var_d),
     ("e", "E · Anschnitt", "schwarz", var_e), ("i", "F · Zitat", "schwarz", var_i),
-    ("j", "G · Steigerung", "weiß", var_j), ("k", "H · Senkrecht", "schwarz", var_k),
-    ("l", "I · Drei Zeichen", "weiß", var_l),
+    ("m", "G · Referenzen", "weiß · Logos in Originalfarbe", var_m), ("n", "H · Problem", "weiß · schwarzer Kasten", var_n),
 ]
 
 
 def inhalt():
     figuren = [figur(fn(f"rollup-{k}"), f"<b>{t}</b> · {farbe} · 100 × 200 cm",
                      download(f"ga/rollup/rollup-{k}.png", f"PNG-Vorschau · {PX[0]} × {PX[1]} px")) for k, t, farbe, fn in VARIANTEN]
-    teile = [abschnitt("Neun Varianten", "<b>A</b> Claim und Doppelpfeil. <b>B</b> die drei Leistungen mit ihren Zeichen. "
+    teile = [abschnitt("Acht Varianten", "<b>A</b> Claim und Doppelpfeil. <b>B</b> die drei Leistungen mit ihren Zeichen. "
                        "<b>C</b> die Leistungskarten als Bänder. <b>D</b> ein Raster aus Doppelpfeilen, einer leuchtet. "
                        "<b>E</b> der Doppelpfeil im Anschnitt. <b>F</b> der Leitsatz als Zitat. "
-                       "<b>G</b> Doppelpfeile, die von oben nach unten wachsen – der letzte gelb im Anschnitt. "
-                       "<b>H</b> „wirkt.“ riesig und senkrecht über die ganze Höhe. <b>I</b> die drei Zeichen groß untereinander.",
-                       raster(figuren, 3, 2, "gap:2.4rem 1.6rem"))]
+                       "<b>G</b> Referenzen: Claim und alle 14 Kundenlogos in Originalfarbe – für Messen in der Versicherungsbranche. "
+                       "<b>H</b> der Problem-Abschnitt der Homepage: Aussage und schwarzer Kasten mit den drei Fragen, die jede Führungskraft kennt.",
+                       raster(figuren, 4, 2, "gap:2.4rem 1.4rem"))]
     zonen = ('<div class="ru-zonen">'
              '<div class="ru-z" style="top:0;height:15%"><span>Kopfzone · 170–200 cm</span><small>Logo – sichtbar über Köpfe hinweg</small></div>'
              '<div class="ru-z ru-z--auge" style="top:15%;height:40%"><span>Augenhöhe · 90–170 cm</span><small>Botschaft – hier wird gelesen</small></div>'
@@ -214,25 +201,19 @@ CSS = masse("""
 .ru-pfeil-e { position: absolute; right: [-180]; top: [960]; width: [640]; }
 .ru-pfeil-e svg { display: block; width: 100%; height: auto; }
 .ru--e .ru-web, .ru--d .ru-web { color: #fff; }
-/* G · Steigerung */
-.ru-stufen { position: absolute; inset: 0; }
-.ru-stufe { position: absolute; left: [80]; }
+/* G · Referenzen */
+.ru--m .ru-h { font-size: [100]; }
+.ru-ref-k { position: absolute; left: [80]; top: [800]; }
+.ru-ref { position: absolute; left: [80]; right: [80]; top: [880]; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: [92]; column-gap: [50]; }
+.ru-ref span { display: flex; align-items: center; }
+.ru-ref img { display: block; width: auto; max-width: 92%; object-fit: contain; }
+/* H · Problem */
+.ru--n .ru-h { font-size: [64]; }
+.ru-kasten { position: absolute; left: [80]; right: [80]; top: [780]; background: #1a1817; color: #fff; border-radius: [22]; padding: [58] [54]; }
+.ru-kfrage { font: 700 [40]/1.3 'Lora', Georgia, serif; letter-spacing: -.01em; }
+.ru-kfrage + .ru-kfrage { margin-top: [30] !important; }
+.ru-kantwort { margin-top: [46] !important; padding-top: [40]; border-top: [4] solid #fff400; font: 300 [28]/1.55 'Poppins', sans-serif; color: rgba(255,255,255,.8); }
 .ru-stufe svg, .ru-pfeil-i svg, .ru-pfeil-k svg, .ru-zz__z svg { display: block; width: 100%; height: auto; }
-.ru-stufe--letzte { left: auto; right: [-150]; }
-/* H · Senkrecht */
-.ru-block--k { top: [330]; }
-.ru--k .ru-h { font-size: [110]; }
-.ru-senkrecht { position: absolute; left: [440]; top: [1580]; transform: rotate(-90deg); transform-origin: 0 0;
-  font: 700 [330]/1.3 'Lora', Georgia, serif; letter-spacing: -.03em; white-space: nowrap; }
-.ru-pfeil-k { position: absolute; left: [80]; bottom: [260]; width: [200]; }
-.ru--k .ru-kicker { color: #fff400; }
-.ru--k .ru-web, .ru--j .ru-web { }
-/* I · Drei Zeichen */
-.ru-zzs { position: absolute; left: [80]; right: [80]; top: [830]; display: grid; gap: [54]; }
-.ru-zz { display: grid; grid-template-columns: [190] 1fr; align-items: center; gap: [50]; }
-.ru-zz__z { display: block; width: [190]; }
-.ru-zz__z--gelb { background: #fff400; border-radius: [20]; padding: [34] [26]; }
-.ru-zz b { font: 700 [44]/1.3 'Lora', Georgia, serif; }
 /* H · Zitat */
 .ru-block--i { top: [380]; }
 .ru-zitat { font: 700 [86]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
@@ -259,9 +240,9 @@ CSS = masse("""
 def bauen(mit_png=True):
     seite_schreiben(DATEI, "Roll-up",
                     'Roll-<span class="hl">up</span>',
-                    "Neun Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
+                    "Acht Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
                     "die Botschaft auf Augenhöhe. Alle Entwürfe sind maßstäblich; die PNGs sind Vorschauen, keine Druckdaten.",
-                    ["Entwurf 2", "100 × 200 cm", "9 Varianten", "Sichtzonen"], inhalt(), CSS)
+                    ["Entwurf 2", "100 × 200 cm", "8 Varianten", "Sichtzonen"], inhalt(), CSS)
     if mit_png:
         png_export(DATEI, "rollup")
 
