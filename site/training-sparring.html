@@ -95,18 +95,22 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/styles.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-seiten.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "lime" ===== */
   body.produktseite-clean { background: #fff; }
   .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
-  .produktseite-clean .produkt-hero .kicker { color: #086a80; }
+  .produktseite-clean .produkt-hero .kicker { color: #1a1817; }
   .produktseite-clean .produkt-hero h1 { color: var(--ink); }
   .produktseite-clean .produkt-hero .hl { color: #ffffff; }
-  .produktseite-clean .produkt-hero .hl { background-image: linear-gradient(#0B9FBD, #0B9FBD); }
+  .produktseite-clean .produkt-hero .hl { background-image: linear-gradient(#fff400, #fff400); }
   .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
   .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
-  .produktseite-clean .produkt-hero .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #ffffff; }
+  .produktseite-clean .produkt-hero .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
   .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
   .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
@@ -116,12 +120,12 @@
 
   /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
      dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
-  .usp-turbo-icon { background: #0B9FBD; color: #ffffff; }
+  .usp-turbo-icon { background: #fff400; color: #1a1817; }
 
   /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
      Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
   .produktseite-clean .sprint-structure-card {
-    background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%);
+    background: linear-gradient(155deg, #fff400 0%, #fff400 100%);
     border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
   }
   .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
@@ -129,12 +133,12 @@
   .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
   .produktseite-clean .media-box-title,
   .produktseite-clean .sprint-structure-title { color: #fff; }
-  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #0B9FBD; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #1a1817; }
 
   /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
   .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
   .produktseite-clean .produkt-mock-icon { background: none; }
-  .produktseite-clean .produkt-mock-icon svg { color: #086a80; filter: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #1a1817; filter: none; }
   .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
 
   /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
@@ -144,12 +148,12 @@
   .produktseite-clean .dash-kpi .val { color: var(--ink); }
   .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
   .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
-  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #0B9FBD, #086a80); }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #fff400, #fff400); }
   .produktseite-clean .dash-caption { color: var(--grey-50); }
   .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
-  .produktseite-clean .tool-dash-logo { background: #0B9FBD; }
+  .produktseite-clean .tool-dash-logo { background: #fff400; }
   .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
-  .produktseite-clean .tool-dash-nav-item--active { background: #0B9FBD; }
+  .produktseite-clean .tool-dash-nav-item--active { background: #fff400; }
 
   /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
      ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
@@ -206,7 +210,7 @@
      Header (mit Invertierung) automatisch weiß wird. */
   .produktseite-clean .media-box-thumb .mock-phone-body,
   .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
-  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); }
   @media (max-width: 900px) {
     .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
     .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
@@ -221,36 +225,36 @@
 
   /* Sprint-Landingpage: Timeline */
   .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
-  .produktseite-clean .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #ffffff; }
+  .produktseite-clean .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
   .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
-  .produktseite-clean .sprint-substep-tag { color: #ffffff; background: #0B9FBD; border-color: #0B9FBD; }
+  .produktseite-clean .sprint-substep-tag { color: #1a1817; background: #fff400; border-color: #fff400; }
   .produktseite-clean .sprint-substep p { color: var(--grey-70); }
 
   /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
-  .produktseite-clean .produkt-section-head .kicker { color: #086a80; }
+  .produktseite-clean .produkt-section-head .kicker { color: #1a1817; }
   .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
   .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
 
   /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
-  .produktseite-clean .vorschau-split-text .kicker { color: #086a80; }
+  .produktseite-clean .vorschau-split-text .kicker { color: #1a1817; }
   .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
   .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
   .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
   .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
-  .produktseite-clean .vorschau-facts-list li::before { background: #0B9FBD; }
+  .produktseite-clean .vorschau-facts-list li::before { background: #1a1817; }
   .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
   .produktseite-clean .produkt-glass h3 { color: var(--ink); }
   .produktseite-clean .produkt-glass p { color: var(--grey-70); }
   .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
-  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #086a80; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #1a1817; }
   .produktseite-clean .topics-list li { color: var(--ink); }
-  .produktseite-clean .topics-list li::before { background: #0B9FBD; }
+  .produktseite-clean .topics-list li::before { background: #1a1817; }
 
   /* Preis-Hinweis-Karte (einzelner großer Preis) */
   .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
   .produktseite-clean .price-note-amount { color: #fff; }
   .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
   .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
@@ -264,35 +268,35 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #0B9FBD; }
-  .produktseite-clean .price-badge { background: #0B9FBD; border-color: #0B9FBD; color: #ffffff; }
-  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
-  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #0B9FBD 0%, #086a80 100%); border-color: transparent; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
-  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-features li { color: #1a1817; }
   .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
-  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
-  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
-  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
-  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #0B9FBD; border-color: #fff; }
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(26,24,23,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(26,24,23,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #1a1817; border-color: #1a1817; }
   .produktseite-clean .pricing-footnote { color: var(--grey-50); }
   .produktseite-clean .price-more-btn { margin-top: 30px; align-self: center; }
-  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #0B9FBD; border-color: #fff; }
-  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #0B9FBD; opacity: .92; }
+  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #1a1817; border-color: #fff; }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #1a1817; opacity: .92; }
   .produktseite-clean .price-ideal-band { background: var(--grey-bg); }
   .produktseite-clean .price-ideal { color: var(--ink); }
   .produktseite-clean .price-card--featured .price-ideal-band { background: rgba(0,0,0,.16); }
-  .produktseite-clean .price-card--featured .price-ideal { color: #fff; }
+  .produktseite-clean .price-card--featured .price-ideal { color: #1a1817; }
 
   /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
-  .produktseite-clean .modal .sprint-step-marker { background: #0B9FBD; border-color: #0B9FBD; color: #ffffff; }
+  .produktseite-clean .modal .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
      bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
   .produktseite-clean .usp-highlight {
     margin-top: 28px; padding: clamp(28px, 4vw, 44px);
-    border-radius: 22px; background: linear-gradient(150deg, #0B9FBD 0%, #086a80 100%);
-    color: #ffffff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    border-radius: 22px; background: linear-gradient(150deg, #fff400 0%, #fff400 100%);
+    color: #1a1817; box-shadow: 0 30px 70px rgba(0,0,0,.18);
     display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
   }
   .produktseite-clean .usp-highlight-icon {
@@ -311,7 +315,7 @@
   /* Prozess-Schritte */
   .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
-  .produktseite-clean .produkt-process-step .step-num { color: #086a80; }
+  .produktseite-clean .produkt-process-step .step-num { color: #1a1817; }
   .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
   .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
 
@@ -320,35 +324,35 @@
      statt weißer Schrift (sonst unlesbar auf hellem Grund). */
   .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
   .produktseite-clean .vergleich-label { color: var(--ink); }
-  .produktseite-clean .vergleich-label--brand { color: #086a80; }
+  .produktseite-clean .vergleich-label--brand { color: #1a1817; }
   .produktseite-clean .vergleich-timeline { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .vergleich-timeline--outline { border-color: #086a80; }
+  .produktseite-clean .vergleich-timeline--outline { border-color: #fff400; }
   .produktseite-clean .vergleich-pill { background: var(--grey-bg); border: 1px solid #e7e2df; color: var(--ink); }
-  .produktseite-clean .vergleich-rocket { border-color: rgba(255,255,255,.5); }
+  .produktseite-clean .vergleich-rocket { border-color: rgba(26,24,23,.5); }
   .produktseite-clean .vergleich-bonus { color: var(--ink); }
-  .produktseite-clean .vergleich-bonus svg { color: #086a80; }
+  .produktseite-clean .vergleich-bonus svg { color: #1a1817; }
 
   /* FAQ */
   .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
   .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
-  .produktseite-clean .produkt-faq-item summary::after { color: #086a80; }
+  .produktseite-clean .produkt-faq-item summary::after { color: #1a1817; }
   .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
 
   /* Ansprechpartner + finaler CTA */
   .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
-  .produktseite-clean .produkt-team-cta .kicker { color: #086a80; }
+  .produktseite-clean .produkt-team-cta .kicker { color: #1a1817; }
   .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
   .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
   .produktseite-clean .ansprechpartner-name { color: var(--ink); }
   .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
-  .produktseite-clean .produkt-cta .btn--dark { background: #0B9FBD; border-color: #0B9FBD; color: #ffffff; }
+  .produktseite-clean .produkt-cta .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   body.produktseite-clean .site-footer { background: var(--black); }
 </style>
 
 </head>
-<body class="produktseite produktseite-clean produktseite--training-sparring">
+<body class="e2 produktseite produktseite-clean produktseite--training-sparring">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -523,7 +527,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+    <a class="brand" href="/" aria-label="empiria Startseite">
       <img src="/assets/empiria-logo.svg" alt="empiria">
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
@@ -1095,116 +1099,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </header>
 
 <main>
+<div class="e2-alt e2-alt--violett e2-seite--training-sparring">
   <!-- ===== Hero ===== -->
-  <section class="produkt-hero">
-    <div class="container">
-    <div class="produkt-hero-grid">
-      <div class="produkt-hero-text">
-        <p class="kicker">Training &amp; Sparring</p>
-        <h1 class="h-serif">Begleitung, <span class="hl">die wirkt.</span> Kein Seminar von der Stange.</h1>
-        <div class="produkt-hero-lead-cols produkt-hero-lead-cols--single">
-        <p class="lead">Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen.</p>
-        <p class="lead">Beides ist auf die Versicherungsbranche und Deinen konkreten Alltag zugeschnitten – zugeschnitten auf Eure echten Themen statt auf Fallbeispiele von der Stange.</p>
-      </div>
-              <div class="produkt-pills">
-        <span class="produkt-pill reveal">Teams befähigen</span>
-        <span class="produkt-pill reveal">1:1 Sparring</span>
-      </div>
-
-      </div>
-      <div class="produkt-hero-visual">
-              <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 880 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines Trainingsplans: Standortbestimmung, Live-Übung, Video-Feedback, Wiederholen &amp; schärfen, Transfer in den Alltag">
-          <rect x="300.0" y="30.0" width="280.0" height="540.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <rect x="318.0" y="43.0" width="92.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="318.0" y="58.0" width="58.0" height="6.0" rx="2" fill="rgba(255,255,255,.26)"/>
-          <circle cx="554.0" cy="50.0" r="9.0" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-          <line x1="554.0" y1="44.0" x2="554.0" y2="50.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-          <line x1="554.0" y1="50.0" x2="558.0" y2="53.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
-          <circle cx="342.0" cy="100.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-          <rect x="376.0" y="84.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="376.0" y="100.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="376.0" y="116.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="286.0" y1="120.0" x2="299.0" y2="120.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="120.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="108.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Standortbestimmung</text>
-          <text x="276.0" y="127.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wo Dein Team heute steht,</text>
-          <text x="276.0" y="142.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">bevor es losgeht</text>
-          <rect x="300.0" y="170.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="170.0" x2="580.0" y2="170.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <line x1="340.0" y1="198.0" x2="340.0" y2="236.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-          <rect x="333.0" y="184.0" width="14.0" height="22.0" rx="7" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <line x1="330.0" y1="248.0" x2="550.0" y2="248.0" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
-          <circle cx="378.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="394.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="410.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="426.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="442.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="458.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="378.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="394.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="410.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="426.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="442.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="458.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <line x1="581.0" y1="220.0" x2="594.0" y2="220.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="220.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="208.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Live-Übung</text>
-          <text x="604.0" y="227.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Präsentieren im</text>
-          <text x="604.0" y="242.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">geschützten Rahmen</text>
-          <line x1="300.0" y1="270.0" x2="580.0" y2="270.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="276.0" width="144.0" height="46.0" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>
-          <circle cx="392.0" cy="299.0" r="15.0" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <path d="M387.0,291.0 L387.0,307.0 L401.0,299.0 Z" fill="rgba(255,255,255,.6)"/>
-          <rect x="320.0" y="332.0" width="144.0" height="5.0" rx="2.5" fill="rgba(255,255,255,.14)"/>
-          <rect x="320.0" y="332.0" width="57.6" height="5.0" rx="2.5" fill="rgba(255,255,255,.55)"/>
-          <line x1="286.0" y1="320.0" x2="299.0" y2="320.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="320.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="308.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Video-Feedback</text>
-          <text x="276.0" y="327.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Direkt sehen, was</text>
-          <text x="276.0" y="342.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich ankommt</text>
-          <rect x="300.0" y="370.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="370.0" x2="580.0" y2="370.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <line x1="333.0" y1="412.0" x2="547.0" y2="412.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <circle cx="333.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="333.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
-          <circle cx="404.3" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="404.3" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
-          <circle cx="475.7" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="475.7" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
-          <circle cx="547.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="547.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
-          <line x1="581.0" y1="420.0" x2="594.0" y2="420.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="420.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="408.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Wiederholen &amp; schärfen</text>
-          <text x="604.0" y="427.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Üben, verbessern,</text>
-          <text x="604.0" y="442.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">erneut testen</text>
-          <line x1="300.0" y1="470.0" x2="580.0" y2="470.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="476.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,484.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="480.0" width="206.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="320.0" y="502.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,510.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.63)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="506.0" width="168.9" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="320.0" y="528.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,536.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.51)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="532.0" width="131.8" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="286.0" y1="520.0" x2="299.0" y2="520.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="520.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="508.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Transfer in den Alltag</text>
-          <text x="276.0" y="527.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Damit es im Arbeitsalltag</text>
-          <text x="276.0" y="542.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich hängen bleibt</text>
-        </svg>
-      </div>
-      </div>
-    </div>
-    <div class="produkt-hero-actions produkt-hero-actions--center">
-      <a class="btn btn--dark" href="#naechste-sektion">Training &amp; Sparring kennenlernen</a>
-      
-    </div>
-    </div>
-  </section>
+  <section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
+  <div class="e2-kopf__text"><p class="e2-kicker">Training &amp; Sparring</p><h1>Begleitung, <span class="hl">die wirkt.</span><br>Bis in den Alltag.</h1>
+    <div class="e2-kopf__inhalt"><p>Für Dein Team als Trainingsbegleitung, für Dich als Führungskraft im vertraulichen Sparring.</p></div>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="#naechste-sektion">Training &amp; Sparring kennenlernen <svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="e2-kopfbild"><svg class="e2-bild e2-bild--gross" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(75 110) scale(4.5833)" fill="none" stroke="#1a1817" stroke-width="1.135" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20" /> <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /> <path d="m7 21 5-5 5 5" /></g><text x="130" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">TEAMS</text><g transform="translate(255 110) scale(4.5833)" fill="none" stroke="#1a1817" stroke-width="1.135" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g><text x="310" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">1:1 SPARRING</text></svg><svg class="e2-bild e2-bild--mobil" viewBox="60 100 320 200" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(75 110) scale(4.5833)" fill="none" stroke="#1a1817" stroke-width="1.135" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20" /> <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /> <path d="m7 21 5-5 5 5" /></g><text x="130" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">TEAMS</text><g transform="translate(255 110) scale(4.5833)" fill="none" stroke="#1a1817" stroke-width="1.135" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g><text x="310" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">1:1 SPARRING</text></svg></div>
+</div></section>
 
   <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
   <!-- ===== Vorteile ===== -->
@@ -1212,17 +1114,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <div class="container">
       <div class="produkt-section-head reveal">
         <p class="kicker">Unser Ansatz</p>
-        <h2 class="h-serif">Begleitung statt Seminar von der Stange.</h2>
-        <p>Ob im Team oder im 1:1: Wir bleiben dran, bis die Wirkung im Alltag ankommt.</p>
+        <h2 class="h-serif">Drei Dinge, die den Unterschied machen.</h2>
+        <p>Inhalte aus Deiner Praxis, ehrliche Rückmeldung und eine Begleitung, die nicht nach dem Termin endet.</p>
       </div>
       <div class="produkt-grid-cards">
       <div class="produkt-glass reveal">
         <div class="feature-icon"><svg><use href="#ic-control"/></svg></div>
-        <h3>Auf Deinen Alltag zugeschnitten</h3><p>Keine Vorlage von der Stange – Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche.</p>
+        <h3>Auf Deinen Alltag zugeschnitten</h3><p>Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche.</p>
       </div>
       <div class="produkt-glass reveal">
         <div class="feature-icon"><svg><use href="#ic-audience"/></svg></div>
-        <h3>Vertraulich &amp; auf Augenhöhe</h3><p>Ob im Team oder im 1:1: offen, ehrlich und mit klarer Rückmeldung, auch wenn sie unbequem ist.</p>
+        <h3>Vertraulich &amp; auf Augenhöhe</h3><p>Offen, ehrlich und mit klarer Rückmeldung – auch wenn sie unbequem ist.</p>
       </div>
       <div class="produkt-glass reveal">
         <div class="feature-icon"><svg><use href="#ic-forward"/></svg></div>
@@ -1241,94 +1143,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <h2 class="h-serif">Zwei Formate. Ein Ziel: Wirkung im Alltag.</h2>
         <p>Wähle das Format – wir passen es auf Dich an.</p>
       </div>
-      <div class="media-boxes-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 714px; margin-left: auto; margin-right: auto;">
+      <div class="media-boxes-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
         <a class="media-box sprint-structure-card media-box--icon" href="/praesentationsseminar" aria-label="Mehr erfahren: Teams befähigen, professionell zu kommunizieren">
-          <div class="media-box-thumb media-box-thumb--mock">
-                  <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 880 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines Trainingsplans: Standortbestimmung, Live-Übung, Video-Feedback, Wiederholen &amp; schärfen, Transfer in den Alltag">
-          <rect x="300.0" y="30.0" width="280.0" height="540.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <rect x="318.0" y="43.0" width="92.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="318.0" y="58.0" width="58.0" height="6.0" rx="2" fill="rgba(255,255,255,.26)"/>
-          <circle cx="554.0" cy="50.0" r="9.0" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-          <line x1="554.0" y1="44.0" x2="554.0" y2="50.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-          <line x1="554.0" y1="50.0" x2="558.0" y2="53.0" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
-          <circle cx="342.0" cy="100.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-          <rect x="376.0" y="84.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="376.0" y="100.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="376.0" y="116.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="286.0" y1="120.0" x2="299.0" y2="120.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="120.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="108.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Standortbestimmung</text>
-          <text x="276.0" y="127.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wo Dein Team heute steht,</text>
-          <text x="276.0" y="142.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">bevor es losgeht</text>
-          <rect x="300.0" y="170.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="170.0" x2="580.0" y2="170.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <line x1="340.0" y1="198.0" x2="340.0" y2="236.0" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-          <rect x="333.0" y="184.0" width="14.0" height="22.0" rx="7" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <line x1="330.0" y1="248.0" x2="550.0" y2="248.0" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
-          <circle cx="378.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="394.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="410.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="426.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="442.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="458.0" cy="200.0" r="3.4" fill="rgba(255,255,255,0.48)"/>
-          <circle cx="378.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="394.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="410.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="426.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="442.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="458.0" cy="220.0" r="3.4" fill="rgba(255,255,255,0.32)"/>
-          <line x1="581.0" y1="220.0" x2="594.0" y2="220.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="220.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="208.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Live-Übung</text>
-          <text x="604.0" y="227.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Präsentieren im</text>
-          <text x="604.0" y="242.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">geschützten Rahmen</text>
-          <line x1="300.0" y1="270.0" x2="580.0" y2="270.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="276.0" width="144.0" height="46.0" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>
-          <circle cx="392.0" cy="299.0" r="15.0" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <path d="M387.0,291.0 L387.0,307.0 L401.0,299.0 Z" fill="rgba(255,255,255,.6)"/>
-          <rect x="320.0" y="332.0" width="144.0" height="5.0" rx="2.5" fill="rgba(255,255,255,.14)"/>
-          <rect x="320.0" y="332.0" width="57.6" height="5.0" rx="2.5" fill="rgba(255,255,255,.55)"/>
-          <line x1="286.0" y1="320.0" x2="299.0" y2="320.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="320.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="308.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Video-Feedback</text>
-          <text x="276.0" y="327.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Direkt sehen, was</text>
-          <text x="276.0" y="342.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich ankommt</text>
-          <rect x="300.0" y="370.0" width="280.0" height="100.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="370.0" x2="580.0" y2="370.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <line x1="333.0" y1="412.0" x2="547.0" y2="412.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <circle cx="333.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="333.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
-          <circle cx="404.3" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="404.3" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
-          <circle cx="475.7" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="475.7" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
-          <circle cx="547.0" cy="412.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="547.0" y="416.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
-          <line x1="581.0" y1="420.0" x2="594.0" y2="420.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="420.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="408.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Wiederholen &amp; schärfen</text>
-          <text x="604.0" y="427.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Üben, verbessern,</text>
-          <text x="604.0" y="442.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">erneut testen</text>
-          <line x1="300.0" y1="470.0" x2="580.0" y2="470.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="476.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,484.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="480.0" width="206.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="320.0" y="502.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,510.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.63)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="506.0" width="168.9" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="320.0" y="528.0" width="16.0" height="16.0" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
-          <path d="M323.0,536.0 l4,5 l7,-9" fill="none" stroke="rgba(255,255,255,0.51)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="346.0" y="532.0" width="131.8" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="286.0" y1="520.0" x2="299.0" y2="520.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="520.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="508.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Transfer in den Alltag</text>
-          <text x="276.0" y="527.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Damit es im Arbeitsalltag</text>
-          <text x="276.0" y="542.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">wirklich hängen bleibt</text>
-        </svg>
-      </div>
-          </div>
+          <div class="media-box-thumb e2-wk-thumb"><svg class="e2-wk-bild e2-wk-bild--eng" viewBox="36 100 368 204" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#1a1817" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20" /> <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /> <path d="m7 21 5-5 5 5" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /></g></svg></div>
           <div class="media-box-footer">
             <span class="media-box-title">Teams befähigen, professionell zu kommunizieren</span>
             <p class="media-box-desc">Dein Team bereitet Themen vor, die nicht überzeugen? Wir bringen ihm bei, wie es geht – und begleiten es dabei, wenn es zählt.</p>
@@ -1336,9 +1153,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </a>
         <a class="media-box sprint-structure-card media-box--icon" href="/sparring" aria-label="Mehr erfahren: 1:1 Sparring für Vorstände &amp; Führungskräfte">
-          <div class="media-box-thumb media-box-thumb--photo">
-            <img src="/assets/daniel-sparring.webp" alt="" loading="lazy">
-          </div>
+          <div class="media-box-thumb e2-wk-thumb"><svg class="e2-wk-bild e2-wk-bild--eng" viewBox="28 56 380 290" role="img" font-family="Poppins, Arial, sans-serif"><text x="36" y="282" font-size="196" font-weight="700" letter-spacing="-6" fill="#1a1817" font-family="Lora, Georgia, serif">1:1</text><g transform="translate(320 60) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g></svg></div>
           <div class="media-box-footer">
             <span class="media-box-title">1:1 Sparring für Vorstände &amp; Führungskräfte</span>
             <p class="media-box-desc">Strategisches Sparring auf Augenhöhe für Führungskräfte in der Versicherungsbranche – vertraulich, erfahren und mit klarer Rückmeldung.</p>
@@ -1351,17 +1166,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <!-- ===== Download: PDF-Zusammenfassung ===== -->
   <section class="produkt-section pdf-dl-section">
     <div class="container">
-      <div class="pdf-dl pdf-dl--mist reveal" id="download" style="--dl-acc:#0B9FBD; --dl-hl-fg:#ffffff;">
+      <div class="pdf-dl pdf-dl--mist reveal" id="download" style="--dl-acc:#fff400; --dl-hl-fg:#ffffff;">
         <div class="pdf-dl-visual" aria-hidden="true">
-          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/empiria-training-sparring-2.webp" alt="" loading="lazy">
-          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/empiria-training-sparring-1.webp" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/2.0/empiria-training-sparring-2.png" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/2.0/empiria-training-sparring-1.png" alt="" loading="lazy">
         </div>
         <div class="pdf-dl-text">
           <p class="pdf-dl-kicker">Download</p>
-          <h2 class="pdf-dl-h">Training &amp; Sparring auf <span class="hl-acc">einen Blick.</span></h2>
+          <h2 class="pdf-dl-h">Training &amp; Sparring auf <span class="e2-dl-hl">einen Blick.</span></h2>
           <p class="pdf-dl-lead">Das Wichtigste kompakt zusammengefasst. Zum Nachlesen und Weitergeben an Dein Team oder Deine Entscheider.</p>
-          <div class="pdf-dl-meta"><span>PDF</span><span>5 Seiten</span><span>0,7 MB</span></div>
-          <a class="pdf-dl-btn" href="/assets/downloads/empiria-training-sparring.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="pdf-dl-meta"><span>PDF</span><span>7 Seiten</span><span>0,4 MB</span></div>
+          <a class="pdf-dl-btn" href="/assets/downloads/2.0/empiria-training-sparring.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -1391,6 +1206,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
     </div>
   </section>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script></div>
 </main>
 
 

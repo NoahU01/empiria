@@ -95,18 +95,22 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/styles.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-seiten.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/sg/e2-runde5.css">
+<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">
 <style>
   /* ===== Clean/A2-Redesign: weißer Hintergrund, Akzentfarbe "magenta" ===== */
   body.produktseite-clean { background: #fff; }
   .produktseite-clean .produkt-hero { color: var(--ink); background: #fff; }
-  .produktseite-clean .produkt-hero .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-hero .kicker { color: #1a1817; }
   .produktseite-clean .produkt-hero h1 { color: var(--ink); }
   .produktseite-clean .produkt-hero .hl { color: #fff; }
-  .produktseite-clean .produkt-hero .hl { background-image: linear-gradient(#C51F5D, #C51F5D); }
+  .produktseite-clean .produkt-hero .hl { background-image: linear-gradient(#fff400, #fff400); }
   .produktseite-clean .produkt-hero p.lead { color: var(--grey-70); }
   .produktseite-clean .produkt-hero-lead-cols p.lead { color: var(--grey-70); }
-  .produktseite-clean .produkt-hero .btn--dark { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .produkt-hero .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .produkt-pill { background: #fff; border-color: rgba(0,0,0,.14); color: var(--ink); }
   .produktseite-clean .hero-stat { background: var(--grey-bg); border: 1.5px solid #e7e2df; box-shadow: none; }
   .produktseite-clean .hero-stat-icon, .produktseite-clean .hero-stat-num { color: var(--ink); }
@@ -116,12 +120,12 @@
 
   /* Separat hervorgehobener USP-Bereich (z.B. "Umsetzungsturbo") — volle Breite,
      dezenter grauer Hintergrund wie die Problem-Sektion auf der Startseite. */
-  .usp-turbo-icon { background: #C51F5D; color: #fff; }
+  .usp-turbo-icon { background: #fff400; color: #1a1817; }
 
   /* Mockup-/Vorschau-Karten (PowerPoint, Roll-up, Landingpage, Medien-Kacheln,
      Sprint-Landingpage-Struktur) — werden zur vollfarbigen Farbkarte. */
   .produktseite-clean .sprint-structure-card {
-    background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%);
+    background: linear-gradient(155deg, #fff400 0%, #fff400 100%);
     border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28);
   }
   .produktseite-clean .sprint-structure-card:hover { border-color: transparent; }
@@ -129,12 +133,12 @@
   .produktseite-clean .sprint-structure-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
   .produktseite-clean .media-box-title,
   .produktseite-clean .sprint-structure-title { color: #fff; }
-  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #7a1339; }
+  .produktseite-clean .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #1a1817; }
 
   /* Standard-Icon-Mockup (Seiten ohne eigenes Bild) */
   .produktseite-clean .produkt-mock { border: 1px solid #e7e2df; background: var(--grey-bg); box-shadow: 0 30px 70px rgba(0,0,0,.08); }
   .produktseite-clean .produkt-mock-icon { background: none; }
-  .produktseite-clean .produkt-mock-icon svg { color: #C51F5D; filter: none; }
+  .produktseite-clean .produkt-mock-icon svg { color: #1a1817; filter: none; }
   .produktseite-clean .produkt-mock--structure svg { filter: invert(1); }
 
   /* Dashboard-/Tool-Mockups (Paid Ads, Dashboard digitales Marketing) */
@@ -144,12 +148,12 @@
   .produktseite-clean .dash-kpi .val { color: var(--ink); }
   .produktseite-clean .dash-kpi .lbl { color: var(--grey-70); }
   .produktseite-clean .dash-bars { background: none; padding-top: 6px; }
-  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #C51F5D, #7a1339); }
+  .produktseite-clean .dash-bar { background: linear-gradient(180deg, #fff400, #fff400); }
   .produktseite-clean .dash-caption { color: var(--grey-50); }
   .produktseite-clean .tool-dash-nav { background: #fff; border-right-color: #e7e2df; }
-  .produktseite-clean .tool-dash-logo { background: #C51F5D; }
+  .produktseite-clean .tool-dash-logo { background: #fff400; }
   .produktseite-clean .tool-dash-nav-item { background: rgba(0,0,0,.08); }
-  .produktseite-clean .tool-dash-nav-item--active { background: #C51F5D; }
+  .produktseite-clean .tool-dash-nav-item--active { background: #fff400; }
 
   /* Bare Split-Mockup (Dashboard digitales Marketing: MacBook + Video-Skizze) — komplett
      ohne Kasten/Hintergrund, frei auf dem Hero. Weiß gezeichnete Skizzen, Invertierung
@@ -206,7 +210,7 @@
      Header (mit Invertierung) automatisch weiß wird. */
   .produktseite-clean .media-box-thumb .mock-phone-body,
   .produktseite-clean .modal-summary-mock .mock-phone-body { fill: rgba(255,255,255,.14); }
-  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); }
+  .produktseite-clean .modal--structure-accent { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); }
   @media (max-width: 900px) {
     .produktseite-clean .produkt-hero-grid { grid-template-columns: 1fr; }
     .produktseite-clean .produkt-hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
@@ -221,36 +225,36 @@
 
   /* Sprint-Landingpage: Timeline */
   .produktseite-clean .sprint-step:not(:last-child)::before { background: #e7e2df; }
-  .produktseite-clean .sprint-step-marker { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
   .produktseite-clean .sprint-step-body h4 { color: var(--ink); }
   .produktseite-clean .sprint-step-meta { color: var(--grey-70); }
-  .produktseite-clean .sprint-substep-tag { color: #fff; background: #C51F5D; border-color: #C51F5D; }
+  .produktseite-clean .sprint-substep-tag { color: #1a1817; background: #fff400; border-color: #fff400; }
   .produktseite-clean .sprint-substep p { color: var(--grey-70); }
 
   /* Sektionsköpfe / Vorteile-Kästen (immer clean weiß) */
-  .produktseite-clean .produkt-section-head .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-section-head .kicker { color: #1a1817; }
   .produktseite-clean .produkt-section-head h2 { color: var(--ink); }
   .produktseite-clean .produkt-section-head p { color: var(--grey-70); }
 
   /* Zweispaltige Vorschau-Sektion (z.B. "Erfolgsfaktor") */
-  .produktseite-clean .vorschau-split-text .kicker { color: #C51F5D; }
+  .produktseite-clean .vorschau-split-text .kicker { color: #1a1817; }
   .produktseite-clean .vorschau-split-text h2 { color: var(--ink); }
   .produktseite-clean .vorschau-split-text p { color: var(--grey-70); }
   .produktseite-clean .vorschau-facts-list { border-top-color: #e7e2df; }
   .produktseite-clean .vorschau-facts-list li { color: var(--ink); }
-  .produktseite-clean .vorschau-facts-list li::before { background: #C51F5D; }
+  .produktseite-clean .vorschau-facts-list li::before { background: #1a1817; }
   .produktseite-clean .produkt-glass { background: #fff; border: 1px solid #e7e2df; box-shadow: 0 14px 34px rgba(0,0,0,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .produktseite-clean .produkt-glass:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(0,0,0,.08); background: #fff; border-color: #e7e2df; }
   .produktseite-clean .produkt-glass h3 { color: var(--ink); }
   .produktseite-clean .produkt-glass p { color: var(--grey-70); }
   .produktseite-clean .feature-icon { background: none; border: none; border-radius: 0; width: auto; height: auto; margin-bottom: 18px; }
-  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #C51F5D; }
+  .produktseite-clean .feature-icon svg { width: 36px; height: 36px; color: #1a1817; }
   .produktseite-clean .topics-list li { color: var(--ink); }
-  .produktseite-clean .topics-list li::before { background: #C51F5D; }
+  .produktseite-clean .topics-list li::before { background: #1a1817; }
 
   /* Preis-Hinweis-Karte (einzelner großer Preis) */
   .produktseite-clean .price-note-card { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
+  .produktseite-clean .price-note-card--feature { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; box-shadow: 0 30px 70px rgba(0,0,0,.18); }
   .produktseite-clean .price-note-amount { color: #fff; }
   .produktseite-clean .price-note-unit { color: rgba(255,255,255,.75); }
   .produktseite-clean .price-note-detail { color: rgba(255,255,255,.85); }
@@ -264,35 +268,35 @@
   .produktseite-clean .price-unit, .produktseite-clean .price-note { color: var(--grey-70); }
   .produktseite-clean .price-features { border-top-color: #e7e2df; }
   .produktseite-clean .price-features li { color: var(--ink); }
-  .produktseite-clean .price-features li::before { background: #C51F5D; }
-  .produktseite-clean .price-badge { background: #C51F5D; border-color: #C51F5D; color: #fff; }
-  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; }
-  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #C51F5D 0%, #7a1339 100%); border-color: transparent; }
+  .produktseite-clean .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-badge { background: #fff400; border-color: #fff400; color: #1a1817; }
+  .produktseite-clean .price-card--featured { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
+  .produktseite-clean .price-card--featured:hover { background: linear-gradient(155deg, #fff400 0%, #fff400 100%); border-color: transparent; }
   .produktseite-clean .price-card--featured h3, .produktseite-clean .price-card--featured .price-amount,
-  .produktseite-clean .price-card--featured .price-features li { color: #fff; }
+  .produktseite-clean .price-card--featured .price-features li { color: #1a1817; }
   .produktseite-clean .price-card--featured .price-name-sub, .produktseite-clean .price-card--featured .price-desc,
-  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(255,255,255,.82); }
-  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(255,255,255,.3); }
-  .produktseite-clean .price-card--featured .price-features li::before { background: #fff; }
-  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #7a1339; border-color: #fff; }
+  .produktseite-clean .price-card--featured .price-unit, .produktseite-clean .price-card--featured .price-note { color: rgba(26,24,23,.82); }
+  .produktseite-clean .price-card--featured .price-features { border-top-color: rgba(26,24,23,.3); }
+  .produktseite-clean .price-card--featured .price-features li::before { background: #1a1817; }
+  .produktseite-clean .price-card--featured .price-badge { background: #fff; color: #1a1817; border-color: #1a1817; }
   .produktseite-clean .pricing-footnote { color: var(--grey-50); }
   .produktseite-clean .price-more-btn { margin-top: 30px; align-self: center; }
-  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #7a1339; border-color: #fff; }
-  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #7a1339; opacity: .92; }
+  .produktseite-clean .price-card--featured .btn--outline { background: #fff; color: #1a1817; border-color: #fff; }
+  .produktseite-clean .price-card--featured .btn--outline:hover { background: #fff; color: #1a1817; opacity: .92; }
   .produktseite-clean .price-ideal-band { background: var(--grey-bg); }
   .produktseite-clean .price-ideal { color: var(--ink); }
   .produktseite-clean .price-card--featured .price-ideal-band { background: rgba(0,0,0,.16); }
-  .produktseite-clean .price-card--featured .price-ideal { color: #fff; }
+  .produktseite-clean .price-card--featured .price-ideal { color: #1a1817; }
 
   /* Ablauf-Popups (je Paket, "Mehr erfahren") — nutzen dieselbe Timeline wie Sprint Landingpage */
-  .produktseite-clean .modal .sprint-step-marker { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .modal .sprint-step-marker { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   /* Hervorgehobener USP-Banner unterhalb der Feature-Kacheln (z.B. "Kein Briefing nötig") —
      bewusst NICHT im weißen .produkt-glass-Stil, sondern als eigenständiger, farbiger Block. */
   .produktseite-clean .usp-highlight {
     margin-top: 28px; padding: clamp(28px, 4vw, 44px);
-    border-radius: 22px; background: linear-gradient(150deg, #C51F5D 0%, #7a1339 100%);
-    color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.18);
+    border-radius: 22px; background: linear-gradient(150deg, #fff400 0%, #fff400 100%);
+    color: #1a1817; box-shadow: 0 30px 70px rgba(0,0,0,.18);
     display: flex; flex-wrap: wrap; align-items: center; gap: clamp(18px, 3vw, 36px);
   }
   .produktseite-clean .usp-highlight-icon {
@@ -311,7 +315,7 @@
   /* Prozess-Schritte */
   .produktseite-clean .produkt-process-step { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-process-step:hover { background: #faf8f7; transform: translateY(-3px); }
-  .produktseite-clean .produkt-process-step .step-num { color: #C51F5D; }
+  .produktseite-clean .produkt-process-step .step-num { color: #1a1817; }
   .produktseite-clean .produkt-process-step h3 { color: var(--ink); }
   .produktseite-clean .produkt-process-step p { color: var(--grey-70); }
 
@@ -320,36 +324,36 @@
      statt weißer Schrift (sonst unlesbar auf hellem Grund). */
   .produktseite-clean .vergleich-bild { background: var(--grey-bg); border: 1px solid #e7e2df; }
   .produktseite-clean .vergleich-label { color: var(--ink); }
-  .produktseite-clean .vergleich-label--brand { color: #C51F5D; }
+  .produktseite-clean .vergleich-label--brand { color: #1a1817; }
   .produktseite-clean .vergleich-timeline { background: #fff; border: 1px solid #e7e2df; }
-  .produktseite-clean .vergleich-timeline--outline { border-color: #C51F5D; }
+  .produktseite-clean .vergleich-timeline--outline { border-color: #fff400; }
   .produktseite-clean .vergleich-pill { background: var(--grey-bg); border: 1px solid #e7e2df; color: var(--ink); }
-  .produktseite-clean .vergleich-rocket { border-color: rgba(255,255,255,.5); }
+  .produktseite-clean .vergleich-rocket { border-color: rgba(26,24,23,.5); }
   .produktseite-clean .vergleich-bonus { color: var(--ink); }
-  .produktseite-clean .vergleich-bonus svg { color: #C51F5D; }
+  .produktseite-clean .vergleich-bonus svg { color: #1a1817; }
 
   /* FAQ */
   .produktseite-clean .produkt-faq-item { background: #fff; border: 1px solid #e7e2df; }
   .produktseite-clean .produkt-faq-item:hover { background: #faf8f7; border-color: #e7e2df; }
   .produktseite-clean .produkt-faq-item summary { color: var(--ink); }
-  .produktseite-clean .produkt-faq-item summary::after { color: #C51F5D; }
+  .produktseite-clean .produkt-faq-item summary::after { color: #1a1817; }
   .produktseite-clean .produkt-faq-item p { color: var(--grey-70); }
 
   /* Ansprechpartner + finaler CTA */
   .produktseite-clean .produkt-team-cta { background: #fff; padding-bottom: clamp(60px, 8vw, 110px); }
-  .produktseite-clean .produkt-team-cta .kicker { color: #C51F5D; }
+  .produktseite-clean .produkt-team-cta .kicker { color: #1a1817; }
   .produktseite-clean .produkt-team-cta h2, .produktseite-clean .produkt-cta h2 { color: var(--ink); }
   .produktseite-clean .produkt-team-cta-sub { color: var(--grey-70); }
   .produktseite-clean .ansprechpartner-name { color: var(--ink); }
   .produktseite-clean .ansprechpartner-role { color: var(--grey-50); }
-  .produktseite-clean .produkt-cta .btn--dark { background: #C51F5D; border-color: #C51F5D; color: #fff; }
+  .produktseite-clean .produkt-cta .btn--dark { background: #fff400; border-color: #fff400; color: #1a1817; }
 
   body.produktseite-clean .site-footer { background: var(--black); }
 
 </style>
 
 </head>
-<body class="produktseite produktseite-clean produktseite--workshops">
+<body class="e2 produktseite produktseite-clean produktseite--workshops">
 
 <!-- ===== SVG icon symbols ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -541,7 +545,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+    <a class="brand" href="/" aria-label="empiria Startseite">
       <img src="/assets/empiria-logo.svg" alt="empiria">
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
@@ -1113,72 +1117,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </header>
 
 <main>
+<div class="e2-alt e2-alt--magenta e2-seite--workshops">
   <!-- ===== Hero ===== -->
-  <section class="produkt-hero">
-    <div class="container">
-    <div class="produkt-hero-grid">
-      <div class="produkt-hero-text">
-        <p class="kicker">Workshops</p>
-        <h1 class="h-serif">Workshops, <span class="hl">die wirken.</span> Nicht nur Theorie.</h1>
-        <div class="produkt-hero-lead-cols produkt-hero-lead-cols--single" style="max-width:none;gap:1.6em">
-        <p class="lead">Ob Künstliche Intelligenz, eine neue Landingpage oder die Moderation Deines nächsten Workshops. Aus unseren Projekten sind Formate entstanden, die Du direkt buchen kannst.</p>
-        <p class="lead">Jeder Workshop ist auf einen konkreten Anwendungsfall zugeschnitten – mit klaren Ergebnissen und einer Moderation, die Dein Team wirklich ans Ziel bringt.</p>
-      </div>
-              <div class="produkt-pills">
+  <section class="e2-kopf" id="intro"><div class="e2-wrap e2-kopf__raster">
+  <div class="e2-kopf__text"><p class="e2-kicker">Workshops</p><h1>Workshops, <span class="hl">die wirken.</span> Nicht nur Theorie.</h1>
+    <div class="e2-kopf__inhalt"><p>Ob Künstliche Intelligenz, eine neue Landingpage oder die Moderation Deines nächsten Workshops. Aus unseren Projekten sind Formate entstanden, die Du direkt buchen kannst.</p><div class="produkt-pills">
         <span class="produkt-pill reveal">KI zum Anfassen</span>
         <span class="produkt-pill reveal">Sprint Landingpage</span>
         <span class="produkt-pill reveal">Moderation deines Workshops</span>
-      </div>
-
-      </div>
-      <div class="produkt-hero-visual">
-              <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Metaplanwand auf einem Stellwand-Gestell mit angepinnten Moderationskarten in Clustern">
-          <rect x="54.0" y="14.0" width="252.0" height="178.0" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
-          <circle cx="180.0" cy="22.0" r="3.0" fill="rgba(255,255,255,.6)"/>
-          <rect x="70.0" y="28.0" width="220.0" height="26.0" rx="3" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.5)" stroke-width="1.3"/>
-          <rect x="84.0" y="38.0" width="192.0" height="6.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <circle cx="104.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="70.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="78.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="78.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="180.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="146.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="154.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="154.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="256.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="222.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="230.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="230.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="104.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="70.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="78.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="78.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="180.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="146.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="154.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="154.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="256.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="222.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="230.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="230.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <line x1="78.0" y1="192.0" x2="52.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="78.0" y1="192.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="52.0" y1="260.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="282.0" y1="192.0" x2="256.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="282.0" y1="192.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="256.0" y1="260.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="20.0" y1="268.0" x2="340.0" y2="268.0" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/>
-        </svg>
-      </div>
-      </div>
-    </div>
-    <div class="produkt-hero-actions produkt-hero-actions--center">
-      <a class="btn btn--dark" href="#naechste-sektion">Workshops kennenlernen</a>
-      
-    </div>
-    </div>
-  </section>
+      </div></div>
+    <div class="e2-knoepfe"><a class="e2-knopf" href="#naechste-sektion">Workshops kennenlernen <svg class="e2-pfeil" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="e2-kopfbild"><svg class="e2-bild e2-bild--gross" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(30 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></g><text x="80" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">KI</text><g transform="translate(170 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g><text x="220" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">LANDINGPAGE</text><g transform="translate(310 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g><text x="360" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">MODERATION</text></svg><svg class="e2-bild e2-bild--mobil" viewBox="26 112 392 186" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(30 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></g><text x="80" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">KI</text><g transform="translate(170 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /> <path d="M10 4v4" /> <path d="M2 8h20" /> <path d="M6 4v4" /></g><text x="220" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">LANDINGPAGE</text><g transform="translate(310 116) scale(4.1667)" fill="none" stroke="#1a1817" stroke-width="1.248" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g><text x="360" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="#1a1817" text-anchor="middle" font-family="Poppins, Arial, sans-serif">MODERATION</text></svg></div>
+</div></section>
 
   <span id="naechste-sektion" class="section-anchor" aria-hidden="true"></span>
   <!-- ===== Vorteile ===== -->
@@ -1217,33 +1167,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
       <div class="media-boxes-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1088px; margin-left: auto; margin-right: auto;">
         <a class="media-box sprint-structure-card media-box--icon" href="/ki-zum-anfassen" aria-label="Mehr erfahren: KI zum Anfassen">
-          <div class="media-box-thumb media-box-thumb--mock">
-                  <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze eines MacBooks mit einer stilisierten KI-Eingabemaske, überlagert von einem kleineren Smartphone mit derselben Eingabemaske">
-          <rect x="20.0" y="16.0" width="300.0" height="190.0" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <rect x="30.0" y="26.0" width="280.0" height="170.0" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
-          <rect x="46.0" y="50.0" width="198.4" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.4)"/>
-          <rect x="46.0" y="66.1" width="148.8" height="6.9" rx="3.4499999999999997" fill="rgba(255,255,255,.25)"/>
-          <rect x="46.0" y="93.7" width="248.0" height="25.3" rx="12.649999999999999" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="1.4949999999999999"/>
-          <rect x="57.5" y="104.0" width="104.2" height="4.6" rx="2.3" fill="rgba(255,255,255,.3)"/>
-          <circle cx="281.4" cy="106.3" r="8.1" fill="rgba(255,255,255,.55)"/>
-          <path d="M278.1,102.7 L285.8,106.3 L278.1,110.0 Z" fill="rgba(0,0,0,.55)"/>
-          <path d="M4.0,220.0 L336.0,220.0 L314.0,206.0 L26.0,206.0 Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.32)" stroke-width="1.4"/>
-          <rect x="146.0" y="211.0" width="48.0" height="4.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <g transform="rotate(5 304.0 198.0)">
-          <rect class="mock-phone-body" x="250.0" y="110.0" width="108.0" height="176.0" rx="20" fill="rgba(10,10,14,.92)" stroke="rgba(255,255,255,.5)" stroke-width="1.8"/>
-          <rect x="258.0" y="118.0" width="92.0" height="160.0" rx="13" fill="rgba(255,255,255,.05)"/>
-          <rect x="266.0" y="144.0" width="60.8" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.4)"/>
-          <rect x="266.0" y="152.7" width="45.6" height="3.7" rx="1.8599999999999999" fill="rgba(255,255,255,.25)"/>
-          <rect x="266.0" y="167.6" width="76.0" height="13.6" rx="6.82" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width="0.806"/>
-          <rect x="272.2" y="173.1" width="31.9" height="2.5" rx="1.24" fill="rgba(255,255,255,.3)"/>
-          <circle cx="335.2" cy="174.4" r="4.4" fill="rgba(255,255,255,.55)"/>
-          <path d="M333.4,172.4 L337.6,174.4 L333.4,176.3 Z" fill="rgba(0,0,0,.55)"/>
-          <rect x="288.0" y="276.0" width="32.0" height="3.4" rx="1.7" fill="rgba(255,255,255,.4)"/>
-          </g>
-        </svg>
-      </div>
-          </div>
+          <div class="media-box-thumb e2-wk-thumb"><svg class="e2-wk-bild" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#1a1817" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /> <path d="M7 11h10" /> <path d="M7 15h6" /> <path d="M7 7h8" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></g></svg></div>
           <div class="media-box-footer">
             <span class="media-box-title">KI zum Anfassen</span>
             <p class="media-box-desc">Echte KI-Tools, echte Usecases aus der Versicherungsbranche – Schluss mit Arbeitskreisen ohne Praxis.</p>
@@ -1251,115 +1175,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </a>
         <a class="media-box sprint-structure-card media-box--icon" href="/sprint-landingpage" aria-label="Mehr erfahren: Sprint Landingpage">
-          <div class="media-box-thumb media-box-thumb--mock">
-                  <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 880 1092" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Struktur einer Landingpage: Header, Problem, Lösung &amp; USP, Ablauf, About us, Leadmagnet, Kontakt, Footer">
-          <rect x="300.0" y="30.0" width="280.0" height="1032.0" rx="18" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <circle cx="318.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
-          <circle cx="334.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
-          <circle cx="350.0" cy="50.0" r="4.0" fill="rgba(255,255,255,.3)"/>
-          <line x1="300.0" y1="70.0" x2="580.0" y2="70.0" stroke="rgba(255,255,255,.14)" stroke-width="1.4"/>
-          <rect x="320.0" y="86.0" width="30.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="482.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
-          <rect x="508.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
-          <rect x="534.0" y="87.0" width="20.0" height="8.0" rx="2" fill="rgba(255,255,255,.25)"/>
-          <rect x="320.0" y="112.0" width="196.8" height="14.0" rx="3" fill="rgba(255,255,255,.85)"/>
-          <rect x="320.0" y="133.0" width="134.4" height="9.0" rx="2" fill="rgba(255,255,255,.4)"/>
-          <rect x="320.0" y="154.0" width="70.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
-          <line x1="581.0" y1="132.0" x2="594.0" y2="132.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="132.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="120.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Header</text>
-          <text x="604.0" y="139.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Erster Eindruck, Navigation</text>
-          <text x="604.0" y="154.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">&amp; ggf. Testimonials</text>
-          <rect x="300.0" y="194.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="194.0" x2="580.0" y2="194.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <circle cx="334.0" cy="224.0" r="12.0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
-          <rect x="332.7" y="218.0" width="2.6" height="9.0" rx="1.3" fill="rgba(255,255,255,.6)"/>
-          <circle cx="334.0" cy="231.5" r="1.6" fill="rgba(255,255,255,.6)"/>
-          <rect x="360.0" y="210.0" width="200.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="360.0" y="226.0" width="156.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="360.0" y="242.0" width="110.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="286.0" y1="256.0" x2="299.0" y2="256.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="256.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="244.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Problem</text>
-          <text x="276.0" y="263.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Die Ausgangslage, die dein</text>
-          <text x="276.0" y="278.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Gegenüber wiedererkennt</text>
-          <line x1="300.0" y1="318.0" x2="580.0" y2="318.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
-          <circle cx="356.7" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
-          <rect x="334.7" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
-          <rect x="403.3" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
-          <circle cx="440.0" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
-          <rect x="418.0" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
-          <rect x="486.7" y="328.0" width="73.3" height="84.0" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
-          <circle cx="523.3" cy="350.0" r="9.0" fill="rgba(255,255,255,.5)"/>
-          <rect x="501.3" y="370.0" width="44.0" height="7.0" rx="2" fill="rgba(255,255,255,.32)"/>
-          <line x1="581.0" y1="380.0" x2="594.0" y2="380.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="380.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="368.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Lösung &amp; USP</text>
-          <text x="604.0" y="387.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Dein Angebot und was</text>
-          <text x="604.0" y="402.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">dich unterscheidet</text>
-          <rect x="300.0" y="442.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="442.0" x2="580.0" y2="442.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <line x1="333.0" y1="484.0" x2="547.0" y2="484.0" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
-          <circle cx="333.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="333.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">1</text>
-          <circle cx="404.3" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="404.3" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">2</text>
-          <circle cx="475.7" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="475.7" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">3</text>
-          <circle cx="547.0" cy="484.0" r="13.0" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
-          <text x="547.0" y="488.0" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="rgba(255,255,255,.9)">4</text>
-          <line x1="286.0" y1="504.0" x2="299.0" y2="504.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="504.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="492.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Ablauf / Zusammenarbeit</text>
-          <text x="276.0" y="511.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wie die Zusammenarbeit</text>
-          <text x="276.0" y="526.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">konkret abläuft</text>
-          <line x1="300.0" y1="566.0" x2="580.0" y2="566.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <circle cx="342.0" cy="596.0" r="20.0" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
-          <rect x="376.0" y="580.0" width="184.0" height="8.0" rx="2" fill="rgba(255,255,255,0.32)"/>
-          <rect x="376.0" y="596.0" width="138.0" height="8.0" rx="2" fill="rgba(255,255,255,0.26)"/>
-          <rect x="376.0" y="612.0" width="92.0" height="8.0" rx="2" fill="rgba(255,255,255,0.20)"/>
-          <line x1="581.0" y1="628.0" x2="594.0" y2="628.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="628.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="616.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">About us</text>
-          <text x="604.0" y="635.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Wer dahintersteht –</text>
-          <text x="604.0" y="650.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Vertrauen durch Gesicht</text>
-          <rect x="300.0" y="690.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="690.0" x2="580.0" y2="690.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="696.0" width="240.0" height="84.0" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
-          <rect x="336.0" y="712.0" width="14.0" height="18.0" rx="2" fill="rgba(255,255,255,.45)"/>
-          <rect x="362.0" y="714.0" width="170.0" height="10.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <rect x="336.0" y="742.0" width="90.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
-          <line x1="286.0" y1="752.0" x2="299.0" y2="752.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="752.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="740.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Leadmagnet</text>
-          <text x="276.0" y="759.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Ein Mehrwert im Tausch</text>
-          <text x="276.0" y="774.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">gegen Kontaktdaten</text>
-          <line x1="300.0" y1="814.0" x2="580.0" y2="814.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="320.0" y="822.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
-          <rect x="320.0" y="848.0" width="240.0" height="16.0" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
-          <rect x="320.0" y="876.0" width="80.0" height="18.0" rx="9" fill="rgba(255,255,255,.9)"/>
-          <line x1="581.0" y1="876.0" x2="594.0" y2="876.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="580.0" cy="876.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="604.0" y="864.5" text-anchor="start" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Kontakt</text>
-          <text x="604.0" y="883.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Der letzte Schritt</text>
-          <text x="604.0" y="898.5" text-anchor="start" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">zur Anfrage</text>
-          <rect x="300.0" y="938.0" width="280.0" height="124.0" fill="rgba(255,255,255,.025)"/>
-          <line x1="300.0" y1="938.0" x2="580.0" y2="938.0" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-          <rect x="351.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <rect x="399.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <rect x="447.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <rect x="495.0" y="968.0" width="34.0" height="7.0" rx="2" fill="rgba(255,255,255,.3)"/>
-          <rect x="395.0" y="992.0" width="90.0" height="6.0" rx="2" fill="rgba(255,255,255,.2)"/>
-          <line x1="286.0" y1="1000.0" x2="299.0" y2="1000.0" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-          <circle cx="300.0" cy="1000.0" r="2.6" fill="rgba(255,255,255,.75)"/>
-          <text x="276.0" y="988.5" text-anchor="end" font-family="var(--font-serif)" font-size="15" font-weight="700" fill="rgba(255,255,255,.92)">Footer</text>
-          <text x="276.0" y="1007.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">Rechtliches &amp;</text>
-          <text x="276.0" y="1022.5" text-anchor="end" font-family="var(--font-sans)" font-size="11.5" fill="rgba(255,255,255,.6)">ergänzende Links</text>
-        </svg>
-      </div>
-          </div>
+          <div class="media-box-thumb e2-wk-thumb"><svg class="e2-wk-bild" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><text x="36" y="282" font-size="196" font-weight="700" letter-spacing="-6" fill="#1a1817" font-family="Lora, Georgia, serif">48h</text><g transform="translate(320 60) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /></g></svg></div>
           <div class="media-box-footer">
             <span class="media-box-title">Sprint Landingpage</span>
             <p class="media-box-desc">Deine Landingpage in 48 Stunden live – für den Moment, in dem es schnell gehen muss.</p>
@@ -1367,47 +1183,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           </div>
         </a>
         <a class="media-box sprint-structure-card media-box--icon" href="/workshop-moderation" aria-label="Mehr erfahren: Moderation deines Workshops">
-          <div class="media-box-thumb media-box-thumb--mock">
-                  <div class="produkt-mock-sketch reveal">
-        <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze einer Metaplanwand auf einem Stellwand-Gestell mit angepinnten Moderationskarten in Clustern">
-          <rect x="54.0" y="14.0" width="252.0" height="178.0" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.42)" stroke-width="1.6"/>
-          <circle cx="180.0" cy="22.0" r="3.0" fill="rgba(255,255,255,.6)"/>
-          <rect x="70.0" y="28.0" width="220.0" height="26.0" rx="3" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.5)" stroke-width="1.3"/>
-          <rect x="84.0" y="38.0" width="192.0" height="6.0" rx="2" fill="rgba(255,255,255,.55)"/>
-          <circle cx="104.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="70.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="78.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="78.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="180.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="146.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="154.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="154.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="256.0" cy="69.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="222.0" y="74.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="230.0" y="84.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="230.0" y="96.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="104.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="70.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="78.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="78.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="180.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="146.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="154.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="154.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <circle cx="256.0" cy="123.0" r="2.6" fill="rgba(255,255,255,.55)"/>
-          <rect x="222.0" y="128.0" width="68.0" height="40.0" rx="3" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
-          <rect x="230.0" y="138.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.40)"/>
-          <rect x="230.0" y="150.0" width="52.0" height="5.0" rx="2" fill="rgba(255,255,255,0.30)"/>
-          <line x1="78.0" y1="192.0" x2="52.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="78.0" y1="192.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="52.0" y1="260.0" x2="84.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="282.0" y1="192.0" x2="256.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="282.0" y1="192.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="256.0" y1="260.0" x2="288.0" y2="260.0" stroke="rgba(255,255,255,.4)" stroke-width="1.6"/>
-          <line x1="20.0" y1="268.0" x2="340.0" y2="268.0" stroke="rgba(255,255,255,.16)" stroke-width="1.2"/>
-        </svg>
-      </div>
-          </div>
+          <div class="media-box-thumb e2-wk-thumb"><svg class="e2-wk-bild" viewBox="0 0 440 400" role="img" font-family="Poppins, Arial, sans-serif"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#1a1817" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /> <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#1a1817" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></g></svg></div>
           <div class="media-box-footer">
             <span class="media-box-title">Moderation deines Workshops</span>
             <p class="media-box-desc">Gezielte Aktivierung, Perspektivwechsel und Handlungsklarheit – für Ergebnisse, mit denen sich weiterarbeiten lässt.</p>
@@ -1420,17 +1196,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <!-- ===== Download: Workshops-PDF ===== -->
   <section class="produkt-section" id="download">
     <div class="container">
-      <div class="pdf-dl pdf-dl--mist reveal" style="--dl-acc:#C51F5D;">
+      <div class="pdf-dl pdf-dl--mist reveal" style="--dl-acc:#fff400;">
         <div class="pdf-dl-visual" aria-hidden="true">
-          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/empiria-workshops-2.webp" alt="" loading="lazy">
-          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/empiria-workshops-1.webp" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--back" src="/assets/downloads/2.0/empiria-workshops-2.png" alt="" loading="lazy">
+          <img class="pdf-dl-page pdf-dl-page--front" src="/assets/downloads/2.0/empiria-workshops-1.png" alt="" loading="lazy">
         </div>
         <div class="pdf-dl-text">
           <p class="pdf-dl-kicker">Download</p>
-          <h2 class="pdf-dl-h">Alle Workshops auf <span class="hl-acc">einen Blick.</span></h2>
+          <h2 class="pdf-dl-h">Alle Workshops auf <span class="e2-dl-hl e2-dl-hl--magenta">einen Blick.</span></h2>
           <p class="pdf-dl-lead">Ansatz, Formate, Umfang und Investition – kompakt zusammengefasst. Zum Nachlesen und Weitergeben an Dein Team oder Deine Entscheider.</p>
-          <div class="pdf-dl-meta"><span>PDF</span><span>4 Seiten</span><span>0,7 MB</span></div>
-          <a class="pdf-dl-btn" href="/assets/downloads/empiria-workshops.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="pdf-dl-meta"><span>PDF</span><span>10 Seiten</span><span>0,6 MB</span></div>
+          <a class="pdf-dl-btn" href="/assets/downloads/2.0/empiria-workshops.pdf" target="_blank" rel="noopener">PDF herunterladen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -1465,6 +1241,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
     </div>
   </section>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("[data-e2-auf]");if(a){document.getElementById(a.getAttribute("data-e2-auf")).showModal();return;}
+var z=e.target.closest(".e2-dialog__zu");if(z){z.closest("dialog").close();return;}if(e.target.tagName==="DIALOG")e.target.close();});</script></div>
 </main>
 
 

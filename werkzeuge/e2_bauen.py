@@ -18,6 +18,12 @@ import e2_runde5
 
 SITE = Path(__file__).resolve().parent.parent / "site"
 ZIEL = SITE / "projekte" / "empiria-2"
+QUELLE = SITE.parent / "werkzeuge" / "e2_quelle"   # Originalseiten (seit 10.10. sind die echten Seiten auf Daniel die 2.0-Fassung)
+
+
+def original_lesen(pfad):
+    q = QUELLE / pfad
+    return (q if q.exists() else SITE / pfad).read_text(encoding="utf-8")
 CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-seiten.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">'
 
 # Originalseite -> Seite im Entwurf; Links darauf werden im Entwurf auf die 2.0-Fassung umgebogen
@@ -108,7 +114,7 @@ def links_umbiegen(html):
 
 # ---------- Seitenrahmen ----------
 def seite(original, main, titel_zusatz="empiria 2.0 · Entwurf", h=None):
-    h = h or (SITE / original).read_text(encoding="utf-8")
+    h = h or original_lesen(original)
     a, b = h.index("<main"), h.index("</main>") + 7
     kopf, fuss = h[:a], h[b:]
     kopf = kopf.replace('<link rel="stylesheet" href="/styles.css">', '<link rel="stylesheet" href="/styles.css">\n' + CSS, 1)
@@ -187,7 +193,7 @@ def _alt_mit_strategie2(html):
 
 # ---------- Formensprache der empiria-Startseite (kräftige geometrische Formen, viewBox 232.44) ----------
 def _sprite(name):
-    t = (SITE / "index.html").read_text(encoding="utf-8")
+    t = original_lesen("index.html")
     return re.search(rf'<symbol id="ic-{name}"[^>]*>\s*(.*?)\s*</symbol>', t, re.S).group(1)
 
 
@@ -628,7 +634,7 @@ def unterseite(original, ziel, html=None):
 
 # ---------- Startseite ----------
 def startseite():
-    h = (SITE / "index.html").read_text(encoding="utf-8")
+    h = original_lesen("index.html")
     held = abschnitt(h, 'id="hero"')
     h1 = eins(r"<h1>(.*?)</h1>", held)
     pfeil = eins(r'<div class="hero-arrow">(.*?)</div>', held)
@@ -758,5 +764,36 @@ def main():
     print("gebaut:", ", ".join(SEITEN.values()), "+ strategie-alt.html")
 
 
+# ---------- Veröffentlichen auf dem Daniel-Branch (10.10.2026) ----------
+def veroeffentlichen():
+    """Die 2.0-Seiten werden zu den echten Seiten unter ihren echten Adressen (nur Daniel-Branch, nicht main).
+    Links zeigen wieder auf die echten Adressen, Kopfdaten (Titel, Beschreibung, canonical, og:*, robots) kommen aus dem Original.
+    Das Entwicklungsmenü bleibt unverändert (es verlinkt weiter auf /projekte/empiria-2/…)."""
+    zurueck = {}
+    for live, ziel in LINKS.items():
+        if live != "/index.html" and ziel not in zurueck:
+            zurueck[ziel] = live
+    muster = re.compile(r'(href|action)="/projekte/empiria-2/([a-z0-9-]+\.html)')
+    KOPF_TAGS = [r"<title>.*?</title>", r'<meta name="description"[^>]*>', r'<meta name="robots"[^>]*>', r'<link rel="canonical"[^>]*>',
+                 r'<meta property="og:title"[^>]*>', r'<meta property="og:description"[^>]*>', r'<meta property="og:url"[^>]*>']
+
+    for orig, ziel in SEITEN.items():
+        html = (ZIEL / ziel).read_text(encoding="utf-8")
+        teile = re.split(r"(<!-- ENTWICKLUNG:START -->.*?<!-- ENTWICKLUNG:END -->)", html, flags=re.S)
+        html = "".join(t if t.startswith("<!-- ENTWICKLUNG:START") else
+                       muster.sub(lambda m: f'{m.group(1)}="{zurueck.get(m.group(2), "/projekte/empiria-2/" + m.group(2))}', t) for t in teile)
+        quelle = original_lesen(orig)
+        q_kopf = quelle[:quelle.index("</head>")]
+        a = html.index("</head>")
+        kopf = html[:a]
+        for tag in KOPF_TAGS:
+            alt = re.search(tag, q_kopf, re.S)
+            if alt:
+                kopf, n = re.subn(tag, lambda _: alt.group(0), kopf, count=1, flags=re.S)
+        (SITE / orig).write_text(kopf + html[a:], encoding="utf-8")
+    print("veröffentlicht:", len(SEITEN), "Seiten unter ihren echten Adressen (Daniel-Branch)")
+
+
 if __name__ == "__main__":
     main()
+    veroeffentlichen()

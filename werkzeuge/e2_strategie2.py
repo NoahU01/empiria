@@ -10,6 +10,12 @@ from pathlib import Path
 from e2_lucide import ICONS
 
 SITE = Path(__file__).resolve().parent.parent / "site"
+QUELLE = Path(__file__).resolve().parent / "e2_quelle"
+
+
+def _lesen(pfad):
+    q = QUELLE / pfad
+    return (q if q.exists() else SITE / pfad).read_text(encoding="utf-8")
 
 
 def _abschnitt(html, marker):
@@ -36,9 +42,9 @@ def _sym(n):
 
 
 def quelle():
-    st = (SITE / "leistungen" / "strategie.html").read_text(encoding="utf-8")
+    st = _lesen("leistungen/strategie.html")
     sm = st[st.index("<main"):st.index("</main>")]
-    rahmen = (SITE / "ki-zum-anfassen.html").read_text(encoding="utf-8")
+    rahmen = _lesen("ki-zum-anfassen.html")
 
     # Kopf (Inhalt der Strategie-Seite, Aufbau der Produktseiten)
     held = _abschnitt(sm, 'leistung-hero')
