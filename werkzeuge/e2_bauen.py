@@ -4,7 +4,7 @@
 Daniels Auftrag (09.10.2026): Startseite, Strategiehandwerk (+3 Unterseiten) und Workshops (+3 Unterseiten)
 grafisch in die Klarheit der Wagenpaten-Seite übersetzen. Texte und Abschnitte bleiben 1:1 – deshalb werden alle
 Inhalte hier aus den Originalseiten gelesen, nicht abgetippt. Kopf, Menü, Fuß, Detailfenster und Skripte kommen
-unverändert aus der jeweiligen Originalseite; nur <main> wird neu gesetzt (Gestaltung: assets/projekte/empiria-2/e2.css).
+unverändert aus der jeweiligen Originalseite; nur <main> wird neu gesetzt (Gestaltung: assets/e2/e2.css).
 
     python3 werkzeuge/e2_bauen.py
 """
@@ -25,7 +25,7 @@ QUELLE = SITE.parent / "werkzeuge" / "e2_quelle"   # Originalseiten (seit 10.10.
 def original_lesen(pfad):
     q = QUELLE / pfad
     return (q if q.exists() else SITE / pfad).read_text(encoding="utf-8")
-CSS = '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-seiten.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">'
+CSS = '<link rel="stylesheet" href="/assets/e2/e2.css">\n<link rel="stylesheet" href="/assets/e2/e2-seiten.css">\n<link rel="stylesheet" href="/assets/e2/e2-runde5.css">'
 
 # Originalseite -> Seite im Entwurf; Links darauf werden im Entwurf auf die 2.0-Fassung umgebogen
 SEITEN = {
@@ -163,16 +163,16 @@ def mit_strategie2(html):
     if not SCHWARZ_GELB:
         return html
     import e2_schwarzgelb
-    html = html.replace('<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">', '<link rel="stylesheet" href="/assets/projekte/empiria-2/e2-runde5.css">\n<link rel="stylesheet" href="/assets/projekte/empiria-2/schwarzgelb-ergaenzung.css">', 1)
-    html = html.replace('href="/styles.css"', 'href="/assets/projekte/empiria-2/sg/styles.css"').replace('href="/assets/projekte/empiria-2/e2', 'href="/assets/projekte/empiria-2/sg/e2')
+    html = html.replace('<link rel="stylesheet" href="/assets/e2/e2-runde5.css">', '<link rel="stylesheet" href="/assets/e2/e2-runde5.css">\n<link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">', 1)
+    html = html.replace('href="/styles.css"', 'href="/assets/e2/sg/styles.css"').replace('href="/assets/e2/e2', 'href="/assets/e2/sg/e2')
     return e2_schwarzgelb.html(html)
 
 
 def schwarzgelb_css():
     """Umgefärbte Kopien der Stylesheets für den Schwarz-Gelb-Versuch (Originale bleiben unverändert)."""
     import e2_schwarzgelb
-    ziel = SITE / "assets/projekte/empiria-2/sg"; ziel.mkdir(exist_ok=True)
-    for quelle in [SITE / "styles.css"] + [SITE / f"assets/projekte/empiria-2/{n}.css" for n in ("e2", "e2-seiten", "e2-runde5")]:
+    ziel = SITE / "assets/e2/sg"; ziel.mkdir(exist_ok=True)
+    for quelle in [SITE / "styles.css"] + [SITE / f"assets/e2/{n}.css" for n in ("e2", "e2-seiten", "e2-runde5")]:
         text = quelle.read_text(encoding="utf-8").replace('url("./assets/', 'url("/assets/')
         (ziel / quelle.name).write_text(e2_schwarzgelb.css(text), encoding="utf-8")
 

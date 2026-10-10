@@ -6,7 +6,7 @@ in den Stylesheets und in den Seiten nach einer festen Regel ersetzt:
   · Schrift, Linien, Icons (color, stroke, fill)                    → Schwarz #1a1817
   · Wird in einer Regel eine Fläche gelb, wird weiße Schrift derselben Regel schwarz.
   · Weiße Schrift auf den früheren Farbstreifen (Regeln für .e2-alt--magenta/cyan/violett) → schwarz.
-Die Originaldateien bleiben unverändert; die umgefärbten Stylesheets liegen in assets/projekte/empiria-2/sg/.
+Die Originaldateien bleiben unverändert; die umgefärbten Stylesheets liegen in assets/e2/sg/.
 """
 import re
 

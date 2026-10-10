@@ -26,7 +26,7 @@ import json, os, shutil, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
-from main_pruefen import INTERNE_SEITEN, INTERNE_PFADE  # noqa: E402
+from main_pruefen import INTERNE_SEITEN, INTERNE_PFADE, INTERNE_ORDNER  # noqa: E402
 
 QUELLE, ZIEL = "origin/Daniel", "main"
 
@@ -65,6 +65,11 @@ def entwicklungsteil_entfernen(baum):
         if os.path.exists(p):
             os.remove(p)
             weg.append(s)
+    for ordner in INTERNE_ORDNER:
+        p = os.path.join(baum, ordner)
+        if os.path.isdir(p):
+            shutil.rmtree(p)
+            weg.append(ordner)
     if weg:
         bericht.append("interne Seiten geloescht: " + ", ".join(weg))
 

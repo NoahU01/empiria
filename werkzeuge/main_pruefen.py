@@ -73,6 +73,10 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
     "site/projekte/sv-meilensteine-fein.html",
     "site/projekte/sv-meilensteine-dunkel.html",
                   "site/assets/projekte/sv-rakete.webp"]
+# Ganze Ordner, die nie auf main dürfen (Daniel 10.10.2026): alles unter „Projekte“ ist Entwicklung –
+# empiria 3.0, Kopfbilder, Header, Darstellungsideen, PDF-Varianten, Volksfest, SV-Akademie …
+INTERNE_ORDNER = ["site/projekte/", "site/assets/projekte/"]
+
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter", "/visitenkarte",
                  "/projekte", "/strategie"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
@@ -140,6 +144,10 @@ def pruefen(q):
     # 2 Interne Seiten
     befunde["Interne Seiten"] = [f"{s} liegt im Stand" for s in INTERNE_SEITEN
                                  if q.gibt_es(s)]
+    for ordner in INTERNE_ORDNER:
+        rest = q.dateien(ordner.rstrip("/"), endung="")
+        if rest:
+            befunde["Interne Seiten"].append(f"{ordner} enthält {len(rest)} Datei(en), z. B. {rest[0]}")
 
     # 3 Rewrites
     rew = []
