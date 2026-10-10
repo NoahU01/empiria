@@ -24,10 +24,9 @@ WEB = "/projekte/ga/hintergruende"
 # Schlüssel, Name, Breite, Höhe, Art, Bildschirmbreite in cm (für die maßstäbliche Gerätereihe)
 FORMATE = [
     ("macbook", "MacBook", 3024, 1964, "mac", 30.2),
-    ("ipad13-quer", "iPad 13″ quer", 2752, 2064, "ipad", 28.1),
-    ("ipad13-hoch", "iPad 13″ hoch", 2064, 2752, "ipad", 21.0),
-    ("ipadmini-quer", "iPad mini quer", 2266, 1488, "ipad", 19.5),
-    ("ipadmini-hoch", "iPad mini hoch", 1488, 2266, "ipad", 13.4),
+    # iPad: iPadOS nutzt EIN Bild für quer und hoch und schneidet die Mitte aus → quadratisch, Wichtiges im mittleren 75-%-Feld
+    ("ipad13", "iPad 13″", 2752, 2752, "ipadq", 28.1),
+    ("ipadmini", "iPad mini", 2266, 2266, "ipadq", 19.5),
     ("iphone13mini", "iPhone 13 mini", 1080, 2340, "iphone", 6.2),
     ("iphone15", "iPhone 15/16", 1179, 2556, "iphone", 6.7),
     ("iphonepromax", "iPhone Pro Max", 1290, 2796, "iphone", 7.3),
@@ -83,6 +82,27 @@ def hintergrund(motiv, fmt):
     hoch = h > w
     rand, lh = .055 * m, .032 * m
     teile = []
+
+    if art == "ipadq":  # quadratisch; sichtbar bleibt quer das mittlere 75 % der Höhe, hoch das mittlere 75 % der Breite
+        s0, s1 = .125 * w, .875 * w
+        if motiv == "leistungen":
+            felder = [(GELB, "forward", SCHWARZ, .26), (SCHWARZ, "kreuz", GELB, .5), (GRAU_FL, "kreis", SCHWARZ, .74)]
+            for i, (farbe, z, zf, cy) in enumerate(felder):
+                gr = .15 * w
+                teile.append(flaeche(p, 0, i * h / 3, w, h / 3 + 1, farbe, zeichen_html(p, z, gr, s0 + .05 * w + gr / 2, cy * h - i * h / 3, zf)))
+        elif motiv.startswith("muster"):
+            ton = "#2b2926" if motiv == "muster-schwarz" else "#ebe100"
+            n = 8
+            zelle = w / n
+            for r in range(n):
+                for c in range(n):
+                    an = (c, r) == (5, 3)
+                    teile.append(zeichen_html(p, "forward", zelle * .52, (c + .5) * zelle, (r + .5) * zelle, fg if an else ton))
+        else:  # startseite
+            gr = .1 * w
+            teile.append(f'<h2 style="left:{p(s0 + .05 * w)};top:{p(.3 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
+            teile.append(zeichen_html(p, "forward", .26 * w, s0 + .05 * w + .13 * w, .3 * h + 2 * gr * 1.32 + .1 * h, SCHWARZ))
+        return f'<div class="hg" style="aspect-ratio:1/1;--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
 
     if motiv == "leistungen":
         felder = [(GELB, "forward", SCHWARZ), (SCHWARZ, "kreuz", GELB), (GRAU_FL, "kreis", SCHWARZ)]
@@ -208,14 +228,14 @@ PERSON = ('<svg viewBox="0 0 200 170" aria-hidden="true"><circle cx="100" cy="58
           '<path d="M14 170c0-48 38-74 86-74s86 26 86 74z" fill="rgba(60,60,60,.55)"/></svg>')
 
 
-def geraet(motiv, fmt):
+def geraet(motiv, fmt, lage=None):
     _, name, w, h, art, _ = FMT[fmt]
     bg = MOTIVE[motiv][1]
     ui_farbe = "#fff" if bg == SCHWARZ else "#1a1817"
     ui = ""
     if art == "mac":
         ui = '<div class="ui"><span class="ui-menue"></span><span class="ui-dock"></span></div>'
-    elif art == "ipad":
+    elif art == "ipadq":
         ui = '<div class="ui"><span class="ui-dock ui-dock--ipad"></span></div>'
     elif art == "iphone":
         ui = (f'<div class="ui" style="--ui:{ui_farbe}"><span class="ui-insel"></span><span class="ui-datum">Samstag, 10. Oktober</span>'
@@ -223,18 +243,30 @@ def geraet(motiv, fmt):
               '<span class="ui-strich"></span></div>')
     elif art == "video":
         ui = f'<div class="ui"><span class="ui-person">{PERSON}</span></div>'
+    if art == "ipadq":  # dieselbe quadratische Datei, so beschnitten, wie iPadOS sie zeigt
+        if lage == "quer":
+            bild = f'<div style="width:100%;margin-top:-12.5%">{hintergrund(motiv, fmt)}</div>'
+            return f'<div class="ger ger--ipad"><div class="scr" style="aspect-ratio:4/3">{bild}{ui}</div></div>'
+        bild = f'<div style="width:133.333%;margin-left:-16.667%">{hintergrund(motiv, fmt)}</div>'
+        return f'<div class="ger ger--ipad"><div class="scr" style="aspect-ratio:3/4">{bild}{ui}</div></div>'
     return f'<div class="ger ger--{art}"><div class="scr">{hintergrund(motiv, fmt)}{ui}</div></div>'
 
 
 def reihe(motiv, formate, faktor, cls=""):
     figs = []
-    for fmt in formate:
+    for eintrag in formate:
+        fmt, _, lage = eintrag.partition(":")
         _, name, w, h, art, cm = FMT[fmt]
-        gewicht = (cm or 34) * faktor if art != "video" else 46
+        if art == "ipadq":
+            gewicht = cm * (1 if lage == "quer" else .75) * faktor
+            label = f"{name} {lage} · dieselbe Datei {w} × {h}"
+        else:
+            gewicht = (cm or 34) * faktor if art != "video" else 46
+            label = f"{name} · {w} × {h}"
         breit = " gr-breit" if art in ("mac", "video") else ""
         basis = '<div class="ger-basis"></div>' if art == "mac" else ""
-        figs.append(f'<figure class="{breit.strip()}" style="flex:{gewicht:.2f} 1 0">{geraet(motiv, fmt)}{basis}'
-                    f'<p class="pm-label">{name} · {w} × {h}</p></figure>')
+        figs.append(f'<figure class="{breit.strip()}" style="flex:{gewicht:.2f} 1 0">{geraet(motiv, fmt, lage)}{basis}'
+                    f'<p class="pm-label">{label}</p></figure>')
     return f'<div class="gr {cls}">{"".join(figs)}</div>'
 
 
@@ -243,12 +275,12 @@ def main_html():
     for i, (mo, (name, _, _, _, text)) in enumerate(MOTIVE.items(), 1):
         links = "".join(download(f"{WEB}/{png_name(mo, f[0])}", f[1]) for f in FORMATE)
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
-                     + reihe(mo, ["macbook", "ipad13-quer", "ipad13-hoch", "ipadmini-quer", "ipadmini-hoch"], 1)
+                     + reihe(mo, ["macbook", "ipad13:quer", "ipad13:hoch", "ipadmini:quer", "ipadmini:hoch"], 1)
                      + reihe(mo, ["iphone13mini", "iphone15", "iphonepromax", "teams"], 1.7, "gr--phones")
                      + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
-                   'Vier Motive aus der Bildsprache der Homepage – Für MacBook, iPad, iPhone und Videokonferenzen. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
+                   'Vier Motive aus der Bildsprache der Homepage – Für MacBook, iPad, iPhone und Videokonferenzen. Beim iPad gibt es je ein quadratisches Bild für quer und hoch – iPadOS schneidet daraus selbst die Mitte aus; gezeigt ist, was in beiden Lagen zu sehen ist. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
                    'Auf dem iPhone bleiben Uhr und Widgets oben sowie die Knöpfe unten frei; bei Teams und Zoom sitzt die Person in der Mitte – alles Wichtige liegt am Rand.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n</main>')
