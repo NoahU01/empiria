@@ -1,0 +1,19 @@
+/* empiria 2.0 · Kontakt (Startseite unten + Kontaktseite) in der durchgängigen Designsprache (Daniel 10.10.2026).
+   Aufbau und Positionen bleiben; angeglichen werden Schrift, Highlight, Kicker und Knöpfe an den Kopf der Startseite. */
+.kontakt-standalone .kicker, .kontakt-standalone .e2-kicker {
+  display: flex !important; align-items: center; gap: .75rem; margin: 0 0 1.1rem !important;
+  font-family: 'Poppins', system-ui, sans-serif !important; font-size: .8rem !important; font-weight: 700 !important;
+  letter-spacing: .14em !important; text-transform: uppercase; color: #1a1817 !important; }
+.kontakt-standalone .kicker > span[style] { display: none !important; }
+.kontakt-standalone .kicker::before, .kontakt-standalone .e2-kicker::before { content: ""; width: 1.6rem; height: 2px; background: #1a1817; flex: 0 0 auto; }
+.kontakt-standalone :is(h1, h2).h-serif {
+  font-family: 'Lora', Georgia, serif !important; font-weight: 700 !important; letter-spacing: -.02em !important;
+  line-height: 1.2 !important; color: #1a1817 !important; }
+.kontakt-standalone :is(h1, h2) .hl {
+  font-weight: 700 !important; background: #fff400 !important; background-image: none !important; color: #1a1817 !important;
+  padding: 0 .12em .07em !important; margin-left: 0 !important; border-radius: .14em !important; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.kontakt-standalone .lead { font-weight: 300 !important; color: #3d3a37 !important; font-size: 1.2rem !important; line-height: 1.6 !important; margin-top: 1.8rem !important; }
+.kontakt-standalone .kontakt-standalone-note { font-weight: 600 !important; color: #1a1817 !important; }
+.kontakt-standalone .ks-pill { background: #1a1817 !important; border-color: #1a1817 !important; color: #fff !important; font-size: .98rem !important; font-weight: 600 !important; }
+.kontakt-standalone .ks-pill--ghost { background: transparent !important; color: #1a1817 !important; border: 1.5px solid #1a1817 !important; }
+.kontakt-standalone .ks-pill-icon :is(svg, use) { color: currentColor !important; }
