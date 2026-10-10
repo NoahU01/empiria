@@ -1,5 +1,5 @@
-"""PDF „1:1 Sparring“ im Stil des Musters KI zum Anfassen (10.10.2026).
-Quelle: site/projekte/empiria-2/sparring.html, ergänzend P["sparring"] im alten PDF.
+"""PDF „Sparring für Führungskräfte“ im Muster KI zum Anfassen – Runde 2 (10.10.2026).
+Quelle: site/projekte/empiria-2/sparring.html (Abschnitte in derselben Reihenfolge), ergänzend P["sparring"] im alten PDF.
 „1:1“ steht nur einmal – im Kopfbild der Titelseite."""
 from lib import (titelseite, kopfbild, seite, kopf, kicker, punkte, zeitstrahl, team, kontaktdaten, check, dokument, ico)
 
@@ -8,6 +8,7 @@ T = "Sparring für Führungskräfte"
 N = 4
 
 CSS = """
+h2, h3, .lead, .punkte p, .zs p, .kasten p { text-wrap: pretty; }
 .wann { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; margin-top: 5mm; }
 .wann > div { border-top: 1.6px solid #1a1817; padding-top: 3.6mm; display: flex; align-items: center; gap: 2.6mm; }
 .wann svg { width: 5.6mm; height: 5.6mm; flex: 0 0 auto; }
@@ -16,9 +17,8 @@ CSS = """
 .turbo .punkte svg { margin: 0; flex: 0 0 auto; width: 6mm; height: 6mm; }
 .turbo .punkte h3 { font-size: 11pt; line-height: 1.3; }
 .ueber { margin-top: 5mm; columns: 2; column-gap: 9mm; list-style: none; border-top: 1.6px solid #1a1817; }
-.ueber li { break-inside: avoid; position: relative; padding: 2.1mm 0 2.1mm 7mm; border-bottom: 1px solid #dcd8d1; font-size: 9.2pt; line-height: 1.45; }
-.ueber li::before { content: ""; position: absolute; left: 0; top: 4.2mm; width: 3mm; height: 1.6mm; border-left: 1.6px solid #1a1817; border-bottom: 1.6px solid #1a1817; transform: rotate(-45deg); }
-.label-s { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.ueber li { break-inside: avoid; position: relative; padding: 1.8mm 0 1.8mm 7mm; border-bottom: 1px solid #dcd8d1; font-size: 9.2pt; line-height: 1.45; }
+.ueber li::before { content: ""; position: absolute; left: 0; top: 3.9mm; width: 3mm; height: 1.6mm; border-left: 1.6px solid #1a1817; border-bottom: 1.6px solid #1a1817; transform: rotate(-45deg); }
 .turbo h2 { color: #fff; }
 .turbo .lead { color: rgba(255,255,255,.85); max-width: 165mm; }
 .turbo .schluss { margin-top: 6mm; padding-top: 0; border-top: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; }
@@ -56,13 +56,13 @@ def bauen():
              "Abwägen von Lösungswegen und Vorgehensweisen", "Positionierung gegenüber Vorstand und anderen Bereichen", "Umgang mit dem Aufsichtsrat",
              "Steuerung von Konzernunternehmen", "Konzeption von Kommunikation nach außen", "… und vieles mehr"]
     s3 = seite(
-        kopf(T) + '<div class="rand" style="padding-top:14mm">' + kicker("Themen")
+        kopf(T) + '<div class="rand" style="padding-top:16mm">' + kicker("Themen")
         + '<h2>So flexibel, wie es <span class="hl">für Dich passt.</span></h2>'
         + '<p class="lead" style="max-width:150mm">Der Alltag hält sich oftmals nicht an planbare Termine. Ich richte mich immer danach, wie es für Dich als Führungskraft passt. '
           'Oftmals ist ein kurzer Austausch genauso hilfreich wie ein strukturierter Termin – bei Bedarf auch zu Randzeiten.</p>'
-        + '<p class="label-s" style="margin-top:8mm">Wann wir sprechen</p>'
+        + '<p class="kicker" style="margin-top:8mm">Wann wir sprechen</p>'
         + '<div class="wann">' + "".join(f'<div>{ico(i)}<b>{t}</b></div>' for i, t in wann) + '</div>'
-        + '<p class="label-s" style="margin-top:8mm">Worüber wir sprechen</p>'
+        + '<p class="kicker" style="margin-top:8mm">Worüber wir sprechen</p>'
         + '<ul class="ueber">' + "".join(f"<li>{x}</li>" for x in ueber) + '</ul>'
         + '</div><div class="band band--schwarz wachsen turbo" style="margin-top:10mm;padding-top:10mm">' + kicker("Mehr als nur Sparring")
         + '<h2>Umsetzungsturbo!</h2>'
@@ -82,7 +82,7 @@ def bauen():
         + '<h2>Bereit für ein offenes Sparring <span class="hl">auf Augenhöhe?</span></h2>'
         + '<p class="lead">Sag mir, worüber Du offen sprechen willst – wir finden das Format, das in Deinen Alltag passt.</p>'
         + zeitstrahl([("01", "Kurz schildern", "Worum geht es, und was steht gerade an? Eine Mail, ein Anruf oder eine Kurznachricht reicht."),
-                      ("02", "Erstes Gespräch", "Wir sprechen offen über Dein Thema – persönlich, am Telefon oder wie es für Dich passt."),
+                      ("02", "Vorschlag erhalten", "Wir melden uns zeitnah mit Rückfragen und einem konkreten Vorschlag."),
                       ("03", "Festzurren", "Rhythmus, Umfang und Investition klären wir gemeinsam, bevor es losgeht.")])
         + '</div><div class="band band--gelb wachsen mitte" style="margin-top:14mm">' + kicker("Dein direkter Draht zu uns")
         + '<h2>Aus Gespräch wird Klarheit.</h2>'

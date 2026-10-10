@@ -38,3 +38,32 @@ Daniel hat das Muster **KI zum Anfassen** freigegeben. Alle PDFs der 2.0-Seiten 
 - Bauen + prüfen: `python3 werkzeuge/pdf2/bauen.py <slug>` → schreibt das PDF nach `site/assets/downloads/2.0/` und Seitenbilder nach `werkzeuge/pdf2/_build/<slug>-seiten/seite-N.png`; meldet, ob etwas herausragt.
 - **Jede Seite als Bild ansehen** (Read auf die PNGs) und so lange nachbessern, bis alles sauber ist: nichts ragt heraus, keine Löcher, keine verwaisten Einzelwörter, gleiche Höhen, Farbregeln eingehalten.
 - Nichts committen, nichts pushen, keine Website-Dateien ändern.
+
+---
+# Runde 2 (Daniel, 10.10.2026) – Überarbeitung ALLER PDFs
+
+## Grundsätze (gelten vor allem anderen)
+1. **Inhalt = die aktuelle 2.0-Seite.** Das PDF gibt die Seite sehr gut wieder – mit allen aktuellen Überschriften, Kopftexten, Abschnitten in derselben Reihenfolge und Logik. Die Seiten wurden in den letzten Tagen stark umgebaut: alles logisch neu gegen `site/projekte/empiria-2/<slug>.html` prüfen.
+2. **Plus Details aus Pop-ups/Fenstern:** Alles, was auf der Seite erst nach Klick sichtbar ist (`<dialog class="e2-dialog">`, `.modal-overlay`, „Mehr lesen“, „Module & Ergebnis“, Erklär-Knöpfe, Akkordeons), gehört ausführlich ins PDF. Das PDF ist die ausführliche Fassung.
+3. **Preise dürfen genannt werden** (so wie auf den Seiten).
+4. **Alte PDF-Texte (pages.py) nicht 1:1 übernehmen** – nur, wo sie zur aktuellen Seite passen. Lieber weglassen als Altes behalten, das der Seite widerspricht (z. B. „Für wen“-Listen nur, wenn sie zur Seite passen).
+5. **Alle PDFs gleich gebaut** – gleiche Bausteine, gleiche Reihenfolge-Logik, gleiche Abstände, gleiche Typografie. Kein PDF darf aus der Reihe fallen (die Strategiehandwerk-PDFs müssen genauso aussehen wie die übrigen).
+
+## Einheitlicher Aufbau (Pflicht, in dieser Reihenfolge, Abschnitte nur wenn die Seite sie hat)
+1. Titelseite: `titelseite()` – Kicker = Unterzeile der Seite, H1 exakt wie auf der Seite (gleiche Hervorhebung), Kopftext der Seite, Bild (Strategiehandwerk: großes Themen-Zeichen, sonst `kopfbild`), Faktenzeile mit 3–4 Fakten aus der Seite.
+2. Problem (falls Seite eins hat): Text oben + darunter gelbes Band „Die Lösung“ mit `punkte` – ODER bei Seiten ohne Problem: gelbes Band „Das bekommst Du/Unser Ansatz“ mit `punkte`.
+3. Inhaltsseiten in der Reihenfolge der Website-Abschnitte; Schritte immer als `zeitstrahl`, Module/Details als `liste`, Zwischenergebnisse/Hinweise als schwarzer `kasten`.
+4. Preise/Formate/Pakete: Vergleichstabelle wie `ki_varianten.formate_tabelle` (gelbe Spalte = auf der Seite hervorgehobenes Paket, sonst keine gelbe Spalte), darunter optional schwarzer Kasten „In jedem … enthalten“.
+5. Beispiele/Anwendungsfälle/FAQ: `liste` wie `ki_varianten.beispiele_liste` auf `seite--hell`; hervorgehobener Fall („Im Fokus“/„Sonderthema“) als schwarzes Band.
+6. Schluss: Kicker „Jetzt loslegen“, H2 = Kontakt-Überschrift der Seite mit Highlight, Lead, `zeitstrahl` 3 Schritte (Kurz schildern / Vorschlag erhalten / Festzurren), gelbes Band Kicker „Dein direkter Draht zu uns“ + H2 „Aus Gespräch wird Klarheit.“ + Team (Personen genau wie im Kontakt der 2.0-Seite) + `kontaktdaten()`.
+
+## Einheitliche Maße (nicht abweichen)
+- Innenseiten beginnen mit `kopf(Thema)`, Inhalt mit `'<div class="rand" style="padding-top:16mm">'` bzw. Bänder mit `margin-top:10mm` direkt unter dem Kopf.
+- H2 in Bändern und Seiten nur über das Standard-`<h2>` (keine eigenen Schriftgrößen). Kein eigenes `extra_css` für Typografie; extra_css nur für echte Sonderbausteine.
+- Fußzeile automatisch (Thema + Seitenzahl). Thema = kurzer Seitenname (z. B. „Strategie in den Alltag“, „Teams befähigen“).
+
+## Festlegungen zu Einzelfragen
+- Impulsvorträge: „Strategie für Aufsichtsräte“ als schwarzes Sonderthema-Band aufnehmen (Inhalt aus pages.py P["strategie-fuer-aufsichtsraete"] verdichten).
+- Sprint: „48“ nur einmal (im Titelbild); Schluss-Überschrift ohne Zahl.
+- Workshops-Übersicht: Preise aller drei Formate wie auf den Detailseiten; keine gelbe Spalte, solange die Seite keinen Favoriten markiert.
+- Paid Ads: Kanäle so nennen, wie es die Paid-Ads-Seite tut.

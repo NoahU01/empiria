@@ -43,7 +43,6 @@ CSS = """
 .bereich li { position: relative; padding: 1.5mm 0 1.5mm 4mm; border-bottom: 1px solid #e4e0db; font-size: 8.8pt; line-height: 1.5; }
 .bereich li:last-child { border-bottom: 0; }
 .bereich li::before { content: ""; position: absolute; left: 0; top: 3.6mm; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: #1a1817; }
-.profil-h { font-size: 26pt; }
 .hinweis p:last-child { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 12.5pt; line-height: 1.4; color: #fff; margin-top: 2mm; }
 """
 
@@ -54,7 +53,7 @@ def bauen():
         f'<ul>{"".join(f"<li>{x}</li>" for x in items)}</ul></div>' for i, t, items in BEREICHE)
     s1 = seite(
         kopf("Anforderungsprofil") + '<div class="rand" style="padding-top:16mm">' + kicker("Anforderungsprofil")
-        + '<h2 class="profil-h">Digitaler <span class="hl">Marketingmanager</span> (m/w/d)</h2>'
+        + '<h2>Digitaler <span class="hl">Marketingmanager</span> (m/w/d)</h2>'
         + '<p class="lead" style="max-width:174mm">Als Stratege, Controller, Grafiker und Entwickler in einem entwickelst Du die digitale '
           'Marketingstrategie, steuerst Homepage und Social-Media-Kanäle in einem übergreifenden Dashboard und setzt '
           'Kampagneninhalte und technische Anpassungen selbst um.</p>'

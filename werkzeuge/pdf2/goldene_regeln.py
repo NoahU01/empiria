@@ -24,8 +24,9 @@ CSS = """
 .poster .kicker { margin-top: 22mm; }
 .poster h1 { font-size: 36pt; line-height: 1.08; margin-top: 6mm; }
 .regeln { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9mm; margin-top: 18mm; }
+.regel { border-top: 1.6px solid #1a1817; padding-top: 5mm; }
 .regel > svg { width: 11mm; height: 11mm; display: block; }
-.regel h3 { font-size: 15pt; line-height: 1.2; margin-top: 5mm; padding-top: 4.5mm; border-top: 1.6px solid #1a1817; min-height: 23mm; }
+.regel h3 { font-size: 15pt; line-height: 1.2; margin-top: 5mm; min-height: 19mm; }
 .regel p { font-size: 10pt; line-height: 1.6; color: #3d3a37; margin-top: 4mm; }
 .regel p + p { margin-top: 3mm; }
 .frage { margin-top: auto; background: #fff400; padding: 14mm 18mm 12mm; display: flex; flex-direction: column; }
