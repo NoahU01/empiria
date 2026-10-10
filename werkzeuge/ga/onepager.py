@@ -355,7 +355,7 @@ CSS_HOCH = masse("""
 .op-logo--kopf { position: absolute; top: [16]; left: [24]; }
 .op-k { display: flex; align-items: center; gap: [3]; margin: 0 0 [5]; font: 700 [9pt]/1 'Poppins', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
 .op-k::before { content: ""; width: [8]; height: [0.6]; background: currentColor; }
-.op h1 { margin: 0; font: 700 [56pt]/1.16 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.op h1 { margin: 0; font: 700 [56pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
 .op h2 { margin: 0; font: 700 [26pt]/1.25 'Lora', Georgia, serif; letter-spacing: -.015em; }
 .op .hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; white-space: nowrap; }
 .op-lead { margin: [7] 0 0; max-width: [160]; font: 300 [14pt]/1.55 'Poppins', sans-serif; color: #3d3a37; }
@@ -394,7 +394,7 @@ CSS_QUER = masse("""
 .op--quer .op-spalte { background: #1a1817; color: #fff; padding: [20] [18] [18]; display: flex; flex-direction: column; justify-content: space-between; }
 .op-spalte .op-k { color: #fff400; }
 .op-spalte > .op-logo { align-self: flex-start; }
-.op--quer h1 { line-height: 1.22; }
+.op--quer h1 { line-height: 1.3; }
 .op--quer h1 { font-size: [40pt]; }
 .op-spalte .hl { color: #1a1817; }
 .op--quer .op-lead { font-size: [12pt]; max-width: none; color: rgba(255,255,255,.75); }

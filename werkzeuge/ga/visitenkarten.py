@@ -123,6 +123,74 @@ FRONTEN = [
 ]
 
 
+# ---------- Hochformat 55 × 85 mm ----------
+PX_HOCH = (650, 1004)
+
+
+def karte_hoch(inhalt, bg, fg, cls="", png=None):
+    attr = f' data-png="ga/visitenkarten/{png}.png" data-pw="{PX_HOCH[0]}"' if png else ""
+    return f'<div class="vkh ga-blatt {cls}" style="--bg:{bg};--fg:{fg}"{attr}><div class="vk-in">{inhalt}</div></div>'
+
+
+def h_highlight(p, png=None):
+    return karte_hoch(kicker(p) + name_zwei(p) + kontakt_text(p), "#fff", SCHWARZ, "vkh--hl", png)
+
+
+def h_gelb(p, png=None):
+    return karte_hoch(f'<span class="vkh-pfeil">{zeichen("forward", SCHWARZ)}</span>' + kicker(p) + name_zwei(p, False) + kontakt_text(p),
+                      GELB, SCHWARZ, "vkh--gelb", png)
+
+
+def h_schwarz(p, png=None):
+    return karte_hoch(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vkh--schwarz", png)
+
+
+def h_wechsel(p, png=None):
+    return karte_hoch(f'<div class="vkh-oben">{kicker(p)}{name_zwei(p, False)}</div>' + kontakt_text(p), "#fff", SCHWARZ, "vkh--wechsel", png)
+
+
+def hh_schwarz(png=None):
+    return karte_hoch(f'<span class="vkh-pfeil-r">{zeichen("forward", GELB)}</span>' + logo(True, "vkh-logo"), SCHWARZ, "#fff", "vkh--rs", png)
+
+
+def hh_gelb(png=None):
+    return karte_hoch(f'<span class="vkh-pfeil-m">{zeichen("forward", SCHWARZ)}</span>' + logo(cls="vkh-logo vkh-logo--m"), GELB, SCHWARZ, "vkh--rg", png)
+
+
+FRONTEN_HOCH = [
+    ("highlight", "Highlight", h_highlight, hh_schwarz), ("gelb", "Gelb mit Anschnitt", h_gelb, hh_schwarz),
+    ("schwarz", "Schwarz", h_schwarz, hh_gelb), ("wechsel", "Flächenwechsel", h_wechsel, hh_schwarz),
+]
+
+CSS_HOCH = masse("""
+.vkh { position: relative; aspect-ratio: 55 / 85; container-type: inline-size; background: var(--bg); color: var(--fg); overflow: hidden;
+  border-radius: 6px; font-family: 'Poppins', sans-serif; }
+.vkh * { box-sizing: border-box; }
+.vkh p { margin: 0; }
+.vkh .vk-in { position: absolute; inset: 0; }
+.vkh .vk2-kicker { position: absolute; left: [6]; top: [7]; display: flex; align-items: center; gap: [1.6]; font: 600 [5.2pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vkh .vk2-kicker::before { content: ""; width: [3.6]; height: [0.35]; background: currentColor; }
+.vkh .vk2-name { position: absolute; left: [6]; top: [11.5]; margin: 0; font: 700 [20pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.vkh .vk2-name .vk-hl { color: #1a1817; }
+.vkh .vk2-kontakt { position: absolute; left: [6]; bottom: [6.5]; font: 400 [6.3pt]/1.6 'Poppins', sans-serif; }
+.vkh--schwarz .vk2-kicker { color: #fff400; }
+.vkh--schwarz .vk2-kontakt { color: rgba(255,255,255,.85); }
+.vkh--gelb .vk2-kicker { top: [37.5]; }
+.vkh--gelb .vk2-name { top: [42]; }
+.vkh-pfeil { position: absolute; right: [-10]; top: [6.5]; width: [36]; }
+.vkh-pfeil svg, .vkh-pfeil-r svg, .vkh-pfeil-m svg { display: block; width: 100%; height: auto; }
+.vkh--wechsel .vkh-oben { position: absolute; left: 0; right: 0; top: 0; height: [52]; background: #fff400; }
+.vkh--wechsel .vk2-kicker { top: auto; bottom: [26]; }
+.vkh--wechsel .vk2-name { top: auto; bottom: [6]; }
+.vkh-pfeil-r { position: absolute; left: [6]; bottom: [-10]; width: [62]; }
+.vkh-logo { position: absolute; left: [5]; top: [7]; height: [5.2]; width: auto; display: block; }
+.vkh-pfeil-m { position: absolute; left: 50%; top: [30]; transform: translateX(-50%); width: [26]; }
+.vkh-logo--m { top: auto; bottom: [12]; left: 50%; transform: translateX(-50%); height: [5.6]; }
+.ga-raster--vkh { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+@media (max-width: 800px) { .ga-raster--vkh { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+""", 55)
+
+
 VARIANTEN = [
     ("a", "Variante A · Weiß", "Ruhig und klassisch. Vorderseite: Logo oben, Name und Rolle in der Mitte, Kontakt unten in zwei Spalten. "
      "Rückseite weiß mit dem Claim und dem gelben Highlight – wie die Startseite der Website.", vorne_a, hinten_a),
@@ -148,6 +216,15 @@ def inhalt():
     rueck = raster([figur(fh(f"{k}-rueckseite"), f"<b>{t}</b>", dl(f"{k}-rueckseite"))
                     for k, t, fh in (("a", "Rückseite Weiß · Claim", hinten_a), ("b", "Rückseite Schwarz · Anschnitt", hinten_b),
                                      ("c", "Rückseite Gelb · Doppelpfeil und Logo", hinten_c))], 3, 1)
+    hoch = []
+    for kurz, titel, fv, fh in FRONTEN_HOCH:
+        hoch.append(figur(fv(d, f"hoch-vorne-{kurz}"), f"<b>{titel}</b> · Vorderseite", dl(f"hoch-vorne-{kurz}").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")))
+    hoch_r = [figur(hh_schwarz("hoch-hinten-schwarz"), "<b>Rückseite Schwarz</b>", dl("hoch-hinten-schwarz").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")),
+              figur(hh_gelb("hoch-hinten-gelb"), "<b>Rückseite Gelb</b>", dl("hoch-hinten-gelb").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}"))]
+    teile.append(abschnitt("Hochformat · 55 × 85 mm", "Dieselben Ideen hochkant: Name groß oben, Kontakt unten. Beim Gelb läuft der Doppelpfeil oben rechts "
+                           "aus der Karte, beim Flächenwechsel steht der Name auf der Kante zwischen Gelb und Weiß.",
+                           f'<div class="ga-raster ga-raster--vkh">{"".join(hoch)}</div>'
+                           f'<p class="ga-unter">Rückseiten hoch</p><div class="ga-raster ga-raster--vkh">{"".join(hoch_r)}</div>'))
     teile.append(abschnitt("Rückseiten", "Unverändert aus Entwurf 1 – jede Vorderseite lässt sich mit jeder Rückseite kombinieren.", rueck))
     alt = raster([figur(vorne(fv, d, "daniel"), f"<b>{titel}</b> · Entwurf 1") for _, titel, _, fv, _ in VARIANTEN], 3, 1)
     teile.append(abschnitt("Archiv · Vorderseiten Entwurf 1", "Zum Vergleich – mit Icons und Foto, wird nicht weiterverfolgt.", alt))
@@ -186,7 +263,7 @@ CSS = masse("""
 .vk--c .vk-rolle::before { display: none; }
 /* Rückseiten */
 .vk-hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; }
-.vk-claim { position: absolute; left: [6.5]; bottom: [6]; font: 700 [17pt]/1.18 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.vk-claim { position: absolute; left: [6.5]; bottom: [6]; font: 700 [17pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
 .vk-pfeil-a { position: absolute; right: [6.5]; top: [6.5]; width: [17]; }
 .vk-pfeil-a svg, .vk-pfeil-b svg, .vk-pfeil-c svg { width: 100%; height: auto; display: block; }
 .vk-pfeil-b { position: absolute; right: [-15]; top: 50%; transform: translateY(-50%); width: [58]; }
@@ -228,8 +305,8 @@ def bauen(mit_png=True):
                     'Visiten<span class="hl">karten</span>',
                     "Fünf Vorderseiten im Format 85 × 55 mm – nur Name, Funktion und Kontakt, ohne Icons und ohne Foto. "
                     "Neben jeder Vorderseite die vorgeschlagene Rückseite. Erst wenn die Gestaltung steht, folgen die weiteren Personen.",
-                    ["Entwurf 2", "85 × 55 mm", "5 Vorderseiten", "3 Rückseiten"],
-                    inhalt(), CSS)
+                    ["Entwurf 2", "quer 85 × 55 mm", "hoch 55 × 85 mm", "nur Text vorne"],
+                    inhalt(), CSS + CSS_HOCH)
     if mit_png:
         png_export(DATEI, "visitenkarten")
 

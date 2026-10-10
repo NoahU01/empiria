@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Roll-up 85 × 200 cm – Entwürfe (Daniel, 10.10.2026).
+"""Roll-up 100 × 200 cm – Entwürfe (Daniel, 10.10.2026).
 
 Vier Varianten:
   A · Claim       – weiß, „Strategie, die wirkt.“ + großer Doppelpfeil
@@ -16,8 +16,8 @@ from ga_basis import (GELB, SCHWARZ, FIRMA, abschnitt, download, figur, ico, log
                       seite_schreiben, zeichen)
 
 DATEI = "ga-rollup.html"
-B = 850  # mm
-PX = (1000, 2353)
+B = 1000  # mm
+PX = (1000, 2000)
 
 
 def rollup(inhalt, bg, fg, cls="", png=None):
@@ -66,9 +66,7 @@ def var_d(png=None):
     fragen = ["Warum bewegt sich da nichts?", "Warum zieht mein Team nicht mit?"]
     return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Die Strategie steht") +
                   '<p class="ru-h">Warum kommt meine Strategie im Alltag nicht an?</p>' +
-                  "".join(f'<p class="ru-frage">{f}</p>' for f in fragen) +
-                  '<p class="ru-text ru-text--d">Es liegt selten an der Strategie selbst – sondern daran, dass sie niemand in den Alltag übersetzt hat.</p></div>'
-                  f'<span class="ru-pfeil-d">{zeichen("forward", SCHWARZ)}</span>' +
+                  "".join(f'<p class="ru-frage">{f}</p>' for f in fragen) + '</div>' +
                   fuss(SCHWARZ, GELB, text=f'Strategie, die wirkt. <em>{FIRMA["web"]}</em>'), GELB, SCHWARZ, "ru--d", png)
 
 
@@ -79,7 +77,7 @@ VARIANTEN = [
 
 
 def inhalt():
-    figuren = [figur(fn(f"rollup-{k}"), f"<b>{t}</b> · {farbe} · 85 × 200 cm",
+    figuren = [figur(fn(f"rollup-{k}"), f"<b>{t}</b> · {farbe} · 100 × 200 cm",
                      download(f"ga/rollup/rollup-{k}.png", f"PNG-Vorschau · {PX[0]} × {PX[1]} px")) for k, t, farbe, fn in VARIANTEN]
     teile = [abschnitt("Vier Varianten", "<b>A</b> setzt allein auf den Claim und den Doppelpfeil – wirkt aus 10 m Entfernung. "
                        "<b>B</b> erklärt in drei Zeilen, was empiria tut. <b>C</b> zeigt die Menschen – gut für Messen und Netzwerk-Abende. "
@@ -92,7 +90,7 @@ def inhalt():
              '<div class="ru-z ru-z--fuss" style="top:87.5%;height:12.5%"><span>Fußzone · 0–25 cm</span><small>oft verdeckt – nur Web-Adresse</small></div></div>')
     aufbau = '<div class="ga-raster ru-aufbau">' + "".join([figur(var_a().replace('<div class="ru-in">', zonen + '<div class="ru-in">', 1), "<b>Sichtzonen</b> · am Beispiel A"),
                      '<div class="ru-mass">' + "".join(f'<p><b>{a}</b><span>{b}</span></p>' for a, b in [
-                         ("Format", "85 × 200 cm, hoch (Standard-Kassette)"),
+                         ("Format", "100 × 200 cm, hoch (Standard-Kassette)"),
                          ("Rand", "8 cm seitlich, Logo 8 cm vom oberen Rand"),
                          ("Überschrift", "Lora Bold, ca. 300–400 pt – lesbar aus 5–8 m"),
                          ("Text", "Poppins Light, ca. 90–110 pt"),
@@ -105,7 +103,7 @@ def inhalt():
 
 
 CSS = masse("""
-.ru { position: relative; aspect-ratio: 85 / 200; container-type: inline-size; background: var(--bg); color: var(--fg); overflow: hidden;
+.ru { position: relative; aspect-ratio: 100 / 200; container-type: inline-size; background: var(--bg); color: var(--fg); overflow: hidden;
   border-radius: 4px; font-family: 'Poppins', sans-serif; }
 .ru p, .ru ol { margin: 0; }
 .ru-in { position: absolute; inset: 0; }
@@ -113,8 +111,8 @@ CSS = masse("""
 .ru-block { position: absolute; left: [80]; right: [80]; top: [400]; }
 .ru-kicker { display: flex; align-items: center; gap: [20]; margin-bottom: [40] !important; font: 700 [24]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .ru-kicker::before { content: ""; width: [50]; height: [5]; background: currentColor; }
-.ru-h { font: 700 [92]/1.16 'Lora', Georgia, serif; letter-spacing: -.02em; }
-.ru-h--gross { font-size: [128]; line-height: 1.12; }
+.ru-h { font: 700 [92]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.ru-h--gross { font-size: [128]; line-height: 1.3; }
 .ru-hl { background: #fff400; color: #1a1817; padding: 0 .12em .07em; border-radius: .14em; }
 .ru-text { margin-top: [50] !important; font: 300 [34]/1.5 'Poppins', sans-serif; max-width: [640]; }
 .ru-fuss { position: absolute; left: 0; right: 0; bottom: 0; height: [250]; display: flex; align-items: center; justify-content: space-between;
@@ -164,15 +162,15 @@ CSS = masse("""
 .ru-mass p { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; margin: 0; padding: .75rem 0; border-bottom: 1px solid #e4e0db; font-size: .95rem; line-height: 1.45; }
 .ru-mass b { font-weight: 600; }
 @media (max-width: 800px) { .ru-aufbau { grid-template-columns: 1fr; } .ru-aufbau .ga-wrap { max-width: 260px; } .ru-mass p { grid-template-columns: 6.5rem 1fr; font-size: .88rem; } }
-""", B)
+""", 850)  # Maße aus dem 85er-Raster, skaliert auf 100 cm Breite
 
 
 def bauen(mit_png=True):
     seite_schreiben(DATEI, "Roll-up",
                     'Roll-<span class="hl">up</span>',
-                    "Vier Entwürfe für das Roll-up im Format 85 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
+                    "Vier Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
                     "die Botschaft auf Augenhöhe. Alle Entwürfe sind maßstäblich; die PNGs sind Vorschauen, keine Druckdaten.",
-                    ["Entwurf 1", "85 × 200 cm", "4 Varianten", "Sichtzonen"], inhalt(), CSS)
+                    ["Entwurf 1", "100 × 200 cm", "4 Varianten", "Sichtzonen"], inhalt(), CSS)
     if mit_png:
         png_export(DATEI, "rollup")
 

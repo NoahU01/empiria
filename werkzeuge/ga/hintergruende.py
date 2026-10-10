@@ -54,7 +54,7 @@ CSS = """
 .hg { position: relative; width: 100%; container-type: inline-size; overflow: hidden; background: var(--bg); color: var(--fg); font-family: 'Poppins', sans-serif; }
 .hg > * { position: absolute; }
 .hg img { display: block; width: auto; }
-.hg h2 { margin: 0; font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.025em; line-height: 1.24; color: #1a1817; white-space: nowrap; }
+.hg h2 { margin: 0; font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.025em; line-height: 1.32; color: #1a1817; white-space: nowrap; }
 .hg .hl { background: #fff400; color: #1a1817; padding: 0 .1em .04em; border-radius: .12em; }
 """
 
@@ -141,11 +141,11 @@ def hintergrund(motiv, fmt):
         elif art == "iphone":
             gr = .15 * w
             teile.append(f'<h2 style="left:{p(.085 * w)};top:{p(.5 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .34 * w, .085 * w + .17 * w, .5 * h + 2 * gr * 1.24 + .1 * h, SCHWARZ))
+            teile.append(zeichen_html(p, "forward", .34 * w, .085 * w + .17 * w, .5 * h + 2 * gr * 1.32 + .1 * h, SCHWARZ))
         elif hoch:
             gr = .12 * w
             teile.append(f'<h2 style="left:{p(.09 * w)};top:{p(.36 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
-            teile.append(zeichen_html(p, "forward", .32 * w, .09 * w + .16 * w, .36 * h + 2 * gr * 1.24 + .12 * h, SCHWARZ))
+            teile.append(zeichen_html(p, "forward", .32 * w, .09 * w + .16 * w, .36 * h + 2 * gr * 1.32 + .12 * h, SCHWARZ))
             teile.append(logo(p, hell, rand, rand, lh, unten=True))
         else:
             gr = .085 * w

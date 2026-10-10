@@ -289,8 +289,8 @@ CSS = """
 .f-strich { width: 2cqw; height: .18cqw; background: currentColor; }
 .f-kicker { display: flex; align-items: center; gap: .8cqw; margin: 0 0 1.4cqw; font: 700 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .f-kicker::before { content: ""; width: 2cqw; height: .18cqw; background: currentColor; }
-.folie h1 { margin: 0; font: 700 6.2cqw/1.18 'Lora', Georgia, serif; letter-spacing: -.02em; color: var(--fg); }
-.folie h2 { margin: 0; max-width: 70cqw; font: 700 3.6cqw/1.25 'Lora', Georgia, serif; letter-spacing: -.015em; color: var(--fg); }
+.folie h1 { margin: 0; font: 700 6.2cqw/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; color: var(--fg); }
+.folie h2 { margin: 0; max-width: 70cqw; font: 700 3.6cqw/1.3 'Lora', Georgia, serif; letter-spacing: -.015em; color: var(--fg); }
 .folie .hl { background: var(--akz); color: #1a1817; padding: 0 .12em .07em; border-radius: .14em; }
 .f-sub { margin: 2cqw 0 0; font-size: 1.5cqw; opacity: .75; }
 .f-titel { position: absolute; left: 6cqw; bottom: 8cqw; max-width: 60cqw; }
