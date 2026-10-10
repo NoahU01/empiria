@@ -67,3 +67,12 @@ Daniel hat das Muster **KI zum Anfassen** freigegeben. Alle PDFs der 2.0-Seiten 
 - Sprint: „48“ nur einmal (im Titelbild); Schluss-Überschrift ohne Zahl.
 - Workshops-Übersicht: Preise aller drei Formate wie auf den Detailseiten; keine gelbe Spalte, solange die Seite keinen Favoriten markiert.
 - Paid Ads: Kanäle so nennen, wie es die Paid-Ads-Seite tut.
+
+---
+# Runde 3 (Daniel, 10.10.2026) – Übersichts-PDFs mit Kapiteln
+Workshops, Marketing 2.0 und Training & Sparring fassen Unterseiten zusammen. Ihr PDF muss deshalb **je Unterseite ein eigenes Kapitel** enthalten, sonst steht kaum etwas drin.
+- Aufbau: Titel · Ansatz (gelbes Band) · **Überblick** (die Wege/Formate als Vergleichstabelle oder Liste, mit Preisen) · **Kapitel je Unterseite** · Schluss.
+- Kapitel-Einstieg: eigene Seite oder Seitenanfang mit großer Kapitelnummer („01“), Kicker = Name der Unterseite, H2 = Kopfzeile der Unterseite mit Highlight, Lead = Kopftext der Unterseite. Danach 1–2 Seiten Kerninhalt der Unterseite: Problem/Ansatz als `punkte`, Ablauf als `zeitstrahl`, Preise/Pakete als Tabelle, 2–3 stärkste Beispiele als `liste`. Nicht das ganze Unter-PDF kopieren – verdichten, das Wesentliche, damit der Leser alles Wichtige auf einen Blick hat.
+- Zum Wiederverwenden: Die Module der Unterseiten (z. B. ki_zum_anfassen.py, sprint_landingpage.py …) enthalten die Inhalte bereits; Texte gern von dort übernehmen. Inhaltlich gilt die aktuelle 2.0-Seite.
+- Am Schluss eines Kapitels ein kleiner Hinweis „Alle Details: eigenes PDF ‚<Name>‘ auf empiria.de“ (als Notiz, kein Kasten).
+- Nach dem Einbau: das ganze PDF Seite für Seite als Bild prüfen – Highlights dürfen keine Buchstaben der Zeile darüber verdecken, nichts ragt heraus, keine Löcher, gleiche Abstände wie in den anderen PDFs.
