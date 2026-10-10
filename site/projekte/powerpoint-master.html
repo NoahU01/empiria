@@ -3,46 +3,262 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Strategie · SV Akademie – empiria</title>
-<meta name="description" content="Strategie der SV Akademie.">
+<title>PowerPoint- &amp; Keynote-Master – empiria (intern)</title>
+<meta name="description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch. Schreibe uns oder rufe direkt an.">
+<link rel="canonical" href="https://www.empiria.de/kontakt">
 <meta name="robots" content="noindex, nofollow">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/kontakt">
+<meta property="og:title" content="Kontakt – empiria">
+<meta property="og:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kontakt – empiria">
+<meta name="twitter:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/assets/projekte/projekte.css">
+<link rel="stylesheet" href="/assets/e2/kontakt.css">
 </head>
-<body>
+<body class="kontakt-page">
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<!-- Eigene Strichzeichen fuer die Methoden. Bewusst keine CD-Formen
-     (Forward, Kreuz, Raute, Kreis, Quadrat) - die stehen fuer die
-     Leistungen des Hauses und sind belegt. -->
-<symbol id="mi-zielgruppe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/>
-</symbol>
-<symbol id="mi-werkstatt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 19.5 10.5 13"/><path d="M14.5 3.5a4.5 4.5 0 0 0-3.9 6.7L4 16.8 7.2 20l6.6-6.6a4.5 4.5 0 0 0 6.7-3.9l-2.8 2.8-3.2-.9-.9-3.2z"/>
-</symbol>
-<symbol id="mi-protokoll" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/>
-  <path d="M14.5 3.5V8h4.2"/><path d="M9 12.5h6M9 16h4"/>
-</symbol>
-</defs></svg>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
       <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
       <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
     </symbol>
-<symbol id="ic-kreis" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
     </symbol>
-<symbol id="ic-kreuz" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
     </symbol>
-<symbol id="ic-raute" viewBox="0 0 232.44 232.44">
-      <path fill="currentColor" d="M116.22,27.03l89.19,89.19-89.19,89.19L27.03,116.22,116.22,27.03M116.22,2.83c-2.53,0-5.06.96-6.99,2.89L5.73,109.23c-3.86,3.86-3.86,10.11,0,13.97l103.51,103.51c1.93,1.93,4.46,2.89,6.99,2.89s5.06-.96,6.99-2.89l103.51-103.51c3.86-3.86,3.86-10.11,0-13.97L123.21,5.73c-1.93-1.93-4.46-2.89-6.99-2.89h0Z"/>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
     </symbol>
-</defs></svg>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-rocket" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c10,8,14,20,14,32c0,8-4,16-14,22c-10-6-14-14-14-22c0-12,4-24,14-32z"/>
+        <circle cx="40" cy="34" r="6"/>
+        <path d="M26,48l-8,14"/>
+        <path d="M54,48l8,14"/>
+        <path d="M34,64c0,6,3,10,6,12c3-2,6-6,6-12"/>
+      </g>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="26"/>
+        <path d="M40,24v16l12,8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-refresh" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,33A22,22,0,0,0,20,25"/>
+        <path d="M20,13v14h14"/>
+        <path d="M20,47A22,22,0,0,0,60,55"/>
+        <path d="M60,67v-14h-14"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
 
+<!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="/index.html" aria-label="empiria Startseite">
@@ -577,107 +793,96 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </header>
 
 <main>
+<section class="pm"><div class="container">
+  <p class="pm-kicker">Geschäftsausstattung</p>
+  <h1>PowerPoint- &amp; Keynote-<span class="hl">Master</span></h1>
+  <p class="pm-lead">Wir arbeiten uns in Stufen heran. Erst das Grundsystem – Hintergründe, Header, Schriften, Farben und Designelemente –, dann die einzelnen Folientypen, dann die Darstellungsvarianten. Am Ende entstehen daraus die echten Vorlagen in PowerPoint und Keynote.</p>
+  <div class="pm-stufen"><span class="aktiv">Stufe 1 · Grundsystem</span><span>Stufe 2 · Folientypen</span><span>Stufe 3 · Darstellungsvarianten</span><span>Stufe 4 · PowerPoint &amp; Keynote</span></div>
+  <div class="pm-abschnitt"><h2>1 · Hintergründe</h2><p>Weiß ist die Grundseite. Schwarz, Gelb und Grau gliedern. Magenta, Violett und Cyan als Vollfläche für Themen, Kapitel oder Statements.</p><div class="pm-raster"><figure class="f-wrap"><div class="folie f--titel" style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Strategiehandwerk</p><h1>Strategie,<br>die <span class="hl">wirkt.</span></h1><p class="f-sub">Titelfolie · Grundseite Weiß</p></div><span class="f-gross"><svg viewBox="2.83 31.08 226.78 170.29" fill="#1a1817" color="#1a1817" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#1a1817;--fg:#ffffff;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Kapitel 01</p><h1>Das Problem.</h1><p class="f-sub">Kapitelfolie · Schwarz</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#fff400" color="#fff400" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Schwarz</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#fff400;--fg:#1a1817;--akz:#1a1817"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Kapitel 02</p><h1>Die Lösung.</h1><p class="f-sub">Kapitelfolie · Gelb</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#1a1817" color="#1a1817" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Gelb</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#f3f1ee;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Kapitel 03</p><h1>Das Vorgehen.</h1><p class="f-sub">Kapitelfolie · Grau</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#1a1817" color="#1a1817" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Grau</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#C51F5D;--fg:#ffffff;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Themenfarbe</p><h1>Workshops.</h1><p class="f-sub">Vollfläche · Magenta</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#ffffff" color="#ffffff" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Magenta</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#8613A1;--fg:#ffffff;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Themenfarbe</p><h1>Training &amp; Sparring.</h1><p class="f-sub">Vollfläche · Violett</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#ffffff" color="#ffffff" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Violett</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#0B9FBD;--fg:#ffffff;--akz:#fff400"><div class="f-innen"><div class="f-titel"><p class="f-kicker">Themenfarbe</p><h1>Marketing 2.0.</h1><p class="f-sub">Vollfläche · Cyan</p></div><span class="f-gross f-gross--klein"><svg viewBox="2.83 31.08 226.78 170.29" fill="#ffffff" color="#ffffff" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div></div><figcaption class="f-label">Cyan</figcaption></figure></div></div><div class="pm-abschnitt"><h2>2 · Header – drei Ideen</h2><p>A: Logo links, Thema als Kicker rechts (wie die Website). B: gelber Balken + Thema links, Logo rechts. C: kein Kopf – kleiner Doppelpfeil oben rechts, Logo wandert in den Fuß.</p><div class="pm-raster"><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><p class="f-kicker">Ausgangslage</p><h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2><div class="f-punkte"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" /></svg><b>Rolle</b><p>Was erwartet man von mir – und was nicht?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg><b>Richtung</b><p>Wohin entwickelt sich mein Bereich?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg><b>Handwerk</b><p>Wie übersetze ich das in den Alltag?</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Idee A · Logo links, Thema rechts</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--b"><span class="f-balken"></span><span class="f-thema">Strategie in den Alltag</span><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"></div><p class="f-kicker">Ausgangslage</p><h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2><div class="f-punkte"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" /></svg><b>Rolle</b><p>Was erwartet man von mir – und was nicht?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg><b>Richtung</b><p>Wohin entwickelt sich mein Bereich?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg><b>Handwerk</b><p>Wie übersetze ich das in den Alltag?</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Idee B · gelber Balken + Thema, Logo rechts</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--c"><span class="f-mini"><svg viewBox="2.83 31.08 226.78 170.29" fill="#1a1817" color="#1a1817" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span></div><p class="f-kicker">Ausgangslage</p><h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2><div class="f-punkte"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" /></svg><b>Rolle</b><p>Was erwartet man von mir – und was nicht?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg><b>Richtung</b><p>Wohin entwickelt sich mein Bereich?</p></div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg><b>Handwerk</b><p>Wie übersetze ich das in den Alltag?</p></div></div></div><div class="f-fuss"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Idee C · Doppelpfeil oben, Logo im Fuß</figcaption></figure></div></div><div class="pm-abschnitt"><h2>3 · Sekundärfarben als Hervorhebung</h2><p>Auf der weißen Grundseite markieren Magenta, Violett und Cyan ein Thema: Highlight, Kasten, Aufzählungspunkte. Gelb bleibt das empiria-Highlight für alles andere.</p><div class="pm-raster"><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Magenta</span></div><p class="f-kicker">Hervorhebung</p><h2>Ein Thema bekommt <span class="hl" style="background:#C51F5D;color:#fff">seine Farbe.</span></h2><div class="f-zwei"><div class="f-kasten" style="background:#C51F5D"><b>Kernaussage</b><p>Kasten in der Themenfarbe für die eine Botschaft, die hängen bleiben soll.</p></div><div class="f-liste"><p><span style="background:#C51F5D"></span>Punkte in der Themenfarbe</p><p><span style="background:#C51F5D"></span>Linien und Icons in Schwarz</p><p><span style="background:#C51F5D"></span>Gelb bleibt das empiria-Highlight</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Violett</span></div><p class="f-kicker">Hervorhebung</p><h2>Ein Thema bekommt <span class="hl" style="background:#8613A1;color:#fff">seine Farbe.</span></h2><div class="f-zwei"><div class="f-kasten" style="background:#8613A1"><b>Kernaussage</b><p>Kasten in der Themenfarbe für die eine Botschaft, die hängen bleiben soll.</p></div><div class="f-liste"><p><span style="background:#8613A1"></span>Punkte in der Themenfarbe</p><p><span style="background:#8613A1"></span>Linien und Icons in Schwarz</p><p><span style="background:#8613A1"></span>Gelb bleibt das empiria-Highlight</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Cyan</span></div><p class="f-kicker">Hervorhebung</p><h2>Ein Thema bekommt <span class="hl" style="background:#0B9FBD;color:#fff">seine Farbe.</span></h2><div class="f-zwei"><div class="f-kasten" style="background:#0B9FBD"><b>Kernaussage</b><p>Kasten in der Themenfarbe für die eine Botschaft, die hängen bleiben soll.</p></div><div class="f-liste"><p><span style="background:#0B9FBD"></span>Punkte in der Themenfarbe</p><p><span style="background:#0B9FBD"></span>Linien und Icons in Schwarz</p><p><span style="background:#0B9FBD"></span>Gelb bleibt das empiria-Highlight</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure></div></div><div class="pm-abschnitt"><h2>4 · Designelemente der Homepage</h2><p>Kicker mit Strich, gelber Highlight-Kasten, gelbes Band mit Punkten, Zeitstrahl, schwarzer Kasten, Doppelpfeil – dieselben Bausteine wie auf www.empiria.de.</p><div class="pm-raster"><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><p class="f-kicker">Designelement</p><h2>Gelbes Band mit <span class="hl">Punkten.</span></h2><div class="f-band"><div class="f-punkte f-punkte--klein"><div><b>Klar</b><p>Eine Botschaft je Folie.</p></div><div><b>Ruhig</b><p>Viel Weißraum, wenig Text.</p></div><div><b>Wirksam</b><p>Ergebnis statt Aufzählung.</p></div></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><p class="f-kicker">Designelement</p><h2>Ablauf als <span class="hl">Zeitstrahl.</span></h2><ol class="f-zs"><li><span></span><small>01</small><b>Verstehen</b></li><li><span></span><small>02</small><b>Ordnen</b></li><li><span></span><small>03</small><b>Entscheiden</b></li><li><span></span><small>04</small><b>Umsetzen</b></li></ol></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><div class="f-zwei f-zwei--mitte"><div><p class="f-kicker">Designelement</p><h2>Schwarzer Kasten für die <span class="hl">Kernaussage.</span></h2></div><div class="f-kasten" style="background:#1a1817"><b style="color:#fff400">Das Ergebnis</b><p>Du führst Dein Team, statt es zu vertrösten.</p></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure><figure class="f-wrap"><div class="folie " style="--bg:#1a1817;--fg:#ffffff;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo-weiss.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><p class="f-kicker">Zitat</p><p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="f-sub">Daniel Ströbel</p></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Schwarz</figcaption></figure></div></div><div class="pm-abschnitt"><h2>5 · Schriften & Farben</h2><p>Was im Master hinterlegt wird: Lora für Überschriften, Poppins für Text, sieben Farben im Farbschema.</p><div class="pm-raster"><figure class="f-wrap"><div class="folie " style="--bg:#ffffff;--fg:#1a1817;--akz:#fff400"><div class="f-innen"><div class="f-kopf f-kopf--a"><img class="f-logo" src="/assets/empiria-logo.svg" alt="empiria"><span class="f-thema">Strategie in den Alltag</span></div><div class="f-zwei"><div><p class="f-kicker">Schriften</p><p class="f-typo1">Lora Bold</p><p class="f-typo-info">Überschriften · 28–60 pt</p><p class="f-typo2">Poppins Regular / Light</p><p class="f-typo-info">Text · 14–20 pt</p><p class="f-typo3">POPPINS BOLD · KICKER</p><p class="f-typo-info">Kicker · 10–12 pt, Großbuchstaben, gesperrt</p></div><div><p class="f-kicker">Farben</p><div class="f-farben"><div><span style="background:#ffffff;border:1px solid #e4e0db"></span><b>Weiß</b><small>#FFFFFF</small></div><div><span style="background:#1a1817;border:1px solid #e4e0db"></span><b>Schwarz</b><small>#1A1817</small></div><div><span style="background:#fff400;border:1px solid #e4e0db"></span><b>Gelb</b><small>#FFF400</small></div><div><span style="background:#f3f1ee;border:1px solid #e4e0db"></span><b>Grau</b><small>#F3F1EE</small></div><div><span style="background:#C51F5D;border:1px solid #e4e0db"></span><b>Magenta</b><small>#C51F5D</small></div><div><span style="background:#8613A1;border:1px solid #e4e0db"></span><b>Violett</b><small>#8613A1</small></div><div><span style="background:#0B9FBD;border:1px solid #e4e0db"></span><b>Cyan</b><small>#0B9FBD</small></div></div></div></div></div><div class="f-fuss"><span class="f-strich"></span><span>empiria GmbH</span><span>04</span></div></div><figcaption class="f-label">Weiß</figcaption></figure></div></div>
+</div></section>
+<style>
+.pm { padding: 6rem 0 5rem; }
+.pm-kicker { display: flex; align-items: center; gap: .75rem; margin: 0 0 1.1rem; font: 700 .8rem/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #1a1817; }
+.pm-kicker::before { content: ""; width: 1.6rem; height: 2px; background: #1a1817; }
+.pm h1 { font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; font-size: clamp(2.4rem, 5vw, 4rem); margin: 0; color: #1a1817; }
+.pm .hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; }
+.pm-lead { max-width: 46rem; margin: 1.2rem 0 0; font-size: 1.1rem; line-height: 1.6; font-weight: 300; color: #3d3a37; }
+.pm-stufen { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.pm-stufen span { padding: .45rem .9rem; border-radius: 999px; border: 1px solid #d9d5ce; font: 500 .8rem/1 'Poppins', sans-serif; color: #6f6a64; }
+.pm-stufen span.aktiv { background: #1a1817; color: #fff; border-color: #1a1817; }
+.pm-abschnitt { margin-top: 4rem; }
+.pm-abschnitt h2 { font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 1.7rem; margin: 0; }
+.pm-abschnitt > p { max-width: 50rem; margin: .6rem 0 0; color: #3d3a37; line-height: 1.6; }
+.pm-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.6rem; }
+@media (max-width: 800px) { .pm-raster { grid-template-columns: 1fr; } }
 
-  <section class="hero pj-hero">
-    <div class="container">
-      <p class="pj-wo">
-        <a href="/projekte/sv-akademie.html">&#8592; SV Akademie</a>
-        <span class="pj-wo-trenner" aria-hidden="true">&rsaquo;</span>
-        <span aria-current="page">Strategie</span>
-      </p>
-      <nav class="pj-reiter" aria-label="Die drei Module">
-        <a class="pj-reiter-knopf" href="/projekte/sv-selbstverstaendnis.html"><span class="pj-reiter-nr">1</span>Selbstverständnis</a>
-        <a class="pj-reiter-knopf" href="/projekte/sv-vision.html"><span class="pj-reiter-nr">2</span>Vision</a>
-        <a class="pj-reiter-knopf is-hier" href="/projekte/sv-strategie.html" aria-current="page"><span class="pj-reiter-nr">3</span>Strategie</a>
-      </nav>
-      <div class="pj-hero-grid pj-hero-grid--einspaltig">
-        <div class="pj-hero-text">
-          <p class="kicker">Strategie</p>
-          <h1 class="h-serif">Wie kommen wir <span class="hl">dorthin?</span></h1>
-          <p class="lead">Die Strategie führt von der heutigen Situation zum Zielbild. Sie benennt die Richtungen, in denen gearbeitet wird, legt deren Reihenfolge fest und macht überprüfbar, ob sie wirken.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Der Weg von heute zur Vision =====
-       Zwei gleich starke Kaesten: Ist-Situation und Stossrichtungen. Die Vision
-       wird nur angedeutet - sie ist Modul 2 und nicht Gegenstand dieser
-       Seite. Alles Weitere steht auf den beiden Unterseiten. -->
-  <section class="section">
-    <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Strategie</p>
-        <h2 class="h-serif">Der Weg von heute <span class="hl">zur Vision.</span></h2>
-        <p class="lead">Strategie beschreibt, wie aus der heutigen Situation das Zielbild
-          wird: wenige Richtungen, ihre Reihenfolge und die Kriterien, an denen sich ihre
-          Wirkung ablesen lässt. Grundlage dafür sind die Beschreibung der Ausgangslage und
-          das Zielbild aus Modul 2.</p>
-      </div>
-
-      <div class="pj-weg">
-        <a class="pj-weg-karte" href="/projekte/sv-strategie-ist.html">
-          <span class="pj-strecke-tag">Heute</span>
-          <h3>Ist-Situation</h3>
-          <p>Die Beschreibung der heutigen Situation: Geschäfts- und Organisationsmodell,
-            Leistungen, Nachfrage und die Sicht der Stakeholder. Sortiert entlang der
-            SWOT-Logik – Stärken und Schwächen im Haus, Chancen und Risiken außerhalb.</p>
-          <ul class="pj-feld-liste">
-            <li>Methode: SWOT-Analyse</li>
-          </ul>
-          <span class="pj-weg-fuss"><span class="pj-marke pj-marke--laeuft">In Arbeit</span><span class="pj-pfeil">&#8594;</span></span>
-        </a>
-
-        <a class="pj-weg-karte" href="/projekte/sv-strategie-stossrichtungen.html">
-          <span class="pj-strecke-tag">Die Strecke</span>
-          <h3>Stoßrichtungen</h3>
-          <p>Wenige Richtungen, die das Zielbild erreichbar machen. Jede benennt, was sie
-            verändert und woran sich ihre Wirkung erkennen lässt. Dazu die Reihenfolge: was
-            zuerst bearbeitet wird und was später folgt.</p>
-          <ul class="pj-feld-liste">
-            <li>Abgeleitet aus der SWOT</li>
-          </ul>
-          <span class="pj-weg-fuss"><span class="pj-marke pj-marke--offen">Offen</span><span class="pj-pfeil">&#8594;</span></span>
-        </a>
-      </div>
-
-      <a class="pj-weg-ziel" href="/projekte/sv-vision.html">
-        <span class="pj-weg-ziel-pfeil" aria-hidden="true">&#8594;</span>
-        <span class="pj-weg-ziel-text"><b>Das Ziel ist die Vision.</b> Das Zielbild selbst
-          entsteht in Modul 2; auf dieser Seite geht es um den Weg dorthin.</span>
-        <span class="pj-pfeil">&#8594;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== Meilensteinplan ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="pj-kopfzeile">
-        <p class="kicker">Projektplanung</p>
-        <h2 class="h-serif">Von der Richtung <span class="hl">zum Termin.</span></h2>
-        <p class="lead">Die Stoßrichtungen werden in Zwischenergebnisse übersetzt, die bis
-          Ende 2028 erreicht sein sollen. Wann daran gearbeitet wird und was voneinander
-          abhängt, steht in der Projektplanung.</p>
-      </div>
-
-      <a class="pj-standzeile" href="/projekte/sv-projektplanung.html">
-        <span class="pj-standzeile-text">
-          <span class="pj-tag">Projektplanung</span>
-          <b>Was bisher lief – und was als Nächstes ansteht</b>
-          <small>Die Termine mit Agenda und Protokoll, dazu der Meilensteinplan über drei
-            Stränge.</small>
-        </span>
-        <span class="pj-standzeile-balken" aria-hidden="true">
-          <span class="pj-standbalken pj-standbalken--1"></span>
-          <span class="pj-standbalken pj-standbalken--2"></span>
-          <span class="pj-standbalken pj-standbalken--3"></span>
-        </span>
-        <span class="pj-standzeile-pfeil" aria-hidden="true">&#8594;</span>
-      </a>
-    </div>
-  </section>
-
+/* Folie 16:9 – Maße relativ zur Folienbreite (cqw), damit jede Größe stimmt */
+.folie { position: relative; aspect-ratio: 16 / 9; container-type: inline-size; background: var(--bg); color: var(--fg); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 0 0 1px #e4e0db, 0 12px 30px rgba(26,24,23,.06); font-family: 'Poppins', sans-serif; }
+.f-innen { position: absolute; inset: 0; padding: 9.5cqw 6cqw 8cqw; }
+.f-wrap { margin: 0; }
+.f-label { margin-top: .7rem; font: 600 .72rem/1.4 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #8a847c; }
+.f-logo { height: 2.2cqw; width: auto; display: block; }
+.f-kopf { position: absolute; top: 3cqw; left: 6cqw; right: 6cqw; display: flex; align-items: center; justify-content: space-between; }
+.f-thema { font: 700 1.05cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; display: flex; align-items: center; gap: .8cqw; }
+.f-kopf--a .f-thema::before { content: ""; width: 2cqw; height: .18cqw; background: currentColor; }
+.f-kopf--b { justify-content: flex-start; gap: 1.4cqw; }
+.f-kopf--b .f-logo { margin-left: auto; }
+.f-balken { width: .7cqw; height: 3cqw; background: #fff400; border-radius: .2cqw; }
+.f-kopf--c { justify-content: flex-end; }
+.f-mini svg { width: 4.2cqw; height: auto; display: block; }
+.f-fuss { position: absolute; left: 6cqw; right: 6cqw; bottom: 2.6cqw; display: flex; align-items: center; gap: 1.4cqw; font-size: .95cqw; opacity: .7; }
+.f-fuss span:last-child { margin-left: auto; }
+.f-fuss .f-logo { height: 1.6cqw; }
+.f-strich { width: 2cqw; height: .18cqw; background: currentColor; }
+.f-kicker { display: flex; align-items: center; gap: .8cqw; margin: 0 0 1.4cqw; font: 700 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.f-kicker::before { content: ""; width: 2cqw; height: .18cqw; background: currentColor; }
+.folie h1 { margin: 0; font: 700 6.2cqw/1.18 'Lora', Georgia, serif; letter-spacing: -.02em; color: var(--fg); }
+.folie h2 { margin: 0; max-width: 70cqw; font: 700 3.6cqw/1.25 'Lora', Georgia, serif; letter-spacing: -.015em; color: var(--fg); }
+.folie .hl { background: var(--akz); color: #1a1817; padding: 0 .12em .07em; border-radius: .14em; }
+.f-sub { margin: 2cqw 0 0; font-size: 1.5cqw; opacity: .75; }
+.f-titel { position: absolute; left: 6cqw; bottom: 8cqw; max-width: 60cqw; }
+.f-gross { position: absolute; right: 6cqw; top: 50%; transform: translateY(-50%); width: 28cqw; }
+.f-gross--klein { width: 14cqw; top: auto; bottom: 8cqw; transform: none; }
+.f-gross svg { width: 100%; height: auto; display: block; }
+.f--titel .f-titel { bottom: auto; top: 50%; transform: translateY(-50%); }
+.f-punkte { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; margin-top: 3.6cqw; }
+.f-punkte > div { border-top: .16cqw solid currentColor; padding-top: 1.6cqw; }
+.f-punkte svg { width: 2.6cqw; height: 2.6cqw; display: block; margin-bottom: 1cqw; }
+.f-punkte b { display: block; font: 700 1.9cqw/1.2 'Lora', serif; }
+.f-punkte p { margin: .7cqw 0 0; font-size: 1.3cqw; line-height: 1.5; opacity: .8; }
+.f-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; margin-top: 3.4cqw; align-items: start; }
+.f-zwei--mitte { align-items: center; margin-top: 4cqw; }
+.f-kasten { border-radius: 1.4cqw; padding: 2.6cqw 2.8cqw; color: #fff; }
+.f-kasten b { font: 700 1.1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.f-kasten p { margin: 1.2cqw 0 0; font: 700 2.1cqw/1.35 'Lora', serif; }
+.f-liste p { display: flex; align-items: center; gap: 1.2cqw; margin: 0; padding: 1.3cqw 0; border-bottom: .1cqw solid #e4e0db; font-size: 1.45cqw; }
+.f-liste span { width: 1cqw; height: 1cqw; border-radius: 50%; flex: 0 0 auto; }
+.f-band { margin: 3.4cqw -6cqw 0; padding: 3cqw 6cqw; background: #fff400; color: #1a1817; }
+.f-band .f-punkte { margin-top: 0; }
+.f-zs { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; margin: 6cqw 0 0; padding: 0; }
+.f-zs::before { content: ""; position: absolute; left: 0; right: 0; top: .6cqw; height: .16cqw; background: #1a1817; }
+.f-zs li span { display: block; width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #1a1817; box-shadow: 0 0 0 .5cqw #fff400; position: relative; margin-bottom: 2.2cqw; }
+.f-zs small { font: 700 1cqw/1 'Poppins', sans-serif; letter-spacing: .14em; }
+.f-zs b { display: block; margin-top: .8cqw; font: 700 2cqw/1.2 'Lora', serif; }
+.f-zitat { margin: 2cqw 0 0; max-width: 72cqw; font: 700 4.4cqw/1.3 'Lora', serif; }
+.f-typo1 { margin: 0; font: 700 4.2cqw/1.1 'Lora', serif; }
+.f-typo2 { margin: 2.4cqw 0 0; font: 400 2.4cqw/1.2 'Poppins', sans-serif; }
+.f-typo3 { margin: 2.4cqw 0 0; font: 700 1.3cqw/1 'Poppins', sans-serif; letter-spacing: .14em; }
+.f-typo-info { margin: .6cqw 0 0; font-size: 1.1cqw; opacity: .6; }
+.f-farben { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6cqw; }
+.f-farben span { display: block; height: 5cqw; border-radius: .8cqw; }
+.f-farben b { display: block; margin-top: .7cqw; font-size: 1.15cqw; }
+.f-farben small { font-size: 1cqw; opacity: .6; }
+</style>
 </main>
 
 <footer class="site-footer">
@@ -687,10 +892,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </div>
 </footer>
 
-
-
-
-
 <script src="/script.js"></script>
+<script src="/tracking.js"></script>
 </body>
 </html>
