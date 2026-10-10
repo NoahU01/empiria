@@ -243,6 +243,8 @@ CSS_INHALT = masse("""
 .oi-logo-fuss { display: block; height: [7]; width: auto; margin-left: [-1.7]; }
 .oi-daten { display: flex; flex-direction: column; gap: [1.2]; font: 400 [8.5pt]/1.3 'Poppins', sans-serif; color: rgba(255,255,255,.8); white-space: nowrap; }
 .oi-ergebnis .op-k { color: #fff400; }
+.op--inhalt:not(.op--inhalt-hoch) .op-k, .op--blatt-quer .op-k, .op--quer .op-k { gap: [3]; }
+.op--inhalt:not(.op--inhalt-hoch) .op-k::before, .op--blatt-quer .op-k::before, .op--quer .op-k::before { width: [8]; height: [0.6]; }
 .op--inhalt:not(.op--inhalt-hoch) .oi-ergebnis { grid-column: 2 / span 2; }
 .oi-links { white-space: nowrap; }
 .oi-ergebnis p:last-child { margin: 0; font: 700 [13pt]/1.35 'Lora', serif; }
@@ -290,6 +292,54 @@ CSS_INHALT_HOCH = masse("""
 .op--inhalt-hoch .oi-daten { flex-direction: row; gap: [6]; font-size: [8.5pt]; }
 .op--inhalt-hoch .oi-logo-fuss { height: [6.5]; margin-left: [-1.4]; }
 """, 297)
+
+
+# ---------- Arbeitsblatt: druckerfreundlich, nur Weiß, Schreibfelder ----------
+BLATT = dict(
+    kicker="Workshop · Strategiehandwerk",
+    h1='Wie sähe die Homepage Deines <span class="hl">Bereichs</span> aus?',
+    lead="Stell Dir vor, Dein Bereich wäre ein eigenes Unternehmen. Beantworte die Fragen in Stichworten – so, wie es auf seiner Homepage stünde.",
+    felder=["Welche Zielgruppe sprechen wir an?", "Welches Problem lösen wir für sie?", "Welcher Nutzen entsteht daraus?",
+            "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit mit uns ab?", "Was ich mitnehme"],
+)
+
+
+def arbeitsblatt(d, fmt, png=None):
+    attr = f' data-png="ga/onepager/{png}.png" data-pw="{PX[fmt][0]}"' if png else ""
+    linien = "<i></i>" * (6 if fmt == "quer" else 7)
+    felder = "".join(f'<div class="ab-feld"><p class="ab-frage"><span class="oi-nr">0{i + 1}</span>{f}</p><div class="ab-linien">{linien}</div></div>'
+                     for i, f in enumerate(d["felder"]))
+    return (f'<div class="op op--blatt op--blatt-{fmt}"{attr}><div class="ab-in">'
+            f'<header class="ab-kopf">{logo(cls="oi-logo")}<div class="ab-name"><span>Name</span><span>Datum</span></div></header>'
+            f'<div class="ab-titel">{k(d["kicker"])}<h1>{d["h1"]}</h1><p class="op-lead">{d["lead"]}</p></div>'
+            f'<div class="ab-felder">{felder}</div>'
+            f'<footer class="ab-fuss"><span>Arbeitsblatt</span><span>{FIRMA["web"]}</span></footer></div></div>')
+
+
+def css_blatt(w, rand, h1, spalten, zeile):
+    return masse(f"""
+.op--blatt-{'hoch' if w == 297 else 'quer'} {{ aspect-ratio: {w} / {297 if w == 420 else 420}; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-in {{ position: absolute; inset: 0; display: flex; flex-direction: column; padding: [16] [{rand}] [12]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .oi-logo {{ height: [7]; margin-left: [-1.5]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-kopf {{ display: flex; justify-content: space-between; align-items: flex-end; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name {{ display: flex; gap: [8]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name span {{ width: [48]; padding-bottom: [1.5]; border-bottom: [0.3] solid #1a1817; font: 400 [8pt]/1 'Poppins', sans-serif; color: #6b6762; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-name span + span {{ width: [32]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-titel {{ margin-top: [14]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .op-k {{ font-size: [8pt]; margin-bottom: [4]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} h1 {{ font-size: [{h1}pt]; line-height: 1.28; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .op-lead {{ margin-top: [4]; font-size: [11pt]; max-width: [200]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-felder {{ flex: 1; min-height: 0; display: grid; grid-template-columns: repeat({spalten}, 1fr); grid-auto-rows: 1fr; gap: [9] [12]; margin-top: [12]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-feld {{ display: flex; flex-direction: column; min-height: 0; border-top: [0.6] solid #1a1817; padding-top: [3]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-frage {{ display: flex; gap: [3]; align-items: baseline; margin: 0; font: 700 [11pt]/1.3 'Lora', serif; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-frage .oi-nr {{ flex: 0 0 auto; font-size: [7.5pt]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-linien {{ flex: 1; display: flex; flex-direction: column; margin-top: [2]; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-linien i {{ flex: 1; border-bottom: [0.25] solid #d4cfc8; }}
+.op--blatt-{'hoch' if w == 297 else 'quer'} .ab-fuss {{ display: flex; justify-content: space-between; margin-top: [8]; padding-top: [3]; border-top: [0.3] solid #d4cfc8; font: 400 [7.5pt]/1 'Poppins', sans-serif; color: #6b6762; letter-spacing: .04em; }}
+""", w)
+
+
+CSS_BLATT = css_blatt(297, 20, 30, 2, 9) + css_blatt(420, 22, 32, 3, 9)
 
 
 CSS_HOCH = masse("""
@@ -373,7 +423,8 @@ CSS_QUER = masse("""
 SEITE_CSS = """
 .op-reihe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; margin-top: 1.8rem; align-items: start; }
 .op-reihe--quer { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 900px) { .op-reihe, .op-reihe--quer { grid-template-columns: 1fr; } }
+.op-reihe--blatt { grid-template-columns: minmax(0, 297fr) minmax(0, 594fr); align-items: end; }
+@media (max-width: 900px) { .op-reihe, .op-reihe--quer, .op-reihe--blatt { grid-template-columns: 1fr; } }
 """
 
 
@@ -393,6 +444,8 @@ def inhalt(mit_png):
           f(lambda n: quer_inhalt(INHALT, False, n), "a3-quer-inhalt", "B · ohne Bild", Q)]
     qk = [f(lambda n: quer(LEISTUNG, "person", n), "a3-quer-leistung", "C · mit Ansprechpartner", Q),
           f(lambda n: quer(RASTER, "raster", n), "a3-quer-raster", "D · Grundraster", Q)]
+    ab = [f(lambda n: arbeitsblatt(BLATT, "hoch", n), "a3-hoch-arbeitsblatt", "Arbeitsblatt hoch", H),
+          f(lambda n: arbeitsblatt(BLATT, "quer", n), "a3-quer-arbeitsblatt", "Arbeitsblatt quer", Q)]
     return (abschnitt("A3 hoch · Inhalt",
                       "Das Arbeitsformat für echte Inhalte: Überschrift über die volle Breite, darunter Problem und Lösung nebeneinander, "
                       "die Zusammenarbeit in drei Schritten, fünf Fragen und unten ein schwarzes Band mit dem Ergebnis.",
@@ -406,7 +459,11 @@ def inhalt(mit_png):
                         f'<div class="op-reihe op-reihe--quer">{"".join(qi)}</div>')
             + abschnitt("A3 quer · Kurzfassung",
                         "Wenig Text: schwarze Titelspalte links, rechts eine offene weiße Fläche mit Problem, Lösung und Ergebnis.",
-                        f'<div class="op-reihe op-reihe--quer">{"".join(qk)}</div>'))
+                        f'<div class="op-reihe op-reihe--quer">{"".join(qk)}</div>')
+            + abschnitt("Arbeitsblatt · hoch und quer",
+                        "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Name und Datum, "
+                        "darunter Schreibfelder mit Linien – je Feld eine Frage.",
+                        f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>'))
 
 
 def main():
@@ -415,7 +472,7 @@ def main():
                     "Ein Blatt für eine Leistung oder ein Thema, in A3 hoch und quer. Die Inhaltsfassung trägt echte Inhalte über die volle Breite, "
                     "die Kurzfassung arbeitet mit wenig Text und großen Flächen. Jeweils mit Ansprechpartner oder ohne Bild.",
                     ["Entwurf 3", "A3 hoch & quer", "Inhalt & Kurzfassung", "mit / ohne Bild"],
-                    inhalt(mit_png), CSS_HOCH + CSS_QUER + CSS_INHALT + CSS_INHALT_HOCH + SEITE_CSS)
+                    inhalt(mit_png), CSS_HOCH + CSS_QUER + CSS_INHALT + CSS_INHALT_HOCH + CSS_BLATT + SEITE_CSS)
     if mit_png:
         png_export(DATEI, "onepager")
 
