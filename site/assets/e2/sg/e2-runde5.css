@@ -1212,3 +1212,8 @@ html body.e2 .e2v-held__raster .e2v-held__pfeil svg { width: auto !important; he
 .e2-ref-dialog__raster span { display: grid; place-items: center; height: 4.4rem; padding: .8rem; border-radius: 12px; background: #fff; }
 .e2-ref-dialog__raster img { max-width: 100%; max-height: 2.2rem; width: auto; height: auto; }
 .e2-ref-knopf { text-decoration: none !important; } .e2-ref-knopf { border-bottom: 1.5px solid #1a1817 !important; padding-bottom: .2rem !important; } .e2-ref-knopf span { margin-left: .1rem; }
+/* Daniel 10.10.: Hinweis dezenter – klein, grau, ohne Linie; Schließen-Kreuz ohne blauen Fokusrahmen */
+@media (max-width: 640px) {
+  html body.e2 .e2-ref-knopf.e2-ref-knopf { font-size: .74rem !important; font-weight: 500 !important; color: #8a847c !important; border: 0 !important; padding: 0 !important; margin-top: .7rem !important; letter-spacing: .01em; text-decoration: none !important; }
+}
+.e2-ref-dialog__zu:focus, .e2-ref-dialog__zu:focus-visible, .e2-ref-dialog:focus, .e2-ref-dialog:focus-visible { outline: none !important; box-shadow: none !important; }

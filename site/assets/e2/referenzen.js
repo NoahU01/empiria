@@ -26,8 +26,8 @@
       m.classList.add("e2-ref-reihe");
       var k = document.createElement("button");
       k.type = "button"; k.className = "e2-ref-knopf";
-      k.innerHTML = "Alle Referenzen ansehen <span aria-hidden=\"true\">→</span>";
-      k.addEventListener("click", function () { dlg.showModal(); });
+      k.innerHTML = "Alle Referenzen ansehen <span aria-hidden=\"true\">›</span>";
+      k.addEventListener("click", function () { dlg.showModal(); dlg.querySelector(".e2-ref-dialog__zu").blur(); });
       m.insertAdjacentElement("afterend", k);
       // Knopf bündig mit dem ersten Logo (Seiten ohne Innenabstand um das Logoband)
       function ausrichten() {
