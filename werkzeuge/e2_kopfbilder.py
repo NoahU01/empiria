@@ -66,6 +66,16 @@ def zielgruppe(namen, icons, labels):
     return reihe(icons, labels, doppel=True, oben=o, y0=96 + len(zeilen) * 14)
 
 
+def paar(icons, labels):
+    """Zwei Formate nebeneinander, mittig – für Übersichten mit genau zwei Wegen (Training & Sparring)."""
+    o = ""
+    for k, (n, l) in enumerate(zip(icons, labels)):
+        cx = 130 + k * 180
+        o += icon(n, cx - 55, 110, 110)
+        o += f'<text x="{cx}" y="286" font-size="14" font-weight="600" letter-spacing="1.6" fill="{K}" text-anchor="middle" font-family="{SANS}">{l}</text>'
+    return _svg(o)
+
+
 def zahl(wort, akzent):
     breite = len(wort) * 96
     return _svg(marker(30, 214, breite + 20, 84)
@@ -96,7 +106,7 @@ SEITEN = [
     ("Roll-up", "Medien", "cyan", "Dein Auftritt. Ein Blick. Volle Wirkung.", "trio", ("image", "users", "message-circle"), "Auftritt, Besucher, Gespräch."),
     ("Video", "Medien", "cyan", "Deine Botschaft. Bewegt. Volle Wirkung.", "trio", ("circle-play", "video", "film"), "Video, Dreh, Schnitt."),
     ("Digitale Tools", "Marketing 2.0", "cyan", "Digitale Tools, die den Alltag einfacher machen.", "trio", ("layout-grid", "chart-column", "smartphone"), "Ein Ort, Zahlen, App."),
-    ("Training & Sparring", "Formate", "violett", "Begleitung, die wirkt. Kein Seminar von der Stange.", "trio", ("handshake", "trending-up", "users"), "Begleitung, Wirkung, Team."),
+    ("Training & Sparring", "Formate", "violett", "Begleitung, die wirkt. Kein Seminar von der Stange.", "paar", (["presentation", "messages-square"], ["TEAMS", "1:1 SPARRING"]), "Die zwei Wege: Team und Führungskraft."),
     ("1:1 Sparring", "Training & Sparring", "violett", "Offen sprechen. Klar entscheiden. Volle Wirkung.", "zahl", ("1:1", "messages-square"), "Die Zahl ist das Format."),
     ("Impulsvorträge", "Einzelseite", "violett", "Impulse, die nachwirken. Nicht nur unterhalten.", "trio", ("mic-vocal", "lightbulb", "users"), "Vortrag, These, Publikum."),
 ]
@@ -116,6 +126,8 @@ def bild(seite):
         return zielgruppe(*daten), NAMEN[aufbau]
     if aufbau == "reihe_dp":
         return reihe(*daten, doppel=True), NAMEN[aufbau]
+    if aufbau == "paar":
+        return paar(*daten), "Paar"
     if aufbau == "reihe_o":
         return reihe(*daten, pfeile=False), NAMEN[aufbau]
     return zahl(*daten), NAMEN[aufbau]
@@ -126,6 +138,8 @@ def eng(seite):
     a = seite[4]
     if a == "trio":
         return "36 100 368 204"
+    if a == "paar":
+        return "60 100 320 200"
     if a == "zahl":
         return "28 56 380 246"
     if a == "zielgruppe":

@@ -77,3 +77,48 @@ html body .modal--jobprofile .jobprofile-callout, html body .modal--jobprofile .
 html body .modal--jobprofile .jobprofile-download { margin-top: 2rem !important; }
 html body .modal--jobprofile .jobprofile-download-item :is(svg, use) { color: #1a1817 !important; stroke: #1a1817 !important; }
 html body .modal--jobprofile .jobprofile-download .btn { background: #fff400 !important; color: #1a1817 !important; border-color: #fff400 !important; }
+
+/* Feedback 10.10. · ALLE FAQ einheitlich: Hellgrau-Sektion, schlanke Zeilen mit Linie, schwarzes Plus ohne Kreis (sofort sichtbar = Paid Ads = alle) */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-faq-item summary::after {
+  width: 18px !important; height: 18px !important; border-radius: 0 !important;
+  background: linear-gradient(#1a1817, #1a1817) center / 14px 1.8px no-repeat, linear-gradient(#1a1817, #1a1817) center / 1.8px 14px no-repeat !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-list { display: block !important; gap: 0 !important; border-top: 1px solid #d9d5ce; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-item.pa-faq-item { background: transparent !important; border: 0 !important; border-bottom: 1px solid #d9d5ce !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-item summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.05rem 0 !important; font-size: .98rem !important; font-weight: 600; color: #1a1817 !important; min-height: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-icon { width: 18px !important; height: 18px !important; border-radius: 0 !important; border: 0 !important; flex: 0 0 auto;
+  background: linear-gradient(#1a1817, #1a1817) center / 14px 1.8px no-repeat, linear-gradient(#1a1817, #1a1817) center / 1.8px 14px no-repeat !important; transition: transform .2s; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-icon::before, html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-icon::after { display: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-item[open] .pa-faq-icon { transform: rotate(45deg); }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-answer { padding: 0 2.6rem 1.2rem 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-faq-answer p { margin: 0 !important; font-size: .93rem !important; line-height: 1.65 !important; color: #3d3a37 !important; }
+
+/* Feedback 10.10. · sofort sichtbar „Was … mitbringt“: Bilder stehen auf der schwarzen Linie, darunter Titel und Text */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt .sofort-feature-card.sofort-feature-card { display: flex !important; flex-direction: column; border-top: 0 !important; padding-top: 0 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt .sofort-feature-card .sofort-feature-img { order: -1; display: block; width: 100% !important; height: 13rem !important; object-fit: contain; object-position: center bottom; margin: 0 0 1.4rem !important; padding: 0 !important; border-bottom: 1.5px solid #1a1817; border-radius: 0 !important; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid.produkt-grid .produkt-grid-cards.produkt-grid-cards > .sofort-feature-card.sofort-feature-card.sofort-feature-card { border-top: 0 !important; padding-top: 0 !important; }
+
+/* Feedback 10.10. · sofort sichtbar „Monate werden zu Tagen“: mehr Wirkung – Sektion auf Gelb, Vergleich in einer weißen Bühne, Raketen-Kacheln schwarz mit gelber Rakete */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar > section.produkt-section.produkt-process:nth-of-type(n) { background: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-bild { background: #fff !important; border: 0 !important; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline { background: #f3f1ee !important; border-color: transparent !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-timeline--outline { background: #fff !important; border: 2px solid #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket { background: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-rocket :is(svg, use, path) { color: #fff400 !important; stroke: #fff400 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .vergleich-pill { background: #fff !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .produkt-process-step.produkt-process-step { background: #fff !important; border: 0 !important; border-radius: 18px !important; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .step-num { background: #fff400 !important; color: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process .produkt-section-head p { color: #1a1817 !important; opacity: .85; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt.e2-seite--sofort-sichtbar .produkt-process-step h3 { margin-bottom: .45rem !important; }
+/* Feedback 10.10. · Paid Ads Potentialcheck: Abstand unter Eingabefeld und Knopf */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc form :is(.pa-pc-form-row, .pa-pc-row, .pa-pc-input-row), html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc :is(input[type=url], input[type=text]) { margin-bottom: .9rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc .pa-pc-note { margin-top: 1.1rem !important; }
+
+/* Feedback 10.10. · Paid Ads im Volksfest-Stil: Ablauf-Karten ruhig (Nummer in der Karte, nicht auf dem Rand), Potentialcheck ohne Schatten, weißes Eingabefeld, mehr Luft */
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-process .produkt-process-step.produkt-process-step { padding: 1.6rem 1.5rem 1.7rem !important; overflow: visible; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-process .step-num { position: static !important; transform: none !important; display: inline-grid !important; place-items: center; width: 2.4rem !important; height: 2.4rem !important; margin: 0 0 1.1rem !important; background: #fff400 !important; color: #1a1817 !important; box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .produkt-process-step h3 { margin: 0 0 .5rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt :is(.pa-pc, .pa-check) { box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc input:not([type=hidden]):not([type=checkbox]) { background: #fff !important; border: 1.5px solid #1a1817 !important; color: #1a1817 !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc .pa-pc-note { margin-top: 1.4rem !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt .pa-pc-report { box-shadow: none !important; }
+html body main .e2-alt.e2-alt.e2-alt.e2-alt section.produkt-grid :is(.produkt-grid-cta, .pa-leist-cta) { justify-content: flex-start !important; text-align: left !important; }

@@ -1024,7 +1024,7 @@ html body main .e2-alt.e2-alt.e2-alt .usp-highlight .usp-highlight-icon :is(svg,
 /* Runde 38 · sofort sichtbar: Logo als Kicker (größer, ohne Strich), Original-Mockup im Kopf */
 html body .e2-alt .e2-kicker.e2-kicker--logo::before { display: none !important; }
 html body .e2-alt .e2-kicker.e2-kicker--logo { padding-left: 0 !important; }
-html body .e2-alt .e2-kicker--logo img { height: 1.7rem; width: auto; display: block; }
+html body .e2-alt .e2-kicker--logo img { height: 1.05rem; width: auto; display: block; }
 .e2-kopfbild--foto img { width: 100%; height: auto; display: block; }
 @media (max-width: 900px) { .e2-kopfbild--foto { max-width: 26rem; } }
 /* Runde 38 · MES-Pakete wie alle Preiskarten: Hellgrau, die empfohlene in Gelb (wie KI-Formate, sofort sichtbar) */

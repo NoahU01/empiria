@@ -505,6 +505,21 @@ def unterseite(original, ziel, html=None):
         sek = abschnitt(main, 'produkt-price-note'); main = main.replace(sek, e2_runde5.preis_sprint(sek))
     if name == "workshop-moderation":   # Feedback 10.10.: „unzählig“ klingt übertrieben
         main = main.replace("Erfahrung aus unzähligen Workshops.", "Erfahrung aus zahlreichen Workshops.")
+    if name == "training-sparring":   # Feedback 10.10.: Kopf ohne Verneinung, keine Wiederholungen zur nächsten Sektion
+        main = main.replace('<h1>Begleitung, <span class="hl">die wirkt.</span> Kein Seminar von der Stange.</h1>', '<h1>Begleitung, <span class="hl">die wirkt.</span><br>Bis in den Alltag.</h1>', 1)
+        main = main.replace("Ob als Trainingsbegleitung für Dein Team oder als vertrauliches 1:1-Sparring für Dich als Führungskraft: Wir begleiten, statt nur zu schulen.",
+                            "Für Dein Team als Trainingsbegleitung, für Dich als Führungskraft im vertraulichen Sparring.", 1)
+        a = main.index('<div class="produkt-pills">', main.index('class="e2-kopf"')); main = main.replace(e2_runde5.div_block(main, a), "", 1)
+        main = main.replace("Begleitung statt Seminar von der Stange.", "Drei Dinge, die den Unterschied machen.", 1)
+        main = main.replace("Ob im Team oder im 1:1: Wir bleiben dran, bis die Wirkung im Alltag ankommt.", "Inhalte aus Deiner Praxis, ehrliche Rückmeldung und eine Begleitung, die nicht nach dem Termin endet.", 1)
+        main = main.replace("Keine Vorlage von der Stange – Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche.", "Inhalte und Fälle aus Deiner Praxis in der Versicherungsbranche.", 1)
+        main = main.replace("Ob im Team oder im 1:1: offen, ehrlich und mit klarer Rückmeldung, auch wenn sie unbequem ist.", "Offen, ehrlich und mit klarer Rückmeldung – auch wenn sie unbequem ist.", 1)
+    if name == "sparring":   # Feedback 10.10.: „1:1“ nur noch im Bild; neuer Text und Knopf
+        k = main.index('class="e2-kopf"')
+        main = main[:k] + main[k:].replace('<p class="e2-kicker">1:1 Sparring</p>', '<p class="e2-kicker">Sparring für Führungskräfte</p>', 1)
+        main = main.replace("Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll im 1:1 – bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.",
+                            "Seit vielen Jahren begleite ich Vorstandsmitglieder und Führungskräfte vertrauensvoll bei strategischen Themen, Ideen zum Geschäftsmodell oder Führungsfragen.", 1)
+        main = main.replace(">1:1 Sparring kennenlernen <", ">Sparring kennenlernen <", 1)
     if name == "marketing":   # Feedback 10.10.: Paid-Ads-Text auf vier Zeilen wie die anderen Karten
         main = main.replace("Kampagnen auf Google und Meta, die nicht nur Reichweite bringen, sondern Anfragen – klar ausgewertet statt Blackbox.", "Kampagnen auf Google und Meta, die Anfragen bringen – klar ausgewertet statt Blackbox.")
     if name == "workshop-moderation" and 'class="produkt-section produkt-faq' in main:   # Runde 38: Usecases als Karten wie KI/Sprint
