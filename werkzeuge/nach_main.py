@@ -82,6 +82,85 @@ def entwicklungsteil_entfernen(baum):
             json.dump(d, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
         bericht.append(f"Rewrites: {vorher} -> {len(d['rewrites'])}")
+    bericht += nur_verlinkte_seiten(baum)
+    return bericht
+
+
+# Daniel 10.10.2026: Auf main nur, was die Website wirklich zeigt – Startseite, alle Leistungsseiten,
+# Kontakt, Impressum, Datenschutz. Nicht verlinkte Seiten (Archiv, Vorträge, alte Fassungen …) fliegen raus.
+START = ["site/index.html", "site/kontakt.html", "site/impressum.html", "site/datenschutz.html"]
+# Weggefallene Adressen leiten dauerhaft auf die passende Seite weiter (Suchmaschinen, alte Links)
+WEITERLEITUNG = {"/leistungen/teams": "/praesentationsseminar", "/der-beste-workshop": "/workshops",
+                 "/impulsvortraege": "/training-sparring", "/vortrag-1": "/training-sparring", "/vortrag-2": "/training-sparring",
+                 "/vortrag-3": "/training-sparring", "/digitale-tools": "/marketing", "/powerpoint": "/medien",
+                 "/landingpage": "/medien", "/rollup": "/medien", "/video": "/medien"}
+
+
+def erreichbare_seiten(baum):
+    import posixpath, re
+    gesehen, offen = set(), list(START)
+    while offen:
+        f = offen.pop()
+        pfad = os.path.join(baum, f)
+        if f in gesehen or not os.path.exists(pfad):
+            continue
+        gesehen.add(f)
+        for h in re.findall(r'href="([^"]+)"', open(pfad, encoding="utf-8").read()):
+            h = h.split("#")[0].split("?")[0]
+            if not h or h.startswith(("http", "mailto", "tel", "javascript")):
+                continue
+            if not h.startswith("/"):
+                h = "/" + posixpath.normpath(posixpath.join(posixpath.dirname(f[5:]), h))
+            if h == "/":
+                offen.append("site/index.html"); continue
+            p = "site" + h.rstrip("/")
+            if p.endswith(".html"):
+                offen.append(p)
+            elif "." not in p.split("/")[-1]:
+                offen.append(p + ".html")
+    return gesehen
+
+
+def nur_verlinkte_seiten(baum):
+    bericht = []
+    bleibt = erreichbare_seiten(baum)
+    weg = []
+    for dp, dn, fs in os.walk(os.path.join(baum, "site")):
+        for f in fs:
+            rel = os.path.relpath(os.path.join(dp, f), baum).replace(os.sep, "/")
+            if rel.endswith(".html") and rel not in bleibt:
+                os.remove(os.path.join(dp, f)); weg.append(rel)
+    if weg:
+        bericht.append(f"nicht verlinkte Seiten entfernt ({len(weg)}): " + ", ".join(sorted(weg)))
+    # vercel.json: Rewrites auf entfernte Seiten raus, Weiterleitungen für weggefallene Adressen rein
+    vj = os.path.join(baum, "vercel.json")
+    d = json.load(open(vj, encoding="utf-8"))
+    def ziel_da(r):
+        z = r.get("destination", "")
+        return "$" in z or not z.endswith(".html") or os.path.exists(os.path.join(baum, z.lstrip("/")))
+    d["rewrites"] = [r for r in d.get("rewrites", []) if ziel_da(r)]
+    vorhanden = {r.get("source") for r in d.get("redirects", [])}
+    for alt, neu in WEITERLEITUNG.items():
+        if not os.path.exists(os.path.join(baum, "site" + alt + ".html")):
+            for quelle in (alt, alt + ".html", alt + "/"):
+                if quelle not in vorhanden:
+                    d.setdefault("redirects", []).append({"source": quelle, "destination": neu, "permanent": True})
+    if not os.path.exists(os.path.join(baum, "site", "archiv", "startseite-v1.html")) and "/archiv/:pfad*" not in vorhanden:
+        d.setdefault("redirects", []).append({"source": "/archiv/:pfad*", "destination": "/", "permanent": True})
+    with open(vj, "w", encoding="utf-8") as fh:
+        json.dump(d, fh, indent=2, ensure_ascii=False); fh.write("\n")
+    # sitemap.xml: genau die Seiten, die es gibt (saubere Adressen wie in den Rewrites)
+    sauber = {r["destination"].replace("/site", "", 1): r["source"] for r in d.get("rewrites", []) if "$" not in r.get("source", "")}
+    urls = []
+    for f in sorted(bleibt, key=lambda x: (x != "site/index.html", x)):
+        roh = f[4:]
+        url = sauber.get(roh, roh)
+        if url in ("/index.html",):
+            url = "/"
+        urls.append(f"  <url><loc>https://www.empiria.de{url}</loc></url>")
+    open(os.path.join(baum, "site", "sitemap.xml"), "w", encoding="utf-8").write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n")
+    bericht.append(f"sitemap.xml: {len(urls)} Seiten; Weiterleitungen für weggefallene Adressen gesetzt")
     return bericht
 
 
