@@ -72,6 +72,57 @@ def hinten_c(png=None):
                  GELB, SCHWARZ, "vk--rc", png)
 
 
+# ---------- Vorderseiten · Entwurf 2: nur Text, keine Icons, kein Foto ----------
+def kontakt_text(p):
+    return (f'<div class="vk2-kontakt"><p>{ph(p["mail"], p["ph"])}</p><p>{ph(p["tel"], p["ph"])}</p>'
+            f'<p>{FIRMA["web"]}</p></div>')
+
+
+def name_zwei(p, hl=True):
+    vor, nach = p["name"].split(" ", 1)
+    return f'<p class="vk2-name">{vor}<br>{f"<span class=vk-hl>{nach}</span>" if hl else nach}</p>'
+
+
+def kicker(p):
+    return f'<p class="vk2-kicker">{p["rolle2"] or p["rolle"]}</p>'
+
+
+def v_highlight(p, png=None):
+    return karte(kicker(p) + name_zwei(p) + kontakt_text(p), "#fff", SCHWARZ, "vk2 vk2--hl", png)
+
+
+def v_gelb(p, png=None):
+    return karte(kicker(p) + name_zwei(p, False) + kontakt_text(p) + f'<span class="vk2-pfeil">{zeichen("forward", SCHWARZ)}</span>',
+                 GELB, SCHWARZ, "vk2 vk2--gelb", png)
+
+
+def v_schwarz(p, png=None):
+    return karte(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vk2 vk2--schwarz", png)
+
+
+def v_wechsel(p, png=None):
+    return karte(f'<div class="vk2-oben">{kicker(p)}{name_zwei(p, False)}</div>' + kontakt_text(p), "#fff", SCHWARZ, "vk2 vk2--wechsel", png)
+
+
+def v_logo(p, png=None):
+    return karte(logo(cls="vk2-logo") + f'<div class="vk2-unten"><div><p class="vk2-name vk2-name--eins">{p["name"]}</p>{kicker(p)}</div>'
+                 f'{kontakt_text(p)}</div>', "#fff", SCHWARZ, "vk2 vk2--logo", png)
+
+
+FRONTEN = [
+    ("highlight", "1 · Highlight", "Der Name steht wie die Überschrift der Homepage: groß, zweizeilig, der Nachname im gelben Highlight. Kein Logo – das steht hinten.",
+     v_highlight, hinten_b, "Rückseite Schwarz"),
+    ("gelb", "2 · Gelb mit Anschnitt", "Vollfläche Gelb, rechts läuft der Doppelpfeil groß aus der Karte. Name und Kontakt links, alles schwarz.",
+     v_gelb, hinten_a, "Rückseite Weiß"),
+    ("schwarz", "3 · Schwarz", "Schwarze Karte, weißer Name, der Nachname im gelben Highlight. Kräftig und edel – dazu die gelbe Rückseite.",
+     v_schwarz, hinten_c, "Rückseite Gelb"),
+    ("wechsel", "4 · Flächenwechsel", "Oben Gelb mit Funktion und Name, unten Weiß mit dem Kontakt – der Flächenwechsel der Website im Kleinen.",
+     v_wechsel, hinten_b, "Rückseite Schwarz"),
+    ("logo", "5 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts. Für alle, die das Logo vorne möchten.",
+     v_logo, hinten_b, "Rückseite Schwarz"),
+]
+
+
 VARIANTEN = [
     ("a", "Variante A · Weiß", "Ruhig und klassisch. Vorderseite: Logo oben, Name und Rolle in der Mitte, Kontakt unten in zwei Spalten. "
      "Rückseite weiß mit dem Claim und dem gelben Highlight – wie die Startseite der Website.", vorne_a, hinten_a),
@@ -87,34 +138,20 @@ def vorne(fn, p, key, png=None):
 
 
 def inhalt():
-    teile = []
-    for kurz, titel, text, fv, fh in VARIANTEN:
-        d = PERSONEN["daniel"]
-        f1 = figur(vorne(fv, d, "daniel", f"{kurz}-vorderseite-daniel"), "<b>Vorderseite</b> · 85 × 55 mm · Daniel",
-                   download(f"ga/visitenkarten/{kurz}-vorderseite-daniel.png", f"PNG · {PX[0]} × {PX[1]} px"))
-        f2 = figur(fh(f"{kurz}-rueckseite"), "<b>Rückseite</b> · 85 × 55 mm · für alle gleich",
-                   download(f"ga/visitenkarten/{kurz}-rueckseite.png", f"PNG · {PX[0]} × {PX[1]} px"))
-        weitere = [figur(vorne(fv, PERSONEN[k], k), f"<b>Vorderseite</b> · {PERSONEN[k]['name']}") for k in ("kerstin", "noah")]
-        teile.append(abschnitt(titel, text, raster([f1, f2]) + '<p class="ga-unter">Weitere Personen</p>' + raster(weitere)))
-
-    # Aufbau
     d = PERSONEN["daniel"]
-    aufbau = raster([
-        figur(vorne_a(d).replace('class="vk ', 'class="vk vk--raster ', 1), "<b>Satzspiegel</b> · Sicherheitsabstand 5 mm (gestrichelt)"),
-        '<div class="vk-mass">' + "".join(f'<p><b>{a}</b><span>{b}</span></p>' for a, b in [
-            ("Endformat", "85 × 55 mm, quer"),
-            ("Anschnitt", "+ 3 mm rundum für die Druckdaten (noch anzulegen)"),
-            ("Abstand", "Text und Logo mindestens 5 mm vom Rand"),
-            ("Name", "Lora Bold 11 pt"),
-            ("Rolle", "Poppins SemiBold 5,5 pt, Großbuchstaben, gesperrt"),
-            ("Kontakt", "Poppins Regular 6,5 pt"),
-            ("Farben", "Weiß, Schwarz #1A1817, Gelb #FFF400"),
-        ]) + '</div>'])
-    teile.append(abschnitt("Aufbau &amp; Maße", "Gilt für alle drei Varianten. Die PNGs zeigen das Endformat ohne Anschnitt – zum Ansehen und Abstimmen, "
-                           "nicht als Druckdaten.", aufbau))
-    hinweis = (f'<p class="ga-hinweis">{ph("gestrichelt")}<span>= Platzhalter. E-Mail-Adressen und Telefonnummern von Kerstin und Noah '
-               f'sind angenommen bzw. noch offen und müssen vor dem Druck bestätigt werden.</span></p>')
-    return hinweis + "".join(teile)
+    dl = lambda n: download(f"ga/visitenkarten/{n}.png", f"PNG · {PX[0]} × {PX[1]} px")
+    teile = []
+    for kurz, titel, text, fv, fh, hinten_name in FRONTEN:
+        f1 = figur(fv(d, f"vorne-{kurz}"), "<b>Vorderseite</b> · 85 × 55 mm", dl(f"vorne-{kurz}"))
+        f2 = figur(fh(), f"<b>{hinten_name}</b> · Vorschlag")
+        teile.append(abschnitt(titel, text, raster([f1, f2])))
+    rueck = raster([figur(fh(f"{k}-rueckseite"), f"<b>{t}</b>", dl(f"{k}-rueckseite"))
+                    for k, t, fh in (("a", "Rückseite Weiß · Claim", hinten_a), ("b", "Rückseite Schwarz · Anschnitt", hinten_b),
+                                     ("c", "Rückseite Gelb · Doppelpfeil und Logo", hinten_c))], 3, 1)
+    teile.append(abschnitt("Rückseiten", "Unverändert aus Entwurf 1 – jede Vorderseite lässt sich mit jeder Rückseite kombinieren.", rueck))
+    alt = raster([figur(vorne(fv, d, "daniel"), f"<b>{titel}</b> · Entwurf 1") for _, titel, _, fv, _ in VARIANTEN], 3, 1)
+    teile.append(abschnitt("Archiv · Vorderseiten Entwurf 1", "Zum Vergleich – mit Icons und Foto, wird nicht weiterverfolgt.", alt))
+    return "".join(teile)
 
 
 CSS = masse("""
@@ -157,6 +194,27 @@ CSS = masse("""
 .vk-claim-klein { position: absolute; left: [6.5]; top: [6.5]; font: 600 [5.5pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #fff400; }
 .vk-pfeil-c { position: absolute; left: 50%; top: [12.5]; transform: translateX(-50%); width: [22]; }
 .vk-logo--c { top: auto; bottom: [7]; left: 50%; transform: translateX(-50%); height: [6]; }
+/* Entwurf 2 */
+.vk2 .vk-in { padding: 0; }
+.vk2-kicker { display: flex; align-items: center; gap: [1.6]; font: 600 [5.2pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vk2-kicker::before { content: ""; width: [3.6]; height: [0.35]; background: currentColor; }
+.vk2-name { margin-top: [2.6] !important; font: 700 [19pt]/1.22 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.vk2-name .vk-hl { color: #1a1817; }
+.vk2-kontakt { position: absolute; left: [6]; bottom: [5.6]; font: 400 [6.3pt]/1.6 'Poppins', sans-serif; }
+.vk2--hl .vk2-kicker, .vk2--gelb .vk2-kicker, .vk2--schwarz .vk2-kicker { position: absolute; left: [6]; top: [6.4]; }
+.vk2--hl .vk2-name, .vk2--gelb .vk2-name, .vk2--schwarz .vk2-name { position: absolute; left: [6]; top: [10.2]; }
+.vk2--schwarz .vk2-kicker { color: #fff400; }
+.vk2--schwarz .vk2-kontakt { color: rgba(255,255,255,.85); }
+.vk2-pfeil { position: absolute; right: [-13]; top: 50%; transform: translateY(-50%); width: [48]; }
+.vk2-pfeil svg { display: block; width: 100%; height: auto; }
+.vk2--wechsel .vk2-oben { position: absolute; left: 0; right: 0; top: 0; height: [33]; background: #fff400; padding: [6.4] [6] 0; }
+.vk2--wechsel .vk2-name { font-size: [17pt]; }
+.vk2-logo { position: absolute; left: [4.9]; top: [6]; height: [5.2]; width: auto; display: block; }
+.vk2-unten { position: absolute; left: [6]; right: [6]; bottom: [5.6]; display: flex; justify-content: space-between; align-items: flex-end; }
+.vk2--logo .vk2-kontakt { position: static; text-align: right; }
+.vk2-name--eins { margin: 0 0 [1.8] !important; font-size: [11.5pt]; }
+.vk2--logo .vk2-kicker { margin-bottom: [0.9] !important; }
+.vk2--logo .vk2-kicker::before { display: none; }
 /* Satzspiegel */
 .vk--raster::after { content: ""; position: absolute; inset: [5]; border: 1px dashed #C51F5D; pointer-events: none; }
 .vk-mass { align-self: center; }
@@ -168,9 +226,9 @@ CSS = masse("""
 def bauen(mit_png=True):
     seite_schreiben(DATEI, "Visitenkarten",
                     'Visiten<span class="hl">karten</span>',
-                    "Drei Entwürfe im Format 85 × 55 mm, jeweils mit Vorder- und Rückseite. Die Vorderseite trägt die Person, die Rückseite die Marke – "
-                    "einmal weiß, einmal schwarz, einmal gelb. Alle Entwürfe sind maßstäblich; die PNGs haben 300 dpi.",
-                    ["Entwurf 1", "85 × 55 mm", "Vorder- &amp; Rückseite", "3 Varianten", "Daniel · Kerstin · Noah"],
+                    "Fünf Vorderseiten im Format 85 × 55 mm – nur Name, Funktion und Kontakt, ohne Icons und ohne Foto. "
+                    "Neben jeder Vorderseite die vorgeschlagene Rückseite. Erst wenn die Gestaltung steht, folgen die weiteren Personen.",
+                    ["Entwurf 2", "85 × 55 mm", "5 Vorderseiten", "3 Rückseiten"],
                     inhalt(), CSS)
     if mit_png:
         png_export(DATEI, "visitenkarten")
