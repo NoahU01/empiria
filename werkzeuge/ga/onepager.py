@@ -94,15 +94,29 @@ def hoch(d, art, png=None):
             f'</div>')
 
 
+def fuss_spalte(art):
+    """Fuß der schwarzen Titelspalte (quer)."""
+    if art == "person":
+        return (f'<div class="op-person"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>{D["name"]}</b><span>{D["rolle2"]}</span></div></div>'
+                f'<div class="op-kontakt op-kontakt--liste"><span>{D["mail"]}</span><span>{D["tel"]}</span><span>www.empiria.de</span></div>')
+    if art == "marke":
+        return '<div class="op-kontakt op-kontakt--liste"><span>www.empiria.de</span></div>'
+    return '<div class="op-kontakt op-kontakt--liste"><span>Workshop · Datum</span><span>www.empiria.de</span></div>'
+
+
 def quer(d, art, png=None):
+    """Schwarze Titelspalte links über die volle Höhe, rechts offene weiße Fläche ohne Kästen und Bänder."""
     attr = f' data-png="ga/onepager/{png}.png" data-pw="{PX["quer"][0]}"' if png else ""
-    pfeil = f'<span class="op-pfeil">{zeichen("forward", "#1a1817")}</span>'
+    liste = (f'<div class="op-liste"><p class="op-liste__label">{d["p_label"]}</p>'
+             f'<ul>{"".join(f"<li>{x}</li>" for x in d["p_liste"])}</ul></div>')
     return (f'<div class="op op--quer"{attr}>'
-            f'<section class="op-spalte">{logo(cls="op-logo op-logo--kopf")}<div>{k(d["kicker"])}<h1>{d["h1"]}</h1><p class="op-lead">{d["lead"]}</p></div>{pfeil}</section>'
+            f'<section class="op-spalte">{logo(hell=True, cls="op-logo")}'
+            f'<div>{k(d["kicker"])}<h1>{d["h1"]}</h1><p class="op-lead">{d["lead"]}</p></div>'
+            f'<div><span class="op-pfeil">{zeichen("forward", "#fff400")}</span>{fuss_spalte(art)}</div></section>'
             f'<div class="op-rechts">'
-            f'<section class="op-zwei"><div>{k(d["p_kicker"])}<h2>{d["p_h2"]}</h2></div>{problem_kasten(d)}</section>'
-            f'<section class="op-weiss">{k(d["l_kicker"])}<h2>{d["l_h2"]}</h2>{punkte(d)}</section>'
-            f'<section class="op-schwarz">{k(d["e_kicker"])}<p class="op-satz">{d["e_satz"]}</p><div class="op-fuss">{fuss(art)}</div></section>'
+            f'<section class="op-zwei"><div>{k(d["p_kicker"])}<h2>{d["p_h2"]}</h2></div>{liste}</section>'
+            f'<section>{k(d["l_kicker"])}<h2>{d["l_h2"]}</h2>{punkte(d)}</section>'
+            f'<section>{k(d["e_kicker"])}<p class="op-satz">{d["e_satz"]}</p></section>'
             f'</div></div>')
 
 
@@ -150,35 +164,34 @@ CSS_HOCH = masse("""
 """, 297)
 
 CSS_QUER = masse("""
-.op--quer { aspect-ratio: 420 / 297; display: grid; grid-template-columns: 38% 62%; }
-.op--quer section { padding: [18] [20]; }
-.op-spalte { background: #fff400; display: flex; flex-direction: column; justify-content: center; }
-.op--quer .op-logo--kopf { top: [16]; left: [20]; }
-.op--quer h1 { font-size: [44pt]; }
-.op--quer .op-lead { font-size: [12.5pt]; max-width: none; }
-.op--quer .op-pfeil { left: [20]; right: auto; bottom: [16]; width: [40]; }
-.op-rechts { display: grid; grid-template-rows: 1fr 1fr auto; height: 100%; min-height: 0; }
-.op--quer .op-rechts > section { min-height: 0; }
-.op--quer section { padding: [14] [18]; }
-.op--quer .op-kasten { padding: [8] [9]; }
-.op--quer .op-kasten li { font-size: [12pt]; padding-top: [1.6]; padding-bottom: [1.6]; }
-.op--quer .op-kasten__label { font-size: [10pt]; }
-.op--quer .op-punkt p { font-size: [10pt]; }
-.op--quer .op-punkt b { font-size: [13pt]; }
-.op--quer .op-ico { width: [7]; height: [7]; margin-bottom: [3]; }
-.op--quer .op-fuss { margin-top: [6]; padding-top: [5]; }
-.op--quer .op-person img { width: [12]; height: [12]; }
-.op-spalte .hl { background: #1a1817; color: #fff; }
-.op--quer .op-kasten li::before { top: [3.4]; width: [2]; height: [2]; }
+.op--quer { aspect-ratio: 420 / 297; display: grid; grid-template-columns: 34% 66%; }
+.op--quer .op-spalte { background: #1a1817; color: #fff; padding: [20] [18] [18]; display: flex; flex-direction: column; justify-content: space-between; }
+.op-spalte .op-k { color: #fff400; }
+.op-spalte > .op-logo { align-self: flex-start; }
+.op--quer h1 { line-height: 1.22; }
+.op--quer h1 { font-size: [40pt]; }
+.op-spalte .hl { color: #1a1817; }
+.op--quer .op-lead { font-size: [12pt]; max-width: none; color: rgba(255,255,255,.75); }
+.op--quer .op-pfeil { position: static; display: block; width: [30]; margin-bottom: [12]; }
+.op--quer .op-person img { width: [13]; height: [13]; }
+.op--quer .op-person b { font-size: [11pt]; }
+.op--quer .op-person span { font-size: [8pt]; }
+.op-kontakt--liste { flex-direction: column; gap: [1.6]; margin-top: [6]; font-size: [9pt]; color: rgba(255,255,255,.8); }
+.op-rechts { display: flex; flex-direction: column; justify-content: space-between; padding: [20] [22] [20] [22]; }
+.op--quer .op-rechts section { padding: 0; }
 .op--quer .op-k { font-size: [8pt]; margin-bottom: [4]; }
-.op--quer .op-kontakt { font-size: [8pt]; gap: [6]; white-space: nowrap; }
-.op--quer .op-person b { font-size: [10pt]; }
-.op--quer .op-person span { font-size: [7.5pt]; }
-.op-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: [12]; align-items: center; }
-.op--quer h2 { font-size: [19pt]; }
-.op--quer .op-punkte { margin-top: [7]; }
-.op--quer .op-satz { font-size: [21pt]; }
-.op--quer .op-fuss { margin-top: [8]; }
+.op--quer h2 { font-size: [20pt]; }
+.op-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: [16]; align-items: start; }
+.op-liste__label { margin: [1] 0 [3]; font: 600 [10pt]/1.4 'Poppins', sans-serif; color: #6b6762; }
+.op-liste ul { list-style: none; margin: 0; padding: 0; }
+.op-liste li { position: relative; padding: [2.4] 0 [2.4] [7]; border-bottom: [0.3] solid #d9d5cf; font: 700 [12.5pt]/1.35 'Lora', serif; }
+.op-liste li::before { content: ""; position: absolute; left: 0; top: [5.3]; width: [3.5]; height: [0.6]; background: #1a1817; }
+.op--quer .op-punkte { margin-top: [7]; gap: [12]; }
+.op--quer .op-punkt b { font-size: [13pt]; }
+.op--quer .op-punkt p { font-size: [10pt]; }
+.op--quer .op-ico { width: [7]; height: [7]; margin-bottom: [3]; }
+.op--quer .op-nr { font-size: [18pt]; }
+.op--quer .op-satz { font-size: [24pt]; max-width: none; }
 """, 420)
 
 SEITE_CSS = """
@@ -194,13 +207,13 @@ def inhalt(mit_png):
     h = [figur(hoch(LEISTUNG, "person", "a3-hoch-leistung-person" if mit_png else None), "A · Leistung mit Ansprechpartner", dl("a3-hoch-leistung-person", "PNG · 1754 × 2480 px")),
          figur(hoch(LEISTUNG, "marke", "a3-hoch-leistung" if mit_png else None), "B · Leistung ohne Person", dl("a3-hoch-leistung", "PNG · 1754 × 2480 px")),
          figur(hoch(RASTER, "raster", "a3-hoch-raster" if mit_png else None), "C · Grundraster für eigene Themen", dl("a3-hoch-raster", "PNG · 1754 × 2480 px"))]
-    q = [figur(quer(LEISTUNG, "person", "a3-quer-leistung" if mit_png else None), "A · Leistung, gelbe Titelspalte", dl("a3-quer-leistung", "PNG · 2480 × 1754 px")),
+    q = [figur(quer(LEISTUNG, "person", "a3-quer-leistung" if mit_png else None), "A · Leistung mit Ansprechpartner", dl("a3-quer-leistung", "PNG · 2480 × 1754 px")),
          figur(quer(RASTER, "raster", "a3-quer-raster" if mit_png else None), "B · Grundraster quer", dl("a3-quer-raster", "PNG · 2480 × 1754 px"))]
     return (abschnitt("A3 hoch", "Vier Flächen übereinander wie auf der Volksfest-Seite: Thema auf Weiß, Problem auf Gelb mit schwarzem Kasten, "
                       "Lösung auf Weiß, Ergebnis auf Schwarz. Je Fläche genau eine Aussage. A mit Ansprechpartner, B ohne Person "
                       "(z. B. als Handout im Workshop), C als leeres Grundraster zum Aufbereiten eigener Themen.",
                       f'<div class="op-reihe">{"".join(h)}</div>')
-            + abschnitt("A3 quer", "Gelbe Titelspalte links, rechts dieselben drei Flächen: Problem, Lösung, Ergebnis.",
+            + abschnitt("A3 quer", "Schwarze Titelspalte links mit Ansprechpartner, rechts eine offene weiße Fläche: Problem, Lösung, Ergebnis – ohne Kästen und Bänder.",
                         f'<div class="op-reihe op-reihe--quer">{"".join(q)}</div>'))
 
 
