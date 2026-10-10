@@ -122,14 +122,14 @@ def hintergrund(motiv, fmt):
                     teile.append(zeichen_html(p, "forward", zelle * .52, (c + .5) * zelle, (r + .5) * zelle, fg if an else ton))
         else:  # Claim-Motive
             pf, an = CLAIM[motiv][3], CLAIM[motiv][4]
-            gr = .1 * w
+            gr = .062 * w
             if an:
-                teile.append(claim_h2(p, s0 + .05 * w, .2 * h, gr, motiv))
-                b = .5 * w  # Anschnitt an der sichtbaren Kante (unten 87,5 %, rechts 87,5 %) – quer und hoch gleich
+                teile.append(claim_h2(p, s0 + .06 * w, .24 * h, gr, motiv))
+                b = .36 * w  # Anschnitt an der sichtbaren Kante (unten 87,5 %, rechts 87,5 %) – quer und hoch gleich
                 teile.append(zeichen_html(p, "forward", b, .875 * w - .3 * b, .875 * h - .35 * b * PFEIL_VERH, pf))
             else:
-                teile.append(claim_h2(p, s0 + .05 * w, .3 * h, gr, motiv))
-                teile.append(zeichen_html(p, "forward", .26 * w, s0 + .05 * w + .13 * w, .3 * h + 2 * gr * 1.32 + .1 * h, pf))
+                teile.append(claim_h2(p, s0 + .06 * w, .34 * h, gr, motiv))
+                teile.append(zeichen_html(p, "forward", .16 * w, s0 + .06 * w + .08 * w, .34 * h + 2 * gr * 1.32 + .1 * h, pf))
         return f'<div class="hg" style="aspect-ratio:1/1;--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
 
     if motiv == "leistungen":
@@ -185,14 +185,14 @@ def hintergrund(motiv, fmt):
         pf, an = CLAIM[motiv][3], CLAIM[motiv][4]
         if an:
             if art == "video":
-                gr = .05 * w
-                teile.append(claim_h2(p, .045 * w, .08 * h, gr, motiv))
-                b = .26 * w
+                gr = .038 * w
+                teile.append(claim_h2(p, .05 * w, .09 * h, gr, motiv))
+                b = .2 * w
                 teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .35 * b * PFEIL_VERH, pf))
             elif art == "iphone":
-                gr = .15 * w
-                teile.append(claim_h2(p, .085 * w, .33 * h, gr, motiv))
-                b = 1.1 * w
+                gr = .11 * w
+                teile.append(claim_h2(p, .1 * w, .36 * h, gr, motiv))
+                b = .78 * w
                 teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .38 * b * PFEIL_VERH, pf))
             else:
                 gr = .085 * w
@@ -201,13 +201,13 @@ def hintergrund(motiv, fmt):
                 teile.append(zeichen_html(p, "forward", b, w - .3 * b, h - .35 * b * PFEIL_VERH, pf))
                 teile.append(logo(p, hell, rand, rand, lh, unten=True))
         elif art == "video":
-            gr = .05 * w
-            teile.append(claim_h2(p, .045 * w, .08 * h, gr, motiv))
-            teile.append(zeichen_html(p, "forward", .17 * w, w - .045 * w - .085 * w, .2 * h, pf))
+            gr = .038 * w
+            teile.append(claim_h2(p, .05 * w, .09 * h, gr, motiv))
+            teile.append(zeichen_html(p, "forward", .12 * w, w - .05 * w - .06 * w, .17 * h, pf))
         elif art == "iphone":
-            gr = .15 * w
-            teile.append(claim_h2(p, .085 * w, .5 * h, gr, motiv))
-            teile.append(zeichen_html(p, "forward", .34 * w, .085 * w + .17 * w, .5 * h + 2 * gr * 1.32 + .1 * h, pf))
+            gr = .11 * w
+            teile.append(claim_h2(p, .1 * w, .52 * h, gr, motiv))
+            teile.append(zeichen_html(p, "forward", .22 * w, .1 * w + .11 * w, .52 * h + 2 * gr * 1.32 + .07 * h, pf))
         else:
             gr = .085 * w
             teile.append(claim_h2(p, .08 * w, 0, gr, motiv, "top:50%;transform:translateY(-55%)"))
