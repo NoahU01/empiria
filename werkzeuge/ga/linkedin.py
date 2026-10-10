@@ -30,20 +30,13 @@ PERSONEN = {
 VARIANTEN = {
     "weiss": ("Weiß", "Ruhig wie die Startseite: weiße Fläche, der Claim mit gelbem Highlight, rechts der Doppelpfeil."),
     "schwarz": ("Schwarz mit Anschnitt", "Weißer Claim auf Schwarz, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
-    "logos-start": ("Kundenlogos · Claim oben", "Der Claim groß, darunter alle 14 Kundenlogos in Originalfarbe auf Weiß. "
+    "logos-start": ("Kundenlogos", "Der Claim groß, darunter alle 14 Kundenlogos in Originalfarbe auf Weiß. "
                     "Rechts läuft ein großer schwarzer Doppelpfeil aus dem Bild."),
-    "logos-unten": ("Kundenlogos · Claim unten", "Umgekehrt: oben die Logoleiste wie auf der Startseite, darunter groß der Claim – "
-                    "der Doppelpfeil steht klein am Ende der Zeile."),
-    "treppe": ("Treppe", "Der Claim links, rechts steigen die drei Zeichen der Leistungen als Kacheln ab – Gelb, Schwarz, Grau."),
-    "muster": ("Muster", "Schwarz, rechts ein ruhiges Raster aus Doppelpfeilen – einer leuchtet gelb. Links der weiße Claim."),
 }
 FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil
     "weiss": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
     "schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
     "logos-start": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
-    "logos-unten": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
-    "treppe": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
-    "muster": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
 }
 
 
@@ -324,7 +317,7 @@ def main_html():
                      f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn-<span class="hl">Banner</span>',
-                   'Sechs Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
+                   'Drei Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
                    'Erst wenn die Gestaltung steht, folgen Kerstin und Noah.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{LOGO_CSS}{SEITE_EXTRA}</style>\n</main>')

@@ -125,8 +125,10 @@ def hintergrund(motiv, fmt):
             gr = .062 * w
             if an:
                 teile.append(claim_h2(p, s0 + .06 * w, .24 * h, gr, motiv))
-                b = .36 * w  # Anschnitt an der sichtbaren Kante (unten 87,5 %, rechts 87,5 %) – quer und hoch gleich
-                teile.append(zeichen_html(p, "forward", b, .875 * w - .3 * b, .875 * h - .35 * b * PFEIL_VERH, pf))
+                # iPad: kein Anschnitt – der Ausschnitt ist quer und hoch verschieden. Der Pfeil steht vollständig in der Fläche,
+                # die in beiden Lagen sichtbar bleibt (mittlere 75 % in beide Richtungen), unten rechts.
+                b = .24 * w
+                teile.append(zeichen_html(p, "forward", b, .875 * w - .06 * w - b / 2, .56 * h, pf))  # rechts, über dem Dock
             else:
                 teile.append(claim_h2(p, s0 + .06 * w, .34 * h, gr, motiv))
                 teile.append(zeichen_html(p, "forward", .16 * w, s0 + .06 * w + .08 * w, .34 * h + 2 * gr * 1.32 + .1 * h, pf))
