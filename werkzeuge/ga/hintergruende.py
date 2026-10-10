@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Geschäftsausstattung · Hintergrundbilder (Entwurf, Daniel 10.10.2026).
 
-Fünf Motive (Doppelpfeil auf Weiß, Gelb, Schwarz · Formen-Kacheln · Claim) in neun Formaten:
+Vier Motive (Flächenwechsel · Anschnitt Gelb · Anschnitt Schwarz · Claim) in neun Formaten:
 MacBook, iPad 13" quer/hoch, iPad mini quer/hoch, iPhone 13 mini, iPhone 15/16, iPhone Pro Max, Teams/Zoom.
 Regeln: iPhone – oben Uhr/Widgets (bis ca. 30 %) und unten Dock/Knöpfe (ab ca. 85 %) frei;
 Teams/Zoom – die Person sitzt mittig, Elemente nur am Rand.
@@ -35,59 +35,39 @@ FORMATE = [
 ]
 FMT = {f[0]: f for f in FORMATE}
 
-# Motiv: Name, Hintergrund, Vordergrund, Logo weiß?, Beschreibung
+# Motiv: Name, Hintergrund (bestimmt die Farbe von Uhr/Datum), Vordergrund, Logo weiß?, Beschreibung
 MOTIVE = {
-    "weiss": ("Doppelpfeil auf Weiß", WEISS, SCHWARZ, False,
-              "Die ruhigste Variante: weiße Fläche, großer schwarzer Doppelpfeil in der Mitte, kleines Logo in der Ecke."),
-    "gelb": ("Doppelpfeil auf Gelb", GELB, SCHWARZ, False,
-             "Dieselbe Komposition auf Gelb – alles darauf schwarz. Am auffälligsten, gut für Messe- und Präsentationsrechner."),
-    "schwarz": ("Doppelpfeil auf Schwarz", SCHWARZ, GELB, True,
-                "Dieselbe Komposition auf Schwarz mit gelbem Doppelpfeil. Augenschonend im Dunkelmodus, wirkt edel."),
-    "formen": ("Formen-Kacheln", GRAU, SCHWARZ, False,
-               "Graue Fläche mit weißen Kacheln aus den Markenformen, eine Kachel gelb – wie die Icon-Raster der Website."),
+    "wechsel": ("Flächenwechsel", GELB, SCHWARZ, False,
+                "Die Idee der Website als Bild: oben Gelb, unten Schwarz – genau an der Kante sitzt der Doppelpfeil und wechselt mit der Fläche "
+                "die Farbe (schwarz auf Gelb, gelb auf Schwarz). Uhr und Widgets stehen auf dem ruhigen Gelb."),
+    "gelb": ("Anschnitt Gelb", GELB, SCHWARZ, False,
+             "Ein einziges Zeichen, riesig und vom Rand angeschnitten: der Doppelpfeil läuft aus dem Bild – nach vorne. Viel freie Fläche für Symbole und Fenster."),
+    "schwarz": ("Anschnitt Schwarz", SCHWARZ, GELB, True,
+                "Dieselbe Geste auf Schwarz mit gelbem Pfeil. Für den Dunkelmodus und abends angenehm."),
     "claim": ("Claim", WEISS, SCHWARZ, False,
-              "Weiß mit Logo und Claim „Strategie, die wirkt.“ im gelben Highlight, links ausgerichtet wie die Website-Überschriften."),
+              "Weiß, nur der Claim „Strategie, die wirkt.“ – groß gesetzt wie die Überschriften der Website, „wirkt.“ im gelben Highlight."),
 }
 
 CSS = """
 .hg { position: relative; width: 100%; container-type: inline-size; overflow: hidden; background: var(--bg); color: var(--fg); font-family: 'Poppins', sans-serif; }
 .hg > * { position: absolute; }
 .hg img { display: block; width: auto; }
-.hg-raster { display: grid; }
-.hg-raster > span { display: flex; align-items: center; justify-content: center; background: #fff; }
-.hg-raster > span.gelb { background: #fff400; }
-.hg h2 { margin: 0; font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; color: var(--fg); white-space: nowrap; }
-.hg .hl { background: #fff400; color: #1a1817; padding: 0 .12em .07em; border-radius: .14em; }
+.hg-flaeche { left: 0; width: 100%; overflow: hidden; }
+.hg h2 { margin: 0; font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.025em; line-height: 1.32; color: var(--fg); white-space: nowrap; }
+.hg .hl { background: #fff400; color: #1a1817; padding: 0 .1em .04em; border-radius: .12em; }
 """
 
 
-def pfeil(p, w, h, breite, cx, cy, farbe):
+def pfeil(p, breite, cx, cy, farbe):
     hoehe = breite * PFEIL_VERH
-    return f'<div style="left:{p(cx - breite / 2)};top:{p(cy - hoehe / 2)};width:{p(breite)}">{form("forward", farbe)}</div>'
+    return (f'<div style="position:absolute;left:{p(cx - breite / 2)};top:{p(cy - hoehe / 2)};width:{p(breite)}">'
+            f'{form("forward", farbe)}</div>')
 
 
-def logo(p, hell, x, y, hoehe, rechts=False):
+def logo(p, hell, x, y, hoehe, unten=False):
     datei = f'/assets/empiria-logo{"-weiss" if hell else ""}.svg'
-    pos = f'right:{p(x)}' if rechts else f'left:{p(x)}'
-    return f'<img src="{datei}" alt="empiria" style="{pos};top:{p(y)};height:{p(hoehe)}">'
-
-
-def kacheln(p, namen, spalten, zelle, gap, x, y):
-    zeilen = (len(namen) + spalten - 1) // spalten
-    breite = spalten * zelle + (spalten - 1) * gap
-    inhalt = "".join(
-        f'<span class="{"gelb" if n == "forward" else ""}" style="border-radius:{p(zelle * .17)}">'
-        f'<i style="display:block;width:{p(zelle * (.52 if n == "forward" else .46))}">{form(n, SCHWARZ)}</i></span>' for n in namen)
-    return (f'<div class="hg-raster" style="left:{p(x)};top:{p(y)};width:{p(breite)};grid-template-columns:repeat({spalten},1fr);'
-            f'gap:{p(gap)};grid-auto-rows:{p(zelle)}">{inhalt}</div>'), breite, zeilen * zelle + (zeilen - 1) * gap
-
-
-def claim(p, groesse, x, y, zweizeilig, hell, logo_h):
-    """Logo + Claim als Block; y = Oberkante des Blocks."""
-    datei = f'/assets/empiria-logo{"-weiss" if hell else ""}.svg'
-    umbruch = "<br>" if zweizeilig else " "
-    return (f'<div style="left:{p(x)};top:{p(y)}"><img src="{datei}" alt="empiria" style="height:{p(logo_h)};margin-bottom:{p(groesse * .38)}">'
-            f'<h2 style="font-size:{p(groesse)}">Strategie,{umbruch}die <span class="hl">wirkt.</span></h2></div>')
+    pos = f'bottom:{p(y)}' if unten else f'top:{p(y)}'
+    return f'<img src="{datei}" alt="empiria" style="left:{p(x)};{pos};height:{p(hoehe)}">'
 
 
 def hintergrund(motiv, fmt):
@@ -95,66 +75,60 @@ def hintergrund(motiv, fmt):
     _, _, w, h, art, _ = FMT[fmt]
     p = px_fn(w)
     m = min(w, h)
-    teile = []
     hoch = h > w
+    rand, lh = .055 * m, .032 * m          # Randabstand, Logohöhe
+    teile = []
 
-    if motiv in ("weiss", "gelb", "schwarz"):
-        if art == "video":  # Person mittig → Pfeil an den rechten Rand, Logo oben links
-            b = .16 * w
-            teile.append(pfeil(p, w, h, b, w - .07 * w - b / 2, h * .5, fg))
-            teile.append(logo(p, hell, .05 * w, .075 * h, .045 * h))
-        elif art == "iphone":  # Uhr oben, Dock unten frei → Pfeil in der Mitte, kein Logo
-            teile.append(pfeil(p, w, h, .56 * w, w / 2, h * .57, fg))
-        else:
-            b = (.46 if hoch else .31) * w
-            teile.append(pfeil(p, w, h, b, w / 2, h * (.52 if hoch else .5), fg))
-            teile.append(logo(p, hell, .05 * m, h - .05 * m - .035 * m, .035 * m))
-
-    elif motiv == "formen":
-        if art == "video":  # Kacheln am rechten Rand, Logo oben links
-            z, g = .085 * w, .014 * w
-            html, bw, bh = kacheln(p, ["forward", "kreis", "stern"], 1, z, g, 0, 0)
-            html = html.replace(f"left:{p(0)};top:{p(0)}", f"left:{p(w - .06 * w - bw)};top:{p((h - bh) / 2)}")
-            teile.append(html)
-            teile.append(logo(p, hell, .05 * w, .075 * h, .045 * h))
+    if motiv == "wechsel":
+        if art == "video":
+            g, b, cx = .72 * h, .32 * w, w - .3 * .32 * w
+        elif art == "iphone":
+            g, b, cx = .6 * h, .92 * w, .6 * w
         elif hoch:
-            z, g = (.2 if art == "iphone" else .15) * w, (.035 if art == "iphone" else .025) * w
-            namen = ["forward", "kreis", "kreuz", "stern", "raute", "blase"]
-            html, bw, bh = kacheln(p, namen, 3, z, g, 0, 0)
-            cy = h * (.57 if art == "iphone" else .52)
-            teile.append(html.replace(f"left:{p(0)};top:{p(0)}", f"left:{p((w - bw) / 2)};top:{p(cy - bh / 2)}"))
-            if art != "iphone":
-                teile.append(logo(p, hell, .05 * m, h - .05 * m - .035 * m, .035 * m))
+            g, b, cx = .6 * h, .78 * w, .58 * w
         else:
-            z, g = .115 * w, .018 * w
-            namen = ["forward", "kreis", "kreuz", "quadrat", "stern", "raute", "blase", "blitz"]
-            html, bw, bh = kacheln(p, namen, 4, z, g, 0, 0)
-            teile.append(html.replace(f"left:{p(0)};top:{p(0)}", f"left:{p((w - bw) / 2)};top:{p((h - bh) / 2)}"))
-            teile.append(logo(p, hell, .05 * m, h - .05 * m - .035 * m, .035 * m))
+            g, b, cx = .62 * h, .5 * w, .64 * w
+        oben = f'<div class="hg-flaeche" style="top:0;height:{p(g)};background:{GELB}">{pfeil(p, b, cx, g, SCHWARZ)}</div>'
+        unten = (f'<div class="hg-flaeche" style="top:{p(g)};height:{p(h - g)};background:{SCHWARZ}">'
+                 f'<div style="position:absolute;left:0;top:{p(-g)};width:100%;height:{p(h)}">{pfeil(p, b, cx, g, GELB)}</div></div>')
+        teile += [oben, unten]
+        if art == "video":
+            teile.append(logo(p, False, .045 * w, .07 * h, .045 * h))
+        elif art != "iphone":
+            teile.append(logo(p, True, rand, rand, lh, unten=True))
+
+    elif motiv in ("gelb", "schwarz"):
+        if art == "video":      # nur der erste Winkel ragt von rechts ins Bild – die Mitte bleibt der Person
+            b = 1.3 * h / PFEIL_VERH
+            teile.append(pfeil(p, b, .73 * w + b / 2, .5 * h, fg))
+            teile.append(logo(p, hell, .045 * w, .07 * h, .045 * h))
+        elif art == "iphone":   # Uhr oben frei, Pfeil in der unteren Hälfte, rechts angeschnitten
+            b = 1.15 * w
+            teile.append(pfeil(p, b, w - .3 * b, .69 * h, fg))
+        elif hoch:
+            b = 1.05 * w
+            teile.append(pfeil(p, b, w - .3 * b, .55 * h, fg))
+            teile.append(logo(p, hell, rand, rand, lh, unten=True))
+        else:
+            b = .85 * w
+            teile.append(pfeil(p, b, w - .3 * b, .5 * h, fg))
+            teile.append(logo(p, hell, rand, rand, lh, unten=True))
 
     elif motiv == "claim":
-        if art == "video":  # Logo oben links, Claim unten links – Mitte bleibt frei
-            gr = .042 * w
-            teile.append(logo(p, hell, .05 * w, .075 * h, .045 * h))
-            teile.append(f'<div style="left:{p(.05 * w)};bottom:{p(.08 * h)}"><h2 style="font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2></div>')
-            b = .075 * w
-            teile.append(pfeil(p, w, h, b, w - .05 * w - b / 2, h - .08 * h - b * PFEIL_VERH / 2, fg))
+        if art == "video":
+            gr = .045 * w
+            teile.append(logo(p, hell, .045 * w, .07 * h, .045 * h))
+            teile.append(f'<h2 style="left:{p(.045 * w)};bottom:{p(.08 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
         elif hoch:
-            gr = (.13 if art == "iphone" else .1) * w
-            lh = (.05 if art == "iphone" else .04) * w
-            blockh = lh + gr * .38 + 2 * gr * 1.2
-            cy = h * (.58 if art == "iphone" else .5)
-            teile.append(claim(p, gr, .1 * w, cy - blockh / 2, True, hell, lh))
+            gr = (.165 if art == "iphone" else .13) * w
+            oben = (.5 if art == "iphone" else .46) * h
+            teile.append(f'<h2 style="left:{p(.085 * w)};top:{p(oben)};font-size:{p(gr)}">Strategie,<br>die<br><span class="hl">wirkt.</span></h2>')
             if art != "iphone":
-                b = .14 * w
-                teile.append(pfeil(p, w, h, b, w - .1 * w - b / 2, h - .05 * m - b * PFEIL_VERH / 2 - .02 * m, fg))
+                teile.append(logo(p, hell, rand, rand, lh, unten=True))
         else:
-            gr = .065 * w
-            lh = .028 * w
-            blockh = lh + gr * .38 + gr * 1.2
-            teile.append(claim(p, gr, .09 * w, (h - blockh) / 2, False, hell, lh))
-            b = .1 * w
-            teile.append(pfeil(p, w, h, b, w - .09 * w - b / 2, h - .06 * m - b * PFEIL_VERH / 2, fg))
+            gr = .088 * w
+            teile.append(f'<h2 style="left:{p(.07 * w)};bottom:{p(.2 * h)};font-size:{p(gr)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>')
+            teile.append(logo(p, hell, rand, rand, lh, unten=True))
 
     return f'<div class="hg" style="aspect-ratio:{w}/{h};--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
 
@@ -251,7 +225,7 @@ def main_html():
                      + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
-                   'Fünf Motive für MacBook, iPad, iPhone und Videokonferenzen. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
+                   'Vier Motive, eine Haltung: wenige, große Flächen und ein einziges Zeichen – wie auf der Website. Für MacBook, iPad, iPhone und Videokonferenzen. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
                    'Auf dem iPhone bleiben Uhr und Widgets oben sowie die Knöpfe unten frei; bei Teams und Zoom sitzt die Person in der Mitte – alles Wichtige liegt am Rand.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n</main>')
