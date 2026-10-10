@@ -30,7 +30,7 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 
 # Seiten, die es auf main nicht geben darf. Bewusst als feste Liste: was
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
-INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
+INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/strategie-aufsichtsrat.html",
                   "site/signatur-kopieren.html",
                   "site/visitenkarte.html", "site/visitenkarte-1.html",
                   "site/visitenkarte-4.html", "site/visitenkarte-5.html", "site/visitenkarte.webmanifest",
@@ -75,7 +75,7 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/strategie-aufsichtsrat.html",
                   "site/assets/projekte/sv-rakete.webp"]
 # Ganze Ordner, die nie auf main dürfen (Daniel 10.10.2026): alles unter „Projekte“ ist Entwicklung –
 # empiria 3.0, Kopfbilder, Header, Darstellungsideen, PDF-Varianten, Volksfest, SV-Akademie …
-INTERNE_ORDNER = ["site/projekte/", "site/assets/projekte/"]
+INTERNE_ORDNER = ["site/projekte/", "site/assets/projekte/", "site/designideen/"]
 
 INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter", "/visitenkarte",
                  "/projekte", "/strategie"]
