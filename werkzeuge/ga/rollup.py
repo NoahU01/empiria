@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Roll-up 100 × 200 cm – Entwürfe (Daniel, 10.10.2026).
 
-Vier Varianten:
-  A · Claim       – weiß, „Strategie, die wirkt.“ + großer Doppelpfeil
-  B · Leistungen  – schwarz, die drei Leistungen
-  C · Team        – weiß, Teamfoto, Namen und Rollen
-  D · Frage       – gelb, die Leitfrage der Startseite
+Sechs Varianten:
+  A · Claim            – weiß, „Strategie, die wirkt.“ + großer Doppelpfeil
+  B · Leistungen       – schwarz, die drei Leistungen mit ihren Zeichen
+  C · Drei Leistungen  – die Leistungskarten der Homepage als Bänder (gelb/schwarz/grau)
+  D · Muster           – schwarz, Raster aus Doppelpfeilen, einer gelb
+  E · Anschnitt        – schwarz, riesiger gelber Doppelpfeil läuft rechts hinaus
+  F · Frage            – weiß, die Leitfrage der Startseite
 Dazu eine Aufbau-Ansicht mit Sichtzonen. PNG-Vorschau (1000 × 2353 px) nach site/projekte/ga/rollup/.
 
 Aufruf: python3 werkzeuge/ga/rollup.py [--ohne-png]
@@ -52,37 +54,57 @@ def var_b(png=None):
 
 
 def var_c(png=None):
-    namen = [("Kerstin Christ", "Expertin HR &amp; Weiterbildung"), ("Daniel Ströbel", "Strategiehandwerker"),
-             ("Noah Hermanns", "Experte Performance Marketing")]
-    return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Kontakt") +
-                  '<p class="ru-h">Wir sind<br>für <span class="ru-hl">Dich da!</span></p>'
-                  '<p class="ru-text">Direkter Draht – keine Warteschleifen, kein Ticketsystem.</p></div>'
-                  '<img class="ru-team" src="/assets/team-portrait.webp" alt="">'
-                  '<div class="ru-namen">' + "".join(f'<p><b>{n}</b><span>{r}</span></p>' for n, r in namen) + '</div>' +
-                  fuss(SCHWARZ, GELB, text=f'Strategie, die wirkt. <em>{FIRMA["web"]}</em>'), "#fff", SCHWARZ, "ru--c", png)
+    """Drei Leistungen – die Leistungskarten der Homepage als Bänder."""
+    baender = [("ru-band--gelb", "forward", SCHWARZ, "Strategie in den Alltag überführen"),
+               ("ru-band--schwarz", "kreuz", GELB, "Komplexe Themen strukturieren &amp; kommunizieren"),
+               ("ru-band--grau", "kreis", SCHWARZ, "Innovation &amp; Geschäftsmodell neu denken")]
+    b_html = "".join(f'<div class="ru-band {c}"><span class="ru-band__z">{zeichen(z, f)}</span><p>{t}</p></div>' for c, z, f, t in baender)
+    return rollup(logo(cls="ru-logo") + '<div class="ru-block ru-block--c">' + kicker("Strategiehandwerk") +
+                  '<p class="ru-h">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>' +
+                  f'<div class="ru-baender">{b_html}</div>', "#fff", SCHWARZ, "ru--c", png)
 
 
 def var_d(png=None):
-    fragen = ["Warum bewegt sich da nichts?", "Warum zieht mein Team nicht mit?"]
+    """Muster – ein ruhiges Raster aus Doppelpfeilen auf Schwarz, einer leuchtet gelb."""
+    sp, zelle, y0, zeilen = 5, 170, 860, 4
+    pfeile = "".join(f'<span class="ru-m" style="left:{c * zelle + 0}px;top:{r * zelle}px"></span>' for r in range(zeilen) for c in range(sp))
+    muster = "".join(
+        f'<span class="ru-m{" ru-m--an" if (c, r) == (3, 1) else ""}" style="--x:{c};--y:{r}">{zeichen("forward", GELB if (c, r) == (3, 1) else "#2e2b28")}</span>'
+        for r in range(zeilen) for c in range(sp))
+    return rollup(logo(True, "ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
+                  '<p class="ru-h ru-h--gross">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>' +
+                  f'<div class="ru-muster">{muster}</div><p class="ru-web">{FIRMA["web"]}</p>', SCHWARZ, "#fff", "ru--d", png)
+
+
+def var_e(png=None):
+    """Anschnitt – ein riesiger gelber Doppelpfeil läuft rechts aus dem Roll-up."""
+    return rollup(logo(True, "ru-logo") + '<div class="ru-block">' + kicker("Strategiehandwerk") +
+                  '<p class="ru-h ru-h--gross">Strategie,<br>die <span class="ru-hl">wirkt.</span></p></div>' +
+                  f'<span class="ru-pfeil-e">{zeichen("forward", GELB)}</span><p class="ru-web">{FIRMA["web"]}</p>', SCHWARZ, "#fff", "ru--e", png)
+
+
+def var_f(png=None):
+    """Frage auf Weiß – die Leitfrage der Startseite, groß, Gelb nur im Highlight."""
     return rollup(logo(cls="ru-logo") + '<div class="ru-block">' + kicker("Die Strategie steht") +
-                  '<p class="ru-h">Warum kommt meine Strategie im Alltag nicht an?</p>' +
-                  "".join(f'<p class="ru-frage">{f}</p>' for f in fragen) + '</div>' +
-                  fuss(SCHWARZ, GELB, text=f'Strategie, die wirkt. <em>{FIRMA["web"]}</em>'), GELB, SCHWARZ, "ru--d", png)
+                  '<p class="ru-h ru-h--frage">Warum kommt<br>meine Strategie<br>im Alltag<br><span class="ru-hl">nicht an?</span></p>'
+                  f'<p class="ru-antwort"><span class="ru-zeichen">{zeichen("forward", SCHWARZ)}</span>Wir übersetzen sie in Wirkung.</p></div>' +
+                  fuss(SCHWARZ, GELB, text=f'Strategie, die wirkt. <em>{FIRMA["web"]}</em>'), "#fff", SCHWARZ, "ru--f", png)
 
 
 VARIANTEN = [
     ("a", "A · Claim", "weiß", var_a), ("b", "B · Leistungen", "schwarz", var_b),
-    ("c", "C · Team", "weiß + Foto", var_c), ("d", "D · Frage", "gelb", var_d),
+    ("c", "C · Drei Leistungen", "weiß · gelb · schwarz · grau", var_c), ("d", "D · Muster", "schwarz", var_d),
+    ("e", "E · Anschnitt", "schwarz", var_e), ("f", "F · Frage", "weiß", var_f),
 ]
 
 
 def inhalt():
     figuren = [figur(fn(f"rollup-{k}"), f"<b>{t}</b> · {farbe} · 100 × 200 cm",
                      download(f"ga/rollup/rollup-{k}.png", f"PNG-Vorschau · {PX[0]} × {PX[1]} px")) for k, t, farbe, fn in VARIANTEN]
-    teile = [abschnitt("Vier Varianten", "<b>A</b> setzt allein auf den Claim und den Doppelpfeil – wirkt aus 10 m Entfernung. "
-                       "<b>B</b> erklärt in drei Zeilen, was empiria tut. <b>C</b> zeigt die Menschen – gut für Messen und Netzwerk-Abende. "
-                       "<b>D</b> holt die Leitfrage der Startseite auf Gelb und spricht Führungskräfte direkt an.",
-                       raster(figuren, 4, 2, "gap:2.2rem 1.2rem"))]
+    teile = [abschnitt("Sechs Varianten", "<b>A</b> setzt allein auf Claim und Doppelpfeil. <b>B</b> nennt die drei Leistungen mit ihren Zeichen. "
+                       "<b>C</b> stapelt die drei Leistungskarten der Homepage als Bänder. <b>D</b> zeigt ein ruhiges Raster aus Doppelpfeilen – einer leuchtet. "
+                       "<b>E</b> lässt einen riesigen gelben Doppelpfeil aus dem Roll-up laufen. <b>F</b> stellt die Leitfrage der Startseite – groß, auf Weiß.",
+                       raster(figuren, 3, 2, "gap:2.4rem 1.6rem"))]
     zonen = ('<div class="ru-zonen">'
              '<div class="ru-z" style="top:0;height:15%"><span>Kopfzone · 170–200 cm</span><small>Logo – sichtbar über Köpfe hinweg</small></div>'
              '<div class="ru-z ru-z--auge" style="top:15%;height:40%"><span>Augenhöhe · 90–170 cm</span><small>Botschaft – hier wird gelesen</small></div>'
@@ -134,20 +156,32 @@ CSS = masse("""
 .ru-liste b { display: block; font: 700 [40]/1.22 'Lora', serif; }
 .ru-formate { margin-top: [56] !important; font: 300 [30]/1.5 'Poppins', sans-serif; }
 .ru-formate span { display: block; margin-bottom: [10]; font: 700 [22]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
-/* C */
-.ru--c .ru-block { top: [360]; }
-.ru-team { position: absolute; left: [-40]; right: [-40]; width: calc(100% + [80]); bottom: [490]; height: auto; display: block; }
-.ru-namen { position: absolute; left: [80]; right: [80]; bottom: [320]; display: grid; grid-template-columns: repeat(3, 1fr); gap: [24]; }
-.ru-namen p { border-top: [5] solid #1a1817; padding-top: [24]; }
-.ru-namen b { display: block; font: 700 [25]/1.2 'Lora', serif; white-space: nowrap; }
-.ru-namen span { display: block; margin-top: [10]; font: 400 [17]/1.4 'Poppins', sans-serif; }
-/* D */
-.ru--d .ru-block { top: [380]; }
-.ru--d .ru-h { font-size: [96]; }
-.ru-frage { margin-top: [40] !important; padding-top: [40]; border-top: [4] solid #1a1817; font: 700 [44]/1.25 'Lora', serif; }
-.ru-frage:first-of-type { margin-top: [80] !important; }
-.ru-text--d { margin-top: [70] !important; }
-.ru-pfeil-d { position: absolute; right: [80]; bottom: [340]; width: [260]; }
+/* C · Drei Leistungen */
+.ru-block--c { top: [300]; }
+.ru--c .ru-h { font-size: [86]; }
+.ru-baender { position: absolute; left: 0; right: 0; top: [700]; bottom: 0; display: grid; grid-template-rows: 1fr 1fr 1.25fr; }
+.ru-band { position: relative; padding: [60] [80]; }
+.ru-band--gelb { background: #fff400; color: #1a1817; }
+.ru-band--schwarz { background: #1a1817; color: #fff; }
+.ru-band--grau { background: #f3f1ee; color: #1a1817; }
+.ru-band__z { position: absolute; right: [80]; top: [60]; width: [130]; }
+.ru-band__z svg { display: block; width: 100%; height: auto; }
+.ru-band p { position: absolute; left: [80]; top: [60]; max-width: [480]; font: 700 [50]/1.25 'Lora', Georgia, serif; letter-spacing: -.01em; }
+.ru-web { position: absolute; left: [80]; bottom: [90]; font: 600 [36]/1 'Poppins', sans-serif; letter-spacing: .02em; }
+/* D · Muster */
+.ru-muster { position: absolute; left: [40]; right: [40]; top: [880]; display: grid; grid-template-columns: repeat(5, 1fr); row-gap: [60]; }
+.ru-m { display: block; width: 52%; margin: 0 auto; }
+.ru-m svg { display: block; width: 100%; height: auto; }
+.ru--d .ru-kicker, .ru--e .ru-kicker { color: #fff400; }
+/* E · Anschnitt */
+.ru-pfeil-e { position: absolute; left: [80]; top: [840]; width: [900]; }
+.ru-pfeil-e svg { display: block; width: 100%; height: auto; }
+.ru--e .ru-web, .ru--d .ru-web { color: #fff; }
+/* F · Frage */
+.ru--f .ru-block { top: [340]; }
+.ru-h--frage { font-size: [90]; }
+.ru-antwort { display: flex; align-items: center; gap: [26]; margin-top: [90] !important; font: 300 [40]/1.3 'Poppins', sans-serif; }
+.ru-antwort .ru-zeichen { width: [70]; flex: 0 0 auto; }
 /* Sichtzonen */
 .ru-zonen { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .ru-z { position: absolute; left: 0; right: 0; border-top: 1px dashed #C51F5D; display: flex; flex-direction: column; align-items: flex-end; padding: [14] [20]; }
@@ -168,9 +202,9 @@ CSS = masse("""
 def bauen(mit_png=True):
     seite_schreiben(DATEI, "Roll-up",
                     'Roll-<span class="hl">up</span>',
-                    "Vier Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
+                    "Sechs Entwürfe für das Roll-up im Format 100 × 200 cm – für Messen, Vorträge und Workshops. Wenig Text, große Schrift, "
                     "die Botschaft auf Augenhöhe. Alle Entwürfe sind maßstäblich; die PNGs sind Vorschauen, keine Druckdaten.",
-                    ["Entwurf 1", "100 × 200 cm", "4 Varianten", "Sichtzonen"], inhalt(), CSS)
+                    ["Entwurf 2", "100 × 200 cm", "6 Varianten", "Sichtzonen"], inhalt(), CSS)
     if mit_png:
         png_export(DATEI, "rollup")
 
