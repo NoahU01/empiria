@@ -78,27 +78,46 @@ def kontakt_text(p):
             f'<p>{FIRMA["web"]}</p></div>')
 
 
-def name_zwei(p, hl=True):
+def name_zwei(p):
     vor, nach = p["name"].split(" ", 1)
-    return f'<p class="vk2-name">{vor}<br>{f"<span class=vk-hl>{nach}</span>" if hl else nach}</p>'
+    return f'<p class="vk2-name">{vor}<br>{nach}</p>'
 
 
 def kicker(p):
     return f'<p class="vk2-kicker">{p["rolle2"] or p["rolle"]}</p>'
 
 
-def v_highlight(p, png=None):
-    return karte(kicker(p) + name_zwei(p) + kontakt_text(p), "#fff", SCHWARZ, "vk2 vk2--hl", png)
+def claim_zeile():
+    return '<p class="vk2-claim">Strategie, die <span class="vk-hl">wirkt.</span></p>'
 
 
-def v_gelb(p, png=None):
-    return karte(kicker(p) + name_zwei(p, False) + kontakt_text(p) + f'<span class="vk2-pfeil">{zeichen("forward", SCHWARZ)}</span>',
-                 GELB, SCHWARZ, "vk2 vk2--gelb", png)
+def rolle_unter(p):
+    return f'<p class="vk2-rolle">{p["rolle2"] or p["rolle"]}</p>'
 
 
-def v_schwarz(p, png=None):
-    return karte(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vk2 vk2--schwarz", png)
+# Varianten: Schlüssel → (Hintergrund, Schrift, Pfeilfarbe oder None, mit Claim?)
+ART = {
+    "weiss": ("#fff", SCHWARZ, None, False),
+    "weiss-pfeil": ("#fff", SCHWARZ, SCHWARZ, False),
+    "schwarz": (SCHWARZ, "#fff", None, False),
+    "schwarz-pfeil": (SCHWARZ, "#fff", GELB, False),
+    "claim": ("#fff", SCHWARZ, None, True),
+}
 
+
+def inhalt_typo(p, art, pfeil_cls):
+    bg, fg, pf, mit_claim = ART[art]
+    kopf = (claim_zeile() + name_zwei(p) + rolle_unter(p)) if mit_claim else (kicker(p) + name_zwei(p))
+    pfeil = f'<span class="{pfeil_cls}">{zeichen("forward", pf)}</span>' if pf else ""
+    dunkel = " vk2--schwarz" if bg == SCHWARZ else ""
+    return pfeil + kopf + kontakt_text(p), bg, fg, dunkel + (" vk2--pfeil" if pf else "") + (" vk2--mitclaim" if mit_claim else "")
+
+
+def vorne_q(art):
+    def f(p, png=None):
+        html, bg, fg, extra = inhalt_typo(p, art, "vk2-pfeil")
+        return karte(html, bg, fg, "vk2 vk2--typo" + extra, png)
+    return f
 
 
 def v_logo(p, png=None):
@@ -107,14 +126,18 @@ def v_logo(p, png=None):
 
 
 FRONTEN = [
-    ("highlight", "1 · Highlight", "Der Name steht wie die Überschrift der Homepage: groß, zweizeilig, der Nachname im gelben Highlight. Kein Logo – das steht hinten.",
-     v_highlight, hinten_b, "Rückseite Schwarz"),
-    ("gelb", "2 · Gelb mit Anschnitt", "Vollfläche Gelb, rechts läuft der Doppelpfeil groß aus der Karte. Name und Kontakt links, alles schwarz.",
-     v_gelb, hinten_a, "Rückseite Weiß"),
-    ("schwarz", "3 · Schwarz", "Schwarze Karte, weißer Name, der Nachname im gelben Highlight. Kräftig und edel – dazu die gelbe Rückseite.",
-     v_schwarz, hinten_c, "Rückseite Gelb"),
-    ("logo", "4 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts. Für alle, die das Logo vorne möchten.",
-     v_logo, hinten_b, "Rückseite Schwarz"),
+    ("weiss", "1 · Weiß", "Name groß und zweizeilig wie eine Überschrift der Homepage, darüber die Funktion, unten der Kontakt. Kein Logo – das steht hinten.",
+     vorne_q("weiss"), hinten_b, "Rückseite Schwarz"),
+    ("weiss-pfeil", "2 · Weiß mit Anschnitt", "Wie Weiß, dazu läuft rechts der schwarze Doppelpfeil groß aus der Karte.",
+     vorne_q("weiss-pfeil"), hinten_c, "Rückseite Gelb"),
+    ("schwarz", "3 · Schwarz", "Schwarze Karte, weißer Name, die Funktion in Gelb. Kräftig und edel.",
+     vorne_q("schwarz"), hinten_c, "Rückseite Gelb"),
+    ("schwarz-pfeil", "4 · Schwarz mit Anschnitt", "Schwarz, rechts der gelbe Doppelpfeil im Anschnitt – die Rückseite B als Vorderseite gedacht.",
+     vorne_q("schwarz-pfeil"), hinten_c, "Rückseite Gelb"),
+    ("claim", "5 · Weiß mit Claim", "Oben „Strategie, die wirkt.“ mit dem gelben Highlight auf „wirkt.“, darunter Name und Funktion, unten der Kontakt.",
+     vorne_q("claim"), hinten_b, "Rückseite Schwarz"),
+    ("logo", "6 · Ruhig mit Logo", "Die zurückhaltende Variante: Logo oben, unten Name und Funktion links, Kontakt rechts.",
+     v_logo, hinten_c, "Rückseite Gelb"),
 ]
 
 
@@ -127,18 +150,11 @@ def karte_hoch(inhalt, bg, fg, cls="", png=None):
     return f'<div class="vkh ga-blatt {cls}" style="--bg:{bg};--fg:{fg}"{attr}><div class="vk-in">{inhalt}</div></div>'
 
 
-def h_highlight(p, png=None):
-    return karte_hoch(kicker(p) + name_zwei(p) + kontakt_text(p), "#fff", SCHWARZ, "vkh--hl", png)
-
-
-def h_gelb(p, png=None):
-    return karte_hoch(f'<span class="vkh-pfeil">{zeichen("forward", SCHWARZ)}</span>' + kicker(p) + name_zwei(p, False) + kontakt_text(p),
-                      GELB, SCHWARZ, "vkh--gelb", png)
-
-
-def h_schwarz(p, png=None):
-    return karte_hoch(kicker(p) + name_zwei(p) + kontakt_text(p), SCHWARZ, "#fff", "vkh--schwarz", png)
-
+def vorne_h(art):
+    def f(p, png=None):
+        html, bg, fg, extra = inhalt_typo(p, art, "vkh-pfeil")
+        return karte_hoch(html, bg, fg, "vkh--typo" + extra.replace("vk2--", "vkh--"), png)
+    return f
 
 
 def hh_schwarz(png=None):
@@ -150,8 +166,9 @@ def hh_gelb(png=None):
 
 
 FRONTEN_HOCH = [
-    ("highlight", "Highlight", h_highlight, hh_schwarz), ("gelb", "Gelb mit Anschnitt", h_gelb, hh_schwarz),
-    ("schwarz", "Schwarz", h_schwarz, hh_gelb),
+    ("weiss", "Weiß", vorne_h("weiss")), ("weiss-pfeil", "Weiß mit Anschnitt", vorne_h("weiss-pfeil")),
+    ("schwarz", "Schwarz", vorne_h("schwarz")), ("schwarz-pfeil", "Schwarz mit Anschnitt", vorne_h("schwarz-pfeil")),
+    ("claim", "Weiß mit Claim", vorne_h("claim")),
 ]
 
 CSS_HOCH = masse("""
@@ -160,22 +177,24 @@ CSS_HOCH = masse("""
 .vkh * { box-sizing: border-box; }
 .vkh p { margin: 0; }
 .vkh .vk-in { position: absolute; inset: 0; }
-.vkh .vk2-kicker { position: absolute; left: [6]; top: [7]; display: flex; align-items: center; gap: [1.6]; font: 600 [5.2pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vkh .vk2-kicker, .vkh .vk2-claim { position: absolute; left: [6]; top: [7]; }
+.vkh .vk2-kicker { display: flex; align-items: center; gap: [1.6]; font: 600 [5.4pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .vkh .vk2-kicker::before { content: ""; width: [3.6]; height: [0.35]; background: currentColor; }
-.vkh .vk2-name { position: absolute; left: [6]; top: [11.5]; margin: 0; font: 700 [20pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
-.vkh .vk2-name .vk-hl { color: #1a1817; }
-.vkh .vk2-kontakt { position: absolute; left: [6]; bottom: [6.5]; font: 400 [6.3pt]/1.6 'Poppins', sans-serif; }
+.vkh .vk2-claim { font: 700 [9pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.01em; }
+.vkh .vk2-name { position: absolute; left: [6]; top: [12]; margin: 0; font: 700 [20pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.vkh .vk2-rolle { position: absolute; left: [6]; top: [34]; font: 600 [5.4pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vkh .vk2-kontakt { position: absolute; left: [6]; bottom: [6.5]; font: 400 [7.2pt]/1.6 'Poppins', sans-serif; }
 .vkh--schwarz .vk2-kicker { color: #fff400; }
 .vkh--schwarz .vk2-kontakt { color: rgba(255,255,255,.85); }
-.vkh--gelb .vk2-kicker { top: [37.5]; }
-.vkh--gelb .vk2-name { top: [42]; }
+.vkh--pfeil .vk2-kicker { top: [37.5]; }
+.vkh--pfeil .vk2-name { top: [42]; }
 .vkh-pfeil { position: absolute; right: [-10]; top: [6.5]; width: [36]; }
 .vkh-pfeil svg, .vkh-pfeil-r svg, .vkh-pfeil-m svg { display: block; width: 100%; height: auto; }
 .vkh-pfeil-r { position: absolute; left: [6]; bottom: [-10]; width: [62]; }
 .vkh-logo { position: absolute; left: [5]; top: [7]; height: [5.2]; width: auto; display: block; }
 .vkh-pfeil-m { position: absolute; left: 50%; top: [30]; transform: translateX(-50%); width: [26]; }
 .vkh-logo--m { top: auto; bottom: [12]; left: 50%; transform: translateX(-50%); height: [5.6]; }
-.ga-raster--vkh { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.ga-raster--vkh { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
 @media (max-width: 800px) { .ga-raster--vkh { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 """, 55)
 
@@ -206,17 +225,15 @@ def inhalt():
                     for k, t, fh in (("a", "Rückseite Weiß · Claim", hinten_a), ("b", "Rückseite Schwarz · Anschnitt", hinten_b),
                                      ("c", "Rückseite Gelb · Doppelpfeil und Logo", hinten_c))], 3, 1)
     hoch = []
-    for kurz, titel, fv, fh in FRONTEN_HOCH:
+    for kurz, titel, fv in FRONTEN_HOCH:
         hoch.append(figur(fv(d, f"hoch-vorne-{kurz}"), f"<b>{titel}</b> · Vorderseite", dl(f"hoch-vorne-{kurz}").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")))
     hoch_r = [figur(hh_schwarz("hoch-hinten-schwarz"), "<b>Rückseite Schwarz</b>", dl("hoch-hinten-schwarz").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}")),
               figur(hh_gelb("hoch-hinten-gelb"), "<b>Rückseite Gelb</b>", dl("hoch-hinten-gelb").replace(f"{PX[0]} × {PX[1]}", f"{PX_HOCH[0]} × {PX_HOCH[1]}"))]
-    teile.append(abschnitt("Hochformat · 55 × 85 mm", "Dieselben Ideen hochkant: Name groß oben, Kontakt unten. Beim Gelb läuft der Doppelpfeil oben rechts "
-                           "aus der Karte.",
+    teile.append(abschnitt("Hochformat · 55 × 85 mm", "Dieselben Ideen hochkant: Name groß, Kontakt unten – etwas größer gesetzt als quer. "
+                           "Bei den Anschnitt-Varianten läuft der Doppelpfeil oben rechts aus der Karte.",
                            f'<div class="ga-raster ga-raster--vkh">{"".join(hoch)}</div>'
                            f'<p class="ga-unter">Rückseiten hoch</p><div class="ga-raster ga-raster--vkh">{"".join(hoch_r)}</div>'))
     teile.append(abschnitt("Rückseiten", "Unverändert aus Entwurf 1 – jede Vorderseite lässt sich mit jeder Rückseite kombinieren.", rueck))
-    alt = raster([figur(vorne(fv, d, "daniel"), f"<b>{titel}</b> · Entwurf 1") for _, titel, _, fv, _ in VARIANTEN], 3, 1)
-    teile.append(abschnitt("Archiv · Vorderseiten Entwurf 1", "Zum Vergleich – mit Icons und Foto, wird nicht weiterverfolgt.", alt))
     return "".join(teile)
 
 
@@ -267,8 +284,11 @@ CSS = masse("""
 .vk2-name { margin-top: [2.6] !important; font: 700 [19pt]/1.22 'Lora', Georgia, serif; letter-spacing: -.02em; }
 .vk2-name .vk-hl { color: #1a1817; }
 .vk2-kontakt { position: absolute; left: [6]; bottom: [5.6]; font: 400 [6.3pt]/1.6 'Poppins', sans-serif; }
-.vk2--hl .vk2-kicker, .vk2--gelb .vk2-kicker, .vk2--schwarz .vk2-kicker { position: absolute; left: [6]; top: [6.4]; }
-.vk2--hl .vk2-name, .vk2--gelb .vk2-name, .vk2--schwarz .vk2-name { position: absolute; left: [6]; top: [10.2]; }
+.vk2--typo .vk2-kicker, .vk2--typo .vk2-claim { position: absolute; left: [6]; top: [6.4]; }
+.vk2-claim { font: 700 [8.5pt]/1.3 'Lora', Georgia, serif; letter-spacing: -.01em; }
+.vk2-rolle { position: absolute; left: [6]; top: [32.6]; font: 600 [5.2pt]/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.vk2--typo .vk2-name { position: absolute; left: [6]; top: [10.2]; }
+.vk2--mitclaim .vk2-name { top: [11.4]; }
 .vk2--schwarz .vk2-kicker { color: #fff400; }
 .vk2--schwarz .vk2-kontakt { color: rgba(255,255,255,.85); }
 .vk2-pfeil { position: absolute; right: [-13]; top: 50%; transform: translateY(-50%); width: [48]; }
