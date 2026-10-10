@@ -25,19 +25,24 @@ PERSONEN = {
     "noah": ("Noah Hermanns", "Experte Performance Marketing", "Performance Marketing"),
 }
 
-# Variante: Name, Hintergrund, Schrift, Pfeil, Highlight-Fläche, Highlight-Schrift, Logo hell?, Beschreibung
+# Varianten (nur Daniel und die Unternehmensseite, bis die Gestaltung steht)
+# Schlüssel: Name, Beschreibung
 VARIANTEN = {
-    "weiss": ("Weiß", WEISS, SCHWARZ, SCHWARZ, GELB, SCHWARZ, False,
-              "Ruhig wie die Website: weiße Fläche, Claim mit gelbem Highlight, schwarzer Doppelpfeil rechts."),
-    "gelb": ("Gelb", GELB, SCHWARZ, SCHWARZ, SCHWARZ, GELB, False,
-             "Maximal auffällig im Feed: Vollfläche Gelb, alles darauf schwarz – das Highlight wird zum schwarzen Kasten."),
-    "schwarz": ("Schwarz", SCHWARZ, WEISS, GELB, GELB, SCHWARZ, True,
-                "Edel und kontrastreich: schwarze Fläche, weiße Schrift, Gelb nur als Akzent (Highlight und Doppelpfeil)."),
-    "formen": ("Formen", GRAU, SCHWARZ, SCHWARZ, GELB, SCHWARZ, False,
-               "Spielerischer: graue Fläche, rechts ein Raster aus den Markenformen, eine Kachel gelb."),
+    "weiss": ("Weiß", "Ruhig wie die Startseite: weiße Fläche, der Claim mit gelbem Highlight, rechts der Doppelpfeil."),
+    "gelb": ("Gelb mit Anschnitt", "Vollfläche Gelb, der Claim zweizeilig wie auf der Homepage, rechts läuft der Doppelpfeil groß aus dem Bild."),
+    "schwarz": ("Schwarz mit Anschnitt", "Dieselbe Geste auf Schwarz: weißer Claim, gelbes Highlight, gelber Doppelpfeil im Anschnitt."),
+    "wechsel": ("Flächenwechsel", "Oben Gelb, unten Schwarz – der Doppelpfeil sitzt auf der Kante und wechselt mit der Fläche die Farbe."),
+    "logos-gelb": ("Kundenlogos auf Gelb", "Alle 14 Kundenlogos einfarbig schwarz direkt auf Gelb, darüber der Claim."),
+    "logos-schwarz": ("Kundenlogos auf Schwarz", "Alle 14 Kundenlogos einfarbig weiß auf Schwarz, Gelb nur im Highlight."),
 }
-
-FORMEN_P = ["forward", "kreis", "kreuz", "quadrat", "stern", "raute", "blase", "blitz"]
+FARBEN = {  # Hintergrund, Schrift, Highlight-Fläche, Highlight-Schrift, Pfeil, Logo weiß?
+    "weiss": (WEISS, SCHWARZ, GELB, SCHWARZ, SCHWARZ),
+    "gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
+    "schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
+    "wechsel": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
+    "logos-gelb": (GELB, SCHWARZ, SCHWARZ, GELB, SCHWARZ),
+    "logos-schwarz": (SCHWARZ, WEISS, GELB, SCHWARZ, GELB),
+}
 
 CSS = """
 .lb { position: relative; width: 100%; container-type: inline-size; overflow: hidden; background: var(--bg); color: var(--fg); font-family: 'Poppins', sans-serif; }
@@ -80,68 +85,87 @@ SEITE_EXTRA = """
 .lg-gross { margin-top: 1.4rem; max-width: 860px; }
 .lg-gross > .lb { box-shadow: 0 0 0 1px #e4e0db; border-radius: 6px; }
 .lg-raster--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.4rem; }
-@media (max-width: 800px) { .lg-raster, .lg-raster--2 { grid-template-columns: 1fr; } }
+.lg-raster--li { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+@media (max-width: 800px) { .lg-raster, .lg-raster--2, .lg-raster--li { grid-template-columns: 1fr; } }
 """
 
 
-def person_banner(var, wer):
-    """Personenbanner 1584 × 396. Profilfoto deckt ca. x 45–350, y 175–396 ab → Inhalt beginnt bei x 470."""
-    _, bg, fg, pf, hlbg, hlfg, hell, _ = VARIANTEN[var]
+def pfeil(p, breite, cx, cy, farbe):
+    return (f'<div style="position:absolute;left:{p(cx - breite / 2)};top:{p(cy - breite * PFEIL_VERH / 2)};width:{p(breite)}">'
+            f'{form("forward", farbe)}</div>')
+
+
+def claim(p, groesse, zweizeilig=False):
+    return f'<h2 style="font-size:{p(groesse)}">Strategie,{"<br>" if zweizeilig else " "}die <span class="hl">wirkt.</span></h2>'
+
+
+def rahmen(cls, var, W, H, inhalt):
+    bg, fg, hlbg, hlfg, _ = FARBEN[var]
+    return (f'<div class="lb {cls}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">{inhalt}</div>')
+
+
+def kicker_html(p, text, groesse, gap, strich, dicke, extra=""):
+    return (f'<p class="lb-kicker" style="font-size:{p(groesse)};gap:{p(gap)};{extra}">'
+            f'<i style="display:block;width:{p(strich)};height:{p(dicke)};background:currentColor"></i>{text}</p>')
+
+
+def wechsel_flaechen(p, W, H, g, b, cx):
+    """Oben Gelb, unten Schwarz; der Pfeil sitzt auf der Kante und wechselt die Farbe."""
+    return (f'<div style="left:0;top:0;width:100%;height:{p(g)};overflow:hidden;background:{GELB}">{pfeil(p, b, cx, g, SCHWARZ)}</div>'
+            f'<div style="left:0;top:{p(g)};width:100%;height:{p(H - g)};overflow:hidden;background:{SCHWARZ}">'
+            f'<div style="position:absolute;left:0;top:{p(-g)};width:100%;height:{p(H)}">{pfeil(p, b, cx, g, GELB)}</div></div>')
+
+
+def person_banner(var):
+    """Personenbanner 1584 × 396. Das Profilfoto deckt links unten ca. x 45–350 ab → Inhalt beginnt bei x 470."""
     W, H = 1584, 396
     p = px_fn(W)
-    kicker = PERSONEN[wer][2]
-    logo = f'/assets/empiria-logo{"-weiss" if hell else ""}.svg'
-    text = (f'<div class="lb-text" style="left:{p(470)}">'
-            f'<p class="lb-kicker" style="font-size:{p(22)};gap:{p(16)};margin-bottom:{p(22)}">{kicker}</p>'
-            f'<h2 style="font-size:{p(78)}">Strategie,<br>die <span class="hl">wirkt.</span></h2>'
-            f'<p class="lb-fuss" style="margin-top:{p(24)};gap:{p(22)};font-size:{p(22)}"><img src="{logo}" alt="empiria" style="height:{p(36)}">www.empiria.de</p>'
-            f'</div>')
-    if var == "formen":
-        zelle, gap = 104, 16
-        breite = 4 * zelle + 3 * gap
-        hoehe = 2 * zelle + gap
-        kacheln = "".join(
-            f'<span class="{"gelb" if n == "forward" else ""}" style="border-radius:{p(18)}"><i style="display:block;width:{p(54 if n == "forward" else 50)}">{form(n, SCHWARZ)}</i></span>'
-            for n in FORMEN_P)
-        rechts = (f'<div class="lb-raster" style="right:{p(90)};top:{p((H - hoehe) / 2)};width:{p(breite)};'
-                  f'grid-template-columns:repeat(4,1fr);gap:{p(gap)};grid-auto-rows:{p(zelle)}">{kacheln}</div>')
-    else:
-        pb = 280
-        rechts = f'<div style="right:{p(110)};top:{p((H - pb * PFEIL_VERH) / 2)};width:{p(pb)}">{form("forward", pf)}</div>'
-    kstrich = f'<style>.lb-k-{var}-{wer} .lb-kicker::before{{width:{p(40)};height:{p(4)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-k-{var}-{wer}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
-            f'{text}{rechts}</div>')
+    _, _, _, _, pf = FARBEN[var]
+    x = 470
+    k = lambda extra="": kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(16) + ";" + extra)
+    if var.startswith("logos"):
+        return rahmen("", var, W, H, person_logos(var.split("-")[1]))
+    if var == "weiss":
+        inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 70)}</div>'
+                  + pfeil(p, 210, W - 110 - 105, H / 2, pf))
+    elif var in ("gelb", "schwarz"):
+        b = .9 * H / PFEIL_VERH
+        inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k()}{claim(p, 72, True)}</div>'
+                  + pfeil(p, b, W - .3 * b, H / 2, pf))
+    else:  # wechsel
+        g = .62 * H
+        b = 1.5 * (H - g) / PFEIL_VERH
+        inhalt = (wechsel_flaechen(p, W, H, g, b, W - 100 - b / 2)
+                  + f'<div style="left:{p(x)};top:{p(g / 2)};transform:translateY(-50%)">{k()}{claim(p, 60)}</div>')
+    return rahmen("", var, W, H, inhalt)
 
 
 def firma_banner(var):
-    """Firmenbanner 1128 × 191. Firmenlogo deckt ca. x 30–165, y 110–191 ab → Inhalt beginnt bei x 250."""
-    _, bg, fg, pf, hlbg, hlfg, hell, _ = VARIANTEN[var]
+    """Firmenbanner 1128 × 191. Das Firmenlogo deckt links unten ca. x 30–165 ab → Inhalt beginnt bei x 250."""
     W, H = 1128, 191
     p = px_fn(W)
-    text = (f'<div class="lb-text" style="left:{p(250)}">'
-            f'<p class="lb-kicker" style="font-size:{p(14)};gap:{p(12)};margin-bottom:{p(14)}">Strategiehandwerk · Crailsheim</p>'
-            f'<h2 style="font-size:{p(52 if var != "formen" else 46)}">Strategie, die <span class="hl">wirkt.</span></h2>'
-            f'</div>')
-    if var == "formen":
-        zelle, gap = 76, 12
-        breite = 3 * zelle + 2 * gap
-        kacheln = "".join(
-            f'<span class="{"gelb" if n == "forward" else ""}" style="border-radius:{p(14)}"><i style="display:block;width:{p(40 if n == "forward" else 36)}">{form(n, SCHWARZ)}</i></span>'
-            for n in ["kreis", "forward", "stern"])
-        rechts = (f'<div class="lb-raster" style="right:{p(64)};top:{p((H - zelle) / 2)};width:{p(breite)};'
-                  f'grid-template-columns:repeat(3,1fr);gap:{p(gap)};grid-auto-rows:{p(zelle)}">{kacheln}</div>')
+    _, _, _, _, pf = FARBEN[var]
+    x = 250
+    k = kicker_html(p, "Strategiehandwerk · Crailsheim", 12, 10, 24, 2.4, "margin:0 0 " + p(12) + ";")
+    if var.startswith("logos"):
+        return rahmen("", var, W, H, firma_logos(var.split("-")[1]))
+    if var == "weiss":
+        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, 112, W - 64 - 56, H / 2, pf)
+    elif var in ("gelb", "schwarz"):
+        b = .9 * H / PFEIL_VERH
+        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, b, W - .3 * b, H / 2, pf)
     else:
-        pb = 136
-        rechts = f'<div style="right:{p(72)};top:{p((H - pb * PFEIL_VERH) / 2)};width:{p(pb)}">{form("forward", pf)}</div>'
-    kstrich = f'<style>.lb-f-{var} .lb-kicker::before{{width:{p(28)};height:{p(2.8)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-f-{var}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
-            f'{text}{rechts}</div>')
+        g = .64 * H
+        b = 1.5 * (H - g) / PFEIL_VERH
+        inhalt = (wechsel_flaechen(p, W, H, g, b, W - 56 - b / 2)
+                  + f'<div style="left:{p(x)};top:{p(g / 2)};transform:translateY(-50%)">{claim(p, 40)}</div>')
+    return rahmen("", var, W, H, inhalt)
 
 
-def attrappe_person(var, wer):
-    name, rolle, _ = PERSONEN[wer]
-    return (f'<div class="li"><div class="li-banner">{person_banner(var, wer)}'
-            f'<span class="li-foto" style="background-image:url(/assets/ansprechpartner-{wer}.webp)"></span></div>'
+def attrappe_person(var):
+    name, rolle, _ = PERSONEN["daniel"]
+    return (f'<div class="li"><div class="li-banner">{person_banner(var)}'
+            f'<span class="li-foto" style="background-image:url(/assets/ansprechpartner-daniel.webp)"></span></div>'
             f'<div class="li-info"><div><p class="li-name">{name}</p><p class="li-rolle">{rolle} · empiria GmbH</p>'
             f'<p class="li-ort">Crailsheim, Baden-Württemberg</p>'
             f'<div class="li-knoepfe"><span>Vernetzen</span><span>Nachricht</span></div></div>'
@@ -191,41 +215,23 @@ def logo_raster(p, var, hoehe, zeile, gap_y):
                    for d, n in KUNDEN), f"grid-auto-rows:{p(zeile)};row-gap:{p(gap_y)}"
 
 
-def person_logos(var, wer):
-    """Personenbanner 1584 × 396: oben Kicker + Claim, darunter alle 14 Kundenlogos in zwei Reihen. Inhalt ab x 470 (Profilfoto links)."""
-    _, bg, fg, hlbg, hlfg, _, _, _ = LOGO_VAR[var]
-    W, H = 1584, 396
+def person_logos(var):
+    """Inhalt Personenbanner mit Logos: oben Kicker + Claim, darunter alle 14 Kundenlogos in zwei Reihen (ab x 470)."""
+    W = 1584
     p = px_fn(W)
-    links, rechts = 470, 84
     logos, raster = logo_raster(p, var, 34, 60, 18)
-    inhalt = (f'<div style="left:{p(links)};top:{p(46)}">'
-              f'<p class="lb-kicker" style="font-size:{p(18)};gap:{p(14)};margin-bottom:{p(14)}">{PERSONEN[wer][2]}</p>'
-              f'<h2 style="font-size:{p(54)}">Strategie, die <span class="hl">wirkt.</span></h2></div>'
-              f'<div class="lb-logos" style="left:{p(links)};right:{p(rechts)};top:{p(206)};{raster}">{logos}</div>')
-    kstrich = f'<style>.lb-pl-{var}-{wer} .lb-kicker::before{{width:{p(36)};height:{p(3.5)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-pl-{var}-{wer}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
-            f'{inhalt}</div>')
+    return (f'<div style="left:{p(470)};top:{p(46)}">{kicker_html(p, "Strategiehandwerker", 18, 14, 36, 3.5, "margin:0 0 " + p(14) + ";")}'
+            f'{claim(p, 54)}</div>'
+            f'<div class="lb-logos" style="left:{p(470)};right:{p(84)};top:{p(206)};{raster}">{logos}</div>')
 
 
 def firma_logos(var):
-    """Firmenbanner 1128 × 191: Kicker und alle 14 Kundenlogos in zwei Reihen. Inhalt ab x 250 (Firmenlogo links unten)."""
-    _, bg, fg, hlbg, hlfg, _, _, _ = LOGO_VAR[var]
-    W, H = 1128, 191
+    """Inhalt Firmenbanner mit Logos: Kicker und alle 14 Kundenlogos in zwei Reihen (ab x 250)."""
+    W = 1128
     p = px_fn(W)
     logos, raster = logo_raster(p, var, 22, 42, 10)
-    inhalt = (f'<p class="lb-kicker" style="left:{p(250)};top:{p(30)};font-size:{p(12)};gap:{p(10)}">Wir arbeiten unter anderem für</p>'
-              f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(60)};{raster}">{logos}</div>')
-    kstrich = f'<style>.lb-fl-{var} .lb-kicker::before{{width:{p(24)};height:{p(2.4)}}}</style>'
-    return (f'{kstrich}<div class="lb lb-fl-{var}" style="aspect-ratio:{W}/{H};--bg:{bg};--fg:{fg};--hlbg:{hlbg};--hlfg:{hlfg}">'
-            f'{inhalt}</div>')
-
-
-def attrappe_person_logos(var, wer):
-    return attrappe_person("weiss", wer).replace(person_banner("weiss", wer), person_logos(var, wer))
-
-
-def attrappe_firma_logos(var):
-    return attrappe_firma("weiss").replace(firma_banner("weiss"), firma_logos(var))
+    return (f'<div style="left:{p(250)};top:{p(30)}">{kicker_html(p, "Wir arbeiten unter anderem für", 12, 10, 24, 2.4)}</div>'
+            f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(60)};{raster}">{logos}</div>')
 
 
 def schutzzone():
@@ -245,63 +251,27 @@ def schutzzone():
 def jobs():
     j = []
     for var in VARIANTEN:
-        for wer in PERSONEN:
-            j.append({"html": person_banner(var, wer), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-{var}-{wer}.png"})
+        j.append({"html": person_banner(var), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-{var}.png"})
         j.append({"html": firma_banner(var), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
-    for var in LOGO_VAR:
-        for wer in PERSONEN:
-            j.append({"html": person_logos(var, wer), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-logos-{var}-{wer}.png"})
-        j.append({"html": firma_logos(var), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-logos-{var}.png"})
     return j
 
 
 def main_html():
-    teile = []
-    # Personenprofil
-    teile.append('<div class="pm-abschnitt"><h2>1 · Personenprofil</h2>'
-                 '<p class="pm-text">Banner 1584 × 396 px. Links unten liegt das runde Profilfoto über dem Banner – deshalb beginnt der Inhalt erst rechts davon. '
-                 'Oben im Kicker steht das Fachgebiet der Person; Name und Rolle zeigt LinkedIn ohnehin darunter (Kicker lässt sich auch weglassen).</p>'
-                 + schutzzone())
-    for i, (var, v) in enumerate(VARIANTEN.items()):
-        buchst = "ABCD"[i]
-        teile.append(f'<h3>Variante {buchst} · {v[0]}</h3><p class="pm-text">{v[7]}</p>'
-                     f'<div class="lg-gross">{attrappe_person(var, "daniel")}<p class="pm-label">Attrappe Personenprofil · Daniel Ströbel</p></div>'
-                     '<div class="lg-raster">'
-                     + "".join(f'<figure style="margin:0">{person_banner(var, wer)}<p class="pm-label">{PERSONEN[wer][0]} · 1584 × 396 px</p>'
-                               f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-{var}-{wer}.png", "PNG laden")}</div></figure>'
-                               for wer in PERSONEN)
-                     + '</div>')
-    teile.append('</div>')
-    # Firmenprofil
-    teile.append('<div class="pm-abschnitt"><h2>2 · Firmenprofil</h2>'
-                 '<p class="pm-text">Banner 1128 × 191 px mit dem Claim „Strategie, die wirkt.“ – sehr flach, deshalb einzeilig. Links unten liegt das Firmenlogo.</p>')
-    teile.append('<div class="lg-raster lg-raster--2">'
-                 + "".join(f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Variante {"ABCD"[i]} · {v[0]} · 1128 × 191 px</p>'
-                           f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></figure>'
-                           for i, (var, v) in enumerate(VARIANTEN.items()))
-                 + '</div>')
-    teile.append('</div>')
-    # Mit Kundenlogos
-    teile.append('<div class="pm-abschnitt"><h2>3 · Mit Kundenlogos</h2>'
-                 '<p class="pm-text">Alle 14 Kundenlogos, einfarbig und direkt auf der Fläche – schwarz auf Gelb oder weiß auf Schwarz, '
-                 'in zwei Reihen im Raster. Für die Unternehmensseite und für die Personenprofile.</p>')
-    for i, (var, v) in enumerate(LOGO_VAR.items()):
-        teile.append(f'<h3>Variante {"AB"[i]} · {v[0]}</h3><p class="pm-text">{v[7]}</p>'
-                     f'<div class="lg-raster lg-raster--2"><figure style="margin:0">{attrappe_firma_logos(var)}'
-                     f'<p class="pm-label">Unternehmensseite · 1128 × 191 px</p>'
-                     f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-logos-{var}.png", "PNG laden")}</div></figure>'
-                     f'<figure style="margin:0">{attrappe_person_logos(var, "daniel")}<p class="pm-label">Personenprofil · Daniel Ströbel</p></figure></div>'
-                     '<div class="lg-raster">'
-                     + "".join(f'<figure style="margin:0">{person_logos(var, wer)}<p class="pm-label">{PERSONEN[wer][0]} · 1584 × 396 px</p>'
-                               f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-logos-{var}-{wer}.png", "PNG laden")}</div></figure>'
-                               for wer in PERSONEN)
-                     + '</div>')
-    teile.append('</div>')
-
+    teile = ['<div class="pm-abschnitt"><h2>Wo Foto und Logo liegen</h2>'
+             '<p class="pm-text">LinkedIn legt das Profilfoto bzw. das Firmenlogo links unten über das Banner – dort steht deshalb nichts Wichtiges.</p>'
+             + schutzzone() + '</div>']
+    for i, (var, (name, text)) in enumerate(VARIANTEN.items(), 1):
+        teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
+                     f'<div class="lg-raster lg-raster--li">'
+                     f'<figure style="margin:0">{attrappe_person(var)}<p class="pm-label">Personenprofil · 1584 × 396 px</p>'
+                     f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-{var}.png", "PNG laden")}</div></figure>'
+                     f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Unternehmensseite · 1128 × 191 px</p>'
+                     f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></figure>'
+                     f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn-<span class="hl">Banner</span>',
-                   'Vier Varianten für die Personenprofile von Daniel, Kerstin und Noah und für die Unternehmensseite – '
-                   'jeweils in der LinkedIn-Attrappe, damit man sieht, wie Foto und Logo über dem Banner liegen. Alle Banner gibt es als PNG in Originalgröße.')
+                   'Sechs Varianten, jeweils für Dein Profil und die Unternehmensseite – gezeigt in der LinkedIn-Ansicht. '
+                   'Erst wenn die Gestaltung steht, folgen Kerstin und Noah.')
             + "".join(teile)
             + f'</div></section>\n<style>{SEITE_CSS}{CSS}{LOGO_CSS}{SEITE_EXTRA}</style>\n</main>')
 
