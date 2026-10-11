@@ -306,3 +306,37 @@
   .ak-fakten{grid-template-columns:1fr}
   .ak-termine li{grid-template-columns:1fr;gap:4px}
 }
+
+/* Übersicht: Landingpage-Vorschau im Browserfenster, scrollt beim Darüberfahren */
+.lpv .lpv-fenster{position:relative;display:block;background:#f3f2f0;padding:16px 16px 0;border-bottom:1px solid #ecebe8}
+.lpv-leiste{display:flex;align-items:center;gap:6px;background:#fff;border-radius:10px 10px 0 0;padding:9px 12px;border:1px solid #e4e1dd;border-bottom:0}
+.lpv-leiste i{width:8px;height:8px;border-radius:50%;background:#d8d5d1}
+.lpv-leiste span{margin-left:8px;flex:1;background:#f3f2f0;border-radius:5px;font-size:.68rem;color:var(--grey-50);padding:3px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lpv-seite{display:block;height:340px;overflow:hidden;background:#fff;border:1px solid #e4e1dd;border-bottom:0;--weg:0px;--dauer:8s}
+.lpv-seite img{display:block;width:100%;height:auto;transform:translateY(0);transition:transform 1.2s ease}
+.lpv:hover .lpv-seite img,.lpv:focus-visible .lpv-seite img{transform:translateY(calc(-1 * var(--weg)));transition:transform var(--dauer) linear}
+.lpv-hinweis{position:absolute;right:28px;bottom:14px;background:rgba(26,24,23,.82);color:#fff;font-size:.72rem;font-weight:600;padding:6px 11px;border-radius:999px;transition:opacity .3s}
+.lpv:hover .lpv-hinweis{opacity:0}
+@media (hover:none){.lpv-seite{overflow-y:auto}.lpv-hinweis{display:none}}
+
+/* Übersicht: Medienkonzept mit laufendem Feed der echten Postings */
+.mkv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);background:var(--ink);color:#fff;border-radius:var(--radius-card);overflow:hidden;text-decoration:none;min-height:520px;transition:transform .2s}
+.mkv:hover{transform:translateY(-4px)}
+.mkv-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,4vw,56px)}
+.mkv-text small{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--hl)}
+.mkv-text b{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.12;margin:.7rem 0 1rem;color:#fff}
+.e2 main .mkv-text p{margin:0;color:#cfcac3;line-height:1.65;max-width:34rem}
+.mkv-kapitel{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.4rem}
+.mkv-kapitel span{font-size:.78rem;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid #3b3835;color:#e7e2db}
+.mkv-knopf{align-self:flex-start;margin-top:1.8rem;background:var(--hl);color:var(--ink);font-weight:700;padding:13px 22px;border-radius:999px}
+.mkv{height:560px}
+.mkv-feed{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 20px;height:560px;overflow:hidden;transform:rotate(-4deg) scale(1.12);-webkit-mask:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.mkv-spalte{position:relative;overflow:hidden;height:100%}
+.mkv-band{display:flex;flex-direction:column;gap:12px;animation:mkv-hoch 70s linear infinite}
+.mkv-spalte--2 .mkv-band{animation-direction:reverse;animation-duration:80s}
+.mkv-spalte--3 .mkv-band{animation-duration:62s}
+.mkv-band img{display:block;width:100%;aspect-ratio:4/5;border-radius:10px;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+.mkv:hover .mkv-band{animation-play-state:paused}
+@keyframes mkv-hoch{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 6px))}}
+@media (prefers-reduced-motion:reduce){.mkv-band{animation:none}.lpv-seite img{transition:none}}
+@media (max-width:900px){.mkv{grid-template-columns:minmax(0,1fr);height:auto}.mkv-feed{height:380px}}
