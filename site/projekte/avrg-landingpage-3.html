@@ -18,7 +18,7 @@
 <symbol id="i-ort" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-kalender" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
-<symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+<symbol id="i-geschenk" viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5S10.5 4 8 4.5 6.8 8.5 12 8.5zM12 8.5S13.5 4 16 4.5s1.2 4-4 4z"/></symbol><symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
 <symbol id="i-sprechen" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
 <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 0 0 4v5h17v-5a2 2 0 0 1 0-4v-3h-17z"/><path d="M14.5 4.5v12" stroke-dasharray="2 2"/></symbol>
 </defs></svg>
@@ -88,16 +88,20 @@
   </div>
 </div></section>
 
-<section class="v3-sek v3-sek--schwarz" id="ergebnis"><div class="wrap">
+<section class="v3-sek" id="ergebnis"><div class="wrap">
   <p class="v3-kicker">Das Ergebnis</p>
   <h2 class="v3-h2">Zwei Ausgänge. Beide sind gut.</h2>
-  <div class="v3-ausgaenge">
-    <div class="v3-ausgang"><svg class="ico v3-ausgang__ico" aria-hidden="true"><use href="#i-haken"/></svg><p class="v3-ausgang__wort">Mitnehmen.</p><h3>Du hast einen Vorteil.</h3><p>Dann zeigen wir ihn dir – schwarz auf weiß, mit deinen Zahlen.</p><p class="v3-ausgang__plus"><span><b>Und obendrauf:</b> die Lösung, die wir dir mit Überzeugung empfehlen. Wir haben alle Möglichkeiten durchdacht.</span></p></div>
-    <div class="v3-ausgang"><svg class="ico v3-ausgang__ico" aria-hidden="true"><use href="#i-mond"/></svg><p class="v3-ausgang__wort">Abhaken.</p><h3>Du brauchst es nicht.</h3><p>Dann sagen wir dir das genauso klar.</p><p class="v3-ausgang__plus"><span><b>Und du kannst gut schlafen.</b> Kein schlechtes Gefühl mehr beim nächsten Zeitungsartikel.</span></p></div>
+  <div class="ausgaenge">
+    <article class="ausgang"><p class="ausgang__kopf"><span>1</span>Ausgang eins</p>
+      <div class="ausgang__bild ausgang__bild--rot"><small>Du hast einen Vorteil</small><b>Mitnehmen.</b><svg class="ico" aria-hidden="true"><use href="#i-geschenk"/></svg></div>
+      <p class="ausgang__text">Wir zeigen ihn dir – schwarz auf weiß, mit deinen Zahlen. <b>Und obendrauf:</b> die Lösung, die wir dir mit Überzeugung empfehlen.</p></article>
+    <article class="ausgang"><p class="ausgang__kopf"><span>2</span>Ausgang zwei</p>
+      <div class="ausgang__bild ausgang__bild--hell"><small>Du brauchst es nicht</small><b>Abhaken.</b><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></div>
+      <p class="ausgang__text">Dann sagen wir dir das genauso klar. <b>Und das Thema ist erledigt</b> – kein schlechtes Gefühl mehr beim nächsten Zeitungsartikel.</p></article>
   </div>
 </div></section>
 
-<section class="v3-sek" id="rechner"><div class="wrap">
+<section class="v3-sek v3-sek--hell" id="rechner"><div class="wrap">
   <p class="v3-kicker">Rechner</p>
   <h2 class="v3-h2">Spiel’s kurz durch.</h2>
   <p class="v3-lead" style="margin-bottom:clamp(32px,4vw,48px)">Zwei Regler, ein Gefühl dafür, was der Staat dazulegt. Ob es für dich passt, klären wir im Gespräch.</p>
@@ -149,7 +153,7 @@
   </div>
 </div></section>
 
-<section class="v3-sek v3-sek--hell" id="termin"><div class="wrap v3-termin">
+<section class="v3-sek" id="termin"><div class="wrap v3-termin">
   <div>
     <p class="v3-kicker">Termin</p>
     <h2 class="v3-h2">Löse dein Ticket ein.</h2>
@@ -204,7 +208,7 @@
   </div>
 </div></section>
 
-<section class="v3-sek" id="faq"><div class="wrap">
+<section class="v3-sek v3-sek--hell" id="faq"><div class="wrap">
   <p class="v3-kicker">Fragen</p>
   <h2 class="v3-h2" style="margin-bottom:clamp(28px,3.4vw,44px)">Kurz beantwortet.</h2>
   <div class="v3-kasten"><div class="faq">

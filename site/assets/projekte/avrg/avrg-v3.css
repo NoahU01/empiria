@@ -162,15 +162,22 @@ h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-heig
 }
 
 /* ---------- Überarbeitung 11.10. ---------- */
-/* Ergebnis: Superkästen wie Volksfest – dunkle Kästen auf Schwarz, Rot nur als Symbol */
-#ergebnis .v3-ausgang{background:#252220;padding:clamp(30px,3.6vw,48px)}
-.v3-ausgang__ico{width:2.6rem;height:2.6rem;color:var(--rot);stroke-width:2.2}
-#ergebnis .v3-ausgang__wort{margin-top:1.4rem}
-#ergebnis .v3-ausgang p{color:#cfcac3}
-#ergebnis .v3-ausgang p.v3-ausgang__wort{color:#fff}
-#ergebnis .v3-ausgang h3{color:#fff;font-size:1.3rem}
-#ergebnis .v3-ausgang__plus span{border-top:0;padding-top:0;color:#cfcac3}
-#ergebnis .v3-ausgang__plus b{color:#fff}
+/* Ergebnis wie die Social-Media-Karten der Volksfest-Seite: weiße Karte, großer Farbteil, großes Symbol */
+.ausgaenge{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:clamp(36px,4vw,52px)}
+.ausgaenge .ausgang{padding:0;display:block;border-radius:20px;background:#fff;border:1px solid #e4e0db;overflow:hidden;box-shadow:0 24px 50px -40px rgba(26,24,23,.35)}
+.ausgang__kopf{display:flex;align-items:center;gap:.6rem;margin:0;padding:.9rem 1.2rem;font-size:.85rem;font-weight:600;color:var(--ink)}
+.ausgang__kopf span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--rot);color:#fff;font-size:.8rem;font-weight:700}
+.ausgang__bild{position:relative;aspect-ratio:16/11;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,2.6vw,34px)}
+.ausgang__bild--rot{background:var(--rot);color:#fff}
+.ausgang__bild--hell{background:var(--hell);color:var(--ink)}
+.ausgang__bild small{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.ausgang__bild b{font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,4.6vw,4rem);line-height:1.05;letter-spacing:-.02em}
+.ausgang__bild .ico{position:absolute;right:clamp(22px,2.4vw,32px);top:clamp(22px,2.4vw,32px);width:clamp(4.4rem,7vw,6rem);height:clamp(4.4rem,7vw,6rem);stroke-width:1.6}
+.ausgang__bild--rot .ico{color:#fff}
+.ausgang__bild--hell .ico{color:var(--rot);stroke-width:2.2}
+.ausgang__text{margin:0;padding:1.1rem 1.2rem 1.4rem;font-size:15.5px;line-height:1.6;color:var(--text)}
+.ausgang__text b{color:var(--ink)}
+@media (max-width:760px){.ausgaenge{grid-template-columns:minmax(0,1fr)}}
 /* Sandra im Ticket groß – der Fuß des Tickets ist die Person */
 .ticket__fuss{gap:16px;margin-top:1.6rem;padding-top:1.3rem}
 .ticket__fuss img{width:76px;height:76px;border-width:3px;flex:0 0 auto}
