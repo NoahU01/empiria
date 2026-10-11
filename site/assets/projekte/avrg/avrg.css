@@ -70,6 +70,18 @@ p{margin:0}
 .held__fuss{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;color:var(--muted)}
 .held__fuss .ico{color:var(--rot)}
 
+/* Variante 1: Text mittig wie in der Vorlage, Foto darunter – die Gesichter bleiben frei */
+.held--mitte{display:block;min-height:0;background:#fff;overflow:visible}
+.held--mitte::before{display:none}
+.held--mitte .wrap{padding-top:clamp(36px,4vw,56px);padding-bottom:0}
+.held--mitte .held__text{max-width:860px;margin:0 auto;text-align:center}
+.held--mitte h1{font-size:clamp(44px,5vw,68px)}
+.held--mitte .lead{margin-left:auto;margin-right:auto;max-width:38em;margin-top:18px}
+.held--mitte .held__knoepfe{justify-content:center;margin-top:28px}
+.held--mitte .held__fuss{justify-content:center}
+.held--mitte .held__foto{max-width:var(--wrap);margin:clamp(28px,3vw,40px) auto 0;padding:0 var(--pad)}
+.held--mitte .held__bild{position:static;width:100%;height:clamp(300px,40vw,560px);object-fit:cover;object-position:50% 52%;border-radius:22px}
+
 /* Problem: Fotokarten wie „Was kann konkret passieren?“ */
 .faelle{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .fall img{width:100%;aspect-ratio:306/170;object-fit:cover;border-radius:var(--radius)}
