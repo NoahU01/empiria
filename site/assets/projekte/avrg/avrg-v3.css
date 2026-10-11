@@ -161,28 +161,26 @@ h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-heig
   .v3-leute{align-items:flex-start;flex-direction:column;gap:12px}
 }
 
-/* ---------- Überarbeitung 11.10.: Ergebnis positiv auf Hell, Sandra groß ---------- */
-.v3-ergebnis{background:#fff}
-.v3-ergebnis .v3-ausgang{background:var(--hell);color:var(--ink)}
-.v3-ergebnis .v3-ausgang p,.v3-ergebnis .v3-ausgang h3{color:var(--ink)}
-.v3-ergebnis .v3-ausgang p.v3-ausgang__wort{color:var(--ink)}
-.v3-ergebnis .v3-ausgang--rot p.v3-ausgang__wort{color:var(--rot)}
-.v3-ergebnis .v3-ausgang__plus span{border-top-color:rgba(26,24,23,.15)}
-.v3-ausgang__haken{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;margin-bottom:1.4rem}
-.v3-ausgang--rot .v3-ausgang__haken{background:var(--rot)}
-.v3-ausgang__haken .ico{width:28px;height:28px;stroke-width:2.4}
-.v3-sandra{position:absolute;left:-8px;bottom:-6px;z-index:3;margin:0;display:flex;align-items:center;gap:14px;padding:8px 22px 8px 8px;border-radius:999px;background:#fff;box-shadow:0 18px 40px -18px rgba(26,24,23,.45)}
-.v3-sandra img{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block}
-.v3-sandra figcaption{font-size:14px;line-height:1.35;color:var(--text)}
-.v3-sandra b{display:block;font-family:var(--head);font-size:1.35rem;color:var(--ink)}
-.ticket-buehne{padding-bottom:110px}
-.v3-person{display:grid;grid-template-columns:auto 1fr;gap:18px 22px;align-items:center;margin-top:2.4rem;padding:28px;border-radius:20px;background:var(--hell)}
-.v3-person img{width:150px;height:150px;border-radius:50%;object-fit:cover;grid-row:span 1}
-.v3-person__name{font-family:var(--head);font-weight:700;font-size:2rem;line-height:1.15;color:var(--ink)}
-.v3-person__rolle{margin-top:.35rem;font-size:15px;color:var(--text)}
-.v3-person__tel{grid-column:1/-1;justify-self:start;font-size:1.15rem;padding:.95rem 1.5rem}
-.v3-person__link{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;margin:0;color:var(--ink);text-decoration:none;font-weight:500}
-.v3-person__link .ico,.v3-person__tel .ico{width:20px;height:20px}
-.v3-person__link .ico{color:var(--rot)}
-@media (max-width:991px){.ticket-buehne{display:flex;flex-direction:column;gap:22px;padding-bottom:10px}.v3-sandra{position:relative;left:auto;bottom:auto;order:2;align-self:flex-start;max-width:100%}.v3-sandra img{width:84px;height:84px}}
-@media (max-width:560px){.v3-person{grid-template-columns:1fr}.v3-person img{width:120px;height:120px}}
+/* ---------- Überarbeitung 11.10. ---------- */
+/* Ergebnis: Superkästen wie Volksfest – dunkle Kästen auf Schwarz, Rot nur als Symbol */
+#ergebnis .v3-ausgang{background:#252220;padding:clamp(30px,3.6vw,48px)}
+.v3-ausgang__ico{width:2.6rem;height:2.6rem;color:var(--rot);stroke-width:2.2}
+#ergebnis .v3-ausgang__wort{margin-top:1.4rem}
+#ergebnis .v3-ausgang p{color:#cfcac3}
+#ergebnis .v3-ausgang p.v3-ausgang__wort{color:#fff}
+#ergebnis .v3-ausgang h3{color:#fff;font-size:1.3rem}
+#ergebnis .v3-ausgang__plus span{border-top:0;padding-top:0;color:#cfcac3}
+#ergebnis .v3-ausgang__plus b{color:#fff}
+/* Sandra im Ticket groß – der Fuß des Tickets ist die Person */
+.ticket__fuss{gap:16px;margin-top:1.6rem;padding-top:1.3rem}
+.ticket__fuss img{width:76px;height:76px;border-width:3px;flex:0 0 auto}
+.ticket__fuss b{font-family:var(--head);font-size:1.35rem;font-weight:700;line-height:1.2;margin-bottom:3px}
+.ticket__fuss span{font-size:14px;line-height:1.4}
+/* Kontakt unter dem Ticket im Termin-Bereich */
+.v3-kontakt{gap:14px;margin-top:2.6rem}
+.v3-kontakt__titel{font-family:var(--head);font-weight:700;font-size:1.4rem;color:var(--ink);margin:0}
+.v3-kontakt a.v3-kontakt__tel{justify-self:start;color:#fff;font-size:1.2rem;padding:1rem 1.6rem}
+.v3-kontakt a.v3-kontakt__tel .ico{color:#fff;width:22px;height:22px}
+.v3-kontakt a{font-size:1.05rem}
+.ticket__fuss small{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
+.ticket__fuss b{white-space:nowrap}
