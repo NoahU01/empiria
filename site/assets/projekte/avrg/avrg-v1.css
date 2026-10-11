@@ -19,7 +19,7 @@
 .lp1-held{position:relative;height:max(600px,44vw);overflow:hidden;background:#8a8a6a}
 /* Wie im Original: Foto beginnt direkt unter der weißen Kopfzeile und füllt den ganzen Aufmacher.
    Nur ein leichter heller Schleier hinter dem Text, damit die schwarze Schrift auf dem Laub lesbar bleibt. */
-.lp1-held__bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+.lp1-held__bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .lp1-held::before{content:"";position:absolute;inset:0 0 auto;height:58%;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 100%)}
 .lp1-held__text{position:relative;z-index:2;max-width:836px;margin:0 auto;padding:62px 20px 0;text-align:center}
 .lp1-held h1{font:400 56px/73px 'Ubuntu',sans-serif;color:#000;letter-spacing:0;margin:0}
