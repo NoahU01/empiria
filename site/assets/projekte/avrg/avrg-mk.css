@@ -257,7 +257,7 @@
 
 /* Ticket */
 .cr--ticket{background:var(--h)}
-.cr__tk{position:absolute;left:8cqi;right:8cqi;top:40cqi;height:66cqi;transform:rotate(-6deg);display:grid;grid-template-columns:1fr 18cqi;filter:drop-shadow(0 3cqi 4cqi rgba(160,10,10,.25))}
+.cr__tk{position:absolute;left:8cqi;right:8cqi;top:40cqi;height:66cqi;transform:rotate(-6deg);display:grid;grid-template-columns:1fr 18cqi;isolation:isolate;}
 .cr__tk-haupt,.cr__tk-ab{background:var(--r);color:#fff}
 .cr__tk-haupt{border-radius:4cqi 0 0 4cqi;padding:7cqi 6cqi;display:flex;flex-direction:column;justify-content:space-between;
   -webkit-mask:radial-gradient(circle 3cqi at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 3cqi at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
@@ -291,7 +291,7 @@
 
 /* Ticket-Flyer (Vorder- und Rückseite) */
 .tf{position:relative;height:clamp(380px,44vw,580px)}
-.tf__karte{position:absolute;width:min(100%,520px);aspect-ratio:210/99;display:grid;grid-template-columns:1fr 22%;container-type:inline-size;font-family:'Ubuntu',system-ui,sans-serif;filter:drop-shadow(0 24px 30px rgba(0,0,0,.18))}
+.tf__karte{position:absolute;width:min(100%,520px);aspect-ratio:210/99;display:grid;grid-template-columns:1fr 22%;container-type:inline-size;font-family:'Ubuntu',system-ui,sans-serif;isolation:isolate;}
 .tf__karte--vorn{left:0;top:0;transform:rotate(-5deg);z-index:2}
 .tf__karte--hinten{right:0;bottom:0;transform:rotate(4deg)}
 .tf__haupt,.tf__abriss{position:relative}
@@ -396,3 +396,7 @@
 .mk-idee b{display:block;font:700 1.3rem/1.25 var(--font-serif);margin-top:1rem}
 .e2 main .mk-idee p{margin:.6rem 0 0;color:var(--e2-ink-2);font-size:.95rem;line-height:1.55}
 @media (max-width:900px){.mk-ausbau-raster{grid-template-columns:minmax(0,1fr)}}
+
+/* Schatten der Tickets als weiche Fläche dahinter (Safari zeichnet drop-shadow bei Masken eckig) */
+.cr__tk::before,.tf__karte::before{content:"";position:absolute;z-index:-1;left:6%;right:6%;top:14%;bottom:-5%;border-radius:8cqi;background:rgba(150,20,20,.3);filter:blur(5cqi)}
+.tf__karte--hinten::before{background:rgba(0,0,0,.18)}
