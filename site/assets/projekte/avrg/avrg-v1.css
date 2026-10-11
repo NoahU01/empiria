@@ -16,10 +16,10 @@
 .lp1-burger{display:none;appearance:none;border:0;background:none;padding:0;width:24px;height:24px;cursor:pointer;color:#000}
 .lp1-burger svg{width:24px;height:24px;display:block}
 
-.lp1-held{position:relative;height:50vw;overflow:hidden;background:#dfe8d3}
-/* Foto oben verankert und in voller Breite: Sichtbar bleibt das obere Drittel bis zur Brust der Eltern */
-.lp1-held__bild{position:absolute;left:0;top:0;width:100%;height:auto;display:block}
-.lp1-held::before{content:"";position:absolute;inset:0 0 auto;height:60%;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.4) 55%,rgba(255,255,255,0) 100%)}
+.lp1-held{position:relative;height:max(816px,66vw);overflow:hidden;background:#fff}
+/* Drei Generationen: Gesichter in der unteren Hälfte, Text oben auf aufgehelltem Laub */
+.lp1-held__bild{position:absolute;left:0;right:0;bottom:0;top:auto;width:100%;height:calc(100% - 150px);object-fit:cover;object-position:50% 30%}
+.lp1-held::before{content:"";position:absolute;inset:0 0 auto;height:56%;z-index:1;background:linear-gradient(180deg,#fff 0%,#fff 27%,rgba(255,255,255,.75) 55%,rgba(255,255,255,0) 100%)}
 .lp1-held__text{position:relative;z-index:2;max-width:836px;margin:0 auto;padding:62px 20px 0;text-align:center}
 .lp1-held h1{font:400 56px/73px 'Ubuntu',sans-serif;color:#000;letter-spacing:0;margin:0}
 .lp1-held p{font:400 17px/29px 'Ubuntu',sans-serif;color:#000;max-width:774px;margin:4px auto 0}
