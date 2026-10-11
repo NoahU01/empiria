@@ -16,24 +16,17 @@
 .lp1-burger{display:none;appearance:none;border:0;background:none;padding:0;width:24px;height:24px;cursor:pointer;color:#000}
 .lp1-burger svg{width:24px;height:24px;display:block}
 
-.lp1-held{position:relative;height:max(816px,66vw);overflow:hidden;background:#fff}
-/* Drei Generationen: Gesichter in der unteren Hälfte, Text oben auf aufgehelltem Laub */
-.lp1-held__bild{position:absolute;left:0;right:0;bottom:0;top:auto;width:100%;height:calc(100% - 150px);object-fit:cover;object-position:50% 30%}
-.lp1-held::before{content:"";position:absolute;inset:0 0 auto;height:56%;z-index:1;background:linear-gradient(180deg,#fff 0%,#fff 27%,rgba(255,255,255,.75) 55%,rgba(255,255,255,0) 100%)}
+.lp1-held{position:relative;height:max(816px,66vw);overflow:hidden;background:#8a8a6a}
+/* Wie im Original: Foto beginnt direkt unter der weißen Kopfzeile und füllt den ganzen Aufmacher.
+   Nur ein leichter heller Schleier hinter dem Text, damit die schwarze Schrift auf dem Laub lesbar bleibt. */
+.lp1-held__bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.lp1-held::before{content:"";position:absolute;inset:0 0 auto;height:58%;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.5) 55%,rgba(255,255,255,0) 100%)}
 .lp1-held__text{position:relative;z-index:2;max-width:836px;margin:0 auto;padding:62px 20px 0;text-align:center}
 .lp1-held h1{font:400 56px/73px 'Ubuntu',sans-serif;color:#000;letter-spacing:0;margin:0}
 .lp1-held p{font:400 17px/29px 'Ubuntu',sans-serif;color:#000;max-width:774px;margin:4px auto 0}
 .lp1-held .lp1-knopf{display:inline-flex;align-items:center;justify-content:center;width:218px;height:54px;margin-top:28px;border-radius:999px;background:#ed1c1c;color:#fff;font:400 13px 'Ubuntu',sans-serif;text-decoration:none}
 .lp1-held .lp1-knopf:hover{background:#c8141b}
 
-/* Unter 1240 px: Text oben auf Weiß, darunter das ganze Foto (wie die Handyfassung des Originals) */
-@media (max-width:1239px){
-  .lp1-held{height:auto;background:#fff;display:flex;flex-direction:column}
-  .lp1-held::before{display:none}
-  .lp1-held__text{order:1;padding-bottom:0}
-  .lp1-held__bild{order:2;position:relative;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 70%;margin-top:-40px;-webkit-mask:linear-gradient(180deg,transparent 0,#000 22%);mask:linear-gradient(180deg,transparent 0,#000 22%)}
-  .lp1-held__text{position:relative;z-index:2}
-}
 @media (max-width:1000px){
   .lp1-held h1{font-size:44px;line-height:58px}
 }
@@ -46,7 +39,7 @@
   .lp1-kopf.ist-offen .lp1-nav{display:flex}
   .lp1-nav a{width:auto;text-align:left;line-height:44px;font-size:16px}
   .lp1-nav .lp1-cta{margin:10px 0 0;text-align:center;font-size:14px}
-  .lp1-held__bild{margin-top:-20px}
+  .lp1-held{height:700px}
   .lp1-held__text{padding:41px 42px 0}
   .lp1-held h1{font-size:24px;line-height:29px}
   .lp1-held p{font-size:14px;line-height:19.5px;font-weight:300;margin-top:11px}

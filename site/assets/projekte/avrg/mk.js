@@ -36,7 +36,7 @@
     b.addEventListener('click', function () {
       var v = b.dataset.v;
       $$('.mk-variante').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      $('#mk-lp-bild').src = '/assets/projekte/avrg/lp-vorschau-voll-' + v + '.jpg?v=4';
+      $('#mk-lp-bild').src = '/assets/projekte/avrg/lp-vorschau-voll-' + v + '.jpg?v=5';
       $('.ak-browser-seite').scrollTop = 0;
       $('#mk-lp-url').textContent = 'agentur-beispiel.de/neue-altersvorsorge' + (v === '1' ? '' : '-' + v);
       $$('.mk-bausteine').forEach(function (l) { l.hidden = l.dataset.v !== v; });
