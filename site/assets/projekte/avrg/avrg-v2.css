@@ -3,7 +3,7 @@
 
 /* Aufmacher: links Frage + Auswahl, rechts die gewählte Person */
 .v2-held{padding:clamp(40px,5vw,72px) 0 clamp(64px,8vw,104px)}
-.v2-held .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.v2-held .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .v2-held h1{font-size:clamp(46px,6vw,82px);line-height:1.02;letter-spacing:-.02em}
 .v2-held .lead{margin-top:20px;font-size:clamp(17px,1.5vw,19px);max-width:30em}
 .v2-wahl-titel{margin:34px 0 14px;font-size:14px;color:var(--muted)}
@@ -13,18 +13,18 @@
 .v2-person:hover{border-color:var(--ink)}
 .v2-person[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
 
-.v2-buehne{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/4.3;background:#ddd;box-shadow:0 40px 80px -50px rgba(0,0,0,.5)}
-.v2-buehne img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s}
-.v2-buehne::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.72) 100%)}
-.v2-buehne__text{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(22px,3vw,34px);color:#fff}
-.v2-buehne__wer{font-size:14px;opacity:.85}
-.v2-buehne__frage{font-size:clamp(26px,2.8vw,36px);line-height:1.15;margin-top:6px;color:#fff}
-.v2-klaeren{background:#fff;border-radius:16px;padding:20px 22px;margin-top:18px;color:var(--ink)}
-.v2-klaeren b{display:block;font-weight:500;font-size:14px;color:var(--muted);margin-bottom:8px}
-.v2-klaeren ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-.v2-klaeren li{display:flex;gap:10px;font-size:15.5px;line-height:1.4}
+.v2-buehne{border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(0,0,0,.45)}
+.v2-buehne__bild{position:relative;aspect-ratio:16/10;background:#ddd}
+.v2-buehne__bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.v2-buehne__text{padding:clamp(22px,2.6vw,30px)}
+.v2-buehne__wer{font-size:14px;color:var(--muted)}
+.v2-buehne__frage{font-size:clamp(24px,2.4vw,32px);line-height:1.18;margin-top:6px;color:var(--ink)}
+.v2-klaeren{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink)}
+.v2-klaeren b{display:block;font-weight:500;font-size:14px;color:var(--muted);margin-bottom:10px}
+.v2-klaeren ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.v2-klaeren li{display:flex;gap:10px;font-size:16px;line-height:1.4}
 .v2-klaeren li .ico{color:var(--rot);margin-top:2px}
-.v2-klaeren .knopf{margin-top:16px;width:100%}
+.v2-klaeren .knopf{margin-top:20px;width:100%}
 
 /* Das Gespräch als Zeitleiste */
 .v2-zeit{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:8px}
@@ -49,7 +49,7 @@
 .v2-liste--ja .v2-marke{background:var(--rot);color:#fff}
 .v2-liste--nein .v2-marke{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .v2-liste--nein li{color:var(--muted)}
-.v2-liste--nein li span{text-decoration:line-through;text-decoration-thickness:1.5px}
+.v2-liste--nein li > span:last-child > span{text-decoration:line-through;text-decoration-thickness:1.5px}
 
 /* Wer mit dir spricht + Termin */
 .v2-team{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,64px);align-items:start}
@@ -63,8 +63,8 @@
 .v2-direkt a:hover{border-color:var(--ink)}
 
 @media (max-width:980px){
-  .v2-held .wrap,.v2-team{grid-template-columns:1fr}
-  .v2-buehne{aspect-ratio:4/3.6;max-width:560px}
+  .v2-held .wrap,.v2-team{grid-template-columns:minmax(0,1fr)}
+  .v2-buehne{max-width:600px}
   .v2-zeit{grid-template-columns:1fr 1fr;row-gap:36px}
   .v2-zeit::before{display:none}
 }
@@ -72,7 +72,6 @@
   .v2-wahl{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(-1 * var(--pad));padding:2px var(--pad) 6px;scrollbar-width:none}
   .v2-wahl::-webkit-scrollbar{display:none}
   .v2-person{flex:none}
-  .v2-buehne{aspect-ratio:auto;min-height:520px}
   .v2-zwei{grid-template-columns:1fr}
   .v2-zeit{grid-template-columns:1fr}
 }

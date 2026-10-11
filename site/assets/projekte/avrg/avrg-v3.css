@@ -1,0 +1,162 @@
+/* Landingpage AVRG · Variante 3 – Gestaltungsmaßstab Volksfest-Seite:
+   eine starke Bildidee (das Klarheits-Ticket), große Lora-Überschriften,
+   klare Flächenwechsel Weiß · Rot · Schwarz · Warmgrau. Agenturfarben bleiben:
+   Rot als Signal, Schwarz, Weiß. Bausteine (Rechner, Termin, FAQ) aus avrg.css. */
+@import url('/assets/fonts/fonts.css');
+
+:root{
+  --font:'Poppins',system-ui,sans-serif;
+  --head:'Lora',Georgia,serif;
+  --ink:#1a1817;
+  --text:#3d3a37;
+  --muted:#6f6a64;
+  --line:#e7e4df;
+  --hell:#f6f5f2;
+  --wrap:74rem;
+}
+body{font:400 17px/1.6 var(--font);color:var(--ink)}
+h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-height:1.04}
+.wrap{max-width:var(--wrap)}
+.ico{stroke-width:1.8}
+
+.v3-sek{padding:clamp(80px,9vw,124px) 0}
+.v3-sek--rot{background:var(--rot);color:#fff}
+.v3-sek--schwarz{background:var(--ink);color:#fff}
+.v3-sek--hell{background:var(--hell)}
+.v3-sek--rot h2,.v3-sek--schwarz h2,.v3-sek--schwarz h3,.v3-ausgang h3,.v3-ausgang__wort{color:#fff}
+.v3-kicker{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.v3-kicker::before{content:"";width:1.4rem;height:3px;border-radius:2px;background:currentColor}
+.v3-h2{font-size:clamp(2.2rem,4.6vw,3.7rem);max-width:17ch}
+.v3-lead{margin-top:1.3rem;max-width:40rem;font-size:1.15rem;line-height:1.62;color:var(--text)}
+.v3-sek--rot .v3-lead,.v3-sek--schwarz .v3-lead{color:rgba(255,255,255,.86)}
+.v3-rot{color:var(--rot)}
+.knopf{font-family:var(--font);font-weight:600;font-size:16px}
+.knopf--weiss{background:#fff;color:var(--ink)}
+.knopf--weiss:hover{background:#f1f1f1}
+.knopf--rand-hell{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
+.knopf--rand-hell:hover{background:rgba(255,255,255,.1)}
+
+/* ---------- Aufmacher ---------- */
+.v3-held{padding:clamp(48px,6vw,88px) 0 clamp(56px,6vw,80px);overflow:hidden}
+.v3-held .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,5vw,72px);align-items:center}
+.v3-held h1{font-size:clamp(3rem,5.9vw,5.4rem);line-height:1}
+.v3-held h1 .v3-rot{display:block}
+.v3-held .v3-lead{font-size:clamp(1.08rem,1.4vw,1.22rem)}
+.v3-knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin-top:2rem}
+.v3-leute{display:flex;align-items:center;gap:18px;margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid var(--line)}
+.v3-leute__fotos{display:flex;flex:none}
+.v3-leute__fotos img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-left:-14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.v3-leute__fotos img:first-child{margin-left:0}
+.v3-leute p{font-size:15px;line-height:1.45;color:var(--text)}
+.v3-leute b{color:var(--ink);font-weight:600}
+
+/* Das Klarheits-Ticket */
+.ticket-buehne{position:relative;display:grid;place-items:center;padding:30px 0}
+.ticket{position:relative;display:grid;grid-template-columns:1fr 84px;width:min(100%,470px);transform:rotate(-4deg);filter:drop-shadow(0 30px 40px rgba(120,10,10,.28));transition:transform .4s ease}
+.ticket:hover{transform:rotate(-2deg) translateY(-4px)}
+.ticket__haupt,.ticket__abriss{background:var(--rot);color:#fff}
+.ticket__haupt{border-radius:22px 0 0 22px;padding:30px 28px 28px;
+  -webkit-mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right/100% 51% no-repeat}
+.ticket__abriss{border-radius:0 22px 22px 0;border-left:2.5px dashed rgba(255,255,255,.55);display:grid;place-items:center;
+  -webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left/100% 51% no-repeat}
+.ticket__abriss span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.ticket__art{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.ticket__titel{font-family:var(--head);font-weight:700;font-size:clamp(2.2rem,3.6vw,2.9rem);line-height:1;margin:.5rem 0 1.3rem;letter-spacing:-.02em}
+.ticket__titel small{display:block;font-size:.5em;font-weight:500;margin-top:.35rem;letter-spacing:0}
+.ticket__liste{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ticket__liste li{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500}
+.ticket__box{width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,.75);display:grid;place-items:center;flex:none;color:transparent;transition:all .35s}
+.ticket__box .ico{width:15px;height:15px;stroke-width:3}
+.ticket.ist-sichtbar .ticket__box{background:#fff;border-color:#fff;color:var(--rot)}
+.ticket.ist-sichtbar li:nth-child(2) .ticket__box{transition-delay:.45s}
+.ticket.ist-sichtbar li:nth-child(3) .ticket__box{transition-delay:.9s}
+.ticket__fuss{display:flex;align-items:center;gap:10px;margin-top:1.5rem;padding-top:1.1rem;border-top:1.5px solid rgba(255,255,255,.3);font-size:13px}
+.ticket__fuss img{width:34px;height:34px;border-radius:50%;border:2px solid #fff}
+.ticket__fuss b{display:block;font-weight:600;font-size:14px}
+.stempel{position:absolute;right:-6px;top:-18px;z-index:3;width:118px;height:118px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;text-align:center;transform:rotate(10deg);box-shadow:0 14px 30px rgba(0,0,0,.18);font-family:var(--head);font-weight:700;line-height:1.02;font-size:18px;border:3px solid var(--ink)}
+.stempel small{display:block;font-family:var(--font);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;color:var(--rot)}
+
+/* ---------- Die Idee (rot) ---------- */
+.v3-zwei{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.v3-idee p.v3-lead + p.v3-lead{margin-top:1rem}
+.v3-stimmen{background:var(--ink);color:#fff;border-radius:20px;padding:clamp(28px,3.4vw,40px)}
+.v3-stimmen ul{list-style:none;margin:0;padding:0;display:grid;gap:1.1rem}
+.v3-stimmen li{font-family:var(--head);font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.3}
+.v3-stimmen li::before{content:"„"}
+.v3-stimmen li::after{content:"“"}
+.v3-stimmen p{margin-top:1.6rem;padding-top:1.3rem;border-top:2px solid var(--rot);font-size:15px;color:#d8d3cc;line-height:1.6}
+
+/* ---------- Menschen ---------- */
+.v3-menschen{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:clamp(36px,4vw,52px)}
+.mensch{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.mensch img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.mensch__text{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.mensch__wer{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mensch__wer{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mensch__frage{font-family:var(--head);font-weight:700;font-size:1.22rem;line-height:1.22;margin-top:.5rem;min-height:2.44em}
+.mensch__antwort{margin-top:.8rem;font-size:14.5px;line-height:1.55;color:var(--text)}
+
+/* ---------- Schritte ---------- */
+.v3-schritte{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(36px,4vw,52px)}
+.v3-schritt{position:relative;border:1px solid var(--line);border-radius:18px;padding:28px 26px 30px;background:#fff}
+.v3-schritt__ico{width:56px;height:56px;border-radius:14px;background:var(--ink);color:#fff;display:grid;place-items:center}
+.v3-schritt:last-child .v3-schritt__ico{background:var(--rot)}
+.v3-schritt__ico .ico{width:28px;height:28px}
+.v3-schritt__nr{position:absolute;right:24px;top:24px;font-family:var(--head);font-weight:700;color:#c9c4bd;font-size:1.1rem}
+.v3-schritt h3{font-size:1.5rem;margin-top:1.4rem}
+.v3-schritt p{margin-top:.6rem;color:var(--text);font-size:15.5px}
+
+/* ---------- Zwei Ausgänge (schwarz) ---------- */
+.v3-ausgaenge{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:clamp(36px,4vw,52px)}
+.v3-ausgang{border-radius:20px;padding:clamp(28px,3.4vw,44px);background:#262321;display:flex;flex-direction:column}
+.v3-ausgang--rot{background:var(--rot)}
+.v3-ausgang__wort{font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,5vw,4rem);line-height:1}
+.v3-ausgang h3{font-family:var(--font);font-weight:600;font-size:1.15rem;margin-top:1.4rem;letter-spacing:0}
+.v3-ausgang p{margin-top:.5rem;color:rgba(255,255,255,.82);line-height:1.6}
+.v3-ausgang__plus{margin-top:auto;padding-top:1.4rem}
+.v3-ausgang__plus span{display:block;padding-top:1.1rem;border-top:1.5px solid rgba(255,255,255,.25);font-size:15px;line-height:1.55}
+
+/* ---------- Rechner & Termin: Bausteine aus avrg.css im Volksfest-Look ---------- */
+.rechner,.buchung{border-radius:20px}
+.rechner__ergebnis{background:#fff}
+.regler output{font-family:var(--head);font-weight:700;letter-spacing:-.02em}
+.gross{font-weight:600}
+.v3-ausgang p.v3-ausgang__wort{color:#fff}
+.v3-termin{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.v3-termin .ticket{width:min(100%,400px);margin-top:2.4rem;transform:rotate(3deg)}
+.v3-termin .ticket__titel{font-size:2.1rem}
+.v3-kontakt{display:grid;gap:10px;margin-top:2rem}
+.v3-kontakt a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:500}
+.v3-kontakt .ico{color:var(--rot)}
+
+/* ---------- FAQ-Kasten ---------- */
+.v3-kasten{border:2px solid var(--ink);border-radius:20px;padding:clamp(26px,3.4vw,44px)}
+.v3-kasten .faq{max-width:none;border-top:0}
+.v3-kasten .faq summary{font-family:var(--head);font-weight:700;font-size:1.25rem}
+.faq summary .plus{background:var(--rot)}
+
+/* ---------- Schluss ---------- */
+.v3-schluss{text-align:center}
+.v3-schluss h2{font-size:clamp(2.6rem,6vw,5rem);max-width:none}
+.v3-schluss .v3-knoepfe{justify-content:center}
+
+@media (max-width:1100px){
+  .v3-menschen{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .v3-held .wrap,.v3-zwei,.v3-termin{grid-template-columns:minmax(0,1fr)}
+  .ticket-buehne{padding:10px 0 20px}
+  .v3-schritte{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:700px){
+  .v3-menschen{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-padding:0 var(--pad);margin-left:calc(-1 * var(--pad));margin-right:calc(-1 * var(--pad));padding:0 var(--pad) 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .v3-menschen::-webkit-scrollbar{display:none}
+  .mensch{scroll-snap-align:start}
+  .v3-ausgaenge{grid-template-columns:minmax(0,1fr)}
+  .ticket{grid-template-columns:1fr 60px}
+  .ticket__haupt{padding:24px 20px 22px}
+  .stempel{width:92px;height:92px;font-size:15px;right:-4px;top:-26px}
+  .v3-leute{align-items:flex-start;flex-direction:column;gap:12px}
+}
