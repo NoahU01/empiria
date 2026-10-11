@@ -17,76 +17,85 @@
 <symbol id="i-ort" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-kalender" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
 </defs></svg>
 
 <div class="dev"><div class="wrap"><span>Entwurf · nur in der Entwicklungsumgebung sichtbar · Landingpage AVRG – Vorlage am Beispiel Sandra Hild</span><a href="avrg.html">← zurück zu AVRG</a></div></div>
 
-<!-- Agenturdaten (Name, Foto, Kontakt) sind austauschbar: Beispiel Sandra Hild, Gebietsdirektion Owen. -->
+<!-- Agenturdaten (Logo, Name, Foto, Kontakt) sind austauschbar: Beispiel SV Gebietsdirektion Owen, Sandra Hild.
+     Fotos: Unsplash (frei nutzbar), Platzhalter bis zum Fototermin. -->
 <header class="kopf" id="kopf"><div class="wrap">
-  <a class="marke" href="#top"><img src="/assets/projekte/avrg/sandra.jpg" alt=""><span><b>Sandra Hild</b><small>Gebietsdirektion Owen</small></span></a>
-  <nav class="nav" aria-label="Seite"><a href="#fragen">So läuft’s</a><a href="#rechner">Rechner</a><a href="#faq">Fragen</a><a class="knopf knopf--klein" href="#termin">Termin vereinbaren</a></nav>
+  <a class="logo" href="#top"><img src="/assets/projekte/avrg/sv-owen-logo.svg" alt="SV Owen"></a>
+  <nav class="nav" aria-label="Seite"><a href="#loesung">Lösung</a><a href="#rechner">Rechner</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a><a class="knopf" href="#termin">Termin vereinbaren</a></nav>
 </div></header>
 
 <main id="top">
 
-<section class="held"><div class="wrap">
-  <div>
+<section class="held">
+  <img class="held__bild" src="/assets/projekte/avrg/fotos/paar-tablet-kueche.jpg" alt="Paar schaut in der Küche gemeinsam auf ein Tablet">
+  <div class="wrap"><div class="held__text">
     <p class="kicker">Die neue Altersvorsorge ab 2027</p>
-    <h1>Mitnehmen<br> oder abhaken.</h1>
-    <p class="lead">Alle reden darüber, kaum einer erklärt es dir. Wir sortieren das für dich: In einem kurzen Gespräch weißt du, ob dich die neue Altersvorsorge betrifft – und ob du etwas davon hast. Danach ist das Thema für dich erledigt.</p>
-    <div class="held__knoepfe"><a class="knopf" href="#termin">15 Minuten für Klarheit <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#rechner">Erst mal rechnen</a></div>
-    <p class="held__fuss"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg>Kostenlos · unverbindlich · am Telefon, per Video oder bei uns im Büro</p>
-  </div>
+    <h1>Mitnehmen<br>oder abhaken.</h1>
+    <p class="lead">Alle reden darüber, kaum einer erklärt es dir. In einem kurzen Gespräch weißt du, ob dich die neue Altersvorsorge betrifft – und ob du etwas davon hast. Danach ist das Thema für dich erledigt.</p>
+    <div class="held__knoepfe"><a class="knopf" href="#termin">Jetzt Klarheit schaffen</a><a class="knopf knopf--rand" href="#rechner">Erst mal rechnen</a></div>
+    <p class="held__fuss"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg>15 Minuten · kostenlos · unverbindlich</p>
+  </div></div>
+</section>
 
-  <div class="karte" id="karte" aria-label="So sieht dein Gespräch aus">
-    <div class="karte__kopf"><img src="/assets/projekte/avrg/sandra.jpg" alt=""><span><b>Dein Gespräch mit Sandra</b><small>15 Minuten · neue Altersvorsorge 2027</small></span></div>
-    <ul class="karte__fragen">
-      <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Betrifft mich das?</li>
-      <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Wenn ja: wie?</li>
-      <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Habe ich einen Vorteil?</li>
-    </ul>
-    <div class="karte__ergebnis">
-      <span class="ja"><b>Vorteil mitnehmen</b>schwarz auf weiß</span>
-      <i>oder</i>
-      <span class="nein"><b>Gut schlafen</b>Thema abgehakt</span>
+<section class="sektion" id="problem"><div class="wrap">
+  <div class="kopfzeile">
+    <p class="kicker">Problem</p>
+    <h2 class="titel">Viel Gerede, wenig Klarheit</h2>
+    <p class="lead">Alle reden über die neue Altersvorsorge. Was sie für dich konkret bedeutet, erklärt dir aber keiner.</p>
+  </div>
+  <div class="faelle">
+    <div class="fall"><img src="/assets/projekte/avrg/fotos/frau-dokument.jpg" alt="" loading="lazy"><h3>Post bekommen, nur Bahnhof verstanden</h3><p>Ein Schreiben zur neuen Altersvorsorge liegt auf dem Tisch. Was es für dich bedeutet, steht da nicht drin.</p></div>
+    <div class="fall"><img src="/assets/projekte/avrg/fotos/paar-rechnungen.jpg" alt="" loading="lazy"><h3>Ist mein Riester-Vertrag jetzt schlecht?</h3><p>Überall heißt es, Riester sei vorbei. Ob du etwas tun musst, sagt dir keiner.</p></div>
+    <div class="fall"><img src="/assets/projekte/avrg/fotos/cafe-inhaberin.jpg" alt="" loading="lazy"><h3>Selbstständig – bin ich diesmal dabei?</h3><p>Bisher war geförderte Vorsorge für dich kein Thema. Jetzt plötzlich doch?</p></div>
+  </div>
+  <p class="entwarnung">Völlig normal. Du musst dich da nicht einarbeiten – dafür sind wir da.</p>
+</div></section>
+
+<section class="sektion" id="loesung" style="padding-top:0"><div class="wrap">
+  <div class="loesung">
+    <div>
+      <p class="kicker">Lösung</p>
+      <h2 class="titel">Wir klären drei Fragen – mehr nicht</h2>
+      <p class="lead">Wir erklären dir keine Paragrafen. Wir schauen auf deine Situation und ordnen das Thema darin ein.</p>
+      <ul class="punkte">
+        <li>Betrifft mich die neue Altersvorsorge?</li>
+        <li>Wenn ja: wie – auch für Verträge, die ich schon habe?</li>
+        <li>Habe ich einen Vorteil, wenn ich mitmache?</li>
+        <li>Ergebnis in 15 Minuten, ohne Verpflichtung</li>
+      </ul>
+      <a class="knopf" href="#termin">Jetzt Klarheit schaffen</a>
+    </div>
+    <div class="karte" id="karte" aria-label="So sieht dein Gespräch aus">
+      <div class="karte__kopf"><img src="/assets/projekte/avrg/sandra.jpg" alt=""><span><b>Dein Gespräch mit Sandra</b><small>15 Minuten · neue Altersvorsorge 2027</small></span></div>
+      <ul class="karte__fragen">
+        <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Betrifft mich das?</li>
+        <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Wenn ja: wie?</li>
+        <li><span class="haken"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>Habe ich einen Vorteil?</li>
+      </ul>
+      <div class="karte__ergebnis"><span><b>Vorteil mitnehmen</b>schwarz auf weiß</span><i>oder</i><span><b>Gut schlafen</b>Thema abgehakt</span></div>
     </div>
   </div>
 </div></section>
 
-<section class="sektion sektion--grau" id="problem"><div class="wrap">
+<section class="sektion sektion--grau" id="ergebnis"><div class="wrap">
   <div class="kopfzeile">
-    <p class="kicker">Kommt dir das bekannt vor?</p>
-    <h2 class="titel">Viel Gerede, wenig Klarheit.</h2>
+    <p class="kicker">Ergebnis</p>
+    <h2 class="titel">Zwei Ausgänge. Beide sind gut.</h2>
   </div>
-  <div class="saetze">
-    <p class="satz">Ich habe Post zur neuen Altersvorsorge bekommen – und verstehe nur Bahnhof.</p>
-    <p class="satz">Ist mein Riester-Vertrag jetzt plötzlich schlecht?</p>
-    <p class="satz">Alle sagen, das muss man machen. Aber muss ich das wirklich?</p>
-  </div>
-  <p class="entwarnung"><span>Völlig normal.</span> <b>Du musst dich da nicht einarbeiten – dafür sind wir da.</b></p>
-</div></section>
-
-<section class="sektion" id="fragen"><div class="wrap">
-  <div class="kopfzeile">
-    <p class="kicker">Unser Weg</p>
-    <h2 class="titel">Wir erklären dir keine Paragrafen. Wir klären drei Fragen.</h2>
-    <p class="lead">Wir schauen auf deine Situation – nicht auf das Gesetz. Und ordnen das Thema darin ein.</p>
-  </div>
-  <div class="fragen">
-    <div class="frage"><div class="frage__zeichen">?</div><h3>Betrifft mich das?</h3><p>Angestellt, selbstständig, mit Riester-Vertrag oder ohne – wir klären, ob die neue Altersvorsorge für dich überhaupt ein Thema ist.</p></div>
-    <div class="frage"><div class="frage__zeichen">?</div><h3>Wenn ja: wie?</h3><p>Was ändert sich für dich konkret? Und was bedeutet das für Verträge, die du schon hast?</p></div>
-    <div class="frage"><div class="frage__zeichen">?</div><h3>Habe ich einen Vorteil?</h3><p>Lohnt es sich für dich, mitzumachen – oder bist du so, wie es ist, gut aufgestellt?</p></div>
-  </div>
-
   <div class="ausgaenge">
-    <div class="ausgang ausgang--ja">
-      <p class="ausgang__label">Ergebnis A</p>
+    <div class="ausgang">
+      <span class="ausgang__zeichen"><svg class="ico" aria-hidden="true"><use href="#i-haken"/></svg></span>
       <h3>Du hast einen Vorteil.</h3>
       <p>Dann zeigen wir ihn dir – schwarz auf weiß, mit deinen Zahlen.</p>
       <p class="ausgang__ontop"><span><b>Und obendrauf:</b> Wir haben die neue Altersvorsorge mit allen Möglichkeiten durchdacht und sagen dir, welche Lösung wir dir mit Überzeugung empfehlen.</span></p>
     </div>
-    <div class="ausgang ausgang--nein">
-      <p class="ausgang__label">Ergebnis B</p>
+    <div class="ausgang">
+      <span class="ausgang__zeichen"><svg class="ico" aria-hidden="true"><use href="#i-mond"/></svg></span>
       <h3>Du brauchst es nicht.</h3>
       <p>Auch gut. Dann sagen wir dir das genauso klar – und du kannst gut schlafen.</p>
       <p class="ausgang__ontop"><span><b>Thema abgehakt.</b> Keine offenen Fragen mehr, kein schlechtes Gefühl beim nächsten Zeitungsartikel.</span></p>
@@ -94,10 +103,10 @@
   </div>
 </div></section>
 
-<section class="sektion sektion--grau" id="rechner"><div class="wrap">
+<section class="sektion" id="rechner"><div class="wrap">
   <div class="kopfzeile">
-    <p class="kicker">Zum Ausprobieren</p>
-    <h2 class="titel">Spiel kurz durch, was der Staat dazulegt.</h2>
+    <p class="kicker">Rechner</p>
+    <h2 class="titel">Spiel kurz durch, was der Staat dazulegt</h2>
     <p class="lead">Zwei Regler, ein Gefühl für die Größenordnung. Ob es für dich passt, klären wir im Gespräch.</p>
   </div>
   <div class="rechner">
@@ -129,8 +138,10 @@
     <div class="rechner__ergebnis" aria-live="polite">
       <p class="kicker">Der Staat legt dazu</p>
       <p class="gross"><span id="zulage">540 €</span><small>im Jahr</small></p>
-      <div class="saeule" aria-hidden="true"><span class="s-eigen" id="s-eigen"></span><span class="s-staat" id="s-staat"></span></div>
-      <p class="legende"><span><i style="background:var(--ink)"></i>Dein Beitrag</span><span><i style="background:var(--plus)"></i>Zulagen vom Staat</span></p>
+      <div class="balken" aria-hidden="true">
+        <div class="balken__zeile"><span>Dein Beitrag</span><span class="balken__spur"><span class="b-eigen" id="b-eigen"></span></span></div>
+        <div class="balken__zeile"><span>Vom Staat</span><span class="balken__spur"><span class="b-staat" id="b-staat"></span></span></div>
+      </div>
       <ul class="zeilen">
         <li><span>Du zahlst im Jahr ein</span><b id="z-eigen">600 €</b></li>
         <li><span>Grundzulage</span><b id="z-grund">240 €</b></li>
@@ -140,37 +151,31 @@
       <p class="rechner__satz" id="satz"></p>
       <div class="rechner__fuss">
         <p>Vereinfachte Rechnung nach den Eckdaten der Reform: Grundzulage 50 Cent je Euro bis 360 € im Jahr, 25 Cent je Euro bis 1.800 €; Kinderzulage 1 € je Euro, bis 300 € je Kind. Mindestbeitrag 120 € im Jahr. Steuervorteile nicht eingerechnet. Keine Beratung.</p>
-        <a class="knopf knopf--klein" href="#termin">Für mich prüfen lassen</a>
+        <a class="knopf" href="#termin">Für mich prüfen lassen</a>
       </div>
     </div>
   </div>
 </div></section>
 
-<section class="sektion" id="ablauf"><div class="wrap">
+<section class="sektion sektion--grau" id="ablauf"><div class="wrap">
   <div class="kopfzeile">
     <p class="kicker">Ablauf</p>
-    <h2 class="titel">So einfach geht’s.</h2>
+    <h2 class="titel">So kommst du zu mehr Klarheit</h2>
   </div>
   <div class="schritte">
-    <div class="schritt"><h3>Termin wählen</h3><p>Such dir unten eine Zeit aus – am Telefon, per Video oder bei uns im Büro.</p></div>
+    <div class="schritt"><h3>Termin wählen</h3><p>Such dir eine Zeit aus – am Telefon, per Video oder bei uns im Büro.</p></div>
     <div class="schritt"><h3>15 Minuten sprechen</h3><p>Wir gehen die drei Fragen mit dir durch. Unterlagen brauchst du nicht. Wenn du einen Riester-Vertrag hast, leg ihn bereit.</p></div>
     <div class="schritt"><h3>Klar wissen, woran du bist</h3><p>Du bekommst ein klares Ergebnis: Vorteil – oder abgehakt. Ohne Verpflichtung, ohne Abschlussdruck.</p></div>
   </div>
 </div></section>
 
-<section class="sektion sektion--grau" id="termin"><div class="wrap termin">
+<section class="sektion" id="termin"><div class="wrap termin">
   <div>
     <p class="kicker">Termin vereinbaren</p>
-    <h2 class="titel">Lass uns kurz sprechen.</h2>
-    <p class="lead" style="margin-top:18px">Ich nehme mir 15 Minuten für deine Fragen. Danach weißt du, woran du bist.</p>
+    <h2 class="titel">Lass uns kurz sprechen</h2>
+    <p class="lead" style="margin-top:16px">Ich nehme mir 15 Minuten für deine Fragen. Danach weißt du, woran du bist.</p>
     <div class="person"><img src="/assets/projekte/avrg/sandra.jpg" alt="Sandra Hild"><span><b>Sandra Hild</b><small>Gebietsleiterin / Kundenberaterin</small></span></div>
-    <ul class="kontakt">
-      <li><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-telefon"/></svg></span><span><a href="tel:+4970219808021">+49 7021 98080-21</a><small>Lieber gleich anrufen</small></span></li>
-      <li><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span><a href="mailto:sandra.hild@sv-owen.de">sandra.hild@sv-owen.de</a><small>Oder kurz schreiben</small></span></li>
-      <li><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-ort"/></svg></span><span><b style="font-weight:500;color:var(--ink)">Gebietsdirektion Owen</b><small>Kirchheimer Straße 22 · 73277 Owen</small></span></li>
-    </ul>
   </div>
-
   <div class="buchung" id="buchung">
     <form id="buchung-form" novalidate>
       <fieldset>
@@ -181,18 +186,12 @@
           <label class="chip"><input type="radio" name="art" value="Büro"><span>Im Büro</span></label>
         </div>
       </fieldset>
-      <fieldset>
-        <legend>Welcher Tag?</legend>
-        <div class="chips" id="tage"></div>
-      </fieldset>
-      <fieldset>
-        <legend>Welche Uhrzeit?</legend>
-        <div class="chips" id="zeiten"></div>
-      </fieldset>
+      <fieldset><legend>Welcher Tag?</legend><div class="chips" id="tage"></div></fieldset>
+      <fieldset><legend>Welche Uhrzeit?</legend><div class="chips" id="zeiten"></div></fieldset>
       <div class="felder">
         <label class="feld breit"><input type="text" name="name" placeholder="Vor- und Nachname" autocomplete="name"></label>
-        <label class="feld"><input type="tel" name="telefon" placeholder="Telefon" autocomplete="tel"></label>
-        <label class="feld"><input type="email" name="mail" placeholder="E-Mail" autocomplete="email"></label>
+        <label class="feld"><input type="tel" name="telefon" placeholder="Telefonnummer" autocomplete="tel"></label>
+        <label class="feld"><input type="email" name="mail" placeholder="E-Mail-Adresse" autocomplete="email"></label>
       </div>
       <label class="einwilligung"><input type="checkbox" checked>Ich bin einverstanden, dass Sandra Hild mich zur Terminabstimmung per Telefon oder E-Mail kontaktiert. Widerruf jederzeit möglich.</label>
       <button class="knopf" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-kalender"/></svg>Termin anfragen</button>
@@ -207,10 +206,10 @@
   </div>
 </div></section>
 
-<section class="sektion" id="faq"><div class="wrap">
+<section class="sektion sektion--grau" id="faq"><div class="wrap">
   <div class="kopfzeile">
-    <p class="kicker">Häufige Fragen</p>
-    <h2 class="titel">Kurz beantwortet.</h2>
+    <p class="kicker">FAQ</p>
+    <h2 class="titel">Häufige Fragen</h2>
   </div>
   <div class="faq">
     <details><summary>Ich habe einen Riester-Vertrag. Muss ich jetzt etwas tun?<span class="plus"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span></summary><p>Nicht sofort. Dein Riester-Vertrag läuft weiter. Ab 2027 kannst du in die neue Förderung wechseln – das ist allerdings eine Entscheidung, die du nicht mehr rückgängig machen kannst. Ob sich der Wechsel für dich lohnt, hängt von deinem Vertrag ab. Genau das schauen wir uns gemeinsam an.</p></details>
@@ -222,25 +221,34 @@
   </div>
 </div></section>
 
-<section class="sektion sektion--grau schluss"><div class="wrap">
-  <h2 class="titel">Mitnehmen oder abhaken. In 15 Minuten weißt du es.</h2>
-  <p class="lead">Kein Fachvortrag, kein Verkaufsgespräch. Nur Klarheit für deine Situation.</p>
-  <div class="held__knoepfe"><a class="knopf" href="#termin">Termin vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+<section class="sektion kontakt-ende" id="kontakt"><div class="wrap">
+  <h2 class="titel">Wir freuen uns auf einen Austausch!</h2>
+  <p class="lead">Nimm Kontakt mit uns auf und kläre deine Fragen in einem persönlichen und unverbindlichen Austausch.</p>
+  <div class="person"><img src="/assets/projekte/avrg/sandra.jpg" alt="Sandra Hild"><span><b>Sandra Hild</b><small>Gebietsleiterin / Kundenberaterin</small></span></div>
+  <div class="kontakt-karten">
+    <a class="kontakt-karte" href="tel:+4970219808021"><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-telefon"/></svg></span><b>+49 7021 98080-21</b><small>Telefonnummer</small></a>
+    <a class="kontakt-karte" href="mailto:sandra.hild@sv-owen.de"><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><b>sandra.hild@sv-owen.de</b><small>E-Mail</small></a>
+    <div class="kontakt-karte"><span class="rund"><svg class="ico" aria-hidden="true"><use href="#i-ort"/></svg></span><b>Gebietsdirektion Owen</b><small>Kirchheimer Straße 22 · 73277 Owen</small></div>
+  </div>
 </div></section>
 
 </main>
 
-<footer class="fuss"><div class="wrap"><span>Sandra Hild · Gebietsdirektion Owen</span><nav><a href="#">Impressum</a><a href="#">Datenschutz</a></nav></div></footer>
+<footer class="fuss"><div class="wrap"><img src="/assets/projekte/avrg/sv-owen-logo.svg" alt="SV Owen"><nav><a href="#">Impressum</a><a href="#">Datenschutz</a></nav></div></footer>
 
-<div class="mobil-cta" id="mobil-cta"><a class="knopf" href="#termin">15 Minuten für Klarheit</a></div>
+<div class="mobil-cta" id="mobil-cta"><a class="knopf" href="#termin">Jetzt Klarheit schaffen</a></div>
 
 <script>
 (function(){
   var euro = function(n){ return Math.round(n).toLocaleString('de-DE') + ' €'; };
 
   /* Rechner: Grundzulage 50 ct je € bis 360 €, 25 ct je € von 361 bis 1.800 €;
-     Kinderzulage 1 € je eingezahltem €, bis 300 € je Kind (Eckdaten SV-Übersicht 09/2026). */
+     Kinderzulage 1 € je eingezahltem €, bis 300 € je Kind (Eckdaten SV-Übersicht 09/2026).
+     Balken auf fester Skala (3.000 € = höchster Jahresbeitrag des Reglers), damit
+     beide Balken mit dem Beitrag wachsen und die Zulage nie optisch schrumpft. */
+  var SKALA = 3000;
   var beitrag = document.getElementById('beitrag'), kinder = 1;
+  var beispiele = document.querySelectorAll('.beispiel');
   function rechne(){
     var m = +beitrag.value, jahr = m * 12;
     var grund = 0.5 * Math.min(jahr, 360) + 0.25 * Math.max(0, Math.min(jahr, 1800) - 360);
@@ -252,13 +260,13 @@
     document.getElementById('z-grund').textContent = euro(grund);
     document.getElementById('z-kind').textContent = kinder ? euro(kind) : '–';
     document.getElementById('z-summe').textContent = euro(jahr + zulage);
-    document.getElementById('s-eigen').style.width = (jahr / (jahr + zulage) * 100) + '%';
-    document.getElementById('s-staat').style.width = (zulage / (jahr + zulage) * 100) + '%';
+    document.getElementById('b-eigen').style.width = Math.min(100, jahr / SKALA * 100) + '%';
+    document.getElementById('b-staat').style.width = Math.min(100, zulage / SKALA * 100) + '%';
     var cent = Math.round(zulage / jahr * 100);
-    document.getElementById('satz').innerHTML = 'Auf jeden Euro, den du einzahlst, legt der Staat <b style="font-weight:500;color:var(--plus)">' + (cent >= 100 ? (cent / 100).toLocaleString('de-DE', {minimumFractionDigits: 2}) + ' €' : cent + ' Cent') + '</b> drauf.';
-    var h = '';
-    if (m * 12 > 1800) h = 'Über 150 € im Monat gibt es keine zusätzliche Grundzulage mehr.';
-    else if (m * 12 <= 360) h = 'Bis 30 € im Monat gibt es 50 Cent auf jeden Euro.';
+    document.getElementById('satz').innerHTML = 'Auf jeden Euro, den du einzahlst, legt der Staat <b>' + (cent >= 100 ? (cent / 100).toLocaleString('de-DE', {minimumFractionDigits: 2}) + ' €' : cent + ' Cent') + '</b> drauf.';
+    var h;
+    if (jahr > 1800) h = 'Über 150 € im Monat gibt es keine zusätzliche Grundzulage mehr.';
+    else if (jahr <= 360) h = 'Bis 30 € im Monat gibt es 50 Cent auf jeden Euro.';
     else h = 'Ab 150 € im Monat ist die volle Grundzulage erreicht.';
     if (kinder && jahr < 300 * kinder) h = 'Für die volle Kinderzulage braucht es ' + (25 * kinder) + ' € im Monat.';
     document.getElementById('beitrag-hinweis').textContent = h;
@@ -266,10 +274,8 @@
     document.getElementById('kind-minus').disabled = kinder === 0;
     document.getElementById('kind-plus').disabled = kinder === 5;
     document.getElementById('kinder').textContent = kinder;
-    if (typeof markiere === 'function') markiere();
+    beispiele.forEach(function(b){ b.classList.toggle('ist-aktiv', +b.dataset.m === m && +b.dataset.k === kinder); });
   }
-  var beispiele = document.querySelectorAll('.beispiel');
-  function markiere(){ beispiele.forEach(function(b){ b.classList.toggle('ist-aktiv', +b.dataset.m === +beitrag.value && +b.dataset.k === kinder); }); }
   beispiele.forEach(function(b){ b.onclick = function(){ beitrag.value = b.dataset.m; kinder = +b.dataset.k; rechne(); }; });
   beitrag.addEventListener('input', rechne);
   document.getElementById('kind-minus').onclick = function(){ kinder = Math.max(0, kinder - 1); rechne(); };
