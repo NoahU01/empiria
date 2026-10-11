@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merch – empiria (intern)</title>
+<meta name="description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch. Schreibe uns oder rufe direkt an.">
+<link rel="canonical" href="https://www.empiria.de/kontakt">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/kontakt">
+<meta property="og:title" content="Kontakt – empiria">
+<meta property="og:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kontakt – empiria">
+<meta name="twitter:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/e2/kontakt.css">
+</head>
+<body class="kontakt-page">
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-rocket" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c10,8,14,20,14,32c0,8-4,16-14,22c-10-6-14-14-14-22c0-12,4-24,14-32z"/>
+        <circle cx="40" cy="34" r="6"/>
+        <path d="M26,48l-8,14"/>
+        <path d="M54,48l8,14"/>
+        <path d="M34,64c0,6,3,10,6,12c3-2,6-6,6-12"/>
+      </g>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="26"/>
+        <path d="M40,24v16l12,8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-refresh" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,33A22,22,0,0,0,20,25"/>
+        <path d="M20,13v14h14"/>
+        <path d="M20,47A22,22,0,0,0,60,55"/>
+        <path d="M60,67v-14h-14"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html#leistungen" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--desktop" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="../impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="../vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="../vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="../vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="../budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="../budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="../visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="../visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="../strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="../xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="../xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="../xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="../xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="../xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="../xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="../xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="../xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="../xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="../xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="../xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Module</p>
+<a href="sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<div class="dev-dd-sub">
+<a href="sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Darunter</p>
+<a href="sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+</div></div>
+</div>
+<a href="sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+</div></div>
+</div>
+<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<div class="dev-dd-sub">
+<a href="vofe-umzug-schulen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VF</span><span class="dev-dd-txt"><b>Homepage VoFe Umzug</b><small>Patenwagen &middot; Entwurf Startseite</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="vofe-festzug.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Der Festzug</b><small>Alle Wagen der Schulen &middot; Patenschaft übernehmen</small></span></a>
+<a href="vofe-ueber-uns.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Über uns</b><small>Motivation &middot; wer dahintersteckt</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="avrg.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">AV</span><span class="dev-dd-txt"><b>AVRG</b><small>Neue Altersvorsorge 2027 &middot; sofortsichtbar</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="avrg-landingpage-1.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Landingpage AVRG</b><small>Drei Varianten &middot; mit Rechner</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="avrg-landingpage-1.html" class="dev-dd-link"><span class="dev-dd-tag">L1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Nah an der Vorlage SV Owen</small></span></a>
+<a href="avrg-landingpage-2.html" class="dev-dd-link"><span class="dev-dd-tag">L2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Einstieg &bdquo;Was trifft auf dich zu?&ldquo;</small></span></a>
+<a href="avrg-landingpage-3.html" class="dev-dd-link"><span class="dev-dd-tag">L3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Das Klarheits-Ticket &middot; Ma&szlig;stab Volksfest</small></span></a>
+</div></div>
+</div>
+<a href="avrg-medienkonzept.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Claim, Mailings, Postings, Webinar, Print</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="darstellungsideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3.0</span><span class="dev-dd-txt"><b>empiria 3.0</b><small>Konzipiert, noch nicht umgesetzt</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Ideen &amp; Konzepte</p>
+<a href="darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<a href="header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<p class="dev-dd-group">Frühere Fassungen von 2.0</p>
+<a href="empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="corporate-design.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">CD</span><span class="dev-dd-txt"><b>Corporate Design</b><small>PDF-Varianten &middot; Designideen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Vorlagen</p>
+<a href="geschaeftsausstattung.html" class="dev-dd-link"><span class="dev-dd-tag">GA</span><span class="dev-dd-txt"><b>Geschäftsausstattung</b><small>Präsentation, Dokumente, Print, LinkedIn, Hintergründe</small></span></a>
+<a href="powerpoint-master.html" class="dev-dd-link"><span class="dev-dd-tag">PPT</span><span class="dev-dd-txt"><b>PowerPoint-Master</b><small>Stufe 2 · Folientypen</small></span></a>
+<a href="ga-visitenkarten.html" class="dev-dd-link"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Entwurf</small></span></a>
+<a href="ga-rollup.html" class="dev-dd-link"><span class="dev-dd-tag">RU</span><span class="dev-dd-txt"><b>Roll-up</b><small>Entwurf</small></span></a>
+<a href="ga-word.html" class="dev-dd-link"><span class="dev-dd-tag">DOC</span><span class="dev-dd-txt"><b>Word-Vorlagen</b><small>Entwurf</small></span></a>
+<a href="ga-onepager.html" class="dev-dd-link"><span class="dev-dd-tag">A3</span><span class="dev-dd-txt"><b>One-Pager</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin.html" class="dev-dd-link"><span class="dev-dd-tag">IN</span><span class="dev-dd-txt"><b>LinkedIn-Banner</b><small>Entwurf</small></span></a>
+<a href="ga-hintergruende.html" class="dev-dd-link"><span class="dev-dd-tag">HG</span><span class="dev-dd-txt"><b>Hintergrundbilder</b><small>Entwurf</small></span></a>
+<a href="merch.html" class="dev-dd-link"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Merch</b><small>Die Marke zum Anfassen</small></span></a>
+<a href="pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<p class="dev-dd-group">Designideen</p>
+<a href="../designideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<a href="../designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="../designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="methoden.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Methoden</b><small>F&uuml;r die Zusammenarbeit in Projekten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Methoden</p>
+<a href="methoden-storyboard.html" class="dev-dd-link"><span class="dev-dd-tag">SB</span><span class="dev-dd-txt"><b>Storyboard Landing Page</b><small>Antworten &middot; Fragen &middot; Skizze &middot; Final</small></span></a>
+<a href="methoden-elevator-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Von der Landingpage zur halben Minute</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="../leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="../der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="../archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="../archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="../archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-flex;align-items:center;margin-left:auto}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:inherit;font-size:.95rem;font-weight:400;line-height:1.4;color:var(--grey-50);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;transition:color .18s ease}
+.dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
+.dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.dev-dd-group{margin:4px 8px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-50);font-weight:600}
+.dev-dd-group--sub{margin-top:14px;padding-top:12px;border-top:1px solid var(--grey-bg)}
+a.dev-dd-link{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:var(--ink);text-decoration:none;border-bottom:0;font-size:inherit;min-height:0;white-space:normal}
+a.dev-dd-link:hover,a.dev-dd-link.is-current{background:var(--grey-bg);color:var(--ink)}
+a.dev-dd-link--indent{padding-left:30px}
+.dev-dd-tag{flex:0 0 32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12px}
+.dev-dd-link--muted .dev-dd-tag{background:var(--grey-bg);color:var(--grey-70)}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dev-dd-txt b{font-weight:500;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:var(--grey-50);margin-top:1px}
+/* ---- Zweite Ebene: oeffnet nach rechts, wie im Leistungen-Menue -----------
+   Das Panel sitzt am rechten Rand; gemessen bleiben dort auch bei 1280 px
+   Fensterbreite noch 277 px frei, das reicht fuer das Flyout. */
+.dev-dd-sub{position:relative}
+a.dev-dd-link--parent::after{content:"";width:6px;height:6px;margin-left:auto;flex:0 0 auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.45}
+.dev-dd-sub:hover>a.dev-dd-link--parent,.dev-dd-sub:focus-within>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout{position:absolute;left:100%;top:-10px;padding-left:10px;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;z-index:81}
+.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout,.dev-dd-flyout.is-auf{opacity:1;visibility:visible}
+.dev-dd-sub.is-auf>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout-panel{width:262px;padding:10px;background:#fff;border:1px solid var(--grey-bg);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.dev-dd-flyout-panel .dev-dd-group{margin:2px 8px 6px}
+.dev-dd--mobile{display:none}
+.dev-dd-short{display:none}
+@media (min-width:901px) and (max-width:1140px){
+.dev-dd--desktop .dev-dd-long{display:none}
+.dev-dd--desktop .dev-dd-short{display:inline}
+.dev-dd--desktop ~ .nav-cta{margin-left:1.1rem;padding-left:1.6rem;padding-right:1.6rem}
+}
+@media (max-width:900px){
+.nav .dev-dd--desktop{display:none}
+.mobile-menu .dev-dd--mobile{display:block;margin:0}
+.mobile-menu .dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 0;font-size:1.15rem;border-bottom:1px solid #f2f2f2}
+.mobile-menu .dev-dd-panel{position:static;width:auto;max-height:none;overflow:visible;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;margin:10px 0 6px;padding:0 0 0 12px}
+.mobile-menu .dev-dd-panel::before{display:none}
+.mobile-menu .dev-dd.is-open .dev-dd-panel{display:block}
+.mobile-menu a.dev-dd-link{padding:9px 8px;font-size:inherit;border-bottom:0}
+.mobile-menu a.dev-dd-link--indent{padding-left:30px}
+.mobile-menu .dev-dd-panel{overflow:auto}
+.mobile-menu .dev-dd-flyout{position:static;opacity:1;visibility:visible;padding-left:0}
+.mobile-menu .dev-dd-flyout-panel{width:auto;padding:0 0 0 12px;margin:2px 0 6px 20px;background:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;box-shadow:none}
+.mobile-menu a.dev-dd-link--parent::after{display:none}
+}
+</style>
+<script>
+(function(){
+function init(){
+var here=location.href.split('#')[0].split('?')[0];
+document.querySelectorAll('[data-dev-dd]').forEach(function(d){
+var b=d.querySelector('.dev-dd-toggle'),t;
+function desk(){return window.innerWidth>900;}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
+d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href&&a.href.split('#')[0]===here)a.classList.add('is-current');});
+
+var panel=d.querySelector('.dev-dd-panel');
+
+// ---- Zweite Ebene -------------------------------------------------------
+// Das Panel muss scrollen, seit es vier Kategorien hat (gemessen: 834px
+// Inhalt bei 680px Platz auf einem 900er Bildschirm). Ein Flyout darin wuerde
+// mitgeschnitten. position:fixed hilft nicht - die Kopfzeile hat einen
+// backdrop-filter und wird dadurch zum Bezugsrahmen fuer fixed. Das Flyout
+// haengt sich beim Oeffnen deshalb unter .dev-dd um: dort ist es absolut
+// positioniert, aber ausserhalb des scrollenden Panels.
+// Weil :hover dort nicht mehr traegt, steuert eine Klasse die Sichtbarkeit.
+panel&&panel.querySelectorAll(':scope>.dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+var heim=f.parentNode,nachbar=f.nextSibling,t2;
+function heimholen(){
+clearTimeout(t2);f.classList.remove('is-auf');s.classList.remove('is-auf');
+if(f.parentNode!==heim){heim.insertBefore(f,nachbar);f.removeAttribute('style');}
+}
+function auf(){
+if(!desk()){heimholen();return;}
+clearTimeout(t2);
+if(f.parentNode!==d)d.appendChild(f);
+var z=s.getBoundingClientRect(),dr=d.getBoundingClientRect(),
+    k=f.firstElementChild.getBoundingClientRect();
+// Rechts daneben, wenn Platz ist - sonst nach links gekippt.
+if(z.right+10+k.width>window.innerWidth-12){
+f.style.left=(z.left-dr.left-10-k.width)+'px';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}else{
+f.style.left=(z.right-dr.left)+'px';
+f.style.paddingLeft='';f.style.paddingRight='';
+}
+// Senkrecht an der Zeile, aber nie unter den Fensterrand.
+var oben=z.top-dr.top-10,grenze=window.innerHeight-12-k.height-dr.top;
+f.style.top=Math.max(-dr.top+12,Math.min(oben,grenze))+'px';
+f.classList.add('is-auf');s.classList.add('is-auf');
+}
+function zu(){t2=setTimeout(function(){f.classList.remove('is-auf');s.classList.remove('is-auf');},180);}
+s.addEventListener('mouseenter',auf);
+s.addEventListener('focusin',auf);
+s.addEventListener('mouseleave',zu);
+f.addEventListener('mouseenter',function(){clearTimeout(t2);});
+f.addEventListener('mouseleave',zu);
+panel.addEventListener('scroll',function(){if(f.classList.contains('is-auf'))auf();});
+window.addEventListener('resize',heimholen);
+});
+
+// ---- Dritte Ebene -------------------------------------------------------
+// Die bleibt, wo sie ist: ihr Elternteil ist bereits aus dem Panel heraus,
+// dort wird nichts mehr abgeschnitten. Sie braucht nur die Kippung nach
+// links, weil rechts neben der zweiten Ebene kein Platz mehr ist.
+d.querySelectorAll('.dev-dd-flyout .dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+function platzieren(){
+f.style.top='';f.style.left='';f.style.right='';f.style.paddingLeft='';f.style.paddingRight='';
+if(!desk())return;
+f.style.top='-10px';
+var r=f.firstElementChild.getBoundingClientRect(),z=s.getBoundingClientRect();
+if(z.right+10+r.width>window.innerWidth-12){
+f.style.left='auto';f.style.right='100%';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}
+var u=f.getBoundingClientRect().bottom-(window.innerHeight-12);
+if(u>0)f.style.top=(-10-u)+'px';
+}
+s.addEventListener('mouseenter',platzieren);
+s.addEventListener('focusin',platzieren);
+window.addEventListener('resize',function(){f.removeAttribute('style');});
+});
+});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark btn--sm nav-cta" href="/kontakt.html">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html#leistungen">Strategiehandwerk</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Strategiehandwerk anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Workshops anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Training & Sparring anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+    </div>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--mobile" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="../impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="../vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="../vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="../vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="../budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="../budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="../visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="../visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="../strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<div class="dev-dd-sub">
+<a href="../xmas.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas</b><small>Weihnachtsseite · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../xmas-1.html" class="dev-dd-link"><span class="dev-dd-tag">X1</span><span class="dev-dd-txt"><b>Die Bescherung</b><small>Landschaft &amp; Geschenke</small></span></a>
+<a href="../xmas-2.html" class="dev-dd-link"><span class="dev-dd-tag">X2</span><span class="dev-dd-txt"><b>Der Adventskalender</b><small>Zwölf Türchen</small></span></a>
+<a href="../xmas-4.html" class="dev-dd-link"><span class="dev-dd-tag">X4</span><span class="dev-dd-txt"><b>Die Lichterkette</b><small>Sekundärfarben</small></span></a>
+<a href="../xmas-5.html" class="dev-dd-link"><span class="dev-dd-tag">X5</span><span class="dev-dd-txt"><b>Das Fenster</b><small>Scheiben freiwischen</small></span></a>
+<a href="../xmas-6.html" class="dev-dd-link"><span class="dev-dd-tag">X6</span><span class="dev-dd-txt"><b>Der Wunschzettel</b><small>Zum Abhaken</small></span></a>
+<a href="../xmas-8.html" class="dev-dd-link"><span class="dev-dd-tag">X8</span><span class="dev-dd-txt"><b>Der Schneesturm</b><small>Legt sich beim Öffnen</small></span></a>
+<a href="../xmas-9.html" class="dev-dd-link"><span class="dev-dd-tag">X9</span><span class="dev-dd-txt"><b>Der Baum aus Worten</b><small>Typografie statt Grafik</small></span></a>
+<a href="../xmas-10.html" class="dev-dd-link"><span class="dev-dd-tag">X10</span><span class="dev-dd-txt"><b>Das Geschenkpapier</b><small>Zum Aufreißen</small></span></a>
+<a href="../xmas-11.html" class="dev-dd-link"><span class="dev-dd-tag">X11</span><span class="dev-dd-txt"><b>Vorsätze · Der Zettel</b><small>2025/26 gestrichen · PDF</small></span></a>
+<a href="../xmas-12.html" class="dev-dd-link"><span class="dev-dd-tag">X12</span><span class="dev-dd-txt"><b>Vorsätze · Der Stapel</b><small>Drei Jahre übereinander</small></span></a>
+<a href="../xmas-13.html" class="dev-dd-link"><span class="dev-dd-tag">X13</span><span class="dev-dd-txt"><b>Vorsätze · Die Jahreszahlen</b><small>Strich wird gezogen</small></span></a>
+</div></div>
+</div>
+<a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="sv-akademie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">SV</span><span class="dev-dd-txt"><b>SV Akademie</b><small>Steuerungsseite &middot; drei Module</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Module</p>
+<a href="sv-selbstverstaendnis.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Selbstverständnis</b><small>Wofür stehen wir?</small></span></a>
+<a href="sv-vision.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Vision</b><small>Wie wollen wir wahrgenommen werden?</small></span></a>
+<div class="dev-dd-sub">
+<a href="sv-strategie.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Strategie</b><small>Wie kommen wir dorthin?</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Darunter</p>
+<a href="sv-strategie-ist.html" class="dev-dd-link"><span class="dev-dd-tag">IS</span><span class="dev-dd-txt"><b>Ist-Situation</b><small>SWOT-Logik und was einflie&szlig;t</small></span></a>
+<a href="sv-strategie-stossrichtungen.html" class="dev-dd-link"><span class="dev-dd-tag">ST</span><span class="dev-dd-txt"><b>Sto&szlig;richtungen</b><small>Herkunft, Auswahl, Nachweis</small></span></a>
+<a href="sv-meilensteine.html" class="dev-dd-link"><span class="dev-dd-tag">MS</span><span class="dev-dd-txt"><b>Meilensteinplan</b><small>Drei Str&auml;nge &middot; fein, hell, dunkel</small></span></a>
+<a href="sv-abstimmung-hal.html" class="dev-dd-link"><span class="dev-dd-tag">AG</span><span class="dev-dd-txt"><b>Agenda Vision &amp; Strategie</b><small>Workshop mit dem Hauptabteilungsleiter</small></span></a>
+</div></div>
+</div>
+<a href="sv-projektplanung.html" class="dev-dd-link"><span class="dev-dd-tag">PP</span><span class="dev-dd-txt"><b>Projektplanung</b><small>Termine, Agenden und der Meilensteinplan</small></span></a>
+</div></div>
+</div>
+<a href="sitemap.html" class="dev-dd-link"><span class="dev-dd-tag">&#9638;</span><span class="dev-dd-txt"><b>Sitemap</b><small>Alle Seiten der SV Akademie &middot; mit Vorschau</small></span></a>
+<div class="dev-dd-sub">
+<a href="vofe-umzug-schulen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VF</span><span class="dev-dd-txt"><b>Homepage VoFe Umzug</b><small>Patenwagen &middot; Entwurf Startseite</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="vofe-festzug.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Der Festzug</b><small>Alle Wagen der Schulen &middot; Patenschaft übernehmen</small></span></a>
+<a href="vofe-ueber-uns.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Über uns</b><small>Motivation &middot; wer dahintersteckt</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="avrg.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">AV</span><span class="dev-dd-txt"><b>AVRG</b><small>Neue Altersvorsorge 2027 &middot; sofortsichtbar</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="avrg-landingpage-1.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Landingpage AVRG</b><small>Drei Varianten &middot; mit Rechner</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="avrg-landingpage-1.html" class="dev-dd-link"><span class="dev-dd-tag">L1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Nah an der Vorlage SV Owen</small></span></a>
+<a href="avrg-landingpage-2.html" class="dev-dd-link"><span class="dev-dd-tag">L2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Einstieg &bdquo;Was trifft auf dich zu?&ldquo;</small></span></a>
+<a href="avrg-landingpage-3.html" class="dev-dd-link"><span class="dev-dd-tag">L3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Das Klarheits-Ticket &middot; Ma&szlig;stab Volksfest</small></span></a>
+</div></div>
+</div>
+<a href="avrg-medienkonzept.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Claim, Mailings, Postings, Webinar, Print</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="darstellungsideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3.0</span><span class="dev-dd-txt"><b>empiria 3.0</b><small>Konzipiert, noch nicht umgesetzt</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Ideen &amp; Konzepte</p>
+<a href="darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<a href="header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<p class="dev-dd-group">Frühere Fassungen von 2.0</p>
+<a href="empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="corporate-design.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">CD</span><span class="dev-dd-txt"><b>Corporate Design</b><small>PDF-Varianten &middot; Designideen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Vorlagen</p>
+<a href="geschaeftsausstattung.html" class="dev-dd-link"><span class="dev-dd-tag">GA</span><span class="dev-dd-txt"><b>Geschäftsausstattung</b><small>Präsentation, Dokumente, Print, LinkedIn, Hintergründe</small></span></a>
+<a href="powerpoint-master.html" class="dev-dd-link"><span class="dev-dd-tag">PPT</span><span class="dev-dd-txt"><b>PowerPoint-Master</b><small>Stufe 2 · Folientypen</small></span></a>
+<a href="ga-visitenkarten.html" class="dev-dd-link"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Entwurf</small></span></a>
+<a href="ga-rollup.html" class="dev-dd-link"><span class="dev-dd-tag">RU</span><span class="dev-dd-txt"><b>Roll-up</b><small>Entwurf</small></span></a>
+<a href="ga-word.html" class="dev-dd-link"><span class="dev-dd-tag">DOC</span><span class="dev-dd-txt"><b>Word-Vorlagen</b><small>Entwurf</small></span></a>
+<a href="ga-onepager.html" class="dev-dd-link"><span class="dev-dd-tag">A3</span><span class="dev-dd-txt"><b>One-Pager</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin.html" class="dev-dd-link"><span class="dev-dd-tag">IN</span><span class="dev-dd-txt"><b>LinkedIn-Banner</b><small>Entwurf</small></span></a>
+<a href="ga-hintergruende.html" class="dev-dd-link"><span class="dev-dd-tag">HG</span><span class="dev-dd-txt"><b>Hintergrundbilder</b><small>Entwurf</small></span></a>
+<a href="merch.html" class="dev-dd-link"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Merch</b><small>Die Marke zum Anfassen</small></span></a>
+<a href="pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<p class="dev-dd-group">Designideen</p>
+<a href="../designideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<a href="../designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="../designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="methoden.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Methoden</b><small>F&uuml;r die Zusammenarbeit in Projekten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Methoden</p>
+<a href="methoden-storyboard.html" class="dev-dd-link"><span class="dev-dd-tag">SB</span><span class="dev-dd-txt"><b>Storyboard Landing Page</b><small>Antworten &middot; Fragen &middot; Skizze &middot; Final</small></span></a>
+<a href="methoden-elevator-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Von der Landingpage zur halben Minute</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="../leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="../der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="../archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="../archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="../archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark" href="/kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+<section class="mc"><div class="container">
+  <p class="mc-kicker">Corporate Design · Merch</p>
+  <h1>Die Marke zum <span class="hl">Anfassen.</span></h1>
+  <p class="mc-lead">Nicht als Werbegeschenk, sondern für uns: Kleidung für Workshops und Messen, Aufkleber für MacBook und Auto, Werkzeug für die Moderationswand. Gebaut aus den Zeichen, die wir schon haben.</p>
+  <div class="mc-abschnitt"><p class="mc-kicker">Bausteine</p><h2>Fünf Zeichen. Mehr braucht es nicht.</h2><div class="mc-bausteine"><div class="mc-baustein"><span class="mc-baustein__z"><svg viewBox="2.83 31.08 226.78 170.29" style="color:#1a1817" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></span><b>Doppelpfeil</b><small>Strategie. Das Hauptzeichen – vorwärts.</small></div><div class="mc-baustein"><span class="mc-baustein__z"><svg viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></span><b>Kreuz</b><small>Komplexe Themen.</small></div><div class="mc-baustein"><span class="mc-baustein__z"><svg viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817" aria-hidden="true"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></span><b>Kreis</b><small>Innovation.</small></div><div class="mc-baustein"><span class="mc-baustein__z"><svg viewBox="0 0 340.16 89.29" style="color:#1a1817;height:2.2rem" aria-hidden="true"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg></span><b>Logo</b><small>„empiria_“ – mit dem Unterstrich, der wie ein Cursor wartet.</small></div><div class="mc-baustein"><span class="mc-baustein__z"><span class="hl" style="font:700 1.9rem/1 Lora,Georgia,serif">wirkt.</span></span><b>Claim</b><small>Das letzte Wort im gelben Kasten.</small></div></div></div>
+  <div class="mc-abschnitt"><p class="mc-kicker">Regeln</p><h2>Damit es nach Marke aussieht.</h2><div class="mc-regeln"><div class="mc-regel"><b>Ein Zeichen je Stück</b><p>Pfeil oder Kreuz oder Kreis – nie alles auf einmal. Das Logo begleitet höchstens klein.</p></div><div class="mc-regel"><b>Winzig oder riesig</b><p>Klein und präzise auf der Brust oder groß und angeschnitten auf dem Rücken. Mittelgroß wirkt wie Werbung.</p></div><div class="mc-regel"><b>Schwarz, Weiß, Gelb</b><p>Keine weiteren Farben. Gelb steht auf Schwarz oder als Fläche, nie als dünner Rand auf Weiß.</p></div></div></div>
+  <div class="mc-abschnitt"><p class="mc-kicker">Die Stücke</p><h2>Zwölf Ideen für <span class="hl">uns.</span></h2><div class="mc-raster"><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#fff400"/><g transform="translate(-6 70) scale(0.6)" filter="url(#weich)"><path d="M116 46 L56 74 L18 250 L56 260 L84 150 L84 318 Q160 330 236 318 L236 150 L264 260 L302 250 L264 74 L204 46 Z" fill="#1a1817"/><path d="M84 306 L236 306" stroke="#ffffff1f" stroke-width="3"/><path d="M112 44 Q160 -14 208 44 L198 58 Q160 34 122 58 Z" fill="#1a1817"/><path d="M126 52 Q160 30 194 52 Q186 86 160 90 Q134 86 126 52 Z" fill="#0d0c0b" opacity=".55"/><line x1="148" y1="88" x2="146" y2="140" stroke="#ffffff1f" stroke-width="4" stroke-linecap="round"/><line x1="172" y1="88" x2="174" y2="140" stroke="#ffffff1f" stroke-width="4" stroke-linecap="round"/><path d="M108 228 L212 228 L230 290 L90 290 Z" fill="none" stroke="#ffffff1f" stroke-width="3"/><g><svg x="196" y="120" width="30" height="22.53" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g></g><g transform="translate(196 70) scale(0.6)" filter="url(#weich)"><path d="M116 46 L56 74 L18 250 L56 260 L84 150 L84 318 Q160 330 236 318 L236 150 L264 260 L302 250 L264 74 L204 46 Z" fill="#1a1817"/><path d="M84 306 L236 306" stroke="#ffffff1f" stroke-width="3"/><path d="M115 40 Q160 -18 205 40 Q200 70 160 74 Q120 70 115 40 Z" fill="#1a1817"/><g><g clip-path="url(#saum2)"><svg x="82" y="150" width="156" height="117.14" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="125" y="112" width="70" height="18.37" viewBox="0 0 340.16 89.29" style="color:#ffffff"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg></g><clipPath id="saum2"><path d="M84 60 L236 60 L236 306 L84 306 Z"/></clipPath></g></g></svg></div><div class="mc-karte__text"><small>Kleidung · Workshops · Messe · Team</small><b>Hoodie</b><p>Vorne winzig der gelbe Doppelpfeil auf der Brust. Hinten groß über den ganzen Rücken – darüber klein das Logo.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#f3f1ee"/><g transform="translate(8 120) scale(0.42)" filter="url(#weich)"><path d="M110 6 Q145 30 180 6 L238 26 L290 80 L252 120 L228 98 L228 296 Q145 306 62 296 L62 98 L38 120 L0 80 L52 26 Z" fill="#ffffff"/><path d="M110 8 Q145 40 180 8" fill="none" stroke="#00000022" stroke-width="4"/><g><svg x="119.0" y="120" width="52" height="39.05" viewBox="2.83 31.08 226.78 170.29" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g></g><g transform="translate(136 120) scale(0.42)" filter="url(#weich)"><path d="M110 6 Q145 30 180 6 L238 26 L290 80 L252 120 L228 98 L228 296 Q145 306 62 296 L62 98 L38 120 L0 80 L52 26 Z" fill="#ffffff"/><path d="M110 8 Q145 40 180 8" fill="none" stroke="#00000022" stroke-width="4"/><g><svg x="122.0" y="112" width="46" height="46.00" viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></g></g><g transform="translate(264 120) scale(0.42)" filter="url(#weich)"><path d="M110 6 Q145 30 180 6 L238 26 L290 80 L252 120 L228 98 L228 296 Q145 306 62 296 L62 98 L38 120 L0 80 L52 26 Z" fill="#ffffff"/><path d="M110 8 Q145 40 180 8" fill="none" stroke="#00000022" stroke-width="4"/><g><svg x="122.0" y="112" width="46" height="46.00" viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></g></g><text x="200" y="330" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="600" letter-spacing="2" fill="#1a1817">STRATEGIE · KOMPLEXE THEMEN · INNOVATION</text></svg></div><div class="mc-karte__text"><small>Kleidung · Ein Zeichen je Leistung</small><b>Drei T-Shirts</b><p>Weiße Shirts mit Pfeil, Kreuz oder Kreis. Im Workshop trägt jeder das Zeichen seines Themas.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#f3f1ee"/><g transform="translate(55 60) scale(1)" filter="url(#weich)"><path d="M110 6 Q145 30 180 6 L238 26 L290 80 L252 120 L228 98 L228 296 Q145 306 62 296 L62 98 L38 120 L0 80 L52 26 Z" fill="#1a1817"/><path d="M118 22 L145 58 L172 22" fill="none" stroke="#ffffff22" stroke-width="3"/><path d="M108 14 L145 50 L182 14 L172 2 Q145 18 118 2 Z" fill="#1a1817" stroke="#ffffff22" stroke-width="2"/><line x1="145" y1="50" x2="145" y2="92" stroke="#ffffff22" stroke-width="3"/><circle cx="145" cy="66" r="3" fill="#ffffff22"/><circle cx="145" cy="82" r="3" fill="#ffffff22"/><g><svg x="180" y="92" width="26" height="19.52" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="110" y="260" width="70" height="18.37" viewBox="0 0 340.16 89.29" style="color:#ffffff55"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg></g></g></svg></div><div class="mc-karte__text"><small>Kleidung · Kundentermine</small><b>Polo</b><p>Schwarz, der Doppelpfeil klein in Gelb gestickt. Ruhig genug für den Vorstandstermin.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#fff400"/><g transform="translate(50 110) scale(1)" filter="url(#weich)"><ellipse cx="150" cy="158" rx="140" ry="24" fill="#1a1817"/><path d="M30 150 Q30 30 150 26 Q270 30 270 150 Z" fill="#1a1817"/><path d="M150 26 L150 150" stroke="#ffffff18" stroke-width="3"/><circle cx="150" cy="28" r="7" fill="#1a1817" stroke="#ffffff22" stroke-width="2"/><path d="M30 150 Q150 170 270 150" fill="none" stroke="#ffffff22" stroke-width="3"/><g><svg x="122" y="70" width="56" height="42.05" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g></g></svg></div><div class="mc-karte__text"><small>Kleidung · Volksfest · Sommer</small><b>Cap</b><p>Schwarz mit gelbem Doppelpfeil vorne, gestickt. Sonst nichts.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#1a1817"/><g filter="url(#weich)"><rect x="40" y="70" width="320" height="220" rx="16" fill="#d7d8db"/><rect x="40" y="70" width="320" height="220" rx="16" fill="url(#alu)"/></g><linearGradient id="alu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient><rect x="60" y="290" width="280" height="10" rx="4" fill="#bfc1c5"/><g filter="url(#schatten)" style="paint-order:stroke;stroke:#fff;stroke-width:22;stroke-linejoin:round"><svg x="300" y="92" width="38" height="28.53" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g></svg></div><div class="mc-karte__text"><small>Alltag · Geplotteter Aufkleber</small><b>MacBook-Deckel</b><p>Ja, das ergibt Sinn: ein kleiner gelber Doppelpfeil, oben rechts in der Ecke, aus Folie geplottet. Präzise statt bunt beklebt.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#f3f1ee"/><g filter="url(#schatten)" style="paint-order:stroke;stroke:#fff;stroke-width:22;stroke-linejoin:round"><svg x="40" y="60" width="150" height="112.64" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g><g filter="url(#schatten)" style="paint-order:stroke;stroke:#fff;stroke-width:22;stroke-linejoin:round"><svg x="230" y="50" width="120" height="120.00" viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></g><g filter="url(#schatten)" style="paint-order:stroke;stroke:#fff;stroke-width:22;stroke-linejoin:round"><svg x="245" y="215" width="105" height="105.00" viewBox="2.83 2.83 226.78 226.78" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></g><g filter="url(#schatten)" style="paint-order:stroke;stroke:#fff;stroke-width:22;stroke-linejoin:round"><svg x="70" y="260" width="80" height="60.07" viewBox="2.83 31.08 226.78 170.29" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g><g filter="url(#schatten)"><rect x="40" y="200" width="160" height="44" rx="10" fill="#fff"/><svg x="56" y="211" width="128" height="33.60" viewBox="0 0 340.16 89.29" style="color:#1a1817"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg></g><g filter="url(#schatten)"><rect x="168" y="300" width="118" height="54" rx="10" fill="#fff"/><rect x="178" y="310" width="98" height="34" rx="6" fill="#fff400"/><text x="227" y="335" text-anchor="middle" font-family="Lora" font-weight="700" font-size="22" fill="#1a1817">wirkt.</text></g></svg></div><div class="mc-karte__text"><small>Alltag · Laptop · Flasche · Notizbuch</small><b>Sticker-Set</b><p>Die drei Zeichen, das Logo und „wirkt.“ als Konturschnitt mit weißem Rand – zum Weitergeben im Workshop.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#fff400"/><g filter="url(#weich)"><path d="M40 250 Q40 205 90 196 L310 196 Q360 205 360 250 L360 318 Q360 330 346 330 L54 330 Q40 330 40 318 Z" fill="#e9e7e3"/><path d="M92 104 Q96 92 110 92 L290 92 Q304 92 308 104 L332 196 L68 196 Z" fill="#1a1817"/><rect x="52" y="214" width="62" height="22" rx="6" fill="#c5281f"/><rect x="286" y="214" width="62" height="22" rx="6" fill="#c5281f"/><rect x="150" y="262" width="100" height="26" rx="4" fill="#fff" stroke="#cfcac3"/><rect x="40" y="300" width="320" height="30" rx="8" fill="#d4d1cc"/></g><svg x="108" y="166" width="82" height="21.52" viewBox="0 0 340.16 89.29" style="color:#ffffff"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg><svg x="278" y="156" width="34" height="25.53" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></svg></div><div class="mc-karte__text"><small>Alltag · Heckscheibe</small><b>Auto</b><p>Weiß geplottet unten links das Logo, rechts der gelbe Doppelpfeil. Klein, nicht vollflächig – wirkt wie ein Markenauto.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#f3f1ee"/><g filter="url(#weich)"><rect x="30" y="60" width="340" height="250" rx="10" fill="#fff"/><rect x="30" y="60" width="340" height="250" rx="10" fill="none" stroke="#cfcac3" stroke-width="6"/></g><rect x="70" y="100" width="92" height="64" rx="3" fill="#fff8a8"/><rect x="190" y="118" width="92" height="64" rx="3" fill="#fff8a8"/><rect x="110" y="210" width="92" height="64" rx="3" fill="#fff8a8"/><path d="M84 122h60M84 136h44M204 140h60M204 154h40M124 232h60M124 246h50" stroke="#1a181766" stroke-width="4" stroke-linecap="round"/><g filter="url(#schatten)"><circle cx="158" cy="96" r="22" fill="#fff400"/></g><svg x="145" y="86" width="26" height="19.52" viewBox="2.83 31.08 226.78 170.29" style="color:#1a1817;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><g filter="url(#schatten)"><circle cx="278" cy="114" r="22" fill="#1a1817"/></g><svg x="267" y="103" width="22" height="22.00" viewBox="2.83 2.83 226.78 226.78" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg><g filter="url(#schatten)"><circle cx="198" cy="206" r="22" fill="#1a1817"/></g><svg x="187" y="195" width="22" height="22.00" viewBox="2.83 2.83 226.78 226.78" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></svg></div><div class="mc-karte__text"><small>Workshop · Whiteboard · Moderationswand</small><b>Magnete</b><p>Pfeil, Kreuz und Kreis als runde Magnete: Damit markieren wir live, was Strategie, was komplex und was neu ist.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#fff400"/><g filter="url(#weich)"><path d="M285 160 Q340 160 340 205 Q340 250 285 250" fill="none" stroke="#1a1817" stroke-width="22"/><path d="M90 110 L290 110 L280 318 Q278 330 266 330 L114 330 Q102 330 100 318 Z" fill="#1a1817"/><ellipse cx="190" cy="110" rx="100" ry="14" fill="#2a2725"/></g><text x="128" y="206" font-family="Lora" font-weight="700" font-size="28" fill="#fff">Strategie,</text><text x="128" y="250" font-family="Lora" font-weight="700" font-size="28" fill="#fff">die</text><rect x="176" y="224" width="94" height="36" rx="5" fill="#fff400"/><text x="223" y="250" text-anchor="middle" font-family="Lora" font-weight="700" font-size="28" fill="#1a1817">wirkt.</text></svg></div><div class="mc-karte__text"><small>Workshop · Besprechung · Büro</small><b>Tasse</b><p>Schwarz, der Claim in Weiß, „wirkt.“ im gelben Kasten – wie auf der Homepage.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#f3f1ee"/><g filter="url(#weich)"><rect x="95" y="50" width="210" height="300" rx="10" fill="#1a1817"/></g><rect x="95" y="50" width="12" height="300" rx="4" fill="#0f0e0d"/><svg x="170" y="170" width="70" height="52.56" viewBox="2.83 31.08 226.78 170.29" style="color:#2b2826;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><rect x="268" y="50" width="14" height="300" fill="#fff400"/></svg></div><div class="mc-karte__text"><small>Workshop · Für jeden Teilnehmer</small><b>Notizbuch</b><p>Schwarzer Einband, der Doppelpfeil schwarz auf schwarz geprägt, ein gelbes Gummiband.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#1a1817"/><g filter="url(#weich)" style="paint-order:stroke;stroke:#3a3632;stroke-width:14;stroke-linejoin:round"><svg x="110" y="132" width="180" height="135.16" viewBox="2.83 31.08 226.78 170.29" style="color:#fff400;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g></svg></div><div class="mc-karte__text"><small>Details · Revers · Rucksack</small><b>Anstecknadel</b><p>Emaille, gelb mit schwarzer Kante: der Doppelpfeil als kleines Erkennungszeichen.</p></div></article><article class="mc-karte"><div class="mc-karte__bild"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><filter id="schatten" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1a1817" flood-opacity=".18"/></filter><filter id="weich" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1a1817" flood-opacity=".22"/></filter></defs><rect width="400" height="400" fill="#c9d3d6"/><rect x="0" y="0" width="400" height="400" fill="url(#raum)"/><linearGradient id="raum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8eef0"/><stop offset="1" stop-color="#aebbc0"/></linearGradient><rect x="0" y="140" width="400" height="100" fill="#ffffff" opacity=".55"/><g opacity=".95"><svg x="22" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="86" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="150" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="214" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="278" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg><svg x="342" y="168" width="44" height="33.04" viewBox="2.83 31.08 226.78 170.29" style="color:#ffffff;overflow:visible" ><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></g><rect x="196" y="0" width="8" height="400" fill="#8c999e"/><svg x="250" y="330" width="110" height="28.87" viewBox="0 0 340.16 89.29" style="color:#1a1817"><path fill="currentColor" d="M48.81,48.87v1.14c0,2.48-.64,4.09-1.92,4.84-1.28.75-4.06,1.12-8.34,1.12-4.51,0-7.38-.78-8.61-2.35-1.23-1.57-1.84-5.21-1.84-10.93h26.14v-2.85c0-6.9-1.04-11.43-3.12-13.58-2.08-2.15-6.46-3.23-13.15-3.23-6.13,0-10.25,1.24-12.35,3.72-2.1,2.48-3.15,7.34-3.15,14.57,0,7.82,1.04,12.94,3.13,15.38,2.09,2.44,6.48,3.66,13.17,3.66,5.75,0,9.77-.75,12.06-2.26,2.29-1.5,3.44-4.14,3.44-7.91l-.04-1.33h-5.43ZM30.1,29.5c1.28-1.38,4.07-2.07,8.38-2.07s7.07.59,8.36,1.76c1.29,1.18,1.94,3.72,1.94,7.64l.04,1.71h-20.63c0-4.65.64-7.67,1.92-9.05Z"/><path fill="currentColor" d="M105.63,23.03c-6.05,0-10.22,2.04-12.5,6.11h-.15c-1.32-4.07-5.05-6.11-11.21-6.11s-9.8,2.04-11.86,6.11v-5.58h-5.32v36.27h5.32v-20.6c0-7.87,3.62-11.8,10.87-11.8,5.34,0,8.02,2.34,8.02,7.02l.08,1.67v23.71h5.32v-20.98c0-4.45.75-7.47,2.24-9.05,1.49-1.58,4.34-2.37,8.55-2.37,3.17,0,5.32.57,6.46,1.71,1.14,1.14,1.71,3.3,1.71,6.49v24.21h5.32v-23.71c0-8.73-4.28-13.09-12.84-13.09Z"/><path fill="currentColor" d="M147.93,23.03c-5.99,0-9.92,1.68-11.82,5.04v-4.51h-5.32v51.82h5.32v-19.84h.11c1.92,3.21,5.88,4.82,11.86,4.82,5.24,0,8.89-1.32,10.94-3.96,2.05-2.64,3.08-7.37,3.08-14.17,0-7.33-1.01-12.37-3.04-15.1-2.03-2.73-5.74-4.1-11.13-4.1ZM154.6,53.27c-1.28,1.8-3.92,2.69-7.92,2.69-4.21,0-7-.93-8.4-2.79-1.39-1.86-2.09-5.58-2.09-11.17,0-6.04.65-9.98,1.94-11.82,1.29-1.83,4.07-2.75,8.32-2.75s6.97.91,8.21,2.73c1.24,1.82,1.86,5.82,1.86,11.99,0,5.62-.64,9.32-1.92,11.12Z"/><rect fill="currentColor" x="172.44" y="23.56" width="5.32" height="36.27"/><path fill="currentColor" d="M204.86,22.73c-4.53,0-7.86,1.5-9.99,4.49v-3.66h-5.32v36.27h5.32v-21.74c0-7.31,2.96-10.96,8.89-10.96,4.05,0,6.08,1.86,6.08,5.58,0,.33-.04.97-.11,1.93l-.11.91h5.24l.04-2.5c0-6.88-3.34-10.32-10.03-10.32Z"/><rect fill="currentColor" x="221.97" y="23.56" width="5.32" height="36.27"/><rect fill="currentColor" x="280.16" y="54.51" width="35.33" height="5.32"/><path fill="currentColor" d="M265.18,25.71c-2.13-1.78-6.22-2.67-12.27-2.67-5.57,0-9.32.73-11.23,2.18-1.91,1.45-2.87,4.29-2.87,8.52h5.28c-.03-.53-.04-.89-.04-1.06,0-3.67,3.27-5.5,9.8-5.5,3.85,0,6.35.61,7.49,1.84,1.14,1.23,1.71,3.91,1.71,8.06v4.4l-.11.04c-1.27-2.5-5.09-3.76-11.48-3.76-5.37,0-9.08.83-11.13,2.5-2.05,1.67-3.08,4.69-3.08,9.07,0,7.36,4.59,11.04,13.76,11.04,5.91,0,9.93-1.36,12.05-4.07v3.54h5.32v-23.94c0-5.01-1.06-8.4-3.19-10.19ZM252.07,55.96c-3.72,0-6.19-.47-7.41-1.42-1.22-.95-1.82-2.89-1.82-5.82s.61-4.68,1.84-5.54c1.23-.86,3.88-1.29,7.96-1.29s7.04.49,8.49,1.48c1.46.99,2.18,2.91,2.18,5.77,0,4.55-3.75,6.83-11.25,6.83Z"/></svg></svg></div><div class="mc-karte__text"><small>Details · Büro · Besprechungsraum</small><b>Glastür</b><p>Ein Band aus Doppelpfeilen als Milchglasfolie auf Augenhöhe – Sichtschutz und Marke zugleich.</p></div></article></div></div>
+</div></section>
+<style>
+.mc { padding: 5rem 0 6rem; }
+.mc-kicker { display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.2rem; font: 700 .78rem/1 'Poppins', sans-serif; letter-spacing: .15em; text-transform: uppercase; color: #1a1817; }
+.mc-kicker::before { content: ""; width: 1.5rem; height: 2px; background: currentColor; }
+.mc h1 { margin: 0; font: 700 clamp(2.6rem, 5.4vw, 4.4rem)/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; color: #1a1817; }
+.mc h2 { margin: 0; font: 700 clamp(1.9rem, 3.4vw, 2.7rem)/1.25 'Lora', Georgia, serif; letter-spacing: -.02em; color: #1a1817; }
+.mc .hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; white-space: nowrap; }
+.mc-lead { margin: 1.4rem 0 0; max-width: 42rem; font: 300 1.15rem/1.65 'Poppins', sans-serif; color: #3d3a37; }
+.mc-abschnitt { margin-top: 5.5rem; }
+.mc-bausteine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin-top: 2.2rem; }
+.mc-baustein { display: flex; flex-direction: column; gap: 1rem; padding: 1.6rem 1.4rem; border-radius: 18px; background: #f3f1ee; }
+.mc-baustein__z { height: 4.2rem; display: flex; align-items: center; }
+.mc-baustein__z svg { height: 100%; width: auto; }
+.mc-baustein b { font: 700 1.15rem/1.25 'Lora', Georgia, serif; color: #1a1817; }
+.mc-baustein small { font: 400 .9rem/1.5 'Poppins', sans-serif; color: #3d3a37; }
+.mc-regeln { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.mc-regel { padding: 1.4rem 1.4rem; border-radius: 18px; background: #1a1817; color: #fff; }
+.mc-regel b { display: block; font: 700 1.2rem/1.3 'Lora', Georgia, serif; color: #fff400; }
+.mc-regel p { margin: .5rem 0 0; font: 400 .95rem/1.55 'Poppins', sans-serif; color: #d8d3cc; }
+.mc-gruppe { margin: 3.4rem 0 0; font: 700 .78rem/1 'Poppins', sans-serif; letter-spacing: .15em; text-transform: uppercase; color: #6b6762; }
+.mc-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 2.4rem; }
+.mc-karte { border-radius: 18px; background: #fff; border: 1px solid #e4e0db; overflow: hidden; }
+.mc-karte__bild svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+.mc-karte__text { padding: 1.2rem 1.3rem 1.4rem; }
+.mc-karte__text small { display: block; font: 700 .74rem/1 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #6b6762; }
+.mc-karte__text b { display: block; margin-top: .55rem; font: 700 1.45rem/1.25 'Lora', Georgia, serif; color: #1a1817; }
+.mc-karte__text p { margin: .5rem 0 0; font: 400 .95rem/1.55 'Poppins', sans-serif; color: #3d3a37; }
+@media (max-width: 1000px) { .mc-bausteine { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mc-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .mc-bausteine, .mc-raster, .mc-regeln { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>
