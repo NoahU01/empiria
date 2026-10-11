@@ -57,80 +57,76 @@
     });
   });
 
-  /* ---------- Postings ---------- */
+  /* ---------- Postings: fertige Einzelbilder 4:5 ohne Logo ---------- */
   var P = window.AVRG_POSTINGS || [], TH = window.AVRG_THEMEN || {};
-  var LOGO = '/assets/projekte/avrg/sv-owen-logo.svg', FOTO = '/assets/projekte/avrg/fotos/', SANDRA = '/assets/projekte/avrg/sandra.jpg';
-  var FORMAT = {feed: 'Feed-Beitrag', karussell: 'Karussell', story: 'Story', reel: 'Reel'};
-  var ICON = {
-    karussell: '<svg viewBox="0 0 24 24"><rect x="7" y="3" width="14" height="14" rx="2"/><path d="M17 21H5a2 2 0 0 1-2-2V7"/></svg>',
-    story: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3 2.4"/><circle cx="12" cy="12" r="4"/></svg>',
-    reel: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg>'
-  };
-  function logo(platte) { return platte ? '<span class="cr__platte"><img class="cr__logo" src="' + LOGO + '" alt=""></span>' : '<img class="cr__logo" src="' + LOGO + '" alt="">'; }
-  function pill(p, art) { return p.pill ? '<span class="cr__pill' + (art ? ' cr__pill--' + art : '') + '">' + p.pill + '</span>' : ''; }
-  function sub(p) { return p.s ? '<p class="cr__sub">' + p.s + '</p>' : ''; }
-  function punkte(p) { return p.f === 'karussell' ? '<span class="cr__punkte"><i></i><i></i><i></i><i></i></span>' : ''; }
-  function creative(p, hoch) {
-    var k = 'cr' + (hoch ? ' cr--hoch' : ''), innen;
-    switch (p.t) {
-      case 'rot':
-        return '<div class="' + k + ' cr--rot"><div class="cr__innen"><p class="cr__label">' + (p.l || '') + '</p><div><p class="cr__h">' + p.h + '</p>' + sub(p) + '</div><div class="cr__fuss">' + logo(true) + pill(p, 'weiss') + '</div></div>' + punkte(p) + '</div>';
-      case 'schwarz':
-        return '<div class="' + k + ' cr--schwarz"><div class="cr__innen"><p class="cr__label">' + (p.l || '') + '</p><div><p class="cr__h">' + p.h + '</p>' + sub(p) + '</div><div class="cr__fuss">' + logo(true) + pill(p) + '</div></div>' + punkte(p) + '</div>';
-      case 'band':
-        return '<div class="' + k + ' cr--band"><img class="cr__foto" src="' + FOTO + p.foto + '.jpg" alt="" loading="lazy"><div class="cr__innen"><p class="cr__h">' + p.h + '</p><div class="cr__fuss">' + logo() + pill(p) + '</div></div></div>';
-      case 'blase':
-        return '<div class="' + k + '"><img class="cr__foto" src="' + FOTO + p.foto + '.jpg" alt="" loading="lazy"><p class="cr__blase">' + p.blase + '</p><span class="cr__wer">' + p.wer + '</span></div>';
-      case 'verlauf':
-        return '<div class="' + k + ' cr--verlauf"><img class="cr__foto" src="' + FOTO + p.foto + '.jpg" alt="" loading="lazy"><div class="cr__innen">' + logo(true) + '<div><p class="cr__h">' + p.h + '</p>' + sub(p) + '</div></div></div>';
-      case 'split':
-        return '<div class="' + k + '"><div class="cr__geteilt"><div class="o"><small>Ergebnis A</small><b>Mitnehmen.</b></div><div class="u"><small>Ergebnis B</small><b>Abhaken<span>.</span></b></div></div></div>';
-      case 'liste':
-        return '<div class="' + k + ' cr--rot"><div class="cr__innen"><p class="cr__label">' + p.l + '</p><div><p class="cr__h">' + p.h + '</p><ul class="cr__liste"><li><i>✓</i>Betrifft mich das?</li><li><i>✓</i>Wenn ja: wie?</li><li><i>✓</i>Habe ich einen Vorteil?</li></ul></div><div class="cr__fuss">' + logo(true) + '</div></div>' + punkte(p) + '</div>';
-      case 'nein':
-        return '<div class="' + k + '"><div class="cr__innen"><p class="cr__label">' + p.l + '</p><ul class="cr__nein">' + p.items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul><div class="cr__fuss">' + logo() + pill(p) + '</div></div></div>';
-      case 'zahl':
-        return '<div class="' + k + '"><div class="cr__innen"><p class="cr__zahl">' + p.z + '</p><p class="cr__h" style="font-size:7cqi">' + p.h + '</p><div class="cr__fuss">' + logo() + pill(p) + '</div></div></div>';
-      case 'umfrage':
-        return '<div class="' + k + '"><div class="cr__innen"><p class="cr__label">' + p.l + '</p><div><p class="cr__h">' + p.h + '</p><div class="cr__umfrage">' + p.opt.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div></div><div class="cr__fuss">' + logo() + '</div></div></div>';
-      case 'sandra':
-        return '<div class="' + k + ' cr--grau"><div class="cr__innen"><p class="cr__label">Sandra Hild · Owen</p><p class="cr__h" style="max-width:72%">' + p.h + '</p><span></span></div><img class="cr__sandra" src="' + SANDRA + '" alt=""></div>';
-      case 'ticket':
-        return '<div class="' + k + ' cr--grau"><div class="cr__innen"><p class="cr__label">' + p.l + '</p><p class="cr__h" style="max-width:80%">' + p.h + '</p><span></span></div><div class="cr__mini-ticket"><small>Klarheits-Ticket</small><b>15 Minuten</b><small>Einlösbar bei Sandra Hild</small></div></div>';
-      default:
-        return '<div class="' + k + '"><div class="cr__innen"><p class="cr__label">' + (p.l || '') + '</p><div><p class="cr__h">' + p.h + '</p>' + sub(p) + '</div><div class="cr__fuss">' + logo() + pill(p) + '</div></div>' + punkte(p) + '</div>';
-    }
+  var FOTO = '/assets/projekte/avrg/fotos/';
+  function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
+  function flaeche(p, art) {
+    return '<div class="cr cr--' + art + '">' + (p.d ? '<span class="cr__deko">' + p.d + '</span>' : '') +
+      '<div class="cr__in"><p class="cr__label">' + p.l + '</p><p class="cr__h cr__mitte">' + p.h + '</p>' + (p.fuss ? '<p class="cr__fuss">' + p.fuss + '</p>' : '') + '</div></div>';
   }
+  function creative(p) {
+    switch (p.t) {
+      case 'weiss': case 'rot': case 'schwarz': return flaeche(p, p.t);
+      case 'blase':
+        return '<div class="cr"><img class="cr__foto" src="' + FOTO + p.foto + '.jpg" alt="" loading="lazy"><p class="cr__blase">' + p.blase + '</p><span class="cr__tag">' + p.tag + '</span></div>';
+      case 'band':
+        return '<div class="cr cr--band"><img class="cr__foto" src="' + FOTO + p.foto + '.jpg" alt="" loading="lazy"><div class="cr__in"><p class="cr__h">' + p.h + '</p></div></div>';
+      case 'fa':
+        return '<div class="cr cr--fa"><div class="cr__frage"><p class="cr__fa-label">Frage</p><p class="cr__h">' + p.q + '</p></div><div class="cr__antwort"><p class="cr__fa-label">Antwort</p><p>' + p.a + '</p></div></div>';
+      case 'durch':
+        return '<div class="cr cr--durch"><div class="cr__in"><p class="cr__label" style="color:var(--r)">Was du bei uns nicht bekommst</p><div class="cr__mitte"><ul class="cr__weg">' + p.items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul><p class="cr__h">' + p.h + '</p></div></div></div>';
+      case 'check':
+        return '<div class="cr cr--check"><div class="cr__in"><p class="cr__label" style="color:rgba(255,255,255,.75)">Neue Altersvorsorge 2027</p><div class="cr__mitte"><p class="cr__h">' + p.h + '</p><ul class="cr__haken">' + p.items.map(function (x) { return '<li><i></i>' + x + '</li>'; }).join('') + '</ul></div></div></div>';
+      case 'split':
+        return '<div class="cr cr--split"><div class="cr__teil cr__teil--o"><small>Ergebnis A</small><b>Mitnehmen.</b></div><div class="cr__teil cr__teil--u"><small>Ergebnis B</small><b>Abhaken<span>.</span></b></div><span class="cr__oder">oder</span></div>';
+      case 'zahl':
+        return '<div class="cr cr--zahl"><div class="cr__in"><p class="cr__label" style="color:var(--r)">Countdown</p><div class="cr__mitte"><p class="cr__zahl">' + p.z + '</p><p class="cr__h">' + p.h + '</p></div><p class="cr__fuss">' + p.fuss + '</p></div></div>';
+      case 'zitat':
+        return '<div class="cr cr--zitat"><div class="cr__in"><p class="cr__anf">“</p><p class="cr__h cr__mitte">' + p.h + '</p></div></div>';
+      case 'suche':
+        return '<div class="cr cr--suche"><div class="cr__in"><div class="cr__such"><div class="cr__feld"><span class="cr__lupe"></span><span>' + p.q + '<span class="cr__cursor"></span></span></div><ul class="cr__vorsch">' + p.vorschlaege.map(function (x) { return '<li><span>altersvorsorge <b>' + x.replace('… ', '') + '</b></span></li>'; }).join('') + '</ul></div><p class="cr__h">' + p.h + '</p></div></div>';
+      case 'chat':
+        return '<div class="cr cr--chat"><div class="cr__in"><p class="cr__label" style="color:var(--r)">Neue Altersvorsorge 2027</p><div class="cr__chat"><p class="cr__msg cr__msg--ich"><small>Du</small>' + p.ich + '</p><p class="cr__msg cr__msg--wir"><small>Wir</small>' + p.wir + '</p><span class="cr__tippt"><i></i><i></i><i></i></span></div></div></div>';
+      case 'notiz':
+        return '<div class="cr cr--notiz"><div class="cr__zettel"><b>' + p.titel + '</b><ul>' + p.items.map(function (x) { return '<li class="' + (x[1] ? 'ok' : 'offen') + '"><i></i><span>' + x[0] + '</span></li>'; }).join('') + '</ul></div><div class="cr__in"><p class="cr__h">' + p.h + '</p></div></div>';
+      case 'ticket':
+        return '<div class="cr cr--ticket"><div class="cr__in"><p class="cr__h">' + p.h + '</p></div><div class="cr__tk"><div class="cr__tk-haupt"><small>Neue Altersvorsorge 2027</small><b>15 Minuten Klarheit</b><ul><li>Betrifft mich das?</li><li>Wenn ja: wie?</li><li>Habe ich einen Vorteil?</li></ul></div><div class="cr__tk-ab"><span>Kostenlos</span></div></div></div>';
+    }
+    return '';
+  }
+  window.AVRG_CREATIVE = creative;
   var raster = $('#ig-raster');
   if (raster) {
     raster.innerHTML = P.map(function (p, i) {
-      return '<button type="button" class="ig-kachel" data-i="' + i + '" data-th="' + p.th + '" aria-label="Posting ' + (i + 1) + ' öffnen">' + creative(p, false) +
-        (ICON[p.f] ? '<span class="ig-format">' + ICON[p.f] + '</span>' : '') +
-        '<span class="ig-kachel__info">Woche ' + p.w + ' · ' + TH[p.th] + '<small>' + FORMAT[p.f] + '</small></span></button>';
+      return '<button type="button" class="ig-kachel" data-i="' + i + '" data-th="' + p.th + '" aria-label="Posting ' + nr(i) + ' öffnen">' + creative(p) +
+        '<span class="ig-kachel__info">' + nr(i) + ' · Woche ' + p.w + '<small>' + TH[p.th] + '</small></span></button>';
     }).join('');
-    /* Filter */
-    var zaehle = {}; P.forEach(function (p) { zaehle[p.th] = (zaehle[p.th] || 0) + 1; });
     var filter = $('#ig-filter');
-    filter.innerHTML = '<button type="button" aria-pressed="true" data-th="">Alle</button>' + Object.keys(TH).map(function (k) { return '<button type="button" aria-pressed="false" data-th="' + k + '">' + TH[k] + '</button>'; }).join('');
-    var aktiv = '';
+    filter.innerHTML = '<button type="button" aria-pressed="true" data-th="">Alle 30</button>' + Object.keys(TH).map(function (k) { return '<button type="button" aria-pressed="false" data-th="' + k + '">' + TH[k] + '</button>'; }).join('');
     $$('button', filter).forEach(function (b) {
       b.addEventListener('click', function () {
-        aktiv = b.dataset.th;
+        var th = b.dataset.th;
         $$('button', filter).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        $$('.ig-kachel', raster).forEach(function (k) { k.hidden = aktiv && k.dataset.th !== aktiv; });
+        $$('.ig-kachel', raster).forEach(function (k) { k.hidden = th && k.dataset.th !== th; });
       });
     });
-    /* Großansicht */
-    var modal = $('#ig-modal'), jetzt = 0;
+    var modal = $('#ig-modal'), jetzt = 0, kanal = 'ig';
+    function zeigeText() {
+      var p = P[jetzt], t = kanal === 'li' ? p.li : p.ig;
+      $('#ig-m-text').innerHTML = t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/(#[\wäöüÄÖÜß]+)/g, '<span class="tags">$1</span>');
+      $$('.ig-kanal button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.kanal === kanal ? 'true' : 'false'); });
+      var k = $('#ig-kopieren'); k.classList.remove('ist-kopiert'); k.textContent = kanal === 'li' ? 'LinkedIn-Text kopieren' : 'Text kopieren';
+    }
     function sichtbar() { return $$('.ig-kachel', raster).filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; }); }
     function oeffne(i) {
-      jetzt = i; var p = P[i], hoch = p.f === 'story' || p.f === 'reel';
-      $('#ig-m-bild').innerHTML = creative(p, hoch);
-      $('#ig-m-format').textContent = 'Woche ' + p.w + ' · ' + FORMAT[p.f];
-      $('#ig-m-text').innerHTML = p.cap.replace(/</g, '&lt;') + (p.tags ? '\n\n<span class="tags">' + p.tags + '</span>' : '');
-      var meta = [['Thema', TH[p.th]], ['Format', FORMAT[p.f]], ['Bild', p.bild], ['Ziel', p.ziel]];
-      if (p.folien) meta.push(['Folien', p.folien]);
-      $('#ig-m-meta').innerHTML = meta.map(function (m) { return '<dt>' + m[0] + '</dt><dd>' + m[1] + '</dd>'; }).join('');
+      jetzt = i; var p = P[i];
+      $('#ig-m-bild').innerHTML = creative(p);
+      $('#ig-m-format').textContent = 'Posting ' + nr(i) + ' · Woche ' + p.w + ' · ' + TH[p.th];
+      $('#ig-m-meta').innerHTML = '<dt>Bild</dt><dd>' + p.bild + '</dd><dt>Ziel</dt><dd>' + p.ziel + '</dd><dt>Format</dt><dd>Einzelbild 4:5 · 1080 × 1350 · Instagram, Facebook, LinkedIn</dd>';
+      $('#ig-laden').href = '/assets/projekte/avrg/postings/posting-' + nr(i) + '.jpg';
+      $('#ig-laden').setAttribute('download', 'posting-' + nr(i) + '.jpg');
+      zeigeText();
       if (!modal.open) modal.showModal();
     }
     raster.addEventListener('click', function (e) { var k = e.target.closest('.ig-kachel'); if (k) oeffne(+k.dataset.i); });
@@ -138,6 +134,11 @@
     $('#ig-zurueck').addEventListener('click', function () { blaettere(-1); });
     $('#ig-vor').addEventListener('click', function () { blaettere(1); });
     $('#ig-zu').addEventListener('click', function () { modal.close(); });
+    $$('.ig-kanal button').forEach(function (b) { b.addEventListener('click', function () { kanal = b.dataset.kanal; zeigeText(); }); });
+    $('#ig-kopieren').addEventListener('click', function () {
+      var t = kanal === 'li' ? P[jetzt].li : P[jetzt].ig, k = this;
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { k.classList.add('ist-kopiert'); k.textContent = 'Kopiert ✓'; }, function () { k.textContent = 'Bitte markieren und kopieren'; });
+    });
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
     modal.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') blaettere(1); if (e.key === 'ArrowLeft') blaettere(-1); });
   }
