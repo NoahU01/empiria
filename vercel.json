@@ -175,6 +175,10 @@
       "destination": "/site/video.html"
     },
     {
+      "source": "/projekte/:seite([a-z0-9-]+)",
+      "destination": "/site/projekte/:seite.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/site/$1"
     }
