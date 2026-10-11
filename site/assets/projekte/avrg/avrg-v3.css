@@ -196,3 +196,52 @@ h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-heig
 .v3-kontakt a{font-size:1.05rem}
 .ticket__fuss small{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
 .ticket__fuss b{white-space:nowrap}
+
+/* ---------- Die Idee: Familienchat im iPhone (Aufbau wie beim Budget-Retter) ---------- */
+.v3-phone{position:relative;justify-self:center;width:min(300px,78vw)}
+.v3-phone-rahmen{position:relative;aspect-ratio:71.7/148.7;border-radius:13%/6%;background:linear-gradient(150deg,#2b2b2b 0%,#0d0d0d 42%,#202020 100%);padding:9px;box-shadow:0 40px 80px rgba(80,0,0,.45),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+.v3-taste{position:absolute;background:#17171a;border-radius:3px;z-index:-1}
+.v3-taste--stumm{left:-3px;top:15.5%;width:3.5px;height:4.2%}
+.v3-taste--lauter{left:-3.5px;top:23.5%;width:4px;height:8.4%}
+.v3-taste--leiser{left:-3.5px;top:34%;width:4px;height:8.4%}
+.v3-taste--power{right:-3.5px;top:28%;width:4px;height:12.6%}
+.v3-schirm{position:relative;height:100%;border-radius:11%/5.2%;background:#f3efe9;overflow:hidden;display:flex;flex-direction:column;font-family:var(--font)}
+.v3-insel{position:absolute;left:50%;top:9px;transform:translateX(-50%);width:31%;height:22px;border-radius:12px;background:#000;z-index:3}
+.v3-status{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 0;font-size:.68rem;font-weight:600;color:#1a1817}
+.v3-status svg{height:9px;width:auto;display:block}
+.v3-status-r{display:flex;gap:5px;align-items:center}
+.v3-chatkopf{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;border-bottom:1px solid #e3ddd4;background:rgba(255,255,255,.6)}
+.v3-gruppe{display:flex;flex:none}
+.v3-gruppe img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid #f3efe9;margin-left:-9px}
+.v3-gruppe img:first-child{margin-left:0}
+.v3-chatkopf b{display:block;font-size:.8rem;font-weight:600;line-height:1.2;color:var(--ink)}
+.v3-chatkopf small{display:block;font-size:.62rem;color:var(--muted)}
+.v3-verlauf{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:12px 11px 14px}
+.v3-tag{align-self:center;font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9a948b;background:rgba(0,0,0,.05);padding:3px 9px;border-radius:999px}
+.v3-msg{display:flex;align-items:flex-end;gap:7px;max-width:88%;opacity:0;transform:translateY(8px) scale(.97)}
+.v3-msg img{width:24px;height:24px;border-radius:50%;object-fit:cover;flex:none}
+.v3-msg p{margin:0;background:#fff;border-radius:14px 14px 14px 4px;padding:8px 11px;font-size:.76rem;line-height:1.4;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.v3-msg small{display:block;font-size:.6rem;font-weight:600;color:var(--rot);margin-bottom:1px}
+.v3-msg--2 small{color:#8a5a00}
+.v3-msg--3 small{color:#3d6b8f}
+.v3-msg--du{align-self:flex-end;display:block;margin:0;background:var(--rot);color:#fff;border-radius:14px 14px 4px 14px;padding:9px 12px;font-size:.76rem;line-height:1.42;font-weight:500;max-width:80%}
+.v3-zeit{display:block;margin-top:3px;font-size:.55rem;opacity:.75;text-align:right;font-weight:500}
+.v3-tippt{align-self:flex-end;display:flex;gap:4px;padding:10px 12px;background:var(--rot);border-radius:14px;opacity:0;height:0;padding-top:0;padding-bottom:0;overflow:hidden}
+.v3-tippt i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:v3-huepf 1.1s ease-in-out infinite}
+.v3-tippt i:nth-child(2){animation-delay:.15s}
+.v3-tippt i:nth-child(3){animation-delay:.3s}
+.v3-eingabe{display:flex;align-items:center;gap:8px;padding:8px 11px 10px}
+.v3-plus{width:26px;height:26px;border-radius:50%;background:rgba(26,24,23,.07);display:grid;place-items:center;font-size:1rem;color:rgba(26,24,23,.55);flex:none}
+.v3-feld{flex:1;height:30px;border-radius:999px;background:#fff;border:1px solid #ddd8d0;display:flex;align-items:center;padding:0 13px;font-size:.68rem;color:#a9a39a}
+.v3-home{width:36%;height:4px;border-radius:2px;background:rgba(0,0,0,.28);margin:0 auto 7px}
+.v3-phone.ist-sichtbar .v3-msg{animation:v3-rein .45s cubic-bezier(.2,.8,.3,1) forwards}
+.v3-phone.ist-sichtbar .v3-msg--1{animation-delay:.3s}
+.v3-phone.ist-sichtbar .v3-msg--2{animation-delay:1.3s}
+.v3-phone.ist-sichtbar .v3-msg--3{animation-delay:2.3s}
+.v3-phone.ist-sichtbar .v3-tippt{animation:v3-tipp-an .25s ease 3.1s forwards,v3-tipp-aus .2s ease 4.3s forwards}
+.v3-phone.ist-sichtbar .v3-msg--du{animation-delay:4.4s}
+@keyframes v3-rein{to{opacity:1;transform:none}}
+@keyframes v3-tipp-an{to{opacity:1;height:auto;padding-top:10px;padding-bottom:10px}}
+@keyframes v3-tipp-aus{to{opacity:0;height:0;padding:0;margin:0}}
+@keyframes v3-huepf{0%,60%,100%{transform:none}30%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.v3-msg{opacity:1;transform:none;animation:none!important}.v3-tippt{display:none}}

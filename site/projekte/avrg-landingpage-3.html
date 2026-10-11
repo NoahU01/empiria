@@ -7,7 +7,7 @@
 <meta name="description" content="Die neue geförderte Altersvorsorge ab 2027: Dein Klarheits-Ticket – in 15 Minuten weißt du, ob du etwas davon hast.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/assets/projekte/avrg/avrg.css?v=2">
-<link rel="stylesheet" href="/assets/projekte/avrg/avrg-v3.css?v=8">
+<link rel="stylesheet" href="/assets/projekte/avrg/avrg-v3.css?v=9">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -65,14 +65,26 @@
     <p class="v3-lead">Zulagen, Depots, Garantien: Wer sich in die neue Altersvorsorge einarbeiten will, braucht Wochen. Musst du nicht.</p>
     <p class="v3-lead">Wir drehen es um. Wir erklären dir nicht das Gesetz – wir schauen auf dein Leben und sagen dir, ob das Gesetz darin eine Rolle spielt.</p>
   </div>
-  <div class="v3-stimmen">
-    <p class="v3-stimmen__titel">Kommt dir das bekannt vor?</p>
-    <ul>
-      <li><img src="/assets/projekte/avrg/fotos/frau-brief.jpg" alt=""><span>Ich habe Post bekommen und verstehe nur Bahnhof.</span></li>
-      <li><img src="/assets/projekte/avrg/fotos/frau-40.jpg" alt=""><span>Ist mein Riester-Vertrag jetzt schlecht?</span></li>
-      <li><img src="/assets/projekte/avrg/fotos/vater-kinder.jpg" alt=""><span>Alle sagen, das muss man machen. Muss ich?</span></li>
-    </ul>
-    <p class="v3-stimmen__fuss"><b>→</b> Dann ist das Klarheits-Ticket für dich.</p>
+  <div class="v3-phone" id="v3-phone" aria-label="Familienchat: drei Fragen zur neuen Altersvorsorge">
+    <span class="v3-taste v3-taste--stumm" aria-hidden="true"></span><span class="v3-taste v3-taste--lauter" aria-hidden="true"></span><span class="v3-taste v3-taste--leiser" aria-hidden="true"></span><span class="v3-taste v3-taste--power" aria-hidden="true"></span>
+    <div class="v3-phone-rahmen"><div class="v3-insel" aria-hidden="true"></div>
+      <div class="v3-schirm">
+        <div class="v3-status" aria-hidden="true"><span>9:41</span><span class="v3-status-r">
+          <svg viewBox="0 0 18 10"><g fill="#1a1817"><rect x="0" y="7" width="3" height="3" rx=".6"/><rect x="4.5" y="5" width="3" height="5" rx=".6"/><rect x="9" y="2.6" width="3" height="7.4" rx=".6"/><rect x="13.5" y="0" width="3" height="10" rx=".6"/></g></svg>
+          <svg viewBox="0 0 26 10"><rect x=".6" y=".6" width="21" height="8.8" rx="2.6" fill="none" stroke="#1a1817" stroke-opacity=".45" stroke-width="1"/><rect x="2.2" y="2.2" width="15" height="5.6" rx="1.4" fill="#1a1817"/></svg></span></div>
+        <div class="v3-chatkopf"><span class="v3-gruppe" aria-hidden="true"><img src="/assets/projekte/avrg/fotos/frau-brief.jpg" alt=""><img src="/assets/projekte/avrg/fotos/frau-40.jpg" alt=""><img src="/assets/projekte/avrg/fotos/vater-kinder.jpg" alt=""></span><span><b>Familie</b><small>Mama, Julia, Tom, du</small></span></div>
+        <div class="v3-verlauf">
+          <span class="v3-tag">Heute</span>
+          <div class="v3-msg v3-msg--1"><img src="/assets/projekte/avrg/fotos/frau-brief.jpg" alt=""><p><small>Mama</small>Ich habe Post bekommen und verstehe nur Bahnhof. 🙈</p></div>
+          <div class="v3-msg v3-msg--2"><img src="/assets/projekte/avrg/fotos/frau-40.jpg" alt=""><p><small>Julia</small>Ist mein Riester-Vertrag jetzt schlecht?</p></div>
+          <div class="v3-msg v3-msg--3"><img src="/assets/projekte/avrg/fotos/vater-kinder.jpg" alt=""><p><small>Tom</small>Alle sagen, das muss man machen. Muss ich?</p></div>
+          <div class="v3-tippt" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="v3-msg v3-msg--du">Ich hab für uns alle ein Klarheits-Ticket: 15 Minuten, dann wissen wir’s. 🎟️<span class="v3-zeit">gelesen</span></p>
+        </div>
+        <div class="v3-eingabe" aria-hidden="true"><span class="v3-plus">+</span><span class="v3-feld">Nachricht</span></div>
+        <div class="v3-home" aria-hidden="true"></div>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -312,6 +324,10 @@
     cta.classList.toggle('ist-sichtbar', window.scrollY > 600 && (t.top > window.innerHeight || t.bottom < 0));
   }
   window.addEventListener('scroll', scroll, {passive: true}); scroll();
+  /* Chat im Telefon startet, sobald es sichtbar ist */
+  var tel = document.getElementById('v3-phone');
+  if (tel) { if ('IntersectionObserver' in window) { new IntersectionObserver(function(es, o){ es.forEach(function(e){ if (e.isIntersecting) { tel.classList.add('ist-sichtbar'); o.disconnect(); } }); }, {threshold: .35}).observe(tel); } else tel.classList.add('ist-sichtbar'); }
+
   /* Die Haken auf den Tickets setzen sich, sobald ein Ticket sichtbar wird */
   document.querySelectorAll('.ticket').forEach(function(t){
     if (!('IntersectionObserver' in window)) { t.classList.add('ist-sichtbar'); return; }
