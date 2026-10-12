@@ -213,12 +213,13 @@ def attrappe_firma(var):
 
 # ----- Mit Kundenlogos -----
 # Alle Kundenlogos in der Reihenfolge der Website (site/script.js)
-KUNDEN = [("logo-01-sv.svg", "SV SparkassenVersicherung"), ("logo-02-vgh.svg", "VGH"), ("logo-03-devk-re.svg", "DEVK RE"),
-          ("logo-04-vh.svg", "Vereinigte Hagelversicherung"), ("logo-05-svs.svg", "SV SparkassenVersicherung Sachsen"),
-          ("logo-msk.svg", "Meyerthole Siems Kohlruss"), ("logo-voev.jpg", "Verband öffentlicher Versicherer"),
-          ("logo-06-gartenbau.svg", "Gartenbau-Versicherung"), ("logo-07-sv-bav.svg", "SV bAV Consulting"),
-          ("logo-08-devk-am.svg", "DEVK AM"), ("logo-09-oerag.svg", "ÖRAG Rechtsschutz"), ("logo-10-svp.svg", "SV Pensionsfonds"),
-          ("logo-11-cominia.svg", "cominia"), ("logo-12-zeitsprung.svg", "zeitsprung")]
+KUNDEN = [  # Reihenfolge nach Daniel (12.10.): zwei Reihen à sieben
+    ("logo-01-sv.svg", "SV SparkassenVersicherung"), ("logo-02-vgh.svg", "VGH"), ("logo-07-sv-bav.svg", "SV bAV Consulting"),
+    ("logo-03-devk-re.svg", "DEVK RE"), ("logo-voev.jpg", "Verband öffentlicher Versicherer"), ("logo-12-zeitsprung.svg", "zeitsprung"),
+    ("logo-04-vh.svg", "Vereinigte Hagelversicherung"),
+    ("logo-06-gartenbau.svg", "Gartenbau-Versicherung"), ("logo-05-svs.svg", "SV SparkassenVersicherung Sachsen"),
+    ("logo-09-oerag.svg", "ÖRAG Rechtsschutz"), ("logo-msk.svg", "Meyerthole Siems Kohlruss"), ("logo-08-devk-am.svg", "DEVK AM"),
+    ("logo-10-svp.svg", "SV Pensionsfonds"), ("logo-11-cominia.svg", "cominia")]
 # Logos einfarbig: Schwellwert (Weiß bleibt weiß, alles andere wird schwarz), dann per Mischmodus auf die Fläche gelegt –
 # auf Gelb verschwindet das Weiß (multiply), auf Schwarz wird invertiert und das Schwarz verschwindet (screen).
 # Die Logos stehen immer in ihren Originalfarben (Vorgabe der Unternehmen) – deshalb nur auf Weiß.
