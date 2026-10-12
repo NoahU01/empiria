@@ -102,6 +102,11 @@ SEITE_EXTRA = """
 .lg-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.4rem; }
 .lg-raster .lb { box-shadow: 0 0 0 1px #e4e0db; border-radius: 6px; }
 .lg-gross { margin-top: 1.4rem; max-width: 860px; }
+.lg-logo { display: flex; align-items: flex-end; gap: 2rem; margin-top: 1.4rem; }
+.lg-logo figure:first-child { width: 220px; }
+.lg-logo .lb { border-radius: 10px; overflow: hidden; }
+.lg-logo__klein { width: 48px; }
+.lg-logo__klein .lb { border-radius: 6px; }
 .lg-gross > .lb { box-shadow: 0 0 0 1px #e4e0db; border-radius: 6px; }
 .lg-raster--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.4rem; }
 .lg-raster--li { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
@@ -296,12 +301,33 @@ def schutzzone():
             + '</div>')
 
 
+def firmenlogo(groesse=400):
+    """Quadratisches Firmenlogo: gelbe Fläche, schwarzer Doppelpfeil mittig (optisch leicht nach rechts, weil die Spitzen rechts liegen)."""
+    p = px_fn(groesse)
+    b = .56 * groesse
+    return (f'<div class="lb" style="aspect-ratio:1/1;--bg:{GELB}">'
+            f'{pfeil(p, b, groesse / 2 + .015 * groesse, groesse / 2, SCHWARZ)}</div>')
+
+
+def firmenlogo_svg():
+    vx, vy, vw, vh = 2.83, 31.08, 226.78, 170.29
+    b = .56 * 400
+    h = b * vh / vw
+    x, y = 200 + 6 - b / 2, 200 - h / 2
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">'
+            f'<rect width="400" height="400" fill="{GELB}"/>'
+            f'<svg x="{x:.2f}" y="{y:.2f}" width="{b:.2f}" height="{h:.2f}" viewBox="{vx} {vy} {vw} {vh}" color="{SCHWARZ}">'
+            f'{FORM["forward"].replace("currentColor", SCHWARZ)}</svg></svg>')
+
+
 def jobs():
     """LinkedIn verdichtet die Bilder stark – deshalb in doppelter Auflösung (3168 × 792 bzw. 2256 × 382)."""
     j = []
     for var in VARIANTEN:
         j.append({"html": person_banner(var), "w": 1584, "h": 396, "faktor": 2, "pfad": ORDNER / f"linkedin-person-{var}.png"})
         j.append({"html": firma_banner(var), "w": 1128, "h": 191, "faktor": 2, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
+    j.append({"html": firmenlogo(), "w": 400, "h": 400, "pfad": ORDNER / "linkedin-firmenlogo-400.png"})
+    j.append({"html": firmenlogo(), "w": 400, "h": 400, "faktor": 2, "pfad": ORDNER / "linkedin-firmenlogo-800.png"})
     return j
 
 
@@ -309,6 +335,13 @@ def main_html():
     teile = ['<div class="pm-abschnitt"><h2>Wo Foto und Logo liegen</h2>'
              '<p class="pm-text">LinkedIn legt das Profilfoto bzw. das Firmenlogo links unten über das Banner – dort steht deshalb nichts Wichtiges.</p>'
              + schutzzone() + '</div>']
+    teile.append('<div class="pm-abschnitt"><h2>Firmenlogo</h2>'
+                 '<p class="pm-text">Das quadratische Logo der Unternehmensseite: gelbe Fläche, schwarzer Doppelpfeil. '
+                 'LinkedIn zeigt es mit leicht gerundeten Ecken – der Pfeil hat deshalb rundum Luft.</p>'
+                 f'<div class="lg-logo"><figure style="margin:0">{firmenlogo()}<p class="pm-label">400 × 400 px</p></figure>'
+                 f'<figure style="margin:0"><div class="lg-logo__klein">{firmenlogo()}</div><p class="pm-label">So klein wie im Feed</p></figure></div>'
+                 f'<div class="pm-dl">{download(f"{WEB}/linkedin-firmenlogo-400.png", "PNG 400 × 400")}'
+                 f'{download(f"{WEB}/linkedin-firmenlogo-800.png", "PNG 800 × 800")}{download(f"{WEB}/linkedin-firmenlogo.svg", "SVG")}</div></div>')
     for i, (var, (name, text)) in enumerate(VARIANTEN.items(), 1):
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
                      f'<div class="lg-raster lg-raster--li">'
@@ -326,6 +359,7 @@ def main_html():
 
 
 if __name__ == "__main__":
+    (ORDNER / "linkedin-firmenlogo.svg").write_text(firmenlogo_svg(), encoding="utf-8")
     seite("ga-linkedin.html", "LinkedIn-Banner", main_html())
     if "--ohne-png" not in sys.argv:
         exportieren(CSS + LOGO_CSS, jobs())
