@@ -134,6 +134,22 @@ def pitch():
     seite("methoden-elevator-pitch.html", "Elevator Pitch", html)
 
 
+UEBERSICHT_CSS = """.mt { padding: 5rem 0 6rem; }
+.mt-kicker { display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.2rem; font: 700 .78rem/1 'Poppins', sans-serif; letter-spacing: .15em; text-transform: uppercase; color: #1a1817; }
+.mt-kicker::before { content: ""; width: 1.5rem; height: 2px; background: currentColor; }
+.mt h1 { margin: 0; font: 700 clamp(2.4rem, 5vw, 3.8rem)/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; color: #1a1817; }
+.mt .hl { background: #fff400; padding: 0 .12em .07em; border-radius: .14em; white-space: nowrap; }
+.mt-lead { margin: 1.4rem 0 0; max-width: 40rem; font: 300 1.15rem/1.65 'Poppins', sans-serif; color: #3d3a37; }
+.mt-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.2rem; }
+.mt-karte { display: flex; flex-direction: column; gap: .6rem; padding: 1.8rem 1.6rem; border-radius: 18px; background: #f3f1ee; color: #1a1817; text-decoration: none; transition: transform .15s ease; }
+.mt-karte:hover { transform: translateY(-2px); }
+.mt-tag { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: #1a1817; color: #fff400; font: 700 .85rem/1 'Poppins', sans-serif; letter-spacing: .06em; }
+.mt-karte b { margin-top: .6rem; font: 700 1.4rem/1.25 'Lora', Georgia, serif; }
+.mt-karte small { font: 400 .95rem/1.55 'Poppins', sans-serif; color: #3d3a37; }
+@media (max-width: 900px) { .mt-raster { grid-template-columns: 1fr; } }
+"""
+
+
 # ---------- Übersicht ----------
 def uebersicht():
     karten = [("/projekte/methoden-storyboard.html", "SB", "Storyboard Landing Page",
@@ -148,26 +164,35 @@ def uebersicht():
   <p class="mt-lead">Seiten, die wir nutzen, wenn wir in Projekten mit Menschen zusammenarbeiten – zum Erklären, gemeinsamen Erarbeiten und Festhalten.</p>
   <div class="mt-raster">{k}</div>
 </div></section>
-<style>
-.mt {{ padding: 5rem 0 6rem; }}
-.mt-kicker {{ display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.2rem; font: 700 .78rem/1 'Poppins', sans-serif; letter-spacing: .15em; text-transform: uppercase; color: #1a1817; }}
-.mt-kicker::before {{ content: ""; width: 1.5rem; height: 2px; background: currentColor; }}
-.mt h1 {{ margin: 0; font: 700 clamp(2.4rem, 5vw, 3.8rem)/1.3 'Lora', Georgia, serif; letter-spacing: -.02em; color: #1a1817; }}
-.mt .hl {{ background: #fff400; padding: 0 .12em .07em; border-radius: .14em; white-space: nowrap; }}
-.mt-lead {{ margin: 1.4rem 0 0; max-width: 40rem; font: 300 1.15rem/1.65 'Poppins', sans-serif; color: #3d3a37; }}
-.mt-raster {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.2rem; }}
-.mt-karte {{ display: flex; flex-direction: column; gap: .6rem; padding: 1.8rem 1.6rem; border-radius: 18px; background: #f3f1ee; color: #1a1817; text-decoration: none; transition: transform .15s ease; }}
-.mt-karte:hover {{ transform: translateY(-2px); }}
-.mt-tag {{ display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: #1a1817; color: #fff400; font: 700 .85rem/1 'Poppins', sans-serif; letter-spacing: .06em; }}
-.mt-karte b {{ margin-top: .6rem; font: 700 1.4rem/1.25 'Lora', Georgia, serif; }}
-.mt-karte small {{ font: 400 .95rem/1.55 'Poppins', sans-serif; color: #3d3a37; }}
-@media (max-width: 900px) {{ .mt-raster {{ grid-template-columns: 1fr; }} }}
-</style>
+<style>{UEBERSICHT_CSS}</style>
 </main>'''
     seite("methoden.html", "Methoden", html)
 
 
+def business_story():
+    """Platzhalter (Daniel, 12.10.): Business Story von empiria – Storyboard, Elevator Pitch usw. folgen."""
+    html = f'''<main>
+<section class="mt"><div class="container">
+  <p class="mt-kicker">Marketing</p>
+  <h1>Business <span class="hl">Story.</span></h1>
+  <p class="mt-lead">Aus unseren Antworten über die Fragen der Leser zur Landingpage – und daraus der Elevator Pitch. Beide Seiten zeigen bisher das Beispiel Müller &amp; Ströbel; die Business Story von empiria folgt.</p>
+  <div class="mt-raster">
+    <a class="mt-karte" href="/projekte/methoden-storyboard.html"><span class="mt-tag">SB</span><b>Storyboard Landing Page</b><small>Antworten, Fragen des Lesers, Abschnitte, Skizze, Final.</small></a>
+    <a class="mt-karte" href="/projekte/methoden-elevator-pitch.html"><span class="mt-tag">EP</span><b>Elevator Pitch</b><small>Unsere Story in 30/10 Sekunden.</small></a>
+    <div class="mt-karte mt-karte--offen"><span class="mt-tag">&middot;</span><b>Business Story empiria</b><small>Folgt.</small></div>
+  </div>
+</div></section>
+<style>{UEBERSICHT_CSS}
+.mt-karte--offen {{ background: transparent; outline: 1.5px dashed #b9b3ab; outline-offset: -1.5px; color: #6b6762; }}
+.mt-karte--offen:hover {{ transform: none; }}
+.mt-karte--offen .mt-tag {{ background: #e6e2dc; color: #6b6762; }}
+</style>
+</main>'''
+    seite("business-story.html", "Business Story", html)
+
+
 if __name__ == "__main__":
+    business_story()
     storyboard()
     pitch()
     uebersicht()
