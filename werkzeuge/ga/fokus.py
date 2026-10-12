@@ -124,7 +124,7 @@ def deckblatt(t):
         f'<img src="/assets/empiria-logo.svg" alt="empiria" style="left:{p(80)};top:{p(72)};height:{p(34)}">'
         f'<p style="right:{p(80)};top:{p(80)};font-size:{p(17)};letter-spacing:.06em;opacity:.7">LinkedIn · Im Fokus</p>'
         f'<div style="left:{p(80)};top:50%;transform:translateY(-50%)">{kicker(t["bereich"])}'
-        f'<h1 style="margin-top:{p(26)};font-size:{p(98)};line-height:1.22">{titel}</h1></div>'
+        f'<h1 style="margin-top:{p(26)};font-size:{p(98)};line-height:1.3">{titel}</h1></div>'
         f'<div style="right:{p(80)};top:50%;transform:translateY(-12%)">{zeichen(t["zeichen"], 230, S)}</div>'
         f'<p style="left:{p(80)};bottom:{p(72)};font-size:{p(20)};font-weight:600">{t["fuer"]} · {t["url"]}</p>'
         f'<p style="right:{p(80)};bottom:{p(72)};font-size:{p(17)};letter-spacing:.06em;opacity:.7">1 / 6</p>')
@@ -191,7 +191,7 @@ def gespraech(t):
                  f'<p style="margin-top:{p(8)};font-size:{p(20)};line-height:1.45;color:#d8d3cc">{f}</p></div>' for w, f in t["so"])
     return rahmen(
         f'<div style="left:{p(80)};right:{p(80)};top:{p(130)}">{kicker("Wie geht es weiter?", Y)}'
-        f'<h2 style="margin-top:{p(30)};font-size:{p(84)};line-height:1.24;color:#fff">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>'
+        f'<h2 style="margin-top:{p(30)};font-size:{p(84)};line-height:1.3;color:#fff">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>'
         f'<p style="margin-top:{p(26)};font-size:{p(27)};font-weight:300;line-height:1.55;color:#d8d3cc;max-width:{p(820)}">'
         f'Erzähl mir, was dich gerade bewegt. Im ersten Gespräch klären wir, ob und wie ich dir weiterhelfen kann.</p>'
         f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:{p(28)};margin-top:{p(46)}">{so}</div></div>'
@@ -240,39 +240,90 @@ def pdf(name, t):
 
 # ---------- Variante B: das Homepage-PDF (A4 hoch) mit eigenem LinkedIn-Deckblatt ----------
 PDF2 = Path(__file__).resolve().parent.parent / "pdf2"
-A4 = {"strategie": ("strategie", "Strategie in den<br>Alltag <span class=\"hl\">überführen.</span>",
-                    [("Für wen", "Abteilungs- &amp; Bereichsleiter"), ("Fokus", "Rolle, Richtung, Handwerkszeug"),
-                     ("Begleitung", "Direkt mit Daniel"), ("Dein Einsatz", "1–2 Stunden pro Woche")])}
+# Reihenfolge = Reihenfolge auf der Seite: Modul in werkzeuge/pdf2, Adresse der Leistungsseite, Art des Bildes
+A4 = {
+    "strategie": ("strategie", "empiria.de/leistungen/strategie", "zeichen"),
+    "komplexe-themen": ("komplexe_themen", "empiria.de/leistungen/komplexe-themen", "zeichen"),
+    "innovation": ("innovation", "empiria.de/leistungen/innovation", "zeichen"),
+    "workshops": ("workshops", "empiria.de/workshops", "reihe"),
+    "marketing": ("marketing", "empiria.de/marketing", "reihe"),
+    "training-sparring": ("training_sparring", "empiria.de/training-sparring", "reihe"),
+}
 
 
-def a4_deckblatt(t, h1, fakten):
-    """A4 hoch. Die Fokus-Vorschau zeigt etwa die mittleren 144 mm der Höhe (76–221 mm) → Kernaussage bei 95–200 mm."""
+# Erläuterung für LinkedIn („Im Fokus“): Titel + zwei Sätze, einfache Worte, Mehrwert aus Sicht des Lesers
+LINKEDIN = {
+    "strategie": ("Strategie in den Alltag überführen",
+                  "Die Strategie steht – aber was heißt sie für deinen Bereich? Wir übersetzen sie mit dir in Rolle, Richtung und Alltag, "
+                  "damit dein Team weiß, wohin es geht."),
+    "komplexe-themen": ("Komplexe Themen strukturieren & kommunizieren",
+                        "Vorstand, Aufsichtsrat oder Kunde: Dein Thema muss ankommen. Wir machen es klar und überzeugend – "
+                        "damit du die Entscheidung bekommst, die du brauchst."),
+    "innovation": ("Innovation & Geschäftsmodell neu denken",
+                   "Neue Idee, Kooperation oder Beteiligung – was davon trägt in zehn Jahren noch? Wir prüfen es mit dir ehrlich und strukturiert, "
+                   "damit du mit gutem Gefühl entscheidest."),
+    "workshops": ("Workshops, die wirken",
+                  "KI ausprobieren, eine Landingpage im Sprint oder deinen nächsten Workshop moderieren lassen: Formate, die du direkt buchen kannst – "
+                  "mit Ergebnis statt Folienbergen."),
+    "marketing": ("Marketing für Versicherer, anders gedacht",
+                  "Wir verstehen Strategie und das Geschäftsmodell Versicherung – und damit dein Gegenüber. So kommt deine Botschaft bei den "
+                  "richtigen Menschen an, von der Sichtbarkeit bis zur Kampagne."),
+    "training-sparring": ("Training & Sparring",
+                          "Für dein Team ein Training, das im Alltag hängen bleibt. Für dich ein vertrauliches Sparring auf Augenhöhe – "
+                          "damit du klarer führst und leichter entscheidest."),
+}
+
+
+def homepage_pdf(modul):
+    """Baut das Homepage-PDF und fängt die Angaben der Titelseite ab (Kicker, Überschrift, Bild, Eckdaten)."""
+    import importlib
     sys.path.insert(0, str(PDF2))
-    from _strategie_teile import zeichen as z_mm  # noqa: E402
+    import lib
+    gefangen = {}
+    original = lib.titelseite
+
+    def fangen(kick, h1, sub, bild, fakten):
+        gefangen.update(kick=kick, h1=h1, sub=sub, bild=bild, fakten=fakten)
+        return original(kick, h1, sub, bild, fakten)
+    lib.titelseite = fangen
+    try:
+        m = importlib.import_module(modul)
+        m = importlib.reload(m)
+        m.titelseite = fangen
+        html = m.bauen()
+    finally:
+        lib.titelseite = original
+    return html, gefangen
+
+
+def a4_deckblatt(d, url, art):
+    """A4 hoch. Die Fokus-Vorschau zeigt etwa die mittleren 144 mm der Höhe (76–221 mm) → Überschrift und Bild bei ca. 95–205 mm.
+    Kein Einleitungstext – nur Überschrift und Zeichen bzw. Symbolreihe; Eckdaten und Adresse am Rand."""
     f = "".join(f'<div style="padding-top:3mm;border-top:.5mm solid #1a1817"><span style="display:block;font:700 6.5pt/1 Poppins,sans-serif;'
                 f'letter-spacing:.14em;text-transform:uppercase;color:#6b6762">{l}</span><b style="display:block;margin-top:2mm;'
-                f'font:600 9pt/1.35 Poppins,sans-serif">{v}</b></div>' for l, v in fakten)
+                f'font:600 9pt/1.35 Poppins,sans-serif">{v}</b></div>' for l, v in d["fakten"])
+    bild = (f'<div style="margin-top:9mm;display:flex;justify-content:flex-end"><div class="a4-z" style="width:52mm">{d["bild"]}</div></div>' if art == "zeichen"
+            else f'<div class="a4-reihe" style="margin-top:10mm;height:40mm;display:flex;justify-content:flex-start">{d["bild"]}</div>')
     return (f'<section class="seite" style="background:#fff">'
+            f'<style>.a4-reihe svg {{ height: 100%; width: auto; max-width: 100%; }} .a4-zeichen .a4-z svg {{ width: 100% !important; height: auto !important; display: block; }}</style>'
             f'<img src="assets/empiria-logo.svg" alt="empiria" style="position:absolute;left:18mm;top:16mm;height:6mm">'
             f'<p style="position:absolute;right:18mm;top:17.5mm;margin:0;font:400 7.5pt/1 Poppins,sans-serif;letter-spacing:.06em;color:#6b6762">LinkedIn · Im Fokus</p>'
             f'<div style="position:absolute;left:18mm;right:18mm;top:154mm;transform:translateY(-50%)">'
             f'<p style="display:flex;align-items:center;gap:3.5mm;margin:0;font:700 8pt/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase">'
-            f'<i style="display:block;width:9mm;height:.8mm;background:#1a1817"></i>{t["bereich"]}</p>'
-            f'<h1 style="margin:7mm 0 0;font:700 46pt/1.32 Lora,Georgia,serif;letter-spacing:-.025em;color:#1a1817">{h1}</h1>'
-            f'<div style="margin-top:9mm;display:flex;justify-content:flex-end">{z_mm(t["zeichen"], 52)}</div></div>'
-            f'<div style="position:absolute;left:18mm;right:18mm;bottom:22mm;display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">{f}</div>'
-            f'<p style="position:absolute;left:18mm;bottom:12mm;margin:0;font:600 7.5pt/1 Poppins,sans-serif">{t["url"]}</p>'
+            f'<i style="display:block;width:9mm;height:.8mm;background:#1a1817"></i>{d["kick"]}</p>'
+            f'<h1 style="margin:7mm 0 0;font:700 44pt/1.32 Lora,Georgia,serif;letter-spacing:-.025em;color:#1a1817">{d["h1"]}</h1>'
+            f'<div class="a4-zeichen">{bild}</div></div>'
+            f'<div style="position:absolute;left:18mm;right:18mm;bottom:22mm;display:grid;grid-template-columns:repeat({len(d["fakten"])},1fr);gap:5mm">{f}</div>'
+            f'<p style="position:absolute;left:18mm;bottom:12mm;margin:0;font:600 7.5pt/1 Poppins,sans-serif">{url}</p>'
             f'</section>')
 
 
-def pdf_a4(name, t):
-    import importlib
-    modul, h1, fakten = A4[name]
-    sys.path.insert(0, str(PDF2))
-    html = importlib.import_module(modul).bauen()
+def pdf_a4(name):
+    modul, url, art = A4[name]
+    html, d = homepage_pdf(modul)
     a = html.index('<section class="seite')
     b = html.index('</section>', a) + len('</section>')
-    html = html[:a] + a4_deckblatt(t, h1, fakten) + html[b:]
+    html = html[:a] + a4_deckblatt(d, url, art) + html[b:]
     build = PDF2 / "_build"
     build.mkdir(exist_ok=True)
     if not (build / "assets").exists():
@@ -283,8 +334,11 @@ def pdf_a4(name, t):
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={ziel}",
                     "--virtual-time-budget=8000", "file://" + str(src)], capture_output=True, timeout=180)
     ordner = ORDNER / f"{name}-a4"
+    for alt in ordner.glob("seite-*.png"):
+        alt.unlink()
     subprocess.run(["node", str(PDF2 / "seiten.mjs"), str(src), str(ordner)], check=True)
-    return len(list(ordner.glob("seite-*.png")))
+    titel = re.sub(r"<[^>]+>", " ", d["h1"]).replace("&amp;", "&")
+    return dict(seiten=len(list(ordner.glob("seite-*.png"))), titel=re.sub(r"\s+", " ", titel).strip(), h1=d["h1"], kick=d["kick"], sub=d["sub"])
 
 
 # ---------- Vorschauseite ----------
@@ -319,6 +373,13 @@ SEITE_EXTRA = """
 .fk-karte__text b { display: block; font-size: 1.05rem; color: #1d1d1d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .fk-karte__text p { margin: .3rem 0 0; font-size: .98rem; line-height: 1.35; color: #1d1d1d; }
 .fk-reihe--a4 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.fk-li { padding: 1.3rem 1.4rem; border-radius: 14px; background: #f3f1ee; }
+.fk-li__k { margin: 0 0 .5rem; font: 700 .72rem/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #6b6762; }
+.fk-li__t { margin: 0; font: 400 1rem/1.55 'Poppins', sans-serif; color: #1a1817; }
+.fk-kopie { margin-top: .9rem; padding: .5rem .9rem; border: 1px solid #1a1817; border-radius: 999px; background: #fff; font: 600 .82rem/1 'Poppins', sans-serif; cursor: pointer; }
+.fk-kopie.ok { background: #fff400; border-color: #fff400; }
+.fk-thema { margin-top: 3.2rem; padding-top: 2.6rem; border-top: 1px solid #e4e0db; }
+.fk-thema h3 { margin-top: 0 !important; }
 .fk-auf--a4 img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 0 0 1px #e4e0db; }
 .fk-a4 { position: absolute; left: 0; top: 50%; width: 100%; transform: translateY(-50%); }
 .pm-abschnitt h3 { margin-top: 3.4rem; }
@@ -331,7 +392,7 @@ def lightbox(a4_seiten):
     import time
     v = int(time.time())
     eintraege = [(n, [f"{WEB}/{n}-{i + 1}.png?v={v}" for i in range(len(SEITEN))]) for n in THEMEN]
-    eintraege += [(f"{n}-a4", [f"{WEB}/{n}-a4/seite-{i + 1}.png?v={v}" for i in range(k)]) for n, k in a4_seiten.items()]
+    eintraege += [(f"{n}-a4", [f"{WEB}/{n}-a4/seite-{i + 1}.png?v={v}" for i in range(info["seiten"])]) for n, info in a4_seiten.items()]
     docs = "{" + ",".join(f'"{n}":[' + ",".join(f'"{u}"' for u in us) + "]" for n, us in eintraege) + "}"
     return ('<div class="fk-lb" id="fk-lb" role="dialog" aria-modal="true" aria-label="Seitenvorschau">'
             '<button class="fk-lb__zu" type="button" aria-label="Schließen">×</button>'
@@ -347,6 +408,9 @@ def lightbox(a4_seiten):
   function auf(d,n){{ doc=d; i=n; zeig(); lb.classList.add('offen'); document.body.style.overflow='hidden'; vor.focus(); }}
   function schliessen(){{ lb.classList.remove('offen'); document.body.style.overflow=''; }}
   function geh(d){{ var n=i+d; if(n>=0&&n<DOCS[doc].length){{ i=n; zeig(); }} }}
+  document.querySelectorAll('.fk-kopie').forEach(function(b){{ b.addEventListener('click',function(){{
+    var t=b.closest('.fk-li').querySelector('.fk-li__t').innerText; navigator.clipboard.writeText(t).then(function(){{ b.textContent='Kopiert'; b.classList.add('ok');
+    setTimeout(function(){{ b.textContent='Text kopieren'; b.classList.remove('ok'); }},1600); }}); }}); }});
   document.querySelectorAll('[data-doc]').forEach(function(b){{ b.addEventListener('click',function(){{ auf(b.dataset.doc,+b.dataset.seite); }}); }});
   zu.onclick=schliessen; zur.onclick=function(){{ geh(-1); }}; vor.onclick=function(){{ geh(1); }};
   bild.onclick=function(){{ geh(1); }};
@@ -358,57 +422,63 @@ def lightbox(a4_seiten):
 }})();</script>""")
 
 
-def main_html(a4_seiten):
+def karte_html(bild, titel, text):
+    return (f'<div class="fk-karte"><div class="fk-karte__bild"><small>Medien</small>{bild}</div>'
+            f'<div class="fk-karte__text"><b>{titel}</b><p>{text}</p></div></div>')
+
+
+def main_html(a4):
     import time
     v = int(time.time())
-    teile = []
+    # Variante B · alle Themen
+    b_teile = []
+    for name, info in a4.items():
+        k = info["seiten"]
+        bild = f'<img class="fk-a4" src="{WEB}/{name}-a4/seite-1.png?v={v}" alt="">'
+        seiten = "".join(f'<figure style="margin:0"><button class="fk-auf fk-auf--a4" type="button" data-doc="{name}-a4" data-seite="{i}" '
+                         f'aria-label="Seite {i + 1} groß ansehen"><img src="{WEB}/{name}-a4/seite-{i + 1}.png?v={v}" alt="" loading="lazy"></button>'
+                         f'<p class="pm-label">Seite {i + 1}</p></figure>' for i in range(k))
+        li_titel, li_text = LINKEDIN[name]
+        b_teile.append(
+            f'<div class="pm-abschnitt fk-thema"><h3>{info["kick"]} · {info["h1"]}</h3>'
+            f'<div class="fk-oben"><div>{karte_html(bild, li_titel, li_text)}<p class="pm-label">So erscheint das Dokument in „Im Fokus“</p></div>'
+            f'<div><div class="fk-li"><p class="fk-li__k">Text für LinkedIn</p><p class="fk-li__t"><b>{li_titel}</b><br>{li_text}</p>'
+            f'<button class="fk-kopie" type="button" data-text="{li_text}">Text kopieren</button></div>'
+            f'<button class="fk-blaettern" type="button" data-doc="{name}-a4" data-seite="0">Durchblättern →</button>'
+            f'<div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}-a4.pdf", f"PDF · {k} Seiten · A4 hoch")}</div></div></div>'
+            f'<div class="fk-reihe fk-reihe--a4">{seiten}</div></div>')
+    # Variante A · quadratisch (nur Strategie, zum Vergleich)
+    a_teile = []
     for name, t in THEMEN.items():
         titel_rein = re.sub(r"<[^>]+>", "", " ".join(t["titel"]))
-
-        def karte(bild):
-            return (f'<div class="fk-karte"><div class="fk-karte__bild"><small>Medien</small>{bild}</div>'
-                    f'<div class="fk-karte__text"><b>{titel_rein}</b><p>{t["karte"]}</p></div></div>')
-        # Variante A · quadratisch
         seiten = "".join(f'<figure style="margin:0"><button class="fk-auf" type="button" data-doc="{name}" data-seite="{i}" '
                          f'aria-label="Seite {i + 1} groß ansehen">{fn(t)}</button><p class="pm-label">Seite {i + 1}</p></figure>'
                          for i, fn in enumerate(SEITEN))
-        var_a = (f'<h3>Variante A · Quadratisch, eigenes Dokument</h3>'
-                 f'<div class="fk-oben"><div>{karte(deckblatt(t))}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
-                 f'<div><p class="pm-text">Sechs Seiten 1080 × 1080, je Seite eine Frage des Lesers und die Antwort. Gut lesbar auf dem Handy – '
-                 f'der Inhalt ist aber eine Kurzfassung und muss neben der Homepage gepflegt werden.</p>'
-                 f'<button class="fk-blaettern" type="button" data-doc="{name}" data-seite="0">Durchblättern →</button>'
-                 f'<div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}.pdf", "PDF · 6 Seiten · 1080 × 1080")}</div></div></div>'
-                 f'<div class="fk-reihe">{seiten}</div>')
-        # Variante B · A4 hoch = Homepage-PDF mit LinkedIn-Deckblatt
-        k = a4_seiten.get(name, 0)
-        bild_b = f'<img class="fk-a4" src="{WEB}/{name}-a4/seite-1.png?v={v}" alt="">'
-        seiten_b = "".join(f'<figure style="margin:0"><button class="fk-auf fk-auf--a4" type="button" data-doc="{name}-a4" data-seite="{i}" '
-                           f'aria-label="Seite {i + 1} groß ansehen"><img src="{WEB}/{name}-a4/seite-{i + 1}.png?v={v}" alt=""></button>'
-                           f'<p class="pm-label">Seite {i + 1}</p></figure>' for i in range(k))
-        var_b = (f'<h3>Variante B · A4 hoch, das PDF der Homepage</h3>'
-                 f'<div class="fk-oben"><div>{karte(bild_b)}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
-                 f'<div><p class="pm-text">Das Download-PDF der Strategie-Seite, unverändert ab Seite 2 – nur das Deckblatt ist neu: '
-                 f'Die Vorschau zeigt beim Hochformat nur die mittlere Hälfte der Höhe, dort steht die Kernaussage. '
-                 f'Voller Inhalt und nur einmal zu pflegen; auf dem Handy ist der Fließtext klein.</p>'
-                 f'<button class="fk-blaettern" type="button" data-doc="{name}-a4" data-seite="0">Durchblättern →</button>'
-                 f'<div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}-a4.pdf", f"PDF · {k} Seiten · A4 hoch")}</div></div></div>'
-                 f'<div class="fk-reihe fk-reihe--a4">{seiten_b}</div>')
-        teile.append(f'<div class="pm-abschnitt"><h2>{t["bereich"]} · {" ".join(t["titel"])}</h2>{var_a}{var_b}</div>')
+        a_teile.append(
+            f'<div class="fk-oben"><div>{karte_html(deckblatt(t), titel_rein, t["karte"])}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
+            f'<div><p class="pm-text">Sechs Seiten 1080 × 1080, je Seite eine Frage des Lesers und die Antwort. Gut lesbar auf dem Handy – '
+            f'der Inhalt ist aber eine Kurzfassung und müsste neben der Homepage gepflegt werden.</p>'
+            f'<button class="fk-blaettern" type="button" data-doc="{name}" data-seite="0">Durchblättern →</button>'
+            f'<div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}.pdf", "PDF · 6 Seiten · 1080 × 1080")}</div></div></div>'
+            f'<div class="fk-reihe">{seiten}</div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn <span class="hl">im Fokus</span>',
-                   'Dokumente für den Bereich „Im Fokus“ im LinkedIn-Profil. Am Beispiel „Strategie in den Alltag überführen“ zwei Wege im Vergleich: '
-                   'A ein eigenes quadratisches Dokument, B das PDF der Homepage mit einem Deckblatt für die LinkedIn-Vorschau.')
-            + "".join(teile)
-            + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n{lightbox(a4_seiten)}</main>')
+                   'Die PDFs der Homepage für den Bereich „Im Fokus“ im LinkedIn-Profil – mit einem eigenen Deckblatt: Die Vorschau zeigt nur einen '
+                   'waagrechten Streifen aus der Mitte, dort stehen Überschrift und Zeichen. Ab Seite 2 sind es die unveränderten Homepage-PDFs.')
+            + '<div class="pm-abschnitt"><h2>Variante B · Die PDFs der Homepage, A4 hoch</h2>'
+              '<p class="pm-text">Die drei Strategiethemen im Detail, Workshops, Marketing 2.0 und Training &amp; Sparring als Überblick. '
+              'Zu jedem Dokument der Text für die Beschreibung bei LinkedIn – zum Kopieren.</p></div>'
+            + "".join(b_teile)
+            + '<div class="pm-abschnitt"><h2>Variante A · Eigenes quadratisches Dokument (zum Vergleich)</h2></div>'
+            + "".join(a_teile)
+            + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n{lightbox(a4)}</main>')
 
 
 if __name__ == "__main__":
     ORDNER.mkdir(parents=True, exist_ok=True)
-    a4 = {}
     for name, t in THEMEN.items():
         pdf(name, t)
         exportieren(CSS, [{"html": fn(t), "w": G, "h": G, "pfad": ORDNER / f"{name}-{i + 1}.png"} for i, fn in enumerate(SEITEN)])
-        if name in A4:
-            a4[name] = pdf_a4(name, t)
+    a4 = {name: pdf_a4(name) for name in A4}
     seite("ga-linkedin-fokus.html", "LinkedIn im Fokus", main_html(a4))
     print("fertig")

@@ -37,7 +37,7 @@ CSS = """
 .team3 .kontaktdaten { margin-top: 0; }
 """
 
-SRC = open(os.path.join(ROOT, "site", "projekte", "empiria-2", "paid-ads.html"), encoding="utf-8").read()
+SRC = open(os.path.join(ROOT, "werkzeuge", "_e2_build", "paid-ads.html"), encoding="utf-8").read()  # Quelle seit dem Umzug der Seiten
 
 
 def _logo(name, farbe="#1a1817"):
