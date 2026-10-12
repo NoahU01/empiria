@@ -2,7 +2,7 @@
 """Methoden – Seiten für die Zusammenarbeit mit Menschen in Projekten (Entwicklung › Projekte › Methoden).
 
 Übernommen aus muellerundstroebel/entwicklung (Kopien der Quellen hier im Ordner, quelle-*):
-  · Storyboard Landing Page  (storyboard.html)    – mit dem Beispiel Müller & Ströbel, dazu Schritt 5 „Landingpage final“
+  · Storyboard Landing Page  (storyboard.html)    – mit dem Beispiel Müller & Ströbel (Schritt 4 Entwürfe, Schritt 5 Skizze)
   · Elevator Pitch          (elevator-pitch.html) – mit dem Beispiel Müller & Ströbel
 Das Stylesheet von M&S (business-story-2.css + storyboard.css) wird auf `.sbm` begrenzt und über die
 Variablen auf empiria umgestellt: Schwarz statt Navy, Weiß/Grau statt Sand, Gelb nur auf Schwarz, Lora 700/Poppins.
@@ -99,83 +99,17 @@ def main_aus(datei):
     return s[s.index("<main>") + 6:s.index("</main>")]
 
 
-def div_ende(s, start):
-    """Index hinter dem </div>, das das <div ab `start` schließt."""
-    tiefe = 0
-    for m in re.finditer(r"<div\b|</div>", s[start:]):
-        tiefe += 1 if m.group(0) == "<div" else -1
-        if tiefe == 0:
-            return start + m.end()
-    raise ValueError("div nicht geschlossen")
-
-
-# ---------- Storyboard ----------
-def schritt5(sk_html):
-    """Spalte 5 je Abschnitt: dieselben Bausteine wie die Skizze – hier stehen die freigegebenen Inhalte."""
-    titel = re.search(r'<div class="sk__kopf">(.*?)</div>', sk_html).group(1)
-    teile = re.findall(r'<div class="sk-teil sk-teil--(\w+)"><em>(.*?)</em>', sk_html)
-    gesehen, felder = set(), ""
-    for art, name in teile:
-        if art == "hinweis" or name in gesehen:
-            continue
-        gesehen.add(name)
-        felder += (f'<div class="sf-feld"><em>{name}</em><p>Noch offen</p>'
-                   f'<span>Aus Fassung A, B oder C übernehmen und angleichen</span></div>')
-    return (f'<div class="sf"><div class="sf__kopf">{titel.replace("Abschnitt", "Final · Abschnitt")}</div>'
-            f'<div class="sf__felder">{felder}</div><p class="sf__status"><i></i>Freigabe ausstehend</p></div>')
-
-
 def storyboard_main():
     m = main_aus("quelle-storyboard-mus.html")
     m = m.replace('<p class="kicker">Storyboard</p>', BEISPIEL + '<p class="kicker">Methode · Storyboard</p>', 1)
     m = m.replace("<h1>So entsteht die Landingpage.</h1>", '<h1>So entsteht die <span class="hl">Landingpage.</span></h1>', 1)
-    alt = '<span><i>4</i>Landingpage-Skizze<small>Headline · Text · Elemente</small></span>'
-    assert alt in m
-    m = m.replace(alt, '<span><i>4</i>Landingpage-Skizze<small>Fassungen A · B · C</small></span>'
-                       '<span><i>5</i>Landingpage final<small>freigegebene Inhalte</small></span>', 1)
-    m = m.replace("bis zur Skizze der Landingpage →", "über die Skizze (Schritt 4) bis zu den finalen Inhalten (Schritt 5) →")
-    # Spalte 5: hinter jede Skizze eine finale Karte; gestapelte Skizzen (Abschnitt 4.1/4.2) bekommen einen eigenen Stapel
-    pos = 0
-    while True:
-        i = m.find('<div class="sk', pos)
-        if i < 0:
-            break
-        e = div_ende(m, i)
-        block = m[i:e]
-        if block.startswith('<div class="sk-stapel'):
-            sks, j = [], 0
-            while True:
-                a = block.find('<div class="sk sk--', j)
-                if a < 0:
-                    break
-                b = div_ende(block, a)
-                sks.append(block[a:b])
-                j = b
-            neu = '<div class="sk-stapel sf-stapel">' + "".join(schritt5(x) for x in sks) + '</div>'
-        elif block.startswith('<div class="sk sk--'):
-            neu = schritt5(block)
-        else:
-            pos = i + 5
-            continue
-        m = m[:e] + neu + m[e:]
-        pos = e + len(neu)
     return m
 
 
 STORYBOARD_CSS = """
-.sbm .sb-flaeche .sb-t-kopf, .sbm .sb-flaeche .sb-t-gruppe { grid-template-columns: 26rem 24rem 15rem 126rem 26rem; }
-.sbm .sf-stapel .sf::before { top: 50%; }
-.sbm .sf { position: relative; display: flex; flex-direction: column; border-radius: 18px; background: #fff; border: 2px solid #1a1817; }
-.sbm .sf::before { content: ""; position: absolute; left: -2.4rem; top: 50%; width: 2.3rem; border-top: 2px solid var(--taupe); }
-.sbm .sf__kopf { padding: .9rem 1.2rem; border-radius: 15px 15px 0 0; background: #1a1817; color: #fff400; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.sbm .sf__felder { display: grid; gap: .6rem; padding: 1.1rem 1.2rem; }
-.sbm .sf-feld { padding: .75rem .9rem; border-radius: 12px; outline: 1.5px dashed var(--taupe); outline-offset: -1.5px; }
-.sbm .sf-feld em { display: block; font-style: normal; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
-.sbm .sf-feld p { margin-top: .25rem; font-family: var(--head); font-weight: 700; font-size: 1.05rem; color: var(--ink-2); }
-.sbm .sf-feld span { display: block; margin-top: .2rem; font-size: .75rem; line-height: 1.4; color: var(--taupe-d); }
-.sbm .sf__status { display: flex; align-items: center; gap: .55rem; margin: auto 1.2rem 1.1rem; font-size: .82rem; font-weight: 600; }
-.sbm .sf__status i { width: .9rem; height: .9rem; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink); }
-@media (max-width: 991px) { .sbm .sf::before { display: none; } }
+.sbm .sk--skizze { border-color: #1a1817; }
+.sbm .sk--skizze.sk--navy { border-color: #fff400; }
+.sbm .sk--leer { border-color: var(--taupe); }
 """
 
 
@@ -190,9 +124,9 @@ def pitch():
     m = main_aus("quelle-elevator-pitch-mus.html")
     assert '<p class="kicker">Elevator Pitch</p>' in m
     m = m.replace('<p class="kicker">Elevator Pitch</p>', BEISPIEL + '<p class="kicker">Methode · Elevator Pitch</p>', 1)
-    m = m.replace("<h1>Von der Landingpage zur halben Minute.</h1>",
-                  '<h1>Von der Landingpage zur <span class="hl">halben Minute.</span></h1>', 1)
-    i = m.find('<div class="lp-dl"')   # Download-Block (PDF im M&S-Design) entfällt
+    m = m.replace("<h1>Unsere Story<br>in 30/10 Sekunden.</h1>", '<h1>Unsere Story<br>in <span class="hl">30/10 Sekunden.</span></h1>', 1)
+    m = re.sub(r'<a class="ep-dl".*?</a>', "", m, flags=re.S)        # Download (PDF im M&S-Design) entfällt
+    i = m.find('<div class="lp-dl"')
     if i >= 0:
         m = m[:m.rfind("<section", 0, i)] + m[m.find("</section>", i) + 10:]
     m = m.replace('href="/entwicklung/storyboard.html', 'href="/projekte/methoden-storyboard.html')
@@ -203,7 +137,7 @@ def pitch():
 # ---------- Übersicht ----------
 def uebersicht():
     karten = [("/projekte/methoden-storyboard.html", "SB", "Storyboard Landing Page",
-               "Von den Antworten zur Landingpage: 12 Punkte, 8 Fragen des Lesers, 4 Abschnitte, Skizze in Fassungen, finale Inhalte."),
+               "Von den Antworten zur Landingpage: 12 Punkte, 8 Fragen des Lesers, 4 Abschnitte, Entwürfe A und B, daraus die Skizze."),
               ("/projekte/methoden-elevator-pitch.html", "EP", "Elevator Pitch",
                "Von der Landingpage zur halben Minute: sechs Bausteine, sechs Sätze – und eine Kurzfassung für die Vorstellungsrunde.")]
     k = "".join(f'<a class="mt-karte" href="{h}"><span class="mt-tag">{t}</span><b>{n}</b><small>{x}</small></a>' for h, t, n, x in karten)
