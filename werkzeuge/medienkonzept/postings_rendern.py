@@ -8,7 +8,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 ZIEL = os.path.join(SITE, "assets", "projekte", "medienkonzept", "postings")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BILDER = ["p1", "p2", "p3", "p4", "p5", "d1", "d2", "d3", "d4", "d5", "d6"]
+BILDER = ["p1", "p2", "p3", "p4", "p5", "d1", "d2", "d3", "d4", "d5", "d6", "f1", "f2", "f3", "f4", "f5"]
 
 def main():
     os.makedirs(ZIEL, exist_ok=True)
@@ -33,7 +33,7 @@ def main():
         # Dokument als PDF (LinkedIn-Dokumentbeitrag): Seiten d1–d6
         open(tmp, "w", encoding="utf-8").write(open(os.path.join(HIER, "postings-vorlage.html"), encoding="utf-8").read()
             .replace("<body>", '<body class="druck">')
-            .replace("</style>", ".druck section[id^=p]{display:none!important}</style>"))
+            .replace("</style>", ".druck section[id^=p],.druck section[id^=f]{display:none!important}</style>"))
         pdf = os.path.join(ZIEL, "Ein-Thema-vier-Gegenueber.pdf")
         subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
                         "--virtual-time-budget=6000", f"--print-to-pdf={pdf}",

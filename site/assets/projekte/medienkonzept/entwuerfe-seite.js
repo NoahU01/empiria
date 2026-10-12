@@ -9,16 +9,21 @@
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
-  raster.innerHTML = P.map(function (p, i) {
+  function kachel(p, i) {
     return '<button type="button" class="ig-kachel" data-i="' + i + '" data-feld="' + p.feld + '" aria-label="Posting ' + nr(i) + ' öffnen">' +
       '<img src="' + PFAD + p.bild + '.jpg" alt="" loading="lazy">' +
       (p.seiten ? '<span class="mke-doc" aria-hidden="true">PDF · ' + p.seiten.length + '</span>' : '') +
-      '<span class="ig-kachel__info">' + nr(i) + ' · ' + p.termin + '<small>' + p.feld + ' · ' + p.art + '</small></span></button>';
-  }).join('');
+      '<span class="ig-kachel__info">' + (p.kanal === 'firma' ? 'Firma · ' : nr(i) + ' · ') + p.termin + '<small>' + p.feld + ' · ' + p.art + '</small></span></button>';
+  }
+  var D = [], FI = [];
+  P.forEach(function (p, i) { (p.kanal === 'firma' ? FI : D).push(i); });
+  raster.innerHTML = D.map(function (i) { return kachel(P[i], i); }).join('');
+  var rasterFirma = $('#mke-raster-firma');
+  if (rasterFirma) rasterFirma.innerHTML = FI.map(function (i) { return kachel(P[i], i); }).join('');
 
   var filter = $('#mke-filter');
-  var felder = Object.keys(FE).filter(function (k) { return P.some(function (p) { return p.feld === k; }); });
-  filter.innerHTML = '<button type="button" aria-pressed="true" data-feld="">Alle ' + P.length + '</button>' +
+  var felder = Object.keys(FE).filter(function (k) { return D.some(function (i) { return P[i].feld === k; }); });
+  filter.innerHTML = '<button type="button" aria-pressed="true" data-feld="">Alle ' + D.length + '</button>' +
     felder.map(function (k) { return '<button type="button" aria-pressed="false" data-feld="' + k + '">' + FE[k] + '</button>'; }).join('');
   $$('button', filter).forEach(function (b) {
     b.addEventListener('click', function () {
@@ -28,24 +33,39 @@
     });
   });
 
-  var modal = $('#mke-modal'), jetzt = 0;
-  function sichtbar() { return $$('.ig-kachel', raster).filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; }); }
+  var modal = $('#mke-modal'), jetzt = 0, variante = 'bild';
+  function sichtbar() {
+    var r = P[jetzt].kanal === 'firma' ? rasterFirma : raster;
+    return $$('.ig-kachel', r).filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; });
+  }
+  function bildZeigen() {
+    var p = P[jetzt], b = (variante === 'alt' && p.alt) ? p.alt : p.bild;
+    if (!p.seiten) $('#mke-bild').innerHTML = '<img src="' + PFAD + b + '.jpg" alt="">';
+    $('#mke-laden').href = PFAD + b + '.jpg';
+    $$('#mke-variante button').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === variante ? 'true' : 'false'); });
+  }
   function oeffne(i) {
-    jetzt = i; var p = P[i];
+    jetzt = i; var p = P[i], firma = p.kanal === 'firma';
+    if (!p.alt) variante = 'bild';
+    $('#mke-avatar').src = firma ? '/assets/empiria-logo.svg' : '/assets/ansprechpartner-daniel.webp';
+    $('#mke-avatar').classList.toggle('mke-avatar-logo', firma);
+    $('#mke-name').textContent = firma ? 'empiria GmbH' : 'Daniel Ströbel';
+    $('#mke-variante').hidden = !p.alt;
     $('#mke-bild').innerHTML = p.seiten
       ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
-    $('#mke-format').textContent = 'Posting ' + nr(i) + ' · ' + p.termin + ' · 8:30 Uhr';
+    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : 'Posting ' + nr(i) + ' · ' + p.termin + ' · 8:30 Uhr';
     $('#mke-text').textContent = p.text;
     $('#mke-meta').innerHTML = '<dt>Themenfeld</dt><dd>' + p.feld + ' · ' + p.art + '</dd><dt>Format</dt><dd>' + p.format + '</dd>' +
       '<dt>Was bleibt</dt><dd>' + esc(p.kern) + '</dd><dt>Noch offen</dt><dd>' + esc(p.offen) + '</dd>';
-    $('#mke-laden').href = PFAD + p.bild + '.jpg';
-    $('#mke-laden').setAttribute('download', 'posting-' + nr(i) + '.jpg');
+    $('#mke-laden').setAttribute('download', (firma ? 'firma-' : 'posting-') + nr(i) + '.jpg');
+    bildZeigen();
     var pdf = $('#mke-pdf'); pdf.hidden = !p.pdf; if (p.pdf) { pdf.href = PFAD + p.pdf; pdf.setAttribute('download', p.pdf); }
     var k = $('#mke-kopieren'); k.classList.remove('ist-kopiert'); k.textContent = 'Text kopieren';
     if (!modal.open) modal.showModal();
   }
-  raster.addEventListener('click', function (e) { var k = e.target.closest('.ig-kachel'); if (k) oeffne(+k.dataset.i); });
+  [raster, rasterFirma].forEach(function (r) { if (r) r.addEventListener('click', function (e) { var k = e.target.closest('.ig-kachel'); if (k) oeffne(+k.dataset.i); }); });
+  $$('#mke-variante button').forEach(function (b) { b.addEventListener('click', function () { variante = b.dataset.v; bildZeigen(); }); });
   function blaettere(d) { var l = sichtbar(), pos = l.indexOf(jetzt); oeffne(l[(pos + d + l.length) % l.length]); }
   $('#mke-zurueck').addEventListener('click', function () { blaettere(-1); });
   $('#mke-vor').addEventListener('click', function () { blaettere(1); });

@@ -65,3 +65,62 @@
 .mke-hinweis { color: #6b6762; }
 .ig .ig-kopf img[src*="ansprechpartner-daniel"] { border-color: #1a1817; }
 #mke-modal .ig-aktionen a, #mke-modal .ig-aktionen button { white-space: nowrap; }
+/* Firmenprofil-Block und Bildfassung (12.10.2026) */
+.mke-firma { margin-top: 48px; }
+.mke-logo { width: 86px; height: 86px; flex: 0 0 86px; border-radius: 50%; border: 2px solid #1a1817; display: grid; place-items: center; background: #fff; }
+.mke-logo img { width: 62px; height: auto; border: 0; padding: 0; border-radius: 0; }
+#mke-avatar.mke-avatar-logo { object-fit: contain; background: #fff; padding: 6px; border: 1px solid #e4e0db; }
+#mke-raster-firma .ig-kachel { aspect-ratio: 4 / 5; }
+#mke-raster-firma .ig-kachel > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mke-variante[hidden] { display: none; }
+@media (max-width: 700px) { .mke-logo { width: 64px; height: 64px; flex-basis: 64px; } .mke-logo img { width: 46px; } }
+
+/* Formate (12.10.2026): Regel, Matrix, Beispiele */
+.mkf-kanaele { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
+.mkf-k { background: #262321; border-radius: 20px; padding: 28px 30px; color: #fff; }
+.mkf-k small { display: block; font: 600 .74rem/1.4 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #fff400; }
+.mkf-k b { display: block; margin-top: .4rem; font: 700 1.6rem/1.2 'Lora', Georgia, serif; }
+.mkf-k ul { margin: 1rem 0 0; padding: 0; list-style: none; }
+.mkf-k li { padding: 9px 0; border-top: 1px solid #3a3734; font: 400 .98rem/1.5 'Poppins', sans-serif; color: #e6e2dc; }
+.mkf-satz { margin: 28px 0 0; font: 400 1.05rem/1.6 'Poppins', sans-serif; color: #e6e2dc; max-width: 46rem; }
+.mkf-satz b { color: #fff; }
+.mkf-tabelle { margin-top: 32px; overflow-x: auto; border: 1px solid #e4e0db; border-radius: 18px; background: #fff; }
+.mkf-tabelle table { width: 100%; min-width: 860px; border-collapse: collapse; font: 400 .92rem/1.45 'Poppins', sans-serif; color: #1a1817; }
+.mkf-tabelle th, .mkf-tabelle td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid #ece9e5; }
+.mkf-tabelle tr:last-child th, .mkf-tabelle tr:last-child td { border-bottom: 0; }
+.mkf-tabelle tr:first-child th { font: 600 .72rem/1.3 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #6b6762; background: #f7f5f2; }
+.mkf-tabelle th[scope=row] b { display: block; font: 700 1.02rem/1.3 'Lora', Georgia, serif; }
+.mkf-tabelle th[scope=row] small { display: block; margin-top: 2px; font: 400 .8rem/1.4 'Poppins', sans-serif; color: #6b6762; }
+.mkf-da { font-weight: 600; }
+.mkf-idee { color: #8a857e; }
+.mkf-leer { color: #c9c4bd; }
+.mkf-nr { font: 700 1.1rem/1.2 'Lora', Georgia, serif; }
+.mkf-tabelle code { font: 500 .82rem/1.4 'Poppins', sans-serif; color: #3d3a37; }
+.mkf-kanal { display: inline-block; padding: 5px 10px; border-radius: 999px; font: 600 .72rem/1 'Poppins', sans-serif; white-space: nowrap; }
+.mkf-kanal--daniel { background: #fff400; color: #1a1817; }
+.mkf-kanal--firma { background: #1a1817; color: #fff; }
+.mkf-kanal--beide { background: #ece9e5; color: #1a1817; }
+.mkf-hinweis { margin: 18px 0 0; font: 400 .95rem/1.6 'Poppins', sans-serif; color: #6b6762; max-width: 46rem; }
+.mkf-raster { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.mkf-bsp { margin: 0; }
+.mkf-bsp__bild { aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #e4e0db; }
+.mkf-bsp__bild > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mkf-bsp figcaption { padding: 14px 2px 0; font: 400 .9rem/1.5 'Poppins', sans-serif; color: #3d3a37; }
+.mkf-bsp figcaption b { display: block; margin: 10px 0 4px; font: 700 1.1rem/1.3 'Lora', Georgia, serif; color: #1a1817; }
+.mkf-nurtext { height: 100%; padding: 4px 0 0; font: 400 .9rem/1.55 'Poppins', sans-serif; color: #1a1817; }
+.mkf-nurtext .mkb-kopf { padding: 14px 16px 8px; }
+.mkf-nurtext p { margin: 0 16px .7em; }
+.mkf-nurtext .mkf-mehr { color: #6b6762; font-weight: 600; text-align: right; }
+.mkf-paar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; max-width: 900px; }
+.mkf-paar figure { margin: 0; }
+.mkf-paar img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block; border: 1px solid #e4e0db; }
+.mkf-paar figcaption { padding-top: 14px; }
+.mkf-paar p { margin: 10px 0 0; font: 400 .95rem/1.55 'Poppins', sans-serif; color: #3d3a37; }
+.mkf-knopf { margin: 28px 0 0; }
+@media (max-width: 1000px) { .mkf-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .mkf-kanaele, .mkf-paar { grid-template-columns: minmax(0, 1fr); } .mkf-raster { gap: 14px; } }
+#mke-modal .mke-bild { justify-content: safe center; min-height: 0; overflow: hidden; }
+#mke-modal .mke-bild > img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+/* Großansicht: Bild oben bündig, nie beschnitten */
+#mke-modal .ig-modal__bild.mke-bild { display: block; align-self: start; background: #fff; overflow: visible; }
+#mke-modal .mke-bild > img { width: 100%; height: auto; max-height: none; object-fit: initial; }

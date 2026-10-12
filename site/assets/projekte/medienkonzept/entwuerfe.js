@@ -2,28 +2,33 @@
 window.MK_ENTWUERFE = [
  {
   "id": 25,
+  "kanal": "daniel",
   "feld": "Durchsetzung",
   "art": "Werkzeug",
   "kern": "Vor jeder Vorstandsvorlage drei Fragen: Wen brauche ich? Wen habe ich zu wenig berücksichtigt? An wem richte ich das Thema aus?",
   "text": "Bevor ich mit einem Kunden an einer Vorstandsvorlage arbeite, schauen wir uns keine einzige Folie an.\n\nWir beantworten drei Fragen, und meistens verändert das die Unterlage mehr als jede Überarbeitung.\n\nWen brauche ich, damit das Thema durchgeht? Das sind fast immer mehr Menschen als die, die am Ende im Raum sitzen: der Vorstand, aber auch der Kollege, dessen Bereich betroffen ist, und die Referentin, die die Vorlage vorab liest.\n\nWen habe ich bislang zu wenig berücksichtigt? Hier steckt oft der Grund, warum gute Themen in der Sitzung hängen bleiben. Einer fühlt sich übergangen und stellt die Frage, auf die niemand vorbereitet ist.\n\nAn wem richte ich das Thema eigentlich aus? Wer das klar beantwortet, weiß auch, mit wem er vorher sprechen muss und in welcher Reihenfolge.\n\nDie Folie kommt danach, und sie wird kürzer.\n\nWenn du nächste Woche eine Entscheidung brauchst: Nimm dir heute zehn Minuten, beantworte die drei Fragen auf einem Blatt und plane die zwei Gespräche, die vor der Sitzung stattfinden müssen.",
   "bild": "p1",
+  "alt": "v1",
   "termin": "Di 20.10.",
   "format": "Foto aus der Arbeit · Einzelbild 4:5",
   "offen": "Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."
  },
  {
   "id": 26,
+  "kanal": "daniel",
   "feld": "Richtung",
   "art": "Beobachtung",
   "kern": "Niemand sagt, er habe keine Strategie. Das Problem ist, dass sie im Alltag nicht ankommt – Test: drei Führungskräfte fragen, was sie deshalb diese Woche anders entscheiden.",
   "text": "In meinen Gesprächen mit Führungskräften bei Versicherern hat noch nie jemand gesagt, er habe keine Strategie.\n\nWas ich höre, ist etwas anderes: dass im Alltag zu wenig davon ankommt. Die Strategie steht auf der Folie, die Begriffe kennt jeder, und trotzdem entscheiden die Leute im Bereich am Montag genauso wie vor einem Jahr.\n\nDas hat einen einfachen Grund. Aus vier Feldern mit Schlagworten kann niemand ableiten, was er diese Woche anders machen soll. Es fehlt das Bild, wie der Bereich in Zukunft funktioniert, und es fehlt die Entscheidung, was man dafür bewusst nicht mehr macht.\n\nEin Test, den du heute machen kannst: Frag drei deiner Führungskräfte, was sie wegen der Strategie in dieser Woche anders entscheiden. Wenn die Antworten weit auseinanderliegen oder lange auf sich warten lassen, weißt du, wo du ansetzen musst.\n\nAnsetzen heißt dann: die vorhandene Strategie so schärfen, dass jeder sie in einem Satz für seinen Bereich übersetzen kann, einschließlich der Dinge, die wegfallen.",
   "bild": "p2",
+  "alt": "v2",
   "termin": "Mi 21.10.",
   "format": "Foto aus der Arbeit · Einzelbild 4:5",
   "offen": "Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"
  },
  {
   "id": 27,
+  "kanal": "daniel",
   "feld": "Umsetzungspower",
   "art": "Geschichte",
   "kern": "„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“ – ein komplexes Thema auf eine Skizze bringen.",
@@ -35,17 +40,20 @@ window.MK_ENTWUERFE = [
  },
  {
   "id": 28,
+  "kanal": "daniel",
   "feld": "Zukunft",
   "art": "Werkzeug",
   "kern": "Die Neugründungs-Frage mit drei Unterfragen: Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen – erst sinnvoll, wenn der Kern im Griff ist.",
   "text": "Wie würdest du deinen Bereich aufbauen, wenn du ihn heute neu gründen würdest?\n\nDie Frage stelle ich in Strategieterminen oft, und sie bringt das Gespräch schnell an die Stellen, über die sonst keiner spricht. Damit sie trägt, brauchst du drei Unterfragen.\n\nWürdest du die Aufgaben noch genauso zuschneiden? Viele Zuständigkeiten sind historisch gewachsen und heute vor allem Schnittstellen.\n\nWürdest du dich an derselben Stelle der Wertschöpfung positionieren? Manches, was der Bereich selbst macht, könnte ein Partner besser, und an anderer Stelle fehlt etwas, das heute niemand verantwortet.\n\nWürdest du dieselben Zielgruppen und Stakeholder bedienen? Oft zeigt sich hier, dass der Bereich auf die Erwartungen von gestern eingestellt ist.\n\nEine Einschränkung gehört dazu. Die Frage funktioniert erst, wenn dein Kern im Griff ist: wenn du dein heutiges Geschäftsmodell erklären kannst und weißt, wen du für Veränderungen brauchst. Vorher entsteht eine Wunschliste.\n\nWenn dein Vorstand von dir erwartet, über den Tellerrand zu denken, fang mit diesen drei Fragen an und schreib zu jeder einen Satz auf, bevor du über Maßnahmen sprichst.",
   "bild": "p4",
+  "alt": "v4",
   "termin": "Mo 26.10.",
   "format": "Foto aus der Arbeit · Einzelbild 4:5",
   "offen": "Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"
  },
  {
   "id": 29,
+  "kanal": "daniel",
   "feld": "Umsetzungspower",
   "art": "Denkfehler",
   "kern": "Am Ende jeder Abstimmung festlegen: Wer treibt das Thema, bis wann kommt es zurück, in welcher Form – dann kommt es beim nächsten Mal eine Stufe weiter.",
@@ -57,6 +65,7 @@ window.MK_ENTWUERFE = [
  },
  {
   "id": 30,
+  "kanal": "daniel",
   "feld": "Durchsetzung",
   "art": "Wissen hergeben",
   "kern": "Ein Thema, vier Gegenüber: Vorstand, Aufsichtsrat, Vertrieb und Team brauchen je eine eigene Antwort – Dokument mit Leitfrage, Einwänden und Gesprächseinstieg.",
@@ -74,6 +83,66 @@ window.MK_ENTWUERFE = [
    "d6"
   ],
   "offen": "Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."
+ },
+ {
+  "id": 31,
+  "kanal": "firma",
+  "feld": "Durchsetzung",
+  "art": "Werkzeug",
+  "kern": "Drei Fragen vor jeder Vorstandsvorlage – Link auf Komplexe Themen.",
+  "text": "Vor jeder Vorstandsvorlage stellen wir mit unseren Kunden drei Fragen: Wen brauche ich, damit das Thema durchgeht? Wen habe ich bislang zu wenig berücksichtigt? An wem richte ich das Thema eigentlich aus?\n\nErst danach entsteht die Unterlage. Sie wird kürzer, und die Sitzung endet mit einer Entscheidung.\n\nWie wir komplexe Themen strukturieren und kommunizieren: https://empiria.de/leistungen/komplexe-themen",
+  "bild": "f1",
+  "termin": "Fr 23.10.",
+  "format": "Themenkarte · Einzelbild 4:5",
+  "offen": "Fassung fürs Firmenprofil zu Posting 01."
+ },
+ {
+  "id": 32,
+  "kanal": "firma",
+  "feld": "Richtung",
+  "art": "Beobachtung",
+  "kern": "Strategie-Test: Was entscheidet dein Team diese Woche anders? – Link auf Strategie.",
+  "text": "Kaum eine Führungskraft würde sagen, dass ihr Bereich keine Strategie hat. Entscheidend ist, was sich deshalb im Alltag ändert.\n\nEin einfacher Test: Frag drei Führungskräfte, was sie wegen der Strategie in dieser Woche anders entscheiden. Liegen die Antworten weit auseinander, ist das der Ansatzpunkt.\n\nSo bringen wir Strategie in den Alltag: https://empiria.de/leistungen/strategie",
+  "bild": "f2",
+  "termin": "Di 27.10.",
+  "format": "Themenkarte · Einzelbild 4:5",
+  "offen": "Fassung fürs Firmenprofil zu Posting 02."
+ },
+ {
+  "id": 33,
+  "kanal": "firma",
+  "feld": "Umsetzungspower",
+  "art": "Geschichte",
+  "kern": "Zitat zur Arbeitsweise von Daniel – Link auf die Startseite.",
+  "text": "„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“\n\nSo hat ein Vorstand die Arbeitsweise von Daniel Ströbel beschrieben. Ein komplexes Thema auf ein Bild bringen, bis alle auf dieselbe Stelle zeigen: Daraus entsteht bei uns jede Entscheidungsvorlage.\n\nhttps://empiria.de",
+  "bild": "f3",
+  "termin": "Do 29.10.",
+  "format": "Zitatkarte · Einzelbild 4:5",
+  "offen": "Fassung fürs Firmenprofil zu Posting 03 – erst nach Freigabe des Zitats."
+ },
+ {
+  "id": 34,
+  "kanal": "firma",
+  "feld": "Zukunft",
+  "art": "Werkzeug",
+  "kern": "Neugründungs-Frage mit drei Unterfragen – Link auf Innovation.",
+  "text": "Wie würdest du deinen Bereich aufbauen, wenn du ihn heute neu gründen würdest?\n\nMit dieser Frage beginnen wir, wenn es um das Geschäftsmodell der Zukunft geht. Dazu gehören drei Unterfragen: Würdest du die Aufgaben noch genauso zuschneiden? Würdest du dich an derselben Stelle der Wertschöpfung positionieren? Würdest du dieselben Zielgruppen bedienen?\n\nGeschäftsmodell und Innovation neu denken: https://empiria.de/leistungen/innovation",
+  "bild": "f4",
+  "termin": "Di 03.11.",
+  "format": "Themenkarte · Einzelbild 4:5",
+  "offen": "Fassung fürs Firmenprofil zu Posting 04."
+ },
+ {
+  "id": 35,
+  "kanal": "firma",
+  "feld": "Umsetzungspower",
+  "art": "Werkzeug",
+  "kern": "Wer? Bis wann? In welcher Form? – Link auf Kontakt.",
+  "text": "Am Ende jeder Abstimmung drei Punkte festlegen: Wer treibt das Thema? Bis wann kommt es zurück? In welcher Form?\n\nZwei Minuten, die dafür sorgen, dass ein Thema beim nächsten Termin eine Stufe weiter ist.\n\nDu gibst uns ein Thema, wir sorgen dafür, dass daraus ein Ergebnis wird: https://empiria.de/kontakt",
+  "bild": "f5",
+  "termin": "Do 05.11.",
+  "format": "Werkzeugkarte · Einzelbild 4:5",
+  "offen": "Fassung fürs Firmenprofil zu Posting 05."
  }
 ];
 window.MK_FELDER = {"Richtung": "Richtung", "Durchsetzung": "Durchsetzung", "Zukunft": "Zukunft", "Umsetzungspower": "Umsetzungspower"};

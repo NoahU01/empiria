@@ -89,14 +89,14 @@ def zeichen(svg, right=None, top=None, size=None):
     return '<div class="zeichen"%s>%s</div>' % (stil, svg)
 
 
-def foto_posting(pid, bild, pos, kicker, headline, sym, sw=False):
+def foto_posting(pid, bild, pos, kicker, headline, sym, sw=False, links="Daniel Ströbel"):
     return """<section class="p" id="%s">
   <div class="karte%s" style="--pos:%s"><img src="%s%s" alt=""></div>
   <p class="k">%s</p>
   <p class="h m">%s</p>
   %s
   %s
-</section>""" % (pid, " sw" if sw else "", pos, B, bild, kicker, headline, zeichen(sym, 84, 720, 92), fuss())
+</section>""" % (pid, " sw" if sw else "", pos, B, bild, kicker, headline, zeichen(sym, 84, 720, 92), fuss(links))
 
 
 def doc_seite(nr, titel, frage, einwaende, eroeffnung):
@@ -154,6 +154,18 @@ teile = [
   <ul class="check" style="margin-top:64px"><li>Welche Entscheidung brauche ich vom Vorstand?</li><li>Wie bleibt es für den Aufsichtsrat steuerbar?</li><li>Welchen Satz sagt der Vertrieb seinem Kunden?</li><li>Was ändert sich für mein Team ab Montag?</li></ul>
   <div class="fuss" style="color:#1a1817"><span>Daniel Ströbel · Strategie in Wirkung bringen</span><span>6 / 6</span></div>
 </section>""",
+]
+
+# Firmenprofil empiria (12.10.2026): die gestalteten Karten mit Link-Ziel im Fuß statt Daniels Namen
+teile += [
+    foto_posting("f1", "entwurf-e1.jpg", "50% 38%", "Vor jeder Vorstandsvorlage",
+                 'Erst drei Fragen, dann die <span class="hl">Folie.</span>', X, sw=True, links="empiria.de/leistungen/komplexe-themen"),
+    foto_posting("f2", "entwurf-e2.jpg", "35% 40%", "Strategie im Alltag",
+                 'Was entscheidest du diese Woche <span class="hl">anders?</span>', F, links="empiria.de/leistungen/strategie"),
+    teile[2].replace('id="p3"', 'id="f3"').replace("<span>Daniel Ströbel</span>", "<span>empiria.de</span>").replace("über meine Arbeit", "über die Arbeit von Daniel Ströbel"),
+    foto_posting("f4", "entwurf-e4.jpg", "30% 75%", "Die Neugründungs-Frage",
+                 'Was würdest du heute nicht mehr <span class="hl">machen?</span>', O, links="empiria.de/leistungen/innovation"),
+    teile[4].replace('id="p5"', 'id="f5"').replace("<span>Daniel Ströbel</span>", "<span>empiria.de</span>"),
 ]
 
 html = """<!doctype html>

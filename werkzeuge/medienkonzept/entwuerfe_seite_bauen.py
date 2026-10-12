@@ -10,23 +10,29 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "3"  # Versionsnummer für CSS/JS
+V = "7"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
-    25: dict(bild="p1", termin="Di 20.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    25: dict(bild="p1", alt="v1", termin="Di 20.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
              offen="Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."),
-    26: dict(bild="p2", termin="Mi 21.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    26: dict(bild="p2", alt="v2", termin="Mi 21.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
              offen="Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"),
     27: dict(bild="p3", termin="Do 22.10.", format="Zitat mit Porträt · Einzelbild 4:5",
              offen="Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"),
-    28: dict(bild="p4", termin="Mo 26.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    28: dict(bild="p4", alt="v4", termin="Mo 26.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
              offen="Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"),
     29: dict(bild="p5", termin="Di 27.10.", format="Grafik · Einzelbild 4:5",
              offen="Einziger Beitrag mit Türspalt zum Angebot (letzter Absatz). So lassen oder ohne?"),
     30: dict(bild="d1", termin="Mi 28.10.", format="Dokument · 6 Seiten (PDF)", pdf="Ein-Thema-vier-Gegenueber.pdf",
              seiten=["d1", "d2", "d3", "d4", "d5", "d6"],
              offen="Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."),
+    # Firmenprofil empiria: gestaltete Karten, Wir-Form, mit Link auf die passende Homepage-Unterseite
+    31: dict(bild="f1", termin="Fr 23.10.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 01."),
+    32: dict(bild="f2", termin="Di 27.10.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 02."),
+    33: dict(bild="f3", termin="Do 29.10.", format="Zitatkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 03 – erst nach Freigabe des Zitats."),
+    34: dict(bild="f4", termin="Di 03.11.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 04."),
+    35: dict(bild="f5", termin="Do 05.11.", format="Werkzeugkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 05."),
 }
 FELDER = {"Richtung": "Richtung", "Durchsetzung": "Durchsetzung", "Zukunft": "Zukunft", "Umsetzungspower": "Umsetzungspower"}
 
@@ -36,7 +42,8 @@ def main(pfad):
     posts = []
     for e in daten:
         x = EXTRA[e["id"]]
-        posts.append(dict(id=e["id"], feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"], **x))
+        posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
+                          feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"], **x))
     open(os.path.join(MK, "entwuerfe.js"), "w", encoding="utf-8").write(
         "/* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */\n"
         "window.MK_ENTWUERFE = " + json.dumps(posts, ensure_ascii=False, indent=1) + ";\n"
@@ -48,7 +55,7 @@ def main(pfad):
     with zipfile.ZipFile(os.path.join(MK, "postings", "Postings-Daniel.zip"), "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("Texte.md", "\n".join(md))
         for p in posts:
-            for s in p.get("seiten", [p["bild"]]):
+            for s in p.get("seiten", [p["bild"]] + ([p["alt"]] if p.get("alt") else [])):
                 z.write(os.path.join(MK, "postings", s + ".jpg"), s + ".jpg")
             if p.get("pdf"):
                 z.write(os.path.join(MK, "postings", p["pdf"]), p["pdf"])
@@ -81,6 +88,12 @@ def main(pfad):
       <div class="ig-plan"><span><b>KW 43:</b> Di 20. · Mi 21. · Do 22.10.</span><span><b>Ab KW 44:</b> montags bis freitags, 8:30 Uhr</span><span><b>Ohne Link</b> im Beitrag</span></div>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
+
+    <div class="ig mke-firma">
+      <div class="ig-kopf"><span class="mke-logo"><img src="/assets/empiria-logo.svg" alt="empiria"></span><div><b>empiria GmbH</b><p>LinkedIn-Firmenprofil · gestaltete Karten in der Wir-Form, immer mit Link auf die passende Seite<br>Zwei Postings pro Woche, jeweils zwei bis drei Tage nach Daniels Fassung</p></div></div>
+      <div class="ig-raster" id="mke-raster-firma"></div>
+      <div class="ig-plan"><span><b>Neu:</b> bisher nichts gepostet</span><span><b>Rhythmus:</b> dienstags und donnerstags, 9:00 Uhr</span><span><b>Mit Link</b> auf die Homepage</span></div>
+    </div>
   </div></section>
 
 </main>
@@ -88,7 +101,8 @@ def main(pfad):
 <dialog class="ig-modal" id="mke-modal" aria-label="Posting in Großansicht"><div class="ig-modal__innen">
   <div class="ig-modal__bild mke-bild" id="mke-bild"></div>
   <div class="ig-modal__text">
-    <div class="ig-modal__kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><span><b>Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
+    <div class="ig-modal__kopf"><img id="mke-avatar" src="/assets/ansprechpartner-daniel.webp" alt=""><span><b id="mke-name">Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
+    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Gestaltet</button><button type="button" data-v="alt" aria-pressed="false">Echtes Foto · Vorschlag</button></div>
     <p class="ig-caption" id="mke-text"></p>
     <div class="ig-aktionen"><button type="button" id="mke-kopieren">Text kopieren</button><a id="mke-laden" href="#" download>Bild herunterladen</a><a id="mke-pdf" href="#" download hidden>Dokument (PDF)</a></div>
     <dl class="ig-meta" id="mke-meta"></dl>

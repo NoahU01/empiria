@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
 <link rel="stylesheet" href="/assets/projekte/avrg/avrg-konzept.css?v=4">
 <link rel="stylesheet" href="/assets/projekte/avrg/avrg-mk.css?v=8">
-<link rel="stylesheet" href="/assets/projekte/medienkonzept/medienkonzept.css?v=3">
+<link rel="stylesheet" href="/assets/projekte/medienkonzept/medienkonzept.css?v=7">
 </head>
 <body class="e2">
 
@@ -291,6 +291,7 @@
 <p class="dev-dd-group">Die Unterseiten</p>
 <a href="medienkonzept-beitragsarten.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Beitragsarten</b><small>Drei Beispiele zum Besprechen</small></span></a>
 <a href="medienkonzept-entwuerfe.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Entwürfe</b><small>Die ersten Postings zur Freigabe</small></span></a>
+<a href="medienkonzept-formate.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Formate</b><small>Inhalte × Darstellungen · zwei Kanäle</small></span></a>
 </div></div>
 </div>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
@@ -671,6 +672,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <p class="dev-dd-group">Die Unterseiten</p>
 <a href="medienkonzept-beitragsarten.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Beitragsarten</b><small>Drei Beispiele zum Besprechen</small></span></a>
 <a href="medienkonzept-entwuerfe.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Entwürfe</b><small>Die ersten Postings zur Freigabe</small></span></a>
+<a href="medienkonzept-formate.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Formate</b><small>Inhalte × Darstellungen · zwei Kanäle</small></span></a>
 </div></div>
 </div>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
@@ -719,6 +721,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="ig-plan"><span><b>KW 43:</b> Di 20. · Mi 21. · Do 22.10.</span><span><b>Ab KW 44:</b> montags bis freitags, 8:30 Uhr</span><span><b>Ohne Link</b> im Beitrag</span></div>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
+
+    <div class="ig mke-firma">
+      <div class="ig-kopf"><span class="mke-logo"><img src="/assets/empiria-logo.svg" alt="empiria"></span><div><b>empiria GmbH</b><p>LinkedIn-Firmenprofil · gestaltete Karten in der Wir-Form, immer mit Link auf die passende Seite<br>Zwei Postings pro Woche, jeweils zwei bis drei Tage nach Daniels Fassung</p></div></div>
+      <div class="ig-raster" id="mke-raster-firma"></div>
+      <div class="ig-plan"><span><b>Neu:</b> bisher nichts gepostet</span><span><b>Rhythmus:</b> dienstags und donnerstags, 9:00 Uhr</span><span><b>Mit Link</b> auf die Homepage</span></div>
+    </div>
   </div></section>
 
 </main>
@@ -726,7 +734,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <dialog class="ig-modal" id="mke-modal" aria-label="Posting in Großansicht"><div class="ig-modal__innen">
   <div class="ig-modal__bild mke-bild" id="mke-bild"></div>
   <div class="ig-modal__text">
-    <div class="ig-modal__kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><span><b>Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
+    <div class="ig-modal__kopf"><img id="mke-avatar" src="/assets/ansprechpartner-daniel.webp" alt=""><span><b id="mke-name">Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
+    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Gestaltet</button><button type="button" data-v="alt" aria-pressed="false">Echtes Foto · Vorschlag</button></div>
     <p class="ig-caption" id="mke-text"></p>
     <div class="ig-aktionen"><button type="button" id="mke-kopieren">Text kopieren</button><a id="mke-laden" href="#" download>Bild herunterladen</a><a id="mke-pdf" href="#" download hidden>Dokument (PDF)</a></div>
     <dl class="ig-meta" id="mke-meta"></dl>
@@ -750,8 +759,8 @@ document.querySelectorAll('.lpv-seite img').forEach(function (img) {
 </footer>
 
 <script>document.querySelectorAll(".mkb-mehr").forEach(function(b){b.onclick=function(){var t=b.previousElementSibling,zu=t.hasAttribute("data-zu");if(zu){t.removeAttribute("data-zu");b.textContent="weniger";}else{t.setAttribute("data-zu","");b.textContent="… mehr";}b.setAttribute("aria-expanded",String(zu));};});</script>
-<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=3"></script>
-<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=3"></script>
+<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=7"></script>
+<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=7"></script>
 <script src="/script.js"></script>
 </body>
 </html>
