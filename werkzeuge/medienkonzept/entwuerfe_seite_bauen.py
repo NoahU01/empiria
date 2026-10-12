@@ -10,7 +10,7 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "7"  # Versionsnummer für CSS/JS
+V = "8"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -27,12 +27,6 @@ EXTRA = {
     30: dict(bild="d1", termin="Mi 28.10.", format="Dokument · 6 Seiten (PDF)", pdf="Ein-Thema-vier-Gegenueber.pdf",
              seiten=["d1", "d2", "d3", "d4", "d5", "d6"],
              offen="Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."),
-    # Firmenprofil empiria: gestaltete Karten, Wir-Form, mit Link auf die passende Homepage-Unterseite
-    31: dict(bild="f1", termin="Fr 23.10.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 01."),
-    32: dict(bild="f2", termin="Di 27.10.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 02."),
-    33: dict(bild="f3", termin="Do 29.10.", format="Zitatkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 03 – erst nach Freigabe des Zitats."),
-    34: dict(bild="f4", termin="Di 03.11.", format="Themenkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 04."),
-    35: dict(bild="f5", termin="Do 05.11.", format="Werkzeugkarte · Einzelbild 4:5", offen="Fassung fürs Firmenprofil zu Posting 05."),
 }
 FELDER = {"Richtung": "Richtung", "Durchsetzung": "Durchsetzung", "Zukunft": "Zukunft", "Umsetzungspower": "Umsetzungspower"}
 
@@ -41,6 +35,8 @@ def main(pfad):
     daten = sorted(json.load(open(pfad, encoding="utf-8")), key=lambda e: e["id"])
     posts = []
     for e in daten:
+        if "Firmenprofil" in e["kanal"]:
+            continue
         x = EXTRA[e["id"]]
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
                           feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"], **x))
@@ -89,11 +85,6 @@ def main(pfad):
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
 
-    <div class="ig mke-firma">
-      <div class="ig-kopf"><span class="mke-logo"><img src="/assets/empiria-logo.svg" alt="empiria"></span><div><b>empiria GmbH</b><p>LinkedIn-Firmenprofil · gestaltete Karten in der Wir-Form, immer mit Link auf die passende Seite<br>Zwei Postings pro Woche, jeweils zwei bis drei Tage nach Daniels Fassung</p></div></div>
-      <div class="ig-raster" id="mke-raster-firma"></div>
-      <div class="ig-plan"><span><b>Neu:</b> bisher nichts gepostet</span><span><b>Rhythmus:</b> dienstags und donnerstags, 9:00 Uhr</span><span><b>Mit Link</b> auf die Homepage</span></div>
-    </div>
   </div></section>
 
 </main>

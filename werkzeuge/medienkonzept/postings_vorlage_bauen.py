@@ -75,6 +75,17 @@ html, body { width:1080px; background:#fff; }
 .autor .rund { width:96px; height:96px; border-width:4px; }
 .autor .rund img { object-position:25% 15%; }
 .autor b { display:block; color:var(--ink); font-weight:600; margin-bottom:8px; }
+
+/* Serien-Beispiele (12.10.2026): Foto vollflächig mit einem Satz, ohne Rahmen und Logo */
+.vollbild { padding:0; }
+.vollbild > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:var(--pos,50% 50%); }
+.vollbild .verlauf { position:absolute; inset:auto 0 0 0; height:62%; background:linear-gradient(180deg, rgba(26,24,23,0) 0%, rgba(26,24,23,.82) 55%, rgba(26,24,23,.92) 100%); }
+.vollbild .unten { position:absolute; left:80px; right:80px; bottom:86px; color:#fff; }
+.vollbild .satz { font:700 66px/1.14 "Lora",Georgia,serif; letter-spacing:-.01em; }
+.vollbild .wer { margin-top:30px; font:500 28px/1.4 "Poppins",sans-serif; color:#d9d5cf; }
+.vollbild .zahl { font:700 230px/.9 "Lora",Georgia,serif; color:var(--gelb); letter-spacing:-.02em; }
+.vollbild .oben { position:absolute; left:80px; top:76px; color:#fff; }
+.vollbild .oben.k::before { background:#fff; }
 """
 
 
@@ -156,16 +167,20 @@ teile = [
 </section>""",
 ]
 
-# Firmenprofil empiria (12.10.2026): die gestalteten Karten mit Link-Ziel im Fuß statt Daniels Namen
+
+# Serien-Beispiele für die Strategie-Seite
 teile += [
-    foto_posting("f1", "entwurf-e1.jpg", "50% 38%", "Vor jeder Vorstandsvorlage",
-                 'Erst drei Fragen, dann die <span class="hl">Folie.</span>', X, sw=True, links="empiria.de/leistungen/komplexe-themen"),
-    foto_posting("f2", "entwurf-e2.jpg", "35% 40%", "Strategie im Alltag",
-                 'Was entscheidest du diese Woche <span class="hl">anders?</span>', F, links="empiria.de/leistungen/strategie"),
-    teile[2].replace('id="p3"', 'id="f3"').replace("<span>Daniel Ströbel</span>", "<span>empiria.de</span>").replace("über meine Arbeit", "über die Arbeit von Daniel Ströbel"),
-    foto_posting("f4", "entwurf-e4.jpg", "30% 75%", "Die Neugründungs-Frage",
-                 'Was würdest du heute nicht mehr <span class="hl">machen?</span>', O, links="empiria.de/leistungen/innovation"),
-    teile[4].replace('id="p5"', 'id="f5"').replace("<span>Daniel Ströbel</span>", "<span>empiria.de</span>"),
+    """<section class="p vollbild" id="s1">
+  <img src="%sentwurf-e3.jpg" alt="" style="filter:grayscale(1) contrast(1.06);--pos:50%% 20%%">
+  <div class="verlauf"></div>
+  <div class="unten"><p class="satz">„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“</p><p class="wer">— ein befreundeter Vorstand über meine Arbeit</p></div>
+</section>""" % B,
+    """<section class="p vollbild" id="n1">
+  <img src="%sentwurf-e6.jpg" alt="" style="--pos:30%% 30%%">
+  <div class="verlauf" style="height:72%%"></div>
+  <p class="k oben">Eingeordnet</p>
+  <div class="unten"><p class="zahl">77 %%</p><p class="satz" style="margin-top:18px">sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.</p><p class="wer">Quelle: Wieselhuber · Was das für deinen Bereich heißt, im Text</p></div>
+</section>""" % B,
 ]
 
 html = """<!doctype html>

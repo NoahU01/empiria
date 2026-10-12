@@ -83,66 +83,6 @@ window.MK_ENTWUERFE = [
    "d6"
   ],
   "offen": "Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."
- },
- {
-  "id": 31,
-  "kanal": "firma",
-  "feld": "Durchsetzung",
-  "art": "Werkzeug",
-  "kern": "Drei Fragen vor jeder Vorstandsvorlage – Link auf Komplexe Themen.",
-  "text": "Vor jeder Vorstandsvorlage stellen wir mit unseren Kunden drei Fragen: Wen brauche ich, damit das Thema durchgeht? Wen habe ich bislang zu wenig berücksichtigt? An wem richte ich das Thema eigentlich aus?\n\nErst danach entsteht die Unterlage. Sie wird kürzer, und die Sitzung endet mit einer Entscheidung.\n\nWie wir komplexe Themen strukturieren und kommunizieren: https://empiria.de/leistungen/komplexe-themen",
-  "bild": "f1",
-  "termin": "Fr 23.10.",
-  "format": "Themenkarte · Einzelbild 4:5",
-  "offen": "Fassung fürs Firmenprofil zu Posting 01."
- },
- {
-  "id": 32,
-  "kanal": "firma",
-  "feld": "Richtung",
-  "art": "Beobachtung",
-  "kern": "Strategie-Test: Was entscheidet dein Team diese Woche anders? – Link auf Strategie.",
-  "text": "Kaum eine Führungskraft würde sagen, dass ihr Bereich keine Strategie hat. Entscheidend ist, was sich deshalb im Alltag ändert.\n\nEin einfacher Test: Frag drei Führungskräfte, was sie wegen der Strategie in dieser Woche anders entscheiden. Liegen die Antworten weit auseinander, ist das der Ansatzpunkt.\n\nSo bringen wir Strategie in den Alltag: https://empiria.de/leistungen/strategie",
-  "bild": "f2",
-  "termin": "Di 27.10.",
-  "format": "Themenkarte · Einzelbild 4:5",
-  "offen": "Fassung fürs Firmenprofil zu Posting 02."
- },
- {
-  "id": 33,
-  "kanal": "firma",
-  "feld": "Umsetzungspower",
-  "art": "Geschichte",
-  "kern": "Zitat zur Arbeitsweise von Daniel – Link auf die Startseite.",
-  "text": "„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“\n\nSo hat ein Vorstand die Arbeitsweise von Daniel Ströbel beschrieben. Ein komplexes Thema auf ein Bild bringen, bis alle auf dieselbe Stelle zeigen: Daraus entsteht bei uns jede Entscheidungsvorlage.\n\nhttps://empiria.de",
-  "bild": "f3",
-  "termin": "Do 29.10.",
-  "format": "Zitatkarte · Einzelbild 4:5",
-  "offen": "Fassung fürs Firmenprofil zu Posting 03 – erst nach Freigabe des Zitats."
- },
- {
-  "id": 34,
-  "kanal": "firma",
-  "feld": "Zukunft",
-  "art": "Werkzeug",
-  "kern": "Neugründungs-Frage mit drei Unterfragen – Link auf Innovation.",
-  "text": "Wie würdest du deinen Bereich aufbauen, wenn du ihn heute neu gründen würdest?\n\nMit dieser Frage beginnen wir, wenn es um das Geschäftsmodell der Zukunft geht. Dazu gehören drei Unterfragen: Würdest du die Aufgaben noch genauso zuschneiden? Würdest du dich an derselben Stelle der Wertschöpfung positionieren? Würdest du dieselben Zielgruppen bedienen?\n\nGeschäftsmodell und Innovation neu denken: https://empiria.de/leistungen/innovation",
-  "bild": "f4",
-  "termin": "Di 03.11.",
-  "format": "Themenkarte · Einzelbild 4:5",
-  "offen": "Fassung fürs Firmenprofil zu Posting 04."
- },
- {
-  "id": 35,
-  "kanal": "firma",
-  "feld": "Umsetzungspower",
-  "art": "Werkzeug",
-  "kern": "Wer? Bis wann? In welcher Form? – Link auf Kontakt.",
-  "text": "Am Ende jeder Abstimmung drei Punkte festlegen: Wer treibt das Thema? Bis wann kommt es zurück? In welcher Form?\n\nZwei Minuten, die dafür sorgen, dass ein Thema beim nächsten Termin eine Stufe weiter ist.\n\nDu gibst uns ein Thema, wir sorgen dafür, dass daraus ein Ergebnis wird: https://empiria.de/kontakt",
-  "bild": "f5",
-  "termin": "Do 05.11.",
-  "format": "Werkzeugkarte · Einzelbild 4:5",
-  "offen": "Fassung fürs Firmenprofil zu Posting 05."
  }
 ];
 window.MK_FELDER = {"Richtung": "Richtung", "Durchsetzung": "Durchsetzung", "Zukunft": "Zukunft", "Umsetzungspower": "Umsetzungspower"};

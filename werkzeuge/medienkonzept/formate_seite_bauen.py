@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Baut die Unterseite Medienkonzept › Formate: Matrix aus Inhalten und Darstellungen,
-Regel persönliches Profil / Firmenprofil, Beispiele mit echten Bildern.
+Daniels persönliches Profil, Beispiele mit echten Bildern.
 
     python3 werkzeuge/medienkonzept/formate_seite_bauen.py
 """
@@ -9,7 +9,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "7"
+V = "8"
 
 FELDER = ["Richtung", "Durchsetzung", "Zukunft", "Umsetzungspower"]
 
@@ -21,14 +21,8 @@ DARST = [
      {"Richtung": ("Die Prüffrage für jede Vision als Skizze", False), "Durchsetzung": ("„What’s in for me?“ am Flipchart", False), "Zukunft": ("Wertschöpfungskette neu gezeichnet", False), "Umsetzungspower": ("Wer? Bis wann? In welcher Form? – Foto vom Flipchart", False)}),
     ("Nur Text", "daniel", "Ein persönlicher Gedanke", "ca. 10 %",
      {"Umsetzungspower": ("03 Die iPad-Geschichte", True), "Durchsetzung": ("„Sie schicken mir wirklich kein Angebot?“", False)}),
-    ("Dokument zum Durchblättern", "beide", "Etwas zum Mitnehmen", "ca. 20 %",
+    ("Dokument zum Durchblättern", "daniel", "Etwas zum Mitnehmen", "ca. 20 %",
      {"Durchsetzung": ("06 Ein Thema. Vier Gegenüber.", True), "Richtung": ("Die Prüffrage für jede Vision in fünf Schritten", False), "Zukunft": ("Die Neugründungs-Frage als Arbeitsblatt", False)}),
-    ("Themenkarte im Homepage-Stil", "firma", "Marke mit klarer Aussage", "2 pro Woche",
-     {"Richtung": ("Strategie im Alltag → /leistungen/strategie", True), "Durchsetzung": ("Drei Fragen → /leistungen/komplexe-themen", True), "Zukunft": ("Neugründungs-Frage → /leistungen/innovation", True)}),
-    ("Zitatkarte", "firma", "Stimme über die Arbeit", "",
-     {"Umsetzungspower": ("Die iPad-Geschichte → empiria.de", True)}),
-    ("Werkzeugkarte", "firma", "Ein Werkzeug in drei Zeilen", "",
-     {"Umsetzungspower": ("Wer? Bis wann? In welcher Form? → /kontakt", True)}),
 ]
 KANAL = {"daniel": "Daniel", "firma": "empiria", "beide": "Daniel · empiria teilt"}
 
@@ -37,19 +31,16 @@ BEISPIELE = [
     ("v1.jpg", "Echtes Foto, vollflächig", "daniel", "Kein Text im Bild. Der Beitragstext trägt die Aussage, das Foto zeigt den Menschen."),
     ("b1.jpg", "Flipchart oder Skizze", "daniel", "Was du im Termin zeichnest, abfotografiert. Dein Erkennungszeichen."),
     (None, "Nur Text", "daniel", "Für eine starke Geschichte reicht der erste Satz. Kein Bild lenkt ab."),
-    ("d1.jpg", "Dokument, 6 Seiten", "beide", "Das Großzügige: eine Methode vollständig. Gestaltung wird hier erwartet."),
-    ("f1.jpg", "Themenkarte", "firma", "Homepage-Stil, Wir-Form, Link auf die passende Unterseite."),
-    ("f3.jpg", "Zitatkarte", "firma", "Eine Stimme über die Arbeit von Daniel – mit Freigabe."),
-    ("f5.jpg", "Werkzeugkarte", "firma", "Ein Werkzeug in drei Zeilen, auf einen Blick erfassbar."),
+    ("d1.jpg", "Dokument, 6 Seiten", "daniel", "Das Großzügige: eine Methode vollständig. Gestaltung wird hier erwartet."),
 ]
 
 ERSTE = [
-    ("01", "Echtes Foto statt Karte", "Themenkarte · Fr 23.10.", "/leistungen/komplexe-themen"),
-    ("02", "Echtes Foto statt Karte", "Themenkarte · Di 27.10.", "/leistungen/strategie"),
-    ("03", "Nur Text oder Porträt vollflächig", "Zitatkarte · Do 29.10. (nach Freigabe)", "empiria.de"),
-    ("04", "Echtes Foto statt Karte", "Themenkarte · Di 03.11.", "/leistungen/innovation"),
-    ("05", "Foto deines Flipcharts mit den drei Fragen", "Werkzeugkarte · Do 05.11.", "/kontakt"),
-    ("06", "Dokument bleibt", "teilt Daniels Dokument", "–"),
+    ("01", "Echtes Foto statt gestalteter Karte"),
+    ("02", "Echtes Foto statt gestalteter Karte"),
+    ("03", "Nur Text oder Porträt vollflächig"),
+    ("04", "Echtes Foto statt gestalteter Karte"),
+    ("05", "Foto deines Flipcharts mit den drei Fragen"),
+    ("06", "Dokument bleibt"),
 ]
 
 
@@ -58,7 +49,7 @@ def badge(k):
 
 
 def matrix():
-    kopf = "<tr><th>Darstellung</th><th>Kanal</th>%s<th>Anteil</th></tr>" % "".join("<th>%s</th>" % f for f in FELDER)
+    kopf = "<tr><th>Darstellung</th>%s<th>Anteil</th></tr>" % "".join("<th>%s</th>" % f for f in FELDER)
     zeilen = []
     for name, k, wirkt, anteil, bsp in DARST:
         zellen = []
@@ -68,7 +59,7 @@ def matrix():
                 zellen.append('<td class="%s">%s</td>' % ("mkf-da" if da else "mkf-idee", t))
             else:
                 zellen.append('<td class="mkf-leer">–</td>')
-        zeilen.append('<tr><th scope="row"><b>%s</b><small>%s</small></th><td>%s</td>%s<td>%s</td></tr>' % (name, wirkt, badge(k), "".join(zellen), anteil))
+        zeilen.append('<tr><th scope="row"><b>%s</b><small>%s</small></th>%s<td>%s</td></tr>' % (name, wirkt, "".join(zellen), anteil))
     return '<div class="mkf-tabelle"><table>%s%s</table></div>' % (kopf, "".join(zeilen))
 
 
@@ -80,13 +71,13 @@ def beispiele():
         else:
             b = ('<div class="mkf-nurtext"><div class="mkb-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><small>Geschäftsführer empiria</small></div></div>'
                  '<p>Ein befreundeter Vorstand hat einem Kollegen einmal beschrieben, wie ich arbeite:</p><p>„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“</p><p class="mkf-mehr">… mehr</p></div>')
-        karten.append('<figure class="mkf-bsp"><div class="mkf-bsp__bild">%s</div><figcaption>%s<b>%s</b><span>%s</span></figcaption></figure>' % (b, badge(k), titel, satz))
+        karten.append('<figure class="mkf-bsp"><div class="mkf-bsp__bild">%s</div><figcaption><b>%s</b><span>%s</span></figcaption></figure>' % (b, titel, satz))
     return '<div class="mkf-raster">%s</div>' % "".join(karten)
 
 
 def erste():
-    z = "".join('<tr><td class="mkf-nr">%s</td><td>%s</td><td>%s</td><td><code>%s</code></td></tr>' % e for e in ERSTE)
-    return '<div class="mkf-tabelle"><table><tr><th>Posting</th><th>Daniel · Vorschlag</th><th>empiria · Firmenprofil</th><th>Link</th></tr>%s</table></div>' % z
+    z = "".join('<tr><td class="mkf-nr">%s</td><td>%s</td></tr>' % e for e in ERSTE)
+    return '<div class="mkf-tabelle"><table style="min-width:0"><tr><th>Posting</th><th>Vorschlag</th></tr>%s</table></div>' % z
 
 
 MAIN = '''<main class="ak">
@@ -94,19 +85,8 @@ MAIN = '''<main class="ak">
   <section class="e2-kopf ak-kopfbereich"><div class="e2-wrap">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Formate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Formate</p>
-      <h1>Ein Gedanke. Zwei <span class="hl">Kanäle.</span></h1>
-      <p class="e2-lead">Was nach Mensch aussieht, kommt auf Daniels Profil. Was nach Marke aussieht, kommt auf das Firmenprofil von empiria. So bekommen die gestalteten Karten ihren Platz, und Daniels Profil bleibt persönlich.</p>
-  </div></section>
-
-  <section class="e2-sek e2-sek--schwarz"><div class="e2-wrap">
-    <p class="e2-kicker">Die Regel</p>
-    <h2 class="e2-h2">Würde man es für Werbung halten?</h2>
-    <p class="e2-lead">Dann gehört es auf das Firmenprofil. Im Feed entscheidet der Leser in einer Sekunde, ob ein Mensch spricht oder eine Firma. Deine eigenen Zahlen zeigen es: Echte Situationen mit echtem Foto liefen zwei- bis dreimal besser als gestaltete Thesen.</p>
-    <div class="mkf-kanaele">
-      <div class="mkf-k"><small>Persönliches Profil</small><b>Daniel Ströbel</b><ul><li>Ich-Form, eigene Szenen</li><li>Echtes Foto, Skizze, nur Text, Dokument</li><li>Ohne Link im Beitrag</li><li>Montags bis freitags, 8:30 Uhr</li><li>Ziel: als „Strategie in Wirkung bringen“ wahrgenommen werden</li></ul></div>
-      <div class="mkf-k"><small>Firmenprofil</small><b>empiria GmbH</b><ul><li>Wir-Form, kurz</li><li>Gestaltete Karten im Homepage-Stil</li><li>Immer mit Link auf die passende Unterseite</li><li>Dienstags und donnerstags, 9:00 Uhr</li><li>Ziel: Besuche auf der Homepage</li></ul></div>
-    </div>
-    <p class="mkf-satz"><b>Ein Gedanke, zwei Formen.</b> Der Kern entsteht einmal. Daniel erzählt ihn als Erlebnis, empiria bringt ihn zwei bis drei Tage später als Karte mit Link.</p>
+      <h1>Themen und <span class="hl">Darstellungen.</span></h1>
+      <p class="e2-lead">Daniels persönliches Profil: Themenfelder und Darstellungen. Diskussionsstand vom 12.10. – die Postingarten sind noch nicht festgelegt.</p>
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
@@ -118,21 +98,13 @@ MAIN = '''<main class="ak">
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Die Darstellungen</p><h2 class="e2-h2">So sieht jede aus.</h2>
-    <p class="e2-lead">Mit deinen Fotos, so wie sie im Feed erscheinen. Oben persönlich, unten das Firmenprofil.</p></div>
+    <p class="e2-lead">Mit deinen Fotos, so wie sie im Feed erscheinen.</p></div>
     ''' + beispiele() + '''
-  </div></section>
-
-  <section class="e2-sek ak-sec"><div class="e2-wrap">
-    <div class="ak-kopf"><p class="e2-kicker">Ein Gedanke, zwei Kanäle</p><h2 class="e2-h2">Derselbe Kern, zweimal erzählt.</h2></div>
-    <div class="mkf-paar">
-      <figure><img src="''' + PF + '''v1.jpg" alt="" loading="lazy"><figcaption><span class="mkf-kanal mkf-kanal--daniel">Daniel · Di 20.10.</span><p>„Bevor ich mit einem Kunden an einer Vorstandsvorlage arbeite, schauen wir uns keine einzige Folie an. Wir beantworten drei Fragen …“</p></figcaption></figure>
-      <figure><img src="''' + PF + '''f1.jpg" alt="" loading="lazy"><figcaption><span class="mkf-kanal mkf-kanal--firma">empiria · Fr 23.10.</span><p>„Vor jeder Vorstandsvorlage stellen wir mit unseren Kunden drei Fragen … Wie wir komplexe Themen strukturieren: empiria.de/leistungen/komplexe-themen“</p></figcaption></figure>
-    </div>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Für die ersten Postings</p><h2 class="e2-h2">Was das konkret heißt.</h2>
-    <p class="e2-lead">Nichts ist weggefallen. Auf der Seite Entwürfe stehen bei 01, 02 und 04 beide Bildfassungen zum Vergleich, die Firmenfassungen im eigenen Block darunter.</p></div>
+    <p class="e2-lead">Auf der Seite Entwürfe stehen bei 01, 02 und 04 beide Bildfassungen zum Vergleich.</p></div>
     ''' + erste() + '''
     <p class="mkf-knopf"><a class="e2-knopf" href="/projekte/medienkonzept-entwuerfe.html">Zu den Entwürfen &rarr;</a></p>
   </div></section>
@@ -151,7 +123,7 @@ def main():
     fuss = rest.split("</main>", 1)[1]
     kopf = (kopf.replace("<title>Beitragsarten · Medienkonzept – empiria</title>", "<title>Formate · Medienkonzept – empiria</title>")
                 .replace('content="Medienkonzept empiria – drei Beispiele für Beiträge von Daniel."',
-                         'content="Medienkonzept empiria – Inhalte und Darstellungen, persönliches Profil und Firmenprofil."')
+                         'content="Medienkonzept empiria – Inhalte und Darstellungen für Daniels persönliches Profil."')
                 .replace("medienkonzept.css?v=1", "medienkonzept.css?v=" + V))
     open(os.path.join(SITE, "projekte", "medienkonzept-formate.html"), "w", encoding="utf-8").write(kopf + MAIN + fuss)
     print("Formate-Seite gebaut")
