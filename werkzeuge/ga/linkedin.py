@@ -2,7 +2,7 @@
 """Geschäftsausstattung · LinkedIn-Banner (Entwurf, Daniel 10.10.2026).
 
 Personenprofil 1584 × 396 px (links unten liegt das runde Profilfoto – dort nichts Wichtiges),
-Firmenprofil 1128 × 191 px (links unten liegt das Firmenlogo). Je vier Varianten: Weiß, Gelb, Schwarz, Formen.
+Firmenprofil 1192 × 220 px (LinkedIn-Zuschnitt 5,4 : 1; links liegt das große Firmenlogo bis ca. 25 % der Breite). Je vier Varianten: Weiß, Gelb, Schwarz, Formen.
 Alle Maße werden in Originalpixeln geplant und in cqw umgerechnet – Vorschau und PNG sind dieselbe Gestaltung.
 
 Aufruf: python3 werkzeuge/ga/linkedin.py           → Seite + PNGs
@@ -83,10 +83,11 @@ SEITE_EXTRA = """
 .li { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px #e4e0db, 0 12px 30px rgba(26,24,23,.06); container-type: inline-size; font-family: -apple-system, 'Segoe UI', 'Poppins', sans-serif; }
 .li-banner { position: relative; border-bottom: 1px solid #e4e0db; }
 .li-foto { position: absolute; left: 3cqw; top: 11cqw; width: 18.9cqw; aspect-ratio: 1; border-radius: 50%; border: .55cqw solid #fff; background: #ddd center/cover; }
-.li-logo { position: absolute; left: 2.6cqw; top: 9.6cqw; width: 12cqw; aspect-ratio: 1; border-radius: .8cqw; border: .45cqw solid #fff; background: #fff; box-shadow: 0 0 0 1px #e4e0db; display: flex; align-items: center; justify-content: center; }
+.li-logo { position: absolute; left: 3.6cqw; top: 6.6cqw; width: 19.2cqw; aspect-ratio: 1; border-radius: 2cqw; overflow: hidden; box-shadow: 0 0 0 .3cqw #fff; }
+.li-logo .lb { border-radius: 0; }
 .li-logo img { width: 78%; height: auto; }
 .li-info { display: flex; justify-content: space-between; gap: 3cqw; padding: 7.2cqw 3cqw 3cqw; }
-.li-info--firma { padding-top: 6cqw; }
+.li-info--firma { padding-top: 10cqw; }
 .li-name { margin: 0; font-size: 2.9cqw; font-weight: 600; color: #1d1d1d; line-height: 1.2; }
 .li-rolle { margin: .5cqw 0 0; font-size: 1.85cqw; color: #1d1d1d; line-height: 1.35; }
 .li-ort { margin: .7cqw 0 0; font-size: 1.6cqw; color: #666; }
@@ -171,19 +172,20 @@ def person_banner(var):
 
 
 def firma_banner(var):
-    """Firmenbanner 1128 × 191. Das Firmenlogo deckt links unten ca. x 30–165 ab → Inhalt beginnt bei x 250."""
-    W, H = 1128, 191
+    """Firmenbanner 1192 × 220 (LinkedIn-Zuschnitt 5,4 : 1). Das große Firmenlogo deckt links bis ca. 25 % der Breite ab
+    → Inhalt beginnt bei x 340 (28,5 %)."""
+    W, H = 1192, 220
     p = px_fn(W)
     _, _, _, _, pf = FARBEN[var]
-    x = 250
-    k = kicker_html(p, "Strategiehandwerk · Crailsheim", 12, 10, 24, 2.4, "margin:0 0 " + p(12) + ";")
+    x = 340
+    k = kicker_html(p, "Strategiehandwerk · Crailsheim", 13, 10, 26, 2.6, "margin:0 0 " + p(13) + ";")
     if var.startswith("logos"):
         return rahmen("", var, W, H, firma_logos(var.split("-")[1]))
     if var == "weiss":
-        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, 112, W - 64 - 56, H / 2, pf)
+        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 50)}</div>' + pfeil(p, 124, W - 70 - 62, H / 2, pf)
     elif var == "schwarz":
         b = .9 * H / PFEIL_VERH
-        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>' + pfeil(p, b, W - .3 * b, H / 2, pf)
+        inhalt = f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 50)}</div>' + pfeil(p, b, W - .3 * b, H / 2, pf)
     elif var == "treppe":
         inhalt = (f'<div style="left:{p(x)};top:50%;transform:translateY(-50%)">{k}{claim(p, 46)}</div>'
                   + treppe(p, W, H, 50, 56, 22, 60, 48))
@@ -210,7 +212,7 @@ def attrappe_person(var):
 
 def attrappe_firma(var):
     return (f'<div class="li"><div class="li-banner">{firma_banner(var)}'
-            f'<span class="li-logo"><img src="/assets/empiria-logo.svg" alt="empiria"></span></div>'
+            f'<span class="li-logo">{firmenlogo()}</span></div>'
             f'<div class="li-info li-info--firma"><div><p class="li-name">empiria GmbH</p><p class="li-rolle">Strategie, die wirkt.</p>'
             f'<p class="li-ort">Crailsheim, Baden-Württemberg</p>'
             f'<div class="li-knoepfe"><span>+ Folgen</span><span>Website ansehen</span></div></div></div></div>')
@@ -269,22 +271,22 @@ def person_logos(art):
 
 
 def firma_logos(art):
-    """Firmenbanner mit Logos (ab x 250, rechts 56)."""
-    W = 1128
+    """Firmenbanner mit Logos, 1192 × 220 (ab x 340 – links liegt das große Firmenlogo)."""
+    W = 1192
     p = px_fn(W)
     if art == "start":
-        H = 191
+        H = 220
         b = .8 * H / PFEIL_VERH
         links_pfeil = W - .3 * b - b / 2
-        logos, raster = logo_raster(p, 18, 34, 8)
+        logos, raster = logo_raster(p, 19, 38, 10)
         return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
-                + f'<h2 style="left:{p(250)};top:{p(16)};font-size:{p(38)}">Strategie, die <span class="hl">wirkt.</span></h2>'
-                + f'<div class="lb-logos" style="left:{p(250)};right:{p(W - links_pfeil + 36)};top:{p(92)};{raster}">{logos}</div>')
-    H = 191
+                + f'<h2 style="left:{p(340)};top:{p(20)};font-size:{p(42)}">Strategie, die <span class="hl">wirkt.</span></h2>'
+                + f'<div class="lb-logos" style="left:{p(340)};right:{p(W - links_pfeil + 36)};top:{p(104)};{raster}">{logos}</div>')
+    H = 220
     logos, raster = logo_raster(p, 16, 30, 6)
-    return (f'<div class="lb-logos" style="left:{p(250)};right:{p(56)};top:{p(16)};{raster}">{logos}</div>'
-            f'<div style="left:{p(250)};bottom:{p(18)}">{claim(p, 40)}</div>'
-            + pfeil(p, 70, W - 56 - 35, H - 18 - 40 * .65, SCHWARZ))
+    return (f'<div class="lb-logos" style="left:{p(340)};right:{p(70)};top:{p(20)};{raster}">{logos}</div>'
+            f'<div style="left:{p(340)};bottom:{p(22)}">{claim(p, 42)}</div>'
+            + pfeil(p, 74, W - 70 - 37, H - 22 - 42 * .65, SCHWARZ))
 
 
 def schutzzone():
@@ -297,7 +299,7 @@ def schutzzone():
                 f'<p class="pm-label">{label}</p></figure>')
     return (f'<div class="lg-raster lg-raster--2">'
             + zone(1584, 396, (47, 175, 300, True), "Profilfoto – hier nichts Wichtiges", "Personenprofil · 1584 × 396 px · Schutzzone")
-            + zone(1128, 191, (30, 110, 136, False), "Firmenlogo", "Firmenprofil · 1128 × 191 px · Schutzzone")
+            + zone(1192, 220, (40, 70, 255, False), "Firmenlogo – hier nichts Wichtiges", "Firmenprofil · 1192 × 220 px · Schutzzone")
             + '</div>')
 
 
@@ -325,7 +327,7 @@ def jobs():
     j = []
     for var in VARIANTEN:
         j.append({"html": person_banner(var), "w": 1584, "h": 396, "faktor": 2, "pfad": ORDNER / f"linkedin-person-{var}.png"})
-        j.append({"html": firma_banner(var), "w": 1128, "h": 191, "faktor": 2, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
+        j.append({"html": firma_banner(var), "w": 1192, "h": 220, "faktor": 2, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
     j.append({"html": firmenlogo(), "w": 400, "h": 400, "pfad": ORDNER / "linkedin-firmenlogo-400.png"})
     j.append({"html": firmenlogo(), "w": 400, "h": 400, "faktor": 2, "pfad": ORDNER / "linkedin-firmenlogo-800.png"})
     return j
@@ -347,7 +349,7 @@ def main_html():
                      f'<div class="lg-raster lg-raster--li">'
                      f'<figure style="margin:0">{attrappe_person(var)}<p class="pm-label">Personenprofil · 1584 × 396 px · PNG doppelt: 3168 × 792</p>'
                      f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-{var}.png", "PNG laden")}</div></figure>'
-                     f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Unternehmensseite · 1128 × 191 px · PNG doppelt: 2256 × 382</p>'
+                     f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Unternehmensseite · 1192 × 220 px · PNG doppelt: 2384 × 440</p>'
                      f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></figure>'
                      f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
