@@ -240,6 +240,25 @@ def pdf(name, t):
 
 # ---------- Vorschauseite ----------
 SEITE_EXTRA = """
+.fk-auf { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 6px; }
+.fk-auf:focus-visible { outline: 3px solid #1a1817; outline-offset: 3px; }
+.fk-auf .fk { transition: transform .15s ease; }
+.fk-auf:hover .fk { transform: translateY(-3px); }
+.fk-blaettern { display: inline-flex; margin: 1.2rem 0 .4rem; padding: .75rem 1.3rem; border: 0; border-radius: 999px; background: #1a1817;
+  color: #fff; font: 600 .95rem/1 'Poppins', sans-serif; cursor: pointer; }
+.fk-blaettern:hover { background: #3a3632; }
+.fk-lb { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; background: rgba(20,19,18,.92); }
+.fk-lb.offen { display: flex; }
+.fk-lb__bild { width: min(86vh, 88vw); aspect-ratio: 1; border-radius: 8px; box-shadow: 0 30px 80px rgba(0,0,0,.5); background: #fff; display: block; }
+.fk-lb__knopf { position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; border: 0; border-radius: 50%;
+  background: #fff; color: #1a1817; font-size: 26px; line-height: 1; cursor: pointer; }
+.fk-lb__knopf:disabled { opacity: .25; cursor: default; }
+.fk-lb__zurueck { left: 24px; } .fk-lb__vor { right: 24px; }
+.fk-lb__zu { position: absolute; top: 18px; right: 22px; width: 46px; height: 46px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12);
+  color: #fff; font-size: 26px; cursor: pointer; }
+.fk-lb__zahl { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #d8d3cc; font: 600 .9rem/1 'Poppins', sans-serif; letter-spacing: .08em; }
+@media (max-width: 700px) { .fk-lb__knopf { top: auto; bottom: 54px; transform: none; width: 50px; height: 50px; } .fk-lb__zurueck { left: 18px; } .fk-lb__vor { right: 18px; } }
+
 .fk-reihe { display: grid; width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 2.4rem; }
 .fk-reihe .fk { border-radius: 6px; box-shadow: 0 0 0 1px #e4e0db; }
 .fk-karte { width: 100%; max-width: 360px; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px #d9d5cf;
@@ -255,6 +274,35 @@ SEITE_EXTRA = """
 """
 
 
+def lightbox():
+    import time
+    v = int(time.time())
+    docs = "{" + ",".join(f'"{n}":[' + ",".join(f'"{WEB}/{n}-{i + 1}.png?v={v}"' for i in range(len(SEITEN))) + "]" for n in THEMEN) + "}"
+    return ('<div class="fk-lb" id="fk-lb" role="dialog" aria-modal="true" aria-label="Seitenvorschau">'
+            '<button class="fk-lb__zu" type="button" aria-label="Schließen">×</button>'
+            '<button class="fk-lb__knopf fk-lb__zurueck" type="button" aria-label="Vorherige Seite">‹</button>'
+            '<img class="fk-lb__bild" alt="">'
+            '<button class="fk-lb__knopf fk-lb__vor" type="button" aria-label="Nächste Seite">›</button>'
+            '<p class="fk-lb__zahl"></p></div>'
+            f"""<script>(function(){{
+  var DOCS={docs}, lb=document.getElementById('fk-lb'), bild=lb.querySelector('.fk-lb__bild'), zahl=lb.querySelector('.fk-lb__zahl'),
+      zu=lb.querySelector('.fk-lb__zu'), zur=lb.querySelector('.fk-lb__zurueck'), vor=lb.querySelector('.fk-lb__vor'), doc=null, i=0, x0=null;
+  function zeig(){{ var s=DOCS[doc]; bild.src=s[i]; bild.alt='Seite '+(i+1); zahl.textContent='Seite '+(i+1)+' / '+s.length;
+    zur.disabled=i===0; vor.disabled=i===s.length-1; (s[i+1]&&(new Image().src=s[i+1])); }}
+  function auf(d,n){{ doc=d; i=n; zeig(); lb.classList.add('offen'); document.body.style.overflow='hidden'; vor.focus(); }}
+  function schliessen(){{ lb.classList.remove('offen'); document.body.style.overflow=''; }}
+  function geh(d){{ var n=i+d; if(n>=0&&n<DOCS[doc].length){{ i=n; zeig(); }} }}
+  document.querySelectorAll('[data-doc]').forEach(function(b){{ b.addEventListener('click',function(){{ auf(b.dataset.doc,+b.dataset.seite); }}); }});
+  zu.onclick=schliessen; zur.onclick=function(){{ geh(-1); }}; vor.onclick=function(){{ geh(1); }};
+  bild.onclick=function(){{ geh(1); }};
+  lb.addEventListener('click',function(e){{ if(e.target===lb) schliessen(); }});
+  document.addEventListener('keydown',function(e){{ if(!lb.classList.contains('offen')) return;
+    if(e.key==='Escape') schliessen(); else if(e.key==='ArrowRight') geh(1); else if(e.key==='ArrowLeft') geh(-1); }});
+  lb.addEventListener('touchstart',function(e){{ x0=e.touches[0].clientX; }},{{passive:true}});
+  lb.addEventListener('touchend',function(e){{ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) geh(dx<0?1:-1); x0=null; }});
+}})();</script>""")
+
+
 def main_html():
     teile = []
     for name, t in THEMEN.items():
@@ -262,19 +310,21 @@ def main_html():
         karte = (f'<div class="fk-karte"><div class="fk-karte__bild"><small>Medien</small>{deckblatt(t)}</div>'
                  f'<div class="fk-karte__text"><b>{titel_rein}</b>'
                  f'<p>{t["karte"]}</p></div></div>')
-        seiten = "".join(f'<figure style="margin:0">{fn(t)}<p class="pm-label">Seite {i + 1}</p></figure>' for i, fn in enumerate(SEITEN))
+        seiten = "".join(f'<figure style="margin:0"><button class="fk-auf" type="button" data-doc="{name}" data-seite="{i}" '
+                         f'aria-label="Seite {i + 1} groß ansehen">{fn(t)}</button><p class="pm-label">Seite {i + 1}</p></figure>'
+                         for i, fn in enumerate(SEITEN))
         teile.append(f'<div class="pm-abschnitt"><h2>{t["bereich"]} · {" ".join(t["titel"])}</h2>'
                      f'<div class="fk-oben"><div>{karte}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
                      f'<div><p class="pm-text">LinkedIn zeigt vom Deckblatt nur einen waagrechten Streifen. Deshalb steht die Aussage '
                      f'in der Mitte der Höhe; Logo, Adresse und Seitenzahl gehören zur geöffneten Seite und dürfen in der Vorschau wegfallen.'
-                     f'</p><div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}.pdf", "PDF · 6 Seiten · 1080 × 1080")}</div></div>'
+                     f'</p><button class="fk-blaettern" type="button" data-doc="{name}" data-seite="0">Durchblättern →</button><div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}.pdf", "PDF · 6 Seiten · 1080 × 1080")}</div></div>'
                      f'<div class="fk-reihe">{seiten}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('LinkedIn <span class="hl">im Fokus</span>',
                    'Sechs Dokumente für den Bereich „Im Fokus“ im LinkedIn-Profil – einheitlich aufgebaut, je Seite eine Aussage. '
                    'Die drei Strategiethemen im Detail, Workshops, Marketing 2.0 und Training &amp; Sparring als Überblick. Begonnen wird mit „Strategie in den Alltag überführen“.')
             + "".join(teile)
-            + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n</main>')
+            + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n{lightbox()}</main>')
 
 
 if __name__ == "__main__":
