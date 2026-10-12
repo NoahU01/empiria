@@ -46,19 +46,37 @@ THEMEN = {
     "strategie": dict(
         bereich="Strategiehandwerk", zeichen="forward", url="empiria.de/leistungen/strategie",
         titel=["Strategie in den", '<span class="hl">Alltag</span>', "überführen."],
-        moment="Strategisches Denken wird vorausgesetzt. Beigebracht hat es dir keiner.",
-        moment_fehlt=["die klare Richtung", "die eigene Rolle", "das Handwerkszeug für den Alltag"],
-        ansatz_h="Rolle, Richtung, Handwerkszeug.",
-        ansatz=[("flag", "Rolle", "Wofür stehe ich und mein Bereich?"),
-                ("compass", "Richtung", "Wie wollen wir wahrgenommen werden?"),
-                ("wrench", "Handwerkszeug", "Wie kommen wir dorthin?")],
+        fuer="Für Abteilungs- und Bereichsleiter",
+        karte="Die Strategie steht – aber was heißt sie für deinen Bereich? Wir übersetzen sie mit dir in Rolle, Richtung und Alltag.",
+        # 2 · Kennst du das?
+        problem_h="Die Strategie steht. Aber was heißt sie für deinen Bereich?",
+        problem_text="Du leitest deinen Bereich, weil du fachlich überzeugt hast. Strategisches Denken stand nie auf dem Lehrplan – "
+                     "trotzdem wird es ab dem ersten Tag vorausgesetzt. Die Folge: harte Gespräche mit dem eigenen Team.",
+        problem_fehlt=["die klare Richtung", "die eigene Rolle", "das Handwerkszeug für den Alltag"],
+        # 3 · Was macht ihr?
+        weg_h='Wir übersetzen die Strategie in <span class="hl">deinen Bereich.</span>',
+        weg_text="Gemeinsam mit dir, in vier Schritten – vom Selbstverständnis bis in den Alltag deines Teams.",
+        weg=[("Selbstverständnis", "Wofür stehen wir – und für wen?"),
+             ("Vision", "Wie wollen wir wahrgenommen werden?"),
+             ("Strategie", "Welchen Weg gehen wir, mit welchen Schwerpunkten?"),
+             ("Alltag", "Wie führen, erklären und positionieren wir uns?")],
+        # 4 · Was habe ich davon?
+        gewinn_h="Du führst dein Team, statt es zu vertrösten.",
+        gewinn_text="Du kannst jederzeit erklären, wofür dein Bereich steht und wohin er will. Dein Team zieht mit, weil die Richtung geklärt ist.",
+        gewinn=[("flag", "Rolle", "Ein klares Selbstverständnis deines Bereichs"),
+                ("compass", "Richtung", "Ein Zielbild und die Schwerpunkte dorthin"),
+                ("wrench", "Handwerkszeug", "Für Führung, Strategiekommunikation und Pitch")],
+        # 5 · Probier es aus
         denk_h="Wie sähe die Homepage deines Bereichs aus?",
+        denk_text="Stell dir vor, dein Bereich wäre ein eigenes Unternehmen. Kannst du diese fünf Fragen beantworten – und würde dein Team dasselbe sagen?",
         denk_url="www.dein-bereich-gmbh.de",
         denk=["Welche Zielgruppe sprechen wir an?", "Welches Problem lösen wir?", "Welcher Nutzen entsteht daraus?",
               "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"],
-        denk_frage="Würde jeder in deinem Team dasselbe hineinschreiben?",
-        ergebnis=['Jeder im Team versteht,', 'wofür dein Bereich', '<span class="hl">da ist.</span>'],
-        ergebnis_text="Und du bestimmst, wie er wahrgenommen wird.",
+        denk_schluss='Wenn nicht: <span class="hl">Genau hier fangen wir an.</span>',
+        # 6 · Wie geht's weiter?
+        so=[("Direkt mit Daniel", "Du arbeitest mit mir – ehrlich, direkt, auf Augenhöhe."),
+            ("Dein Einsatz", "Ein bis zwei Stunden pro Woche. Die Umsetzung bleibt bei dir."),
+            ("Im Rhythmus", "Regelmäßig abstimmen, flexibel umsteuern, stringent umsetzen.")],
     ),
 }
 
@@ -92,9 +110,15 @@ def rahmen(inhalt, bg="#fff", fg=S):
     return f'<div class="fk" style="--bg:{bg};--fg:{fg}">{inhalt}</div>'
 
 
-# ---------- Seiten ----------
+# ---------- Seiten: Frage (Kicker) · Antwort (Überschrift) · Erklärung · Bildelement ----------
+def kopfblock(frage, h, text, farbe_k=None, h_farbe=None, h_gr=66, text_farbe="#3d3a37", top=130):
+    hf = f"color:{h_farbe};" if h_farbe else ""
+    return (f'<div style="left:{p(80)};right:{p(80)};top:{p(top)}">{kicker(frage, farbe_k)}'
+            f'<h2 style="margin-top:{p(30)};font-size:{p(h_gr)};line-height:1.24;{hf}">{h}</h2>'
+            f'<p style="margin-top:{p(26)};max-width:{p(860)};font-size:{p(27)};line-height:1.55;font-weight:300;color:{text_farbe}">{text}</p></div>')
+
+
 def deckblatt(t):
-    # Aussage im Band 30–70 % der Höhe: Kicker, dreizeiliger Titel, Themenzeichen rechts auf Titelhöhe
     titel = "<br>".join(t["titel"])
     return rahmen(
         f'<img src="/assets/empiria-logo.svg" alt="empiria" style="left:{p(80)};top:{p(72)};height:{p(34)}">'
@@ -102,79 +126,85 @@ def deckblatt(t):
         f'<div style="left:{p(80)};top:50%;transform:translateY(-50%)">{kicker(t["bereich"])}'
         f'<h1 style="margin-top:{p(26)};font-size:{p(98)};line-height:1.22">{titel}</h1></div>'
         f'<div style="right:{p(80)};top:50%;transform:translateY(-12%)">{zeichen(t["zeichen"], 230, S)}</div>'
-        f'<p style="left:{p(80)};bottom:{p(72)};font-size:{p(19)};font-weight:600">{t["url"]}</p>'
+        f'<p style="left:{p(80)};bottom:{p(72)};font-size:{p(20)};font-weight:600">{t["fuer"]} · {t["url"]}</p>'
         f'<p style="right:{p(80)};bottom:{p(72)};font-size:{p(17)};letter-spacing:.06em;opacity:.7">1 / 6</p>')
 
 
 def moment(t):
     fehlt = "".join(f'<li style="display:flex;align-items:center;gap:{p(18)};padding:{p(16)} 0;border-top:{p(3)} solid #1a1817">'
-                    f'<i style="display:block;width:{p(22)};height:{p(4)};background:#1a1817"></i>{x}</li>' for x in t["moment_fehlt"])
+                    f'<i style="display:block;width:{p(22)};height:{p(4)};background:#1a1817"></i>{x}</li>' for x in t["problem_fehlt"])
     return rahmen(
-        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Der Moment")}'
-        f'<h2 style="margin-top:{p(36)};font-size:{p(76)};line-height:1.22">{t["moment"]}</h2></div>'
-        f'<div style="left:{p(80)};width:{p(560)};bottom:{p(160)}"><p style="font-size:{p(24)};font-weight:600;margin-bottom:{p(14)}">Was fehlt:</p>'
-        f'<ul style="font-size:{p(28)};font-weight:500">{fehlt}</ul></div>'
+        kopfblock("Kennst du das?", t["problem_h"], t["problem_text"], text_farbe="#1a1817", h_gr=62, top=110)
+        + f'<div style="left:{p(80)};width:{p(600)};bottom:{p(130)}"><p style="font-size:{p(22)};font-weight:700;letter-spacing:.1em;'
+          f'text-transform:uppercase;margin-bottom:{p(14)}">Was fehlt</p><ul style="font-size:{p(28)};font-weight:500">{fehlt}</ul></div>'
         + fuss(t, 2), Y, S)
 
 
 def ansatz(t):
-    zeilen = "".join(
-        f'<div style="display:grid;grid-template-columns:{p(96)} 1fr;align-items:center;padding:{p(30)} 0;border-top:{p(3)} solid #e4e0db">'
-        f'<span style="display:grid;place-items:center;width:{p(76)};height:{p(76)};border-radius:{p(18)};background:#1a1817;color:#fff400">{ico(i, gr=40)}</span>'
-        f'<div><p class="fk-l" style="font-size:{p(46)};line-height:1.2">{w}</p><p style="margin-top:{p(6)};font-size:{p(26)};color:#3d3a37">{f}</p></div></div>'
-        for i, w, f in t["ansatz"])
+    schritte = "".join(
+        f'<li style="position:relative;display:grid;grid-template-columns:{p(84)} 1fr;align-items:start;padding:{p(18)} 0">'
+        f'<span style="position:relative;z-index:1;display:grid;place-items:center;width:{p(58)};height:{p(58)};border-radius:50%;'
+        f'background:{"#fff400" if i == 3 else "#1a1817"};color:{"#1a1817" if i == 3 else "#fff"};font-size:{p(21)};font-weight:700">0{i + 1}</span>'
+        f'<div><p class="fk-l" style="font-size:{p(38)};line-height:1.2">{w}</p><p style="margin-top:{p(4)};font-size:{p(24)};color:#3d3a37">{f}</p></div></li>'
+        for i, (w, f) in enumerate(t["weg"]))
     return rahmen(
-        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Der Ansatz")}'
-        f'<h2 style="margin-top:{p(36)};font-size:{p(72)};line-height:1.22">{t["ansatz_h"]}</h2>'
-        f'<div style="margin-top:{p(56)}">{zeilen}</div></div>'
+        kopfblock("Was macht ihr?", t["weg_h"], t["weg_text"], h_gr=60, top=110)
+        + f'<ol style="left:{p(80)};right:{p(80)};bottom:{p(120)}">'
+          f'<i style="position:absolute;left:{p(28)};top:{p(48)};bottom:{p(48)};width:{p(3)};background:#e4e0db"></i>{schritte}</ol>'
         + fuss(t, 3))
+
+
+def ergebnis(t):
+    karten = "".join(
+        f'<div style="padding:{p(28)} {p(26)};border-radius:{p(18)};background:#fff">'
+        f'<span style="display:grid;place-items:center;width:{p(64)};height:{p(64)};border-radius:{p(16)};background:#1a1817;color:#fff400">{ico(i, gr=34)}</span>'
+        f'<p class="fk-l" style="margin-top:{p(22)};font-size:{p(32)}">{w}</p><p style="margin-top:{p(8)};font-size:{p(21)};line-height:1.45;color:#3d3a37">{f}</p></div>'
+        for i, w, f in t["gewinn"])
+    return rahmen(
+        kopfblock("Was habe ich davon?", t["gewinn_h"], t["gewinn_text"], h_gr=68)
+        + f'<div style="left:{p(80)};right:{p(80)};bottom:{p(140)}"><p style="font-size:{p(20)};font-weight:700;letter-spacing:.1em;'
+          f'text-transform:uppercase;margin-bottom:{p(18)}">Am Ende hast du in der Hand</p>'
+          f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:{p(18)}">{karten}</div></div>'
+        + fuss(t, 4), "#f3f1ee", S)
 
 
 def denkanstoss(t):
     felder = "".join(
-        f'<li style="display:grid;grid-template-columns:{p(54)} 1fr {p(44)};align-items:center;padding:{p(15)} {p(26)};'
+        f'<li style="display:grid;grid-template-columns:{p(54)} 1fr {p(44)};align-items:center;padding:{p(11)} {p(26)};'
         f'border-top:{p(2)} solid #e4e0db"><span style="font-size:{p(17)};font-weight:700;letter-spacing:.12em">0{n + 1}</span>'
-        f'<span style="font-size:{p(25)}">{f}</span><b class="fk-l" style="font-size:{p(36)};color:#1a1817;background:#fff400;'
-        f'border-radius:{p(8)};text-align:center;line-height:1.2">?</b></li>' for n, f in enumerate(t["denk"]))
+        f'<span style="font-size:{p(24)}">{f}</span><b class="fk-l" style="font-size:{p(32)};color:#1a1817;background:#fff400;'
+        f'border-radius:{p(8)};text-align:center;line-height:1.25">?</b></li>' for n, f in enumerate(t["denk"]))
     browser = (f'<div style="border-radius:{p(18)};background:#fff;color:#1a1817;overflow:hidden">'
-               f'<div style="display:flex;align-items:center;gap:{p(10)};padding:{p(16)} {p(22)};background:#efece8">'
+               f'<div style="display:flex;align-items:center;gap:{p(10)};padding:{p(14)} {p(22)};background:#efece8">'
                + "".join(f'<i style="display:block;width:{p(12)};height:{p(12)};border-radius:50%;background:#cfcac3"></i>' for _ in range(3))
-               + f'<span style="margin-left:{p(14)};padding:{p(6)} {p(18)};border-radius:99px;background:#fff;font-size:{p(17)};color:#6b6762">{t["denk_url"]}</span></div>'
+               + f'<span style="margin-left:{p(14)};padding:{p(5)} {p(18)};border-radius:99px;background:#fff;font-size:{p(17)};color:#6b6762">{t["denk_url"]}</span></div>'
                f'<ol>{felder}</ol></div>')
     return rahmen(
-        f'<div style="left:{p(80)};right:{p(80)};top:{p(130)}">{kicker("Der Denkanstoß", Y)}'
-        f'<h2 style="margin-top:{p(30)};font-size:{p(64)};line-height:1.22;color:#fff">{t["denk_h"]}</h2>'
-        f'<div style="margin-top:{p(44)}">{browser}</div>'
-        f'<p class="fk-l" style="margin-top:{p(34)};font-size:{p(32)};line-height:1.3;color:#fff">{t["denk_frage"]}</p></div>'
-        + fuss(t, 4, hell=True), S, "#fff")
-
-
-def ergebnis(t):
-    return rahmen(
-        f'<div style="left:{p(80)};right:{p(80)};top:50%;transform:translateY(-58%)">{kicker("Das Ergebnis")}'
-        f'<h2 style="margin-top:{p(36)};font-size:{p(74)};line-height:1.26;white-space:nowrap">{"<br>".join(t["ergebnis"])}</h2>'
-        f'<p style="margin-top:{p(34)};font-size:{p(30)};font-weight:300;color:#3d3a37">{t["ergebnis_text"]}</p></div>'
-        f'<div style="right:{p(80)};top:{p(96)}">{zeichen(t["zeichen"], 120, S)}</div>'
-        + fuss(t, 5))
+        kopfblock("Probier es aus", t["denk_h"], t["denk_text"], Y, "#fff", 54, "#d8d3cc", top=96)
+        + f'<div style="left:{p(80)};right:{p(80)};bottom:{p(124)}">{browser}'
+          f'<p class="fk-l" style="margin-top:{p(24)};font-size:{p(34)};line-height:1.3;color:#fff">{t["denk_schluss"]}</p></div>'
+        + fuss(t, 5, hell=True), S, "#fff")
 
 
 def gespraech(t):
+    so = "".join(f'<div style="padding-top:{p(18)};border-top:{p(3)} solid #fff400"><p class="fk-l" style="font-size:{p(28)};color:#fff">{w}</p>'
+                 f'<p style="margin-top:{p(8)};font-size:{p(20)};line-height:1.45;color:#d8d3cc">{f}</p></div>' for w, f in t["so"])
     return rahmen(
-        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Lust auf mehr?", Y)}'
-        f'<h2 style="margin-top:{p(36)};font-size:{p(92)};line-height:1.24;color:#fff">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>'
-        f'<p style="margin-top:{p(34)};font-size:{p(28)};font-weight:300;line-height:1.55;color:#d8d3cc;max-width:{p(700)}">'
-        f'Kein Pitch, kein Angebot von der Stange. Ein Gespräch – offen, konkret und auf Augenhöhe.</p></div>'
-        f'<div style="left:{p(80)};right:{p(80)};bottom:{p(150)};display:flex;align-items:center;gap:{p(30)};padding-top:{p(40)};'
-        f'border-top:{p(2)} solid #3a3632">'
-        f'<img src="/assets/ansprechpartner-daniel.webp" alt="" style="width:{p(132)};height:{p(132)};border-radius:50%;object-fit:cover">'
-        f'<div style="color:#fff"><p class="fk-l" style="font-size:{p(38)}">Daniel Ströbel</p>'
-        f'<p style="margin-top:{p(8)};font-size:{p(22)};line-height:1.55;color:#d8d3cc">daniel.stroebel@empiria.de<br>+49 176 3134 7217</p></div>'
-        f'<p style="margin-left:auto;text-align:right;font-size:{p(20)};line-height:1.5;color:#d8d3cc">Mehr zum Thema<br>'
+        f'<div style="left:{p(80)};right:{p(80)};top:{p(130)}">{kicker("Wie geht es weiter?", Y)}'
+        f'<h2 style="margin-top:{p(30)};font-size:{p(84)};line-height:1.24;color:#fff">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>'
+        f'<p style="margin-top:{p(26)};font-size:{p(27)};font-weight:300;line-height:1.55;color:#d8d3cc;max-width:{p(820)}">'
+        f'Erzähl mir, was dich gerade bewegt. Im ersten Gespräch klären wir, ob und wie ich dir weiterhelfen kann.</p>'
+        f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:{p(28)};margin-top:{p(46)}">{so}</div></div>'
+        f'<div style="left:{p(80)};right:{p(80)};bottom:{p(140)};display:flex;align-items:center;gap:{p(28)}">'
+        f'<img src="/assets/ansprechpartner-daniel.webp" alt="" style="width:{p(120)};height:{p(120)};border-radius:50%;object-fit:cover">'
+        f'<div style="color:#fff"><p class="fk-l" style="font-size:{p(36)}">Daniel Ströbel</p>'
+        f'<p style="margin-top:{p(6)};font-size:{p(21)};line-height:1.55;color:#d8d3cc">daniel.stroebel@empiria.de<br>+49 176 3134 7217</p></div>'
+        f'<p style="margin-left:auto;text-align:right;font-size:{p(19)};line-height:1.5;color:#d8d3cc">Mehr zum Thema<br>'
         f'<b style="color:#fff400;font-weight:600">{t["url"]}</b></p></div>'
         + fuss(t, 6, hell=True), S, "#fff")
 
 
-SEITEN = [deckblatt, moment, ansatz, denkanstoss, ergebnis, gespraech]
+SEITEN = [deckblatt, moment, ansatz, ergebnis, denkanstoss, gespraech]
 
 
 # ---------- PDF ----------
@@ -231,7 +261,7 @@ def main_html():
         titel_rein = re.sub(r"<[^>]+>", "", " ".join(t["titel"]))
         karte = (f'<div class="fk-karte"><div class="fk-karte__bild"><small>Medien</small>{deckblatt(t)}</div>'
                  f'<div class="fk-karte__text"><b>{titel_rein}</b>'
-                 f'<p>{t["moment"]}</p></div></div>')
+                 f'<p>{t["karte"]}</p></div></div>')
         seiten = "".join(f'<figure style="margin:0">{fn(t)}<p class="pm-label">Seite {i + 1}</p></figure>' for i, fn in enumerate(SEITEN))
         teile.append(f'<div class="pm-abschnitt"><h2>{t["bereich"]} · {" ".join(t["titel"])}</h2>'
                      f'<div class="fk-oben"><div>{karte}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
