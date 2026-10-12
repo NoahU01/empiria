@@ -297,10 +297,11 @@ def schutzzone():
 
 
 def jobs():
+    """LinkedIn verdichtet die Bilder stark – deshalb in doppelter Auflösung (3168 × 792 bzw. 2256 × 382)."""
     j = []
     for var in VARIANTEN:
-        j.append({"html": person_banner(var), "w": 1584, "h": 396, "pfad": ORDNER / f"linkedin-person-{var}.png"})
-        j.append({"html": firma_banner(var), "w": 1128, "h": 191, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
+        j.append({"html": person_banner(var), "w": 1584, "h": 396, "faktor": 2, "pfad": ORDNER / f"linkedin-person-{var}.png"})
+        j.append({"html": firma_banner(var), "w": 1128, "h": 191, "faktor": 2, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
     return j
 
 
@@ -311,9 +312,9 @@ def main_html():
     for i, (var, (name, text)) in enumerate(VARIANTEN.items(), 1):
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
                      f'<div class="lg-raster lg-raster--li">'
-                     f'<figure style="margin:0">{attrappe_person(var)}<p class="pm-label">Personenprofil · 1584 × 396 px</p>'
+                     f'<figure style="margin:0">{attrappe_person(var)}<p class="pm-label">Personenprofil · 1584 × 396 px · PNG doppelt: 3168 × 792</p>'
                      f'<div class="pm-dl">{download(f"{WEB}/linkedin-person-{var}.png", "PNG laden")}</div></figure>'
-                     f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Unternehmensseite · 1128 × 191 px</p>'
+                     f'<figure style="margin:0">{attrappe_firma(var)}<p class="pm-label">Unternehmensseite · 1128 × 191 px · PNG doppelt: 2256 × 382</p>'
                      f'<div class="pm-dl">{download(f"{WEB}/linkedin-firma-{var}.png", "PNG laden")}</div></figure>'
                      f'</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
