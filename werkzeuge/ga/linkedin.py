@@ -277,9 +277,9 @@ def firma_logos(art):
     if art == "start":
         H = 220
         b = .8 * H / PFEIL_VERH
-        links_pfeil = W - .3 * b - b / 2
+        links_pfeil = W - .46 * b - b / 2  # nur die Spitze ist angeschnitten
         logos, raster = logo_raster(p, 19, 38, 10)
-        return (pfeil(p, b, W - .3 * b, H / 2, SCHWARZ)
+        return (pfeil(p, b, W - .46 * b, H / 2, SCHWARZ)
                 + f'<h2 style="left:{p(340)};top:{p(20)};font-size:{p(42)}">Strategie, die <span class="hl">wirkt.</span></h2>'
                 + f'<div class="lb-logos" style="left:{p(340)};right:{p(W - links_pfeil + 36)};top:{p(104)};{raster}">{logos}</div>')
     H = 220
