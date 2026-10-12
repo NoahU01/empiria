@@ -1,0 +1,256 @@
+#!/usr/bin/env python3
+"""LinkedIn „Im Fokus“ – quadratische PDFs je Leistungsthema (Daniel, 12.10.2026).
+
+Ein Aufbau für alle sechs Dokumente, je Seite eine Fläche und eine Aussage (1080 × 1080):
+  1 Deckblatt (Weiß)   – Thema groß + Themenzeichen; Aussage in der Mitte der Höhe, weil die Fokus-Vorschau
+                         nur einen waagrechten Streifen zeigt. Logo/Fuß am Rand gehören zur geöffneten Seite.
+  2 Der Moment (Gelb)  – das Problem in einem Satz
+  3 Der Ansatz (Weiß)  – drei Bausteine (bei Überblicks-Themen: die Formate)
+  4 Denkanstoß (Schwarz) – etwas zum Selbermachen
+  5 Das Ergebnis (Weiß) – positiv, ein Satz
+  6 Gespräch (Schwarz) – Daniel, Kontakt, Link zur Seite
+
+Aufruf: python3 werkzeuge/ga/fokus.py
+Ergebnis: site/projekte/ga-linkedin-fokus.html, site/projekte/ga/fokus/<thema>.pdf + Seiten-PNGs
+"""
+import re
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from e2_lucide import ICONS  # noqa: E402
+from ga_export import (CHROME, FORM, PUPPETEER, SEITE_CSS, SITE, download, exportieren, kopf,  # noqa: E402
+                       px_fn, seite)
+
+ORDNER = SITE / "projekte" / "ga" / "fokus"
+WEB = "/projekte/ga/fokus"
+G = 1080
+p = px_fn(G)
+S, Y = "#1a1817", "#fff400"
+
+
+def zeichen(name, breite, farbe):
+    vb = "2.83 31.08 226.78 170.29" if name == "forward" else "2.83 2.83 226.78 226.78"
+    return f'<svg viewBox="{vb}" style="display:block;width:{p(breite)};height:auto;color:{farbe}" aria-hidden="true">{FORM[name]}</svg>'
+
+
+def ico(n, farbe="currentColor", gr=56):
+    return (f'<svg viewBox="0 0 24 24" style="width:{p(gr)};height:{p(gr)};display:block" fill="none" stroke="{farbe}" '
+            f'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>')
+
+
+THEMEN = {
+    "strategie": dict(
+        bereich="Strategiehandwerk", zeichen="forward", url="empiria.de/leistungen/strategie",
+        titel=["Strategie in den", '<span class="hl">Alltag</span>', "überführen."],
+        moment="Strategisches Denken wird vorausgesetzt. Beigebracht hat es dir keiner.",
+        moment_fehlt=["die klare Richtung", "die eigene Rolle", "das Handwerkszeug für den Alltag"],
+        ansatz_h="Rolle, Richtung, Handwerkszeug.",
+        ansatz=[("flag", "Rolle", "Wofür stehe ich und mein Bereich?"),
+                ("compass", "Richtung", "Wie wollen wir wahrgenommen werden?"),
+                ("wrench", "Handwerkszeug", "Wie kommen wir dorthin?")],
+        denk_h="Wie sähe die Homepage deines Bereichs aus?",
+        denk_url="www.dein-bereich-gmbh.de",
+        denk=["Welche Zielgruppe sprechen wir an?", "Welches Problem lösen wir?", "Welcher Nutzen entsteht daraus?",
+              "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"],
+        denk_frage="Würde jeder in deinem Team dasselbe hineinschreiben?",
+        ergebnis=['Jeder im Team versteht,', 'wofür dein Bereich', '<span class="hl">da ist.</span>'],
+        ergebnis_text="Und du bestimmst, wie er wahrgenommen wird.",
+    ),
+}
+
+CSS = """
+.fk { position: relative; width: 100%; aspect-ratio: 1; container-type: inline-size; overflow: hidden; background: var(--bg, #fff);
+  color: var(--fg, #1a1817); font-family: 'Poppins', sans-serif; }
+.fk > * { position: absolute; }
+.fk p, .fk h1, .fk h2, .fk ol, .fk ul { margin: 0; padding: 0; list-style: none; }
+.fk h1, .fk h2, .fk .fk-l { font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -.025em; }
+.fk .hl { background: #fff400; color: #1a1817; padding: 0 .1em .05em; border-radius: .12em; white-space: nowrap; }
+.fk-k { display: flex; align-items: center; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; line-height: 1; }
+.fk-fuss { left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; }
+.fk-fuss img { display: block; width: auto; }
+"""
+
+
+def kicker(text, farbe=None):
+    st = f"color:{farbe};" if farbe else ""
+    return (f'<p class="fk-k" style="{st}font-size:{p(19)};gap:{p(16)}"><i style="display:block;width:{p(40)};height:{p(4)};'
+            f'background:currentColor"></i>{text}</p>')
+
+
+def fuss(t, nr, hell=False):
+    logo = f'/assets/empiria-logo{"-weiss" if hell else ""}.svg'
+    return (f'<div class="fk-fuss" style="bottom:{p(64)};padding:0 {p(80)}">'
+            f'<img src="{logo}" alt="empiria" style="height:{p(30)}">'
+            f'<span style="font-size:{p(17)};letter-spacing:.06em;opacity:.7">{t["bereich"]} · {nr} / 6</span></div>')
+
+
+def rahmen(inhalt, bg="#fff", fg=S):
+    return f'<div class="fk" style="--bg:{bg};--fg:{fg}">{inhalt}</div>'
+
+
+# ---------- Seiten ----------
+def deckblatt(t):
+    # Aussage im Band 30–70 % der Höhe: Kicker, dreizeiliger Titel, Themenzeichen rechts auf Titelhöhe
+    titel = "<br>".join(t["titel"])
+    return rahmen(
+        f'<img src="/assets/empiria-logo.svg" alt="empiria" style="left:{p(80)};top:{p(72)};height:{p(34)}">'
+        f'<p style="right:{p(80)};top:{p(80)};font-size:{p(17)};letter-spacing:.06em;opacity:.7">LinkedIn · Im Fokus</p>'
+        f'<div style="left:{p(80)};top:50%;transform:translateY(-50%)">{kicker(t["bereich"])}'
+        f'<h1 style="margin-top:{p(26)};font-size:{p(98)};line-height:1.22">{titel}</h1></div>'
+        f'<div style="right:{p(80)};top:50%;transform:translateY(-12%)">{zeichen(t["zeichen"], 230, S)}</div>'
+        f'<p style="left:{p(80)};bottom:{p(72)};font-size:{p(19)};font-weight:600">{t["url"]}</p>'
+        f'<p style="right:{p(80)};bottom:{p(72)};font-size:{p(17)};letter-spacing:.06em;opacity:.7">1 / 6</p>')
+
+
+def moment(t):
+    fehlt = "".join(f'<li style="display:flex;align-items:center;gap:{p(18)};padding:{p(16)} 0;border-top:{p(3)} solid #1a1817">'
+                    f'<i style="display:block;width:{p(22)};height:{p(4)};background:#1a1817"></i>{x}</li>' for x in t["moment_fehlt"])
+    return rahmen(
+        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Der Moment")}'
+        f'<h2 style="margin-top:{p(36)};font-size:{p(76)};line-height:1.22">{t["moment"]}</h2></div>'
+        f'<div style="left:{p(80)};width:{p(560)};bottom:{p(160)}"><p style="font-size:{p(24)};font-weight:600;margin-bottom:{p(14)}">Was fehlt:</p>'
+        f'<ul style="font-size:{p(28)};font-weight:500">{fehlt}</ul></div>'
+        + fuss(t, 2), Y, S)
+
+
+def ansatz(t):
+    zeilen = "".join(
+        f'<div style="display:grid;grid-template-columns:{p(96)} 1fr;align-items:center;padding:{p(30)} 0;border-top:{p(3)} solid #e4e0db">'
+        f'<span style="display:grid;place-items:center;width:{p(76)};height:{p(76)};border-radius:{p(18)};background:#1a1817;color:#fff400">{ico(i, gr=40)}</span>'
+        f'<div><p class="fk-l" style="font-size:{p(46)};line-height:1.2">{w}</p><p style="margin-top:{p(6)};font-size:{p(26)};color:#3d3a37">{f}</p></div></div>'
+        for i, w, f in t["ansatz"])
+    return rahmen(
+        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Der Ansatz")}'
+        f'<h2 style="margin-top:{p(36)};font-size:{p(72)};line-height:1.22">{t["ansatz_h"]}</h2>'
+        f'<div style="margin-top:{p(56)}">{zeilen}</div></div>'
+        + fuss(t, 3))
+
+
+def denkanstoss(t):
+    felder = "".join(
+        f'<li style="display:grid;grid-template-columns:{p(54)} 1fr {p(44)};align-items:center;padding:{p(15)} {p(26)};'
+        f'border-top:{p(2)} solid #e4e0db"><span style="font-size:{p(17)};font-weight:700;letter-spacing:.12em">0{n + 1}</span>'
+        f'<span style="font-size:{p(25)}">{f}</span><b class="fk-l" style="font-size:{p(36)};color:#1a1817;background:#fff400;'
+        f'border-radius:{p(8)};text-align:center;line-height:1.2">?</b></li>' for n, f in enumerate(t["denk"]))
+    browser = (f'<div style="border-radius:{p(18)};background:#fff;color:#1a1817;overflow:hidden">'
+               f'<div style="display:flex;align-items:center;gap:{p(10)};padding:{p(16)} {p(22)};background:#efece8">'
+               + "".join(f'<i style="display:block;width:{p(12)};height:{p(12)};border-radius:50%;background:#cfcac3"></i>' for _ in range(3))
+               + f'<span style="margin-left:{p(14)};padding:{p(6)} {p(18)};border-radius:99px;background:#fff;font-size:{p(17)};color:#6b6762">{t["denk_url"]}</span></div>'
+               f'<ol>{felder}</ol></div>')
+    return rahmen(
+        f'<div style="left:{p(80)};right:{p(80)};top:{p(130)}">{kicker("Der Denkanstoß", Y)}'
+        f'<h2 style="margin-top:{p(30)};font-size:{p(64)};line-height:1.22;color:#fff">{t["denk_h"]}</h2>'
+        f'<div style="margin-top:{p(44)}">{browser}</div>'
+        f'<p class="fk-l" style="margin-top:{p(34)};font-size:{p(32)};line-height:1.3;color:#fff">{t["denk_frage"]}</p></div>'
+        + fuss(t, 4, hell=True), S, "#fff")
+
+
+def ergebnis(t):
+    return rahmen(
+        f'<div style="left:{p(80)};right:{p(80)};top:50%;transform:translateY(-58%)">{kicker("Das Ergebnis")}'
+        f'<h2 style="margin-top:{p(36)};font-size:{p(74)};line-height:1.26;white-space:nowrap">{"<br>".join(t["ergebnis"])}</h2>'
+        f'<p style="margin-top:{p(34)};font-size:{p(30)};font-weight:300;color:#3d3a37">{t["ergebnis_text"]}</p></div>'
+        f'<div style="right:{p(80)};top:{p(96)}">{zeichen(t["zeichen"], 120, S)}</div>'
+        + fuss(t, 5))
+
+
+def gespraech(t):
+    return rahmen(
+        f'<div style="left:{p(80)};right:{p(80)};top:{p(150)}">{kicker("Lust auf mehr?", Y)}'
+        f'<h2 style="margin-top:{p(36)};font-size:{p(92)};line-height:1.24;color:#fff">Aus Gespräch<br>wird <span class="hl">Klarheit.</span></h2>'
+        f'<p style="margin-top:{p(34)};font-size:{p(28)};font-weight:300;line-height:1.55;color:#d8d3cc;max-width:{p(700)}">'
+        f'Kein Pitch, kein Angebot von der Stange. Ein Gespräch – offen, konkret und auf Augenhöhe.</p></div>'
+        f'<div style="left:{p(80)};right:{p(80)};bottom:{p(150)};display:flex;align-items:center;gap:{p(30)};padding-top:{p(40)};'
+        f'border-top:{p(2)} solid #3a3632">'
+        f'<img src="/assets/ansprechpartner-daniel.webp" alt="" style="width:{p(132)};height:{p(132)};border-radius:50%;object-fit:cover">'
+        f'<div style="color:#fff"><p class="fk-l" style="font-size:{p(38)}">Daniel Ströbel</p>'
+        f'<p style="margin-top:{p(8)};font-size:{p(22)};line-height:1.55;color:#d8d3cc">daniel.stroebel@empiria.de<br>+49 176 3134 7217</p></div>'
+        f'<p style="margin-left:auto;text-align:right;font-size:{p(20)};line-height:1.5;color:#d8d3cc">Mehr zum Thema<br>'
+        f'<b style="color:#fff400;font-weight:600">{t["url"]}</b></p></div>'
+        + fuss(t, 6, hell=True), S, "#fff")
+
+
+SEITEN = [deckblatt, moment, ansatz, denkanstoss, ergebnis, gespraech]
+
+
+# ---------- PDF ----------
+PDF_JS = r"""
+const p = require(process.argv[2]);
+(async () => {
+  const b = await p.launch({executablePath: process.argv[3], headless: 'new'});
+  const pg = await b.newPage();
+  await pg.goto(process.argv[4], {waitUntil: 'networkidle0'});
+  await pg.evaluate(async () => { await document.fonts.ready; });
+  await pg.pdf({path: process.argv[5], width: '1080px', height: '1080px', printBackground: true, pageRanges: ''});
+  await b.close();
+})().catch(e => { console.error(e); process.exit(1); });
+"""
+
+
+def pdf(name, t):
+    druck = (f'<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="/assets/fonts/fonts.local.css">'
+             f'<style>@page {{ size: 1080px 1080px; margin: 0 }} html,body {{ margin:0; padding:0 }} '
+             f'.blatt {{ width:1080px; height:1080px; page-break-after: always; overflow:hidden }} {CSS}</style></head><body>'
+             + "".join(f'<div class="blatt">{fn(t)}</div>' for fn in SEITEN) + '</body></html>')
+    datei = ORDNER / f"_druck_{name}.html"
+    datei.write_text(druck, encoding="utf-8")
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            js = Path(tmp) / "pdf.js"
+            js.write_text(PDF_JS, encoding="utf-8")
+            subprocess.run(["node", str(js), str(PUPPETEER), CHROME,
+                            f"http://localhost:4599/projekte/ga/fokus/{datei.name}", str(ORDNER / f"empiria-fokus-{name}.pdf")], check=True)
+    finally:
+        datei.unlink(missing_ok=True)
+
+
+# ---------- Vorschauseite ----------
+SEITE_EXTRA = """
+.fk-reihe { display: grid; width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 2.4rem; }
+.fk-reihe .fk { border-radius: 6px; box-shadow: 0 0 0 1px #e4e0db; }
+.fk-karte { width: 100%; max-width: 360px; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px #d9d5cf;
+  font-family: -apple-system, 'Segoe UI', 'Poppins', sans-serif; }
+.fk-karte__bild { position: relative; aspect-ratio: 466 / 320; overflow: hidden; }
+.fk-karte__bild .fk { position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+.fk-karte__bild small { position: absolute; left: 14px; top: 10px; z-index: 2; font-size: 14px; color: #666; background: rgba(255,255,255,.9); padding: 0 4px; }
+.fk-karte__text { padding: .7rem .9rem 1rem; background: #f3f2ef; }
+.fk-karte__text b { display: block; font-size: 1.05rem; color: #1d1d1d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fk-karte__text p { margin: .3rem 0 0; font-size: .98rem; line-height: 1.35; color: #1d1d1d; }
+.fk-oben { display: grid; width: 100%; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 2.4rem; align-items: start; margin-top: 1.6rem; }
+@media (max-width: 800px) { .fk-reihe { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fk-oben { grid-template-columns: 1fr; } }
+"""
+
+
+def main_html():
+    teile = []
+    for name, t in THEMEN.items():
+        titel_rein = re.sub(r"<[^>]+>", "", " ".join(t["titel"]))
+        karte = (f'<div class="fk-karte"><div class="fk-karte__bild"><small>Medien</small>{deckblatt(t)}</div>'
+                 f'<div class="fk-karte__text"><b>{titel_rein}</b>'
+                 f'<p>{t["moment"]}</p></div></div>')
+        seiten = "".join(f'<figure style="margin:0">{fn(t)}<p class="pm-label">Seite {i + 1}</p></figure>' for i, fn in enumerate(SEITEN))
+        teile.append(f'<div class="pm-abschnitt"><h2>{t["bereich"]} · {" ".join(t["titel"])}</h2>'
+                     f'<div class="fk-oben"><div>{karte}<p class="pm-label">So erscheint das Deckblatt in „Im Fokus“</p></div>'
+                     f'<div><p class="pm-text">LinkedIn zeigt vom Deckblatt nur einen waagrechten Streifen. Deshalb steht die Aussage '
+                     f'in der Mitte der Höhe; Logo, Adresse und Seitenzahl gehören zur geöffneten Seite und dürfen in der Vorschau wegfallen.'
+                     f'</p><div class="pm-dl">{download(f"{WEB}/empiria-fokus-{name}.pdf", "PDF · 6 Seiten · 1080 × 1080")}</div></div>'
+                     f'<div class="fk-reihe">{seiten}</div></div>')
+    return (f'<main>\n<section class="pm"><div class="container">'
+            + kopf('LinkedIn <span class="hl">im Fokus</span>',
+                   'Sechs Dokumente für den Bereich „Im Fokus“ im LinkedIn-Profil – einheitlich aufgebaut, je Seite eine Aussage. '
+                   'Die drei Strategiethemen im Detail, Workshops, Marketing 2.0 und Training &amp; Sparring als Überblick. Begonnen wird mit „Strategie in den Alltag überführen“.')
+            + "".join(teile)
+            + f'</div></section>\n<style>{SEITE_CSS}{CSS}{SEITE_EXTRA}</style>\n</main>')
+
+
+if __name__ == "__main__":
+    ORDNER.mkdir(parents=True, exist_ok=True)
+    seite("ga-linkedin-fokus.html", "LinkedIn im Fokus", main_html())
+    for name, t in THEMEN.items():
+        pdf(name, t)
+        exportieren(CSS, [{"html": fn(t), "w": G, "h": G, "pfad": ORDNER / f"{name}-{i + 1}.png"} for i, fn in enumerate(SEITEN)])
+    print("fertig")
