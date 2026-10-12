@@ -137,7 +137,7 @@ def pitch():
 # ---------- Übersicht ----------
 def uebersicht():
     karten = [("/projekte/methoden-storyboard.html", "SB", "Storyboard Landing Page",
-               "Von den Antworten zur Landingpage: 12 Punkte, 8 Fragen des Lesers, 4 Abschnitte, Entwürfe A und B, daraus die Skizze."),
+               "Von den Antworten zur Landingpage: 12 Punkte, 8 Fragen des Lesers, 4 Abschnitte, Skizze in Fassung A und B, daraus die finale Fassung."),
               ("/projekte/methoden-elevator-pitch.html", "EP", "Elevator Pitch",
                "Von der Landingpage zur halben Minute: sechs Bausteine, sechs Sätze – und eine Kurzfassung für die Vorstellungsrunde.")]
     k = "".join(f'<a class="mt-karte" href="{h}"><span class="mt-tag">{t}</span><b>{n}</b><small>{x}</small></a>' for h, t, n, x in karten)
