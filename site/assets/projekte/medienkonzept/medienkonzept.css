@@ -48,3 +48,20 @@
   .mkb-regel { grid-template-columns: minmax(0, 1fr); }
   .mkb-stapel { min-height: 320px; }
 }
+
+/* Entwürfe (12.10.2026): Raster und Großansicht wie AVRG › Social Media (Klassen aus avrg-mk.css) */
+#mke-raster .ig-kachel { aspect-ratio: 4 / 5; }
+#mke-raster .ig-kachel > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mke-doc { position: absolute; top: 12px; right: 12px; z-index: 6; padding: 6px 10px; border-radius: 999px; background: #1a1817; color: #fff; font: 600 .72rem/1 'Poppins', sans-serif; letter-spacing: .06em; }
+.mke-bild { display: block; background: #1a1817; }
+.mke-bild > img { display: block; width: 100%; height: auto; }
+.mke-seiten { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.mke-seiten::-webkit-scrollbar { display: none; }
+.mke-seiten img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: start; display: block; }
+.mke-hinweis { margin: 0; padding: 10px 16px; font: 500 .82rem/1.3 'Poppins', sans-serif; color: #d9d5cf; text-align: center; }
+#mke-pdf[hidden] { display: none; }
+.mke-bild > img, .mke-seiten img { max-height: min(860px, 90vh); object-fit: contain; }
+#mke-modal .ig-modal__bild, .mke-bild { background: #f3f1ee; display: flex; flex-direction: column; justify-content: center; }
+.mke-hinweis { color: #6b6762; }
+.ig .ig-kopf img[src*="ansprechpartner-daniel"] { border-color: #1a1817; }
+#mke-modal .ig-aktionen a, #mke-modal .ig-aktionen button { white-space: nowrap; }

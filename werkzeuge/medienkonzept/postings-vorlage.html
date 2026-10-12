@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>/* Erzeugt von postings_vorlage_bauen.py – nicht von Hand ändern. */
+:root { --ink:#1a1817; --ink2:#3d3a37; --gelb:#fff400; --grau:#6b6762; --hell:#f3f1ee; --linie:#e4e0db; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { width:1080px; background:#fff; }
+.p { display:none; position:relative; width:1080px; height:1350px; overflow:hidden; font-family:"Poppins",sans-serif; color:var(--ink); background:#fff; padding:84px 84px 0; }
+.p:target { display:block; }
+@media print { @page { size:1080px 1350px; margin:0; } body.druck .p { display:block; break-after:page; } }
+.k { display:flex; align-items:center; gap:18px; font:600 24px/1.2 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+.k::before { content:""; width:44px; height:3px; background:currentColor; }
+.h { font:700 96px/1.06 "Lora",Georgia,serif; letter-spacing:-.015em; margin-top:34px; }
+.h.m { font-size:84px; }
+.hl { background:var(--gelb); border-radius:18px; padding:0 .14em; margin:0 -.04em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+.text { margin-top:30px; font:400 34px/1.5 "Poppins",sans-serif; color:var(--ink2); max-width:860px; }
+.fuss { position:absolute; left:84px; right:84px; bottom:70px; display:flex; justify-content:space-between; align-items:center; font:500 24px/1 "Poppins",sans-serif; color:var(--grau); }
+.fuss > img { height:34px; display:block; }
+.zeichen { position:absolute; color:var(--ink); }
+.zeichen svg { width:100%; height:100%; display:block; }
+.karte { height:600px; border-radius:28px; overflow:hidden; margin-bottom:58px; }
+.karte img { width:100%; height:100%; object-fit:cover; object-position:var(--pos,50% 50%); display:block; }
+.sw img { filter:grayscale(1) contrast(1.06); }
+.gelbgrund { background:var(--gelb); }
+.rund { width:300px; height:300px; border-radius:50%; overflow:hidden; border:8px solid var(--ink); }
+.rund img { width:100%; height:100%; object-fit:cover; object-position:50% 30%; filter:grayscale(1) contrast(1.06); display:block; }
+.zitat { margin-top:72px; font:700 80px/1.13 "Lora",Georgia,serif; letter-spacing:-.01em; }
+.quelle { margin-top:40px; font:500 30px/1.4 "Poppins",sans-serif; }
+.schwarz { background:var(--ink); color:#fff; }
+.schwarz .k { color:var(--gelb); }
+.schwarz .fuss { color:#a8a39c; }
+.liste { margin-top:70px; }
+.liste div { display:flex; align-items:baseline; gap:40px; padding:34px 0; border-top:2px solid #3a3734; font:700 88px/1 "Lora",Georgia,serif; }
+.liste div:last-child { border-bottom:2px solid #3a3734; }
+.liste small { font:600 26px/1 "Poppins",sans-serif; color:#a8a39c; width:44px; }
+.nr { font:700 30px/1 "Lora",Georgia,serif; color:#b5b0a9; }
+.seitenkopf { display:flex; justify-content:space-between; align-items:center; }
+.frage { margin-top:40px; background:var(--ink); color:#fff; border-radius:28px; padding:52px 150px 58px 56px; position:relative; }
+.frage small { display:block; font:600 22px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--gelb); margin-bottom:24px; }
+.frage p { font:700 58px/1.16 "Lora",Georgia,serif; }
+.frage .zeichen { right:48px; top:44px; width:64px; height:64px; color:var(--gelb); }
+.block { margin-top:50px; }
+.block > small { display:block; font:600 22px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--grau); margin-bottom:16px; }
+.block li { list-style:none; padding:18px 0; border-top:2px solid var(--linie); font:400 34px/1.4 "Poppins",sans-serif; }
+.block li:last-child { border-bottom:2px solid var(--linie); }
+.oeffnen { background:var(--hell); border-radius:24px; padding:36px 42px; font:500 34px/1.5 "Poppins",sans-serif; }
+.check li { list-style:none; display:flex; gap:32px; align-items:flex-start; padding:30px 0; border-top:3px solid var(--ink); font:600 34px/1.3 "Poppins",sans-serif; }
+.check li:last-child { border-bottom:3px solid var(--ink); }
+.check li::before { content:""; flex:0 0 46px; height:46px; border:4px solid var(--ink); border-radius:10px; margin-top:2px; }
+.autor { display:flex; align-items:center; gap:22px; }
+.autor .rund { width:96px; height:96px; border-width:4px; }
+.autor .rund img { object-position:25% 15%; }
+.autor b { display:block; color:var(--ink); font-weight:600; margin-bottom:8px; }
+</style></head>
+<body>
+<section class="p" id="p1">
+  <div class="karte sw" style="--pos:50% 38%"><img src="/assets/projekte/medienkonzept/entwurf-e1.jpg" alt=""></div>
+  <p class="k">Vor jeder Vorstandsvorlage</p>
+  <p class="h m">Erst drei Fragen, dann die <span class="hl">Folie.</span></p>
+  <div class="zeichen" style="right:84px;top:720px;width:92px;height:92px"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div>
+  <div class="fuss"><span>Daniel Ströbel</span><img src="/assets/empiria-logo.svg" alt="empiria"></div>
+</section>
+
+<section class="p" id="p2">
+  <div class="karte" style="--pos:35% 40%"><img src="/assets/projekte/medienkonzept/entwurf-e2.jpg" alt=""></div>
+  <p class="k">Strategie im Alltag</p>
+  <p class="h m">Was entscheidest du diese Woche <span class="hl">anders?</span></p>
+  <div class="zeichen" style="right:84px;top:720px;width:92px;height:92px"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></div>
+  <div class="fuss"><span>Daniel Ströbel</span><img src="/assets/empiria-logo.svg" alt="empiria"></div>
+</section>
+
+<section class="p gelbgrund" id="p3">
+  <div class="rund" style="margin-top:60px"><img src="/assets/projekte/medienkonzept/entwurf-e3.jpg" alt=""></div>
+  <p class="zitat">„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“</p>
+  <p class="quelle">Ein befreundeter Vorstand über meine Arbeit</p>
+  <div class="fuss" style="color:#1a1817"><span>Daniel Ströbel</span><img src="/assets/empiria-logo.svg" alt="empiria"></div>
+</section>
+
+<section class="p" id="p4">
+  <div class="karte" style="--pos:30% 75%"><img src="/assets/projekte/medienkonzept/entwurf-e4.jpg" alt=""></div>
+  <p class="k">Die Neugründungs-Frage</p>
+  <p class="h m">Was würdest du heute nicht mehr <span class="hl">machen?</span></p>
+  <div class="zeichen" style="right:84px;top:720px;width:92px;height:92px"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M116.22,22.83c51.49,0,93.39,41.89,93.39,93.39s-41.89,93.39-93.39,93.39S22.83,167.71,22.83,116.22,64.73,22.83,116.22,22.83M116.22,2.83C53.6,2.83,2.83,53.6,2.83,116.22s50.76,113.39,113.39,113.39,113.39-50.76,113.39-113.39S178.84,2.83,116.22,2.83h0Z"/></svg></div>
+  <div class="fuss"><span>Daniel Ströbel</span><img src="/assets/empiria-logo.svg" alt="empiria"></div>
+</section>
+
+<section class="p schwarz" id="p5">
+  <p class="k">Am Ende jeder Abstimmung</p>
+  <div class="liste"><div><small>01</small>Wer?</div><div><small>02</small>Bis wann?</div><div><small>03</small>In welcher Form?</div></div>
+  <p class="text" style="color:#d9d5cf;margin-top:56px">Zwei Minuten, damit das Thema beim nächsten Termin eine Stufe weiter ist.</p>
+  <div class="fuss"><span>Daniel Ströbel</span><img src="/assets/empiria-logo-weiss.svg" alt="empiria"></div>
+</section>
+
+<section class="p" id="d1">
+  <p class="k">Dokument · 6 Seiten</p>
+  <p class="h" style="font-size:118px;margin-top:60px">Ein Thema.<br>Vier <span class="hl">Gegenüber.</span></p>
+  <p class="text">Was Vorstand, Aufsichtsrat, Vertrieb und dein Team von dir wissen wollen – und wie du das Gespräch eröffnest.</p>
+  <div class="zeichen" style="right:84px;top:860px;width:230px;height:230px"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div>
+  <div class="fuss"><span class="autor"><span class="rund"><img src="/assets/projekte/medienkonzept/entwurf-e6.jpg" alt=""></span><span><b>Daniel Ströbel</b>Strategie in Wirkung bringen</span></span><img src="/assets/empiria-logo.svg" alt="empiria"></div>
+</section>
+
+<section class="p" id="d2">
+  <div class="seitenkopf"><p class="k">Der Vorstand</p><span class="nr">01 / 04</span></div>
+  <div class="frage"><small>Die Frage</small><p>Welche Entscheidung brauchst du von mir, und was riskiere ich damit?</p><div class="zeichen"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div></div>
+  <div class="block"><small>Typische Einwände</small><ul><li>„Warum gerade jetzt?“</li><li>„Was passiert, wenn wir es lassen?“</li></ul></div>
+  <div class="block"><small>So eröffnest du</small><p class="oeffnen">„Ich brauche heute eine Entscheidung zu einer Frage. Meine Empfehlung ist …, das Risiko begrenzen wir auf …“</p></div>
+  <div class="fuss"><span>Ein Thema. Vier Gegenüber.</span><span>2 / 6</span></div>
+</section>
+
+<section class="p" id="d3">
+  <div class="seitenkopf"><p class="k">Der Aufsichtsrat</p><span class="nr">02 / 04</span></div>
+  <div class="frage"><small>Die Frage</small><p>Passt das zu unserer Strategie, und bleibt es steuerbar?</p><div class="zeichen"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div></div>
+  <div class="block"><small>Typische Einwände</small><ul><li>„Woran messen wir, ob es wirkt?“</li><li>„Wer trägt die Verantwortung?“</li></ul></div>
+  <div class="block"><small>So eröffnest du</small><p class="oeffnen">„Das Vorhaben zahlt auf unsere Stoßrichtung … ein. Verantwortlich ist …, berichtet wird quartalsweise an drei Kennzahlen.“</p></div>
+  <div class="fuss"><span>Ein Thema. Vier Gegenüber.</span><span>3 / 6</span></div>
+</section>
+
+<section class="p" id="d4">
+  <div class="seitenkopf"><p class="k">Der Vertrieb</p><span class="nr">03 / 04</span></div>
+  <div class="frage"><small>Die Frage</small><p>Was habe ich davon, und wie erkläre ich es meinem Kunden in einem Satz?</p><div class="zeichen"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div></div>
+  <div class="block"><small>Typische Einwände</small><ul><li>„Noch ein Thema mehr.“</li><li>„Das versteht mein Kunde nicht.“</li></ul></div>
+  <div class="block"><small>So eröffnest du</small><p class="oeffnen">„Ab … hast du im Kundengespräch ein Argument mehr, und es passt in einen Satz: …“</p></div>
+  <div class="fuss"><span>Ein Thema. Vier Gegenüber.</span><span>4 / 6</span></div>
+</section>
+
+<section class="p" id="d5">
+  <div class="seitenkopf"><p class="k">Dein Team</p><span class="nr">04 / 04</span></div>
+  <div class="frage"><small>Die Frage</small><p>Was ändert sich ab Montag für mich?</p><div class="zeichen"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M162.06,27.36l43.02,43.02-31.7,31.7-14.14,14.14,14.14,14.14,31.7,31.7-43.02,43.02-31.7-31.7-14.14-14.14-14.14,14.14-31.7,31.7-43.02-43.02,31.7-31.7,14.14-14.14-14.14-14.14-31.7-31.7,43.02-43.02,31.7,31.7,14.14,14.14,14.14-14.14,31.7-31.7M162.06,2.83c-2.32,0-4.64.89-6.41,2.66l-39.43,39.43L76.79,5.49c-1.77-1.77-4.09-2.66-6.41-2.66-2.32,0-4.64.88-6.41,2.66L5.49,63.97c-3.54,3.54-3.54,9.28,0,12.82l39.43,39.43L5.49,155.65c-3.54,3.54-3.54,9.28,0,12.82l58.48,58.48c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l39.43-39.43,39.43,39.43c1.77,1.77,4.09,2.66,6.41,2.66s4.64-.89,6.41-2.66l58.48-58.48c3.54-3.54,3.54-9.28,0-12.82l-39.43-39.43,39.43-39.43c3.54-3.54,3.54-9.28,0-12.82L168.47,5.49c-1.77-1.77-4.09-2.66-6.41-2.66h0Z"/></svg></div></div>
+  <div class="block"><small>Typische Einwände</small><ul><li>„Wann sollen wir das auch noch machen?“</li><li>„Das hatten wir doch schon mal.“</li></ul></div>
+  <div class="block"><small>So eröffnest du</small><p class="oeffnen">„Ab Montag ändert sich für euch genau eine Sache: … Dafür fällt … weg.“</p></div>
+  <div class="fuss"><span>Ein Thema. Vier Gegenüber.</span><span>5 / 6</span></div>
+</section>
+
+<section class="p gelbgrund" id="d6">
+  <p class="k">Vor deiner nächsten Vorlage</p>
+  <p class="h m">Hast du alle vier Fragen beantwortet?</p>
+  <ul class="check" style="margin-top:64px"><li>Welche Entscheidung brauche ich vom Vorstand?</li><li>Wie bleibt es für den Aufsichtsrat steuerbar?</li><li>Welchen Satz sagt der Vertrieb seinem Kunden?</li><li>Was ändert sich für mein Team ab Montag?</li></ul>
+  <div class="fuss" style="color:#1a1817"><span>Daniel Ströbel · Strategie in Wirkung bringen</span><span>6 / 6</span></div>
+</section>
+</body></html>
