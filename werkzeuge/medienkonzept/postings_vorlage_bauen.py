@@ -274,6 +274,27 @@ html, body { width:1080px; background:#fff; }
 .nein-block { position:absolute; left:84px; bottom:110px; right:84px; z-index:2; }
 .nein-block p { font:700 64px/1.12 "Lora",Georgia,serif; color:#fff; }
 .nein-block b { display:inline-block; margin-top:24px; padding:6px 30px 14px; border-radius:22px; background:var(--gelb); color:var(--ink); font:700 170px/1 "Lora",Georgia,serif; }
+
+/* Posting im Posting (13.10.2026) – Aufbau der Volksfest-Kästen */
+.kt { background:#ece9e5; padding:64px; }
+.kt:target { display:block; }
+.kt-karte { position:relative; height:100%; display:flex; flex-direction:column; border-radius:34px; background:#fff; border:2px solid #ddd8d2; overflow:hidden; }
+.kt-kopf { display:flex; align-items:center; gap:22px; padding:28px 34px; }
+.kt-av { width:72px; height:72px; flex:0 0 72px; border-radius:50%; overflow:hidden; display:grid; place-items:center; background:#ece9e5; }
+.kt-av img { width:100%; height:100%; object-fit:cover; }
+.kt-av svg { width:40px; height:40px; color:#6b6762; }
+.kt-kopf b { display:block; font:600 32px/1.2 "Poppins",sans-serif; color:var(--ink); }
+.kt-kopf small { display:block; margin-top:4px; font:400 24px/1.2 "Poppins",sans-serif; color:#8a857e; }
+.kt-farbe { position:relative; flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:52px 54px; }
+.kt-farbe small { font:700 24px/1 "Poppins",sans-serif; letter-spacing:.14em; text-transform:uppercase; }
+.kt-farbe p { max-width:76%; font:700 80px/1.08 "Lora",Georgia,serif; letter-spacing:-.02em; }
+.kt-farbe .kt-z { position:absolute; right:44px; bottom:44px; width:130px; height:130px; }
+.kt-farbe .kt-z svg { width:100%; height:100%; }
+.kt-gelb { background:var(--gelb); color:var(--ink); }
+.kt-schwarz { background:var(--ink); color:#fff; }
+.kt-schwarz small, .kt-schwarz .kt-z { color:var(--gelb); }
+.kt-hell { background:#f3f1ee; color:var(--ink); }
+.kt-text { padding:30px 34px 36px; font:400 30px/1.45 "Poppins",sans-serif; color:#3d3a37; }
 """
 
 
@@ -619,6 +640,24 @@ for i, t in enumerate(teile):
         if '<section class="p" id="%s">' % pid in teile[i]:
             teile[i] = teile[i].replace('<section class="p" id="%s">' % pid, '<section class="p %s" id="%s">' % (kl, pid))
 teile.append("""<section class="p foto-voll vollbild" id="sz6">%s<div class="verlauf" style="height:60%%"></div><div class="nein-block"><p>Das wichtigste Wort in jeder Strategie?</p><b>Nein.</b></div></section>""" % vb("voll-e4.jpg", "28% 30%"))
+
+# Posting im Posting (13.10.2026)
+def kt(pid, av, name, unter, farbe, label, satz, zeichen_svg, text):
+    return """<section class="p kt" id="%s"><div class="kt-karte">
+  <div class="kt-kopf"><span class="kt-av">%s</span><span><b>%s</b><small>%s</small></span></div>
+  <div class="kt-farbe kt-%s"><small>%s</small><p>%s</p><span class="kt-z">%s</span></div>
+  <p class="kt-text">%s</p></div></section>""" % (pid, av, name, unter, farbe, label, satz, zeichen_svg, text)
+teile += [
+    kt("kt1", luc("user-round"), "Ein Vorstand", "Versicherer · im Gespräch", "gelb", "Der Satz",
+       "„Es hilft doch nichts, wenn nur ich das hier verstanden habe.“", F,
+       "Ein Vorstand allein bewegt nichts. Wie die Strategie in die Organisation kommt – im Text."),
+    kt("kt2", luc("megaphone"), "Branchenmeldung", "Versicherungswirtschaft · 2026", "schwarz", "Eingeordnet",
+       "Versicherer planen kein Personal&shy;wachstum.", F,
+       "Die Effizienz soll mit KI kommen. Was das für deinen Bereich heißt – drei Fragen im Text."),
+    kt("kt3", '<img src="/assets/ansprechpartner-daniel.webp" alt="">', "Daniel Ströbel", "Strategie in Wirkung bringen", "hell", "Die Frage",
+       "Wie würdest du deinen Bereich heute neu gründen?", O,
+       "Die Frage, mit der ich jedes Gespräch über die Zukunft eines Bereichs beginne."),
+]
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>

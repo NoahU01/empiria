@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "38"
+V = "39"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -34,10 +34,10 @@ TYPEN = [
      [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg"), ("C", "Foto mit Uhrzeit", "sz3.jpg"), ("D", "Foto mit Zeichen", "sz4.jpg"), ("E", "Foto mit gelbem Balken", "sz5.jpg"), ("F", "Foto mit Verlauf und Wort", "sz6.jpg")]),
     ("Der Satz", False, "Ein wörtlicher Satz eines Vorstands oder Kunden – und deine Einordnung.", "Reichweite",
      "Belegt an deinen Zahlen: Satz plus Führungsthema hatte die höchste Reichweite (Median 1.848).",
-     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Die Nachricht", "c1.jpg"), ("C", "Großes Anführungszeichen", "sa3.jpg"), ("D", "Der Zettel", "sa4.jpg"), ("E", "Satz mit Highlight", "sa5.jpg")]),
+     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Die Nachricht", "c1.jpg"), ("C", "Großes Anführungszeichen", "sa3.jpg"), ("D", "Der Zettel", "sa4.jpg"), ("E", "Satz mit Highlight", "sa5.jpg"), ("F", "Posting im Posting", "kt1.jpg")]),
     ("Die Frage", False, "Eine Prüffrage, die der Leser für sich beantwortet.", "Kommentare",
      "Einschätzung: Fragen zum Selbsttest regen Kommentare an; nie als Köderfrage am Schluss.",
-     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Zeichen", "k2.jpg"), ("C", "Großes Fragezeichen", "fr3.jpg"), ("D", "Ja oder nein", "fr4.jpg"), ("E", "Die Skala", "fr5.jpg")]),
+     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Zeichen", "k2.jpg"), ("C", "Großes Fragezeichen", "fr3.jpg"), ("D", "Ja oder nein", "fr4.jpg"), ("E", "Die Skala", "fr5.jpg"), ("F", "Posting im Posting", "kt3.jpg")]),
     ("Das Modell", False, "Ein Zusammenhang auf einen Blick, den man speichert.", "Speichern",
      "Einschätzung: Bildbeiträge 5,3 % Engagement (Socialinsider); Speichern gilt als starkes Signal (Branchenbeobachtung).",
      [("A", "Why · How · Next", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Heute – Vision", "mo3.jpg"), ("D", "Drei Kreise", "mo4.jpg"), ("E", "Erfolgsmap", "mo5.jpg")]),
@@ -46,7 +46,7 @@ TYPEN = [
      [("A", "Liste Schwarz", "p5.jpg"), ("B", "Checkliste Gelb", "w2.jpg"), ("C", "Die Karteikarte", "wz3.jpg"), ("D", "Die ersten drei Minuten", "wz4.jpg"), ("E", "Was nicht hineingehört", "wz5.jpg")]),
     ("Eingeordnet", False, "Eine Branchen- oder Regulierungsnachricht – und was sie heute für einen Bereich heißt.", "Reichweite außerhalb deines Netzwerks",
      "Einschätzung: LinkedIn bewertet Relevanz für ein Fachpublikum (LinkedIn-Team). Inhalte aus dem Branchen-Radar.",
-     [("A", "Zahl mit Raster", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Riesige Zahl", "ei3.jpg"), ("D", "Balken", "ei4.jpg"), ("E", "Das Datum", "ei5.jpg")]),
+     [("A", "Zahl mit Raster", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Riesige Zahl", "ei3.jpg"), ("D", "Balken", "ei4.jpg"), ("E", "Das Datum", "ei5.jpg"), ("F", "Posting im Posting", "kt2.jpg")]),
     ("Zum Mitnehmen", False, "Eine Methode vollständig, auf 6 bis 8 Seiten zum Durchblättern.", "Speichern",
      "Belegt: Dokumente haben die höchste Engagement-Rate, 7,0 % (Socialinsider, 1,3 Mio. Beiträge).",
      [("A", "Titel Weiß", "d1.jpg"), ("B", "Titel Gelb", "dk2.jpg"), ("C", "Titel Schwarz", "dk3.jpg"), ("D", "Titel mit Foto", "dk4.jpg"), ("E", "Titel mit großer Zahl", "dk5.jpg"), ("", "Innenseite Weiß", "d2.jpg"), ("", "Innenseite Schwarz", "d4.jpg"), ("", "Innenseite Gelb", "d5.jpg")]),
