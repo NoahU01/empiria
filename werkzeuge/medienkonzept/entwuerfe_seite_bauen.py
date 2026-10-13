@@ -56,7 +56,7 @@ def main(pfad):
             if p.get("pdf"):
                 z.write(os.path.join(MK, "postings", p["pdf"]), p["pdf"])
     # Seite aus der Beitragsarten-Seite ableiten (Kopf, Menü, Fuß bleiben identisch)
-    quelle = open(os.path.join(SITE, "projekte", "medienkonzept-beitragsarten.html"), encoding="utf-8").read()
+    quelle = open(os.path.join(HIER, "seiten-vorlage.html"), encoding="utf-8").read()
     kopf, rest = quelle.split('<main class="ak">', 1)
     fuss = rest.split("</main>", 1)[1]
     kopf = (kopf.replace("<title>Beitragsarten · Medienkonzept – empiria</title>", "<title>Entwürfe · Medienkonzept – empiria</title>")

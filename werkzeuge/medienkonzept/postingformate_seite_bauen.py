@@ -94,7 +94,7 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Nur zwei Typen brauchen ein Foto – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Nur die Szene braucht ein Foto von dir – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
@@ -128,7 +128,7 @@ MAIN = '''<main class="ak">
 
 
 def main():
-    quelle = open(os.path.join(SITE, "projekte", "medienkonzept-beitragsarten.html"), encoding="utf-8").read()
+    quelle = open(os.path.join(HIER, "seiten-vorlage.html"), encoding="utf-8").read()
     kopf, rest = quelle.split('<main class="ak">', 1)
     fuss = rest.split("</main>", 1)[1]
     kopf = (kopf.replace("<title>Beitragsarten · Medienkonzept – empiria</title>", "<title>Postingformate · Medienkonzept – empiria</title>")

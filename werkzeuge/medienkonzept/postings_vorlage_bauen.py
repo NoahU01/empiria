@@ -15,7 +15,7 @@ SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 B = "/assets/projekte/medienkonzept/"
 
 # Markenzeichen aus dem Symbol-Satz der Seiten
-_sprite = open(os.path.join(SITE, "projekte", "medienkonzept-beitragsarten.html"), encoding="utf-8").read()
+_sprite = open(os.path.join(HIER, "seiten-vorlage.html"), encoding="utf-8").read()
 
 
 def zeichen_svg(name):
