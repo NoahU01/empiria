@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=51';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=52';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -19,11 +19,7 @@
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--' + st[0] + '">' + st[1] + '</span></div>' +
         '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
         '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
-        '<p class="mke-tag__typ">' + esc(p.format) + '</p></div>';
-    }
-    if (t.archiv != null) {
-      return '<div class="mke-tag"><div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--archiv">Veröffentlicht</span></div>' +
-        '<a class="mke-platz mke-platz--leer" href="#archiv"><p>Im Archiv ↓</p></a><p class="mke-tag__typ">&nbsp;</p></div>';
+        '<p class="mke-tag__typ">' + (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a> · ' : '') + esc(p.format) + '</p></div>';
     }
     if (t.plan) {
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--plan">' + (t.plan.interview ? 'Interview mit dir' : 'Zu schreiben') + '</span></div>' +
@@ -32,22 +28,14 @@
     }
     return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '</div><div class="mke-platz mke-platz--leer"><p>kein Posting</p></div><p class="mke-tag__typ">&nbsp;</p></div>';
   }
-  raster.innerHTML = W.map(function (w) {
+  function woche(w) {
     return '<section class="mke-woche"><h2 class="mke-woche__kopf">' + w.kw + '<span>' + w.spanne + '</span></h2>' +
       '<div class="mke-tage">' + w.tage.map(tag).join('') + '</div></section>';
-  }).join('');
+  }
+  raster.innerHTML = W.map(woche).join('');
   var rasterFirma = null;
   var archiv = $('#mke-archiv'), A = window.MK_ARCHIV || [];
-  if (archiv) archiv.innerHTML = A.length ? A.map(function (w) {
-    return '<section class="mke-woche"><h3 class="mke-woche__kopf">' + w.kw + '<span>' + w.spanne + '</span></h3><div class="mke-tage">' +
-      w.posts.map(function (i) {
-        var p = P[i];
-        return '<div class="mke-tag"><div class="mke-tag__kopf"><span class="mke-tag__datum">' + p.termin + '</span>' +
-          (p.url ? '<a class="mke-status mke-status--plan" href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a>' : '') + '</div>' +
-          '<button type="button" class="ig-kachel mke-k" data-i="' + i + '" aria-label="' + p.termin + ' öffnen"><img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
-          '<p class="mke-tag__typ">' + esc(p.format) + '</p></div>';
-      }).join('') + '</div></section>';
-  }).join('') : '<p class="mke-archiv__leer">Noch nichts veröffentlicht. Jedes Posting landet hier nach dem Erscheinen – mit Bild, Text und Link zu LinkedIn.</p>';
+  if (archiv) archiv.innerHTML = A.length ? A.map(woche).join('') : '<p class="mke-archiv__leer">Noch nichts veröffentlicht. Sobald alle Postings einer Woche erschienen sind, wandert die Woche hierher – mit Bild, Text und Link zu LinkedIn.</p>';
 
   var modal = $('#mke-modal'), jetzt = 0, variante = 'bild';
   function sichtbar() {

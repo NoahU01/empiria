@@ -589,3 +589,6 @@ a.mke-platz{text-decoration:none}
 .mke-archiv__kopf{margin:0 0 6px;font:700 1.6rem var(--font-serif,"Lora",serif)}
 .mke-archiv__leer{margin:10px 0 0;color:var(--e2-grau);font-size:.92rem}
 @media (max-width:700px){ .mke-archiv{margin-left:16px;margin-right:16px} }
+.mke-status--archiv{background:var(--e2-hell);color:var(--e2-ink)}
+.mke-status--archiv::before{content:"✓";margin-right:5px}
+.mke-tag__typ a{color:var(--e2-ink);font-weight:600;text-decoration:none}

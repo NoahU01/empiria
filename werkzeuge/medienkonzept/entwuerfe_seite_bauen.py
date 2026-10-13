@@ -15,7 +15,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "51"  # Versionsnummer für CSS/JS
+V = "52"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -57,8 +57,8 @@ def main(pfad):
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
                           feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"],
                           status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], **x))
-    # Wochenraster Mo–Fr ab der laufenden Woche: fertiges Posting, geplantes Thema oder kein Posting.
-    # Veröffentlichte Postings wandern ins Archiv (Platz im Raster bleibt als Hinweis stehen).
+    # Wochenraster Mo–Fr: fertiges Posting, geplantes Thema oder kein Posting.
+    # Eine Woche wandert als ganze Zeile ins Archiv, sobald alle ihre Postings veröffentlicht sind (Daniel, 13.10.2026).
     TAGE = ["Mo", "Di", "Mi", "Do", "Fr"]
     nach_datum = {p["datum"]: i for i, p in enumerate(posts)}
     plan = {}
@@ -66,28 +66,28 @@ def main(pfad):
         d, m = tag.split()[1].strip(".").split(".")
         plan["2026-%s-%s" % (m, d)] = dict(aussage=aussage, typ=typ, interview="Interview" in aussage)
     heute = datetime.date.today()
-    montag = heute - datetime.timedelta(days=heute.weekday())
-    letzter = max([datetime.date.fromisoformat(k) for k in list(plan) + list(nach_datum)] + [montag])
-    wochen = []
+    daten_alle = [datetime.date.fromisoformat(k) for k in list(plan) + list(nach_datum)]
+    montag = min(daten_alle + [heute]); montag -= datetime.timedelta(days=montag.weekday())
+    letzter = max(daten_alle + [heute])
+    wochen, archiv = [], []
     while montag <= letzter:
-        tage = []
+        tage, im_plan = [], False
         for n in range(5):
             d = montag + datetime.timedelta(days=n); k = d.isoformat()
             t = dict(tag="%s %s" % (TAGE[n], d.strftime("%d.%m.")))
-            if k in nach_datum and posts[nach_datum[k]]["status"] == "veroeffentlicht": t["archiv"] = nach_datum[k]
-            elif k in nach_datum: t["i"] = nach_datum[k]
-            elif k in plan: t["plan"] = plan[k]
+            if k in nach_datum:
+                t["i"] = nach_datum[k]
+                im_plan = im_plan or posts[nach_datum[k]]["status"] != "veroeffentlicht"
+            elif k in plan:
+                t["plan"] = plan[k]; im_plan = True
             tage.append(t)
         fr = montag + datetime.timedelta(days=4)
-        wochen.append(dict(kw="KW %d" % montag.isocalendar()[1], spanne="%s–%s" % (montag.strftime("%d.%m."), fr.strftime("%d.%m.")), tage=tage))
+        w = dict(kw="KW %d" % montag.isocalendar()[1], spanne="%s–%s" % (montag.strftime("%d.%m."), fr.strftime("%d.%m.")), tage=tage)
+        if any("i" in t for t in tage) and not im_plan:
+            archiv.insert(0, w)                      # neueste Woche oben
+        elif im_plan or montag >= heute - datetime.timedelta(days=heute.weekday()):
+            wochen.append(w)
         montag += datetime.timedelta(days=7)
-    archiv = {}
-    for i, p in enumerate(posts):
-        if p["status"] == "veroeffentlicht":
-            d = datetime.date.fromisoformat(p["datum"]); mo = d - datetime.timedelta(days=d.weekday())
-            archiv.setdefault(mo, []).append(i)
-    archiv = [dict(kw="KW %d" % mo.isocalendar()[1], spanne="%s–%s" % (mo.strftime("%d.%m."), (mo + datetime.timedelta(days=4)).strftime("%d.%m.")), posts=archiv[mo])
-              for mo in sorted(archiv, reverse=True)]
     open(os.path.join(MK, "entwuerfe.js"), "w", encoding="utf-8").write(
         "/* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */\n"
         "window.MK_ENTWUERFE = " + json.dumps(posts, ensure_ascii=False, indent=1) + ";\n"
@@ -124,13 +124,13 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
-      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein. Nach dem Erscheinen wandern sie ins Archiv unten.</p>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
       <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Mo bis Fr, 8:30 Uhr über Buffer · ohne Link</p></div></div>
-      <div class="mke-legende"><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--buffer">In Buffer</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
+      <div class="mke-legende"><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--buffer">In Buffer</span><span class="mke-status mke-status--archiv">Veröffentlicht</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
       <div class="mke-wochen" id="mke-raster"></div>
       <section class="mke-archiv" id="archiv"><h2 class="mke-archiv__kopf">Archiv · veröffentlicht</h2><div id="mke-archiv"></div></section>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
