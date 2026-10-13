@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "35"
+V = "37"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -31,25 +31,25 @@ THEMEN = [
 TYPEN = [
     ("Die Szene", True, "Ein echter Moment aus deiner Arbeit – und was er über Führung oder Strategie zeigt.", "Kommentare, Profilbesuche",
      "Belegt: persönliche Fotos bis +50 % Engagement (van der Blom 2025); deine Szenen-Postings +70 % Reaktionen gegenüber Thesen.",
-     [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg")]),
+     [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg"), ("C", "Foto mit Uhrzeit", "sz3.jpg"), ("D", "Foto mit Zeichen", "sz4.jpg"), ("E", "Foto mit gelbem Balken", "sz5.jpg")]),
     ("Der Satz", False, "Ein wörtlicher Satz eines Vorstands oder Kunden – und deine Einordnung.", "Reichweite",
      "Belegt an deinen Zahlen: Satz plus Führungsthema hatte die höchste Reichweite (Median 1.848).",
-     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Die Nachricht", "c1.jpg")]),
+     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Die Nachricht", "c1.jpg"), ("C", "Großes Anführungszeichen", "sa3.jpg"), ("D", "Der Zettel", "sa4.jpg"), ("E", "Satz mit Highlight", "sa5.jpg")]),
     ("Die Frage", False, "Eine Prüffrage, die der Leser für sich beantwortet.", "Kommentare",
      "Einschätzung: Fragen zum Selbsttest regen Kommentare an; nie als Köderfrage am Schluss.",
-     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Zeichen", "k2.jpg")]),
+     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Zeichen", "k2.jpg"), ("C", "Großes Fragezeichen", "fr3.jpg"), ("D", "Ja oder nein", "fr4.jpg"), ("E", "Die Skala", "fr5.jpg")]),
     ("Das Modell", False, "Ein Zusammenhang auf einen Blick, den man speichert.", "Speichern",
      "Einschätzung: Bildbeiträge 5,3 % Engagement (Socialinsider); Speichern gilt als starkes Signal (Branchenbeobachtung).",
-     [("A", "Why · How · Next", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Ohne / Mit", "m3.jpg")]),
+     [("A", "Why · How · Next", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Heute – Vision", "mo3.jpg"), ("D", "Drei Säulen", "mo4.jpg"), ("E", "Erfolgsmap", "mo5.jpg")]),
     ("Das Werkzeug", False, "Drei Schritte oder Fragen, die man morgen anwenden kann.", "Speichern",
      "Einschätzung, wie beim Modell.",
-     [("A", "Liste Schwarz", "p5.jpg"), ("B", "Checkliste Gelb", "w2.jpg")]),
+     [("A", "Liste Schwarz", "p5.jpg"), ("B", "Checkliste Gelb", "w2.jpg"), ("C", "Die Karteikarte", "wz3.jpg"), ("D", "Die ersten drei Minuten", "wz4.jpg"), ("E", "Was nicht hineingehört", "wz5.jpg")]),
     ("Eingeordnet", False, "Eine Branchen- oder Regulierungsnachricht – und was sie heute für einen Bereich heißt.", "Reichweite außerhalb deines Netzwerks",
      "Einschätzung: LinkedIn bewertet Relevanz für ein Fachpublikum (LinkedIn-Team). Inhalte aus dem Branchen-Radar.",
-     [("A", "Zahl", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Schlagzeile", "z2.jpg")]),
+     [("A", "Zahl mit Raster", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Riesige Zahl", "ei3.jpg"), ("D", "Balken", "ei4.jpg"), ("E", "Das Datum", "ei5.jpg")]),
     ("Zum Mitnehmen", False, "Eine Methode vollständig, auf 6 bis 8 Seiten zum Durchblättern.", "Speichern",
      "Belegt: Dokumente haben die höchste Engagement-Rate, 7,0 % (Socialinsider, 1,3 Mio. Beiträge).",
-     [("A", "Titelseite", "d1.jpg"), ("", "Innenseite", "d2.jpg"), ("", "Schlussseite", "d6.jpg")]),
+     [("A", "Titel Weiß", "d1.jpg"), ("B", "Titel Gelb", "dk2.jpg"), ("C", "Titel Schwarz", "dk3.jpg"), ("D", "Titel mit Foto", "dk4.jpg"), ("E", "Titel mit großer Zahl", "dk5.jpg"), ("", "Innenseite", "d2.jpg")]),
 ]
 
 WOCHE = [
@@ -106,7 +106,7 @@ MAIN = '''<main class="ak">
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 2</p><h2 class="e2-h2">Die Postingtypen.</h2>
-    <p class="e2-lead">Sieben Typen mit je zwei bis drei Varianten – nur die, die ich selbst stark finde. Das angeschnittene Zeichen zeigt den Baustein: »» Strategie im Alltag, ✕ Komplexe Themen, ○ Geschäftsmodell. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
+    <p class="e2-lead">Sieben Typen mit je fünf Varianten – nur die, die ich selbst stark finde. Das angeschnittene Zeichen zeigt den Baustein: »» Strategie im Alltag, ✕ Komplexe Themen, ○ Geschäftsmodell. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
     ''' + typen() + '''
   </div></section>
 

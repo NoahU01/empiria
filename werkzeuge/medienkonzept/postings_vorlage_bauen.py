@@ -59,12 +59,12 @@ html, body { width:1080px; background:#fff; }
 .liste small { font:600 26px/1 "Poppins",sans-serif; color:#a8a39c; width:44px; }
 .nr { font:700 30px/1 "Lora",Georgia,serif; color:#b5b0a9; }
 .seitenkopf { display:flex; justify-content:space-between; align-items:center; }
-.frage { margin-top:40px; background:var(--ink); color:#fff; border-radius:28px; padding:52px 150px 58px 56px; position:relative; }
+.frage { margin-top:64px; background:var(--ink); color:#fff; border-radius:28px; padding:52px 150px 58px 56px; position:relative; }
 .frage small { display:block; font:600 22px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--gelb); margin-bottom:24px; }
 .frage p { font:700 58px/1.16 "Lora",Georgia,serif; }
 .frage .zeichen { right:48px; top:44px; width:64px; height:64px; color:var(--gelb); }
-.block { margin-top:50px; }
-.block > small { display:block; font:600 22px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--grau); margin-bottom:16px; }
+.block { margin-top:72px; }
+.block > small { display:block; font:600 22px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--grau); margin-bottom:24px; }
 .block li { list-style:none; padding:18px 0; border-top:2px solid var(--linie); font:400 34px/1.4 "Poppins",sans-serif; }
 .block li:last-child { border-bottom:2px solid var(--linie); }
 .oeffnen { background:var(--hell); border-radius:24px; padding:36px 42px; font:500 34px/1.5 "Poppins",sans-serif; }
@@ -150,7 +150,9 @@ html, body { width:1080px; background:#fff; }
 .an { position:absolute; z-index:0; pointer-events:none; }
 .an svg { width:100%; height:100%; display:block; }
 .p > *:not(.an) { position:relative; z-index:1; }
-.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage, .p > .nfuss { position:absolute; }
+.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage, .p > .nfuss, .p > .verlauf, .p > .unten, .p > .oben, .p > .zeichen { position:absolute; }
+.p.vollbild > img { position:absolute; }
+.p > .verlauf { z-index:1; } .p > .unten, .p > .oben { z-index:2; }
 .fr-gross { font:700 104px/1.12 "Lora",Georgia,serif; letter-spacing:-.015em; }
 .raster { display:grid; grid-template-columns:repeat(10, 44px); gap:10px 40px; margin-top:48px; }
 .raster svg { width:44px; height:44px; display:block; color:#3a3632; }
@@ -181,6 +183,69 @@ html, body { width:1080px; background:#fff; }
 .nb1 { margin-top:24px; max-width:720px; padding:34px 40px; border-radius:36px 36px 36px 10px; background:#2b2826; color:#d9d5cf; font:500 40px/1.3 "Poppins",sans-serif; }
 .nzeit { margin-top:90px; font:700 120px/1 "Lora",Georgia,serif; color:var(--gelb); }
 .nb2 { margin-top:28px; align-self:flex-start; padding:48px 58px; border-radius:46px 46px 46px 12px; background:var(--gelb); color:var(--ink); font:700 92px/1.02 "Lora",Georgia,serif; }
+
+/* Fünf Varianten je Typ (13.10.2026) */
+.wort .hl { color:var(--ink); }
+.foto-voll { padding:0; }
+.foto-voll > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.chip { position:absolute; left:64px; top:64px; z-index:2; padding:16px 26px; border-radius:999px; background:rgba(26,24,23,.82); color:#fff; font:600 28px/1 "Poppins",sans-serif; }
+.gelbbalken { position:absolute; left:0; right:0; bottom:0; z-index:2; padding:54px 84px 60px; background:var(--gelb); font:700 70px/1.1 "Lora",Georgia,serif; color:var(--ink); }
+.riesen-anf { position:absolute; left:-30px; top:-700px; font:700 1300px/1 "Lora",Georgia,serif; color:var(--gelb); z-index:0; }
+.zitat-w { position:absolute; left:84px; right:84px; bottom:180px; font:700 76px/1.14 "Lora",Georgia,serif; color:#fff; }
+.zitat-quelle { position:absolute; left:84px; bottom:110px; font:500 30px/1 "Poppins",sans-serif; color:#a8a39c; }
+.tisch { background:#2b2826; }
+.postit { position:absolute; left:140px; top:250px; width:800px; height:800px; padding:90px 80px; background:var(--gelb); transform:rotate(-3deg); box-shadow:0 40px 80px rgba(0,0,0,.45); }
+.postit p { font:700 92px/1.1 "Lora",Georgia,serif; color:var(--ink); }
+.postit small { display:block; margin-top:50px; font:500 32px/1.3 "Poppins",sans-serif; color:var(--ink); }
+.riesen-frage { position:absolute; right:-60px; bottom:-200px; font:700 1100px/1 "Lora",Georgia,serif; color:var(--ink); z-index:0; }
+.jn { margin-top:90px; display:grid; gap:28px; }
+.jn div { display:flex; align-items:center; gap:36px; padding:40px 44px; border:5px solid var(--ink); border-radius:24px; font:700 58px/1 "Lora",Georgia,serif; }
+.jn div::before { content:""; flex:0 0 70px; height:70px; border:6px solid var(--ink); border-radius:14px; }
+.skala { display:grid; grid-template-columns:repeat(10,1fr); gap:14px; margin-top:110px; }
+.skala span { display:grid; place-items:center; aspect-ratio:1; border:4px solid #4a4642; border-radius:50%; font:700 40px/1 "Poppins",sans-serif; color:#fff; }
+.skala-l { display:flex; justify-content:space-between; margin-top:26px; font:500 28px/1.3 "Poppins",sans-serif; color:#a8a39c; }
+.weg { display:grid; grid-template-columns:1fr 330px 1fr; align-items:center; gap:24px; margin-top:110px; }
+.weg .box { padding:70px 30px; border-radius:28px; text-align:center; font:700 70px/1 "Lora",Georgia,serif; }
+.weg .heute { border:6px solid #fff; color:#fff; }
+.weg .vision { background:var(--gelb); color:var(--ink); }
+.weg .mitte { color:var(--gelb); text-align:center; }
+.weg .mitte svg { width:300px; height:300px; display:block; margin:0 auto; }
+.weg .mitte b { display:block; margin-top:16px; font:700 44px/1 "Lora",Georgia,serif; color:#fff; }
+.dach { margin-top:90px; padding:36px; background:var(--ink); color:var(--gelb); text-align:center; font:700 60px/1 "Lora",Georgia,serif; border-radius:20px 20px 0 0; }
+.saeulen { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:26px; }
+.saeulen div { height:560px; padding:40px 26px; display:flex; align-items:flex-end; background:var(--ink); color:#fff; font:700 46px/1.15 "Lora",Georgia,serif; }
+.karte-schief { position:absolute; left:110px; top:230px; width:860px; height:900px; padding:80px 76px; background:#fff; transform:rotate(2.5deg); box-shadow:0 36px 70px rgba(0,0,0,.22); }
+.karte-schief small { font:700 26px/1 "Poppins",sans-serif; letter-spacing:.14em; text-transform:uppercase; color:#6b6762; }
+.karte-schief p { margin-top:26px; font:700 70px/1.12 "Lora",Georgia,serif; }
+.karte-schief ol { margin-top:56px; padding-left:0; list-style:none; counter-reset:n; }
+.karte-schief li { counter-increment:n; display:flex; gap:28px; padding:28px 0; border-top:3px solid var(--linie); font:500 36px/1.3 "Poppins",sans-serif; }
+.karte-schief li::before { content:counter(n); flex:0 0 56px; height:56px; display:grid; place-items:center; border-radius:50%; background:var(--gelb); font:700 28px/1 "Poppins",sans-serif; }
+.zeitleiste { margin-top:90px; }
+.zeitleiste div { display:grid; grid-template-columns:200px 1fr; gap:30px; align-items:baseline; padding:44px 0; border-top:2px solid #3a3734; }
+.zeitleiste div:last-child { border-bottom:2px solid #3a3734; }
+.zeitleiste b { font:700 64px/1 "Lora",Georgia,serif; color:var(--gelb); }
+.zeitleiste span { font:600 44px/1.2 "Poppins",sans-serif; color:#fff; }
+.nicht { margin-top:90px; list-style:none; }
+.nicht li { display:flex; gap:40px; align-items:center; padding:46px 0; border-top:4px solid var(--ink); font:700 56px/1.15 "Lora",Georgia,serif; }
+.nicht li:last-child { border-bottom:4px solid var(--ink); }
+.nicht li svg { flex:0 0 90px; width:90px; height:90px; }
+.zahl-riesig { position:absolute; left:-40px; top:-60px; font:700 980px/.85 "Lora",Georgia,serif; letter-spacing:-.04em; color:var(--gelb); z-index:0; }
+.balken { margin-top:80px; display:grid; gap:56px; }
+.balken div p { font:600 36px/1.3 "Poppins",sans-serif; color:#fff; }
+.balken i { display:block; height:110px; margin-top:22px; border-radius:12px; }
+.balken b { display:block; margin-top:18px; font:700 90px/1 "Lora",Georgia,serif; }
+.datum { margin-top:110px; font:700 210px/.9 "Lora",Georgia,serif; letter-spacing:-.02em; color:var(--gelb); }
+
+.p > .chip, .p > .gelbbalken, .p > .riesen-anf, .p > .zitat-w, .p > .zitat-quelle, .p > .postit, .p > .riesen-frage, .p > .karte-schief, .p > .zahl-riesig { position:absolute; }
+.p.foto-voll > img { position:absolute; z-index:0; }
+.p.foto-voll > .an { z-index:1; }
+.schwarz .hl, .frage-schwarz .h .hl { color:var(--ink); }
+.skala { margin-top:200px !important; gap:16px; }
+.skala span { font-size:44px; }
+.skala-l { font-size:32px !important; margin-top:34px !important; }
+.weg { margin-top:170px !important; }
+.balken { margin-top:120px !important; gap:90px !important; }
+.balken i { height:140px !important; }
 """
 
 
@@ -441,9 +506,67 @@ ersetze("c1", """<section class="p schwarz nachricht" id="c1">
   <p class="nfuss">Aus vier Folien wurde eine.</p>
 </section>""")
 
+# Fünf Varianten je Typ (13.10.2026)
+def vb(bild, pos="50% 50%", sw=False):
+    return '<img src="%s%s" alt="" style="object-position:%s;%s">' % (B, bild, pos, "filter:grayscale(1) contrast(1.06);" if sw else "")
+ERFOLG = """<svg viewBox="0 0 912 700" style="width:100%;margin-top:60px;display:block">
+<g stroke="#1a1817" stroke-width="4" fill="none"><line x1="456" y1="350" x2="160" y2="120"/><line x1="456" y1="350" x2="760" y2="120"/><line x1="456" y1="350" x2="130" y2="560"/><line x1="456" y1="350" x2="780" y2="560"/><line x1="456" y1="350" x2="456" y2="620" stroke-dasharray="14 14"/></g>
+<g font-family="Poppins" font-weight="600" font-size="30" text-anchor="middle" fill="#1a1817">
+<circle cx="160" cy="120" r="92" fill="#fff" stroke="#1a1817" stroke-width="5"/><text x="160" y="130">Vorstand</text>
+<circle cx="760" cy="120" r="92" fill="#fff" stroke="#1a1817" stroke-width="5"/><text x="760" y="130">Team</text>
+<circle cx="130" cy="560" r="92" fill="#fff" stroke="#1a1817" stroke-width="5"/><text x="130" y="570">Vertrieb</text>
+<circle cx="780" cy="560" r="92" fill="#fff" stroke="#1a1817" stroke-width="5"/><text x="780" y="560">Nachbar-</text><text x="780" y="596">bereich</text>
+<circle cx="456" cy="620" r="70" fill="#fff400" stroke="#1a1817" stroke-width="5" stroke-dasharray="12 10"/><text x="456" y="630" font-size="44">?</text>
+<circle cx="456" cy="350" r="120" fill="#1a1817"/><text x="456" y="368" fill="#fff400" font-family="Lora" font-weight="700" font-size="56">Du</text></g></svg>"""
+X_IC = '<svg viewBox="0 0 232.44 232.44" aria-hidden="true">' + X[X.index(">") + 1:X.rindex("</svg>")] + '</svg>'
+teile += [
+    """<section class="p foto-voll" id="sz3">%s<span class="chip">Dienstag, 7:40 · Workshopraum</span></section>""" % vb("voll-b1.jpg", "0% 45%"),
+    """<section class="p foto-voll" id="sz4">%s%s</section>""" % (vb("voll-e2.jpg", "30% 40%"), anschnitt(F, 560, -170, -140, "#fff400")),
+    """<section class="p foto-voll" id="sz5">%s<p class="gelbbalken">Das wichtigste Wort in jeder Strategie.</p></section>""" % vb("voll-e4.jpg", "28% 30%"),
+    """<section class="p schwarz" id="sa3"><span class="riesen-anf">„</span>
+  <p class="zitat-w">„Bei uns kommen viel zu oft Themen auf der falschen&nbsp;Flugebene&nbsp;an.“</p><p class="zitat-quelle">— ein Vorstand</p></section>""",
+    """<section class="p tisch" id="sa4"><div class="postit"><p>„Daniel, ich brauche dich mal nur ganz kurz.“</p><small>Wenn ein Vorstand so anruft, brennt es.</small></div></section>""",
+    """<section class="p" id="sa5">%s<p class="zitat" style="margin-top:430px">„Führung macht einsam. Je höher du kommst, desto weniger sagt dir jemand die <span class="hl">Wahrheit.</span>“</p><p class="quelle">— ein ehemaliger Vorstand</p>%s</section>""" % (anschnitt(F, 520, -170, 960, "#1a1817"), NAME),
+    """<section class="p gelbgrund" id="fr3"><span class="riesen-frage">?</span><p class="fr-gross" style="margin-top:40px;max-width:820px">Wie würdest du deinen Bereich heute neu gründen?</p>%s</section>""" % NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"'),
+    """<section class="p" id="fr4"><p class="fr-gross" style="margin-top:40px;font-size:88px">Weiß jeder in deinem Team, was er diese Woche für die Strategie tut?</p>
+  <div class="jn"><div>Ja.</div><div>Ehrlich gesagt: nein.</div></div>%s%s</section>""" % (anschnitt(F, 520, -170, -170, "#1a1817"), NAME),
+    """<section class="p schwarz" id="fr5"><p class="fr-gross" style="margin-top:40px;color:#fff;font-size:92px">Wie sehr kommt eure Strategie im <span class="hl">Alltag</span> an?</p>
+  <div class="skala">""" + "".join("<span>%d</span>" % i for i in range(1, 11)) + """</div><div class="skala-l"><span>steht auf der Folie</span><span>prägt den Montag</span></div>%s</section>""" % NAME,
+    """<section class="p schwarz" id="mo3"><p class="h m" style="color:#fff">Strategie ist die <span class="hl">Verbindung.</span></p>
+  <div class="weg"><div class="box heute">Heute</div><div class="mitte">%s<b>Strategie</b></div><div class="box vision">Vision</div></div>
+  <p class="text" style="color:#fff;margin-top:150px;font:700 54px/1.2 Lora,Georgia,serif">Ist klar, wo du hinwillst und wo du stehst, ergibt sich der Weg fast von allein.</p>%s</section>""" % (F, NAME),
+    """<section class="p" id="mo4"><p class="h m">Worauf eine Führungsrolle steht.</p><div class="dach">Die Rolle</div>
+  <div class="saeulen"><div>Fach&shy;expertise</div><div>Führungs&shy;kompetenz</div><div>Geschäfts&shy;modell verstehen</div></div>%s</section>""" % NAME,
+    """<section class="p" id="mo5"><p class="h m">Wen brauchst du – und wen hast du <span class="hl">übersehen?</span></p>%s%s</section>""" % (ERFOLG, NAME),
+    """<section class="p gelbgrund" id="wz3"><div class="karte-schief"><small>Die Neugründungs-Frage</small><p>Wie würdest du deinen Bereich heute neu aufbauen?</p>
+  <ol><li>Würdest du die Aufgaben noch genauso zuschneiden?</li><li>Säßest du an derselben Stelle der Wertschöpfung?</li><li>Würdest du dieselben Zielgruppen bedienen?</li></ol></div></section>""",
+    """<section class="p schwarz" id="wz4"><p class="h m" style="color:#fff">Die ersten drei Minuten jedes Termins.</p>
+  <div class="zeitleiste"><div><b>0:00</b><span>Worum geht es heute?</span></div><div><b>1:00</b><span>Mit welchem Ergebnis gehen wir raus?</span></div><div><b>2:00</b><span>Was müssen wir dafür entscheiden?</span></div></div>%s</section>""" % NAME,
+    """<section class="p gelbgrund" id="wz5"><p class="k">Gehört nicht in die Vorstandsvorlage</p>
+  <ul class="nicht"><li>%sJedes Detail, das du kennst</li><li>%sDie Geschichte des Projekts</li><li>%sFünf Optionen ohne Empfehlung</li></ul>%s</section>""" % (X_IC, X_IC, X_IC, NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')),
+    """<section class="p schwarz" id="ei3"><span class="zahl-riesig">11</span>
+  <p style="position:absolute;left:84px;right:84px;bottom:210px;font:700 76px/1.12 Lora,Georgia,serif;color:#fff">Prozent sagen: Die Mitarbeitenden verstehen die Strategie.</p>
+  <p class="quelle2" style="position:absolute;left:84px;bottom:110px">Quelle: Wieselhuber, branchenübergreifend</p></section>""",
+    """<section class="p schwarz" id="ei4"><p class="h m" style="color:#fff">Strategie gegen Tagesgeschäft.</p>
+  <div class="balken"><div><p>Das Tagesgeschäft verdrängt strategische Projekte</p><i style="width:77%;background:#fff400"></i><b style="color:#fff400">77 %</b></div>
+  <div><p>Die Mitarbeitenden verstehen die Strategie</p><i style="width:11%;background:#fff"></i><b style="color:#fff">11 %</b></div></div>
+  <p class="quelle2" style="position:absolute;left:84px;bottom:110px">Quelle: Wieselhuber, branchenübergreifend</p></section>""",
+    """<section class="p schwarz" id="ei5"><p class="k">AI Act · vorläufiger Termin</p><p class="datum">2.12.<br>2027</p>
+  <p style="margin-top:60px;font:700 64px/1.14 Lora,Georgia,serif;color:#fff">Ab dann gelten die Hochrisiko-Pflichten – auch für KI in der Tarifierung.</p>
+  <p class="text" style="color:#d9d5cf">Wer ist in deinem Bereich dafür zuständig?</p></section>""",
+    """<section class="p gelbgrund" id="dk2"><p class="k">Dokument · 6 Seiten</p><p class="h" style="font-size:118px;margin-top:60px">Ein Thema.<br>Vier Gegenüber.</p>
+  <p class="text" style="color:#1a1817">Was Vorstand, Aufsichtsrat, Vertrieb und Team wissen wollen.</p>%s</section>""" % anschnitt(X, 620, -190, -180, "#1a1817"),
+    """<section class="p schwarz" id="dk3"><p class="k">Dokument · 6 Seiten</p><p class="h" style="font-size:118px;margin-top:60px;color:#fff">Ein Thema.<br>Vier <span class="hl">Gegenüber.</span></p>
+  <p class="text" style="color:#d9d5cf">Was Vorstand, Aufsichtsrat, Vertrieb und Team wissen wollen.</p>%s</section>""" % anschnitt(X, 620, -190, -180, "#fff400"),
+    """<section class="p foto-voll vollbild" id="dk4">%s<div class="verlauf" style="height:58%%"></div><div class="unten"><p class="k" style="color:#fff">Dokument · 6 Seiten</p><p class="satz" style="font-size:96px;margin-top:24px">Ein Thema. Vier Gegenüber.</p></div></section>""" % vb("entwurf-e6.jpg", "40% 30%"),
+    """<section class="p" id="dk5"><span class="zahl-riesig" style="color:#1a1817;left:auto;right:-40px;top:auto;bottom:-140px;font-size:900px">4</span>
+  <p class="k">Dokument · 6 Seiten</p><p class="h" style="margin-top:50px;max-width:600px">Gegenüber, die du überzeugen musst.</p>
+  <p class="text" style="max-width:520px">Vorstand, Aufsichtsrat, Vertrieb, Team – und was jedes davon wissen will.</p></section>""",
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
-<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/fonts/fonts.local.css">
 <style>/* Erzeugt von postings_vorlage_bauen.py – nicht von Hand ändern. */%s</style></head>
 <body>
 %s

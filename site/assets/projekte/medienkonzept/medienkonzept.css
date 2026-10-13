@@ -498,3 +498,9 @@ a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
 /* Großansicht: ganzes Bild sichtbar (13.10.2026) */
 #mke-modal .ig-modal__bild.mke-bild { display: flex; align-items: center; justify-content: center; background: #f3f1ee; max-height: min(860px, 90vh); }
 #mke-modal .mke-bild > img { width: auto; max-width: 100%; height: auto; max-height: min(860px, 90vh); object-fit: contain; }
+.mpv-varianten { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .6rem; }
+@media (min-width: 1101px) { .mpv-typ { grid-template-columns: minmax(0, 270px) minmax(0, 1fr); } }
+@media (max-width: 1100px) { .mpv-typ { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) { .mpv-varianten { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .mpv-varianten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mpv-varianten figcaption { hyphens: auto; overflow-wrap: anywhere; }
