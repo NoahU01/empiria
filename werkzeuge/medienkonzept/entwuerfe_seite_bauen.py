@@ -25,16 +25,16 @@ EXTRA = {
 }
 FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}
 
-PLAN = [
+PLAN = [  # Mischung je Woche (Daniel, 13.10.2026): höchstens drei Kern, eins Person, eins Werkstatt/Branche
     ("KW 44", "Mo 26.10.", "30 · Wie würdest du deinen Bereich heute neu gründen?", "Frage · C Fragezeichen"),
     ("KW 44", "Di 27.10.", "12 · Logik allein verändert wenig.", "Szene · A Foto pur"),
     ("KW 44", "Mi 28.10.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
-    ("KW 44", "Do 29.10.", "10 · Geduldetes Fehlverhalten demotiviert die Guten.", "Szene · B Foto mit Satz"),
-    ("KW 44", "Fr 30.10.", "07 · Wie sähe die Homepage deiner Abteilung aus?", "Zum Mitnehmen · Dokument"),
+    ("KW 44", "Do 29.10.", "Person · Erlebnis aus deinem Leben (aus dem Interview)", "Du als Person · Foto"),
+    ("KW 44", "Fr 30.10.", "Werkstatt · Wie du selbst mit KI arbeitest (aus dem Interview)", "Werkstatt · Foto oder Szene"),
     ("KW 45", "Mo 02.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
     ("KW 45", "Di 03.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
     ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
-    ("KW 45", "Do 05.11.", "20 · Themen auf der falschen Flugebene.", "Szene · B Foto mit Satz"),
+    ("KW 45", "Do 05.11.", "Person · zweites Erlebnis (aus dem Interview)", "Du als Person · Foto"),
     ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
 ]
 
