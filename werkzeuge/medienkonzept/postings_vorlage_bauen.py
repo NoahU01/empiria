@@ -145,6 +145,16 @@ html, body { width:1080px; background:#fff; }
 .news b { display:block; margin-top:24px; font:700 68px/1.14 "Lora",Georgia,serif; }
 .news-frage { position:absolute; left:84px; right:84px; bottom:110px; font:700 92px/1.12 "Lora",Georgia,serif; color:#fff; }
 .news-frage .hl { color:var(--ink); }
+
+/* Anschnitt und Raster (13.10.2026): Markenzeichen zeigt den Baustein – »» 01 · ✕ 02 · ○ 03 */
+.an { position:absolute; z-index:0; pointer-events:none; }
+.an svg { width:100%; height:100%; display:block; }
+.p > *:not(.an) { position:relative; z-index:1; }
+.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage { position:absolute; }
+.fr-gross { font:700 104px/1.12 "Lora",Georgia,serif; letter-spacing:-.015em; }
+.raster { display:grid; grid-template-columns:repeat(10, 44px); gap:10px 40px; margin-top:48px; }
+.raster svg { width:44px; height:44px; display:block; color:#3a3632; }
+.raster svg.an-ja { color:var(--gelb); }
 """
 
 
@@ -324,6 +334,54 @@ teile += [
   <p class="news-frage">Was heißt das für deinen <span class="hl">Bereich?</span></p>
 </section>""",
 ]
+
+# Überarbeitung 13.10.2026: angeschnittenes Markenzeichen je Baustein, Raster als Datengrafik
+def anschnitt(svg, groesse, rechts, unten, farbe):
+    return '<div class="an" style="width:%dpx;height:%dpx;right:%dpx;bottom:%dpx;color:%s">%s</div>' % (groesse, groesse, rechts, unten, farbe, svg)
+
+def ersetze(pid, html):
+    for i, t in enumerate(teile):
+        if 'id="%s"' % pid in t:
+            teile[i] = html
+            return
+    raise KeyError(pid)
+
+NAME = '<p class="namezeile">Daniel Ströbel</p>'
+ersetze("k1", """<section class="p" id="k1">
+  <p class="fr-gross" style="margin-top:40px">Kann jeder in deinem Bereich sagen, wie ihr <span class="hl">erfolgreich</span> seid?</p>
+  <p class="text" style="margin-top:40px;font-size:38px">Und was sein eigener Beitrag dazu ist.</p>
+  %s%s
+</section>""" % (anschnitt(F, 880, -300, -250, "#1a1817"), NAME))
+ersetze("k2", """<section class="p schwarz frage-schwarz" id="k2">
+  %s
+  <p class="h">Was entscheidest du diese Woche wegen der Strategie <span class="hl">anders?</span></p>
+</section>""" % anschnitt(F, 820, -330, 560, "#fff400"))
+ersetze("t1", """<section class="p gelbgrund satzkarte" id="t1">
+  <p class="zitat" style="margin-top:60px">„Es hilft doch nichts, wenn nur ich das hier verstanden habe.“</p>
+  <p class="quelle">— ein Vorstand</p>
+  %s
+  <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
+</section>""" % anschnitt(F, 700, -220, -190, "#1a1817"))
+zellen = "".join('<svg viewBox="0 0 232.44 232.44" class="%s">%s</svg>' % ("an-ja" if i < 77 else "", F[F.index(">") + 1:F.rindex("</svg>")]) for i in range(100))
+ersetze("z1", """<section class="p schwarz zahlkarte" id="z1">
+  <p class="zahl" style="margin-top:20px">77&nbsp;%</p>
+  <p class="satz" style="margin-top:24px">sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.</p>
+  <div class="raster">""" + zellen + """</div>
+  <p class="quelle2" style="position:absolute;left:84px;bottom:70px">Quelle: Wieselhuber · Was das für deinen Bereich heißt, steht im Text.</p>
+</section>""")
+ersetze("p5", """<section class="p schwarz" id="p5">
+  <p class="k">Am Ende jeder Abstimmung</p>
+  <div class="liste"><div><small>01</small>Wer?</div><div><small>02</small>Bis wann?</div><div><small>03</small>In welcher Form?</div></div>
+  <p class="text" style="color:#d9d5cf;margin-top:56px;max-width:640px">Zwei Minuten, damit das Thema beim nächsten Termin eine Stufe weiter ist.</p>
+  %s
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""" % anschnitt(X, 560, -170, -150, "#fff400"))
+ersetze("w2", """<section class="p gelbgrund" id="w2">
+  <p class="k">Vor jeder Vorstandsvorlage</p>
+  <ul class="check2"><li>Wen brauche ich?</li><li>Wen habe ich übersehen?</li><li>An wem richte ich es aus?</li></ul>
+  <p class="text" style="color:#1a1817;margin-top:60px;font-size:40px;font-weight:600;max-width:560px">Erst diese drei Fragen. Dann die Folie.</p>
+  %s
+</section>""" % anschnitt(X, 520, -150, -150, "#1a1817"))
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>

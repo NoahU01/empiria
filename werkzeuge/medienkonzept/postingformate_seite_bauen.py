@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "33"
+V = "34"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -72,8 +72,8 @@ def themen():
 def typen():
     k = []
     for t, foto, leser, mess, beleg, varianten in TYPEN:
-        vs = "".join('<figure><img src="%s%s" alt="" loading="lazy"><figcaption>%s%s</figcaption></figure>' % (
-            PF, bild, ('<b>%s</b> ' % v) if v else "", name) for v, name, bild in varianten)
+        vs = "".join('<figure><img src="%s%s?v=%s" alt="" loading="lazy"><figcaption>%s%s</figcaption></figure>' % (
+            PF, bild, V, ('<b>%s</b> ' % v) if v else "", name) for v, name, bild in varianten)
         k.append('''<article class="mpv-typ"><div class="mpv-text">
 <span class="mpf-foto mpf-foto--%s">%s</span><h3>%s</h3><p>%s</p><dl><div><dt>Messen an</dt><dd>%s</dd></div><div><dt>Grundlage</dt><dd>%s</dd></div></dl></div>
 <div class="mpv-varianten">%s</div></article>''' % ("ja" if foto else "nein", "Foto von dir nötig" if foto else "ohne Foto von dir", t, leser, mess, beleg, vs))

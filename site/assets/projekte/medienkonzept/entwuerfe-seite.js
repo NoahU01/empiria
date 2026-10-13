@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=34';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -11,7 +11,7 @@
 
   function kachel(p, i) {
     return '<button type="button" class="ig-kachel" data-i="' + i + '" data-feld="' + p.feld + '" aria-label="Posting ' + nr(i) + ' öffnen">' +
-      '<img src="' + PFAD + p.bild + '.jpg" alt="" loading="lazy">' +
+      '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy">' +
       (p.seiten ? '<span class="mke-doc" aria-hidden="true">PDF · ' + p.seiten.length + '</span>' : '') +
       '<span class="ig-kachel__info">' + (p.kanal === 'firma' ? 'Firma · ' : nr(i) + ' · ') + p.termin + '<small>' + p.feld + ' · ' + p.art + '</small></span></button>';
   }
@@ -40,7 +40,7 @@
   }
   function bildZeigen() {
     var p = P[jetzt], b = (variante === 'alt' && p.alt) ? p.alt : p.bild;
-    if (!p.seiten) $('#mke-bild').innerHTML = '<img src="' + PFAD + b + '.jpg" alt="">';
+    if (!p.seiten) $('#mke-bild').innerHTML = '<img src="' + PFAD + b + '.jpg' + BV + '" alt="">';
     $('#mke-laden').href = PFAD + b + '.jpg';
     $$('#mke-variante button').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === variante ? 'true' : 'false'); });
   }
@@ -52,7 +52,7 @@
     $('#mke-name').textContent = firma ? 'empiria GmbH' : 'Daniel Ströbel';
     $('#mke-variante').hidden = !p.alt;
     $('#mke-bild').innerHTML = p.seiten
-      ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
+      ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
     $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : 'Posting ' + nr(i) + ' · ' + p.termin + ' · 8:30 Uhr';
     $('#mke-text').textContent = p.text;
