@@ -229,7 +229,7 @@ html, body { width:1080px; background:#fff; }
 .nicht li { display:flex; gap:40px; align-items:center; padding:46px 0; border-top:4px solid var(--ink); font:700 56px/1.15 "Lora",Georgia,serif; }
 .nicht li:last-child { border-bottom:4px solid var(--ink); }
 .nicht li svg { flex:0 0 90px; width:90px; height:90px; }
-.zahl-riesig { position:absolute; left:-40px; top:-60px; font:700 980px/.85 "Lora",Georgia,serif; letter-spacing:-.04em; color:var(--gelb); z-index:0; }
+.zahl-riesig { position:absolute; left:-40px; top:30px; font:700 980px/.85 "Lora",Georgia,serif; letter-spacing:-.04em; color:var(--gelb); z-index:0; }
 .balken { margin-top:80px; display:grid; gap:56px; }
 .balken div p { font:600 36px/1.3 "Poppins",sans-serif; color:#fff; }
 .balken i { display:block; height:110px; margin-top:22px; border-radius:12px; }
@@ -246,6 +246,34 @@ html, body { width:1080px; background:#fff; }
 .weg { margin-top:170px !important; }
 .balken { margin-top:120px !important; gap:90px !important; }
 .balken i { height:140px !important; }
+
+/* Große Zahlen, Daten, Uhrzeiten in Poppins Bold (13.10.2026): Lora-Ziffern wirken bei Displaygröße unruhig */
+.zahlkarte .zahl, .vollbild .zahl, .zahl-riesig, .datum, .nzeit, .balken b, .zeitleiste b { font-family:"Poppins",sans-serif !important; font-weight:700 !important; letter-spacing:-.04em !important; }
+.zahl-riesig { letter-spacing:-.06em !important; }
+
+/* Feedback 13.10.2026 */
+.weg .mitte { position:relative; }
+.weg .mitte b { position:absolute; left:0; right:0; top:100%; }
+.venn { display:block; width:100%; margin-top:30px; }
+.erfolg2 { display:block; width:100%; margin-top:40px; }
+.wz5-liste { margin-top:250px !important; }
+.seite-hell { background:#f3f1ee; }
+.seite-hell .oeffnen { background:#fff; }
+.seite-schwarz { background:var(--ink); color:#fff; }
+.seite-schwarz .k { color:var(--gelb); }
+.seite-schwarz .frage { background:var(--gelb); color:var(--ink); }
+.seite-schwarz .frage small, .seite-schwarz .frage .zeichen { color:var(--ink); }
+.seite-schwarz .block > small, .seite-schwarz .fuss { color:#a8a39c; }
+.seite-schwarz .block li { border-color:#3a3734; color:#fff; }
+.seite-schwarz .oeffnen { background:#2b2826; color:#fff; }
+.seite-gelb { background:var(--gelb); }
+.seite-gelb .block > small, .seite-gelb .fuss, .seite-gelb .nr { color:var(--ink); }
+.seite-gelb .block li { border-color:rgba(26,24,23,.25); }
+.seite-gelb .oeffnen { background:#fff; }
+.p > .nein-block { position:absolute !important; }
+.nein-block { position:absolute; left:84px; bottom:110px; right:84px; z-index:2; }
+.nein-block p { font:700 64px/1.12 "Lora",Georgia,serif; color:#fff; }
+.nein-block b { display:inline-block; margin-top:24px; padding:6px 30px 14px; border-radius:22px; background:var(--gelb); color:var(--ink); font:700 170px/1 "Lora",Georgia,serif; }
 """
 
 
@@ -551,7 +579,7 @@ teile += [
   <div class="balken"><div><p>Das Tagesgeschäft verdrängt strategische Projekte</p><i style="width:77%;background:#fff400"></i><b style="color:#fff400">77 %</b></div>
   <div><p>Die Mitarbeitenden verstehen die Strategie</p><i style="width:11%;background:#fff"></i><b style="color:#fff">11 %</b></div></div>
   <p class="quelle2" style="position:absolute;left:84px;bottom:110px">Quelle: Wieselhuber, branchenübergreifend</p></section>""",
-    """<section class="p schwarz" id="ei5"><p class="k">AI Act · vorläufiger Termin</p><p class="datum">2.12.<br>2027</p>
+    """<section class="p schwarz" id="ei5"><p class="k">AI Act · vorläufiger Termin</p><p class="datum">02.12.<br>2027</p>
   <p style="margin-top:60px;font:700 64px/1.14 Lora,Georgia,serif;color:#fff">Ab dann gelten die Hochrisiko-Pflichten – auch für KI in der Tarifierung.</p>
   <p class="text" style="color:#d9d5cf">Wer ist in deinem Bereich dafür zuständig?</p></section>""",
     """<section class="p gelbgrund" id="dk2"><p class="k">Dokument · 6 Seiten</p><p class="h" style="font-size:118px;margin-top:60px">Ein Thema.<br>Vier Gegenüber.</p>
@@ -563,6 +591,34 @@ teile += [
   <p class="k">Dokument · 6 Seiten</p><p class="h" style="margin-top:50px;max-width:600px">Gegenüber, die du überzeugen musst.</p>
   <p class="text" style="max-width:520px">Vorstand, Aufsichtsrat, Vertrieb, Team – und was jedes davon wissen will.</p></section>""",
 ]
+
+# Feedback 13.10.2026: Modell D/E neu, Werkzeug E mittig, Dokument-Innenseiten im Wechsel, Szene F
+VENN = """<svg class="venn" viewBox="0 0 912 860"><g fill="none" stroke="#1a1817" stroke-width="7">
+<circle cx="330" cy="330" r="245"/><circle cx="582" cy="330" r="245"/><circle cx="456" cy="548" r="245"/></g>
+<g font-family="Lora" font-weight="700" font-size="38" fill="#1a1817" text-anchor="middle">
+<text x="225" y="250">Fach-</text><text x="225" y="296">expertise</text>
+<text x="690" y="250">Führungs-</text><text x="690" y="296">kompetenz</text>
+<text x="456" y="690">Geschäftsmodell</text><text x="456" y="740">verstehen</text></g>
+<rect x="356" y="370" width="200" height="74" rx="18" fill="#fff400"/>
+<text x="456" y="420" font-family="Poppins" font-weight="700" font-size="34" text-anchor="middle" fill="#1a1817">Die Rolle</text></svg>"""
+def _knoten(x, y, ic, label, gelb=False):
+    fill = "#fff400" if gelb else "none"
+    col = "#1a1817" if gelb else "#fff"
+    return ('<circle cx="%d" cy="%d" r="88" fill="%s" stroke="%s" stroke-width="5"%s/>' % (x, y, fill, "#fff400" if gelb else "#fff", ' stroke-dasharray="14 12"' if gelb else "")
+            + '<g transform="translate(%d %d) scale(3.2)" fill="none" stroke="%s" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">%s</g>' % (x - 38, y - 38, col, _LUC[ic])
+            + '<text x="%d" y="%d" text-anchor="middle" font-family="Poppins" font-weight="600" font-size="32" fill="#fff">%s</text>' % (x, y + 136, label))
+ERFOLG2 = ("""<svg class="erfolg2" viewBox="0 0 912 820"><g stroke="#4a4642" stroke-width="4"><line x1="456" y1="400" x2="150" y2="130"/><line x1="456" y1="400" x2="762" y2="130"/><line x1="456" y1="400" x2="150" y2="620"/><line x1="456" y1="400" x2="762" y2="620"/></g>"""
+   + _knoten(150, 130, "briefcase", "Vorstand") + _knoten(762, 130, "users", "Team") + _knoten(150, 620, "handshake", "Vertrieb") + _knoten(762, 620, "search", "Übersehen?", True)
+   + """<circle cx="456" cy="400" r="118" fill="#fff400"/><text x="456" y="420" text-anchor="middle" font-family="Lora" font-weight="700" font-size="60" fill="#1a1817">Du</text></svg>""")
+ersetze("mo4", """<section class="p" id="mo4"><p class="h m">Worauf eine Führungsrolle steht.</p>%s%s</section>""" % (VENN, NAME))
+ersetze("mo5", """<section class="p schwarz" id="mo5"><p class="h m" style="color:#fff">Wen brauchst du – und wen hast du <span class="hl">übersehen?</span></p>%s%s</section>""" % (ERFOLG2, NAME))
+for i, t in enumerate(teile):
+    if 'id="wz5"' in t:
+        teile[i] = t.replace('<ul class="nicht">', '<ul class="nicht wz5-liste">')
+    for pid, kl in (("d3", "seite-hell"), ("d4", "seite-schwarz"), ("d5", "seite-gelb")):
+        if '<section class="p" id="%s">' % pid in teile[i]:
+            teile[i] = teile[i].replace('<section class="p" id="%s">' % pid, '<section class="p %s" id="%s">' % (kl, pid))
+teile.append("""<section class="p foto-voll vollbild" id="sz6">%s<div class="verlauf" style="height:60%%"></div><div class="nein-block"><p>Das wichtigste Wort in jeder Strategie?</p><b>Nein.</b></div></section>""" % vb("voll-e4.jpg", "28% 30%"))
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>

@@ -8,7 +8,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 ZIEL = os.path.join(SITE, "assets", "projekte", "medienkonzept", "postings")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BILDER = ["p1", "p2", "p3", "p4", "p5", "d1", "d2", "d3", "d4", "d5", "d6", "s1", "n1", "k1", "m1", "z1", "t1", "c1", "k2", "m2", "m3", "w2", "z2", "sz3", "sz4", "sz5", "sa3", "sa4", "sa5", "fr3", "fr4", "fr5", "mo3", "mo4", "mo5", "wz3", "wz4", "wz5", "ei3", "ei4", "ei5", "dk2", "dk3", "dk4", "dk5"]
+BILDER = ["p1", "p2", "p3", "p4", "p5", "d1", "d2", "d3", "d4", "d5", "d6", "s1", "n1", "k1", "m1", "z1", "t1", "c1", "k2", "m2", "m3", "w2", "z2", "sz3", "sz4", "sz5", "sa3", "sa4", "sa5", "fr3", "fr4", "fr5", "mo3", "mo4", "mo5", "wz3", "wz4", "wz5", "ei3", "ei4", "ei5", "dk2", "dk3", "dk4", "dk5", "sz6"]
 
 def main():
     os.makedirs(ZIEL, exist_ok=True)
