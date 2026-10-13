@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "31"
+V = "33"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -29,27 +29,27 @@ THEMEN = [
 
 # Typ, Bild, was der Leser bekommt, Bild-Beschreibung, Foto nötig, Messgröße, Beleg/Einschätzung
 TYPEN = [
-    ("Die Szene", "v1.jpg", "Ein echter Moment aus deiner Arbeit – und was er über Führung oder Strategie zeigt.",
-     "Echtes Foto, ohne Text. Ab und zu mit einem Satz im Bild (wie die Entwürfe 01, 02, 04).", True,
-     "Kommentare, Profilbesuche", "Belegt: persönliche Fotos bis +50 % Engagement (van der Blom 2025); deine Szenen-Postings hatten 70 % mehr Reaktionen als Thesen."),
-    ("Der Satz", "t1.jpg", "Ein wörtlicher Satz eines Vorstands oder Kunden – und deine Einordnung.",
-     "Satzkarte in Gelb oder Porträt aus dem Bestand mit dem Satz (wie Entwurf 03).", False,
-     "Reichweite", "Belegt an deinen Zahlen: Satz plus Führungsthema hatte die höchste Reichweite (Median 1.848)."),
-    ("Die Frage", "k1.jpg", "Eine Prüffrage, die der Leser für sich beantwortet.",
-     "Fragekarte, ein Wort im gelben Block, Markenzeichen dazu.", False,
-     "Kommentare", "Einschätzung: Fragen zum Selbsttest regen Kommentare an; keine Köderfrage am Schluss."),
-    ("Das Modell", "m1.jpg", "Ein Zusammenhang auf einen Blick, den man speichert.",
-     "Diagramm im empiria-Design – aus deinen Werkzeugen (Why – How – What next, drei Säulen, Erfolgsmap).", False,
-     "Speichern", "Einschätzung: Bildbeiträge mit 5,3 % Engagement (Socialinsider); Speichern gilt als starkes Signal (Branchenbeobachtung, nicht von LinkedIn bestätigt)."),
-    ("Das Werkzeug", "p5.jpg", "Drei Schritte, die man morgen anwenden kann.",
-     "Werkzeugkarte in Schwarz.", False,
-     "Speichern", "Einschätzung, wie beim Modell."),
-    ("Eingeordnet", "z1.jpg", "Eine Branchen- oder Regulierungsnachricht – und was sie für einen Bereich heißt.",
-     "Zahl oder Schlagzeile groß, mit Quelle. Inhalte aus dem Branchen-Radar.", False,
-     "Reichweite außerhalb deines Netzwerks", "Einschätzung: aktuelle Themen erreichen neue Leser; LinkedIn bewertet Relevanz für ein Fachpublikum (LinkedIn-Team)."),
-    ("Zum Mitnehmen", "d1.jpg", "Eine Methode vollständig, auf 6 bis 8 Seiten.",
-     "Dokument im empiria-Design zum Durchblättern (wie Entwurf 06).", False,
-     "Speichern", "Belegt: Dokumente haben die höchste Engagement-Rate, 7,0 % (Socialinsider, 1,3 Mio. Beiträge)."),
+    ("Die Szene", True, "Ein echter Moment aus deiner Arbeit – und was er über Führung oder Strategie zeigt.", "Kommentare, Profilbesuche",
+     "Belegt: persönliche Fotos bis +50 % Engagement (van der Blom 2025); deine Szenen-Postings +70 % Reaktionen gegenüber Thesen.",
+     [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg"), ("C", "Foto als Karte", "p1.jpg")]),
+    ("Der Satz", False, "Ein wörtlicher Satz eines Vorstands oder Kunden – und deine Einordnung.", "Reichweite",
+     "Belegt an deinen Zahlen: Satz plus Führungsthema hatte die höchste Reichweite (Median 1.848).",
+     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Porträt mit Satz", "p3.jpg"), ("C", "Die Nachricht", "c1.jpg")]),
+    ("Die Frage", False, "Eine Prüffrage, die der Leser für sich beantwortet.", "Kommentare",
+     "Einschätzung: Fragen zum Selbsttest regen Kommentare an; nie als Köderfrage am Schluss.",
+     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Icon", "k2.jpg")]),
+    ("Das Modell", False, "Ein Zusammenhang auf einen Blick, den man speichert.", "Speichern",
+     "Einschätzung: Bildbeiträge 5,3 % Engagement (Socialinsider); Speichern gilt als starkes Signal (Branchenbeobachtung).",
+     [("A", "Drei Stufen", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Ohne / Mit", "m3.jpg")]),
+    ("Das Werkzeug", False, "Drei Schritte oder Fragen, die man morgen anwenden kann.", "Speichern",
+     "Einschätzung, wie beim Modell.",
+     [("A", "Liste Schwarz", "p5.jpg"), ("B", "Checkliste Gelb", "w2.jpg")]),
+    ("Eingeordnet", False, "Eine Branchen- oder Regulierungsnachricht – und was sie heute für einen Bereich heißt.", "Reichweite außerhalb deines Netzwerks",
+     "Einschätzung: LinkedIn bewertet Relevanz für ein Fachpublikum (LinkedIn-Team). Inhalte aus dem Branchen-Radar.",
+     [("A", "Zahl", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Schlagzeile", "z2.jpg")]),
+    ("Zum Mitnehmen", False, "Eine Methode vollständig, auf 6 bis 8 Seiten zum Durchblättern.", "Speichern",
+     "Belegt: Dokumente haben die höchste Engagement-Rate, 7,0 % (Socialinsider, 1,3 Mio. Beiträge).",
+     [("A", "Titelseite", "d1.jpg"), ("", "Innenseite", "d2.jpg"), ("", "Schlussseite", "d6.jpg")]),
 ]
 
 WOCHE = [
@@ -71,11 +71,16 @@ def themen():
 
 def typen():
     k = []
-    for t, bild, leser, b, foto, mess, beleg in TYPEN:
-        k.append('''<article class="mpf-typ"><div class="mpf-typ__bild"><img src="%s%s" alt="" loading="lazy"></div><div class="mpf-typ__text">
-<span class="mpf-foto mpf-foto--%s">%s</span><b>%s</b><p>%s</p><dl><div><dt>Bild</dt><dd>%s</dd></div><div><dt>Messen an</dt><dd>%s</dd></div><div><dt>Grundlage</dt><dd>%s</dd></div></dl></div></article>''' % (
-            PF, bild, "ja" if foto else "nein", "Foto von dir nötig" if foto else "ohne Foto von dir", t, leser, b, mess, beleg))
-    return '<div class="mpf-typen">%s</div>' % "".join(k)
+    for t, foto, leser, mess, beleg, varianten in TYPEN:
+        vs = "".join('<figure><img src="%s%s" alt="" loading="lazy"><figcaption>%s%s</figcaption></figure>' % (
+            PF, bild, ('<b>%s</b> ' % v) if v else "", name) for v, name, bild in varianten)
+        k.append('''<article class="mpv-typ"><div class="mpv-text">
+<span class="mpf-foto mpf-foto--%s">%s</span><h3>%s</h3><p>%s</p><dl><div><dt>Messen an</dt><dd>%s</dd></div><div><dt>Grundlage</dt><dd>%s</dd></div></dl></div>
+<div class="mpv-varianten">%s</div></article>''' % ("ja" if foto else "nein", "Foto von dir nötig" if foto else "ohne Foto von dir", t, leser, mess, beleg, vs))
+    k.append('''<article class="mpv-typ mpv-typ--quer"><div class="mpv-text"><span class="mpf-foto mpf-foto--ja">Handyfoto, kein Porträt</span><h3>Quer: Du als Person</h3>
+<p>Eine Analogie aus deinem Leben, die zu einem Thema führt – Lego, Mountainbike, die Fragen deiner Kinder. Meist als Szene, mit einem Foto vom Gegenstand oder Ort, nie von den Kindern. Bewusst wenig Gestaltung, damit es nach Alltag aussieht.</p></div>
+<div class="mpv-varianten"><figure><div class="mpv-leer">Dein Foto folgt</div><figcaption><b>A</b> Foto pur</figcaption></figure><figure><div class="mpv-leer">Dein Foto folgt</div><figcaption><b>B</b> Foto mit einem Satz</figcaption></figure></div></article>''')
+    return '<div class="mpv">%s</div>' % "".join(k)
 
 
 def woche():
@@ -101,7 +106,7 @@ MAIN = '''<main class="ak">
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 2</p><h2 class="e2-h2">Die Postingtypen.</h2>
-    <p class="e2-lead">Jeder Typ hat eine Aufgabe und ein festes Bild. So wechselt das Aussehen von Tag zu Tag, und trotzdem erkennt man dich an Schrift, Gelb und Ton.</p></div>
+    <p class="e2-lead">Sieben Typen mit je zwei bis drei Varianten. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
     ''' + typen() + '''
   </div></section>
 

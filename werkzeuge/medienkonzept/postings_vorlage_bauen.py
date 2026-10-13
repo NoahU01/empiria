@@ -104,6 +104,47 @@ html, body { width:1080px; background:#fff; }
 .zahlkarte .quelle2 { margin-top:34px; font:500 26px/1.4 "Poppins",sans-serif; color:#a8a39c; }
 .satzkarte .zitat { margin-top:210px; font:700 104px/1.1 "Lora",Georgia,serif; }
 .satzkarte .quelle { margin-top:44px; }
+
+/* Varianten je Postingtyp (13.10.2026) */
+.luc { fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; display:block; }
+.grau { background:#ece9e5; }
+/* Satz V3 – die Nachricht */
+.chat-zeit { text-align:center; margin-top:40px; font:600 26px/1 "Poppins",sans-serif; color:#8a857e; }
+.chat-blase { margin-top:30px; max-width:800px; padding:40px 46px; border-radius:40px 40px 40px 10px; background:#fff; font:500 52px/1.28 "Poppins",sans-serif; color:var(--ink); box-shadow:0 2px 0 rgba(0,0,0,.06); }
+.chat-blase.du { margin-left:auto; border-radius:40px 40px 10px 40px; background:var(--ink); color:#fff; }
+.chat-blase small { display:block; margin-top:14px; font:500 24px/1 "Poppins",sans-serif; color:#8a857e; text-align:right; }
+.chat-fuss { position:absolute; left:84px; right:84px; bottom:96px; font:700 84px/1.08 "Lora",Georgia,serif; color:var(--ink); }
+/* Frage V2 – schwarz mit Icon */
+.frage-schwarz { flex-direction:column; padding-bottom:96px; }\n.frage-schwarz:target { display:flex; }
+.frage-schwarz .riesig { width:380px; height:380px; color:var(--gelb); margin-top:70px; }
+.frage-schwarz .h { color:#fff; margin-top:auto; font-size:100px; line-height:1.16; }
+/* Modell V2 – drei Icons */
+.drei { margin-top:90px; display:grid; gap:0; }
+.drei div { display:grid; grid-template-columns:170px 1fr; gap:40px; align-items:center; padding:52px 0; border-top:4px solid var(--ink); }
+.drei div:last-child { border-bottom:4px solid var(--ink); }
+.drei svg { width:150px; height:150px; }
+.drei b { display:block; font:700 80px/1 "Lora",Georgia,serif; }
+.drei span { display:block; margin-top:16px; font:500 36px/1.3 "Poppins",sans-serif; }
+/* Modell V3 – vorher / nachher */
+.vn { margin-top:80px; display:grid; grid-template-columns:1fr 1fr; gap:26px; height:760px; }
+.vn > div { padding:48px 40px; border-radius:28px; }
+.vn .vor { background:var(--hell); }
+.vn .nach { background:var(--gelb); }
+.vn small { display:block; font:700 24px/1 "Poppins",sans-serif; letter-spacing:.14em; text-transform:uppercase; }
+.vn ul { list-style:none; margin-top:50px; display:grid; gap:56px; }
+.vn li { font:600 44px/1.22 "Poppins",sans-serif; }
+.vn .vor li { color:#8a857e; text-decoration:line-through; text-decoration-thickness:3px; }
+/* Werkzeug V2 – Checkliste */
+.check2 { margin-top:110px; list-style:none; }
+.check2 li { display:flex; gap:40px; align-items:center; padding:62px 0; border-top:4px solid var(--ink); font:700 62px/1.12 "Lora",Georgia,serif; }
+.check2 li:last-child { border-bottom:4px solid var(--ink); }
+.check2 li::before { content:""; flex:0 0 76px; height:76px; border:6px solid var(--ink); border-radius:12px; }
+/* Eingeordnet V2 – Schlagzeile */
+.news { margin-top:90px; padding:52px 50px 56px; border-radius:28px; background:#fff; color:var(--ink); }
+.news small { display:block; font:600 24px/1 "Poppins",sans-serif; color:#8a857e; }
+.news b { display:block; margin-top:24px; font:700 68px/1.14 "Lora",Georgia,serif; }
+.news-frage { position:absolute; left:84px; right:84px; bottom:110px; font:700 92px/1.12 "Lora",Georgia,serif; color:#fff; }
+.news-frage .hl { color:var(--ink); }
 """
 
 
@@ -232,6 +273,55 @@ teile += [
   <p class="zitat">„Es hilft doch nichts, wenn nur ich das hier verstanden habe.“</p>
   <p class="quelle">— ein Vorstand</p>
   <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
+</section>""",
+]
+
+# Varianten je Postingtyp (13.10.2026) – Inhalte aus Interview und Postings
+import sys as _sys
+_sys.path.insert(0, os.path.join(HIER, ".."))
+from e2_lucide import ICONS as _LUC
+def luc(name):
+    return '<svg class="luc" viewBox="0 0 24 24" aria-hidden="true">%s</svg>' % _LUC[name]
+
+teile += [
+    """<section class="p grau" id="c1">
+  <p class="chat-zeit" style="margin-top:20px">Freitag · 14:20 · Anfrage eines Vorstands</p>
+  <div class="chat-blase">Kannst du dir die Folien bis morgen früh ansehen? Es muss sitzen.</div>
+  <p class="chat-zeit" style="margin-top:44px">22:25</p>
+  <div class="chat-blase du">Vielen Dank!<br>Passt. Lass es so.<small>Vorstand</small></div>
+  <p class="chat-fuss">Aus vier Folien wurde eine.</p>
+</section>""",
+    """<section class="p schwarz frage-schwarz" id="k2">
+  <p class="k">Strategie im Alltag</p>
+  <div class="riesig">%s</div>
+  <p class="h">Was entscheidest du diese Woche wegen der Strategie <span class="hl">anders?</span></p>
+</section>""" % luc("compass"),
+    """<section class="p gelbgrund" id="m2">
+  <p class="k">Strategie im Alltag</p>
+  <p class="h">Was jeder Bereich braucht.</p>
+  <div class="drei">
+    <div>%s<p><b>Rolle</b><span>Wofür stehe ich und mein Bereich?</span></p></div>
+    <div>%s<p><b>Richtung</b><span>Wie wollen wir wahrgenommen werden?</span></p></div>
+    <div>%s<p><b>Handwerkszeug</b><span>Wie kommen wir dort hin?</span></p></div>
+  </div>
+</section>""" % (luc("flag"), luc("compass"), luc("wrench")),
+    """<section class="p" id="m3">
+  <p class="k">Strategie im Alltag</p>
+  <p class="h m">Woran du ein Zielbild <span class="hl">erkennst.</span></p>
+  <div class="vn">
+    <div class="vor"><small>Ohne</small><ul><li>Agendapunkte werden aufgezählt</li><li>Jeder verteidigt sein Thema</li><li>Am Ende ein Kompromiss</li></ul></div>
+    <div class="nach"><small>Mit</small><ul><li>Das Ziel in einem Satz</li><li>Jeder kennt das Warum</li><li>Am Ende eine Entscheidung</li></ul></div>
+  </div>
+</section>""",
+    """<section class="p gelbgrund" id="w2">
+  <p class="k">Vor jeder Vorstandsvorlage</p>
+  <ul class="check2"><li>Wen brauche ich?</li><li>Wen habe ich übersehen?</li><li>An wem richte ich es aus?</li></ul>
+  <p class="text" style="color:#1a1817;margin-top:70px;font-size:40px;font-weight:600">Erst diese drei Fragen. Dann die Folie.</p>
+</section>""",
+    """<section class="p schwarz" id="z2">
+  <p class="k">Branche eingeordnet</p>
+  <div class="news"><small>Branche · 2026</small><b>Versicherer planen kein Personalwachstum. Die Effizienz soll mit KI kommen.</b></div>
+  <p class="news-frage">Was heißt das für deinen <span class="hl">Bereich?</span></p>
 </section>""",
 ]
 

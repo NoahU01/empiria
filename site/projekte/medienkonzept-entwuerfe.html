@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
 <link rel="stylesheet" href="/assets/projekte/avrg/avrg-konzept.css?v=4">
 <link rel="stylesheet" href="/assets/projekte/avrg/avrg-mk.css?v=8">
-<link rel="stylesheet" href="/assets/projekte/medienkonzept/medienkonzept.css?v=8">
+<link rel="stylesheet" href="/assets/projekte/medienkonzept/medienkonzept.css?v=33">
 </head>
 <body class="e2">
 
@@ -734,7 +734,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="ig-modal__bild mke-bild" id="mke-bild"></div>
   <div class="ig-modal__text">
     <div class="ig-modal__kopf"><img id="mke-avatar" src="/assets/ansprechpartner-daniel.webp" alt=""><span><b id="mke-name">Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
-    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Gestaltet</button><button type="button" data-v="alt" aria-pressed="false">Echtes Foto · Vorschlag</button></div>
+    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Vorschlag</button><button type="button" data-v="alt" aria-pressed="false">Alternative</button></div>
     <p class="ig-caption" id="mke-text"></p>
     <div class="ig-aktionen"><button type="button" id="mke-kopieren">Text kopieren</button><a id="mke-laden" href="#" download>Bild herunterladen</a><a id="mke-pdf" href="#" download hidden>Dokument (PDF)</a></div>
     <dl class="ig-meta" id="mke-meta"></dl>
@@ -758,8 +758,8 @@ document.querySelectorAll('.lpv-seite img').forEach(function (img) {
 </footer>
 
 <script>document.querySelectorAll(".mkb-mehr").forEach(function(b){b.onclick=function(){var t=b.previousElementSibling,zu=t.hasAttribute("data-zu");if(zu){t.removeAttribute("data-zu");b.textContent="weniger";}else{t.setAttribute("data-zu","");b.textContent="… mehr";}b.setAttribute("aria-expanded",String(zu));};});</script>
-<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=8"></script>
-<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=8"></script>
+<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=33"></script>
+<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=33"></script>
 <script src="/script.js"></script>
 </body>
 </html>

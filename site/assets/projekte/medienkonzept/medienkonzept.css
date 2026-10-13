@@ -476,3 +476,25 @@ a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
 .e2 main .lg-leit { margin: 0; padding: .35rem .55rem; border-left: 3px solid #1a1817; background: #fff; border-radius: 0 6px 6px 0; font: 400 .74rem/1.45 'Poppins', sans-serif; color: #3d3a37; }
 .lg-leit span { font-weight: 700; color: #1a1817; }
 @media (min-width: 1101px) { .mpf-typen > .mpf-typ:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 12px); } }
+
+/* Postingtypen mit Varianten (13.10.2026) */
+.mpv { display: grid; gap: 1rem; margin-top: 2rem; }
+.mpv-typ { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 1.6rem; padding: 1.3rem; border: 1px solid #e4e0db; border-radius: 18px; background: #fff; }
+.e2 main .mpv-typ h3 { margin: .7rem 0 0; font: 700 1.5rem/1.2 'Lora', Georgia, serif; color: #1a1817; }
+.e2 main .mpv-text p { margin-top: .45rem; font: 400 .95rem/1.55 'Poppins', sans-serif; color: #1a1817; }
+.mpv-text dl { margin: .8rem 0 0; }
+.mpv-text dl div { padding: .45rem 0; border-top: 1px solid #ece9e5; }
+.mpv-text dt { font: 600 .66rem/1.4 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #6b6762; }
+.mpv-text dd { margin: .1rem 0 0; font: 400 .84rem/1.5 'Poppins', sans-serif; color: #3d3a37; }
+.mpv-varianten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; align-content: start; }
+.mpv-varianten figure { margin: 0; }
+.mpv-varianten img, .mpv-leer { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; border: 1px solid #ece9e5; display: block; }
+.mpv-leer { display: grid; place-items: center; background: #f3f1ee; font: 500 .85rem/1.4 'Poppins', sans-serif; color: #8a857e; border-style: dashed; border-color: #c9c4bd; }
+.mpv-varianten figcaption { margin-top: .45rem; font: 500 .85rem/1.35 'Poppins', sans-serif; color: #3d3a37; }
+.mpv-varianten figcaption b { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; margin-right: .3rem; border-radius: 50%; background: #1a1817; color: #fff400; font: 700 .7rem/1 'Poppins', sans-serif; }
+.mpv-typ--quer { background: transparent; border-style: dashed; border-color: #c9c4bd; }
+@media (max-width: 900px) { .mpv-typ { grid-template-columns: minmax(0, 1fr); gap: 1rem; } }
+@media (max-width: 480px) { .mpv-varianten { gap: .5rem; } .mpv-varianten figcaption { font-size: .75rem; } }
+/* Großansicht: ganzes Bild sichtbar (13.10.2026) */
+#mke-modal .ig-modal__bild.mke-bild { display: flex; align-items: center; justify-content: center; background: #f3f1ee; max-height: min(860px, 90vh); }
+#mke-modal .mke-bild > img { width: auto; max-width: 100%; height: auto; max-height: min(860px, 90vh); object-fit: contain; }

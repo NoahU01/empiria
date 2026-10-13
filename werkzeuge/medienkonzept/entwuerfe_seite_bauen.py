@@ -10,25 +10,25 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "8"  # Versionsnummer für CSS/JS
+V = "33"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
-    25: dict(bild="p1", alt="v1", termin="Di 20.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    25: dict(bild="w2", alt="p1", termin="Di 20.10.", format="Das Werkzeug · B Checkliste Gelb (Alternative: Szene C)",
              offen="Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."),
-    26: dict(bild="p2", alt="v2", termin="Mi 21.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    26: dict(bild="k2", alt="m3", termin="Mi 21.10.", format="Die Frage · B Schwarz mit Icon (Alternative: Modell C)",
              offen="Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"),
-    27: dict(bild="p3", termin="Do 22.10.", format="Zitat mit Porträt · Einzelbild 4:5",
+    27: dict(bild="s1", alt="p3", termin="Do 22.10.", format="Die Szene · B Foto mit einem Satz (Alternative: Satz B)",
              offen="Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"),
-    28: dict(bild="p4", alt="v4", termin="Mo 26.10.", format="Foto aus der Arbeit · Einzelbild 4:5",
+    28: dict(bild="v4", alt="p4", termin="Mo 26.10.", format="Die Szene · A Foto pur (Alternative: Szene C)",
              offen="Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"),
-    29: dict(bild="p5", termin="Di 27.10.", format="Grafik · Einzelbild 4:5",
+    29: dict(bild="p5", termin="Di 27.10.", format="Das Werkzeug · A Liste Schwarz",
              offen="Einziger Beitrag mit Türspalt zum Angebot (letzter Absatz). So lassen oder ohne?"),
-    30: dict(bild="d1", termin="Mi 28.10.", format="Dokument · 6 Seiten (PDF)", pdf="Ein-Thema-vier-Gegenueber.pdf",
+    30: dict(bild="d1", termin="Mi 28.10.", format="Zum Mitnehmen · Dokument, 6 Seiten (PDF)", pdf="Ein-Thema-vier-Gegenueber.pdf",
              seiten=["d1", "d2", "d3", "d4", "d5", "d6"],
              offen="Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."),
 }
-FELDER = {"Richtung": "Richtung", "Durchsetzung": "Durchsetzung", "Zukunft": "Zukunft", "Umsetzungspower": "Umsetzungspower"}
+FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "03 Geschäftsmodell": "03 Geschäftsmodell"}
 
 
 def main(pfad):
@@ -93,7 +93,7 @@ def main(pfad):
   <div class="ig-modal__bild mke-bild" id="mke-bild"></div>
   <div class="ig-modal__text">
     <div class="ig-modal__kopf"><img id="mke-avatar" src="/assets/ansprechpartner-daniel.webp" alt=""><span><b id="mke-name">Daniel Ströbel</b><small id="mke-format"></small></span><button type="button" class="ig-zu" id="mke-zu" aria-label="Schließen">×</button></div>
-    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Gestaltet</button><button type="button" data-v="alt" aria-pressed="false">Echtes Foto · Vorschlag</button></div>
+    <div class="ig-kanal mke-variante" id="mke-variante" role="group" aria-label="Bildfassung" hidden><button type="button" data-v="bild" aria-pressed="true">Vorschlag</button><button type="button" data-v="alt" aria-pressed="false">Alternative</button></div>
     <p class="ig-caption" id="mke-text"></p>
     <div class="ig-aktionen"><button type="button" id="mke-kopieren">Text kopieren</button><a id="mke-laden" href="#" download>Bild herunterladen</a><a id="mke-pdf" href="#" download hidden>Dokument (PDF)</a></div>
     <dl class="ig-meta" id="mke-meta"></dl>
