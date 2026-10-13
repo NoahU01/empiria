@@ -258,3 +258,33 @@ a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
 @media (max-width: 800px) { .mk3-raster--vier { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 1200px) and (min-width: 801px) { .mk3-raster--vier { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .mk3-dlg .mk-wirkt__folge { margin-top: 1.2rem !important; }
+
+/* Kompakter für die Arbeitsebene (13.10.2026, iPad mini 744 px: alle drei Kästen auf einen Blick) */
+.mk3-farbe { min-height: 0; gap: .9rem; padding: 1.3rem 1.5rem 1.25rem; }
+.mk3-farbe b { max-width: 80%; font-size: clamp(1.5rem, 2.3vw, 2rem); }
+.mk3-zeichen { right: 1.3rem; bottom: 1.15rem; width: 3rem; height: 3rem; }
+.mk3-farbe small { font-size: .72rem; }
+.mk3-text { gap: .7rem; padding: 1.1rem 1.5rem 1.3rem; font-size: .95rem; line-height: 1.55; }
+.mk3-super--breit .mk3-farbe { flex: 0 0 36%; min-height: 0; justify-content: space-between; }
+.mk3-super--breit .mk3-text { padding: 1.2rem 1.5rem 1.3rem; }
+.mk3-bilder { grid-template-columns: repeat(4, minmax(0, 92px)); gap: .5rem; }
+.mk3-zwei { gap: 1rem; margin-top: 1rem; }
+.mk3-zwei .mk3-farbe { min-height: 7.6rem; }
+.mk3-super--breit .mk3-farbe b { margin-top: 2.2rem; }
+@media (max-width: 800px) {
+  .mk3-super--breit { flex-direction: row; }
+  .mk3-super--breit .mk3-farbe { flex-basis: 36%; }
+  .mk3-zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mk3-bilder { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .mk3-super--breit { flex-direction: column; }
+  .mk3-super--breit .mk3-farbe { flex-basis: auto; }
+  .mk3-super--breit .mk3-farbe b { margin-top: .6rem; }
+  .mk3-zwei { grid-template-columns: minmax(0, 1fr); }
+  .mk3-zwei .mk3-farbe { min-height: 6.4rem; }
+}
+.mk3-super--breit .mk3-zeichen { top: 1.1rem; bottom: auto; }
+.mk3-super--breit .mk3-farbe b { max-width: 100%; }
+.mk3-bilder { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 460px; }
+@media (max-width: 600px) { .mk3-super--breit .mk3-zeichen { top: auto; bottom: 1.15rem; } .mk3-super--breit .mk3-farbe b { max-width: 78%; } }
