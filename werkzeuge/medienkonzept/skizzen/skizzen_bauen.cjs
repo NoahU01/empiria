@@ -34,28 +34,6 @@ const NAME = (c) => `<p class="namezeile" style="z-index:2${c ? ";color:" + c : 
 const out = [];
 const sek = (id, cls, html) => out.push(`<section class="p sk2 ${cls}" id="${id}">${html}</section>`);
 
-// 1 · Gezeichnete Szene (Open Peeps): Lenkungsausschuss
-{
-  let g = "";
-  g += r(gen.rectangle(110, 420, 330, 230, RO({ seed: 4 })), INK, 6);
-  g += `<text x="275" y="565" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="76" fill="${INK}" letter-spacing="-3">37/40</text>`;
-  g += peep("Explaining", "ShortTwo", "Explaining", GELB, "", 470, 420, 400, true);
-  g += peep("Coffee", "Bald", "Tired", "#ffffff", "MustacheThin", 40, 830, 360);
-  g += peep("Paper", "MediumBangs", "Solemn", "#ffffff", "", 360, 840, 360);
-  g += peep("ButtonShirt", "GrayShort", "Suspicious", "#ffffff", "", 680, 830, 360);
-  g += `<rect x="0" y="1180" width="1080" height="170" fill="#ffffff"/>` + r(gen.line(30, 1182, 1050, 1182, RO({ seed: 9, strokeWidth: 7 })), INK, 7);
-  sek("ss1", "", SVG(g, "#ffffff") + HEAD("Lenkungsausschuss", 'Folie 37 von 40. Entschieden wird <span class="hl">nichts.</span>') + NAME());
-}
-// 2 · Porträt mit Notizen: Montag nach dem Auftakt
-{
-  let g = peep("ButtonShirt", "NoHairTwo", "Concerned", "#ffffff", "Goatee", 300, 560, 480);
-  g += hand(84, 520, "12 Regeltermine", 60, INK, "start", -6) + pfeil(250, 545, 400, 690, INK, 21);
-  g += hand(800, 500, "Mails", 64, INK, "start", 6) + pfeil(850, 525, 740, 680, INK, 31);
-  g += hand(84, 1010, "Vorstands-", 58, INK, "start", -4) + hand(90, 1068, "beschwerde", 58, INK, "start", -4) + pfeil(250, 980, 360, 900, INK, 41);
-  g += hand(820, 960, "Brand!", 66, INK, "start", 8) + pfeil(860, 990, 760, 920, INK, 51);
-  g += r(gen.ellipse(540, 1210, 380, 120, RO({ seed: 61, stroke: INK, fill: GELB, fillStyle: "solid" })), INK, 6) + hand(540, 1228, "Und die Strategie?", 54, INK, "middle", -3);
-  sek("ss2", "", SVG(g, "#ffffff") + HEAD("Montag nach dem Auftakt", 'Alles brennt. Nur nicht die <span class="hl">Strategie.</span>'));
-}
 // 3 · Whiteboard (Handstrich, ohne Menschen): zwei Wege
 {
   let g = "";
@@ -74,14 +52,22 @@ const sek = (id, cls, html) => out.push(`<section class="p sk2 ${cls}" id="${id}
   g += hand(84, 860, "So wird entschieden:", 60, GRAU) + reihe(900, ["Thema", "1 Seite", "Ja."], 90, true);
   sek("ss3", "", SVG(g, "#ffffff") + HEAD("Am Whiteboard", 'Gleiches Thema. Andere <span class="hl">Struktur.</span>') + NAME());
 }
-// 4 · Bild-Metapher Eisberg (Fläche, ohne Menschen)
+// 4 · Bild-Metapher Eisberg – sauber aufgebaut: Wasserlinie, symmetrische Form, Liste mit Trennlinien
 {
-  let g = `<rect y="760" width="1080" height="590" fill="${INK}"/>`;
-  g += `<path d="M 380 760 L 470 640 L 515 670 L 580 560 L 640 640 L 690 610 L 760 760 Z" fill="${GELB}"/>`;
-  g += `<path d="M 330 760 L 800 760 L 930 900 L 960 1060 L 860 1230 L 620 1310 L 360 1270 L 170 1120 L 140 940 Z" fill="#3a3632"/>`;
-  g += `<text x="570" y="735" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="42" fill="${INK}">Strategie</text>`;
-  ["Regeltermine", "Abstimmungsschleifen", "Brände im Tagesgeschäft", "Mails · Vorlagen · Eskalationen"].forEach((t, i) => {
-    g += `<text x="540" y="${880 + i * 90}" text-anchor="middle" font-family="Poppins" font-weight="600" font-size="38" fill="#ffffff">${t}</text>`;
+  const W = 760; // Wasserlinie
+  let g = `<rect y="${W}" width="1080" height="${1350 - W}" fill="${INK}"/>`;
+  // Spitze über Wasser
+  g += `<path d="M 360 ${W} L 470 560 L 520 610 L 572 470 L 630 590 L 670 555 L 752 ${W} Z" fill="${GELB}"/>`;
+  g += `<text x="556" y="${W - 26}" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="46" fill="${INK}">Strategie</text>`;
+  // Masse unter Wasser
+  g += `<path d="M 380 ${W} L 732 ${W} L 900 880 L 960 1030 L 900 1180 L 700 1290 L 410 1290 L 210 1180 L 150 1030 L 210 880 Z" fill="#33302d"/>`;
+  // Wasserlinie als feine Linie
+  g += `<line x1="0" y1="${W}" x2="1080" y2="${W}" stroke="${GELB}" stroke-width="4"/>`;
+  const zeilen = ["Regeltermine", "Abstimmungsschleifen", "Brände im Tagesgeschäft", "Vorlagen und Eskalationen"];
+  zeilen.forEach((t, i) => {
+    const y = 900 + i * 92;
+    if (i > 0) g += `<line x1="330" y1="${y - 56}" x2="780" y2="${y - 56}" stroke="#4a4642" stroke-width="2"/>`;
+    g += `<text x="555" y="${y}" text-anchor="middle" font-family="Poppins" font-weight="600" font-size="38" fill="#ffffff">${t}</text>`;
   });
   sek("ss4", "", SVG(g, HELL) + HEAD("Was man sieht – und was darunter liegt", 'Die Strategie ist nur die <span class="hl">Spitze.</span>') + NAME("#a8a39c").replace('class="namezeile"', 'class="namezeile" style="z-index:3"'));
 }
