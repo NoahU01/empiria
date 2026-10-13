@@ -3,14 +3,19 @@
 Text kopieren, Bild herunterladen) und die Datendatei entwuerfe.js.
 
     python3 werkzeuge/medienkonzept/entwuerfe_seite_bauen.py beitraege.json
-beitraege.json = Export der Supabase-Tabelle beitraege (id, feld, art, kernaussage, text, geplant_am).
+beitraege.json = Export der Supabase-Tabelle beitraege:
+    ~/AlwaysOn/supabase/sql.py -c "select id, art, feld, geplant_am, kanal, kernaussage, text, status, bild, linkedin_url
+      from beitraege where kanal not ilike '%Firmenprofil%' and status in ('entwurf','freigegeben','geplant','veroeffentlicht')
+      and geplant_am >= '2026-10-14' order by geplant_am" > beitraege.json
+Status-Abfolge: entwurf (Zur Freigabe) → freigegeben → geplant (in Buffer) → veroeffentlicht (Archiv, mit linkedin_url).
+Raster beginnt mit der laufenden Woche; Seite nach jeder Statusänderung neu bauen und pushen.
 """
-import json, os, sys, zipfile
+import datetime, json, os, sys, zipfile
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "50"  # Versionsnummer für CSS/JS
+V = "51"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -45,35 +50,50 @@ def main(pfad):
     for e in daten:
         if "Firmenprofil" in e["kanal"]:
             continue
-        x = EXTRA[e["id"]]
+        datum = e["geplant_am"][:10]
+        x = dict(EXTRA.get(e["id"]) or dict(bild=(e.get("bild") or "").replace(".jpg", ""), format=e["art"], offen=""))
+        x["termin"] = "%s %s." % (["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"][datetime.date.fromisoformat(datum).weekday()], datum[8:10] + "." + datum[5:7])
+        x["url"] = e.get("linkedin_url") or ""
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
                           feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"],
                           status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], **x))
-    # Wochenraster Mo–Fr ab KW 42: fertiges Posting, geplantes Thema oder kein Posting
-    import datetime
+    # Wochenraster Mo–Fr ab der laufenden Woche: fertiges Posting, geplantes Thema oder kein Posting.
+    # Veröffentlichte Postings wandern ins Archiv (Platz im Raster bleibt als Hinweis stehen).
     TAGE = ["Mo", "Di", "Mi", "Do", "Fr"]
     nach_datum = {p["datum"]: i for i, p in enumerate(posts)}
     plan = {}
     for kw, tag, aussage, typ in PLAN:
         d, m = tag.split()[1].strip(".").split(".")
         plan["2026-%s-%s" % (m, d)] = dict(aussage=aussage, typ=typ, interview="Interview" in aussage)
-    wochen, montag = [], datetime.date(2026, 10, 12)
-    while montag <= datetime.date(2026, 11, 2):
+    heute = datetime.date.today()
+    montag = heute - datetime.timedelta(days=heute.weekday())
+    letzter = max([datetime.date.fromisoformat(k) for k in list(plan) + list(nach_datum)] + [montag])
+    wochen = []
+    while montag <= letzter:
         tage = []
         for n in range(5):
             d = montag + datetime.timedelta(days=n); k = d.isoformat()
             t = dict(tag="%s %s" % (TAGE[n], d.strftime("%d.%m.")))
-            if k in nach_datum: t["i"] = nach_datum[k]
+            if k in nach_datum and posts[nach_datum[k]]["status"] == "veroeffentlicht": t["archiv"] = nach_datum[k]
+            elif k in nach_datum: t["i"] = nach_datum[k]
             elif k in plan: t["plan"] = plan[k]
             tage.append(t)
         fr = montag + datetime.timedelta(days=4)
         wochen.append(dict(kw="KW %d" % montag.isocalendar()[1], spanne="%s–%s" % (montag.strftime("%d.%m."), fr.strftime("%d.%m.")), tage=tage))
         montag += datetime.timedelta(days=7)
+    archiv = {}
+    for i, p in enumerate(posts):
+        if p["status"] == "veroeffentlicht":
+            d = datetime.date.fromisoformat(p["datum"]); mo = d - datetime.timedelta(days=d.weekday())
+            archiv.setdefault(mo, []).append(i)
+    archiv = [dict(kw="KW %d" % mo.isocalendar()[1], spanne="%s–%s" % (mo.strftime("%d.%m."), (mo + datetime.timedelta(days=4)).strftime("%d.%m.")), posts=archiv[mo])
+              for mo in sorted(archiv, reverse=True)]
     open(os.path.join(MK, "entwuerfe.js"), "w", encoding="utf-8").write(
         "/* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */\n"
         "window.MK_ENTWUERFE = " + json.dumps(posts, ensure_ascii=False, indent=1) + ";\n"
         "window.MK_FELDER = " + json.dumps(FELDER, ensure_ascii=False) + ";\n"
-        "window.MK_WOCHEN = " + json.dumps(wochen, ensure_ascii=False) + ";\n")
+        "window.MK_WOCHEN = " + json.dumps(wochen, ensure_ascii=False) + ";\n"
+        "window.MK_ARCHIV = " + json.dumps(archiv, ensure_ascii=False) + ";\n")
     # Paket: alle Bilder, Dokument-PDF und Texte
     md = ["# Postings Daniel Ströbel – LinkedIn (Entwürfe, Stand 12.10.2026)", ""]
     for i, p in enumerate(posts):
@@ -104,14 +124,15 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
-      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Erst freigegebene Postings kommen in Buffer.</p>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein. Nach dem Erscheinen wandern sie ins Archiv unten.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
       <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Mo bis Fr, 8:30 Uhr über Buffer · ohne Link</p></div></div>
-      <div class="mke-legende"><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
+      <div class="mke-legende"><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--buffer">In Buffer</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
       <div class="mke-wochen" id="mke-raster"></div>
+      <section class="mke-archiv" id="archiv"><h2 class="mke-archiv__kopf">Archiv · veröffentlicht</h2><div id="mke-archiv"></div></section>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
 

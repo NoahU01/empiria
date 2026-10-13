@@ -578,3 +578,14 @@ a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
   .mke-tag:has(.mke-platz--leer){display:none}
   .mke-platz p{font-size:.84rem}
 }
+/* Status-Abfolge: Zur Freigabe (gelb) → Freigegeben (Kontur) → In Buffer (schwarz) → Veröffentlicht (Archiv) */
+.mke-status--frei{background:#fff;color:var(--e2-ink);box-shadow:inset 0 0 0 1.5px var(--e2-ink)}
+.mke-status--buffer{background:var(--e2-ink);color:#fff}
+.mke-status--buffer::before{content:"✓";margin-right:5px}
+.mke-status--archiv{background:var(--e2-hell);color:var(--e2-grau)}
+a.mke-status{text-decoration:none}
+a.mke-platz{text-decoration:none}
+.mke-archiv{margin:8px 24px 0;padding:32px 0 36px;border-top:2px solid var(--e2-ink)}
+.mke-archiv__kopf{margin:0 0 6px;font:700 1.6rem var(--font-serif,"Lora",serif)}
+.mke-archiv__leer{margin:10px 0 0;color:var(--e2-grau);font-size:.92rem}
+@media (max-width:700px){ .mke-archiv{margin-left:16px;margin-right:16px} }

@@ -3,14 +3,14 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=50';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=51';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
   var W = window.MK_WOCHEN || [];
-  var STATUS = { freigegeben: ['frei', 'Freigegeben'], entwurf: ['offen', 'Zur Freigabe'] };
+  var STATUS = { entwurf: ['offen', 'Zur Freigabe'], freigegeben: ['frei', 'Freigegeben'], geplant: ['buffer', 'In Buffer'], veroeffentlicht: ['archiv', 'Veröffentlicht'] };
   function status(p) { return STATUS[p.status] || STATUS.entwurf; }
   function tag(t) {
     var kopf = '<span class="mke-tag__datum">' + t.tag + '</span>';
@@ -20,6 +20,10 @@
         '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
         '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
         '<p class="mke-tag__typ">' + esc(p.format) + '</p></div>';
+    }
+    if (t.archiv != null) {
+      return '<div class="mke-tag"><div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--archiv">Veröffentlicht</span></div>' +
+        '<a class="mke-platz mke-platz--leer" href="#archiv"><p>Im Archiv ↓</p></a><p class="mke-tag__typ">&nbsp;</p></div>';
     }
     if (t.plan) {
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--plan">' + (t.plan.interview ? 'Interview mit dir' : 'Zu schreiben') + '</span></div>' +
@@ -33,11 +37,21 @@
       '<div class="mke-tage">' + w.tage.map(tag).join('') + '</div></section>';
   }).join('');
   var rasterFirma = null;
+  var archiv = $('#mke-archiv'), A = window.MK_ARCHIV || [];
+  if (archiv) archiv.innerHTML = A.length ? A.map(function (w) {
+    return '<section class="mke-woche"><h3 class="mke-woche__kopf">' + w.kw + '<span>' + w.spanne + '</span></h3><div class="mke-tage">' +
+      w.posts.map(function (i) {
+        var p = P[i];
+        return '<div class="mke-tag"><div class="mke-tag__kopf"><span class="mke-tag__datum">' + p.termin + '</span>' +
+          (p.url ? '<a class="mke-status mke-status--plan" href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a>' : '') + '</div>' +
+          '<button type="button" class="ig-kachel mke-k" data-i="' + i + '" aria-label="' + p.termin + ' öffnen"><img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
+          '<p class="mke-tag__typ">' + esc(p.format) + '</p></div>';
+      }).join('') + '</div></section>';
+  }).join('') : '<p class="mke-archiv__leer">Noch nichts veröffentlicht. Jedes Posting landet hier nach dem Erscheinen – mit Bild, Text und Link zu LinkedIn.</p>';
 
   var modal = $('#mke-modal'), jetzt = 0, variante = 'bild';
   function sichtbar() {
-    var r = raster;
-    return $$('.ig-kachel', r).filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; });
+    return $$('.ig-kachel').filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; });
   }
   function bildZeigen() {
     var p = P[jetzt], b = (variante === 'alt' && p.alt) ? p.alt : p.bild;
@@ -65,7 +79,7 @@
     var k = $('#mke-kopieren'); k.classList.remove('ist-kopiert'); k.textContent = 'Text kopieren';
     if (!modal.open) modal.showModal();
   }
-  [raster, rasterFirma].forEach(function (r) { if (r) r.addEventListener('click', function (e) { var k = e.target.closest('.ig-kachel'); if (k) oeffne(+k.dataset.i); }); });
+  [raster, archiv].forEach(function (r) { if (r) r.addEventListener('click', function (e) { var k = e.target.closest('.ig-kachel'); if (k) oeffne(+k.dataset.i); }); });
   $$('#mke-variante button').forEach(function (b) { b.addEventListener('click', function () { variante = b.dataset.v; bildZeigen(); }); });
   function blaettere(d) { var l = sichtbar(), pos = l.indexOf(jetzt); oeffne(l[(pos + d + l.length) % l.length]); }
   $('#mke-zurueck').addEventListener('click', function () { blaettere(-1); });

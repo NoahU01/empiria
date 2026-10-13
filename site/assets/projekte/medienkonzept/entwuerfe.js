@@ -12,7 +12,8 @@ window.MK_ENTWUERFE = [
   "bild": "mo5",
   "termin": "Mi 14.10.",
   "format": "Modell · E Erfolgsmap",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 42,
@@ -26,7 +27,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp07",
   "termin": "Do 15.10.",
   "format": "Szene · F Foto mit Verlauf und Wort",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 40,
@@ -40,7 +42,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp05",
   "termin": "Fr 16.10.",
   "format": "Szene · A Foto pur (Flipchart)",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 39,
@@ -54,7 +57,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp04",
   "termin": "Mo 19.10.",
   "format": "Frage · E Skala",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 36,
@@ -68,7 +72,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp01",
   "termin": "Di 20.10.",
   "format": "Szene · B Foto mit Satz",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 37,
@@ -82,7 +87,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp02",
   "termin": "Mi 21.10.",
   "format": "Modell · A Why · How · Next",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 38,
@@ -96,7 +102,8 @@ window.MK_ENTWUERFE = [
   "bild": "rp03",
   "termin": "Do 22.10.",
   "format": "Szene · B Foto mit Satz (Porträt)",
-  "offen": ""
+  "offen": "",
+  "url": ""
  },
  {
   "id": 43,
@@ -110,8 +117,10 @@ window.MK_ENTWUERFE = [
   "bild": "rp08",
   "termin": "Fr 23.10.",
   "format": "Eingeordnet · B Zahl auf Foto",
-  "offen": ""
+  "offen": "",
+  "url": ""
  }
 ];
 window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};
 window.MK_WOCHEN = [{"kw": "KW 42", "spanne": "12.10.–16.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}]}, {"kw": "KW 43", "spanne": "19.10.–23.10.", "tage": [{"tag": "Mo 19.10.", "i": 3}, {"tag": "Di 20.10.", "i": 4}, {"tag": "Mi 21.10.", "i": 5}, {"tag": "Do 22.10.", "i": 6}, {"tag": "Fr 23.10.", "i": 7}]}, {"kw": "KW 44", "spanne": "26.10.–30.10.", "tage": [{"tag": "Mo 26.10.", "plan": {"aussage": "30 · Wie würdest du deinen Bereich heute neu gründen?", "typ": "Frage · C Fragezeichen", "interview": false}}, {"tag": "Di 27.10.", "plan": {"aussage": "12 · Logik allein verändert wenig.", "typ": "Szene · A Foto pur", "interview": false}}, {"tag": "Mi 28.10.", "plan": {"aussage": "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "typ": "Modell · D Drei Kreise", "interview": false}}, {"tag": "Do 29.10.", "plan": {"aussage": "Person · Erlebnis aus deinem Leben (aus dem Interview)", "typ": "Du als Person · Foto", "interview": true}}, {"tag": "Fr 30.10.", "plan": {"aussage": "Werkstatt · Wie du selbst mit KI arbeitest (aus dem Interview)", "typ": "Werkstatt · Foto oder Szene", "interview": true}}]}, {"kw": "KW 45", "spanne": "02.11.–06.11.", "tage": [{"tag": "Mo 02.11.", "plan": {"aussage": "09 · Neu in der Rolle – überladen mit Regelterminen.", "typ": "Skizze · C Isometrisch", "interview": false}}, {"tag": "Di 03.11.", "plan": {"aussage": "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "typ": "Szene · D Kritzelei auf Foto", "interview": false}}, {"tag": "Mi 04.11.", "plan": {"aussage": "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "typ": "Werkzeug · D Zeitleiste", "interview": false}}, {"tag": "Do 05.11.", "plan": {"aussage": "Person · zweites Erlebnis (aus dem Interview)", "typ": "Du als Person · Foto", "interview": true}}, {"tag": "Fr 06.11.", "plan": {"aussage": "34 · AI Act grob eingeordnet.", "typ": "Eingeordnet · F Posting im Posting", "interview": false}}]}];
+window.MK_ARCHIV = [];
