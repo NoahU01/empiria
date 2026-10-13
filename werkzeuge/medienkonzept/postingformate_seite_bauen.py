@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "40"
+V = "44"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -47,6 +47,9 @@ TYPEN = [
     ("Eingeordnet", False, "Eine Branchen- oder Regulierungsnachricht – und was sie heute für einen Bereich heißt.", "Reichweite außerhalb deines Netzwerks",
      "Einschätzung: LinkedIn bewertet Relevanz für ein Fachpublikum (LinkedIn-Team). Inhalte aus dem Branchen-Radar.",
      [("A", "Zahl mit Raster", "z1.jpg"), ("B", "Zahl auf Foto", "n1.jpg"), ("C", "Riesige Zahl", "ei3.jpg"), ("D", "Balken", "ei4.jpg"), ("E", "Das Datum", "ei5.jpg"), ("F", "Posting im Posting", "kt2.jpg")]),
+    ("Die Skizze", False, "Eine Szene oder ein Zusammenhang gezeichnet – für alles, wovon es kein Foto gibt. Sechs Darstellungsarten zur Auswahl.", "Kommentare, Speichern",
+     "Einschätzung: passt zu deinem Erkennungszeichen, dem Skizzieren. Figuren: Open Peeps (Pablo Stanley, frei nutzbar, CC0), Handstrich mit rough.js, Handschrift Caveat – keine KI-Bilder.",
+     [("A", "Gezeichnete Szene mit Menschen", "ss1.jpg"), ("B", "Porträt mit Notizen", "ss2.jpg"), ("C", "Whiteboard, ohne Menschen", "ss3.jpg"), ("D", "Bild-Metapher (Eisberg)", "ss4.jpg"), ("E", "Isometrische Bausteine", "ss5.jpg"), ("F", "Kritzelei auf deinem Foto", "ss6.jpg")]),
     ("Zum Mitnehmen", False, "Eine Methode vollständig, auf 6 bis 8 Seiten zum Durchblättern.", "Speichern",
      "Belegt: Dokumente haben die höchste Engagement-Rate, 7,0 % (Socialinsider, 1,3 Mio. Beiträge).",
      [("A", "Titel Weiß", "d1.jpg"), ("B", "Titel Gelb", "dk2.jpg"), ("C", "Titel Schwarz", "dk3.jpg"), ("D", "Titel mit Foto", "dk4.jpg"), ("E", "Titel mit großer Zahl", "dk5.jpg"), ("", "Innenseite Weiß", "d2.jpg"), ("", "Innenseite Schwarz", "d4.jpg"), ("", "Innenseite Gelb", "d5.jpg")]),
@@ -94,7 +97,7 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Zwei Postings pro Woche zeigen dich im Foto, die übrigen entstehen aus Schrift, Gelb, Schwarz und Icons – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und acht Postingtypen. Zwei Postings pro Woche zeigen dich im Foto, die übrigen entstehen aus Schrift, Gelb, Schwarz und Icons – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
@@ -106,7 +109,7 @@ MAIN = '''<main class="ak">
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 2</p><h2 class="e2-h2">Die Postingtypen.</h2>
-    <p class="e2-lead">Sieben Typen mit je fünf Varianten – nur die, die ich selbst stark finde. Das angeschnittene Zeichen zeigt den Baustein: »» Strategie im Alltag, ✕ Komplexe Themen, ○ Geschäftsmodell. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
+    <p class="e2-lead">Acht Typen mit je fünf bis sechs Varianten – nur die, die ich selbst stark finde. Das angeschnittene Zeichen zeigt den Baustein: »» Strategie im Alltag, ✕ Komplexe Themen, ○ Geschäftsmodell. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
     ''' + typen() + '''
   </div></section>
 

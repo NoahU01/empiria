@@ -295,6 +295,20 @@ html, body { width:1080px; background:#fff; }
 .kt-schwarz small, .kt-schwarz .kt-z { color:var(--gelb); }
 .kt-hell { background:#f3f1ee; color:var(--ink); }
 .kt-text { padding:30px 34px 36px; font:400 30px/1.45 "Poppins",sans-serif; color:#3d3a37; }
+
+/* Postingtyp „Die Skizze“ (13.10.2026) */
+.sk-post { display:none; }
+.sk-post:target { display:flex; flex-direction:column; }
+.sk-post .sk { display:block; width:100%; margin-top:auto; }
+.sk-post .h { font-size:80px; line-height:1.1; }
+.sk-c { background:#f3f1ee; }
+.sk-mark { background:linear-gradient(transparent 55%, var(--gelb) 55%, var(--gelb) 92%, transparent 92%); padding:0 .06em; }
+
+/* Skizzen (13.10.2026) */
+@font-face { font-family:"Caveat"; font-weight:700; src:url(/assets/projekte/medienkonzept/caveat-700.woff2) format("woff2"); }
+.sk2 { padding:0; }
+.sk2:target { display:block; }
+.p.sk2 > div { position:absolute; }
 """
 
 
@@ -658,6 +672,10 @@ teile += [
        "Wie würdest du deinen Bereich heute neu gründen?", O,
        "Die Frage, mit der ich jedes Gespräch über die Zukunft eines Bereichs beginne."),
 ]
+
+# Postingtyp „Die Skizze“ (13.10.2026): sechs Darstellungsarten, erzeugt von skizzen/skizzen_bauen.cjs
+# (Open Peeps CC0 · rough.js MIT · Caveat OFL) – Ergebnis liegt in skizzen-sektionen.html
+teile.append(open(os.path.join(HIER, "skizzen-sektionen.html"), encoding="utf-8").read())
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
