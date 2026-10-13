@@ -134,3 +134,31 @@
 .mk-wirkt__folge b { display: inline; }
 .mk-wirkt code a { color: inherit; }
 @media (max-width: 800px) { .mk-wirkt ol { grid-template-columns: minmax(0, 1fr); } }
+
+/* Postingformate (13.10.2026): Themen und Postingtypen */
+.mpf-themen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.mpf-thema { background: #fff; border: 1px solid #e4e0db; border-radius: 18px; padding: 24px 26px; }
+.mpf-nr { display: block; font: 700 .95rem/1 'Lora', Georgia, serif; color: #b5b0a9; }
+.mpf-thema b { display: block; margin-top: 10px; font: 700 1.3rem/1.25 'Lora', Georgia, serif; color: #1a1817; }
+.mpf-thema p { margin: 10px 0 0; font: 400 .95rem/1.55 'Poppins', sans-serif; color: #3d3a37; }
+.mpf-thema small { display: block; margin-top: 12px; padding-top: 12px; border-top: 1px solid #ece9e5; font: 400 .82rem/1.5 'Poppins', sans-serif; color: #6b6762; }
+.mpf-quer { margin: 36px 0 0; font: 400 1rem/1.6 'Poppins', sans-serif; color: #3d3a37; max-width: 46rem; }
+.mpf-typen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+.mpf-typ { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 22px; align-items: start; padding: 20px; border: 1px solid #e4e0db; border-radius: 20px; background: #fff; }
+.mpf-typ__bild { aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; border: 1px solid #ece9e5; }
+.mpf-typ__bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mpf-platzhalter { display: grid; place-items: center; background: #f3f1ee; text-align: center; padding: 14px; font: 500 .82rem/1.45 'Poppins', sans-serif; color: #6b6762; }
+.mpf-typ__text b { display: block; margin-top: 10px; font: 700 1.35rem/1.2 'Lora', Georgia, serif; color: #1a1817; }
+.mpf-typ__text p { margin: 8px 0 0; font: 400 .95rem/1.5 'Poppins', sans-serif; color: #1a1817; }
+.mpf-typ dl { margin: 12px 0 0; }
+.mpf-typ dl div { padding: 7px 0; border-top: 1px solid #ece9e5; }
+.mpf-typ dt { font: 600 .68rem/1.4 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #6b6762; }
+.mpf-typ dd { margin: 2px 0 0; font: 400 .85rem/1.5 'Poppins', sans-serif; color: #3d3a37; }
+.mpf-foto { display: inline-block; padding: 5px 10px; border-radius: 999px; font: 600 .72rem/1 'Poppins', sans-serif; }
+.mpf-foto--nein { background: #ece9e5; color: #1a1817; }
+.mpf-foto--ja { background: #1a1817; color: #fff; }
+.mpf-ehrlich { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; max-width: 52rem; }
+.mpf-ehrlich li { font: 400 1rem/1.6 'Poppins', sans-serif; color: #3d3a37; }
+@media (max-width: 1100px) { .mpf-typen { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .mpf-themen { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .mpf-typ { grid-template-columns: minmax(0, 1fr); } .mpf-typ__bild { max-width: 260px; } }

@@ -86,6 +86,24 @@ html, body { width:1080px; background:#fff; }
 .vollbild .zahl { font:700 230px/.9 "Lora",Georgia,serif; color:var(--gelb); letter-spacing:-.02em; }
 .vollbild .oben { position:absolute; left:80px; top:76px; color:#fff; }
 .vollbild .oben.k::before { background:#fff; }
+
+/* Postingtypen ohne Foto (13.10.2026): Frage, Modell, Zahl, Satz */
+.karte-frage { padding:96px 88px; }
+.karte-frage .h { font-size:96px; line-height:1.16; margin-top:70px; }
+.namezeile { position:absolute; left:88px; right:88px; bottom:72px; font:500 24px/1 "Poppins",sans-serif; color:var(--grau); }
+.schwarz .namezeile { color:#a8a39c; }
+.modell { margin-top:64px; display:grid; gap:22px; }
+.modell .stufe { display:grid; grid-template-columns:200px 1fr; gap:28px; align-items:start; padding:44px 40px; border-radius:24px; background:var(--hell); }
+.modell .stufe b { font:700 64px/1 "Lora",Georgia,serif; }
+.modell .stufe p { font:500 34px/1.35 "Poppins",sans-serif; color:var(--ink2); }
+.modell .stufe small { display:block; margin-top:10px; font:500 24px/1.4 "Poppins",sans-serif; color:var(--grau); }
+.modell .stufe.gelb-b { background:var(--gelb); }
+.modell .stufe.gelb-b p, .modell .stufe.gelb-b small { color:var(--ink); }
+.zahlkarte .zahl { margin-top:110px; font:700 300px/.9 "Lora",Georgia,serif; color:var(--gelb); letter-spacing:-.03em; }
+.zahlkarte .satz { margin-top:40px; font:700 64px/1.15 "Lora",Georgia,serif; color:#fff; }
+.zahlkarte .quelle2 { margin-top:34px; font:500 26px/1.4 "Poppins",sans-serif; color:#a8a39c; }
+.satzkarte .zitat { margin-top:210px; font:700 104px/1.1 "Lora",Georgia,serif; }
+.satzkarte .quelle { margin-top:44px; }
 """
 
 
@@ -181,6 +199,40 @@ teile += [
   <p class="k oben">Eingeordnet</p>
   <div class="unten"><p class="zahl">77 %%</p><p class="satz" style="margin-top:18px">sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.</p><p class="wer">Quelle: Wieselhuber · Was das für deinen Bereich heißt, im Text</p></div>
 </section>""" % B,
+]
+
+# Postingtypen ohne Foto (13.10.2026) – Inhalte aus dem Interview
+teile += [
+    """<section class="p karte-frage" id="k1">
+  <p class="k">Die Frage</p>
+  <p class="h">Kann jeder in deinem Bereich sagen, wie ihr <span class="hl">erfolgreich</span> seid?</p>
+  <p class="text" style="margin-top:44px">Und was sein eigener Beitrag dazu ist.</p>
+  %s
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""" % zeichen(F, 88, 1040, 110),
+    """<section class="p" id="m1">
+  <p class="k">Das Modell</p>
+  <p class="h m" style="margin-top:28px">Was ein Vorstand wissen <span class="hl">muss.</span></p>
+  <div class="modell">
+    <div class="stufe"><b>Why</b><div><p>Warum beschäftigen wir uns damit?</p><small>Ausgangssituation · Problem · Lösung</small></div></div>
+    <div class="stufe"><b>How</b><div><p>Wie gehen wir grundsätzlich vor?</p><small>Grundsätzlich, nicht im Detail</small></div></div>
+    <div class="stufe gelb-b"><b>Next</b><div><p>Was ist der konkrete nächste Schritt?</p><small>Damit es vorangeht</small></div></div>
+  </div>
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""",
+    """<section class="p schwarz zahlkarte" id="z1">
+  <p class="k">Eingeordnet</p>
+  <p class="zahl">77&nbsp;%</p>
+  <p class="satz">sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.</p>
+  <p class="quelle2">Quelle: Wieselhuber · Was das für einen Bereich heißt, steht im Text.</p>
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""",
+    """<section class="p gelbgrund satzkarte" id="t1">
+  <p class="k">Der Satz</p>
+  <p class="zitat">„Es hilft doch nichts, wenn nur ich das hier verstanden habe.“</p>
+  <p class="quelle">— ein Vorstand</p>
+  <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
+</section>""",
 ]
 
 html = """<!doctype html>
