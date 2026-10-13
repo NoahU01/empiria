@@ -8,21 +8,23 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "11"
+V = "25"
 
 THEMEN = [
-    ("Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
-     "Zielbild heißt: Jeder hat das Geschäftsmodell verstanden · Die Strategie gibt der Chef vor · Ohne Vision keine Strategie · operativ und strategisch trennen"),
-    ("Entscheidungen herbeiführen", "Themen für Vorstand und Aufsichtsrat so aufbereiten, dass entschieden werden kann – und Stakeholder gewinnen.",
-     "Why – How – What next · Themen auf der falschen Flugebene · Diskussionen kippen, wenn die Bedeutung fehlt · What's in it for me"),
-    ("Führung, die trägt", "Führungskräfte, die ihre Rolle von Anfang an ausfüllen können – und Organisationen, die sie lassen.",
-     "Erst befördern, dann entwickeln ist falsch · Rolle und drei Säulen · geduldetes Fehlverhalten demotiviert die Guten · Logik allein verändert wenig"),
-    ("Vertrieb, der die Strategie umsetzt", "Vertriebsstrategie, Markteinführungen und Vertriebstagungen, die im Alltag etwas bewegen.",
-     "Nach der Vertriebstagung: tolle Stimmung, und nach vier Wochen spricht keiner mehr davon · Mehrwert für Vertriebspartner klar machen"),
-    ("Branche und Regulierung eingeordnet", "Was die Branche bewegt – mit Blick auf die Konsequenzen für einen Bereich. Quelle: Branchen-Radar, montags.",
-     "AI Act, DORA, BaFin: was es bewirkt, worüber man nachdenken muss, wie man es positiv nutzt · Studien und Zahlen mit Quelle"),
-    ("KI aus eigener Praxis", "Erfahrungswissen statt Meinung: wie KI hilft, schneller und besser zu entscheiden.",
-     "Viele reden mit, ohne KI selbst zu nutzen · Taskforce und Verbote im Haus, privat wird genutzt, was geschäftlich nicht erlaubt ist"),
+    ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
+     "Zielbild heißt: Jeder hat das Geschäftsmodell verstanden · Die Strategie gibt der Chef vor · operativ und strategisch trennen"),
+    ("Baustein 1 · Strategie in den Alltag überführen", "Führung, die trägt", "Führungskräfte, die ihre Rolle von Anfang an ausfüllen und Strategie in ihren Bereich bringen.",
+     "Erst befördern, dann entwickeln ist falsch · Rolle und drei Säulen · geduldetes Fehlverhalten demotiviert die Guten"),
+    ("Baustein 2 · Komplexe Themen strukturieren und kommunizieren", "Entscheidungen herbeiführen", "Vorstand, Aufsichtsrat und Stakeholder so ansprechen, dass entschieden wird.",
+     "Why – How – What next · Themen auf der falschen Flugebene · Diskussionen kippen, wenn die Bedeutung fehlt"),
+    ("Baustein 2 · Komplexe Themen strukturieren und kommunizieren", "Vertrieb, der die Strategie umsetzt", "Vertriebsstrategie, Markteinführungen und Tagungen, die im Alltag etwas bewegen.",
+     "Nach der Vertriebstagung spricht nach vier Wochen keiner mehr davon · What's in it for me"),
+    ("Baustein 3 · Innovation und Geschäftsmodell neu denken", "Geschäftsmodell der Zukunft", "Neu denken auf einem Kern, den man im Griff hat – nicht als Wunschliste.",
+     "Die Neugründungs-Frage · Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen"),
+    ("Baustein 3 · Innovation und Geschäftsmodell neu denken", "KI aus eigener Praxis", "Erfahrungswissen statt Meinung: wie KI hilft, schneller und besser zu entscheiden.",
+     "Viele reden mit, ohne KI selbst zu nutzen · Taskforce und Verbote im Haus"),
+    ("Quer über alle drei", "Branche und Regulierung eingeordnet", "Was die Branche bewegt und was AI Act, DORA oder BaFin im Alltag bewirken. Quelle: Branchen-Radar, montags.",
+     "Konsequenzen statt Detailauslegung · Studien und Zahlen mit Quelle"),
 ]
 
 # Typ, Bild, was der Leser bekommt, Bild-Beschreibung, Foto nötig, Messgröße, Beleg/Einschätzung
@@ -61,8 +63,9 @@ WOCHE = [
 
 def themen():
     k = []
-    for i, (t, w, m) in enumerate(THEMEN, 1):
-        k.append('<div class="mpf-thema"><span class="mpf-nr">0%d</span><b>%s</b><p>%s</p><small>Aus deinem Material: %s</small></div>' % (i, t, w, m))
+    for bs, t, w, m in THEMEN:
+        quer = " mpf-thema--quer" if bs.startswith("Quer") else ""
+        k.append('<div class="mpf-thema%s"><span class="mpf-nr">%s</span><b>%s</b><p>%s</p><small>Aus deinem Material: %s</small></div>' % (quer, bs, t, w, m))
     return '<div class="mpf-themen">%s</div>' % "".join(k)
 
 
@@ -88,12 +91,12 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sechs Themen aus deinem Personal-Brand-Profil und acht Postingtypen. Nur zwei Typen brauchen ein Foto – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und acht Postingtypen. Nur zwei Typen brauchen ein Foto – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 1</p><h2 class="e2-h2">Die Themen.</h2>
-    <p class="e2-lead">Abgeleitet aus dem Interview vom 12. und 13.10. Ein Fachgebiet, sechs Felder – so erkennt LinkedIn dich als Experten.</p></div>
+    <p class="e2-lead">Abgeleitet aus dem Dreiklang des Strategiehandwerks – je Baustein zwei Themen, eines quer dazu. Die Herleitung zeigt die Seite <a href="/projekte/medienkonzept-zuordnung.html">Zuordnung</a>.</p></div>
     ''' + themen() + '''
     <p class="mpf-quer"><b>Quer dazu: du als Person.</b> Analogien und Erlebnisse aus deinem Leben würzen jedes Thema – und sind ab und zu ein eigenes Posting.</p>
   </div></section>
