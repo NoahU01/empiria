@@ -1,87 +1,100 @@
 /* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */
 window.MK_ENTWUERFE = [
  {
-  "id": 25,
+  "id": 36,
   "kanal": "daniel",
-  "feld": "02 Komplexe Themen",
-  "art": "Werkzeug",
-  "kern": "Vor jeder Vorstandsvorlage drei Fragen: Wen brauche ich? Wen habe ich zu wenig berücksichtigt? An wem richte ich das Thema aus?",
-  "text": "Bevor ich mit einem Kunden an einer Vorstandsvorlage arbeite, schauen wir uns keine einzige Folie an.\n\nWir beantworten drei Fragen, und meistens verändert das die Unterlage mehr als jede Überarbeitung.\n\nWen brauche ich, damit das Thema durchgeht? Das sind fast immer mehr Menschen als die, die am Ende im Raum sitzen: der Vorstand, aber auch der Kollege, dessen Bereich betroffen ist, und die Referentin, die die Vorlage vorab liest.\n\nWen habe ich bislang zu wenig berücksichtigt? Hier steckt oft der Grund, warum gute Themen in der Sitzung hängen bleiben. Einer fühlt sich übergangen und stellt die Frage, auf die niemand vorbereitet ist.\n\nAn wem richte ich das Thema eigentlich aus? Wer das klar beantwortet, weiß auch, mit wem er vorher sprechen muss und in welcher Reihenfolge.\n\nDie Folie kommt danach, und sie wird kürzer.\n\nWenn du nächste Woche eine Entscheidung brauchst: Nimm dir heute zehn Minuten, beantworte die drei Fragen auf einem Blatt und plane die zwei Gespräche, die vor der Sitzung stattfinden müssen.",
-  "bild": "w2",
-  "alt": "v1",
+  "feld": "01 Strategie im Alltag",
+  "art": "Szene · B Foto mit Satz",
+  "kern": "Themenliste 03: Die Strategie gibt der Chef vor. Das ist sein Job.",
+  "text": "Die Strategie gibt der Chef vor. Das ist sein Job.\n\nIch erlebe es immer wieder: Eine neue Strategie soll her, und der erste Schritt ist ein großer Workshop mit dem ganzen Team. Alle sollen mitreden, alle sollen sich wiederfinden.\n\nIn der Praxis holst du damit Menschen an den Tisch, die nie gelernt haben, über Strategie zu sprechen, und denen die Erfahrung dafür fehlt. Heraus kommt ein Kompromiss, auf den sich alle einigen können. Schlechtes Mittelmaß.\n\nNebenbei entsteht Unsicherheit. Wenn der Chef fragt, wo es hingehen soll, wirkt es, als wüsste der Trainer nicht, wohin die Mannschaft laufen soll.\n\nDie Reihenfolge ist eine andere. Zuerst klärt die Führungskraft, wo der Bereich hinwill und wie er dort erfolgreich ist. Dafür braucht es keinen Zweitagesworkshop, für den Einstieg reichen zwei, drei Gespräche. Danach kommt das Team dazu, wenn es um die Umsetzung geht.\n\nWer oben steht und selbst kein Bild hat, wohin es geht, kann das von seinen Führungskräften auch nicht verlangen.",
+  "bild": "rp01",
   "termin": "Di 20.10.",
-  "format": "Das Werkzeug · B Checkliste Gelb (Alternative: Szene A)",
-  "offen": "Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."
+  "format": "Szene · B Foto mit Satz",
+  "offen": "Passt das Bühnenfoto, oder hast du ein Foto aus einem Strategiegespräch?"
  },
  {
-  "id": 26,
+  "id": 37,
   "kanal": "daniel",
-  "feld": "01 Strategie im Alltag",
-  "art": "Beobachtung",
-  "kern": "Niemand sagt, er habe keine Strategie. Das Problem ist, dass sie im Alltag nicht ankommt – Test: drei Führungskräfte fragen, was sie deshalb diese Woche anders entscheiden.",
-  "text": "In meinen Gesprächen mit Führungskräften bei Versicherern hat noch nie jemand gesagt, er habe keine Strategie.\n\nWas ich höre, ist etwas anderes: dass im Alltag zu wenig davon ankommt. Die Strategie steht auf der Folie, die Begriffe kennt jeder, und trotzdem entscheiden die Leute im Bereich am Montag genauso wie vor einem Jahr.\n\nDas hat einen einfachen Grund. Aus vier Feldern mit Schlagworten kann niemand ableiten, was er diese Woche anders machen soll. Es fehlt das Bild, wie der Bereich in Zukunft funktioniert, und es fehlt die Entscheidung, was man dafür bewusst nicht mehr macht.\n\nEin Test, den du heute machen kannst: Frag drei deiner Führungskräfte, was sie wegen der Strategie in dieser Woche anders entscheiden. Wenn die Antworten weit auseinanderliegen oder lange auf sich warten lassen, weißt du, wo du ansetzen musst.\n\nAnsetzen heißt dann: die vorhandene Strategie so schärfen, dass jeder sie in einem Satz für seinen Bereich übersetzen kann, einschließlich der Dinge, die wegfallen.",
-  "bild": "k2",
-  "alt": "m3",
+  "feld": "02 Komplexe Themen",
+  "art": "Modell · A Why · How · Next",
+  "kern": "Themenliste 18: Why – How – What next.",
+  "text": "Viele Vorstandsvorlagen sind vollständig und trotzdem nicht entscheidbar.\n\nWer ein Fachthema einbringt, präsentiert meist bis ins letzte Detail. Der Vorstand weiß danach viel, nur nicht, was das Thema für das Unternehmen bedeutet. Dann geht es in die nächste Schleife.\n\nDrei Fragen reichen, in dieser Reihenfolge:\n\nWhy. Welche Bedeutung hat dieses Thema für uns und unser Unternehmen? Kurz und auf den Punkt.\n\nHow. Wie gehen wir grundsätzlich vor? Grundsätzlich heißt: ohne die Einzelprobleme, solange die Gesamtwirkung nicht klar ist.\n\nWhat next. Was ist der konkrete nächste Schritt, damit es vorangeht?\n\nDas klingt einfach, und trotzdem lässt es sich sehr ungeschickt aufbauen. Prüf deine nächste Vorlage gegen diese drei Fragen, bevor du an den Folien feilst.",
+  "bild": "rp02",
   "termin": "Mi 21.10.",
-  "format": "Die Frage · B Schwarz mit Zeichen (Alternative: Modell C)",
-  "offen": "Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"
+  "format": "Modell · A Why · How · Next",
+  "offen": "Gibt es eine echte Vorlage, die an der Bedeutung gescheitert ist? Ein Satz dazu macht den Einstieg stärker."
  },
  {
-  "id": 27,
-  "kanal": "daniel",
-  "feld": "02 Komplexe Themen",
-  "art": "Geschichte",
-  "kern": "„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“ – ein komplexes Thema auf eine Skizze bringen.",
-  "text": "Ein befreundeter Vorstand hat einem Kollegen einmal beschrieben, wie ich arbeite:\n\n„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“\n\nDer Satz trifft ziemlich genau, was in fast jedem meiner Projekte passiert. Komplexe Themen werden in Besprechungen meist mit immer mehr Folien beantwortet. Ich versuche, sie auf eine Skizze zu bringen: wer mit wem zusammenhängt, wo eine Entscheidung entsteht und wo sie stockt.\n\nSobald das Bild auf dem Tisch liegt, ändert sich das Gespräch. Die Leute diskutieren nicht mehr über Formulierungen. Sie zeigen auf eine Stelle und sagen: Genau da hakt es.\n\nProbier es beim nächsten verfahrenen Termin aus. Nimm ein Blatt, zeichne die drei, vier Beteiligten und die Pfeile dazwischen und dreh das Blatt zu deinem Gegenüber. Du wirst merken, wie schnell aus einer Diskussion ein gemeinsames Bild wird.",
-  "bild": "s1",
-  "termin": "Do 22.10.",
-  "format": "Die Szene · B Foto mit einem Satz",
-  "offen": "Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"
- },
- {
-  "id": 28,
-  "kanal": "daniel",
-  "feld": "03 Geschäftsmodell",
-  "art": "Werkzeug",
-  "kern": "Die Neugründungs-Frage mit drei Unterfragen: Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen – erst sinnvoll, wenn der Kern im Griff ist.",
-  "text": "Wie würdest du deinen Bereich aufbauen, wenn du ihn heute neu gründen würdest?\n\nDie Frage stelle ich in Strategieterminen oft, und sie bringt das Gespräch schnell an die Stellen, über die sonst keiner spricht. Damit sie trägt, brauchst du drei Unterfragen.\n\nWürdest du die Aufgaben noch genauso zuschneiden? Viele Zuständigkeiten sind historisch gewachsen und heute vor allem Schnittstellen.\n\nWürdest du dich an derselben Stelle der Wertschöpfung positionieren? Manches, was der Bereich selbst macht, könnte ein Partner besser, und an anderer Stelle fehlt etwas, das heute niemand verantwortet.\n\nWürdest du dieselben Zielgruppen und Stakeholder bedienen? Oft zeigt sich hier, dass der Bereich auf die Erwartungen von gestern eingestellt ist.\n\nEine Einschränkung gehört dazu. Die Frage funktioniert erst, wenn dein Kern im Griff ist: wenn du dein heutiges Geschäftsmodell erklären kannst und weißt, wen du für Veränderungen brauchst. Vorher entsteht eine Wunschliste.\n\nWenn dein Vorstand von dir erwartet, über den Tellerrand zu denken, fang mit diesen drei Fragen an und schreib zu jeder einen Satz auf, bevor du über Maßnahmen sprichst.",
-  "bild": "v4",
-  "termin": "Mo 26.10.",
-  "format": "Die Szene · A Foto pur",
-  "offen": "Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"
- },
- {
-  "id": 29,
+  "id": 38,
   "kanal": "daniel",
   "feld": "01 Strategie im Alltag",
-  "art": "Denkfehler",
-  "kern": "Am Ende jeder Abstimmung festlegen: Wer treibt das Thema, bis wann kommt es zurück, in welcher Form – dann kommt es beim nächsten Mal eine Stufe weiter.",
-  "text": "Ein Thema ist besprochen, alle nicken, der Termin endet gut. Zwei Wochen später liegt es wieder bei dir, genauso offen wie vorher.\n\nDas passiert in vielen Häusern. Meist ist am Ende des Termins offen geblieben, wer das Thema jetzt treibt und in welcher Form es zurückkommt.\n\nIch schließe deshalb jede Abstimmung mit drei Punkten ab. Wer übernimmt das Thema ab jetzt? Bis wann kommt es zurück? Und in welcher Form: als Entscheidungsvorlage mit Empfehlung, damit beim nächsten Termin eine Entscheidung fällt.\n\nDas kostet zwei Minuten am Ende des Termins. Danach kannst du das Thema guten Gewissens loslassen, weil klar ist, dass es beim nächsten Mal eine Stufe weiter ist.\n\nSo arbeite ich auch mit meinen Kunden: Sie geben mir ein Thema, und ab da liegt es bei mir, bis es entscheidungsreif auf ihrem Tisch liegt.",
-  "bild": "p5",
-  "termin": "Di 27.10.",
-  "format": "Das Werkzeug · A Liste Schwarz",
-  "offen": "Einziger Beitrag mit Türspalt zum Angebot (letzter Absatz). So lassen oder ohne?"
+  "art": "Szene · B Foto mit Satz (Porträt)",
+  "kern": "Themenliste 13: Führung macht einsam.",
+  "text": "„Daniel, Führung macht einsam. Je höher du kommst, desto weniger sagt dir jemand die Wahrheit.“\n\nDiesen Satz hat mir ein ehemaliger Vorstand gesagt, mit dem ich bis heute befreundet bin. Er begleitet mich in fast jedem Projekt.\n\nEin Vorstand braucht mindestens einen Menschen, der auf Augenhöhe offen mit ihm spricht. Jemanden, der eine andere Meinung fundiert vertritt, ohne Angst, weil er von ihr überzeugt ist. Und der den nächsten Schritt aufzeigt, weil sich ein Vorstand gar nicht um alle Themen selbst kümmern kann.\n\nWenn du selbst führst, schreib dir heute einen Namen auf: Wer sagt dir die Wahrheit? Fällt dir niemand ein, ist das die wichtigste Aufgabe dieser Woche.",
+  "bild": "rp03",
+  "termin": "Do 22.10.",
+  "format": "Szene · B Foto mit Satz (Porträt)",
+  "offen": "Den Satz hast du schon einmal gepostet – als Wiederaufnahme in Ordnung?"
  },
  {
-  "id": 30,
+  "id": 39,
+  "kanal": "daniel",
+  "feld": "01 Strategie im Alltag",
+  "art": "Frage · E Skala",
+  "kern": "Themenliste 06: Wie viel deiner Woche zahlt auf die Strategie ein?",
+  "text": "Wie viel deiner Woche zahlt auf die Strategie ein?\n\nIm Alltag kommt ständig etwas hoch: ein dringender Sachverhalt, eine Vorstandsbeschwerde, ein Termin, der brennt. Das muss heute geregelt werden. Gleichzeitig steht irgendwo eine Strategie, die erreicht werden soll.\n\nIn Bereichen, in denen Strategie wirkt, ist beides sauber getrennt. Dort ist jederzeit klar, womit man sich beschäftigt und womit nicht, damit die Strategie umgesetzt wird.\n\nEin ehrlicher Test für diese Woche: Geh deinen Kalender durch und markiere jeden Termin, der direkt auf die Strategie einzahlt. Der Rest ist Tagesgeschäft. Das Verhältnis zeigt dir, wo du ansetzen musst.",
+  "bild": "rp04",
+  "termin": "Mo 26.10.",
+  "format": "Frage · E Skala",
+  "offen": ""
+ },
+ {
+  "id": 40,
   "kanal": "daniel",
   "feld": "02 Komplexe Themen",
-  "art": "Wissen hergeben",
-  "kern": "Ein Thema, vier Gegenüber: Vorstand, Aufsichtsrat, Vertrieb und Team brauchen je eine eigene Antwort – Dokument mit Leitfrage, Einwänden und Gesprächseinstieg.",
-  "text": "Ein wichtiges Thema hat selten nur ein Publikum. Vorstand, Aufsichtsrat, Vertrieb und dein Team schauen mit unterschiedlichen Fragen darauf, und jede davon braucht eine eigene Antwort.\n\nDer Vorstand will wissen, welche Entscheidung du von ihm brauchst und welches Risiko er damit eingeht.\n\nDer Aufsichtsrat will sehen, dass das Thema zur Strategie passt und steuerbar bleibt.\n\nDer Vertrieb will wissen, was er davon hat und wie er es seinem Kunden in einem Satz erklärt.\n\nDein Team will wissen, was sich ab Montag für jeden Einzelnen ändert.\n\nIm Dokument findest du für alle vier die Leitfrage, die typischen Einwände und einen Satz, mit dem du das Gespräch eröffnest. Leg es neben deine nächste Vorlage und prüf, ob du alle vier Fragen beantwortet hast.\n\nDer Gedanke dahinter begleitet mich in jedem Projekt: Menschen überzeugst du, indem du dein Gegenüber erfolgreich machst.",
-  "bild": "d1",
+  "art": "Szene · A Foto pur (Flipchart)",
+  "kern": "Themenliste 27: What's in it for me – für jeden Vertriebspartner.",
+  "text": "What's in it for me?\n\nDiese Frage stellt sich jeder Vertriebspartner, wenn ein neues Thema auf ihn zukommt. Meist leise.\n\nBei Vertriebstagungen und Markteinführungen erlebe ich oft das Gegenteil von dem, was hilft: viele richtige Fakten, viele bunte Folien, und am Ende weiß der Vertrieb nicht, was er jetzt tun soll.\n\nAuf dem Flipchart steht der Satz, mit dem wir jede Kommunikation beginnen: Was hat mein Gegenüber davon? Erst wenn das in einem Satz beantwortet ist, kommen das Warum, das Wie und der nächste Schritt.\n\nWenn dein Vertrieb nach der nächsten Tagung wirklich loslegen soll, schreib vorher diesen einen Satz auf. Passt er nicht in eine Zeile, ist die Botschaft noch nicht fertig.",
+  "bild": "rp05",
+  "termin": "Di 27.10.",
+  "format": "Szene · A Foto pur (Flipchart)",
+  "offen": "Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."
+ },
+ {
+  "id": 41,
+  "kanal": "daniel",
+  "feld": "02 Komplexe Themen",
+  "art": "Modell · E Erfolgsmap",
+  "kern": "Themenliste 23: Bevor du ein Thema vorantreibst: deine Erfolgsmap.",
+  "text": "Bevor du ein Thema vorantreibst, brauchst du deine Erfolgsmap.\n\nNiemand bringt ein Thema allein durch. Drei Fragen, bevor es losgeht:\n\nAn wem richtest du dich aus?\nWen brauchst du, um Erfolg zu haben?\nWen hast du bisher zu wenig beachtet?\n\nDie dritte Frage ist die unbequemste. Dort sitzen oft die Menschen, an denen ein gutes Thema später hängen bleibt.\n\nSteht die Map, ergibt sich daraus die Taktik: mit wem du in welcher Reihenfolge sprichst und was jeder davon hat. Das ist bei jedem Thema ein bisschen anders. Ohne diese Map bleibt es Zufall.",
+  "bild": "mo5",
   "termin": "Mi 28.10.",
-  "format": "Zum Mitnehmen · Dokument, 6 Seiten (PDF)",
-  "pdf": "Ein-Thema-vier-Gegenueber.pdf",
-  "seiten": [
-   "d1",
-   "d2",
-   "d3",
-   "d4",
-   "d5",
-   "d6"
-  ],
-  "offen": "Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."
+  "format": "Modell · E Erfolgsmap",
+  "offen": ""
+ },
+ {
+  "id": 42,
+  "kanal": "daniel",
+  "feld": "01 Strategie im Alltag",
+  "art": "Szene · F Foto mit Verlauf und Wort",
+  "kern": "Themenliste 02: Gibt der Vorstand kein Zielbild vor, ist das deine Chance.",
+  "text": "Dein Vorstand gibt kein Zielbild für deinen Bereich vor? Das ist ganz oft so.\n\nViele warten dann. Auf den Konzern, auf die nächste Klausur, auf Vorgaben von oben.\n\nIch sehe darin eine Chance. Du kannst das Zielbild so bauen, wie dein Bereich es braucht, um erfolgreich zu sein. Genau dafür trägst du als Bereichsleiter die Verantwortung.\n\nZielbild heißt dabei kein wohlklingender Satz für die Folie. Jeder in deinem Bereich versteht, wie ihr funktioniert, wie ihr erfolgreich seid und was sein Beitrag dazu ist.\n\nFang mit einer Frage an: Wenn dein Bereich in drei Jahren richtig gut läuft, woran merkt man das am Montagmorgen?",
+  "bild": "rp07",
+  "termin": "Do 29.10.",
+  "format": "Szene · F Foto mit Verlauf und Wort",
+  "offen": ""
+ },
+ {
+  "id": 43,
+  "kanal": "daniel",
+  "feld": "Branche eingeordnet",
+  "art": "Eingeordnet · B Zahl auf Foto",
+  "kern": "Themenliste 36: 77 % – das Tagesgeschäft verdrängt die Strategie.",
+  "text": "77 % sagen: Das Tagesgeschäft verdrängt die strategischen Projekte. Nur 11 % sagen, die Mitarbeitenden verstehen die Strategie.\n\nDie Zahlen stammen aus einer branchenübergreifenden Studie von Wieselhuber. Bei Versicherern erlebe ich es nicht anders.\n\nWas heißt das für einen Bereich? Strategie braucht im Alltag einen festen Platz, sonst gewinnt immer das, was heute brennt.\n\nZwei Dinge helfen. Jeder kann in einem Satz sagen, wohin der Bereich will und warum, dann lassen sich Prioritäten im Alltag selbst entscheiden. Und strategische Themen bekommen feste Termine im Kalender, genauso wie das Tagesgeschäft.",
+  "bild": "rp08",
+  "termin": "Fr 30.10.",
+  "format": "Eingeordnet · B Zahl auf Foto",
+  "offen": "Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."
  }
 ];
-window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "03 Geschäftsmodell": "03 Geschäftsmodell"};
+window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};

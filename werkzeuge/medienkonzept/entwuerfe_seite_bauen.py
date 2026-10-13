@@ -10,25 +10,33 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "39"  # Versionsnummer für CSS/JS
+V = "47"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
-    25: dict(bild="w2", alt="v1", termin="Di 20.10.", format="Das Werkzeug · B Checkliste Gelb (Alternative: Szene A)",
-             offen="Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."),
-    26: dict(bild="k2", alt="m3", termin="Mi 21.10.", format="Die Frage · B Schwarz mit Zeichen (Alternative: Modell C)",
-             offen="Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"),
-    27: dict(bild="s1", termin="Do 22.10.", format="Die Szene · B Foto mit einem Satz",
-             offen="Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"),
-    28: dict(bild="v4", termin="Mo 26.10.", format="Die Szene · A Foto pur",
-             offen="Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"),
-    29: dict(bild="p5", termin="Di 27.10.", format="Das Werkzeug · A Liste Schwarz",
-             offen="Einziger Beitrag mit Türspalt zum Angebot (letzter Absatz). So lassen oder ohne?"),
-    30: dict(bild="d1", termin="Mi 28.10.", format="Zum Mitnehmen · Dokument, 6 Seiten (PDF)", pdf="Ein-Thema-vier-Gegenueber.pdf",
-             seiten=["d1", "d2", "d3", "d4", "d5", "d6"],
-             offen="Passen die vier Gegenüber und die Satzanfänge so? Das Dokument ist fertig gesetzt."),
+    36: dict(bild="rp01", termin="Di 20.10.", format="Szene · B Foto mit Satz", offen="Passt das Bühnenfoto, oder hast du ein Foto aus einem Strategiegespräch?"),
+    37: dict(bild="rp02", termin="Mi 21.10.", format="Modell · A Why · How · Next", offen="Gibt es eine echte Vorlage, die an der Bedeutung gescheitert ist? Ein Satz dazu macht den Einstieg stärker."),
+    38: dict(bild="rp03", termin="Do 22.10.", format="Szene · B Foto mit Satz (Porträt)", offen="Den Satz hast du schon einmal gepostet – als Wiederaufnahme in Ordnung?"),
+    39: dict(bild="rp04", termin="Mo 26.10.", format="Frage · E Skala", offen=""),
+    40: dict(bild="rp05", termin="Di 27.10.", format="Szene · A Foto pur (Flipchart)", offen="Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."),
+    41: dict(bild="mo5", termin="Mi 28.10.", format="Modell · E Erfolgsmap", offen=""),
+    42: dict(bild="rp07", termin="Do 29.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
+    43: dict(bild="rp08", termin="Fr 30.10.", format="Eingeordnet · B Zahl auf Foto", offen="Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."),
 }
-FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "03 Geschäftsmodell": "03 Geschäftsmodell"}
+FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}
+
+PLAN = [
+    ("KW 45", "Mo 02.11.", "30 · Wie würdest du deinen Bereich heute neu gründen?", "Frage · C Fragezeichen"),
+    ("KW 45", "Di 03.11.", "12 · Logik allein verändert wenig.", "Szene · A Foto pur"),
+    ("KW 45", "Mi 04.11.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
+    ("KW 45", "Do 05.11.", "10 · Geduldetes Fehlverhalten demotiviert die Guten.", "Szene · B Foto mit Satz"),
+    ("KW 45", "Fr 06.11.", "07 · Wie sähe die Homepage deiner Abteilung aus?", "Zum Mitnehmen · Dokument"),
+    ("KW 46", "Mo 09.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
+    ("KW 46", "Di 10.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
+    ("KW 46", "Mi 11.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
+    ("KW 46", "Do 12.11.", "20 · Themen auf der falschen Flugebene.", "Szene · B Foto mit Satz"),
+    ("KW 46", "Fr 13.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
+]
 
 
 def main(pfad):
@@ -67,13 +75,14 @@ def main(pfad):
                         '<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=%s"></script>\n'
                         '<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=%s"></script>\n'
                         '<script src="/script.js"></script>' % (V, V))
+    plan_zeilen = "".join('<tr><td style="white-space:nowrap">%s<br><b>%s</b></td><td>%s<br><span style="color:#6b6661">%s</span></td></tr>' % z for z in PLAN)
     main_html = '''<main class="ak">
 
   <section class="e2-kopf ak-kopfbereich"><div class="e2-wrap">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Die ersten Postings. Fertig zur <span class="hl">Freigabe.</span></h1>
-      <p class="e2-lead">Jedes Posting mit Bild und Text, so wie es auf LinkedIn erscheint. Antippen: Text lesen, kopieren, Bild herunterladen. Freigabe im Chat, je Posting ein „passt“ oder ein Satz, was nicht stimmt.</p>
+      <p class="e2-lead">Redaktionsplan KW 43 bis 46. Die ersten acht Postings sind fertig mit Bild und Text – antippen zum Lesen. Freigabe im Chat: je Posting „passt“ oder ein Satz, was nicht stimmt. KW 45 und 46 schreibe ich nach deiner Rückmeldung zu Ton und Form.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
@@ -81,9 +90,12 @@ def main(pfad):
       <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Start Di 20.10., jeweils 8:30 Uhr über Buffer</p></div></div>
       <div class="ig-filter" id="mke-filter" role="group" aria-label="Nach Themenfeld filtern"></div>
       <div class="ig-raster" id="mke-raster"></div>
-      <div class="ig-plan"><span><b>KW 43:</b> Di 20. · Mi 21. · Do 22.10.</span><span><b>Ab KW 44:</b> montags bis freitags, 8:30 Uhr</span><span><b>Ohne Link</b> im Beitrag</span></div>
+      <div class="ig-plan"><span><b>KW 43:</b> Di 20. · Mi 21. · Do 22.10.</span><span><b>KW 44:</b> Mo 26. bis Fr 30.10.</span><span><b>8:30 Uhr</b> über Buffer · ohne Link</span></div>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
+
+    <div class="mke-plan"><h2 class="e2-h2" style="font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:3rem">KW 45 und 46 · geplant</h2>
+      <div class="mkf-tabelle"><table style="min-width:0"><tr><th>Termin</th><th>Aussage (Themenliste) · Typ und Variante</th></tr>{{PLAN}}</table></div></div>
 
   </div></section>
 
@@ -99,7 +111,7 @@ def main(pfad):
     <dl class="ig-meta" id="mke-meta"></dl>
     <div class="ig-blaettern"><button type="button" id="mke-zurueck">← Vorheriges</button><button type="button" id="mke-vor">Nächstes →</button></div>
   </div>
-</div></dialog>'''
+</div></dialog>'''.replace("{{PLAN}}", plan_zeilen)
     open(os.path.join(SITE, "projekte", "medienkonzept-entwuerfe.html"), "w", encoding="utf-8").write(kopf + main_html + fuss)
     print("Seite, Daten und Paket gebaut:", len(posts), "Postings")
 

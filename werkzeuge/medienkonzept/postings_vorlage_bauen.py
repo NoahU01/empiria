@@ -309,6 +309,8 @@ html, body { width:1080px; background:#fff; }
 .sk2 { padding:0; }
 .sk2:target { display:block; }
 .p.sk2 > div { position:absolute; }
+
+.vollbild .satz .hl { color:var(--ink); }
 """
 
 
@@ -676,6 +678,34 @@ teile += [
 # Postingtyp „Die Skizze“ (13.10.2026): sechs Darstellungsarten, erzeugt von skizzen/skizzen_bauen.cjs
 # (Open Peeps CC0 · rough.js MIT · Caveat OFL) – Ergebnis liegt in skizzen-sektionen.html
 teile.append(open(os.path.join(HIER, "skizzen-sektionen.html"), encoding="utf-8").read())
+
+# Redaktionsplan KW 43/44 (13.10.2026): Bilder je Posting
+teile += [
+    """<section class="p foto-voll vollbild" id="rp01">%s<div class="verlauf" style="height:62%%"></div><div class="unten"><p class="satz" style="font-size:84px">Die Strategie gibt der Chef vor.</p><p class="satz" style="font-size:84px;margin-top:10px"><span class="hl">Das ist sein Job.</span></p></div></section>""" % vb("voll-e2.jpg", "30% 40%"),
+    """<section class="p schwarz" id="rp02">
+  <p class="k">Was ein Vorstand wissen muss</p>
+  <div style="margin-top:70px">
+    <div class="wortzeile"><p class="wort">Why.</p><em>Welche Bedeutung hat das Thema für uns?</em></div>
+    <div class="wortzeile"><p class="wort">How.</p><em>Wie gehen wir grundsätzlich vor?</em></div>
+    <div class="wortzeile"><p class="wort"><span class="hl" style="padding:0 .08em">Next.</span></p><em>Was ist der nächste Schritt?</em></div>
+  </div>
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""",
+    """<section class="p vollbild" id="rp03">
+  <img src="%sentwurf-e3.jpg" alt="" style="filter:grayscale(1) contrast(1.06);--pos:50%% 20%%">
+  <div class="verlauf"></div>
+  <div class="unten"><p class="satz">„Führung macht einsam. Je höher du kommst, desto weniger sagt dir jemand die Wahrheit.“</p><p class="wer">— ein ehemaliger Vorstand</p></div>
+</section>""" % B,
+    """<section class="p schwarz" id="rp04"><p class="fr-gross" style="margin-top:40px;color:#fff;font-size:92px">Wie viel deiner Woche zahlt auf die <span class="hl">Strategie</span> ein?</p>
+  <div class="skala">""" + "".join("<span>%d</span>" % (i * 10) for i in range(1, 11)) + """</div><div class="skala-l"><span>Prozent deiner Termine</span><span>alles Strategie</span></div>%s%s</section>""" % (anschnitt(F, 560, -180, -170, "#fff400"), NAME),
+    """<section class="p foto-voll" id="rp05">%s</section>""" % vb("entwurf-e6.jpg", "50% 40%"),
+    """<section class="p vollbild" id="rp08">
+  <img src="%svoll-b1.jpg" alt="" style="--pos:0%% 45%%">
+  <div class="verlauf" style="height:72%%"></div>
+  <div class="unten"><p class="zahl">77 %%</p><p class="satz" style="margin-top:18px">sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.</p><p class="wer">Quelle: Wieselhuber, branchenübergreifend</p></div>
+</section>""" % B,
+    """<section class="p foto-voll vollbild" id="rp07">%s<div class="verlauf" style="height:60%%"></div><div class="nein-block"><p>Dein Vorstand gibt kein Zielbild vor?</p><b>Chance.</b></div></section>""" % vb("voll-e1.jpg", "35% 40%"),
+]
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
