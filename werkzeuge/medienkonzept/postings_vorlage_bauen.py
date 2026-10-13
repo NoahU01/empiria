@@ -639,7 +639,7 @@ VENN = """<svg class="venn" viewBox="0 0 912 860"><g fill="none" stroke="#1a1817
 <rect x="356" y="370" width="200" height="74" rx="18" fill="#fff400"/>
 <text x="456" y="420" font-family="Poppins" font-weight="700" font-size="34" text-anchor="middle" fill="#1a1817">Die Rolle</text></svg>"""
 def _knoten(x, y, ic, label, gelb=False):
-    fill = "#fff400" if gelb else "none"
+    fill = "#fff400" if gelb else "#1a1817"  # gefüllt, damit die Verbindungslinien im Kreis verschwinden
     col = "#1a1817" if gelb else "#fff"
     return ('<circle cx="%d" cy="%d" r="88" fill="%s" stroke="%s" stroke-width="5"%s/>' % (x, y, fill, "#fff400" if gelb else "#fff", ' stroke-dasharray="14 12"' if gelb else "")
             + '<g transform="translate(%d %d) scale(3.2)" fill="none" stroke="%s" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">%s</g>' % (x - 38, y - 38, col, _LUC[ic])
@@ -648,7 +648,7 @@ ERFOLG2 = ("""<svg class="erfolg2" viewBox="0 0 912 820"><g stroke="#4a4642" str
    + _knoten(150, 130, "briefcase", "Vorstand") + _knoten(762, 130, "users", "Team") + _knoten(150, 620, "handshake", "Vertrieb") + _knoten(762, 620, "search", "Übersehen?", True)
    + """<circle cx="456" cy="400" r="118" fill="#fff400"/><text x="456" y="420" text-anchor="middle" font-family="Lora" font-weight="700" font-size="60" fill="#1a1817">Du</text></svg>""")
 ersetze("mo4", """<section class="p" id="mo4"><p class="h m">Worauf eine Führungsrolle steht.</p>%s%s</section>""" % (VENN, NAME))
-ersetze("mo5", """<section class="p schwarz" id="mo5"><p class="h m" style="color:#fff">Wen brauchst du – und wen hast du <span class="hl">übersehen?</span></p>%s%s</section>""" % (ERFOLG2, NAME))
+ersetze("mo5", """<section class="p schwarz" id="mo5"><p class="h m" style="color:#fff;font-size:64px">Wen brauchst du –<br><span style="white-space:nowrap">und wen hast du <span class="hl">übersehen?</span></span></p>%s%s</section>""" % (ERFOLG2, NAME))
 for i, t in enumerate(teile):
     if 'id="wz5"' in t:
         teile[i] = t.replace('<ul class="nicht">', '<ul class="nicht wz5-liste">')
