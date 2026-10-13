@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "39"
+V = "40"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -54,9 +54,9 @@ TYPEN = [
 
 WOCHE = [
     ("Mo", "Die Frage", "nein"),
-    ("Di", "Die Szene – alle zwei Wochen „Du als Person“", "ja, ein Foto"),
+    ("Di", "Die Szene", "ja"),
     ("Mi", "Das Modell oder Das Werkzeug", "nein"),
-    ("Do", "Der Satz", "nein (Porträt aus dem Bestand)"),
+    ("Do", "Der Satz mit Porträt oder „Du als Person“", "ja"),
     ("Fr", "Eingeordnet – alle zwei Wochen Zum Mitnehmen", "nein"),
 ]
 
@@ -94,7 +94,7 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Nur die Szene braucht ein Foto von dir – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Zwei Postings pro Woche zeigen dich im Foto, die übrigen entstehen aus Schrift, Gelb, Schwarz und Icons – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
@@ -111,7 +111,7 @@ MAIN = '''<main class="ak">
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
-    <div class="ak-kopf"><p class="e2-kicker">Die Woche</p><h2 class="e2-h2">Fünf Postings, ein Foto.</h2>
+    <div class="ak-kopf"><p class="e2-kicker">Die Woche</p><h2 class="e2-h2">Fünf Postings, zwei Fotos.</h2>
     <p class="e2-lead">Die Themen wandern durch die Woche, damit keins zweimal hintereinander kommt. Start: drei Postings pro Woche, dann fünf.</p></div>
     ''' + woche() + '''
   </div></section>

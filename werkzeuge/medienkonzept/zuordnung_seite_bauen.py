@@ -119,9 +119,9 @@ MAIN = '''<main class="ak">
         <li>Erst die Szene oder der Satz, dann die Aussage, dann der Mehrwert <i>T2 · T3</i></li>
         <li>Daniels Stimme aus dem Diktat, 700–900 Zeichen, kein Link <i>T2 · T3</i></li>
         <li>Nie Text ohne Bild – Foto, Karte, Grafik oder Dokument im Wechsel <i>T3</i></li>
-        <li>Fünf pro Woche, ein Foto von Daniel <i>T2 · T3</i></li>
+        <li>Fünf pro Woche, davon mindestens zwei mit Foto von Daniel <i>T2 · T3</i></li>
       </ul>
-      <p class="lg-weiter"><a href="/projekte/medienkonzept-postingformate.html">Postingformate im Detail &rarr;</a> · <a href="/projekte/medienkonzept-entwuerfe.html">Entwürfe &rarr;</a></p>
+      <p class="lg-weiter"><a href="/projekte/medienkonzept-postingformate.html">Postingformate &rarr;</a> · <a href="/projekte/medienkonzept-themenliste.html">Themenliste &rarr;</a> · <a href="/projekte/medienkonzept-entwuerfe.html">Entwürfe &rarr;</a></p>
     </div>
   </div></section>
 
