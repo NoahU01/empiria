@@ -205,3 +205,56 @@
   .mk2-auf summary { grid-template-columns: minmax(0, 1fr) 24px; }
   .mk2-auf summary span { grid-column: 1; }
 }
+
+/* Medienkonzept-Übersicht nach Volksfest-Maßstab (13.10.2026): Superkästen, Karten, Details im Fenster */
+.e2 main .mk3 .e2-h2 { margin-bottom: 2.6rem; }
+.mk3-super { display: flex; flex-direction: column; border: 1px solid #e4e0db; border-radius: 22px; background: #fff; overflow: hidden; text-decoration: none; color: #1a1817; }
+a.mk3-super { transition: transform .2s, border-color .2s; }
+a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
+.mk3-farbe { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem; min-height: 15rem; padding: 1.8rem 1.8rem 1.6rem; }
+.mk3-farbe small { font: 700 .78rem/1.3 'Poppins', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.mk3-farbe b { max-width: 78%; font: 700 clamp(1.9rem, 3vw, 2.6rem)/1.05 'Lora', Georgia, serif; letter-spacing: -.02em; }
+.mk3-zeichen { position: absolute; right: 1.6rem; bottom: 1.5rem; width: 4.6rem; height: 4.6rem; }
+.mk3-farbe--gelb { background: #fff400; color: #1a1817; }
+.mk3-farbe--schwarz { background: #1a1817; color: #fff; }
+.mk3-farbe--schwarz .mk3-zeichen { color: #fff400; }
+.mk3-farbe--hell { background: #f3f1ee; color: #1a1817; }
+.mk3-text { display: flex; flex-direction: column; flex: 1; gap: 1rem; padding: 1.5rem 1.8rem 1.7rem; font: 400 1rem/1.6 'Poppins', sans-serif; color: #3d3a37; }
+.mk3-link { margin-top: auto; align-self: flex-start; font: 600 .95rem/1 'Poppins', sans-serif; font-style: normal; color: #1a1817; border-bottom: 2px solid #1a1817; padding-bottom: 4px; }
+.mk3-hinweis { margin-top: auto; font: 500 .9rem/1 'Poppins', sans-serif; font-style: normal; color: #6b6762; }
+.mk3-super--breit { flex-direction: row; }
+.mk3-super--breit .mk3-farbe { flex: 0 0 44%; min-height: 19rem; }
+.mk3-super--breit .mk3-text { justify-content: center; padding: 2rem 2.2rem; }
+.mk3-bilder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; }
+.mk3-bilder img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; border: 1px solid #ece9e5; display: block; }
+.mk3-super--breit .mk3-link { margin-top: .4rem; }
+.mk3-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 1.4rem; }
+.mk3-block + .mk3-block { margin-top: 4.5rem; }
+.e2 main .mk3-block h3 { margin: 0 0 1.4rem; font: 700 clamp(1.5rem, 2.2vw, 1.9rem)/1.2 'Lora', Georgia, serif; color: #1a1817; }
+.mk3-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.mk3-karte { appearance: none; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: .5rem; padding: 1.4rem 1.5rem 1.3rem; border: 1px solid #e4e0db; border-radius: 18px; background: #fff; font: inherit; color: #1a1817; transition: border-color .2s, transform .2s; }
+.mk3-karte:hover { border-color: #c9c4bd; transform: translateY(-2px); }
+.mk3-karte b { font: 600 1.02rem/1.35 'Poppins', sans-serif; }
+.mk3-karte span { font: 400 .92rem/1.55 'Poppins', sans-serif; color: #3d3a37; }
+.mk3-karte em { margin-top: auto; padding-top: .5rem; font: 600 .82rem/1 'Poppins', sans-serif; font-style: normal; color: #6b6762; }
+.e2 main .mk3-frueher { margin-top: 3.2rem; font: 400 .9rem/1.6 'Poppins', sans-serif; color: #6b6762; }
+.mk3-frueher a { color: #3d3a37; }
+.mk3-dlg { border: 0; padding: 0; width: min(760px, 92vw); max-height: 86vh; border-radius: 20px; background: #fff; }
+.mk3-dlg::backdrop { background: rgba(20, 18, 17, .7); }
+.mk3-dlg__kopf { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; border-bottom: 1px solid #ece9e5; background: #fff; }
+.mk3-dlg__kopf b { font: 700 1.3rem/1.25 'Lora', Georgia, serif; }
+.mk3-zu { appearance: none; border: 0; width: 38px; height: 38px; border-radius: 50%; background: #f3f1ee; font-size: 1.2rem; cursor: pointer; flex: 0 0 auto; }
+.mk3-dlg__inhalt { padding: 1.3rem 1.5rem 1.6rem; font: 400 .97rem/1.6 'Poppins', sans-serif; color: #3d3a37; }
+.e2 main .mk3-dlg__inhalt p { margin: 0 0 .8em; }
+.mk3-dlg .mk-wirkt ol { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1000px) { .mk3-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 800px) {
+  .mk3-super--breit { flex-direction: column; }
+  .mk3-super--breit .mk3-farbe { flex-basis: auto; min-height: 15rem; }
+  .mk3-zwei, .mk3-raster { grid-template-columns: minmax(0, 1fr); }
+}
+.mk3-raster--vier { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .mk3-raster--vier { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 800px) { .mk3-raster--vier { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1200px) and (min-width: 801px) { .mk3-raster--vier { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mk3-dlg .mk-wirkt__folge { margin-top: 1.2rem !important; }
