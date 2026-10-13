@@ -11,7 +11,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "30"
+V = "31"
 
 TOEPFE = [
     ("T1", "empiria", "Was wir lösen – Homepage und Pitch", "Die Strategie steht. Trotzdem passiert zu wenig – wir bringen sie in Wirkung.", [
@@ -45,18 +45,20 @@ POS_REGELN = [
 
 # (Nr, Baustein, Problem, Ergebnis, Gewicht, [(Thema, [(Postingidee, Herkunft)])], [(Lösung, URL)])
 BAUSTEINE = [
-    ("01", "Strategie in den Alltag überführen", "Was bedeutet die Strategie für meinen Bereich?", "Handlungsklarheit", "ca. 40 %",
+    ("01", "Strategie in den Alltag überführen", "Was bedeutet die Strategie für meinen Bereich?", "Handlungsklarheit",
+     "Führung mit klaren Aussagen zu Rolle, Umsetzung und Wichtigkeit – als Teil der Strategie.",
      [("Strategie, die im Alltag ankommt", [("Zielbild heißt: Jeder hat das Geschäftsmodell verstanden", "T2"), ("Die Strategie gibt der Chef vor – nicht das ganze Team", "T2"), ("Wie sähe die Homepage deiner Abteilung aus?", "T1")]),
-      ("Führung, die trägt", [("Erst befördern, dann entwickeln ist falsch", "T2"), ("Neu in der Rolle – und überladen mit Regelterminen", "T3"), ("Führung macht einsam", "T2 · T3")])],
-     [("Strategie", "/leistungen/strategie"), ("1:1 Sparring", "/sparring"), ("Training & Sparring", "/training-sparring")]),
-    ("02", "Komplexe Themen strukturieren und kommunizieren", "Wie bringe ich mein Thema bei den Menschen durch, die ich brauche?", "Handlungssicherheit", "ca. 40 %",
+      ("Führung, die trägt", [("Erst befördern, dann entwickeln ist falsch", "T2"), ("Neu in der Rolle – und überladen mit Regelterminen", "T3"), ("Führung macht einsam", "T2 · T3")]),
+      ("KI aus eigener Praxis", [("Taskforce, Verbote – und privat wird genutzt", "T2 · T3"), ("Was KI heute im eigenen Bereich bringt", "T2")])],
+     [("Strategie", "/leistungen/strategie"), ("1:1 Sparring", "/sparring"), ("Training & Sparring", "/training-sparring"), ("KI zum Anfassen", "/ki-zum-anfassen")]),
+    ("02", "Komplexe Themen strukturieren und kommunizieren", "Wie bringe ich mein Thema bei den Menschen durch, die ich brauche?", "Handlungssicherheit", "",
      [("Entscheidungen herbeiführen", [("Why – How – What next", "T1 · T2"), ("Themen auf der falschen Flugebene", "T2"), ("Aus vier Folien wird eine", "T2 · T3")]),
       ("Vertrieb, der die Strategie umsetzt", [("Nach der Vertriebstagung spricht keiner mehr davon", "T2"), ("What's in it for me – für den Vertrieb", "T1 · T2")])],
      [("Komplexe Themen", "/leistungen/komplexe-themen"), ("Präsentationsseminar", "/praesentationsseminar"), ("Workshop-Moderation", "/workshop-moderation"), ("Medien", "/medien"), ("Marketing 2.0", "/marketing")]),
-    ("03", "Innovation und Geschäftsmodell neu denken", "Trägt die Idee – bevor wir weiterbauen?", "Fundiertes Neudenken", "ca. 20 %",
-     [("Geschäftsmodell der Zukunft", [("Wie würdest du deinen Bereich heute neu gründen?", "T1 · T2"), ("Erst den Kern im Griff, dann neu denken", "T1")]),
-      ("KI aus eigener Praxis", [("Taskforce, Verbote – und privat wird genutzt", "T2 · T3"), ("Was KI heute im eigenen Bereich bringt", "T2")])],
-     [("Innovation", "/leistungen/innovation"), ("KI zum Anfassen", "/ki-zum-anfassen"), ("Sprint Landingpage", "/sprint-landingpage"), ("MES", "/dashboard-digitales-marketing")]),
+    ("03", "Innovation und Geschäftsmodell neu denken", "Trägt die Idee – bevor wir weiterbauen?", "Fundiertes Neudenken",
+     "Immer hinterfragen: Muss es so organisiert sein wie heute? Zukunftsbilder sind erlaubt.",
+     [("Geschäftsmodell der Zukunft", [("Wie würdest du deinen Bereich heute neu gründen?", "T1 · T2"), ("Die meisten sehen nur die Grenzen, die heute gesteckt sind", "T2"), ("Wie würden wir eine Akademie heute neu gründen?", "T2")])],
+     [("Innovation", "/leistungen/innovation"), ("Sprint Landingpage", "/sprint-landingpage"), ("MES", "/dashboard-digitales-marketing")]),
 ]
 
 TYPEN = [("Die Szene", "v1.jpg", "Foto"), ("Der Satz", "t1.jpg", "Karte"), ("Die Frage", "k1.jpg", "Karte"), ("Das Modell", "m1.jpg", "Grafik"),
@@ -72,18 +74,18 @@ def topf(tag, titel, unter, kernsatz, punkte, quelle):
     return '<div class="lg-topf"><span class="lg-tag">%s</span><b class="lg-topf__t">%s</b><small>%s</small><p class="lg-kern">%s</p><ul>%s</ul><em>%s</em></div>' % (tag, titel, unter, kernsatz, li, quelle)
 
 
-def baustein(nr, titel, problem, ergebnis, gewicht, themen, loesungen):
+def baustein(nr, titel, problem, ergebnis, leitplanke, themen, loesungen):
     th = ""
     for name, ideen in themen:
         idl = "".join('<li>%s <i>%s</i></li>' % (i, h) for i, h in ideen)
         th += '<div class="lg-thema"><b>%s</b><ul>%s</ul></div>' % (name, idl)
     ls = " · ".join('<a href="%s">%s</a>' % (u, n) for n, u in loesungen)
     return '''<div class="lg-spalte">
-  <div class="lg-baustein"><span class="lg-nr">%s</span><b>%s</b><span class="lg-gew">%s</span></div>
-  <p class="lg-pe"><span>Problem:</span> %s <span>Ergebnis:</span> %s</p>
+  <div class="lg-baustein"><span class="lg-nr">%s</span><b>%s</b></div>
+  <p class="lg-pe"><span>Problem:</span> %s <span>Ergebnis:</span> %s</p>%s
   %s
   <p class="lg-loes"><span>Lösung:</span> %s</p>
-</div>''' % (nr, titel, gewicht, problem, ergebnis, th, ls)
+</div>''' % (nr, titel, problem, ergebnis, ('<p class="lg-leit"><span>Leitplanke:</span> %s</p>' % leitplanke) if leitplanke else '', th, ls)
 
 
 PFEIL = '<div class="lg-pfeil" aria-hidden="true"><span></span></div>'
@@ -106,7 +108,7 @@ MAIN = '''<main class="ak">
       <div class="lg-pos__regeln">''' + "".join('<div><small>%s</small><span>%s</span><i>%s</i></div>' % r for r in POS_REGELN) + '''</div>
     </div>
     ''' + PFEIL + '''
-    <p class="lg-stufe"><i>C</i>Themen für Daniel – je Baustein, mit Postingideen und Lösung</p>
+    <p class="lg-stufe"><i>C</i>Themen für Daniel – je Baustein, mit Postingideen und Lösung <span>Gewichtung folgt der laufenden Auswertung</span></p>
     <div class="lg-baum">''' + "".join(baustein(*b) for b in BAUSTEINE) + '''</div>
     <p class="lg-quer"><b>Quer:</b> Branche und Regulierung eingeordnet <i>T3</i> – immer übersetzt in einen der drei Bausteine · Du als Person <i>T2</i> – Analogien, die zu einem Thema führen.</p>
     ''' + PFEIL + '''

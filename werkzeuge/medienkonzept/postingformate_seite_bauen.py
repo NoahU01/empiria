@@ -8,21 +8,21 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "25"
+V = "31"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
      "Zielbild heißt: Jeder hat das Geschäftsmodell verstanden · Die Strategie gibt der Chef vor · operativ und strategisch trennen"),
-    ("Baustein 1 · Strategie in den Alltag überführen", "Führung, die trägt", "Führungskräfte, die ihre Rolle von Anfang an ausfüllen und Strategie in ihren Bereich bringen.",
+    ("Baustein 1 · Strategie in den Alltag überführen", "Führung, die trägt", "Klare Aussagen zu Rolle, Umsetzung und Wichtigkeit von Führung – als Teil der Strategie.",
      "Erst befördern, dann entwickeln ist falsch · Rolle und drei Säulen · geduldetes Fehlverhalten demotiviert die Guten"),
+    ("Baustein 1 · Strategie in den Alltag überführen", "KI aus eigener Praxis", "Erfahrungswissen statt Meinung: wie KI hilft, schneller und besser zu entscheiden.",
+     "Viele reden mit, ohne KI selbst zu nutzen · Taskforce und Verbote im Haus"),
     ("Baustein 2 · Komplexe Themen strukturieren und kommunizieren", "Entscheidungen herbeiführen", "Vorstand, Aufsichtsrat und Stakeholder so ansprechen, dass entschieden wird.",
      "Why – How – What next · Themen auf der falschen Flugebene · Diskussionen kippen, wenn die Bedeutung fehlt"),
     ("Baustein 2 · Komplexe Themen strukturieren und kommunizieren", "Vertrieb, der die Strategie umsetzt", "Vertriebsstrategie, Markteinführungen und Tagungen, die im Alltag etwas bewegen.",
      "Nach der Vertriebstagung spricht nach vier Wochen keiner mehr davon · What's in it for me"),
-    ("Baustein 3 · Innovation und Geschäftsmodell neu denken", "Geschäftsmodell der Zukunft", "Neu denken auf einem Kern, den man im Griff hat – nicht als Wunschliste.",
+    ("Baustein 3 · Innovation und Geschäftsmodell neu denken", "Geschäftsmodell der Zukunft", "Hinterfragen, ob es so organisiert sein muss wie heute – Zukunftsbilder erlaubt.",
      "Die Neugründungs-Frage · Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen"),
-    ("Baustein 3 · Innovation und Geschäftsmodell neu denken", "KI aus eigener Praxis", "Erfahrungswissen statt Meinung: wie KI hilft, schneller und besser zu entscheiden.",
-     "Viele reden mit, ohne KI selbst zu nutzen · Taskforce und Verbote im Haus"),
     ("Quer über alle drei", "Branche und Regulierung eingeordnet", "Was die Branche bewegt und was AI Act, DORA oder BaFin im Alltag bewirken. Quelle: Branchen-Radar, montags.",
      "Konsequenzen statt Detailauslegung · Studien und Zahlen mit Quelle"),
 ]
@@ -75,8 +75,6 @@ def typen():
         k.append('''<article class="mpf-typ"><div class="mpf-typ__bild"><img src="%s%s" alt="" loading="lazy"></div><div class="mpf-typ__text">
 <span class="mpf-foto mpf-foto--%s">%s</span><b>%s</b><p>%s</p><dl><div><dt>Bild</dt><dd>%s</dd></div><div><dt>Messen an</dt><dd>%s</dd></div><div><dt>Grundlage</dt><dd>%s</dd></div></dl></div></article>''' % (
             PF, bild, "ja" if foto else "nein", "Foto von dir nötig" if foto else "ohne Foto von dir", t, leser, b, mess, beleg))
-    k.append('''<article class="mpf-typ mpf-typ--leer"><div class="mpf-typ__bild mpf-platzhalter"><span>Dein Foto:<br>Lego, Mountainbike, Lustiges Taschenbuch</span></div><div class="mpf-typ__text">
-<span class="mpf-foto mpf-foto--ja">Handyfoto, kein Porträt</span><b>Du als Person</b><p>Eine Analogie aus deinem Leben, die zu einem Thema führt – die Frage deiner Kinder, die Tochter mit Spaß an Buchhaltung, das Mountainbike.</p><dl><div><dt>Bild</dt><dd>Ein Foto vom Gegenstand oder Ort, nicht von dir und nie von den Kindern.</dd></div><div><dt>Messen an</dt><dd>Kommentare, Profilbesuche</dd></div><div><dt>Grundlage</dt><dd>Einschätzung: macht dich als Person greifbar; aus deinem Interview, 13.10.</dd></div></dl></div></article>''')
     return '<div class="mpf-typen">%s</div>' % "".join(k)
 
 
@@ -91,14 +89,14 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und acht Postingtypen. Nur zwei Typen brauchen ein Foto – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und sieben Postingtypen. Nur zwei Typen brauchen ein Foto – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 1</p><h2 class="e2-h2">Die Themen.</h2>
     <p class="e2-lead">Abgeleitet aus dem Dreiklang des Strategiehandwerks – je Baustein zwei Themen, eines quer dazu. Die Herleitung zeigt die Seite <a href="/projekte/medienkonzept-zuordnung.html">Zuordnung</a>.</p></div>
     ''' + themen() + '''
-    <p class="mpf-quer"><b>Quer dazu: du als Person.</b> Analogien und Erlebnisse aus deinem Leben würzen jedes Thema – und sind ab und zu ein eigenes Posting.</p>
+    <p class="mpf-quer"><b>Quer dazu: du als Person.</b> Analogien und Erlebnisse aus deinem Leben würzen jedes Thema – meist als Szene mit Foto. Die Gewichtung der Themen folgt der laufenden Auswertung.</p>
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
