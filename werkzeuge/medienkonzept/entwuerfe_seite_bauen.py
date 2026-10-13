@@ -34,12 +34,12 @@ PLAN = [  # Mischung je Woche (Daniel, 13.10.2026): höchstens drei Kern, eins P
     ("KW 44", "Mo 26.10.", "30 · Wie würdest du deinen Bereich heute neu gründen?", "Frage · C Fragezeichen"),
     ("KW 44", "Di 27.10.", "12 · Logik allein verändert wenig.", "Szene · A Foto pur"),
     ("KW 44", "Mi 28.10.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
-    ("KW 44", "Do 29.10.", "Person · Erlebnis aus deinem Leben (aus dem Interview)", "Du als Person · Foto"),
-    ("KW 44", "Fr 30.10.", "Werkstatt · Wie du selbst mit KI arbeitest (aus dem Interview)", "Werkstatt · Foto oder Szene"),
+    ("KW 44", "Do 29.10.", "Person · London 2000: täglich Wissen am Afterwork – daraus wurde „90 Minuten Wissen to go“", "Du als Person · Foto"),
+    ("KW 44", "Fr 30.10.", "Werkstatt · Ein Jahr KI selbst gebaut: Das Problem ist, wenn man zu viel vorgibt und zu wenig fragt", "Werkstatt · Foto oder Szene"),
     ("KW 45", "Mo 02.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
     ("KW 45", "Di 03.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
     ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
-    ("KW 45", "Do 05.11.", "Person · zweites Erlebnis (aus dem Interview)", "Du als Person · Foto"),
+    ("KW 45", "Do 05.11.", "Person · London: Wer Vertrauen verspielt, ist raus aus dem Markt", "Du als Person · Foto"),
     ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
 ]
 
@@ -64,7 +64,7 @@ def main(pfad):
     plan = {}
     for kw, tag, aussage, typ in PLAN:
         d, m = tag.split()[1].strip(".").split(".")
-        plan["2026-%s-%s" % (m, d)] = dict(aussage=aussage, typ=typ, interview="Interview" in aussage)
+        plan["2026-%s-%s" % (m, d)] = dict(aussage=aussage, typ=typ, interview=False)
     heute = datetime.date.today()
     daten_alle = [datetime.date.fromisoformat(k) for k in list(plan) + list(nach_datum)]
     montag = min(daten_alle + [heute]); montag -= datetime.timedelta(days=montag.weekday())
