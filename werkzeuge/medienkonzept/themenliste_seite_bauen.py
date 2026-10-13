@@ -9,14 +9,14 @@ import os
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "43"
+V = "46"
 
 # (Gruppe, Unterzeile, [(Aussage, Mehrwert für den Leser, Herkunft, Typ · Variante, Foto?)])
 LISTE = [
     ("01 · Strategie, die im Alltag ankommt", "Baustein 1 · Strategie in den Alltag überführen", [
-        ("Zielbild heißt: Jeder hat das Geschäftsmodell seines Bereichs verstanden.", "Woran du es erkennst: Deine Leute können fundiert sagen, warum ihr etwas tut. Sie leiten Themen aus dem Gesamtbild ab. Und bei Optionen argumentieren sie sauber, statt sich auf einen Kompromiss zu einigen.", "I", "Werkzeug · B Checkliste", False),
+        ("Zielbild heißt: Jeder hat das Geschäftsmodell seines Bereichs verstanden.", "Woran du es erkennst: Deine Leute ordnen jedes Thema klar in den Gesamtzusammenhang ein und wissen genau, warum sie etwas tun.", "I", "Werkzeug · B Checkliste", False),
         ("Gibt der Vorstand kein Zielbild vor, ist das deine Chance.", "Freiraum statt Warten: Der Bereichsleiter darf und muss es so bauen, wie sein Bereich es braucht – genau dafür trägt er die Verantwortung.", "I", "Szene · F Foto mit Verlauf und Wort", True),
-        ("Die Strategie gibt der Chef vor. Das ist sein Job.", "Wer sie im ganzen Team erarbeiten lässt, holt Menschen dazu, die nie gelernt haben, über Strategie zu sprechen – und legt die Basis für schlechtes Mittelmaß.", "I", "Szene · B Foto mit Satz", True),
+        ("Die Strategie gibt der Chef vor. Das ist sein Job.", "Wer sie im ganzen Team erarbeiten lässt, holt Menschen dazu, die nie gelernt haben, über Strategie zu sprechen – und legt die Basis für schlechtes Mittelmaß. Nebenbei schafft man Unsicherheit: Es wirkt, als wüsste der Trainer nicht, wo die Mannschaft hin soll.", "I", "Szene · B Foto mit Satz", True),
         ("Der Einstieg in die Strategie dauert drei Stunden, keine zwei Tage.", "So läuft er: drei Gespräche ohne Vorbereitung, spiegeln, dann das Vorgehen entlang der Stakeholder.", "I", "Werkzeug · D Zeitleiste", False),
         ("Strategie ist die Verbindung zwischen heute und dem Zielbild.", "Wer beide Enden kennt, findet den Weg fast von allein – ohne Vision keine Strategie.", "I", "Modell · C Heute – Vision", False),
         ("Wie viel deiner Woche zahlt auf die Strategie ein?", "Ein ehrlicher Selbsttest: operative Brände und strategische Arbeit sauber trennen.", "I", "Frage · E Skala", False),
@@ -37,7 +37,7 @@ LISTE = [
         ("Ich nutze KI, um schneller und besser zu entscheiden.", "Drei konkrete Anwendungen aus deinem Alltag – ohne dein System zu zeigen.", "I", "Szene · C Foto mit Uhrzeit", True),
     ]),
     ("04 · Entscheidungen herbeiführen", "Baustein 2 · Komplexe Themen strukturieren und kommunizieren", [
-        ("Why – How – What next.", "Why: Ausgangssituation, Problem, Lösung – kurz und auf den Punkt, ohne Details. How: grundsätzlich, wie wir vorgehen. What next: der konkrete nächste Schritt.", "I · P", "Modell · A", False),
+        ("Why – How – What next.", "Why: Welche Bedeutung hat dieses Thema für mich und unser Unternehmen? How: grundsätzlich, wie wir vorgehen. What next: der konkrete nächste Schritt.", "I · P", "Modell · A", False),
         ("Vorstandsvorlagen scheitern am Aufbau, nicht an der Länge.", "Die eine Prüffrage: Wie denkt ein Vorstand, um entscheiden zu können?", "I", "Werkzeug · E Was nicht hineingehört", False),
         ("„Bei uns kommen viel zu oft Themen auf der falschen Flugebene an.“", "Woran man die richtige Flughöhe erkennt – und was es kostet, wenn sie fehlt.", "I", "Satz · C Anführungszeichen", False),
         ("Diskussionen kippen, sobald die Bedeutung für das Unternehmen fehlt.", "Vor jedem Termin in einem Satz klären, was das Thema für das Haus bedeutet.", "I", "Szene · B Foto mit Satz", True),
@@ -72,9 +72,10 @@ LISTE = [
 ]
 
 
-STATUS = {n: "geschärft" for n in (1, 3, 7, 8, 9, 18, 23, 29, 30, 32, 34)}
+STATUS = {n: "bestätigt" for n in range(1, 41)}
 STATUS[22] = "raus"
-OFFEN = {7: "ohne Vorgabe geschärft – bitte prüfen", 18: "ohne Vorgabe geschärft – bitte prüfen", 5: "vertiefen beim Schreiben"}
+STATUS[32] = "raus"
+OFFEN = {5: "vertiefen beim Schreiben"}
 
 
 def zeile(nr, aussage, mehrwert, herkunft, format_, foto):
@@ -99,7 +100,7 @@ def main():
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Themenliste</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Themenliste &middot; zur Freigabe</p>
       <h1>Worüber du <span class="hl">sprichst.</span></h1>
-      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 16 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Stand: deine Rückmeldung vom 13.10. ist eingearbeitet. Bitte nur noch die geschärften Aussagen prüfen.</p>
+      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 16 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Stand 13.10.: beide Rückmeldungen eingearbeitet – 38 Aussagen bestätigt, 2 raus. Grundlage für den Redaktionsplan.</p>
       <p class="tl-legende">Herkunft: <b>I</b> Interview 12./13.10. · <b>P</b> Positionierung &amp; Homepage · <b>F</b> Fundus früherer Postings · <b>R</b> Recherche / Branchen-Radar · <b>Idee</b> Vorschlag von mir, bitte bestätigen</p>
   </div></section>
 
