@@ -17,30 +17,30 @@ EXTRA = {
     36: dict(bild="rp01", termin="Di 20.10.", format="Szene · B Foto mit Satz", offen="Passt das Bühnenfoto, oder hast du ein Foto aus einem Strategiegespräch?"),
     37: dict(bild="rp02", termin="Mi 21.10.", format="Modell · A Why · How · Next", offen="Gibt es eine echte Vorlage, die an der Bedeutung gescheitert ist? Ein Satz dazu macht den Einstieg stärker."),
     38: dict(bild="rp03", termin="Do 22.10.", format="Szene · B Foto mit Satz (Porträt)", offen="Den Satz hast du schon einmal gepostet – als Wiederaufnahme in Ordnung?"),
-    39: dict(bild="rp04", termin="Mo 26.10.", format="Frage · E Skala", offen=""),
-    40: dict(bild="rp05", termin="Di 27.10.", format="Szene · A Foto pur (Flipchart)", offen="Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."),
-    41: dict(bild="mo5", termin="Mi 28.10.", format="Modell · E Erfolgsmap", offen=""),
-    42: dict(bild="rp07", termin="Do 29.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
-    43: dict(bild="rp08", termin="Fr 30.10.", format="Eingeordnet · B Zahl auf Foto", offen="Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."),
+    39: dict(bild="rp04", termin="Mo 19.10.", format="Frage · E Skala", offen=""),
+    40: dict(bild="rp05", termin="Fr 16.10.", format="Szene · A Foto pur (Flipchart)", offen="Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."),
+    41: dict(bild="mo5", termin="Mi 14.10.", format="Modell · E Erfolgsmap", offen=""),
+    42: dict(bild="rp07", termin="Do 15.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
+    43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen="Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."),
 }
 FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}
 
 PLAN = [
-    ("KW 45", "Mo 02.11.", "30 · Wie würdest du deinen Bereich heute neu gründen?", "Frage · C Fragezeichen"),
-    ("KW 45", "Di 03.11.", "12 · Logik allein verändert wenig.", "Szene · A Foto pur"),
-    ("KW 45", "Mi 04.11.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
-    ("KW 45", "Do 05.11.", "10 · Geduldetes Fehlverhalten demotiviert die Guten.", "Szene · B Foto mit Satz"),
-    ("KW 45", "Fr 06.11.", "07 · Wie sähe die Homepage deiner Abteilung aus?", "Zum Mitnehmen · Dokument"),
-    ("KW 46", "Mo 09.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
-    ("KW 46", "Di 10.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
-    ("KW 46", "Mi 11.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
-    ("KW 46", "Do 12.11.", "20 · Themen auf der falschen Flugebene.", "Szene · B Foto mit Satz"),
-    ("KW 46", "Fr 13.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
+    ("KW 44", "Mo 26.10.", "30 · Wie würdest du deinen Bereich heute neu gründen?", "Frage · C Fragezeichen"),
+    ("KW 44", "Di 27.10.", "12 · Logik allein verändert wenig.", "Szene · A Foto pur"),
+    ("KW 44", "Mi 28.10.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
+    ("KW 44", "Do 29.10.", "10 · Geduldetes Fehlverhalten demotiviert die Guten.", "Szene · B Foto mit Satz"),
+    ("KW 44", "Fr 30.10.", "07 · Wie sähe die Homepage deiner Abteilung aus?", "Zum Mitnehmen · Dokument"),
+    ("KW 45", "Mo 02.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
+    ("KW 45", "Di 03.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
+    ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
+    ("KW 45", "Do 05.11.", "20 · Themen auf der falschen Flugebene.", "Szene · B Foto mit Satz"),
+    ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
 ]
 
 
 def main(pfad):
-    daten = sorted(json.load(open(pfad, encoding="utf-8")), key=lambda e: e["id"])
+    daten = sorted(json.load(open(pfad, encoding="utf-8")), key=lambda e: e["geplant_am"])
     posts = []
     for e in daten:
         if "Firmenprofil" in e["kanal"]:
@@ -82,19 +82,19 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Die ersten Postings. Fertig zur <span class="hl">Freigabe.</span></h1>
-      <p class="e2-lead">Redaktionsplan KW 43 bis 46. Die ersten acht Postings sind fertig mit Bild und Text – antippen zum Lesen. Freigabe im Chat: je Posting „passt“ oder ein Satz, was nicht stimmt. KW 45 und 46 schreibe ich nach deiner Rückmeldung zu Ton und Form.</p>
+      <p class="e2-lead">Redaktionsplan ab Mi 14.10. Die ersten acht Postings sind fertig mit Bild und Text – antippen zum Lesen. Freigabe im Chat: je Posting „passt“ oder ein Satz, was nicht stimmt. Erst nach deiner Freigabe kommt ein Posting in Buffer.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
-      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Start Di 20.10., jeweils 8:30 Uhr über Buffer</p></div></div>
+      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Start Mi 14.10., jeweils 8:30 Uhr über Buffer</p></div></div>
       <div class="ig-filter" id="mke-filter" role="group" aria-label="Nach Themenfeld filtern"></div>
       <div class="ig-raster" id="mke-raster"></div>
-      <div class="ig-plan"><span><b>KW 43:</b> Di 20. · Mi 21. · Do 22.10.</span><span><b>KW 44:</b> Mo 26. bis Fr 30.10.</span><span><b>8:30 Uhr</b> über Buffer · ohne Link</span></div>
+      <div class="ig-plan"><span><b>KW 42:</b> Mi 14. · Do 15. · Fr 16.10.</span><span><b>KW 43:</b> Mo 19. bis Fr 23.10.</span><span><b>8:30 Uhr</b> über Buffer · ohne Link</span></div>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
 
-    <div class="mke-plan"><h2 class="e2-h2" style="font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:3rem">KW 45 und 46 · geplant</h2>
+    <div class="mke-plan"><h2 class="e2-h2" style="font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:3rem">KW 44 und 45 · geplant</h2>
       <div class="mkf-tabelle"><table style="min-width:0"><tr><th>Termin</th><th>Aussage (Themenliste) · Typ und Variante</th></tr>{{PLAN}}</table></div></div>
 
   </div></section>

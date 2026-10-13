@@ -1,6 +1,54 @@
 /* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */
 window.MK_ENTWUERFE = [
  {
+  "id": 41,
+  "kanal": "daniel",
+  "feld": "02 Komplexe Themen",
+  "art": "Modell · E Erfolgsmap",
+  "kern": "Themenliste 23: Bevor du ein Thema vorantreibst: deine Erfolgsmap.",
+  "text": "Bevor du ein Thema vorantreibst, brauchst du deine Erfolgsmap.\n\nNiemand bringt ein Thema allein durch. Drei Fragen, bevor es losgeht:\n\n• An wem richtest du dich aus?\n• Wen brauchst du, um Erfolg zu haben?\n• Wen hast du bisher zu wenig beachtet?\n\nDie dritte Frage ist die unbequemste. Dort sitzen oft die Menschen, an denen ein gutes Thema später hängen bleibt.\n\nSteht die Map, ergibt sich daraus die Taktik: mit wem du in welcher Reihenfolge sprichst und was jeder davon hat. Das ist bei jedem Thema ein bisschen anders. Ohne diese Map bleibt es Zufall.",
+  "bild": "mo5",
+  "termin": "Mi 14.10.",
+  "format": "Modell · E Erfolgsmap",
+  "offen": ""
+ },
+ {
+  "id": 42,
+  "kanal": "daniel",
+  "feld": "01 Strategie im Alltag",
+  "art": "Szene · F Foto mit Verlauf und Wort",
+  "kern": "Themenliste 02: Gibt der Vorstand kein Zielbild vor, ist das deine Chance.",
+  "text": "Dein Vorstand gibt kein Zielbild für deinen Bereich vor? Sei froh. Das ist deine Chance.\n\nDu baust es selbst. So, wie dein Bereich es braucht, um erfolgreich zu sein. Genau dafür trägst du als Bereichsleiter die Verantwortung.\n\nWer jetzt auf den Konzern, die nächste Klausur oder Vorgaben von oben wartet, verschenkt diese Chance.\n\nEin gutes Zielbild erkennst du daran: Jeder in deinem Bereich versteht, wie ihr funktioniert, wie ihr erfolgreich seid und was sein Beitrag dazu ist.\n\nFang mit einer Frage an: Wenn dein Bereich in drei Jahren richtig gut läuft, woran merkt man das am Montagmorgen?",
+  "bild": "rp07",
+  "termin": "Do 15.10.",
+  "format": "Szene · F Foto mit Verlauf und Wort",
+  "offen": ""
+ },
+ {
+  "id": 40,
+  "kanal": "daniel",
+  "feld": "02 Komplexe Themen",
+  "art": "Szene · A Foto pur (Flipchart)",
+  "kern": "Themenliste 27: What's in it for me – für jeden Vertriebspartner.",
+  "text": "What's in it for me?\n\nDiese Frage stellt sich jeder Vertriebspartner, wenn ein neues Thema auf ihn zukommt. Meist leise.\n\nBei Vertriebstagungen und Markteinführungen erlebe ich oft das Gegenteil von dem, was hilft: viele richtige Fakten, viele bunte Folien, und am Ende weiß der Vertrieb nicht, was er jetzt tun soll.\n\nAuf dem Flipchart steht der Satz, mit dem wir jede Kommunikation beginnen: Was hat mein Gegenüber davon? Erst wenn das in einem Satz beantwortet ist, kommen das Warum, das Wie und der nächste Schritt.\n\nWenn dein Vertrieb nach der nächsten Tagung wirklich loslegen soll, schreib vorher diesen einen Satz auf. Passt er nicht in eine Zeile, ist die Botschaft noch nicht fertig.",
+  "bild": "rp05",
+  "termin": "Fr 16.10.",
+  "format": "Szene · A Foto pur (Flipchart)",
+  "offen": "Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."
+ },
+ {
+  "id": 39,
+  "kanal": "daniel",
+  "feld": "01 Strategie im Alltag",
+  "art": "Frage · E Skala",
+  "kern": "Themenliste 06: Wie viel deiner Woche zahlt auf die Strategie ein?",
+  "text": "Wie viel deiner Woche zahlt auf die Strategie ein?\n\nIm Alltag kommt ständig etwas hoch: ein dringender Sachverhalt, eine Vorstandsbeschwerde, ein Termin, der brennt. Das muss heute geregelt werden. Gleichzeitig steht irgendwo eine Strategie, die erreicht werden soll.\n\nIn Bereichen, in denen Strategie wirkt, ist beides sauber getrennt. Dort ist jederzeit klar, womit man sich beschäftigt und womit nicht, damit die Strategie umgesetzt wird.\n\nEin ehrlicher Test für diese Woche: Geh deinen Kalender durch und markiere jeden Termin, der direkt auf die Strategie einzahlt. Der Rest ist Tagesgeschäft. Das Verhältnis zeigt dir, wo du ansetzen musst.",
+  "bild": "rp04",
+  "termin": "Mo 19.10.",
+  "format": "Frage · E Skala",
+  "offen": ""
+ },
+ {
   "id": 36,
   "kanal": "daniel",
   "feld": "01 Strategie im Alltag",
@@ -37,54 +85,6 @@ window.MK_ENTWUERFE = [
   "offen": "Den Satz hast du schon einmal gepostet – als Wiederaufnahme in Ordnung?"
  },
  {
-  "id": 39,
-  "kanal": "daniel",
-  "feld": "01 Strategie im Alltag",
-  "art": "Frage · E Skala",
-  "kern": "Themenliste 06: Wie viel deiner Woche zahlt auf die Strategie ein?",
-  "text": "Wie viel deiner Woche zahlt auf die Strategie ein?\n\nIm Alltag kommt ständig etwas hoch: ein dringender Sachverhalt, eine Vorstandsbeschwerde, ein Termin, der brennt. Das muss heute geregelt werden. Gleichzeitig steht irgendwo eine Strategie, die erreicht werden soll.\n\nIn Bereichen, in denen Strategie wirkt, ist beides sauber getrennt. Dort ist jederzeit klar, womit man sich beschäftigt und womit nicht, damit die Strategie umgesetzt wird.\n\nEin ehrlicher Test für diese Woche: Geh deinen Kalender durch und markiere jeden Termin, der direkt auf die Strategie einzahlt. Der Rest ist Tagesgeschäft. Das Verhältnis zeigt dir, wo du ansetzen musst.",
-  "bild": "rp04",
-  "termin": "Mo 26.10.",
-  "format": "Frage · E Skala",
-  "offen": ""
- },
- {
-  "id": 40,
-  "kanal": "daniel",
-  "feld": "02 Komplexe Themen",
-  "art": "Szene · A Foto pur (Flipchart)",
-  "kern": "Themenliste 27: What's in it for me – für jeden Vertriebspartner.",
-  "text": "What's in it for me?\n\nDiese Frage stellt sich jeder Vertriebspartner, wenn ein neues Thema auf ihn zukommt. Meist leise.\n\nBei Vertriebstagungen und Markteinführungen erlebe ich oft das Gegenteil von dem, was hilft: viele richtige Fakten, viele bunte Folien, und am Ende weiß der Vertrieb nicht, was er jetzt tun soll.\n\nAuf dem Flipchart steht der Satz, mit dem wir jede Kommunikation beginnen: Was hat mein Gegenüber davon? Erst wenn das in einem Satz beantwortet ist, kommen das Warum, das Wie und der nächste Schritt.\n\nWenn dein Vertrieb nach der nächsten Tagung wirklich loslegen soll, schreib vorher diesen einen Satz auf. Passt er nicht in eine Zeile, ist die Botschaft noch nicht fertig.",
-  "bild": "rp05",
-  "termin": "Di 27.10.",
-  "format": "Szene · A Foto pur (Flipchart)",
-  "offen": "Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."
- },
- {
-  "id": 41,
-  "kanal": "daniel",
-  "feld": "02 Komplexe Themen",
-  "art": "Modell · E Erfolgsmap",
-  "kern": "Themenliste 23: Bevor du ein Thema vorantreibst: deine Erfolgsmap.",
-  "text": "Bevor du ein Thema vorantreibst, brauchst du deine Erfolgsmap.\n\nNiemand bringt ein Thema allein durch. Drei Fragen, bevor es losgeht:\n\n• An wem richtest du dich aus?\n• Wen brauchst du, um Erfolg zu haben?\n• Wen hast du bisher zu wenig beachtet?\n\nDie dritte Frage ist die unbequemste. Dort sitzen oft die Menschen, an denen ein gutes Thema später hängen bleibt.\n\nSteht die Map, ergibt sich daraus die Taktik: mit wem du in welcher Reihenfolge sprichst und was jeder davon hat. Das ist bei jedem Thema ein bisschen anders. Ohne diese Map bleibt es Zufall.",
-  "bild": "mo5",
-  "termin": "Mi 28.10.",
-  "format": "Modell · E Erfolgsmap",
-  "offen": ""
- },
- {
-  "id": 42,
-  "kanal": "daniel",
-  "feld": "01 Strategie im Alltag",
-  "art": "Szene · F Foto mit Verlauf und Wort",
-  "kern": "Themenliste 02: Gibt der Vorstand kein Zielbild vor, ist das deine Chance.",
-  "text": "Dein Vorstand gibt kein Zielbild für deinen Bereich vor? Sei froh. Das ist deine Chance.\n\nDu baust es selbst. So, wie dein Bereich es braucht, um erfolgreich zu sein. Genau dafür trägst du als Bereichsleiter die Verantwortung.\n\nWer jetzt auf den Konzern, die nächste Klausur oder Vorgaben von oben wartet, verschenkt diese Chance.\n\nEin gutes Zielbild erkennst du daran: Jeder in deinem Bereich versteht, wie ihr funktioniert, wie ihr erfolgreich seid und was sein Beitrag dazu ist.\n\nFang mit einer Frage an: Wenn dein Bereich in drei Jahren richtig gut läuft, woran merkt man das am Montagmorgen?",
-  "bild": "rp07",
-  "termin": "Do 29.10.",
-  "format": "Szene · F Foto mit Verlauf und Wort",
-  "offen": ""
- },
- {
   "id": 43,
   "kanal": "daniel",
   "feld": "Branche eingeordnet",
@@ -92,7 +92,7 @@ window.MK_ENTWUERFE = [
   "kern": "Themenliste 36: 77 % – das Tagesgeschäft verdrängt die Strategie.",
   "text": "77 % sagen: Das Tagesgeschäft verdrängt die strategischen Projekte. Nur 11 % sagen, die Mitarbeitenden verstehen die Strategie.\n\nDie Zahlen stammen aus einer branchenübergreifenden Studie von Wieselhuber. Bei Versicherern erlebe ich es nicht anders.\n\nWas heißt das für einen Bereich? Strategie braucht im Alltag einen festen Platz, sonst gewinnt immer das, was heute brennt.\n\nZwei Dinge helfen. Jeder kann in einem Satz sagen, wohin der Bereich will und warum, dann lassen sich Prioritäten im Alltag selbst entscheiden. Und strategische Themen bekommen feste Termine im Kalender, genauso wie das Tagesgeschäft.",
   "bild": "rp08",
-  "termin": "Fr 30.10.",
+  "termin": "Fr 23.10.",
   "format": "Eingeordnet · B Zahl auf Foto",
   "offen": "Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."
  }
