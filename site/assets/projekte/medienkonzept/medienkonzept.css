@@ -162,3 +162,46 @@
 @media (max-width: 1100px) { .mpf-typen { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 900px) { .mpf-themen { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .mpf-typ { grid-template-columns: minmax(0, 1fr); } .mpf-typ__bild { max-width: 260px; } }
+
+/* Medienkonzept-Übersicht, ruhiger Aufbau (13.10.2026) */
+.mk2 .e2-h2 { margin-bottom: 28px; }
+.mk2-breit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: center; padding: 28px; border: 1px solid #e4e0db; border-radius: 22px; background: #fff; text-decoration: none; color: #1a1817; transition: border-color .2s, transform .2s; }
+.mk2-breit:hover, .mk2-kanal:hover { border-color: #1a1817; transform: translateY(-2px); }
+.mk2-breit__text small, .mk2-kanal small { display: block; font: 600 .72rem/1.4 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #6b6762; }
+.mk2-breit__text b { display: block; margin-top: 8px; font: 700 clamp(1.6rem, 2.6vw, 2.1rem)/1.15 'Lora', Georgia, serif; }
+.mk2-breit__text p, .mk2-kanal p { margin: 10px 0 0; font: 400 1rem/1.6 'Poppins', sans-serif; color: #3d3a37; }
+.mk2-pfeil { display: inline-block; margin-top: 16px; font: 600 .92rem/1 'Poppins', sans-serif; color: #1a1817; border-bottom: 2px solid #1a1817; padding-bottom: 3px; }
+.mk2-breit__bilder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.mk2-breit__bilder img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; border: 1px solid #ece9e5; display: block; }
+.mk2-kanaele { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+.mk2-kanal { display: block; padding: 26px 28px; border: 1px solid #e4e0db; border-radius: 22px; background: #fff; text-decoration: none; color: #1a1817; transition: border-color .2s, transform .2s; }
+.mk2-kanal b { display: block; margin-top: 8px; font: 700 1.5rem/1.2 'Lora', Georgia, serif; }
+.mk2-kanal--offen { background: #f7f5f2; }
+.mk2-kanal--offen:hover { border-color: #e4e0db; transform: none; }
+.mk2-status { display: inline-block; margin-top: 16px; padding: 5px 10px; border-radius: 999px; background: #ece9e5; font: 600 .74rem/1 'Poppins', sans-serif; color: #3d3a37; }
+.mk2-gruppe { margin-top: 30px; }
+.mk2-gruppe h3 { margin: 0 0 10px; font: 600 .74rem/1.4 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #6b6762; }
+.mk2-auf { border-top: 1px solid #ddd8d2; }
+.mk2-gruppe .mk2-auf:last-child { border-bottom: 1px solid #ddd8d2; }
+.mk2-auf summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr) 24px; gap: 20px; align-items: baseline; padding: 16px 4px; }
+.mk2-auf summary::-webkit-details-marker { display: none; }
+.mk2-auf summary::after { content: "+"; font: 400 1.4rem/1 'Poppins', sans-serif; color: #6b6762; text-align: right; }
+.mk2-auf[open] summary::after { content: "–"; }
+.mk2-auf summary b { font: 700 1.08rem/1.35 'Lora', Georgia, serif; color: #1a1817; }
+.mk2-auf summary span { font: 400 .95rem/1.5 'Poppins', sans-serif; color: #3d3a37; }
+.mk2-auf__inhalt { padding: 0 4px 22px; max-width: 60rem; font: 400 .95rem/1.6 'Poppins', sans-serif; color: #3d3a37; }
+.mk2-auf__inhalt p { margin: 0 0 .7em; }
+.mk2-quelle { font-size: .8rem !important; color: #6b6762 !important; }
+.mk2-quelle a { color: inherit; }
+.mk2-weg, .mk2-liste { margin: 0 0 .8em; padding-left: 1.2em; display: grid; gap: 8px; }
+.mk2-weg b, .mk2-liste b { color: #1a1817; }
+.mk2-weg span { display: block; }
+.mk2-wirkt { background: none; padding: 0; }
+.mk2-wirkt ol { margin-top: 4px; }
+.mk2-frueher { margin: 40px 0 0; font: 400 .9rem/1.6 'Poppins', sans-serif; color: #6b6762; }
+.mk2-frueher a { color: #3d3a37; }
+@media (max-width: 900px) {
+  .mk2-breit, .mk2-kanaele { grid-template-columns: minmax(0, 1fr); }
+  .mk2-auf summary { grid-template-columns: minmax(0, 1fr) 24px; }
+  .mk2-auf summary span { grid-column: 1; }
+}
