@@ -9,22 +9,22 @@ import os
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "42"
+V = "43"
 
 # (Gruppe, Unterzeile, [(Aussage, Mehrwert für den Leser, Herkunft, Typ · Variante, Foto?)])
 LISTE = [
     ("01 · Strategie, die im Alltag ankommt", "Baustein 1 · Strategie in den Alltag überführen", [
-        ("Zielbild heißt: Jeder hat das Geschäftsmodell seines Bereichs verstanden.", "Drei Prüffragen fürs eigene Zielbild: Wie funktionieren wir? Wie sind wir erfolgreich? Was ist mein Beitrag?", "I", "Werkzeug · B Checkliste", False),
-        ("Gibt der Vorstand kein Zielbild vor, ist das deine Chance.", "Freiraum statt Warten: Der Bereichsleiter darf es so bauen, wie sein Bereich es braucht.", "I", "Szene · F Foto mit Verlauf und Wort", True),
-        ("Die Strategie gibt der Chef vor – erst danach kommt das Team dazu.", "Die Reihenfolge und ihr Grund: Ein Zukunftsbild, das zu früh im Team diskutiert wird, erzeugt Angst um Jobs.", "I", "Szene · B Foto mit Satz", True),
+        ("Zielbild heißt: Jeder hat das Geschäftsmodell seines Bereichs verstanden.", "Woran du es erkennst: Deine Leute können fundiert sagen, warum ihr etwas tut. Sie leiten Themen aus dem Gesamtbild ab. Und bei Optionen argumentieren sie sauber, statt sich auf einen Kompromiss zu einigen.", "I", "Werkzeug · B Checkliste", False),
+        ("Gibt der Vorstand kein Zielbild vor, ist das deine Chance.", "Freiraum statt Warten: Der Bereichsleiter darf und muss es so bauen, wie sein Bereich es braucht – genau dafür trägt er die Verantwortung.", "I", "Szene · F Foto mit Verlauf und Wort", True),
+        ("Die Strategie gibt der Chef vor. Das ist sein Job.", "Wer sie im ganzen Team erarbeiten lässt, holt Menschen dazu, die nie gelernt haben, über Strategie zu sprechen – und legt die Basis für schlechtes Mittelmaß.", "I", "Szene · B Foto mit Satz", True),
         ("Der Einstieg in die Strategie dauert drei Stunden, keine zwei Tage.", "So läuft er: drei Gespräche ohne Vorbereitung, spiegeln, dann das Vorgehen entlang der Stakeholder.", "I", "Werkzeug · D Zeitleiste", False),
         ("Strategie ist die Verbindung zwischen heute und dem Zielbild.", "Wer beide Enden kennt, findet den Weg fast von allein – ohne Vision keine Strategie.", "I", "Modell · C Heute – Vision", False),
         ("Wie viel deiner Woche zahlt auf die Strategie ein?", "Ein ehrlicher Selbsttest: operative Brände und strategische Arbeit sauber trennen.", "I", "Frage · E Skala", False),
-        ("Wie sähe die Homepage deiner Abteilung aus?", "Die Prüffrage für jede Vision: Zielgruppe, Problem, Nutzen, Unterschied, Zusammenarbeit.", "P", "Zum Mitnehmen · Dokument", False),
+        ("Wie sähe die Homepage deiner Abteilung aus?", "Gedankenexperiment: Deine Abteilung wird morgen eine GmbH und verkauft ihre Leistung an deinen Arbeitgeber. Was stünde auf der Homepage – und würde jeder im Team dasselbe hineinschreiben?", "P", "Zum Mitnehmen · Dokument", False),
     ]),
     ("02 · Führung, die trägt", "Baustein 1 · klare Aussagen zu Rolle, Umsetzung und Wichtigkeit", [
-        ("Erst befördern, dann 12 bis 24 Monate entwickeln – das ist der größte Fehler.", "Was vor dem ersten Tag geklärt sein muss: die Rolle und ihre drei Säulen.", "I", "Modell · D Drei Kreise", False),
-        ("Neu in der Rolle – und überladen mit Regelterminen ohne Mehrwert.", "Die ersten 30 Tage: jeden Regeltermin auf seinen Beitrag zum Ziel prüfen.", "I", "Frage · D Ja oder nein", False),
+        ("Erst befördern, dann 12 bis 24 Monate entwickeln – das ist der größte Fehler.", "Was vor dem ersten Tag geklärt sein muss: die Rolle in klaren Worten – was erwartet wird, welche Funktion man hat. Fachexpertise bringt man mit, sie macht aber keine Führungskraft. Dazu kommen: das Team mitnehmen und aktiv zum Unternehmenserfolg beitragen.", "I", "Modell · D Drei Kreise", False),
+        ("Neu in der Rolle – und überladen mit Regelterminen ohne Mehrwert.", "Wer neu ist, kann in den ersten Wochen gar nicht bewerten, welcher Termin zählt. Darum muss das System vorher stehen – sonst läuft man jeden Tag im Alarmmodus.", "I", "Frage · D Ja oder nein", False),
         ("Geduldetes Fehlverhalten von Führungskräften demotiviert die Guten am meisten.", "Was Wegschauen kostet – und warum Führung auch Eingreifen heißt.", "I", "Szene · B Foto mit Satz", True),
         ("„Von dieser Person hätten wir mehr erwartet.“", "Wenn eine neue Führungskraft untergeht, fehlt meist das System – selten das Können.", "I", "Satz · D Zettel", False),
         ("Logik allein verändert wenig.", "Persönlichkeiten, Macht- und Interessenströmungen sind stärker als jedes Konzept – was das für die Umsetzung heißt.", "I", "Szene · A Foto pur", True),
@@ -37,12 +37,12 @@ LISTE = [
         ("Ich nutze KI, um schneller und besser zu entscheiden.", "Drei konkrete Anwendungen aus deinem Alltag – ohne dein System zu zeigen.", "I", "Szene · C Foto mit Uhrzeit", True),
     ]),
     ("04 · Entscheidungen herbeiführen", "Baustein 2 · Komplexe Themen strukturieren und kommunizieren", [
-        ("Why – How – What next.", "Die Struktur für jede Vorstandsvorlage, Why als Ausgangssituation, Problem, Lösung.", "I · P", "Modell · A", False),
+        ("Why – How – What next.", "Why: Ausgangssituation, Problem, Lösung – kurz und auf den Punkt, ohne Details. How: grundsätzlich, wie wir vorgehen. What next: der konkrete nächste Schritt.", "I · P", "Modell · A", False),
         ("Vorstandsvorlagen scheitern am Aufbau, nicht an der Länge.", "Die eine Prüffrage: Wie denkt ein Vorstand, um entscheiden zu können?", "I", "Werkzeug · E Was nicht hineingehört", False),
         ("„Bei uns kommen viel zu oft Themen auf der falschen Flugebene an.“", "Woran man die richtige Flughöhe erkennt – und was es kostet, wenn sie fehlt.", "I", "Satz · C Anführungszeichen", False),
         ("Diskussionen kippen, sobald die Bedeutung für das Unternehmen fehlt.", "Vor jedem Termin in einem Satz klären, was das Thema für das Haus bedeutet.", "I", "Szene · B Foto mit Satz", True),
         ("Aus vier Folien wurde eine. 22:25 Uhr: „Passt. Lass es so.“", "Wirkung entsteht, wenn der Entscheider sofort versteht – nicht durch mehr Fakten.", "F · I", "Satz · B Nachricht", False),
-        ("Erst drei Fragen, dann die Folie.", "Wen brauche ich? Wen habe ich übersehen? An wem richte ich es aus?", "P", "Werkzeug · B Checkliste", False),
+        ("Bevor du ein Thema vorantreibst: deine Erfolgsmap.", "An wem richtest du dich aus? Wen brauchst du, um Erfolg zu haben? Wen hast du bisher zu wenig beachtet? Daraus folgen Taktik und Reihenfolge.", "I", "Modell · E Erfolgsmap", False),
         ("„Kann mir einer kurz einordnen, mit welchem Ergebnis wir rausgehen?“", "Die ersten drei Minuten eines Termins entscheiden, ob er etwas bringt.", "I", "Werkzeug · D Zeitleiste", False),
         ("Wenn ihr es nicht einfach erklären könnt, habt ihr es nicht im Griff.", "Warum Entscheider bei Faktensammlungen misstrauisch werden – Erfahrung aus einem gewonnenen Pitch.", "I", "Szene · A Foto pur", True),
     ]),
@@ -50,16 +50,16 @@ LISTE = [
         ("Nach der Vertriebstagung: tolle Stimmung. Nach vier Wochen spricht keiner mehr davon.", "Was vorbereitet sein muss, damit die Impulse im Alltag ankommen.", "I", "Szene · D Foto mit Zeichen", True),
         ("What's in it for me – für jeden Vertriebspartner.", "Mehrwert in einem Satz erklären, bevor über das Produkt gesprochen wird.", "I", "Szene · A Foto pur (Flipchart „What's in for me“)", True),
         ("Ohne klare Unternehmensstrategie setzt jeder Regionalleiter eigene Schwerpunkte.", "Woran man eine echte Vertriebsstrategie erkennt.", "I", "Frage · A Fragekarte", False),
-        ("Eine Idee fürs Neugeschäft dieses Jahr ist noch keine Vertriebsstrategie.", "Der Unterschied zwischen Maßnahme und Plan, erfolgreich zu sein.", "I", "Satz · A Satzkarte", False),
+        ("Kurzfristige Ideen für mehr Neugeschäft sind noch keine Vertriebsstrategie.", "Der Unterschied zwischen Maßnahme und Plan, erfolgreich zu sein.", "I", "Satz · A Satzkarte", False),
     ]),
     ("06 · Geschäftsmodell der Zukunft", "Baustein 3 · immer hinterfragen, ob es so organisiert sein muss wie heute", [
-        ("Wie würdest du deinen Bereich heute neu gründen?", "Drei Unterfragen: Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen.", "P · I", "Frage · C Fragezeichen", False),
+        ("Wie würdest du deinen Bereich heute neu gründen?", "Drei Fragen, bevor weitergebaut wird: Welches Problem hat dein Kunde wirklich? Wie löst du es? Und ist er überhaupt bereit, es zu lösen?", "P · I", "Frage · C Fragezeichen", False),
         ("Die meisten sehen nur die Grenzen, die heute gesteckt sind.", "Was sich ändert, wenn man die Grenzen bewusst wegdenkt.", "I", "Szene · E Foto mit gelbem Balken", True),
-        ("Wie würden wir eine Weiterbildungsakademie heute neu gründen?", "Ein Beispiel aus der Praxis, wie Neudenken konkret aussieht (anonymisiert).", "I", "Szene · A Foto pur", True),
+        ("„Das war schon immer so.“ – Drei Sätze, die Neudenken verhindern.", "Das war schon immer so. Das ist bei uns gesetzt. Das macht man in unserer Branche nicht. Und was, wenn nicht?", "P", "Szene · A Foto pur", True),
         ("Erst den Kern im Griff, dann neu denken.", "Warum Innovation ohne stabile Basis eine Wunschliste bleibt.", "P", "Modell · C Heute – Vision", False),
     ]),
     ("07 · Branche und Regulierung eingeordnet", "Quer · Konsequenzen statt Detailauslegung · Zahlen vor Verwendung neu prüfen", [
-        ("AI Act: ab 02.12.2027 Hochrisiko-Pflichten, auch für KI in der Tarifierung.", "Was das für einen Bereich heißt – und wer heute dafür zuständig sein sollte.", "R", "Eingeordnet · E Datum", False),
+        ("AI Act: Für KI bei Versicherern gelten künftig verbindliche Regeln.", "Grob eingeordnet, ohne Rechtsauskunft: was das für die KI-Nutzung im eigenen Bereich heißt und wer sich darum kümmern sollte. Fakten vor dem Posten an der Quelle prüfen.", "R", "Eingeordnet · F Posting im Posting", False),
         ("77 % sagen: Das Tagesgeschäft verdrängt die strategischen Projekte.", "Was ein Bereich tun kann, damit Strategie Termine im Kalender bekommt.", "R", "Eingeordnet · B Zahl auf Foto", True),
         ("Versicherer planen kein Personalwachstum – die Effizienz soll mit KI kommen.", "Welche Fragen sich ein Bereichsleiter jetzt stellen sollte.", "R", "Eingeordnet · F Posting im Posting", False),
         ("DORA im Alltag: was es für Prozesse und Verantwortung bedeutet.", "Konsequenzen und wie man es positiv nutzt – Inhalt kommt aus dem Branchen-Radar.", "R", "Eingeordnet · C Riesige Zahl", False),
@@ -72,9 +72,16 @@ LISTE = [
 ]
 
 
+STATUS = {n: "geschärft" for n in (1, 3, 7, 8, 9, 18, 23, 29, 30, 32, 34)}
+STATUS[22] = "raus"
+OFFEN = {7: "ohne Vorgabe geschärft – bitte prüfen", 18: "ohne Vorgabe geschärft – bitte prüfen", 5: "vertiefen beim Schreiben"}
+
+
 def zeile(nr, aussage, mehrwert, herkunft, format_, foto):
-    return '<tr><td class="tl-nr">%02d</td><td><b>%s</b><span>%s</span></td><td><em>%s</em></td><td>%s%s</td></tr>' % (
-        nr, html.escape(aussage), html.escape(mehrwert), herkunft, format_, ' <i class="tl-foto">Foto</i>' if foto else "")
+    st = STATUS.get(nr, "bestätigt")
+    hinweis = ('<small class="tl-hinweis">%s</small>' % OFFEN[nr]) if nr in OFFEN else ""
+    return '<tr class="tl-%s"><td class="tl-nr">%02d</td><td><b>%s</b><span>%s</span>%s</td><td><em>%s</em><i class="tl-st tl-st--%s">%s</i></td><td>%s%s</td></tr>' % (
+        st, nr, html.escape(aussage), html.escape(mehrwert), hinweis, herkunft, st, st, format_, ' <i class="tl-foto">Foto</i>' if foto else "")
 
 
 def main():
@@ -92,7 +99,7 @@ def main():
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Themenliste</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Themenliste &middot; zur Freigabe</p>
       <h1>Worüber du <span class="hl">sprichst.</span></h1>
-      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 16 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Bitte je Nummer: <b>stimmt</b>, <b>schärfen</b> oder <b>raus</b>.</p>
+      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 16 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Stand: deine Rückmeldung vom 13.10. ist eingearbeitet. Bitte nur noch die geschärften Aussagen prüfen.</p>
       <p class="tl-legende">Herkunft: <b>I</b> Interview 12./13.10. · <b>P</b> Positionierung &amp; Homepage · <b>F</b> Fundus früherer Postings · <b>R</b> Recherche / Branchen-Radar · <b>Idee</b> Vorschlag von mir, bitte bestätigen</p>
   </div></section>
 

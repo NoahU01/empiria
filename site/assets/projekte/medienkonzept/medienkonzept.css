@@ -527,3 +527,10 @@ a.mk3-super:hover { transform: translateY(-3px); border-color: #c9c4bd; }
   .tl-tab td:nth-child(3)::before { content: "Herkunft: "; font: 400 .78rem 'Poppins', sans-serif; color: #8a857e; }
   .tl-tab td:nth-child(4)::before { content: "Vorschlag: "; color: #8a857e; }
 }
+.tl-st { display: block; margin-top: .4rem; padding: 2px 7px; width: max-content; border-radius: 999px; font: 600 .68rem/1.4 'Poppins', sans-serif; font-style: normal; }
+.tl-st--bestätigt { background: #ece9e5; color: #3d3a37; }
+.tl-st--geschärft { background: #fff400; color: #1a1817; }
+.tl-st--raus { background: #1a1817; color: #fff; }
+.tl-raus td b, .tl-raus td span { text-decoration: line-through; color: #a8a39c; }
+.tl-hinweis { display: block; margin-top: .35rem; font: 600 .78rem/1.4 'Poppins', sans-serif; color: #1a1817; }
+@media (max-width: 700px) { .tl-tab td:nth-child(3) .tl-st { display: inline-block; margin: 0 0 0 .4rem; } }
