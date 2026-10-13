@@ -10,18 +10,18 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "49"  # Versionsnummer für CSS/JS
+V = "50"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
-    36: dict(bild="rp01", termin="Di 20.10.", format="Szene · B Foto mit Satz", offen="Passt das Bühnenfoto, oder hast du ein Foto aus einem Strategiegespräch?"),
-    37: dict(bild="rp02", termin="Mi 21.10.", format="Modell · A Why · How · Next", offen="Gibt es eine echte Vorlage, die an der Bedeutung gescheitert ist? Ein Satz dazu macht den Einstieg stärker."),
-    38: dict(bild="rp03", termin="Do 22.10.", format="Szene · B Foto mit Satz (Porträt)", offen="Den Satz hast du schon einmal gepostet – als Wiederaufnahme in Ordnung?"),
+    36: dict(bild="rp01", termin="Di 20.10.", format="Szene · B Foto mit Satz", offen=""),
+    37: dict(bild="rp02", termin="Mi 21.10.", format="Modell · A Why · How · Next", offen=""),
+    38: dict(bild="rp03", termin="Do 22.10.", format="Szene · B Foto mit Satz (Porträt)", offen=""),
     39: dict(bild="rp04", termin="Mo 19.10.", format="Frage · E Skala", offen=""),
-    40: dict(bild="rp05", termin="Fr 16.10.", format="Szene · A Foto pur (Flipchart)", offen="Aus welchem Termin stammt das Flipchart-Foto? Ein Halbsatz zum Anlass macht es zur echten Szene."),
+    40: dict(bild="rp05", termin="Fr 16.10.", format="Szene · A Foto pur (Flipchart)", offen=""),
     41: dict(bild="mo5", termin="Mi 14.10.", format="Modell · E Erfolgsmap", offen=""),
     42: dict(bild="rp07", termin="Do 15.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
-    43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen="Zahlen vor dem Posten an der Quelle prüfen (Wieselhuber)."),
+    43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen=""),
 }
 FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}
 
@@ -47,11 +47,33 @@ def main(pfad):
             continue
         x = EXTRA[e["id"]]
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
-                          feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"], **x))
+                          feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"],
+                          status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], **x))
+    # Wochenraster Mo–Fr ab KW 42: fertiges Posting, geplantes Thema oder kein Posting
+    import datetime
+    TAGE = ["Mo", "Di", "Mi", "Do", "Fr"]
+    nach_datum = {p["datum"]: i for i, p in enumerate(posts)}
+    plan = {}
+    for kw, tag, aussage, typ in PLAN:
+        d, m = tag.split()[1].strip(".").split(".")
+        plan["2026-%s-%s" % (m, d)] = dict(aussage=aussage, typ=typ, interview="Interview" in aussage)
+    wochen, montag = [], datetime.date(2026, 10, 12)
+    while montag <= datetime.date(2026, 11, 2):
+        tage = []
+        for n in range(5):
+            d = montag + datetime.timedelta(days=n); k = d.isoformat()
+            t = dict(tag="%s %s" % (TAGE[n], d.strftime("%d.%m.")))
+            if k in nach_datum: t["i"] = nach_datum[k]
+            elif k in plan: t["plan"] = plan[k]
+            tage.append(t)
+        fr = montag + datetime.timedelta(days=4)
+        wochen.append(dict(kw="KW %d" % montag.isocalendar()[1], spanne="%s–%s" % (montag.strftime("%d.%m."), fr.strftime("%d.%m.")), tage=tage))
+        montag += datetime.timedelta(days=7)
     open(os.path.join(MK, "entwuerfe.js"), "w", encoding="utf-8").write(
         "/* Medienkonzept empiria – Entwürfe für Daniels LinkedIn-Profil (aus Supabase beitraege, Stand 12.10.2026). */\n"
         "window.MK_ENTWUERFE = " + json.dumps(posts, ensure_ascii=False, indent=1) + ";\n"
-        "window.MK_FELDER = " + json.dumps(FELDER, ensure_ascii=False) + ";\n")
+        "window.MK_FELDER = " + json.dumps(FELDER, ensure_ascii=False) + ";\n"
+        "window.MK_WOCHEN = " + json.dumps(wochen, ensure_ascii=False) + ";\n")
     # Paket: alle Bilder, Dokument-PDF und Texte
     md = ["# Postings Daniel Ströbel – LinkedIn (Entwürfe, Stand 12.10.2026)", ""]
     for i, p in enumerate(posts):
@@ -75,27 +97,23 @@ def main(pfad):
                         '<script src="/assets/projekte/medienkonzept/entwuerfe.js?v=%s"></script>\n'
                         '<script src="/assets/projekte/medienkonzept/entwuerfe-seite.js?v=%s"></script>\n'
                         '<script src="/script.js"></script>' % (V, V))
-    plan_zeilen = "".join('<tr><td style="white-space:nowrap">%s<br><b>%s</b></td><td>%s<br><span style="color:#6b6661">%s</span></td></tr>' % z for z in PLAN)
+    _ = "".join('<tr><td style="white-space:nowrap">%s<br><b>%s</b></td><td>%s<br><span style="color:#6b6661">%s</span></td></tr>' % z for z in PLAN)
     main_html = '''<main class="ak">
 
   <section class="e2-kopf ak-kopfbereich"><div class="e2-wrap">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
-      <h1>Die ersten Postings. Fertig zur <span class="hl">Freigabe.</span></h1>
-      <p class="e2-lead">Redaktionsplan ab Mi 14.10. Die ersten acht Postings sind fertig mit Bild und Text – antippen zum Lesen. Freigabe im Chat: je Posting „passt“ oder ein Satz, was nicht stimmt. Erst nach deiner Freigabe kommt ein Posting in Buffer.</p>
+      <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Erst freigegebene Postings kommen in Buffer.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
-      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Start Mi 14.10., jeweils 8:30 Uhr über Buffer</p></div></div>
-      <div class="ig-filter" id="mke-filter" role="group" aria-label="Nach Themenfeld filtern"></div>
-      <div class="ig-raster" id="mke-raster"></div>
-      <div class="ig-plan"><span><b>KW 42:</b> Mi 14. · Do 15. · Fr 16.10.</span><span><b>KW 43:</b> Mo 19. bis Fr 23.10.</span><span><b>8:30 Uhr</b> über Buffer · ohne Link</span></div>
+      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Mo bis Fr, 8:30 Uhr über Buffer · ohne Link</p></div></div>
+      <div class="mke-legende"><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
+      <div class="mke-wochen" id="mke-raster"></div>
       <div class="ig-paket"><p><b>Alles auf einmal:</b> Bilder in 1080 × 1350, das Dokument als PDF und alle Texte.</p><a class="e2-knopf" href="/assets/projekte/medienkonzept/postings/Postings-Daniel.zip" download>Paket herunterladen</a></div>
     </div>
-
-    <div class="mke-plan"><h2 class="e2-h2" style="font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:3rem">KW 44 und 45 · geplant</h2>
-      <div class="mkf-tabelle"><table style="min-width:0"><tr><th>Termin</th><th>Aussage (Themenliste) · Typ und Variante</th></tr>{{PLAN}}</table></div></div>
 
   </div></section>
 
@@ -111,7 +129,7 @@ def main(pfad):
     <dl class="ig-meta" id="mke-meta"></dl>
     <div class="ig-blaettern"><button type="button" id="mke-zurueck">← Vorheriges</button><button type="button" id="mke-vor">Nächstes →</button></div>
   </div>
-</div></dialog>'''.replace("{{PLAN}}", plan_zeilen)
+</div></dialog>'''
     open(os.path.join(SITE, "projekte", "medienkonzept-entwuerfe.html"), "w", encoding="utf-8").write(kopf + main_html + fuss)
     print("Seite, Daten und Paket gebaut:", len(posts), "Postings")
 

@@ -3,39 +3,40 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=49';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=50';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
-  function kachel(p, i) {
-    return '<button type="button" class="ig-kachel" data-i="' + i + '" data-feld="' + p.feld + '" aria-label="Posting ' + nr(i) + ' öffnen">' +
-      '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy">' +
-      (p.seiten ? '<span class="mke-doc" aria-hidden="true">PDF · ' + p.seiten.length + '</span>' : '') +
-      '<span class="ig-kachel__info">' + (p.kanal === 'firma' ? 'Firma · ' : nr(i) + ' · ') + p.termin + '<small>' + p.feld + ' · ' + p.art + '</small></span></button>';
+  var W = window.MK_WOCHEN || [];
+  var STATUS = { freigegeben: ['frei', 'Freigegeben'], entwurf: ['offen', 'Zur Freigabe'] };
+  function status(p) { return STATUS[p.status] || STATUS.entwurf; }
+  function tag(t) {
+    var kopf = '<span class="mke-tag__datum">' + t.tag + '</span>';
+    if (t.i != null) {
+      var p = P[t.i], st = status(p);
+      return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--' + st[0] + '">' + st[1] + '</span></div>' +
+        '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
+        '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
+        '<p class="mke-tag__typ">' + esc(p.format) + '</p></div>';
+    }
+    if (t.plan) {
+      return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--plan">' + (t.plan.interview ? 'Interview mit dir' : 'Zu schreiben') + '</span></div>' +
+        '<div class="mke-platz"><p>' + esc(t.plan.aussage) + '</p></div>' +
+        '<p class="mke-tag__typ">' + esc(t.plan.typ) + '</p></div>';
+    }
+    return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '</div><div class="mke-platz mke-platz--leer"><p>kein Posting</p></div><p class="mke-tag__typ">&nbsp;</p></div>';
   }
-  var D = [], FI = [];
-  P.forEach(function (p, i) { (p.kanal === 'firma' ? FI : D).push(i); });
-  raster.innerHTML = D.map(function (i) { return kachel(P[i], i); }).join('');
-  var rasterFirma = $('#mke-raster-firma');
-  if (rasterFirma) rasterFirma.innerHTML = FI.map(function (i) { return kachel(P[i], i); }).join('');
-
-  var filter = $('#mke-filter');
-  var felder = Object.keys(FE).filter(function (k) { return D.some(function (i) { return P[i].feld === k; }); });
-  filter.innerHTML = '<button type="button" aria-pressed="true" data-feld="">Alle ' + D.length + '</button>' +
-    felder.map(function (k) { return '<button type="button" aria-pressed="false" data-feld="' + k + '">' + FE[k] + '</button>'; }).join('');
-  $$('button', filter).forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.dataset.feld;
-      $$('button', filter).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      $$('.ig-kachel', raster).forEach(function (k) { k.hidden = f && k.dataset.feld !== f; });
-    });
-  });
+  raster.innerHTML = W.map(function (w) {
+    return '<section class="mke-woche"><h2 class="mke-woche__kopf">' + w.kw + '<span>' + w.spanne + '</span></h2>' +
+      '<div class="mke-tage">' + w.tage.map(tag).join('') + '</div></section>';
+  }).join('');
+  var rasterFirma = null;
 
   var modal = $('#mke-modal'), jetzt = 0, variante = 'bild';
   function sichtbar() {
-    var r = P[jetzt].kanal === 'firma' ? rasterFirma : raster;
+    var r = raster;
     return $$('.ig-kachel', r).filter(function (k) { return !k.hidden; }).map(function (k) { return +k.dataset.i; });
   }
   function bildZeigen() {
@@ -54,10 +55,10 @@
     $('#mke-bild').innerHTML = p.seiten
       ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
-    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : 'Posting ' + nr(i) + ' · ' + p.termin + ' · 8:30 Uhr';
+    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · 8:30 Uhr · ' + status(p)[1];
     $('#mke-text').textContent = p.text;
     $('#mke-meta').innerHTML = '<dt>Themenfeld</dt><dd>' + p.feld + ' · ' + p.art + '</dd><dt>Format</dt><dd>' + p.format + '</dd>' +
-      '<dt>Was bleibt</dt><dd>' + esc(p.kern) + '</dd><dt>Noch offen</dt><dd>' + esc(p.offen) + '</dd>';
+      '<dt>Was bleibt</dt><dd>' + esc(p.kern) + '</dd>' + (p.offen ? '<dt>Noch offen</dt><dd>' + esc(p.offen) + '</dd>' : '');
     $('#mke-laden').setAttribute('download', (firma ? 'firma-' : 'posting-') + nr(i) + '.jpg');
     bildZeigen();
     var pdf = $('#mke-pdf'); pdf.hidden = !p.pdf; if (p.pdf) { pdf.href = PFAD + p.pdf; pdf.setAttribute('download', p.pdf); }
