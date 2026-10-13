@@ -127,11 +127,37 @@ html, body { width:1080px; background:#fff; }
 .an { position:absolute; z-index:0; pointer-events:none; }
 .an svg { width:100%; height:100%; display:block; }
 .p > *:not(.an) { position:relative; z-index:1; }
-.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage { position:absolute; }
+.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage, .p > .nfuss { position:absolute; }
 .fr-gross { font:700 104px/1.12 "Lora",Georgia,serif; letter-spacing:-.015em; }
 .raster { display:grid; grid-template-columns:repeat(10, 44px); gap:10px 40px; margin-top:48px; }
 .raster svg { width:44px; height:44px; display:block; color:#3a3632; }
 .raster svg.an-ja { color:var(--gelb); }
+
+/* Modell und Nachricht neu (13.10.2026) */
+.wort { font:700 200px/.92 "Lora",Georgia,serif; letter-spacing:-.03em; }
+.wortzeile { display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:end; margin-top:80px; }
+.wortzeile em { font-style:normal; padding-bottom:22px; font:500 34px/1.3 "Poppins",sans-serif; color:#d9d5cf; }
+.wort.hl { color:var(--ink); }
+.icons3 { display:grid; grid-template-columns:1fr 1fr 1.35fr; gap:30px; margin-top:120px; }
+.icons3 div { display:flex; flex-direction:column; gap:30px; }
+.icons3 svg { width:220px; height:220px; stroke-width:1.2; }
+.icons3 b { font:700 50px/1 "Lora",Georgia,serif; }
+.icons3 span { font:500 28px/1.35 "Poppins",sans-serif; }
+.band2 { padding:0; grid-template-rows:1fr 1fr; }
+.band2:target { display:grid; }
+.band2 > div { padding:70px 84px; display:flex; flex-direction:column; justify-content:center; }
+.band2 .oben { background:var(--hell); }
+.band2 .unten { background:var(--gelb); }
+.band2 small { font:700 26px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+.band2 p { margin-top:30px; font:700 74px/1.12 "Lora",Georgia,serif; }
+.band2 .oben p { color:#a8a39c; text-decoration:line-through; text-decoration-thickness:6px; }
+.nachricht { flex-direction:column; }
+.nachricht:target { display:flex; }
+.nz { font:700 30px/1 "Poppins",sans-serif; color:#8a857e; }
+.nfuss { position:absolute; left:84px; right:84px; bottom:90px; font:700 66px/1.1 "Lora",Georgia,serif; color:#fff; }
+.nb1 { margin-top:24px; max-width:720px; padding:34px 40px; border-radius:36px 36px 36px 10px; background:#2b2826; color:#d9d5cf; font:500 40px/1.3 "Poppins",sans-serif; }
+.nzeit { margin-top:90px; font:700 120px/1 "Lora",Georgia,serif; color:var(--gelb); }
+.nb2 { margin-top:28px; align-self:flex-start; padding:48px 58px; border-radius:46px 46px 46px 12px; background:var(--gelb); color:var(--ink); font:700 92px/1.02 "Lora",Georgia,serif; }
 </style></head>
 <body>
 <section class="p" id="p1">
@@ -241,13 +267,12 @@ html, body { width:1080px; background:#fff; }
       <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></div><p class="namezeile">Daniel Ströbel</p>
 </section>
 
-<section class="p" id="m1">
-  <p class="k">Das Modell</p>
-  <p class="h m" style="margin-top:28px">Was ein Vorstand wissen <span class="hl">muss.</span></p>
-  <div class="modell">
-    <div class="stufe"><b>Why</b><div><p>Warum beschäftigen wir uns damit?</p><small>Ausgangssituation · Problem · Lösung</small></div></div>
-    <div class="stufe"><b>How</b><div><p>Wie gehen wir grundsätzlich vor?</p><small>Grundsätzlich, nicht im Detail</small></div></div>
-    <div class="stufe gelb-b"><b>Next</b><div><p>Was ist der konkrete nächste Schritt?</p><small>Damit es vorangeht</small></div></div>
+<section class="p schwarz" id="m1">
+  <p class="k">Was ein Vorstand wissen muss</p>
+  <div style="margin-top:70px">
+    <div class="wortzeile"><p class="wort">Why.</p><em>Warum beschäftigen wir uns damit?</em></div>
+    <div class="wortzeile"><p class="wort">How.</p><em>Wie gehen wir grundsätzlich vor?</em></div>
+    <div class="wortzeile"><p class="wort"><span class="hl" style="padding:0 .08em">Next.</span></p><em>Was ist der nächste Schritt?</em></div>
   </div>
   <p class="namezeile">Daniel Ströbel</p>
 </section>
@@ -367,12 +392,12 @@ html, body { width:1080px; background:#fff; }
   <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
 </section>
 
-<section class="p grau" id="c1">
-  <p class="chat-zeit" style="margin-top:20px">Freitag · 14:20 · Anfrage eines Vorstands</p>
-  <div class="chat-blase">Kannst du dir die Folien bis morgen früh ansehen? Es muss sitzen.</div>
-  <p class="chat-zeit" style="margin-top:44px">22:25</p>
-  <div class="chat-blase du">Vielen Dank!<br>Passt. Lass es so.<small>Vorstand</small></div>
-  <p class="chat-fuss">Aus vier Folien wurde eine.</p>
+<section class="p schwarz nachricht" id="c1">
+  <p class="nz">14:20 · Anfrage eines Vorstands</p>
+  <div class="nb1">Kannst du dir die Folien bis morgen früh ansehen? Es muss sitzen.</div>
+  <p class="nzeit">22:25</p>
+  <div class="nb2">Passt. Lass es so.</div>
+  <p class="nfuss">Aus vier Folien wurde eine.</p>
 </section>
 
 <section class="p schwarz frage-schwarz" id="k2">
@@ -382,22 +407,20 @@ html, body { width:1080px; background:#fff; }
 </section>
 
 <section class="p gelbgrund" id="m2">
-  <p class="k">Strategie im Alltag</p>
-  <p class="h">Was jeder Bereich braucht.</p>
-  <div class="drei">
-    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" /></svg><p><b>Rolle</b><span>Wofür stehe ich und mein Bereich?</span></p></div>
-    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg><p><b>Richtung</b><span>Wie wollen wir wahrgenommen werden?</span></p></div>
-    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg><p><b>Handwerkszeug</b><span>Wie kommen wir dort hin?</span></p></div>
+  <p class="h" style="margin-top:20px">Was jeder Bereich braucht.</p>
+  <div class="icons3">
+    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" /></svg><b>Rolle</b><span>Wofür stehen wir?</span></div>
+    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></svg><b>Richtung</b><span>Wohin wollen wir?</span></div>
+    <div><svg class="luc" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg><b>Handwerkszeug</b><span>Wie kommen wir hin?</span></div>
   </div>
+  <div class="an" style="width:620px;height:620px;right:-230px;bottom:-230px;color:#1a1817"><svg viewBox="0 0 232.44 232.44" aria-hidden="true"><path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/></svg></div>
+  <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
 </section>
 
-<section class="p" id="m3">
-  <p class="k">Strategie im Alltag</p>
-  <p class="h m">Woran du ein Zielbild <span class="hl">erkennst.</span></p>
-  <div class="vn">
-    <div class="vor"><small>Ohne</small><ul><li>Agendapunkte werden aufgezählt</li><li>Jeder verteidigt sein Thema</li><li>Am Ende ein Kompromiss</li></ul></div>
-    <div class="nach"><small>Mit</small><ul><li>Das Ziel in einem Satz</li><li>Jeder kennt das Warum</li><li>Am Ende eine Entscheidung</li></ul></div>
-  </div>
+<section class="p band2" id="m3">
+  <div class="oben"><small>Ohne Zielbild</small><p>Jeder verteidigt sein Thema. Am Ende ein Kompromiss.</p></div>
+  <div class="unten"><small>Mit Zielbild</small><p>Jeder kennt das Warum. Am Ende eine Entscheidung.</p></div>
 </section>
 
 <section class="p gelbgrund" id="w2">

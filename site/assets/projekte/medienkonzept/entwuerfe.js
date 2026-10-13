@@ -8,9 +8,9 @@ window.MK_ENTWUERFE = [
   "kern": "Vor jeder Vorstandsvorlage drei Fragen: Wen brauche ich? Wen habe ich zu wenig berücksichtigt? An wem richte ich das Thema aus?",
   "text": "Bevor ich mit einem Kunden an einer Vorstandsvorlage arbeite, schauen wir uns keine einzige Folie an.\n\nWir beantworten drei Fragen, und meistens verändert das die Unterlage mehr als jede Überarbeitung.\n\nWen brauche ich, damit das Thema durchgeht? Das sind fast immer mehr Menschen als die, die am Ende im Raum sitzen: der Vorstand, aber auch der Kollege, dessen Bereich betroffen ist, und die Referentin, die die Vorlage vorab liest.\n\nWen habe ich bislang zu wenig berücksichtigt? Hier steckt oft der Grund, warum gute Themen in der Sitzung hängen bleiben. Einer fühlt sich übergangen und stellt die Frage, auf die niemand vorbereitet ist.\n\nAn wem richte ich das Thema eigentlich aus? Wer das klar beantwortet, weiß auch, mit wem er vorher sprechen muss und in welcher Reihenfolge.\n\nDie Folie kommt danach, und sie wird kürzer.\n\nWenn du nächste Woche eine Entscheidung brauchst: Nimm dir heute zehn Minuten, beantworte die drei Fragen auf einem Blatt und plane die zwei Gespräche, die vor der Sitzung stattfinden müssen.",
   "bild": "w2",
-  "alt": "p1",
+  "alt": "v1",
   "termin": "Di 20.10.",
-  "format": "Das Werkzeug · B Checkliste Gelb (Alternative: Szene C)",
+  "format": "Das Werkzeug · B Checkliste Gelb (Alternative: Szene A)",
   "offen": "Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."
  },
  {
@@ -23,7 +23,7 @@ window.MK_ENTWUERFE = [
   "bild": "k2",
   "alt": "m3",
   "termin": "Mi 21.10.",
-  "format": "Die Frage · B Schwarz mit Icon (Alternative: Modell C)",
+  "format": "Die Frage · B Schwarz mit Zeichen (Alternative: Modell C)",
   "offen": "Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"
  },
  {
@@ -34,9 +34,8 @@ window.MK_ENTWUERFE = [
   "kern": "„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“ – ein komplexes Thema auf eine Skizze bringen.",
   "text": "Ein befreundeter Vorstand hat einem Kollegen einmal beschrieben, wie ich arbeite:\n\n„Er stellt Fragen, zeichnet, dreht das iPad um und sagt: Eigentlich ist es doch so.“\n\nDer Satz trifft ziemlich genau, was in fast jedem meiner Projekte passiert. Komplexe Themen werden in Besprechungen meist mit immer mehr Folien beantwortet. Ich versuche, sie auf eine Skizze zu bringen: wer mit wem zusammenhängt, wo eine Entscheidung entsteht und wo sie stockt.\n\nSobald das Bild auf dem Tisch liegt, ändert sich das Gespräch. Die Leute diskutieren nicht mehr über Formulierungen. Sie zeigen auf eine Stelle und sagen: Genau da hakt es.\n\nProbier es beim nächsten verfahrenen Termin aus. Nimm ein Blatt, zeichne die drei, vier Beteiligten und die Pfeile dazwischen und dreh das Blatt zu deinem Gegenüber. Du wirst merken, wie schnell aus einer Diskussion ein gemeinsames Bild wird.",
   "bild": "s1",
-  "alt": "p3",
   "termin": "Do 22.10.",
-  "format": "Die Szene · B Foto mit einem Satz (Alternative: Satz B)",
+  "format": "Die Szene · B Foto mit einem Satz",
   "offen": "Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"
  },
  {
@@ -47,9 +46,8 @@ window.MK_ENTWUERFE = [
   "kern": "Die Neugründungs-Frage mit drei Unterfragen: Aufgabenzuschnitt, Platz in der Wertschöpfung, Zielgruppen – erst sinnvoll, wenn der Kern im Griff ist.",
   "text": "Wie würdest du deinen Bereich aufbauen, wenn du ihn heute neu gründen würdest?\n\nDie Frage stelle ich in Strategieterminen oft, und sie bringt das Gespräch schnell an die Stellen, über die sonst keiner spricht. Damit sie trägt, brauchst du drei Unterfragen.\n\nWürdest du die Aufgaben noch genauso zuschneiden? Viele Zuständigkeiten sind historisch gewachsen und heute vor allem Schnittstellen.\n\nWürdest du dich an derselben Stelle der Wertschöpfung positionieren? Manches, was der Bereich selbst macht, könnte ein Partner besser, und an anderer Stelle fehlt etwas, das heute niemand verantwortet.\n\nWürdest du dieselben Zielgruppen und Stakeholder bedienen? Oft zeigt sich hier, dass der Bereich auf die Erwartungen von gestern eingestellt ist.\n\nEine Einschränkung gehört dazu. Die Frage funktioniert erst, wenn dein Kern im Griff ist: wenn du dein heutiges Geschäftsmodell erklären kannst und weißt, wen du für Veränderungen brauchst. Vorher entsteht eine Wunschliste.\n\nWenn dein Vorstand von dir erwartet, über den Tellerrand zu denken, fang mit diesen drei Fragen an und schreib zu jeder einen Satz auf, bevor du über Maßnahmen sprichst.",
   "bild": "v4",
-  "alt": "p4",
   "termin": "Mo 26.10.",
-  "format": "Die Szene · A Foto pur (Alternative: Szene C)",
+  "format": "Die Szene · A Foto pur",
   "offen": "Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"
  },
  {

@@ -150,11 +150,37 @@ html, body { width:1080px; background:#fff; }
 .an { position:absolute; z-index:0; pointer-events:none; }
 .an svg { width:100%; height:100%; display:block; }
 .p > *:not(.an) { position:relative; z-index:1; }
-.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage { position:absolute; }
+.p > .namezeile, .p > .fuss, .p > .chat-fuss, .p > .news-frage, .p > .nfuss { position:absolute; }
 .fr-gross { font:700 104px/1.12 "Lora",Georgia,serif; letter-spacing:-.015em; }
 .raster { display:grid; grid-template-columns:repeat(10, 44px); gap:10px 40px; margin-top:48px; }
 .raster svg { width:44px; height:44px; display:block; color:#3a3632; }
 .raster svg.an-ja { color:var(--gelb); }
+
+/* Modell und Nachricht neu (13.10.2026) */
+.wort { font:700 200px/.92 "Lora",Georgia,serif; letter-spacing:-.03em; }
+.wortzeile { display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:end; margin-top:80px; }
+.wortzeile em { font-style:normal; padding-bottom:22px; font:500 34px/1.3 "Poppins",sans-serif; color:#d9d5cf; }
+.wort.hl { color:var(--ink); }
+.icons3 { display:grid; grid-template-columns:1fr 1fr 1.35fr; gap:30px; margin-top:120px; }
+.icons3 div { display:flex; flex-direction:column; gap:30px; }
+.icons3 svg { width:220px; height:220px; stroke-width:1.2; }
+.icons3 b { font:700 50px/1 "Lora",Georgia,serif; }
+.icons3 span { font:500 28px/1.35 "Poppins",sans-serif; }
+.band2 { padding:0; grid-template-rows:1fr 1fr; }
+.band2:target { display:grid; }
+.band2 > div { padding:70px 84px; display:flex; flex-direction:column; justify-content:center; }
+.band2 .oben { background:var(--hell); }
+.band2 .unten { background:var(--gelb); }
+.band2 small { font:700 26px/1 "Poppins",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+.band2 p { margin-top:30px; font:700 74px/1.12 "Lora",Georgia,serif; }
+.band2 .oben p { color:#a8a39c; text-decoration:line-through; text-decoration-thickness:6px; }
+.nachricht { flex-direction:column; }
+.nachricht:target { display:flex; }
+.nz { font:700 30px/1 "Poppins",sans-serif; color:#8a857e; }
+.nfuss { position:absolute; left:84px; right:84px; bottom:90px; font:700 66px/1.1 "Lora",Georgia,serif; color:#fff; }
+.nb1 { margin-top:24px; max-width:720px; padding:34px 40px; border-radius:36px 36px 36px 10px; background:#2b2826; color:#d9d5cf; font:500 40px/1.3 "Poppins",sans-serif; }
+.nzeit { margin-top:90px; font:700 120px/1 "Lora",Georgia,serif; color:var(--gelb); }
+.nb2 { margin-top:28px; align-self:flex-start; padding:48px 58px; border-radius:46px 46px 46px 12px; background:var(--gelb); color:var(--ink); font:700 92px/1.02 "Lora",Georgia,serif; }
 """
 
 
@@ -382,6 +408,38 @@ ersetze("w2", """<section class="p gelbgrund" id="w2">
   <p class="text" style="color:#1a1817;margin-top:60px;font-size:40px;font-weight:600;max-width:560px">Erst diese drei Fragen. Dann die Folie.</p>
   %s
 </section>""" % anschnitt(X, 520, -150, -150, "#1a1817"))
+
+# Modell und Nachricht neu (13.10.2026)
+ersetze("m1", """<section class="p schwarz" id="m1">
+  <p class="k">Was ein Vorstand wissen muss</p>
+  <div style="margin-top:70px">
+    <div class="wortzeile"><p class="wort">Why.</p><em>Warum beschäftigen wir uns damit?</em></div>
+    <div class="wortzeile"><p class="wort">How.</p><em>Wie gehen wir grundsätzlich vor?</em></div>
+    <div class="wortzeile"><p class="wort"><span class="hl" style="padding:0 .08em">Next.</span></p><em>Was ist der nächste Schritt?</em></div>
+  </div>
+  <p class="namezeile">Daniel Ströbel</p>
+</section>""")
+ersetze("m2", """<section class="p gelbgrund" id="m2">
+  <p class="h" style="margin-top:20px">Was jeder Bereich braucht.</p>
+  <div class="icons3">
+    <div>%s<b>Rolle</b><span>Wofür stehen wir?</span></div>
+    <div>%s<b>Richtung</b><span>Wohin wollen wir?</span></div>
+    <div>%s<b>Handwerkszeug</b><span>Wie kommen wir hin?</span></div>
+  </div>
+  %s
+  <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
+</section>""" % (luc("flag"), luc("compass"), luc("wrench"), anschnitt(F, 620, -230, -230, "#1a1817")))
+ersetze("m3", """<section class="p band2" id="m3">
+  <div class="oben"><small>Ohne Zielbild</small><p>Jeder verteidigt sein Thema. Am Ende ein Kompromiss.</p></div>
+  <div class="unten"><small>Mit Zielbild</small><p>Jeder kennt das Warum. Am Ende eine Entscheidung.</p></div>
+</section>""")
+ersetze("c1", """<section class="p schwarz nachricht" id="c1">
+  <p class="nz">14:20 · Anfrage eines Vorstands</p>
+  <div class="nb1">Kannst du dir die Folien bis morgen früh ansehen? Es muss sitzen.</div>
+  <p class="nzeit">22:25</p>
+  <div class="nb2">Passt. Lass es so.</div>
+  <p class="nfuss">Aus vier Folien wurde eine.</p>
+</section>""")
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>

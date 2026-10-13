@@ -10,17 +10,17 @@ import json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "34"  # Versionsnummer für CSS/JS
+V = "35"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
-    25: dict(bild="w2", alt="p1", termin="Di 20.10.", format="Das Werkzeug · B Checkliste Gelb (Alternative: Szene C)",
+    25: dict(bild="w2", alt="v1", termin="Di 20.10.", format="Das Werkzeug · B Checkliste Gelb (Alternative: Szene A)",
              offen="Gibt es eine Vorlage, bei der die drei Fragen bei dir oder einem Kunden etwas gedreht haben? Ein Satz dazu macht ihn stärker."),
-    26: dict(bild="k2", alt="m3", termin="Mi 21.10.", format="Die Frage · B Schwarz mit Icon (Alternative: Modell C)",
+    26: dict(bild="k2", alt="m3", termin="Mi 21.10.", format="Die Frage · B Schwarz mit Zeichen (Alternative: Modell C)",
              offen="Noch ohne eigene Szene, deshalb eher erklärend. Wo hast du zuletzt erlebt, dass eine Strategie auf der Folie steht und im Alltag nichts ändert?"),
-    27: dict(bild="s1", alt="p3", termin="Do 22.10.", format="Die Szene · B Foto mit einem Satz (Alternative: Satz B)",
+    27: dict(bild="s1", termin="Do 22.10.", format="Die Szene · B Foto mit einem Satz",
              offen="Stimmt die Szene so, und darf das Zitat ohne Namen verwendet werden?"),
-    28: dict(bild="v4", alt="p4", termin="Mo 26.10.", format="Die Szene · A Foto pur (Alternative: Szene C)",
+    28: dict(bild="v4", termin="Mo 26.10.", format="Die Szene · A Foto pur",
              offen="Noch ohne eigene Szene. In welchem Termin hat die Neugründungs-Frage zuletzt etwas ausgelöst?"),
     29: dict(bild="p5", termin="Di 27.10.", format="Das Werkzeug · A Liste Schwarz",
              offen="Einziger Beitrag mit Türspalt zum Angebot (letzter Absatz). So lassen oder ohne?"),

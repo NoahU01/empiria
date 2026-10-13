@@ -8,7 +8,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "34"
+V = "35"
 
 THEMEN = [
     ("Baustein 1 · Strategie in den Alltag überführen", "Strategie, die im Alltag ankommt", "Zielbild, Vision und Strategie so klar, dass jeder weiß, wie der Bereich erfolgreich ist und was sein Beitrag ist.",
@@ -31,16 +31,16 @@ THEMEN = [
 TYPEN = [
     ("Die Szene", True, "Ein echter Moment aus deiner Arbeit – und was er über Führung oder Strategie zeigt.", "Kommentare, Profilbesuche",
      "Belegt: persönliche Fotos bis +50 % Engagement (van der Blom 2025); deine Szenen-Postings +70 % Reaktionen gegenüber Thesen.",
-     [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg"), ("C", "Foto als Karte", "p1.jpg")]),
+     [("A", "Foto pur", "v1.jpg"), ("B", "Foto mit einem Satz", "s1.jpg")]),
     ("Der Satz", False, "Ein wörtlicher Satz eines Vorstands oder Kunden – und deine Einordnung.", "Reichweite",
      "Belegt an deinen Zahlen: Satz plus Führungsthema hatte die höchste Reichweite (Median 1.848).",
-     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Porträt mit Satz", "p3.jpg"), ("C", "Die Nachricht", "c1.jpg")]),
+     [("A", "Satzkarte Gelb", "t1.jpg"), ("B", "Die Nachricht", "c1.jpg")]),
     ("Die Frage", False, "Eine Prüffrage, die der Leser für sich beantwortet.", "Kommentare",
      "Einschätzung: Fragen zum Selbsttest regen Kommentare an; nie als Köderfrage am Schluss.",
-     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Icon", "k2.jpg")]),
+     [("A", "Fragekarte Weiß", "k1.jpg"), ("B", "Schwarz mit Zeichen", "k2.jpg")]),
     ("Das Modell", False, "Ein Zusammenhang auf einen Blick, den man speichert.", "Speichern",
      "Einschätzung: Bildbeiträge 5,3 % Engagement (Socialinsider); Speichern gilt als starkes Signal (Branchenbeobachtung).",
-     [("A", "Drei Stufen", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Ohne / Mit", "m3.jpg")]),
+     [("A", "Why · How · Next", "m1.jpg"), ("B", "Drei Icons", "m2.jpg"), ("C", "Ohne / Mit", "m3.jpg")]),
     ("Das Werkzeug", False, "Drei Schritte oder Fragen, die man morgen anwenden kann.", "Speichern",
      "Einschätzung, wie beim Modell.",
      [("A", "Liste Schwarz", "p5.jpg"), ("B", "Checkliste Gelb", "w2.jpg")]),
@@ -106,7 +106,7 @@ MAIN = '''<main class="ak">
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Achse 2</p><h2 class="e2-h2">Die Postingtypen.</h2>
-    <p class="e2-lead">Sieben Typen mit je zwei bis drei Varianten. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
+    <p class="e2-lead">Sieben Typen mit je zwei bis drei Varianten – nur die, die ich selbst stark finde. Das angeschnittene Zeichen zeigt den Baustein: »» Strategie im Alltag, ✕ Komplexe Themen, ○ Geschäftsmodell. Nur die Szene braucht ein Foto von dir – alles andere entsteht aus Schrift, Gelb, Schwarz und den Icons der Homepage. So wechselt das Bild jeden Tag, und man erkennt dich trotzdem.</p></div>
     ''' + typen() + '''
   </div></section>
 
