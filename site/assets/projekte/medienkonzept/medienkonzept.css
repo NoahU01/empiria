@@ -592,3 +592,12 @@ a.mke-platz{text-decoration:none}
 .mke-status--archiv{background:var(--e2-hell);color:var(--e2-ink)}
 .mke-status--archiv::before{content:"✓";margin-right:5px}
 .mke-tag__typ a{color:var(--e2-ink);font-weight:600;text-decoration:none}
+
+/* Übersicht › Was wir posten: Wege im Kasten „Daniel Ströbel“ (14.10.2026) */
+.mk3-wege { display: flex; flex-direction: column; margin-top: auto; border-top: 1px solid #e4e0db; }
+.mk3-wege a { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 1rem; padding: .8rem 0; border-bottom: 1px solid #e4e0db; text-decoration: none; color: #1a1817; }
+.mk3-wege a::after { content: "→"; grid-column: 2; grid-row: 1 / 3; align-self: center; font-weight: 600; transition: transform .2s; }
+.mk3-wege a:hover::after { transform: translateX(3px); }
+.mk3-wege b { font: 600 .98rem/1.3 'Poppins', sans-serif; }
+.mk3-wege span { font-size: .84rem; line-height: 1.4; color: #6b6661; }
+.mk3-wege a:last-child { border-bottom: 0; padding-bottom: 0; }
