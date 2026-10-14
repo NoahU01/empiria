@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=52';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=53';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -12,6 +12,16 @@
   var W = window.MK_WOCHEN || [];
   var STATUS = { entwurf: ['offen', 'Zur Freigabe'], freigegeben: ['frei', 'Freigegeben'], geplant: ['buffer', 'In Buffer'], veroeffentlicht: ['archiv', 'Veröffentlicht'] };
   function status(p) { return STATUS[p.status] || STATUS.entwurf; }
+  // Kennzahlen (Daniel, 14.10.2026): Stand nach 24 Stunden und nach 7 Tagen, täglich aus Buffer gemessen
+  function zahlen(p) {
+    var k = p.kennzahlen || [];
+    if (!k.length) return '';
+    var f = function (n) { return n == null ? '–' : Number(n).toLocaleString('de-DE'); };
+    var h24 = k.filter(function (x) { return x.stunden >= 20; })[0], d7 = k.filter(function (x) { return x.stunden >= 160; })[0], last = k[k.length - 1];
+    return '<p class="mke-zahlen">' + (h24 ? '<span><b>' + f(h24.impressionen) + '</b> nach 24 h</span>' : '<span><b>' + f(last.impressionen) + '</b> nach ' + Math.round(last.stunden) + ' h</span>') +
+      (d7 ? '<span><b>' + f(d7.impressionen) + '</b> nach 7 Tagen</span>' : '') +
+      '<span>' + f(last.reaktionen) + ' Reakt. · ' + f(last.kommentare) + ' Komm.</span></p>';
+  }
   function tag(t) {
     var kopf = '<span class="mke-tag__datum">' + t.tag + '</span>';
     if (t.i != null) {
@@ -19,7 +29,7 @@
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--' + st[0] + '">' + st[1] + '</span></div>' +
         '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
         '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
-        '<p class="mke-tag__typ">' + (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a> · ' : '') + esc(p.format) + '</p></div>';
+        zahlen(p) + '<p class="mke-tag__typ">' + (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a> · ' : '') + esc(p.format) + '</p></div>';
     }
     if (t.plan) {
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--plan">' + (t.plan.interview ? 'Interview mit dir' : 'Zu schreiben') + '</span></div>' +

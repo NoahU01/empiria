@@ -7,6 +7,7 @@ beitraege.json = Export der Supabase-Tabelle beitraege:
     ~/AlwaysOn/supabase/sql.py -c "select id, art, feld, geplant_am, kanal, kernaussage, text, status, bild, linkedin_url
       from beitraege where kanal not ilike '%Firmenprofil%' and status in ('entwurf','freigegeben','geplant','veroeffentlicht')
       and geplant_am >= '2026-10-14' order by geplant_am" > beitraege.json
+Export samt Kennzahlen: ~/AlwaysOn/pruefung/redaktionsplan.py (EXPORT).
 Status-Abfolge: entwurf (Zur Freigabe) → freigegeben → geplant (in Buffer) → veroeffentlicht (Archiv, mit linkedin_url).
 Raster beginnt mit der laufenden Woche; Seite nach jeder Statusänderung neu bauen und pushen.
 """
@@ -15,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "52"  # Versionsnummer für CSS/JS
+V = "53"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -56,7 +57,7 @@ def main(pfad):
         x["url"] = e.get("linkedin_url") or ""
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
                           feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"],
-                          status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], **x))
+                          status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], kennzahlen=e.get("kennzahlen") or [], **x))
     # Wochenraster Mo–Fr: fertiges Posting, geplantes Thema oder kein Posting.
     # Eine Woche wandert als ganze Zeile ins Archiv, sobald alle ihre Postings veröffentlicht sind (Daniel, 13.10.2026).
     TAGE = ["Mo", "Di", "Mi", "Do", "Fr"]
