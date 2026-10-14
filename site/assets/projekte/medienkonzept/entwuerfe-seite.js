@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=55';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=56';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -20,7 +20,7 @@
     var wann = function (h) { return h < 20 ? Math.round(h) + ' h' : 'Tag ' + Math.round(h / 24); };
     return '<p class="mke-zahlen"><span class="mke-zahlen__titel">Impressionen</span>' +
       k.map(function (x) { return '<span><b>' + f(x.impressionen) + '</b> ' + wann(x.stunden) + '</span>'; }).join('') +
-      '<span class="mke-zahlen__rest">' + f(last.reaktionen) + ' Reaktionen · ' + f(last.kommentare) + ' Kommentare</span></p>';
+      '<span class="mke-zahlen__rest">' + f(last.reaktionen) + (last.reaktionen === 1 ? ' Reaktion · ' : ' Reaktionen · ') + f(last.kommentare) + (last.kommentare === 1 ? ' Kommentar' : ' Kommentare') + '</span></p>';
   }
   function tag(t) {
     var kopf = '<span class="mke-tag__datum">' + t.tag + '</span>';
