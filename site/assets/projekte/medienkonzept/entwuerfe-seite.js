@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=53';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=54';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -18,8 +18,8 @@
     if (!k.length) return '';
     var f = function (n) { return n == null ? '–' : Number(n).toLocaleString('de-DE'); };
     var h24 = k.filter(function (x) { return x.stunden >= 20; })[0], d7 = k.filter(function (x) { return x.stunden >= 160; })[0], last = k[k.length - 1];
-    return '<p class="mke-zahlen">' + (h24 ? '<span><b>' + f(h24.impressionen) + '</b> nach 24 h</span>' : '<span><b>' + f(last.impressionen) + '</b> nach ' + Math.round(last.stunden) + ' h</span>') +
-      (d7 ? '<span><b>' + f(d7.impressionen) + '</b> nach 7 Tagen</span>' : '') +
+    return '<p class="mke-zahlen">' + (h24 ? '<span><b>' + f(h24.impressionen) + '</b> Impr. nach 24 h</span>' : '<span><b>' + f(last.impressionen) + '</b> Impr. nach ' + Math.round(last.stunden) + ' h</span>') +
+      (d7 ? '<span><b>' + f(d7.impressionen) + '</b> Impr. nach 7 Tagen</span>' : '') +
       '<span>' + f(last.reaktionen) + ' Reakt. · ' + f(last.kommentare) + ' Komm.</span></p>';
   }
   function tag(t) {
