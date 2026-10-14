@@ -7,13 +7,13 @@ window.MK_ENTWUERFE = [
   "art": "Modell · E Erfolgsmap",
   "kern": "Themenliste 23: Bevor du ein Thema vorantreibst: deine Erfolgsmap.",
   "text": "Dein Thema ist fachlich sauber durchdacht. Und trotzdem kommt es nicht voran.\n\nDas erlebe ich ständig. Und die Reaktion ist fast immer dieselbe: noch eine Analyse, noch eine Berechnung, noch tiefer in die Details.\n\nDamit wirst du nicht erfolgreicher. Fachlich warst du vorher schon gut.\n\nEin Thema bewegt sich, wenn die Menschen, die du dafür brauchst, es wollen. Und jeder davon hat seinen eigenen Blickwinkel, seine eigenen Ziele und seine eigenen Gründe, Ja oder Nein zu sagen.\n\nDer Vorstand schaut auf etwas anderes als der Vertrieb. Der Nachbarbereich fragt sich, was das für ihn bedeutet. Und irgendwo sitzt jemand, an den keiner gedacht hat und an dem das Thema am Ende hängen bleibt.\n\nDeshalb steht bei mir vor jedem Thema die Erfolgsmap:\n\n• An wem richtest du dich mit deinem Bereich aus? Wessen Erwartungen entscheiden, ob du als erfolgreich wahrgenommen wirst?\n• Wen brauchst du, um das Thema durchzubringen?\n• Wen hast du bisher zu wenig beachtet?\n\nUnd dann für jeden auf der Map: Wie schaut er auf das Thema, was will er erreichen, was treibt ihn an?\n\nDaraus ergibt sich deine Taktik. Mit wem sprichst du zuerst, wen holst du vorher ab, welches Argument zählt bei wem?\n\nDas ist bei jedem Thema anders, weil die Menschen andere sind.\n\nLogik und Fachlichkeit allein haben in einer Organisation noch kein Thema durchgebracht. Das machen die Menschen.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-14",
   "bild": "mo5",
   "termin": "Mi 14.10.",
   "format": "Modell · E Erfolgsmap",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7516022669419544578"
  },
  {
   "id": 42,
