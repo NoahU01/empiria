@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=54';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=55';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -12,15 +12,15 @@
   var W = window.MK_WOCHEN || [];
   var STATUS = { entwurf: ['offen', 'Zur Freigabe'], freigegeben: ['frei', 'Freigegeben'], geplant: ['buffer', 'In Buffer'], veroeffentlicht: ['archiv', 'Veröffentlicht'] };
   function status(p) { return STATUS[p.status] || STATUS.entwurf; }
-  // Kennzahlen (Daniel, 14.10.2026): Stand nach 24 Stunden und nach 7 Tagen, täglich aus Buffer gemessen
+  // Kennzahlen (Daniel, 14.10.2026): jeder tägliche Messpunkt der ersten 7 Tage (Impressionen), dazu Reaktionen/Kommentare zuletzt
   function zahlen(p) {
     var k = p.kennzahlen || [];
     if (!k.length) return '';
-    var f = function (n) { return n == null ? '–' : Number(n).toLocaleString('de-DE'); };
-    var h24 = k.filter(function (x) { return x.stunden >= 20; })[0], d7 = k.filter(function (x) { return x.stunden >= 160; })[0], last = k[k.length - 1];
-    return '<p class="mke-zahlen">' + (h24 ? '<span><b>' + f(h24.impressionen) + '</b> Impr. nach 24 h</span>' : '<span><b>' + f(last.impressionen) + '</b> Impr. nach ' + Math.round(last.stunden) + ' h</span>') +
-      (d7 ? '<span><b>' + f(d7.impressionen) + '</b> Impr. nach 7 Tagen</span>' : '') +
-      '<span>' + f(last.reaktionen) + ' Reakt. · ' + f(last.kommentare) + ' Komm.</span></p>';
+    var f = function (n) { return n == null ? '–' : Number(n).toLocaleString('de-DE'); }, last = k[k.length - 1];
+    var wann = function (h) { return h < 20 ? Math.round(h) + ' h' : 'Tag ' + Math.round(h / 24); };
+    return '<p class="mke-zahlen"><span class="mke-zahlen__titel">Impressionen</span>' +
+      k.map(function (x) { return '<span><b>' + f(x.impressionen) + '</b> ' + wann(x.stunden) + '</span>'; }).join('') +
+      '<span class="mke-zahlen__rest">' + f(last.reaktionen) + ' Reaktionen · ' + f(last.kommentare) + ' Kommentare</span></p>';
   }
   function tag(t) {
     var kopf = '<span class="mke-tag__datum">' + t.tag + '</span>';
