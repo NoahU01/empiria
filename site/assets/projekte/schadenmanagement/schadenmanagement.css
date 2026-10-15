@@ -446,3 +446,8 @@
 .sm-bk--dunkel .sm-mehr { color: #d8d3cc; }
 .sm-bk--dunkel .sm-mehr:hover { color: #fff; }
 .sm-hg h3.sm-hg__abschnitt { margin: 1.6rem 0 .6rem !important; }
+
+/* ===== Variante 4 · Poster (Hochformat, druckfertige Vektorgrafik) ===== */
+.sm-v4 { padding: 0 0 6rem; }
+.sm-poster-rahmen { max-width: 850px; margin: 0 auto; border: 1px solid var(--e2-linie); border-radius: 6px; overflow: hidden; box-shadow: 0 24px 60px -30px rgba(26,24,23,.35); background: #fff; }
+.sm-poster-svg { display: block; width: 100%; height: auto; }
