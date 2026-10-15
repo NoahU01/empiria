@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=14">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=16">
 </head>
 <body class="e2">
 
@@ -712,6 +712,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <div class="sm-schalter" role="group" aria-label="Darstellung wählen">
         <button type="button" data-v="1" aria-pressed="true"><b>1</b>Alle Fakten</button>
         <button type="button" data-v="2" aria-pressed="false"><b>2</b>Das Bild</button>
+        <button type="button" data-v="3" aria-pressed="false"><b>3</b>Infografik</button>
       </div>
     </div></section>
 
@@ -1030,6 +1031,117 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   </div>
 
+  <!-- ======================= Variante 3 · Infografik ======================= -->
+  <div class="sm-v sm-v3" data-variante="3" hidden><div class="e2-wrap"><div class="ig">
+
+    <div class="ig-legende" aria-label="Farblegende">
+      <span><i class="ig-l--schwarz"></i>nicht verhandelbar</span>
+      <span><i class="ig-l--gelb"></i>hier wirkt das Schadenmanagement</span>
+      <span><i class="ig-l--weiss"></i>Sachverhalt</span>
+    </div>
+
+    <!-- 01 Geschäftsmodell -->
+    <section class="ig-station">
+      <p class="ig-marke"><span>01</span>Das Geschäftsmodell eines Versicherers</p>
+      <div class="ig-basis">
+        <small>Die Basis von allem</small>
+        <b>Risikoausgleich im Kollektiv und in der Zeit.</b>
+        <span>berechnet &middot; vertraglich geregelt &middot; erfüllbar im Normal- und im Extremjahr</span>
+        <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-risiko">Was ist ein Risiko?</button><button type="button" class="sm-mehr" data-hg="hg-versicherung">Was ist Versicherung?</button></div>
+      </div>
+      <div class="ig-zweig" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="ig-drei ig-kette">
+        <div class="ig-karte"><small>Risikotransfer</small><h4>Übernehmen</h4><p>Viele einzelne Risiken werden ein Kollektiv. Das Versprechen steht.</p><button type="button" class="sm-mehr" data-hg="hg-transfer">Mehr dazu</button></div>
+        <div class="ig-karte"><small>Risikotransformation</small><h4>Ausgleichen</h4><p>Das Gesamtrisiko steuern – Rückstellungen, Rückversicherung, Kapitalanlage.</p><button type="button" class="sm-mehr" data-hg="hg-transformation">Mehr dazu</button></div>
+        <div class="ig-karte ig-karte--gelb"><small>Schadenkompensation</small><h4>Einlösen</h4><p>Im Schadenfall wird das Versprechen eingelöst. Hier liegt das Projekt.</p><button type="button" class="sm-mehr" data-hg="hg-kompensation">Mehr dazu</button></div>
+      </div>
+    </section>
+
+    <div class="ig-verbinder"><span>Aus dem Einlösen folgt die Grundregel</span></div>
+
+    <!-- 02 Grundregel als Karte -->
+    <section class="ig-station">
+      <p class="ig-marke"><span>02</span>Die Grundregel</p>
+      <div class="ig-post">
+        <div class="ig-post__kopf"><span class="ig-post__zeichen">§</span><span><b>Selbstverständnis</b><small>nicht verhandelbar</small></span></div>
+        <div class="ig-post__mitte"><b>Entschädigt wird, was vereinbart ist.</b></div>
+        <ol class="ig-post__fuss">
+          <li><i>1</i>Das Versprechen hält.</li>
+          <li><i>2</i>Es ist fair für alle.</li>
+          <li><i>3</i>Die BaFin achtet darauf.</li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="ig-verbinder"><span>Daraus folgen drei Oberziele – und die Fragen dazu</span></div>
+
+    <!-- 03 Oberziele mit Vorhang und Fragen -->
+    <section class="ig-station">
+      <p class="ig-marke"><span>03</span>Drei Oberziele</p>
+      <div class="ig-buehne">
+        <p class="ig-buehne__l1">Vor dem Vorhang <span>sehen Kunde und Vertrieb</span></p>
+        <p class="ig-buehne__l2">Hinter dem Vorhang <span>intern</span></p>
+        <div class="ig-buehne__vorhang" aria-hidden="true"><span>Der Vorhang</span></div>
+
+        <div class="ig-ziel ig-ziel--kunde">
+          <h4>Kundenorientierung</h4>
+          <svg class="ig-grafik" viewBox="0 0 300 200" role="img" aria-label="Dreieck der Kundenzufriedenheit: Erstattungsumfang, Schnelligkeit, Transparenz">
+            <polygon points="150,34 46,162 254,162" fill="#fff400" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="150" cy="34" r="6" fill="#1a1817"/><circle cx="46" cy="162" r="6" fill="#1a1817"/><circle cx="254" cy="162" r="6" fill="#1a1817"/>
+            <text x="150" y="20" text-anchor="middle" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="#1a1817">Erstattungsumfang</text>
+            <text x="20" y="190" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="#1a1817">Schnelligkeit</text>
+            <text x="280" y="190" text-anchor="end" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="#1a1817">Transparenz</text>
+            <text x="150" y="122" text-anchor="middle" font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1a1817">Kunden-</text>
+            <text x="150" y="139" text-anchor="middle" font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1a1817">zufriedenheit</text>
+          </svg>
+          <p class="ig-frage"><i>?</i>Was nimmt der Kunde wahr – und wie schnell schaffen wir Gewissheit?</p>
+        </div>
+
+        <div class="ig-ziel ig-ziel--schaden">
+          <h4>Schadenkosten</h4>
+          <svg class="ig-grafik ig-grafik--breit" viewBox="0 0 352 200" role="img" aria-label="Risikotreppe: Vermeiden, Vermindern, Begrenzen, Selbst tragen oder versichern – beim Begrenzen hat das Schadenmanagement den größten Hebel">
+            <text x="0" y="12" font-family="Poppins, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" fill="#6f6a64">GESAMTRISIKO</text>
+            <g stroke="#1a1817" stroke-width="2">
+              <rect x="1" y="24" width="76" height="130" rx="6" fill="#fff"/>
+              <rect x="92" y="56" width="76" height="98" rx="6" fill="#fff"/>
+              <rect x="183" y="88" width="76" height="66" rx="6" fill="#fff400"/>
+              <rect x="274" y="118" width="76" height="36" rx="6" fill="#fff"/>
+            </g>
+            <g font-family="Poppins, sans-serif" font-size="12.5" font-weight="700" fill="#1a1817" text-anchor="middle">
+              <text x="39" y="176">Vermeiden</text><text x="130" y="176">Vermindern</text><text x="221" y="176">Begrenzen</text><text x="312" y="176">Tragen /</text><text x="312" y="192">versichern</text>
+            </g>
+          </svg>
+          <p class="ig-frage"><i>?</i>Was davon kann das Schadenmanagement aktiv beeinflussen?</p>
+        </div>
+
+        <div class="ig-ziel ig-ziel--prozess">
+          <h4>Prozesskosten</h4>
+          <div class="ig-tags"><span>Automatisierung</span><span>KI</span><span>Abläufe</span><span>Zuständigkeiten</span><span>Schnittstellen</span><span>Summengrenzen</span><span>Gutachter</span><span>Drohnen &amp; Satellit</span></div>
+          <p class="ig-frage"><i>?</i>Wie arbeiten wir eigentlich?</p>
+        </div>
+
+        <div class="ig-zg ig-zg--vorne"><small>Zielgruppen</small><b>Kunde &middot; Vertrieb &middot; Vertriebsvorstand</b></div>
+        <div class="ig-zg ig-zg--hinten"><small>Zielgruppen</small><b>Vorstand &middot; Controlling</b></div>
+      </div>
+    </section>
+
+    <div class="ig-verbinder"><span>Für diese Zielgruppen gründen wir das Schadenmanagement neu</span></div>
+
+    <!-- 04 Zielbild -->
+    <section class="ig-station">
+      <p class="ig-marke"><span>04</span>Das Zielbild – als würden wir es morgen als eigenes Unternehmen gründen</p>
+      <div class="ig-drei ig-kette">
+        <div class="ig-karte"><small>Wofür stehen wir?</small><h4>Selbstverständnis</h4><p>Auf dem Fundament der Grundregel – für die Zielgruppen vor und hinter dem Vorhang.</p></div>
+        <div class="ig-karte"><small>Wie wollen wir wahrgenommen werden?</small><h4>Vision</h4><p>Zukünftiges Geschäfts- und Organisationsmodell: Hauptabteilung oder GmbH?</p></div>
+        <div class="ig-karte ig-karte--gelb"><small>Welches Problem lösen wir?</small><h4>Positionierung &amp; Pitch</h4>
+          <div class="ig-browser" aria-hidden="true"><span class="ig-browser__leiste"><i></i><i></i><i></i></span><span class="ig-browser__kopf"></span><span class="ig-browser__zeile"></span><span class="ig-browser__zeile ig-browser__zeile--kurz"></span></div>
+          <p>Der Test: Wie sieht die Homepage deiner Abteilung aus?</p></div>
+      </div>
+      <div class="sm-mehr-zeile ig-mitte"><button type="button" class="sm-mehr" data-hg="hg-strategiemodell">Der Weg: unser Strategiemodell</button></div>
+    </section>
+
+  </div></div></div>
+
   <dialog class="sm-hg" id="hg-risiko" aria-labelledby="hg-risiko-t">
     <div class="sm-hg__kopf"><div><p class="e2-kicker">Hintergrund</p><h2 id="hg-risiko-t">Risiko</h2></div><button type="button" class="sm-hg__zu" aria-label="Schließen">&times;</button></div>
     <div class="sm-hg__inhalt">
@@ -1259,10 +1371,11 @@ document.querySelectorAll('.sm-hg').forEach(function (d) {
   function zeige(v, merken) {
     document.querySelectorAll('.sm-v').forEach(function (el) { el.hidden = el.dataset.variante !== v; });
     knoepfe.forEach(function (k) { k.setAttribute('aria-pressed', k.dataset.v === v ? 'true' : 'false'); });
-    if (merken) history.replaceState(null, '', v === '2' ? '#bild' : location.pathname + location.search);
+    if (merken) history.replaceState(null, '', v === '2' ? '#bild' : v === '3' ? '#infografik' : location.pathname + location.search);
   }
   knoepfe.forEach(function (k) { k.addEventListener('click', function () { zeige(k.dataset.v, true); }); });
   if (location.hash === '#bild') zeige('2', false);
+  if (location.hash === '#infografik') zeige('3', false);
 })();
 </script>
 

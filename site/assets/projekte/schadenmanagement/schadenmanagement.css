@@ -232,3 +232,125 @@
 .sm-mehr-zeile--gelb .sm-mehr { color: var(--e2-ink); }
 @media (max-width: 900px) { .sm-reihe--2 { grid-template-columns: 1fr; } }
 .sm-bk small { padding-right: 2.2rem; }
+
+/* ===== Variante 3 · Infografik auf Weiß =====
+   Farben mit Funktion: Schwarz = nicht verhandelbar, Gelb = hier wirkt das
+   Schadenmanagement, Weiß mit Rand = Sachverhalt. Verbindungslinien zeigen,
+   was woraus hervorgeht; keine Flächenwechsel, keine großen Zwischenüberschriften. */
+.sm-v3 { padding: 0 0 6rem; }
+.ig { max-width: 62rem; margin: 0 auto; }
+.ig h4 { margin: 0; font-family: var(--font-serif); font-size: 1.22rem; line-height: 1.2; }
+.e2 .ig p { margin: 0; }
+
+.ig-legende { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; justify-content: center; margin-bottom: 2.6rem; font-size: .8rem; color: var(--e2-grau); }
+.ig-legende i { display: inline-block; width: .9rem; height: .9rem; margin-right: .45rem; vertical-align: -2px; border-radius: 3px; }
+.ig-l--schwarz { background: var(--e2-ink); }
+.ig-l--gelb { background: var(--e2-gelb); box-shadow: inset 0 0 0 1.5px var(--e2-ink); }
+.ig-l--weiss { background: #fff; box-shadow: inset 0 0 0 1.5px #cfcac3; }
+
+.ig-marke { display: flex; align-items: center; justify-content: center; gap: .6rem; margin: 0 0 1.2rem !important; font-size: .74rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; text-align: center; }
+.ig-marke span { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-size: .74rem; letter-spacing: 0; flex: none; }
+
+/* Verbinder zwischen den Stationen */
+.ig-verbinder { position: relative; display: flex; justify-content: center; padding: 2.6rem 0; }
+.ig-verbinder::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px solid var(--e2-ink); }
+.ig-verbinder::after { content: ""; position: absolute; left: 50%; bottom: -2px; transform: translateX(-50%); border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid var(--e2-ink); }
+.ig-verbinder span { position: relative; padding: .4rem .9rem; border: 1.5px solid var(--e2-ink); border-radius: 999px; background: #fff; font-size: .8rem; font-weight: 600; text-align: center; max-width: 90%; }
+
+/* Basis (schwarz) und Verzweigung */
+.ig-basis { display: grid; justify-items: center; gap: .4rem; max-width: 40rem; margin: 0 auto; padding: 1.6rem 1.8rem; border-radius: 16px; background: var(--e2-ink); color: #fff; text-align: center; }
+.ig-basis small { font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--e2-gelb); }
+.ig-basis b { font-family: var(--font-serif); font-size: clamp(1.3rem, 2.4vw, 1.65rem); line-height: 1.2; }
+.ig-basis > span { font-size: .85rem; color: #d8d3cc; }
+.ig-basis .sm-mehr-zeile { justify-content: center; margin-top: .4rem; }
+.ig-basis .sm-mehr { color: #d8d3cc; }
+.ig-basis .sm-mehr:hover { color: #fff; }
+.ig-zweig { position: relative; height: 2.6rem; }
+.ig-zweig::before { content: ""; position: absolute; left: 50%; top: 0; height: 1.3rem; border-left: 2px solid var(--e2-ink); }
+.ig-zweig::after { content: ""; position: absolute; left: 16.66%; right: 16.66%; top: 1.3rem; border-top: 2px solid var(--e2-ink); }
+.ig-zweig i { position: absolute; top: 1.3rem; height: 1.3rem; border-left: 2px solid var(--e2-ink); }
+.ig-zweig i:nth-child(1) { left: 16.66%; } .ig-zweig i:nth-child(2) { left: 50%; } .ig-zweig i:nth-child(3) { left: calc(83.33% - 2px); }
+
+/* Karten */
+.ig-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+.ig-karte { position: relative; display: flex; flex-direction: column; gap: .45rem; padding: 1.3rem 1.3rem 1.2rem; border: 1.5px solid #cfcac3; border-radius: 14px; background: #fff; }
+.ig-karte small { font-size: .68rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--e2-grau); }
+.e2 .ig-karte p { font-size: .87rem; line-height: 1.5; color: var(--e2-ink-2); }
+.ig-karte .sm-mehr { margin-top: auto; padding-top: .4rem; align-self: flex-start; }
+.ig-karte--gelb { background: var(--e2-gelb); border-color: var(--e2-ink); }
+.ig-karte--gelb small, .ig-karte--gelb .sm-mehr { color: var(--e2-ink); }
+.e2 .ig-karte--gelb p { color: var(--e2-ink); }
+.ig-karte--schwarz { background: var(--e2-ink); border-color: var(--e2-ink); color: #fff; }
+.ig-karte--schwarz small { color: var(--e2-gelb); }
+.ig-karte--schwarz h4 { color: #fff; }
+.e2 .ig-karte--schwarz p { color: #d8d3cc; }
+.ig-kette .ig-karte + .ig-karte::before { content: ""; position: absolute; left: -1.25rem; top: 50%; width: .7rem; height: .7rem; border-top: 2px solid var(--e2-ink); border-right: 2px solid var(--e2-ink); transform: translateY(-50%) rotate(45deg); }
+
+/* Grundregel als Social-Media-Karte: weißer Kopf, schwarze Mitte, weißer Fuß */
+.ig-post { max-width: 30rem; margin: 0 auto; border: 1.5px solid var(--e2-ink); border-radius: 16px; overflow: hidden; background: #fff; }
+.ig-post__kopf { display: flex; align-items: center; gap: .7rem; padding: .85rem 1.1rem; }
+.ig-post__zeichen { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--e2-gelb); font-weight: 700; }
+.ig-post__kopf b { display: block; font-size: .88rem; }
+.ig-post__kopf small { display: block; font-size: .74rem; color: var(--e2-grau); }
+.ig-post__mitte { padding: 2.4rem 1.8rem; background: var(--e2-ink); color: #fff; }
+.ig-post__mitte b { display: block; font-family: var(--font-serif); font-size: clamp(1.7rem, 3.4vw, 2.3rem); line-height: 1.12; }
+.ig-post__fuss { list-style: none; margin: 0; padding: .9rem 1.1rem; display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: .5rem; }
+.ig-post__fuss li { display: flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 600; }
+.ig-post__fuss i { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-style: normal; font-size: .68rem; }
+
+/* Bühne: Oberziele mit Vorhang, Fragen und Zielgruppen */
+.ig-buehne { display: grid; grid-template-columns: minmax(0, 1fr) 2.4rem minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "l1 . l2 l2" "kunde vorhang schaden prozess" "zgv vorhang zgh zgh"; column-gap: 1rem; row-gap: .8rem; }
+.ig-buehne__l1, .ig-buehne__l2 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.ig-buehne__l1 span, .ig-buehne__l2 span { font-weight: 500; letter-spacing: .02em; text-transform: none; color: var(--e2-grau); }
+.ig-buehne__l1 { grid-area: l1; } .ig-buehne__l2 { grid-area: l2; }
+.ig-buehne__vorhang { grid-area: vorhang; position: relative; display: flex; justify-content: center; }
+.ig-buehne__vorhang::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 2px dashed var(--e2-ink); }
+.ig-buehne__vorhang span { position: relative; align-self: center; writing-mode: vertical-rl; transform: rotate(180deg); padding: .7rem 0; background: #fff; font-size: .64rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.ig-ziel { display: flex; flex-direction: column; border: 1.5px solid #cfcac3; border-radius: 14px; overflow: hidden; background: #fff; }
+.ig-ziel h4 { padding: 1.1rem 1.2rem 0; }
+.ig-ziel--kunde { grid-area: kunde; } .ig-ziel--schaden { grid-area: schaden; } .ig-ziel--prozess { grid-area: prozess; }
+.ig-grafik { display: block; width: 100%; max-width: 15rem; height: auto; margin: 1rem auto .9rem; padding: 0 1rem; box-sizing: content-box; }
+.ig-tags { display: flex; flex-wrap: wrap; align-content: center; gap: .4rem; flex: 1; padding: 1rem 1.2rem; }
+.ig-tags span { padding: .32rem .7rem; border-radius: 999px; background: var(--e2-hell); font-size: .8rem; font-weight: 600; }
+.ig-frage { display: flex; gap: .6rem; align-items: flex-start; margin-top: auto !important; padding: .85rem 1.2rem; border-top: 1.5px solid #cfcac3; font-size: .85rem !important; font-weight: 600; line-height: 1.4; }
+.ig-frage i { display: grid; place-items: center; flex: none; width: 1.35rem; height: 1.35rem; border-radius: 50%; background: var(--e2-ink); color: #fff; font-style: normal; font-size: .75rem; }
+.ig-zg { position: relative; margin-top: 1.4rem; padding: .8rem 1rem; border: 1.5px solid var(--e2-ink); border-radius: 12px; text-align: center; }
+.ig-zg::before { content: ""; position: absolute; left: 50%; top: -1.45rem; height: 1.3rem; border-left: 2px solid var(--e2-ink); }
+.ig-zg small { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.ig-zg b { display: block; margin-top: .2rem; font-size: .92rem; }
+.ig-zg--vorne { grid-area: zgv; } .ig-zg--hinten { grid-area: zgh; }
+
+/* Homepage-Skizze im Pitch */
+.ig-browser { display: grid; gap: .35rem; margin: .4rem 0 .2rem; padding: .5rem; border-radius: 8px; background: #fff; }
+.ig-browser__leiste { display: flex; gap: .25rem; }
+.ig-browser__leiste i { width: .4rem; height: .4rem; border-radius: 50%; background: #cfcac3; }
+.ig-browser__kopf { height: 1.6rem; border-radius: 4px; background: var(--e2-gelb); }
+.ig-browser__zeile { height: .35rem; border-radius: 2px; background: #e7e4df; }
+.ig-browser__zeile--kurz { width: 60%; }
+.ig-mitte { justify-content: center; margin-top: 1.2rem; }
+
+@media (max-width: 900px) {
+  .ig-drei { grid-template-columns: 1fr; gap: 1.6rem; }
+  .ig-kette .ig-karte + .ig-karte::before { left: 50%; top: -1.15rem; transform: translateX(-50%) rotate(135deg); }
+  .ig-zweig { display: none; }
+  .ig-basis { margin-bottom: 1.6rem; }
+  .ig-buehne { grid-template-columns: 1fr; grid-template-areas: "l1" "kunde" "zgv" "vorhang" "l2" "schaden" "prozess" "zgh"; }
+  .ig-buehne__vorhang { height: 2.6rem; }
+  .ig-buehne__vorhang::before { top: 50%; bottom: auto; left: 0; right: 0; border-left: 0; border-top: 2px dashed var(--e2-ink); }
+  .ig-buehne__vorhang span { writing-mode: horizontal-tb; transform: none; padding: 0 .8rem; }
+  .ig-zg { margin-top: .4rem; }
+  .ig-zg::before { display: none; }
+}
+@media (max-width: 640px) {
+  .sm-v3 .e2-wrap { padding: 0 1rem; }
+  .ig-post__fuss { grid-template-columns: 1fr; }
+  .sm-schalter { flex-wrap: wrap; border-radius: 22px; }
+}
+.ig-grafik--breit { max-width: 17rem; }
+.ig-post { max-width: 32rem; }
+.ig-post__fuss { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: stretch; gap: .6rem; padding: 1rem 1.1rem; }
+.ig-post__fuss li { flex-direction: column; gap: .35rem; text-align: center; font-size: .8rem; line-height: 1.3; }
+.ig-karte--gelb .ig-browser { background: var(--e2-ink); }
+.ig-karte--gelb .ig-browser__leiste i { background: #6f6a64; }
+.ig-karte--gelb .ig-browser__zeile { background: #3d3a37; }
+@media (max-width: 640px) { .ig-post__fuss { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
