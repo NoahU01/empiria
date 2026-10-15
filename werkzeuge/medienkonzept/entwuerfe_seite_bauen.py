@@ -28,6 +28,7 @@ EXTRA = {
     41: dict(bild="mo5", termin="Mi 14.10.", format="Modell · E Erfolgsmap", offen=""),
     42: dict(bild="rp07", termin="Do 15.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
     66: dict(bild="rp09", termin="Sa 17.10.", format="Weitergedacht · Gelbe Satzkarte mit Kreis", offen=""),
+    68: dict(bild="rp11", termin="Sa 24.10.", format="Weitergedacht · Gelbe Satzkarte", offen="Aktuelles Erlebnis – im Text steht „letzte Woche“."),
     67: dict(bild="rp10", termin="So 18.10.", format="Satz · B Anführungszeichen", offen=""),
     43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen=""),
 }
@@ -44,7 +45,6 @@ PLAN = [  # Mischung je Woche (Daniel, 13.10.2026): höchstens drei Kern, eins P
     ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
     ("KW 45", "Do 05.11.", "Person · London: Wer Vertrauen verspielt, ist raus aus dem Markt", "Du als Person · Foto"),
     ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
-    ("KW 43", "Sa 24.10.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
     ("KW 43", "So 25.10.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
     ("KW 44", "Sa 31.10.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
     ("KW 44", "So 01.11.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
