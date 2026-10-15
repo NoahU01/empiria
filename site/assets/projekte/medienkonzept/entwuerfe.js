@@ -31,14 +31,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · F Foto mit Verlauf und Wort",
   "kern": "Themenliste 02: Gibt der Vorstand kein Zielbild vor, ist das deine Chance.",
   "text": "Dein Vorstand gibt kein Zielbild für deinen Bereich vor? Sei froh. Das ist deine Chance.\n\nDamit hast du die Freiheit, deinen Bereich so aufzustellen, dass er erfolgreich sein kann. Genau dafür trägst du als Bereichsleiter die Verantwortung.\n\nWer jetzt auf Vorgaben von oben wartet, lässt diese Freiheit liegen.\n\nEin wohlklingender Satz auf einer Folie hilft dabei niemandem. Ein Zielbild beschreibt das Geschäftsmodell deines Bereichs, und zwar so klar, dass jeder deiner Mitarbeiter es erklären kann:\n\n• Für wen arbeiten wir, und welchen Mehrwert liefern wir?\n• Woran wird gemessen, ob wir erfolgreich sind?\n• Wie müssen wir in Zukunft funktionieren? Die beste Frage dafür: Wie würdest du deinen Bereich heute neu gründen?\n• Und was ist mein eigener Beitrag dazu?\n\nSteht das, ergibt sich die Strategie fast von allein. Sie ist die Verbindung zwischen heute und diesem Bild.\n\nOb ein Bereich ein echtes Zielbild hat, merke ich meist in den ersten Minuten eines Termins. Die Leute leiten ihr Thema aus dem Gesamtbild ab: warum wir heute hier sind, wo es hingehen soll, mit welchem Ergebnis wir rausgehen.\n\nGeht es um Optionen, argumentieren sie sauber und einigen sich nicht am Ende auf einen Kompromiss.\n\nUnd sie sind spürbar motivierter, weil alles, woran sie arbeiten, einen Sinn hat.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-15",
   "kennzahlen": [],
   "bild": "rp07",
   "termin": "Do 15.10.",
   "format": "Szene · F Foto mit Verlauf und Wort",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7516385015522283521"
  },
  {
   "id": 40,
