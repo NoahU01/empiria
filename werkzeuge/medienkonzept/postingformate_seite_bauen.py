@@ -55,12 +55,14 @@ TYPEN = [
      [("A", "Titel Weiß", "d1.jpg"), ("B", "Titel Gelb", "dk2.jpg"), ("C", "Titel Schwarz", "dk3.jpg"), ("D", "Titel mit Foto", "dk4.jpg"), ("E", "Titel mit großer Zahl", "dk5.jpg"), ("", "Innenseite Weiß", "d2.jpg"), ("", "Innenseite Schwarz", "d4.jpg"), ("", "Innenseite Gelb", "d5.jpg")]),
 ]
 
-WOCHE = [
-    ("Mo", "Die Frage", "nein"),
-    ("Di", "Die Szene", "ja"),
+WOCHE = [  # 7-Tage-Rhythmus (Daniel, 15.10.2026)
+    ("Mo", "Die Frage – Strategie im Alltag oder Geschäftsmodell, im Wechsel", "nein"),
+    ("Di", "Die Szene – Komplexe Themen, Entscheidungen, Vertrieb", "ja"),
     ("Mi", "Das Modell oder Das Werkzeug", "nein"),
-    ("Do", "Der Satz mit Porträt oder „Du als Person“", "ja"),
-    ("Fr", "Eingeordnet – alle zwei Wochen Zum Mitnehmen", "nein"),
+    ("Do", "Geschichte aus der Praxis – aus deinem Vorrat", "meist ja"),
+    ("Fr", "Eingeordnet: Studie oder Analyse – im Wechsel mit Werkstatt oder Zum Mitnehmen", "nein"),
+    ("Sa", "Weitergedacht: Impuls über den Tellerrand – „Was wäre, wenn …?“", "nein"),
+    ("So", "Aufgegriffen: deine Stellung zu einer Stimme der Woche – Interview, Podcast, Panel", "nein"),
 ]
 
 
@@ -97,7 +99,7 @@ MAIN = '''<main class="ak">
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Postingformate</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Postingformate &middot; Vorschlag zur Entscheidung</p>
       <h1>Worüber du sprichst. Und wie es <span class="hl">aussieht.</span></h1>
-      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und acht Postingtypen. Zwei Postings pro Woche zeigen dich im Foto, die übrigen entstehen aus Schrift, Gelb, Schwarz und Icons – so tragen fünf Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
+      <p class="e2-lead">Zwei Achsen für dein persönliches Profil: sieben Themen aus dem Strategiehandwerk und acht Postingtypen. Zwei Postings pro Woche zeigen dich im Foto, die übrigen entstehen aus Schrift, Gelb, Schwarz und Icons – so tragen sieben Postings pro Woche, und es wird nicht eintönig. Jedes Thema kann in jedem Typ erscheinen.</p>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
@@ -114,8 +116,8 @@ MAIN = '''<main class="ak">
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
-    <div class="ak-kopf"><p class="e2-kicker">Die Woche</p><h2 class="e2-h2">Fünf Postings, zwei Fotos.</h2>
-    <p class="e2-lead">Die Themen wandern durch die Woche, damit keins zweimal hintereinander kommt. Start: drei Postings pro Woche, dann fünf.</p></div>
+    <div class="ak-kopf"><p class="e2-kicker">Die Woche</p><h2 class="e2-h2">Sieben Tage, sieben Blickwinkel.</h2>
+    <p class="e2-lead">Seit 15.10. jeden Tag ein Posting. Die Themen wandern durch die Woche, damit keins zweimal hintereinander kommt. Am Wochenende geht der Blick über den Tellerrand und auf das, was andere in der Branche sagen.</p></div>
     ''' + woche() + '''
   </div></section>
 

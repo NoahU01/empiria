@@ -606,3 +606,12 @@ a.mke-platz{text-decoration:none}
 .mke-zahlen b { color: var(--e2-ink); font-weight: 700; }
 .mke-zahlen__titel { flex-basis: 100%; font-weight: 600; color: var(--e2-ink); }
 .mke-zahlen__rest { flex-basis: 100%; }
+/* Redaktionsplan mit 7 Tagen (15.10.2026): breit 7 Spalten, darunter seitlich wischen */
+.mke-tage{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.mke-tag__kopf .mke-status{font-size:.62rem;padding:3px 7px}
+@media (max-width:1100px){
+  .mke-tage{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:27%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .mke-tag{scroll-snap-align:start}
+}
+@media (max-width:700px){ .mke-tage{grid-auto-columns:42%} }
+.mke-tag__kopf{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;min-height:44px}

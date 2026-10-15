@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=56';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=57';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }

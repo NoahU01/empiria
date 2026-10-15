@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "56"  # Versionsnummer für CSS/JS
+V = "57"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -42,6 +42,12 @@ PLAN = [  # Mischung je Woche (Daniel, 13.10.2026): höchstens drei Kern, eins P
     ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
     ("KW 45", "Do 05.11.", "Person · London: Wer Vertrauen verspielt, ist raus aus dem Markt", "Du als Person · Foto"),
     ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
+    ("KW 43", "Sa 24.10.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
+    ("KW 43", "So 25.10.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
+    ("KW 44", "Sa 31.10.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
+    ("KW 44", "So 01.11.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
+    ("KW 45", "Sa 07.11.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
+    ("KW 45", "So 08.11.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
 ]
 
 
@@ -58,9 +64,9 @@ def main(pfad):
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
                           feld=e["feld"], art=e["art"], kern=e["kernaussage"], text=e["text"],
                           status=e.get("status", "entwurf"), datum=e["geplant_am"][:10], kennzahlen=e.get("kennzahlen") or [], **x))
-    # Wochenraster Mo–Fr: fertiges Posting, geplantes Thema oder kein Posting.
+    # Wochenraster Mo–So (seit 15.10.2026 sieben Tage): fertiges Posting, geplantes Thema oder kein Posting.
     # Eine Woche wandert als ganze Zeile ins Archiv, sobald alle ihre Postings veröffentlicht sind (Daniel, 13.10.2026).
-    TAGE = ["Mo", "Di", "Mi", "Do", "Fr"]
+    TAGE = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
     nach_datum = {p["datum"]: i for i, p in enumerate(posts)}
     plan = {}
     for kw, tag, aussage, typ in PLAN:
@@ -73,7 +79,7 @@ def main(pfad):
     wochen, archiv = [], []
     while montag <= letzter:
         tage, im_plan = [], False
-        for n in range(5):
+        for n in range(7):
             d = montag + datetime.timedelta(days=n); k = d.isoformat()
             t = dict(tag="%s %s" % (TAGE[n], d.strftime("%d.%m.")))
             if k in nach_datum:
@@ -82,7 +88,7 @@ def main(pfad):
             elif k in plan:
                 t["plan"] = plan[k]; im_plan = True
             tage.append(t)
-        fr = montag + datetime.timedelta(days=4)
+        fr = montag + datetime.timedelta(days=6)
         w = dict(kw="KW %d" % montag.isocalendar()[1], spanne="%s–%s" % (montag.strftime("%d.%m."), fr.strftime("%d.%m.")), tage=tage)
         if any("i" in t for t in tage) and not im_plan:
             archiv.insert(0, w)                      # neueste Woche oben
@@ -125,12 +131,12 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
-      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Freitag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Sonntag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
-      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Mo bis Fr, 8:30 Uhr über Buffer · ohne Link</p></div></div>
+      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>täglich 8:30 Uhr über Buffer · ohne Link</p></div></div>
       <div class="mke-legende"><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--buffer">In Buffer</span><span class="mke-status mke-status--archiv">Veröffentlicht</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
       <div class="mke-wochen" id="mke-raster"></div>
       <section class="mke-archiv" id="archiv"><h2 class="mke-archiv__kopf">Archiv · veröffentlicht</h2><div id="mke-archiv"></div></section>
