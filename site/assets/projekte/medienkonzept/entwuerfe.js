@@ -83,7 +83,7 @@ window.MK_ENTWUERFE = [
   "kennzahlen": [],
   "bild": "rp09",
   "termin": "Sa 17.10.",
-  "format": "Weitergedacht · Satzkarte mit Kreis",
+  "format": "Weitergedacht · Gelbe Satzkarte mit Kreis",
   "offen": "",
   "url": ""
  },
