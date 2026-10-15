@@ -434,3 +434,15 @@
   .ig-detail__zwei { gap: .6rem; padding-top: 0; }
   .ig-detail__zwei::before, .ig-detail__titel::after { display: none; }
 }
+
+/* Zwei Steuerungsperspektiven in Segment 3 */
+.sm-perspektiven { display: grid; grid-template-columns: 1fr 1fr; margin-top: .5rem; border-top: 1px solid var(--e2-linie); }
+.sm-perspektiven > div { display: grid; gap: .2rem; padding: .8rem 1rem .2rem 0; }
+.sm-perspektiven > div + div { padding-left: 1rem; border-left: 1.5px dashed var(--e2-grau); }
+.sm-perspektiven .sm-mini { margin: 0; }
+.sm-perspektiven b { font-size: .92rem; }
+.sm-k .sm-stich b { color: var(--e2-ink); }
+@media (max-width: 640px) {
+  .sm-perspektiven { grid-template-columns: 1fr; }
+  .sm-perspektiven > div + div { padding-left: 0; border-left: 0; border-top: 1.5px dashed var(--e2-grau); }
+}
