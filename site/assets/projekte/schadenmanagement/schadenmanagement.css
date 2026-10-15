@@ -1,80 +1,119 @@
 /* Schadenmanagement – Arbeitsdokument als Hochformat-Poster.
-   Jedes Segment: Kopf (Nummer, Einordnung, Überschrift), darunter zwei Stränge:
-   links der vollständige Inhalt, rechts die Verdichtung (was wir daraus machen). */
+   Überblickslogik: je Segment ein Kopf, dann Aussage-Bänder (Ebene 1),
+   Kästen nebeneinander (Ebene 2), Stichworte/Chips (Ebene 3).
+   Pfeile zeigen, was woraus hervorgeht. Details klappen auf oder öffnen ein Fenster. */
 
-.sm-poster { padding: 0 0 6rem; }
-.sm-seg { border: 1px solid var(--e2-linie); border-radius: var(--e2-r); background: #fff; overflow: hidden; }
-
-.sm-seg__kopf { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.4rem; align-items: center; padding: 2rem 2.4rem; border-bottom: 1px solid var(--e2-linie); }
-.sm-nr { display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 12px; background: var(--e2-ink); color: var(--e2-gelb); font-weight: 700; font-size: 1.6rem; line-height: 1; }
+.sm-poster { padding: 0 0 7rem; }
+.sm-seg { border: 1px solid var(--e2-linie); border-radius: 22px; background: #fff; padding: 0 0 3rem; }
+.sm-seg__kopf { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.4rem; align-items: center; padding: 2.2rem 2.6rem; margin-bottom: 2.6rem; border-bottom: 1px solid var(--e2-linie); }
+.sm-nr { display: grid; place-items: center; width: 3.8rem; height: 3.8rem; border-radius: 12px; background: var(--e2-ink); color: var(--e2-gelb); font-weight: 700; font-size: 1.7rem; line-height: 1; }
 .sm-seg__kopf .e2-kicker { margin-bottom: .45rem !important; }
-.sm-seg__kopf h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.15; }
+.sm-seg__kopf h2 { margin: 0; font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.12; }
+.sm-seg__inhalt { padding: 0 2.6rem; }
 
-.sm-straenge { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
-.sm-strang { padding: 2.2rem 2.4rem 2.6rem; }
-.sm-strang + .sm-strang { border-left: 1px solid var(--e2-linie); background: var(--e2-hell); }
-.sm-strang__titel { margin: 0 0 1.6rem; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-grau); }
+/* Ebene 1: Aussage-Band */
+.sm-band { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem 2rem; align-items: center; padding: 2rem 2.2rem; border-radius: 16px; background: var(--e2-ink); color: #fff; }
+.sm-band .e2-kicker { color: var(--e2-gelb); margin-bottom: .6rem !important; }
+.sm-band h3 { margin: 0; color: #fff; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.2; }
+.e2 .sm-band p { margin: .5rem 0 0; color: #d8d3cc; font-size: 1rem; }
+.sm-band .sm-mehr-zeile { margin: 0; justify-content: flex-end; }
+.sm-band .sm-mehr { background: transparent; border-color: #fff; color: #fff; }
+.sm-band .sm-mehr::after { background: var(--e2-gelb); color: var(--e2-ink); }
+.sm-band .sm-mehr:hover { background: rgba(255,255,255,.08); }
 
-/* Bausteine im linken Strang */
-.sm-block { border: 1px solid var(--e2-linie); border-radius: 14px; padding: 1.5rem 1.6rem; }
-.sm-block__marke { margin: 0 0 .5rem; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--e2-grau); }
-.sm-block h3 { margin: 0 0 .7rem; font-size: 1.35rem; line-height: 1.25; }
-.e2 .sm-block p { margin: 0 0 .8rem; font-size: 1rem; line-height: 1.6; color: var(--e2-ink-2); }
-.e2 .sm-block p:last-child { margin-bottom: 0; }
+/* Ebene 2: Kästen nebeneinander, am Band angehängt */
+.sm-reihe { display: grid; gap: 1rem; }
+.sm-reihe--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sm-reihe--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sm-anhang { position: relative; margin-top: 1.6rem; }
+.sm-anhang::before { content: attr(data-label); position: absolute; left: 0; top: -1.25rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-kasten { display: flex; flex-direction: column; gap: .5rem; padding: 1.4rem 1.5rem; border: 1.5px solid var(--e2-linie); border-radius: 14px; background: #fff; }
+.sm-kasten h4 { margin: 0; font-family: var(--font-sans); font-size: 1.08rem; font-weight: 700; line-height: 1.3; }
+.e2 .sm-kasten p { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--e2-ink-2); }
 
-.sm-punkte { list-style: none; margin: 1rem 0 0; padding: 0; border-top: 1px solid var(--e2-linie); }
-.sm-punkte li { padding: .8rem 0 .8rem 1.4rem; border-bottom: 1px solid var(--e2-linie); position: relative; font-size: .98rem; line-height: 1.55; color: var(--e2-ink-2); }
-.sm-punkte li::before { content: ""; position: absolute; left: 0; top: 1.3rem; width: .55rem; height: 3px; border-radius: 2px; background: var(--e2-ink); }
-.sm-punkte b { color: var(--e2-ink); }
+/* Pfeil: was woraus hervorgeht */
+.sm-pfeil { display: flex; flex-direction: column; align-items: center; gap: .45rem; padding: 1.2rem 0; text-align: center; }
+.sm-pfeil::before { content: ""; width: 2px; height: 1.6rem; background: var(--e2-ink); }
+.sm-pfeil span { max-width: 34rem; font-size: .9rem; font-weight: 600; line-height: 1.4; }
+.sm-pfeil::after { content: ""; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 10px solid var(--e2-ink); }
 
-.sm-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
-.sm-chips span { padding: .4rem .85rem; border: 1px solid var(--e2-linie); border-radius: 999px; font-size: .88rem; font-weight: 500; }
+/* Entscheidung vor der Annahme */
+.sm-entscheid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: center; padding: 1.5rem 1.8rem; border: 2px solid var(--e2-ink); border-radius: 14px; }
+.sm-entscheid small { display: block; margin-bottom: .3rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-entscheid h3 { margin: 0; font-size: 1.35rem; line-height: 1.25; }
+.sm-chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+.sm-chips span { padding: .38rem .8rem; border: 1px solid var(--e2-linie); border-radius: 999px; background: #fff; font-size: .86rem; font-weight: 500; color: var(--e2-ink); }
 
-/* Übergang: was geht woraus hervor */
-.sm-folge { display: flex; align-items: center; gap: .8rem; margin: .9rem 0 .9rem 1.6rem; padding-left: 1.2rem; border-left: 2px solid var(--e2-ink); min-height: 2.6rem; font-size: .9rem; font-weight: 600; color: var(--e2-ink); }
-
-/* Die drei Schritte */
-.sm-schritte { display: grid; gap: .8rem; }
-.sm-schritt { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 1.1rem; border: 1px solid var(--e2-linie); border-radius: 14px; padding: 1.4rem 1.6rem; }
-.sm-schritt__nr { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 2px solid var(--e2-ink); font-weight: 700; }
-.sm-schritt h3 { margin: .3rem 0 .6rem; font-size: 1.3rem; }
-.e2 .sm-schritt p { margin: 0 0 .7rem; font-size: .98rem; line-height: 1.6; color: var(--e2-ink-2); }
-.e2 .sm-schritt p:last-child { margin-bottom: 0; }
-.sm-schritt .sm-chips span { background: #fff; }
-
-/* Schritt 3: hier setzt das Projekt an */
+/* Die drei Schritte als Ablauf */
+.sm-ablauf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem; }
+.sm-schritt { position: relative; display: flex; flex-direction: column; gap: .6rem; padding: 1.5rem 1.5rem 1.4rem; border: 1.5px solid var(--e2-linie); border-radius: 14px; }
+.sm-schritt + .sm-schritt::before { content: ""; position: absolute; left: -1.75rem; top: 2.15rem; width: 1.3rem; height: 1.3rem; border-top: 2.5px solid var(--e2-ink); border-right: 2.5px solid var(--e2-ink); transform: rotate(45deg); transform-origin: center; }
+.sm-schritt__nr { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px solid var(--e2-ink); font-weight: 700; }
+.sm-schritt h3 { margin: 0; font-size: 1.3rem; }
+.sm-kern { font-size: 1.02rem; font-weight: 600; line-height: 1.4; color: var(--e2-ink); }
+.sm-schritt .sm-fuss { margin-top: auto; display: grid; gap: .7rem; padding-top: .4rem; }
 .sm-schritt--fokus { background: var(--e2-ink); border-color: var(--e2-ink); color: #fff; }
 .sm-schritt--fokus .sm-schritt__nr { background: var(--e2-gelb); border-color: var(--e2-gelb); color: var(--e2-ink); }
-.sm-schritt--fokus h3 { color: #fff; }
-.sm-schritt--fokus p { color: #d8d3cc; }
-.sm-hier { display: inline-block; margin-bottom: .2rem; padding: .3rem .7rem; border-radius: 6px; background: var(--e2-gelb); color: var(--e2-ink); font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.sm-ebenen { display: grid; margin-top: 1.1rem; border-top: 1px solid rgba(255,255,255,.22); }
-.sm-ebene { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 1rem; padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.22); }
-.sm-ebene b { color: #fff; font-size: 1rem; }
-.sm-ebene span { font-size: .93rem; line-height: 1.55; color: #d8d3cc; }
+.sm-schritt--fokus h3, .sm-schritt--fokus .sm-kern { color: #fff; }
+.sm-schritt--fokus .sm-chips span { background: transparent; border-color: rgba(255,255,255,.35); color: #fff; }
+.sm-hier { align-self: flex-start; padding: .28rem .65rem; border-radius: 6px; background: var(--e2-gelb); color: var(--e2-ink); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.sm-schritt__kopf { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
 
-/* Rechter Strang: noch offen */
-.sm-offen { display: grid; gap: .5rem; padding: 1.5rem 1.6rem; border: 2px dashed #cfcac3; border-radius: 14px; color: var(--e2-grau); }
-.sm-offen b { color: var(--e2-ink); font-size: 1.05rem; }
-.sm-offen p { margin: 0; font-size: .95rem; line-height: 1.55; }
+/* Aufklappen */
+.sm-auf summary { display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; list-style: none; font-size: .86rem; font-weight: 600; color: var(--e2-grau); }
+.sm-auf summary::-webkit-details-marker { display: none; }
+.sm-auf summary::before { content: "+"; display: grid; place-items: center; width: 1.2rem; height: 1.2rem; border: 1.5px solid currentColor; border-radius: 50%; font-size: .85rem; line-height: 1; }
+.sm-auf[open] summary::before { content: "–"; }
+.sm-auf summary:hover { color: var(--e2-ink); }
+.sm-auf__text { margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--e2-linie); }
+.e2 .sm-auf__text p { margin: 0 0 .6rem; font-size: .93rem; line-height: 1.6; color: var(--e2-ink-2); }
+.e2 .sm-auf__text p:last-child { margin-bottom: 0; }
+.sm-schritt--fokus .sm-auf summary { color: #d8d3cc; }
+.sm-schritt--fokus .sm-auf summary:hover { color: #fff; }
+.sm-schritt--fokus .sm-auf__text { border-color: rgba(255,255,255,.22); }
+.e2 .sm-schritt--fokus .sm-auf__text p { color: #d8d3cc; }
 
-@media (max-width: 900px) {
-  .sm-straenge { grid-template-columns: 1fr; }
-  .sm-strang + .sm-strang { border-left: 0; border-top: 1px solid var(--e2-linie); }
-}
-@media (max-width: 640px) {
-  .sm-poster .e2-wrap { padding: 0 1rem; }
-  .sm-seg__kopf { padding: 1.4rem 1.2rem; gap: 1rem; }
-  .sm-nr { width: 2.8rem; height: 2.8rem; font-size: 1.3rem; }
-  .sm-strang { padding: 1.6rem 1.2rem 1.8rem; }
-  .sm-block { padding: 1.2rem 1.15rem; }
-  .sm-schritt { grid-template-columns: 1fr; gap: .6rem; padding: 1.2rem 1.15rem; }
-  .sm-folge { margin-left: 1rem; }
-  .sm-ebene { grid-template-columns: 1fr; gap: .3rem; }
-}
+/* Vorhang */
+.sm-lage { display: flex; align-items: baseline; gap: .7rem; margin: 0 0 .8rem; font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.sm-lage span { font-weight: 500; letter-spacing: .04em; text-transform: none; font-size: .88rem; color: var(--e2-grau); }
+.sm-vorhang { position: relative; margin: 1.8rem 0; border-top: 2px dashed var(--e2-ink); }
+.sm-vorhang span { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); padding: .2rem .9rem; background: #fff; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 
-/* Schritt 3: Text auf Schwarz (gegen die allgemeine Absatzregel absichern) */
-.e2 .sm-schritt--fokus p { color: #d8d3cc; }
+/* Oberziel-Kästen */
+.sm-oz { display: flex; flex-direction: column; gap: .9rem; padding: 1.7rem 1.8rem; border: 2px solid var(--e2-ink); border-radius: 16px; }
+.sm-oz__titel small { display: block; margin-bottom: .3rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-oz__titel h3 { margin: 0; font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.2; }
+.e2 .sm-oz__frage { margin: 0; font-size: 1.02rem; font-weight: 600; color: var(--e2-ink); }
+.sm-oz--kunde { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 2rem; align-items: center; }
+.sm-oz--kunde .sm-oz__links { display: flex; flex-direction: column; gap: .9rem; }
+.sm-fragen { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+.sm-fragen li { position: relative; padding-left: 1.3rem; font-size: .96rem; line-height: 1.5; color: var(--e2-ink-2); }
+.sm-fragen li::before { content: ""; position: absolute; left: 0; top: .68rem; width: .55rem; height: 3px; border-radius: 2px; background: var(--e2-ink); }
+
+/* Dreieck der Kundenzufriedenheit */
+.sm-dreieck { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1rem; padding: 1.2rem 1.2rem 1rem; border-radius: 14px; background: var(--e2-hell); }
+.sm-dreieck svg { grid-column: 1 / -1; display: block; width: min(100%, 17rem); height: auto; margin: 0 auto; }
+.sm-ecke b { display: block; font-size: .98rem; }
+.sm-ecke span { display: block; margin-top: .15rem; font-size: .84rem; line-height: 1.45; color: var(--e2-grau); }
+.sm-ecke--oben { grid-column: 1 / -1; text-align: center; max-width: 20rem; margin: 0 auto; }
+.sm-ecke--rechts { text-align: right; }
+
+/* Risikotreppe */
+.sm-treppe { display: grid; gap: .5rem; }
+.sm-treppe__start { display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: .9rem; align-items: center; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-treppe__start i { display: block; height: 10px; border-radius: 3px; background: #b9b3ab; }
+.sm-stufe { display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: .3rem .9rem; padding: .8rem 0; border-top: 1px solid var(--e2-linie); }
+.sm-stufe > b { font-size: 1rem; }
+.sm-stufe__balken { display: block; height: 10px; margin-top: .45rem; border-radius: 3px; background: var(--e2-ink); }
+.sm-stufe__rechts { display: grid; gap: .35rem; }
+.e2 .sm-stufe__rechts p { margin: 0; font-size: .93rem; line-height: 1.5; color: var(--e2-ink-2); }
+.sm-hebel { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .5rem; align-items: start; font-size: .9rem; font-weight: 600; line-height: 1.45; }
+.sm-hebel em { font-style: normal; padding: .15rem .45rem; border-radius: 5px; background: var(--e2-ink); color: var(--e2-gelb); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; margin-top: .1rem; }
+
+/* Stellschrauben Prozesskosten */
+.sm-kacheln { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.sm-kachel { padding: .85rem .95rem; border-radius: 10px; background: var(--e2-hell); font-size: .93rem; font-weight: 600; line-height: 1.35; }
+.sm-kachel small { display: block; margin-top: .2rem; font-weight: 400; font-size: .84rem; color: var(--e2-grau); }
 
 /* Hintergrund-Knöpfe: mehr Futter, aber nicht auf den ersten Blick */
 .sm-mehr-zeile { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
@@ -114,3 +153,38 @@
 }
 .sm-hg__zu:focus-visible, .sm-mehr:focus-visible { outline: 3px solid var(--e2-ink); outline-offset: 2px; }
 .sm-hg__zu:focus:not(:focus-visible) { outline: none; }
+
+
+@media (max-width: 1000px) {
+  .sm-ablauf { grid-template-columns: 1fr; gap: 2rem; }
+  .sm-schritt + .sm-schritt::before { left: 50%; top: -1.45rem; transform: translateX(-50%) rotate(135deg); width: 1rem; height: 1rem; }
+  .sm-oz--kunde { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .sm-reihe--3, .sm-reihe--2 { grid-template-columns: 1fr; }
+  .sm-band, .sm-entscheid { grid-template-columns: 1fr; }
+  .sm-band .sm-mehr-zeile { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .sm-poster .e2-wrap { padding: 0 1rem; }
+  .sm-seg { padding-bottom: 1.6rem; }
+  .sm-seg__kopf { padding: 1.4rem 1.2rem; gap: 1rem; margin-bottom: 1.6rem; }
+  .sm-nr { width: 2.8rem; height: 2.8rem; font-size: 1.3rem; }
+  .sm-seg__inhalt { padding: 0 1rem; }
+  .sm-band { padding: 1.5rem 1.3rem; }
+  .sm-entscheid, .sm-oz { padding: 1.3rem 1.2rem; }
+  .sm-stufe, .sm-treppe__start { grid-template-columns: 1fr; }
+  .sm-kacheln { grid-template-columns: 1fr; }
+  .sm-lage { flex-direction: column; gap: .2rem; }
+  .sm-ecke span { font-size: .8rem; }
+  .sm-hg__kopf { padding: 1.3rem 1.2rem 1rem; }
+  .sm-hg__inhalt { padding: 1.3rem 1.2rem 1.6rem; }
+}
+
+.sm-schritt .sm-chips span { padding: .3rem .65rem; font-size: .8rem; }
+.e2 .sm-hg p.sm-hg__quelle { margin: 1.4rem 0 .7rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-hebel { grid-template-columns: 1fr; gap: .3rem; }
+.sm-hebel em { justify-self: start; }
+@media (max-width: 1100px) {
+  .sm-entscheid { grid-template-columns: 1fr; }
+}
