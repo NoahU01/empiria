@@ -27,6 +27,8 @@ EXTRA = {
     40: dict(bild="rp05", termin="Fr 16.10.", format="Szene · A Foto pur (Flipchart)", offen=""),
     41: dict(bild="mo5", termin="Mi 14.10.", format="Modell · E Erfolgsmap", offen=""),
     42: dict(bild="rp07", termin="Do 15.10.", format="Szene · F Foto mit Verlauf und Wort", offen=""),
+    66: dict(bild="rp09", termin="Sa 17.10.", format="Weitergedacht · Satzkarte mit Kreis", offen=""),
+    67: dict(bild="rp10", termin="So 18.10.", format="Satz · B Anführungszeichen", offen=""),
     43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen=""),
 }
 FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}

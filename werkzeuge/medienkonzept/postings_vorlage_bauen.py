@@ -28,6 +28,7 @@ F, X, O = zeichen_svg("forward"), zeichen_svg("kreuz"), zeichen_svg("kreis")
 CSS = """
 :root { --ink:#1a1817; --ink2:#3d3a37; --gelb:#fff400; --grau:#6b6762; --hell:#f3f1ee; --linie:#e4e0db; }
 * { box-sizing:border-box; margin:0; padding:0; }
+
 html, body { width:1080px; background:#fff; }
 .p { display:none; position:relative; width:1080px; height:1350px; overflow:hidden; font-family:"Poppins",sans-serif; color:var(--ink); background:#fff; padding:84px 84px 0; }
 .p:target { display:block; }
@@ -707,6 +708,13 @@ teile += [
     """<section class="p foto-voll vollbild" id="rp07">%s<div class="verlauf" style="height:60%%"></div><div class="nein-block"><p>Dein Vorstand gibt kein Zielbild vor?</p><b>Chance.</b></div></section>""" % vb("voll-e1.jpg", "35% 40%"),
 ]
 
+# Redaktionsplan Wochenende 17./18.10.2026 (7-Tage-Rhythmus)
+teile += [
+    """<section class="p" id="rp09"><p class="h" style="margin-top:60px;font-size:96px;line-height:1.08;max-width:900px">Die meisten sehen nur die Grenzen, die heute <span class="hl">gesteckt</span> sind.</p>%s%s</section>""" % (anschnitt(O, 700, -220, -190, "#1a1817"), NAME),
+    """<section class="p schwarz" id="rp10"><span class="riesen-anf">„</span>
+  <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— ein Vorstand</p></section>""",
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
@@ -717,3 +725,4 @@ html = """<!doctype html>
 
 open(os.path.join(HIER, "postings-vorlage.html"), "w", encoding="utf-8").write(html)
 print("Vorlage gebaut")
+
