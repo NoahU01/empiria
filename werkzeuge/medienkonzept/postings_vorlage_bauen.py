@@ -712,7 +712,7 @@ teile += [
 teile += [
     """<section class="p gelbgrund" id="rp09"><p class="h" style="margin-top:60px;font-size:96px;line-height:1.24;max-width:900px;color:#1a1817">Die meisten sehen nur die Grenzen, die heute <span class="hl" style="background:#1a1817;color:#fff400">gesteckt</span> sind.</p>%s%s</section>""" % (anschnitt(O, 700, -220, -190, "#1a1817"), NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')),
     """<section class="p schwarz" id="rp10"><span class="riesen-anf">„</span>
-  <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— ein Vorstand</p></section>""",
+  <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— (m)ein Vorstand</p></section>""",
 ]
 
 html = """<!doctype html>
