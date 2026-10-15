@@ -517,3 +517,49 @@ button.v3-karte:has(.v3-karte__nr) h3 { padding-right: 2rem; }
   .sv-dreieck, .sv-kosten { grid-template-columns: 1fr; }
   .sv-dreieck svg { max-width: 16rem; }
 }
+
+/* Variante 1: Grafik im Kasten */
+.sm-grafik { display: grid; place-items: center; padding: .4rem 0; }
+.sm-grafik svg { display: block; width: 100%; max-width: 16rem; height: auto; }
+.sm-k .sm-auf summary { font-size: .8rem; }
+.sm-k .sm-auf { margin-top: .2rem; padding-top: 0; }
+.sm-auf__text .sm-zeilen { border-top: 0; }
+
+/* Fenster: Risikotreppe */
+.rt { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: .8rem; row-gap: .6rem; margin-top: 1.6rem; align-items: end; }
+.e2 .sm-hg p.rt__start, .sm-hg p.rt__start { grid-column: 1 / -1; margin: 0; font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--e2-grau); }
+.rt__stufe { display: flex; flex-direction: column; gap: .45rem; align-self: stretch; justify-content: flex-start; }
+.rt__balken { display: block; border-radius: 8px 8px 0 0; background: var(--e2-hell); border: 2px solid var(--e2-ink); border-bottom: 0; }
+.rt__stufe--1 .rt__balken { height: 9rem; }
+.rt__stufe--2 .rt__balken { height: 7rem; margin-top: 2rem; }
+.rt__stufe--3 .rt__balken { height: 5rem; margin-top: 4rem; background: var(--e2-gelb); }
+.rt__stufe--4 .rt__balken { height: 3rem; margin-top: 6rem; }
+.rt__stufe { border-bottom: 0; }
+.rt__stufe .rt__balken { order: 0; }
+.rt__stufe > b { order: 1; padding-top: .7rem; border-top: 2px solid var(--e2-ink); font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.2; }
+.e2 .sm-hg .rt__stufe p, .sm-hg .rt__stufe p { order: 2; margin: 0; font-size: .86rem; line-height: 1.5; color: var(--e2-ink-2); }
+.rt__hebel { align-self: stretch; padding: .9rem 1rem; border-radius: 12px; border: 1px solid var(--e2-linie); }
+.rt__hebel small { display: block; margin-bottom: .3rem; font-size: .66rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.e2 .sm-hg .rt__hebel p, .sm-hg .rt__hebel p { margin: 0; font-size: .86rem; line-height: 1.5; color: var(--e2-ink); font-weight: 600; }
+.rt__hebel--12 { grid-column: 1 / 3; }
+.rt__hebel--3 { grid-column: 3 / 4; background: var(--e2-gelb); border-color: var(--e2-gelb); }
+.rt__hebel--3 small { color: var(--e2-ink); }
+@media (max-width: 760px) {
+  .rt { grid-template-columns: 1fr; row-gap: 1rem; }
+  .rt__stufe { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); column-gap: .9rem; row-gap: .25rem; }
+  .rt__stufe .rt__balken { grid-row: 1 / span 2; height: 1.4rem !important; margin-top: .2rem !important; border: 2px solid var(--e2-ink); border-radius: 4px; }
+  .rt__stufe--1 .rt__balken { width: 100%; } .rt__stufe--2 .rt__balken { width: 78%; } .rt__stufe--3 .rt__balken { width: 56%; } .rt__stufe--4 .rt__balken { width: 34%; }
+  .rt__stufe > b { padding-top: 0; border-top: 0; }
+  .rt__hebel--12, .rt__hebel--3 { grid-column: 1; }
+}
+/* Risikotreppe als eine durchgehende Treppe */
+.rt { column-gap: 1.2rem; }
+.rt__treppe { grid-column: 1 / -1; display: block; width: 100%; height: 9rem; }
+.rt__stufe > b { border-top: 0; padding-top: .2rem; }
+.rt__hebel--3 { grid-column: 3 / 5; }
+@media (max-width: 760px) {
+  .rt__treppe { height: 6rem; }
+  .rt__stufe { display: flex; }
+  .rt__hebel--3 { grid-column: 1; }
+}
+.sm-b--schwarz .sm-bk .sm-mehr-zeile { margin-top: auto; padding-top: .5rem; }
