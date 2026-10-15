@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "61"  # Versionsnummer für CSS/JS
+V = "62"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -133,12 +133,12 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
-      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Sonntag, jeweils 8:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Sonntag – werktags um 8:30, am Wochenende um 9:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">
     <div class="ig">
-      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>täglich 8:30 Uhr über Buffer · ohne Link</p></div></div>
+      <div class="ig-kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><div><b>Daniel Ströbel</b><p>Persönliches LinkedIn-Profil · Strategie in Wirkung bringen<br>Mo–Fr 8:30, Sa/So 9:30 Uhr über Buffer · ohne Link</p></div></div>
       <div class="mke-legende"><span class="mke-status mke-status--offen">Zur Freigabe</span><span class="mke-status mke-status--frei">Freigegeben</span><span class="mke-status mke-status--buffer">In Buffer</span><span class="mke-status mke-status--archiv">Veröffentlicht</span><span class="mke-status mke-status--plan">Zu schreiben</span><span class="mke-status mke-status--plan">Interview mit dir</span></div>
       <div class="mke-wochen" id="mke-raster"></div>
       <section class="mke-archiv" id="archiv"><h2 class="mke-archiv__kopf">Archiv · veröffentlicht</h2><div id="mke-archiv"></div></section>

@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=61';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=62';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -67,7 +67,7 @@
     $('#mke-bild').innerHTML = p.seiten
       ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
-    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · 8:30 Uhr · ' + status(p)[1];
+    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · ' + (/^(Sa|So)/.test(p.termin) ? '9:30' : '8:30') + ' Uhr · ' + status(p)[1];
     $('#mke-text').textContent = p.text;
     $('#mke-meta').innerHTML = '<dt>Themenfeld</dt><dd>' + p.feld + ' · ' + p.art + '</dd><dt>Format</dt><dd>' + p.format + '</dd>' +
       '<dt>Was bleibt</dt><dd>' + esc(p.kern) + '</dd>' + (p.offen ? '<dt>Noch offen</dt><dd>' + esc(p.offen) + '</dd>' : '');
