@@ -217,3 +217,18 @@
 @media (max-width: 900px) {
   .sm-b__karten--2 { grid-template-columns: 1fr; }
 }
+
+/* Stufen des Strategiemodells in Segment 4 */
+.sm-gruppe__kopf { display: flex; align-items: center; gap: .8rem; margin-bottom: .2rem; }
+.sm-gruppe__nr { display: grid; place-items: center; flex: none; width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 1.5px solid var(--e2-ink); font-size: .9rem; font-weight: 700; }
+.sm-gruppe__kopf .sm-mini { margin-bottom: .15rem; }
+.sm-gruppe__kopf h3 { margin: 0; font-size: 1.25rem; line-height: 1.2; }
+.e2 .sm-gruppe__fundament { margin: .8rem 0 0; font-size: .84rem; color: var(--e2-ink-2); }
+.sm-reihe--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Strategiemodell im Fenster: dunkle Fläche wie auf der Strategie-Seite */
+.sm-hg--modell { width: min(52rem, calc(100vw - 2rem)); }
+.sm-modell { padding: 1rem; border-radius: 14px; background: var(--e2-ink); --font-sans: Poppins, sans-serif; --font-serif: Lora, serif; }
+.sm-modell svg { display: block; width: 100%; height: auto; }
+.sm-mehr-zeile--gelb .sm-mehr { color: var(--e2-ink); }
+@media (max-width: 900px) { .sm-reihe--2 { grid-template-columns: 1fr; } }
+.sm-bk small { padding-right: 2.2rem; }
