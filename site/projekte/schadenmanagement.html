@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=33">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=34">
 </head>
 <body class="e2">
 
@@ -1413,22 +1413,52 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </div>
   </dialog>
 
-  <dialog class="sm-hg" id="hg-selbstverstaendnis" aria-labelledby="hg-selbstverstaendnis-t">
+  <dialog class="sm-hg sm-hg--breit" id="hg-selbstverstaendnis" aria-labelledby="hg-selbstverstaendnis-t">
     <div class="sm-hg__kopf"><div><p class="e2-kicker">Zielbild &middot; wofür stehen wir?</p><h2 id="hg-selbstverstaendnis-t">Unser Selbstverständnis</h2></div><button type="button" class="sm-hg__zu" aria-label="Schließen">&times;</button></div>
     <div class="sm-hg__inhalt">
-      <div class="sm-hg__def"><p>Entschädigt wird, was vereinbart ist.</p><small>Darüber gibt es keine Diskussion – und das transportieren wir mit völligem Selbstverständnis.</small></div>
-
-      <h3 class="sm-hg__abschnitt">Kundenorientierung – unser größter Hebel</h3>
-      <p>Hier lösen wir das Versprechen ein, das durch den Versicherungsvertrag gegeben wurde. Hier machen wir die Leistung des Versicherers spürbar. Dafür muss klar sein, wie wir mit dem Dreieck der Kundenzufriedenheit umgehen.</p>
-      <div class="sm-hg__zwei">
-        <div><b>Schnelligkeit und Transparenz</b><p>Unser größter Hebel. Hier können wir am meisten aktiv tun – und zwar jeder.</p><p><b>Schnelligkeit</b> im Sinne von Gewissheit und Sicherheit: Wie agieren wir, wie informieren wir, was ist unsere Regelkommunikation, was schreiben wir uns auf die Fahne?</p><p><b>Transparenz:</b> Wie schaffen wir Verständlichkeit, Offenheit, Einfachheit, Klarheit und Ehrlichkeit?</p></div>
-        <div><b>Erstattungsumfang: im Kleinen großzügig</b><p>Der Grundsatz „Entschädigt wird, was vereinbart ist“ gilt ohne Diskussion. Daneben gibt es kleine Möglichkeiten, großzügig zu sein – über die müssen wir uns verständigen.</p><p>Dann herrschen Klarheit und Fairness für alle.</p></div>
+      <div class="sv-grundsatz">
+        <small>Der Grundsatz</small>
+        <b>Entschädigt wird, was vereinbart ist.</b>
+        <span>Darüber gibt es keine Diskussion – und das transportieren wir mit völligem Selbstverständnis.</span>
       </div>
-      <p>Das sind keine leeren Werteversprechen. Es geht um unser Verhalten – mit einem direkten Bezug zur Kundenzufriedenheit.</p>
 
-      <h3 class="sm-hg__abschnitt">Schaden- und Prozesskosten – unser Job</h3>
-      <p>Es gehört zu unserem Job und zu unserem Selbstverständnis, die Schaden- und Prozesskosten klein zu halten – auch im Sinne des Kunden. Entschädigt wird, was vereinbart ist. Trotzdem halten wir die Gesamtschadenkosten gering: indem wir die Folgekosten eines Schadens beeinflussen und unsere Prozesse optimieren.</p>
-      <p>Das ist unsere betriebswirtschaftliche Brille. Daran ist nichts Schlechtes, und es ist nicht zum Nachteil des Kunden.</p>
+      <p class="sv-marke">Kundenorientierung &middot; unser größter Hebel</p>
+      <p class="sv-text">Hier lösen wir das Versprechen ein, das durch den Versicherungsvertrag gegeben wurde. Hier machen wir die Leistung des Versicherers spürbar. Dafür muss klar sein, wie wir mit dem Dreieck der Kundenzufriedenheit umgehen.</p>
+      <div class="sv-dreieck">
+        <svg viewBox="0 0 300 230" role="img" aria-label="Dreieck der Kundenzufriedenheit: Erstattungsumfang oben, Schnelligkeit und Transparenz unten – dort liegt der größte Hebel">
+          <path d="M46 186 L150 40 L254 186 Z" fill="#f4f3f0"/>
+          <path d="M46 186 L150 40 L254 186" fill="none" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/>
+          <line x1="46" y1="186" x2="254" y2="186" stroke="#fff400" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="150" cy="40" r="7" fill="#1a1817"/><circle cx="46" cy="186" r="8" fill="#1a1817"/><circle cx="254" cy="186" r="8" fill="#1a1817"/>
+          <g font-family="Poppins, sans-serif" font-size="14" font-weight="600" fill="#1a1817" text-anchor="middle">
+            <text x="150" y="24">Erstattungsumfang</text><text x="56" y="216">Schnelligkeit</text><text x="244" y="216">Transparenz</text>
+          </g>
+          <g font-family="Poppins, sans-serif" font-size="11.5" font-weight="500" fill="#6f6a64" text-anchor="middle"><text x="150" y="132">Kunden-</text><text x="150" y="147">zufriedenheit</text></g>
+        </svg>
+        <div class="sv-ecken">
+          <div class="sv-ecke sv-ecke--gelb">
+            <small>Unten · Schnelligkeit und Transparenz</small>
+            <b>Unser größter Hebel.</b>
+            <p>Hier können wir am meisten aktiv tun – und zwar jeder.</p>
+            <ul>
+              <li><b>Schnelligkeit</b> im Sinne von Gewissheit und Sicherheit: Wie agieren wir, wie informieren wir, was ist unsere Regelkommunikation, was schreiben wir uns auf die Fahne?</li>
+              <li><b>Transparenz:</b> Wie schaffen wir Verständlichkeit, Offenheit, Einfachheit, Klarheit und Ehrlichkeit?</li>
+            </ul>
+          </div>
+          <div class="sv-ecke">
+            <small>Oben · Erstattungsumfang</small>
+            <b>Im Kleinen großzügig.</b>
+            <p>Der Grundsatz gilt ohne Diskussion. Daneben gibt es kleine Möglichkeiten, großzügig zu sein – über die müssen wir uns verständigen. Dann herrschen Klarheit und Fairness für alle.</p>
+          </div>
+        </div>
+      </div>
+      <p class="sv-merksatz">Das sind keine leeren Werteversprechen. Es geht um unser Verhalten – mit einem direkten Bezug zur Kundenzufriedenheit.</p>
+
+      <p class="sv-marke">Schaden- und Prozesskosten &middot; unser Job</p>
+      <div class="sv-kosten">
+        <p class="sv-text">Es gehört zu unserem Job und zu unserem Selbstverständnis, die Schaden- und Prozesskosten klein zu halten – auch im Sinne des Kunden. Entschädigt wird, was vereinbart ist. Trotzdem halten wir die Gesamtschadenkosten gering: indem wir die Folgekosten eines Schadens beeinflussen und unsere Prozesse optimieren.</p>
+        <div class="sv-ecke"><small>Unsere Sicht</small><b>Die betriebswirtschaftliche Brille.</b><p>Daran ist nichts Schlechtes, und es ist nicht zum Nachteil des Kunden.</p></div>
+      </div>
     </div>
   </dialog>
 
