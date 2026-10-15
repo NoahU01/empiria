@@ -417,3 +417,75 @@ button.v3-karte:has(.v3-karte__nr) h3 { padding-right: 2rem; }
 @media (max-width: 900px) {
   .v3-wofuer__eingaben .v3-karte--klein { grid-template-columns: 1fr; gap: .35rem; }
 }
+
+/* ===== Variante 3 · durchgehendes Bild (überschreibt die Abschnitts-Optik) ===== */
+.v3-sek { --v3-links: 13rem; }
+.v3-sek { grid-template-columns: 13rem minmax(0, 1fr); gap: 3rem; padding-bottom: 0; }
+.v3-sek::before { top: 4.2rem; bottom: -1rem; }
+.v3-sek--letzte::before { display: none; }
+.v3-marke { gap: .5rem; padding-bottom: 2rem; }
+.v3-merk { margin: .7rem 0 0 !important; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; line-height: 1.22; color: var(--e2-ink); }
+.e2 .v3-merk-text { margin: .3rem 0 0; font-size: .88rem; line-height: 1.55; color: var(--e2-ink-2); }
+.v3-merk, .v3-merk-text { padding-left: 0; }
+.v3-inhalt > .v3-karten:first-child, .v3-inhalt > .v3-regel:first-child { margin-top: 0; }
+
+/* Über allem: das Basis-Band */
+.v3-basis { display: grid; justify-items: center; gap: .45rem; padding: 1.7rem 2rem 1.5rem; border-radius: 16px; background: var(--e2-ink); color: #fff; text-align: center; }
+.v3-basis small { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-gelb); }
+.v3-basis b { font-family: var(--font-serif); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; }
+.v3-basis > span { font-size: .9rem; color: #d8d3cc; }
+.v3-basis__begriffe { display: flex; gap: 1.4rem; margin-top: .3rem; }
+.v3-link--hell { color: #fff; }
+.v3-zweig { position: relative; height: 2.6rem; }
+.v3-zweig::before { content: ""; position: absolute; left: calc(50% - 1px); top: 0; height: 1.3rem; border-left: 2px solid var(--e2-ink); }
+.v3-zweig::after { content: ""; position: absolute; top: 1.3rem; left: calc((100% - 2 * var(--v3-g)) / 6 - 1px); right: calc((100% - 2 * var(--v3-g)) / 6 - 1px); border-top: 2px solid var(--e2-ink); }
+.v3-zweig i { position: absolute; top: 1.3rem; height: 1.3rem; border-left: 2px solid var(--e2-ink); }
+.v3-zweig i:nth-child(1) { left: calc((100% - 2 * var(--v3-g)) / 6 - 1px); }
+.v3-zweig i:nth-child(2) { left: calc(50% - 1px); }
+.v3-zweig i:nth-child(3) { right: calc((100% - 2 * var(--v3-g)) / 6 - 1px); }
+.v3-sek .v3-zweig + .v3-karten { margin-top: 0; }
+
+/* Kette: Verbindungslinie statt Dreieck */
+.v3-kette .v3-karte + .v3-karte::before { left: calc(-1 * var(--v3-g) - 1px); top: 50%; width: calc(var(--v3-g) + 2px); height: 0; border: 0; border-top: 2px solid var(--e2-ink); transform: none; }
+
+/* Verbinder zur nächsten Station: durchgehende Linie rechts in der Mitte */
+.v3-weiter { position: relative; height: 4.5rem; }
+.v3-weiter::before { content: ""; position: absolute; left: calc(50% - 1px); top: 0; bottom: 4px; border-left: 2px solid var(--e2-ink); }
+.v3-weiter::after { content: ""; position: absolute; left: 50%; bottom: -2px; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--e2-ink); }
+.v3-regel { margin-top: 0; }
+
+/* Vorhang als echte Trennlinie zwischen vorne und hinten */
+.v3-ziele { grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr) minmax(0, 1fr); margin-top: 0; }
+.v3-vorhang-linie { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.v3-vorhang-linie::before { content: ""; position: absolute; top: -1rem; bottom: -1rem; left: calc(50% - 1px); border-left: 2px dashed var(--e2-ink); }
+.v3-vorhang-linie span { position: relative; writing-mode: vertical-rl; transform: rotate(180deg); padding: .8rem 0; background: #fff; font-size: .64rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--e2-grau); }
+.v3-vorhang-linie span:first-child { display: none; }
+.v3-ziele .v3-karte:first-child small::after { content: " · vor dem Vorhang"; }
+.v3-ziele .v3-vorhang-linie ~ .v3-karte small::after { content: " · hinter dem Vorhang"; }
+
+/* 04 */
+.v3-zwischen--erste { margin-top: 0 !important; }
+
+@media (max-width: 1100px) {
+  .v3-sek { grid-template-columns: 1fr; gap: 1.2rem; }
+  .v3-marke { padding-bottom: 0; display: grid; }
+  .v3-marke .v3-nr { font-size: 2.2rem; }
+  .v3-ziele { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .v3-vorhang-linie { display: none; }
+}
+@media (max-width: 900px) {
+  .v3-zweig { display: none; }
+  .v3-basis { margin-bottom: var(--v3-g); }
+  .v3-ziele { grid-template-columns: 1fr; }
+  .v3-kette .v3-karte + .v3-karte::before { left: calc(50% - 1px); top: calc(-1 * var(--v3-g) - 1px); width: 0; height: calc(var(--v3-g) + 2px); border-top: 0; border-left: 2px solid var(--e2-ink); }
+  .v3-weiter { height: 3rem; }
+}
+/* Leitlinie links neben dem Text, nicht durch ihn */
+.v3-sek::before { left: 0; top: .4rem; bottom: -1rem; }
+.v3-marke { padding-left: 1.6rem; }
+.v3-raster { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.v3-raster li { font-size: .78rem; overflow-wrap: anywhere; }
+@media (max-width: 1100px) { .v3-marke { padding-left: 0; } }
+/* Oberziele brauchen Breite: Infografik darf breiter als die Homepage sein */
+.e2 .sm-v3 .e2-wrap.v3 { max-width: 90rem !important; }
+.v3-raster li { overflow-wrap: normal; font-size: .8rem; }
