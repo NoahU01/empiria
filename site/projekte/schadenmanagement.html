@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=9">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=11">
 </head>
 <body class="e2">
 
@@ -704,17 +704,20 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <a class="btn btn--dark" href="/kontakt.html">Kontakt</a>
   </nav>
 </header>
-
 <main>
 
   <section class="e2-kopf"><div class="e2-wrap">
       <p class="e2-kicker">Projekt &middot; SV SparkassenVersicherung &middot; Arbeitsdokument</p>
       <h1>Schaden&shy;management.</h1>
+      <div class="sm-schalter" role="group" aria-label="Darstellung wählen">
+        <button type="button" data-v="1" aria-pressed="true"><b>1</b>Alle Fakten</button>
+        <button type="button" data-v="2" aria-pressed="false"><b>2</b>Das Bild</button>
+      </div>
     </div></section>
 
-  <div class="sm-poster"><div class="e2-wrap">
+  <!-- ======================= Variante 1 · Fakten ======================= -->
+  <div class="sm-v sm-v1" data-variante="1"><div class="e2-wrap">
 
-    <!-- ===== Segment 1 ===== -->
     <section class="sm-seg" id="geschaeftsmodell">
       <header class="sm-seg__kopf">
         <span class="sm-nr">1</span>
@@ -725,64 +728,54 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </header>
       <div class="sm-seg__inhalt">
 
-        <div class="sm-band">
-          <div>
-            <p class="e2-kicker">Die Basis von allem</p>
-            <h3>Risikoausgleich im Kollektiv und in der Zeit.</h3>
-            <p>Ohne ihn funktioniert Versicherung nicht.</p>
-          </div>
+        <div class="sm-aussage">
+          <div><p class="sm-mini">Die Basis von allem</p><h3>Risikoausgleich im Kollektiv und in der Zeit.</h3><p>Ohne ihn funktioniert Versicherung nicht.</p></div>
           <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-risiko">Was ist ein Risiko?</button><button type="button" class="sm-mehr" data-hg="hg-versicherung">Was ist Versicherung?</button></div>
         </div>
-        <div class="sm-reihe sm-reihe--3 sm-anhang" data-label="Dahinter steht">
-          <div class="sm-kasten"><h4>Risikokalkulation</h4></div>
-          <div class="sm-kasten"><h4>Klare Vereinbarungen</h4><p>Was ist versichert, was nicht – und zu welchem Preis?</p></div>
-          <div class="sm-kasten"><h4>Erfüllbare Verpflichtungen</h4><p>Die Verpflichtungen gegenüber dem Kunden erfüllen können – im Normaljahr und im Extremjahr. Darauf achtet unter anderem die BaFin.</p></div>
+        <div class="sm-reihe sm-reihe--3">
+          <div class="sm-k"><p class="sm-mini">Dahinter steht</p><h4>Risikokalkulation</h4></div>
+          <div class="sm-k"><p class="sm-mini">Dahinter steht</p><h4>Klare Vereinbarungen</h4><p>Was ist versichert, was nicht – und zu welchem Preis?</p></div>
+          <div class="sm-k"><p class="sm-mini">Dahinter steht</p><h4>Erfüllbare Verpflichtungen</h4><p>Die Verpflichtungen gegenüber dem Kunden erfüllen können – im Normaljahr und im Extremjahr. Darauf achtet unter anderem die BaFin.</p></div>
         </div>
 
         <div class="sm-pfeil"><span>Aus der Kalkulation folgt die Entscheidung über das Risiko</span></div>
 
-        <div class="sm-entscheid">
-          <div><small>Vor der Annahme</small><h3>Ist das Risiko versicherbar – und wenn ja, zu welchen Bedingungen?</h3></div>
-          <div class="sm-chips"><span>Was ist eingeschlossen?</span><span>Was ist ausgeschlossen?</span><span>Zu welchem Preis?</span></div>
+        <div class="sm-k">
+          <p class="sm-mini">Vor der Annahme</p>
+          <h4>Ist das Risiko versicherbar – und wenn ja, zu welchen Bedingungen?</h4>
+          <p class="sm-stich">Was ist eingeschlossen? &middot; Was ist ausgeschlossen? &middot; Zu welchem Preis?</p>
         </div>
 
         <div class="sm-pfeil"><span>Wird das Risiko angenommen, folgen drei Schritte</span></div>
 
         <div class="sm-ablauf">
-          <div class="sm-schritt">
-            <span class="sm-schritt__nr">1</span>
-            <h3>Risikotransfer</h3>
-            <p class="sm-kern">Risiken übernehmen, ein Kollektiv bilden, das Versprechen abgeben.</p>
-            <div class="sm-fuss">
-              <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transfer">Mehr dazu</button></div>
-            </div>
+          <div class="sm-k">
+            <p class="sm-mini">Schritt 1</p>
+            <h4>Risikotransfer</h4>
+            <p>Risiken übernehmen, ein Kollektiv bilden, das Versprechen abgeben.</p>
+            <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transfer">Mehr dazu</button></div>
           </div>
-          <div class="sm-schritt">
-            <span class="sm-schritt__nr">2</span>
-            <h3>Risikotransformation</h3>
-            <p class="sm-kern">Mit dem Gesamtrisiko umgehen.</p>
-            <div class="sm-chips"><span>Risikomanagement</span><span>Solvency II</span><span>Bestandsorganisation</span><span>Kapitalanlage</span></div>
-            <div class="sm-fuss">
-              <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transformation">Mehr dazu</button></div>
-            </div>
+          <div class="sm-k">
+            <p class="sm-mini">Schritt 2</p>
+            <h4>Risikotransformation</h4>
+            <p>Mit dem Gesamtrisiko umgehen.</p>
+            <p class="sm-stich">Risikomanagement &middot; Solvency II &middot; Bestandsorganisation &middot; Kapitalanlage</p>
+            <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transformation">Mehr dazu</button></div>
           </div>
-          <div class="sm-schritt sm-schritt--fokus">
-            <div class="sm-schritt__kopf"><span class="sm-schritt__nr">3</span><span class="sm-hier">Hier liegt das Projekt</span></div>
-            <h3>Schadenkompensation</h3>
-            <p class="sm-kern">Das Versprechen einlösen: Schadenmanagement und Schadenpolitik.</p>
-            <div class="sm-chips"><span>Kundenorientierung</span><span>Schadenkosten</span><span>Prozesskosten</span></div>
-            <div class="sm-fuss">
-              <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-kompensation">Mehr dazu</button></div>
-            </div>
+          <div class="sm-k">
+            <div class="sm-k__kopf"><p class="sm-mini">Schritt 3</p><span class="sm-hier">Hier liegt das Projekt</span></div>
+            <h4>Schadenkompensation</h4>
+            <p>Das Versprechen einlösen: Schadenmanagement und Schadenpolitik.</p>
+            <p class="sm-stich">Kundenorientierung &middot; Schadenkosten &middot; Prozesskosten</p>
+            <div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-kompensation">Mehr dazu</button></div>
           </div>
         </div>
 
       </div>
     </section>
 
-    <div class="sm-pfeil sm-pfeil--gross"><span>Daraus abgeleitet</span></div>
+    <div class="sm-pfeil"><span>Daraus abgeleitet</span></div>
 
-    <!-- ===== Segment 2 ===== -->
     <section class="sm-seg" id="grundregeln">
       <header class="sm-seg__kopf">
         <span class="sm-nr">2</span>
@@ -793,68 +786,67 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </header>
       <div class="sm-seg__inhalt">
 
-        <div class="sm-band">
-          <div>
-            <p class="e2-kicker">Nicht verhandelbar &middot; das Selbstverständnis</p>
-            <h3>Entschädigt wird, was vertraglich geregelt ist.</h3>
-          </div>
+        <div class="sm-aussage">
+          <div><p class="sm-mini">Nicht verhandelbar &middot; das Selbstverständnis</p><h3>Entschädigt wird, was vertraglich geregelt ist.</h3></div>
         </div>
-        <div class="sm-reihe sm-reihe--3 sm-anhang" data-label="Weil">
-          <div class="sm-kasten"><h4>Das Versprechen</h4><p>Nur so bleibt das Versprechen an den Kunden haltbar – und nur für das vertraglich Geregelte wurde Beitrag gezahlt.</p>
+        <div class="sm-reihe sm-reihe--3">
+          <div class="sm-k"><p class="sm-mini">Weil</p><h4>Das Versprechen</h4><p>Nur so bleibt das Versprechen an den Kunden haltbar – und nur für das vertraglich Geregelte wurde Beitrag gezahlt.</p>
             <details class="sm-auf"><summary>Details</summary><div class="sm-auf__text"><p>Andernfalls verstoßen wir gegen die Grundfunktionsweise eines Versicherungsunternehmens und können das, wofür ein Versicherer da ist, nicht mehr aufrechterhalten.</p><p>Dem Kunden gegenüber ist ein Versprechen gegeben. Halten können wir es nur, wenn wir entschädigen, was vertraglich geregelt ist, und das andere nicht. Denn nur für das vertraglich Geregelte haben wir auch Beitrag erhalten.</p></div></details></div>
-          <div class="sm-kasten"><h4>Fairness</h4><p>Wer dauerhaft mehr zahlt als vereinbart, erhöht den Beitrag für alle – auch für die, die keinen Schaden hatten.</p></div>
-          <div class="sm-kasten"><h4>Aufsicht</h4><p>Die BaFin achtet darauf, dass es ein faires Spiel ist und die Verpflichtungen vor allem langfristig erfüllbar bleiben.</p></div>
+          <div class="sm-k"><p class="sm-mini">Weil</p><h4>Fairness</h4><p>Wer dauerhaft mehr zahlt als vereinbart, erhöht den Beitrag für alle – auch für die, die keinen Schaden hatten.</p></div>
+          <div class="sm-k"><p class="sm-mini">Weil</p><h4>Aufsicht</h4><p>Die BaFin achtet darauf, dass es ein faires Spiel ist und die Verpflichtungen vor allem langfristig erfüllbar bleiben.</p></div>
         </div>
 
         <div class="sm-pfeil"><span>Daraus folgen drei Oberziele – unabhängig davon, welche Detailziele das Unternehmen in der Zielvereinbarung setzt</span></div>
 
-        <p class="sm-lage">Vor dem Vorhang <span>was Kunde und Vertriebspartner sehen</span></p>
-        <div class="sm-oz sm-oz--kunde">
-          <div class="sm-oz__links">
-            <div class="sm-oz__titel"><small>Oberziel</small><h3>Optimierung der Kundenorientierung</h3></div>
-            <ul class="sm-fragen"><li>Wie gehe ich mit dem Kunden um?</li><li>Wie reguliere ich?</li><li>Was nimmt er wahr?</li></ul>
-            <p class="sm-oz__frage">Im Kern: Wie gehe ich mit dem Thema Kundenzufriedenheit um?</p>
-          </div>
-          <div class="sm-dreieck">
-            <div class="sm-ecke sm-ecke--oben"><b>Erstattungsumfang</b><span>Wie viel von dem, was der Kunde glaubt, dass ihm zusteht, wird erstattet?</span></div>
-            <svg viewBox="0 0 300 200" role="img" aria-label="Dreieck der Kundenzufriedenheit">
-              <polygon points="150,14 22,186 278,186" fill="#fff" stroke="#1a1817" stroke-width="2.5" stroke-linejoin="round"/>
-              <circle cx="150" cy="14" r="9" fill="#1a1817"/><circle cx="22" cy="186" r="9" fill="#1a1817"/><circle cx="278" cy="186" r="9" fill="#1a1817"/>
-              <text x="150" y="128" text-anchor="middle" font-family="Poppins, sans-serif" font-size="15" font-weight="700" fill="#1a1817">Kunden-</text>
-              <text x="150" y="147" text-anchor="middle" font-family="Poppins, sans-serif" font-size="15" font-weight="700" fill="#1a1817">zufriedenheit</text>
-            </svg>
-            <div class="sm-ecke"><b>Schnelligkeit</b><span>im Sinne von Gewissheit und Sicherheit – wie kommuniziere ich, wenn es länger dauert?</span></div>
-            <div class="sm-ecke sm-ecke--rechts"><b>Transparenz</b><span>Verständlichkeit, Offenheit, Einfachheit, Klarheit, Ehrlichkeit</span></div>
-          </div>
-        </div>
+        <div class="sm-ziele">
+          <p class="sm-mini sm-ziele__l1">Vor dem Vorhang &middot; <span>was Kunde und Vertriebspartner sehen</span></p>
+          <p class="sm-mini sm-ziele__l2">Hinter dem Vorhang &middot; <span>was intern zu sehen ist</span></p>
+          <div class="sm-ziele__vorhang" aria-hidden="true"><span>Der Vorhang</span></div>
 
-        <div class="sm-vorhang" aria-hidden="true"><span>Der Vorhang</span></div>
-
-        <p class="sm-lage">Hinter dem Vorhang <span>was intern zu sehen ist</span></p>
-        <div class="sm-reihe sm-reihe--2">
-          <div class="sm-oz">
-            <div class="sm-oz__titel"><small>Oberziel</small><h3>Optimierung der Schadenkosten</h3></div>
-            <p class="sm-oz__frage">Die Risikotreppe: Was davon kann das Schadenmanagement aktiv beeinflussen?</p>
-            <div class="sm-treppe">
-              <div class="sm-treppe__start"><span>Gesamtrisiko</span><i></i></div>
-              <div class="sm-stufe"><b>Vermeiden</b><div class="sm-stufe__rechts"><span class="sm-stufe__balken" style="width:84%"></span><p>Nicht annehmen oder in den Bedingungen ausschließen.</p></div></div>
-              <div class="sm-stufe"><b>Vermindern</b><div class="sm-stufe__rechts"><span class="sm-stufe__balken" style="width:66%"></span><p>Individuelle Klauseln, technische Pflichten.</p><div class="sm-hebel"><em>Hebel</em><span>Vermeiden und Vermindern: Rückmeldung aus dem Schaden in die Produktentwicklung</span></div></div></div>
-              <div class="sm-stufe"><b>Begrenzen</b><div class="sm-stufe__rechts"><span class="sm-stufe__balken" style="width:48%"></span><p>Schnelle Schadenminderung, wenn der Schaden eintritt.</p><div class="sm-hebel"><em>Hebel</em><span>Handwerkerdienstleistungen, Geschwindigkeit der Reaktion</span></div></div></div>
-              <div class="sm-stufe"><b>Selbst tragen oder versichern</b><div class="sm-stufe__rechts"><span class="sm-stufe__balken" style="width:32%"></span><p>Was bleibt: selbst tragen oder an den Rückversicherer geben.</p></div></div>
+          <div class="sm-k sm-ziel sm-ziel--kunde">
+            <p class="sm-mini">Oberziel</p>
+            <h4>Optimierung der Kundenorientierung</h4>
+            <p class="sm-frage">Wie gehe ich mit dem Kunden um? Wie reguliere ich? Was nimmt er wahr?</p>
+            <p>Im Kern: Wie gehe ich mit dem Thema Kundenzufriedenheit um?</p>
+            <div class="sm-dreieck">
+              <div class="sm-ecke sm-ecke--oben"><b>Erstattungsumfang</b><span>Wie viel von dem, was der Kunde glaubt, dass ihm zusteht, wird erstattet?</span></div>
+              <svg viewBox="0 0 300 200" role="img" aria-label="Dreieck der Kundenzufriedenheit">
+                <polygon points="150,14 22,186 278,186" fill="none" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="150" cy="14" r="8" fill="#1a1817"/><circle cx="22" cy="186" r="8" fill="#1a1817"/><circle cx="278" cy="186" r="8" fill="#1a1817"/>
+                <text x="150" y="128" text-anchor="middle" font-family="Poppins, sans-serif" font-size="19" font-weight="700" fill="#1a1817">Kunden-</text>
+                <text x="150" y="152" text-anchor="middle" font-family="Poppins, sans-serif" font-size="19" font-weight="700" fill="#1a1817">zufriedenheit</text>
+              </svg>
+              <div class="sm-ecke"><b>Schnelligkeit</b><span>im Sinne von Gewissheit und Sicherheit – wie kommuniziere ich, wenn es länger dauert?</span></div>
+              <div class="sm-ecke sm-ecke--rechts"><b>Transparenz</b><span>Verständlichkeit, Offenheit, Einfachheit, Klarheit, Ehrlichkeit</span></div>
             </div>
+          </div>
+
+          <div class="sm-k sm-ziel sm-ziel--schaden">
+            <p class="sm-mini">Oberziel</p>
+            <h4>Optimierung der Schadenkosten</h4>
+            <p class="sm-frage">Die Risikotreppe: Was davon kann das Schadenmanagement aktiv beeinflussen?</p>
+            <ul class="sm-zeilen sm-treppe">
+              <li><b>Gesamtrisiko</b></li>
+              <li><b>Vermeiden</b>Nicht annehmen oder in den Bedingungen ausschließen.</li>
+              <li><b>Vermindern</b>Individuelle Klauseln, technische Pflichten.<span class="sm-hebel">Rückmeldung aus dem Schaden in die Produktentwicklung (auch fürs Vermeiden)</span></li>
+              <li><b>Begrenzen</b>Schnelle Schadenminderung, wenn der Schaden eintritt.<span class="sm-hebel">Handwerkerdienstleistungen, Geschwindigkeit der Reaktion</span></li>
+              <li><b>Selbst tragen oder versichern</b>Was bleibt: selbst tragen oder an den Rückversicherer geben.</li>
+            </ul>
             <details class="sm-auf"><summary>Details</summary><div class="sm-auf__text"><p>In der Schadenkostenoptimierung stecken die Grundregeln aus dem Geschäftsmodell – und ganz grundsätzlich die Risikotreppe. Diese gedankliche Treppe geht jeder Kunde durch: Welches Risiko will ich gar nicht erst eingehen? Wie mindere ich die Risiken, die ich nicht vermeiden kann oder bewusst eingehe? Wie begrenze ich Schäden, wenn sie eintreten? Und was trage ich von dem, was übrig bleibt, selbst – was versichere ich? Nichts anderes macht der Versicherer in Risikotransfer und Risikotransformation.</p><p><b>Vermeiden:</b> Risiken, die ich nicht haben will, nehme ich nicht an oder schließe sie im Rahmen der Bedingungen aus.</p><p><b>Vermindern:</b> Die Eintrittswahrscheinlichkeit senken – bei der Annahme über individuelle Klauseln oder, etwa bei gewerblichen Risiken, über technische Vorgaben als Pflicht: nichts Brennbares in der Nähe einer heißen Maschine, kein offenes Feuer, Sprinkleranlagen.</p><p><b>Begrenzen:</b> Etwa über die Geschwindigkeit der Schadenminderung – wie schnell kommen Handwerker in eine Region, in der ein großer Sturm Dächer abgedeckt hat?</p><p><b>Selbst tragen oder versichern:</b> Von den Risiken, die bleiben: Was trage ich selbst, was gebe ich dem Rückversicherer?</p><p><b>Hebel des Schadenmanagements:</b> sehr viel bei Handwerkerdienstleistungen und der Geschwindigkeit der Reaktion – wie schnell gehe ich raus, wie schnell kümmere ich mich um die richtigen Risiken. Bei Vermeiden und Vermindern: Wie viel Rückmeldung aus den Erkenntnissen des Schadenmanagements geht in die Produktentwicklung?</p></div></details>
           </div>
-          <div class="sm-oz">
-            <div class="sm-oz__titel"><small>Oberziel</small><h3>Optimierung der Prozesskosten</h3></div>
-            <p class="sm-oz__frage">Wie arbeiten wir eigentlich?</p>
-            <div class="sm-kacheln">
-              <div class="sm-kachel">Automatisierung und KI-Einsatz</div>
-              <div class="sm-kachel">Optimierung des Ablaufs</div>
-              <div class="sm-kachel">Zuständigkeiten zwischen den Abteilungen<small>Klarheit der Zuständigkeiten und Schnittstellen</small></div>
-              <div class="sm-kachel">Summengrenzen bei der Prüfung<small>Was ist Standardfall, was Detailfall?</small></div>
-              <div class="sm-kachel">Einsatz von Gutachtern<small>Ab wann geht ein Gutachter raus?</small></div>
-              <div class="sm-kachel">Drohnen und Satellitenbilder<small>Was mache ich damit?</small></div>
-            </div>
+
+          <div class="sm-k sm-ziel sm-ziel--prozess">
+            <p class="sm-mini">Oberziel</p>
+            <h4>Optimierung der Prozesskosten</h4>
+            <p class="sm-frage">Wie arbeiten wir eigentlich?</p>
+            <ul class="sm-zeilen">
+              <li><b>Automatisierung und KI-Einsatz</b></li>
+              <li><b>Optimierung des Ablaufs</b></li>
+              <li><b>Zuständigkeiten zwischen den Abteilungen</b><small>Klarheit der Zuständigkeiten und der Schnittstellen</small></li>
+              <li><b>Summengrenzen bei der Prüfung</b><small>Was gehört zum Standardfall, was ist ein Detailfall?</small></li>
+              <li><b>Einsatz von Gutachtern</b><small>Ab wann geht ein Gutachter raus?</small></li>
+              <li><b>Drohnen und Satellitenbilder</b><small>Was mache ich damit?</small></li>
+            </ul>
           </div>
         </div>
 
@@ -862,6 +854,47 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     </section>
 
   </div></div>
+
+  <!-- ======================= Variante 2 · Bild ======================= -->
+  <div class="sm-v sm-v2" data-variante="2" hidden>
+
+    <section class="sm-b sm-b--erste"><div class="e2-wrap">
+      <p class="e2-kicker">Das Geschäftsmodell</p>
+      <h2>Versicherung gleicht <span class="hl">Risiken</span> aus.</h2>
+      <p class="sm-lead">Im Kollektiv und in der Zeit – berechnet, vertraglich geregelt und erfüllbar im Normaljahr wie im Extremjahr.</p>
+      <div class="sm-mehr-zeile" style="margin-top:1rem"><button type="button" class="sm-mehr" data-hg="hg-risiko">Was ist ein Risiko?</button><button type="button" class="sm-mehr" data-hg="hg-versicherung">Was ist Versicherung?</button></div>
+      <div class="sm-b__karten">
+        <div class="sm-bk"><span class="sm-bk__nr">01</span><small>Risikotransfer</small><h3>Übernehmen.</h3><p>Viele einzelne Risiken werden zu einem Kollektiv. Der Versicherer gibt sein Versprechen.</p><div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transfer">Mehr dazu</button></div></div>
+        <div class="sm-bk"><span class="sm-bk__nr">02</span><small>Risikotransformation</small><h3>Ausgleichen.</h3><p>Das Gesamtrisiko wird gesteuert – mit Rückstellungen, Rückversicherung und Kapitalanlage.</p><div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-transformation">Mehr dazu</button></div></div>
+        <div class="sm-bk sm-bk--gelb"><span class="sm-bk__nr">03</span><small>Schadenkompensation</small><h3>Einlösen.</h3><span class="sm-bk__projekt">Hier liegt das Projekt</span><p>Im Schadenfall wird das Versprechen eingelöst. Das ist die Aufgabe des Schadenmanagements.</p><div class="sm-mehr-zeile"><button type="button" class="sm-mehr" data-hg="hg-kompensation">Mehr dazu</button></div></div>
+      </div>
+    </div></section>
+
+    <section class="sm-b sm-b--gelb"><div class="e2-wrap sm-b__zeile">
+      <div>
+        <p class="e2-kicker">Die Grundregel</p>
+        <h2>Entschädigt wird, was vereinbart ist.</h2>
+        <p class="sm-lead">Das Selbstverständnis des Schadenmanagements. Es ist nicht verhandelbar.</p>
+      </div>
+      <ol class="sm-gruende">
+        <li><i>1</i><div><b>Das Versprechen hält.</b><span>Nur für das vertraglich Geregelte wurde Beitrag gezahlt.</span></div></li>
+        <li><i>2</i><div><b>Es ist fair.</b><span>Wer mehr zahlt als vereinbart, erhöht den Beitrag für alle.</span></div></li>
+        <li><i>3</i><div><b>Die Aufsicht achtet darauf.</b><span>Ein faires Spiel und langfristig erfüllbare Verpflichtungen – darauf schaut die BaFin.</span></div></li>
+      </ol>
+    </div></section>
+
+    <section class="sm-b sm-b--schwarz"><div class="e2-wrap">
+      <p class="e2-kicker">Die drei Oberziele</p>
+      <h2>Worauf jede Strategie eine Antwort braucht.</h2>
+      <p class="sm-lead">Unabhängig von den Detailzielen der Zielvereinbarung – eines davon sehen Kunde und Vertriebspartner, zwei wirken intern.</p>
+      <div class="sm-b__karten">
+        <div class="sm-bk"><span class="sm-bk__nr">01</span><small>Vor dem Vorhang</small><h3>Kunden&shy;orientierung</h3><p>Was erlebt der Kunde im Schadenfall?</p><p>Schnelligkeit &middot; Erstattungsumfang &middot; Transparenz</p></div>
+        <div class="sm-bk"><span class="sm-bk__nr">02</span><small>Hinter dem Vorhang</small><h3>Schadenkosten</h3><p>Was kostet der Schaden – und was davon beeinflussen wir?</p><p>Vermeiden &middot; Vermindern &middot; Begrenzen &middot; Selbst tragen oder versichern</p></div>
+        <div class="sm-bk"><span class="sm-bk__nr">03</span><small>Hinter dem Vorhang</small><h3>Prozesskosten</h3><p>Wie arbeiten wir eigentlich?</p><p>Automatisierung &middot; Abläufe &middot; Zuständigkeiten &middot; Prüfgrenzen &middot; Gutachter &middot; Drohnen</p></div>
+      </div>
+    </div></section>
+
+  </div>
 
   <dialog class="sm-hg" id="hg-risiko" aria-labelledby="hg-risiko-t">
     <div class="sm-hg__kopf"><div><p class="e2-kicker">Hintergrund</p><h2 id="hg-risiko-t">Risiko</h2></div><button type="button" class="sm-hg__zu" aria-label="Schließen">&times;</button></div>
@@ -941,6 +974,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </dialog>
 
 </main>
+
 <script>
 /* Hintergrund-Fenster: Knopf öffnet, Kreuz/Esc/Klick daneben schließt */
 document.querySelectorAll('[data-hg]').forEach(function (k) {
@@ -950,6 +984,17 @@ document.querySelectorAll('.sm-hg').forEach(function (d) {
   d.querySelector('.sm-hg__zu').addEventListener('click', function () { d.close(); });
   d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
 });
+/* Umschalter Variante 1 / 2 – Wahl steht in der Adresse (#bild) */
+(function () {
+  var knoepfe = document.querySelectorAll('.sm-schalter button');
+  function zeige(v, merken) {
+    document.querySelectorAll('.sm-v').forEach(function (el) { el.hidden = el.dataset.variante !== v; });
+    knoepfe.forEach(function (k) { k.setAttribute('aria-pressed', k.dataset.v === v ? 'true' : 'false'); });
+    if (merken) history.replaceState(null, '', v === '2' ? '#bild' : location.pathname + location.search);
+  }
+  knoepfe.forEach(function (k) { k.addEventListener('click', function () { zeige(k.dataset.v, true); }); });
+  if (location.hash === '#bild') zeige('2', false);
+})();
 </script>
 
 
