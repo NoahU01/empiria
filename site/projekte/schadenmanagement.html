@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=24">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=27">
 </head>
 <body class="e2">
 
@@ -713,7 +713,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
         <button type="button" data-v="1" aria-pressed="true"><b>1</b>Alle Fakten</button>
         <button type="button" data-v="2" aria-pressed="false"><b>2</b>Das Bild</button>
         <button type="button" data-v="3" aria-pressed="false"><b>3</b>Infografik</button>
-        <button type="button" data-v="4" aria-pressed="false"><b>4</b>Poster</button>
       </div>
     </div></section>
 
@@ -1051,8 +1050,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <p class="sm-lead">Unabhängig von den Detailzielen der Zielvereinbarung – eines davon sehen Kunde und Vertriebspartner, zwei wirken intern.</p>
       <div class="sm-b__karten">
         <div class="sm-bk"><span class="sm-bk__nr">01</span><small>Vor dem Vorhang &middot; größter Hebel</small><h3>Kunden&shy;orientierung</h3><p>Was erlebt der Kunde im Schadenfall? Am meisten bewegen wir bei Schnelligkeit und Transparenz.</p><p>Schnelligkeit &middot; Erstattungsumfang &middot; Transparenz</p></div>
-        <div class="sm-bk"><span class="sm-bk__nr">02</span><small>Hinter dem Vorhang</small><h3>Schadenkosten</h3><p>Was kostet der Schaden – und was davon beeinflussen wir?</p><p>Vermeiden &middot; Vermindern &middot; Begrenzen &middot; Selbst tragen oder versichern</p></div>
-        <div class="sm-bk"><span class="sm-bk__nr">03</span><small>Hinter dem Vorhang</small><h3>Prozesskosten</h3><p>Wie arbeiten wir eigentlich?</p><p>Automatisierung &middot; Abläufe &middot; Zuständigkeiten &middot; Prüfgrenzen &middot; Gutachter &middot; Drohnen</p></div>
+        <div class="sm-bk"><span class="sm-bk__nr">02</span><small>Oberziel</small><h3>Schadenkosten</h3><p>Was kostet der Schaden – und was davon beeinflussen wir?</p><p>Vermeiden &middot; Vermindern &middot; Begrenzen &middot; Selbst tragen oder versichern</p></div>
+        <div class="sm-bk"><span class="sm-bk__nr">03</span><small>Oberziel</small><h3>Prozesskosten</h3><p>Wie arbeiten wir eigentlich?</p><p>Automatisierung &middot; Abläufe &middot; Zuständigkeiten &middot; Prüfgrenzen &middot; Gutachter &middot; Drohnen</p></div>
       </div>
     </div></section>
 
@@ -1082,198 +1081,130 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   </div>
 
   <!-- ======================= Variante 3 · Infografik ======================= -->
-  <div class="sm-v sm-v3" data-variante="3" hidden><div class="e2-wrap"><div class="ig">
-
-    <div class="ig-legende" aria-label="Farblegende">
-      <span><i class="ig-l--schwarz"></i>nicht verhandelbar</span>
-      <span><i class="ig-l--gelb"></i>hier wirkt das Schadenmanagement</span>
-      <span><i class="ig-l--weiss"></i>Sachverhalt</span>
-    </div>
+  <div class="sm-v sm-v3" data-variante="3" hidden><div class="e2-wrap v3">
 
     <!-- 01 -->
-    <section class="ig-station">
-      <p class="ig-marke"><span>01</span>Das Geschäftsmodell eines Versicherers</p>
-      <div class="ig-basis">
-        <p class="ig-eyebrow">Die Basis von allem</p>
-        <h4>Risikoausgleich im Kollektiv und in der Zeit.</h4>
-        <p>berechnet &middot; vertraglich geregelt &middot; erfüllbar im Normal- und im Extremjahr</p>
-        <div class="ig-begriffe"><button type="button" class="sm-mehr" data-hg="hg-risiko">Risiko</button><button type="button" class="sm-mehr" data-hg="hg-versicherung">Versicherung</button></div>
-      </div>
-      <div class="ig-zweig" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="ig-drei ig-kette">
-        <div class="ig-karte"><button type="button" class="ig-plus" data-hg="hg-transfer" aria-label="Mehr zum Risikotransfer" title="Mehr zum Risikotransfer"></button><p class="ig-eyebrow">Risikotransfer</p><h4>Übernehmen</h4><p>Viele einzelne Risiken werden ein Kollektiv. Das Versprechen steht.</p></div>
-        <div class="ig-karte"><button type="button" class="ig-plus" data-hg="hg-transformation" aria-label="Mehr zur Risikotransformation" title="Mehr zur Risikotransformation"></button><p class="ig-eyebrow">Risikotransformation</p><h4>Ausgleichen</h4><p>Das Gesamtrisiko steuern – Rückstellungen, Rückversicherung, Kapitalanlage.</p></div>
-        <div class="ig-karte ig-karte--gelb"><button type="button" class="ig-plus" data-hg="hg-kompensation" aria-label="Mehr zur Schadenkompensation" title="Mehr zur Schadenkompensation"></button><p class="ig-eyebrow">Schadenkompensation</p><h4>Einlösen</h4><p>Im Schadenfall wird das Versprechen eingelöst. Hier liegt das Projekt.</p></div>
+    <section class="v3-sek">
+      <div class="v3-marke"><span class="v3-nr">01</span><span class="v3-label">Das Geschäfts&shy;modell</span></div>
+      <div class="v3-inhalt">
+        <h2 class="v3-h2">Versicherung gleicht <span class="hl">Risiken</span> aus.</h2>
+        <p class="v3-lead">Risikoausgleich im Kollektiv und in der Zeit – berechnet, vertraglich geregelt und erfüllbar im Normal- wie im Extremjahr. Ohne ihn funktioniert Versicherung nicht.</p>
+        <p class="v3-begriffe"><span>Begriffe</span><button type="button" class="v3-link" data-hg="hg-risiko">Risiko</button><button type="button" class="v3-link" data-hg="hg-versicherung">Versicherung</button></p>
+        <div class="v3-karten v3-kette">
+          <button type="button" class="v3-karte v3-zeigen" data-hg="hg-transfer"><span class="v3-karte__nr">01</span><small>Risikotransfer</small><h3>Übernehmen.</h3><p>Viele einzelne Risiken werden zu einem Kollektiv. Der Versicherer gibt sein Versprechen.</p><span class="v3-karte__mehr">Mehr erfahren</span></button>
+          <button type="button" class="v3-karte v3-zeigen" data-hg="hg-transformation"><span class="v3-karte__nr">02</span><small>Risikotransformation</small><h3>Ausgleichen.</h3><p>Das Gesamtrisiko wird gesteuert – mit Rückstellungen, Rückversicherung und Kapitalanlage.</p><span class="v3-karte__mehr">Mehr erfahren</span></button>
+          <button type="button" class="v3-karte v3-karte--gelb v3-zeigen" data-hg="hg-kompensation"><span class="v3-karte__nr">03</span><small>Schadenkompensation</small><h3>Einlösen.</h3><p>Im Schadenfall wird das Versprechen eingelöst. Hier liegt das Projekt.</p><span class="v3-karte__mehr">Mehr erfahren</span></button>
+        </div>
       </div>
     </section>
-
-    <div class="ig-pfeil"><span>Aus dem Einlösen folgt<br>die Grundlogik</span></div>
 
     <!-- 02 -->
-    <section class="ig-station">
-      <p class="ig-marke"><span>02</span>Die Grundregel</p>
-      <div class="ig-post">
-        <div class="ig-post__kopf"><span class="ig-post__zeichen">§</span><span><b>Grundlogik</b><small>nicht verhandelbar</small></span></div>
-        <div class="ig-post__mitte"><b>Entschädigt wird, was vereinbart ist.</b></div>
-        <ol class="ig-post__fuss">
-          <li><i>1</i>Das Versprechen hält.</li>
-          <li><i>2</i>Es ist fair für alle.</li>
-          <li><i>3</i>Die BaFin achtet darauf.</li>
-        </ol>
+    <section class="v3-sek">
+      <div class="v3-marke"><span class="v3-nr">02</span><span class="v3-label">Die Grund&shy;logik</span></div>
+      <div class="v3-inhalt">
+        <h2 class="v3-h2">Was daraus für den Schaden folgt.</h2>
+        <p class="v3-lead">Das Einlösen folgt einer Regel, die nicht verhandelbar ist.</p>
+        <div class="v3-regel v3-zeigen">
+          <div class="v3-regel__satz"><small>Grundlogik</small><b>Entschädigt wird, was vereinbart ist.</b></div>
+          <ol class="v3-regel__gruende">
+            <li><i>1</i><div><b>Das Versprechen hält.</b><span>Nur für das vertraglich Geregelte wurde Beitrag gezahlt.</span></div></li>
+            <li><i>2</i><div><b>Es ist fair.</b><span>Wer mehr zahlt als vereinbart, erhöht den Beitrag für alle.</span></div></li>
+            <li><i>3</i><div><b>Die Aufsicht achtet darauf.</b><span>Faires Spiel und langfristig erfüllbare Verpflichtungen.</span></div></li>
+          </ol>
+        </div>
       </div>
     </section>
-
-    <div class="ig-pfeil"><span>Daraus folgen drei Oberziele<br>und die Fragen dazu</span></div>
 
     <!-- 03 -->
-    <section class="ig-station">
-      <p class="ig-marke"><span>03</span>Drei Oberziele</p>
-      <div class="ig-buehne">
-        <p class="ig-eyebrow ig-buehne__l1">Vor dem Vorhang</p>
-        <p class="ig-eyebrow ig-buehne__l2">Hinter dem Vorhang</p>
-        <div class="ig-buehne__vorhang" aria-hidden="true"><span>Der Vorhang</span></div>
-
-        <div class="ig-karte ig-ziel ig-ziel--kunde">
-          <p class="ig-eyebrow ig-ziel__label">Oberziel <span class="ig-hebel">Größter Hebel</span></p>
-          <h4>Kundenorientierung</h4>
-          <div class="ig-ziel__grafik"><svg viewBox="0 0 300 210" role="img" aria-label="Dreieck der Kundenzufriedenheit – größter Hebel bei Schnelligkeit und Transparenz">
-              <polygon points="150,38 52,164 248,164" fill="#f4f3f0" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/>
-              <circle cx="150" cy="38" r="7" fill="#1a1817"/>
-              <circle cx="52" cy="164" r="11" fill="#fff400" stroke="#1a1817" stroke-width="2"/>
-              <circle cx="248" cy="164" r="11" fill="#fff400" stroke="#1a1817" stroke-width="2"/>
-              <g font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1a1817">
-                <text x="150" y="22" text-anchor="middle">Erstattungsumfang</text>
-                <text x="18" y="196">Schnelligkeit</text>
-                <text x="282" y="196" text-anchor="end">Transparenz</text>
-              </g>
-              <g font-family="Poppins, sans-serif" font-size="12" font-weight="500" fill="#6f6a64" text-anchor="middle">
-                <text x="150" y="122">Kunden-</text><text x="150" y="138">zufriedenheit</text>
-              </g>
-            </svg></div>
-          <p class="ig-karte__fuss"><i>?</i>Was nimmt der Kunde wahr – und wie schnell schaffen wir Gewissheit?</p>
-        </div>
-
-        <div class="ig-karte ig-ziel ig-ziel--schaden">
-          <p class="ig-eyebrow ig-ziel__label">Oberziel</p>
-          <h4>Schadenkosten</h4>
-          <div class="ig-ziel__grafik">
-            <svg viewBox="0 0 352 200" role="img" aria-label="Risikotreppe: Vermeiden, Vermindern, Begrenzen, Selbst tragen oder versichern">
-              <text x="0" y="12" font-family="Poppins, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" fill="#6f6a64">GESAMTRISIKO</text>
-              <g stroke="#1a1817" stroke-width="2">
-                <rect x="1" y="24" width="76" height="130" rx="6" fill="#f4f3f0"/>
-                <rect x="92" y="56" width="76" height="98" rx="6" fill="#f4f3f0"/>
-                <rect x="183" y="88" width="76" height="66" rx="6" fill="#fff400"/>
-                <rect x="274" y="118" width="76" height="36" rx="6" fill="#f4f3f0"/>
-              </g>
-              <g font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1a1817" text-anchor="middle">
-                <text x="39" y="178">Vermeiden</text><text x="130" y="178">Vermindern</text><text x="221" y="178">Begrenzen</text><text x="312" y="178">Tragen /</text><text x="312" y="195">versichern</text>
-              </g>
-            </svg>
+    <section class="v3-sek">
+      <div class="v3-marke"><span class="v3-nr">03</span><span class="v3-label">Drei Ober&shy;ziele</span></div>
+      <div class="v3-inhalt">
+        <h2 class="v3-h2">Worauf jede Strategie eine Antwort braucht.</h2>
+        <p class="v3-lead">Unabhängig von den Detailzielen der Zielvereinbarung: Eines sehen Kunde und Vertrieb, zwei wirken intern.</p>
+        <div class="v3-vorhang" aria-hidden="true"><span>Vor dem Vorhang</span><span>Hinter dem Vorhang</span></div>
+        <div class="v3-karten v3-ziele">
+          <div class="v3-karte v3-karte--gelb v3-zeigen">
+            <small>Oberziel · größter Hebel</small><h3>Kundenorientierung</h3><p>Hier wird die Leistung des Versicherers spürbar.</p>
+            <div class="v3-grafik">
+              <svg viewBox="0 0 260 150" role="img" aria-label="Dreieck der Kundenzufriedenheit: größter Hebel bei Schnelligkeit und Transparenz">
+                <path d="M40 124 L130 26 L220 124" fill="none" stroke="#1a1817" stroke-width="1.5" stroke-linejoin="round"/>
+                <line x1="40" y1="124" x2="220" y2="124" stroke="#1a1817" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="130" cy="26" r="5" fill="#1a1817"/><circle cx="40" cy="124" r="6" fill="#1a1817"/><circle cx="220" cy="124" r="6" fill="#1a1817"/>
+                <g font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817" text-anchor="middle">
+                  <text x="130" y="13">Erstattungsumfang</text><text x="40" y="145">Schnelligkeit</text><text x="220" y="145">Transparenz</text>
+                </g>
+                <text x="130" y="112" font-family="Poppins, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#1a1817" text-anchor="middle">GRÖSSTER HEBEL</text>
+              </svg>
+            </div>
+            <details class="v3-auf"><summary>Fragen und Zielgruppen</summary><ul><li>Was nimmt der Kunde wahr?</li><li>Wie schnell schaffen wir Gewissheit und Sicherheit?</li><li>Wie verständlich, offen und ehrlich regulieren wir?</li><li>Welche Spielräume haben wir – was wird von uns erwartet?</li><li><b>Zielgruppen:</b> Kunde, Vertrieb, Vertriebsvorstand</li></ul></details>
           </div>
-          <p class="ig-karte__fuss"><i>?</i>Was davon kann das Schadenmanagement aktiv beeinflussen?</p>
-        </div>
-
-        <div class="ig-karte ig-ziel ig-ziel--prozess">
-          <p class="ig-eyebrow ig-ziel__label">Oberziel</p>
-          <h4>Prozesskosten</h4>
-          <div class="ig-ziel__grafik"><div class="ig-tags"><span>Automatisierung</span><span>KI</span><span>Abläufe</span><span>Zuständigkeiten</span><span>Schnittstellen</span><span>Summengrenzen</span><span>Gutachter</span><span>Drohnen &amp; Satellit</span></div></div>
-          <p class="ig-karte__fuss"><i>?</i>Wie arbeiten wir eigentlich?</p>
+          <div class="v3-karte v3-zeigen">
+            <small>Oberziel</small><h3>Schadenkosten</h3><p>Die Risikotreppe: Was davon beeinflussen wir aktiv?</p>
+            <div class="v3-grafik">
+              <svg viewBox="0 0 260 150" role="img" aria-label="Risikotreppe: Vermeiden, Vermindern, Begrenzen, Selbst tragen oder versichern – beim Begrenzen wirkt das Schadenmanagement am stärksten">
+                <path d="M10 128 V34 H66 V62 H122 V90 H178 V114 H234 V128 Z" fill="#f4f3f0"/>
+                <rect x="122" y="90" width="56" height="38" fill="#fff400"/>
+                <path d="M10 34 H66 V62 H122 V90 H178 V114 H234 V128" fill="none" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/>
+                <line x1="10" y1="128" x2="250" y2="128" stroke="#1a1817" stroke-width="1.5"/>
+                <g font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">
+                  <text x="12" y="26">Vermeiden</text><text x="68" y="54">Vermindern</text><text x="124" y="82">Begrenzen</text><text x="190" y="92">Tragen /</text><text x="190" y="106">versichern</text>
+                </g>
+                <text x="10" y="146" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#6f6a64">vom Gesamtrisiko zum Rest, der bleibt</text>
+              </svg>
+            </div>
+            <details class="v3-auf"><summary>Fragen und Zielgruppen</summary><ul><li>Wie schnell gehen wir raus – kümmern wir uns um die richtigen Risiken?</li><li>Wie organisieren wir Handwerkerdienstleistungen, gerade bei großen Ereignissen?</li><li>Wie viel Rückmeldung geht in die Produktentwicklung?</li><li><b>Zielgruppen:</b> Vorstand, Controlling</li></ul></details>
+          </div>
+          <div class="v3-karte v3-zeigen">
+            <small>Oberziel</small><h3>Prozesskosten</h3><p>Wie arbeiten wir eigentlich?</p>
+            <div class="v3-grafik">
+              <ul class="v3-raster"><li>Automatisierung</li><li>KI</li><li>Abläufe</li><li>Zuständigkeiten</li><li>Schnittstellen</li><li>Summengrenzen</li><li>Gutachter</li><li>Drohnen &amp; Satellit</li></ul>
+            </div>
+            <details class="v3-auf"><summary>Fragen und Zielgruppen</summary><ul><li>Wo automatisieren wir, wo setzen wir KI ein?</li><li>Sind Zuständigkeiten und Schnittstellen klar?</li><li>Wo liegen die Summengrenzen zwischen Standard- und Detailfall?</li><li>Ab wann geht ein Gutachter raus?</li><li><b>Zielgruppen:</b> Vorstand, Controlling</li></ul></details>
+          </div>
         </div>
       </div>
-      <details class="ig-auf">
-        <summary>Zielgruppen</summary>
-        <div class="ig-auf__inhalt">
-          <p><span class="ig-eyebrow">Vor dem Vorhang</span>Kunde &middot; Vertrieb &middot; Vertriebsvorstand</p>
-          <p><span class="ig-eyebrow">Hinter dem Vorhang</span>Vorstand &middot; Controlling</p>
-        </div>
-      </details>
     </section>
-
-    <div class="ig-pfeil"><span>Daraus gründen wir<br>das Schadenmanagement neu</span></div>
 
     <!-- 04 -->
-    <section class="ig-station">
-      <p class="ig-marke"><span>04</span>Das Zielbild – als würden wir es morgen als eigenes Unternehmen gründen</p>
+    <section class="v3-sek v3-sek--letzte">
+      <div class="v3-marke"><span class="v3-nr">04</span><span class="v3-label">Das Ziel&shy;bild</span></div>
+      <div class="v3-inhalt">
+        <h2 class="v3-h2">Als würden wir es morgen neu gründen.</h2>
+        <p class="v3-lead">Ob neue Hauptabteilung oder eigenständige GmbH – der Weg ist unser Strategiemodell.</p>
+        <p class="v3-begriffe"><span>Vorlage</span><button type="button" class="v3-link" data-hg="hg-strategiemodell">Strategiemodell</button></p>
 
-      <div class="ig-modell">
-        <div class="ig-modell__oben">
-          <p class="ig-modell__frage">Wofür stehen wir?</p>
-          <div class="ig-modell__eingaben">
-            <div class="ig-baustein"><p class="ig-eyebrow">Unternehmens&shy;strategie</p><p>Kundenzufriedenheit ist ein großer Bestandteil.</p></div>
-            <div class="ig-baustein"><p class="ig-eyebrow">Führungs&shy;verständnis</p><p>offen</p></div>
-            <div class="ig-baustein"><p class="ig-eyebrow">Zielgruppe: „What&#8217;s in for me?“</p><p>Kunde &middot; Vertrieb &middot; Vertriebsvorstand<br>Vorstand &middot; Controlling</p></div>
-            <span class="ig-modell__pfeil" aria-hidden="true"></span>
+        <p class="v3-zwischen">Wofür stehen wir?</p>
+        <div class="v3-wofuer">
+          <div class="v3-wofuer__eingaben">
+            <div class="v3-karte v3-karte--klein v3-zeigen"><small>Unternehmensstrategie</small><p>Kundenzufriedenheit ist ein großer Bestandteil.</p></div>
+            <div class="v3-karte v3-karte--klein v3-zeigen"><small>Führungsverständnis</small><p>Noch offen.</p></div>
+            <div class="v3-karte v3-karte--klein v3-zeigen"><small>Zielgruppen</small><p>Kunde, Vertrieb, Vertriebsvorstand · Vorstand, Controlling</p></div>
           </div>
-          <div class="ig-selbst">
-            <button type="button" class="ig-plus" data-hg="hg-selbstverstaendnis" aria-label="Unser Selbstverständnis im Detail" title="Unser Selbstverständnis im Detail"></button>
-            <p class="ig-eyebrow">Selbstverständnis</p>
-            <h4>Entschädigt wird, was vereinbart ist.</h4>
-            <ul>
-              <li>Im Schaden machen wir die Leistung spürbar – größter Hebel: Schnelligkeit und Transparenz.</li>
-              <li>Beim Erstattungsumfang: im Kleinen großzügig.</li>
-              <li>Schaden- und Prozesskosten klein halten ist unser Job.</li>
-            </ul>
-          </div>
+          <button type="button" class="v3-karte v3-karte--schwarz v3-zeigen" data-hg="hg-selbstverstaendnis"><small>Selbstverständnis</small><h3>Entschädigt wird, was vereinbart ist.</h3><p>Leistung spürbar machen, im Kleinen großzügig, Kosten klein halten.</p><span class="v3-karte__mehr">Mehr erfahren</span></button>
         </div>
-        <div class="ig-modell__runter" aria-hidden="true"></div>
 
-        <div class="ig-modell__unten">
-          <div class="ig-modell__pfeil-a" aria-hidden="true"></div>
-          <div class="ig-modell__pfeil-b" aria-hidden="true"><span>Mission</span></div>
-
-          <div class="ig-modell__links">
-            <p class="ig-modell__frage">Wie kommen wir dorthin?</p>
-            <div class="ig-spalte ig-spalte--1">
-              <span class="ig-kreis">1</span>
-              <h4>Ausgangssituation</h4>
-              <div class="ig-baustein"><p class="ig-eyebrow">Heutiges Geschäfts- und Organisationsmodell</p><p>Wie arbeitet das Schadenmanagement heute – Antworten auf die Grundfragen.</p></div>
-            </div>
-            <div class="ig-spalte ig-spalte--3">
-              <span class="ig-kreis">3</span>
-              <h4>Strategie</h4>
-              <div class="ig-baustein"><p class="ig-eyebrow">Stoßrichtungen &amp; Handlungsfelder</p><p>Der Weg vom Heute zum Zielbild.</p></div>
-            </div>
-            <div class="ig-detail">
-              <p class="ig-detail__titel">Detaillierung der Strategie</p>
-              <div class="ig-detail__zwei">
-                <div class="ig-baustein"><p class="ig-eyebrow">Führungs- und Arbeitsalltag</p><p class="ig-baustein__frage"><i>?</i>Wie sichern wir die Zielerreichung?</p></div>
-                <div class="ig-baustein"><p class="ig-eyebrow">Strategiekommunikation</p><p class="ig-baustein__frage"><i>?</i>Wie erklären wir die Strategie intern?</p></div>
-              </div>
-            </div>
+        <div class="v3-modell">
+          <div class="v3-modell__flaeche v3-modell__flaeche--links" aria-hidden="true"></div>
+          <div class="v3-modell__flaeche v3-modell__flaeche--rechts" aria-hidden="true"></div>
+          <p class="v3-zwischen v3-modell__t1">Wie kommen wir dorthin?</p>
+          <p class="v3-zwischen v3-modell__t2">Wie wollen wir wahrgenommen werden?</p>
+          <div class="v3-modell__kreise" aria-hidden="true">
+            <span class="v3-modell__pfeil-a"></span><span class="v3-modell__pfeil-b"><em>Mission</em></span>
+            <div><i>1</i><b>Ausgangssituation</b></div><div><i>3</i><b>Strategie</b></div><div><i>2</i><b>Vision</b></div>
           </div>
-
-          <div class="ig-modell__rechts">
-            <p class="ig-modell__frage">Wie wollen wir wahrgenommen werden?</p>
-            <div class="ig-spalte ig-spalte--2">
-              <span class="ig-kreis">2</span>
-              <h4>Vision</h4>
-              <div class="ig-baustein"><p class="ig-eyebrow">Zukünftiges Geschäfts- und Organisationsmodell</p><p>Neue Hauptabteilung oder eigenständige GmbH?</p></div>
-              <span class="ig-strich" aria-hidden="true"></span>
-              <div class="ig-baustein ig-baustein--gelb"><p class="ig-eyebrow">Positionierung &amp; Pitch</p>
-                <span class="ig-browser" aria-hidden="true"><span class="ig-browser__leiste"><i></i><i></i><i></i></span><span class="ig-browser__kopf"></span><span class="ig-browser__zeile"></span><span class="ig-browser__zeile ig-browser__zeile--kurz"></span></span>
-                <p>Der Test: Wie sieht die Homepage deiner Abteilung aus?</p>
-                <p class="ig-baustein__frage"><i>?</i>Welches Problem lösen wir – und was macht uns einzigartig?</p>
-              </div>
-            </div>
-          </div>
+          <div class="v3-karte v3-karte--klein v3-modell__a1 v3-zeigen"><span class="v3-mobil"><i>1</i>Ausgangssituation</span><small>Heutiges Geschäfts- und Organisationsmodell</small><p>Wie arbeitet das Schadenmanagement heute?</p></div>
+          <div class="v3-karte v3-karte--klein v3-modell__a3 v3-zeigen"><span class="v3-mobil"><i>3</i>Strategie</span><small>Stoßrichtungen &amp; Handlungsfelder</small><p>Der Weg vom Heute zum Zielbild.</p></div>
+          <div class="v3-karte v3-karte--klein v3-modell__a2 v3-zeigen"><span class="v3-mobil"><i>2</i>Vision</span><small>Zukünftiges Geschäfts- und Organisationsmodell</small><p>Neue Hauptabteilung oder eigenständige GmbH?</p></div>
+          <div class="v3-modell__klammer" aria-hidden="true"><em>Detaillierung der Strategie</em></div>
+          <div class="v3-modell__strich" aria-hidden="true"></div>
+          <div class="v3-karte v3-karte--klein v3-modell__b1 v3-zeigen"><small>Führungs- und Arbeitsalltag</small><p class="v3-frage">Wie sichern wir die Zielerreichung?</p></div>
+          <div class="v3-karte v3-karte--klein v3-modell__b2 v3-zeigen"><small>Strategiekommunikation</small><p class="v3-frage">Wie erklären wir die Strategie intern?</p></div>
+          <div class="v3-karte v3-karte--klein v3-karte--gelb v3-modell__b3 v3-zeigen"><small>Positionierung &amp; Pitch</small><p class="v3-frage">Welches Problem lösen wir – und was macht uns einzigartig?</p><p>Der Test: Wie sieht die Homepage deiner Abteilung aus?</p></div>
         </div>
       </div>
-
-      <div class="ig-begriffe ig-mitte"><button type="button" class="sm-mehr" data-hg="hg-strategiemodell">Strategiemodell</button></div>
     </section>
 
-  </div></div></div>
-
-  <!-- ======================= Variante 4 · Poster (erzeugt von werkzeuge/schadenmanagement-poster.mjs) ======================= -->
-  <div class="sm-v sm-v4" data-variante="4" hidden><div class="e2-wrap"><div class="sm-poster-rahmen">
-<!-- POSTER:START -->
-<svg class="sm-poster-svg" viewBox="0 0 850 2602" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Poster Schadenmanagement: vom Geschäftsmodell über die Grundlogik und die drei Oberziele zum Zielbild">
-<rect width="850" height="2602" fill="#fff"/>
-<line x1="76" y1="330" x2="76" y2="1617" stroke="#dcd7d0" stroke-width="2" stroke-linecap="round"/><circle cx="76" cy="330" r="17" fill="#1a1817"/><text x="76" y="334.5" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#fff400" text-anchor="middle">01</text><circle cx="76" cy="746" r="17" fill="#1a1817"/><text x="76" y="750.5" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#fff400" text-anchor="middle">02</text><circle cx="76" cy="1098" r="17" fill="#1a1817"/><text x="76" y="1102.5" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#fff400" text-anchor="middle">03</text><circle cx="76" cy="1617" r="17" fill="#1a1817"/><text x="76" y="1621.5" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#fff400" text-anchor="middle">04</text>
-<text x="120" y="92" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#6f6a64" letter-spacing="2.2">SV SPARKASSENVERSICHERUNG · ARBEITSDOKUMENT</text><text x="117" y="158" font-family="Lora, sans-serif" font-size="60" font-weight="700" fill="#1a1817">Schadenmanagement.</text><text x="120" y="194" font-family="Poppins, sans-serif" font-size="16.5" font-weight="400" fill="#6f6a64">Vom Geschäftsmodell zum Zielbild – der Gesamtzusammenhang.</text><rect x="120" y="226" width="12" height="12" rx="3" fill="#1a1817"/><text x="139" y="236.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#6f6a64">nicht verhandelbar</text><rect x="274.7213134765625" y="226" width="12" height="12" rx="3" fill="#fff400" stroke="#1a1817" stroke-width="1.3"/><text x="293.7213134765625" y="236.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#6f6a64">hier wirkt das Schadenmanagement</text><rect x="530.0559692382812" y="226" width="12" height="12" rx="3" fill="#fff" stroke="#b9b3ab" stroke-width="1.3"/><text x="549.0559692382812" y="236.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#6f6a64">Sachverhalt</text><line x1="120" y1="270" x2="790" y2="270" stroke="#dcd7d0" stroke-width="1" stroke-linecap="round"/><text x="120" y="334" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#6f6a64" letter-spacing="2.2">DAS GESCHÄFTSMODELL</text><text x="119" y="370" font-family="Lora, sans-serif" font-size="28" font-weight="700" fill="#1a1817">Versicherung gleicht Risiken aus.</text><rect x="120" y="396" width="670" height="90" rx="12" fill="#1a1817"/><text x="146" y="426" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#fff400" letter-spacing="1.6">DIE BASIS VON ALLEM</text><text x="146" y="453" font-family="Lora, sans-serif" font-size="22" font-weight="700" fill="#fff">Risikoausgleich im Kollektiv und in der Zeit.</text><text x="146" y="473" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#d8d3cc">berechnet · vertraglich geregelt · erfüllbar im Normal- und im Extremjahr</text><line x1="225" y1="486" x2="225" y2="508" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><line x1="455" y1="486" x2="455" y2="508" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><line x1="685" y1="486" x2="685" y2="508" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><rect x="120" y="508" width="210" height="162" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="142" y="538" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#6f6a64" letter-spacing="1.6">RISIKOTRANSFER</text><text x="142" y="565" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Übernehmen</text><text x="142" y="591" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">Viele einzelne Risiken</text><text x="142" y="609" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">werden ein Kollektiv. Das</text><text x="142" y="627" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">Versprechen steht.</text><rect x="350" y="508" width="210" height="162" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="372" y="538" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#6f6a64" letter-spacing="1.6">RISIKOTRANSFORMATION</text><text x="372" y="565" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Ausgleichen</text><text x="372" y="591" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">Das Gesamtrisiko steuern</text><text x="372" y="609" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">– Rückstellungen,</text><text x="372" y="627" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">Rückversicherung,</text><text x="372" y="645" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#3d3a37">Kapitalanlage.</text><path d="M337 583 l6 6 l-6 6" fill="none" stroke="#1a1817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="580" y="508" width="210" height="162" rx="12" fill="#fff400" stroke="#1a1817" stroke-width="1.5"/><text x="602" y="538" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" letter-spacing="1.6">SCHADENKOMPENSATION</text><text x="602" y="565" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Einlösen</text><text x="602" y="591" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#1a1817">Im Schadenfall wird das</text><text x="602" y="609" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#1a1817">Versprechen eingelöst.</text><text x="602" y="627" font-family="Poppins, sans-serif" font-size="12.5" font-weight="400" fill="#1a1817">Hier liegt das Projekt.</text><path d="M567 583 l6 6 l-6 6" fill="none" stroke="#1a1817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="120" y="750" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#6f6a64" letter-spacing="2.2">DIE GRUNDLOGIK</text><text x="119" y="786" font-family="Lora, sans-serif" font-size="28" font-weight="700" fill="#1a1817">Was daraus für den Schaden folgt.</text><rect x="120" y="812" width="670" height="210" rx="12" fill="#1a1817"/><text x="146" y="844" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#fff400" letter-spacing="1.6">GRUNDLOGIK · NICHT VERHANDELBAR</text><text x="145" y="888" font-family="Lora, sans-serif" font-size="34" font-weight="700" fill="#fff">Entschädigt wird, was vereinbart ist.</text><line x1="146" y1="912" x2="764" y2="912" stroke="#3d3a37" stroke-width="1" stroke-linecap="round"/><text x="146" y="943" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff400">1</text><text x="164" y="943" font-family="Poppins, sans-serif" font-size="12.5" font-weight="600" fill="#fff">Das Versprechen hält.</text><text x="164" y="962" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">Nur für das Vereinbarte</text><text x="164" y="979" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">wurde Beitrag gezahlt.</text><text x="352" y="943" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff400">2</text><text x="370" y="943" font-family="Poppins, sans-serif" font-size="12.5" font-weight="600" fill="#fff">Es ist fair für alle.</text><text x="370" y="962" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">Mehr zu zahlen als</text><text x="370" y="979" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">vereinbart erhöht den</text><text x="370" y="996" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">Beitrag für alle.</text><text x="558" y="943" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff400">3</text><text x="576" y="943" font-family="Poppins, sans-serif" font-size="12.5" font-weight="600" fill="#fff">Die BaFin achtet darauf.</text><text x="576" y="962" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">Die Verpflichtungen</text><text x="576" y="979" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">bleiben langfristig</text><text x="576" y="996" font-family="Poppins, sans-serif" font-size="12" font-weight="400" fill="#d8d3cc">erfüllbar.</text><text x="120" y="1102" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#6f6a64" letter-spacing="2.2">DREI OBERZIELE</text><text x="119" y="1138" font-family="Lora, sans-serif" font-size="28" font-weight="700" fill="#1a1817">Worauf jede Strategie eine Antwort braucht.</text><text x="120" y="1168" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" letter-spacing="1.6">VOR DEM VORHANG</text><text x="350" y="1168" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" letter-spacing="1.6">HINTER DEM VORHANG</text><rect x="120" y="1184" width="210" height="357" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="142" y="1214" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#6f6a64" letter-spacing="1.6">OBERZIEL</text><rect x="210.2698516845703" y="1203" width="106.17483520507812" height="16" rx="4" fill="#fff400" stroke="#1a1817" stroke-width="1.2"/><text x="217.2698516845703" y="1214.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#1a1817" letter-spacing="1.2">GRÖSSTER HEBEL</text><text x="142" y="1241" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Kundenorientierung</text><path d="M156 1382 L225 1284 L294 1382 Z" fill="#f4f3f0"/><path d="M156 1382 L225 1284 L294 1382" fill="none" stroke="#1a1817" stroke-width="1.5" stroke-linejoin="round"/><line x1="156" y1="1382" x2="294" y2="1382" stroke="#fff400" stroke-width="7" stroke-linecap="round"/><circle cx="225" cy="1284" r="4.5" fill="#1a1817"/><circle cx="156" cy="1382" r="4.5" fill="#1a1817"/><circle cx="294" cy="1382" r="4.5" fill="#1a1817"/><text x="225" y="1272" font-family="Poppins, sans-serif" font-size="11" font-weight="600" fill="#1a1817" text-anchor="middle">Erstattungsumfang</text><text x="142" y="1404" font-family="Poppins, sans-serif" font-size="11" font-weight="600" fill="#1a1817">Schnelligkeit</text><text x="308" y="1404" font-family="Poppins, sans-serif" font-size="11" font-weight="600" fill="#1a1817" text-anchor="end">Transparenz</text><text x="225" y="1349" font-family="Poppins, sans-serif" font-size="10" font-weight="500" fill="#6f6a64" text-anchor="middle">Kunden-</text><text x="225" y="1362" font-family="Poppins, sans-serif" font-size="10" font-weight="500" fill="#6f6a64" text-anchor="middle">zufriedenheit</text><line x1="120" y1="1422" x2="330" y2="1422" stroke="#dcd7d0" stroke-width="1.5" stroke-linecap="round"/><circle cx="150" cy="1446" r="8" fill="#1a1817"/><text x="150" y="1450" font-family="Poppins, sans-serif" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="166" y="1450" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">Was nimmt der Kunde</text><text x="166" y="1467" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">wahr – und wie schnell</text><text x="166" y="1484" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">schaffen wir</text><text x="166" y="1501" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">Gewissheit?</text><rect x="350" y="1184" width="210" height="357" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="372" y="1214" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#6f6a64" letter-spacing="1.6">OBERZIEL</text><text x="372" y="1241" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Schadenkosten</text><text x="372" y="1282" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#1a1817">Gesamtrisiko</text><rect x="484" y="1270" width="54" height="16" rx="3" fill="#8d867e"/><text x="372" y="1311" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Vermeiden</text><rect x="484" y="1299" width="45" height="16" rx="3" fill="#cfcac3"/><text x="372" y="1340" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Vermindern</text><rect x="484" y="1328" width="36" height="16" rx="3" fill="#cfcac3"/><text x="372" y="1369" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Begrenzen</text><rect x="484" y="1357" width="27" height="16" rx="3" fill="#fff400" stroke="#1a1817" stroke-width="1.2"/><text x="372" y="1398" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Tragen/versichern</text><rect x="484" y="1386" width="18" height="16" rx="3" fill="#cfcac3"/><line x1="350" y1="1422" x2="560" y2="1422" stroke="#dcd7d0" stroke-width="1.5" stroke-linecap="round"/><circle cx="380" cy="1446" r="8" fill="#1a1817"/><text x="380" y="1450" font-family="Poppins, sans-serif" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="396" y="1450" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">Was davon kann das</text><text x="396" y="1467" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">Schadenmanagement</text><text x="396" y="1484" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">aktiv beeinflussen?</text><rect x="580" y="1184" width="210" height="357" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="602" y="1214" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#6f6a64" letter-spacing="1.6">OBERZIEL</text><text x="602" y="1241" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817">Prozesskosten</text><rect x="602" y="1270" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1276" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Automatisierung und KI</text><line x1="602" y1="1283" x2="768" y2="1283" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1292" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1298" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Abläufe</text><line x1="602" y1="1305" x2="768" y2="1305" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1314" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1320" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Zuständigkeiten</text><line x1="602" y1="1327" x2="768" y2="1327" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1336" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1342" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Schnittstellen</text><line x1="602" y1="1349" x2="768" y2="1349" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1358" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1364" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Summengrenzen</text><line x1="602" y1="1371" x2="768" y2="1371" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1380" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1386" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Gutachter</text><line x1="602" y1="1393" x2="768" y2="1393" stroke="#ece9e4" stroke-width="1" stroke-linecap="round"/><rect x="602" y="1402" width="5" height="5" rx="1" fill="#1a1817"/><text x="614" y="1408" font-family="Poppins, sans-serif" font-size="11" font-weight="500" fill="#1a1817">Drohnen und Satellit</text><line x1="580" y1="1422" x2="790" y2="1422" stroke="#dcd7d0" stroke-width="1.5" stroke-linecap="round"/><circle cx="610" cy="1446" r="8" fill="#1a1817"/><text x="610" y="1450" font-family="Poppins, sans-serif" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="626" y="1450" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">Wie arbeiten wir</text><text x="626" y="1467" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#1a1817">eigentlich?</text><line x1="340" y1="1158" x2="340" y2="1541" stroke="#1a1817" stroke-width="1.5" stroke-dasharray="4 5" stroke-linecap="round"/><text x="120" y="1621" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#6f6a64" letter-spacing="2.2">DAS ZIELBILD</text><text x="119" y="1657" font-family="Lora, sans-serif" font-size="28" font-weight="700" fill="#1a1817">Als würden wir es morgen neu gründen.</text><rect x="120" y="1683" width="670" height="318" rx="16" fill="#f4f3f0"/><text x="140" y="1713" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" letter-spacing="1.6">WOFÜR STEHEN WIR?</text><rect x="140" y="1731" width="408" height="78" rx="10" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="156" y="1773.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">UNTERNEHMENSSTRATEGIE</text><text x="324" y="1766.25" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Kundenzufriedenheit ist ein großer</text><text x="324" y="1781.75" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Bestandteil.</text><rect x="140" y="1817" width="408" height="78" rx="10" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="156" y="1859.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">FÜHRUNGSVERSTÄNDNIS</text><text x="324" y="1860" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">offen</text><rect x="140" y="1903" width="408" height="78" rx="10" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="156" y="1939.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">ZIELGRUPPE</text><text x="156" y="1951.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">„WHAT’S IN FOR ME?“</text><text x="324" y="1938.25" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Kunde · Vertrieb · Vertriebsvorstand</text><text x="324" y="1953.75" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Vorstand · Controlling</text><line x1="552" y1="1856" x2="566" y2="1856" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M566 1850.5 L574 1856 L566 1861.5 Z" fill="#1a1817"/><rect x="580" y="1731" width="190" height="250" rx="12" fill="#1a1817"/><text x="598" y="1757" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#fff400" letter-spacing="1.6">SELBSTVERSTÄNDNIS</text><text x="598" y="1781" font-family="Lora, sans-serif" font-size="15" font-weight="700" fill="#fff">Entschädigt wird,</text><text x="598" y="1800" font-family="Lora, sans-serif" font-size="15" font-weight="700" fill="#fff">was vereinbart ist.</text><line x1="598" y1="1817" x2="752" y2="1817" stroke="#3d3a37" stroke-width="1" stroke-linecap="round"/><circle cx="602" cy="1831" r="3" fill="#fff400"/><text x="612" y="1835" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Leistung spürbar machen</text><text x="612" y="1849" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">– größter Hebel:</text><text x="612" y="1863" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Schnelligkeit und</text><text x="612" y="1877" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Transparenz.</text><circle cx="602" cy="1893" r="3" fill="#fff400"/><text x="612" y="1897" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Erstattungsumfang: im</text><text x="612" y="1911" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Kleinen großzügig.</text><circle cx="602" cy="1927" r="3" fill="#fff400"/><text x="612" y="1931" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Schaden- und</text><text x="612" y="1945" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">Prozesskosten klein halten</text><text x="612" y="1959" font-family="Poppins, sans-serif" font-size="10.5" font-weight="400" fill="#d8d3cc">ist unser Job.</text><line x1="685" y1="1981" x2="685" y2="2029" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M679.5 2027 L685 2035 L690.5 2027 Z" fill="#1a1817"/><rect x="120" y="2035" width="440" height="461" rx="16" fill="#f4f3f0"/><rect x="580" y="2035" width="210" height="461" rx="16" fill="#f4f3f0"/><text x="340" y="2063" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" text-anchor="middle" letter-spacing="1.6">WIE KOMMEN WIR DORTHIN?</text><text x="685" y="2063" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" text-anchor="middle" letter-spacing="1.6">WIE WOLLEN WIR</text><text x="685" y="2077" font-family="Poppins, sans-serif" font-size="10" font-weight="700" fill="#1a1817" text-anchor="middle" letter-spacing="1.6">WAHRGENOMMEN WERDEN?</text><path d="M225 2104 V2095 H685 V2096" fill="none" stroke="#1a1817" stroke-width="2" stroke-linejoin="round"/><path d="M679.5 2096 L685 2104 L690.5 2096 Z" fill="#1a1817"/><line x1="659" y1="2121" x2="482" y2="2121" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M482 2115.5 L474 2121 L482 2126.5 Z" fill="#1a1817"/><text x="570" y="2114" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#6f6a64" text-anchor="middle">Mission</text><circle cx="225" cy="2121" r="16" fill="#1a1817"/><text x="225" y="2125.5" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">1</text><text x="225" y="2163" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817" text-anchor="middle">Ausgangssituation</text><circle cx="455" cy="2121" r="16" fill="#1a1817"/><text x="455" y="2125.5" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">3</text><text x="455" y="2163" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817" text-anchor="middle">Strategie</text><circle cx="685" cy="2121" r="16" fill="#1a1817"/><text x="685" y="2125.5" font-family="Poppins, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">2</text><text x="685" y="2163" font-family="Lora, sans-serif" font-size="17" font-weight="700" fill="#1a1817" text-anchor="middle">Vision</text><rect x="130" y="2175" width="190" height="114.5" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="144" y="2197" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">HEUTIGES GESCHÄFTS- UND</text><text x="144" y="2209" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">ORGANISATIONSMODELL</text><text x="144" y="2231" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Wie arbeitet das</text><text x="144" y="2246.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Schadenmanagement</text><text x="144" y="2262" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">heute?</text><rect x="360" y="2175" width="190" height="114.5" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="374" y="2197" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">STOSSRICHTUNGEN &amp;</text><text x="374" y="2209" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">HANDLUNGSFELDER</text><text x="374" y="2231" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Der Weg vom Heute zum</text><text x="374" y="2246.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Zielbild.</text><rect x="590" y="2175" width="190" height="114.5" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="604" y="2197" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">ZUKÜNFTIGES GESCHÄFTS-</text><text x="604" y="2209" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">UND ORGANISATIONSMODELL</text><text x="604" y="2231" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">Neue Hauptabteilung oder</text><text x="604" y="2246.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#1a1817">eigenständige GmbH?</text><line x1="455" y1="2289.5" x2="455" y2="2309.5" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><line x1="225" y1="2309.5" x2="455" y2="2309.5" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><line x1="225" y1="2309.5" x2="225" y2="2323.5" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M219.5 2321.5 L225 2329.5 L230.5 2321.5 Z" fill="#1a1817"/><line x1="455" y1="2309.5" x2="455" y2="2323.5" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M449.5 2321.5 L455 2329.5 L460.5 2321.5 Z" fill="#1a1817"/><text x="340" y="2303.5" font-family="Poppins, sans-serif" font-size="10.5" font-weight="600" fill="#6f6a64" text-anchor="middle">Detaillierung der Strategie</text><line x1="685" y1="2289.5" x2="685" y2="2323.5" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/><path d="M679.5 2321.5 L685 2329.5 L690.5 2321.5 Z" fill="#1a1817"/><rect x="130" y="2329.5" width="190" height="144.5" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="144" y="2351.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">FÜHRUNGS- UND</text><text x="144" y="2363.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">ARBEITSALLTAG</text><circle cx="151" cy="2385.5" r="7" fill="#1a1817"/><text x="151" y="2389" font-family="Poppins, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="164" y="2389.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">Wie sichern wir die</text><text x="164" y="2405" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">Zielerreichung?</text><rect x="360" y="2329.5" width="190" height="144.5" rx="12" fill="#fff" stroke="#dcd7d0" stroke-width="1.5"/><text x="374" y="2351.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#6f6a64" letter-spacing="1.2">STRATEGIEKOMMUNIKATION</text><circle cx="381" cy="2385.5" r="7" fill="#1a1817"/><text x="381" y="2389" font-family="Poppins, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="394" y="2389.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">Wie erklären wir die</text><text x="394" y="2405" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">Strategie intern?</text><rect x="590" y="2329.5" width="190" height="144.5" rx="12" fill="#fff400" stroke="#1a1817" stroke-width="1.5"/><text x="604" y="2351.5" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="#1a1817" letter-spacing="1.2">POSITIONIERUNG &amp; PITCH</text><circle cx="611" cy="2385.5" r="7" fill="#1a1817"/><text x="611" y="2389" font-family="Poppins, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">?</text><text x="624" y="2389.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">Welches Problem lösen</text><text x="624" y="2405" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">wir – und was macht</text><text x="624" y="2420.5" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#1a1817">uns einzigartig?</text><text x="604" y="2444" font-family="Poppins, sans-serif" font-size="11" font-weight="400" fill="#1a1817">Der Test: die Homepage</text><text x="604" y="2459" font-family="Poppins, sans-serif" font-size="11" font-weight="400" fill="#1a1817">deiner Abteilung.</text><line x1="120" y1="2526" x2="790" y2="2526" stroke="#dcd7d0" stroke-width="1" stroke-linecap="round"/><text x="120" y="2552" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#6f6a64">empiria · Strategie in den Alltag überführen</text><text x="790" y="2552" font-family="Poppins, sans-serif" font-size="11.5" font-weight="400" fill="#6f6a64" text-anchor="end">Stand 15.10.2026</text>
-</svg>
-<!-- POSTER:END -->
-  </div></div></div>
+  </div></div>
 
   <dialog class="sm-hg" id="hg-risiko" aria-labelledby="hg-risiko-t">
     <div class="sm-hg__kopf"><div><p class="e2-kicker">Hintergrund</p><h2 id="hg-risiko-t">Risiko</h2></div><button type="button" class="sm-hg__zu" aria-label="Schließen">&times;</button></div>
@@ -1517,18 +1448,24 @@ document.querySelectorAll('.sm-hg').forEach(function (d) {
   d.querySelector('.sm-hg__zu').addEventListener('click', function () { d.close(); });
   d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
 });
+/* Variante 3: Karten blenden beim Scrollen sanft ein */
+(function () {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('v3-bewegt');
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ist-da'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.v3-zeigen').forEach(function (el) { io.observe(el); });
+})();
 /* Umschalter Variante 1 / 2 – Wahl steht in der Adresse (#bild) */
 (function () {
   var knoepfe = document.querySelectorAll('.sm-schalter button');
   function zeige(v, merken) {
     document.querySelectorAll('.sm-v').forEach(function (el) { el.hidden = el.dataset.variante !== v; });
     knoepfe.forEach(function (k) { k.setAttribute('aria-pressed', k.dataset.v === v ? 'true' : 'false'); });
-    if (merken) history.replaceState(null, '', v === '2' ? '#bild' : v === '3' ? '#infografik' : v === '4' ? '#poster' : location.pathname + location.search);
+    if (merken) history.replaceState(null, '', v === '2' ? '#bild' : v === '3' ? '#infografik' : location.pathname + location.search);
   }
   knoepfe.forEach(function (k) { k.addEventListener('click', function () { zeige(k.dataset.v, true); }); });
   if (location.hash === '#bild') zeige('2', false);
   if (location.hash === '#infografik') zeige('3', false);
-  if (location.hash === '#poster') zeige('4', false);
 })();
 </script>
 
