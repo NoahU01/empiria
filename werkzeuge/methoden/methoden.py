@@ -3,7 +3,7 @@
 
 Übernommen aus muellerundstroebel/entwicklung (Kopien der Quellen hier im Ordner, quelle-*):
   · Storyboard Landing Page  (storyboard.html)    – mit dem Beispiel Müller & Ströbel (Schritt 4 Entwürfe, Schritt 5 Skizze)
-  · Elevator Pitch          (elevator-pitch.html) – mit dem Beispiel Müller & Ströbel
+  · Elevator Pitch          – seit 16.10.2026 die empiria-Fassung (quelle-elevator-pitch-empiria.html)
 Das Stylesheet von M&S (business-story-2.css + storyboard.css) wird auf `.sbm` begrenzt und über die
 Variablen auf empiria umgestellt: Schwarz statt Navy, Weiß/Grau statt Sand, Gelb nur auf Schwarz, Lora 700/Poppins.
 
@@ -121,15 +121,9 @@ def storyboard():
 
 # ---------- Elevator Pitch ----------
 def pitch():
-    m = main_aus("quelle-elevator-pitch-mus.html")
-    assert '<p class="kicker">Elevator Pitch</p>' in m
-    m = m.replace('<p class="kicker">Elevator Pitch</p>', BEISPIEL + '<p class="kicker">Methode · Elevator Pitch</p>', 1)
+    """Elevator Pitch von empiria (Daniel, 16.10.2026) – eigene Fassung im Aufbau der M&S-Vorlage, ohne Beispiel-Hinweis."""
+    m = main_aus("quelle-elevator-pitch-empiria.html")
     m = m.replace("<h1>Unsere Story<br>in 30/10 Sekunden.</h1>", '<h1>Unsere Story<br>in <span class="hl">30/10 Sekunden.</span></h1>', 1)
-    m = re.sub(r'<a class="ep-dl".*?</a>', "", m, flags=re.S)        # Download (PDF im M&S-Design) entfällt
-    i = m.find('<div class="lp-dl"')
-    if i >= 0:
-        m = m[:m.rfind("<section", 0, i)] + m[m.find("</section>", i) + 10:]
-    m = m.replace('href="/entwicklung/storyboard.html', 'href="/projekte/methoden-storyboard.html')
     html = f'<main>\n<div class="sbm">{m}</div>\n<style>{QUELL_CSS}{EMPIRIA}</style>\n</main>'
     seite("methoden-elevator-pitch.html", "Elevator Pitch", html)
 
@@ -175,7 +169,7 @@ def business_story():
 <section class="mt"><div class="container">
   <p class="mt-kicker">Marketing</p>
   <h1>Business <span class="hl">Story.</span></h1>
-  <p class="mt-lead">Aus unseren Antworten über die Fragen der Leser zur Landingpage – und daraus der Elevator Pitch. Beide Seiten zeigen bisher das Beispiel Müller &amp; Ströbel; die Business Story von empiria folgt.</p>
+  <p class="mt-lead">Aus unseren Antworten über die Fragen der Leser zur Landingpage – und daraus der Elevator Pitch. Der Elevator Pitch ist die Fassung von empiria; das Storyboard zeigt bisher das Beispiel Müller &amp; Ströbel.</p>
   <div class="mt-raster">
     <a class="mt-karte" href="/projekte/methoden-storyboard.html"><span class="mt-tag">SB</span><b>Storyboard Landing Page</b><small>Antworten, Fragen des Lesers, Abschnitte, Skizze, Final.</small></a>
     <a class="mt-karte" href="/projekte/methoden-elevator-pitch.html"><span class="mt-tag">EP</span><b>Elevator Pitch</b><small>Unsere Story in 30/10 Sekunden.</small></a>
