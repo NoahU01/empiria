@@ -62,14 +62,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · A Foto pur (Flipchart)",
   "kern": "Themenliste 27: What's in it for me – für jeden Vertriebspartner.",
   "text": "What's in it for me?\n\nDiese Frage stellt sich jeder Vertriebspartner, wenn ein neues Thema auf ihn zukommt. Er stellt sie nicht laut. Aber er entscheidet danach, ob er etwas tut.\n\nBei Vertriebstagungen und Markteinführungen erlebe ich es immer wieder: tolle Stimmung, viele richtige Fakten, viele bunte Folien.\n\nWenn ich nachfrage, wie gut die Umsetzung vorbereitet ist, kommt meist kurz ein Schlucken. Und nach vier Wochen spricht keiner mehr von der Tagung.\n\nDeshalb steht diese Frage bei uns am Anfang jeder Vorbereitung. Sie ist das Why, und zwar aus Sicht des Zuhörers: Was bedeutet das für mich? Was bringt mir das?\n\nErst wenn das klar ist, kommen das How, also wie er grundsätzlich vorgeht, und das What next, der konkrete nächste Schritt.\n\nDie zweite Frage folgt direkt: Wie zeigen wir das so, dass es sofort verstanden wird, ohne große Erklärung? Show, don't tell.\n\nBevor du die nächste Tagung vorbereitest: Schreib für jede Zielgruppe in einem Satz auf, was sie davon hat.\n\nWenn dir das schwerfällt, weiß es der Vertrieb hinterher auch nicht.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-16",
   "kennzahlen": [],
   "bild": "rp05",
   "termin": "Fr 16.10.",
   "format": "Szene · A Foto pur (Flipchart)",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7516747439417118720"
  },
  {
   "id": 66,
