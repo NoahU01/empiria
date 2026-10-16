@@ -718,12 +718,6 @@ teile += [
   <p style="position:absolute;left:84px;right:84px;bottom:190px;margin:0;font:600 42px/1.45 Poppins,sans-serif;color:#1a1817">Wenn das gut gemeinte Feature nach hinten <span class="hl" style="background:#1a1817;color:#fff400">losgeht.</span></p>
   %s
 </section>""" % (luc("phone").replace('class="luc"', 'class="luc" style="stroke-width:1.1"'), NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')),
-    """<section class="p gelbgrund" id="rp11b">
-  <div class="an" style="width:1080px;height:1080px;left:-20px;top:-110px;color:#1a1817">%s</div>
-  <p class="zitat" style="position:absolute;left:170px;right:110px;top:300px;margin:0;font-size:124px;line-height:1.06;color:#1a1817">„Das kommt darauf&nbsp;an.“</p>
-  <p style="position:absolute;left:84px;right:84px;bottom:190px;margin:0;font:600 42px/1.45 Poppins,sans-serif;color:#1a1817">Wenn das gut gemeinte Feature nach hinten <span class="hl" style="background:#1a1817;color:#fff400">losgeht.</span></p>
-  %s
-</section>""" % (luc("message-circle").replace('class="luc"', 'class="luc" style="stroke-width:.9"'), NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')),
     """<section class="p schwarz" id="rp10"><span class="riesen-anf">„</span>
   <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— (m)ein Vorstand</p></section>""",
 ]
