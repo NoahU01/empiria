@@ -151,7 +151,7 @@ const [chrome, url, ziel] = process.argv.slice(3);
 (async () => {
   const b = await puppeteer.launch({ executablePath: chrome, headless: 'new' });
   const p = await b.newPage();
-  await p.setViewport({ width: 3600, height: 2000, deviceScaleFactor: 1 });
+  await p.setViewport({ width: 3600, height: 2000, deviceScaleFactor: 4 });  // vierfache Pixeldichte: gestochen scharf, auch im Druck und beim Heranzoomen
   await p.goto(url, { waitUntil: 'networkidle0' });
   await p.evaluate(() => document.fonts.ready);
   const n = await p.evaluate(() => {

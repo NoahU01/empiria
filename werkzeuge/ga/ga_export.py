@@ -62,7 +62,7 @@ const jobs = JSON.parse(require('fs').readFileSync(process.argv[3], 'utf8'));
   const pg = await b.newPage();
   await pg.goto(process.argv[5], {waitUntil: 'networkidle0'});
   for (const j of jobs) {
-    await pg.setViewport({width: j.w, height: j.h, deviceScaleFactor: j.faktor || 1});
+    await pg.setViewport({width: j.w, height: j.h, deviceScaleFactor: j.faktor || 2});  // mindestens doppelte Pixeldichte
     await pg.evaluate((html, w, h) => {
       const c = document.getElementById('c');
       c.style.width = w + 'px'; c.style.height = h + 'px'; c.innerHTML = html;

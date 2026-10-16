@@ -328,7 +328,7 @@ def jobs():
     for var in VARIANTEN:
         j.append({"html": person_banner(var), "w": 1584, "h": 396, "faktor": 2, "pfad": ORDNER / f"linkedin-person-{var}.png"})
         j.append({"html": firma_banner(var), "w": 1192, "h": 220, "faktor": 2, "pfad": ORDNER / f"linkedin-firma-{var}.png"})
-    j.append({"html": firmenlogo(), "w": 400, "h": 400, "pfad": ORDNER / "linkedin-firmenlogo-400.png"})
+    j.append({"html": firmenlogo(), "w": 400, "h": 400, "faktor": 1, "pfad": ORDNER / "linkedin-firmenlogo-400.png"})
     j.append({"html": firmenlogo(), "w": 400, "h": 400, "faktor": 2, "pfad": ORDNER / "linkedin-firmenlogo-800.png"})
     return j
 

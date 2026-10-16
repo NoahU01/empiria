@@ -219,13 +219,16 @@ def hintergrund(motiv, fmt):
     return f'<div class="hg" style="aspect-ratio:{w}/{h};--bg:{bg};--fg:{fg}">{"".join(teile)}</div>'
 
 
+FAKTOR = 2  # Dateien in doppelter Auflösung – werden auf jedem Bildschirm nur verkleinert, nie hochskaliert
+
+
 def png_name(motiv, fmt):
-    w, h = FMT[fmt][2], FMT[fmt][3]
+    w, h = FMT[fmt][2] * FAKTOR, FMT[fmt][3] * FAKTOR
     return f"empiria-hintergrund-{motiv}-{fmt}-{w}x{h}.png"
 
 
 def jobs():
-    return [{"html": hintergrund(mo, f[0]), "w": f[2], "h": f[3], "pfad": ORDNER / png_name(mo, f[0])}
+    return [{"html": hintergrund(mo, f[0]), "w": f[2], "h": f[3], "faktor": FAKTOR, "pfad": ORDNER / png_name(mo, f[0])}
             for mo in MOTIVE for f in FORMATE]
 
 
@@ -320,7 +323,7 @@ def main_html():
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
                      + reihe(mo, ["macbook", "ipad13:quer", "ipad13:hoch", "ipadmini:quer", "ipadmini:hoch"], 1)
                      + reihe(mo, ["iphone13mini", "iphone13pro", "iphone16pro", "teams"], 1.7, "gr--phones")
-                     + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
+                     + f'<p class="pm-dl-titel">PNG in doppelter Auflösung laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
                    'Motive aus der Bildsprache der Homepage – Für MacBook, iPad, iPhone und Videokonferenzen. Beim iPad gibt es je ein quadratisches Bild für quer und hoch – iPadOS schneidet daraus selbst die Mitte aus; gezeigt ist, was in beiden Lagen zu sehen ist. Die Geräte stehen im richtigen Größenverhältnis nebeneinander. '
