@@ -2,7 +2,7 @@
 """Geschäftsausstattung · Hintergrundbilder (Entwurf, Daniel 10.10.2026).
 
 Vier Motive (Drei Leistungen · Muster Schwarz · Muster Gelb · Startseite) in neun Formaten:
-MacBook, iPad 13" quer/hoch, iPad mini quer/hoch, iPhone 13 mini, iPhone 15/16, iPhone Pro Max, Teams/Zoom.
+MacBook, iPad 13" quer/hoch, iPad mini quer/hoch, iPhone 13 mini, iPhone 13 Pro, iPhone 15/16, iPhone Pro Max, Teams/Zoom.
 Regeln: iPhone – oben Uhr/Widgets (bis ca. 30 %) und unten Dock/Knöpfe (ab ca. 85 %) frei;
 Teams/Zoom – die Person sitzt mittig, Elemente nur am Rand.
 Gestaltung in Originalpixeln, umgerechnet in cqw – Vorschau und PNG sind identisch.
@@ -28,6 +28,7 @@ FORMATE = [
     ("ipad13", "iPad 13″", 2752, 2752, "ipadq", 28.1),
     ("ipadmini", "iPad mini", 2266, 2266, "ipadq", 19.5),
     ("iphone13mini", "iPhone 13 mini", 1080, 2340, "iphone", 6.2),
+    ("iphone13pro", "iPhone 13 Pro", 1170, 2532, "iphone", 6.7),
     ("iphone15", "iPhone 15/16", 1179, 2556, "iphone", 6.7),
     ("iphonepromax", "iPhone Pro Max", 1290, 2796, "iphone", 7.3),
     ("teams", "Teams/Zoom", 1920, 1080, "video", 0),
@@ -263,7 +264,7 @@ SEITE_EXTRA = """
   .gr { flex-wrap: wrap; align-items: flex-end; gap: 1.6rem 1rem; }
   .gr > figure { flex: 0 0 calc(50% - .5rem) !important; }
   .gr > figure.gr-breit { flex-basis: 100% !important; }
-  .gr--phones > figure { flex: 0 0 calc(33.333% - .67rem) !important; }
+  .gr--phones > figure:not(.gr-breit) { flex: var(--g) 1 0 !important; }  /* alle iPhones in einer Reihe, im echten Größenverhältnis */
 }
 """
 
@@ -308,7 +309,7 @@ def reihe(motiv, formate, faktor, cls=""):
             label = f"{name} · {w} × {h}"
         breit = " gr-breit" if art in ("mac", "video") else ""
         basis = '<div class="ger-basis"></div>' if art == "mac" else ""
-        figs.append(f'<figure class="{breit.strip()}" style="flex:{gewicht:.2f} 1 0">{geraet(motiv, fmt, lage)}{basis}'
+        figs.append(f'<figure class="{breit.strip()}" style="flex:{gewicht:.2f} 1 0;--g:{gewicht:.2f}">{geraet(motiv, fmt, lage)}{basis}'
                     f'<p class="pm-label">{label}</p></figure>')
     return f'<div class="gr {cls}">{"".join(figs)}</div>'
 
@@ -319,7 +320,7 @@ def main_html():
         links = "".join(download(f"{WEB}/{png_name(mo, f[0])}", f[1]) for f in FORMATE)
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
                      + reihe(mo, ["macbook", "ipad13:quer", "ipad13:hoch", "ipadmini:quer", "ipadmini:hoch"], 1)
-                     + reihe(mo, ["iphone13mini", "iphone15", "iphonepromax", "teams"], 1.7, "gr--phones")
+                     + reihe(mo, ["iphone13mini", "iphone13pro", "iphone15", "iphonepromax", "teams"], 1.7, "gr--phones")
                      + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
