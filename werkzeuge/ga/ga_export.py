@@ -72,6 +72,10 @@ const jobs = JSON.parse(require('fs').readFileSync(process.argv[3], 'utf8'));
       await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
     });
     await pg.screenshot({path: j.pfad, clip: {x: 0, y: 0, width: j.w, height: j.h}});
+    // dieselbe Gestaltung als Vektor-PDF in exakt derselben Größe (Schrift, Formen, Logo bleiben Vektoren)
+    await pg.emulateMediaType('screen');
+    await pg.pdf({path: j.pfad.replace(/\.png$/, '.pdf'), width: j.w + 'px', height: j.h + 'px', printBackground: true,
+                  pageRanges: '1', margin: {top: 0, right: 0, bottom: 0, left: 0}});
     process.stdout.write('.');
   }
   await b.close();
@@ -143,4 +147,8 @@ def kopf(titel_html, lead):
 
 
 def download(pfad_web, text):
-    return f'<a href="{pfad_web}" download>{DL_ICON}{text}</a>'
+    """Download-Chip; zu jedem PNG gibt es ein gleichnamiges Vektor-PDF."""
+    a = f'<a href="{pfad_web}" download>{DL_ICON}{text}</a>'
+    if pfad_web.endswith(".png"):
+        a += f'<a href="{pfad_web[:-4]}.pdf" download>{DL_ICON}{text} · PDF Vektor</a>'
+    return a

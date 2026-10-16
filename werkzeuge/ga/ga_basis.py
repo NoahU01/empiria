@@ -109,7 +109,11 @@ DL_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 
 
 def download(pfad, text):
-    return f'<a class="ga-dl" href="/projekte/{pfad}" download>{DL_ICON}{text}</a>'
+    """Download-Chip; zu jedem PNG gibt es ein gleichnamiges Vektor-PDF."""
+    a = f'<a class="ga-dl" href="/projekte/{pfad}" download>{DL_ICON}{text}</a>'
+    if pfad.endswith(".png"):
+        a += f'<a class="ga-dl" href="/projekte/{pfad[:-4]}.pdf" download>{DL_ICON}PDF · Vektor, für Druck und Illustrator</a>'
+    return a
 
 
 def figur(inhalt, label, dl=""):
@@ -179,6 +183,19 @@ const [chrome, url, ziel] = process.argv.slice(3);
   for (let i = 0; i < els.length; i++) {
     await els[i].screenshot({ path: ziel + '/' + pfade[i] });
     console.log('png:', pfade[i]);
+  }
+  // zu jedem PNG ein Vektor-PDF in exakt derselben Größe: alle anderen Elemente ausblenden, nur dieses drucken
+  await p.emulateMediaType('screen');
+  for (let i = 0; i < els.length; i++) {
+    const g = await p.evaluate((k) => {
+      const alle = [...document.querySelectorAll('#ga-stage > [data-png]')];
+      alle.forEach((e, n) => { e.style.display = n === k ? '' : 'none'; });
+      const r = alle[k].getBoundingClientRect();
+      return { w: Math.round(r.width), h: Math.round(r.height) };
+    }, i);
+    await p.pdf({ path: ziel + '/' + pfade[i].replace(/\.png$/, '.pdf'), width: g.w + 'px', height: g.h + 'px',
+                  printBackground: true, pageRanges: '1', margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+    console.log('pdf:', pfade[i].replace(/\.png$/, '.pdf'));
   }
   await b.close();
 })();
