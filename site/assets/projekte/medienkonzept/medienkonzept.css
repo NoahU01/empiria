@@ -615,3 +615,58 @@ a.mke-platz{text-decoration:none}
 }
 @media (max-width:700px){ .mke-tage{grid-auto-columns:42%} }
 .mke-tag__kopf{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;min-height:44px}
+
+/* Medienkonzept › Pitch (16.10.2026) */
+.mpp-ueber{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 18px;padding:16px 22px;border-radius:14px;background:#1a1817;color:#fff}
+.mpp-ueber small{font:700 .72rem/1 'Poppins',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff400}
+.mpp-ueber b{font:700 clamp(1.05rem,1.6vw,1.3rem)/1.35 'Lora',Georgia,serif}
+.mpp-schritte{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch}
+.mpp-pfeil{align-self:center;font:600 1.4rem 'Poppins',sans-serif;color:#1a1817}
+.mpp-schritt{display:flex;flex-direction:column;gap:10px;padding:20px 20px 18px;border:1px solid #e4e0db;border-radius:18px;background:#fff}
+.mpp-schritt__nr{display:flex;align-items:center;gap:10px;margin:0}
+.mpp-schritt__nr b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff400;font:700 1rem 'Poppins',sans-serif}
+.mpp-schritt__nr span{font:700 .74rem 'Poppins',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#6b6661}
+.mpp-schritt h3{margin:0;font:700 1.2rem/1.25 'Lora',Georgia,serif}
+.mpp-schritt dl{margin:0;display:grid;gap:8px}
+.mpp-schritt dt{font:600 .82rem 'Poppins',sans-serif}
+.mpp-schritt dd{margin:0;font:.9rem/1.5 'Poppins',sans-serif;color:#3d3a37}
+.mpp-danach{margin:auto 0 0;padding-top:12px;border-top:1px solid #e4e0db;font:600 .92rem/1.45 'Poppins',sans-serif}
+.mpp-danach small{display:block;margin-bottom:4px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#6b6661}
+.mpp-pitch{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px}
+.mpp-karte{padding:24px 26px;border-radius:18px;border:1px solid #e4e0db;background:#fff}
+.mpp-karte--kurz{background:#1a1817;color:#fff;border-color:#1a1817}
+.mpp-karte__kopf{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid #e4e0db}
+.mpp-karte--kurz .mpp-karte__kopf{border-color:#3d3a37}
+.mpp-karte__kopf b{font:700 1.15rem 'Lora',Georgia,serif}
+.mpp-karte__kopf span{font:.8rem 'Poppins',sans-serif;color:#8a8783}
+.mpp-karte--lang p:not(.mpp-karte__kopf){margin:0 0 10px;font:1rem/1.6 'Poppins',sans-serif}
+.mpp-karte--lang p:last-child{margin:0;font-weight:600}
+.mpp-zehn{margin:0 0 18px;font:700 clamp(1.15rem,1.8vw,1.45rem)/1.4 'Lora',Georgia,serif}
+.mpp-kurz{margin:0;font:600 .98rem/1.45 'Poppins',sans-serif;color:#fff400}
+.mpp-kurz small{display:block;margin-bottom:4px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#a8a39c}
+.mpp-regeln,.mpp-fragen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mpp-regeln li,.mpp-fragen li{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:14px;background:#fff;border:1px solid #e4e0db}
+.mpp-regeln b,.mpp-fragen b{font:600 1rem/1.4 'Poppins',sans-serif}
+.mpp-regeln span,.mpp-fragen span{font:.88rem/1.45 'Poppins',sans-serif;color:#6b6661}
+.mpp-quelle{margin:20px 0 0;font:.8rem/1.5 'Poppins',sans-serif;color:#8a8783}
+@media (max-width:900px){
+  .mpp-schritte{grid-template-columns:minmax(0,1fr)}
+  .mpp-pfeil{justify-self:center;transform:rotate(90deg)}
+  .mpp-pitch,.mpp-regeln,.mpp-fragen{grid-template-columns:minmax(0,1fr)}
+}
+/* Logik › Verweis auf den Pitch (16.10.2026) */
+.lg-pitch{display:flex;flex-direction:column;gap:8px;margin:16px 0 0;padding:18px 22px;border-radius:16px;background:#1a1817;color:#fff;text-decoration:none;transition:transform .2s}
+.lg-pitch:hover{transform:translateY(-2px)}
+.lg-pitch small{font:700 .72rem/1 'Poppins',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff400}
+.lg-pitch b{font:700 clamp(1rem,1.5vw,1.2rem)/1.45 'Lora',Georgia,serif}
+.lg-pitch em{align-self:flex-start;font:600 .9rem 'Poppins',sans-serif;font-style:normal;color:#fff;border-bottom:2px solid #fff400;padding-bottom:3px}
+.mpp-ueber{margin-bottom:26px}
+.mpp-danach{min-height:6.2em}
+@media (max-width:900px){ .mpp-danach{min-height:0} }
+.ak-sec .mpp-ueber{margin:0 0 26px}
+.mpp-schritt dl{flex:1}
+.mpp-schritt .mpp-danach{margin-top:auto;min-height:7.4em}
+@media (max-width:900px){ .mpp-schritt .mpp-danach{min-height:0} }
+.ak-sec .mpp-zehn{margin:0 0 18px}
+.ak-sec .mpp-karte--lang p:not(.mpp-karte__kopf){margin:0 0 10px}
+.ak-sec .mpp-karte--lang p:last-child{margin:0}

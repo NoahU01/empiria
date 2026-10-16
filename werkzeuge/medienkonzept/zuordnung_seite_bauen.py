@@ -11,7 +11,7 @@ import os
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 PF = "/assets/projekte/medienkonzept/postings/"
-V = "31"
+V = "63"
 
 TOEPFE = [
     ("T1", "empiria", "Was wir lösen – Homepage und Pitch", "Die Strategie steht. Trotzdem passiert zu wenig – wir bringen sie in Wirkung.", [
@@ -107,6 +107,7 @@ MAIN = '''<main class="ak">
       <div class="lg-pos__kern"><b>''' + POSITIONIERUNG[0] + '''</b><span>''' + POSITIONIERUNG[1] + '''</span></div>
       <div class="lg-pos__regeln">''' + "".join('<div><small>%s</small><span>%s</span><i>%s</i></div>' % r for r in POS_REGELN) + '''</div>
     </div>
+    <a class="lg-pitch" href="/projekte/medienkonzept-pitch.html"><small>Gesagt in 10 Sekunden</small><b>„Ich bin Strategiehandwerker für Führungskräfte bei Versicherern. Ich sorge dafür, dass ihre Strategie im Alltag ankommt: erst Klarheit, dann Wirkung, dann Raum für Neues.“</b><em>Business Story und 30-Sekunden-Pitch &rarr;</em></a>
     ''' + PFEIL + '''
     <p class="lg-stufe"><i>C</i>Themen für Daniel – je Baustein, mit Postingideen und Lösung <span>Gewichtung folgt der laufenden Auswertung</span></p>
     <div class="lg-baum">''' + "".join(baustein(*b) for b in BAUSTEINE) + '''</div>
@@ -119,7 +120,7 @@ MAIN = '''<main class="ak">
         <li>Erst die Szene oder der Satz, dann die Aussage, dann der Mehrwert <i>T2 · T3</i></li>
         <li>Daniels Stimme aus dem Diktat, 700–900 Zeichen, kein Link <i>T2 · T3</i></li>
         <li>Nie Text ohne Bild – Foto, Karte, Grafik oder Dokument im Wechsel <i>T3</i></li>
-        <li>Fünf pro Woche, davon mindestens zwei mit Foto von Daniel <i>T2 · T3</i></li>
+        <li>Sieben pro Woche, davon mindestens zwei mit Foto von Daniel <i>T2 · T3</i></li>
       </ul>
       <p class="lg-weiter"><a href="/projekte/medienkonzept-postingformate.html">Postingformate &rarr;</a> · <a href="/projekte/medienkonzept-themenliste.html">Themenliste &rarr;</a> · <a href="/projekte/medienkonzept-entwuerfe.html">Entwürfe &rarr;</a></p>
     </div>
