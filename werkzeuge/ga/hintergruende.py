@@ -2,7 +2,7 @@
 """Geschäftsausstattung · Hintergrundbilder (Entwurf, Daniel 10.10.2026).
 
 Vier Motive (Drei Leistungen · Muster Schwarz · Muster Gelb · Startseite) in neun Formaten:
-MacBook, iPad 13" quer/hoch, iPad mini quer/hoch, iPhone 13 mini, iPhone 13 Pro, iPhone 15/16, iPhone Pro Max, Teams/Zoom.
+MacBook, iPad 13" quer/hoch, iPad mini quer/hoch, iPhone 13 mini, iPhone 13 Pro, iPhone 16 Pro, Teams/Zoom.
 Regeln: iPhone – oben Uhr/Widgets (bis ca. 30 %) und unten Dock/Knöpfe (ab ca. 85 %) frei;
 Teams/Zoom – die Person sitzt mittig, Elemente nur am Rand.
 Gestaltung in Originalpixeln, umgerechnet in cqw – Vorschau und PNG sind identisch.
@@ -29,8 +29,7 @@ FORMATE = [
     ("ipadmini", "iPad mini", 2266, 2266, "ipadq", 19.5),
     ("iphone13mini", "iPhone 13 mini", 1080, 2340, "iphone", 6.2),
     ("iphone13pro", "iPhone 13 Pro", 1170, 2532, "iphone", 6.7),
-    ("iphone15", "iPhone 15/16", 1179, 2556, "iphone", 6.7),
-    ("iphonepromax", "iPhone Pro Max", 1290, 2796, "iphone", 7.3),
+    ("iphone16pro", "iPhone 16 Pro", 1206, 2622, "iphone", 6.9),
     ("teams", "Teams/Zoom", 1920, 1080, "video", 0),
 ]
 FMT = {f[0]: f for f in FORMATE}
@@ -320,7 +319,7 @@ def main_html():
         links = "".join(download(f"{WEB}/{png_name(mo, f[0])}", f[1]) for f in FORMATE)
         teile.append(f'<div class="pm-abschnitt"><h2>{i} · {name}</h2><p class="pm-text">{text}</p>'
                      + reihe(mo, ["macbook", "ipad13:quer", "ipad13:hoch", "ipadmini:quer", "ipadmini:hoch"], 1)
-                     + reihe(mo, ["iphone13mini", "iphone13pro", "iphone15", "iphonepromax", "teams"], 1.7, "gr--phones")
+                     + reihe(mo, ["iphone13mini", "iphone13pro", "iphone16pro", "teams"], 1.7, "gr--phones")
                      + f'<p class="pm-dl-titel">PNG in Originalgröße laden</p><div class="pm-dl">{links}</div></div>')
     return (f'<main>\n<section class="pm"><div class="container">'
             + kopf('Hinter&shy;grund&shy;<span class="hl">bilder</span>',
