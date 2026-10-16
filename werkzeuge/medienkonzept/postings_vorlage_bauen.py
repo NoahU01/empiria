@@ -711,12 +711,7 @@ teile += [
 # Redaktionsplan Wochenende 17./18.10.2026 (7-Tage-Rhythmus)
 teile += [
     """<section class="p gelbgrund" id="rp09"><p class="h" style="margin-top:60px;font-size:96px;line-height:1.24;max-width:900px;color:#1a1817">Die meisten sehen nur die Grenzen, die <span class="hl" style="background:#1a1817;color:#fff400">heute gesteckt</span> sind.</p>%s%s</section>""" % (anschnitt(O, 700, -220, -190, "#1a1817"), NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')),
-    """<section class="p gelbgrund satzkarte" id="rp11">
-  <p class="zitat" style="margin-top:60px;font-size:150px;line-height:1.05">„Das kommt darauf&nbsp;an.“</p>
-  <p class="h" style="margin-top:56px;font-size:58px;line-height:1.4;max-width:860px;color:#1a1817">Wenn das gut gemeinte Feature nach hinten <span class="hl" style="background:#1a1817;color:#fff400">losgeht.</span></p>
-  %s
-  <p class="namezeile" style="color:#1a1817">Daniel Ströbel</p>
-</section>""" % anschnitt(O, 700, -220, -190, "#1a1817"),
+    """<section class="p tisch" id="rp11"><div class="postit" style="top:230px;height:820px;padding:215px 80px 0 85px"><p style="font-size:108px;line-height:1.12">„Das&nbsp;kommt darauf&nbsp;an.“</p><small style="margin-top:70px;font-size:40px;line-height:1.35">Wenn das gut gemeinte Feature nach hinten losgeht.</small></div>%s</section>""" % NAME.replace('class="namezeile"', 'class="namezeile" style="color:#a8a39c"'),
     """<section class="p schwarz" id="rp10"><span class="riesen-anf">„</span>
   <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— (m)ein Vorstand</p></section>""",
 ]
