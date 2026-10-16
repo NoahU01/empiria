@@ -23,6 +23,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 148,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 51.5,
+    "impressionen": 303,
+    "reichweite": 181,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -47,6 +54,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 73,
     "reaktionen": 5,
     "kommentare": 2
+   },
+   {
+    "stunden": 27.5,
+    "impressionen": 424,
+    "reichweite": 285,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -64,7 +78,15 @@ window.MK_ENTWUERFE = [
   "text": "What's in it for me?\n\nDiese Frage stellt sich jeder Vertriebspartner, wenn ein neues Thema auf ihn zukommt. Er stellt sie nicht laut. Aber er entscheidet danach, ob er etwas tut.\n\nBei Vertriebstagungen und Markteinführungen erlebe ich es immer wieder: tolle Stimmung, viele richtige Fakten, viele bunte Folien.\n\nWenn ich nachfrage, wie gut die Umsetzung vorbereitet ist, kommt meist kurz ein Schlucken. Und nach vier Wochen spricht keiner mehr von der Tagung.\n\nDeshalb steht diese Frage bei uns am Anfang jeder Vorbereitung. Sie ist das Why, und zwar aus Sicht des Zuhörers: Was bedeutet das für mich? Was bringt mir das?\n\nErst wenn das klar ist, kommen das How, also wie er grundsätzlich vorgeht, und das What next, der konkrete nächste Schritt.\n\nDie zweite Frage folgt direkt: Wie zeigen wir das so, dass es sofort verstanden wird, ohne große Erklärung? Show, don't tell.\n\nBevor du die nächste Tagung vorbereitest: Schreib für jede Zielgruppe in einem Satz auf, was sie davon hat.\n\nWenn dir das schwerfällt, weiß es der Vertrieb hinterher auch nicht.",
   "status": "veroeffentlicht",
   "datum": "2026-10-16",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 3.5,
+    "impressionen": 168,
+    "reichweite": 102,
+    "reaktionen": 6,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp05",
   "termin": "Fr 16.10.",
   "format": "Szene · A Foto pur (Flipchart)",
