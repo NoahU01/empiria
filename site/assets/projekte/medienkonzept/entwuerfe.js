@@ -100,14 +100,14 @@ window.MK_ENTWUERFE = [
   "art": "Weitergedacht",
   "kern": "Themenliste 31: Die meisten sehen nur die Grenzen, die heute gesteckt sind.",
   "text": "Die meisten sehen nur die Grenzen, die heute gesteckt sind.\n\nDas ist kein Vorwurf. Wer einen Bereich führt, denkt in dem Rahmen, den er kennt: Zuständigkeiten, Systeme, Budgets.\n\nUnd kaum jemand schlägt eine Lösung vor, die seine eigene Rolle überflüssig machen würde.\n\nGenau deshalb lohnt es sich, die Grenzen ab und zu bewusst wegzudenken.\n\nMit einem Schadenchef über die Frage, wie sein Schadenmanagement aussähe, wenn er es heute ohne die gewachsenen Abläufe aufbauen würde.\n\nMit einem Vertriebsdirektor darüber, wie er seinen Vertrieb aufstellen würde, wenn er morgen bei null anfangen dürfte.\n\nDie Antworten sind selten sofort umsetzbar. Aber sie zeigen, welche Grenzen wirklich gesetzt sind und welche nur Gewohnheit.\n\nEine Voraussetzung gibt es: Der Kern muss laufen. Wer im Alltag noch Löcher stopft, hat für solche Fragen keinen Kopf.\n\nWelche Grenze in deinem Bereich ist eigentlich nur Gewohnheit?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-17",
   "kennzahlen": [],
   "bild": "rp09",
   "termin": "Sa 17.10.",
   "format": "Weitergedacht · Gelbe Satzkarte mit Kreis",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7517124892769607680"
  },
  {
   "id": 67,
