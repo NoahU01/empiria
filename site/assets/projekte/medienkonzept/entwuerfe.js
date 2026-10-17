@@ -30,6 +30,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 181,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 75.5,
+    "impressionen": 316,
+    "reichweite": 193,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -61,6 +68,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 285,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 51.5,
+    "impressionen": 467,
+    "reichweite": 319,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -85,6 +99,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 102,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 27.5,
+    "impressionen": 425,
+    "reichweite": 295,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -102,7 +123,15 @@ window.MK_ENTWUERFE = [
   "text": "Die meisten sehen nur die Grenzen, die heute gesteckt sind.\n\nDas ist kein Vorwurf. Wer einen Bereich führt, denkt in dem Rahmen, den er kennt: Zuständigkeiten, Systeme, Budgets.\n\nUnd kaum jemand schlägt eine Lösung vor, die seine eigene Rolle überflüssig machen würde.\n\nGenau deshalb lohnt es sich, die Grenzen ab und zu bewusst wegzudenken.\n\nMit einem Schadenchef über die Frage, wie sein Schadenmanagement aussähe, wenn er es heute ohne die gewachsenen Abläufe aufbauen würde.\n\nMit einem Vertriebsdirektor darüber, wie er seinen Vertrieb aufstellen würde, wenn er morgen bei null anfangen dürfte.\n\nDie Antworten sind selten sofort umsetzbar. Aber sie zeigen, welche Grenzen wirklich gesetzt sind und welche nur Gewohnheit.\n\nEine Voraussetzung gibt es: Der Kern muss laufen. Wer im Alltag noch Löcher stopft, hat für solche Fragen keinen Kopf.\n\nWelche Grenze in deinem Bereich ist eigentlich nur Gewohnheit?",
   "status": "veroeffentlicht",
   "datum": "2026-10-17",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 2.5,
+    "impressionen": 97,
+    "reichweite": 66,
+    "reaktionen": 2,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp09",
   "termin": "Sa 17.10.",
   "format": "Weitergedacht · Gelbe Satzkarte mit Kreis",
