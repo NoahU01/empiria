@@ -90,6 +90,7 @@ SEITEN_CSS = """
 .ga-label b { color: #1a1817; font-weight: 700; }
 .ga-dl { display: inline-flex; align-items: center; gap: .4rem; margin-top: .45rem; font: 600 .78rem/1 'Poppins', sans-serif; color: #1a1817; text-decoration: none; border-bottom: 2px solid #fff400; padding-bottom: .2rem; }
 .ga-dl:hover { background: #fff400; }
+.ga-dl { margin-right: 1.2rem; }
 .ga-dl svg { width: .95rem; height: .95rem; }
 .ga-hinweis { margin-top: 1.2rem; display: flex; gap: .7rem; align-items: flex-start; max-width: 50rem; font-size: .88rem; line-height: 1.55; color: #6f6a64; }
 .ga-hinweis .ga-ph { flex: 0 0 auto; }
