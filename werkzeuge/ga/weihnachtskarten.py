@@ -31,9 +31,9 @@ def karte(inhalt, bg, fg, cls, png):
             f'data-pw="{KARTE_PX}">{inhalt}</div>')
 
 
-def innen(links, akzent, png):
+def innen(links, akzent, png, cls=""):
     linien = "".join('<span class="wk-linie"></span>' for _ in range(4))
-    return (f'<div class="wki ga-blatt" data-png="ga/weihnachtskarten/{png}.png" data-pw="{INNEN_PX}">'
+    return (f'<div class="wki ga-blatt {cls}" data-png="ga/weihnachtskarten/{png}.png" data-pw="{INNEN_PX}"><span class="wki-flaeche"></span>'
             f'<div class="wki-links"><p class="wki-kicker"><span class="wki-akzent">{akzent}</span>Frohe Weihnachten</p>{links}</div>'
             f'<div class="wki-rechts">{linien}</div>{logo(cls="wki-logo")}<span class="wki-falz"></span></div>')
 
@@ -48,7 +48,7 @@ def a_vorne():
                  f'<span class="wka-stern">{zeichen("stern", SCHWARZ)}</span>'
                  f'<span class="wka-stern wka-stern--2">{zeichen("stern", SCHWARZ)}</span>'
                  f'<span class="wka-stern wka-stern--3">{zeichen("stern", SCHWARZ)}</span>'
-                 '<p class="wk-spruch">Jetzt mal<br>ohne Agenda.</p>', GELB, SCHWARZ, "wka", "a-vorderseite")
+                 '<p class="wk-spruch">Jetzt mal<br>ohne <span class="wk-hl wk-hl--schwarz">Agenda.</span></p>', GELB, SCHWARZ, "wka", "a-vorderseite")
 
 
 def a_hinten():
@@ -61,16 +61,25 @@ def a_hinten():
 
 
 def a_innen():
-    return innen(innentext("Danke für ein Jahr<br>voller guter Fragen.",
+    return innen(innentext("Danke für ein Jahr<br>voller <span class=\"wk-hl wk-hl--schwarz\">guter Fragen.</span>",
                            "Für das Vertrauen, die offenen Gespräche und jede Strategie, die im Alltag angekommen ist. "
                            "Wir wünschen Feiertage ohne Tagesordnung – und für 2027 Klarheit bei allem, was ansteht."),
-                 zeichen("stern", SCHWARZ), "a-innen")
+                 zeichen("stern", SCHWARZ), "a-innen", "wki--gelb")
 
 
 # ---------- B · Luft nach oben ----------
 def b_vorne():
-    return karte(f'{logo(cls="wk-logo")}<div class="wkb-baum"><span class="wkb-ast">{pfeil_hoch(SCHWARZ)}</span>'
-                 f'<span class="wkb-spitze">{zeichen("stern", GELB)}</span></div>'
+    """Viele kleine Doppelpfeile nach oben ergeben gemeinsam den Baum – der Stern ist die Spitze."""
+    zeilen = [1, 2, 3, 4, 5]
+    teile = []
+    for r, n in enumerate(zeilen):
+        for c in range(n):
+            x = (c - (n - 1) / 2)
+            if r == 0:
+                teile.append(f'<span class="wkb-stern" style="--x:{x};--r:{r}">{zeichen("stern", GELB)}</span>')
+            else:
+                teile.append(f'<span class="wkb-p" style="--x:{x};--r:{r}">{pfeil_hoch(SCHWARZ)}</span>')
+    return karte(f'{logo(cls="wk-logo")}<div class="wkb-baum">{"".join(teile)}<span class="wkb-stamm"></span></div>'
                  '<p class="wk-spruch">Nach oben ist<br>noch <span class="wk-hl">Luft.</span></p>', "#fff", SCHWARZ, "wkb", "b-vorderseite")
 
 
@@ -85,7 +94,7 @@ def b_innen():
     return innen(innentext("Wachsen braucht<br>auch Pausen.",
                            "Danke für ein Jahr, in dem wir gemeinsam vorangekommen sind. Jetzt ist Zeit für Familie, "
                            "Freunde und alles, was im Kalender zu kurz kommt. Frohe Weihnachten und einen guten Start in 2027."),
-                 pfeil_hoch(SCHWARZ), "b-innen")
+                 pfeil_hoch(SCHWARZ), "b-innen", "wki--grau")
 
 
 # ---------- C · Abschalten ----------
@@ -93,7 +102,7 @@ KUGELN = [("kreis", 118, 34, "#fff"), ("raute", 141, 52, "#fff"), ("stern", 162,
 
 
 def c_vorne():
-    kugeln = "".join(f'<span class="wkc-kugel" style="--x:{x};--l:{l}"><i></i>{zeichen(n, f)}</span>' for n, x, l, f in KUGELN)
+    kugeln = "".join(f'<span class="wkc-kugel" style="--x:{x};--l:{l}"><i></i><b></b>{zeichen(n, f)}</span>' for n, x, l, f in KUGELN)
     return karte(f'{logo(True, "wk-logo")}{kugeln}'
                  '<p class="wk-spruch">Abschalten ist auch<br>eine <span class="wk-hl">Strategie.</span></p>',
                  SCHWARZ, "#fff", "wkc", "c-vorderseite")
@@ -110,13 +119,13 @@ def c_innen():
     return innen(innentext("Das Jahr darf jetzt<br>Pause machen.",
                            "Danke für die Zusammenarbeit, das Vertrauen und die vielen guten Gespräche. Wir wünschen "
                            "Feiertage ohne Termine – und einen Start ins Jahr 2027, der Lust auf Neues macht."),
-                 '<span class="wki-punkt"></span>', "c-innen")
+                 '<span class="wki-punkt"></span>', "c-innen", "wki--schwarz")
 
 
 VARIANTEN = [
     ("a", "A · Ohne Agenda", "Gelb, der empiria-Stern groß im Anschnitt. Der Spruch nimmt den Beratungsalltag auf die Schippe – "
      "und die Rückseite liefert die Agenda trotzdem: drei Punkte für die Feiertage.", a_vorne, a_hinten, a_innen),
-    ("b", "B · Luft nach oben", "Unser Doppelpfeil, nach oben gedreht, wird zum Tannenbaum – mit gelbem "
+    ("b", "B · Luft nach oben", "Viele kleine Doppelpfeile, alle nach oben, ergeben gemeinsam den Tannenbaum – mit gelbem "
      "Stern als Spitze. Die Rückseite in Gelb schaut nach vorn.", b_vorne, b_hinten, b_innen),
     ("c", "C · Abschalten", "Die empiria-Formen hängen als Christbaumkugeln von der Oberkante, eine leuchtet gelb. Auf der "
      "Rückseite ist genau diese Kugel heruntergefallen – und das Büro kurz offline.", c_vorne, c_hinten, c_innen),
@@ -143,6 +152,7 @@ KARTE_CSS = masse("""
 .wk-logo { position: absolute; left: [12]; top: [11]; height: [4.6]; width: auto; display: block; }
 .wk-spruch { position: absolute; left: [12]; bottom: [12]; font: 700 [11.5]/1.08 'Lora', Georgia, serif; letter-spacing: -.02em; }
 .wk-hl { background: #fff400; color: #1a1817; padding: 0 .1em .04em; border-radius: .12em; }
+.wk-hl--schwarz { background: #1a1817; color: #fff400; }
 .wk svg { display: block; width: 100%; height: auto; }
 .wk-kicker { position: absolute; left: [12]; top: [12]; display: flex; align-items: center; gap: [2.4];
   font: 700 [3.2]/1 'Poppins', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #fff400; }
@@ -160,15 +170,18 @@ KARTE_CSS = masse("""
 .wka-agenda li { display: flex; align-items: baseline; gap: [5]; font: 700 [8.6]/1.05 'Lora', Georgia, serif; letter-spacing: -.01em; }
 .wka-agenda i { font: 700 [3.4]/1 'Poppins', sans-serif; font-style: normal; color: #fff400; letter-spacing: .06em; width: [6]; }
 /* B · Luft nach oben */
-.wkb-baum { position: absolute; right: [30]; bottom: [12]; width: [46]; }
-.wkb-ast { display: block; width: 100%; }
-.wkb-spitze { position: absolute; left: 50%; top: [-15]; width: [13]; transform: translateX(-50%); }
+.wkb-baum { position: absolute; right: [50]; top: [9]; width: 0; height: [80]; }
+.wkb-p, .wkb-stern { position: absolute; left: calc(var(--x) * [12.2]); transform: translateX(-50%); }
+.wkb-p { width: [9.4]; top: calc(var(--r) * [13.2] + [1.5]); }
+.wkb-stern { width: [11]; top: [-1]; }
+.wkb-stamm { position: absolute; left: 0; top: [67.8]; width: [4.4]; height: [5.6]; transform: translateX(-50%); background: #1a1817; border-radius: 0 0 [0.6] [0.6]; }
 .wkb-r-pfeil { position: absolute; right: [46]; bottom: [-34]; width: [64]; }
 /* C · Abschalten */
 .wkc-kugel { position: absolute; top: 0; left: calc(var(--x) * 100cqw / 210); display: flex; flex-direction: column; align-items: center;
   transform: translateX(-50%); }
 .wkc-kugel i { display: block; width: [0.35]; height: calc(var(--l) * 100cqw / 210); background: rgba(255,255,255,.6); }
-.wkc-kugel svg { width: [13]; margin-top: [-0.6]; }
+.wkc-kugel b { display: block; width: [3.2]; height: [1.8]; border-radius: [0.4] [0.4] 0 0; background: rgba(255,255,255,.85); }
+.wkc-kugel svg { width: [13]; margin-top: [-0.3]; }
 .wkc-boden { position: absolute; left: [12]; right: [12]; bottom: [24]; height: [0.5]; background: #1a1817; }
 .wkc-gefallen { position: absolute; right: [44]; bottom: [24.5]; width: [12]; height: [12]; border-radius: 50%; background: #fff400; }
 .wkc-r .wk-absender { bottom: [10]; }
@@ -178,7 +191,15 @@ INNEN_CSS = masse("""
 .wki { position: relative; aspect-ratio: 420 / 99; container-type: inline-size; background: #fff; color: #1a1817; overflow: hidden;
   border-radius: 3px; font-family: 'Poppins', sans-serif; }
 .wki p { margin: 0; }
-.wki-links { position: absolute; left: [14]; top: [14]; width: [168]; }
+.wki-flaeche { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; }
+.wki--gelb .wki-flaeche { background: #fff400; }
+.wki--grau .wki-flaeche { background: #f3f1ee; }
+.wki--schwarz .wki-flaeche { background: #1a1817; }
+.wki--schwarz .wki-links { color: #fff; }
+.wki--schwarz .wki-text { color: #d8d3cc; }
+.wki--schwarz .wki-kicker { color: #fff400; }
+.wki--gelb .wki-text { color: #1a1817; }
+.wki-links { position: absolute; left: [14]; top: [14]; width: [172]; }
 .wki-kicker { display: flex; align-items: center; gap: [2.6]; font: 700 [3]/1 'Poppins', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
 .wki-akzent { display: block; width: [5]; }
 .wki-akzent svg { display: block; width: 100%; height: auto; }
