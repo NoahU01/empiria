@@ -37,6 +37,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 193,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 99.5,
+    "impressionen": 328,
+    "reichweite": 204,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -75,6 +82,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 319,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 75.5,
+    "impressionen": 493,
+    "reichweite": 334,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -106,6 +120,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 295,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 51.5,
+    "impressionen": 499,
+    "reichweite": 361,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -130,6 +151,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 66,
     "reaktionen": 2,
     "kommentare": 2
+   },
+   {
+    "stunden": 26.5,
+    "impressionen": 249,
+    "reichweite": 171,
+    "reaktionen": 4,
+    "kommentare": 2
    }
   ],
   "bild": "rp09",
@@ -147,7 +175,15 @@ window.MK_ENTWUERFE = [
   "text": "„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“\n\nDiesen Satz habe ich von meinem Vorstand unzählige Male gehört. Meist in Meetings, in denen wichtige Folien gezeigt und wichtige Worte benutzt wurden.\n\nDas Bemerkenswerte: Er hatte es fast immer längst verstanden.\n\nEr wollte wissen, ob derjenige es verstanden hat, der das Thema präsentiert und nachher umsetzen soll.\n\nDenn das Thema muss auch dann richtig weiterlaufen, wenn der Vorstand nicht mehr im Raum ist.\n\nSeine kleine Mikromethode. Ganz ruhig, ohne jede Schärfe. Und jedes Mal hat sie gezeigt, ob ein Thema trägt.\n\nIch bewundere sie bis heute.\n\nFür beide Seiten des Tisches steckt etwas drin:\n\n• Wer führt, hat eine Frage, die mehr prüft als jeder Statusbericht.\n• Wer präsentiert, weiß, worauf es ankommt: das Thema in eigenen Worten erklären können, ohne Folie.",
   "status": "veroeffentlicht",
   "datum": "2026-10-18",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 2.5,
+    "impressionen": 204,
+    "reichweite": 155,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp10",
   "termin": "So 18.10.",
   "format": "Satz · B Anführungszeichen",
