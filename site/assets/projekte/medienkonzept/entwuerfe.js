@@ -197,14 +197,14 @@ window.MK_ENTWUERFE = [
   "art": "Eingeordnet · B Zahl auf Foto",
   "kern": "Themenliste 36: 77 % – das Tagesgeschäft verdrängt die Strategie.",
   "text": "77 % sagen: Das Tagesgeschäft verdrängt die strategischen Projekte. Nur 11 % sagen, die Mitarbeitenden verstehen die Strategie.\n\nDie Zahlen stammen aus einer branchenübergreifenden Studie von Wieselhuber. Bei Versicherern erlebe ich es nicht anders.\n\nWas heißt das für einen Bereich? Strategie braucht im Alltag einen festen Platz, sonst gewinnt immer das, was heute brennt.\n\nZwei Dinge helfen.\n\nJeder kann in einem Satz sagen, wohin der Bereich will und warum, dann lassen sich Prioritäten im Alltag selbst entscheiden.\n\nUnd strategische Themen bekommen feste Termine im Kalender, genauso wie das Tagesgeschäft.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-19",
   "kennzahlen": [],
   "bild": "rp08",
   "termin": "Mo 19.10.",
   "format": "Eingeordnet · B Zahl auf Foto",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7517834568326881280"
  },
  {
   "id": 36,
