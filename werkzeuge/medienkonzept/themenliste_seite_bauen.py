@@ -21,6 +21,7 @@ LISTE = [
         ("Strategie ist die Verbindung zwischen heute und dem Zielbild.", "Wer beide Enden kennt, findet den Weg fast von allein – ohne Vision keine Strategie.", "I", "Modell · C Heute – Vision", False),
         ("Wie viel deiner Woche zahlt auf die Strategie ein?", "Ein ehrlicher Selbsttest: operative Brände und strategische Arbeit sauber trennen.", "I", "Frage · E Skala", False),
         ("Wie sähe die Homepage deiner Abteilung aus?", "Gedankenexperiment: Deine Abteilung wird morgen eine GmbH und verkauft ihre Leistung an deinen Arbeitgeber. Was stünde auf der Homepage – und würde jeder im Team dasselbe hineinschreiben?", "P", "Zum Mitnehmen · Dokument", False),
+        ("„Wir brauchen keinen Strategieberater. Wir haben eine Strategie.“", "Ein Strategiedokument ist noch keine Strategie. Der Test: Kannst du Zielbild, Weg dorthin, Markterfolg und Positionierung so einfach erklären wie in der Sendung mit der Maus – und jeder Mitarbeiter weiß danach, wie er beiträgt? Sonst hast du keine Strategie. Und selbst dann ist sie noch nicht im Alltag angekommen.", "I", "Szene · B Foto mit Satz", True, 41),
     ]),
     ("02 · Führung, die trägt", "Baustein 1 · klare Aussagen zu Rolle, Umsetzung und Wichtigkeit", [
         ("Erst befördern, dann 12 bis 24 Monate entwickeln – das ist der größte Fehler.", "Was vor dem ersten Tag geklärt sein muss: die Rolle in klaren Worten – was erwartet wird, welche Funktion man hat. Fachexpertise bringt man mit, sie macht aber keine Führungskraft. Dazu kommen: das Team mitnehmen und aktiv zum Unternehmenserfolg beitragen.", "I", "Modell · D Drei Kreise", False),
@@ -72,7 +73,7 @@ LISTE = [
 ]
 
 
-STATUS = {n: "bestätigt" for n in range(1, 41)}
+STATUS = {n: "bestätigt" for n in range(1, 42)}
 STATUS[22] = "raus"
 STATUS[32] = "raus"
 OFFEN = {5: "vertiefen beim Schreiben"}
@@ -91,6 +92,9 @@ def main():
     for titel, unter, eintraege in LISTE:
         zeilen = []
         for e in eintraege:
+            if len(e) == 6:  # nachträglich aufgenommen, feste Nummer – bestehende Nummern bleiben (Redaktionsplan verweist darauf)
+                zeilen.append(zeile(e[5], *e[:5]))
+                continue
             n += 1
             zeilen.append(zeile(n, *e))
         gruppen.append('<div class="tl-gruppe"><h3>%s</h3><p class="tl-unter">%s</p><div class="mkf-tabelle tl-tab"><table><tr><th>Nr</th><th>Aussage · Mehrwert für den Leser</th><th>Herkunft</th><th>Vorschlag</th></tr>%s</table></div></div>' % (titel, unter, "".join(zeilen)))
@@ -100,7 +104,7 @@ def main():
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Themenliste</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; Themenliste &middot; zur Freigabe</p>
       <h1>Worüber du <span class="hl">sprichst.</span></h1>
-      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 16 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Stand 13.10.: beide Rückmeldungen eingearbeitet – 38 Aussagen bestätigt, 2 raus. Grundlage für den Redaktionsplan.</p>
+      <p class="e2-lead">%d Aussagen aus deinem Interview, deiner Positionierung und der Recherche – je mit Mehrwert für den Leser und einem Vorschlag für Typ und Variante. 17 davon mit Foto von dir – passend zu zwei Foto-Postings pro Woche. Stand 13.10.: beide Rückmeldungen eingearbeitet – 38 Aussagen bestätigt, 2 raus. 19.10.: Nr. 41 aus deinem Diktat ergänzt. Grundlage für den Redaktionsplan.</p>
       <p class="tl-legende">Herkunft: <b>I</b> Interview 12./13.10. · <b>P</b> Positionierung &amp; Homepage · <b>F</b> Fundus früherer Postings · <b>R</b> Recherche / Branchen-Radar · <b>Idee</b> Vorschlag von mir, bitte bestätigen</p>
   </div></section>
 
@@ -108,7 +112,7 @@ def main():
     %s
   </div></section>
 
-</main>''' % (n, "".join(gruppen))
+</main>''' % (sum(len(g[2]) for g in LISTE), "".join(gruppen))
     quelle = open(os.path.join(HIER, "seiten-vorlage.html"), encoding="utf-8").read()
     kopf, rest = quelle.split('<main class="ak">', 1)
     fuss = rest.split("</main>", 1)[1]
