@@ -722,6 +722,15 @@ teile += [
   <p class="zitat-w" style="font-size:70px">„Das habe ich noch nicht richtig verstanden. Können Sie mir das mal in Ihren eigenen Worten erklären?“</p><p class="zitat-quelle">— (m)ein Vorstand</p></section>""",
 ]
 
+# Redaktionsplan 25.–27.10.2026 (Sprache näher an Daniel, 19.10.2026)
+teile += [
+    """<section class="p" id="rp12"><p class="k">Aufgegriffen</p>
+  <p class="zitat" style="margin-top:230px;font-size:100px;line-height:1.15;max-width:910px">„Gute Beratung führt Schritt für Schritt zu einer <span class="hl">begründeten Entscheidung.</span>“</p>
+  <p class="quelle" style="color:#6b6762">— Matthias Weber, Vorstand Vertrieb HDI Bancassurance</p>%s%s</section>""" % (anschnitt(F, 520, -170, -170, "#1a1817"), NAME),
+    """<section class="p gelbgrund" id="rp13"><span class="riesen-frage">?</span><p class="fr-gross" style="margin-top:40px;max-width:840px;position:relative;line-height:1.2;color:#1a1817">Wie würdest du deinen Bereich heute <span class="hl" style="background:#1a1817;color:#fff400">neu gründen?</span></p>%s</section>""" % NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"'),
+    """<section class="p foto-voll vollbild" id="rp14">%s<div class="verlauf" style="height:34%%"></div><div class="unten" style="bottom:70px"><p class="satz" style="font-size:84px">Logik allein verändert</p><p class="satz" style="font-size:84px;margin-top:6px"><span class="hl" style="color:#1a1817">wenig.</span></p></div></section>""" % vb("voll-e5.jpg", "50% 30%"),
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
