@@ -44,6 +44,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 204,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 123.5,
+    "impressionen": 339,
+    "reichweite": 211,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -89,6 +96,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 334,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 99.5,
+    "impressionen": 515,
+    "reichweite": 348,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -127,6 +141,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 361,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 75.5,
+    "impressionen": 541,
+    "reichweite": 388,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -158,6 +179,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 171,
     "reaktionen": 4,
     "kommentare": 2
+   },
+   {
+    "stunden": 50.5,
+    "impressionen": 266,
+    "reichweite": 182,
+    "reaktionen": 4,
+    "kommentare": 2
    }
   ],
   "bild": "rp09",
@@ -182,6 +210,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 155,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 26.5,
+    "impressionen": 1079,
+    "reichweite": 808,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -199,7 +234,15 @@ window.MK_ENTWUERFE = [
   "text": "77 % sagen: Das Tagesgeschäft verdrängt die strategischen Projekte. Nur 11 % sagen, die Mitarbeitenden verstehen die Strategie.\n\nDie Zahlen stammen aus einer branchenübergreifenden Studie von Wieselhuber. Bei Versicherern erlebe ich es nicht anders.\n\nWas heißt das für einen Bereich? Strategie braucht im Alltag einen festen Platz, sonst gewinnt immer das, was heute brennt.\n\nZwei Dinge helfen.\n\nJeder kann in einem Satz sagen, wohin der Bereich will und warum, dann lassen sich Prioritäten im Alltag selbst entscheiden.\n\nUnd strategische Themen bekommen feste Termine im Kalender, genauso wie das Tagesgeschäft.",
   "status": "veroeffentlicht",
   "datum": "2026-10-19",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 3.5,
+    "impressionen": 68,
+    "reichweite": 42,
+    "reaktionen": 4,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp08",
   "termin": "Mo 19.10.",
   "format": "Eingeordnet · B Zahl auf Foto",
