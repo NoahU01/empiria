@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=32">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=34">
 </head>
 <body class="e2">
 
@@ -961,7 +961,11 @@ window.VVDE_MODELL = {
       ],
       inhalt: [] } ] },
   strategie: { nr: 3, titel: "Strategie", frage: "Wie kommen wir dorthin?", zone: "Wie kommen wir dorthin?",
-    bausteine: [ { titel: "Stoßrichtungen & Handlungsfelder", inhalt: [] } ],
+    bausteine: [ { titel: "Stoßrichtungen & Handlungsfelder",
+      /* Drei strategische Stoßrichtungen, horizontal über die Zeitschiene (später: Stränge, Meilensteine, Quality Gates) */
+      zeitplan: { start: 2027, jahre: 5,
+        stossrichtungen: [ "Governance-System und Risikomanagement", "Vertrieb und Produktentwicklung", "Digitalisierung und Modernisierung" ] },
+      inhalt: [] } ],
     folgt: [ { titel: "Führungs- und Arbeitsalltag", frage: "Wie sichern wir die Zielerreichung?", inhalt: [] },
              { titel: "Strategiekommunikation", frage: "Wie erklären wir die Strategie intern?", inhalt: [] } ] }
 };
@@ -1126,6 +1130,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=17"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=19"></script>
 </body>
 </html>

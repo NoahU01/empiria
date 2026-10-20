@@ -19,7 +19,8 @@
      modus "kurz" (Infografik): nur die Kurzzeile je Thema; sonst alles ausgeschrieben. */
   function text(b, modus) {
     var h = b.kern ? '<p class="vv-kern">' + esc(b.kern) + "</p>" : "";
-    if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot);
+    if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
+    if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Drei strategische Stoßrichtungen</p>' + zeitplanBild(b);
     var th = b.themen || [];
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
@@ -28,7 +29,7 @@
     else if (z.length) h += liste(z, "");
     return h;
   }
-  function leer(b) { return !b.kern && !b.swot && !(b.themen || []).length && !(b.inhalt || []).length; }
+  function leer(b) { return !b.kern && !b.swot && !b.zeitplan && !(b.themen || []).length && !(b.inhalt || []).length; }
 
   /* SWOT-Matrix: 3 × 3, links oben leer. Oben Chancen · Risiken, links Stärken · Schwächen,
      in den Schnittpunkten die vier Strategien. modus "mini" deutet nur an (Linien statt Text). */
@@ -49,7 +50,7 @@
 
   /* ---------------- Variante 1 · Alle Fakten ---------------- */
   function zeile(b, art) {
-    if (!art && ((b.themen || []).length || b.swot)) art = "voll";
+    if (!art && ((b.themen || []).length || b.swot || b.zeitplan)) art = "voll";
     return '<div class="vv-f-zeile' + (art ? " vv-f-zeile--" + art : "") + '"><div class="vv-f-zeile__kopf"><b>' + esc(b.titel) + "</b>" +
       (b.frage ? "<span>" + esc(b.frage) + "</span>" : "") + '</div><div class="vv-f-zeile__text">' + text(b) + "</div></div>";
   }
@@ -82,7 +83,7 @@
   /* ---------------- Variante 2 · Infografik ---------------- */
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
   function karte(b, cls, extra, frage) {
-    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + esc(b.titel) + '</small>' + (leer(b) ? "" : '<div class="vv-g-text">' + text(b, "kurz") + "</div>" + swotMini(b, frage) + details(b, frage)) +
+    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + esc(b.titel) + '</small>' + (leer(b) ? "" : '<div class="vv-g-text">' + text(b, "kurz") + "</div>" + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
       (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
@@ -94,12 +95,16 @@
       html: s.saetze.map(function (x) { return '<div class="vv-fenster__block"><p class="vv-fenster__label">' + esc(x.label) + '</p><p class="vv-fenster__satz">' + esc(x.text) + "</p></div>"; }).join("") +
         ((s.werte || []).length ? '<div class="vv-fenster__block"><p class="vv-fenster__label">Unsere Werte</p>' + liste(s.werte, "vv-werte") + "</div>" : "") });
   }
-  function swotMini(b, frage) {
-    if (!b.swot) return "";
-    var f = { kicker: frage, titel: "SWOT-Analyse", breit: true, html: swot(b.swot) };
-    FENSTER["w:" + b.titel] = f;
-    return '<button type="button" class="vv-auf vv-swot-knopf" data-fenster="' + esc("w:" + b.titel) + '" aria-label="SWOT-Analyse groß ansehen">' + swot(b.swot, "mini") + "</button>" +
-      knopf("w:" + b.titel, "SWOT ansehen", f);
+  /* SWOT in der Infografik nur angedeutet – die vollständige Analyse steht in einem separaten Dokument */
+  function swotMini(b) { return b.swot ? '<div class="vv-swot-mini">' + swot(b.swot, "mini") + "</div>" : ""; }
+  /* Zeitplan der Stoßrichtungen: Streifen laufen nach rechts über die Betrachtungsjahre */
+  function zeitplanBild(b, modus) {
+    var z = b.zeitplan; if (!z) return "";
+    var jahre = []; for (var i = 0; i < z.jahre; i++) jahre.push(z.start + i);
+    return '<div class="vv-zeit' + (modus === "mini" ? " vv-zeit--mini" : "") + '" style="--n:' + z.jahre + '">' +
+      jahre.map(function (y) { return '<span class="vv-zeit__jahr">' + y + "</span>"; }).join("") +
+      z.stossrichtungen.map(function (s) { return '<div class="vv-zeit__streifen"><span>' + esc(s) + "</span></div>"; }).join("") +
+      "</div>";
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";

@@ -78,13 +78,26 @@
 .vv-swot .vv-punkte { margin-top: .5rem; }
 .vv-swot .vv-punkte li { font-size: .85rem; }
 /* Mini in der Infografik: nur angedeutet */
-.vv-auf.vv-swot-knopf { display: block; width: 100%; margin-top: .9rem; padding: 0; border: 0; background: none; text-decoration: none; cursor: zoom-in; }
+.vv-swot-mini { width: 100%; margin-top: .9rem; }
 .vv-swot--mini { gap: 4px; }
 .vv-swot--mini .vv-swot__kopf { padding: .35rem .2rem; border-radius: 5px; font-size: .64rem; font-weight: 700; line-height: 1.2; text-align: center; color: var(--e2-ink); }
 .vv-swot--mini .vv-swot__feld { display: flex; flex-direction: column; justify-content: center; gap: 5px; min-height: 2.6rem; padding: .45rem .55rem; border-radius: 5px; }
 .vv-swot--mini .vv-swot__feld i { display: block; height: 3px; border-radius: 2px; background: #d9d4cd; }
 .vv-swot--mini .vv-swot__feld i:nth-child(2) { width: 80%; } .vv-swot--mini .vv-swot__feld i:nth-child(3) { width: 60%; }
-.vv-swot-knopf:hover .vv-swot__feld { border-color: var(--e2-grau); }
+.e2 .vv-swot-hinweis { grid-column: 1 / -1; margin-top: -.6rem; }
+
+/* Stoßrichtungen über die Zeit: drei Streifen mit dem Namen darin, laufen mit Spitze nach rechts über die Jahre */
+.vv-zeit { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 8px 0; grid-column: 1 / -1; text-align: left; }
+.vv-zeit__jahr { padding: 0 0 .2rem .55rem; border-left: 1px solid var(--e2-linie); font-size: .8rem; font-weight: 600; color: var(--e2-grau); }
+.vv-zeit__streifen { grid-column: 1 / -1; display: flex; align-items: center; min-height: 3.2rem; padding: .5rem 2rem .5rem 1rem; background:
+  repeating-linear-gradient(to right, transparent 0, transparent calc(100% / var(--n) - 1px), rgba(255,255,255,.95) calc(100% / var(--n) - 1px), rgba(255,255,255,.95) calc(100% / var(--n))), #e7e4df;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
+.vv-zeit__streifen span { font-size: .95rem; font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
+.vv-zeit--mini { gap: 4px 0; width: 100%; margin-top: .9rem; }
+.vv-zeit--mini .vv-zeit__jahr { padding: 0 0 .1rem .3rem; font-size: .62rem; }
+.vv-zeit--mini .vv-zeit__streifen { min-height: 2.3rem; padding: .35rem 1.2rem .35rem .6rem; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%); }
+.vv-zeit--mini .vv-zeit__streifen span { font-size: .7rem; font-weight: 600; line-height: 1.25; }
+
 .vv-fenster.vv-fenster--breit { width: min(60rem, calc(100vw - 2rem)); }
 
 /* Werte: schlichte Liste mit feinen Linien, ohne Nummern (keine Schritte) */
@@ -226,6 +239,8 @@
   .vv-f-zeile { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
   .vv-werte { grid-template-columns: minmax(0, 1fr); }
   .vv-swot { gap: 5px; }
+  .vv-zeit__jahr { font-size: .66rem; padding-left: .3rem; }
+  .vv-zeit__streifen span { font-size: .82rem; }
   .vv-swot__kopf, .vv-swot__feld { padding: .6rem .55rem; }
   .vv-swot__feld { min-height: 5.5rem; }
   .e2 .vv-swot__t { font-size: .74rem; }
