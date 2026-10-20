@@ -256,14 +256,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · B Foto mit Satz",
   "kern": "Themenliste 03: Die Strategie gibt der Chef vor. Das ist sein Job.",
   "text": "Ich erlebe es immer wieder: Eine neue Strategie soll her, und der erste Schritt ist ein großer Workshop mit dem ganzen Team. Alle sollen mitreden, alle sollen sich wiederfinden.\n\nIn der Praxis holst du damit Menschen an den Tisch, die nie gelernt haben, über Strategie zu sprechen, und denen die Erfahrung dafür fehlt.\n\nHeraus kommt ein Kompromiss, auf den sich alle einigen können. Schlechtes Mittelmaß.\n\nNebenbei entsteht Unsicherheit. Wenn der Chef fragt, wo es hingehen soll, wirkt es, als wüsste der Trainer nicht, wohin die Mannschaft laufen soll.\n\nDie Reihenfolge ist eine andere. Zuerst klärt die Führungskraft, wo der Bereich hinwill und wie er dort erfolgreich ist.\n\nDer Einstieg beginnt dabei nicht mit einem Zweitagesworkshop. Zwei, drei Gespräche mit mir reichen, um den Gesamtzusammenhang klar und stringent zu skizzieren.\n\nDiesen arbeiten wir danach gezielt aus, immer nur in dem zeitlichen Umfang, den es braucht. Zwischen den Terminen arbeite ich weiter und liefere das nächste Level der Ausarbeitung.\n\nWer oben steht und selbst kein Bild hat, wohin es geht, kann das von seinen Führungskräften auch nicht verlangen.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-20",
   "kennzahlen": [],
   "bild": "rp01",
   "termin": "Di 20.10.",
   "format": "Szene · B Foto mit Satz",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7518196985418645504"
  },
  {
   "id": 37,
