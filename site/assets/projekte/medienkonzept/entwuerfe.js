@@ -51,6 +51,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 211,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 147.5,
+    "impressionen": 346,
+    "reichweite": 215,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -103,6 +110,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 348,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 123.5,
+    "impressionen": 525,
+    "reichweite": 356,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -148,6 +162,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 388,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 99.5,
+    "impressionen": 577,
+    "reichweite": 414,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -186,6 +207,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 182,
     "reaktionen": 4,
     "kommentare": 2
+   },
+   {
+    "stunden": 74.5,
+    "impressionen": 277,
+    "reichweite": 188,
+    "reaktionen": 4,
+    "kommentare": 4
    }
   ],
   "bild": "rp09",
@@ -217,6 +245,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 808,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 50.5,
+    "impressionen": 1479,
+    "reichweite": 1116,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -241,6 +276,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 42,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 27.5,
+    "impressionen": 180,
+    "reichweite": 103,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -258,7 +300,15 @@ window.MK_ENTWUERFE = [
   "text": "Ich erlebe es immer wieder: Eine neue Strategie soll her, und der erste Schritt ist ein großer Workshop mit dem ganzen Team. Alle sollen mitreden, alle sollen sich wiederfinden.\n\nIn der Praxis holst du damit Menschen an den Tisch, die nie gelernt haben, über Strategie zu sprechen, und denen die Erfahrung dafür fehlt.\n\nHeraus kommt ein Kompromiss, auf den sich alle einigen können. Schlechtes Mittelmaß.\n\nNebenbei entsteht Unsicherheit. Wenn der Chef fragt, wo es hingehen soll, wirkt es, als wüsste der Trainer nicht, wohin die Mannschaft laufen soll.\n\nDie Reihenfolge ist eine andere. Zuerst klärt die Führungskraft, wo der Bereich hinwill und wie er dort erfolgreich ist.\n\nDer Einstieg beginnt dabei nicht mit einem Zweitagesworkshop. Zwei, drei Gespräche mit mir reichen, um den Gesamtzusammenhang klar und stringent zu skizzieren.\n\nDiesen arbeiten wir danach gezielt aus, immer nur in dem zeitlichen Umfang, den es braucht. Zwischen den Terminen arbeite ich weiter und liefere das nächste Level der Ausarbeitung.\n\nWer oben steht und selbst kein Bild hat, wohin es geht, kann das von seinen Führungskräften auch nicht verlangen.",
   "status": "veroeffentlicht",
   "datum": "2026-10-20",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 3.5,
+    "impressionen": 126,
+    "reichweite": 73,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp01",
   "termin": "Di 20.10.",
   "format": "Szene · B Foto mit Satz",
