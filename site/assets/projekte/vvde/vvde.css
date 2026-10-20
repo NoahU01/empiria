@@ -140,6 +140,33 @@
 .vv-auf.vv-teil-knopf { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: .4rem .6rem; border: 0; border-radius: 0; background: transparent; font: inherit; font-weight: 700; color: var(--e2-ink); text-decoration: none; cursor: pointer; transition: background .15s; }
 .vv-auf.vv-teil-knopf:hover { background: var(--e2-hell); }
 
+/* Teilstrategie (Fenster + Fakten): Lead, Zielfläche, Hebelkarten, Wirkungen, Stärken/Schwächen-Karten, Kacheln */
+.e2 .vv-teil__lead { margin: 0 0 1.6rem; max-width: 46rem; font-size: 1.08rem; font-weight: 500; line-height: 1.6; color: var(--e2-ink); }
+.vv-teil__ziel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin-bottom: 1.8rem; padding: 1.7rem 1.9rem 1.8rem; border-radius: 16px; background: var(--e2-hell); }
+.vv-teil__ziel .vv-mess { margin: 0; }
+.e2 .vv-teil__aufnahme { margin: 0; max-width: 44rem; font-size: .92rem; line-height: 1.6; color: var(--e2-ink-2); text-wrap: pretty; }
+.vv-hebel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .7rem; margin: .2rem 0 0; padding: 0; list-style: none; }
+.vv-hebel li { text-wrap: balance; display: flex; flex-direction: column; gap: .8rem; padding: 1rem 1rem 1.1rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; font-size: .9rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); }
+.vv-hebel__ic { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; border-radius: 10px; background: var(--e2-ink); color: #fff; }
+.vv-hebel__ic svg { width: 1.2rem; height: 1.2rem; }
+.vv-wirkung { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem 1.4rem; margin: 0; padding: 0; list-style: none; }
+.vv-wirkung li { text-wrap: pretty; display: flex; align-items: flex-start; gap: .55rem; font-size: .92rem; font-weight: 500; line-height: 1.45; color: var(--e2-ink); }
+.vv-wirkung__ic { display: grid; place-items: center; flex: none; width: 1.35rem; height: 1.35rem; margin-top: .05rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); }
+.vv-wirkung__ic svg { width: .8rem; height: .8rem; }
+.vv-kacheln { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.vv-kacheln li { display: flex; align-items: center; padding: .95rem 1rem; border-radius: 12px; font-size: .9rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); text-wrap: balance; }
+.vv-kacheln--hell li { background: var(--e2-hell); }
+.vv-kacheln--rand li { border: 2.5px solid var(--e2-ink); background: #fff; }
+.vv-sw__karte { padding: 1.1rem 1.2rem 1.2rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; }
+.e2 .vv-sw__t { display: flex; align-items: center; gap: .55rem; }
+.vv-sw__ic { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--e2-ink); color: #fff; }
+.vv-sw__ic svg { width: .9rem; height: .9rem; }
+.vv-f-zeile__text .vv-hebel, .vv-f-zeile__text .vv-wirkung, .vv-f-zeile__text .vv-kacheln { padding: 0; }
+/* in „Alle Fakten“ ist die Spalte schmaler: Hebel und Kacheln zweispaltig, Wirkungen untereinander */
+@media (min-width: 901px) { .vv-f-teil .vv-hebel, .vv-f-teil .vv-kacheln { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.vv-f-teil .vv-wirkung { grid-template-columns: minmax(0, 1fr); }
+.vv-f-zeile__text .vv-hebel li, .vv-f-zeile__text .vv-wirkung li, .vv-f-zeile__text .vv-kacheln li, .vv-f-zeile__text .vv-hebel li + li, .vv-f-zeile__text .vv-wirkung li + li, .vv-f-zeile__text .vv-kacheln li + li { margin: 0; }
+
 /* Fenster/Fakten: Teilstrategie */
 .vv-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .5rem; margin: 0; padding: 0; list-style: none; }
 .vv-fenster .vv-felder li, .vv-f-teil .vv-felder li { display: flex; align-items: center; padding: .7rem .9rem; border: 1px solid var(--e2-linie); border-radius: 10px; font-size: .9rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); }
@@ -423,6 +450,9 @@
 /* nur so hell wie die Detailkästen (Führungs- und Arbeitsalltag, Strategiekommunikation) – diese selbst bleiben, wie sie sind */
 .vv-hoverfokus .vv-g.vv-fokus-an > :not(.vv-fokus-ist):not(.vv-g-b1):not(.vv-g-b2) { opacity: .3; }
 
+/* Fakten auf hellgrauem Grund: jeder Block ein weißes Panel – SWOT-Kopffelder & Co. bleiben sichtbar */
+.vv-inhalt--buehne .vv-f-block { margin-bottom: 1.2rem; padding: 2.4rem 2.6rem 2.6rem; border: 0 !important; border-radius: 20px; background: #fff; }
+.vv-inhalt--buehne .vv-f-marke { top: 7.5rem; }
 /* Bühne: die ganze Sektion auf hellgrauem Grund über die volle Breite (wie die Flächen der Homepage) */
 .vv-inhalt--buehne { border-top: 0; background: var(--e2-hell); }
 .vv-inhalt--buehne .sm-schalter { background: #fff; }
@@ -458,6 +488,16 @@
   .vv-werte { grid-template-columns: minmax(0, 1fr); }
   .vv-swot { gap: 5px; }
   .vv-felder, .vv-sw { grid-template-columns: minmax(0, 1fr); }
+  .vv-kacheln { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .vv-hebel { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .vv-hebel li { flex-direction: row; align-items: center; gap: .9rem; padding: .8rem .9rem; }
+  .vv-hebel__ic { flex: none; }
+  .vv-teil__ziel .vv-mess { flex-direction: column; align-items: flex-start; gap: .7rem; }
+  .vv-teil__ziel .vv-mess i { width: 0; height: 1.6rem; margin-left: 1.1rem; border-top: 0; border-left: 1.5px solid var(--e2-ink); }
+  .vv-teil__ziel .vv-mess i::after { top: auto; right: auto; bottom: -1px; left: -6px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--e2-ink); border-bottom: 0; }
+  .vv-wirkung { grid-template-columns: minmax(0, 1fr); }
+  .vv-teil__ziel { grid-template-columns: minmax(0, 1fr); padding: 1.3rem 1.2rem; }
+  .vv-inhalt--buehne .vv-f-block { padding: 1.6rem 1.3rem 1.8rem; }
   .vv-mess b { font-size: 2.1rem; }
   .vv-pv__oben { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
   .vv-pv__band { grid-template-columns: minmax(0, 1fr); gap: .7rem; padding: 1.2rem 1.2rem; }

@@ -41,15 +41,28 @@
 
   /* Fokusfeld unter den Teilstrategien: fett und etwas dickere schwarze Linie */
   /* Details einer Teilstrategie (hell, ruhig): Bedeutung · Ziel · messbares Ziel · externe Anforderungen · interne Rahmenbedingungen · Zielbild-Leitplanken */
+  /* Details einer Teilstrategie – hell und ruhig, mit klarer Bildsprache (Volksfest-Prinzip):
+     messbares Ziel als Blickfang · Hebel als gleiche Karten mit Symbolkachel · Wirkungen mit Häkchen ·
+     Stärken/Schwächen als zwei Karten · externe Anforderungen als Kacheln · Leitplanken mit dickem Rand (definiert) */
+  var TICON = {
+    suchen: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+    netzwerk: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    sichtbar: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+    kommunizieren: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+    haken: '<path d="M20 6 9 17l-5-5"/>', plus: '<path d="M12 5v14M5 12h14"/>', minus: '<path d="M5 12h14"/>'
+  };
+  function ticon(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + TICON[k] + "</svg>"; }
   function teilHtml(d) {
     function blk(label, inhalt) { return '<div class="vv-fenster__block vv-fenster__text"><p class="vv-fenster__label">' + esc(label) + "</p>" + inhalt + "</div>"; }
-    function felder(xs) { return '<ul class="vv-felder">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
-    return blk("Übergeordnete Bedeutung", '<p class="vv-fenster__satz">' + esc(d.bedeutung) + "</p>") +
-      blk("Ziel", liste(d.ziele, "vv-punkte") + '<p class="vv-teil__dadurch">Dadurch</p>' + liste(d.wirkung, "vv-punkte")) +
-      blk("Messbares Ziel", '<div class="vv-mess"><div><b>' + esc(d.messziel.von) + "</b><span>" + esc(d.messziel.vonText) + '</span></div><i aria-hidden="true"></i><div><b>' + esc(d.messziel.bis) + "</b><span>" + esc(d.messziel.bisText) + "</span></div></div><p>" + esc(d.aufnahme) + "</p>") +
-      blk("Externe Anforderungen", felder(d.extern)) +
-      blk("Interne Rahmenbedingungen", '<div class="vv-sw"><div><p class="vv-sw__t">Stärken</p>' + liste(d.staerken, "vv-punkte") + '</div><div><p class="vv-sw__t">Schwächen</p>' + liste(d.schwaechen, "vv-punkte") + "</div></div>") +
-      blk("Zielbild-Leitplanken · vier Dimensionen", felder(d.leitplanken));
+    function kacheln(xs, art) { return '<ul class="vv-kacheln vv-kacheln--' + art + '">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
+    var hebelIcons = ["suchen", "netzwerk", "sichtbar", "kommunizieren"];
+    return '<p class="vv-teil__lead">' + esc(d.bedeutung) + "</p>" +
+      '<div class="vv-teil__ziel"><div class="vv-mess"><div><b>' + esc(d.messziel.von) + "</b><span>" + esc(d.messziel.vonText) + '</span></div><i aria-hidden="true"></i><div><b>' + esc(d.messziel.bis) + "</b><span>" + esc(d.messziel.bisText) + '</span></div></div><p class="vv-teil__aufnahme">' + esc(d.aufnahme) + "</p></div>" +
+      blk("Ziel", '<ul class="vv-hebel">' + d.ziele.map(function (x, i) { return '<li><span class="vv-hebel__ic">' + ticon(hebelIcons[i] || "haken") + "</span><span>" + esc(x) + "</span></li>"; }).join("") + "</ul>" +
+        '<p class="vv-teil__dadurch">Dadurch</p><ul class="vv-wirkung">' + d.wirkung.map(function (x) { return '<li><span class="vv-wirkung__ic">' + ticon("haken") + "</span><span>" + esc(x) + "</span></li>"; }).join("") + "</ul>") +
+      blk("Externe Anforderungen", kacheln(d.extern, "hell")) +
+      blk("Interne Rahmenbedingungen", '<div class="vv-sw"><div class="vv-sw__karte"><p class="vv-sw__t"><span class="vv-sw__ic">' + ticon("plus") + "</span>Stärken</p>" + liste(d.staerken, "vv-punkte") + '</div><div class="vv-sw__karte"><p class="vv-sw__t"><span class="vv-sw__ic">' + ticon("minus") + "</span>Schwächen</p>" + liste(d.schwaechen, "vv-punkte") + "</div></div>") +
+      blk("Zielbild-Leitplanken · vier Dimensionen", kacheln(d.leitplanken, "rand"));
   }
   function teilKnopf(b, s, inhalt) {
     var d = (b.teilDetails || {})[s];
@@ -137,7 +150,7 @@
     block(0, "Basis · " + sv.frage, sv.titel,
       (sv.saetze || []).map(function (x) { return aussage(x.label, x.text); }).join("") +
       ((sv.werte || []).length ? '<p class="vv-f-mini">Unsere Werte</p><ul class="vv-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
-      '<p class="vv-f-mini">Was einfließt</p>' + zeile(M.zufluss)) +
+      "") +   /* Hinweis „Zielgruppenfokus …“ auf Daniels Wunsch entfernt – auch hier */
     schritt(M.ausgangssituation) +
     schritt(M.vision, "Daraus folgt") +
     schritt(M.strategie, "Detaillierung der Strategie");
