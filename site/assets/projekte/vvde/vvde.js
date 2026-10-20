@@ -1,15 +1,14 @@
 /* VVDE – Projektseite. Beide Ansichten („Alle Fakten“, „Infografik“) werden aus
    derselben Quelle window.VVDE_MODELL (in projekte/vvde.html) erzeugt – so können
-   sie nicht auseinanderlaufen. Leerer Baustein (inhalt: []) = „Noch offen“. */
+   sie nicht auseinanderlaufen. Leerer Baustein (inhalt: []) bleibt leer – noch keine Inhalte. */
 (function () {
   var M = window.VVDE_MODELL;
   if (!M) return;
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function offen() { return '<span class="vv-offen">Noch offen</span>'; }
   function text(b) {
     var z = b.inhalt || [];
-    if (!z.length) return offen();
+    if (!z.length) return "";
     if (z.length === 1) return "<p>" + esc(z[0]) + "</p>";
     return "<ul>" + z.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
   }
@@ -33,8 +32,8 @@
   var sv = M.selbstverstaendnis;
   var fakten =
     block(0, "Basis · " + sv.frage, sv.titel,
-      '<div class="vv-f-kern">' + (leer(sv) ? offen() : '<p class="vv-f-kern__satz">' + esc(sv.inhalt[0]) + "</p>" +
-        (sv.inhalt.length > 1 ? "<ul>" + sv.inhalt.slice(1).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "")) + "</div>" +
+      (leer(sv) ? "" : '<div class="vv-f-kern"><p class="vv-f-kern__satz">' + esc(sv.inhalt[0]) + "</p>" +
+        (sv.inhalt.length > 1 ? "<ul>" + sv.inhalt.slice(1).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + "</div>") +
       '<p class="vv-f-mini">Was einfließt</p>' + zeile(M.zufluss)) +
     schritt(M.ausgangssituation) +
     schritt(M.vision, "Daraus folgt") +
@@ -44,7 +43,7 @@
   /* ---------------- Variante 2 · Infografik ---------------- */
   function karte(b, cls, extra) {
     return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + esc(b.titel) + '</small><div class="vv-g-text">' + text(b) + "</div>" +
-      (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage">' + esc(b.frage) + "</p>" : "") + "</div>";
+      (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
   }
   function kopf(s) { return '<span class="vv-g-mobilkopf"><i>' + s.nr + "</i>" + esc(s.titel) + "</span>"; }
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
@@ -55,9 +54,9 @@
       '<div class="vv-g-flaeche vv-g-flaeche--oben" aria-hidden="true"></div>' +
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
       '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
-      '<div class="vv-g-zufluss"><p><b>' + esc(M.zufluss.titel) + "</b><span>" + esc(M.zufluss.frage) + '</span></p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
+      '<div class="vv-g-zufluss"><p><span>' + esc(M.zufluss.titel) + "</span><span>" + esc(M.zufluss.frage) + '</span></p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
       '<div class="vv-g-karte vv-g-sv"><small>' + esc(sv.titel) + '</small><div class="vv-g-text">' +
-        (leer(sv) ? offen() : '<p class="vv-g-sv__satz">' + esc(sv.inhalt[0]) + "</p>") + "</div></div>" +
+        (leer(sv) ? "" : '<p class="vv-g-sv__satz">' + esc(sv.inhalt[0]) + "</p>") + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +
       '<p class="vv-g-zone__t vv-g-t1">' + esc(A.zone) + '</p><p class="vv-g-zone__t vv-g-t2">' + esc(V.zone) + "</p>" +
       '<span class="vv-g-linie vv-g-linie--a" aria-hidden="true"></span><span class="vv-g-linie vv-g-linie--b" aria-hidden="true"><em>Mission</em></span>' +
