@@ -133,11 +133,8 @@
 .vv-teile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .4rem; margin: 0; padding: 0; list-style: none; }
 .vv-teile li { display: flex; align-items: center; justify-content: center; padding: .4rem .6rem; border: 1px solid #cfc9c1; border-radius: 10px; font-size: .74rem; font-weight: 500; line-height: 1.3; text-align: center; color: var(--e2-ink); text-wrap: balance; }
 .vv-g .vv-teile li { white-space: nowrap; }
-/* Fokusfeld: gelbe Fläche mit schwarzer Schrift (Marker wie im CD), erklärt durch die Legende darunter */
-.vv-teile li.vv-teile__hervor { border-color: var(--e2-gelb); background: var(--e2-gelb); font-weight: 700; }
-.e2 .vv-fokus-legende { display: flex; align-items: center; justify-content: center; gap: .45rem; margin: .7rem 0 0; font-size: .7rem; font-weight: 600; color: var(--e2-grau); }
-.vv-fokus-legende::before { content: ""; width: .8rem; height: .8rem; border-radius: 3px; background: var(--e2-gelb); }
-.vv-f-zeile__text .vv-fokus-legende { justify-content: flex-start; grid-column: 1 / -1; margin-top: -.6rem; }
+/* Fokusfeld Vertrieb: fett, schwarze etwas dickere Linie, Hintergrund weiß */
+.vv-teile li.vv-teile__hervor { border: 2px solid var(--e2-ink); background: #fff; font-weight: 700; }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-g .vv-teile li { padding: .4rem .3rem; font-size: .68rem; } }
 .vv-f-zeile__text .vv-teile { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 36rem; padding: 0; }
 .vv-f-zeile__text .vv-teile li, .vv-f-zeile__text .vv-teile li + li { margin: 0; }
