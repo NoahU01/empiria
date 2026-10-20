@@ -68,6 +68,13 @@
 .vv-f-zeile--voll .vv-thema + .vv-thema { margin-top: 0; }
 .e2 .vv-hinweis { margin: .35rem 0 0; font-size: .82rem; font-style: italic; color: var(--e2-grau); }
 
+/* Kanäle (Positionierung & Pitch): drei Strichzeichnungen gleich gewichtet nebeneinander */
+.vv-kanaele { display: flex; justify-content: center; align-items: flex-end; gap: 1.1rem; margin: .9rem 0 .2rem; }
+.vv-kanal svg { display: block; height: 2.9rem; width: auto; fill: none; stroke: var(--e2-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.vv-kanal svg .b { fill: #e7e4df; stroke: none; }
+.vv-kanal svg .f { fill: var(--e2-ink); stroke: none; }
+.vv-f-zeile__text .vv-kanaele { justify-content: flex-start; grid-column: 1 / -1; margin: 0; }
+
 /* SWOT-Matrix: Kopffelder hell hinterlegt, Strategiefelder mit dunklem Rand */
 .e2 .vv-swot-titel { margin: 0 0 -.6rem; font-size: .92rem; font-weight: 700; color: var(--e2-ink); grid-column: 1 / -1; }
 .vv-swot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; grid-column: 1 / -1; text-align: left; }

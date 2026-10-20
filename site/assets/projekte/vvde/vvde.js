@@ -6,6 +6,18 @@
   if (!M) return;
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
+  var KANAL = {
+    homepage: { name: "Homepage", svg: '<svg viewBox="0 0 64 48"><rect x="1" y="1" width="62" height="46" rx="5"/><path d="M1 11h62"/><circle cx="7" cy="6" r="1.4" class="f"/><circle cx="12" cy="6" r="1.4" class="f"/><circle cx="17" cy="6" r="1.4" class="f"/><rect x="8" y="17" width="48" height="12" rx="2" class="b"/><path d="M8 35h30M8 40h22"/></svg>' },
+    social: { name: "Social Media", svg: '<svg viewBox="0 0 44 48"><rect x="1" y="1" width="42" height="46" rx="5"/><circle cx="9" cy="9" r="3.5" class="b"/><path d="M16 8h18M16 11h11"/><rect x="6" y="17" width="32" height="20" rx="2" class="b"/><path d="M6 42h14"/></svg>' },
+    onepager: { name: "One-Pager", svg: '<svg viewBox="0 0 36 48"><rect x="1" y="1" width="34" height="46" rx="3"/><rect x="6" y="6" width="24" height="9" rx="1.5" class="b"/><path d="M6 21h24M6 26h24M6 31h18M6 37h24M6 42h14"/></svg>' }
+  };
+  function kanaele(b) {
+    if (!(b.kanaele || []).length) return "";
+    return '<div class="vv-kanaele" role="img" aria-label="Auf allen Kanälen: ' + b.kanaele.map(function (k) { return KANAL[k].name; }).join(", ") + '">' +
+      b.kanaele.map(function (k) { return '<span class="vv-kanal">' + KANAL[k].svg + "</span>"; }).join("") + "</div>";
+  }
+
   function liste(xs, cls) { return '<ul class="' + cls + '">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
   /* Ein Thema ausgeschrieben: Titel, Text, Einleitung + Punkte, Hinweis */
   function thema(t) {
@@ -19,6 +31,7 @@
      modus "kurz" (Infografik): nur die Kurzzeile je Thema; sonst alles ausgeschrieben. */
   function text(b, modus) {
     var h = b.kern ? '<p class="vv-kern">' + esc(b.kern) + "</p>" : "";
+    h += kanaele(b);
     if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
     if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Drei strategische Stoßrichtungen</p>' + zeitplanBild(b);
     var th = b.themen || [];
