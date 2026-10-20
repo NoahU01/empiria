@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=29">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=32">
 </head>
 <body class="e2">
 
@@ -923,7 +923,11 @@ window.VVDE_MODELL = {
   /* Was in das Selbstverständnis einfließt – in der Infografik als Pfeil ohne Kasten */
   zufluss: { titel: "Zielgruppenfokus + zentraler Erfolgsfaktor", frage: "„What’s in it for me?“", inhalt: [] },
   ausgangssituation: { nr: 1, titel: "Ausgangssituation", frage: "Wo stehen wir heute?", zone: "Wie kommen wir dorthin?",
-    bausteine: [ { titel: "Heutiges Geschäfts- und Organisationsmodell", inhalt: [] } ] },
+    bausteine: [ { titel: "Heutiges Geschäfts- und Organisationsmodell",
+      /* SWOT-Matrix: je Feld eine Liste von Stichpunkten (leer = nur angedeutet) */
+      swot: { staerken: [], schwaechen: [], chancen: [], risiken: [],
+              sc: [], sr: [], wc: [], wr: [] },
+      inhalt: [] } ] },
   vision: { nr: 2, titel: "Vision", fensterTitel: "Unsere Vision", frage: "Wie wollen wir wahrgenommen werden?", zone: "Wie wollen wir wahrgenommen werden?",
     saetze: [
       { label: "Übergeordnete Vision · offiziell", text: "Unsere Vision ist, zur ersten Wahl zu gehören, wenn es um Versicherungsschutz für Bahnunternehmen geht." },
@@ -1122,6 +1126,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=16"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=17"></script>
 </body>
 </html>

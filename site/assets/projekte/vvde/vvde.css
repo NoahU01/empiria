@@ -68,6 +68,25 @@
 .vv-f-zeile--voll .vv-thema + .vv-thema { margin-top: 0; }
 .e2 .vv-hinweis { margin: .35rem 0 0; font-size: .82rem; font-style: italic; color: var(--e2-grau); }
 
+/* SWOT-Matrix: Kopffelder hell hinterlegt, Strategiefelder mit dunklem Rand */
+.e2 .vv-swot-titel { margin: 0 0 -.6rem; font-size: .92rem; font-weight: 700; color: var(--e2-ink); grid-column: 1 / -1; }
+.vv-swot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; grid-column: 1 / -1; text-align: left; }
+.vv-swot__kopf { display: flex; flex-direction: column; justify-content: center; padding: .85rem 1rem; border-radius: 10px; background: var(--e2-hell); }
+.vv-swot__feld { min-height: 7.5rem; padding: .85rem 1rem; border: 1px solid var(--e2-ink); border-radius: 10px; background: #fff; }
+.e2 .vv-swot__t { margin: 0; font-size: .88rem; font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
+.vv-swot__feld .vv-swot__t { font-size: .8rem; font-weight: 600; color: var(--e2-grau); }
+.vv-swot .vv-punkte { margin-top: .5rem; }
+.vv-swot .vv-punkte li { font-size: .85rem; }
+/* Mini in der Infografik: nur angedeutet */
+.vv-auf.vv-swot-knopf { display: block; width: 100%; margin-top: .9rem; padding: 0; border: 0; background: none; text-decoration: none; cursor: zoom-in; }
+.vv-swot--mini { gap: 4px; }
+.vv-swot--mini .vv-swot__kopf { padding: .35rem .2rem; border-radius: 5px; font-size: .64rem; font-weight: 700; line-height: 1.2; text-align: center; color: var(--e2-ink); }
+.vv-swot--mini .vv-swot__feld { display: flex; flex-direction: column; justify-content: center; gap: 5px; min-height: 2.6rem; padding: .45rem .55rem; border-radius: 5px; }
+.vv-swot--mini .vv-swot__feld i { display: block; height: 3px; border-radius: 2px; background: #d9d4cd; }
+.vv-swot--mini .vv-swot__feld i:nth-child(2) { width: 80%; } .vv-swot--mini .vv-swot__feld i:nth-child(3) { width: 60%; }
+.vv-swot-knopf:hover .vv-swot__feld { border-color: var(--e2-grau); }
+.vv-fenster.vv-fenster--breit { width: min(60rem, calc(100vw - 2rem)); }
+
 /* Werte: schlichte Liste mit feinen Linien, ohne Nummern (keine Schritte) */
 .vv-werte { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin: .4rem 0 1.4rem; padding: 0; list-style: none; }
 .vv-werte li { padding: .6rem 0; border-bottom: 1px solid var(--e2-linie); font-size: .95rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); }
@@ -206,6 +225,11 @@
   .vv-f-zahl { margin-right: .7rem; }
   .vv-f-zeile { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
   .vv-werte { grid-template-columns: minmax(0, 1fr); }
+  .vv-swot { gap: 5px; }
+  .vv-swot__kopf, .vv-swot__feld { padding: .6rem .55rem; }
+  .vv-swot__feld { min-height: 5.5rem; }
+  .e2 .vv-swot__t { font-size: .74rem; }
+  .vv-swot__feld .vv-swot__t { font-size: .7rem; }
   .vv-f-zeile--voll .vv-f-zeile__text { grid-template-columns: minmax(0, 1fr); }
   .vv-fenster { padding: 2.2rem 1.5rem 2rem; }
   .e2 .vv-fenster__titel { font-size: 1.6rem; }
