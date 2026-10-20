@@ -337,7 +337,7 @@ window.MK_ENTWUERFE = [
   "feld": "01 Strategie im Alltag",
   "art": "Szene · B Foto mit Satz (Porträt)",
   "kern": "Themenliste 13: Führung macht einsam.",
-  "text": "Ein ehemaliger Vorstand, mit dem ich bis heute befreundet bin, hat mir das einmal gesagt. Der Satz begleitet mich in fast jedem Projekt.\n\nEin Vorstand braucht mindestens einen Menschen, der auf Augenhöhe offen mit ihm spricht. Jemanden, der eine andere Meinung fundiert vertritt, ohne Angst, weil er von ihr überzeugt ist.\n\nUnd der den nächsten Schritt aufzeigt, weil sich ein Vorstand gar nicht um alle Themen selbst kümmern kann.\n\nWenn du selbst führst, schreibe dir heute einen Namen auf: Wer sagt dir die Wahrheit?\n\nFällt dir niemand ein, ist das die wichtigste Aufgabe dieser Woche.",
+  "text": "Du stellst in der Runde eine Idee vor. Alle nicken. Du fragst: „Sieht das jemand anders?“ Stille.\nJe höher du kommst, desto seltener sagt dir jemand ins Gesicht, was er denkt.\n\nMit Budget und Karriere hat das nur am Rande zu tun. Ab einer gewissen Stufe ist da Ehrfurcht. Viele glauben, einem Vorstand oder einem Hauptabteilungsleiter dürfe man gar nicht die Wahrheit sagen. Und sie sind schlicht unsicher.\n\nWas dir dann fehlt, ist ein Mensch auf Augenhöhe. Jemand, der\n• eine andere Perspektive einnimmt und sie gut begründen kann.\n• gezielte Fragen stellt, die dich wirklich zum Nachdenken bringen und dir einen anderen Blick auf die Dinge geben.\n• Gesamtzusammenhänge aufzeigt und den nächsten Schritt klar benennt.\n\nSchreibe dir heute einen Namen auf:\nWer sagt dir die Wahrheit? Ungeschönt, ohne Rücksicht auf deine Position.\n\nFällt dir niemand ein, ist das die wichtigste Aufgabe dieser Woche.",
   "status": "geplant",
   "datum": "2026-10-22",
   "kennzahlen": [],
