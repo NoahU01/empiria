@@ -32,6 +32,9 @@
       b.kanaele.map(function (k) { return '<span class="vv-kanal">' + KANAL[k].svg + "</span>"; }).join("") + "</button>";
   }
 
+  /* Fokusfeld unter den Teilstrategien markieren (alle Teilstrategien existieren – daher kein schwarzer Rand) */
+  function legende(b) { return (b.teilHervor || []).length ? '<p class="vv-fokus-legende">Fokusfeld</p>' : ""; }
+  function hervor(b, s) { return (b.teilHervor || []).indexOf(s) > -1 ? ' class="vv-teile__hervor"' : ""; }
   function liste(xs, cls) { return '<ul class="' + cls + '">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
   /* Ein Thema ausgeschrieben: Titel, Text, Einleitung + Punkte, Hinweis */
   function thema(t) {
@@ -49,7 +52,7 @@
     h += kanaele(b);
     if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
     if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Geschäftsstrategie · drei strategische Stoßrichtungen</p>' + zeitplanBild(b) +
-      ((b.teilstrategien || []).length ? '<p class="vv-swot-titel">Daraus abgeleitet · Strategien der Bereiche</p>' + liste(b.teilstrategien.map(function (s) { return s.replace("|", " "); }), "vv-teile") : "");
+      ((b.teilstrategien || []).length ? '<p class="vv-swot-titel">Daraus abgeleitet · Teilstrategien</p>' + ('<ul class="vv-teile">' + b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + ">" + esc(s.replace("|", " ")) + "</li>"; }).join("") + "</ul>" + legende(b)) : "");
     var th = b.themen || [];
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
@@ -138,12 +141,12 @@
       z.stossrichtungen.map(function (s) { return '<div class="vv-zeit__streifen"><span>' + esc(s) + "</span></div>"; }).join("") +
       "</div>";
   }
-  /* Strategie in zwei Ebenen: Geschäftsstrategie (Zeitstrahl) → abgeleitet die Strategien der Bereiche */
+  /* Strategie in zwei Ebenen: Geschäftsstrategie (Zeitstrahl) → abgeleitet die Teilstrategien */
   function strategieEbenen(b) {
     if (!b.zeitplan) return "";
     return '<div class="vv-ebenen"><p class="vv-ebenen__t">Geschäftsstrategie</p>' + zeitplanBild(b, "mini") +
-      ((b.teilstrategien || []).length ? '<span class="vv-ebenen__pfeil" aria-hidden="true"></span><p class="vv-ebenen__t">Strategien der Bereiche</p><ul class="vv-teile">' +
-        b.teilstrategien.map(function (s) { return "<li><span>" + s.split("|").map(esc).join("<br>") + "</span></li>"; }).join("") + "</ul>" : "") + "</div>";
+      ((b.teilstrategien || []).length ? '<span class="vv-ebenen__pfeil" aria-hidden="true"></span><p class="vv-ebenen__t">Teilstrategien</p><ul class="vv-teile">' +
+        b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + "><span>" + s.split("|").map(esc).join("<br>") + "</span></li>"; }).join("") + "</ul>" + legende(b) : "") + "</div>";
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
