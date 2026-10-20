@@ -47,7 +47,7 @@
 .vv-f-zeile__text li + li { margin-top: .35rem; }
 
 /* Inhalte eines Bausteins (beide Ansichten) */
-.e2 .vv-kern { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.35; color: var(--e2-ink); }
+.e2 .vv-kern { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.35; color: var(--e2-ink); text-wrap: balance; }
 .e2 .vv-einleitung { margin: .35rem 0 0; }
 .vv-punkte { margin: .45rem 0 0; padding-left: 1.1rem; }
 .vv-punkte li + li { margin-top: .3rem; }
@@ -78,7 +78,7 @@
 
 /* Fenster Perspektivwechsel: wie die Sektion auf „Strategie in den Alltag überführen“, hell */
 .vv-pv__oben { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.6rem; align-items: start; }
-.e2 .vv-pv__lead { margin: 0; font-size: 1.02rem; line-height: 1.65; color: var(--e2-ink); }
+.e2 .vv-pv__lead { margin: 0; font-size: .98rem; line-height: 1.65; color: var(--e2-ink); }
 .vv-pv .e2-pv__schritt { margin-top: 1.6rem; padding-top: 1.1rem; border-top: 2px solid var(--e2-ink); }
 .e2 .vv-pv .e2-pv__tag { margin: 0 0 .6rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-ink); }
 .e2 .vv-pv .e2-pv__schritt p:not(.e2-pv__tag) { margin: 0; font-size: .98rem; line-height: 1.6; color: var(--e2-ink); }
@@ -87,11 +87,11 @@
 .vv-pv__band { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.8rem; align-items: center; margin-top: 2.2rem; padding: 1.5rem 1.8rem; border-radius: 16px; background: var(--e2-hell); }
 .e2 .vv-pv__band-tag { display: inline-flex; align-items: center; gap: .55rem; margin: 0; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-ink); }
 .vv-pv__band-tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
-.e2 .vv-pv__band-satz { margin: 0; font-family: var(--font-serif); font-size: clamp(1.15rem, 1.8vw, 1.45rem); font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
+.e2 .vv-pv__band-satz { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.55; color: var(--e2-ink); }
 
 /* SWOT-Matrix: Kopffelder hell hinterlegt, Strategiefelder mit dunklem Rand */
 .e2 .vv-swot-titel { margin: 0 0 -.6rem; font-size: .92rem; font-weight: 700; color: var(--e2-ink); grid-column: 1 / -1; }
-.vv-swot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; grid-column: 1 / -1; text-align: left; }
+.vv-swot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 8px; grid-column: 1 / -1; text-align: left; }
 .vv-swot__kopf { display: flex; flex-direction: column; justify-content: center; padding: .85rem 1rem; border-radius: 10px; background: var(--e2-hell); }
 .vv-swot__feld { min-height: 7.5rem; padding: .85rem 1rem; border: 1px solid var(--e2-ink); border-radius: 10px; background: #fff; }
 .e2 .vv-swot__t { margin: 0; font-size: .88rem; font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
@@ -101,7 +101,7 @@
 /* Mini in der Infografik: nur angedeutet */
 .vv-swot-mini { width: 100%; }
 .vv-swot--mini { gap: 4px; }
-.vv-swot--mini .vv-swot__kopf { padding: .35rem .2rem; border-radius: 5px; font-size: .64rem; font-weight: 700; line-height: 1.2; text-align: center; color: var(--e2-ink); }
+.vv-swot--mini .vv-swot__kopf { display: flex; align-items: center; justify-content: center; padding: .35rem .2rem; border-radius: 5px; font-size: .64rem; font-weight: 700; line-height: 1.2; text-align: center; color: var(--e2-ink); }
 .vv-swot--mini .vv-swot__feld { display: flex; flex-direction: column; justify-content: center; gap: 5px; min-height: 2.6rem; padding: .45rem .55rem; border-radius: 5px; }
 .vv-swot--mini .vv-swot__feld i { display: block; height: 3px; border-radius: 2px; background: #d9d4cd; }
 .vv-swot--mini .vv-swot__feld i:nth-child(2) { width: 80%; } .vv-swot--mini .vv-swot__feld i:nth-child(3) { width: 60%; }
@@ -140,11 +140,11 @@
 .vv-fenster__zu:focus { outline: none; }
 .vv-fenster__zu:focus-visible { box-shadow: 0 0 0 2px var(--e2-ink); }
 .vv-fenster__zu { position: absolute; top: 1rem; right: 1rem; width: 2.4rem; height: 2.4rem; border: 1px solid var(--e2-linie); border-radius: 50%; background: #fff; color: var(--e2-ink); font-size: 1.3rem; line-height: 1; cursor: pointer; }
-.e2 .vv-fenster__kicker { margin: 0 0 .7rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-grau); }
-.e2 .vv-fenster__titel { margin: 0 0 1.1rem; font-family: var(--font-serif); font-size: 1.9rem; line-height: 1.1; }
-.vv-fenster__block + .vv-fenster__block { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--e2-linie); }
-.e2 .vv-fenster__label { margin: 0 0 .5rem; font-size: .82rem; font-weight: 600; color: var(--e2-grau); }
-.e2 .vv-fenster__satz { margin: 0; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.35; color: var(--e2-ink); }
+.e2 .vv-fenster__kicker { margin: 0 0 .8rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-grau); }
+.e2 .vv-fenster__titel { margin: 0 0 2.2rem; font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.2; }
+.vv-fenster__block + .vv-fenster__block { margin-top: 1.6rem; padding-top: 1.6rem; border-top: 1px solid var(--e2-linie); }
+.e2 .vv-fenster__label { margin: 0 0 .6rem; font-size: .8rem; font-weight: 600; color: var(--e2-grau); }
+.e2 .vv-fenster__satz { margin: 0; font-size: 1.05rem; font-weight: 500; line-height: 1.65; color: var(--e2-ink); }
 
 /* ===== Variante 2 · Infografik – hell und reduziert, volle Breite =====
    Zonen nur als gestrichelte Umrisse, alle Karten gleich (auch das Selbstverständnis).
@@ -262,10 +262,38 @@
 .vv-inhalt--c .vv-g-mobilauf .vv-auf { margin-top: 0; }
 /* Die Bilder füllen ihren Kasten: SWOT und Zeitplan wachsen mit der Reihenhöhe */
 .vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-zeit--mini { flex: 1; display: grid; }
-.vv-inhalt--c .vv-swot--mini { height: 100%; grid-template-rows: auto 1fr 1fr; }
+.vv-inhalt--c .vv-swot--mini { height: 100%; grid-template-rows: repeat(3, 1fr); }
 .vv-inhalt--c .vv-swot--mini .vv-swot__kopf { display: flex; align-items: center; justify-content: center; }
 .vv-inhalt--c .vv-zeit--mini { grid-template-rows: auto repeat(3, 1fr); }
 .vv-inhalt--c .vv-zeit--mini .vv-zeit__streifen { min-height: 2.6rem; }
+
+/* ===== Variante D (Sektion 4): aus C – weniger auf einmal, ausgewogene Kästen =====
+   Selbstverständnis breit mit seiner Aussage und den Werten ruhig in drei Spalten; Hinweis dreizeilig daneben.
+   Kernkästen etwa gleich voll: Bilder in natürlicher Höhe, Listen ohne Trennlinien. Weniger Verweise. */
+.vv-inhalt--d .vv-g {
+  grid-template-areas:
+    "t0 t0 t0 t0 t0"
+    ".  .  svt svt svt"
+    "zu zu sv sv sv"
+    ".  .  .  .  ab"
+    "t1 t1 t1 .  t2"
+    "k1 .  k3 .  k2"
+    "a1 .  a3 .  a2"
+    "kl kl kl .  st"
+    "b1 .  b2 .  b3";
+}
+.vv-inhalt--d .vv-g-flaeche { border-color: #dcd7d0; }
+.vv-inhalt--d .vv-g-karte { padding: 1.6rem 1.6rem 1.7rem; }
+.vv-inhalt--d .vv-g-zufluss p { line-height: 1.55; }
+.vv-inhalt--d .vv-g-sv { padding: 1.9rem 2.4rem 2rem; }
+.e2 .vv-inhalt--d .vv-g-svsatz { max-width: 34rem; margin: 0 auto; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: var(--e2-ink); }
+.vv-inhalt--d .vv-g-werte { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem 1.2rem; margin: 1.4rem 0 0; padding-top: 1.3rem; border-top: 1px solid var(--e2-linie); }
+.vv-inhalt--d .vv-g-werte li { padding: 0; border: 0; font-size: .86rem; font-weight: 500; color: var(--e2-ink-2); }
+/* Bilder füllen ihren Kasten wie in C */
+.vv-inhalt--d .vv-zeit--mini .vv-zeit__streifen { min-height: 2.8rem; }
+/* Liste im Vision-Kasten ohne Trennlinien, ruhiger Zeilenabstand */
+.vv-inhalt--d .vv-g .vv-punkte { margin-top: .8rem; }
+.vv-inhalt--d .vv-g .vv-punkte li { padding: .28rem 0; border: 0; color: var(--e2-ink-2); }
 
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
@@ -288,8 +316,8 @@
   .vv-swot__feld .vv-swot__t { font-size: .7rem; }
   .vv-f-zeile--voll .vv-f-zeile__text { grid-template-columns: minmax(0, 1fr); }
   .vv-fenster { padding: 2.2rem 1.5rem 2rem; }
-  .e2 .vv-fenster__titel { font-size: 1.6rem; }
-  .e2 .vv-fenster__satz { font-size: 1.12rem; }
+  .e2 .vv-fenster__titel { font-size: 1.4rem; margin-bottom: 1.6rem; }
+  .e2 .vv-fenster__satz { font-size: 1rem; }
 
   .vv-g { display: flex; flex-direction: column; gap: .8rem; padding: 0; }
   .vv-g-flaeche, .vv-g-t1, .vv-g-t2, .vv-g-kreis, .vv-g-linie, .vv-g-klammer, .vv-g-strich, .vv-g-pfeil { display: none; }
@@ -303,6 +331,8 @@
   /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
   .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 4; }
   .vv-g-svtitel { order: 3; margin-bottom: 0 !important; }
+  .vv-inhalt--d .vv-g-sv { padding: 1.5rem 1.3rem; }
+  .vv-inhalt--d .vv-g-werte { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vv-g-abwaerts { order: 3; }
   .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
   .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }

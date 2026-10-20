@@ -14,17 +14,17 @@
     onepager: { name: "One-Pager", svg: '<svg viewBox="0 0 36 48"><rect x="1" y="1" width="34" height="46" rx="3"/><rect x="6" y="6" width="24" height="9" rx="1.5" class="b"/><path d="M6 21h24M6 26h24M6 31h18M6 37h24M6 42h14"/></svg>' }
   };
   /* Perspektivwechsel aus „Strategie in den Alltag überführen“ – übertragen von der Abteilung auf das Unternehmen */
-  FENSTER["k:homepage"] = { kicker: "Perspektivwechsel", titel: "Wie sieht die Homepage Eures Unternehmens aus?", breit: true, html:
+  FENSTER["k:homepage"] = { kicker: "Perspektivwechsel", titel: "Wie sieht die Homepage des Unternehmens aus?", breit: true, html:
     '<div class="vv-pv"><div class="vv-pv__oben"><div>' +
-      '<p class="vv-pv__lead">Also warum die Frage? Weil hier sofort klar wird, ob Ihr den Mehrwert Eures Unternehmens sauber erklären könnt. Und wenn Ihr das nicht könnt, kann auch keiner im Team aktiv zu Eurer Strategie beitragen.</p>' +
-      '<div class="e2-pv__schritt"><p class="e2-pv__tag">Gedankenexperiment</p><p>Stellt Euch vor, wir gründen Euer Unternehmen morgen neu. Was stünde auf seiner Homepage – und würde jeder im Team dasselbe hineinschreiben?</p></div></div>' +
-      '<div class="perspektive-browser" role="img" aria-label="Skizze einer leeren Homepage Eures Unternehmens mit fünf offenen Fragen">' +
-        '<div class="pb-bar"><span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="pb-url">www.euer-unternehmen.de<span class="pb-caret" aria-hidden="true"></span></span></div>' +
+      '<p class="vv-pv__lead">Warum diese Frage? Weil sich hier sofort zeigt, ob sich der Mehrwert des Unternehmens klar erklären lässt. Gelingt das nicht, kann auch niemand im Team aktiv zur Strategie beitragen.</p>' +
+      '<div class="e2-pv__schritt"><p class="e2-pv__tag">Gedankenexperiment</p><p>Angenommen, das Unternehmen würde morgen neu gegründet: Was stünde auf seiner Homepage – und würde jeder im Team dasselbe hineinschreiben?</p></div></div>' +
+      '<div class="perspektive-browser" role="img" aria-label="Skizze einer leeren Homepage des Unternehmens mit fünf offenen Fragen">' +
+        '<div class="pb-bar"><span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="pb-url">www.unternehmen.de<span class="pb-caret" aria-hidden="true"></span></span></div>' +
         '<div class="pb-page"><ol class="pb-rows">' +
           ["Welche Zielgruppe sprechen wir an?", "Welches konkrete Problem lösen wir?", "Welcher Nutzen entsteht daraus?", "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"]
             .map(function (q, i) { return '<li><span class="pb-num">0' + (i + 1) + '</span><span class="pb-q">' + q + '</span><span class="pb-mark">?</span></li>'; }).join("") +
         "</ol></div></div></div>" +
-    '<div class="vv-pv__band"><p class="vv-pv__band-tag">Ergebnis</p><p class="vv-pv__band-satz">Jeder im Team versteht, wofür Euer Unternehmen da ist – und Ihr bestimmt seine Wahrnehmung.</p></div></div>' };
+    '<div class="vv-pv__band"><p class="vv-pv__band-tag">Ergebnis</p><p class="vv-pv__band-satz">Jeder im Team versteht, wofür das Unternehmen steht – und das Unternehmen bestimmt selbst, wie es wahrgenommen wird.</p></div></div>' };
   function kanaele(b) {
     if (!(b.kanaele || []).length) return "";
     return '<button type="button" class="vv-auf vv-kanaele" data-fenster="k:homepage" aria-label="Auf allen Kanälen: ' + b.kanaele.map(function (k) { return KANAL[k].name; }).join(", ") + ' – Perspektivwechsel öffnen">' +
@@ -108,7 +108,7 @@
 
   /* ---------------- Variante 2 · Infografik ---------------- */
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
-  var C = false;   /* true beim Erzeugen von Variante C */
+  var C = false, D = false;   /* true beim Erzeugen von Variante C bzw. D (D baut auf C auf) */
   function lab(normal) { return C ? "Mehr erfahren" : normal; }
   function karte(b, cls, extra, frage) {
     return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
@@ -135,6 +135,7 @@
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
+    if (D && !b.themen.some(function (t) { return t.kurz; })) return "";   /* D: kein Verweis, wenn das Fenster nur die sichtbare Aussage wiederholt */
     return knopf("b:" + b.titel, lab("Details lesen"), { kicker: frage, titel: b.titel,
       html: (b.kern ? '<div class="vv-fenster__block"><p class="vv-fenster__satz">' + esc(b.kern) + "</p></div>" : "") +
         b.themen.map(function (t) { return '<div class="vv-fenster__block vv-fenster__text">' + thema(t) + "</div>"; }).join("") });
@@ -147,10 +148,11 @@
       '<div class="vv-g-flaeche vv-g-flaeche--oben" aria-hidden="true"></div>' +
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
       '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
-      '<div class="vv-g-zufluss"><p><span>' + esc(M.zufluss.titel) + "</span><span>" + esc(M.zufluss.frage) + '</span></p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
+      '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
       (C ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
       '<div class="vv-g-karte vv-g-sv">' + (C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
-        ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + auf(sv) + "</div></div>" +
+        (D && (sv.saetze || []).length ? '<p class="vv-g-svsatz">' + esc(sv.saetze[0].text) + "</p>" : "") +
+        ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + (D ? "" : auf(sv)) + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +
       '<p class="vv-g-zone__t vv-g-t1">' + esc(A.zone) + '</p><p class="vv-g-zone__t vv-g-t2">' + esc(V.zone) + "</p>" +
       '<span class="vv-g-linie vv-g-linie--a" aria-hidden="true"></span><span class="vv-g-linie vv-g-linie--b" aria-hidden="true"><em>Mission</em></span>' +
@@ -164,10 +166,10 @@
       karte(V.folgt[0], "vv-g-aus vv-g-b3") +
     "</div>"); }
   document.querySelectorAll(".vv-grafik").forEach(function (el) {
-    C = !!el.closest(".vv-inhalt--c");
+    C = !!el.closest(".vv-inhalt--c"); D = !!el.closest(".vv-inhalt--d");
     el.innerHTML = baueGrafik();
   });
-  C = false;
+  C = false; D = false;
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");
