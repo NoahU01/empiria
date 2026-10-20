@@ -26,7 +26,6 @@
 .vv-inhalt__kopf h2 { margin: 0; font-family: var(--font-serif); font-size: clamp(2.1rem, 3.6vw, 3rem); line-height: 1.08; }
 .vv-inhalt__kopf .e2-kicker { margin-bottom: .8rem; }
 
-
 /* ===== Variante 1 · Alle Fakten ===== */
 .vv-f-block { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: 2rem 4rem; padding: 2.8rem 0 3rem; border-top: 2px solid var(--e2-ink); }
 .vv-f-block:last-child { border-bottom: 1px solid var(--e2-linie); }
@@ -84,14 +83,16 @@
 .vv-g-t0 { grid-area: t0; } .vv-g-t1 { grid-area: t1; } .vv-g-t2 { grid-area: t2; }
 
 /* Karten – eine Art */
-.vv-g-karte { display: flex; flex-direction: column; gap: .7rem; padding: 1.15rem 1.25rem 1.25rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; min-width: 0; }
-.vv-g-karte small { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.4; color: var(--e2-grau); }
+.vv-g-karte { display: flex; flex-direction: column; align-items: center; gap: .45rem; padding: 1.15rem 1.25rem 1.25rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; min-width: 0; text-align: center; }
+/* Bezeichnungen wie im Vorbild-Pop-up: normale Schrift, halbfett, zentriert – keine Versalien */
+.vv-g-karte small { font-size: .82rem; font-weight: 600; line-height: 1.45; color: var(--e2-ink-2); }
+.vv-g-sv small { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.15; color: var(--e2-ink); }
 .vv-g-text p, .vv-g-text li { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--e2-ink-2); }
 .vv-g-text ul { margin: 0; padding-left: 1rem; }
-/* Ergebnis: die zentrale Frage – vollflächiger Fuß der Karte, zentriert, Pfeil zeigt hinein */
-.vv-g-aus { padding-bottom: 0; overflow: hidden; }
-.e2 .vv-g-frage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 5.6rem; margin: auto -1.25rem 0; padding: 1.5rem 1.4rem 1.35rem; text-align: center; font-size: .95rem; font-weight: 700; line-height: 1.4; background: var(--e2-ink); color: #fff; }
-.vv-g-frage::before { content: ""; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 9px solid #fff; }
+/* Ergebnis: die zentrale Frage – klein, zentriert unter einem Dreieck wie im Vorbild */
+
+.e2 .vv-g-frage { margin: auto 0 0; padding-top: 1rem; text-align: center; font-size: .88rem; font-weight: 700; line-height: 1.4; color: var(--e2-ink); }
+.vv-g-frage::before { content: ""; display: block; width: 0; margin: 0 auto .6rem; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 10px solid var(--e2-ink); }
 
 /* Zufluss ins Selbstverständnis: Text und Pfeil, ohne Kasten */
 /* Zufluss ins Selbstverständnis: nur ein Hinweis – klein wie „Mission“, rechtsbündig, kurzer Pfeil */
@@ -112,7 +113,7 @@
    Spitze nur an der Vision. */
 .vv-g-kreis { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .7rem; margin-bottom: 1.3rem; }
 .vv-g-kreis i { display: grid; place-items: center; width: 2.7rem; height: 2.7rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-style: normal; font-weight: 700; }
-.vv-g-kreis b { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.1; text-align: center; color: var(--e2-ink); }
+.vv-g-kreis b { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.1; text-align: center; color: var(--e2-ink); }
 .vv-g-k1 { grid-area: k1; } .vv-g-k3 { grid-area: k3; } .vv-g-k2 { grid-area: k2; }
 /* Spanne über zwei Kartenspalten: von Mitte zu Mitte = 25 % minus ein Viertel der Lücke; dazu der Kreisradius */
 .vv-g-linie { position: relative; z-index: 0; align-self: start; height: 0; margin-top: 1.35rem; border-top: 1.5px solid var(--e2-ink); }
@@ -134,26 +135,19 @@
 
 /* Gewichtung: die Kernkarten tragen den klarsten, dunkelsten Rand */
 .vv-g-sv, .vv-g-a1, .vv-g-a3, .vv-g-a2, .vv-g-b3 { border: 1.5px solid var(--e2-ink); }
+.vv-g-a1 small, .vv-g-a3 small, .vv-g-a2 small, .vv-g-b3 small { color: var(--e2-ink); }
 /* Detaillierung der Strategie: Alltag und Kommunikation hellgrau */
 .vv-g-b1, .vv-g-b2 { border-color: #e2ded8; }
 .vv-g-b1 small, .vv-g-b2 small, .vv-g-b1 .vv-g-text p, .vv-g-b2 .vv-g-text p, .vv-g-b1 .vv-g-text li, .vv-g-b2 .vv-g-text li { color: var(--grau-hell); }
-.e2 .vv-g-b1 .vv-g-frage, .e2 .vv-g-b2 .vv-g-frage { background: var(--e2-hell); color: var(--grau-hell); }
+.e2 .vv-g-b1 .vv-g-frage, .e2 .vv-g-b2 .vv-g-frage { color: var(--grau-hell); }
+.vv-g-b1 .vv-g-frage::before, .vv-g-b2 .vv-g-frage::before { border-top-color: var(--grau-hell); }
 
 /* ===== Variante B (Sektion 3): reduziert wie das Vorbild im Pop-up =====
    Keine Kästen um die einzelnen Punkte – die Bereiche zeigen sich über Abstand,
    kleine Überschrift und die gestrichelten Zonen. Großbuchstaben nur für die drei Zonenfragen.
-   Schriftverhältnisse aus dem Vorbild: Zonenfrage 11 · Punkt 11,5 · Name 19 · Ergebnisfrage 12,5 */
-.vv-inhalt--reduziert .vv-g-karte { align-items: center; gap: .45rem; padding: 0; border: 0 !important; border-radius: 0; background: none; text-align: center; }
-.vv-inhalt--reduziert .vv-g-karte small { font-size: .82rem; font-weight: 600; letter-spacing: 0; text-transform: none; line-height: 1.45; color: var(--e2-ink-2); }
-.vv-inhalt--reduziert .vv-g-sv small { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.15; color: var(--e2-ink); }
-.vv-inhalt--reduziert .vv-g-kreis b { font-size: 1.35rem; }
-.vv-inhalt--reduziert .vv-g-aus { overflow: visible; }
+   Schrift wie im Vorbild gilt für beide Varianten (siehe oben). */
+.vv-inhalt--reduziert .vv-g-karte { padding: 0; border: 0 !important; border-radius: 0; background: none; }
 .vv-inhalt--reduziert .vv-g-klammer, .vv-inhalt--reduziert .vv-g-strich { margin-top: .55rem; margin-bottom: .55rem; }
-.e2 .vv-inhalt--reduziert .vv-g-frage { display: block; min-height: 0; margin: auto 0 0; padding: 1rem 0 0; background: none; text-align: center; font-size: .88rem; line-height: 1.4; color: var(--e2-ink); }
-.vv-inhalt--reduziert .vv-g-frage::before { position: static; display: block; width: 0; margin: 0 auto .6rem; transform: none; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 10px solid var(--e2-ink); }
-.vv-inhalt--reduziert .vv-g-b1 small, .vv-inhalt--reduziert .vv-g-b2 small { color: var(--grau-hell); }
-.e2 .vv-inhalt--reduziert .vv-g-b1 .vv-g-frage, .e2 .vv-inhalt--reduziert .vv-g-b2 .vv-g-frage { background: none; color: var(--grau-hell); }
-.vv-inhalt--reduziert .vv-g-b1 .vv-g-frage::before, .vv-inhalt--reduziert .vv-g-b2 .vv-g-frage::before { border-top-color: var(--grau-hell); }
 
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
@@ -172,7 +166,7 @@
   .vv-g-zufluss p { text-align: center; }
   .e2 .vv-g-t0 { margin: .6rem 0 .2rem; }
   .vv-g-abwaerts { order: 0; height: 1.6rem; margin: 0 auto; }
-  .vv-g-mobilkopf { display: flex; align-items: center; gap: .7rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--e2-ink); }
+  .vv-g-mobilkopf { display: flex; align-items: center; justify-content: center; gap: .7rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--e2-ink); }
   .vv-g-mobilkopf i { display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-family: var(--font-sans); font-size: .9rem; font-style: normal; }
   /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
   .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 4; }
@@ -181,5 +175,4 @@
   .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
   .vv-inhalt--reduziert .vv-g { gap: 1.5rem; }
   .vv-inhalt--reduziert .vv-g-a1, .vv-inhalt--reduziert .vv-g-a2, .vv-inhalt--reduziert .vv-g-a3 { margin-top: 2.2rem; }
-  .vv-inhalt--reduziert .vv-g-mobilkopf { justify-content: center; }
 }
