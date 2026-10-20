@@ -83,7 +83,7 @@
     var kv = []; th.forEach(function (t) { if (t.kv) kv = kv.concat(t.kv); else if (t.k) kv.push([t.k, t.w]); });
     /* Variante 1: kompakte Zeilen – Bezeichnung nur, wo sie etwas erklärt, und dann in derselben Zeile; USP als Abschluss */
     if (th.length && modus === "kurz" && KOMPAKT && th.some(function (t) { return t.cw; })) h += '<ul class="vv-kompakt">' + th.filter(function (t) { return t.cw; }).map(function (t) {
-        return '<li' + (t.abschluss ? ' class="vv-kompakt__abschluss"' : "") + ">" + (t.ck ? "<small>" + esc(t.ck) + "</small> " : "") + String(t.cw).split("|").map(esc).join("<br>") + "</li>"; }).join("") + "</ul>";
+        return "<li>" + (t.ck ? esc(t.ck) + ": " : "") + String(t.cw).split("|").map(esc).join("<br>") + "</li>"; }).join("") + "</ul>";
     else if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(esc).join("<br>") + "</dd>"; }).join("") + "</dl>";
     else if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
     var z = b.inhalt || [];
@@ -219,6 +219,18 @@
     el.innerHTML = baueGrafik();
   });
   C = false; D = false; E = false; F = false; KOMPAKT = false;
+
+  /* Fokus per Maus: Kasten bleibt, alles andere wird hellgrau; der zugehörige Name bleibt sichtbar */
+  var PARTNER = { "vv-g-sv": ".vv-g-svtitel", "vv-g-a1": ".vv-g-k1", "vv-g-a3": ".vv-g-k3", "vv-g-a2": ".vv-g-k2" };
+  if (window.matchMedia("(hover: hover) and (min-width: 901px)").matches) {
+    document.querySelectorAll(".vv-hoverfokus .vv-g").forEach(function (g) {
+      g.querySelectorAll(":scope > .vv-g-karte").forEach(function (k) {
+        var partner = Object.keys(PARTNER).filter(function (c) { return k.classList.contains(c); }).map(function (c) { return g.querySelector(":scope > " + PARTNER[c]); }).filter(Boolean);
+        k.addEventListener("mouseenter", function () { g.classList.add("vv-fokus-an"); k.classList.add("vv-fokus-ist"); partner.forEach(function (p) { p.classList.add("vv-fokus-ist"); }); });
+        k.addEventListener("mouseleave", function () { g.classList.remove("vv-fokus-an"); k.classList.remove("vv-fokus-ist"); partner.forEach(function (p) { p.classList.remove("vv-fokus-ist"); }); });
+      });
+    });
+  }
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");

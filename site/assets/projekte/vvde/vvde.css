@@ -303,7 +303,9 @@
 .vv-inhalt--c .vv-g-kreis .vv-auf { margin-top: -.2rem; }
 .vv-inhalt--c .vv-g-mobilauf .vv-auf { margin-top: 0; }
 /* SWOT und Zeitplan in ihrer natürlichen Größe, vertikal mittig im verbleibenden Platz des Kastens */
-.vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-ebenen { margin-top: auto; margin-bottom: auto; }
+.vv-inhalt--c .vv-g-a1 .vv-swot-mini { margin-top: auto; margin-bottom: auto; }
+.vv-inhalt--f .vv-g-a3 .vv-ebenen { margin-top: auto; margin-bottom: 0; }
+.vv-inhalt--f .vv-g-a2 > .vv-auf:last-child { display: block; margin-top: auto !important; padding-top: 1rem; padding-bottom: 0; line-height: 1; }
 
 /* ===== Variante D (Sektion 4): Fokus auf „Wie kommen wir dorthin?“ und „Wie wollen wir wahrgenommen werden?“ =====
    Oben ruhig: Selbstverständnis hell gerahmt, kleiner Titel, Aussage in Grundschrift (zwei Zeilen), Werte als Pills.
@@ -410,19 +412,11 @@
 /* ===== Variante 1: kompakter Steckbrief und Fokus per Maus ===== */
 .vv-kompakt { width: 100%; margin: 1rem 0 0; padding: 0; list-style: none; text-align: center; }
 .vv-kompakt li { padding: .3rem 0; font-size: .9rem; font-weight: 500; line-height: 1.4; color: var(--e2-ink); text-wrap: balance; }
-.vv-kompakt li small { margin-right: .3rem; font-size: .74rem; font-weight: 600; color: var(--e2-grau); }
-.vv-kompakt li small::after { content: ":"; }
-.vv-kompakt__abschluss { margin-top: .6rem; padding-top: .9rem !important; border-top: 1px solid var(--e2-linie); font-weight: 600 !important; }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-kompakt li { font-size: .82rem; } }
-/* Fokus (Variante 1 und 2): Kasten unter der Maus bleibt, alles andere sehr hellgrau – der zugehörige Name bleibt mit hervorgehoben */
-@media (hover: hover) and (min-width: 901px) {
-  .vv-hoverfokus .vv-g > * { transition: opacity .2s ease; }
-  .vv-hoverfokus .vv-g:has(> .vv-g-karte:hover) > :not(.vv-g-karte:hover) { opacity: .14; }
-  .vv-hoverfokus .vv-g:has(> .vv-g-sv:hover) > .vv-g-svtitel,
-  .vv-hoverfokus .vv-g:has(> .vv-g-a1:hover) > .vv-g-k1,
-  .vv-hoverfokus .vv-g:has(> .vv-g-a3:hover) > .vv-g-k3,
-  .vv-hoverfokus .vv-g:has(> .vv-g-a2:hover) > .vv-g-k2 { opacity: 1 !important; }
-}
+/* Fokus (Variante 1 und 2): Kasten unter der Maus bleibt, alles andere sehr hellgrau – per Skript geschaltet (zuverlässig in allen Browsern) */
+.vv-hoverfokus .vv-g > * { transition: opacity .2s ease; }
+/* nur so hell wie die Detailkästen (Führungs- und Arbeitsalltag, Strategiekommunikation) – diese selbst bleiben, wie sie sind */
+.vv-hoverfokus .vv-g.vv-fokus-an > :not(.vv-fokus-ist):not(.vv-g-b1):not(.vv-g-b2) { opacity: .3; }
 
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
