@@ -1,0 +1,155 @@
+/* VVDE – Projektseite, schlank nach dem Vorbild Schadenmanagement.
+   Sektion 1: Strategiemodell zum Anklicken – 1:1 wie „Strategie in den Alltag überführen“.
+   Sektion 2: das Modell für die VVDE in zwei Ansichten aus EINER Quelle (vvde.js).
+   Schwarz · Weiß · Gelb. Gelb nur mit Funktion: Selbstverständnis, Schrittnummern, Leitfragen. */
+
+/* Umschalter: dieselben Regeln wie beim Schadenmanagement */
+.sm-schalter { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--e2-hell); }
+.sm-schalter button { display: inline-flex; align-items: center; gap: .55rem; padding: .55rem 1.1rem .55rem .6rem; border: 0; border-radius: 999px; background: transparent; color: var(--e2-grau); font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; }
+.sm-schalter button b { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: #fff; color: var(--e2-ink); font-size: .8rem; }
+.sm-schalter button[aria-pressed="true"] { background: var(--e2-ink); color: #fff; }
+.sm-schalter button[aria-pressed="true"] b { background: var(--e2-gelb); }
+.sm-v[hidden] { display: none !important; }
+
+/* ===== Sektion 1 · Modellkarte wie auf der Strategie-Seite (dort per .produktseite-clean gesetzt) ===== */
+.vv-kopf { padding-bottom: 1.5rem !important; }
+.vv-modell-sek { padding-top: 2rem !important; }
+.vv-modell-sek .sprint-structure-card { background: #1a1817; border: none; box-shadow: 0 34px 80px rgba(0,0,0,.28); }
+.vv-modell-sek .sprint-structure-card:hover { border-color: transparent; }
+.vv-modell-sek .media-box-footer { background: rgba(0,0,0,.16); border-top: 1px solid rgba(255,255,255,.2); }
+.vv-modell-sek .media-box-title { color: #fff; }
+.vv-modell-sek .sprint-structure-cta.btn--dark { background: #fff; border-color: #fff; color: #1a1817; }
+
+/* ===== Sektion 2 · Kopf mit Umschalter ===== */
+.vv-inhalt { padding: 5.5rem 0 7rem; border-top: 1px solid var(--e2-linie); }
+.vv-inhalt__kopf { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.4rem 2rem; margin-bottom: 3.2rem; }
+.vv-inhalt__kopf h2 { margin: 0; font-family: var(--font-serif); font-size: clamp(2.1rem, 3.6vw, 3rem); line-height: 1.08; }
+.vv-inhalt__kopf .e2-kicker { margin-bottom: .8rem; }
+
+/* „Noch offen“ – eine Art für beide Ansichten */
+.vv-offen { display: inline-flex; align-items: center; gap: .45rem; padding: .28rem .7rem; border: 1px dashed #c9c4bd; border-radius: 999px; color: var(--e2-grau); font-size: .76rem; font-weight: 600; line-height: 1.2; }
+.vv-offen::before { content: ""; width: .42rem; height: .42rem; border-radius: 50%; background: currentColor; opacity: .55; }
+
+/* Schrittnummer – dieselbe Form wie im Modell (gelber Ring) */
+.vv-nr { display: inline-grid; place-items: center; width: 2.7rem; height: 2.7rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-weight: 700; font-size: 1.05rem; line-height: 1; box-shadow: inset 0 0 0 2px var(--e2-gelb); }
+.vv-nr--basis { width: auto; padding: 0 1rem; border-radius: 999px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ===== Variante 1 · Alle Fakten ===== */
+.vv-f-block { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem 4.5rem; padding: 2.8rem 0 3rem; border-top: 2px solid var(--e2-ink); }
+.vv-f-block:last-child { border-bottom: 1px solid var(--e2-linie); }
+.vv-f-marke { align-self: start; position: sticky; top: 6.5rem; }
+.e2 .vv-f-frage { margin: 1.3rem 0 .45rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.vv-f-marke h3 { margin: 0; font-family: var(--font-serif); font-size: clamp(1.9rem, 2.9vw, 2.5rem); line-height: 1.08; letter-spacing: -.01em; }
+.e2 .vv-f-mini { margin: 2rem 0 .2rem; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.vv-f-zeile { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: .6rem 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--e2-linie); }
+.vv-f-inhalt > .vv-f-zeile:first-child { padding-top: .2rem; }
+.vv-f-zeile__kopf b { display: block; font-size: 1rem; font-weight: 700; line-height: 1.35; }
+.vv-f-zeile__kopf span { display: block; margin-top: .25rem; font-size: .86rem; line-height: 1.45; color: var(--e2-grau); }
+.vv-f-zeile__text p, .vv-f-zeile__text li { margin: 0; font-size: .93rem; line-height: 1.6; color: var(--e2-ink-2); }
+.vv-f-zeile__text ul { margin: 0; padding-left: 1.1rem; }
+.vv-f-zeile__text li + li { margin-top: .35rem; }
+/* Selbstverständnis: die Kernaussage – die eine gelbe Fläche der Ansicht */
+.vv-f-kern { padding: 1.6rem 1.8rem; border-radius: var(--e2-r); background: var(--e2-gelb); }
+.vv-f-kern .vv-offen { border-color: rgba(26,24,23,.45); color: var(--e2-ink); }
+.e2 .vv-f-kern__satz { margin: 0; font-family: var(--font-serif); font-size: clamp(1.35rem, 2.1vw, 1.7rem); font-weight: 700; line-height: 1.25; color: var(--e2-ink); }
+.vv-f-kern ul { margin: .9rem 0 0; padding-left: 1.1rem; }
+.vv-f-kern li { font-size: .93rem; line-height: 1.55; }
+
+/* ===== Variante 2 · Infografik ===== */
+.vv-grafik { padding: 2.6rem; border-radius: 26px; background: var(--e2-ink); color: #fff; }
+.vv-g {
+  --lg: 2.4rem;   /* Lücke innerhalb einer Zone */
+  --zg: 3.6rem;   /* Lücke zwischen den Zonen */
+  --zr: 1.4rem;   /* Rand der Zonenflächen */
+  position: relative; display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--lg) minmax(0, 1fr) var(--zg) minmax(0, 1fr);
+  grid-template-rows: auto auto 3.4rem auto auto auto 3.4rem auto;
+  grid-template-areas:
+    "t0 t0 t0 t0 t0"
+    "ein ein ein pf sv"
+    ".  .  .  .  ab"
+    "t1 t1 t1 .  t2"
+    "k1 .  k3 .  k2"
+    "a1 .  a3 .  a2"
+    "kl kl kl .  st"
+    "b1 .  b2 .  b3";
+  padding: var(--zr);
+}
+.vv-g-flaeche { border: 1px dashed rgba(255,255,255,.22); border-radius: 18px; background: rgba(255,255,255,.025); margin: calc(-1 * var(--zr)); pointer-events: none; }
+.vv-g-flaeche--oben { grid-column: 1 / -1; grid-row: 1 / 3; }
+.vv-g-flaeche--links { grid-column: 1 / 4; grid-row: 4 / -1; }
+.vv-g-flaeche--rechts { grid-column: 5 / 6; grid-row: 4 / -1; }
+
+.e2 .vv-g-zone__t { margin: 0 0 1.4rem; text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.vv-g-t0 { grid-area: t0; } .vv-g-t1 { grid-area: t1; } .vv-g-t2 { grid-area: t2; }
+
+/* Karten */
+.vv-g-karte { display: flex; flex-direction: column; gap: .7rem; padding: 1.15rem 1.25rem 1.25rem; border: 1px solid rgba(255,255,255,.14); border-radius: 14px; background: rgba(255,255,255,.06); min-width: 0; }
+.vv-g-karte small { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.4; color: rgba(255,255,255,.62); }
+.vv-g-text p, .vv-g-text li { margin: 0; font-size: .9rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+.vv-g-text ul { margin: 0; padding-left: 1rem; }
+.vv-g .vv-offen { border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.62); }
+.e2 .vv-g-frage { margin: auto 0 0; padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.14); font-size: .9rem; font-weight: 700; line-height: 1.4; color: var(--e2-gelb); }
+.vv-g-frage::before { content: ""; display: inline-block; margin-right: .5rem; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--e2-gelb); vertical-align: .12em; }
+
+.vv-g-eingaben { grid-area: ein; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; align-self: center; }
+.vv-g-karte--klein { padding: .95rem 1.05rem 1.05rem; gap: .55rem; }
+.vv-g-karte--klein small { letter-spacing: .06em; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; }
+.vv-g-sv { grid-area: sv; justify-content: center; padding: 1.5rem 1.4rem; border: 0; background: var(--e2-gelb); color: var(--e2-ink); }
+.vv-g-sv small { color: var(--e2-ink); font-size: .74rem; }
+.vv-g-sv .vv-offen { border-color: rgba(26,24,23,.45); color: var(--e2-ink); }
+.e2 .vv-g-sv__satz { margin: 0; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; line-height: 1.25; color: var(--e2-ink); }
+
+/* Pfeile in Gelb: Eingaben → Selbstverständnis → Vision */
+.vv-g-pfeil { grid-area: pf; align-self: center; justify-self: center; position: relative; width: calc(100% - .8rem); height: 2px; background: var(--e2-gelb); }
+.vv-g-pfeil::after { content: ""; position: absolute; right: -2px; top: -5px; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid var(--e2-gelb); }
+.vv-g-abwaerts { grid-area: ab; align-self: start; justify-self: center; position: relative; width: 2px; height: calc(100% - var(--zr) - 2px); background: var(--e2-gelb); }
+.vv-g-abwaerts::after { content: ""; position: absolute; bottom: -2px; left: -5px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 9px solid var(--e2-gelb); }
+
+/* Kreise 1 · 3 · 2 und die beiden Linien zur Strategie */
+.vv-g-kreis { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .7rem; margin-bottom: 1.3rem; }
+.vv-g-kreis i { display: grid; place-items: center; width: 2.7rem; height: 2.7rem; border-radius: 50%; background: var(--e2-ink); box-shadow: inset 0 0 0 2px var(--e2-gelb); color: var(--e2-gelb); font-style: normal; font-weight: 700; }
+.vv-g-kreis b { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.1; text-align: center; }
+.vv-g-k1 { grid-area: k1; } .vv-g-k3 { grid-area: k3; } .vv-g-k2 { grid-area: k2; }
+/* Linie über eine Spanne von zwei Kartenspalten: von Mitte zu Mitte = 25 % minus ein Viertel der Lücke */
+.vv-g-linie { position: relative; z-index: 0; align-self: start; height: 0; margin-top: 1.35rem; border-top: 1.5px solid rgba(255,255,255,.55); }
+.vv-g-linie--a { grid-row: 5; grid-column: 1 / 4; margin-left: calc(25% - var(--lg) / 4 + 1.6rem); margin-right: calc(25% - var(--lg) / 4 + 1.6rem); }
+.vv-g-linie--b { grid-row: 5; grid-column: 3 / 6; margin-left: calc(25% - var(--zg) / 4 + 1.6rem); margin-right: calc(25% - var(--zg) / 4 + 1.6rem); }
+.vv-g-linie--a::after { content: ""; position: absolute; right: -1px; top: -5.5px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid rgba(255,255,255,.55); }
+.vv-g-linie--b::after { content: ""; position: absolute; left: -1px; top: -5.5px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 8px solid rgba(255,255,255,.55); }
+.vv-g-linie em { position: absolute; left: 72%; top: -1.55rem; transform: translateX(-50%); font-style: normal; font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.6); }
+
+.vv-g-a1 { grid-area: a1; } .vv-g-a3 { grid-area: a3; } .vv-g-a2 { grid-area: a2; }
+.vv-g-b1 { grid-area: b1; } .vv-g-b2 { grid-area: b2; } .vv-g-b3 { grid-area: b3; }
+.vv-g-mobilkopf { display: none; }
+
+/* Klammer „Detaillierung der Strategie“: von der Strategie zu Alltag und Kommunikation */
+.vv-g-klammer { grid-area: kl; position: relative; margin: 0 calc(25% - var(--lg) / 4); }
+.vv-g-klammer::before { content: ""; position: absolute; top: 0; right: 0; height: 50%; border-right: 1.5px solid rgba(255,255,255,.4); }
+.vv-g-klammer::after { content: ""; position: absolute; top: 50%; left: 0; right: 0; bottom: 0; border: 1.5px solid rgba(255,255,255,.4); border-bottom: 0; }
+.vv-g-klammer em { position: absolute; z-index: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 0 .7rem; background: var(--e2-ink); font-style: normal; font-size: .74rem; font-weight: 600; white-space: nowrap; color: rgba(255,255,255,.72); }
+.vv-g-strich { grid-area: st; justify-self: center; width: 0; border-left: 1.5px solid rgba(255,255,255,.4); }
+
+/* ===== Schmal ===== */
+@media (max-width: 900px) {
+  .vv-inhalt { padding: 3.6rem 0 4.5rem; }
+  .vv-inhalt__kopf { margin-bottom: 2.2rem; }
+  .vv-f-block { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: 2.2rem 0 2.4rem; }
+  .vv-f-marke { position: static; }
+  .vv-f-zeile { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+  .vv-f-kern { padding: 1.3rem 1.3rem; }
+
+  .vv-grafik { padding: 1.1rem; border-radius: 20px; }
+  .vv-g { display: flex; flex-direction: column; gap: .8rem; padding: 0; }
+  .vv-g-flaeche, .vv-g-t1, .vv-g-t2, .vv-g-kreis, .vv-g-linie, .vv-g-klammer, .vv-g-strich, .vv-g-pfeil { display: none; }
+  .e2 .vv-g-t0 { margin: .6rem 0 .2rem; }
+  .vv-g-eingaben { grid-template-columns: minmax(0, 1fr); align-self: stretch; gap: .6rem; }
+  .vv-g-abwaerts { order: 0; height: 1.6rem; margin: 0 auto; }
+  .vv-g-mobilkopf { display: flex; align-items: center; gap: .7rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: #fff; }
+  .vv-g-mobilkopf i { display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--e2-gelb); color: var(--e2-gelb); font-family: var(--font-sans); font-size: .9rem; font-style: normal; }
+  /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
+  .vv-g-t0 { order: 1; } .vv-g-eingaben { order: 2; } .vv-g-sv { order: 4; }
+  .vv-g-abwaerts { order: 3; }
+  .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
+  .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
+}
