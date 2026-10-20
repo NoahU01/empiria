@@ -69,11 +69,25 @@
 .e2 .vv-hinweis { margin: .35rem 0 0; font-size: .82rem; font-style: italic; color: var(--e2-grau); }
 
 /* Kanäle (Positionierung & Pitch): drei Strichzeichnungen gleich gewichtet nebeneinander */
-.vv-kanaele { display: flex; justify-content: center; align-items: flex-end; gap: 1.1rem; margin: .9rem 0 .2rem; }
+.vv-auf.vv-kanaele { display: flex; justify-content: center; align-items: flex-end; gap: 1.1rem; margin: .9rem auto .2rem; padding: .5rem .7rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: background .15s; }
+.vv-auf.vv-kanaele:hover { background: var(--e2-hell); }
 .vv-kanal svg { display: block; height: 2.9rem; width: auto; fill: none; stroke: var(--e2-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .vv-kanal svg .b { fill: #e7e4df; stroke: none; }
 .vv-kanal svg .f { fill: var(--e2-ink); stroke: none; }
-.vv-f-zeile__text .vv-kanaele { justify-content: flex-start; grid-column: 1 / -1; margin: 0; }
+.vv-f-zeile__text .vv-auf.vv-kanaele { justify-content: flex-start; grid-column: 1 / -1; justify-self: start; margin: 0 0 0 -.7rem; }
+
+/* Fenster Perspektivwechsel: wie die Sektion auf „Strategie in den Alltag überführen“, hell */
+.vv-pv__oben { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.6rem; align-items: start; }
+.e2 .vv-pv__lead { margin: 0; font-size: 1.02rem; line-height: 1.65; color: var(--e2-ink); }
+.vv-pv .e2-pv__schritt { margin-top: 1.6rem; padding-top: 1.1rem; border-top: 2px solid var(--e2-ink); }
+.e2 .vv-pv .e2-pv__tag { margin: 0 0 .6rem; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-ink); }
+.e2 .vv-pv .e2-pv__schritt p:not(.e2-pv__tag) { margin: 0; font-size: .98rem; line-height: 1.6; color: var(--e2-ink); }
+.vv-pv .pb-mark { background: var(--e2-ink) !important; color: var(--e2-gelb) !important; }
+.vv-pv .perspektive-browser { width: 100%; max-width: none; margin: 0; box-shadow: none; border: 2px solid var(--e2-ink); }
+.vv-pv__band { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.8rem; align-items: center; margin-top: 2.2rem; padding: 1.5rem 1.8rem; border-radius: 16px; background: var(--e2-hell); }
+.e2 .vv-pv__band-tag { display: inline-flex; align-items: center; gap: .55rem; margin: 0; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--e2-ink); }
+.vv-pv__band-tag::before { content: ""; width: 1.4rem; height: 3px; border-radius: 2px; background: currentColor; }
+.e2 .vv-pv__band-satz { margin: 0; font-family: var(--font-serif); font-size: clamp(1.15rem, 1.8vw, 1.45rem); font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
 
 /* SWOT-Matrix: Kopffelder hell hinterlegt, Strategiefelder mit dunklem Rand */
 .e2 .vv-swot-titel { margin: 0 0 -.6rem; font-size: .92rem; font-weight: 700; color: var(--e2-ink); grid-column: 1 / -1; }
@@ -230,13 +244,6 @@
 .e2 .vv-g-b1 .vv-g-frage, .e2 .vv-g-b2 .vv-g-frage { color: var(--grau-hell); }
 .vv-g-b1 .vv-g-frage::before, .vv-g-b2 .vv-g-frage::before { border-top-color: var(--grau-hell); }
 
-/* ===== Variante B (Sektion 3): reduziert wie das Vorbild im Pop-up =====
-   Keine Kästen um die einzelnen Punkte – die Bereiche zeigen sich über Abstand,
-   kleine Überschrift und die gestrichelten Zonen. Großbuchstaben nur für die drei Zonenfragen.
-   Schrift wie im Vorbild gilt für beide Varianten (siehe oben). */
-.vv-inhalt--reduziert .vv-g-karte { padding: 0; border: 0 !important; border-radius: 0; background: none; }
-.vv-inhalt--reduziert .vv-g-klammer, .vv-inhalt--reduziert .vv-g-strich { margin-top: .55rem; margin-bottom: .55rem; }
-
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
   .vv-inhalt { padding: 3.6rem 0 4.5rem; }
@@ -248,6 +255,8 @@
   .vv-f-zeile { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
   .vv-werte { grid-template-columns: minmax(0, 1fr); }
   .vv-swot { gap: 5px; }
+  .vv-pv__oben { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
+  .vv-pv__band { grid-template-columns: minmax(0, 1fr); gap: .7rem; padding: 1.2rem 1.2rem; }
   .vv-zeit__jahr { font-size: .66rem; padding-left: .3rem; }
   .vv-zeit__streifen span { font-size: .82rem; }
   .vv-swot__kopf, .vv-swot__feld { padding: .6rem .55rem; }
@@ -273,6 +282,4 @@
   .vv-g-abwaerts { order: 3; }
   .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
   .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
-  .vv-inhalt--reduziert .vv-g { gap: 1.5rem; }
-  .vv-inhalt--reduziert .vv-g-a1, .vv-inhalt--reduziert .vv-g-a2, .vv-inhalt--reduziert .vv-g-a3 { margin-top: 2.2rem; }
 }

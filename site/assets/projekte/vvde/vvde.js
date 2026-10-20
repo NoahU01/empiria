@@ -5,6 +5,7 @@
   var M = window.VVDE_MODELL;
   if (!M) return;
 
+  var FENSTER = {};   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
   var KANAL = {
@@ -12,10 +13,22 @@
     social: { name: "Social Media", svg: '<svg viewBox="0 0 44 48"><rect x="1" y="1" width="42" height="46" rx="5"/><circle cx="9" cy="9" r="3.5" class="b"/><path d="M16 8h18M16 11h11"/><rect x="6" y="17" width="32" height="20" rx="2" class="b"/><path d="M6 42h14"/></svg>' },
     onepager: { name: "One-Pager", svg: '<svg viewBox="0 0 36 48"><rect x="1" y="1" width="34" height="46" rx="3"/><rect x="6" y="6" width="24" height="9" rx="1.5" class="b"/><path d="M6 21h24M6 26h24M6 31h18M6 37h24M6 42h14"/></svg>' }
   };
+  /* Perspektivwechsel aus „Strategie in den Alltag überführen“ – übertragen von der Abteilung auf das Unternehmen */
+  FENSTER["k:homepage"] = { kicker: "Perspektivwechsel", titel: "Wie sieht die Homepage Eures Unternehmens aus?", breit: true, html:
+    '<div class="vv-pv"><div class="vv-pv__oben"><div>' +
+      '<p class="vv-pv__lead">Also warum die Frage? Weil hier sofort klar wird, ob Ihr den Mehrwert Eures Unternehmens sauber erklären könnt. Und wenn Ihr das nicht könnt, kann auch keiner im Team aktiv zu Eurer Strategie beitragen.</p>' +
+      '<div class="e2-pv__schritt"><p class="e2-pv__tag">Gedankenexperiment</p><p>Stellt Euch vor, wir gründen Euer Unternehmen morgen neu. Was stünde auf seiner Homepage – und würde jeder im Team dasselbe hineinschreiben?</p></div></div>' +
+      '<div class="perspektive-browser" role="img" aria-label="Skizze einer leeren Homepage Eures Unternehmens mit fünf offenen Fragen">' +
+        '<div class="pb-bar"><span class="pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="pb-url">www.euer-unternehmen.de<span class="pb-caret" aria-hidden="true"></span></span></div>' +
+        '<div class="pb-page"><ol class="pb-rows">' +
+          ["Welche Zielgruppe sprechen wir an?", "Welches konkrete Problem lösen wir?", "Welcher Nutzen entsteht daraus?", "Was macht uns einzigartig?", "Wie läuft die Zusammenarbeit ab?"]
+            .map(function (q, i) { return '<li><span class="pb-num">0' + (i + 1) + '</span><span class="pb-q">' + q + '</span><span class="pb-mark">?</span></li>'; }).join("") +
+        "</ol></div></div></div>" +
+    '<div class="vv-pv__band"><p class="vv-pv__band-tag">Ergebnis</p><p class="vv-pv__band-satz">Jeder im Team versteht, wofür Euer Unternehmen da ist – und Ihr bestimmt seine Wahrnehmung.</p></div></div>' };
   function kanaele(b) {
     if (!(b.kanaele || []).length) return "";
-    return '<div class="vv-kanaele" role="img" aria-label="Auf allen Kanälen: ' + b.kanaele.map(function (k) { return KANAL[k].name; }).join(", ") + '">' +
-      b.kanaele.map(function (k) { return '<span class="vv-kanal">' + KANAL[k].svg + "</span>"; }).join("") + "</div>";
+    return '<button type="button" class="vv-auf vv-kanaele" data-fenster="k:homepage" aria-label="Auf allen Kanälen: ' + b.kanaele.map(function (k) { return KANAL[k].name; }).join(", ") + ' – Perspektivwechsel öffnen">' +
+      b.kanaele.map(function (k) { return '<span class="vv-kanal">' + KANAL[k].svg + "</span>"; }).join("") + "</button>";
   }
 
   function liste(xs, cls) { return '<ul class="' + cls + '">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
@@ -100,7 +113,6 @@
       (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
-  var FENSTER = {};
   function knopf(key, label, f) { FENSTER[key] = f; return '<button type="button" class="vv-auf" data-fenster="' + esc(key) + '">' + esc(label) + "</button>"; }
   function auf(s) {
     if (!(s.saetze || []).length) return "";
