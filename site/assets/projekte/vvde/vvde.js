@@ -63,7 +63,7 @@
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
     var kv = []; th.forEach(function (t) { if (t.kv) kv = kv.concat(t.kv); else if (t.k) kv.push([t.k, t.w]); });
-    if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd>"; }).join("") + "</dl>";
+    if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(esc).join("<br>") + "</dd>"; }).join("") + "</dl>";
     else if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
     var z = b.inhalt || [];
     if (z.length === 1) h += "<p>" + esc(z[0]) + "</p>";
