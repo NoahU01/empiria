@@ -5,7 +5,7 @@
   var M = window.VVDE_MODELL;
   if (!M) return;
 
-  var C = false, D = false, E = false, F = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
+  var C = false, D = false, E = false, F = false, KOMPAKT = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
   var FENSTER = {};
   /* Icons der Leitfragen – dieselben wie in Sektion 1 (Fahne · Kompass · Werkzeug); sichtbar nur in Variante 2 im Kopfband */
   var ZICON = {
@@ -81,7 +81,10 @@
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
     var kv = []; th.forEach(function (t) { if (t.kv) kv = kv.concat(t.kv); else if (t.k) kv.push([t.k, t.w]); });
-    if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(esc).join("<br>") + "</dd>"; }).join("") + "</dl>";
+    /* Variante 1: kompakte Zeilen – Bezeichnung nur, wo sie etwas erklärt, und dann in derselben Zeile; USP als Abschluss */
+    if (th.length && modus === "kurz" && KOMPAKT && th.some(function (t) { return t.cw; })) h += '<ul class="vv-kompakt">' + th.filter(function (t) { return t.cw; }).map(function (t) {
+        return '<li' + (t.abschluss ? ' class="vv-kompakt__abschluss"' : "") + ">" + (t.ck ? "<small>" + esc(t.ck) + "</small> " : "") + String(t.cw).split("|").map(esc).join("<br>") + "</li>"; }).join("") + "</ul>";
+    else if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(esc).join("<br>") + "</dd>"; }).join("") + "</dl>";
     else if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
     var z = b.inhalt || [];
     if (z.length === 1) h += "<p>" + esc(z[0]) + "</p>";
@@ -212,10 +215,10 @@
       [["b1", St.folgt[0]], ["b2", St.folgt[1]], ["b3", V.folgt[0]]].map(function (x) {
         return '<p class="vv-g-erg__f vv-g-erg__f--' + x[0] + '"><small>' + esc(x[1].titel) + "</small>" + esc(x[1].frage) + "</p>"; }).join("") + "</div>" : "")); }
   document.querySelectorAll(".vv-grafik").forEach(function (el) {
-    C = !!el.closest(".vv-inhalt--c"); E = !!el.closest(".vv-inhalt--e"); F = !!el.closest(".vv-inhalt--f"); D = E || F || !!el.closest(".vv-inhalt--d");
+    C = !!el.closest(".vv-inhalt--c"); E = !!el.closest(".vv-inhalt--e"); F = !!el.closest(".vv-inhalt--f"); KOMPAKT = !!el.closest(".vv-inhalt--fokus"); D = E || F || !!el.closest(".vv-inhalt--d");
     el.innerHTML = baueGrafik();
   });
-  C = false; D = false; E = false; F = false;
+  C = false; D = false; E = false; F = false; KOMPAKT = false;
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");

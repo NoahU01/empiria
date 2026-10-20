@@ -407,6 +407,23 @@
   .e2 .vv-inhalt--kopf .vv-g-zone__t { align-self: stretch; display: flex; align-items: center; justify-content: center; margin: calc(-1 * var(--zr) - 1px) calc(-1 * var(--zr) - 1px) 2rem; padding: 1.05rem 1.4rem; border-radius: 18px 18px 0 0; background: var(--e2-ink); color: #fff; line-height: 1.5; }
 }
 
+/* ===== Variante 1: kompakter Steckbrief und Fokus per Maus ===== */
+.vv-kompakt { width: 100%; margin: 1rem 0 0; padding: 0; list-style: none; text-align: center; }
+.vv-kompakt li { padding: .3rem 0; font-size: .9rem; font-weight: 500; line-height: 1.4; color: var(--e2-ink); text-wrap: balance; }
+.vv-kompakt li small { margin-right: .3rem; font-size: .74rem; font-weight: 600; color: var(--e2-grau); }
+.vv-kompakt li small::after { content: ":"; }
+.vv-kompakt__abschluss { margin-top: .6rem; padding-top: .9rem !important; border-top: 1px solid var(--e2-linie); font-weight: 600 !important; }
+@media (min-width: 901px) and (max-width: 1200px) { .vv-kompakt li { font-size: .82rem; } }
+/* Fokus: Kasten unter der Maus bleibt, alles andere sehr hellgrau – der zugehörige Name bleibt mit hervorgehoben */
+@media (hover: hover) and (min-width: 901px) {
+  .vv-inhalt--fokus .vv-g > * { transition: opacity .2s ease; }
+  .vv-inhalt--fokus .vv-g:has(> .vv-g-karte:hover) > :not(.vv-g-karte:hover) { opacity: .14; }
+  .vv-inhalt--fokus .vv-g:has(> .vv-g-sv:hover) > .vv-g-svtitel,
+  .vv-inhalt--fokus .vv-g:has(> .vv-g-a1:hover) > .vv-g-k1,
+  .vv-inhalt--fokus .vv-g:has(> .vv-g-a3:hover) > .vv-g-k3,
+  .vv-inhalt--fokus .vv-g:has(> .vv-g-a2:hover) > .vv-g-k2 { opacity: 1 !important; }
+}
+
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
   .vv-inhalt { padding: 3.6rem 0 4.5rem; }
