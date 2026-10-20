@@ -74,9 +74,11 @@
 
 /* Kanäle (Positionierung & Pitch): drei Strichzeichnungen gleich gewichtet nebeneinander */
 .vv-auf.vv-kanaele { display: flex; justify-content: center; align-items: flex-end; gap: 1.1rem; margin: .9rem auto .2rem; padding: .5rem .7rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: background .15s; }
-.vv-auf.vv-kanaele:hover { background: var(--e2-hell); }
+.vv-auf.vv-kanaele:hover { background: var(--e2-gelb); }   /* Hover gelb – Schrift/Linien schwarz, kein Gelb auf Weiß */
 .vv-kanal svg { display: block; height: 2.9rem; width: auto; fill: none; stroke: var(--e2-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .vv-kanal svg .b { fill: #e7e4df; stroke: none; }
+.vv-auf.vv-kanaele:hover .vv-kanal svg { fill: #fff; }
+.vv-auf.vv-kanaele:hover .vv-kanal svg .b { fill: #fff; }
 .vv-kanal svg .f { fill: var(--e2-ink); stroke: none; }
 .vv-f-zeile__text .vv-auf.vv-kanaele { justify-content: flex-start; grid-column: 1 / -1; justify-self: start; margin: 0 0 0 -.7rem; }
 
@@ -138,7 +140,7 @@
 /* Vertrieb anklickbar – gleicher Hover wie bei den Kanälen (Positionierung & Pitch): helle Fläche */
 .vv-teile li:has(> .vv-teil-knopf) { padding: 0; overflow: hidden; }
 .vv-auf.vv-teil-knopf { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: .4rem .6rem; border: 0; border-radius: 0; background: transparent; font: inherit; font-weight: 700; color: var(--e2-ink); text-decoration: none; cursor: pointer; transition: background .15s; }
-.vv-auf.vv-teil-knopf:hover { background: var(--e2-hell); }
+.vv-auf.vv-teil-knopf:hover { background: var(--e2-gelb); }
 
 /* Teilstrategie (Fenster + Fakten): Lead, Zielfläche, Hebelkarten, Wirkungen, Stärken/Schwächen-Karten, Kacheln */
 .e2 .vv-teil__lead { margin: 0 0 1.6rem; max-width: 46rem; font-size: 1.08rem; font-weight: 500; line-height: 1.6; color: var(--e2-ink); }
