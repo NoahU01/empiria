@@ -376,6 +376,43 @@
 .vv-inhalt--e .vv-g-erg__f--b1, .vv-inhalt--e .vv-g-erg__f--b2 { color: rgba(255,255,255,.62); }
 .vv-inhalt--e .vv-g-erg__f--b1::before, .vv-inhalt--e .vv-g-erg__f--b2::before { border-top-color: rgba(255,244,0,.55); }
 
+/* ===== Variante F (Sektion 6): streng nach den VVDE-Vorgaben =====
+   Typografie wie im Modell (Versalien nur Zonenfragen, zentriert), Zonen nur hell gestrichelt mit sauberem Abstand,
+   Fokus unten (große Schrittnamen), dicker Rand 2,5 px = definiert, Ergebnisfragen in ihrem Kasten,
+   Detaillierung gleich groß wie Positionierung & Pitch, Grafiken in Originalgröße mittig. Kein Gelb außer Schrittziffern. */
+.vv-inhalt--f .vv-g {
+  grid-template-areas:
+    "t0 t0 t0 t0 t0"
+    ".  .  svt svt svt"
+    "zu zu sv sv sv"
+    ".  .  .  .  ab"
+    "t1 t1 t1 .  t2"
+    "k1 .  k3 .  k2"
+    "a1 .  a3 .  a2"
+    "kl kl kl .  st"
+    "b1 .  b2 .  b3";
+}
+.vv-inhalt--f .vv-g-flaeche { border-color: #d6d0c8; }
+/* oben: ruhig, aber definiert */
+.vv-inhalt--f .vv-g-sv { padding: 1.6rem 2.2rem 1.8rem; border: 2.5px solid var(--e2-ink) !important; }
+.e2 .vv-inhalt--f .vv-g-svname { margin: 0 0 .7rem; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; line-height: 1.2; color: var(--e2-ink); }
+.e2 .vv-inhalt--f .vv-g-svsatz { max-width: 38rem; margin: 0 auto; font-size: .95rem; font-weight: 400; line-height: 1.6; color: var(--e2-ink-2); }
+.vv-inhalt--f .vv-g-werte { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin: 1.1rem 0 0; padding: 0; }
+.vv-inhalt--f .vv-g-werte li { padding: .3rem .85rem; border: 1px solid #cfc9c1; border-radius: 999px; font-size: .78rem; font-weight: 500; line-height: 1.3; color: var(--e2-ink); }
+/* unten: Fokus */
+.vv-inhalt--f .vv-g-kreis b { font-size: 1.6rem; }
+.vv-inhalt--f .vv-g-kreis i { width: 2.9rem; height: 2.9rem; font-size: 1.05rem; }
+.vv-inhalt--f .vv-g-mobilkopf { font-size: 1.45rem; }
+.vv-inhalt--f .vv-g-karte { padding: 1.6rem 1.6rem 1.7rem; border-radius: 16px; }
+.vv-inhalt--f .vv-g-a1, .vv-inhalt--f .vv-g-a3, .vv-inhalt--f .vv-g-a2, .vv-inhalt--f .vv-g-b3 { border: 2.5px solid var(--e2-ink) !important; }
+.vv-inhalt--f .vv-g-karte > small { font-size: .88rem; }
+/* Steckbrief zentriert: Merkmal klein darüber, Inhalt darunter */
+.vv-inhalt--f .vv-kv { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 1rem; text-align: center; }
+.vv-inhalt--f .vv-kv dt { font-size: .72rem; }
+.vv-inhalt--f .vv-kv dd { margin-bottom: .7rem; font-size: .88rem; text-wrap: balance; }
+.vv-inhalt--f .vv-g-b3 .vv-kern { margin: 0 -1.2rem; font-size: .88rem; }
+@media (min-width: 901px) and (max-width: 1200px) { .vv-inhalt--f .vv-g-b3 .vv-kern { font-size: .8rem; } }
+
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
   .vv-inhalt { padding: 3.6rem 0 4.5rem; }

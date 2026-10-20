@@ -5,7 +5,7 @@
   var M = window.VVDE_MODELL;
   if (!M) return;
 
-  var C = false, D = false, E = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
+  var C = false, D = false, E = false, F = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
   var FENSTER = {};   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
@@ -139,7 +139,7 @@
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
-    if (D && !b.themen.some(function (t) { return t.kurz; })) return "";   /* D: kein Verweis, wenn das Fenster nur die sichtbare Aussage wiederholt */
+    if (D && !F && !b.themen.some(function (t) { return t.kurz; })) return "";   /* F behält den Verweis: der Detailtext ist sonst nicht erreichbar */   /* D: kein Verweis, wenn das Fenster nur die sichtbare Aussage wiederholt */
     /* visionOben: das Fenster nennt zuerst die übergeordnete Vision (Vorgabe Daniel) */
     var vo = b.visionOben && (V.saetze || [])[0];
     return knopf("b:" + b.titel, lab("Details lesen"), { kicker: frage, titel: b.titel,
@@ -156,8 +156,8 @@
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
       '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
       '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
-      (C && !E ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
-      '<div class="vv-g-karte vv-g-sv">' + (E ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
+      (C && !E && !F ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
+      '<div class="vv-g-karte vv-g-sv">' + (E || F ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
         (D && (sv.saetze || []).length ? '<p class="vv-g-svsatz">' + esc(sv.saetze[0].text) + "</p>" : "") +
         ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + (D ? "" : auf(sv)) + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +
@@ -177,10 +177,10 @@
       [["b1", St.folgt[0]], ["b2", St.folgt[1]], ["b3", V.folgt[0]]].map(function (x) {
         return '<p class="vv-g-erg__f vv-g-erg__f--' + x[0] + '"><small>' + esc(x[1].titel) + "</small>" + esc(x[1].frage) + "</p>"; }).join("") + "</div>" : "")); }
   document.querySelectorAll(".vv-grafik").forEach(function (el) {
-    C = !!el.closest(".vv-inhalt--c"); E = !!el.closest(".vv-inhalt--e"); D = E || !!el.closest(".vv-inhalt--d");
+    C = !!el.closest(".vv-inhalt--c"); E = !!el.closest(".vv-inhalt--e"); F = !!el.closest(".vv-inhalt--f"); D = E || F || !!el.closest(".vv-inhalt--d");
     el.innerHTML = baueGrafik();
   });
-  C = false; D = false; E = false;
+  C = false; D = false; E = false; F = false;
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");

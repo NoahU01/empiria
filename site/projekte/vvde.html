@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=52">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=55">
 </head>
 <body class="e2">
 
@@ -926,6 +926,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     <div class="sm-v vv-grafik" data-variante="2"></div>
   </div></section>
 
+  <!-- ======================= Sektion 6 · Variante F: streng nach den VVDE-Vorgaben – Typografie wie im Modell, Fokus unten, starke Ränder für Definiertes ======================= -->
+  <section class="vv-inhalt vv-inhalt--c vv-inhalt--f" id="inhalte-f"><div class="e2-wrap">
+    <header class="vv-inhalt__kopf">
+      <div>
+        <p class="e2-kicker">Strategiemodell VVDE &middot; Variante F</p>
+        <h2>Gesamtzusammenhang<br>und Status&nbsp;quo.</h2>
+      </div>
+      <div class="sm-schalter" role="group" aria-label="Darstellung wählen">
+        <button type="button" data-v="1" aria-pressed="false"><b>1</b>Alle Fakten</button>
+        <button type="button" data-v="2" aria-pressed="true"><b>2</b>Infografik</button>
+      </div>
+    </header>
+
+    <!-- Variante 1 · Alle Fakten (wird aus VVDE_MODELL erzeugt) -->
+    <div class="sm-v vv-fakten" data-variante="1" hidden></div>
+
+    <!-- Variante 2 · Infografik (wird aus VVDE_MODELL erzeugt) -->
+    <div class="sm-v vv-grafik" data-variante="2"></div>
+  </div></section>
+
 
 </main>
 
@@ -976,7 +996,7 @@ window.VVDE_MODELL = {
           text: "Wir richten uns optimal am Bedarf unserer Mitglieder aus. Wir verstehen die Mitglieder und damit unsere Zielgruppen besser als jeder andere Versicherer und liefern die optimale Leistung." }
       ],
       inhalt: [] } ],
-    folgt: [ { titel: "Positionierung & Pitch", frage: "Welches Problem lösen wir – und was macht uns einzigartig?",
+    folgt: [ { titel: "Positionierung & Pitch", frage: "Welches Problem lösen wir\u00A0– und was macht uns einzigartig?",
       kern: "VVaG und Mitgliederorientierung sichtbar und wahrnehmbar machen",
       kernZeilen: [ "VVaG und Mitgliederorientierung", "sichtbar und wahrnehmbar machen" ],
       /* Angedeutet, nicht beschriftet: auf allen Kanälen muss das erfüllt sein */
@@ -1137,6 +1157,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=30"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=32"></script>
 </body>
 </html>
