@@ -451,6 +451,12 @@
 .vv-hoverfokus .vv-g > * { transition: opacity .2s ease; }
 /* nur so hell wie die Detailkästen (Führungs- und Arbeitsalltag, Strategiekommunikation) – diese selbst bleiben, wie sie sind */
 .vv-hoverfokus .vv-g.vv-fokus-an > :not(.vv-fokus-ist):not(.vv-g-b1):not(.vv-g-b2) { opacity: .3; }
+/* Detailkästen unter der Maus: wie ein Kernkasten hervorgehoben – schwarzer Rand, schwarze Schrift */
+.vv-hoverfokus .vv-g-b1.vv-fokus-ist, .vv-hoverfokus .vv-g-b2.vv-fokus-ist { border-color: var(--e2-ink) !important; }
+.vv-hoverfokus .vv-g-b1.vv-fokus-ist small, .vv-hoverfokus .vv-g-b2.vv-fokus-ist small,
+.e2 .vv-hoverfokus .vv-g-b1.vv-fokus-ist .vv-g-frage, .e2 .vv-hoverfokus .vv-g-b2.vv-fokus-ist .vv-g-frage { color: var(--e2-ink); }
+.vv-hoverfokus .vv-g-b1.vv-fokus-ist .vv-g-frage::before, .vv-hoverfokus .vv-g-b2.vv-fokus-ist .vv-g-frage::before { border-top-color: var(--e2-ink); }
+.vv-hoverfokus .vv-g-b1, .vv-hoverfokus .vv-g-b2, .vv-hoverfokus .vv-g-b1 small, .vv-hoverfokus .vv-g-b2 small { transition: border-color .2s ease, color .2s ease, opacity .2s ease; }
 
 /* Fakten auf hellgrauem Grund: jeder Block ein weißes Panel – SWOT-Kopffelder & Co. bleiben sichtbar */
 .vv-inhalt--buehne .vv-f-block { margin-bottom: 1.2rem; padding: 2.4rem 2.6rem 2.6rem; border: 0 !important; border-radius: 20px; background: #fff; }
