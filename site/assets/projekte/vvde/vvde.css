@@ -414,14 +414,14 @@
 .vv-kompakt li small::after { content: ":"; }
 .vv-kompakt__abschluss { margin-top: .6rem; padding-top: .9rem !important; border-top: 1px solid var(--e2-linie); font-weight: 600 !important; }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-kompakt li { font-size: .82rem; } }
-/* Fokus: Kasten unter der Maus bleibt, alles andere sehr hellgrau – der zugehörige Name bleibt mit hervorgehoben */
+/* Fokus (Variante 1 und 2): Kasten unter der Maus bleibt, alles andere sehr hellgrau – der zugehörige Name bleibt mit hervorgehoben */
 @media (hover: hover) and (min-width: 901px) {
-  .vv-inhalt--fokus .vv-g > * { transition: opacity .2s ease; }
-  .vv-inhalt--fokus .vv-g:has(> .vv-g-karte:hover) > :not(.vv-g-karte:hover) { opacity: .14; }
-  .vv-inhalt--fokus .vv-g:has(> .vv-g-sv:hover) > .vv-g-svtitel,
-  .vv-inhalt--fokus .vv-g:has(> .vv-g-a1:hover) > .vv-g-k1,
-  .vv-inhalt--fokus .vv-g:has(> .vv-g-a3:hover) > .vv-g-k3,
-  .vv-inhalt--fokus .vv-g:has(> .vv-g-a2:hover) > .vv-g-k2 { opacity: 1 !important; }
+  .vv-hoverfokus .vv-g > * { transition: opacity .2s ease; }
+  .vv-hoverfokus .vv-g:has(> .vv-g-karte:hover) > :not(.vv-g-karte:hover) { opacity: .14; }
+  .vv-hoverfokus .vv-g:has(> .vv-g-sv:hover) > .vv-g-svtitel,
+  .vv-hoverfokus .vv-g:has(> .vv-g-a1:hover) > .vv-g-k1,
+  .vv-hoverfokus .vv-g:has(> .vv-g-a3:hover) > .vv-g-k3,
+  .vv-hoverfokus .vv-g:has(> .vv-g-a2:hover) > .vv-g-k2 { opacity: 1 !important; }
 }
 
 /* ===== Schmal ===== */
