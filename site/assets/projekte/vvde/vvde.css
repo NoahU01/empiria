@@ -85,7 +85,7 @@
 .vv-swot .vv-punkte { margin-top: .5rem; }
 .vv-swot .vv-punkte li { font-size: .85rem; }
 /* Mini in der Infografik: nur angedeutet */
-.vv-swot-mini { width: 100%; margin-top: .9rem; }
+.vv-swot-mini { width: 100%; }
 .vv-swot--mini { gap: 4px; }
 .vv-swot--mini .vv-swot__kopf { padding: .35rem .2rem; border-radius: 5px; font-size: .64rem; font-weight: 700; line-height: 1.2; text-align: center; color: var(--e2-ink); }
 .vv-swot--mini .vv-swot__feld { display: flex; flex-direction: column; justify-content: center; gap: 5px; min-height: 2.6rem; padding: .45rem .55rem; border-radius: 5px; }
@@ -100,7 +100,7 @@
   repeating-linear-gradient(to right, transparent 0, transparent calc(100% / var(--n) - 1px), rgba(255,255,255,.95) calc(100% / var(--n) - 1px), rgba(255,255,255,.95) calc(100% / var(--n))), #e7e4df;
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
 .vv-zeit__streifen span { font-size: .95rem; font-weight: 700; line-height: 1.3; color: var(--e2-ink); }
-.vv-zeit--mini { gap: 4px 0; width: 100%; margin-top: .9rem; }
+.vv-zeit--mini { gap: 4px 0; width: 100%; }
 .vv-zeit--mini .vv-zeit__jahr { padding: 0 0 .1rem .3rem; font-size: .62rem; }
 .vv-zeit--mini .vv-zeit__streifen { min-height: 2.3rem; padding: .35rem 1.2rem .35rem .6rem; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%); }
 .vv-zeit--mini .vv-zeit__streifen span { font-size: .7rem; font-weight: 600; line-height: 1.25; }
@@ -143,7 +143,7 @@
   --grau-hell: #b4aea7; /* Detaillierung der Strategie – Linien und Schrift */
   position: relative; display: grid;
   grid-template-columns: minmax(0, 1fr) var(--lg) minmax(0, 1fr) var(--zg) minmax(0, 1fr);
-  grid-template-rows: auto auto 6.4rem auto auto auto 3.4rem auto;
+  grid-template-rows: auto auto 6.4rem auto auto auto 5.2rem auto;
   grid-template-areas:
     "t0 t0 t0 t0 t0"
     "zu zu zu zu sv"
@@ -170,7 +170,7 @@
 .vv-g-sv small { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.15; color: var(--e2-ink); }
 .vv-g-text p, .vv-g-text li { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--e2-ink-2); }
 .vv-g-text ul { margin: 0; padding-left: 1rem; }
-.vv-g-text { width: 100%; margin-top: .35rem; }
+.vv-g-text { width: 100%; }
 .vv-g .vv-punkte { margin: .55rem 0 0; padding: 0; list-style: none; }
 .vv-g .vv-punkte li { margin: 0; padding: .4rem 0; border-top: 1px solid var(--e2-linie); font-size: .82rem; line-height: 1.4; }
 .vv-g .vv-punkte li + li { margin-top: 0; }
@@ -222,6 +222,8 @@
 /* Gewichtung: die Kernkarten tragen den klarsten, dunkelsten Rand */
 .vv-g-sv, .vv-g-a1, .vv-g-a3, .vv-g-a2, .vv-g-b3 { border: 1.5px solid var(--e2-ink); }
 .vv-g-a1 small, .vv-g-a3 small, .vv-g-a2 small, .vv-g-b3 small { color: var(--e2-ink); }
+/* Kernkästen: Überschrift immer zweizeilig hoch, danach mehr Abstand – Inhalte beginnen auf gleicher Höhe */
+.vv-g-a1 > small, .vv-g-a3 > small, .vv-g-a2 > small { display: block; min-height: 2.9em; margin-bottom: .8rem; }
 /* Detaillierung der Strategie: Alltag und Kommunikation hellgrau */
 .vv-g-b1, .vv-g-b2 { border-color: #e2ded8; }
 .vv-g-b1 small, .vv-g-b2 small, .vv-g-b1 .vv-g-text p, .vv-g-b2 .vv-g-text p, .vv-g-b1 .vv-g-text li, .vv-g-b2 .vv-g-text li { color: var(--grau-hell); }

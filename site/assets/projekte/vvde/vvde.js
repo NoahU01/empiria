@@ -96,7 +96,7 @@
   /* ---------------- Variante 2 · Infografik ---------------- */
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
   function karte(b, cls, extra, frage) {
-    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + esc(b.titel) + '</small>' + (leer(b) ? "" : '<div class="vv-g-text">' + text(b, "kurz") + "</div>" + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
+    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
       (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
