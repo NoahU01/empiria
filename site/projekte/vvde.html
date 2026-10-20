@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=26">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=29">
 </head>
 <body class="e2">
 
@@ -908,8 +908,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </main>
 
 <!-- ======================= Inhalte – EINE Quelle für beide Ansichten =======================
-     Je Baustein: "kern" = Hauptaussage, "einleitung" + "punkte" (kurz für die Infografik, lang für
-     „Alle Fakten“), "inhalt" = weitere Sätze. Alles leer = Baustein noch ohne Inhalt.
+     Je Baustein: "kern" = Hauptaussage, "themen" = Liste { titel, kurz (Zeile in der Infografik), text,
+     einleitung, punkte, hinweis } – ausgeschrieben in „Alle Fakten“ und im hellen Fenster.
+     Alles leer = Baustein noch ohne Inhalt.
      Je Schritt: "saetze" = Leitsätze mit Label, "werte" = Werteliste (Selbstverständnis) – in der Infografik
      zum Anklicken (helles Fenster), in „Alle Fakten“ ausgeschrieben.
      Nur hier eintragen, dann stimmen „Alle Fakten“ und „Infografik“ automatisch überein. -->
@@ -930,16 +931,31 @@ window.VVDE_MODELL = {
     ],
     bausteine: [ { titel: "Zukünftiges Geschäfts- und Organisationsmodell",
       kern: "Spezialversicherer",
-      einleitung: "Maßgeschneiderte Angebote für",
-      /* kurz = Infografik · lang = Alle Fakten */
-      punkte: [
-        { kurz: "Personennahverkehr (SPNV / ÖPNV)", lang: "Bahn- und Busbetriebe des Personennahverkehrs (SPNV / ÖPNV)" },
-        { kurz: "Güterverkehr auf Schiene und Straße", lang: "Unternehmen des Güterverkehrs auf Schiene und Straße" },
-        { kurz: "Schieneninfrastruktur", lang: "Betreiber von Schieneninfrastrukturen" },
-        { kurz: "Berg- und Seilbahnen", lang: "Berg- und Seilbahnen" }
+      /* kurz = Zeile in der Infografik · alles andere steht in „Alle Fakten“ und im Fenster */
+      themen: [
+        { titel: "Klar definierte Zielgruppen", kurz: "Vier klar definierte Zielgruppen",
+          einleitung: "Maßgeschneiderte Angebote für",
+          punkte: [ "Bahn- und Busbetriebe des Personennahverkehrs (SPNV / ÖPNV)", "Unternehmen des Güterverkehrs auf Schiene und Straße",
+                    "Betreiber von Schieneninfrastrukturen", "Berg- und Seilbahnen" ] },
+        { titel: "Zentraler USP: Ausrichtung an den Mitgliedern", kurz: "USP: optimale Ausrichtung an den Mitgliedern",
+          text: "Wir richten uns optimal an den Interessen unserer Mitglieder aus. Wir verstehen die Mitglieder und damit unsere Zielgruppen besser als jeder andere Versicherer und liefern die optimale Leistung." },
+        { titel: "Versicherungsverein auf Gegenseitigkeit", kurz: "Versicherungsverein auf Gegenseitigkeit",
+          einleitung: "Leistung im Sinne eines Versicherungsvereins auf Gegenseitigkeit heißt:",
+          punkte: [ "Gegenseitigkeitsprinzip", "Ausgeprägter Gemeinschaftsgedanke", "Niedrige Kostenstruktur", "Preisgünstiger und bedarfsgerechter Versicherungsschutz" ] },
+        { titel: "Sparten", kurz: "Nur Firmenkunden: Bahnbetrieb und Kraftfahrt",
+          text: "Der Versicherungsschutz umfasst ausschließlich das Firmenkundengeschäft, und zwar in den Sparten Bahnbetriebsversicherung und Kraftfahrtversicherung. Damit ist der VVDE ein klarer Spezialversicherer." },
+        { titel: "Vertrieb", kurz: "Vertrieb: persönliche Netzwerkpflege durch den Vorstand",
+          text: "Im Vertrieb stehen der persönliche Kontakt und die persönliche Netzwerkpflege durch den Vorstand.",
+          hinweis: "Wird später konkretisiert." }
       ],
       inhalt: [] } ],
-    folgt: [ { titel: "Positionierung & Pitch", frage: "Welches Problem lösen wir – und was macht uns einzigartig?", inhalt: [] } ] },
+    folgt: [ { titel: "Positionierung & Pitch", frage: "Welches Problem lösen wir – und was macht uns einzigartig?",
+      kern: "VVaG und Mitgliederorientierung sichtbar und wahrnehmbar machen",
+      themen: [
+        { titel: "Ganz wichtiger Punkt: Sichtbarkeit und Wahrnehmung",
+          text: "Das Prinzip des Versicherungsvereins auf Gegenseitigkeit und die sehr starke Mitgliederorientierung werden sichtbar und wahrnehmbar gemacht." }
+      ],
+      inhalt: [] } ] },
   strategie: { nr: 3, titel: "Strategie", frage: "Wie kommen wir dorthin?", zone: "Wie kommen wir dorthin?",
     bausteine: [ { titel: "Stoßrichtungen & Handlungsfelder", inhalt: [] } ],
     folgt: [ { titel: "Führungs- und Arbeitsalltag", frage: "Wie sichern wir die Zielerreichung?", inhalt: [] },
@@ -1106,6 +1122,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=13"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=16"></script>
 </body>
 </html>
