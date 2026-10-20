@@ -410,9 +410,13 @@
 }
 
 /* ===== Variante 1: kompakter Steckbrief und Fokus per Maus ===== */
-.vv-kompakt { width: 100%; margin: 1rem 0 0; padding: 0; list-style: none; text-align: center; }
-.vv-kompakt li { padding: .3rem 0; font-size: .9rem; font-weight: 500; line-height: 1.4; color: var(--e2-ink); text-wrap: balance; }
-@media (min-width: 901px) and (max-width: 1200px) { .vv-kompakt li { font-size: .82rem; } }
+.vv-g-text .vv-kompakt { width: calc(100% + 2rem); margin: 1.5rem -1rem 0; padding: 0; list-style: none; text-align: center; }
+.vv-kompakt__z { display: block; white-space: nowrap; }   /* feste Sinnzeilen – nichts bricht weiter um */
+.vv-kompakt li { padding: 0; font-size: .9rem; font-weight: 500; line-height: 1.4; color: var(--e2-ink); text-wrap: balance; }
+.vv-kompakt li + li { margin-top: 1.1rem; }   /* Aussagen einzeln erkennbar wie in Variante 2 */
+@media (min-width: 901px) and (max-width: 1200px) { .vv-kompakt li { font-size: .76rem; } }
+@media (min-width: 901px) and (max-width: 1000px) { .vv-kompakt li { font-size: .68rem; } }
+@media (min-width: 901px) and (max-width: 960px) { .vv-kompakt li { font-size: .64rem; } }
 /* Fokus (Variante 1 und 2): Kasten unter der Maus bleibt, alles andere sehr hellgrau – per Skript geschaltet (zuverlässig in allen Browsern) */
 .vv-hoverfokus .vv-g > * { transition: opacity .2s ease; }
 /* nur so hell wie die Detailkästen (Führungs- und Arbeitsalltag, Strategiekommunikation) – diese selbst bleiben, wie sie sind */
