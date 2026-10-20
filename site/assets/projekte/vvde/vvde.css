@@ -139,6 +139,22 @@
 .vv-g-b1 small, .vv-g-b2 small, .vv-g-b1 .vv-g-text p, .vv-g-b2 .vv-g-text p, .vv-g-b1 .vv-g-text li, .vv-g-b2 .vv-g-text li { color: var(--grau-hell); }
 .e2 .vv-g-b1 .vv-g-frage, .e2 .vv-g-b2 .vv-g-frage { background: var(--e2-hell); color: var(--grau-hell); }
 
+/* ===== Variante B (Sektion 3): reduziert wie das Vorbild im Pop-up =====
+   Keine Kästen um die einzelnen Punkte – die Bereiche zeigen sich über Abstand,
+   kleine Überschrift und die gestrichelten Zonen. Großbuchstaben nur für die drei Zonenfragen.
+   Schriftverhältnisse aus dem Vorbild: Zonenfrage 11 · Punkt 11,5 · Name 19 · Ergebnisfrage 12,5 */
+.vv-inhalt--reduziert .vv-g-karte { align-items: center; gap: .45rem; padding: 0; border: 0 !important; border-radius: 0; background: none; text-align: center; }
+.vv-inhalt--reduziert .vv-g-karte small { font-size: .82rem; font-weight: 600; letter-spacing: 0; text-transform: none; line-height: 1.45; color: var(--e2-ink-2); }
+.vv-inhalt--reduziert .vv-g-sv small { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.15; color: var(--e2-ink); }
+.vv-inhalt--reduziert .vv-g-kreis b { font-size: 1.35rem; }
+.vv-inhalt--reduziert .vv-g-aus { overflow: visible; }
+.vv-inhalt--reduziert .vv-g-klammer, .vv-inhalt--reduziert .vv-g-strich { margin-top: .55rem; margin-bottom: .55rem; }
+.e2 .vv-inhalt--reduziert .vv-g-frage { display: block; min-height: 0; margin: auto 0 0; padding: 1rem 0 0; background: none; text-align: center; font-size: .88rem; line-height: 1.4; color: var(--e2-ink); }
+.vv-inhalt--reduziert .vv-g-frage::before { position: static; display: block; width: 0; margin: 0 auto .6rem; transform: none; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 10px solid var(--e2-ink); }
+.vv-inhalt--reduziert .vv-g-b1 small, .vv-inhalt--reduziert .vv-g-b2 small { color: var(--grau-hell); }
+.e2 .vv-inhalt--reduziert .vv-g-b1 .vv-g-frage, .e2 .vv-inhalt--reduziert .vv-g-b2 .vv-g-frage { background: none; color: var(--grau-hell); }
+.vv-inhalt--reduziert .vv-g-b1 .vv-g-frage::before, .vv-inhalt--reduziert .vv-g-b2 .vv-g-frage::before { border-top-color: var(--grau-hell); }
+
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
   .vv-inhalt { padding: 3.6rem 0 4.5rem; }
@@ -163,4 +179,7 @@
   .vv-g-abwaerts { order: 3; }
   .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
   .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
+  .vv-inhalt--reduziert .vv-g { gap: 1.5rem; }
+  .vv-inhalt--reduziert .vv-g-a1, .vv-inhalt--reduziert .vv-g-a2, .vv-inhalt--reduziert .vv-g-a3 { margin-top: 2.2rem; }
+  .vv-inhalt--reduziert .vv-g-mobilkopf { justify-content: center; }
 }

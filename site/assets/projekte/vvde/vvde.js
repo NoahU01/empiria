@@ -38,7 +38,7 @@
     schritt(M.ausgangssituation) +
     schritt(M.vision, "Daraus folgt") +
     schritt(M.strategie, "Detaillierung der Strategie");
-  document.querySelector(".vv-fakten").innerHTML = fakten;
+  document.querySelectorAll(".vv-fakten").forEach(function (el) { el.innerHTML = fakten; });
 
   /* ---------------- Variante 2 · Infografik ---------------- */
   function karte(b, cls, extra) {
@@ -69,15 +69,16 @@
       karte(St.folgt[1], "vv-g-aus vv-g-b2") +
       karte(V.folgt[0], "vv-g-aus vv-g-b3") +
     "</div>";
-  document.querySelector(".vv-grafik").innerHTML = grafik;
+  document.querySelectorAll(".vv-grafik").forEach(function (el) { el.innerHTML = grafik; });
 
-  /* ---------------- Umschalter ---------------- */
-  var knoepfe = document.querySelectorAll(".sm-schalter button");
-  function zeige(v, merken) {
-    document.querySelectorAll(".sm-v").forEach(function (el) { el.hidden = el.dataset.variante !== v; });
-    knoepfe.forEach(function (k) { k.setAttribute("aria-pressed", k.dataset.v === v ? "true" : "false"); });
-    if (merken) history.replaceState(null, "", v === "2" ? "#infografik" : location.pathname + location.search);
-  }
-  knoepfe.forEach(function (k) { k.addEventListener("click", function () { zeige(k.dataset.v, true); }); });
-  if (location.hash === "#infografik") zeige("2", false);
+  /* ---------------- Umschalter – je Sektion eigenständig ---------------- */
+  document.querySelectorAll(".vv-inhalt").forEach(function (sek) {
+    var knoepfe = sek.querySelectorAll(".sm-schalter button");
+    function zeige(v) {
+      sek.querySelectorAll(".sm-v").forEach(function (el) { el.hidden = el.dataset.variante !== v; });
+      knoepfe.forEach(function (k) { k.setAttribute("aria-pressed", k.dataset.v === v ? "true" : "false"); });
+    }
+    knoepfe.forEach(function (k) { k.addEventListener("click", function () { zeige(k.dataset.v); }); });
+    if (location.hash === "#infografik") zeige("2");
+  });
 })();
