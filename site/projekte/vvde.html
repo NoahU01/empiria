@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=75">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=77">
 </head>
 <body class="e2">
 
@@ -951,6 +951,18 @@ window.VVDE_MODELL = {
       /* Drei strategische Stoßrichtungen, horizontal über die Zeitschiene (später: Stränge, Meilensteine, Quality Gates) */
       /* Zwei Ebenen: Geschäftsstrategie (Zeitstrahl) und daraus abgeleitet die Teilstrategien – Reihenfolge vorgegeben */
       teilHervor: [ "Vertrieb" ],   /* Fokusfeld: dezidierte Maßnahmenpakete und klares Zielbild */
+      /* Details der Fokus-Teilstrategie – Klick auf „Vertrieb“ öffnet sie im hellen Fenster, in „Alle Fakten“ ausgeschrieben */
+      teilDetails: { "Vertrieb": {
+        bedeutung: "Die Vertriebsstrategie stellt die langfristige Stabilität und Wettbewerbsfähigkeit des Vereins sicher.",
+        ziele: [ "Potenzielle Mitglieder systematisch identifizieren", "Bestehende Netzwerke gezielt nutzen", "Den VVDE im Markt sichtbar positionieren", "Die Vorteile des vereinsgetragenen Versicherungsmodells aktiv kommunizieren" ],
+        wirkung: [ "Den Mitgliederbestand strategisch weiterentwickeln", "Die wirtschaftliche Basis des VVDE stärken", "Die Rolle als Branchenversicherer nachhaltig sichern" ],
+        messziel: { von: "80", vonText: "Mitgliedsunternehmen Ende 2025", bis: "100", bisText: "Mitglieder in fünf Jahren ab 2027" },
+        aufnahme: "Aufgenommen werden Unternehmen, die sich fachlich, wirtschaftlich und strukturell gut in die bestehende Gemeinschaft einfügen und den Charakter des Versicherungsvereins als partnerschaftlich organisierte Risikogemeinschaft stärken.",
+        extern: [ "Wirtschaftliche und politische Einflüsse", "Regulatorische Anforderungen", "Neue Akteure, Vertriebsmodelle und Produkte", "Kundenbedürfnisse und Kundenerwartungen" ],
+        staerken: [ "Fachliche Expertise in der Eisenbahnversicherung", "Tiefe Kenntnis des relevanten Marktes", "Als hervorragend attestierte Schadenbearbeitung und Kundenbetreuung" ],
+        schwaechen: [ "Fehlende Vertriebseinheiten und -strukturen", "Keine gesamthafte Vertriebsorganisation", "Vertrieb bisher über einen einzigen Kanal: den persönlichen Vertrieb der Vorstandsmitglieder", "Für die geplante gesteigerte Vertriebsaktivität begrenzte Kapazitäten in den Betriebsfunktionen", "Geringe Automatisierungs- und Digitalisierungsrate", "Aufwendige Antrags- und Angebotsprozesse" ],
+        leitplanken: [ "Markt", "Vertriebsstruktur", "Personal", "Verkaufsansatz und Zugänge" ]
+      } },
       teilstrategien: [ "Risiko", "Vertrieb", "IT", "Kapitalanlage", "Exit\u2011Strategie|für Outsourcing", "DORA" ]   /* | = feste Sinnzeile in der Infografik */,
       zeitplan: { start: 2027, jahre: 5,
         stossrichtungen: [ "Governance-System und Risikomanagement", "Vertrieb und Produktentwicklung", "Digitalisierung und Modernisierung" ] },
@@ -1098,6 +1110,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=45"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=47"></script>
 </body>
 </html>

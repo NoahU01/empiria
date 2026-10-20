@@ -135,6 +135,30 @@
 .vv-g .vv-teile li { white-space: nowrap; }
 /* Fokusfeld Vertrieb: fett, schwarze etwas dickere Linie, Hintergrund weiß */
 .vv-teile li.vv-teile__hervor { border: 2px solid var(--e2-ink); background: #fff; font-weight: 700; }
+/* Vertrieb anklickbar – gleicher Hover wie bei den Kanälen (Positionierung & Pitch): helle Fläche */
+.vv-teile li:has(> .vv-teil-knopf) { padding: 0; overflow: hidden; }
+.vv-auf.vv-teil-knopf { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: .4rem .6rem; border: 0; border-radius: 0; background: transparent; font: inherit; font-weight: 700; color: var(--e2-ink); text-decoration: none; cursor: pointer; transition: background .15s; }
+.vv-auf.vv-teil-knopf:hover { background: var(--e2-hell); }
+
+/* Fenster/Fakten: Teilstrategie */
+.vv-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.vv-fenster .vv-felder li, .vv-f-teil .vv-felder li { display: flex; align-items: center; padding: .7rem .9rem; border: 1px solid var(--e2-linie); border-radius: 10px; font-size: .9rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); }
+.e2 .vv-teil__dadurch { margin: .8rem 0 .3rem; font-size: .8rem; font-weight: 600; color: var(--e2-grau); }
+.vv-mess { display: flex; align-items: center; gap: 1.4rem; margin: .2rem 0 1rem; }
+.vv-mess > div { display: flex; flex-direction: column; }
+.vv-mess b { font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--e2-ink); }
+.vv-mess span { margin-top: .35rem; font-size: .8rem; color: var(--e2-grau); }
+.vv-mess i { position: relative; width: 3rem; height: 0; border-top: 1.5px solid var(--e2-ink); }
+.vv-mess i::after { content: ""; position: absolute; right: -1px; top: -6px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--e2-ink); }
+.vv-sw { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; }
+.e2 .vv-sw__t { margin: 0 0 .4rem; font-size: .9rem; font-weight: 700; color: var(--e2-ink); }
+.vv-f-teil { grid-column: 1 / -1; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--e2-linie); }
+.e2 .vv-f-teil > .vv-swot-titel { margin: 0 0 1.2rem; }
+.vv-f-zeile__text .vv-felder { padding: 0; }
+.vv-f-zeile__text .vv-felder li, .vv-f-zeile__text .vv-felder li + li { margin: 0; }
+.vv-f-teil .vv-fenster__block + .vv-fenster__block { margin-top: 1.3rem; padding-top: 1.3rem; border-top: 1px solid var(--e2-linie); }
+.e2 .vv-f-teil .vv-fenster__label { margin: 0 0 .5rem; font-size: .8rem; font-weight: 600; color: var(--e2-grau); }
+.e2 .vv-f-teil .vv-fenster__satz { margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.6; color: var(--e2-ink); }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-g .vv-teile li { padding: .4rem .3rem; font-size: .68rem; } }
 .vv-f-zeile__text .vv-teile { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 36rem; padding: 0; }
 .vv-f-zeile__text .vv-teile li, .vv-f-zeile__text .vv-teile li + li { margin: 0; }
@@ -273,9 +297,9 @@
 .vv-inhalt--c .vv-g-karte { padding: 1.4rem 1.4rem 1.5rem; }
 .vv-inhalt--c .vv-g-karte > small { font-size: .85rem; }
 .vv-inhalt--c .vv-kern { font-size: .98rem; }
-.vv-inhalt--c .vv-auf:not(.vv-kanaele) { margin-top: .9rem; font-size: .78rem; font-weight: 600; color: var(--e2-grau); text-decoration: none; }
-.vv-inhalt--c .vv-auf:not(.vv-kanaele)::after { content: " \2192"; }
-.vv-inhalt--c .vv-auf:not(.vv-kanaele):hover { color: var(--e2-ink); }
+.vv-inhalt--c .vv-auf:not(.vv-kanaele):not(.vv-teil-knopf) { margin-top: .9rem; font-size: .78rem; font-weight: 600; color: var(--e2-grau); text-decoration: none; }
+.vv-inhalt--c .vv-auf:not(.vv-kanaele):not(.vv-teil-knopf)::after { content: " \2192"; }
+.vv-inhalt--c .vv-auf:not(.vv-kanaele):not(.vv-teil-knopf):hover { color: var(--e2-ink); }
 .vv-inhalt--c .vv-g-kreis .vv-auf { margin-top: -.2rem; }
 .vv-inhalt--c .vv-g-mobilauf .vv-auf { margin-top: 0; }
 /* SWOT und Zeitplan in ihrer natürlichen Größe, vertikal mittig im verbleibenden Platz des Kastens */
@@ -394,6 +418,8 @@
   .vv-f-zeile { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
   .vv-werte { grid-template-columns: minmax(0, 1fr); }
   .vv-swot { gap: 5px; }
+  .vv-felder, .vv-sw { grid-template-columns: minmax(0, 1fr); }
+  .vv-mess b { font-size: 2.1rem; }
   .vv-pv__oben { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
   .vv-pv__band { grid-template-columns: minmax(0, 1fr); gap: .7rem; padding: 1.2rem 1.2rem; }
   .vv-zeit__jahr { font-size: .66rem; padding-left: .3rem; }

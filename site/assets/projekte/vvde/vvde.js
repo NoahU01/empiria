@@ -40,6 +40,23 @@
   }
 
   /* Fokusfeld unter den Teilstrategien: fett und etwas dickere schwarze Linie */
+  /* Details einer Teilstrategie (hell, ruhig): Bedeutung · Ziel · messbares Ziel · externe Anforderungen · interne Rahmenbedingungen · Zielbild-Leitplanken */
+  function teilHtml(d) {
+    function blk(label, inhalt) { return '<div class="vv-fenster__block vv-fenster__text"><p class="vv-fenster__label">' + esc(label) + "</p>" + inhalt + "</div>"; }
+    function felder(xs) { return '<ul class="vv-felder">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
+    return blk("Übergeordnete Bedeutung", '<p class="vv-fenster__satz">' + esc(d.bedeutung) + "</p>") +
+      blk("Ziel", liste(d.ziele, "vv-punkte") + '<p class="vv-teil__dadurch">Dadurch</p>' + liste(d.wirkung, "vv-punkte")) +
+      blk("Messbares Ziel", '<div class="vv-mess"><div><b>' + esc(d.messziel.von) + "</b><span>" + esc(d.messziel.vonText) + '</span></div><i aria-hidden="true"></i><div><b>' + esc(d.messziel.bis) + "</b><span>" + esc(d.messziel.bisText) + "</span></div></div><p>" + esc(d.aufnahme) + "</p>") +
+      blk("Externe Anforderungen", felder(d.extern)) +
+      blk("Interne Rahmenbedingungen", '<div class="vv-sw"><div><p class="vv-sw__t">Stärken</p>' + liste(d.staerken, "vv-punkte") + '</div><div><p class="vv-sw__t">Schwächen</p>' + liste(d.schwaechen, "vv-punkte") + "</div></div>") +
+      blk("Zielbild-Leitplanken · vier Dimensionen", felder(d.leitplanken));
+  }
+  function teilKnopf(b, s, inhalt) {
+    var d = (b.teilDetails || {})[s];
+    if (!d) return inhalt;
+    FENSTER["t:" + s] = { kicker: "Wie kommen wir dorthin? · Teilstrategie", titel: "Teilstrategie " + s, breit: true, html: teilHtml(d) };
+    return '<button type="button" class="vv-auf vv-teil-knopf" data-fenster="t:' + esc(s) + '" aria-label="Teilstrategie ' + esc(s) + ' öffnen">' + inhalt + "</button>";
+  }
   function hervor(b, s) { return (b.teilHervor || []).indexOf(s) > -1 ? ' class="vv-teile__hervor"' : ""; }
   function liste(xs, cls) { return '<ul class="' + cls + '">' + xs.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
   /* Ein Thema ausgeschrieben: Titel, Text, Einleitung + Punkte, Hinweis */
@@ -58,7 +75,8 @@
     h += kanaele(b);
     if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
     if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Geschäftsstrategie · drei strategische Stoßrichtungen</p>' + zeitplanBild(b) +
-      ((b.teilstrategien || []).length ? '<p class="vv-swot-titel">Daraus abgeleitet · Teilstrategien</p>' + ('<ul class="vv-teile">' + b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + ">" + esc(s.replace("|", " ")) + "</li>"; }).join("") + "</ul>") : "");
+      ((b.teilstrategien || []).length ? '<p class="vv-swot-titel">Daraus abgeleitet · Teilstrategien</p>' + ('<ul class="vv-teile">' + b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + ">" + esc(s.replace("|", " ")) + "</li>"; }).join("") + "</ul>" +
+        Object.keys(b.teilDetails || {}).map(function (s) { return '<div class="vv-f-teil"><p class="vv-swot-titel">Fokus · Teilstrategie ' + esc(s) + "</p>" + teilHtml(b.teilDetails[s]) + "</div>"; }).join("")) : "");
     var th = b.themen || [];
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
@@ -152,7 +170,7 @@
     if (!b.zeitplan) return "";
     return '<div class="vv-ebenen"><p class="vv-ebenen__t">Geschäftsstrategie</p>' + zeitplanBild(b, "mini") +
       ((b.teilstrategien || []).length ? '<span class="vv-ebenen__pfeil" aria-hidden="true"></span><p class="vv-ebenen__t">Teilstrategien</p><ul class="vv-teile">' +
-        b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + "><span>" + s.split("|").map(esc).join("<br>") + "</span></li>"; }).join("") + "</ul>" : "") + "</div>";
+        b.teilstrategien.map(function (s) { return "<li" + hervor(b, s) + ">" + teilKnopf(b, s, "<span>" + s.split("|").map(esc).join("<br>") + "</span>") + "</li>"; }).join("") + "</ul>" : "") + "</div>";
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
