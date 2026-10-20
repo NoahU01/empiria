@@ -6,7 +6,14 @@
   if (!M) return;
 
   var C = false, D = false, E = false, F = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
-  var FENSTER = {};   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
+  var FENSTER = {};
+  /* Icons der Leitfragen – dieselben wie in Sektion 1 (Fahne · Kompass · Werkzeug); sichtbar nur in Variante 2 im Kopfband */
+  var ZICON = {
+    wofuer: '<path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/>',
+    wahrgenommen: '<circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>',
+    dorthin: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>'
+  };
+  function zicon(k) { return '<span class="vv-zicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1a1817" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ZICON[k] + "</svg></span>"; }   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
   var KANAL = {
@@ -164,14 +171,14 @@
     '<div class="vv-g">' +
       '<div class="vv-g-flaeche vv-g-flaeche--oben" aria-hidden="true"></div>' +
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
-      '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
+      '<p class="vv-g-zone__t vv-g-t0">' + zicon("wofuer") + "<span>" + esc(sv.frage) + "</span></p>" +
       (F ? "" : '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>') +
       (C && !E ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
       '<div class="vv-g-karte vv-g-sv">' + (E ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
         (D && (sv.saetze || []).length ? '<p class="vv-g-svsatz">' + esc(sv.saetze[0].text) + "</p>" : "") +
         ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + (D ? "" : auf(sv)) + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +
-      '<p class="vv-g-zone__t vv-g-t1">' + esc(A.zone) + '</p><p class="vv-g-zone__t vv-g-t2">' + esc(V.zone) + "</p>" +
+      '<p class="vv-g-zone__t vv-g-t1">' + zicon("dorthin") + "<span>" + esc(A.zone) + '</span></p><p class="vv-g-zone__t vv-g-t2">' + zicon("wahrgenommen") + "<span>" + esc(V.zone) + "</span></p>" +
       '<span class="vv-g-linie vv-g-linie--a" aria-hidden="true"></span><span class="vv-g-linie vv-g-linie--b" aria-hidden="true"><em>Mission</em></span>' +
       [["k1", A], ["k3", St], ["k2", V]].map(function (x) { return '<div class="vv-g-kreis vv-g-' + x[0] + '"><i aria-hidden="true">' + x[1].nr + "</i><b>" + esc(x[1].titel) + "</b>" + auf(x[1]) + "</div>"; }).join("") +
       karte(A.bausteine[0], "vv-g-a1", kopf(A), A.frage) +

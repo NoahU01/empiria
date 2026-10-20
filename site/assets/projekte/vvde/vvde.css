@@ -369,9 +369,14 @@
 @media (min-width: 901px) and (max-width: 1200px) { .e2 .vv-inhalt--f .vv-g-frage { font-size: .8rem; } }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-inhalt--f .vv-g-b3 .vv-kern { font-size: .8rem; } }
 
+.vv-zicon { display: none; }
 /* ===== Variante 2: Zonen hellgrau durchgezogen, oben ein schwarzes Kopfband mit der Zonenfrage (wie Projektmodule der SV Akademie) ===== */
 @media (min-width: 901px) {
   .vv-inhalt--kopf .vv-g-flaeche { border: 1.5px solid #e2ded8; border-radius: 18px; }
+  .vv-inhalt--kopf .vv-g { --zg: 5.6rem; }   /* mehr Abstand zwischen den beiden unteren Zonen */
+  .vv-inhalt--kopf .vv-zicon { display: grid; place-items: center; flex: none; width: 2.1rem; height: 2.1rem; border-radius: 9px; background: var(--e2-gelb); }
+  .vv-inhalt--kopf .vv-zicon svg { width: 1.1rem; height: 1.1rem; }
+  .e2 .vv-inhalt--kopf .vv-g-zone__t { gap: .8rem; text-align: left; }
   .e2 .vv-inhalt--kopf .vv-g-zone__t { align-self: stretch; display: flex; align-items: center; justify-content: center; margin: calc(-1 * var(--zr) - 1px) calc(-1 * var(--zr) - 1px) 2rem; padding: 1.05rem 1.4rem; border-radius: 18px 18px 0 0; background: var(--e2-ink); color: #fff; line-height: 1.5; }
 }
 
