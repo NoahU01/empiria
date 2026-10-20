@@ -5,7 +5,7 @@
   var M = window.VVDE_MODELL;
   if (!M) return;
 
-  var C = false, D = false;   /* true beim Erzeugen von Variante C bzw. D (D baut auf C auf) */
+  var C = false, D = false, E = false;   /* Variante C · D (baut auf C auf) · E (Homepage-Gestaltung, nutzt C und D) */
   var FENSTER = {};   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
@@ -116,7 +116,7 @@
   function lab(normal) { return C ? "Mehr erfahren" : normal; }
   function karte(b, cls, extra, frage) {
     return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
-      (b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
+      (!E && b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
   function knopf(key, label, f) { FENSTER[key] = f; return '<button type="button" class="vv-auf" data-fenster="' + esc(key) + '">' + esc(label) + "</button>"; }
@@ -140,8 +140,11 @@
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
     if (D && !b.themen.some(function (t) { return t.kurz; })) return "";   /* D: kein Verweis, wenn das Fenster nur die sichtbare Aussage wiederholt */
+    /* visionOben: das Fenster nennt zuerst die übergeordnete Vision (Vorgabe Daniel) */
+    var vo = b.visionOben && (V.saetze || [])[0];
     return knopf("b:" + b.titel, lab("Details lesen"), { kicker: frage, titel: b.titel,
-      html: (b.kern ? '<div class="vv-fenster__block"><p class="vv-fenster__satz">' + esc(b.kern) + "</p></div>" : "") +
+      html: (vo ? '<div class="vv-fenster__block"><p class="vv-fenster__label">' + esc(vo.label) + '</p><p class="vv-fenster__satz">' + esc(vo.text) + "</p></div>" : "") +
+        (b.kern ? '<div class="vv-fenster__block">' + (vo ? '<p class="vv-fenster__label">Geschäftsmodell</p>' : "") + '<p class="vv-fenster__satz">' + esc(b.kern) + "</p></div>" : "") +
         b.themen.map(function (t) { return '<div class="vv-fenster__block vv-fenster__text">' + thema(t) + "</div>"; }).join("") });
   }
   function kopf(s) { return '<span class="vv-g-mobilkopf"><i>' + s.nr + "</i>" + esc(s.titel) + "</span>" + ((s.saetze || []).length ? '<span class="vv-g-mobilauf">' + auf(s) + "</span>" : ""); }
@@ -153,8 +156,8 @@
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
       '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
       '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
-      (C ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
-      '<div class="vv-g-karte vv-g-sv">' + (C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
+      (C && !E ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
+      '<div class="vv-g-karte vv-g-sv">' + (E ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
         (D && (sv.saetze || []).length ? '<p class="vv-g-svsatz">' + esc(sv.saetze[0].text) + "</p>" : "") +
         ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + (D ? "" : auf(sv)) + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +
@@ -168,12 +171,16 @@
       karte(St.folgt[0], "vv-g-aus vv-g-b1") +
       karte(St.folgt[1], "vv-g-aus vv-g-b2") +
       karte(V.folgt[0], "vv-g-aus vv-g-b3") +
-    "</div>"); }
+    "</div>" +
+    /* E: die drei Ergebnisfragen als schwarzes Band am Ende – gelbe Dreiecke wie im Original-Modell */
+    (E ? '<div class="vv-g-erg"><p class="vv-g-erg__tag">Ergebnis</p>' +
+      [["b1", St.folgt[0]], ["b2", St.folgt[1]], ["b3", V.folgt[0]]].map(function (x) {
+        return '<p class="vv-g-erg__f vv-g-erg__f--' + x[0] + '"><small>' + esc(x[1].titel) + "</small>" + esc(x[1].frage) + "</p>"; }).join("") + "</div>" : "")); }
   document.querySelectorAll(".vv-grafik").forEach(function (el) {
-    C = !!el.closest(".vv-inhalt--c"); D = !!el.closest(".vv-inhalt--d");
+    C = !!el.closest(".vv-inhalt--c"); E = !!el.closest(".vv-inhalt--e"); D = E || !!el.closest(".vv-inhalt--d");
     el.innerHTML = baueGrafik();
   });
-  C = false; D = false;
+  C = false; D = false; E = false;
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");
