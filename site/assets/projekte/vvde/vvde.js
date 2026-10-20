@@ -20,18 +20,19 @@
     return '<div class="vv-f-zeile' + (art ? " vv-f-zeile--" + art : "") + '"><div class="vv-f-zeile__kopf"><b>' + esc(b.titel) + "</b>" +
       (b.frage ? "<span>" + esc(b.frage) + "</span>" : "") + '</div><div class="vv-f-zeile__text">' + text(b) + "</div></div>";
   }
-  function block(marke, frage, titel, zeilen) {
-    return '<section class="vv-f-block"><div class="vv-f-marke">' + marke +
-      '<p class="vv-f-frage">' + esc(frage) + "</p><h3>" + esc(titel) + '</h3></div><div class="vv-f-inhalt">' + zeilen + "</div></section>";
+  /* Kopf eines Blocks: hängende Ziffer links neben dem Titel (Basis ohne Ziffer, wie im Modell) */
+  function block(nr, frage, titel, zeilen) {
+    return '<section class="vv-f-block"><div class="vv-f-marke">' + (nr ? '<span class="vv-f-zahl" aria-hidden="true">' + nr + "</span>" : "") +
+      '<p class="vv-f-frage">' + esc(frage) + "</p><h3>" + (nr ? '<span class="vv-sr">Schritt ' + nr + ": </span>" : "") + esc(titel) + '</h3></div><div class="vv-f-inhalt">' + zeilen + "</div></section>";
   }
   function schritt(s, folgtTitel) {
-    return block('<span class="vv-nr">' + s.nr + "</span>", s.frage, s.titel,
+    return block(s.nr, s.frage, s.titel,
       s.bausteine.map(function (b) { return zeile(b); }).join("") +
       ((s.folgt || []).length ? '<p class="vv-f-mini">' + esc(folgtTitel) + "</p>" + s.folgt.map(function (b) { return zeile(b); }).join("") : ""));
   }
   var sv = M.selbstverstaendnis;
   var fakten =
-    block('<span class="vv-nr vv-nr--basis">Basis</span>', sv.frage, sv.titel,
+    block(0, "Basis · " + sv.frage, sv.titel,
       '<div class="vv-f-kern">' + (leer(sv) ? offen() : '<p class="vv-f-kern__satz">' + esc(sv.inhalt[0]) + "</p>" +
         (sv.inhalt.length > 1 ? "<ul>" + sv.inhalt.slice(1).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "")) + "</div>" +
       '<p class="vv-f-mini">Was einfließt</p>' + M.eingaben.map(function (b) { return zeile(b); }).join("")) +
