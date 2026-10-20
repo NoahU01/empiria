@@ -5,6 +5,7 @@
   var M = window.VVDE_MODELL;
   if (!M) return;
 
+  var C = false, D = false;   /* true beim Erzeugen von Variante C bzw. D (D baut auf C auf) */
   var FENSTER = {};   /* Inhalte der hellen Fenster, Schlüssel = data-fenster */
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Kanäle als Strichzeichnungen ohne Beschriftung: Homepage · Social Media · One-Pager */
@@ -43,13 +44,17 @@
   /* Inhalt eines Bausteins: Kernaussage + Themen.
      modus "kurz" (Infografik): nur die Kurzzeile je Thema; sonst alles ausgeschrieben. */
   function text(b, modus) {
-    var h = b.kern ? '<p class="vv-kern">' + esc(b.kern) + "</p>" : "";
+    /* kernZeilen: feste Sinnzeilen, damit nichts unglücklich umbricht */
+    var h = b.kern ? '<p class="vv-kern">' + (b.kernZeilen ? b.kernZeilen.map(function (z) { return '<span class="vv-kern__z">' + esc(z) + "</span>"; }).join(" ") : esc(b.kern)) + "</p>" : "";
     h += kanaele(b);
     if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
     if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Drei strategische Stoßrichtungen</p>' + zeitplanBild(b);
     var th = b.themen || [];
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
-    if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
+    /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
+    var kv = []; th.forEach(function (t) { if (t.kv) kv = kv.concat(t.kv); else if (t.k) kv.push([t.k, t.w]); });
+    if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd>"; }).join("") + "</dl>";
+    else if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
     var z = b.inhalt || [];
     if (z.length === 1) h += "<p>" + esc(z[0]) + "</p>";
     else if (z.length) h += liste(z, "");
@@ -108,7 +113,6 @@
 
   /* ---------------- Variante 2 · Infografik ---------------- */
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
-  var C = false, D = false;   /* true beim Erzeugen von Variante C bzw. D (D baut auf C auf) */
   function lab(normal) { return C ? "Mehr erfahren" : normal; }
   function karte(b, cls, extra, frage) {
     return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +

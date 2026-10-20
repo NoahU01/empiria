@@ -46,6 +46,10 @@
 .vv-f-zeile__text ul { margin: 0; padding-left: 1.1rem; }
 .vv-f-zeile__text li + li { margin-top: .35rem; }
 
+/* Umbruch: Überschriften und Aussagen ausgewogen, Listen ohne einzelnes Wort in der letzten Zeile */
+.vv-g small, .vv-kern, .vv-g-frage, .vv-g-svsatz, .vv-g-kreis b, .vv-fenster__titel, .vv-f-aussage__satz, .vv-zeit__streifen span { text-wrap: balance; }
+.vv-g li, .vv-g p, .vv-fenster p, .vv-fenster li, .vv-f-zeile__text p, .vv-f-zeile__text li { text-wrap: pretty; }
+
 /* Inhalte eines Bausteins (beide Ansichten) */
 .e2 .vv-kern { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.35; color: var(--e2-ink); text-wrap: balance; }
 .e2 .vv-einleitung { margin: .35rem 0 0; }
@@ -260,16 +264,12 @@
 .vv-inhalt--c .vv-auf:not(.vv-kanaele):hover { color: var(--e2-ink); }
 .vv-inhalt--c .vv-g-kreis .vv-auf { margin-top: -.2rem; }
 .vv-inhalt--c .vv-g-mobilauf .vv-auf { margin-top: 0; }
-/* Die Bilder füllen ihren Kasten: SWOT und Zeitplan wachsen mit der Reihenhöhe */
-.vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-zeit--mini { flex: 1; display: grid; }
-.vv-inhalt--c .vv-swot--mini { height: 100%; grid-template-rows: repeat(3, 1fr); }
-.vv-inhalt--c .vv-swot--mini .vv-swot__kopf { display: flex; align-items: center; justify-content: center; }
-.vv-inhalt--c .vv-zeit--mini { grid-template-rows: auto repeat(3, 1fr); }
-.vv-inhalt--c .vv-zeit--mini .vv-zeit__streifen { min-height: 2.6rem; }
+/* SWOT und Zeitplan in ihrer natürlichen Größe, vertikal mittig im verbleibenden Platz des Kastens */
+.vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-zeit--mini { margin-top: auto; margin-bottom: auto; }
 
-/* ===== Variante D (Sektion 4): aus C – weniger auf einmal, ausgewogene Kästen =====
-   Selbstverständnis breit mit seiner Aussage und den Werten ruhig in drei Spalten; Hinweis dreizeilig daneben.
-   Kernkästen etwa gleich voll: Bilder in natürlicher Höhe, Listen ohne Trennlinien. Weniger Verweise. */
+/* ===== Variante D (Sektion 4): Fokus auf „Wie kommen wir dorthin?“ und „Wie wollen wir wahrgenommen werden?“ =====
+   Oben ruhig: Selbstverständnis hell gerahmt, kleiner Titel, Aussage in Grundschrift (zwei Zeilen), Werte als Pills.
+   Unten stark: größere Schrittnamen, dunkle Kernkästen, Steckbrief statt loser Zeilen, Detaillierung nur so hoch wie nötig. */
 .vv-inhalt--d .vv-g {
   grid-template-areas:
     "t0 t0 t0 t0 t0"
@@ -285,15 +285,28 @@
 .vv-inhalt--d .vv-g-flaeche { border-color: #dcd7d0; }
 .vv-inhalt--d .vv-g-karte { padding: 1.6rem 1.6rem 1.7rem; }
 .vv-inhalt--d .vv-g-zufluss p { line-height: 1.55; }
-.vv-inhalt--d .vv-g-sv { padding: 1.9rem 2.4rem 2rem; }
-.e2 .vv-inhalt--d .vv-g-svsatz { max-width: 34rem; margin: 0 auto; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: var(--e2-ink); }
-.vv-inhalt--d .vv-g-werte { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem 1.2rem; margin: 1.4rem 0 0; padding-top: 1.3rem; border-top: 1px solid var(--e2-linie); }
-.vv-inhalt--d .vv-g-werte li { padding: 0; border: 0; font-size: .86rem; font-weight: 500; color: var(--e2-ink-2); }
-/* Bilder füllen ihren Kasten wie in C */
-.vv-inhalt--d .vv-zeit--mini .vv-zeit__streifen { min-height: 2.8rem; }
-/* Liste im Vision-Kasten ohne Trennlinien, ruhiger Zeilenabstand */
-.vv-inhalt--d .vv-g .vv-punkte { margin-top: .8rem; }
-.vv-inhalt--d .vv-g .vv-punkte li { padding: .28rem 0; border: 0; color: var(--e2-ink-2); }
+/* oben: ruhig */
+.vv-inhalt--d .vv-g-svtitel { margin-bottom: .8rem; font-size: 1.1rem; }
+.vv-inhalt--d .vv-g-sv { padding: 1.5rem 2rem 1.6rem; border: 1px solid #cfc9c1 !important; }
+.e2 .vv-inhalt--d .vv-g-svsatz { max-width: 38rem; margin: 0 auto; font-size: .98rem; font-weight: 400; line-height: 1.6; color: var(--e2-ink-2); }
+.vv-inhalt--d .vv-g-werte { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin: 1.15rem 0 0; padding: 0; }
+.vv-inhalt--d .vv-g-werte li { padding: .32rem .85rem; border: 1px solid var(--e2-linie); border-radius: 999px; font-size: .8rem; font-weight: 500; line-height: 1.3; color: var(--e2-ink); background: #fff; }
+/* unten: stark */
+.vv-inhalt--d .vv-g-kreis b { font-size: 1.6rem; }
+.vv-inhalt--d .vv-g-mobilkopf { font-size: 1.45rem; }
+/* Steckbrief im zukünftigen Geschäftsmodell */
+.vv-kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .55rem 1rem; width: 100%; margin: 1rem 0 0; text-align: left; }
+.vv-kv dt { padding-top: .08rem; font-size: .74rem; font-weight: 600; letter-spacing: .02em; color: var(--e2-grau); }
+.vv-kv dd { margin: 0; font-size: .86rem; font-weight: 500; line-height: 1.4; color: var(--e2-ink); }
+@media (min-width: 901px) and (max-width: 1200px) {
+  .vv-kv { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .vv-kv dd { margin-bottom: .6rem; }
+}
+.vv-inhalt--d .vv-g-b3 .vv-kern { margin: 0 -.9rem; font-size: .9rem; }
+.vv-kern__z { display: block; text-wrap: balance; }
+/* Detaillierung nur so hoch wie ihr Inhalt */
+.vv-inhalt--d .vv-g-b1, .vv-inhalt--d .vv-g-b2 { align-self: start; }
+.vv-inhalt--d .vv-g-b1 .vv-g-frage, .vv-inhalt--d .vv-g-b2 .vv-g-frage { margin-top: 1rem; }
 
 /* ===== Schmal ===== */
 @media (max-width: 900px) {
@@ -329,11 +342,11 @@
   .vv-g-mobilkopf { display: flex; align-items: center; justify-content: center; gap: .7rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--e2-ink); }
   .vv-g-mobilkopf i { display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-family: var(--font-sans); font-size: .9rem; font-style: normal; }
   /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
-  .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 4; }
-  .vv-g-svtitel { order: 3; margin-bottom: 0 !important; }
+  .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 5; }
+  .vv-g-svtitel { order: 4; margin-bottom: 0 !important; }
   .vv-inhalt--d .vv-g-sv { padding: 1.5rem 1.3rem; }
   .vv-inhalt--d .vv-g-werte { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vv-g-abwaerts { order: 3; }
-  .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
-  .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
+  .vv-g-a1 { order: 6; margin-top: 1.2rem; } .vv-g-a2 { order: 7; margin-top: 1.2rem; } .vv-g-b3 { order: 8; }
+  .vv-g-a3 { order: 9; margin-top: 1.2rem; } .vv-g-b1 { order: 10; } .vv-g-b2 { order: 11; }
 }
