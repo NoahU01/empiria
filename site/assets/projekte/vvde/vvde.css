@@ -70,7 +70,7 @@
   grid-template-rows: auto auto 6.4rem auto auto auto 3.4rem auto;
   grid-template-areas:
     "t0 t0 t0 t0 t0"
-    "ein ein ein pf sv"
+    "zu zu zu zu sv"
     ".  .  .  .  ab"
     "t1 t1 t1 .  t2"
     "k1 .  k3 .  k2"
@@ -95,14 +95,16 @@
 .e2 .vv-g-frage { margin: auto 0 0; padding-top: .9rem; border-top: 1px solid var(--e2-linie); font-size: .9rem; font-weight: 700; line-height: 1.4; color: var(--e2-ink); }
 .vv-g-frage::before { content: ""; display: inline-block; margin-right: .5rem; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--e2-ink); vertical-align: .12em; }
 
-.vv-g-eingaben { grid-area: ein; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; align-self: center; }
-.vv-g-karte--klein { padding: .95rem 1.05rem 1.05rem; gap: .55rem; }
-.vv-g-karte--klein small { letter-spacing: .06em; hyphens: manual; -webkit-hyphens: manual; }
+/* Zufluss ins Selbstverständnis: Text und Pfeil, ohne Kasten */
+.vv-g-zufluss { grid-area: zu; display: flex; align-items: center; gap: 1.6rem; padding-left: .2rem; }
+.vv-g-zufluss p { flex: 0 1 auto; min-width: 0; margin: 0; }
+.vv-g-zufluss b { display: block; font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; line-height: 1.25; color: var(--e2-ink); }
+.vv-g-zufluss p span { display: block; margin-top: .35rem; font-size: .9rem; font-weight: 600; color: var(--e2-grau); }
 .vv-g-sv { grid-area: sv; justify-content: center; }
 .e2 .vv-g-sv__satz { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--e2-ink-2); }
 
-/* Pfeile: Eingaben → Selbstverständnis → Vision */
-.vv-g-pfeil { grid-area: pf; align-self: center; justify-self: center; position: relative; width: calc(100% - .8rem); height: 0; border-top: 1.5px solid var(--e2-ink); }
+/* Pfeile: Zufluss → Selbstverständnis → Vision */
+.vv-g-pfeil { flex: 1; position: relative; min-width: 3rem; margin-right: .8rem; height: 0; border-top: 1.5px solid var(--e2-ink); }
 .vv-g-pfeil::after { content: ""; position: absolute; right: -1px; top: -6px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--e2-ink); }
 .vv-g-abwaerts { grid-area: ab; align-self: start; justify-self: center; position: relative; width: 0; height: calc(100% - var(--zr) - 2px); border-left: 1.5px solid var(--e2-ink); }
 .vv-g-abwaerts::after { content: ""; position: absolute; bottom: -1px; left: -6px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--e2-ink); }
@@ -154,13 +156,14 @@
 
   .vv-g { display: flex; flex-direction: column; gap: .8rem; padding: 0; }
   .vv-g-flaeche, .vv-g-t1, .vv-g-t2, .vv-g-kreis, .vv-g-linie, .vv-g-klammer, .vv-g-strich, .vv-g-pfeil { display: none; }
+  .vv-g-zufluss { display: block; padding: 0; text-align: center; }
+  .vv-g-zufluss b { font-size: 1.15rem; }
   .e2 .vv-g-t0 { margin: .6rem 0 .2rem; }
-  .vv-g-eingaben { grid-template-columns: minmax(0, 1fr); align-self: stretch; gap: .6rem; }
   .vv-g-abwaerts { order: 0; height: 1.6rem; margin: 0 auto; }
   .vv-g-mobilkopf { display: flex; align-items: center; gap: .7rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--e2-ink); }
   .vv-g-mobilkopf i { display: grid; place-items: center; flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-family: var(--font-sans); font-size: .9rem; font-style: normal; }
   /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
-  .vv-g-t0 { order: 1; } .vv-g-eingaben { order: 2; } .vv-g-sv { order: 4; }
+  .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 4; }
   .vv-g-abwaerts { order: 3; }
   .vv-g-a1 { order: 5; margin-top: 1.2rem; } .vv-g-a2 { order: 6; margin-top: 1.2rem; } .vv-g-b3 { order: 7; }
   .vv-g-a3 { order: 8; margin-top: 1.2rem; } .vv-g-b1 { order: 9; } .vv-g-b2 { order: 10; }
