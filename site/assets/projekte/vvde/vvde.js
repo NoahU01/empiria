@@ -85,7 +85,7 @@
     if (th.length && modus === "kurz" && KOMPAKT && th.some(function (t) { return t.cw; })) h += '<ul class="vv-kompakt">' + th.filter(function (t) { return t.cw; }).map(function (t) {
         var z = String(t.cw).split("|"); z[0] = (t.ck ? t.ck + ": " : "") + z[0];
         return "<li>" + z.map(function (s) { return '<span class="vv-kompakt__z">' + esc(s) + "</span>"; }).join("") + "</li>"; }).join("") + "</ul>";
-    else if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(esc).join("<br>") + "</dd>"; }).join("") + "</dl>";
+    else if (th.length && modus === "kurz" && D && kv.length) h += '<dl class="vv-kv">' + kv.map(function (r) { return "<dt>" + esc(r[0]) + "</dt><dd>" + String(r[1]).split("|").map(function (s) { return '<span class="vv-kompakt__z">' + esc(s) + "</span>"; }).join("") + "</dd>"; }).join("") + "</dl>";
     else if (th.length) h += modus === "kurz" ? (kurz.length ? liste(kurz, "vv-punkte") : "") : th.map(thema).join("");
     var z = b.inhalt || [];
     if (z.length === 1) h += "<p>" + esc(z[0]) + "</p>";
