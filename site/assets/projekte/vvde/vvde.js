@@ -116,7 +116,7 @@
   function lab(normal) { return C ? "Mehr erfahren" : normal; }
   function karte(b, cls, extra, frage) {
     return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
-      (!E && b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + esc(b.frage) + "</p>" : "") + "</div>";
+      (!E && b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + (F && b.frageZeilen ? b.frageZeilen.map(function (z) { return '<span class="vv-g-frage__z">' + esc(z) + "</span>"; }).join(" ") : esc(b.frage)) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
   function knopf(key, label, f) { FENSTER[key] = f; return '<button type="button" class="vv-auf" data-fenster="' + esc(key) + '">' + esc(label) + "</button>"; }
@@ -155,9 +155,9 @@
       '<div class="vv-g-flaeche vv-g-flaeche--oben" aria-hidden="true"></div>' +
       '<div class="vv-g-flaeche vv-g-flaeche--links" aria-hidden="true"></div><div class="vv-g-flaeche vv-g-flaeche--rechts" aria-hidden="true"></div>' +
       '<p class="vv-g-zone__t vv-g-t0">' + esc(sv.frage) + "</p>" +
-      '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>' +
-      (C && !E && !F ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
-      '<div class="vv-g-karte vv-g-sv">' + (E || F ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
+      (F ? "" : '<div class="vv-g-zufluss"><p>' + (M.zufluss.zeilen || [M.zufluss.titel]).concat([M.zufluss.frage]).map(function (z) { return "<span>" + esc(z) + "</span>"; }).join("") + '</p><span class="vv-g-pfeil" aria-hidden="true"></span></div>') +
+      (C && !E ? '<p class="vv-g-svtitel">' + esc(sv.titel) + "</p>" : "") +
+      '<div class="vv-g-karte vv-g-sv">' + (E ? '<p class="vv-g-svname">' + esc(sv.titel) + "</p>" : C ? "" : "<small>" + esc(sv.titel) + "</small>") + '<div class="vv-g-text">' +
         (D && (sv.saetze || []).length ? '<p class="vv-g-svsatz">' + esc(sv.saetze[0].text) + "</p>" : "") +
         ((sv.werte || []).length ? '<ul class="vv-g-werte">' + sv.werte.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") + (D ? "" : auf(sv)) + "</div></div>" +
       '<span class="vv-g-abwaerts" aria-hidden="true"></span>' +

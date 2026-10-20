@@ -308,83 +308,15 @@
 .vv-inhalt--d .vv-g-b1, .vv-inhalt--d .vv-g-b2 { align-self: start; }
 .vv-inhalt--d .vv-g-b1 .vv-g-frage, .vv-inhalt--d .vv-g-b2 .vv-g-frage { margin-top: 1rem; }
 
-/* ===== Variante E (Sektion 5): Homepage-Gestaltung nach CD empiria und Volksfest-Prinzip =====
-   Flächenwechsel: Gelb (Wofür stehen wir?) · Weiß (Wie kommen wir dorthin? / Wie wollen wir wahrgenommen werden?) · Schwarz (Ergebnis).
-   Zonenfragen als Kicker mit Strich, Lora für Namen und Kastentitel, Poppins für Inhalte, linksbündig.
-   Dicker schwarzer Rand = definiert (Selbstverständnis und Kernkästen); Detaillierung als helle Fläche, gleich groß. */
-.vv-inhalt--e .vv-g {
-  --zr: 2rem;
-  grid-template-rows: auto auto auto 6.4rem auto auto auto 5.2rem auto;
-  grid-template-areas:
-    "t0 t0 t0 t0 t0"
-    ".  .  svt svt svt"
-    "zu zu sv sv sv"
-    ".  .  .  .  ab"
-    "t1 t1 t1 .  t2"
-    "k1 .  k3 .  k2"
-    "a1 .  a3 .  a2"
-    "kl kl kl .  st"
-    "b1 .  b2 .  b3";
-}
-/* Gelbe Fläche oben */
-.vv-inhalt--e .vv-g-flaeche--oben { border: 0; border-radius: 24px; background: var(--e2-gelb); }
-.vv-inhalt--e .vv-g-flaeche--links, .vv-inhalt--e .vv-g-flaeche--rechts { border: 1.5px dashed #d6d0c8; border-radius: 24px; }
-/* Zonenfragen als Kicker der Homepage: Strich + Versalien, linksbündig */
-.e2 .vv-inhalt--e .vv-g-zone__t { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.8rem; text-align: left; font-size: .74rem; letter-spacing: .16em; color: var(--e2-ink); }
-.vv-inhalt--e .vv-g-zone__t::before { content: ""; flex: none; width: 1.4rem; height: 2px; background: currentColor; }
-.vv-inhalt--e .vv-g-t2 { align-items: flex-start; }
-.vv-inhalt--e .vv-g-t2::before { margin-top: .5em; }
-/* Hinweis links, Selbstverständnis rechts – beides auf Gelb */
-.vv-inhalt--e .vv-g-zufluss { justify-content: flex-start; align-items: center; gap: 1.2rem; }
-.vv-inhalt--e .vv-g-zufluss p { text-align: left; font-size: .9rem; font-weight: 600; line-height: 1.5; color: var(--e2-ink); }
-.vv-inhalt--e .vv-g-zufluss p span:last-child { margin-top: .2rem; font-weight: 400; }
-.vv-inhalt--e .vv-g-pfeil { flex: 1; width: auto; max-width: 9rem; }
-.vv-inhalt--e .vv-g-sv { align-items: flex-start; padding: 1.8rem 2.2rem 2rem; border: 2.5px solid var(--e2-ink) !important; border-radius: 18px; background: #fff; text-align: left; }
-.e2 .vv-inhalt--e .vv-g-svname { margin: 0 0 .7rem; font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700; line-height: 1.15; color: var(--e2-ink); }
-.e2 .vv-inhalt--e .vv-g-svsatz { margin: 0; font-size: 1rem; font-weight: 400; line-height: 1.6; color: var(--e2-ink-2); }
-.vv-inhalt--e .vv-g-werte { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.2rem 0 0; padding: 0; }
-.vv-inhalt--e .vv-g-werte li { padding: .34rem .9rem; border: 1.5px solid var(--e2-ink); border-radius: 999px; font-size: .8rem; font-weight: 600; line-height: 1.3; color: var(--e2-ink); }
-.vv-inhalt--e .vv-g-abwaerts { border-left-width: 2px; }
-/* Unten: Namen groß, Kernkästen wie Karten der Volksfest-Seite */
-.vv-inhalt--e .vv-g-kreis b { font-size: 1.65rem; }
-.vv-inhalt--e .vv-g-kreis i { width: 2.9rem; height: 2.9rem; font-size: 1.05rem; }
-.vv-inhalt--e .vv-g-karte { align-items: flex-start; gap: .5rem; padding: 1.7rem 1.7rem 1.8rem; border-radius: 18px; text-align: left; }
-.vv-inhalt--e .vv-g-a1, .vv-inhalt--e .vv-g-a3, .vv-inhalt--e .vv-g-a2, .vv-inhalt--e .vv-g-b3 { border: 2.5px solid var(--e2-ink) !important; }
-.vv-inhalt--e .vv-g-karte > small, .vv-inhalt--e .vv-g-a1 > small, .vv-inhalt--e .vv-g-a3 > small, .vv-inhalt--e .vv-g-a2 > small { display: block; min-height: 2.5em; margin-bottom: 1.1rem; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; line-height: 1.25; color: var(--e2-ink); }
-.vv-inhalt--e .vv-g-b1, .vv-inhalt--e .vv-g-b2 { border: 0 !important; background: var(--e2-hell); }
-.vv-inhalt--e .vv-g-b1 > small, .vv-inhalt--e .vv-g-b2 > small { color: #a39d96; }
-.vv-inhalt--e .vv-kern { font-size: 1.02rem; }
-.vv-inhalt--e .vv-g-b3 .vv-kern { margin: 0 -1.5rem 0 0; font-size: .88rem; }
-.vv-inhalt--e .vv-auf:not(.vv-kanaele) { margin-top: auto; padding-top: 1.1rem; color: var(--e2-ink); font-size: .8rem; }
-.vv-inhalt--e .vv-g-kreis .vv-auf { margin-top: -.1rem; padding-top: 0; color: var(--e2-grau); }
-.vv-inhalt--e .vv-auf.vv-kanaele { margin: 1.2rem 0 0 -.7rem; }
-.vv-inhalt--e .vv-g-a1 .vv-swot-mini, .vv-inhalt--e .vv-g-a3 .vv-zeit--mini { margin-top: auto; margin-bottom: auto; }
-.vv-inhalt--e .vv-kv { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: .9rem; }
-.vv-inhalt--e .vv-kv dt { font-size: .72rem; }
-.vv-inhalt--e .vv-kv dd { margin-bottom: .7rem; font-size: .9rem; }
-.vv-inhalt--e .vv-g-b1 > small, .vv-inhalt--e .vv-g-b2 > small, .vv-inhalt--e .vv-g-b3 > small { min-height: 0; margin-bottom: .6rem; }
-.vv-inhalt--e .vv-g-klammer em { font-size: .76rem; color: #a39d96; }
-/* Schwarzes Ergebnisband */
-.vv-g-erg { display: none; }
-.vv-inhalt--e .vv-g-erg { display: grid; grid-template-columns: minmax(0, 1fr) 2.4rem minmax(0, 1fr) 3.6rem minmax(0, 1fr); align-items: start; margin-top: 2rem; padding: 2.2rem 2rem 2.4rem; border-radius: 24px; background: var(--e2-ink); color: #fff; }
-.e2 .vv-inhalt--e .vv-g-erg__tag { grid-column: 1 / -1; display: flex; align-items: center; gap: .7rem; margin: 0 0 1.6rem; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--e2-gelb); }
-.vv-inhalt--e .vv-g-erg__tag::before { content: ""; width: 1.4rem; height: 2px; background: currentColor; }
-.e2 .vv-inhalt--e .vv-g-erg__f { position: relative; margin: 0; padding-top: 1.4rem; font-size: 1.05rem; font-weight: 700; line-height: 1.4; color: #fff; text-wrap: balance; }
-.vv-inhalt--e .vv-g-erg__f::before { content: ""; position: absolute; top: 0; left: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 10px solid var(--e2-gelb); }
-.vv-inhalt--e .vv-g-erg__f small { display: block; margin-bottom: .45rem; font-size: .76rem; font-weight: 600; letter-spacing: .02em; color: rgba(255,255,255,.6); }
-.vv-inhalt--e .vv-g-erg__f--b1 { grid-column: 1; } .vv-inhalt--e .vv-g-erg__f--b2 { grid-column: 3; } .vv-inhalt--e .vv-g-erg__f--b3 { grid-column: 5; }
-.vv-inhalt--e .vv-g-erg__f--b1, .vv-inhalt--e .vv-g-erg__f--b2 { color: rgba(255,255,255,.62); }
-.vv-inhalt--e .vv-g-erg__f--b1::before, .vv-inhalt--e .vv-g-erg__f--b2::before { border-top-color: rgba(255,244,0,.55); }
-
-/* ===== Variante F (Sektion 6): streng nach den VVDE-Vorgaben =====
+/* ===== Strategiemodell VVDE (aus Variante F) =====
    Typografie wie im Modell (Versalien nur Zonenfragen, zentriert), Zonen nur hell gestrichelt mit sauberem Abstand,
    Fokus unten (große Schrittnamen), dicker Rand 2,5 px = definiert, Ergebnisfragen in ihrem Kasten,
    Detaillierung gleich groß wie Positionierung & Pitch, Grafiken in Originalgröße mittig. Kein Gelb außer Schrittziffern. */
 .vv-inhalt--f .vv-g {
   grid-template-areas:
     "t0 t0 t0 t0 t0"
-    ".  .  svt svt svt"
-    "zu zu sv sv sv"
+    "svt svt svt svt svt"
+    "sv sv sv sv sv"
     ".  .  .  .  ab"
     "t1 t1 t1 .  t2"
     "k1 .  k3 .  k2"
@@ -394,8 +326,9 @@
 }
 .vv-inhalt--f .vv-g-flaeche { border-color: #d6d0c8; }
 /* oben: ruhig, aber definiert */
-.vv-inhalt--f .vv-g-sv { padding: 1.6rem 2.2rem 1.8rem; border: 2.5px solid var(--e2-ink) !important; }
-.e2 .vv-inhalt--f .vv-g-svname { margin: 0 0 .7rem; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; line-height: 1.2; color: var(--e2-ink); }
+.vv-inhalt--f .vv-g-sv { padding: 1.8rem 2.4rem 1.9rem; border: 2.5px solid var(--e2-ink) !important; }
+/* Selbstverständnis wie im Modell: Name außerhalb des Kastens, so groß wie Ausgangssituation, Strategie, Vision */
+.vv-inhalt--f .vv-g-svtitel { margin: 0 0 1.3rem; font-size: 1.6rem; }
 .e2 .vv-inhalt--f .vv-g-svsatz { max-width: 38rem; margin: 0 auto; font-size: .95rem; font-weight: 400; line-height: 1.6; color: var(--e2-ink-2); }
 .vv-inhalt--f .vv-g-werte { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin: 1.1rem 0 0; padding: 0; }
 .vv-inhalt--f .vv-g-werte li { padding: .3rem .85rem; border: 1px solid #cfc9c1; border-radius: 999px; font-size: .78rem; font-weight: 500; line-height: 1.3; color: var(--e2-ink); }
@@ -405,12 +338,17 @@
 .vv-inhalt--f .vv-g-mobilkopf { font-size: 1.45rem; }
 .vv-inhalt--f .vv-g-karte { padding: 1.6rem 1.6rem 1.7rem; border-radius: 16px; }
 .vv-inhalt--f .vv-g-a1, .vv-inhalt--f .vv-g-a3, .vv-inhalt--f .vv-g-a2, .vv-inhalt--f .vv-g-b3 { border: 2.5px solid var(--e2-ink) !important; }
+.vv-inhalt--f .vv-g-b1, .vv-inhalt--f .vv-g-b2 { border-width: 2.5px; }   /* gleiche Randstärke wie Positionierung & Pitch, damit alles auf gleicher Höhe sitzt */
 .vv-inhalt--f .vv-g-karte > small { font-size: .88rem; }
 /* Steckbrief zentriert: Merkmal klein darüber, Inhalt darunter */
 .vv-inhalt--f .vv-kv { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 1rem; text-align: center; }
 .vv-inhalt--f .vv-kv dt { font-size: .72rem; }
 .vv-inhalt--f .vv-kv dd { margin-bottom: .7rem; font-size: .88rem; text-wrap: balance; }
 .vv-inhalt--f .vv-g-b3 .vv-kern { margin: 0 -1.2rem; font-size: .88rem; }
+/* Ergebnisse: in allen drei Kästen gleich – zwei Zeilen, Dreieck und Satz auf gleicher Höhe (am Kastenfuß) */
+.vv-inhalt--f .vv-g-frage { margin-top: auto; }
+.vv-g-frage__z { display: block; white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1200px) { .e2 .vv-inhalt--f .vv-g-frage { font-size: .8rem; } }
 @media (min-width: 901px) and (max-width: 1200px) { .vv-inhalt--f .vv-g-b3 .vv-kern { font-size: .8rem; } }
 
 /* ===== Schmal ===== */
@@ -449,15 +387,7 @@
   /* Reihenfolge wie im Modelltext: Selbstverständnis → 1 → 2 (mit Positionierung) → 3 (mit Alltag, Kommunikation) */
   .vv-g-t0 { order: 1; } .vv-g-zufluss { order: 2; } .vv-g-sv { order: 5; }
   .vv-g-svtitel { order: 4; margin-bottom: 0 !important; }
-  /* E mobil: gelbe Fläche aus Kicker, Hinweis und Rand um die Selbstverständnis-Karte; Zonenfragen unten entfallen wie in den anderen Varianten */
-  .vv-inhalt--e .vv-g { padding: 0; }
-  .vv-inhalt--e .vv-g-t1, .vv-inhalt--e .vv-g-t2, .vv-inhalt--e .vv-g-abwaerts { display: none !important; }
-  .e2 .vv-inhalt--e .vv-g-t0 { margin: 0 0 -.8rem; padding: 1.5rem 1.2rem .9rem; border-radius: 22px 22px 0 0; background: var(--e2-gelb); }
-  .vv-inhalt--e .vv-g-zufluss { margin: 0 0 -.8rem; padding: .3rem 1.2rem 1.3rem; background: var(--e2-gelb); }
-  .vv-inhalt--e .vv-g-zufluss p { text-align: left; }
-  .vv-inhalt--e .vv-g-sv { margin: 0 1.2rem 2.4rem; box-shadow: 0 0 0 1.2rem var(--e2-gelb); }
-  .vv-inhalt--e .vv-g-erg { display: flex; flex-direction: column; gap: 1.4rem; padding: 1.8rem 1.4rem; }
-  .vv-inhalt--e .vv-g-erg__tag { margin-bottom: 0; }
+  .vv-inhalt--f .vv-g-abwaerts { display: none; }
   .vv-inhalt--d .vv-g-sv { padding: 1.5rem 1.3rem; }
   .vv-inhalt--d .vv-g-werte { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vv-g-abwaerts { order: 3; }
