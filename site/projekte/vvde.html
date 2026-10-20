@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/assets/e2/sg/e2-runde5.css">
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
-<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=21">
+<link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=26">
 </head>
 <body class="e2">
 
@@ -908,17 +908,37 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </main>
 
 <!-- ======================= Inhalte – EINE Quelle für beide Ansichten =======================
-     Je Baustein: "inhalt" ist eine Liste von Sätzen. Leer = „Noch offen“.
+     Je Baustein: "kern" = Hauptaussage, "einleitung" + "punkte" (kurz für die Infografik, lang für
+     „Alle Fakten“), "inhalt" = weitere Sätze. Alles leer = Baustein noch ohne Inhalt.
+     Je Schritt: "saetze" = Leitsätze mit Label, "werte" = Werteliste (Selbstverständnis) – in der Infografik
+     zum Anklicken (helles Fenster), in „Alle Fakten“ ausgeschrieben.
      Nur hier eintragen, dann stimmen „Alle Fakten“ und „Infografik“ automatisch überein. -->
 <script>
 window.VVDE_MODELL = {
-  selbstverstaendnis: { titel: "Selbstverständnis", frage: "Wofür stehen wir?", inhalt: [] },
+  selbstverstaendnis: { titel: "Selbstverständnis", fensterTitel: "Unser Selbstverständnis", frage: "Wofür stehen wir?",
+    saetze: [ { label: "Übergeordnet", text: "Wir denken und gestalten Versicherungsschutz für Eisenbahn- und Verkehrsunternehmen aus der Kundenperspektive." } ],
+    werte: [ "Kundenorientierung", "Traditions\u00ADbewusstsein und Dynamik", "Zuverlässigkeit", "Vertrauen", "Begeisterung", "Wertschätzung" ],
+    inhalt: [] },
   /* Was in das Selbstverständnis einfließt – in der Infografik als Pfeil ohne Kasten */
   zufluss: { titel: "Zielgruppenfokus + zentraler Erfolgsfaktor", frage: "„What’s in it for me?“", inhalt: [] },
   ausgangssituation: { nr: 1, titel: "Ausgangssituation", frage: "Wo stehen wir heute?", zone: "Wie kommen wir dorthin?",
     bausteine: [ { titel: "Heutiges Geschäfts- und Organisationsmodell", inhalt: [] } ] },
-  vision: { nr: 2, titel: "Vision", frage: "Wie wollen wir wahrgenommen werden?", zone: "Wie wollen wir wahrgenommen werden?",
-    bausteine: [ { titel: "Zukünftiges Geschäfts- und Organisationsmodell", inhalt: [] } ],
+  vision: { nr: 2, titel: "Vision", fensterTitel: "Unsere Vision", frage: "Wie wollen wir wahrgenommen werden?", zone: "Wie wollen wir wahrgenommen werden?",
+    saetze: [
+      { label: "Übergeordnete Vision · offiziell", text: "Unsere Vision ist, zur ersten Wahl zu gehören, wenn es um Versicherungsschutz für Bahnunternehmen geht." },
+      { label: "Konkret", text: "Wir wollen Eisenbahn- und Verkehrsunternehmen in der Nische der Eisenbahnversicherung durch maßgeschneiderte Angebote bedarfsgerecht und zu einem fairen Preis versichern." }
+    ],
+    bausteine: [ { titel: "Zukünftiges Geschäfts- und Organisationsmodell",
+      kern: "Spezialversicherer",
+      einleitung: "Maßgeschneiderte Angebote für",
+      /* kurz = Infografik · lang = Alle Fakten */
+      punkte: [
+        { kurz: "Personennahverkehr (SPNV / ÖPNV)", lang: "Bahn- und Busbetriebe des Personennahverkehrs (SPNV / ÖPNV)" },
+        { kurz: "Güterverkehr auf Schiene und Straße", lang: "Unternehmen des Güterverkehrs auf Schiene und Straße" },
+        { kurz: "Schieneninfrastruktur", lang: "Betreiber von Schieneninfrastrukturen" },
+        { kurz: "Berg- und Seilbahnen", lang: "Berg- und Seilbahnen" }
+      ],
+      inhalt: [] } ],
     folgt: [ { titel: "Positionierung & Pitch", frage: "Welches Problem lösen wir – und was macht uns einzigartig?", inhalt: [] } ] },
   strategie: { nr: 3, titel: "Strategie", frage: "Wie kommen wir dorthin?", zone: "Wie kommen wir dorthin?",
     bausteine: [ { titel: "Stoßrichtungen & Handlungsfelder", inhalt: [] } ],
@@ -1086,6 +1106,6 @@ window.VVDE_MODELL = {
 </footer>
 
 <script src="/script.js"></script>
-<script src="/assets/projekte/vvde/vvde.js?v=7"></script>
+<script src="/assets/projekte/vvde/vvde.js?v=13"></script>
 </body>
 </html>
