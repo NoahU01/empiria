@@ -362,6 +362,8 @@
 .vv-inhalt--f .vv-kv { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 1rem; text-align: center; }
 .vv-inhalt--f .vv-kv dt { font-size: .72rem; }
 .vv-inhalt--f .vv-kv dd { margin-bottom: .7rem; font-size: .88rem; text-wrap: balance; }
+@media (min-width: 901px) and (max-width: 1200px) { .vv-inhalt--f .vv-kv { width: calc(100% + 1.6rem); margin-left: -.8rem; margin-right: -.8rem; } .vv-inhalt--f .vv-kv dd { font-size: .82rem; } }
+@media (min-width: 901px) and (max-width: 1000px) { .vv-inhalt--f .vv-kv dd { font-size: .76rem; } }
 .vv-inhalt--f .vv-g-b3 .vv-kern { margin: 0 -1.2rem; font-size: .88rem; }
 /* Ergebnisse: in allen drei Kästen gleich – zwei Zeilen, Dreieck und Satz auf gleicher Höhe (am Kastenfuß) */
 .vv-inhalt--f .vv-g-frage { margin-top: auto; }
