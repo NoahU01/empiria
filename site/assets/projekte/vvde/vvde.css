@@ -125,6 +125,18 @@
 
 .vv-fenster.vv-fenster--breit { width: min(60rem, calc(100vw - 2rem)); }
 
+/* Strategie in zwei Ebenen (Kasten Stoßrichtungen & Handlungsfelder) – Überschriften gleich formatiert, Bereiche als Pills wie die Werte */
+.vv-ebenen { width: 100%; }
+.e2 .vv-ebenen__t { margin: 0 0 .55rem; font-size: .72rem; font-weight: 600; color: var(--e2-grau); text-align: center; }
+.vv-ebenen__pfeil { position: relative; display: block; width: 0; height: 1.3rem; margin: .7rem auto .6rem; border-left: 1.5px solid var(--e2-ink); }
+.vv-ebenen__pfeil::after { content: ""; position: absolute; bottom: -1px; left: -5.5px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--e2-ink); }
+.vv-teile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.vv-teile li { display: flex; align-items: center; justify-content: center; padding: .4rem .6rem; border: 1px solid #cfc9c1; border-radius: 10px; font-size: .74rem; font-weight: 500; line-height: 1.3; text-align: center; color: var(--e2-ink); text-wrap: balance; }
+.vv-g .vv-teile li { white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1200px) { .vv-g .vv-teile li { padding: .4rem .3rem; font-size: .68rem; } }
+.vv-f-zeile__text .vv-teile { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 36rem; padding: 0; }
+.vv-f-zeile__text .vv-teile li, .vv-f-zeile__text .vv-teile li + li { margin: 0; }
+
 /* Werte: schlichte Liste mit feinen Linien, ohne Nummern (keine Schritte) */
 .vv-werte { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin: .4rem 0 1.4rem; padding: 0; list-style: none; }
 .vv-werte li { padding: .6rem 0; border-bottom: 1px solid var(--e2-linie); font-size: .95rem; font-weight: 600; line-height: 1.35; color: var(--e2-ink); }
@@ -265,7 +277,7 @@
 .vv-inhalt--c .vv-g-kreis .vv-auf { margin-top: -.2rem; }
 .vv-inhalt--c .vv-g-mobilauf .vv-auf { margin-top: 0; }
 /* SWOT und Zeitplan in ihrer natürlichen Größe, vertikal mittig im verbleibenden Platz des Kastens */
-.vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-zeit--mini { margin-top: auto; margin-bottom: auto; }
+.vv-inhalt--c .vv-g-a1 .vv-swot-mini, .vv-inhalt--c .vv-g-a3 .vv-ebenen { margin-top: auto; margin-bottom: auto; }
 
 /* ===== Variante D (Sektion 4): Fokus auf „Wie kommen wir dorthin?“ und „Wie wollen wir wahrgenommen werden?“ =====
    Oben ruhig: Selbstverständnis hell gerahmt, kleiner Titel, Aussage in Grundschrift (zwei Zeilen), Werte als Pills.

@@ -48,7 +48,8 @@
     var h = b.kern ? '<p class="vv-kern">' + (b.kernZeilen ? b.kernZeilen.map(function (z) { return '<span class="vv-kern__z">' + esc(z) + "</span>"; }).join(" ") : esc(b.kern)) + "</p>" : "";
     h += kanaele(b);
     if (b.swot && modus !== "kurz") h += '<p class="vv-swot-titel">SWOT-Analyse</p>' + swot(b.swot) + '<p class="vv-hinweis vv-swot-hinweis">Die vollständige SWOT-Analyse steht in einem separaten Dokument.</p>';
-    if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Drei strategische Stoßrichtungen</p>' + zeitplanBild(b);
+    if (b.zeitplan && modus !== "kurz") h += '<p class="vv-swot-titel">Geschäftsstrategie · drei strategische Stoßrichtungen</p>' + zeitplanBild(b) +
+      ((b.teilstrategien || []).length ? '<p class="vv-swot-titel">Daraus abgeleitet · Strategien der Bereiche</p>' + liste(b.teilstrategien.map(function (s) { return s.replace("|", " "); }), "vv-teile") : "");
     var th = b.themen || [];
     var kurz = th.filter(function (t) { return t.kurz; }).map(function (t) { return t.kurz; });
     /* Variante D: Steckbrief (Merkmal · Inhalt) statt loser Zeilen */
@@ -115,7 +116,7 @@
   var A = M.ausgangssituation, V = M.vision, St = M.strategie;
   function lab(normal) { return C ? "Mehr erfahren" : normal; }
   function karte(b, cls, extra, frage) {
-    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + zeitplanBild(b, "mini") + details(b, frage)) +
+    return '<div class="vv-g-karte ' + (cls || "") + '">' + (extra || "") + "<small>" + (b.titelGrafik ? b.titelGrafik.map(esc).join("<br>") : esc(b.titel)) + '</small>' + (leer(b) ? "" : (text(b, "kurz") ? '<div class="vv-g-text">' + text(b, "kurz") + "</div>" : "") + swotMini(b) + strategieEbenen(b) + details(b, frage)) +
       (!E && b.frage && cls && cls.indexOf("vv-g-aus") > -1 ? '<p class="vv-g-frage"><span class="vv-sr">Ergebnis: </span>' + (F && b.frageZeilen ? b.frageZeilen.map(function (z) { return '<span class="vv-g-frage__z">' + esc(z) + "</span>"; }).join(" ") : esc(b.frage)) + "</p>" : "") + "</div>";
   }
   /* Helles Fenster: jeder Leitsatz-Schritt und jeder Baustein mit Themen bekommt eines (Register FENSTER) */
@@ -136,6 +137,13 @@
       jahre.map(function (y) { return '<span class="vv-zeit__jahr">' + y + "</span>"; }).join("") +
       z.stossrichtungen.map(function (s) { return '<div class="vv-zeit__streifen"><span>' + esc(s) + "</span></div>"; }).join("") +
       "</div>";
+  }
+  /* Strategie in zwei Ebenen: Geschäftsstrategie (Zeitstrahl) → abgeleitet die Strategien der Bereiche */
+  function strategieEbenen(b) {
+    if (!b.zeitplan) return "";
+    return '<div class="vv-ebenen"><p class="vv-ebenen__t">Geschäftsstrategie</p>' + zeitplanBild(b, "mini") +
+      ((b.teilstrategien || []).length ? '<span class="vv-ebenen__pfeil" aria-hidden="true"></span><p class="vv-ebenen__t">Strategien der Bereiche</p><ul class="vv-teile">' +
+        b.teilstrategien.map(function (s) { return "<li><span>" + s.split("|").map(esc).join("<br>") + "</span></li>"; }).join("") + "</ul>" : "") + "</div>";
   }
   function details(b, frage) {
     if (!(b.themen || []).length) return "";
