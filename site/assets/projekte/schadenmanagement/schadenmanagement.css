@@ -485,9 +485,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 }
 
 /* ===== Variante 5 · Grundregel: Schwarz mit gelber Markierung und drei Karten mit Symbol ===== */
-.v5-mark { padding: 0 .12em; background: var(--e2-gelb); color: var(--e2-ink); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.sm-b--schwarz h2 .v5-mark { color: var(--e2-ink); }
-.v5-regel h2 { max-width: 20ch; }
 .v5-gruende { list-style: none; margin: 2.8rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .v5-gruende li { display: flex; flex-direction: column; gap: .5rem; padding: 1.6rem 1.5rem; border-radius: 16px; background: #262422; }
 .v5-grund__ic { display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: .5rem; border-radius: 50%; background: var(--e2-gelb); }
@@ -513,10 +510,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
   .v5-gruende { grid-template-columns: 1fr; }
   .sm-v4 .oz-ziel .v4-name { font-size: 1.55rem; }
 }
-@media (min-width: 641px) { .v5-mark { white-space: nowrap; } }
-.v5-regel h2 { max-width: none; }
-.v5-regel h2 { line-height: 1.16; }
-.e2 .v5-regel .sm-lead { margin-top: 1.6rem; }
 @media (min-width: 901px) and (max-width: 1280px) {
   .v4-name { font-size: 1.5rem; }
   .oz { grid-template-columns: minmax(0, 1fr) 4.6rem minmax(0, 1fr) minmax(0, 1fr); column-gap: 1rem; }
@@ -566,23 +559,21 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
   .sm-zufluss__pfeil { flex: none; width: 100%; }
 }
 
-/* ===== Variante 5 · Grundregel kompakt (Daniel, 21.10.): Überschrift einzeilig, kleine abgerundete Markierung,
-   ein Satz statt Kicker und Lead, die drei Gründe als flache Zeile mit Symbol – keine Kästen ===== */
-.sm-b.v5-regel { padding: clamp(3rem, 5vw, 4.2rem) 0; }
-.v5-regel__kopf { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .8rem 2.4rem; }
-.sm-b.v5-regel h2 { max-width: none; font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1.15; }
-.v5-mark { padding: .02em .16em .04em; border-radius: .22em; }
-.e2 .v5-regel__satz { margin: 0; font-size: 1rem; line-height: 1.5; color: #d8d3cc; }
-.v5-regel .v5-gruende { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 2.2rem; border-top: 1px solid #3a3734; }
-.v5-regel .v5-gruende li { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: .9rem; row-gap: .2rem; align-items: start; padding: 1.4rem 1.6rem 0 0; border-radius: 0; background: none; }
-.v5-regel .v5-gruende li + li { padding-left: 1.6rem; border-left: 1px solid #3a3734; }
-.v5-regel .v5-grund__ic { grid-row: 1 / 3; width: 2.4rem; height: 2.4rem; margin: 0; }
-.v5-regel .v5-grund__ic svg { width: 1.25rem; height: 1.25rem; }
-.v5-regel .v5-gruende b { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; line-height: 1.35; }
-.v5-regel .v5-gruende li > span:last-child { font-size: .88rem; line-height: 1.5; }
-@media (max-width: 900px) {
-  .v5-regel .v5-gruende { grid-template-columns: 1fr; }
-  .v5-regel .v5-gruende li { padding: 1.1rem 0 0; }
-  .v5-regel .v5-gruende li + li { padding-left: 0; border-left: 0; }
-}
-.v5-regel .v5-mark { white-space: nowrap; }
+/* ===== Variante 5 · Grundregel als zentriertes Statement (Daniel, 21.10.)
+   Gegenpol zu den linksbündigen Abschnitten: eine Zeile Überschrift in Seitengröße, schmale abgerundete
+   gelbe Unterstreichung statt Block, ein Satz, die drei Gründe zentriert mit Symbol – ohne Linien, ohne Kästen. */
+.sm-b.v5-regel { padding: clamp(3.6rem, 6vw, 5rem) 0; text-align: center; }
+.v5-regel__kopf { display: block; }
+.sm-b.v5-regel h2 { max-width: none; margin: 0 auto; font-size: clamp(2.2rem, 3.9vw, 3.3rem); line-height: 1.12; }
+.v5-mark { position: relative; padding: 0; border-radius: 0; background: none; color: inherit; white-space: nowrap; }
+.sm-b--schwarz h2 .v5-mark { color: #fff; }
+.v5-mark::after { content: ""; position: absolute; left: .02em; right: .02em; bottom: -.1em; height: .13em; border-radius: 99px; background: var(--e2-gelb); }
+.e2 .v5-regel__satz { margin: 1.3rem auto 0; font-size: 1.05rem; line-height: 1.6; color: #d8d3cc; }
+.v5-regel .v5-gruende { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4rem; max-width: 62rem; margin: 3rem auto 0; padding: 0; border: 0; list-style: none; }
+.v5-regel .v5-gruende li { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: 0; border: 0; border-radius: 0; background: none; }
+.v5-regel .v5-gruende li + li { padding: 0; border: 0; }
+.v5-regel .v5-grund__ic { width: 2.8rem; height: 2.8rem; margin: 0 0 .55rem; }
+.v5-regel .v5-grund__ic svg { width: 1.35rem; height: 1.35rem; }
+.v5-regel .v5-gruende b { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; line-height: 1.35; color: #fff; }
+.v5-regel .v5-gruende li > span:last-child { max-width: 17rem; font-size: .9rem; line-height: 1.55; color: #b9b3ab; text-wrap: balance; }
+
