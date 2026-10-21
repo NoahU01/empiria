@@ -256,11 +256,6 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 .vs-rollen dt { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grau); }
 .vs-rollen dd { margin: .25rem 0 0; font-family: var(--head); font-weight: 600; font-size: clamp(1.35rem, 2.2vw, 1.6rem); line-height: 1.24; white-space: nowrap; }
 .vs-rollen em { font-style: normal; background: linear-gradient(transparent 58%, var(--gelb) 58%, var(--gelb) 92%, transparent 92%); padding: 0 .06em; }
-.vs-bausteine { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
-.vs-bausteine .post { border-color: var(--weiss); }
-.vs-bausteine .post__bild { aspect-ratio: 16 / 9; padding: 1.8rem; }
-.vs-bausteine .post__bild b { font-size: clamp(1.8rem, 3vw, 2.5rem); max-width: 70%; }
-.vs-bausteine .post__text { padding: 1.3rem 1.6rem 1.6rem; font-size: 1.02rem; }
 .vs-wege { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
 .vs-weg { display: flex; flex-direction: column; padding: 2rem 2rem 2.2rem; border-radius: var(--r); border: 1.5px solid var(--linie); }
 .vs-weg__kopf { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2rem; }
@@ -294,7 +289,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 @media (prefers-reduced-motion: reduce) { .vs-seite img { transition: none !important; } }
 @media (max-width: 1180px) { .vs-beide { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; } .vs-beide li:first-child { grid-column: 1 / -1; } }
 @media (max-width: 860px) {
-  .vs-held .wrap, .vs-bausteine, .vs-wege { grid-template-columns: minmax(0, 1fr); }
+  .vs-held .wrap, .vs-wege { grid-template-columns: minmax(0, 1fr); }
   .vs-marke { max-width: 26rem; }
   .vs-seiten { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
   .vs-beide { grid-template-columns: minmax(0, 1fr); }
@@ -303,5 +298,37 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
   .vs-held h1 em { white-space: normal; }
   .vs-weg { padding: 1.5rem; }
   .vs-beide { padding: 1.3rem 1.5rem; }
-  .vs-bausteine .post__bild { aspect-ratio: 4 / 3; padding: 1.4rem; }
+}
+
+/* Vorseite: Umschalter Kopfbereich 1/2 (nur Entwurf) und Variante 2 */
+.vs-schalter { display: inline-flex; align-items: center; gap: .35rem; margin-left: auto; }
+.vs-schalter button { width: 1.7rem; height: 1.4rem; border-radius: 6px; border: 1px solid #57524d; background: transparent; color: #cfcac3; font: 600 .75rem var(--text); cursor: pointer; }
+.vs-schalter button[aria-pressed="true"] { background: var(--gelb); border-color: var(--gelb); color: var(--ink); }
+.vs-v[hidden] { display: none; }
+.vs-v__text { margin-top: 1rem; max-width: 40rem; font-size: 1.12rem; color: var(--ink-2); }
+.vs-v__kern { margin-top: 1.4rem; padding-left: 1.2rem; border-left: 4px solid var(--gelb); font-family: var(--head); font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 1.6rem); line-height: 1.24; }
+.vs-v--2 + .vs-v--1 + .knoepfe, .vs-v--2 ~ .knoepfe { margin-top: 2rem; }
+@media (max-width: 560px) { .vs-schalter { margin-left: 0; } }
+@media (max-width: 560px) { .vs-br { display: none; } }
+
+/* Vorseite: Ablauf in vier Schritten (Die Idee) – Linie wie der Festzug */
+.vs-ablauf { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 3.4rem 0 0; padding: 0; list-style: none; }
+.vs-ablauf::before { content: ""; position: absolute; left: 1.6rem; right: calc((100% - 6rem) / 4 - 1.6rem); top: 1.55rem; height: 3px; background: repeating-linear-gradient(90deg, var(--ink) 0 10px, transparent 10px 18px); opacity: .35; }
+.vs-ablauf li { position: relative; display: flex; flex-direction: column; }
+.vs-ablauf__nr { position: relative; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--gelb); border: 2px solid var(--ink); font-family: var(--head); font-weight: 700; font-size: 1.2rem; }
+.vs-ablauf--ziel .vs-ablauf__nr { background: var(--ink); color: var(--gelb); }
+.vs-ablauf__marke { position: absolute; left: 4rem; top: .75rem; padding: .25rem .75rem; border-radius: 999px; background: var(--ink); color: var(--gelb); font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.vs-ablauf .ico { width: 3.4rem; height: 3.4rem; margin-top: 1.8rem; --tupfer: #fff; }
+.vs-ablauf h3 { margin-top: 1.1rem; font-size: 1.45rem; }
+.vs-ablauf p { margin-top: .5rem; font-size: .98rem; color: var(--ink); }
+@media (max-width: 1080px) { .vs-ablauf { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; } .vs-ablauf::before { display: none; } }
+@media (max-width: 560px) {
+  .vs-ablauf { grid-template-columns: minmax(0, 1fr); row-gap: 2.4rem; }
+  .vs-ablauf::before { display: block; left: 1.5rem; right: auto; top: 1.6rem; bottom: 1.6rem; width: 3px; height: auto; background: repeating-linear-gradient(var(--ink) 0 10px, transparent 10px 18px); }
+  .vs-ablauf li { padding-left: 4.4rem; }
+  .vs-ablauf--ziel::after { content: ""; position: absolute; left: 1.1rem; top: 3.2rem; bottom: -3rem; width: 1rem; background: var(--gelb); }
+  .vs-ablauf__nr { position: absolute; left: 0; top: 0; }
+  .vs-ablauf__marke { position: static; align-self: flex-start; margin-bottom: .2rem; }
+  .vs-ablauf .ico { margin-top: 0; width: 2.8rem; height: 2.8rem; }
+  .vs-ablauf h3 { margin-top: .7rem; }
 }

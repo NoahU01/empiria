@@ -35,6 +35,7 @@ SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="16" cy="8" r="5" class="tupfer"/><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11M11 10.5V4a1.5 1.5 0 0 1 3 0v6.5M14 10.5V5.5a1.5 1.5 0 0 1 3 0V13c0 4.4-2.7 8-7 8-3.2 0-4.8-1.6-6.4-4.8L2.4 13.6a1.5 1.5 0 0 1 2.5-1.6L8 15"/></symbol>
 <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5" class="tupfer"/><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/><path d="M10.4 12.6c.9.9 2.3.9 3.2 0"/></symbol>
 <symbol id="i-handy" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" class="tupfer"/><rect x="6.5" y="2.5" width="11" height="19" rx="2.2"/><path d="M10.5 5h3M9.5 10.8l1.8 1.8 3.4-3.4"/><path d="M11 18.5h2"/></symbol>
+<symbol id="i-gespraech" viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h8A2.5 2.5 0 0 1 16 5.5v4a2.5 2.5 0 0 1-2.5 2.5H8.5L5 15v-3h.5A2.5 2.5 0 0 1 3 9.5z" class="tupfer"/><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h8A2.5 2.5 0 0 1 16 5.5v4a2.5 2.5 0 0 1-2.5 2.5H8.5L5 15v-3.1A2.5 2.5 0 0 1 3 9.5z"/><path d="M18.5 8.5A2.5 2.5 0 0 1 21 11v4a2.5 2.5 0 0 1-2.5 2.5H19v3l-3.5-3H11a2.5 2.5 0 0 1-2.5-2.5"/><path d="M7 7.5h5"/></symbol>
 <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
 <symbol id="i-weiter" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 <symbol id="i-regen" viewBox="0 0 24 24"><path d="M7 16.5h10.5a4 4 0 0 0 .6-8 6 6 0 0 0-11.6 1A3.5 3.5 0 0 0 7 16.5z" class="tupfer"/><path d="M7 16.5h10.5a4 4 0 0 0 .6-8 6 6 0 0 0-11.6 1A3.5 3.5 0 0 0 7 16.5z"/><path d="M9 19.5l-.8 2M13 19.5l-.8 2M17 19.5l-.8 2"/></symbol>
@@ -46,7 +47,7 @@ def i(name, cls="ico"): return f'<svg class="{cls}" aria-hidden="true"><use href
 
 def kopf(seite):
     if seite == VORSEITE:
-        return (f'''<div class="dev"><div class="wrap"><span>Entwurf · nur in der Entwicklungsumgebung sichtbar · Vorstellung der Homepage Wagenpaten</span><a href="../index.html">← zurück zu empiria</a></div></div>
+        return (f'''<div class="dev"><div class="wrap"><span>Entwurf · nur in der Entwicklungsumgebung sichtbar · Vorstellung der Homepage Wagenpaten</span><span class="vs-schalter" role="group" aria-label="Variante des Kopfbereichs">Kopfbereich <button type="button" data-kopf="1" aria-pressed="true">1</button><button type="button" data-kopf="2" aria-pressed="false">2</button></span><a href="../index.html">← zurück zu empiria</a></div></div>
 <header class="kopf"><div class="wrap">
 <span class="marke"><svg class="marke__zeichen" aria-hidden="true"><use href="#v-horaff"/></svg><span><b>Wagenpaten</b><small>Volksfestumzug der Schulen 2027</small></span></span>
 <nav class="nav" aria-label="Seiten"><a class="knopf" href="vofe-umzug-schulen.html">Zur Homepage</a></nav></div></header>''')
@@ -236,7 +237,13 @@ VORSTELLUNG = f'''<section class="held vs-held"><div class="wrap">
 <div>
   <p class="kicker">Eine Idee für den Volksfestumzug der Schulen 2027</p>
   <h1>Warum es die <em>Wagenpaten</em> gibt.</h1>
-  <p class="lead">Beim letzten Schulumzug war ich als Wagenengel dabei. Ich habe gesehen, wie viel Freude die Kinder haben – und dass sie die Süßigkeiten zum Verteilen selbst mitbringen. Das möchte ich ändern. Denn das Volksfest gehört zu Crailsheim, und der Umzug der Schulen gehört dazu.</p>
+  <div class="vs-v vs-v--2" hidden>
+  <p class="lead">Für die Kinder am Straßenrand gibt es beim Umzug kaum etwas Schöneres, als etwas zugeworfen zu bekommen. Und wer auf dem Wagen mitfährt oder mitläuft, möchte ordentlich etwas zum Verteilen haben.</p>
+  <p class="vs-v__text">Bisher bringen die Kinder ihre Süßigkeiten selbst mit, und die Wagen sind ganz unterschiedlich ausgestattet.</p>
+  <p class="vs-v__kern">Drei Päckchen Bonbons von zu Hause<br class="vs-br"> reichen nicht weit.</p>
+  <p class="vs-v__text">Ich möchte, dass jeder Wagen ordentlich ausgestattet ist. Dann haben alle mehr Spaß am Umzug: die Kinder, die mitlaufen und verteilen, und die Kinder, die am Wegesrand stehen.</p>
+  </div>
+  <p class="lead vs-v vs-v--1">Beim letzten Schulumzug war ich als Wagenengel dabei. Ich habe gesehen, wie viel Freude die Kinder haben – und dass sie die Süßigkeiten zum Verteilen selbst mitbringen. Das möchte ich ändern. Denn das Volksfest gehört zu Crailsheim, und der Umzug der Schulen gehört dazu.</p>
   <div class="knoepfe"><a class="knopf" href="vofe-umzug-schulen.html">Zur Homepage {i("weiter")}</a></div>
   <div class="vs-person"><img src="/assets/daniel-round.webp" alt="Daniel Ströbel"><div><b>Daniel Ströbel</b><small>Crailsheimer · ehemaliger Schüler des ASG</small></div></div>
 </div>
@@ -249,13 +256,13 @@ VORSTELLUNG = f'''<section class="held vs-held"><div class="wrap">
 
 <section class="sek sek--gelb"><div class="wrap">
 <p class="kicker">Die Idee</p>
-<h2 class="h2">Zwei Bausteine.</h2>
-<div class="vs-bausteine">
-  <article class="post"><div class="post__bild post__bild--schwarz"><small>Baustein 1 · Homepage</small><b>Unternehmen werden Wagenpaten.</b>{i("wagen")}</div>
-  <p class="post__text">Auf der Homepage sehen Unternehmen aus Crailsheim und Umgebung alle Wagen der Schulen. Für einen freien Wagen übernehmen sie mit einem Klick die Patenschaft und stellen die Süßigkeiten. Die Kinder müssen nichts mehr selbst mitbringen.</p></article>
-  <article class="post"><div class="post__bild post__bild--weiss"><small>Baustein 2 · Social Media</small><b>Wer mitmacht, wird gesehen.</b>{i("handy")}</div>
-  <p class="post__text">Über jede Patenschaft berichten wir auf Instagram und Facebook. Dazu bekommen die Unternehmen fertige Vorlagen, mit denen sie selbst zeigen können: Wir machen mit.</p></article>
-</div>
+<h2 class="h2">So läuft es ab.</h2>
+<ol class="vs-ablauf">
+  <li><span class="vs-ablauf__nr">1</span>{i("gespraech")}<h3>Idee vorstellen</h3><p>Wir gehen auf Unternehmen aus Crailsheim und Umgebung zu und stellen ihnen die Wagenpaten vor.</p></li>
+  <li><span class="vs-ablauf__nr">2</span>{i("wagen")}<h3>Wagen aussuchen</h3><p>Auf der Homepage sehen die Unternehmen alle Wagen, die beim Umzug mitfahren. Mit einem Klick übernehmen sie die Patenschaft für einen Wagen.</p></li>
+  <li><span class="vs-ablauf__nr">3</span>{i("handy")}<h3>Darüber berichten</h3><p>Wir berichten regelmäßig in Social Media über die Paten. Dazu bekommen die Unternehmen fertige Postings, mit denen sie sich auf ihren eigenen Kanälen als Wagenpate zeigen.</p></li>
+  <li class="vs-ablauf--ziel"><span class="vs-ablauf__nr">4</span><span class="vs-ablauf__marke">Das Highlight</span>{i("sonne")}<h3>Der Umzug</h3><p>Beim Volksfestumzug 2027 sind die Wagen ordentlich ausgestattet. Glückliche Kinder auf beiden Seiten: auf dem Wagen und am Straßenrand.</p></li>
+</ol>
 </div></section>
 
 <section class="sek"><div class="wrap">
