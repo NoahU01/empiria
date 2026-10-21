@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "65"  # Versionsnummer für CSS/JS
+V = "66"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -133,7 +133,7 @@ def main(pfad):
       <p class="ak-wo"><a href="/projekte/medienkonzept.html">&#8592; Medienkonzept</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">Entwürfe</span></p>
       <p class="e2-kicker">Medienkonzept empiria &middot; LinkedIn Daniel Ströbel</p>
       <h1>Der Redaktionsplan. Woche für <span class="hl">Woche.</span></h1>
-      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Sonntag – werktags um 8:30, am Wochenende um 9:30 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
+      <p class="e2-lead">Jede Zeile ist eine Woche, Montag bis Sonntag – jeden Tag um 7:45 Uhr über Buffer. Bild antippen zum Lesen. Gelb heißt: wartet auf deine Freigabe – „passt“ oder ein Satz, was nicht stimmt. Freigegebene Postings plane ich in Buffer ein und prüfe, ob sie erschienen sind. Ist eine Woche komplett veröffentlicht, wandert sie ins Archiv unten.</p>
   </div></section>
 
   <section class="e2-sek"><div class="e2-wrap">

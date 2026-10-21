@@ -67,7 +67,7 @@
     $('#mke-bild').innerHTML = p.seiten
       ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
-    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · ' + (/^(Sa|So)/.test(p.termin) ? '9:30' : '8:30') + ' Uhr · ' + status(p)[1];
+    $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · ' + '7:45' + ' Uhr · ' + status(p)[1];
     $('#mke-text').textContent = p.text;
     $('#mke-meta').innerHTML = '<dt>Themenfeld</dt><dd>' + p.feld + ' · ' + p.art + '</dd><dt>Format</dt><dd>' + p.format + '</dd>' +
       '<dt>Was bleibt</dt><dd>' + esc(p.kern) + '</dd>' + (p.offen ? '<dt>Noch offen</dt><dd>' + esc(p.offen) + '</dd>' : '');
