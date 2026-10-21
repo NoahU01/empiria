@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
 <link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=103">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=41">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=42">
 </head>
 <body class="e2">
 
@@ -1747,13 +1747,18 @@ window.VVDE_MODELL = {
 </script>
 <script src="/assets/projekte/vvde/vvde.js?v=56"></script>
 <script>
-/* Zielbild: was in das Selbstverständnis einfließt (Merkmal · Inhalt) und „Mehr erfahren“ zum Fenster Selbstverständnis */
+/* Zielbild wie im Pop-up „Unser Strategiemodell“: links stilisiert, was einfließt, Pfeil nach rechts in das Selbstverständnis über der Vision */
+var SM_DOK = '<svg viewBox="0 0 40 52" aria-hidden="true"><rect x="1" y="1" width="38" height="50" rx="4"/><path d="M8 11h24M8 19h19M8 27h14M8 35h24M8 43h19"/></svg>';
+document.querySelectorAll('.sm-zielbild .vv-g').forEach(function (g) {
+  g.insertAdjacentHTML('beforeend',
+    '<div class="sm-zufluss">' +
+      [['Unternehmensstrategie', 'Fokus Kunde'], ['Führungsverständnis', ''], ['Zielgruppe', '„What’s in it for me?“']].map(function (z) {
+        return '<div class="sm-zufluss__teil"><p><b>' + z[0] + '</b>' + (z[1] ? '<span>' + z[1] + '</span>' : '') + '</p>' + SM_DOK + '</div>';
+      }).join('') +
+      '<span class="sm-zufluss__pfeil" aria-hidden="true"></span></div>');
+});
 document.querySelectorAll('.sm-zielbild .vv-g-sv .vv-g-text').forEach(function (t) {
-  t.insertAdjacentHTML('beforeend',
-    '<dl class="sm-sv-kv"><div><dt>Unternehmensstrategie</dt><dd>Kundenzufriedenheit ist ein großer Bestandteil.</dd></div>' +
-    '<div><dt>Führungsverständnis</dt><dd>Noch offen.</dd></div>' +
-    '<div><dt>Zielgruppen</dt><dd>Kunde, Vertrieb, Vertriebsvorstand · Vorstand, Controlling</dd></div></dl>' +
-    '<button type="button" class="sm-sv-mehr" data-hg="hg-selbstverstaendnis">Mehr erfahren</button>');
+  t.insertAdjacentHTML('beforeend', '<button type="button" class="sm-sv-mehr" data-hg="hg-selbstverstaendnis">Mehr erfahren</button>');
 });
 /* PowerPoint als vierter Kanal (Strichzeichnung wie die übrigen) */
 document.querySelectorAll('.sm-zielbild .vv-kanaele').forEach(function (b) {
