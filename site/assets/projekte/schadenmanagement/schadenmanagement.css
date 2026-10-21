@@ -577,3 +577,11 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .v5-regel .v5-gruende b { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; line-height: 1.35; color: #fff; }
 .v5-regel .v5-gruende li > span:last-child { max-width: 17rem; font-size: .9rem; line-height: 1.55; color: #b9b3ab; text-wrap: balance; }
 
+
+/* Oberziele: „Fragen und Zielgruppen“ beginnt in allen Kästen am selben Punkt – auch aufgeklappt (Daniel, 21.10.)
+   oben ausgerichtet statt unten, ohne Trennlinie, mehr Abstand zur Grafik */
+.oz-auf { border-top: 0; }
+.oz-karte > .oz-auf { align-self: start !important; }
+.oz-auf summary { padding-top: 1.5rem; }
+.oz-karte > .oz-auf { margin-top: 0; }
+.oz-auf summary { padding-top: 3rem; }
