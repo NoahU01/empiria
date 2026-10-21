@@ -58,6 +58,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 215,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 171.5,
+    "impressionen": 346,
+    "reichweite": 215,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "mo5",
@@ -117,6 +124,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 356,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 147.5,
+    "impressionen": 533,
+    "reichweite": 362,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -169,6 +183,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 414,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 123.5,
+    "impressionen": 580,
+    "reichweite": 417,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -214,6 +235,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 188,
     "reaktionen": 4,
     "kommentare": 4
+   },
+   {
+    "stunden": 98.5,
+    "impressionen": 281,
+    "reichweite": 191,
+    "reaktionen": 4,
+    "kommentare": 4
    }
   ],
   "bild": "rp09",
@@ -252,6 +280,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1116,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 74.5,
+    "impressionen": 1566,
+    "reichweite": 1174,
+    "reaktionen": 10,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -283,6 +318,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 103,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 51.5,
+    "impressionen": 194,
+    "reichweite": 113,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -307,6 +349,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 73,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 27.5,
+    "impressionen": 286,
+    "reichweite": 189,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -324,7 +373,15 @@ window.MK_ENTWUERFE = [
   "text": "„Danke. Bitte bereiten Sie das noch einmal auf.“\n\nDrei Wochen Arbeit. Zwanzig Minuten Vorstand. Ein Satz.\n\nUnd du gehst raus und fragst dich, was du falsch gemacht hast.\n\nIch sage es dir ehrlich: Am Thema lag es nicht. Du hast zu viel gewusst. Und alles erzählt.\n\nWer sein Thema richtig gut kennt, kann am schlechtesten weglassen. Jedes Detail fühlt sich wichtig an. Ist es auch. Nur nicht für diese eine Entscheidung.\n\nDer Vorstand denkt in dem Moment nicht: schwaches Thema. Er denkt: Was soll ich damit jetzt machen?\n\nEr will drei Dinge wissen. Mehr nicht.\n\nWhy?\nWas bedeutet das Thema für unser Unternehmen?\n\nHow?\nWie gehen wir grundsätzlich vor, um das Ergebnis zu erreichen? Die Details will er erst sehen, wenn er Ja gesagt hat.\n\nWhat next?\nWas muss heute entschieden werden, damit es weitergeht?\n\nDrei Fragen, drei Sätze. Bekommst du die nicht hin, retten dich auch keine vierzig Folien.",
   "status": "veroeffentlicht",
   "datum": "2026-10-21",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 3.5,
+    "impressionen": 55,
+    "reichweite": 36,
+    "reaktionen": 2,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp02",
   "termin": "Mi 21.10.",
   "format": "Modell · A Why · How · Next",
