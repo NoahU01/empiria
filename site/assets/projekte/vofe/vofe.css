@@ -252,8 +252,10 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 .vs-marke svg { width: 9rem; height: 9rem; }
 .vs-marke > b { margin-top: 1.3rem; font-family: var(--head); font-size: 2.6rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.05; }
 .vs-marke > small { margin-top: .3rem; color: var(--grau); font-size: .92rem; }
-.vs-marke p { display: grid; gap: .5rem; width: 100%; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--linie); font-size: .97rem; color: var(--ink-2); }
-.vs-marke p b { color: var(--ink); }
+.vs-rollen { display: grid; gap: 1.1rem; width: 100%; margin: 1.8rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--linie); }
+.vs-rollen dt { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grau); }
+.vs-rollen dd { margin: .25rem 0 0; font-family: var(--head); font-weight: 600; font-size: clamp(1.35rem, 2.2vw, 1.6rem); line-height: 1.24; white-space: nowrap; }
+.vs-rollen em { font-style: normal; background: linear-gradient(transparent 58%, var(--gelb) 58%, var(--gelb) 92%, transparent 92%); padding: 0 .06em; }
 .vs-bausteine { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
 .vs-bausteine .post { border-color: var(--weiss); }
 .vs-bausteine .post__bild { aspect-ratio: 16 / 9; padding: 1.8rem; }
@@ -261,7 +263,6 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 .vs-bausteine .post__text { padding: 1.3rem 1.6rem 1.6rem; font-size: 1.02rem; }
 .vs-wege { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
 .vs-weg { display: flex; flex-direction: column; padding: 2rem 2rem 2.2rem; border-radius: var(--r); border: 1.5px solid var(--linie); }
-.vs-weg--wunsch { border: 2px solid var(--ink); }
 .vs-weg__kopf { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2rem; }
 .vs-weg__kopf small { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grau); }
 .vs-weg__kopf span { padding: .3rem .8rem; border-radius: 999px; background: var(--gelb); font-size: .82rem; font-weight: 700; }

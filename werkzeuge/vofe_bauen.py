@@ -243,7 +243,7 @@ VORSTELLUNG = f'''<section class="held vs-held"><div class="wrap">
 <div class="vs-marke">
   <svg aria-hidden="true"><use href="#v-horaff"/></svg>
   <b>Wagenpaten</b><small>Volksfestumzug der Schulen 2027</small>
-  <p><span><b>Wagenengel</b> sorgen für die Sicherheit am Wagen.</span><span><b>Wagenpaten</b> sorgen für das Süße auf dem Wagen.</span></p>
+  <dl class="vs-rollen"><div><dt>Wagenengel</dt><dd>Sicherheit <em>am Wagen.</em></dd></div><div><dt>Wagenpaten</dt><dd>Süßes <em>auf dem Wagen.</em></dd></div></dl>
 </div>
 </div></section>
 
@@ -262,13 +262,13 @@ VORSTELLUNG = f'''<section class="held vs-held"><div class="wrap">
 <p class="kicker">Wie wir es angehen</p>
 <h2 class="h2">Zwei Möglichkeiten.</h2>
 <div class="vs-wege">
-  <article class="vs-weg vs-weg--wunsch"><p class="vs-weg__kopf"><small>Möglichkeit 1</small><span>Mein Wunsch</span></p>
+  <article class="vs-weg"><p class="vs-weg__kopf"><small>Möglichkeit 1</small></p>
   <h3>Gemeinsam mit dem ASG.</h3>
   <p>Als ehemaliger Schüler hole ich das Albert-Schweitzer-Gymnasium sehr gern mit ins Boot. Wenn das ASG möchte, tritt es als Mitinitiator der Wagenpaten auf und ist auf der Homepage und in Social Media sichtbar.</p>
   </article>
   <article class="vs-weg"><p class="vs-weg__kopf"><small>Möglichkeit 2</small></p>
   <h3>Ich treibe es allein voran.</h3>
-  <p>Möchte das ASG nicht mit auftreten, setze ich die Wagenpaten als private Initiative um. An der Idee ändert sich nichts.</p>
+  <p>Nicht jede Schule kann oder darf als Initiator einer Aktion mit Unternehmen auftreten, etwa weil sie damit Verantwortung übernehmen würde. Dann setze ich die Wagenpaten als private Initiative um. Das ASG ist wie alle Schulen beim Umzug dabei.</p>
   </article>
 </div>
 <ul class="vs-beide"><li><small>In beiden Fällen</small></li><li>Kein Aufwand für die Schule</li><li>Die Umsetzung übernehme ich</li><li>Alle Schulen profitieren</li></ul>
