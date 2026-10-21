@@ -322,14 +322,14 @@ window.MK_ENTWUERFE = [
   "art": "Modell · A Why · How · Next",
   "kern": "Themenliste 18: Why – How – What next.",
   "text": "„Danke. Bitte bereiten Sie das noch einmal auf.“\n\nDrei Wochen Arbeit. Zwanzig Minuten Vorstand. Ein Satz.\n\nUnd du gehst raus und fragst dich, was du falsch gemacht hast.\n\nIch sage es dir ehrlich: Am Thema lag es nicht. Du hast zu viel gewusst. Und alles erzählt.\n\nWer sein Thema richtig gut kennt, kann am schlechtesten weglassen. Jedes Detail fühlt sich wichtig an. Ist es auch. Nur nicht für diese eine Entscheidung.\n\nDer Vorstand denkt in dem Moment nicht: schwaches Thema. Er denkt: Was soll ich damit jetzt machen?\n\nEr will drei Dinge wissen. Mehr nicht.\n\nWhy?\nWas bedeutet das Thema für unser Unternehmen?\n\nHow?\nWie gehen wir grundsätzlich vor, um das Ergebnis zu erreichen? Die Details will er erst sehen, wenn er Ja gesagt hat.\n\nWhat next?\nWas muss heute entschieden werden, damit es weitergeht?\n\nDrei Fragen, drei Sätze. Bekommst du die nicht hin, retten dich auch keine vierzig Folien.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-21",
   "kennzahlen": [],
   "bild": "rp02",
   "termin": "Mi 21.10.",
   "format": "Modell · A Why · How · Next",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7518559329491419138"
  },
  {
   "id": 38,
