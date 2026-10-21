@@ -586,3 +586,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .oz-karte > .oz-auf { margin-top: 0; }
 .oz-auf summary { padding-top: 3rem; }
 
+
+/* Oberziele (4 und 5): die Hauptfrage steht im Kasten – als Text, zweizeilig, mit mehr Abstand zur Grafik (Daniel, 21.10.) */
+.e2 .oz-karte .oz-frage { font-size: 1.02rem; font-weight: 500; line-height: 1.45; color: var(--e2-ink); }
+.oz-karte > .oz-bild { margin-top: 1.6rem; }
