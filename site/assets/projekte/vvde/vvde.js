@@ -234,17 +234,7 @@
   });
   C = false; D = false; E = false; F = false; KOMPAKT = false;
 
-  /* Fokus per Maus: Kasten bleibt, alles andere wird hellgrau; der zugehörige Name bleibt sichtbar */
-  var PARTNER = { "vv-g-sv": ".vv-g-svtitel", "vv-g-a1": ".vv-g-k1", "vv-g-a3": ".vv-g-k3", "vv-g-a2": ".vv-g-k2" };
-  if (window.matchMedia("(hover: hover) and (min-width: 901px)").matches) {
-    document.querySelectorAll(".vv-hoverfokus .vv-g").forEach(function (g) {
-      g.querySelectorAll(":scope > .vv-g-karte").forEach(function (k) {
-        var partner = Object.keys(PARTNER).filter(function (c) { return k.classList.contains(c); }).map(function (c) { return g.querySelector(":scope > " + PARTNER[c]); }).filter(Boolean);
-        k.addEventListener("mouseenter", function () { g.classList.add("vv-fokus-an"); k.classList.add("vv-fokus-ist"); partner.forEach(function (p) { p.classList.add("vv-fokus-ist"); }); });
-        k.addEventListener("mouseleave", function () { g.classList.remove("vv-fokus-an"); k.classList.remove("vv-fokus-ist"); partner.forEach(function (p) { p.classList.remove("vv-fokus-ist"); }); });
-      });
-    });
-  }
+
 
   /* ---------------- Helles Fenster (Inhalte aus FENSTER) ---------------- */
   var fenster = document.createElement("dialog");
