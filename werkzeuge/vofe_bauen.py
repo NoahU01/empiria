@@ -40,9 +40,16 @@ SYMBOLE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 <symbol id="i-regen" viewBox="0 0 24 24"><path d="M7 16.5h10.5a4 4 0 0 0 .6-8 6 6 0 0 0-11.6 1A3.5 3.5 0 0 0 7 16.5z" class="tupfer"/><path d="M7 16.5h10.5a4 4 0 0 0 .6-8 6 6 0 0 0-11.6 1A3.5 3.5 0 0 0 7 16.5z"/><path d="M9 19.5l-.8 2M13 19.5l-.8 2M17 19.5l-.8 2"/></symbol>
 </defs></svg>'''
 
+VORSEITE = "vofe-vorstellung.html"
+
 def i(name, cls="ico"): return f'<svg class="{cls}" aria-hidden="true"><use href="#i-{name}"/></svg>'
 
 def kopf(seite):
+    if seite == VORSEITE:
+        return (f'''<div class="dev"><div class="wrap"><span>Entwurf · nur in der Entwicklungsumgebung sichtbar · Vorstellung der Homepage Wagenpaten</span><a href="../index.html">← zurück zu empiria</a></div></div>
+<header class="kopf"><div class="wrap">
+<span class="marke"><svg class="marke__zeichen" aria-hidden="true"><use href="#v-horaff"/></svg><span><b>Wagenpaten</b><small>Volksfestumzug der Schulen 2027</small></span></span>
+<nav class="nav" aria-label="Seiten"><a class="knopf" href="vofe-umzug-schulen.html">Zur Homepage</a></nav></div></header>''')
     nav = [("vofe-umzug-schulen.html", "Start"), ("vofe-festzug.html", "Der Festzug"), ("vofe-ueber-uns.html", "Über uns")]
     return (f'''<div class="dev"><div class="wrap"><span>Entwurf · nur in der Entwicklungsumgebung sichtbar · Volksfestumzug 2027 (Wagenliste: Stand 2024)</span><a href="../index.html">← zurück zu empiria</a></div></div>
 <header class="kopf"><div class="wrap">
@@ -219,7 +226,68 @@ UEBER = f'''<section class="sek"><div class="wrap ueber">
 </div></div></section>
 <section class="band"><div class="wrap"><h2>Macht mit – sucht euch einen Wagen aus.</h2><a class="knopf" href="vofe-festzug.html">Zum Festzug {i("weiter")}</a></div></section>'''
 
+# ---------------------------------------------------------------- Vorseite (Vorstellung der Homepage, z. B. für die Schulleitung)
+def vorschau(datei, nr, titel, text):
+    return (f'<a class="vs-karte" href="{datei}"><span class="vs-fenster"><span class="vs-leiste"><i></i><i></i><i></i><span>wagenpaten-crailsheim.de</span></span>'
+            f'<span class="vs-seite"><img src="/assets/projekte/vofe/vorschau-{datei[5:-5]}.jpg?v=1" alt="Vorschau der Seite „{titel}“"></span></span>'
+            f'<span class="vs-text"><small>Seite {nr}</small><b>{titel}</b><span class="vs-text__p">{text}</span><span class="vs-pfeil">Seite öffnen {i("weiter")}</span></span></a>')
+
+VORSTELLUNG = f'''<section class="held vs-held"><div class="wrap">
+<div>
+  <p class="kicker">Eine Idee für den Volksfestumzug der Schulen 2027</p>
+  <h1>Warum es die <em>Wagenpaten</em> gibt.</h1>
+  <p class="lead">Beim letzten Schulumzug war ich als Wagenengel dabei. Ich habe gesehen, wie viel Freude die Kinder haben – und dass sie die Süßigkeiten zum Verteilen selbst mitbringen. Das möchte ich ändern. Denn das Volksfest gehört zu Crailsheim, und der Umzug der Schulen gehört dazu.</p>
+  <div class="knoepfe"><a class="knopf" href="vofe-umzug-schulen.html">Zur Homepage {i("weiter")}</a></div>
+  <div class="vs-person"><img src="/assets/daniel-round.webp" alt="Daniel Ströbel"><div><b>Daniel Ströbel</b><small>Crailsheimer · ehemaliger Schüler des ASG</small></div></div>
+</div>
+<div class="vs-marke">
+  <svg aria-hidden="true"><use href="#v-horaff"/></svg>
+  <b>Wagenpaten</b><small>Volksfestumzug der Schulen 2027</small>
+  <p><span><b>Wagenengel</b> sorgen für die Sicherheit am Wagen.</span><span><b>Wagenpaten</b> sorgen für das Süße auf dem Wagen.</span></p>
+</div>
+</div></section>
+
+<section class="sek sek--gelb"><div class="wrap">
+<p class="kicker">Die Idee</p>
+<h2 class="h2">Zwei Bausteine.</h2>
+<div class="vs-bausteine">
+  <article class="post"><div class="post__bild post__bild--schwarz"><small>Baustein 1 · Homepage</small><b>Unternehmen werden Wagenpaten.</b>{i("wagen")}</div>
+  <p class="post__text">Auf der Homepage sehen Unternehmen aus Crailsheim und Umgebung alle Wagen der Schulen. Für einen freien Wagen übernehmen sie mit einem Klick die Patenschaft und stellen die Süßigkeiten. Die Kinder müssen nichts mehr selbst mitbringen.</p></article>
+  <article class="post"><div class="post__bild post__bild--weiss"><small>Baustein 2 · Social Media</small><b>Wer mitmacht, wird gesehen.</b>{i("handy")}</div>
+  <p class="post__text">Über jede Patenschaft berichten wir auf Instagram und Facebook. Dazu bekommen die Unternehmen fertige Vorlagen, mit denen sie selbst zeigen können: Wir machen mit.</p></article>
+</div>
+</div></section>
+
+<section class="sek"><div class="wrap">
+<p class="kicker">Wie wir es angehen</p>
+<h2 class="h2">Zwei Möglichkeiten.</h2>
+<div class="vs-wege">
+  <article class="vs-weg vs-weg--wunsch"><p class="vs-weg__kopf"><small>Möglichkeit 1</small><span>Mein Wunsch</span></p>
+  <h3>Gemeinsam mit dem ASG.</h3>
+  <p>Als ehemaliger Schüler hole ich das Albert-Schweitzer-Gymnasium sehr gern mit ins Boot. Wenn das ASG möchte, tritt es als Mitinitiator der Wagenpaten auf und ist auf der Homepage und in Social Media sichtbar.</p>
+  </article>
+  <article class="vs-weg"><p class="vs-weg__kopf"><small>Möglichkeit 2</small></p>
+  <h3>Ich treibe es allein voran.</h3>
+  <p>Möchte das ASG nicht mit auftreten, setze ich die Wagenpaten als private Initiative um. An der Idee ändert sich nichts.</p>
+  </article>
+</div>
+<ul class="vs-beide"><li><small>In beiden Fällen</small></li><li>Kein Aufwand für die Schule</li><li>Die Umsetzung übernehme ich</li><li>Alle Schulen profitieren</li></ul>
+</div></section>
+
+<section class="sek sek--hell"><div class="wrap">
+<p class="kicker">Die Homepage</p>
+<h2 class="h2">Drei Seiten, jede mit einer Aufgabe.</h2>
+<div class="vs-seiten">
+  {vorschau("vofe-umzug-schulen.html", 1, "Start", "Erklärt Unternehmen die Idee: was eine Patenschaft bringt, wie sie in vier Schritten funktioniert und wie wir in Social Media darüber berichten.")}
+  {vorschau("vofe-festzug.html", 2, "Der Festzug", "Alle 23 Wagen der Schulen in der Reihenfolge des Umzugs. Freie Wagen sind markiert, vergebene zeigen ihren Paten. Mit einem Klick wird ein Unternehmen Wagenpate.")}
+  {vorschau("vofe-ueber-uns.html", 3, "Über uns", "Warum es die Wagenpaten gibt und wer dahintersteht. Hier ist auch der Platz für das ASG als Mitinitiator.")}
+</div>
+</div></section>
+
+<section class="band"><div class="wrap"><h2>Jetzt die Homepage ansehen.</h2><a class="knopf" href="vofe-umzug-schulen.html">Zur Homepage {i("weiter")}</a></div></section>'''
+
+seite(VORSEITE, "Vorstellung", VORSTELLUNG)
 seite("vofe-umzug-schulen.html", "Süßes für den Umzug", START)
 seite("vofe-festzug.html", "Der Festzug", FESTZUG)
 seite("vofe-ueber-uns.html", "Über uns", UEBER)
-print("3 Seiten gebaut")
+print("4 Seiten gebaut")

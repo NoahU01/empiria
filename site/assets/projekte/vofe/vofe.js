@@ -14,3 +14,8 @@
     });
   });
 })();
+/* Vorseite: Seitenvorschau scrollt beim Darüberfahren einmal durch. */
+document.querySelectorAll(".vs-seite img").forEach(function (img) {
+  function setze() { var f = img.parentNode, weg = Math.max(0, img.offsetHeight - f.offsetHeight); f.style.setProperty("--weg", weg + "px"); f.style.setProperty("--dauer", Math.max(4, weg / 260) + "s"); }
+  if (img.complete) setze(); img.addEventListener("load", setze); window.addEventListener("resize", setze);
+});

@@ -239,3 +239,68 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
 .schwebe .ico { width: 2.4rem; height: 2.4rem; }
 .post__bild .ico { width: 5rem; height: 5rem; }
 .knopf .ico, .pfeil { --tupfer: transparent; }
+
+/* Vorseite: Vorstellung der Homepage (vofe-vorstellung.html) */
+.vs-held .wrap { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+.vs-held h1 { font-size: clamp(2.8rem, 6.6vw, 5.4rem); line-height: 1.1; }
+.vs-held h1 em { white-space: nowrap; }
+.vs-person { display: flex; align-items: center; gap: .9rem; margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid var(--linie); }
+.vs-person img { width: 3.6rem; height: 3.6rem; border-radius: 50%; object-fit: cover; background: var(--gelb); }
+.vs-person b { display: block; font-family: var(--head); font-size: 1.15rem; }
+.vs-person small { display: block; color: var(--grau); font-size: .9rem; }
+.vs-marke { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.8rem 2.2rem 2.2rem; border-radius: var(--r); border: 1.5px solid var(--linie); }
+.vs-marke svg { width: 9rem; height: 9rem; }
+.vs-marke > b { margin-top: 1.3rem; font-family: var(--head); font-size: 2.6rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.05; }
+.vs-marke > small { margin-top: .3rem; color: var(--grau); font-size: .92rem; }
+.vs-marke p { display: grid; gap: .5rem; width: 100%; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--linie); font-size: .97rem; color: var(--ink-2); }
+.vs-marke p b { color: var(--ink); }
+.vs-bausteine { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+.vs-bausteine .post { border-color: var(--weiss); }
+.vs-bausteine .post__bild { aspect-ratio: 16 / 9; padding: 1.8rem; }
+.vs-bausteine .post__bild b { font-size: clamp(1.8rem, 3vw, 2.5rem); max-width: 70%; }
+.vs-bausteine .post__text { padding: 1.3rem 1.6rem 1.6rem; font-size: 1.02rem; }
+.vs-wege { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+.vs-weg { display: flex; flex-direction: column; padding: 2rem 2rem 2.2rem; border-radius: var(--r); border: 1.5px solid var(--linie); }
+.vs-weg--wunsch { border: 2px solid var(--ink); }
+.vs-weg__kopf { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2rem; }
+.vs-weg__kopf small { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grau); }
+.vs-weg__kopf span { padding: .3rem .8rem; border-radius: 999px; background: var(--gelb); font-size: .82rem; font-weight: 700; }
+.vs-weg h3 { margin-top: 1rem; font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.vs-weg > p:not(.vs-weg__kopf) { margin-top: .8rem; color: var(--ink-2); }
+.vs-beide { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 2.2rem; margin: 1.4rem 0 0; padding: 1.3rem 2rem; list-style: none; border-radius: var(--r); background: var(--gelb); }
+.vs-beide small { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.vs-beide li { position: relative; padding-left: 1.6rem; font-weight: 600; }
+.vs-beide li:first-child { padding-left: 0; }
+.vs-beide li:first-child::before { display: none; }
+.vs-beide li::before { content: ""; position: absolute; left: .1rem; top: .45em; width: .7rem; height: .4rem; border-left: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); transform: rotate(-45deg); }
+.vs-seiten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+.vs-karte { display: flex; flex-direction: column; border-radius: var(--r); background: var(--weiss); border: 1px solid var(--linie); overflow: hidden; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.vs-karte:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -30px rgba(26,24,23,.35); }
+.vs-fenster { display: block; padding: 14px 14px 0; background: var(--ink); }
+.vs-leiste { display: flex; align-items: center; gap: 5px; padding: 8px 10px; border-radius: 9px 9px 0 0; background: #2e2b29; }
+.vs-leiste i { width: 7px; height: 7px; border-radius: 50%; background: #57524d; }
+.vs-leiste span { margin-left: 6px; flex: 1; padding: 2px 8px; border-radius: 5px; background: #1f1d1b; color: #9b958e; font-size: .68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vs-seite { display: block; height: 300px; overflow: hidden; background: var(--weiss); --weg: 0px; --dauer: 8s; }
+.vs-seite img { width: 100%; height: auto; transition: transform 1.2s ease; }
+.vs-karte:hover .vs-seite img, .vs-karte:focus-visible .vs-seite img { transform: translateY(calc(-1 * var(--weg))); transition: transform var(--dauer) linear; }
+.vs-text { display: flex; flex-direction: column; flex: 1; padding: 1.5rem 1.6rem 1.6rem; }
+.vs-text small { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grau); }
+.vs-text b { margin-top: .3rem; font-family: var(--head); font-size: 1.6rem; font-weight: 600; }
+.vs-text__p { margin: .6rem 0 1.4rem; color: var(--ink-2); font-size: .97rem; }
+.vs-pfeil { display: inline-flex; align-items: center; gap: .45rem; margin-top: auto; font-weight: 600; }
+.vs-pfeil .ico { width: 1.2rem; height: 1.2rem; --tupfer: transparent; }
+@media (hover: none) { .vs-seite { overflow-y: auto; } }
+@media (prefers-reduced-motion: reduce) { .vs-seite img { transition: none !important; } }
+@media (max-width: 1180px) { .vs-beide { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; } .vs-beide li:first-child { grid-column: 1 / -1; } }
+@media (max-width: 860px) {
+  .vs-held .wrap, .vs-bausteine, .vs-wege { grid-template-columns: minmax(0, 1fr); }
+  .vs-marke { max-width: 26rem; }
+  .vs-seiten { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
+  .vs-beide { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .vs-held h1 em { white-space: normal; }
+  .vs-weg { padding: 1.5rem; }
+  .vs-beide { padding: 1.3rem 1.5rem; }
+  .vs-bausteine .post__bild { aspect-ratio: 4 / 3; padding: 1.4rem; }
+}
