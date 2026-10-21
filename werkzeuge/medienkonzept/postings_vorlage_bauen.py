@@ -724,11 +724,50 @@ teile += [
 
 # Redaktionsplan 25.–27.10.2026 (Sprache näher an Daniel, 19.10.2026)
 teile += [
-    """<section class="p" id="rp12"><p class="k">Aufgegriffen</p>
-  <p class="zitat" style="margin-top:230px;font-size:100px;line-height:1.15;max-width:910px">„Gute Beratung führt Schritt für Schritt zu einer <span class="hl">begründeten Entscheidung.</span>“</p>
-  <p class="quelle" style="color:#6b6762">— Matthias Weber, Vorstand Vertrieb HDI Bancassurance</p>%s%s</section>""" % (anschnitt(F, 520, -170, -170, "#1a1817"), NAME),
+    """<section class="p vollbild" id="rp12">%s<div class="verlauf" style="height:46%%"></div><div style="position:absolute;inset:0 0 auto 0;height:280px;background:linear-gradient(180deg,rgba(26,24,23,.6),rgba(26,24,23,0))"></div><p class="oben k">Aufgegriffen</p><div class="unten"><p class="satz" style="font-size:84px">Bis zur Grenze darfst du <span class="hl">klar sein.</span></p></div></section>""" % vb("foto-anzug.jpg", "50% 22%"),
     """<section class="p gelbgrund" id="rp13"><span class="riesen-frage">?</span><p class="fr-gross" style="margin-top:40px;max-width:840px;position:relative;line-height:1.2;color:#1a1817">Wie würdest du deinen Bereich heute <span class="hl" style="background:#1a1817;color:#fff400">neu gründen?</span></p>%s</section>""" % NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"'),
     """<section class="p foto-voll vollbild" id="rp14">%s<div class="verlauf" style="height:34%%"></div><div class="unten" style="bottom:70px"><p class="satz" style="font-size:84px">Logik allein verändert</p><p class="satz" style="font-size:84px;margin-top:6px"><span class="hl" style="color:#1a1817">wenig.</span></p></div></section>""" % vb("voll-e5.jpg", "50% 30%"),
+]
+
+OBENSCHATTEN = '<div style="position:absolute;inset:0 0 auto 0;height:260px;background:linear-gradient(180deg,rgba(26,24,23,.55),rgba(26,24,23,0))"></div>'
+# Redaktionsplan 28.10.–08.11.2026 (Daniel, 21.10.2026: mehr echte Fotos, Abwechslung, Text ≠ Bild)
+GELBNAME = NAME.replace('class="namezeile"', 'class="namezeile" style="color:#1a1817"')
+KREISE = """<svg viewBox="0 0 912 760" style="width:100%;display:block;margin-top:70px">
+<g stroke="#1a1817" stroke-width="5"><circle cx="300" cy="270" r="230" fill="#fff"/><circle cx="612" cy="270" r="230" fill="#fff"/><circle cx="456" cy="520" r="230" fill="#fff"/></g>
+<g stroke="#1a1817" stroke-width="5" fill="none"><circle cx="300" cy="270" r="230"/><circle cx="612" cy="270" r="230"/><circle cx="456" cy="520" r="230"/></g>
+<circle cx="456" cy="352" r="86" fill="#fff400" stroke="#1a1817" stroke-width="5"/>
+<g font-family="Poppins" font-weight="600" font-size="34" text-anchor="middle" fill="#1a1817">
+<text x="250" y="230">Fach-</text><text x="250" y="272">expertise</text>
+<text x="662" y="250">Führung</text>
+<text x="456" y="640">Geschäftsmodell</text>
+<text x="456" y="364" font-family="Lora" font-weight="700" font-size="40">Rolle</text></g></svg>"""
+ZEIT = """<div style="margin-top:100px;display:grid;gap:52px">""" + "".join(
+    """<div style="display:grid;grid-template-columns:150px 1fr;gap:40px;align-items:start"><b style="display:grid;place-items:center;width:150px;height:150px;border-radius:50%%;background:%s;color:%s;font:700 78px/1 Poppins,sans-serif">%s</b><p style="padding-top:8px"><span style="display:block;font:700 68px/1.15 Lora,Georgia,serif;color:#1a1817">%s</span><span style="display:block;margin-top:12px;font:500 36px/1.4 Poppins,sans-serif;color:#4a4642">%s</span></p></div>""" % (bg, fg, n, t, u)
+    for n, t, u, bg, fg in [("1", "Erzählen", "Ohne Vorbereitung, ohne Folien.", "#1a1817", "#fff400"),
+                            ("2", "Spiegeln", "Die Grundstory steht.", "#1a1817", "#fff400"),
+                            ("3", "Vorgehen", "Wer ist betroffen? Wie ticken sie?", "#fff400", "#1a1817")]) + "</div>"
+BROWSER = """<div style="margin-top:80px;border-radius:26px;background:#1a1817;overflow:hidden">
+<div style="display:flex;align-items:center;gap:14px;padding:26px 30px;border-bottom:2px solid #3a3633"><i style="width:18px;height:18px;border-radius:50%;background:#5a5550"></i><i style="width:18px;height:18px;border-radius:50%;background:#5a5550"></i><i style="width:18px;height:18px;border-radius:50%;background:#5a5550"></i>
+<span style="margin-left:18px;flex:1;padding:12px 24px;border-radius:40px;background:#2c2926;font:500 26px/1 Poppins,sans-serif;color:#a8a39c">deine-abteilung-gmbh.de</span></div>
+<div style="padding:56px 56px 64px"><p style="font:700 66px/1.12 Lora,Georgia,serif;color:#fff">Wofür sind <span class="hl" style="color:#1a1817">wir da?</span></p>
+<p style="margin-top:34px;height:22px;width:86%;border-radius:12px;background:#3a3633"></p><p style="margin-top:20px;height:22px;width:70%;border-radius:12px;background:#3a3633"></p><p style="margin-top:20px;height:22px;width:78%;border-radius:12px;background:#3a3633"></p>
+<p style="margin-top:44px;display:inline-block;padding:18px 34px;border-radius:40px;background:#fff400;font:600 28px/1 Poppins,sans-serif;color:#1a1817">Leistung anfragen</p></div></div>"""
+teile += [
+    """<section class="p" id="rp15"><p class="k">Vor dem ersten Tag</p><p class="fr-gross" style="margin-top:40px;font-size:92px">Was eine Führungskraft ab Tag eins <span class="hl">braucht.</span></p>%s%s</section>""" % (KREISE, NAME),
+    """<section class="p vollbild" id="rp16">%s<div style="position:absolute;inset:0 0 auto 0;height:62%%;background:linear-gradient(180deg,rgba(26,24,23,.92) 0%%,rgba(26,24,23,.78) 45%%,rgba(26,24,23,0) 100%%)"></div><p class="oben k">London</p><div class="unten" style="top:150px;bottom:auto"><p class="satz" style="font-size:80px">Lernen nach Feierabend. <span class="hl">Mitten in der City.</span></p></div></section>""" % vb("foto-london.jpg", "50% 100%"),
+    """<section class="p vollbild" id="rp17">%s<div class="verlauf" style="height:46%%"></div><div style="position:absolute;inset:0 0 auto 0;height:280px;background:linear-gradient(180deg,rgba(26,24,23,.6),rgba(26,24,23,0))"></div><p class="oben k">Werkstatt</p><div class="unten"><p class="satz" style="font-size:90px">Ein Jahr KI. <span class="hl">Selbst gebaut.</span></p></div></section>""" % vb("foto-laptop.jpg", "28% 40%"),
+    """<section class="p vollbild" id="rp18">%s<div class="verlauf" style="height:48%%"></div><div style="position:absolute;inset:0 0 auto 0;height:280px;background:linear-gradient(180deg,rgba(26,24,23,.6),rgba(26,24,23,0))"></div><p class="oben k">Weitergedacht</p><div class="unten"><p class="satz" style="font-size:80px">Wenn sie nicht zu uns kommen, <span class="hl">gehen wir zu ihnen.</span></p></div></section>""" % vb("foto-macromedia.jpg", "50% 30%"),
+    """<section class="p" id="rp19"><p class="k">Aufgegriffen</p>
+  <p class="zitat" style="margin-top:220px;font-size:100px;line-height:1.15;max-width:910px">„Welche Maklerleistungen brauchen Kunden <span class="hl">in zehn Jahren</span> noch?“</p>
+  <p class="quelle" style="color:#6b6762">— Tobias Knörrer, Geschäftsführer der bbg (DKM), im Interview mit VWheute</p>%s%s</section>""" % (anschnitt(F, 520, -170, -170, "#1a1817"), NAME),
+    """<section class="p schwarz" id="rp20"><p class="k">Wenn ein Team nicht mitzieht</p><p class="fr-gross" style="margin-top:60px;color:#fff;font-size:104px;max-width:880px;position:relative">Würdest du an ihrer Stelle <span class="hl">anders</span> entscheiden?</p>%s%s</section>""" % (anschnitt(O, 700, -220, -190, "#fff400"), NAME),
+    """<section class="p vollbild" id="rp21">%s<div class="verlauf" style="height:52%%"></div><div class="unten"><p class="satz" style="font-size:80px">Erst die Sicht des Partners. <span class="hl">Dann die Unterlagen.</span></p></div></section>""" % vb("foto-tisch.jpg", "12% 40%"),
+    """<section class="p" id="rp22"><p class="k">Der Einstieg in die Strategie</p><p class="fr-gross" style="margin-top:40px;font-size:96px">Drei Gespräche. <span class="hl">Je&nbsp;eine&nbsp;Stunde.</span></p>%s%s</section>""" % (ZEIT, NAME),
+    """<section class="p vollbild" id="rp23">%s<div class="verlauf" style="height:42%%"></div><div class="unten"><p class="satz" style="font-size:96px">„Eigentlich<br>ist es <span class="hl">doch so.“</span></p></div></section>""" % vb("foto-flipchart.jpg", "18% 40%"),
+    """<section class="p gelbgrund" id="rp24"><p class="k" style="color:#1a1817">Gedankenexperiment</p><p class="fr-gross" style="margin-top:40px;font-size:92px;color:#1a1817">Deine Abteilung ist ab morgen eine GmbH.</p>%s%s</section>""" % (BROWSER, GELBNAME),
+    """<section class="p vollbild" id="rp25">%s<div class="verlauf" style="height:44%%"></div><div style="position:absolute;inset:0 0 auto 0;height:280px;background:linear-gradient(180deg,rgba(26,24,23,.6),rgba(26,24,23,0))"></div><p class="oben k">Weitergedacht</p><div class="unten"><p class="satz" style="font-size:110px">Und was, <span class="hl">wenn nicht?</span></p></div></section>""" % vb("foto-zeigen.jpg", "62% 40%"),
+    """<section class="p schwarz" id="rp26"><span class="riesen-anf">„</span><p class="k" style="position:relative">Aufgegriffen</p>
+  <p class="zitat-w" style="font-size:68px">„Es mangelt häufig nicht an Ideen, sondern es braucht insgesamt mehr Mut, Führung und Tempo.“</p><p class="zitat-quelle">— Peter Stockhorst, Digitalvorstand der Zurich Gruppe Deutschland</p></section>""",
 ]
 
 html = """<!doctype html>

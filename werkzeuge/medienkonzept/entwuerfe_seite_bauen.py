@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "66"  # Versionsnummer für CSS/JS
+V = "67"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -31,25 +31,25 @@ EXTRA = {
     68: dict(bild="rp11", termin="Sa 24.10.", format="Weitergedacht · Gelbe Satzkarte", offen="Aktuelles Erlebnis – im Text steht „letzte Woche“."),
     67: dict(bild="rp10", termin="So 18.10.", format="Satz · B Anführungszeichen", offen=""),
     43: dict(bild="rp08", termin="Fr 23.10.", format="Eingeordnet · B Zahl auf Foto", offen=""),
-    75: dict(bild="rp12", termin="So 25.10.", format="Aufgegriffen · Zitatkarte", offen="Bezug auf das Posting vom Vortag („gestern“) – nur so lassen, wenn der 24.10. wie geplant erscheint. Den Satz „Dasselbe erlebe ich in Häusern nach innen“ bitte bestätigen."),
-    76: dict(bild="rp13", termin="Mo 26.10.", format="Frage · C Fragezeichen", offen="Gern ergänzen: ein Satz, den du typischerweise hörst, wenn du die Frage stellst."),
-    77: dict(bild="rp14", termin="Di 27.10.", format="Szene · A Foto mit Satz", offen="Bitte prüfen: „als ich selbst Führungsverantwortung bei einem Versicherer hatte“ – oder konkreter (Abteilung Leben, rund 40 Leute, zwei Standorte)?"),
+    75: dict(bild="rp12", termin="So 25.10.", format="Aufgegriffen · Foto mit Satz", offen="Bezug „gestern“ setzt voraus, dass der 24.10. erscheint. Bitte bestätigen: „Genau das erlebe ich in den Häusern auch nach innen.“"),
+    76: dict(bild="rp13", termin="Mo 26.10.", format="Frage · C Fragezeichen", offen=""),
+    77: dict(bild="rp14", termin="Di 27.10.", format="Szene · A Foto mit Satz", offen="Bitte prüfen: Stimmt „Ich dachte: Wenn die Logik stimmt, läuft der Rest“ so für dich – und war es die Abteilung Leben (rund 40 Leute, zwei Standorte)?"),
+    79: dict(bild="rp15", termin="Mi 28.10.", format="Modell · D Drei Kreise", offen=""),
+    80: dict(bild="rp16", termin="Do 29.10.", format="Du als Person · Foto", offen="Foto vom Juni 2025 vor dem Lloyd's Building – im Text so benannt."),
+    81: dict(bild="rp17", termin="Fr 30.10.", format="Werkstatt · Foto", offen=""),
+    82: dict(bild="rp18", termin="Sa 31.10.", format="Weitergedacht · Foto", offen=""),
+    83: dict(bild="rp19", termin="So 01.11.", format="Aufgegriffen · Zitatkarte", offen="Zitat im Original geprüft (VWheute, 21.10.2026)."),
+    84: dict(bild="rp20", termin="Mo 02.11.", format="Frage · B Schwarz", offen=""),
+    85: dict(bild="rp21", termin="Di 03.11.", format="Szene · B Foto mit Satz", offen=""),
+    86: dict(bild="rp22", termin="Mi 04.11.", format="Werkzeug · D Zeitleiste", offen=""),
+    87: dict(bild="rp23", termin="Do 05.11.", format="Geschichte · Foto", offen=""),
+    88: dict(bild="rp24", termin="Fr 06.11.", format="Zum Mitnehmen · Gedankenexperiment", offen=""),
+    89: dict(bild="rp25", termin="Sa 07.11.", format="Weitergedacht · Foto", offen=""),
+    90: dict(bild="rp26", termin="So 08.11.", format="Aufgegriffen · Zitatkarte", offen="Zitat vom April 2026 (im Original geprüft) – kommt in KW 45 eine frische Stimme der Woche, tauschen wir."),
 }
 FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"}
 
-PLAN = [  # Mischung je Woche (Daniel, 13.10.2026): höchstens drei Kern, eins Person, eins Werkstatt/Branche
-    ("KW 44", "Mi 28.10.", "08 · Erst befördern, dann entwickeln ist der größte Fehler.", "Modell · D Drei Kreise"),
-    ("KW 44", "Do 29.10.", "Person · London 2000: täglich Wissen am Afterwork – daraus wurde „90 Minuten Wissen to go“", "Du als Person · Foto"),
-    ("KW 44", "Fr 30.10.", "Werkstatt · Ein Jahr KI selbst gebaut: Das Problem ist, wenn man zu viel vorgibt und zu wenig fragt", "Werkstatt · Foto oder Szene"),
-    ("KW 45", "Mo 02.11.", "09 · Neu in der Rolle – überladen mit Regelterminen.", "Skizze · C Isometrisch"),
-    ("KW 45", "Di 03.11.", "21 · Diskussionen kippen, sobald die Bedeutung fehlt.", "Szene · D Kritzelei auf Foto"),
-    ("KW 45", "Mi 04.11.", "04 · Der Einstieg dauert drei Stunden, keine zwei Tage.", "Werkzeug · D Zeitleiste"),
-    ("KW 45", "Do 05.11.", "Person · London: Wer Vertrauen verspielt, ist raus aus dem Markt", "Du als Person · Foto"),
-    ("KW 45", "Fr 06.11.", "34 · AI Act grob eingeordnet.", "Eingeordnet · F Posting im Posting"),
-    ("KW 44", "Sa 31.10.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
-    ("KW 44", "So 01.11.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
-    ("KW 45", "Sa 07.11.", "Weitergedacht · Impuls aus dem Branchen-Radar", "Weitergedacht · Was wäre, wenn …?"),
-    ("KW 45", "So 08.11.", "Aufgegriffen · Stimme der Woche aus dem Branchen-Radar", "Aufgegriffen · Posting im Posting"),
+PLAN = [  # KW 44/45 seit 21.10.2026 vollständig als Entwürfe in Supabase
 ]
 
 
