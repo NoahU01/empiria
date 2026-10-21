@@ -606,3 +606,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .oz--post .oz-auf summary { padding-top: 1.1rem; }
 /* auf Hellgrau: Flächen der Grafiken weiß statt hellgrau */
 .oz--post .oz-svg [fill="#f4f3f0"] { fill: #fff; }
+/* Kastenform 2: alle drei Kästen mit gleichem hellgrauem Rahmen, oben nur „Ziel 01/02/03“ (Daniel, 21.10.) */
+.sm-v5 .oz.oz--post .oz-karte, .sm-v5 .oz.oz--post .v5-karte--fokus, .sm-v5 .oz.oz--post .v5-karte--fokus:hover { border: 1px solid var(--e2-linie); }
+.oz--post .oz-zusatz { display: none; }
