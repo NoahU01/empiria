@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
 <link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=103">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=48">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=49">
 </head>
 <body class="e2">
 
@@ -1225,6 +1225,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <p class="e2-kicker">Die drei Oberziele</p>
       <h2>Worauf jede Strategie eine Antwort braucht.</h2>
       <p class="sm-lead">Unabhängig von den Detailzielen der Zielvereinbarung – eines davon sehen Kunde und Vertriebspartner, zwei wirken intern.</p>
+      <div class="sm-schalter oz-schalter" role="group" aria-label="Gestaltung der Kästen wählen">
+        <button type="button" data-oz="1" aria-pressed="true"><b>1</b>Kästen</button>
+        <button type="button" data-oz="2" aria-pressed="false"><b>2</b>Wie Social Media (Volksfest)</button>
+      </div>
       <div class="oz"><div class="oz-ziel"><div class="v5-karte oz-karte v5-karte--fokus"><small>Ziel 01 &middot; größter Hebel</small><h3>Kundenorientierung</h3><p class="oz-frage">Wie nimmt uns<br>der Kunde wahr?</p><div class="oz-bild"><svg class="oz-svg" viewBox="0 0 260 150" role="img" aria-label="Dreieck der Kundenzufriedenheit: Erstattungsumfang, Schnelligkeit und Transparenz – der größte Hebel liegt bei Schnelligkeit und Transparenz">
 <path d="M130 30 L46 116 L214 116 Z" fill="#f4f3f0" stroke="#1a1817" stroke-width="1.6" stroke-linejoin="round"/>
 <line x1="46" y1="116" x2="214" y2="116" stroke="#1a1817" stroke-width="4" stroke-linecap="round"/>
@@ -1560,9 +1564,17 @@ document.querySelectorAll('.sm-hg').forEach(function (d) {
   d.querySelector('.sm-hg__zu').addEventListener('click', function () { d.close(); });
   d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
 });
+/* Das Bild 2 · Oberziele: Umschalter zwischen Kastenform 1 und 2 (Kästen wie Social Media auf der Volksfest-Seite) */
+document.querySelectorAll('.oz-schalter').forEach(function (sch) {
+  var oz = sch.parentNode.querySelector('.oz'), kn = sch.querySelectorAll('button');
+  kn.forEach(function (k) { k.addEventListener('click', function () {
+    oz.classList.toggle('oz--post', k.dataset.oz === '2');
+    kn.forEach(function (x) { x.setAttribute('aria-pressed', x === k ? 'true' : 'false'); });
+  }); });
+});
 /* Umschalter Variante 1 / 2 – Wahl steht in der Adresse (#bild) */
 (function () {
-  var knoepfe = document.querySelectorAll('.sm-schalter button');
+  var knoepfe = document.querySelectorAll('.sm-schalter button[data-v]');
   function zeige(v, merken) {
     document.querySelectorAll('.sm-v').forEach(function (el) { el.hidden = el.dataset.variante !== v; });
     knoepfe.forEach(function (k) { k.setAttribute('aria-pressed', k.dataset.v === v ? 'true' : 'false'); });
