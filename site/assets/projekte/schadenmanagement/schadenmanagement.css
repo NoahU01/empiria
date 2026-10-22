@@ -653,3 +653,13 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sm-b.sy-b h2 .hl { background: linear-gradient(transparent 60%, var(--e2-gelb) 60%, var(--e2-gelb) 92%, transparent 92%); }
 .sy-grund .v5-grund__ic { width: 2.6rem; height: 2.6rem; margin: 0 0 .5rem; }
 .sy-grund .v5-grund__ic svg { width: 1.3rem; height: 1.3rem; }
+/* Summary · Inhalt 3 = Oberziele aus „Das Bild 2“ in Kastenform 2 (Social Media), ohne Fragen im grauen Teil */
+.sm-vs .oz { margin-top: 2rem; }
+@media (min-width: 901px) {
+  .sm-vs .oz { grid-template-rows: repeat(4, auto); row-gap: 0; }
+  .sm-vs .oz-ziel { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+  .sm-vs .oz-karte { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; justify-items: start; }
+}
+.sm-vs .oz .v5-karte, .sm-vs .oz .v5-karte--fokus, .sm-vs .oz .v5-karte--fokus:hover { padding: 0; overflow: hidden; border: 1px solid var(--e2-linie); }
+.sm-vs .oz--post .oz-karte > h3 { padding-bottom: 0; font-size: 1.25rem; }
+.sm-vs .oz--post .oz-karte > .oz-bild { padding-top: 1.6rem; }
