@@ -609,3 +609,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* Kastenform 2: alle drei Kästen mit gleichem hellgrauem Rahmen, oben nur „Ziel 01/02/03“ (Daniel, 21.10.) */
 .sm-v5 .oz.oz--post .oz-karte, .sm-v5 .oz.oz--post .v5-karte--fokus, .sm-v5 .oz.oz--post .v5-karte--fokus:hover { border: 1px solid var(--e2-linie); }
 .oz--post .oz-zusatz { display: none; }
+/* „Projektfokus“ unten rechts neben „Mehr dazu“ – oben stehen Nummer, Kicker, Überschrift und Text in allen Kästen auf gleicher Höhe (Daniel, 22.10.) */
+.sm-mehr-zeile .sm-bk__projekt { order: 0; align-self: center; margin: 0 0 0 auto; }
+.sm-mehr-zeile .sm-bk__projekt { padding: .1rem .5rem; line-height: 1.4; }
