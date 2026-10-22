@@ -641,3 +641,5 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-inhalt { padding-left: 2.2rem; }
 .sy-h2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sy-trenner { margin: 2.2rem 0 2.2rem; border: 0; border-top: 2px dashed #cfc9c1; }
+/* Unterlängen (g, p, ß) nicht abschneiden – einzeilig bleibt es über nowrap */
+.sy-h2 { overflow: visible; text-overflow: clip; }
