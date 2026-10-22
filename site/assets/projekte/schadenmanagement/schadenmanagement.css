@@ -636,3 +636,8 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-kopf { grid-template-columns: 2.6rem minmax(0, 1fr) auto; gap: 1.3rem; }
 .sy-nr { width: 2.6rem; height: 2.6rem; font-size: 1rem; }
 .sy-inhalt { padding-left: calc(2.2rem + 2.6rem + 1.3rem); }
+/* Summary ohne Zahlen; gestrichelte Linie trennt 1–3 (Grundlagen) von 4–5 (Daniel, 22.10.) */
+.sy-kopf { grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; }
+.sy-inhalt { padding-left: 2.2rem; }
+.sy-h2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sy-trenner { margin: 2.2rem 0 2.2rem; border: 0; border-top: 2px dashed #cfc9c1; }
