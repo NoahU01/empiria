@@ -723,3 +723,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-eff > .sm-bk .oz-auf { margin-top: auto; }
 .sy-eff > .sm-bk .oz-auf summary { padding-top: 1.4rem; }
 .sy-eff > .sm-bk .oz-auf { margin-top: 0; }
+/* Summary · Kasten 3: Look exakt wie „Das Bild 2“ (Social Media) – gleiche Titelgröße und Abstände, unten der weiße Streifen (58 px, wie dort) ohne Text */
+.sm-vs .oz--post .oz-karte > h3 { font-size: 1.45rem; padding-bottom: .55rem; }
+.sm-vs .oz--post .oz-karte > .oz-bild { padding: 2.2rem 1.5rem 1.9rem; }
+.sm-vs .oz--post .oz-karte { padding-bottom: 57px; }
