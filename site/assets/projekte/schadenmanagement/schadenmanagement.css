@@ -785,3 +785,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sm-hg__paar .sm-kurve figcaption { min-height: 0; }
 .sm-hg__paar { column-gap: 0; }
 .sm-hg__seite:first-child { padding-right: 2.4rem; }
+/* Summary · Kasten 3: weißer Streifen oben und unten niedriger und gleich hoch (Daniel, 22.10.) */
+.sm-vs .oz--post .oz-karte > small { padding: .75rem 1.5rem; line-height: 1.5; }
+.sm-vs .oz--post .oz-karte { padding-bottom: var(--sy-streifen, 45px); }
