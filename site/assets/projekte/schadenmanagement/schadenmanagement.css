@@ -649,3 +649,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sm-b.sy-b .sm-b__karten { margin-top: 2rem; }
 .sy-inhalt { padding-top: .6rem; }
 .sm-b.sy-b .sm-bk h3 { font-size: 1.25rem; }
+/* Summary · Inhalt 2 = Grundregel aus „Das Bild 2“ (Formulierungen + Symbole), Karten wie in Inhalt 1 */
+.sm-b.sy-b h2 .hl { background: linear-gradient(transparent 60%, var(--e2-gelb) 60%, var(--e2-gelb) 92%, transparent 92%); }
+.sy-grund .v5-grund__ic { width: 2.6rem; height: 2.6rem; margin: 0 0 .5rem; }
+.sy-grund .v5-grund__ic svg { width: 1.3rem; height: 1.3rem; }
