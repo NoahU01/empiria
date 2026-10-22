@@ -612,3 +612,23 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* „Projektfokus“ unten rechts neben „Mehr dazu“ – oben stehen Nummer, Kicker, Überschrift und Text in allen Kästen auf gleicher Höhe (Daniel, 22.10.) */
 .sm-mehr-zeile .sm-bk__projekt { order: 0; align-self: center; margin: 0 0 0 auto; }
 .sm-mehr-zeile .sm-bk__projekt { padding: .1rem .5rem; line-height: 1.4; }
+
+/* ===== Variante „Summary“ (Anzeige Nummer 2) – Daniel, 22.10.
+   Grundstruktur wie „Alle Fakten“: ein Kasten je Aussage, Kreis mit Zahl so hoch wie Subheadline + Headline,
+   Inhalt zum Auf- und Zuklappen, keine Trennlinien. */
+.sm-vs { padding: 0 0 6rem; }
+.sy-seg { margin-bottom: 1rem; border: 1px solid var(--e2-linie); border-radius: 18px; background: #fff; transition: border-color .2s ease; }
+.sy-seg[open] { border-color: #d6d0c8; }
+.sy-kopf { display: grid; grid-template-columns: 4.4rem minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; padding: 1.7rem 2.2rem; cursor: pointer; list-style: none; }
+.sy-kopf::-webkit-details-marker { display: none; }
+.sy-kopf:focus-visible { outline: 2px solid var(--e2-ink); outline-offset: -4px; border-radius: 18px; }
+.sy-nr { display: grid; place-items: center; width: 4.4rem; height: 4.4rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-size: 1.45rem; font-weight: 700; line-height: 1; }
+.sy-titel { display: grid; gap: .35rem; }
+.sy-titel .e2-kicker { margin: 0 !important; font-size: .7rem; }
+.sy-h2 { font-family: var(--font-serif); font-size: clamp(1.45rem, 2.4vw, 1.9rem); font-weight: 700; line-height: 1.15; color: var(--e2-ink); text-wrap: balance; }
+.sy-pfeil { width: 11px; height: 11px; margin-right: .3rem; border-right: 2px solid var(--e2-ink); border-bottom: 2px solid var(--e2-ink); transform: rotate(45deg) translateY(-3px); transition: transform .2s ease; }
+.sy-seg[open] .sy-pfeil { transform: rotate(-135deg) translateY(-3px); }
+.sy-inhalt { padding: 0 2.2rem 2.2rem calc(2.2rem + 4.4rem + 1.5rem); }
+.e2 .sy-folgt { margin: 0; font-size: .92rem; color: var(--e2-grau); }
+.sy-pfeil { transform: translateY(-3px) rotate(45deg); }
+.sy-seg[open] .sy-pfeil { transform: translateY(3px) rotate(-135deg); }

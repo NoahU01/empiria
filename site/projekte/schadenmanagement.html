@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/e2/schwarzgelb-ergaenzung.css">
 <link rel="stylesheet" href="/assets/e2/kontakt.css">
 <link rel="stylesheet" href="/assets/projekte/vvde/vvde.css?v=103">
-<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=51">
+<link rel="stylesheet" href="/assets/projekte/schadenmanagement/schadenmanagement.css?v=52">
 </head>
 <body class="e2">
 
@@ -682,7 +682,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       <h1>Schaden&shy;management.</h1>
       <div class="sm-schalter" role="group" aria-label="Darstellung wählen">
         <button type="button" data-v="1" aria-pressed="true"><b>1</b>Alle Fakten</button>
-        <button type="button" data-v="2" aria-pressed="false"><b>2</b>Das Bild</button>
+        <button type="button" data-v="s" aria-pressed="false"><b>2</b>Summary</button>
+        <button type="button" data-v="2" aria-pressed="false"><b>3</b>Das Bild</button>
         <button type="button" data-v="4" aria-pressed="false"><b>4</b>Infografik klar</button>
         <button type="button" data-v="5" aria-pressed="false"><b>5</b>Das Bild 2</button>
       </div>
@@ -994,6 +995,33 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       </div>
     </section>
 
+  </div></div>
+
+
+  <!-- ======================= Variante „Summary“ (Anzeige Nummer 2) =======================
+       Grundstruktur wie „Alle Fakten“: je Segment eine komplette Aussage (Kreis mit Zahl · Subheadline · Headline),
+       darunter der Inhalt zum Auf- und Zuklappen, ohne Trennlinien. Inhalte folgen von Daniel. -->
+  <div class="sm-v sm-vs" data-variante="s" hidden><div class="e2-wrap">
+    <details class="sy-seg">
+      <summary class="sy-kopf"><span class="sy-nr" aria-hidden="true">1</span><span class="sy-titel"><span class="e2-kicker">Grundlage &middot; gilt für jeden Versicherer</span><span class="sy-h2">Das Geschäftsmodell eines Versicherers.</span></span><span class="sy-pfeil" aria-hidden="true"></span></summary>
+      <div class="sy-inhalt"><p class="sy-folgt">Inhalt folgt.</p></div>
+    </details>
+    <details class="sy-seg">
+      <summary class="sy-kopf"><span class="sy-nr" aria-hidden="true">2</span><span class="sy-titel"><span class="e2-kicker">Ableitung &middot; Grundregeln des Schadenmanagements</span><span class="sy-h2">Was für das Schaden&shy;management daraus folgt.</span></span><span class="sy-pfeil" aria-hidden="true"></span></summary>
+      <div class="sy-inhalt"><p class="sy-folgt">Inhalt folgt.</p></div>
+    </details>
+    <details class="sy-seg">
+      <summary class="sy-kopf"><span class="sy-nr" aria-hidden="true">3</span><span class="sy-titel"><span class="e2-kicker">Logische Konsequenz für die Steuerung</span><span class="sy-h2">Die drei natürlichen Ziele des Schaden&shy;managements.</span></span><span class="sy-pfeil" aria-hidden="true"></span></summary>
+      <div class="sy-inhalt"><p class="sy-folgt">Inhalt folgt.</p></div>
+    </details>
+    <details class="sy-seg">
+      <summary class="sy-kopf"><span class="sy-nr" aria-hidden="true">4</span><span class="sy-titel"><span class="e2-kicker">Selbstverständnis, Vision und Strategie</span><span class="sy-h2">Wie wollen wir wahrgenommen werden?<br>Und wie kommen wir dorthin?</span></span><span class="sy-pfeil" aria-hidden="true"></span></summary>
+      <div class="sy-inhalt"><p class="sy-folgt">Inhalt folgt.</p></div>
+    </details>
+    <details class="sy-seg">
+      <summary class="sy-kopf"><span class="sy-nr" aria-hidden="true">5</span><span class="sy-titel"><span class="e2-kicker">Konkrete Ansatzpunkte</span><span class="sy-h2">Was wir jetzt angehen –<br>und welche Fragen wir beantworten müssen.</span></span><span class="sy-pfeil" aria-hidden="true"></span></summary>
+      <div class="sy-inhalt"><p class="sy-folgt">Inhalt folgt.</p></div>
+    </details>
   </div></div>
 
   <!-- ======================= Variante 2 · Bild ======================= -->
@@ -1540,11 +1568,12 @@ document.querySelectorAll('.oz-schalter').forEach(function (sch) {
   function zeige(v, merken) {
     document.querySelectorAll('.sm-v').forEach(function (el) { el.hidden = el.dataset.variante !== v; });
     knoepfe.forEach(function (k) { k.setAttribute('aria-pressed', k.dataset.v === v ? 'true' : 'false'); });
-    var HASH = { '2': '#bild', '4': '#infografik-klar', '5': '#bild-2' };
+    var HASH = { 's': '#summary', '2': '#bild', '4': '#infografik-klar', '5': '#bild-2' };
     if (merken) history.replaceState(null, '', HASH[v] || location.pathname + location.search);
   }
   knoepfe.forEach(function (k) { k.addEventListener('click', function () { zeige(k.dataset.v, true); }); });
   if (location.hash === '#bild') zeige('2', false);
+  if (location.hash === '#summary') zeige('s', false);
   if (location.hash === '#infografik-klar') zeige('4', false);
   if (location.hash === '#bild-2') zeige('5', false);
 })();
