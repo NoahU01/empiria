@@ -799,3 +799,44 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-post__fuss { min-height: 45px; padding: 0 1.5rem .75rem; }
 .sy-post__fuss .oz-auf summary { padding-top: .75rem; }
 .sy-post__fuss { padding-bottom: calc(.75rem - 1px); }
+
+/* ===== Fenster „Was ist Versicherung?“ (Summary · Kasten 1) – nach dem Poster „Geschäftsmodell Versicherung“,
+   im empiria-Look: Risiko | Versicherung · Band vom einzelnen Risiko ins Kollektiv · Transfer, Transformation, Kompensation ===== */
+.sm-hg.vs { width: min(74rem, calc(100vw - 2rem)); }
+.vs .sm-hg__inhalt { padding: 2rem 2.4rem 2.6rem; }
+.vs-ic { display: grid; place-items: center; flex: none; width: 3.6rem; height: 3.6rem; border-radius: 50%; }
+.vs-ic svg { width: 1.9rem; height: 1.9rem; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.vs-ic .s { stroke-width: 1.6; } .vs-ic .z { stroke-width: 1.9; }
+.vs-ic--dunkel { background: var(--e2-ink); } .vs-ic--dunkel svg { stroke: #fff; }
+.vs-ic--gelb { background: var(--e2-gelb); } .vs-ic--gelb svg { stroke: var(--e2-ink); }
+.vs-ic--hell { background: var(--e2-hell); } .vs-ic--hell svg { stroke: var(--e2-ink); }
+/* Risiko | Versicherung – beide Hälften auf gemeinsamem Zeilenraster */
+.vs-paar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); }
+.vs-seite { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 1rem; align-content: start; }
+.vs-seite:first-child { padding-right: 2.4rem; }
+.vs-seite + .vs-seite { padding-left: 2.4rem; border-left: 1px solid var(--e2-linie); }
+.vs-titel { display: flex; align-items: center; gap: 1rem; }
+.sm-hg .vs-titel h3 { margin: 0; font-size: 1.7rem; line-height: 1.1; }
+.e2 .sm-hg .vs-text, .sm-hg .vs-text { margin: 0; font-size: .93rem; line-height: 1.6; color: var(--e2-ink-2); }
+.vs .sm-kurve { margin: 0; }
+.e2 .sm-hg .vs-def, .sm-hg .vs-def { margin: 0; padding: .9rem 1.1rem; border-left: 3px solid var(--e2-ink); border-radius: 0 10px 10px 0; background: var(--e2-hell); font-size: .9rem; line-height: 1.55; color: var(--e2-ink); }
+.vs-def small { display: block; margin-top: .35rem; font-size: .78rem; color: var(--e2-grau); }
+/* Band */
+.vs-weg { margin: 2.6rem 0 0; padding: 1.6rem 1.8rem 1.2rem; border-radius: 16px; background: var(--e2-hell); }
+.vs-weg .vs-band { display: block; width: 100%; height: auto; margin-top: .6rem; }
+.e2 .sm-hg .vs-label, .sm-hg .vs-label { margin: 0; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--e2-ink); }
+.e2 .sm-hg .vs-label--drei, .sm-hg .vs-label--drei { margin: 2.6rem 0 1rem; }
+/* drei Kästen */
+.vs-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.vs-karte { position: relative; display: flex; flex-direction: column; gap: .5rem; padding: 1.5rem 1.4rem 1.4rem; border: 1px solid var(--e2-linie); border-radius: 16px; background: #fff; }
+.vs-karte .vs-ic { width: 3rem; height: 3rem; margin-bottom: .4rem; } .vs-karte .vs-ic svg { width: 1.6rem; height: 1.6rem; }
+.vs-karte--fokus { border: 2.5px solid var(--e2-ink); }
+.e2 .sm-hg .vs-klein, .sm-hg .vs-klein { margin: 0; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sm-hg .vs-karte h3 { margin: 0 0 .2rem; font-size: 1.3rem; }
+.e2 .sm-hg .vs-karte .vs-text { font-size: .9rem; }
+.e2 .sm-hg .vs-tief, .sm-hg .vs-tief { margin: .5rem 0 0; padding-top: .8rem; border-top: 1px solid var(--e2-linie); font-size: .8rem; line-height: 1.55; color: var(--e2-grau); }
+.sm-hg .vs-chips { display: flex; flex-wrap: wrap; gap: .35rem; margin: .3rem 0 0; }
+.sm-hg .vs-chips span { padding: .22rem .6rem; border: 1px solid var(--e2-linie); border-radius: 999px; font-size: .74rem; font-weight: 500; color: var(--e2-ink); }
+.vs-fokus { position: absolute; top: 1.5rem; right: 1.4rem; padding: .1rem .5rem; border-radius: 5px; background: var(--e2-ink); color: var(--e2-gelb); font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; }
+.vs .sm-kurve { padding: .9rem 1.1rem .7rem; }
+.vs .sm-kurve svg { max-width: 17rem; margin: 0 auto; }
