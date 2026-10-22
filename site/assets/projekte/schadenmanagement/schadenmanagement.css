@@ -719,3 +719,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-eff__org > div { display: grid; gap: .55rem; }
 .sy-eff__org .sy-org { width: 15rem; max-width: none; margin: 0 1rem 0 0; }
 .sy-schritt { min-height: 7rem; }
+/* Summary · Effizienz: Detailfragen je Ziel zum Aufklappen, „Fragen und Zielgruppen“ in allen drei Kästen auf gleicher Höhe */
+.sy-eff > .sm-bk .oz-auf { margin-top: auto; }
+.sy-eff > .sm-bk .oz-auf summary { padding-top: 1.4rem; }
+.sy-eff > .sm-bk .oz-auf { margin-top: 0; }
