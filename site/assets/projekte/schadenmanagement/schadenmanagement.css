@@ -680,3 +680,5 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-job .sv-ecke { align-content: start; gap: .55rem; padding: 1.6rem 1.5rem 1.5rem; border-radius: 16px; }
 .sy-job .sv-ecke > b { font-size: 1.25rem; }
 .sy-job .sv-ecke small, .sy-bild small { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+/* Kasten 4: jeder Teil mit Nummer, Label und Headline – gleicher Abstand Headline → Text wie beim Grundsatz */
+.e2 .sy-sv .sy-teil > h2 + .sy-text, .e2 .sy-sv .sy-teil > h2 + .sm-lead { margin-top: 1.1rem; }
