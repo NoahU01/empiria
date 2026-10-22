@@ -632,3 +632,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .e2 .sy-folgt { margin: 0; font-size: .92rem; color: var(--e2-grau); }
 .sy-pfeil { transform: translateY(-3px) rotate(45deg); }
 .sy-seg[open] .sy-pfeil { transform: translateY(3px) rotate(-135deg); }
+/* Summary: Kreise deutlich kleiner (Daniel, 22.10.) */
+.sy-kopf { grid-template-columns: 2.6rem minmax(0, 1fr) auto; gap: 1.3rem; }
+.sy-nr { width: 2.6rem; height: 2.6rem; font-size: 1rem; }
+.sy-inhalt { padding-left: calc(2.2rem + 2.6rem + 1.3rem); }
