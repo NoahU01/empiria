@@ -846,3 +846,9 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-organigramm + .sy-zeile { margin-top: 2rem; }
 /* Summary · Kasten 3: keine Hover-Wirkung – Kasten bleibt beim Darüberfahren unverändert (Daniel, 22.10.) */
 .sm-vs .oz--post .oz-karte, .sm-vs .oz--post .oz-karte:hover { padding: 0 0 45px; border: 1px solid var(--e2-linie); box-shadow: none; transform: none; cursor: default; }
+/* Summary · Kasten 4: „Unsere Sicht“ gelb wie „Unser größter Hebel“ */
+.sy-job .sv-ecke--gelb { background: var(--e2-gelb); border-color: var(--e2-gelb); }
+.sy-job .sv-ecke--gelb small, .e2 .sy-sv .sy-job .sv-ecke--gelb p { color: var(--e2-ink); }
+/* Summary · 02 Effizienz: Organigramm links, Prozesskosten rechts daneben */
+.sy-zeile > .sy-organigramm { grid-column: 1; grid-row: 1 / span 3; align-self: center; margin: 0; padding-right: 1.5rem; }
+.sy-zeile > .sy-organigramm ~ .sy-post { grid-column: 2; }
