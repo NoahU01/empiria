@@ -30,7 +30,7 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 
 # Seiten, die es auf main nicht geben darf. Bewusst als feste Liste: was
 # intern ist, entscheidet nicht ein Muster, sondern eine Absprache.
-INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/strategie-aufsichtsrat.html",
+INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/werkzeugkasten.html", "site/strategie-aufsichtsrat.html",
                   "site/signatur-kopieren.html",
                   "site/visitenkarte.html", "site/visitenkarte-1.html",
                   "site/visitenkarte-4.html", "site/visitenkarte-5.html", "site/visitenkarte.webmanifest",
@@ -46,18 +46,8 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/strategie-
                   "site/xmas-9.html", "site/xmas-10.html",
                   "site/xmas-11.html", "site/xmas-12.html",
                   "site/xmas-13.html",
-                  "site/projekte/sv-akademie.html",
-    "site/projekte/sitemap.html",
-    "site/projekte/sv-projektplanung.html",
-    "site/assets/projekte/sv-impulsfragen.pdf",
     "site/assets/projekte/sv-swot-arbeitsauftrag.pdf",
     "site/assets/projekte/sv-swot-vorschau.webp",
-    "site/assets/projekte/sv-impulsfragen-vorschau.webp",
-                  "site/projekte/sv-selbstverstaendnis.html",
-                  "site/projekte/sv-vision.html",
-                  "site/projekte/sv-strategie.html",
-    "site/projekte/sv-strategie-ist.html",
-    "site/projekte/sv-strategie-stossrichtungen.html",
                   "site/strategie/zielbild.html",
                   "site/strategie/meilensteine.html",
                   # Das Stylesheet gehoert nur zu diesen Seiten - ohne sie hat
@@ -66,18 +56,12 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/strategie-
                   "site/assets/projekte/sv-akademie-homepage.webp",
                   "site/assets/projekte/sv-akademie-selbstverstaendnis-1.webp",
                   "site/assets/projekte/sv-akademie-selbstverstaendnis.pdf",
-                  "site/assets/projekte/strategiemodell-mini.webp",
-                  "site/assets/projekte/sv-meilensteine-vorschau.webp",
-                  "site/projekte/sv-meilensteine.html",
-    "site/projekte/sv-abstimmung-hal.html",
-    "site/projekte/sv-meilensteine-fein.html",
-    "site/projekte/sv-meilensteine-dunkel.html",
-                  "site/assets/projekte/sv-rakete.webp"]
+                  "site/assets/projekte/strategiemodell-mini.webp"]
 # Ganze Ordner, die nie auf main dürfen (Daniel 10.10.2026): alles unter „Projekte“ ist Entwicklung –
 # empiria 3.0, Kopfbilder, Header, Darstellungsideen, PDF-Varianten, Volksfest, SV-Akademie …
 INTERNE_ORDNER = ["site/projekte/", "site/assets/projekte/", "site/designideen/"]
 
-INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter", "/visitenkarte",
+INTERNE_PFADE = ["/capiamo", "/strategie-aufsichtsrat", "/xmas", "/budget-retter", "/visitenkarte", "/werkzeugkasten",
                  "/projekte", "/strategie"]
 # Woerter, die im Menueband nichts zu suchen haben. Das Menue zeigt in der
 # Produktion ausschliesslich Problem, Loesung und Leistungen.
