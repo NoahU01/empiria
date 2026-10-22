@@ -788,3 +788,14 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* Summary · Kasten 3: weißer Streifen oben und unten niedriger und gleich hoch (Daniel, 22.10.) */
 .sm-vs .oz--post .oz-karte > small { padding: .75rem 1.5rem; line-height: 1.5; }
 .sm-vs .oz--post .oz-karte { padding-bottom: var(--sy-streifen, 45px); }
+/* Summary · Kasten 5: Grafik klein rechts neben der Frage, Kästen flacher, Streifen 45 px wie bei den Zielen (Daniel, 22.10.) */
+.sy-zeile { grid-template-rows: repeat(3, auto); }
+.sy-post { grid-row: span 3; }
+.e2 .sy-post__kopf { padding: .75rem 1.5rem; line-height: 1.5; }
+.sy-post__mitte { display: grid; grid-template-columns: minmax(0, 1fr) 9.5rem; gap: 1.2rem; align-items: center; padding: 1.4rem 1.5rem; }
+.sy-post__mitte .sy-post__bild { padding: 0; background: none; }
+.sy-post__mitte .sy-post__bild svg { max-width: 9.5rem; }
+.sy-post__mitte .sy-post__bild .sy-org { max-width: 8rem; }
+.sy-post__fuss { min-height: 45px; padding: 0 1.5rem .75rem; }
+.sy-post__fuss .oz-auf summary { padding-top: .75rem; }
+.sy-post__fuss { padding-bottom: calc(.75rem - 1px); }
