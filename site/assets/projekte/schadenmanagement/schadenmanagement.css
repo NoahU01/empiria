@@ -744,3 +744,24 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-post__fuss { min-height: 58px; padding: 0 1.5rem 1.15rem; }
 .sy-post__fuss .oz-auf summary { padding-top: 1.1rem; }
 .sy-prozess + .sy-zeile { margin-top: 2rem; }
+
+/* Prozess (Summary · Kasten 5): Klammer „Bis zur Entscheidung“ über Stufe 1–3, Spezialistenprüfung gestrichelt unter Stufe 3 (bei Bedarf, hin und zurück), danach drei Wege */
+.sy-prozess { grid-template-rows: auto auto auto; row-gap: 0; }
+.sy-klammer { grid-column: 1 / 6; grid-row: 1; position: relative; height: 2.6rem; margin-bottom: 1rem; }
+.sy-klammer::before { content: ""; position: absolute; left: 1.2rem; right: 1.2rem; bottom: 0; height: .9rem; border: 1.5px solid #b4aea7; border-bottom: 0; border-radius: 8px 8px 0 0; }
+.sy-klammer span { position: absolute; left: 50%; bottom: .9rem; transform: translate(-50%, 50%); padding: 0 .8rem; background: #fff; white-space: nowrap; font-size: .85rem; font-weight: 600; color: var(--e2-ink); }
+.sy-prozess > .sy-schritt, .sy-prozess > .sy-weiter, .sy-prozess > .sy-gabel, .sy-prozess > .sy-wege { grid-row: 2; }
+.sy-gabel::after { top: 16.67%; bottom: 16.67%; }
+.sy-wege { grid-template-rows: repeat(3, 1fr); }
+.sy-bedarf { grid-column: 5; grid-row: 3; display: grid; justify-items: center; }
+.sy-bedarf__pfeile { position: relative; width: 100%; height: 3.4rem; }
+.sy-bedarf__pfeile i { position: absolute; top: 0; bottom: 0; border-left: 2px solid var(--e2-ink); }
+.sy-bedarf__pfeile i:nth-child(1) { left: calc(50% - 1.1rem); }
+.sy-bedarf__pfeile i:nth-child(2) { left: calc(50% + 1.1rem); }
+.sy-bedarf__pfeile i:nth-child(1)::after { content: ""; position: absolute; left: -6px; bottom: -1px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--e2-ink); }
+.sy-bedarf__pfeile i:nth-child(2)::after { content: ""; position: absolute; left: -6px; top: -1px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid var(--e2-ink); }
+.sy-bedarf__pfeile em { position: absolute; left: calc(50% + 1.9rem); top: 50%; transform: translateY(-50%); font-style: normal; font-size: .8rem; font-weight: 600; color: var(--e2-grau); white-space: nowrap; }
+.sy-bedarf__kasten { width: 100%; padding: .9rem 1.2rem; border: 1.5px dashed var(--e2-ink); border-radius: 14px; text-align: center; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--e2-ink); }
+.sy-wege { gap: .4rem; align-self: center; }
+.sy-wege li { padding: .45rem 1rem; font-size: .88rem; }
+.sy-prozess > .sy-schritt { align-self: stretch; }
