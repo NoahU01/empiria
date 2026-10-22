@@ -395,14 +395,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · B Foto mit Satz (Porträt)",
   "kern": "Themenliste 13: Führung macht einsam.",
   "text": "Du stellst in der Runde eine Idee vor. Alle nicken. Du fragst: „Sieht das jemand anders?“ Stille.\n\nJe höher du kommst, desto seltener sagt dir jemand ins Gesicht, was er denkt.\n\nMit Budget und Karriere hat das nur am Rande zu tun. Ab einer gewissen Stufe ist da Ehrfurcht.\n\nViele glauben, einem Vorstand oder einem Hauptabteilungsleiter dürfe man gar nicht die Wahrheit sagen. Und sie sind schlicht unsicher.\n\nWas dir dann fehlt, ist ein Mensch auf Augenhöhe. Jemand, der\n• eine andere Perspektive einnimmt und sie gut begründen kann.\n• gezielte Fragen stellt, die dich wirklich zum Nachdenken bringen und dir einen anderen Blick auf die Dinge geben.\n• Gesamtzusammenhänge aufzeigt und den nächsten Schritt klar benennt.\n\nSchreibe dir heute einen Namen auf:\nWer sagt dir die Wahrheit? Ungeschönt, ohne Rücksicht auf deine Position.\n\nFällt dir niemand ein, ist das die wichtigste Aufgabe dieser Woche.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-22",
   "kennzahlen": [],
   "bild": "rp03",
   "termin": "Do 22.10.",
   "format": "Szene · B Foto mit Satz (Porträt)",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7518910362520387584"
  },
  {
   "id": 39,
