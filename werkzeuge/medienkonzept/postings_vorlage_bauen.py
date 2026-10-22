@@ -698,7 +698,11 @@ teile += [
   <div class="unten"><p class="satz">„Führung macht einsam. Je höher du kommst, desto weniger sagt dir jemand die Wahrheit.“</p><p class="wer">— ein ehemaliger Vorstand</p></div>
 </section>""" % B,
     """<section class="p schwarz" id="rp04"><p class="fr-gross" style="margin-top:40px;color:#fff;font-size:92px">Wie viel deiner Woche zahlt auf die <span class="hl">Strategie</span> ein?</p>
-  <div class="skala">""" + "".join("<span>%d</span>" % (i * 10) for i in range(1, 11)) + """</div><div class="skala-l"><span>Prozent deiner Termine</span><span>alles Strategie</span></div>%s%s</section>""" % (anschnitt(F, 560, -180, -170, "#fff400"), NAME),
+  <div style="position:relative;margin-top:150px;height:150px">
+    <div style="position:absolute;left:0;right:0;top:61px;height:28px;border-radius:14px;background:#4a4642"></div>
+    <div style="position:absolute;left:50%%;top:0;width:150px;height:150px;margin-left:-75px;border-radius:50%%;background:#fff400;display:grid;place-items:center;font:700 96px/1 Lora,Georgia,serif;color:#1a1817;box-shadow:0 0 0 12px #1a1817">?</div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-top:30px;font:600 44px/1 Poppins,sans-serif;color:#fff"><span>0&nbsp;%%</span><span>100&nbsp;%%</span></div>%s%s</section>""" % (anschnitt(F, 560, -180, -170, "#fff400"), NAME),
     """<section class="p foto-voll" id="rp05">%s</section>""" % vb("entwurf-e6.jpg", "50% 40%"),
     """<section class="p vollbild" id="rp08">
   <img src="%svoll-b1.jpg" alt="" style="--pos:0%% 45%%">
