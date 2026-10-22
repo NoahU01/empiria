@@ -844,3 +844,5 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-organigramm { margin-top: 1.8rem; }
 .sy-org2 { display: block; width: 100%; max-width: 26rem; height: auto; }
 .sy-organigramm + .sy-zeile { margin-top: 2rem; }
+/* Summary · Kasten 3: keine Hover-Wirkung – Kasten bleibt beim Darüberfahren unverändert (Daniel, 22.10.) */
+.sm-vs .oz--post .oz-karte, .sm-vs .oz--post .oz-karte:hover { padding: 0 0 45px; border: 1px solid var(--e2-linie); box-shadow: none; transform: none; cursor: default; }
