@@ -131,6 +131,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 362,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 171.5,
+    "impressionen": 534,
+    "reichweite": 362,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp07",
@@ -190,6 +197,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 417,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 147.5,
+    "impressionen": 582,
+    "reichweite": 418,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp05",
@@ -242,6 +256,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 191,
     "reaktionen": 4,
     "kommentare": 4
+   },
+   {
+    "stunden": 122.5,
+    "impressionen": 284,
+    "reichweite": 193,
+    "reaktionen": 4,
+    "kommentare": 5
    }
   ],
   "bild": "rp09",
@@ -287,6 +308,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1174,
     "reaktionen": 10,
     "kommentare": 4
+   },
+   {
+    "stunden": 98.5,
+    "impressionen": 1620,
+    "reichweite": 1219,
+    "reaktionen": 10,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -325,6 +353,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 113,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 75.5,
+    "impressionen": 203,
+    "reichweite": 120,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -356,6 +391,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 189,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 51.5,
+    "impressionen": 332,
+    "reichweite": 221,
+    "reaktionen": 12,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -380,6 +422,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 36,
     "reaktionen": 2,
     "kommentare": 0
+   },
+   {
+    "stunden": 27.5,
+    "impressionen": 143,
+    "reichweite": 89,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp02",
@@ -397,7 +446,15 @@ window.MK_ENTWUERFE = [
   "text": "Du stellst in der Runde eine Idee vor. Alle nicken. Du fragst: „Sieht das jemand anders?“ Stille.\n\nJe höher du kommst, desto seltener sagt dir jemand ins Gesicht, was er denkt.\n\nMit Budget und Karriere hat das nur am Rande zu tun. Ab einer gewissen Stufe ist da Ehrfurcht.\n\nViele glauben, einem Vorstand oder einem Hauptabteilungsleiter dürfe man gar nicht die Wahrheit sagen. Und sie sind schlicht unsicher.\n\nWas dir dann fehlt, ist ein Mensch auf Augenhöhe. Jemand, der\n• eine andere Perspektive einnimmt und sie gut begründen kann.\n• gezielte Fragen stellt, die dich wirklich zum Nachdenken bringen und dir einen anderen Blick auf die Dinge geben.\n• Gesamtzusammenhänge aufzeigt und den nächsten Schritt klar benennt.\n\nSchreibe dir heute einen Namen auf:\nWer sagt dir die Wahrheit? Ungeschönt, ohne Rücksicht auf deine Position.\n\nFällt dir niemand ein, ist das die wichtigste Aufgabe dieser Woche.",
   "status": "veroeffentlicht",
   "datum": "2026-10-22",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 98,
+    "reichweite": 57,
+    "reaktionen": 4,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp03",
   "termin": "Do 22.10.",
   "format": "Szene · B Foto mit Satz (Porträt)",
