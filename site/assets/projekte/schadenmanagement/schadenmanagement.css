@@ -765,3 +765,23 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-wege { gap: .4rem; align-self: center; }
 .sy-wege li { padding: .45rem 1rem; font-size: .88rem; }
 .sy-prozess > .sy-schritt { align-self: stretch; }
+
+/* Summary · Kasten 1: Text links, Verweis „Was ist Versicherung?“ rechts (Daniel, 22.10.) */
+.sy-lead-zeile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; }
+.sy-lead-zeile .sm-lead { margin-top: 1.2rem; }
+.sy-lead-zeile .sm-mehr { justify-self: end; margin-bottom: .2rem; }
+/* Fenster mit zwei Seiten: Risiko links, Versicherung rechts – Kurven auf gleicher Höhe */
+.sm-hg--paar { width: min(64rem, calc(100vw - 2rem)); }
+.sm-hg__paar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.4rem; }
+.sm-hg__seite { display: flex; flex-direction: column; }
+.sm-hg__seite + .sm-hg__seite { padding-left: 2.4rem; border-left: 1px solid var(--e2-linie); }
+.sm-hg h3.sm-hg__seite, .sm-hg__seite > h3.sm-hg__abschnitt { margin-top: 0 !important; }
+.sm-hg__seite .sm-kurve { margin-top: auto; margin-bottom: 0; }
+.sm-hg__paar .sm-kurve figcaption { min-height: 2.9rem; align-content: start; }
+.sm-hg__paar { grid-template-rows: repeat(4, auto); }
+.sm-hg__seite { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+.sm-hg__seite > * { align-self: start; }
+.sm-hg__seite .sm-kurve { margin-top: .4rem; }
+.sm-hg__paar .sm-kurve figcaption { min-height: 0; }
+.sm-hg__paar { column-gap: 0; }
+.sm-hg__seite:first-child { padding-right: 2.4rem; }
