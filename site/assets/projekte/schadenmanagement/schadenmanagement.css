@@ -663,3 +663,20 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sm-vs .oz .v5-karte, .sm-vs .oz .v5-karte--fokus, .sm-vs .oz .v5-karte--fokus:hover { padding: 0; overflow: hidden; border: 1px solid var(--e2-linie); }
 .sm-vs .oz--post .oz-karte > h3 { padding-bottom: 0; font-size: 1.25rem; }
 .sm-vs .oz--post .oz-karte > .oz-bild { padding-top: 1.6rem; }
+/* Summary · Inhalt 4 = „Unser Selbstverständnis“ in drei Teilen: Grundsatz · größter Hebel · unser Job (Daniel, 22.10.) */
+.sy-sv .sy-teil + .sy-teil { margin-top: 3rem; }
+.e2 .sy-sv .sy-label { margin: 0 0 .7rem; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--e2-grau); }
+.e2 .sy-sv .sy-text { max-width: 46rem; margin: 0; font-size: .95rem; line-height: 1.65; color: var(--e2-ink-2); }
+.e2 .sy-sv .sy-merk { max-width: 46rem; margin: 1.4rem 0 0; font-size: .95rem; font-weight: 500; line-height: 1.6; color: var(--e2-ink); }
+.sy-sv .sv-dreieck { margin-top: 1.6rem; }
+.e2 .sy-sv .sv-ecke p, .e2 .sy-sv .sv-ecke li { font-size: .9rem; line-height: 1.55; color: var(--e2-ink-2); }
+.sy-sv .sv-ecke ul { padding-left: 0; list-style: none; }
+.sy-sv .sv-ecke--gelb { background: var(--e2-gelb); border-color: var(--e2-gelb); }
+.sy-sv .sv-ecke--gelb small, .e2 .sy-sv .sv-ecke--gelb p, .e2 .sy-sv .sv-ecke--gelb li { color: var(--e2-ink); }
+.sy-job { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.6rem; align-items: stretch; }
+.sy-bild { gap: .8rem; }
+.sy-bild small { padding-right: 0; }
+.sy-bild .oz-svg { max-width: 100%; margin: auto 0; }
+.sy-job .sv-ecke { align-content: start; gap: .55rem; padding: 1.6rem 1.5rem 1.5rem; border-radius: 16px; }
+.sy-job .sv-ecke > b { font-size: 1.25rem; }
+.sy-job .sv-ecke small, .sy-bild small { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
