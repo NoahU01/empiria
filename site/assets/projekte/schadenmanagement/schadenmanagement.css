@@ -879,3 +879,4 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-gross--org .sy-org2 { max-width: 34rem; margin: 0 auto; }
 .sy-figs { align-items: stretch; }
 .sy-fig { grid-template-rows: auto 1fr auto; }
+.sy-fig { grid-template-rows: auto 1fr; }
