@@ -880,3 +880,6 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sy-figs { align-items: stretch; }
 .sy-fig { grid-template-rows: auto 1fr auto; }
 .sy-fig { grid-template-rows: auto 1fr; }
+/* Überschrift über den drei Kästen – gleiche Art wie „Organisationsstruktur“ und „Schadenprozess“ */
+.e2 .sy-fragen-t { display: block; margin: 3rem 0 0; }
+.sy-fragen-t + .sy-zeile--drei { margin-top: .9rem; }
