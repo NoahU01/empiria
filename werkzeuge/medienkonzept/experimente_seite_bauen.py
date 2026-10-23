@@ -9,7 +9,7 @@ import os, html
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "71"
+V = "72"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -221,13 +221,13 @@ def beispiel(e):
     bilder = e["bilder"]
     gross = "|".join("%s%s.jpg?v=%s" % (PF, b, V) for b in bilder)
     zahl = '<span class="mex-seiten">%d Seiten</span>' % len(bilder) if len(bilder) > 1 else ""
-    return '''<article class="mex-bsp"><button type="button" class="mex-thumb" data-gross="%s" aria-label="Bild groß ansehen"><img src="%s%s.jpg?v=%s" alt="" loading="lazy">%s</button>
-  <b>%s</b><span>%s</span><details><summary>Text lesen</summary><div class="mex-posting">%s</div></details></article>''' % (gross, PF, bilder[0], V, zahl, e["titel"], e["hebel"], absaetze(e["text"]))
+    return '''<article class="mex-zeile"><button type="button" class="mex-thumb" data-gross="%s" aria-label="Bild groß ansehen"><img src="%s%s.jpg?v=%s" alt="" loading="lazy">%s</button>
+  <div class="mex-zeile__text"><p class="mex-zeile__kopf"><b>%s</b><span>%s</span></p><div class="mex-posting">%s</div></div></article>''' % (gross, PF, bilder[0], V, zahl, e["titel"], e["hebel"], absaetze(e["text"]))
 
 
 def stufe(st):
     return '''<div class="mex-stufenblock mex-stufenblock--%s"><div class="mex-stufenkopf"><p class="mex-nr"><b>%s</b><span>%s</span><em>%s</em></p><p class="mex-grenze">%s</p></div>
-  <div class="mex-raster">%s</div></div>''' % (st["nr"], st["nr"], st["titel"], st["grad"], st["grenze"], "".join(beispiel(e) for e in st["beispiele"]))
+  <div class="mex-zeilen">%s</div></div>''' % (st["nr"], st["nr"], st["titel"], st["grad"], st["grenze"], "".join(beispiel(e) for e in st["beispiele"]))
 
 
 def absaetze(t):
@@ -262,7 +262,7 @@ def main():
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Runde 2 &middot; 23.10.2026</p><h2 class="e2-h2">Vier Stufen, je drei Beispiele.</h2>
-    <p class="e2-lead">Von Stufe zu Stufe lauter – in Sprache, Bild und Darstellung. Jedes Beispiel nimmt ein anderes Thema aus deinen Antworten. Bild antippen zum Vergrößern, Text aufklappen. Ziel: die Stelle finden, an der du sagst, jetzt wird es zu wild.</p></div>
+    <p class="e2-lead">Von Stufe zu Stufe lauter – in Sprache, Bild und Darstellung. Jedes Beispiel nimmt ein anderes Thema aus deinen Antworten. Bild antippen zum Vergrößern. Ziel: die Stelle finden, an der du sagst, jetzt wird es zu wild.</p></div>
     <ol class="mex-leiter"><li>Der nächste Schritt</li><li>Mutig</li><li>Grenzwertig</li><li>Zu wild</li></ol>
     <div class="mex-stufen">''' + "".join(stufe(e) for e in STUFEN) + '''</div>
   </div></section>

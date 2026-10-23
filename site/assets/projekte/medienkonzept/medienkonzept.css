@@ -732,3 +732,15 @@ a.mke-platz{text-decoration:none}
 .mex-gross__bilder img{display:block;height:min(80vh,820px);width:auto;border-radius:8px}
 .mex-zu{position:sticky;float:right;top:0;z-index:2;width:40px;height:40px;margin-bottom:8px;border:0;border-radius:50%;background:#fff400;font:700 1.4rem/1 'Poppins',sans-serif;cursor:pointer}
 @media (max-width:600px){.mex-raster{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mex-gross__bilder img{height:auto;width:80vw}}
+
+/* Runde 2c – Bild und Text nebeneinander, ohne Aufklappen (23.10.2026) */
+.mex-zeilen{display:grid;gap:14px}
+.mex-zeile{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;align-items:start;padding:14px;border-radius:14px;background:#faf9f7}
+.mex-zeile__kopf{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:2px 0 10px}
+.mex-zeile__kopf b{font:600 1rem/1.3 'Poppins',sans-serif}
+.mex-zeile__kopf span{font-size:.8rem;color:#6b6661}
+.mex-zeile .mex-posting{padding:0;background:none;column-count:2;column-gap:32px}
+.ak-sec .mex-zeile .mex-posting p{font-size:.88rem;line-height:1.5;margin:0 0 .6em;break-inside:avoid}
+@media (max-width:900px){.mex-zeile .mex-posting{column-count:1}}
+@media (max-width:600px){.mex-zeile{grid-template-columns:110px minmax(0,1fr);gap:12px;padding:10px}.ak-sec .mex-zeile .mex-posting p{font-size:.84rem}}
+@media (max-width:600px){.mex-zeile{grid-template-columns:minmax(0,1fr)}.mex-zeile .mex-thumb{width:150px}}
