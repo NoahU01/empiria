@@ -706,3 +706,29 @@ a.mke-platz{text-decoration:none}
 .mex-bild--karussell img:first-child{grid-column:1/-1}
 .mex-bild--karussell img:not(:first-child){border-radius:6px}
 @media (max-width:900px){.mex-leiter{grid-template-columns:repeat(2,minmax(0,1fr))}.mex-leiter li{border-radius:0!important}}
+
+/* Runde 2b – kompakt (23.10.2026) */
+.mex-stufen{display:grid;gap:22px}
+.mex-stufenblock{padding:20px;border:1px solid #e4e0db;border-radius:20px;background:#fff}
+.mex-stufenblock--4{border:2px solid #1a1817}
+.mex-stufenkopf{display:grid;gap:6px;margin-bottom:16px}
+.ak-sec p.mex-nr{margin:0}
+.ak-sec p.mex-grenze{margin:0;font-size:.88rem;line-height:1.5;color:#4a4642;padding:8px 12px;border-left:3px solid #fff400;background:#fffde6}
+.mex-raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.mex-bsp{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mex-thumb{position:relative;display:block;padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px;overflow:hidden}
+.mex-thumb img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .2s}
+.mex-thumb:hover img{transform:scale(1.03)}
+.mex-seiten{position:absolute;right:8px;bottom:8px;padding:4px 8px;border-radius:12px;background:#1a1817;color:#fff400;font:600 .72rem/1 'Poppins',sans-serif}
+.mex-bsp > b{margin-top:6px;font:600 .95rem/1.3 'Poppins',sans-serif}
+.mex-bsp > span{font-size:.8rem;line-height:1.4;color:#6b6661}
+.mex-bsp details{margin-top:4px}
+.mex-bsp summary{cursor:pointer;font:600 .82rem/1.4 'Poppins',sans-serif;color:#1a1817;text-decoration:underline;text-underline-offset:3px}
+.mex-bsp details .mex-posting{margin-top:8px;padding:12px 14px}
+.ak-sec .mex-bsp .mex-posting p{font-size:.86rem;line-height:1.5}
+.mex-gross{max-width:min(92vw,1100px);max-height:92vh;padding:16px;border:0;border-radius:16px;background:#1a1817}
+.mex-gross::backdrop{background:rgba(26,24,23,.75)}
+.mex-gross__bilder{display:flex;gap:12px;overflow-x:auto}
+.mex-gross__bilder img{display:block;height:min(80vh,820px);width:auto;border-radius:8px}
+.mex-zu{position:sticky;float:right;top:0;z-index:2;width:40px;height:40px;margin-bottom:8px;border:0;border-radius:50%;background:#fff400;font:700 1.4rem/1 'Poppins',sans-serif;cursor:pointer}
+@media (max-width:600px){.mex-raster{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mex-gross__bilder img{height:auto;width:80vw}}

@@ -9,7 +9,7 @@ import os, html
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "70"
+V = "71"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -74,36 +74,75 @@ Wenn ein Thema einmal sauber steht, ist der Rest Handwerk. Und Handwerk muss man
 ]
 
 STUFEN = [
-    dict(nr="1", titel="Der nächste Schritt", grad="sofort einsetzbar", bilder=["st1"],
-         sprache="Ich-Perspektive, ein lockerer Einstieg, sonst ruhig erklärt.",
-         bild="Echtes Foto mit handschriftlicher Notiz und Pfeil – wirkt wie ein Schnappschuss aus dem Workshop.",
-         darstellung="Einzelbild, wie bisher.",
+    dict(nr="1", titel="Der nächste Schritt", grad="sofort einsetzbar",
          grenze="Trägt. Kann so in den Redaktionsplan.",
-         text="""Mein erster Handgriff in fast jedem Projekt hat nichts mit Strategie zu tun. Ich räume Folien weg.
+         beispiele=[
+            dict(titel="Folien ins Backup", bilder=["st1"], hebel="Echtes Foto mit Handschrift-Notiz",
+                 text="""Mein erster Handgriff in fast jedem Projekt hat nichts mit Strategie zu tun. Ich räume Folien weg.
 
 Die Arbeit darin ist oft gut. Nur erzählen die meisten Folien das eigene Thema, mit allen Details, aus Sicht dessen, der präsentiert. Was der Entscheider davon hat, steht selten darin.
 
 Also fangen wir anders an: erst das Gesamtbild, auf einem Blatt. Dann entscheiden wir, welche Details es wirklich braucht.
 
 Meistens sind es deutlich weniger, als alle dachten."""),
-    dict(nr="2", titel="Mutig", grad="klare Kante", bilder=["st2"],
-         sprache="Direkte Ansprache, eine harte These, die der Leser auf sich beziehen muss.",
-         bild="Plakat mit Zahl: 27 Folien durchgestrichen, 1 Bild groß dagegen.",
-         darstellung="Einzelbild als Plakat – eine Aussage, sonst nichts.",
-         grenze="Trägt, wenn der Ton danach wieder hilfsbereit wird. Die These darf weh tun, der Text darf nicht von oben herab sein.",
-         text="""Ich sage es so direkt, wie ich es im Projekt auch sage: Wenn deine Vorstandsvorlage 27 Folien hat, weißt du noch nicht genau, was du entscheiden lassen willst.
+            dict(titel="Der Kalender", bilder=["s1b"], hebel="Nachgebauter Wochenkalender, ein gelber Block",
+                 text="""Wenn ich mit frisch beförderten Führungskräften spreche, sehe ich fast immer denselben Kalender.
+
+Regeltermine von morgens bis abends. Viele davon geerbt. Welchen Mehrwert sie bringen, können die meisten selbst nicht sagen.
+
+Und irgendwo dazwischen, wenn es gut läuft, eine halbe Stunde für das, wofür sie eigentlich befördert wurden.
+
+Mein Rat für die ersten Wochen: Gehe jeden Regeltermin einmal durch und frage dich, was passieren würde, wenn du nicht hingehst.
+
+Bei manchen ist die ehrliche Antwort: nichts."""),
+            dict(titel="„Dass es läuft“", bilder=["s1c"], hebel="Selfie mit Kundensatz in Handschrift",
+                 text="""Von allem, was Kunden über die Zusammenarbeit mit uns sagen, mag ich einen Satz am liebsten. Er steht auf dem Bild.
+
+Darin geht es nicht um Folien, Workshops oder Methoden. Es geht um ein Gefühl: Ich muss mich nicht mehr um alles selbst kümmern.
+
+Dahinter steckt wenig Magie. Ich halte den Aufwand für mein Gegenüber so klein wie möglich. Ich entwickle das Besprochene sofort weiter, rufe die drei Leute an, die wir brauchen, und sorge für den nächsten Termin.
+
+Wer länger mit mir arbeitet, weiß: Zwischen den Terminen passiert am meisten."""),
+         ]),
+    dict(nr="2", titel="Mutig", grad="klare Kante",
+         grenze="Trägt, solange der Text nach der harten These hilfsbereit bleibt. Die These darf wehtun, der Ton darf nicht von oben herab sein.",
+         beispiele=[
+            dict(titel="27 Folien, 1 Bild", bilder=["st2"], hebel="Plakat mit harter Zahl",
+                 text="""Ich sage es so direkt, wie ich es im Projekt auch sage: Wenn deine Vorstandsvorlage 27 Folien hat, weißt du noch nicht genau, was du entscheiden lassen willst.
 
 Ich habe das oft genug gesehen. Wer sein Thema richtig durchdrungen hat, kriegt es auf ein Bild. Wer nicht, versteckt sich hinter Folie 14.
 
 Bei mir wandern bestehende Folien deshalb als Erstes ins Backup. Alle. Dann zeichnen wir das Gesamtbild. Und ganz schnell merkt man, ob das Thema trägt.
 
 Das tut kurz weh. Und spart dir die nächste Schleife."""),
-    dict(nr="3", titel="Grenzwertig", grad="Humor mit Spitze", bilder=["st3a", "st3b", "st3c", "st3d", "st3e"],
-         sprache="Augenzwinkern, Hitliste, eine echte Frage zum Mitmachen am Ende.",
-         bild="Nachgebaute Folien mit Stempel „→ Backup“ – Wiedererkennung aus jedem Sitzungssaal.",
-         darstellung="Dokument-Karussell mit fünf Seiten statt Einzelbild. Neu für den Feed.",
-         grenze="Die Hitliste ist meine Zuspitzung, nicht dein Erlebnis – nur nehmen, wenn du die Plätze so unterschreibst. Kann für manche Vorstände nach Spott über ihre eigenen Sitzungen klingen.",
-         text="""Kleines Geständnis: Ich führe eine Hitliste. Folien, die in meinen Projekten als Erstes fliegen.
+            dict(titel="Kein Konfliktseminar", bilder=["s2b"], hebel="Gelbes Plakat, Absage als Headline",
+                 text="""Ein Führungsteam wollte von mir ein Angebot für ein Konfliktmanagement-Seminar.
+
+Ich habe keines geschrieben.
+
+Nach ein paar Fragen war klar: Keiner wusste so richtig, wo der Bereich hin soll. Kein Zielbild, keine Richtung. Jeder hat den Alltag anders interpretiert. Natürlich gibt es da Konflikte.
+
+Dagegen hilft kein Seminar. Dagegen hilft Klarheit.
+
+Genau da haben wir angesetzt. Und eine der drei Führungskräfte, die mir am Anfang noch erklärt hatte „Ich bin Projektleiter, keine Führungskraft“, sagte im dritten oder vierten Termin ganz selbstverständlich: „Ich in meiner Rolle als Führungskraft …“
+
+Das war Weltklasse."""),
+            dict(titel="Nein sagen", bilder=["s2c"], hebel="Porträt mit Karte „Nein“, ein Satz",
+                 text="""Ich sage öfter Nein, als man denkt.
+
+Wenn mich jemand für ein Thema holen will, in dem ich nicht gut bin, sage ich das. Je mehr es ins rein Psychologische geht, desto klarer bin ich raus. Und für Themen, bei denen Menschen in eine Richtung gedrückt werden sollen, obwohl jeder sieht, dass es nicht funktioniert, bin ich gar nicht zu haben.
+
+Ich arbeite über Klarheit, Nutzen und Sinn. Mit Druck arbeite ich nicht.
+
+Die meisten nehmen das dankend an, weil sie ein Ergebnis wollen. Dann einigen wir uns auf einen Weg, der funktioniert. Oder ich nenne ihnen jemanden, der besser passt.
+
+Ein Nein zur richtigen Zeit erspart beiden Seiten viel Frust."""),
+         ]),
+    dict(nr="3", titel="Grenzwertig", grad="Humor mit Spitze",
+         grenze="Satire auf Sitzungen und Workshops. Trägt nur, wenn du die Zuspitzung unterschreibst – manche Vorstände lesen darin Spott über ihre eigenen Runden.",
+         beispiele=[
+            dict(titel="Die Hitliste", bilder=["st3a", "st3b", "st3c", "st3d", "st3e"], hebel="Dokument-Karussell, fünf Seiten",
+                 text="""Kleines Geständnis: Ich führe eine Hitliste. Folien, die in meinen Projekten als Erstes fliegen.
 
 Die Plätze 3 bis 1 stehen im Dokument. Wer schon einmal in einer Vorstandssitzung saß, kennt jede davon.
 
@@ -112,12 +151,32 @@ Klingt gemein? Ein bisschen. Aber jede dieser Folien kostet Minuten, in denen ke
 Mein Tausch: alles ins Backup, ein Gesamtbild auf den Tisch. Dann reden wir über das, was zählt.
 
 Und jetzt du: Welche Folie würdest du sofort löschen?"""),
-    dict(nr="4", titel="Zu wild", grad="bewusst drüber", bilder=["st4"],
-         sprache="Großbuchstaben, Stakkato, Ansage an den Leser, „Deal?“.",
-         bild="Foto abgedunkelt, riesiger Stempel „GELÖSCHT.“, Text in Versalien.",
-         darstellung="Einzelbild im Werbeplakat-Stil.",
-         grenze="Hier kippt es: Großbuchstaben schreien, „in drei Wochen durch“ ist ein Zahlenversprechen ohne Beleg, „Wer das nicht aushält, ist bei mir falsch“ stößt genau die Vorstände vor den Kopf, die wir erreichen wollen. Einzelne Elemente (der Stempel, „Auch deine Lieblingsfolie“) können wir trotzdem in Stufe 2 oder 3 übernehmen.",
-         text="""ICH LÖSCHE DEINE FOLIEN.
+            dict(titel="Workshop-Bingo", bilder=["s3b"], hebel="Bingo-Karte zum Mitspielen",
+                 text="""Für deinen nächsten Strategie-Workshop habe ich dir etwas mitgebracht.
+
+Kreuze an, was fällt. Bei einer vollen Reihe darfst du laut „Bingo“ rufen. Oder leise lächeln.
+
+Im Ernst: Jeder dieser Sätze ist ein Zeichen dafür, dass gerade keiner entscheiden will. „Lass uns das offline klären“ heißt meistens: gar nicht. „Parkplatz“ heißt: für immer.
+
+Wenn du in deinem nächsten Workshop drei davon hörst, stelle eine einzige Frage: Was entscheiden wir heute?
+
+Dann wird es kurz still. Und dann wird es gut."""),
+            dict(titel="Die Stellenanzeige", bilder=["s3c"], hebel="Nachgebaute Anzeige als Satire",
+                 text="""Wenn Häuser ehrlich ausschreiben würden, was ihrem Vorstand fehlt, sähe die Anzeige ungefähr so aus.
+
+Gesucht wird jemand, der widerspricht, wenn alle nicken. Der eine andere Perspektive einnimmt und sie gut begründet. Der Fragen stellt, die unbequem sind, und Zusammenhänge zeigt, die keiner sehen wollte.
+
+Anforderungen: keine Angst vor Hierarchie. Keine Lust auf Kompromisse aus Höflichkeit.
+
+Wir bieten: einen Vorstand, der endlich wieder etwas Neues hört.
+
+Ich weiß, diese Anzeige wird so nie erscheinen. Aber falls du gerade an deine eigene Runde denkst: Wer würde sich darauf bewerben?"""),
+         ]),
+    dict(nr="4", titel="Zu wild", grad="bewusst drüber",
+         grenze="Hier soll es kippen. Makaber, laut, mit erfundenen Zahlen als Stilmittel. Einzelne Elemente – der Stempel, der Fahndungsaufruf als Form – können wir trotzdem eine Stufe tiefer übernehmen.",
+         beispiele=[
+            dict(titel="GELÖSCHT.", bilder=["st4"], hebel="Stempel, Versalien, „Deal?“",
+                 text="""ICH LÖSCHE DEINE FOLIEN.
 
 Alle 27.
 
@@ -132,18 +191,43 @@ Dafür bekommst du ein Bild. Ein einziges. Und eine Entscheidung.
 Wer das nicht aushält, ist bei mir falsch. Wer es aushält, ist in drei Wochen durch.
 
 Deal?"""),
+            dict(titel="Todesanzeige", bilder=["s4b"], hebel="Traueranzeige für eine Strategie",
+                 text="""Wir nehmen Abschied.
+
+Von einer Strategie, die mit großem Aufwand entstanden ist. Zwei Tage Klausur, 84 Folien, ein Leitbild mit sieben Werten.
+
+Sie hat den Alltag nie erreicht. Montags wusste keiner, was sie für die eigene Arbeit bedeutet.
+
+Sie hinterlässt ein Plakat im Flur und eine Mappe im Schrank.
+
+Von Beileidsbekundungen bitten wir abzusehen. Stattdessen: Macht es beim nächsten Mal anders. Erst das Zielbild, das jeder versteht. Dann die Strategie als Weg dorthin. Und dann jemand, der sie jeden Montag in den Alltag trägt."""),
+            dict(titel="Steckbrief", bilder=["s4c"], hebel="Fahndungsplakat „Tot oder lebendig“",
+                 text="""Fahndungsaufruf.
+
+Seit dem Frühjahr spurlos verschwunden: die Entscheidung.
+
+Beschreibung: klar, eigentlich längst überfällig. Zuletzt gesehen in einer Vorstandssitzung. Seitdem dreimal vertagt. Hört auf den Namen „Lass uns das noch einmal vertiefen“.
+
+Sachdienliche Hinweise: Sie versteckt sich meistens dort, wo keiner sagen kann, was das Thema für das Unternehmen bedeutet.
+
+Belohnung: ein Bereich, der wieder vorankommt.
+
+Festnehmen kann sie übrigens jeder, der in den Lead geht."""),
+         ]),
 ]
 
 
-def stufe(e):
-    bilder = "".join('<img src="%s%s.jpg?v=%s" alt="" loading="lazy">' % (PF, b, V) for b in e["bilder"])
-    karussell = " mex-bild--karussell" if len(e["bilder"]) > 1 else ""
-    return '''<article class="mex-karte mex-stufe mex-stufe--%s">
-  <figure class="mex-bild%s">%s</figure>
-  <div class="mex-text"><p class="mex-nr"><b>%s</b><span>%s</span><em>%s</em></p>
-    <div class="mex-posting">%s</div>
-    <dl class="mex-was"><div><dt>Sprache</dt><dd>%s</dd></div><div><dt>Bild</dt><dd>%s</dd></div><div><dt>Darstellung</dt><dd>%s</dd></div><div class="mex-streichen"><dt>Wo die Grenze liegt</dt><dd>%s</dd></div></dl></div>
-</article>''' % (e["nr"], karussell, bilder, e["nr"], e["titel"], e["grad"], absaetze(e["text"]), e["sprache"], e["bild"], e["darstellung"], e["grenze"])
+def beispiel(e):
+    bilder = e["bilder"]
+    gross = "|".join("%s%s.jpg?v=%s" % (PF, b, V) for b in bilder)
+    zahl = '<span class="mex-seiten">%d Seiten</span>' % len(bilder) if len(bilder) > 1 else ""
+    return '''<article class="mex-bsp"><button type="button" class="mex-thumb" data-gross="%s" aria-label="Bild groß ansehen"><img src="%s%s.jpg?v=%s" alt="" loading="lazy">%s</button>
+  <b>%s</b><span>%s</span><details><summary>Text lesen</summary><div class="mex-posting">%s</div></details></article>''' % (gross, PF, bilder[0], V, zahl, e["titel"], e["hebel"], absaetze(e["text"]))
+
+
+def stufe(st):
+    return '''<div class="mex-stufenblock mex-stufenblock--%s"><div class="mex-stufenkopf"><p class="mex-nr"><b>%s</b><span>%s</span><em>%s</em></p><p class="mex-grenze">%s</p></div>
+  <div class="mex-raster">%s</div></div>''' % (st["nr"], st["nr"], st["titel"], st["grad"], st["grenze"], "".join(beispiel(e) for e in st["beispiele"]))
 
 
 def absaetze(t):
@@ -177,10 +261,10 @@ def main():
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
-    <div class="ak-kopf"><p class="e2-kicker">Runde 2 &middot; 23.10.2026</p><h2 class="e2-h2">Ein Thema, vier Stufen.</h2>
-    <p class="e2-lead">Dieselbe Aussage – „Folien wandern bei mir als Erstes ins Backup“ – von Stufe zu Stufe lauter: in der Sprache, im Bild und in der Darstellung. Ziel: die Stelle finden, an der du sagst, jetzt wird es zu wild.</p></div>
+    <div class="ak-kopf"><p class="e2-kicker">Runde 2 &middot; 23.10.2026</p><h2 class="e2-h2">Vier Stufen, je drei Beispiele.</h2>
+    <p class="e2-lead">Von Stufe zu Stufe lauter – in Sprache, Bild und Darstellung. Jedes Beispiel nimmt ein anderes Thema aus deinen Antworten. Bild antippen zum Vergrößern, Text aufklappen. Ziel: die Stelle finden, an der du sagst, jetzt wird es zu wild.</p></div>
     <ol class="mex-leiter"><li>Der nächste Schritt</li><li>Mutig</li><li>Grenzwertig</li><li>Zu wild</li></ol>
-    <div class="mex-liste">''' + "".join(stufe(e) for e in STUFEN) + '''</div>
+    <div class="mex-stufen">''' + "".join(stufe(e) for e in STUFEN) + '''</div>
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
@@ -189,7 +273,13 @@ def main():
     <div class="mex-liste">''' + "".join(experiment(e) for e in EXPERIMENTE) + '''</div>
   </div></section>
 
-</main>'''
+</main>
+<dialog class="mex-gross" id="mex-gross"><button type="button" class="mex-zu" aria-label="Schließen">×</button><div class="mex-gross__bilder"></div></dialog>
+<script>
+(function(){var d=document.getElementById('mex-gross'),b=d.querySelector('.mex-gross__bilder');
+document.addEventListener('click',function(e){var t=e.target.closest('.mex-thumb');if(t){b.innerHTML=t.dataset.gross.split('|').map(function(u){return '<img src="'+u+'" alt="">';}).join('');d.showModal();return;}
+if(e.target.closest('.mex-zu')||e.target===d)d.close();});})();
+</script>'''
     quelle = open(os.path.join(HIER, "seiten-vorlage.html"), encoding="utf-8").read()
     kopf, rest = quelle.split('<main class="ak">', 1)
     fuss = rest.split("</main>", 1)[1]
