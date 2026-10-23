@@ -468,14 +468,14 @@ window.MK_ENTWUERFE = [
   "art": "Frage · E Skala",
   "kern": "Themenliste 06: Wie viel deiner Woche zahlt auf die Strategie ein?",
   "text": "Im Alltag kommt ständig etwas hoch: ein dringender Sachverhalt, eine Vorstandsbeschwerde, ein Termin, der brennt. Das muss heute geregelt werden.\n\nGleichzeitig steht irgendwo eine Strategie, die erreicht werden soll.\n\nIn Bereichen, in denen Strategie wirkt, ist beides sauber getrennt. Dort ist jederzeit klar, womit man sich beschäftigt und womit nicht, damit die Strategie umgesetzt wird.\n\nEin ehrlicher Test für diese Woche: Gehe deinen Kalender durch und markiere jeden Termin, der direkt auf die Strategie einzahlt. Der Rest ist Tagesgeschäft.\n\nDas Verhältnis zeigt dir, wo du ansetzen musst.\n\nUnd wenn dir beim Markieren nicht klar ist, was auf deine Strategie einzahlt, dann ist die Strategie nicht klar genug.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-23",
   "kennzahlen": [],
   "bild": "rp04",
   "termin": "Fr 23.10.",
   "format": "Frage · E Skala",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7519272746724360192"
  },
  {
   "id": 68,
