@@ -9,7 +9,7 @@ import os, html
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "69"
+V = "70"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -73,6 +73,78 @@ Drei Wochen später war sie live.
 Wenn ein Thema einmal sauber steht, ist der Rest Handwerk. Und Handwerk muss man nicht durch jede Abstimmungsrunde schicken."""),
 ]
 
+STUFEN = [
+    dict(nr="1", titel="Der nächste Schritt", grad="sofort einsetzbar", bilder=["st1"],
+         sprache="Ich-Perspektive, ein lockerer Einstieg, sonst ruhig erklärt.",
+         bild="Echtes Foto mit handschriftlicher Notiz und Pfeil – wirkt wie ein Schnappschuss aus dem Workshop.",
+         darstellung="Einzelbild, wie bisher.",
+         grenze="Trägt. Kann so in den Redaktionsplan.",
+         text="""Mein erster Handgriff in fast jedem Projekt hat nichts mit Strategie zu tun. Ich räume Folien weg.
+
+Die Arbeit darin ist oft gut. Nur erzählen die meisten Folien das eigene Thema, mit allen Details, aus Sicht dessen, der präsentiert. Was der Entscheider davon hat, steht selten darin.
+
+Also fangen wir anders an: erst das Gesamtbild, auf einem Blatt. Dann entscheiden wir, welche Details es wirklich braucht.
+
+Meistens sind es deutlich weniger, als alle dachten."""),
+    dict(nr="2", titel="Mutig", grad="klare Kante", bilder=["st2"],
+         sprache="Direkte Ansprache, eine harte These, die der Leser auf sich beziehen muss.",
+         bild="Plakat mit Zahl: 27 Folien durchgestrichen, 1 Bild groß dagegen.",
+         darstellung="Einzelbild als Plakat – eine Aussage, sonst nichts.",
+         grenze="Trägt, wenn der Ton danach wieder hilfsbereit wird. Die These darf weh tun, der Text darf nicht von oben herab sein.",
+         text="""Ich sage es so direkt, wie ich es im Projekt auch sage: Wenn deine Vorstandsvorlage 27 Folien hat, weißt du noch nicht genau, was du entscheiden lassen willst.
+
+Ich habe das oft genug gesehen. Wer sein Thema richtig durchdrungen hat, kriegt es auf ein Bild. Wer nicht, versteckt sich hinter Folie 14.
+
+Bei mir wandern bestehende Folien deshalb als Erstes ins Backup. Alle. Dann zeichnen wir das Gesamtbild. Und ganz schnell merkt man, ob das Thema trägt.
+
+Das tut kurz weh. Und spart dir die nächste Schleife."""),
+    dict(nr="3", titel="Grenzwertig", grad="Humor mit Spitze", bilder=["st3a", "st3b", "st3c", "st3d", "st3e"],
+         sprache="Augenzwinkern, Hitliste, eine echte Frage zum Mitmachen am Ende.",
+         bild="Nachgebaute Folien mit Stempel „→ Backup“ – Wiedererkennung aus jedem Sitzungssaal.",
+         darstellung="Dokument-Karussell mit fünf Seiten statt Einzelbild. Neu für den Feed.",
+         grenze="Die Hitliste ist meine Zuspitzung, nicht dein Erlebnis – nur nehmen, wenn du die Plätze so unterschreibst. Kann für manche Vorstände nach Spott über ihre eigenen Sitzungen klingen.",
+         text="""Kleines Geständnis: Ich führe eine Hitliste. Folien, die in meinen Projekten als Erstes fliegen.
+
+Die Plätze 3 bis 1 stehen im Dokument. Wer schon einmal in einer Vorstandssitzung saß, kennt jede davon.
+
+Klingt gemein? Ein bisschen. Aber jede dieser Folien kostet Minuten, in denen keiner über die Entscheidung redet.
+
+Mein Tausch: alles ins Backup, ein Gesamtbild auf den Tisch. Dann reden wir über das, was zählt.
+
+Und jetzt du: Welche Folie würdest du sofort löschen?"""),
+    dict(nr="4", titel="Zu wild", grad="bewusst drüber", bilder=["st4"],
+         sprache="Großbuchstaben, Stakkato, Ansage an den Leser, „Deal?“.",
+         bild="Foto abgedunkelt, riesiger Stempel „GELÖSCHT.“, Text in Versalien.",
+         darstellung="Einzelbild im Werbeplakat-Stil.",
+         grenze="Hier kippt es: Großbuchstaben schreien, „in drei Wochen durch“ ist ein Zahlenversprechen ohne Beleg, „Wer das nicht aushält, ist bei mir falsch“ stößt genau die Vorstände vor den Kopf, die wir erreichen wollen. Einzelne Elemente (der Stempel, „Auch deine Lieblingsfolie“) können wir trotzdem in Stufe 2 oder 3 übernehmen.",
+         text="""ICH LÖSCHE DEINE FOLIEN.
+
+Alle 27.
+
+Ja, auch die mit der Animation, an der du bis 23 Uhr gesessen hast.
+
+Ja, auch die, die dein Chef so mag.
+
+Ins Backup damit. Keine Diskussion.
+
+Dafür bekommst du ein Bild. Ein einziges. Und eine Entscheidung.
+
+Wer das nicht aushält, ist bei mir falsch. Wer es aushält, ist in drei Wochen durch.
+
+Deal?"""),
+]
+
+
+def stufe(e):
+    bilder = "".join('<img src="%s%s.jpg?v=%s" alt="" loading="lazy">' % (PF, b, V) for b in e["bilder"])
+    karussell = " mex-bild--karussell" if len(e["bilder"]) > 1 else ""
+    return '''<article class="mex-karte mex-stufe mex-stufe--%s">
+  <figure class="mex-bild%s">%s</figure>
+  <div class="mex-text"><p class="mex-nr"><b>%s</b><span>%s</span><em>%s</em></p>
+    <div class="mex-posting">%s</div>
+    <dl class="mex-was"><div><dt>Sprache</dt><dd>%s</dd></div><div><dt>Bild</dt><dd>%s</dd></div><div><dt>Darstellung</dt><dd>%s</dd></div><div class="mex-streichen"><dt>Wo die Grenze liegt</dt><dd>%s</dd></div></dl></div>
+</article>''' % (e["nr"], karussell, bilder, e["nr"], e["titel"], e["grad"], absaetze(e["text"]), e["sprache"], e["bild"], e["darstellung"], e["grenze"])
+
 
 def absaetze(t):
     return "".join("<p>%s</p>" % html.escape(a).replace("\n", "<br>") for a in t.split("\n\n"))
@@ -102,6 +174,13 @@ def main():
     <div class="ak-kopf"><p class="e2-kicker">Der Maßstab</p><h2 class="e2-h2">Woran wir jedes Experiment messen.</h2></div>
     <ul class="mex-massstab">''' + "".join("<li><b>%s</b><span>%s</span></li>" % m for m in MASSSTAB) + '''</ul>
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
+  </div></section>
+
+  <section class="e2-sek ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 2 &middot; 23.10.2026</p><h2 class="e2-h2">Ein Thema, vier Stufen.</h2>
+    <p class="e2-lead">Dieselbe Aussage – „Folien wandern bei mir als Erstes ins Backup“ – von Stufe zu Stufe lauter: in der Sprache, im Bild und in der Darstellung. Ziel: die Stelle finden, an der du sagst, jetzt wird es zu wild.</p></div>
+    <ol class="mex-leiter"><li>Der nächste Schritt</li><li>Mutig</li><li>Grenzwertig</li><li>Zu wild</li></ol>
+    <div class="mex-liste">''' + "".join(stufe(e) for e in STUFEN) + '''</div>
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">

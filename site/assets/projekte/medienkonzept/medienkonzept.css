@@ -694,3 +694,15 @@ a.mke-platz{text-decoration:none}
 .mex-was dd{margin:4px 0 0;font-size:.92rem;line-height:1.5}
 .ak-sec p.mex-quelle{margin-top:14px;font-size:.8rem;color:#8a857f}
 @media (max-width:900px){.mex-massstab{grid-template-columns:minmax(0,1fr)}.mex-karte{grid-template-columns:minmax(0,1fr);padding:16px;gap:18px}.mex-bild{position:static;max-width:420px}}
+
+.ak-sec p.mex-nr em{margin-left:auto;font:600 .75rem/1 'Poppins',sans-serif;letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:#6b6661;padding:6px 10px;border-radius:20px;background:#f3f1ee}
+.mex-leiter{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;counter-reset:st}
+.mex-leiter li{counter-increment:st;padding:12px 14px;font:600 .9rem/1.3 'Poppins',sans-serif;color:#1a1817;background:#f3f1ee}
+.mex-leiter li::before{content:counter(st) " · ";color:#8a857f}
+.mex-leiter li:nth-child(2){background:#fffbb3}.mex-leiter li:nth-child(3){background:#fff400}.mex-leiter li:nth-child(4){background:#1a1817;color:#fff400}
+.mex-leiter li:first-child{border-radius:12px 0 0 12px}.mex-leiter li:last-child{border-radius:0 12px 12px 0}
+.mex-stufe--4{border-color:#1a1817;border-width:2px}
+.mex-bild--karussell{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.mex-bild--karussell img:first-child{grid-column:1/-1}
+.mex-bild--karussell img:not(:first-child){border-radius:6px}
+@media (max-width:900px){.mex-leiter{grid-template-columns:repeat(2,minmax(0,1fr))}.mex-leiter li{border-radius:0!important}}

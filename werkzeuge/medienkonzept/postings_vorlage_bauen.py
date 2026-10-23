@@ -790,6 +790,41 @@ teile += [
   <p style="margin-top:50px;font:700 150px/1.05 Lora,Georgia,serif;color:#fff">In drei <span class="hl">Wochen.</span></p>%s</section>""" % NAME,
 ]
 
+# Experimentierfeld Runde 2 (Daniel, 23.10.2026): Stufenleiter – vom nächsten Schritt bis „zu wild“
+HAND = 'font:700 %dpx/1.05 Caveat,cursive;color:%s'
+def kseite(nr, kopf, satz, stempel=True):
+    return """<section class="p" id="st3%s" style="background:#f3f1ee"><p class="k">Folien, die ich als Erstes lösche · %s/5</p>
+  <div style="position:relative;margin-top:120px;border-radius:12px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.14);padding:60px 56px;min-height:520px">
+    <p style="font:700 64px/1.15 Poppins,sans-serif;color:#2c2926">%s</p>
+    %s
+  </div>
+  <p style="margin-top:70px;font:700 64px/1.18 Lora,Georgia,serif;color:#1a1817">%s</p>%s</section>""" % (nr, {"b": "2", "c": "3", "d": "4"}[nr], kopf,
+        '<span style="position:absolute;right:30px;bottom:-34px;transform:rotate(-8deg);padding:16px 34px;border:6px solid #1a1817;border-radius:14px;background:#fff400;font:700 46px/1 Poppins,sans-serif;color:#1a1817">→ BACKUP</span>' if stempel else "",
+        satz, NAME)
+teile += [
+    # Stufe 1 – nächster Schritt: echtes Foto, eine handschriftliche Notiz
+    """<section class="p foto-voll" id="st1">%s<p style="position:absolute;right:70px;top:120px;transform:rotate(-5deg);%s;text-align:right;text-shadow:0 2px 14px rgba(0,0,0,.25)">Folien?<br>Ab ins<br>Backup.</p>
+  <svg viewBox="0 0 200 200" style="position:absolute;right:260px;top:440px;width:180px;height:180px"><path d="M170 20 C 120 40, 70 90, 40 170" stroke="#fff400" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M40 170 L 30 120 M40 170 L 85 150" stroke="#fff400" stroke-width="9" fill="none" stroke-linecap="round"/></svg></section>""" % (vb("foto-showdonttell.jpg", "22% 40%"), HAND % (104, "#fff400")),
+    # Stufe 2 – mutig: Plakat mit harter Zahl
+    """<section class="p schwarz" id="st2"><p class="k">Vorstandsvorlage</p>
+  <p style="margin-top:330px;font:700 200px/1 Lora,Georgia,serif;color:#6b6762;text-decoration:line-through;text-decoration-thickness:16px;text-decoration-color:#fff400">27 Folien.</p>
+  <p style="margin-top:60px;font:700 250px/1 Lora,Georgia,serif;color:#fff"><span class="hl">1 Bild.</span></p>
+  <p style="margin-top:70px;font:600 44px/1.3 Poppins,sans-serif;color:#a8a39c">Der Rest: Backup.</p>%s</section>""" % NAME,
+    # Stufe 3 – grenzwertig: Dokument-Karussell mit Augenzwinkern
+    """<section class="p gelbgrund" id="st3a"><p class="k" style="color:#1a1817">Hitliste</p>
+  <p style="margin-top:160px;font:700 132px/1.02 Lora,Georgia,serif;color:#1a1817">Folien, die ich als Erstes lösche.</p>
+  <p style="margin-top:80px;font:600 46px/1.3 Poppins,sans-serif;color:#1a1817">Platz 3 bis 1. Wischen →</p>%s</section>""" % GELBNAME,
+    kseite("b", "Agenda<br><span style='display:block;margin-top:18px;columns:2;column-gap:40px;font-weight:500;font-size:34px;line-height:1.55;color:#6b6762'>1. Begrüßung<br>2. Ausgangslage<br>3. Rückblick<br>4. Detailanalyse<br>5. Optionen<br>6. Bewertung<br>7. Risiken<br>8. Zeitplan<br>9. Budget<br>10. Nächste Schritte<br>11. Sonstiges</span>", "Platz 3: Elf Punkte Agenda. Wer elf Punkte braucht, weiß noch nicht, worum es geht."),
+    kseite("c", "Organigramm Hauptabteilung<br><span style='font-weight:500;font-size:40px;color:#6b6762'>Stand: wie immer</span>", "Platz 2: Das Organigramm. Jeder im Raum kennt es. Seit Jahren."),
+    kseite("d", "<span style='display:block;margin-top:120px;text-align:center;font-size:150px'>Fragen?</span>", "Platz 1: „Fragen?“ Die echte Frage stellt der Vorstand sowieso. Auf Folie 3."),
+    """<section class="p schwarz" id="st3e"><p class="k">Was bleibt</p>
+  <p style="margin-top:260px;font:700 120px/1.08 Lora,Georgia,serif;color:#fff">Ein Bild.<br><span class="hl">Eine Entscheidung.</span></p>%s</section>""" % NAME,
+    # Stufe 4 – zu wild: Stempel, Großbuchstaben, Lautstärke
+    """<section class="p vollbild" id="st4">%s<div style="position:absolute;inset:0;background:rgba(26,24,23,.55)"></div>
+  <p style="position:absolute;left:50px;right:50px;top:330px;transform:rotate(-12deg);padding:30px 0;border:14px solid #fff400;border-radius:28px;text-align:center;font:800 170px/1 Poppins,sans-serif;letter-spacing:.04em;color:#fff400">GELÖSCHT.</p>
+  <p style="position:absolute;left:70px;right:70px;bottom:120px;font:800 74px/1.08 Poppins,sans-serif;text-transform:uppercase;color:#fff">Alle 27 Folien.<br><span class="hl">Auch deine Lieblingsfolie.</span></p></section>""" % vb("foto-zeigen.jpg", "62% 40%"),
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
