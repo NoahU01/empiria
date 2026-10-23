@@ -774,6 +774,22 @@ teile += [
   <p class="zitat-w" style="font-size:68px">„Es mangelt häufig nicht an Ideen, sondern es braucht insgesamt mehr Mut, Führung und Tempo.“</p><p class="zitat-quelle">— Peter Stockhorst, Digitalvorstand der Zurich Gruppe Deutschland</p></section>""",
 ]
 
+# Experimentierfeld Persönliches Profil (Daniel, 23.10.2026): bewusst aus dem Raster
+FOLIE = """<div style="position:relative;margin:130px 10px 0;transform:rotate(-4deg);border-radius:10px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.18);padding:44px 48px 52px">
+<p style="font:600 22px/1.2 Poppins,sans-serif;color:#9a958f">Folie 3 von 27</p>
+<p style="margin-top:14px;max-width:600px;font:700 38px/1.2 Poppins,sans-serif;color:#2c2926">Ausgangslage und Detailanalyse im Überblick</p>
+<div style="margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px 40px">""" + "".join('<p style="height:16px;border-radius:8px;background:#d9d5cf;width:%d%%"></p>' % w for w in [92, 80, 70, 95, 85, 60, 90, 75, 65, 88]) + """</div>
+<div style="margin-top:30px;display:flex;gap:14px;align-items:flex-end;height:110px">""" + "".join('<i style="flex:1;height:%d%%;background:#c9c4bd;border-radius:4px 4px 0 0"></i>' % h for h in [40, 70, 55, 90, 35, 65, 80]) + """</div>
+<svg viewBox="0 0 100 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><path d="M4 56 L96 4" stroke="#1a1817" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M5 5 L95 55" stroke="#1a1817" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+<span style="position:absolute;right:-24px;top:-30px;transform:rotate(6deg);padding:14px 30px;border-radius:12px;background:#fff400;font:700 40px/1 Poppins,sans-serif;color:#1a1817">→ Backup</span></div>"""
+teile += [
+    """<section class="p foto-voll" id="ex1">%s</section>""" % vb("foto-klartext.jpg", "14% 40%"),
+    """<section class="p grau" id="ex2"><p class="fr-gross" style="margin-top:30px;font-size:96px">Erst das Bild. <span class="hl">Dann die Details.</span></p>%s%s</section>""" % (FOLIE, NAME),
+    """<section class="p schwarz" id="ex3"><p class="k">Landingpage</p>
+  <p style="margin-top:400px;font:700 120px/1.05 Lora,Georgia,serif;color:#8a857f;text-decoration:line-through;text-decoration-thickness:10px;text-decoration-color:#fff400">Nächstes Jahr.</p>
+  <p style="margin-top:50px;font:700 150px/1.05 Lora,Georgia,serif;color:#fff">In drei <span class="hl">Wochen.</span></p>%s</section>""" % NAME,
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
