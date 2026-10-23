@@ -852,3 +852,30 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* Summary · 02 Effizienz: Organigramm links, Prozesskosten rechts daneben */
 .sy-zeile > .sy-organigramm { grid-column: 1; grid-row: 1 / span 3; align-self: center; margin: 0; padding-right: 1.5rem; }
 .sy-zeile > .sy-organigramm ~ .sy-post { grid-column: 2; }
+
+/* ===== Summary · Kasten 5 „Wie organisieren wir uns?“ (Daniel, 23.10.)
+   oben frei nebeneinander: Organisationsstruktur | Schadenprozess (klein, Klick = groß); darunter drei Kästen nebeneinander */
+.sy-figs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 4rem; align-items: start; }
+.sy-fig { display: grid; gap: .9rem; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: zoom-in; }
+.sy-fig__t { font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--e2-ink); }
+.sy-fig__bild { display: block; }
+.sy-fig__bild--org .sy-org2 { max-width: 100%; }
+.sy-fig__bild--prozess .sy-prozess { zoom: .66; margin-top: 0; }
+.sy-fig__lupe { justify-self: start; font-size: .78rem; font-weight: 600; color: var(--e2-grau); }
+.sy-fig__lupe::after { content: " \2192"; }
+.sy-fig:hover .sy-fig__lupe { color: var(--e2-ink); }
+.sy-fig:focus-visible { outline: 2px solid var(--e2-ink); outline-offset: 6px; border-radius: 8px; }
+.sy-zeile--drei { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 3rem; }
+.sy-zeile--drei .sy-post__mitte { grid-template-columns: minmax(0, 1fr) 6.6rem; gap: .9rem; padding: 1.2rem 1.3rem; }
+.sy-zeile--drei .sy-post__mitte h3 { font-size: 1.2rem; }
+.sy-zeile--drei .sy-post__mitte .sy-post__bild svg { max-width: 6.6rem; }
+.e2 .sy-zeile--drei .sy-post__kopf { padding-left: 1.3rem; padding-right: 1.3rem; }
+.sy-zeile--drei .sy-post__fuss { padding-left: 1.3rem; padding-right: 1.3rem; }
+/* großes Fenster */
+.sm-hg.sy-gross { width: min(76rem, calc(100vw - 2rem)); }
+.sy-gross .sy-gross__bild { padding: 1rem 0 1.4rem; }
+.sy-gross .sy-prozess { zoom: 1; margin-top: .6rem; }
+.sy-gross--org { width: min(46rem, calc(100vw - 2rem)); }
+.sy-gross--org .sy-org2 { max-width: 34rem; margin: 0 auto; }
+.sy-figs { align-items: stretch; }
+.sy-fig { grid-template-rows: auto 1fr auto; }
