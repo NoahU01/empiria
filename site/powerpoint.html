@@ -805,7 +805,8 @@ var here=location.href.split('#')[0].split('?')[0];
 document.querySelectorAll('[data-dev-dd]').forEach(function(d){
 var b=d.querySelector('.dev-dd-toggle'),t;
 function desk(){return window.innerWidth>900;}
-function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));
+if(!o)d.querySelectorAll('.is-auf').forEach(function(x){x.classList.remove('is-auf');});}
 b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
 d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
 d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
@@ -814,6 +815,21 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);}
 d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href&&a.href.split('#')[0]===here)a.classList.add('is-current');});
 
 var panel=d.querySelector('.dev-dd-panel');
+
+// ---- Antippen statt Hover (iPad quer, Touch-Laptops) ---------------------
+// Ohne Maus gibt es kein Hover: der Tipp auf eine Zeile mit Unterseiten
+// sprang sofort auf deren Seite, die Unterseiten waren nie zu sehen.
+// Jetzt klappt der erste Tipp die naechste Ebene auf, erst der zweite Tipp
+// auf dieselbe Zeile oeffnet die Seite. Ob die Ebene schon offen war, wird
+// beim pointerdown gemerkt - das kommt vor dem simulierten mouseenter.
+function antippen(a,offen,oeffnen){
+var tipp=false,war=false;
+a.addEventListener('pointerdown',function(e){tipp=e.pointerType!=='mouse';war=offen();});
+a.addEventListener('click',function(e){
+if(!tipp||!desk()||war)return;
+e.preventDefault();oeffnen();
+});
+}
 
 // ---- Zweite Ebene -------------------------------------------------------
 // Das Panel muss scrollen, seit es vier Kategorien hat (gemessen: 834px
@@ -856,6 +872,11 @@ s.addEventListener('mouseleave',zu);
 f.addEventListener('mouseenter',function(){clearTimeout(t2);});
 f.addEventListener('mouseleave',zu);
 panel.addEventListener('scroll',function(){if(f.classList.contains('is-auf'))auf();});
+antippen(s.querySelector(':scope>a.dev-dd-link--parent'),
+function(){return f.classList.contains('is-auf');},
+function(){d.querySelectorAll(':scope>.dev-dd-flyout.is-auf').forEach(function(x){if(x!==f)x.classList.remove('is-auf');});
+panel.querySelectorAll(':scope>.dev-dd-sub.is-auf').forEach(function(x){if(x!==s)x.classList.remove('is-auf');});
+auf();});
 window.addEventListener('resize',heimholen);
 });
 
@@ -879,6 +900,11 @@ if(u>0)f.style.top=(-10-u)+'px';
 }
 s.addEventListener('mouseenter',platzieren);
 s.addEventListener('focusin',platzieren);
+s.addEventListener('mouseleave',function(){f.classList.remove('is-auf');});
+antippen(s.querySelector(':scope>a.dev-dd-link--parent'),
+function(){return f.classList.contains('is-auf');},
+function(){s.parentNode.querySelectorAll(':scope>.dev-dd-sub>.dev-dd-flyout.is-auf').forEach(function(x){x.classList.remove('is-auf');});
+platzieren();f.classList.add('is-auf');});
 window.addEventListener('resize',function(){f.removeAttribute('style');});
 });
 });
