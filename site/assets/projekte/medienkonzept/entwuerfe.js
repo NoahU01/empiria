@@ -263,6 +263,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 193,
     "reaktionen": 4,
     "kommentare": 5
+   },
+   {
+    "stunden": 170.5,
+    "impressionen": 291,
+    "reichweite": 197,
+    "reaktionen": 4,
+    "kommentare": 5
    }
   ],
   "bild": "rp09",
@@ -315,6 +322,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1219,
     "reaktionen": 10,
     "kommentare": 4
+   },
+   {
+    "stunden": 146.5,
+    "impressionen": 1658,
+    "reichweite": 1244,
+    "reaktionen": 11,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -360,6 +374,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 120,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 123.5,
+    "impressionen": 212,
+    "reichweite": 126,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -398,6 +419,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 221,
     "reaktionen": 12,
     "kommentare": 2
+   },
+   {
+    "stunden": 99.5,
+    "impressionen": 370,
+    "reichweite": 250,
+    "reaktionen": 12,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -429,6 +457,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 89,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 75.5,
+    "impressionen": 167,
+    "reichweite": 109,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp02",
@@ -453,6 +488,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 57,
     "reaktionen": 4,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 341,
+    "reichweite": 234,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp03",
@@ -470,7 +512,15 @@ window.MK_ENTWUERFE = [
   "text": "Im Alltag kommt ständig etwas hoch: ein dringender Sachverhalt, eine Vorstandsbeschwerde, ein Termin, der brennt. Das muss heute geregelt werden.\n\nGleichzeitig steht irgendwo eine Strategie, die erreicht werden soll.\n\nIn Bereichen, in denen Strategie wirkt, ist beides sauber getrennt. Dort ist jederzeit klar, womit man sich beschäftigt und womit nicht, damit die Strategie umgesetzt wird.\n\nEin ehrlicher Test für diese Woche: Gehe deinen Kalender durch und markiere jeden Termin, der direkt auf die Strategie einzahlt. Der Rest ist Tagesgeschäft.\n\nDas Verhältnis zeigt dir, wo du ansetzen musst.\n\nUnd wenn dir beim Markieren nicht klar ist, was auf deine Strategie einzahlt, dann ist die Strategie nicht klar genug.",
   "status": "veroeffentlicht",
   "datum": "2026-10-23",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 28.3,
+    "impressionen": 119,
+    "reichweite": 81,
+    "reaktionen": 5,
+    "kommentare": 1
+   }
+  ],
   "bild": "rp04",
   "termin": "Fr 23.10.",
   "format": "Frage · E Skala",
@@ -486,7 +536,15 @@ window.MK_ENTWUERFE = [
   "text": "Diesen Satz habe ich letzte Woche gefühlt zehnmal gehört – von der Anwaltshotline meiner Rechtsschutzversicherung.\n\nIch hatte ein konkretes Thema und wollte eine Grundeinordnung. Keine abschließende Bewertung, dafür muss man in die Verträge schauen, das ist mir klar. Genau das habe ich gleich zu Beginn gesagt.\n\nIch wollte eine Denkhilfe für das Gespräch mit meinem Vertragspartner. Eine Richtung.\n\nBekommen habe ich: Verträge prüfen. Erst mit dem Vertragspartner reden. Wenn das nicht weiterhilft, anwaltlich prüfen lassen.\n\nKeine Einordnung. Keine Richtung. Das Gespräch hätte ich mir sparen können.\n\nWas mich daran ärgert, ist die vergebene Chance. Versicherer können ihre Leistung meistens nur im Schadenfall zeigen. Ein Rechtsschutzversicherer hat mit so einer Hotline etwas, das sich andere wünschen: mehr Kontakte mit dem Kunden, bei denen er ein echtes Problem löst.\n\nBeim Abschluss wird genau dieser Service groß angepriesen. Und in dem Moment, in dem ich ihn brauche, bekomme ich nicht einmal eine Richtung.\n\nEin Feature, das im entscheidenden Moment nicht hält, was es verspricht, schadet mehr, als wenn es gar nicht da wäre.\n\nWer Services verantwortet, die beim Abschluss verkauft werden: Wann hat zuletzt jemand geprüft, was davon im Ernstfall beim Kunden ankommt?",
   "status": "veroeffentlicht",
   "datum": "2026-10-24",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 196,
+    "reichweite": 123,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp11",
   "termin": "Sa 24.10.",
   "format": "Weitergedacht · Gelbe Satzkarte",
