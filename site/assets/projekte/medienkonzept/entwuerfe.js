@@ -607,14 +607,14 @@ window.MK_ENTWUERFE = [
   "art": "Aufgegriffen · Foto mit Satz",
   "kern": "Weber (HDI Bancassurance): Gute Beratung führt zu einer begründeten Entscheidung – bis zur Grenze darfst du klar sein.",
   "text": "„Gute Beratung führt nicht möglichst schnell zu einer Lösung. Gute Beratung führt Schritt für Schritt zu einer begründeten Entscheidung.“\n\nDas hat Matthias Weber, Vertriebsvorstand bei HDI Bancassurance, in seiner Montagskolumne geschrieben. Den Satz unterschreibe ich sofort.\n\nSein Punkt: Die Regulierung setzt den Rahmen. Den Unterschied macht, wie wir ihn mit Leben füllen.\n\nWie es aussieht, wenn das keiner tut, habe ich gestern erzählt. Anwaltshotline, konkrete Frage, und als Antwort immer wieder „Das kommt darauf an“. Formal alles richtig. Weitergekommen bin ich keinen Schritt.\n\nUnd genau das erlebe ich in den Häusern auch nach innen. Die Regel wird zur Begründung, warum etwas nicht geht. Keiner traut sich, eine Richtung zu geben, weil er Angst hat, sich festzulegen.\n\nWenn du Vertrieb oder Service führst, kannst du deinen Leuten genau hier richtig viel abnehmen.\n\nSie müssen wissen, wo die Grenze verläuft. Und was sie bis dahin klar sagen dürfen, ohne sich dreimal abzusichern.\n\nWer das weiß, gibt dem Kunden eine Richtung. Und genau dafür ruft er an.",
-  "status": "entwurf",
+  "status": "veroeffentlicht",
   "datum": "2026-10-25",
   "kennzahlen": [],
   "bild": "rp12",
   "termin": "So 25.10.",
   "format": "Aufgegriffen · Foto mit Satz",
   "offen": "Bezug „gestern“ setzt voraus, dass der 24.10. erscheint. Bitte bestätigen: „Genau das erlebe ich in den Häusern auch nach innen.“",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7520115562149187585"
  },
  {
   "id": 76,
@@ -623,7 +623,7 @@ window.MK_ENTWUERFE = [
   "art": "Frage · C Fragezeichen",
   "kern": "Themenliste 30: Wie würdest du deinen Bereich heute neu gründen?",
   "text": "Diese Frage stelle ich ziemlich früh, wenn es um die Zukunft eines Bereichs geht. Und die Antwort sieht jedes Mal anders aus als das, was heute da ist.\n\nZuständigkeiten, Abläufe, Schnittstellen: Vieles ist einfach so gewachsen. Also baut man weiter auf dem, was da ist. Wer neu gründet, darf all das infrage stellen.\n\nErst wenn das Bild steht, reden wir über Strategie. Ohne dieses Bild gibt es keine gescheite Strategie. Mit ihm ergibt sie sich fast von allein. Sie ist dann der Weg von heute dorthin.\n\nDamit aus der Frage keine Wunschliste wird, gehe ich drei Dinge durch:\n\n• Welches Problem hat dein Kunde wirklich?\n• Wie löst du es?\n• Und ist er überhaupt bereit, es zu lösen?\n\nEinen Rat gebe ich dabei jedes Mal mit: Beantworte die Frage zuerst allein.\n\nStellst du sie gleich deinem ganzen Team, fragt sich jeder zuerst, ob es seinen Job danach noch gibt. Und mit dieser Sorge im Kopf denkt keiner frei.",
-  "status": "entwurf",
+  "status": "geplant",
   "datum": "2026-10-26",
   "kennzahlen": [],
   "bild": "rp13",
@@ -842,5 +842,5 @@ window.MK_ENTWUERFE = [
  }
 ];
 window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};
-window.MK_WOCHEN = [{"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}];
-window.MK_ARCHIV = [{"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];
+window.MK_WOCHEN = [{"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}];
+window.MK_ARCHIV = [{"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];
