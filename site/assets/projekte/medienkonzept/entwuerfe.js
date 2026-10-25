@@ -329,6 +329,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1244,
     "reaktionen": 11,
     "kommentare": 4
+   },
+   {
+    "stunden": 171.5,
+    "impressionen": 1667,
+    "reichweite": 1251,
+    "reaktionen": 11,
+    "kommentare": 4
    }
   ],
   "bild": "rp10",
@@ -381,6 +388,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 126,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.5,
+    "impressionen": 214,
+    "reichweite": 128,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -426,6 +440,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 250,
     "reaktionen": 12,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.5,
+    "impressionen": 376,
+    "reichweite": 255,
+    "reaktionen": 12,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -464,6 +485,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 109,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.5,
+    "impressionen": 174,
+    "reichweite": 116,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp02",
@@ -495,6 +523,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 234,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 77.3,
+    "impressionen": 388,
+    "reichweite": 271,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp03",
@@ -519,6 +554,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 81,
     "reaktionen": 5,
     "kommentare": 1
+   },
+   {
+    "stunden": 53.3,
+    "impressionen": 149,
+    "reichweite": 96,
+    "reaktionen": 6,
+    "kommentare": 2
    }
   ],
   "bild": "rp04",
@@ -542,6 +584,13 @@ window.MK_ENTWUERFE = [
     "impressionen": 196,
     "reichweite": 123,
     "reaktionen": 1,
+    "kommentare": 0
+   },
+   {
+    "stunden": 29.3,
+    "impressionen": 344,
+    "reichweite": 239,
+    "reaktionen": 4,
     "kommentare": 0
    }
   ],
