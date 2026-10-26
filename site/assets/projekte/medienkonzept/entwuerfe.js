@@ -395,6 +395,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 128,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.5,
+    "impressionen": 215,
+    "reichweite": 129,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp08",
@@ -447,6 +454,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 255,
     "reaktionen": 12,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.5,
+    "impressionen": 381,
+    "reichweite": 258,
+    "reaktionen": 12,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -492,6 +506,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 116,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.5,
+    "impressionen": 178,
+    "reichweite": 120,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp02",
@@ -530,6 +551,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 271,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 101.3,
+    "impressionen": 423,
+    "reichweite": 302,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp03",
@@ -559,6 +587,13 @@ window.MK_ENTWUERFE = [
     "stunden": 53.3,
     "impressionen": 149,
     "reichweite": 96,
+    "reaktionen": 6,
+    "kommentare": 2
+   },
+   {
+    "stunden": 77.3,
+    "impressionen": 167,
+    "reichweite": 109,
     "reaktionen": 6,
     "kommentare": 2
    }
@@ -592,6 +627,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 239,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 53.3,
+    "impressionen": 386,
+    "reichweite": 273,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp11",
@@ -609,7 +651,15 @@ window.MK_ENTWUERFE = [
   "text": "„Gute Beratung führt nicht möglichst schnell zu einer Lösung. Gute Beratung führt Schritt für Schritt zu einer begründeten Entscheidung.“\n\nDas hat Matthias Weber, Vertriebsvorstand bei HDI Bancassurance, in seiner Montagskolumne geschrieben. Den Satz unterschreibe ich sofort.\n\nSein Punkt: Die Regulierung setzt den Rahmen. Den Unterschied macht, wie wir ihn mit Leben füllen.\n\nWie es aussieht, wenn das keiner tut, habe ich gestern erzählt. Anwaltshotline, konkrete Frage, und als Antwort immer wieder „Das kommt darauf an“. Formal alles richtig. Weitergekommen bin ich keinen Schritt.\n\nUnd genau das erlebe ich in den Häusern auch nach innen. Die Regel wird zur Begründung, warum etwas nicht geht. Keiner traut sich, eine Richtung zu geben, weil er Angst hat, sich festzulegen.\n\nWenn du Vertrieb oder Service führst, kannst du deinen Leuten genau hier richtig viel abnehmen.\n\nSie müssen wissen, wo die Grenze verläuft. Und was sie bis dahin klar sagen dürfen, ohne sich dreimal abzusichern.\n\nWer das weiß, gibt dem Kunden eine Richtung. Und genau dafür ruft er an.",
   "status": "veroeffentlicht",
   "datum": "2026-10-25",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 21.4,
+    "impressionen": 220,
+    "reichweite": 138,
+    "reaktionen": 4,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp12",
   "termin": "So 25.10.",
   "format": "Aufgegriffen · Foto mit Satz",
@@ -625,7 +675,15 @@ window.MK_ENTWUERFE = [
   "text": "Diese Frage stelle ich ziemlich früh, wenn es um die Zukunft eines Bereichs geht. Und die Antwort sieht jedes Mal anders aus als das, was heute da ist.\n\nZuständigkeiten, Abläufe, Schnittstellen: Vieles ist einfach so gewachsen. Also baut man weiter auf dem, was da ist. Wer neu gründet, darf all das infrage stellen.\n\nErst wenn das Bild steht, reden wir über Strategie. Ohne dieses Bild gibt es keine gescheite Strategie. Mit ihm ergibt sie sich fast von allein. Sie ist dann der Weg von heute dorthin.\n\nDamit aus der Frage keine Wunschliste wird, gehe ich drei Dinge durch:\n\n• Welches Problem hat dein Kunde wirklich?\n• Wie löst du es?\n• Und ist er überhaupt bereit, es zu lösen?\n\nEinen Rat gebe ich dabei jedes Mal mit: Beantworte die Frage zuerst allein.\n\nStellst du sie gleich deinem ganzen Team, fragt sich jeder zuerst, ob es seinen Job danach noch gibt. Und mit dieser Sorge im Kopf denkt keiner frei.",
   "status": "veroeffentlicht",
   "datum": "2026-10-26",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 104,
+    "reichweite": 73,
+    "reaktionen": 2,
+    "kommentare": 3
+   }
+  ],
   "bild": "rp13",
   "termin": "Mo 26.10.",
   "format": "Frage · C Fragezeichen",
