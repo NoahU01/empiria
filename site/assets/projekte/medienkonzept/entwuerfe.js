@@ -623,14 +623,14 @@ window.MK_ENTWUERFE = [
   "art": "Frage · C Fragezeichen",
   "kern": "Themenliste 30: Wie würdest du deinen Bereich heute neu gründen?",
   "text": "Diese Frage stelle ich ziemlich früh, wenn es um die Zukunft eines Bereichs geht. Und die Antwort sieht jedes Mal anders aus als das, was heute da ist.\n\nZuständigkeiten, Abläufe, Schnittstellen: Vieles ist einfach so gewachsen. Also baut man weiter auf dem, was da ist. Wer neu gründet, darf all das infrage stellen.\n\nErst wenn das Bild steht, reden wir über Strategie. Ohne dieses Bild gibt es keine gescheite Strategie. Mit ihm ergibt sie sich fast von allein. Sie ist dann der Weg von heute dorthin.\n\nDamit aus der Frage keine Wunschliste wird, gehe ich drei Dinge durch:\n\n• Welches Problem hat dein Kunde wirklich?\n• Wie löst du es?\n• Und ist er überhaupt bereit, es zu lösen?\n\nEinen Rat gebe ich dabei jedes Mal mit: Beantworte die Frage zuerst allein.\n\nStellst du sie gleich deinem ganzen Team, fragt sich jeder zuerst, ob es seinen Job danach noch gibt. Und mit dieser Sorge im Kopf denkt keiner frei.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-26",
   "kennzahlen": [],
   "bild": "rp13",
   "termin": "Mo 26.10.",
   "format": "Frage · C Fragezeichen",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7520375023509938176"
  },
  {
   "id": 77,
