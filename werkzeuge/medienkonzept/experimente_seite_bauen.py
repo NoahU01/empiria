@@ -9,10 +9,11 @@ import os, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import experimente_runde3 as R3
 from kw45_texte import KW45
+from kw44_texte import KW44
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "75"
+V = "76"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -276,9 +277,15 @@ def main():
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
   </div></section>
 
+  <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 4b &middot; laufende Woche zur Freigabe</p><h2 class="e2-h2">28.10. bis 01.11. – neu nach Ton-Regler.</h2>
+    <p class="e2-lead">Diese Posts stehen schon in Buffer – noch mit den alten Texten. Nach deiner Freigabe tausche ich sie dort aus. Die Bilder bleiben.</p></div>
+    <div class="mex-iphones">''' + "".join(iphone(tag, t, b) for pid, tag, b, t in KW44) + '''</div>
+  </div></section>
+
   <section class="e2-sek ak-sec"><div class="e2-wrap">
     <div class="ak-kopf"><p class="e2-kicker">Runde 4 &middot; KW 45 zur Freigabe</p><h2 class="e2-h2">Die Woche 02.–08.11. nach Ton-Regler.</h2>
-    <p class="e2-lead">Alle sieben Texte neu geschrieben: Stufe 3, kurze Absätze, ein Werkzeug zum Mitnehmen. So erscheinen sie auf dem iPhone – Text, darunter das Bild.</p></div>
+    <p class="e2-lead">Alle sieben Texte neu geschrieben: Stufe 3, kurze Absätze, ein Werkzeug zum Mitnehmen. Bilder nach Bildlogik: Montag Postfach-Nachbau, Mittwoch Dokument-Karussell mit fünf Seiten (hier Seite 1). So erscheinen sie auf dem iPhone – Text, darunter das Bild.</p></div>
     <div class="mex-iphones">''' + "".join(iphone(tag, t, b) for pid, tag, b, t in KW45) + '''</div>
   </div></section>
 

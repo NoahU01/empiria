@@ -1,6 +1,6 @@
 """KW 45 (02.–08.11.2026) neu nach Ton-Regler (Daniel, 27.10.2026): Stufe 3, 700–1.100 Zeichen, kurze Absätze, Werkzeug-Learning."""
 KW45 = [
-    (84, "Mo 02.11.", "rp20", """Du schreibst die dritte Mail. Du hast die Unterlagen nachgeschärft. Und das andere Team zieht trotzdem nicht mit.
+    (84, "Mo 02.11.", "rp27", """Du schreibst die dritte Mail. Du hast die Unterlagen nachgeschärft. Und das andere Team zieht trotzdem nicht mit.
 
 Ich kenne das. Es nervt.
 
@@ -40,7 +40,7 @@ Bevor die nächste Unterlage entsteht, beantworte drei Fragen aus Sicht der Bank
 3. Wie aufwendig ist ein Abschluss im Alltag?
 
 Wo die Antwort schlecht ist, liegt dein Hebel."""),
-    (86, "Mi 04.11.", "rp22", """Wenn ich mit einer Führungskraft über Strategie rede, denkt sie meistens sofort an zwei Tage Workshop und Kärtchen an der Wand.
+    (86, "Mi 04.11.", "ka1", """Wenn ich mit einer Führungskraft über Strategie rede, denkt sie meistens sofort an zwei Tage Workshop und Kärtchen an der Wand.
 
 Ich brauche keine zwei Tage. Ich brauche zwei, drei Gespräche à eine Stunde. Am Telefon reicht.
 

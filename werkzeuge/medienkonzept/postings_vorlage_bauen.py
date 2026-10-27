@@ -875,6 +875,42 @@ teile += [
   <p style="margin-top:12px;font:600 38px/1.3 Poppins,sans-serif;color:#1a1817">ein Bereich, der wieder vorankommt.</p></div></section>""",
 ]
 
+# KW 45 Bildlogik (Daniel, 28.10.2026): Montag = nachgebautes Mail-Postfach (Szene), Mittwoch = Dokument-Karussell (Werkzeug)
+SYS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+def mailzeile(tag, zeit, text, offen=False):
+    return """<div style="display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:start;padding:26px 30px;border-bottom:1px solid #e6e3df;background:%s">
+<span style="display:grid;place-items:center;width:64px;height:64px;border-radius:50%%;background:#1a1817;color:#fff;font:600 26px/1 %s">Du</span>
+<span><b style="display:block;font:600 30px/1.2 %s;color:#1a1817">Du <span style="font-weight:400;color:#6b6762">an Team Vertriebssteuerung</span></b>
+<span style="display:block;margin-top:8px;font:400 28px/1.35 %s;color:#4a4642">%s</span></span>
+<span style="font:400 24px/1.2 %s;color:#8a857f;white-space:nowrap">%s, %s</span></div>""" % ("#fff" if offen else "#faf9f7", SYS, SYS, SYS, text, SYS, tag, zeit)
+MAIL = """<section class="p" id="rp27" style="background:#e9e7e3;padding:70px 56px 0">
+<div style="border-radius:22px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.12);overflow:hidden">
+<div style="padding:34px 30px 26px;border-bottom:1px solid #e6e3df">
+<p style="font:600 22px/1 %s;letter-spacing:.06em;text-transform:uppercase;color:#8a857f">Gesendete Elemente</p>
+<p style="margin-top:16px;font:700 44px/1.2 %s;color:#1a1817">AW: AW: AW: Unterstützung für das Projekt</p></div>
+%s%s%s
+<div style="padding:30px;font:400 26px/1.3 %s;color:#8a857f">Gelesen · keine Antwort</div></div>
+<p style="position:absolute;left:56px;right:56px;bottom:150px;font:700 84px/1.12 Lora,Georgia,serif;color:#1a1817">Die vierte Mail <span class="hl">hilft auch nicht.</span></p>%s</section>""" % (
+    SYS, SYS,
+    mailzeile("Mo", "09:12", "Hallo zusammen, kurze Erinnerung an unser Thema von letzter Woche …"),
+    mailzeile("Mi", "17:48", "Ich wollte noch einmal nachhaken. Bis Freitag bräuchten wir eure Rückmeldung …"),
+    mailzeile("Do", "16:42", "Gibt es hierzu schon einen Stand? Sonst kommen wir nicht weiter.", True),
+    SYS, NAME)
+def kseite2(nr, kopf, text, gross=None, dunkel=False):
+    bg, fg, sub = ("#1a1817", "#fff", "#cfcac4") if dunkel else ("#fff", "#1a1817", "#4a4642")
+    zahl = '<p style="font:700 300px/.85 Poppins,sans-serif;color:#fff400;-webkit-text-stroke:6px %s">%s</p>' % (fg, gross) if gross else ""
+    return """<section class="p" id="ka%s" style="background:%s"><p class="k" style="color:%s">Strategie in drei Gesprächen · %s/5</p>
+<div style="margin-top:%dpx">%s<p style="margin-top:40px;font:700 96px/1.08 Lora,Georgia,serif;color:%s">%s</p>
+<p style="margin-top:44px;max-width:880px;font:500 48px/1.45 Poppins,sans-serif;color:%s">%s</p></div>%s</section>""" % (
+        nr, bg, fg, nr, 160 if gross else 300, zahl, fg, kopf, sub, text, NAME)
+teile += [MAIL,
+    kseite2("1", "Strategie in drei Gesprächen.", "Statt zwei Tage Workshop und Kärtchen an der Wand. So läuft der Einstieg – und den ersten Schritt kannst du heute selbst gehen.", dunkel=True),
+    kseite2("2", "Erzählen.", "Zwei, drei Gespräche à eine Stunde. Telefon reicht. Keine Vorbereitung, keine Folien. Du erzählst, ich frage, unterbreche, frage weiter.", gross="1"),
+    kseite2("3", "Spiegeln.", "Ich lege hin, was ich gehört habe – strukturiert, neben der Logik des Geschäftsmodells Versicherung. Plötzlich steht das Bild, das du im Kopf hattest.", gross="2"),
+    kseite2("4", "Vorgehen.", "Wen braucht es? Wie ticken die Betroffenen? Erst wenn das klar ist, geht es los.", gross="3"),
+    kseite2("5", "Dein erster Schritt – heute.", "Erzähle jemandem, dem du vertraust, eine Stunde lang ohne Unterlagen, wo dein Bereich hin soll. Und bitte ihn, dir zu spiegeln, was er verstanden hat.", dunkel=True),
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
