@@ -11,7 +11,7 @@ import experimente_runde3 as R3
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "73"
+V = "74"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -238,6 +238,13 @@ def ton_thema(t):
   <p class="mex-ton__offen"><b>Offen:</b> %s</p><p class="mex-quelle">Grundlage: %s</p></div>''' % (t["titel"], t["baustein"], karten, t["offen"], t["quelle"])
 
 
+def iphone(titel, text):
+    zeichen = len(text)
+    return '''<figure class="mex-iphone"><figcaption><b>%s</b><span>%d Zeichen</span></figcaption><div class="mex-iphone__screen">
+  <p class="mex-iphone__kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><span><b>Daniel Ströbel</b><small>Strategiehandwerker für Führungskräfte in der Versicherungsbranche</small></span></p>
+  <div class="mex-iphone__text">%s</div></div></figure>''' % (titel, zeichen, absaetze(text))
+
+
 def absaetze(t):
     return "".join("<p>%s</p>" % html.escape(a).replace("\n", "<br>") for a in t.split("\n\n"))
 
@@ -266,6 +273,12 @@ def main():
     <div class="ak-kopf"><p class="e2-kicker">Der Maßstab</p><h2 class="e2-h2">Woran wir jedes Experiment messen.</h2></div>
     <ul class="mex-massstab">''' + "".join("<li><b>%s</b><span>%s</span></li>" % m for m in MASSSTAB) + '''</ul>
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
+  </div></section>
+
+  <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 3b &middot; 27.10.2026</p><h2 class="e2-h2">Stufe 3, gekürzt – so sieht es auf dem iPhone aus.</h2>
+    <p class="e2-lead">Nach deinem Feedback: Stufe 3 trifft, aber zu lang und zu dichte Absätze. Hier nach Ton-Regler gekürzt – 700 bis 1.100 Zeichen, Absätze höchstens drei Zeilen, in echter iPhone-Breite.</p></div>
+    <div class="mex-iphones">''' + "".join(iphone(t, x) for t, x in R3.GEKUERZT) + '''</div>
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">

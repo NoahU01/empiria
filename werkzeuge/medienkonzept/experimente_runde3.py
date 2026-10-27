@@ -210,3 +210,67 @@ Und die andere Hälfte? Die verteidigst du gerade in jedem Meeting.
 Schließe das Museum. Gründe neu.""",
          ]),
 ]
+
+# Runde 3b (27.10.2026): Stufe 3 gekürzt nach Ton-Regler – Vorschau in iPhone-Breite
+GEKUERZT = [
+    ("KI-Schnellboote", """Ich habe mir im letzten Jahr KI komplett selbst beigebracht. Abends, beim Bauen, mit vielen Nerven.
+
+Meine Erkenntnis: KI lernst du nur im Tun.
+
+Genau das verbieten gerade viele Häuser.
+
+Im Vorstand heißt es: „Denkt quer, baut Schnellboote.“
+Aus der IT kommt: „Externe KI-Tools sind untersagt.“
+
+Das nervt mich gewaltig.
+
+Denn was passiert? Die Leute machen es trotzdem. Privat, abends, am eigenen Laptop.
+
+So fährt ein Schnellboot wirklich:
+
+1. Ein Satz vom Vorstand, wofür KI da sein soll.
+2. Ein Spielfeld: diese Tools ja, diese Daten nie.
+3. Vier Wochen, drei echte Fälle aus dem Alltag.
+4. Ein Termin, an dem jemand entscheidet, was bleibt.
+
+Freiraum und Kontrolle. Beides geht."""),
+    ("Vorstandsvorlage", """Deine Vorstandsvorlage hat 47 Folien? Glückwunsch. Du hast gerade eine Entscheidung verhindert.
+
+Ich habe jahrelang Vorstandsklausuren vorbereitet. Sechs Vorstände, sechs Charaktere, alle hocherfahren.
+
+Stimmte die Vorbereitung, war in Minuten klar, worum es geht.
+
+Pochte ein Fachbereich auf Details, kippte es. Bis der Satz fiel: „Auf der Ebene brauchen wir nicht weiterzudiskutieren.“
+
+Richtig gut lief es, wenn einer einen einzigen klaren Satz als Richtung sagte. Der war mehr wert als jedes Management Summary.
+
+Seitdem prüfe ich jede Vorlage mit drei Fragen:
+
+Why?
+Was bedeutet das Thema für unser Unternehmen? In einem Satz.
+
+How?
+Wie gehen wir grundsätzlich vor? Ein Weg, keine Liste von Einzelproblemen.
+
+What next?
+Was muss heute entschieden werden? Wörtlich auf der Seite.
+
+Und der letzte Test: Welcher Satz bleibt, wenn der Vorstand zuklappt?"""),
+    ("Bereich neu gründen", """Wenn Führungskräfte „Strategie“ hören, denken sie an zwei Tage Workshop und Kärtchen an der Wand.
+
+Ich fange mit einer Frage an: Wie würdest du deinen Bereich bauen, wenn du ihn heute neu gründen würdest?
+
+Dafür brauche ich keine zwei Tage. Zwei, drei Gespräche à eine Stunde. Ohne Vorbereitung, ohne Folien.
+
+Du erzählst. Ich frage, unterbreche, frage weiter.
+
+Dann lege ich dir hin, was ich gehört habe. Und plötzlich steht da ein Bild, das du die ganze Zeit im Kopf hattest.
+
+Das Team kommt bewusst später. Wer zu früh über die Zukunft diskutiert, erzeugt Angst um den eigenen Job. Und mit Angst denkt keiner frei.
+
+Zum Mitnehmen:
+
+1. Beantworte die Frage allein, laut, vor jemandem, dem du vertraust.
+2. Prüfe dein Bild: Welches Problem hat dein Kunde? Wie löst du es? Will er es lösen?
+3. Erst dann: Wen brauchst du dafür?"""),
+]
