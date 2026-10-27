@@ -13,7 +13,7 @@ from kw44_texte import KW44
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "76"
+V = "78"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [

@@ -903,12 +903,51 @@ def kseite2(nr, kopf, text, gross=None, dunkel=False):
 <div style="margin-top:%dpx">%s<p style="margin-top:40px;font:700 96px/1.08 Lora,Georgia,serif;color:%s">%s</p>
 <p style="margin-top:44px;max-width:880px;font:500 48px/1.45 Poppins,sans-serif;color:%s">%s</p></div>%s</section>""" % (
         nr, bg, fg, nr, 160 if gross else 300, zahl, fg, kopf, sub, text, NAME)
-teile += [MAIL,
-    kseite2("1", "Strategie in drei Gesprächen.", "Statt zwei Tage Workshop und Kärtchen an der Wand. So läuft der Einstieg – und den ersten Schritt kannst du heute selbst gehen.", dunkel=True),
-    kseite2("2", "Erzählen.", "Zwei, drei Gespräche à eine Stunde. Telefon reicht. Keine Vorbereitung, keine Folien. Du erzählst, ich frage, unterbreche, frage weiter.", gross="1"),
-    kseite2("3", "Spiegeln.", "Ich lege hin, was ich gehört habe – strukturiert, neben der Logik des Geschäftsmodells Versicherung. Plötzlich steht das Bild, das du im Kopf hattest.", gross="2"),
-    kseite2("4", "Vorgehen.", "Wen braucht es? Wie ticken die Betroffenen? Erst wenn das klar ist, geht es los.", gross="3"),
-    kseite2("5", "Dein erster Schritt – heute.", "Erzähle jemandem, dem du vertraust, eine Stunde lang ohne Unterlagen, wo dein Bereich hin soll. Und bitte ihn, dir zu spiegeln, was er verstanden hat.", dunkel=True),
+teile += [MAIL]
+
+# Karussell „Strategie in drei Gesprächen“ v2 (Daniel, 28.10.2026: Folien auf CD-Niveau) – Flächenwechsel Gelb/Schwarz/Weiß,
+# angeschnittenes Vorwärts-Zeichen läuft über die Seitengrenze 1→2, durchgehende Fortschrittsleiste auf den Schritt-Seiten.
+GELB, INK = "#fff400", "#1a1817"
+def leiste(aktiv, dunkel):
+    farbe_an = GELB if dunkel else INK
+    farbe_aus = "#4a4642" if dunkel else "#cfcac4"
+    text_an = "#fff" if dunkel else INK
+    text_aus = "#8a857f"
+    knoten = ""
+    for i, wort in enumerate(["Erzählen", "Spiegeln", "Vorgehen"]):
+        an = i + 1 <= aktiv
+        knoten += '<div style="position:absolute;left:%dpx;top:-14px;text-align:center;width:200px;margin-left:-100px"><i style="display:block;margin:0 auto;width:%dpx;height:%dpx;border-radius:50%%;background:%s;%s"></i><b style="display:block;margin-top:18px;font:%s 26px/1 Poppins,sans-serif;color:%s">%s</b></div>' % (
+            170 + i * 370, 34 if i + 1 == aktiv else 28, 34 if i + 1 == aktiv else 28, farbe_an if an else (INK if dunkel else "#fff"),
+            "" if an else "border:5px solid %s;box-sizing:border-box" % farbe_aus, "700" if i + 1 == aktiv else "500", text_an if i + 1 == aktiv else text_aus, wort)
+    breite = 170 + (aktiv - 1) * 370
+    return '<div style="position:absolute;left:-20px;right:-20px;bottom:170px;height:6px;background:%s"><div style="position:absolute;left:0;top:0;height:6px;width:%dpx;background:%s"></div>%s</div>' % (farbe_aus, breite + 20, farbe_an, knoten)
+def schritt(nr, wort, saetze, dunkel):
+    bg, fg, sub, zahl = (INK, "#fff", "#cfcac4", GELB) if dunkel else ("#fff", INK, "#4a4642", INK)
+    return """<section class="p" id="ka%d" style="background:%s;padding:84px">
+  <p class="k" style="color:%s">Strategie in drei Gesprächen</p>
+  <p style="position:absolute;left:66px;top:150px;font:800 560px/.8 Poppins,sans-serif;letter-spacing:-.04em;color:%s">%d</p>
+  <div style="position:absolute;left:84px;right:84px;top:640px">
+    <p style="font:700 128px/1 Lora,Georgia,serif;letter-spacing:-.02em;color:%s">%s</p>
+    <p style="margin-top:36px;max-width:860px;font:500 46px/1.4 Poppins,sans-serif;color:%s">%s</p></div>
+  %s</section>""" % (nr + 1, bg, fg, zahl, nr, fg, wort, sub, saetze, leiste(nr, dunkel))
+ZEICHEN_GROSS = 780
+teile += [
+    """<section class="p gelbgrund" id="ka1" style="padding:84px">
+  <p class="k" style="color:#1a1817">Strategie-Einstieg</p>
+  <p style="margin-top:150px;font:700 104px/1.08 Lora,Georgia,serif;letter-spacing:-.02em;color:#1a1817">Strategie in<br>drei Gesprächen.</p>
+  <p style="margin-top:50px;max-width:560px;font:600 46px/1.3 Poppins,sans-serif;color:#1a1817">Statt zwei Tage Workshop und Kärtchen an der Wand.</p>
+  <div class="an" style="width:%dpx;height:%dpx;right:-%dpx;top:700px;color:#1a1817">%s</div>
+  <p style="position:absolute;left:84px;bottom:84px;font:600 30px/1 Poppins,sans-serif;color:#1a1817">Daniel Ströbel</p></section>""" % (ZEICHEN_GROSS, ZEICHEN_GROSS, ZEICHEN_GROSS // 2, F),
+    schritt(1, "Erzählen.", "Eine Stunde, am Telefon. Ohne Vorbereitung, ohne Folien. Du erzählst – ich frage.", True),
+    schritt(2, "Spiegeln.", "Ich lege hin, was ich gehört habe. Plötzlich steht das Bild, das du die ganze Zeit im Kopf hattest.", False),
+    schritt(3, "Vorgehen.", "Wen braucht es? Wie ticken die Betroffenen? Erst dann geht es los.", True),
+    """<section class="p gelbgrund" id="ka5" style="padding:84px">
+  <p class="k" style="color:#1a1817">Dein erster Schritt</p>
+  <p style="margin-top:130px;font:700 124px/1.04 Lora,Georgia,serif;letter-spacing:-.02em;color:#1a1817">Heute.<br>Eine Stunde.<br>Ohne Folien.</p>
+  <p style="margin-top:56px;max-width:820px;font:500 44px/1.42 Poppins,sans-serif;color:#1a1817">Erzähle jemandem, dem du vertraust, wo dein Bereich hin soll. Und bitte ihn, dir zu spiegeln, was er verstanden hat.</p>
+  <div style="position:absolute;left:84px;right:84px;bottom:84px;display:flex;align-items:center;gap:26px;padding-top:34px;border-top:4px solid #1a1817">
+    <img src="/assets/daniel-round.webp" alt="" style="width:110px;height:110px;border-radius:50%%;object-fit:cover;background:#1a1817">
+    <p><b style="display:block;font:700 40px/1.1 Poppins,sans-serif;color:#1a1817">Daniel Ströbel</b><span style="display:block;margin-top:8px;font:500 30px/1.2 Poppins,sans-serif;color:#1a1817">Strategie in Wirkung bringen</span></p></div></section>""",
 ]
 
 html = """<!doctype html>
