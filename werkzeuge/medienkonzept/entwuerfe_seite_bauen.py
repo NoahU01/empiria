@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "68"  # Versionsnummer für CSS/JS
+V = "77"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -41,7 +41,7 @@ EXTRA = {
     83: dict(bild="rp19", termin="So 01.11.", format="Aufgegriffen · Zitatkarte", offen="Zitat im Original geprüft (VWheute, 21.10.2026)."),
     84: dict(bild="rp27", termin="Mo 02.11.", format="Szene · Postfach-Nachbau", offen=""),
     85: dict(bild="rp21", termin="Di 03.11.", format="Szene · B Foto mit Satz", offen=""),
-    86: dict(bild="ka1", termin="Mi 04.11.", format="Werkzeug · Dokument-Karussell (5 Seiten)", offen=""),
+    86: dict(bild="ka1", termin="Mi 04.11.", format="Werkzeug · Dokument-Karussell (5 Seiten)", offen="", seiten=["ka1", "ka2", "ka3", "ka4", "ka5"], pdf="ka-strategie-drei-gespraeche.pdf"),
     87: dict(bild="rp23", termin="Do 05.11.", format="Geschichte · Foto", offen=""),
     88: dict(bild="rp24", termin="Fr 06.11.", format="Zum Mitnehmen · Gedankenexperiment", offen=""),
     89: dict(bild="rp25", termin="Sa 07.11.", format="Weitergedacht · Foto", offen=""),

@@ -3,7 +3,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var P = window.MK_ENTWUERFE || [], FE = window.MK_FELDER || {};
-  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=68';
+  var PFAD = '/assets/projekte/medienkonzept/postings/', BV = '?v=77';
   var raster = $('#mke-raster');
   if (!raster) return;
   function nr(i) { return (i + 1 < 10 ? '0' : '') + (i + 1); }
@@ -28,7 +28,7 @@
       var p = P[t.i], st = status(p);
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--' + st[0] + '">' + st[1] + '</span></div>' +
         '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
-        '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy"></button>' +
+        '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy">' + (p.seiten ? '<span class="mke-k__seiten">' + p.seiten.length + ' Seiten</span>' : '') + '</button>' +
         zahlen(p) + '<p class="mke-tag__typ">' + (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a> · ' : '') + esc(p.format) + '</p></div>';
     }
     if (t.plan) {
@@ -65,7 +65,7 @@
     $('#mke-name').textContent = firma ? 'empiria GmbH' : 'Daniel Ströbel';
     $('#mke-variante').hidden = !p.alt;
     $('#mke-bild').innerHTML = p.seiten
-      ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis">Seiten zur Seite wischen · ' + p.seiten.length + ' Seiten</p>'
+      ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis"><button type="button" class="mke-blaettern" data-richtung="-1" aria-label="Seite zurück">‹</button> Blättern · ' + p.seiten.length + ' Seiten <button type="button" class="mke-blaettern" data-richtung="1" aria-label="Seite weiter">›</button></p>'
       : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
     $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · ' + '7:45' + ' Uhr · ' + status(p)[1];
     $('#mke-text').textContent = p.text;
@@ -90,4 +90,9 @@
   modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
   modal.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') blaettere(1); if (e.key === 'ArrowLeft') blaettere(-1); });
   if (/^#posting-\d+$/.test(location.hash)) { var n = +location.hash.slice(9) - 1; if (P[n]) oeffne(n); }
+  document.addEventListener('click', function (e) {
+    var k = e.target.closest('.mke-blaettern'); if (!k) return;
+    var leiste = document.querySelector('#mke-bild .mke-seiten'); if (!leiste) return;
+    leiste.scrollBy({ left: leiste.clientWidth * +k.dataset.richtung, behavior: 'smooth' });
+  });
 })();

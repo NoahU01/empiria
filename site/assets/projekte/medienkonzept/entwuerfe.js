@@ -889,6 +889,14 @@ window.MK_ENTWUERFE = [
   "termin": "Mi 04.11.",
   "format": "Werkzeug · Dokument-Karussell (5 Seiten)",
   "offen": "",
+  "seiten": [
+   "ka1",
+   "ka2",
+   "ka3",
+   "ka4",
+   "ka5"
+  ],
+  "pdf": "ka-strategie-drei-gespraeche.pdf",
   "url": ""
  },
  {

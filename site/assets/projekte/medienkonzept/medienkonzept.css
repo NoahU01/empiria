@@ -777,3 +777,8 @@ a.mke-platz{text-decoration:none}
 .ak-sec .mex-iphone__text p:last-child{margin-bottom:0}
 
 .mex-iphone__bild{display:block;max-width:none;width:calc(100% + 32px);margin:16px -16px 0;aspect-ratio:4/5;object-fit:cover}
+
+/* Karussell im Redaktionsplan (28.10.2026) */
+.mke-k { position: relative; }
+.mke-k__seiten { position: absolute; right: 6px; bottom: 6px; padding: 3px 7px; border-radius: 10px; background: #1a1817; color: #fff400; font: 600 .68rem/1 'Poppins', sans-serif; }
+.mke-blaettern { width: 34px; height: 34px; margin: 0 10px; border: 0; border-radius: 50%; background: #fff400; color: #1a1817; font: 700 1.2rem/1 'Poppins', sans-serif; cursor: pointer; vertical-align: middle; }
