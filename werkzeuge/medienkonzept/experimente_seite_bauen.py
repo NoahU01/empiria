@@ -8,10 +8,11 @@ Bewusst übertrieben – danach wird gestrichen. Nichts davon ist eingeplant; be
 import os, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import experimente_runde3 as R3
+from kw45_texte import KW45
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "74"
+V = "75"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -238,11 +239,11 @@ def ton_thema(t):
   <p class="mex-ton__offen"><b>Offen:</b> %s</p><p class="mex-quelle">Grundlage: %s</p></div>''' % (t["titel"], t["baustein"], karten, t["offen"], t["quelle"])
 
 
-def iphone(titel, text):
+def iphone(titel, text, bild=None):
     zeichen = len(text)
     return '''<figure class="mex-iphone"><figcaption><b>%s</b><span>%d Zeichen</span></figcaption><div class="mex-iphone__screen">
   <p class="mex-iphone__kopf"><img src="/assets/ansprechpartner-daniel.webp" alt=""><span><b>Daniel Ströbel</b><small>Strategiehandwerker für Führungskräfte in der Versicherungsbranche</small></span></p>
-  <div class="mex-iphone__text">%s</div></div></figure>''' % (titel, zeichen, absaetze(text))
+  <div class="mex-iphone__text">%s</div>%s</div></figure>''' % (titel, zeichen, absaetze(text), ('<img class="mex-iphone__bild" src="%s%s.jpg?v=%s" alt="">' % (PF, bild, V)) if bild else "")
 
 
 def absaetze(t):
@@ -273,6 +274,12 @@ def main():
     <div class="ak-kopf"><p class="e2-kicker">Der Maßstab</p><h2 class="e2-h2">Woran wir jedes Experiment messen.</h2></div>
     <ul class="mex-massstab">''' + "".join("<li><b>%s</b><span>%s</span></li>" % m for m in MASSSTAB) + '''</ul>
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
+  </div></section>
+
+  <section class="e2-sek ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 4 &middot; KW 45 zur Freigabe</p><h2 class="e2-h2">Die Woche 02.–08.11. nach Ton-Regler.</h2>
+    <p class="e2-lead">Alle sieben Texte neu geschrieben: Stufe 3, kurze Absätze, ein Werkzeug zum Mitnehmen. So erscheinen sie auf dem iPhone – Text, darunter das Bild.</p></div>
+    <div class="mex-iphones">''' + "".join(iphone(tag, t, b) for pid, tag, b, t in KW45) + '''</div>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
