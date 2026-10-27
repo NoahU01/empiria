@@ -5,11 +5,13 @@ Bewusst übertrieben – danach wird gestrichen. Nichts davon ist eingeplant; be
 
     python3 werkzeuge/medienkonzept/experimente_seite_bauen.py
 """
-import os, html
+import os, html, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import experimente_runde3 as R3
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "72"
+V = "73"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -230,6 +232,12 @@ def stufe(st):
   <div class="mex-zeilen">%s</div></div>''' % (st["nr"], st["nr"], st["titel"], st["grad"], st["grenze"], "".join(beispiel(e) for e in st["beispiele"]))
 
 
+def ton_thema(t):
+    karten = "".join('''<article class="mex-ton__karte mex-ton__karte--%s"><p class="mex-ton__stufe"><b>%s</b><span>%s</span><em>%s</em></p><div class="mex-posting">%s</div></article>''' % (nr, nr, name, hinweis, absaetze(text)) for (nr, name, hinweis), text in zip(R3.STUFEN, t["texte"]))
+    return '''<div class="mex-ton"><div class="mex-ton__kopf"><h3>%s</h3><span>%s</span></div><div class="mex-ton__raster">%s</div>
+  <p class="mex-ton__offen"><b>Offen:</b> %s</p><p class="mex-quelle">Grundlage: %s</p></div>''' % (t["titel"], t["baustein"], karten, t["offen"], t["quelle"])
+
+
 def absaetze(t):
     return "".join("<p>%s</p>" % html.escape(a).replace("\n", "<br>") for a in t.split("\n\n"))
 
@@ -258,6 +266,12 @@ def main():
     <div class="ak-kopf"><p class="e2-kicker">Der Maßstab</p><h2 class="e2-h2">Woran wir jedes Experiment messen.</h2></div>
     <ul class="mex-massstab">''' + "".join("<li><b>%s</b><span>%s</span></li>" % m for m in MASSSTAB) + '''</ul>
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
+  </div></section>
+
+  <section class="e2-sek ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 3 &middot; 27.10.2026</p><h2 class="e2-h2">Ton kalibrieren: drei Themen, je vier Stufen.</h2>
+    <p class="e2-lead">Dasselbe Thema, vier Tonlagen – vom bisherigen Lehrbuch-Ton bis bewusst drüber. Sag pro Thema, welche Stufe trifft. Daraus wird der feste Ton-Regler in den Schreibregeln.</p></div>
+    ''' + "".join(ton_thema(t) for t in R3.THEMEN) + '''
   </div></section>
 
   <section class="e2-sek ak-sec"><div class="e2-wrap">
