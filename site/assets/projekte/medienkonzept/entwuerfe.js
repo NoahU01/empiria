@@ -461,6 +461,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 258,
     "reaktionen": 12,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.5,
+    "impressionen": 385,
+    "reichweite": 262,
+    "reaktionen": 12,
+    "kommentare": 2
    }
   ],
   "bild": "rp01",
@@ -513,6 +520,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 120,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.5,
+    "impressionen": 180,
+    "reichweite": 122,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp02",
@@ -558,6 +572,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 302,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 125.3,
+    "impressionen": 441,
+    "reichweite": 317,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp03",
@@ -594,6 +615,13 @@ window.MK_ENTWUERFE = [
     "stunden": 77.3,
     "impressionen": 167,
     "reichweite": 109,
+    "reaktionen": 6,
+    "kommentare": 2
+   },
+   {
+    "stunden": 101.3,
+    "impressionen": 186,
+    "reichweite": 123,
     "reaktionen": 6,
     "kommentare": 2
    }
@@ -634,6 +662,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 273,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 77.3,
+    "impressionen": 416,
+    "reichweite": 297,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp11",
@@ -657,6 +692,13 @@ window.MK_ENTWUERFE = [
     "impressionen": 220,
     "reichweite": 138,
     "reaktionen": 4,
+    "kommentare": 0
+   },
+   {
+    "stunden": 45.4,
+    "impressionen": 244,
+    "reichweite": 154,
+    "reaktionen": 5,
     "kommentare": 0
    }
   ],
@@ -682,6 +724,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 73,
     "reaktionen": 2,
     "kommentare": 3
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 171,
+    "reichweite": 121,
+    "reaktionen": 5,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -699,7 +748,15 @@ window.MK_ENTWUERFE = [
   "text": "Als ich selbst eine Abteilung geführt habe, rund 40 Leute an zwei Standorten, habe ich eine Sache gründlich unterschätzt.\n\nIch dachte: Wenn die Logik stimmt, läuft der Rest. Saubere Prozesse, klare Regelungen, ordentliche Absprachen.\n\nDas hat nicht gereicht. Nicht annähernd.\n\nMenschen sind im Alltag viel ausgeprägter, als es jedes Persönlichkeitsmodell beschreibt. Und unter Führungskräften laufen Strömungen, die in keinem Organigramm stehen: wer welche Interessen verteidigt und wer worauf Einfluss hat.\n\nAn vielen Stellen hast du mit reiner Logik fast keine Chance.\n\nWas wirkt, ist Führung im Alltag. Kein Mikromanagement. Aber so aufgestellt sein, dass deine Leute merken: Da ist jemand, der Richtung gibt, nachhält und entscheidet.\n\nBevor du die nächste Regel aufschreibst, stelle dir zwei Fragen:\n\n• Wer muss sich dafür im Alltag anders verhalten?\n• Und woran merkt er, dass es dir ernst ist?",
   "status": "veroeffentlicht",
   "datum": "2026-10-27",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4,
+    "impressionen": 110,
+    "reichweite": 79,
+    "reaktionen": 4,
+    "kommentare": 4
+   }
+  ],
   "bild": "rp14",
   "termin": "Di 27.10.",
   "format": "Szene · A Foto mit Satz",
