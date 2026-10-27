@@ -853,9 +853,9 @@ window.MK_ENTWUERFE = [
   "status": "geplant",
   "datum": "2026-11-02",
   "kennzahlen": [],
-  "bild": "rp20",
+  "bild": "rp27",
   "termin": "Mo 02.11.",
-  "format": "Frage · B Schwarz",
+  "format": "Szene · Postfach-Nachbau",
   "offen": "",
   "url": ""
  },
@@ -885,9 +885,9 @@ window.MK_ENTWUERFE = [
   "status": "geplant",
   "datum": "2026-11-04",
   "kennzahlen": [],
-  "bild": "rp22",
+  "bild": "ka1",
   "termin": "Mi 04.11.",
-  "format": "Werkzeug · D Zeitleiste",
+  "format": "Werkzeug · Dokument-Karussell (5 Seiten)",
   "offen": "",
   "url": ""
  },
