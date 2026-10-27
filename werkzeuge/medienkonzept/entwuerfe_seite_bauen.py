@@ -39,9 +39,9 @@ EXTRA = {
     81: dict(bild="rp17", termin="Fr 30.10.", format="Werkstatt · Foto", offen=""),
     82: dict(bild="rp18", termin="Sa 31.10.", format="Weitergedacht · Foto", offen=""),
     83: dict(bild="rp19", termin="So 01.11.", format="Aufgegriffen · Zitatkarte", offen="Zitat im Original geprüft (VWheute, 21.10.2026)."),
-    84: dict(bild="rp20", termin="Mo 02.11.", format="Frage · B Schwarz", offen=""),
+    84: dict(bild="rp27", termin="Mo 02.11.", format="Szene · Postfach-Nachbau", offen=""),
     85: dict(bild="rp21", termin="Di 03.11.", format="Szene · B Foto mit Satz", offen=""),
-    86: dict(bild="rp22", termin="Mi 04.11.", format="Werkzeug · D Zeitleiste", offen=""),
+    86: dict(bild="ka1", termin="Mi 04.11.", format="Werkzeug · Dokument-Karussell (5 Seiten)", offen=""),
     87: dict(bild="rp23", termin="Do 05.11.", format="Geschichte · Foto", offen=""),
     88: dict(bild="rp24", termin="Fr 06.11.", format="Zum Mitnehmen · Gedankenexperiment", offen=""),
     89: dict(bild="rp25", termin="Sa 07.11.", format="Weitergedacht · Foto", offen=""),
@@ -61,6 +61,9 @@ def main(pfad):
             continue
         datum = e["geplant_am"][:10]
         x = dict(EXTRA.get(e["id"]) or dict(bild=(e.get("bild") or "").replace(".jpg", ""), format=e["art"], offen=""))
+        b = (e.get("bild") or "")
+        if b.endswith(".jpg") and " " not in b:   # Bild aus Supabase gilt immer (Daniel, 28.10.2026: Plan zeigte altes Bild)
+            x["bild"] = b[:-4]
         x["termin"] = "%s %s." % (["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"][datetime.date.fromisoformat(datum).weekday()], datum[8:10] + "." + datum[5:7])
         x["url"] = e.get("linkedin_url") or ""
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
