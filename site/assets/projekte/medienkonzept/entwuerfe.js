@@ -770,14 +770,14 @@ window.MK_ENTWUERFE = [
   "art": "Modell · D Drei Kreise",
   "kern": "Themenliste 13: Erst befördern, dann 12 bis 24 Monate entwickeln – das ist der größte Fehler.",
   "text": "Gestern noch der stärkste Sachbearbeiter im Team. Heute Gruppenleiter. Glückwunsch, Blumen, Mail an alle.\n\nUnd dann? Nichts.\n\nMan gibt ihm zwölf bis vierundzwanzig Monate, um hineinzuwachsen. In der Zeit läuft er im Alarmmodus: geerbte Regeltermine, unbesetzte Stellen, Löcher stopfen.\n\nNach einem Jahr heißt es: „Von dem hätten wir uns mehr erwartet.“\n\nDas finde ich ganz schlimm. Am Können liegt es fast nie. Ihm fehlt das System, mit dem er das Spiel überhaupt gewinnen kann.\n\nBevor du das nächste Mal jemanden beförderst, kläre vorher mit ihm drei Dinge:\n\n1. Was erwartet das Haus von dieser Rolle? In klaren Worten.\n2. Wie nimmt er sein Team mit?\n3. Wie trägt sein Bereich zum Erfolg des Unternehmens bei?\n\nEine Stunde vor dem ersten Tag. Nicht ein Jahr danach.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-28",
   "kennzahlen": [],
   "bild": "rp15",
   "termin": "Mi 28.10.",
   "format": "Modell · D Drei Kreise",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7521099793587249153"
  },
  {
   "id": 80,
