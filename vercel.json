@@ -189,6 +189,11 @@
       "source": "/archiv/:pfad*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/xmas2026/",
+      "destination": "/xmas2026",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -259,6 +264,10 @@
     {
       "source": "/kontakt",
       "destination": "/site/kontakt.html"
+    },
+    {
+      "source": "/xmas2026",
+      "destination": "/site/xmas2026.html"
     },
     {
       "source": "/(.*)",
