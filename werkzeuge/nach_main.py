@@ -88,7 +88,9 @@ def entwicklungsteil_entfernen(baum):
 
 # Daniel 10.10.2026: Auf main nur, was die Website wirklich zeigt – Startseite, alle Leistungsseiten,
 # Kontakt, Impressum, Datenschutz. Nicht verlinkte Seiten (Archiv, Vorträge, alte Fassungen …) fliegen raus.
-START = ["site/index.html", "site/kontakt.html", "site/impressum.html", "site/datenschutz.html"]
+START = ["site/index.html", "site/kontakt.html", "site/impressum.html", "site/datenschutz.html",
+         # Daniel 28.10.2026: nicht verlinkt, aber live – Direktlink/QR-Code auf der Weihnachtskarte
+         "site/xmas2026.html"]
 # Weggefallene Adressen leiten dauerhaft auf die passende Seite weiter (Suchmaschinen, alte Links)
 WEITERLEITUNG = {"/leistungen/teams": "/praesentationsseminar", "/der-beste-workshop": "/workshops",
                  "/impulsvortraege": "/training-sparring", "/vortrag-1": "/training-sparring", "/vortrag-2": "/training-sparring",

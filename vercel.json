@@ -19,6 +19,11 @@
       "source": "/datenschutz/",
       "destination": "/datenschutz.html",
       "permanent": true
+    },
+    {
+      "source": "/xmas2026/",
+      "destination": "/xmas2026",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -177,6 +182,10 @@
     {
       "source": "/projekte/:seite([a-z0-9-]+)",
       "destination": "/site/projekte/:seite.html"
+    },
+    {
+      "source": "/xmas2026",
+      "destination": "/site/xmas2026.html"
     },
     {
       "source": "/(.*)",

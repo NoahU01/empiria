@@ -39,7 +39,6 @@ INTERNE_SEITEN = ["site/capiamo.html", "site/designideen.html", "site/werkzeugka
                   "site/assets/visitenkarte-icon-192.png", "site/assets/visitenkarte-icon-512.png",
                   "site/budget-retter.html", "site/budget-retter-1.html",
                   "site/budget-retter-2.html", "site/budget-retter-3.html",
-                  "site/xmas.html", "site/xmas-11.html",
     "site/assets/projekte/sv-swot-arbeitsauftrag.pdf",
     "site/assets/projekte/sv-swot-vorschau.webp",
                   "site/strategie/zielbild.html",
