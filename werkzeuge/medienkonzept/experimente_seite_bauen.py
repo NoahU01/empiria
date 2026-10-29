@@ -10,10 +10,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import experimente_runde3 as R3
 from kw45_texte import KW45
 from kw44_texte import KW44
+from hooks_texte import HOOKS
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "79"
+V = "80"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
@@ -275,6 +276,12 @@ def main():
     <div class="ak-kopf"><p class="e2-kicker">Der Maßstab</p><h2 class="e2-h2">Woran wir jedes Experiment messen.</h2></div>
     <ul class="mex-massstab">''' + "".join("<li><b>%s</b><span>%s</span></li>" % m for m in MASSSTAB) + '''</ul>
     <p class="mex-nie"><b>Nie:</b> Gossensprache oder Rumschimpfen. Klare Meinung ja, Krawall nein.</p>
+  </div></section>
+
+  <section class="e2-sek ak-sec"><div class="e2-wrap">
+    <div class="ak-kopf"><p class="e2-kicker">Runde 5 &middot; Knallersatz zuerst &middot; zur Freigabe</p><h2 class="e2-h2">30.10. bis 08.11. – jeder Post beginnt mit seiner stärksten Aussage.</h2>
+    <p class="e2-lead">Der Rest der Texte bleibt. Neu ist der erste Satz – der, den man im Feed vor „mehr anzeigen“ sieht. Nach deiner Freigabe tausche ich die Posts in Buffer aus.</p></div>
+    <div class="mex-iphones">''' + "".join(iphone(tag, t, b) for pid, tag, b, t in HOOKS) + '''</div>
   </div></section>
 
   <section class="e2-sek e2-sek--hell ak-sec"><div class="e2-wrap">
