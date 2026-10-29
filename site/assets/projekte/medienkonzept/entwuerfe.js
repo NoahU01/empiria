@@ -835,14 +835,14 @@ window.MK_ENTWUERFE = [
   "art": "Du als Person · Foto",
   "kern": "London 2000: täglich Wissen nach Feierabend – daraus wurde „90 Minuten Wissen to go“.",
   "text": "Im Sommer 2025 stand ich wieder vor dem Lloyd's Building. 25 Jahre nach meiner Zeit in der Londoner Rückversicherung.\n\nIch kam damals von einem ganz normalen Versicherer aus Stuttgart. Schulungen weit weg, Budget knapp.\n\nIn London war das anders. Alle Häuser saßen im selben Viertel.\n\nKam ein neues Thema hoch, nahm es sich eine Firma, bereitete es auf und lud ein. Kurzer Impuls nach Feierabend, danach Essen und Trinken.\n\nMan konnte sich praktisch jeden Tag weiterbilden. Über die Grenzen der eigenen Firma hinaus.\n\nDas habe ich mitgenommen. Zurück in Deutschland wurde daraus „90 Minuten Wissen to go“. Das Format läuft bei meinem früheren Arbeitgeber bis heute.\n\nDas Rezept ist simpel:\n\n1. Ein aktuelles Thema.\n2. Jemand, der es kurz auf den Punkt bringt.\n3. Danach Zeit zum Reden.\n\nMehr braucht es nicht, damit Wissen im Haus wandert.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-29",
   "kennzahlen": [],
   "bild": "rp16",
   "termin": "Do 29.10.",
   "format": "Du als Person · Foto",
   "offen": "Foto vom Juni 2025 vor dem Lloyd's Building – im Text so benannt.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7521462181348057088"
  },
  {
   "id": 81,
