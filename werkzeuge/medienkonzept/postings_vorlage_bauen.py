@@ -971,17 +971,19 @@ def kaestchen(worte):
     return " ".join('<span style="white-space:nowrap"><i style="display:inline-block;width:30px;height:30px;margin:0 8px -3px 0;border:3px solid #1a1817;border-radius:6px"></i>%s</span>' % w for w in worte)
 teile += [
     """<section class="p schwarz" id="rp29" style="padding:84px">
-  <p class="k">Vorlage für jeden Messebericht</p>
-  <div style="margin-top:70px;border-radius:24px;background:#fff;padding:46px 46px 54px;color:#1a1817">
-    <div style="display:flex;align-items:center;gap:20px"><i style="width:84px;height:84px;border-radius:50%%;background:#d9d5cf"></i>
-      <p><b style="display:block;font:600 32px/1.2 %s">Irgendwer aus der Branche</b><span style="display:block;margin-top:4px;font:400 26px/1.2 %s;color:#6b6762">Gestern · Dortmund</span></p></div>
-    <p style="margin-top:38px;font:500 44px/1.7 %s">Zwei Tage DKM – was für ein %s Austausch!</p>
-    <p style="margin-top:18px;font:500 44px/1.7 %s">Danke für die %s Impulse.</p>
-    <p style="margin-top:34px;font:700 44px/1.3 %s">Mein Highlight:</p>
-    <div style="margin-top:16px;height:130px;border-radius:14px;background:#fff400;border:4px dashed #1a1817"></div>
-  </div>
-  <p style="position:absolute;left:84px;right:84px;bottom:120px;font:700 80px/1.1 Lora,Georgia,serif;color:#fff">Was stand bei <span class="hl">dir</span> im&nbsp;Feld?</p>
-  <p class="namezeile">Daniel Ströbel</p></section>""" % (SYS, SYS, SYS, kaestchen(["toller", "inspirierender", "großartiger"]), SYS, kaestchen(["super", "wertvollen", "starken"]), SYS),
+  <div style="display:flex;align-items:center;gap:22px;padding:26px 34px;border-radius:60px;background:#fff">
+    <svg viewBox="0 0 24 24" style="width:46px;height:46px;flex:none" fill="none" stroke="#1a1817" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5.5 5.5"/></svg>
+    <span style="font:600 46px/1 %s;color:#1a1817">DKM Highlight</span></div>
+  <div style="margin-top:44px;display:grid;gap:22px">""" % SYS + "".join("""
+    <div style="padding:26px 30px;border-radius:18px;background:#2c2a28"><p style="font:400 38px/1.45 %s;color:#cfcac4">%s</p></div>""" % (SYS, z) for z in [
+        'Was für ein <span style="background:#fff400;color:#1a1817;padding:0 6px;border-radius:6px">toller Austausch</span> auf der DKM!',
+        'Danke für die <span style="background:#fff400;color:#1a1817;padding:0 6px;border-radius:6px">super Impulse</span> in Dortmund.',
+        'Zwei Tage voller <span style="background:#fff400;color:#1a1817;padding:0 6px;border-radius:6px">Highlights</span>. Bis nächstes Jahr!',
+        '<span style="background:#fff400;color:#1a1817;padding:0 6px;border-radius:6px">Inspirierende Gespräche</span> – danke an alle!']) + """</div>
+  <div style="position:absolute;left:84px;right:84px;bottom:150px;display:flex;align-items:flex-end;gap:36px">
+    <p style="font:800 330px/.78 Poppins,sans-serif;color:#fff400">0</p>
+    <p style="padding-bottom:14px;font:700 60px/1.12 Lora,Georgia,serif;color:#fff">konkrete Highlights gefunden.</p></div>
+  <p class="namezeile">Daniel Ströbel</p></section>""",
 ]
 
 html = """<!doctype html>
