@@ -1011,8 +1011,24 @@ window.MK_ENTWUERFE = [
   "format": "Aufgegriffen · Zitatkarte",
   "offen": "Zitat vom April 2026 (im Original geprüft) – kommt in KW 45 eine frische Stimme der Woche, tauschen wir.",
   "url": ""
+ },
+ {
+  "id": 99,
+  "kanal": "daniel",
+  "feld": "02 Komplexe Themen",
+  "art": "Szene · Zitatkarte (Film)",
+  "kern": "Vertrieb und Beratung: „Der Spion“ – „Ich höre einfach zu. Wenn ich eine Lösung habe, reden wir. Wenn nicht, trinken wir weiter.“ Überzeugung vom Angebot, Fokus aufs Kundenproblem, verkaufen nur, wenn es passt.",
+  "text": "In einem Spionagefilm steckt mehr über Vertrieb als in jedem Vertriebsseminar.\n\n„Der Spion“: Benedict Cumberbatch spielt einen britischen Geschäftsmann. Um seine Rolle als Unternehmer geht es in dem Film eigentlich gar nicht.\n\nUnd trotzdem gibt es diese eine unscheinbare Szene. Er sitzt mit potenziellen Kunden zusammen und sagt sinngemäß:\n\n„Ich vertrete die besten Hersteller. Ihr kennt euer Geschäft. Also spare ich mir meinen üblichen Auftritt und höre einfach zu. Wenn ich eine Lösung habe, reden wir darüber. Wenn nicht, trinken wir weiter.“\n\nEin Absatz. Weltklasse.\n\nDa steckt alles drin:\n\n• Er ist so überzeugt von seinem Angebot, dass er es nicht erklären muss.\n• Wichtig ist nur das Problem des Kunden.\n• Und er verkauft nur, wenn es wirklich passt.\n\nGenau das spüren Kunden sofort: Hier will mir keiner etwas andrehen.\n\nFür dein nächstes Kundengespräch:\n\n1. Kein Pitch am Anfang.\n2. Eine Frage: Was braucht ihr gerade?\n3. Und den Mut zu sagen: Dafür habe ich nichts.\n\nDanach wird es ein anderes Gespräch.",
+  "status": "entwurf",
+  "datum": "2026-11-10",
+  "kennzahlen": [],
+  "bild": "rp28",
+  "format": "Szene · Zitatkarte (Film)",
+  "offen": "",
+  "termin": "Di 10.11.",
+  "url": ""
  }
 ];
 window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};
-window.MK_WOCHEN = [{"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}];
+window.MK_WOCHEN = [{"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}, {"kw": "KW 46", "spanne": "09.11.–15.11.", "tage": [{"tag": "Mo 09.11."}, {"tag": "Di 10.11.", "i": 26}, {"tag": "Mi 11.11."}, {"tag": "Do 12.11."}, {"tag": "Fr 13.11."}, {"tag": "Sa 14.11."}, {"tag": "So 15.11."}]}];
 window.MK_ARCHIV = [{"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];

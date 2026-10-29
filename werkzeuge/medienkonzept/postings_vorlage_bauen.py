@@ -949,6 +949,16 @@ teile += [
   <p style="position:absolute;left:84px;bottom:84px"><b style="display:block;font:700 40px/1.1 Poppins,sans-serif;color:#1a1817">Daniel Ströbel</b><span style="display:block;margin-top:8px;font:500 30px/1.2 Poppins,sans-serif;color:#1a1817">Strategie in Wirkung bringen</span></p></section>""",
 ]
 
+# Posting „Der Spion“ – Vertrieb und Beratung (Daniel, 29.10.2026): Zitatkarte mit Originalsatz, gelbe Fläche
+teile += [
+    """<section class="p gelbgrund" id="rp28" style="padding:84px">
+  <p class="k" style="color:#1a1817">Eine Szene aus „Der Spion“</p>
+  <p style="margin-top:250px;font:700 112px/1.08 Lora,Georgia,serif;letter-spacing:-.015em;color:#1a1817">„I just listen. You tell me what your <span class="hl" style="background:#1a1817;color:#fff400">problems</span> are.“</p>
+  <p style="margin-top:50px;max-width:820px;font:500 40px/1.4 Poppins,sans-serif;color:#1a1817">„Ich höre einfach zu. Ihr sagt mir, wo eure Probleme liegen.“</p>
+  <p style="margin-top:44px;padding-top:30px;border-top:4px solid #1a1817;font:600 32px/1.4 Poppins,sans-serif;color:#1a1817">Benedict Cumberbatch als Greville Wynne</p>
+  %s</section>""" % GELBNAME,
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
