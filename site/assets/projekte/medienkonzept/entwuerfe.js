@@ -593,6 +593,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 326,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 173.3,
+    "impressionen": 460,
+    "reichweite": 332,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp03",
@@ -643,6 +650,13 @@ window.MK_ENTWUERFE = [
     "stunden": 125.3,
     "impressionen": 190,
     "reichweite": 126,
+    "reaktionen": 6,
+    "kommentare": 2
+   },
+   {
+    "stunden": 149.3,
+    "impressionen": 196,
+    "reichweite": 130,
     "reaktionen": 6,
     "kommentare": 2
    }
@@ -697,6 +711,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 310,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 125.3,
+    "impressionen": 441,
+    "reichweite": 318,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp11",
@@ -733,6 +754,13 @@ window.MK_ENTWUERFE = [
     "stunden": 69.4,
     "impressionen": 257,
     "reichweite": 164,
+    "reaktionen": 5,
+    "kommentare": 0
+   },
+   {
+    "stunden": 93.4,
+    "impressionen": 268,
+    "reichweite": 171,
     "reaktionen": 5,
     "kommentare": 0
    }
@@ -773,6 +801,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 133,
     "reaktionen": 5,
     "kommentare": 3
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 194,
+    "reichweite": 140,
+    "reaktionen": 6,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -804,6 +839,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 278,
     "reaktionen": 9,
     "kommentare": 6
+   },
+   {
+    "stunden": 52,
+    "impressionen": 456,
+    "reichweite": 348,
+    "reaktionen": 10,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -821,7 +863,15 @@ window.MK_ENTWUERFE = [
   "text": "Gestern noch der stärkste Sachbearbeiter im Team. Heute Gruppenleiter. Glückwunsch, Blumen, Mail an alle.\n\nUnd dann? Nichts.\n\nMan gibt ihm zwölf bis vierundzwanzig Monate, um hineinzuwachsen. In der Zeit läuft er im Alarmmodus: geerbte Regeltermine, unbesetzte Stellen, Löcher stopfen.\n\nNach einem Jahr heißt es: „Von dem hätten wir uns mehr erwartet.“\n\nDas finde ich ganz schlimm. Am Können liegt es fast nie. Ihm fehlt das System, mit dem er das Spiel überhaupt gewinnen kann.\n\nBevor du das nächste Mal jemanden beförderst, kläre vorher mit ihm drei Dinge:\n\n1. Was erwartet das Haus von dieser Rolle? In klaren Worten.\n2. Wie nimmt er sein Team mit?\n3. Wie trägt sein Bereich zum Erfolg des Unternehmens bei?\n\nEine Stunde vor dem ersten Tag. Nicht ein Jahr danach.",
   "status": "veroeffentlicht",
   "datum": "2026-10-28",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 28.3,
+    "impressionen": 297,
+    "reichweite": 218,
+    "reaktionen": 5,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp15",
   "termin": "Mi 28.10.",
   "format": "Modell · D Drei Kreise",
@@ -837,7 +887,15 @@ window.MK_ENTWUERFE = [
   "text": "Im Sommer 2025 stand ich wieder vor dem Lloyd's Building. 25 Jahre nach meiner Zeit in der Londoner Rückversicherung.\n\nIch kam damals von einem ganz normalen Versicherer aus Stuttgart. Schulungen weit weg, Budget knapp.\n\nIn London war das anders. Alle Häuser saßen im selben Viertel.\n\nKam ein neues Thema hoch, nahm es sich eine Firma, bereitete es auf und lud ein. Kurzer Impuls nach Feierabend, danach Essen und Trinken.\n\nMan konnte sich praktisch jeden Tag weiterbilden. Über die Grenzen der eigenen Firma hinaus.\n\nDas habe ich mitgenommen. Zurück in Deutschland wurde daraus „90 Minuten Wissen to go“. Das Format läuft bei meinem früheren Arbeitgeber bis heute.\n\nDas Rezept ist simpel:\n\n1. Ein aktuelles Thema.\n2. Jemand, der es kurz auf den Punkt bringt.\n3. Danach Zeit zum Reden.\n\nMehr braucht es nicht, damit Wissen im Haus wandert.",
   "status": "veroeffentlicht",
   "datum": "2026-10-29",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 41,
+    "reichweite": 28,
+    "reaktionen": 4,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp16",
   "termin": "Do 29.10.",
   "format": "Du als Person · Foto",
