@@ -908,7 +908,7 @@ window.MK_ENTWUERFE = [
   "feld": "02 Komplexe Themen",
   "art": "Frage · Suchergebnis 0",
   "kern": "DKM-Nachlese: überall „toller Austausch, super Impulse, Highlight“ – aber welches? Ehrliche Frage nach dem konkreten Highlight; Impulse, die man nicht in einem Satz weitergeben kann, verpuffen.",
-  "text": "Ich lese mich seit zwei Tagen durch die DKM-Beiträge. Und suche ein einziges konkretes Highlight.\n\nIch war dieses Jahr nicht dabei. Ich bin also auf euch angewiesen. Und lese überall:\n\n• toller Austausch\n• super Impulse\n• absolutes Highlight\n\nSchön. Aber was genau?\n\nAlso, an alle, die in Dortmund waren: Was war euer Highlight? Ein Satz, eine Idee, ein Gespräch, nach dem ihr etwas anders macht.\n\nOder war es einfach schön, dort gewesen zu sein? Auch okay. Dann sagt es einfach.\n\nIch bin gespannt.",
+  "text": "Ich lese mich seit zwei Tagen durch die DKM-Beiträge. Und suche vergeblich konkrete Highlights.\n\nIch war dieses Jahr nicht dabei. Ich bin also auf euch angewiesen. Und lese überall:\n• toller Austausch\n• super Impulse\n• absolutes Highlight\n\nSchön. Aber was genau?\n\nAlso, an alle, die in Dortmund waren: Was war euer Highlight?\n\nEin Satz, eine Idee, ein Gespräch, nach dem ihr etwas anders macht.\n\nOder war es einfach schön, dort gewesen zu sein? Auch okay. Dann sagt es einfach.\n\nIch bin gespannt...",
   "status": "geplant",
   "datum": "2026-10-30",
   "kennzahlen": [],
