@@ -14,7 +14,7 @@ from hooks_texte import HOOKS
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
-V = "80"
+V = "81"
 PF = "/assets/projekte/medienkonzept/postings/"
 
 MASSSTAB = [
