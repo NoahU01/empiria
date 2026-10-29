@@ -966,6 +966,24 @@ teile += [
   <p style="position:absolute;left:84px;bottom:62px;font:500 24px/1 Poppins,sans-serif;color:#6b6762">Daniel Ströbel</p></section>""",
 ]
 
+# DKM-Lückentext (Daniel, 29.10.2026): anonymer Messebericht als Vorlage, die leere Stelle ist die Pointe
+def kaestchen(worte):
+    return " ".join('<span style="white-space:nowrap"><i style="display:inline-block;width:30px;height:30px;margin:0 8px -3px 0;border:3px solid #1a1817;border-radius:6px"></i>%s</span>' % w for w in worte)
+teile += [
+    """<section class="p schwarz" id="rp29" style="padding:84px">
+  <p class="k">Vorlage für jeden Messebericht</p>
+  <div style="margin-top:70px;border-radius:24px;background:#fff;padding:46px 46px 54px;color:#1a1817">
+    <div style="display:flex;align-items:center;gap:20px"><i style="width:84px;height:84px;border-radius:50%%;background:#d9d5cf"></i>
+      <p><b style="display:block;font:600 32px/1.2 %s">Irgendwer aus der Branche</b><span style="display:block;margin-top:4px;font:400 26px/1.2 %s;color:#6b6762">Gestern · Dortmund</span></p></div>
+    <p style="margin-top:38px;font:500 44px/1.7 %s">Zwei Tage DKM – was für ein %s Austausch!</p>
+    <p style="margin-top:18px;font:500 44px/1.7 %s">Danke für die %s Impulse.</p>
+    <p style="margin-top:34px;font:700 44px/1.3 %s">Mein Highlight:</p>
+    <div style="margin-top:16px;height:130px;border-radius:14px;background:#fff400;border:4px dashed #1a1817"></div>
+  </div>
+  <p style="position:absolute;left:84px;right:84px;bottom:120px;font:700 80px/1.1 Lora,Georgia,serif;color:#fff">Was stand bei <span class="hl">dir</span> im&nbsp;Feld?</p>
+  <p class="namezeile">Daniel Ströbel</p></section>""" % (SYS, SYS, SYS, kaestchen(["toller", "inspirierender", "großartiger"]), SYS, kaestchen(["super", "wertvollen", "starken"]), SYS),
+]
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
