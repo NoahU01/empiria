@@ -659,6 +659,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 130,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 173.3,
+    "impressionen": 202,
+    "reichweite": 133,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "rp04",
@@ -718,6 +725,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 318,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 149.3,
+    "impressionen": 446,
+    "reichweite": 322,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp11",
@@ -762,6 +776,13 @@ window.MK_ENTWUERFE = [
     "impressionen": 268,
     "reichweite": 171,
     "reaktionen": 5,
+    "kommentare": 0
+   },
+   {
+    "stunden": 117.4,
+    "impressionen": 272,
+    "reichweite": 173,
+    "reaktionen": 6,
     "kommentare": 0
    }
   ],
@@ -808,6 +829,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 140,
     "reaktionen": 6,
     "kommentare": 3
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 206,
+    "reichweite": 148,
+    "reaktionen": 7,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -846,6 +874,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 348,
     "reaktionen": 10,
     "kommentare": 6
+   },
+   {
+    "stunden": 76,
+    "impressionen": 506,
+    "reichweite": 386,
+    "reaktionen": 11,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -868,6 +903,13 @@ window.MK_ENTWUERFE = [
     "stunden": 28.3,
     "impressionen": 297,
     "reichweite": 218,
+    "reaktionen": 5,
+    "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 340,
+    "reichweite": 251,
     "reaktionen": 5,
     "kommentare": 2
    }
@@ -894,6 +936,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 28,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 385,
+    "reichweite": 278,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -911,7 +960,15 @@ window.MK_ENTWUERFE = [
   "text": "Zwei Tage lang habe ich DKM-Beiträge gelesen. Ich weiß immer noch nicht, was in Dortmund eigentlich passiert ist.\n\nIch war dieses Jahr nicht dabei. Also bin ich auf euch angewiesen. Und lese überall:\n• toller Austausch\n• super Impulse\n• absolutes Highlight\n\nSchön. Aber was genau?\n\nDarum meine Frage an alle, die dort waren: Was macht ihr ab Montag anders, weil ihr dort wart?\n\nEin Satz, eine Idee, ein Gespräch reicht.\n\nOder war es einfach schön, dabei gewesen zu sein? Darf man auch zugeben.\n\nIch lese jede Antwort.",
   "status": "veroeffentlicht",
   "datum": "2026-10-30",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 55,
+    "reichweite": 42,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp29",
   "format": "Frage · Suchergebnis 0",
   "offen": "",
