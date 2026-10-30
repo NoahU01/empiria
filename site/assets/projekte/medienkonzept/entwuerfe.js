@@ -909,14 +909,14 @@ window.MK_ENTWUERFE = [
   "art": "Frage · Suchergebnis 0",
   "kern": "DKM-Nachlese: überall „toller Austausch, super Impulse, Highlight“ – aber welches? Ehrliche Frage nach dem konkreten Highlight; Impulse, die man nicht in einem Satz weitergeben kann, verpuffen.",
   "text": "Zwei Tage lang habe ich DKM-Beiträge gelesen. Ich weiß immer noch nicht, was in Dortmund eigentlich passiert ist.\n\nIch war dieses Jahr nicht dabei. Also bin ich auf euch angewiesen. Und lese überall:\n• toller Austausch\n• super Impulse\n• absolutes Highlight\n\nSchön. Aber was genau?\n\nDarum meine Frage an alle, die dort waren: Was macht ihr ab Montag anders, weil ihr dort wart?\n\nEin Satz, eine Idee, ein Gespräch reicht.\n\nOder war es einfach schön, dabei gewesen zu sein? Darf man auch zugeben.\n\nIch lese jede Antwort.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-30",
   "kennzahlen": [],
   "bild": "rp29",
   "format": "Frage · Suchergebnis 0",
   "offen": "",
   "termin": "Fr 30.10.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7521824557134147586"
  },
  {
   "id": 82,
