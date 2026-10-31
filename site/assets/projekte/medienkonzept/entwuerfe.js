@@ -982,14 +982,14 @@ window.MK_ENTWUERFE = [
   "art": "Weitergedacht · Foto",
   "kern": "Macromedia 2017/18: einen strukturellen Nachteil in einen Vorteil drehen – zur Zielgruppe gehen.",
   "text": "Unsere Werkstudenten kamen nicht über eine Anzeige. Sie saßen montags um 8 Uhr in meiner Vorlesung.\n\nDie Vorgeschichte: 2017 gingen die guten Leute in Stuttgart zu den großen Autobauern, Beratungen und Banken. Zu uns kleinem Haus kam kaum jemand.\n\nEine Ausschreibung allein bringt dich da nicht weiter.\n\nÜber einen Bekannten kam der Kontakt zur Macromedia. Angeboten hatte ich einen Gastvortrag. Am Ende hatte ich die ganze Vorlesung.\n\nMontags um 8 Uhr, auf Englisch. Für einen Nachtmenschen wie mich eine echte Prüfung.\n\nDas Fach habe ich bewusst gewählt: Projektmanagement. Da konnte ich die Leute, die sich hervortun, später auch brauchen.\n\nZwei haben mich direkt gechallenged. Kurz darauf waren sie unsere Werkstudenten. Mit einem bin ich bis heute befreundet.\n\nWo hast du gerade einen strukturellen Nachteil? Und wohin müsstest du gehen, um ihn umzudrehen?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-10-31",
   "kennzahlen": [],
   "bild": "rp18",
   "termin": "Sa 31.10.",
   "format": "Weitergedacht · Foto",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7522186944680882176"
  },
  {
   "id": 83,
