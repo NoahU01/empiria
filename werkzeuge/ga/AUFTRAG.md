@@ -1,6 +1,6 @@
 # Geschäftsausstattung – Entwürfe (Daniel, 10.10.2026)
 
-Daniel will für jede Vorlage einen ersten Entwurf sehen, ohne vorher Rückfragen. Maßstab: die Gestaltung von www.empiria.de (empiria 2.0) und die Volksfest-Seite `site/projekte/vofe-umzug-schulen.html` – ruhig, reduziert, perfekt ausgerichtet, wenig Text.
+Daniel will für jede Vorlage einen ersten Entwurf sehen, ohne vorher Rückfragen. Maßstab: die Gestaltung von www.empiria.de (empiria 2.0) und die Volksfest-Seite (Wagenpaten, jetzt eigenes Repo: `~/Projekte/VoFe-Wagenpaten/index.html`) – ruhig, reduziert, perfekt ausgerichtet, wenig Text.
 
 ## Gestaltungssystem (verbindlich)
 - Farben: Weiß #ffffff (Grundfläche), Schwarz #1a1817, Gelb #fff400, Grau #f3f1ee. Sekundärfarben nur als Akzent oder Vollfläche für Themen: Magenta #C51F5D, Violett #8613A1, Cyan #0B9FBD. Auf Gelb nur Schwarz; auf Schwarz Gelb als Akzent; nie Weiß auf Gelb.
