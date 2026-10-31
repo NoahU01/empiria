@@ -732,6 +732,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 322,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 173.3,
+    "impressionen": 446,
+    "reichweite": 322,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp11",
@@ -782,6 +789,13 @@ window.MK_ENTWUERFE = [
     "stunden": 117.4,
     "impressionen": 272,
     "reichweite": 173,
+    "reaktionen": 6,
+    "kommentare": 0
+   },
+   {
+    "stunden": 141.4,
+    "impressionen": 274,
+    "reichweite": 175,
     "reaktionen": 6,
     "kommentare": 0
    }
@@ -836,6 +850,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 148,
     "reaktionen": 7,
     "kommentare": 3
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 215,
+    "reichweite": 154,
+    "reaktionen": 7,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -881,6 +902,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 386,
     "reaktionen": 11,
     "kommentare": 6
+   },
+   {
+    "stunden": 100,
+    "impressionen": 571,
+    "reichweite": 442,
+    "reaktionen": 11,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -910,6 +938,13 @@ window.MK_ENTWUERFE = [
     "stunden": 52.3,
     "impressionen": 340,
     "reichweite": 251,
+    "reaktionen": 5,
+    "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 363,
+    "reichweite": 267,
     "reaktionen": 5,
     "kommentare": 2
    }
@@ -943,6 +978,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 278,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 473,
+    "reichweite": 349,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -967,6 +1009,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 42,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 439,
+    "reichweite": 324,
+    "reaktionen": 2,
+    "kommentare": 0
    }
   ],
   "bild": "rp29",
@@ -984,7 +1033,15 @@ window.MK_ENTWUERFE = [
   "text": "Unsere Werkstudenten kamen nicht über eine Anzeige. Sie saßen montags um 8 Uhr in meiner Vorlesung.\n\nDie Vorgeschichte: 2017 gingen die guten Leute in Stuttgart zu den großen Autobauern, Beratungen und Banken. Zu uns kleinem Haus kam kaum jemand.\n\nEine Ausschreibung allein bringt dich da nicht weiter.\n\nÜber einen Bekannten kam der Kontakt zur Macromedia. Angeboten hatte ich einen Gastvortrag. Am Ende hatte ich die ganze Vorlesung.\n\nMontags um 8 Uhr, auf Englisch. Für einen Nachtmenschen wie mich eine echte Prüfung.\n\nDas Fach habe ich bewusst gewählt: Projektmanagement. Da konnte ich die Leute, die sich hervortun, später auch brauchen.\n\nZwei haben mich direkt gechallenged. Kurz darauf waren sie unsere Werkstudenten. Mit einem bin ich bis heute befreundet.\n\nWo hast du gerade einen strukturellen Nachteil? Und wohin müsstest du gehen, um ihn umzudrehen?",
   "status": "veroeffentlicht",
   "datum": "2026-10-31",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 608,
+    "reichweite": 464,
+    "reaktionen": 6,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp18",
   "termin": "Sa 31.10.",
   "format": "Weitergedacht · Foto",
