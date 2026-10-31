@@ -3,7 +3,7 @@
 Daniel hat das Muster **KI zum Anfassen** freigegeben. Alle PDFs der 2.0-Seiten werden in genau diesem Stil neu gebaut.
 
 ## Maßstab
-- Qualität und Darstellungsart der Volksfest-Seite (Wagenpaten, jetzt eigenes Repo: `~/Projekte/VoFe-Wagenpaten/index.html`): ruhig, reduziert, perfekt ausgerichtet, wenig Text, farbige Bänder, schwarze Kästen, gleiche Elemente auf gleicher Höhe.
+- Qualität und Darstellungsart der Volksfest-Seite (`site/projekte/vofe-umzug-schulen.html`): ruhig, reduziert, perfekt ausgerichtet, wenig Text, farbige Bänder, schwarze Kästen, gleiche Elemente auf gleicher Höhe.
 - **Schwarz – Weiß – Gelb.** Keine Sekundärfarben (kein Magenta, Cyan, Lila, Grün). Auf Gelb nur Schwarz, auf Weiß kein Gelb als Schrift/Linie/Punkt, auf Schwarz Gelb als Akzent (Labels, Punkte, Icons).
 - Highlight in Überschriften: gelber Kasten (`<span class="hl">…</span>`), nie über zwei Zeilen.
 - Kicker immer mit kurzem Strich davor (`kicker("…")`). Problem-Abschnitte nie nummeriert.
