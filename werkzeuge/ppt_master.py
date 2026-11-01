@@ -134,7 +134,7 @@ def stufe2():
                    '<tbody><tr><td>Dauer</td><td>½ Tag</td><td class="t-mitte">1 Tag</td><td>2 Tage</td></tr><tr><td>Ziel</td><td>Ausprobieren</td><td class="t-mitte">Fragestellung bearbeiten</td><td>Usecase umsetzen</td></tr>'
                    '<tr><td>Ergebnis</td><td>Erste Erfahrungen</td><td class="t-mitte">Kompaktes Ergebnis</td><td>Konkreter Usecase</td></tr></tbody></table>', "08 · Tabelle"),
         f("weiss", k("Ablauf") + '<h2>In vier Schritten zum <span class="hl">Ergebnis.</span></h2><ol class="f-zs t-zs">'
-                   + "".join(f'<li><span></span><small>0{i+1}</small><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "09 · Ablauf"),
+                   + "".join(f'<li><span>{i+1}</span><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "09 · Ablauf"),
         f("weiss", k("Team") + '<h2>Dein direkter Draht zu <span class="hl">uns.</span></h2><div class="t-team">'
                    + "".join(f'<div><img src="/assets/ansprechpartner-{d}.webp" alt=""><b>{n}</b><p>{r}</p></div>' for d, n, r in [("daniel", "Daniel Ströbel", "Strategiehandwerker"), ("kerstin", "Kerstin Christ", "HR &amp; Weiterbildung"), ("noah", "Noah Hermanns", "Performance Marketing")]) + '</div>', "10 · Team"),
         f("schwarz", k("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="t-meta">Daniel Ströbel</p>', "11 · Zitat"),
@@ -163,17 +163,7 @@ def stufe1():
     s.append(("1 · Hintergründe", "Weiß ist die Grundseite. Schwarz, Gelb und Grau gliedern. Magenta, Violett und Cyan als Vollfläche für Themen, Kapitel oder Statements.",
               flaechen))
 
-    # 2 · Header-Ideen
-    inhalt = (kicker("Ausgangslage") + '<h2>Drei Fragen, die jede Führungskraft <span class="hl">kennt.</span></h2>'
-              '<div class="f-punkte">' + "".join(f'<div>{ico(i)}<b>{t}</b><p>{p}</p></div>' for i, t, p in
-                                                 [("flag", "Rolle", "Was erwartet man von mir – und was nicht?"),
-                                                  ("compass", "Richtung", "Wohin entwickelt sich mein Bereich?"),
-                                                  ("wrench", "Handwerk", "Wie übersetze ich das in den Alltag?")]) + '</div>')
-    s.append(("2 · Header – drei Ideen", "A: Logo links, Thema als Kicker rechts (wie die Website). B: gelber Balken + Thema links, Logo rechts. C: kein Kopf – kleiner Doppelpfeil oben rechts, Logo wandert in den Fuß.",
-              [folie("weiss", inhalt, header="A", label="Idee A · Logo links, Thema rechts"), folie("weiss", inhalt, header="B", label="Idee B · gelber Balken + Thema, Logo rechts"),
-               folie("weiss", inhalt, header="C", label="Idee C · Doppelpfeil oben, Logo im Fuß")]))
-
-    # 3 · Hervorhebung mit Sekundärfarben (auf Weiß)
+    # 2 · Hervorhebung mit Sekundärfarben (auf Weiß)
     hervor = []
     for f in ("magenta", "violett", "cyan"):
         _, bg, _, _ = FARBEN[f]
@@ -181,29 +171,50 @@ def stufe1():
                                       f'<div class="f-zwei"><div class="f-kasten" style="background:{bg}"><b>Kernaussage</b><p>Kasten in der Themenfarbe für die eine Botschaft, die hängen bleiben soll.</p></div>'
                                       f'<div class="f-liste">' + "".join(f'<p><span style="background:{bg}"></span>{x}</p>' for x in ["Punkte in der Themenfarbe", "Linien und Icons in Schwarz", "Gelb bleibt das empiria-Highlight"]) + '</div></div>',
                             header="A", thema=FARBEN[f][0], hervorheben=True))
-    s.append(("3 · Sekundärfarben als Hervorhebung", "Auf der weißen Grundseite markieren Magenta, Violett und Cyan ein Thema: Highlight, Kasten, Aufzählungspunkte. Gelb bleibt das empiria-Highlight für alles andere.", hervor))
+    s.append(("2 · Sekundärfarben als Hervorhebung", "Auf der weißen Grundseite markieren Magenta, Violett und Cyan ein Thema: Highlight, Kasten, Aufzählungspunkte. Gelb bleibt das empiria-Highlight für alles andere.", hervor))
 
-    # 4 · Designelemente der Homepage
-    elem = [
+    # 3 · Designelemente der Homepage
+    haken = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+    karten = "".join(
+        f'<div class="d-karte"><div class="d-karte__kopf" style="background:{bg};color:{fg}"><span class="d-karte__zeichen">{zeichen(z, za)}</span><b>{t}</b></div><p>{p}</p></div>'
+        for bg, fg, z, za, t, p in [("#fff400", "#1a1817", "forward", "#1a1817", "Strategie in den Alltag überführen", "Die Strategie ist da – wir machen sie im Verantwortungsbereich greifbar."),
+                                     ("#1a1817", "#ffffff", "kreuz", "#fff400", "Komplexe Themen strukturieren", "Im Vorstand, im Gremium oder beim Kunden: Das Thema kommt an."),
+                                     ("#f3f1ee", "#1a1817", "kreis", "#1a1817", "Geschäftsmodell neu denken", "Was hat in zehn Jahren noch Bestand? Wir hinterfragen und ordnen.")])
+    neu = [
+        folie("weiss", kicker("x") + '<h2>Drei Schwerpunkte, drei Karten.</h2><div class="d-karten">' + karten + '</div>', header="C0",
+              label="Neu · Karten mit Farbkopf (Homepage, Abschnitt Lösung)"),
+        folie("gelb", '<div class="d-frage"><div>' + kicker("Ausgangslage") + '<h2>Die Strategie steht. Trotzdem passiert zu wenig.</h2>'
+                      '<p>Die Themen sind bekannt. Trotzdem bleiben drei Fragen offen.</p></div>'
+                      '<div class="d-frage__kasten"><p>Warum bewegt sich da nichts?</p><p>Warum zieht das Team nicht mit?</p><p>Warum kommt die Strategie im Alltag nicht an?</p>'
+                      '<small>Die Antwort liegt selten an der Strategie selbst, sondern an der Übersetzung in den Alltag.</small></div></div>', header="C0",
+              label="Neu · Gelbe Fläche mit schwarzem Fragenkasten (Homepage, Abschnitt Problem)"),
+        folie("weiss", kicker("x") + '<h2>Zwei Wege, ein Ergebnis.</h2><div class="d-wege">'
+                       '<div><small>Weg 1</small><b>Gemeinsam mit dem Team</b><p>Wir erarbeiten die Schwerpunkte in einem Workshop mit allen Beteiligten.</p></div>'
+                       '<div><small>Weg 2</small><b>Kompakt mit der Führung</b><p>Wir klären die Schwerpunkte im Sparring und bringen sie danach ins Team.</p></div></div>'
+                       '<div class="d-leiste"><small>In beiden Fällen</small>' + "".join(f'<span>{haken}{t}</span>' for t in ["Klare Prioritäten", "Feste Termine", "Sichtbarer Fortschritt"]) + '</div>',
+              header="C0", label="Neu · Zwei Wege mit Ergebnis-Leiste (Volksfest-Seite, „In beiden Fällen“)"),
+    ]
+    elem = neu + [
         folie("weiss", kicker("Designelement") + '<h2>Gelbes Band mit <span class="hl">Punkten.</span></h2>'
                        '<div class="f-band"><div class="f-punkte f-punkte--klein">' + "".join(f'<div><b>{t}</b><p>{p}</p></div>' for t, p in
                                                                                              [("Klar", "Eine Botschaft je Folie."), ("Ruhig", "Viel Weißraum, wenig Text."), ("Wirksam", "Ergebnis statt Aufzählung.")]) + '</div></div>', hervorheben=True),
         folie("weiss", kicker("Designelement") + '<h2>Ablauf als <span class="hl">Zeitstrahl.</span></h2>'
-                       '<ol class="f-zs">' + "".join(f'<li><span></span><small>0{i+1}</small><b>{t}</b></li>' for i, t in enumerate(["Verstehen", "Ordnen", "Entscheiden", "Umsetzen"])) + '</ol>', hervorheben=True),
+                       '<ol class="f-zs">' + "".join(f'<li><span>{i+1}</span><b>{t}</b></li>' for i, t in enumerate(["Verstehen", "Ordnen", "Entscheiden", "Umsetzen"])) + '</ol>', hervorheben=True),
         folie("weiss", '<div class="f-zwei f-zwei--mitte"><div>' + kicker("Designelement") + '<h2>Schwarzer Kasten für die <span class="hl">Kernaussage.</span></h2></div>'
                        '<div class="f-kasten" style="background:#1a1817"><b style="color:#fff400">Das Ergebnis</b><p>Du führst Dein Team, statt es zu vertrösten.</p></div></div>', hervorheben=True),
         folie("schwarz", kicker("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="f-sub">Daniel Ströbel</p>', header="A"),
     ]
-    s.append(("4 · Designelemente der Homepage", "Kicker mit Strich, gelber Highlight-Kasten, gelbes Band mit Punkten, Zeitstrahl, schwarzer Kasten, Doppelpfeil – dieselben Bausteine wie auf www.empiria.de.", elem))
+    s.append(("3 · Designelemente der Homepage", "Neu oben, aus www.empiria.de und der Volksfest-Seite: Karten mit Farbkopf und Symbol, gelbe Fläche mit schwarzem Fragenkasten, zwei Wege mit Ergebnis-Leiste. "
+              "Darunter die bisherigen Bausteine: gelbes Band mit Punkten, Zeitstrahl (jetzt mit Nummernkreisen wie auf der Volksfest-Seite), schwarzer Kasten, Zitat.", elem))
 
-    # 5 · Schrift & Farben
+    # 4 · Schrift & Farben
     typo = folie("weiss", '<div class="f-zwei"><div>' + kicker("Schriften") +
                  '<p class="f-typo1">Lora Bold</p><p class="f-typo-info">Überschriften · 28–60 pt</p>'
                  '<p class="f-typo2">Poppins Regular / Light</p><p class="f-typo-info">Text · 14–20 pt</p>'
                  '<p class="f-typo3">POPPINS BOLD · KICKER</p><p class="f-typo-info">Kicker · 10–12 pt, Großbuchstaben, gesperrt</p></div>'
                  '<div>' + kicker("Farben") + '<div class="f-farben">' + "".join(
                      f'<div><span style="background:{bg};border:1px solid #e4e0db"></span><b>{n}</b><small>{bg.upper()}</small></div>' for n, bg, _, _ in FARBEN.values()) + '</div></div></div>')
-    s.append(("5 · Schriften & Farben", "Was im Master hinterlegt wird: Lora für Überschriften, Poppins für Text, sieben Farben im Farbschema.", [typo]))
+    s.append(("4 · Schriften & Farben", "Was im Master hinterlegt wird: Lora für Überschriften, Poppins für Text, sieben Farben im Farbschema.", [typo]))
     return s
 
 
@@ -269,10 +280,11 @@ CSS = """
 .t-tab .t-mitte { background: #fff400; }
 .t-zs { margin-top: 5cqw; }
 .t-zs p { margin: 1cqw 0 0; padding-right: 2cqw; font-size: 1.8cqw; line-height: 1.5; }
-.t-team { display: flex; gap: 8cqw; margin-top: 5cqw; }
-.t-team img { width: 17cqw; height: 17cqw; border-radius: 50%; object-fit: cover; filter: grayscale(1); background: #f3f1ee; }
-.t-team b { display: block; margin-top: 2cqw; font: 700 2.4cqw/1.2 'Lora', serif; }
-.t-team p { margin: .6cqw 0 0; font-size: 1.6cqw; opacity: .7; }
+/* Daniel 01.11.: Team ausgewogen – drei gleich breite Spalten über die volle Inhaltsbreite */
+.t-team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; margin-top: 3.4cqw; }
+.t-team img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 20%; border-radius: 1cqw; filter: grayscale(1); background: #f3f1ee; }
+.t-team b { display: block; margin-top: 1.8cqw; font: 700 2.4cqw/1.2 'Lora', serif; }
+.t-team p { margin: .5cqw 0 0; font-size: 1.5cqw; opacity: .7; }
 .f-mass { position: absolute; left: 2.4cqw; width: 1.2cqw; height: 3.6cqw; background: #fff400; }
 .f-mass--oben { top: 0; } .f-mass--unten { bottom: 0; }
 .f-wrap { margin: 0; }
@@ -315,11 +327,36 @@ CSS = """
 .f-liste span { width: 1cqw; height: 1cqw; border-radius: 50%; flex: 0 0 auto; }
 .f-band { margin: 3.4cqw -6cqw 0; padding: 3cqw 6cqw; background: #fff400; color: #1a1817; }
 .f-band .f-punkte { margin-top: 0; }
-.f-zs { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; margin: 6cqw 0 0; padding: 0; }
-.f-zs::before { content: ""; position: absolute; left: 0; right: 0; top: .6cqw; height: .16cqw; background: #1a1817; }
-.f-zs li span { display: block; width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #1a1817; box-shadow: 0 0 0 .5cqw #fff400; position: relative; margin-bottom: 2.2cqw; }
-.f-zs small { font: 700 1.2cqw/1 'Poppins', sans-serif; letter-spacing: .14em; }
-.f-zs b { display: block; margin-top: 1cqw; font: 700 2.5cqw/1.2 'Lora', serif; }
+/* Daniel 01.11.: Ablauf wie „So läuft es ab“ auf der Volksfest-Seite – Nummernkreise, gestrichelte Verbindung */
+.f-zs { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; margin: 6cqw 0 0; padding: 0; }
+.f-zs li { position: relative; }
+.f-zs li span { position: relative; z-index: 1; display: grid; place-items: center; width: 3.6cqw; height: 3.6cqw; border: .16cqw solid currentColor; border-radius: 50%;
+  background: var(--bg); font: 700 1.6cqw/1 'Lora', serif; margin-bottom: 2cqw; }
+.f-zs li:not(:last-child)::after { content: ""; position: absolute; top: 1.8cqw; left: 4.4cqw; right: -1.2cqw; border-top: .16cqw dashed #b9b3ab; }
+.f-zs b { display: block; font: 700 2.4cqw/1.2 'Lora', serif; }
+/* Neue Designelemente aus Homepage und Volksfest-Seite */
+.d-karten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; margin-top: 3.4cqw; }
+.d-karte { border: .1cqw solid #e4e0db; border-radius: 1.2cqw; overflow: hidden; background: #fff; }
+.d-karte__kopf { position: relative; height: 19cqw; padding: 2.2cqw; display: flex; align-items: flex-end; }
+.d-karte__kopf b { font: 700 2.4cqw/1.15 'Lora', serif; letter-spacing: -.01em; max-width: 19cqw; }
+.d-karte__zeichen { position: absolute; top: 2cqw; right: 2cqw; width: 4.4cqw; }
+.d-karte__zeichen svg { display: block; width: 100%; height: auto; }
+.d-karte > p { margin: 0; padding: 1.8cqw 2.2cqw 2.2cqw; font-size: 1.4cqw; line-height: 1.5; color: #3d3a37; }
+.d-frage { position: absolute; left: 6cqw; right: 6cqw; top: 3.6cqw; bottom: 8cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 5cqw; align-items: center; }
+.d-frage h2 { white-space: normal !important; font-size: 4cqw !important; line-height: 1.15 !important; }
+.d-frage > div > p { margin: 2cqw 0 0; font-size: 1.6cqw; line-height: 1.5; }
+.d-frage__kasten { background: #1a1817; color: #fff; border-radius: 1.4cqw; padding: 3cqw 3.2cqw; }
+.d-frage__kasten p { margin: 0 0 1.4cqw; font: 400 2.3cqw/1.3 'Lora', serif; }
+.d-frage__kasten small { display: block; margin-top: 2.2cqw; padding-top: 2cqw; border-top: .16cqw solid #fff400; font-size: 1.3cqw; line-height: 1.5; opacity: .8; }
+.d-wege { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4cqw; margin-top: 3.4cqw; }
+.d-wege > div { border: .1cqw solid #e4e0db; border-radius: 1.2cqw; padding: 2.6cqw 2.8cqw; }
+.d-wege small { font: 700 1.05cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .6; }
+.d-wege b { display: block; margin-top: 1.4cqw; font: 700 2.6cqw/1.2 'Lora', serif; }
+.d-wege p { margin: 1.2cqw 0 0; font-size: 1.5cqw; line-height: 1.5; color: #3d3a37; }
+.d-leiste { display: flex; align-items: center; gap: 3cqw; margin-top: 2.4cqw; padding: 2cqw 2.8cqw; border-radius: 1.2cqw; background: #fff400; color: #1a1817; }
+.d-leiste small { font: 700 1.05cqw/1 'Poppins', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.d-leiste span { display: flex; align-items: center; gap: .8cqw; font: 600 1.6cqw/1 'Poppins', sans-serif; }
+.d-leiste svg { width: 1.8cqw; height: 1.8cqw; }
 .f-zitat { margin: 2cqw 0 0; max-width: 72cqw; font: 700 4.4cqw/1.3 'Lora', serif; }
 .f-typo1 { margin: 0; font: 700 4.2cqw/1.1 'Lora', serif; }
 .f-typo2 { margin: 2.4cqw 0 0; font: 400 2.4cqw/1.2 'Poppins', sans-serif; }
