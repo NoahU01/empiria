@@ -16,6 +16,7 @@ SITE = HERE.parent / "site"
 sys.path.insert(0, str(HERE))
 from e2_bauen import FORM  # noqa: E402
 from e2_lucide import ICONS  # noqa: E402
+from ga.ga_basis import PERSONEN  # noqa: E402  (Kontaktdaten wie in der Geschäftsausstattung)
 
 FARBEN = {  # Name, Hex, Schrift auf der Fläche, Akzent auf der Fläche
     "weiss": ("Weiß", "#ffffff", "#1a1817", "#fff400"),
@@ -135,8 +136,11 @@ def stufe2():
                    '<tr><td>Ergebnis</td><td>Erste Erfahrungen</td><td class="t-mitte">Kompaktes Ergebnis</td><td>Konkreter Usecase</td></tr></tbody></table>', "08 · Tabelle"),
         f("weiss", k("Ablauf") + '<h2>In vier Schritten zum <span class="hl">Ergebnis.</span></h2><ol class="f-zs t-zs">'
                    + "".join(f'<li><span>{i+1}</span><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "09 · Ablauf"),
-        f("weiss", k("Team") + '<h2>Dein direkter Draht zu <span class="hl">uns.</span></h2><div class="t-team">'
-                   + "".join(f'<div><img src="/assets/ansprechpartner-{d}.webp" alt=""><b>{n}</b><p>{r}</p></div>' for d, n, r in [("daniel", "Daniel Ströbel", "Strategiehandwerker"), ("kerstin", "Kerstin Christ", "HR &amp; Weiterbildung"), ("noah", "Noah Hermanns", "Performance Marketing")]) + '</div>', "10 · Team"),
+        # Daniel 01.11.: Team als Kontakt-CTA – runde Fotos wie auf der Homepage, Kontaktdaten als schwarze Knöpfe (Kontaktabschnitt der Homepage)
+        f("gelb", '<div class="t-kontakt">' + k("Kontakt") + '<h2>Dein direkter Draht zu uns.</h2><p class="t-kontakt__sub">Kurze Wege statt langer Abstimmungsrunden.</p><div class="t-team">'
+                  + "".join(f'<div><img src="/assets/ansprechpartner-{d}.webp" alt=""><b>{P["name"]}</b><p>{P["rolle"]}</p>'
+                            f'<span class="t-knopf">{ico("mail")}{P["mail"]}</span><span class="t-knopf">{ico("phone")}{P["tel"]}</span></div>'
+                            for d, P in PERSONEN.items()) + '</div></div>', "10 · Team &amp; Kontakt"),
         f("schwarz", k("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="t-meta">Daniel Ströbel</p>', "11 · Zitat"),
         f("gelb", '<div class="t-titel">' + k("Vielen Dank") + '<h1>Aus Gespräch wird Klarheit.</h1>'
                   '<p class="t-meta">daniel.stroebel@empiria.de · +49 176 3134 7217 · www.empiria.de</p></div>', "12 · Abschluss", fuss=True),
@@ -280,11 +284,18 @@ CSS = """
 .t-tab .t-mitte { background: #fff400; }
 .t-zs { margin-top: 5cqw; }
 .t-zs p { margin: 1cqw 0 0; padding-right: 2cqw; font-size: 1.8cqw; line-height: 1.5; }
-/* Daniel 01.11.: Team ausgewogen – drei gleich breite Spalten über die volle Inhaltsbreite */
-.t-team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; margin-top: 3.4cqw; }
-.t-team img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 20%; border-radius: 1cqw; filter: grayscale(1); background: #f3f1ee; }
-.t-team b { display: block; margin-top: 1.8cqw; font: 700 2.4cqw/1.2 'Lora', serif; }
-.t-team p { margin: .5cqw 0 0; font-size: 1.5cqw; opacity: .7; }
+/* Daniel 01.11.: Team als Kontakt-CTA auf Gelb – zentriert wie der Ansprechpartner-Block der Homepage, Kontaktdaten als schwarze Knöpfe */
+.t-kontakt { position: absolute; left: 6cqw; right: 6cqw; top: 3.6cqw; bottom: 7cqw; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.t-kontakt .f-kicker { margin-bottom: 1.4cqw; }
+.t-kontakt h2 { white-space: normal !important; font-size: 4.6cqw !important; line-height: 1.1 !important; margin: 0 !important; max-width: none; }
+.t-kontakt__sub { margin: 1.2cqw 0 0; font: 300 1.7cqw/1.4 'Poppins', sans-serif; }
+.t-team { flex: 1; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; align-content: center; }
+.t-team > div { display: flex; flex-direction: column; align-items: center; }
+.t-team img { display: block; width: 12cqw; height: 12cqw; border-radius: 50%; object-fit: cover; filter: grayscale(1); background: #fff; box-shadow: 0 1.1cqw 2.6cqw rgba(26,24,23,.18); }
+.t-team b { display: block; margin-top: 1.8cqw; font: 700 2.1cqw/1.2 'Lora', serif; }
+.t-team p { margin: .4cqw 0 1.4cqw; font: 300 1.35cqw/1.4 'Poppins', sans-serif; }
+.t-knopf { display: flex; align-items: center; gap: .9cqw; width: 24cqw; margin-top: .7cqw; padding: .95cqw 1.6cqw; border-radius: 99cqw; background: #1a1817; color: #fff; font: 600 1.2cqw/1 'Poppins', sans-serif; white-space: nowrap; }
+.t-knopf svg { width: 1.4cqw; height: 1.4cqw; flex: 0 0 auto; }
 .f-mass { position: absolute; left: 2.4cqw; width: 1.2cqw; height: 3.6cqw; background: #fff400; }
 .f-mass--oben { top: 0; } .f-mass--unten { bottom: 0; }
 .f-wrap { margin: 0; }
