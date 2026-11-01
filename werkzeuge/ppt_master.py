@@ -42,8 +42,11 @@ def logo(hell):
     return f'<img class="f-logo" src="/assets/empiria-logo{"-weiss" if hell else ""}.svg" alt="empiria">'
 
 
-def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", fuss=True, cls="", label=None, ohne_nr=False):
+def folie(farbe, inhalt, header="A", thema="Strategie in den Alltag", nr="04", fuss=True, cls="", label=None, ohne_nr=False, hervorheben=False):
     name, bg, fg, akz = FARBEN[farbe]
+    if not hervorheben:
+        # Daniel 01.11.: Headlines der Inhaltsfolien standardmäßig ohne gelbe Hervorhebung – nur auf ausdrücklichen Wunsch
+        inhalt = re.sub(r"<h2>.*?</h2>", lambda m: re.sub(r'<span class="hl">(.*?)</span>', r"\1", m.group(0)), inhalt, flags=re.S)
     hell = fg == "#ffffff"
     kopf = {
         # A: Logo links, Thema rechts als Kicker – ruhig, wie die Website
@@ -138,7 +141,7 @@ def stufe2():
         f("gelb", '<div class="t-titel">' + k("Vielen Dank") + '<h1>Aus Gespräch wird Klarheit.</h1>'
                   '<p class="t-meta">daniel.stroebel@empiria.de · +49 176 3134 7217 · www.empiria.de</p></div>', "12 · Abschluss", fuss=True),
     ]
-    return [("Stufe 2 · Folientypen", "Alle Folientypen auf der festgelegten Inhaltsfolie: gleiche Ränder, Headline oben, Logo links unten, keine Deko. "
+    return [("Stufe 2 · Folientypen", "Alle Folientypen auf der festgelegten Inhaltsfolie: gleiche Ränder, Headline oben, Logo links unten, keine Deko. Headlines der Inhaltsfolien ohne gelbe Hervorhebung. "
              "Kapitelfolien gibt es in Gelb, Schwarz, Grau und den Themenfarben. Texte sind Platzhalter.", folien)]
 
 
@@ -177,18 +180,18 @@ def stufe1():
         hervor.append(folie("weiss", kicker("Hervorhebung") + f'<h2>Ein Thema bekommt <span class="hl" style="background:{bg};color:#fff">seine Farbe.</span></h2>'
                                       f'<div class="f-zwei"><div class="f-kasten" style="background:{bg}"><b>Kernaussage</b><p>Kasten in der Themenfarbe für die eine Botschaft, die hängen bleiben soll.</p></div>'
                                       f'<div class="f-liste">' + "".join(f'<p><span style="background:{bg}"></span>{x}</p>' for x in ["Punkte in der Themenfarbe", "Linien und Icons in Schwarz", "Gelb bleibt das empiria-Highlight"]) + '</div></div>',
-                            header="A", thema=FARBEN[f][0]))
+                            header="A", thema=FARBEN[f][0], hervorheben=True))
     s.append(("3 · Sekundärfarben als Hervorhebung", "Auf der weißen Grundseite markieren Magenta, Violett und Cyan ein Thema: Highlight, Kasten, Aufzählungspunkte. Gelb bleibt das empiria-Highlight für alles andere.", hervor))
 
     # 4 · Designelemente der Homepage
     elem = [
         folie("weiss", kicker("Designelement") + '<h2>Gelbes Band mit <span class="hl">Punkten.</span></h2>'
                        '<div class="f-band"><div class="f-punkte f-punkte--klein">' + "".join(f'<div><b>{t}</b><p>{p}</p></div>' for t, p in
-                                                                                             [("Klar", "Eine Botschaft je Folie."), ("Ruhig", "Viel Weißraum, wenig Text."), ("Wirksam", "Ergebnis statt Aufzählung.")]) + '</div></div>'),
+                                                                                             [("Klar", "Eine Botschaft je Folie."), ("Ruhig", "Viel Weißraum, wenig Text."), ("Wirksam", "Ergebnis statt Aufzählung.")]) + '</div></div>', hervorheben=True),
         folie("weiss", kicker("Designelement") + '<h2>Ablauf als <span class="hl">Zeitstrahl.</span></h2>'
-                       '<ol class="f-zs">' + "".join(f'<li><span></span><small>0{i+1}</small><b>{t}</b></li>' for i, t in enumerate(["Verstehen", "Ordnen", "Entscheiden", "Umsetzen"])) + '</ol>'),
+                       '<ol class="f-zs">' + "".join(f'<li><span></span><small>0{i+1}</small><b>{t}</b></li>' for i, t in enumerate(["Verstehen", "Ordnen", "Entscheiden", "Umsetzen"])) + '</ol>', hervorheben=True),
         folie("weiss", '<div class="f-zwei f-zwei--mitte"><div>' + kicker("Designelement") + '<h2>Schwarzer Kasten für die <span class="hl">Kernaussage.</span></h2></div>'
-                       '<div class="f-kasten" style="background:#1a1817"><b style="color:#fff400">Das Ergebnis</b><p>Du führst Dein Team, statt es zu vertrösten.</p></div></div>'),
+                       '<div class="f-kasten" style="background:#1a1817"><b style="color:#fff400">Das Ergebnis</b><p>Du führst Dein Team, statt es zu vertrösten.</p></div></div>', hervorheben=True),
         folie("schwarz", kicker("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="f-sub">Daniel Ströbel</p>', header="A"),
     ]
     s.append(("4 · Designelemente der Homepage", "Kicker mit Strich, gelber Highlight-Kasten, gelbes Band mit Punkten, Zeitstrahl, schwarzer Kasten, Doppelpfeil – dieselben Bausteine wie auf www.empiria.de.", elem))
