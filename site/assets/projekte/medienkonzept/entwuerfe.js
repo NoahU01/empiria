@@ -798,6 +798,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 175,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 165.4,
+    "impressionen": 280,
+    "reichweite": 179,
+    "reaktionen": 6,
+    "kommentare": 0
    }
   ],
   "bild": "rp12",
@@ -857,6 +864,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 154,
     "reaktionen": 7,
     "kommentare": 3
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 224,
+    "reichweite": 163,
+    "reaktionen": 7,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -909,6 +923,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 442,
     "reaktionen": 11,
     "kommentare": 6
+   },
+   {
+    "stunden": 124,
+    "impressionen": 603,
+    "reichweite": 472,
+    "reaktionen": 11,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -945,6 +966,13 @@ window.MK_ENTWUERFE = [
     "stunden": 76.3,
     "impressionen": 363,
     "reichweite": 267,
+    "reaktionen": 5,
+    "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 389,
+    "reichweite": 288,
     "reaktionen": 5,
     "kommentare": 2
    }
@@ -985,6 +1013,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 349,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 507,
+    "reichweite": 372,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -1016,6 +1051,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 324,
     "reaktionen": 2,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 545,
+    "reichweite": 382,
+    "reaktionen": 4,
+    "kommentare": 4
    }
   ],
   "bild": "rp29",
@@ -1040,6 +1082,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 464,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 1143,
+    "reichweite": 870,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1057,7 +1106,15 @@ window.MK_ENTWUERFE = [
   "text": "Bei KI stellt die Branche meistens die falsche Frage. Tobias Knörrer, Geschäftsführer der bbg, hat vor der DKM die richtige gestellt. Sie steht im Bild.\n\nBei KI fragt die Branche meistens: Wie setzt der Makler KI ein? Er dreht das um: Welche Leistungen brauchen Kunden in zehn Jahren überhaupt noch?\n\nSeine Antwort für Makler: das Urteil bei unvollständiger Information, die Fähigkeit, einen Kunden zu einer Entscheidung zu bewegen, und die Haftung für das Ergebnis.\n\nDie Frage gehört in jeden Versicherer. In jeden einzelnen Bereich.\n\nSo gehst du sie an:\n\n1. Schreibe auf, welche Leistungen ihr heute erbringt.\n2. Markiere, was euer Kunde in zehn Jahren noch braucht.\n3. Sieh dir den Rest ehrlich an.\n\nWas übrig bleibt, gibt es oft nur, weil es schon immer da war.",
   "status": "veroeffentlicht",
   "datum": "2026-11-01",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 132,
+    "reichweite": 92,
+    "reaktionen": 0,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp19",
   "termin": "So 01.11.",
   "format": "Aufgegriffen · Zitatkarte",
