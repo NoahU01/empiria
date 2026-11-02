@@ -90,6 +90,15 @@ SUBLINE = {
 }
 
 
+def karten():
+    """Drei Karten mit Farbkopf und Symbol – wie im Abschnitt Lösung der Homepage."""
+    return "".join(
+        f'<div class="d-karte"><div class="d-karte__kopf" style="background:{bg};color:{fg}"><span class="d-karte__zeichen">{zeichen(z, za)}</span><b>{t}</b></div><p>{p}</p></div>'
+        for bg, fg, z, za, t, p in [("#fff400", "#1a1817", "forward", "#1a1817", "Strategie in den Alltag überführen", "Die Strategie ist da – wir machen sie im Verantwortungsbereich greifbar."),
+                                     ("#1a1817", "#ffffff", "kreuz", "#fff400", "Komplexe Themen strukturieren", "Im Vorstand, im Gremium oder beim Kunden: Das Thema kommt an."),
+                                     ("#f3f1ee", "#1a1817", "kreis", "#1a1817", "Geschäftsmodell neu denken", "Was hat in zehn Jahren noch Bestand? Wir hinterfragen und ordnen.")])
+
+
 def festgelegt():
     """Daniel 10.10.: Inhaltsfolie nach Idee C – Überschrift oben, viel Platz für den Inhalt, gleiche Ränder oben und unten."""
     leer = kicker("x") + '<h2>Die Headline steht oben – <span class="hl">Platz für den Inhalt.</span></h2>'
@@ -113,7 +122,7 @@ def stufe2():
     """Daniel 10.10.: Folientypen auf Basis der festgelegten Inhaltsfolie (Idee C) – nur Inhalt, keine Deko."""
     k = kicker
     f = lambda farbe, inhalt, label, fuss=True: folie(farbe, inhalt, header="C0", label=label, fuss=fuss,
-                                                      ohne_nr=label.startswith(("01", "12", "03")))   # Titel, Kapitel, Abschluss ohne Seitenzahl
+                                                      ohne_nr=label.startswith(("01", "13", "03")))   # Titel, Kapitel, Abschluss ohne Seitenzahl
     agenda = "".join(f'<li><small>0{i+1}</small><b>{t}</b></li>' for i, t in enumerate(["Ausgangslage", "Lösung", "Vorgehen", "Zusammenarbeit", "Nächste Schritte"]))
     folien = [
         f("weiss", '<div class="t-titel">' + k("Präsentationstitel") + '<h1>Strategie in den Alltag <span class="hl">überführen.</span></h1>'
@@ -127,23 +136,24 @@ def stufe2():
         f("weiss", k("Zweispalter") + '<h2>Zwei Seiten einer <span class="hl">Entscheidung.</span></h2><div class="t-zwei">'
                    '<div><b>Heute</b><p>Viele Themen gleichzeitig, wenig Priorität, Entscheidungen werden vertagt.</p></div>'
                    '<div><b>Morgen</b><p>Drei klare Schwerpunkte, feste Termine, sichtbare Fortschritte.</p></div></div>', "05 · Zweispalter"),
+        f("weiss", k("Karten") + '<h2>Drei Schwerpunkte für das nächste Jahr.</h2><div class="d-karten">' + karten() + '</div>', "06 · Drei Karten"),
         f("weiss", '<div class="t-bild">' + '<div class="t-bild__text">' + k("Bild + Text") + '<h2>Ein Bild sagt, worum es <span class="hl">geht.</span></h2>'
-                   '<p>Bild rechts, randabfallend. Text links mit derselben Kante wie alle anderen Folien.</p></div><div class="t-bild__bild"><span>Bild</span></div></div>', "06 · Bild + Text"),
+                   '<p>Bild rechts, randabfallend. Text links mit derselben Kante wie alle anderen Folien.</p></div><div class="t-bild__bild"><span>Bild</span></div></div>', "07 · Bild + Text"),
         f("weiss", k("Zahlen") + '<h2>Was sich messbar <span class="hl">verändert.</span></h2><div class="t-zahlen">'
-                   + "".join(f'<div><b>00</b><p>{t}</p></div>' for t in ["Platzhalter Kennzahl 1", "Platzhalter Kennzahl 2", "Platzhalter Kennzahl 3"]) + '</div>', "07 · Zahlen"),
+                   + "".join(f'<div><b>00</b><p>{t}</p></div>' for t in ["Platzhalter Kennzahl 1", "Platzhalter Kennzahl 2", "Platzhalter Kennzahl 3"]) + '</div>', "08 · Zahlen"),
         f("weiss", k("Tabelle") + '<h2>Drei Formate im <span class="hl">Vergleich.</span></h2><table class="t-tab"><thead><tr><th></th><th>Einstieg</th><th class="t-mitte">Sprint</th><th>Deep-Dive</th></tr></thead>'
                    '<tbody><tr><td>Dauer</td><td>½ Tag</td><td class="t-mitte">1 Tag</td><td>2 Tage</td></tr><tr><td>Ziel</td><td>Ausprobieren</td><td class="t-mitte">Fragestellung bearbeiten</td><td>Usecase umsetzen</td></tr>'
-                   '<tr><td>Ergebnis</td><td>Erste Erfahrungen</td><td class="t-mitte">Kompaktes Ergebnis</td><td>Konkreter Usecase</td></tr></tbody></table>', "08 · Tabelle"),
+                   '<tr><td>Ergebnis</td><td>Erste Erfahrungen</td><td class="t-mitte">Kompaktes Ergebnis</td><td>Konkreter Usecase</td></tr></tbody></table>', "09 · Tabelle"),
         f("weiss", k("Ablauf") + '<h2>In vier Schritten zum <span class="hl">Ergebnis.</span></h2><ol class="f-zs t-zs">'
-                   + "".join(f'<li><span>{i+1}</span><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "09 · Ablauf"),
+                   + "".join(f'<li><span>{i+1}</span><b>{t}</b><p>{d}</p></li>' for i, (t, d) in enumerate([("Verstehen", "Ziel und Zielgruppe klären."), ("Ordnen", "Themen strukturieren."), ("Entscheiden", "Prioritäten festlegen."), ("Umsetzen", "In den Alltag bringen.")])) + '</ol>', "10 · Ablauf"),
         # Daniel 01.11.: Team als Kontakt-CTA – runde Fotos wie auf der Homepage, Kontaktdaten als schwarze Knöpfe (Kontaktabschnitt der Homepage)
         f("gelb", '<div class="t-kontakt">' + k("Kontakt") + '<h2>Dein direkter Draht zu uns.</h2><p class="t-kontakt__sub">Kurze Wege statt langer Abstimmungsrunden.</p><div class="t-team">'
                   + "".join(f'<div><img src="/assets/ansprechpartner-{d}.webp" alt=""><b>{P["name"]}</b><p>{P["rolle"]}</p>'
                             f'<span class="t-knopf">{ico("mail")}{P["mail"]}</span><span class="t-knopf">{ico("phone")}{P["tel"]}</span></div>'
-                            for d, P in PERSONEN.items()) + '</div></div>', "10 · Team &amp; Kontakt"),
-        f("schwarz", k("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="t-meta">Daniel Ströbel</p>', "11 · Zitat"),
+                            for d, P in PERSONEN.items()) + '</div></div>', "11 · Team &amp; Kontakt"),
+        f("schwarz", k("Zitat") + '<p class="f-zitat">„Strategie ist keine Zauberei, sondern <span class="hl">Handwerk.</span>“</p><p class="t-meta">Daniel Ströbel</p>', "12 · Zitat"),
         f("gelb", '<div class="t-titel">' + k("Vielen Dank") + '<h1>Aus Gespräch wird Klarheit.</h1>'
-                  '<p class="t-meta">daniel.stroebel@empiria.de · +49 176 3134 7217 · www.empiria.de</p></div>', "12 · Abschluss", fuss=True),
+                  '<p class="t-meta">daniel.stroebel@empiria.de · +49 176 3134 7217 · www.empiria.de</p></div>', "13 · Abschluss", fuss=True),
     ]
     return [("Stufe 2 · Folientypen", "Alle Folientypen auf der festgelegten Inhaltsfolie: gleiche Ränder, Headline oben, Logo links unten, keine Deko. Headlines der Inhaltsfolien ohne gelbe Hervorhebung. "
              "Kapitelfolien gibt es in Gelb, Schwarz, Grau und den Themenfarben. Texte sind Platzhalter.", folien)]
@@ -179,13 +189,8 @@ def stufe1():
 
     # 3 · Designelemente der Homepage
     haken = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
-    karten = "".join(
-        f'<div class="d-karte"><div class="d-karte__kopf" style="background:{bg};color:{fg}"><span class="d-karte__zeichen">{zeichen(z, za)}</span><b>{t}</b></div><p>{p}</p></div>'
-        for bg, fg, z, za, t, p in [("#fff400", "#1a1817", "forward", "#1a1817", "Strategie in den Alltag überführen", "Die Strategie ist da – wir machen sie im Verantwortungsbereich greifbar."),
-                                     ("#1a1817", "#ffffff", "kreuz", "#fff400", "Komplexe Themen strukturieren", "Im Vorstand, im Gremium oder beim Kunden: Das Thema kommt an."),
-                                     ("#f3f1ee", "#1a1817", "kreis", "#1a1817", "Geschäftsmodell neu denken", "Was hat in zehn Jahren noch Bestand? Wir hinterfragen und ordnen.")])
     neu = [
-        folie("weiss", kicker("x") + '<h2>Drei Schwerpunkte, drei Karten.</h2><div class="d-karten">' + karten + '</div>', header="C0",
+        folie("weiss", kicker("x") + '<h2>Drei Schwerpunkte, drei Karten.</h2><div class="d-karten">' + karten() + '</div>', header="C0",
               label="Neu · Karten mit Farbkopf (Homepage, Abschnitt Lösung)"),
         folie("gelb", '<div class="d-frage"><div>' + kicker("Ausgangslage") + '<h2>Die Strategie steht. Trotzdem passiert zu wenig.</h2>'
                       '<p>Die Themen sind bekannt. Trotzdem bleiben drei Fragen offen.</p></div>'
@@ -348,11 +353,11 @@ CSS = """
 /* Neue Designelemente aus Homepage und Volksfest-Seite */
 .d-karten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; margin-top: 3.4cqw; }
 .d-karte { border: .1cqw solid #e4e0db; border-radius: 1.2cqw; overflow: hidden; background: #fff; }
-.d-karte__kopf { position: relative; height: 19cqw; padding: 2.2cqw; display: flex; align-items: flex-end; }
-.d-karte__kopf b { font: 700 2.4cqw/1.15 'Lora', serif; letter-spacing: -.01em; max-width: 19cqw; }
+.d-karte__kopf { position: relative; height: 23cqw; padding: 2.2cqw; display: flex; align-items: flex-end; }
+.d-karte__kopf b { font: 700 2.4cqw/1.15 'Lora', serif; letter-spacing: -.01em; padding-right: 2cqw; }
 .d-karte__zeichen { position: absolute; top: 2cqw; right: 2cqw; width: 4.4cqw; }
 .d-karte__zeichen svg { display: block; width: 100%; height: auto; }
-.d-karte > p { margin: 0; padding: 1.8cqw 2.2cqw 2.2cqw; font-size: 1.4cqw; line-height: 1.5; color: #3d3a37; }
+.d-karte > p { margin: 0; padding: 1.8cqw 2.2cqw 2.2cqw; font-size: 1.5cqw; line-height: 1.5; color: #3d3a37; }
 .d-frage { position: absolute; left: 6cqw; right: 6cqw; top: 3.6cqw; bottom: 8cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 5cqw; align-items: center; }
 .d-frage h2 { white-space: normal !important; font-size: 4cqw !important; line-height: 1.15 !important; }
 .d-frage > div > p { margin: 2cqw 0 0; font-size: 1.6cqw; line-height: 1.5; }
