@@ -1128,14 +1128,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · Postfach-Nachbau",
   "kern": "Ein Team zieht nicht mit: Meist fehlen Rollen, Zielbild oder schlicht der Auftrag – die Perspektive wechseln.",
   "text": "Wenn ein anderes Team nicht mitzieht, liegt es fast nie an diesem Team.\n\nDu schreibst die dritte Mail. Du hast die Unterlagen nachgeschärft. Und das andere Team zieht trotzdem nicht mit.\n\nIch kenne das. Es nervt.\n\nDer naheliegende Schluss: Die wollen nicht. Also braucht es eine Maßnahme mit dem Team.\n\nWenn ich in solchen Fällen genauer hinschaue, ist es fast immer etwas anderes.\n\nDie Rollen sind nicht geklärt. Das Zielbild fehlt. Oder die anderen haben schlicht keinen Auftrag mitzumachen.\n\nDer letzte Punkt tut am meisten weh: Nur weil du etwas willst, muss der andere Bereich nicht mitmachen. Er wird nach seinen eigenen Zielen gesteuert.\n\nBevor du die vierte Mail schreibst:\n\n1. Finde heraus, woran das andere Team gemessen wird.\n2. Prüfe, ob dein Thema darauf einzahlt.\n3. Wenn nicht: Kläre es eine Ebene höher.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-02",
   "kennzahlen": [],
   "bild": "rp27",
   "termin": "Mo 02.11.",
   "format": "Szene · Postfach-Nachbau",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7522911724845355008"
  },
  {
   "id": 85,
