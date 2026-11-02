@@ -805,6 +805,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 179,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 189.4,
+    "impressionen": 283,
+    "reichweite": 182,
+    "reaktionen": 6,
+    "kommentare": 0
    }
   ],
   "bild": "rp12",
@@ -871,6 +878,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 163,
     "reaktionen": 7,
     "kommentare": 3
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 233,
+    "reichweite": 171,
+    "reaktionen": 7,
+    "kommentare": 3
    }
   ],
   "bild": "rp13",
@@ -930,6 +944,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 472,
     "reaktionen": 11,
     "kommentare": 6
+   },
+   {
+    "stunden": 148,
+    "impressionen": 621,
+    "reichweite": 488,
+    "reaktionen": 11,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -974,6 +995,13 @@ window.MK_ENTWUERFE = [
     "impressionen": 389,
     "reichweite": 288,
     "reaktionen": 5,
+    "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 400,
+    "reichweite": 298,
+    "reaktionen": 6,
     "kommentare": 2
    }
   ],
@@ -1020,6 +1048,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 372,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 520,
+    "reichweite": 385,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -1058,6 +1093,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 382,
     "reaktionen": 4,
     "kommentare": 4
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 681,
+    "reichweite": 480,
+    "reaktionen": 4,
+    "kommentare": 5
    }
   ],
   "bild": "rp29",
@@ -1089,6 +1131,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 870,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 1308,
+    "reichweite": 992,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1113,6 +1162,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 92,
     "reaktionen": 0,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 225,
+    "reichweite": 157,
+    "reaktionen": 2,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1130,7 +1186,15 @@ window.MK_ENTWUERFE = [
   "text": "Wenn ein anderes Team nicht mitzieht, liegt es fast nie an diesem Team.\n\nDu schreibst die dritte Mail. Du hast die Unterlagen nachgeschärft. Und das andere Team zieht trotzdem nicht mit.\n\nIch kenne das. Es nervt.\n\nDer naheliegende Schluss: Die wollen nicht. Also braucht es eine Maßnahme mit dem Team.\n\nWenn ich in solchen Fällen genauer hinschaue, ist es fast immer etwas anderes.\n\nDie Rollen sind nicht geklärt. Das Zielbild fehlt. Oder die anderen haben schlicht keinen Auftrag mitzumachen.\n\nDer letzte Punkt tut am meisten weh: Nur weil du etwas willst, muss der andere Bereich nicht mitmachen. Er wird nach seinen eigenen Zielen gesteuert.\n\nBevor du die vierte Mail schreibst:\n\n1. Finde heraus, woran das andere Team gemessen wird.\n2. Prüfe, ob dein Thema darauf einzahlt.\n3. Wenn nicht: Kläre es eine Ebene höher.",
   "status": "veroeffentlicht",
   "datum": "2026-11-02",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 161,
+    "reichweite": 96,
+    "reaktionen": 4,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp27",
   "termin": "Mo 02.11.",
   "format": "Szene · Postfach-Nachbau",
