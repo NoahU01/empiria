@@ -928,9 +928,17 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sk-paar > .sk-punkt:first-child { grid-column: 1; }
 .sk-paar > .sk-punkt:last-child { grid-column: 3 / 5; }
 .sk-paar .sk-ecken { grid-template-columns: 1fr; margin-top: 0; }
-.sk-paar { align-items: start; }
-.sk-paar > .sk-punkt:last-child .sk-ecken { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.sk-paar > .sk-punkt:last-child .sv-ecke { align-content: start; }
+/* 02 und 03 gleich hoch; Kopf, Headline und die beiden Kästen stehen jeweils auf gleicher Höhe (weiß neben weiß, gelb neben gelb) */
+.sk-paar { grid-template-rows: repeat(4, auto); }
+.sk-paar > .sk-punkt { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: .9rem; }
+.sk-paar .sk-ecken { display: contents; }
+.sk-paar .sv-ecke { align-content: start; }
+.sk-paar .sk-punkt h3 { align-self: start; }
+/* Organisationskasten: Überschrift und Zwischenüberschriften zentriert (Daniel, 03.11.) */
+.sk-modell--org .sk-modell__text { text-align: center; }
+.sk-modell--org .e2-kicker { justify-content: center; }
+.sk-modell--org .sy-fig { justify-items: center; }
+.sk-modell--org .sy-fig__t, .e2 .sk-modell--org .sy-fragen-t { text-align: center; }
 /* „Wie organisieren wir uns?“ im gestrichelten Kasten wie das Geschäftsmodell */
 .sk-modell--org { padding-bottom: 2.6rem; }
 .sk-modell--org .sk-org { margin-top: 0; }
@@ -945,6 +953,5 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
   .sk-ab { display: none; }
   .sk-paar { grid-template-columns: 1fr; row-gap: 1.2rem; margin-top: 2rem; }
   .sk-paar > .sk-punkt:first-child, .sk-paar > .sk-punkt:last-child { grid-column: 1; }
-  .sk-paar > .sk-punkt:last-child .sk-ecken { grid-template-columns: 1fr; }
   .sk-modell--org { padding-bottom: 1.8rem; }
 }
