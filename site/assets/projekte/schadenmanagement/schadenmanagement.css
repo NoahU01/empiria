@@ -924,8 +924,16 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sk-ab, .sk-paar { display: grid; grid-template-columns: minmax(0, 1fr) 4.2rem minmax(0, 1fr) minmax(0, 1fr); column-gap: 1.4rem; }
 .sk-pfeil--1 { grid-column: 1; }
 .sk-pfeil--23 { grid-column: 3 / 5; }
-.sk-paar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.sk-paar .sk-ecken { grid-template-columns: 1fr; }
+/* 02 | 03 im Raster der Ziele: Kundenorientierung ein Drittel links, Schaden- und Prozesskosten zwei Drittel rechts (Daniel, 03.11.) */
+.sk-paar > .sk-punkt:first-child { grid-column: 1; }
+.sk-paar > .sk-punkt:last-child { grid-column: 3 / 5; }
+.sk-paar .sk-ecken { grid-template-columns: 1fr; margin-top: 0; }
+.sk-paar { align-items: start; }
+.sk-paar > .sk-punkt:last-child .sk-ecken { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sk-paar > .sk-punkt:last-child .sv-ecke { align-content: start; }
+/* „Wie organisieren wir uns?“ im gestrichelten Kasten wie das Geschäftsmodell */
+.sk-modell--org { padding-bottom: 2.6rem; }
+.sk-modell--org .sk-org { margin-top: 0; }
 .sm-vk .sv-ecke > b { font-size: 1.1rem; }
 .sk-org { margin-top: 2.4rem; }
 @media (max-width: 900px) {
@@ -936,5 +944,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
   .sk-grundregel { padding: 0 1rem; }
   .sk-ab { display: none; }
   .sk-paar { grid-template-columns: 1fr; row-gap: 1.2rem; margin-top: 2rem; }
-  .sk-paar .sk-ecken { grid-template-columns: 1fr; }
+  .sk-paar > .sk-punkt:first-child, .sk-paar > .sk-punkt:last-child { grid-column: 1; }
+  .sk-paar > .sk-punkt:last-child .sk-ecken { grid-template-columns: 1fr; }
+  .sk-modell--org { padding-bottom: 1.8rem; }
 }
