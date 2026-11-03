@@ -883,3 +883,58 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* Überschrift über den drei Kästen – gleiche Art wie „Organisationsstruktur“ und „Schadenprozess“ */
 .e2 .sy-fragen-t { display: block; margin: 3rem 0 0; }
 .sy-fragen-t + .sy-zeile--drei { margin-top: .9rem; }
+
+/* ===== Summary kompakt (Ansicht 2.1, Daniel 03.11.): ein Fluss von oben nach unten
+   Geschäftsmodell (gedanklicher Kasten) → 01 Grundregel → drei natürliche Ziele → 02 Kundenorientierung | 03 Kosten → Wie organisieren wir uns?
+   Die drei Hauptpunkte 01–03 sind gleich gestaltet; Pfeile zeigen, was woraus folgt. ===== */
+.sm-vk { padding: 3rem 0 6rem; }
+.e2 .sm-vk .e2-kicker { margin: 0 0 .6rem; font-size: .7rem; }
+.sk-h2 { margin: 0; font-family: var(--font-serif); font-size: clamp(1.45rem, 2.4vw, 1.9rem); font-weight: 700; line-height: 1.15; color: var(--e2-ink); text-wrap: balance; }
+.e2 .sk-lead { margin: .9rem 0 0; font-size: 1rem; line-height: 1.6; color: var(--e2-ink-2); }
+/* gedanklicher Kasten: gestrichelt, die Grundregel sitzt auf seiner Unterkante */
+.sk-modell { display: grid; gap: 2rem; padding: 2.4rem 2.6rem 5.4rem; border: 2px dashed #cfc9c1; border-radius: 18px; }
+.sk-stufen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+.sk-stufen li { position: relative; display: grid; gap: .3rem; padding: 1.1rem 1.2rem 1.15rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; }
+.sk-stufen li + li::before { content: ""; position: absolute; right: 100%; top: 50%; width: 1.6rem; border-top: 2px solid var(--e2-ink); }
+.sk-stufen li + li::after { content: ""; position: absolute; left: -2px; top: calc(50% - 5px); border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid var(--e2-ink); }
+.sk-stufen small { font-size: .66rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--e2-grau); }
+.sk-stufen b { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.2; color: var(--e2-ink); }
+.sk-stufen .sk-stufe--gelb { background: var(--e2-gelb); border-color: var(--e2-gelb); }
+.sk-stufen .sk-stufe--gelb small { color: var(--e2-ink); }
+.sk-grundregel { display: flex; justify-content: center; margin-top: -3.4rem; padding: 0 2rem; }
+.sk-grundregel .sk-punkt { width: min(100%, 40rem); }
+/* Hauptpunkt 01–03 */
+.sk-punkt { display: flex; flex-direction: column; gap: .9rem; padding: 1.6rem 1.7rem 1.7rem; border: 2px solid var(--e2-ink); border-radius: 18px; background: #fff; }
+.sk-punkt__kopf { display: flex; align-items: center; gap: .9rem; }
+.sk-nr { display: grid; place-items: center; flex: none; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--e2-ink); color: var(--e2-gelb); font-size: .95rem; font-weight: 700; line-height: 1; }
+.e2 .sk-label { margin: 0; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; line-height: 1.45; color: var(--e2-ink); }
+.sk-punkt h3 { margin: 0; font-size: clamp(1.3rem, 2vw, 1.55rem); line-height: 1.2; text-wrap: balance; }
+.sk-punkt h3 .hl { background: linear-gradient(transparent 60%, var(--e2-gelb) 60%, var(--e2-gelb) 92%, transparent 92%); }
+.e2 .sk-text { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--e2-ink-2); }
+.sk-ecken { display: grid; gap: .8rem; margin-top: auto; }
+.e2 .sm-vk .sv-ecke p { margin: 0; font-size: .9rem; line-height: 1.55; color: var(--e2-ink-2); }
+.e2 .sm-vk .sv-ecke--gelb p { color: var(--e2-ink); }
+/* Pfeile */
+.sk-pfeil { position: relative; display: block; width: 2px; height: 3.2rem; margin: 1.1rem auto; background: var(--e2-ink); }
+.sk-pfeil::after { content: ""; position: absolute; left: -5px; bottom: -1px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 9px solid var(--e2-ink); }
+.sk-abschnitt { text-align: center; }
+.sk-abschnitt .sk-h2 { max-width: 40rem; margin: 0 auto; }
+.sm-vk .oz { margin-top: 2rem; }
+/* zwei Ableitungen: Pfeil unter Ziel 1, Pfeil unter Ziel 2 und 3 – gleiches Raster wie die Ziele */
+.sk-ab, .sk-paar { display: grid; grid-template-columns: minmax(0, 1fr) 4.2rem minmax(0, 1fr) minmax(0, 1fr); column-gap: 1.4rem; }
+.sk-pfeil--1 { grid-column: 1; }
+.sk-pfeil--23 { grid-column: 3 / 5; }
+.sk-paar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sk-paar .sk-ecken { grid-template-columns: 1fr; }
+.sm-vk .sv-ecke > b { font-size: 1.1rem; }
+.sk-org { margin-top: 2.4rem; }
+@media (max-width: 900px) {
+  .sk-modell { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.8rem 1.4rem 5rem; }
+  .sk-stufen { grid-template-columns: 1fr; gap: 1.2rem; }
+  .sk-stufen li + li::before { right: auto; left: 50%; top: auto; bottom: 100%; width: 0; height: 1.2rem; border-top: 0; border-left: 2px solid var(--e2-ink); }
+  .sk-stufen li + li::after { left: calc(50% - 4px); top: -2px; border: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--e2-ink); }
+  .sk-grundregel { padding: 0 1rem; }
+  .sk-ab { display: none; }
+  .sk-paar { grid-template-columns: 1fr; row-gap: 1.2rem; margin-top: 2rem; }
+  .sk-paar .sk-ecken { grid-template-columns: 1fr; }
+}
