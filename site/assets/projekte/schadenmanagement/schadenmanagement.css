@@ -904,7 +904,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 /* Grundregel so breit wie der Kasten Geschäftsmodell, Inhalt zentriert (Daniel, 03.11.) */
 .sk-grundregel .sk-punkt { align-items: center; gap: .6rem; text-align: center; padding: 1.4rem 2.6rem 1.5rem; }
 /* Geschäftsmodell und Grundregel sind ein Kasten: oben dünne graue Linie ohne Unterkante, unten schließt die Grundregel schwarz ab (Daniel, 03.11.) */
-.sk-modell:not(.sk-modell--org) { border-bottom: 0; border-radius: 18px 18px 0 0; }
+.sk-modell:not(.sk-modell--org):not(.sk-modell--mitte) { border-bottom: 0; border-radius: 18px 18px 0 0; }
 .sk-grundregel .sk-punkt { border-radius: 0 0 18px 18px; }
 .e2 .sk-grundregel .sk-label { text-align: left; }
 /* Hauptpunkt 01–03 */
@@ -958,3 +958,7 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
   .sk-paar > .sk-punkt:first-child, .sk-paar > .sk-punkt:last-child { grid-column: 1; }
   .sk-modell--org { padding-bottom: 1.8rem; }
 }
+/* Summary kompakt 2.2: die drei natürlichen Ziele mit 02 | 03 ebenfalls im grauen Kasten – drei Hauptteile, drei Kästen (Daniel, 03.11.) */
+.sk-modell--mitte { display: block; }
+.sk-paar > .sk-punkt { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1200px) { .sk-modell--mitte { padding: 2rem 1.3rem 1.6rem; } }
