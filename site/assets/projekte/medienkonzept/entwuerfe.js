@@ -951,6 +951,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 488,
     "reaktionen": 11,
     "kommentare": 6
+   },
+   {
+    "stunden": 172,
+    "impressionen": 642,
+    "reichweite": 505,
+    "reaktionen": 11,
+    "kommentare": 6
    }
   ],
   "bild": "rp14",
@@ -1001,6 +1008,13 @@ window.MK_ENTWUERFE = [
     "stunden": 124.3,
     "impressionen": 400,
     "reichweite": 298,
+    "reaktionen": 6,
+    "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 404,
+    "reichweite": 301,
     "reaktionen": 6,
     "kommentare": 2
    }
@@ -1055,6 +1069,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 385,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 534,
+    "reichweite": 395,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -1100,6 +1121,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 480,
     "reaktionen": 4,
     "kommentare": 5
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 771,
+    "reichweite": 549,
+    "reaktionen": 4,
+    "kommentare": 7
    }
   ],
   "bild": "rp29",
@@ -1138,6 +1166,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 992,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 1374,
+    "reichweite": 1049,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1169,6 +1204,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 157,
     "reaktionen": 2,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 247,
+    "reichweite": 174,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1193,6 +1235,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 96,
     "reaktionen": 4,
     "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 422,
+    "reichweite": 302,
+    "reaktionen": 6,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1210,7 +1259,15 @@ window.MK_ENTWUERFE = [
   "text": "Bessere Unterlagen retten kein Produkt, an dem dein Partner nichts verdient.\n\n„Warum nimmt die Bank unser Vertriebskonzept nicht an?“\n\nDiese Frage höre ich regelmäßig. Und gleich danach die Ideen: noch ein Impuls, bessere Unterlagen, eine Schulungsrunde. Notfalls Druck.\n\nSetze dich gedanklich einmal auf die andere Seite des Tisches.\n\nFür die Bank sieht es oft so aus:\n\n• zu wenig Ertrag\n• zu wenige Leute, die das Thema verstanden haben\n• eine Systemanbindung, die jeden Abschluss zum Ärgernis macht\n\nDann kannst du die Unterlagen noch so schön machen.\n\nIch verstehe den Wunsch, dass es dann läuft. Funktionieren wird es trotzdem nicht.\n\nBevor die nächste Unterlage entsteht, beantworte drei konkrete Fragen:\n\n1. Wie mache ich mein Gegenüber erfolgreich?\n2. Wie vermeide ich unnötigen Aufwand?\n3. Was ist der konkrete nächste Schritt zur Umsetzung?\n\nWas würdest du als Vertreter der Bank von einem Versicherer erwarten?",
   "status": "veroeffentlicht",
   "datum": "2026-11-03",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 76,
+    "reichweite": 57,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp21",
   "termin": "Di 03.11.",
   "format": "Szene · B Foto mit Satz",
