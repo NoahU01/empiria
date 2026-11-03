@@ -891,8 +891,8 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .e2 .sm-vk .e2-kicker { margin: 0 0 .6rem; font-size: .7rem; }
 .sk-h2 { margin: 0; font-family: var(--font-serif); font-size: clamp(1.45rem, 2.4vw, 1.9rem); font-weight: 700; line-height: 1.15; color: var(--e2-ink); text-wrap: balance; }
 .e2 .sk-lead { margin: .9rem 0 0; font-size: 1rem; line-height: 1.6; color: var(--e2-ink-2); }
-/* gedanklicher Kasten (Linie wie Summary), die Grundregel sitzt auf seiner Unterkante */
-.sk-modell { display: grid; gap: 2rem; padding: 2.4rem 2.6rem 5.4rem; border: 1px solid #d6d0c8; border-radius: 18px; background: #fff; }   /* Linie wie die offenen Kästen der Summary */
+/* gedanklicher Kasten (Linie wie Summary) */
+.sk-modell { display: grid; gap: 2rem; padding: 2.4rem 2.6rem 2.6rem; border: 1px solid #d6d0c8; border-radius: 18px; background: #fff; }   /* Linie wie die offenen Kästen der Summary */
 .sk-stufen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
 .sk-stufen li { position: relative; display: grid; gap: .3rem; padding: 1.1rem 1.2rem 1.15rem; border: 1px solid var(--e2-linie); border-radius: 14px; background: #fff; }
 .sk-stufen li + li::before { content: ""; position: absolute; right: 100%; top: 50%; width: 1.6rem; border-top: 2px solid var(--e2-ink); }
@@ -901,8 +901,9 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sk-stufen b { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.2; color: var(--e2-ink); }
 .sk-stufen .sk-stufe--gelb { background: var(--e2-gelb); border-color: var(--e2-gelb); }
 .sk-stufen .sk-stufe--gelb small { color: var(--e2-ink); }
-.sk-grundregel { display: flex; justify-content: center; margin-top: -3.4rem; padding: 0 2rem; }
-.sk-grundregel .sk-punkt { width: min(100%, 40rem); }
+/* Grundregel so breit wie der Kasten Geschäftsmodell, Inhalt zentriert (Daniel, 03.11.) */
+.sk-grundregel .sk-punkt { align-items: center; text-align: center; padding: 2rem 2.6rem 2.1rem; }
+.e2 .sk-grundregel .sk-label { text-align: left; }
 /* Hauptpunkt 01–03 */
 .sk-punkt { display: flex; flex-direction: column; gap: .9rem; padding: 1.6rem 1.7rem 1.7rem; border: 2px solid var(--e2-ink); border-radius: 18px; background: #fff; }
 .sk-punkt__kopf { display: flex; align-items: center; gap: .9rem; }
@@ -945,11 +946,10 @@ button.v4-karte:focus-visible, .v4-mehr:focus-visible, .sm-sv-mehr:focus-visible
 .sm-vk .sv-ecke > b { font-size: 1.1rem; }
 .sk-org { margin-top: 2.4rem; }
 @media (max-width: 900px) {
-  .sk-modell { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.8rem 1.4rem 5rem; }
+  .sk-modell { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.8rem 1.4rem; }
   .sk-stufen { grid-template-columns: 1fr; gap: 1.2rem; }
   .sk-stufen li + li::before { right: auto; left: 50%; top: auto; bottom: 100%; width: 0; height: 1.2rem; border-top: 0; border-left: 2px solid var(--e2-ink); }
   .sk-stufen li + li::after { left: calc(50% - 4px); top: -2px; border: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--e2-ink); }
-  .sk-grundregel { padding: 0 1rem; }
   .sk-ab { display: none; }
   .sk-paar { grid-template-columns: 1fr; row-gap: 1.2rem; margin-top: 2rem; }
   .sk-paar > .sk-punkt:first-child, .sk-paar > .sk-punkt:last-child { grid-column: 1; }
