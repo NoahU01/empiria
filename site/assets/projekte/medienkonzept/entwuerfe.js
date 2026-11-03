@@ -1208,14 +1208,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · B Foto mit Satz",
   "kern": "Bankvertrieb: Bessere Unterlagen helfen nicht, wenn das Produkt für den Partner zu wenig bringt – Perspektivwechsel.",
   "text": "Bessere Unterlagen retten kein Produkt, an dem dein Partner nichts verdient.\n\n„Warum nimmt die Bank unser Vertriebskonzept nicht an?“\n\nDiese Frage höre ich regelmäßig. Und gleich danach die Ideen: noch ein Impuls, bessere Unterlagen, eine Schulungsrunde. Notfalls Druck.\n\nSetze dich gedanklich einmal auf die andere Seite des Tisches.\n\nFür die Bank sieht es oft so aus:\n\n• zu wenig Ertrag\n• zu wenige Leute, die das Thema verstanden haben\n• eine Systemanbindung, die jeden Abschluss zum Ärgernis macht\n\nDann kannst du die Unterlagen noch so schön machen.\n\nIch verstehe den Wunsch, dass es dann läuft. Funktionieren wird es trotzdem nicht.\n\nBevor die nächste Unterlage entsteht, beantworte drei konkrete Fragen:\n\n1. Wie mache ich mein Gegenüber erfolgreich?\n2. Wie vermeide ich unnötigen Aufwand?\n3. Was ist der konkrete nächste Schritt zur Umsetzung?\n\nWas würdest du als Vertreter der Bank von einem Versicherer erwarten?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-03",
   "kennzahlen": [],
   "bild": "rp21",
   "termin": "Di 03.11.",
   "format": "Szene · B Foto mit Satz",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7523274110773399553"
  },
  {
   "id": 86,
