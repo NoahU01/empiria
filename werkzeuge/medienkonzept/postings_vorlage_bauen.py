@@ -986,6 +986,10 @@ teile += [
   <p class="namezeile">Daniel Ströbel</p></section>""",
 ]
 
+# KW 46/47 (Daniel, 04.11.2026): Bilder in kw46_47_bilder.py
+from kw46_47_bilder import sektionen as _kw4647
+teile += _kw4647(NAME, vb, SYS)
+
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
 <link rel="stylesheet" href="/assets/fonts/fonts.local.css">
