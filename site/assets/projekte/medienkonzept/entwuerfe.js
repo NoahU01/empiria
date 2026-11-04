@@ -1281,7 +1281,7 @@ window.MK_ENTWUERFE = [
   "art": "Werkzeug · Dokument-Karussell (5 Seiten)",
   "kern": "Themenliste 4: Der Einstieg in die Strategie dauert drei Stunden, keine zwei Tage.",
   "text": "Für den Einstieg in eine Strategie brauchst du keine zwei Tage Workshop. Drei Stunden reichen.\n\nDie meisten Führungskräfte denken bei Strategie sofort an Moderationskoffer und Kärtchen an der Wand. Ich brauche zwei, drei Gespräche à eine Stunde. Am Telefon.\n\nDu bereitest nichts vor. Keine Folien. Du erzählst, was dir durch den Kopf geht. Ich frage, unterbreche, frage weiter.\n\nDann lege ich dir hin, was ich gehört habe. Strukturiert, neben der Logik des Geschäftsmodells Versicherung.\n\nDas ist der Moment, auf den ich hinarbeite: Plötzlich steht da ein Bild, das du die ganze Zeit im Kopf hattest.\n\nDanach klären wir, wen es braucht und wie die Betroffenen ticken. Erst dann geht es los.\n\nDen ersten Schritt kannst du heute selbst machen:\n\nErzähle jemandem, dem du vertraust, eine Stunde lang ohne Unterlagen, wo dein Bereich hin soll. Und bitte ihn, dir zu spiegeln, was er verstanden hat.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-04",
   "kennzahlen": [],
   "bild": "ka1",
@@ -1296,7 +1296,7 @@ window.MK_ENTWUERFE = [
    "ka5"
   ],
   "pdf": "ka-strategie-drei-gespraeche.pdf",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7523636513801175040"
  },
  {
   "id": 87,
