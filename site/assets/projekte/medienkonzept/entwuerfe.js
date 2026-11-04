@@ -1017,6 +1017,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 301,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 412,
+    "reichweite": 308,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "rp15",
@@ -1076,6 +1083,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 395,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 542,
+    "reichweite": 403,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -1128,6 +1142,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 549,
     "reaktionen": 4,
     "kommentare": 7
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 801,
+    "reichweite": 575,
+    "reaktionen": 4,
+    "kommentare": 7
    }
   ],
   "bild": "rp29",
@@ -1173,6 +1194,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1049,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 1414,
+    "reichweite": 1082,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1211,6 +1239,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 174,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 255,
+    "reichweite": 181,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1242,6 +1277,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 302,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 491,
+    "reichweite": 358,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1266,6 +1308,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 57,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 157,
+    "reichweite": 118,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1283,7 +1332,15 @@ window.MK_ENTWUERFE = [
   "text": "Für den Einstieg in eine Strategie brauchst du keine zwei Tage Workshop. Drei Stunden reichen.\n\nDie meisten Führungskräfte denken bei Strategie sofort an Moderationskoffer und Kärtchen an der Wand. Ich brauche zwei, drei Gespräche à eine Stunde. Am Telefon.\n\nDu bereitest nichts vor. Keine Folien. Du erzählst, was dir durch den Kopf geht. Ich frage, unterbreche, frage weiter.\n\nDann lege ich dir hin, was ich gehört habe. Strukturiert, neben der Logik des Geschäftsmodells Versicherung.\n\nDas ist der Moment, auf den ich hinarbeite: Plötzlich steht da ein Bild, das du die ganze Zeit im Kopf hattest.\n\nDanach klären wir, wen es braucht und wie die Betroffenen ticken. Erst dann geht es los.\n\nDen ersten Schritt kannst du heute selbst machen:\n\nErzähle jemandem, dem du vertraust, eine Stunde lang ohne Unterlagen, wo dein Bereich hin soll. Und bitte ihn, dir zu spiegeln, was er verstanden hat.",
   "status": "veroeffentlicht",
   "datum": "2026-11-04",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 134,
+    "reichweite": 80,
+    "reaktionen": 2,
+    "kommentare": 2
+   }
+  ],
   "bild": "ka1",
   "termin": "Mi 04.11.",
   "format": "Werkzeug · Dokument-Karussell (5 Seiten)",
