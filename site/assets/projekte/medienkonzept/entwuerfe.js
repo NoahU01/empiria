@@ -1090,6 +1090,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 403,
     "reaktionen": 11,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 547,
+    "reichweite": 406,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp16",
@@ -1149,6 +1156,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 575,
     "reaktionen": 4,
     "kommentare": 7
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 812,
+    "reichweite": 584,
+    "reaktionen": 4,
+    "kommentare": 7
    }
   ],
   "bild": "rp29",
@@ -1201,6 +1215,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1082,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 1431,
+    "reichweite": 1096,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1246,6 +1267,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 181,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 263,
+    "reichweite": 189,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1284,6 +1312,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 358,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 551,
+    "reichweite": 399,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1315,6 +1350,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 118,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 178,
+    "reichweite": 131,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1338,6 +1380,13 @@ window.MK_ENTWUERFE = [
     "impressionen": 134,
     "reichweite": 80,
     "reaktionen": 2,
+    "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 254,
+    "reichweite": 162,
+    "reaktionen": 3,
     "kommentare": 2
    }
   ],
@@ -1364,7 +1413,15 @@ window.MK_ENTWUERFE = [
   "text": "In fast jedem meiner Termine kommt ein Moment, ab dem keiner mehr diskutiert.\n\nMir selbst ist das lange nicht aufgefallen. Eine Mitarbeiterin hat es mir gespiegelt: Meine Termine laufen im Kern immer gleich.\n\nIch frage und zeichne mit. Irgendwann sage ich: „Eigentlich ist es doch so.“\n\nDann steht die Struktur auf dem Flipchart oder dem iPad. Ab da sieht jeder den Gesamtzusammenhang, und die Diskussion dreht sich nicht mehr im Kreis.\n\nDas kannst du auch:\n\n1. Frage so lange, bis du die Abhängigkeiten siehst.\n2. Sortiere, was Überbegriff ist und was Detail. Wie im Kinderrätsel: Apfel, Birne, Kirsche, Obst.\n3. Zeichne das Ganze auf ein einziges Blatt.\n\nWenn du den Satz sagen kannst, hast du das Thema verstanden. Und die anderen auch.",
   "status": "veroeffentlicht",
   "datum": "2026-11-05",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 77,
+    "reichweite": 60,
+    "reaktionen": 3,
+    "kommentare": 1
+   }
+  ],
   "bild": "rp23",
   "termin": "Do 05.11.",
   "format": "Geschichte · Foto",
