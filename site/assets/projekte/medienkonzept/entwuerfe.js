@@ -1362,14 +1362,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Foto",
   "kern": "„Eigentlich ist es doch so“ – woher der Satz kommt: eine Mitarbeiterin hat es zuerst gespiegelt.",
   "text": "In fast jedem meiner Termine kommt ein Moment, ab dem keiner mehr diskutiert.\n\nMir selbst ist das lange nicht aufgefallen. Eine Mitarbeiterin hat es mir gespiegelt: Meine Termine laufen im Kern immer gleich.\n\nIch frage und zeichne mit. Irgendwann sage ich: „Eigentlich ist es doch so.“\n\nDann steht die Struktur auf dem Flipchart oder dem iPad. Ab da sieht jeder den Gesamtzusammenhang, und die Diskussion dreht sich nicht mehr im Kreis.\n\nDas kannst du auch:\n\n1. Frage so lange, bis du die Abhängigkeiten siehst.\n2. Sortiere, was Überbegriff ist und was Detail. Wie im Kinderrätsel: Apfel, Birne, Kirsche, Obst.\n3. Zeichne das Ganze auf ein einziges Blatt.\n\nWenn du den Satz sagen kannst, hast du das Thema verstanden. Und die anderen auch.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-05",
   "kennzahlen": [],
   "bild": "rp23",
   "termin": "Do 05.11.",
   "format": "Geschichte · Foto",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7523998885590142976"
  },
  {
   "id": 88,
