@@ -1435,14 +1435,14 @@ window.MK_ENTWUERFE = [
   "art": "Zum Mitnehmen · Gedankenexperiment",
   "kern": "Themenliste 7: Wie sähe die Homepage deiner Abteilung aus? – Test fürs Zielbild.",
   "text": "Ob dein Bereich ein Zielbild hat, erkennst du an einer Homepage, die es gar nicht gibt.\n\nDeine Abteilung wird morgen ausgegründet. Eigene GmbH. Sie verkauft ihre Leistung an deinen bisherigen Arbeitgeber.\n\nWas steht auf eurer Homepage?\n\n• Wofür seid ihr da?\n• Welches Problem löst ihr für wen?\n• Warum sollte das Haus euch beauftragen und es nicht selbst machen?\n\nJetzt die eigentliche Probe: Würde jeder in deinem Team dasselbe hineinschreiben?\n\nWenn ja, habt ihr ein Zielbild. Wenn nicht, weißt du, woran du die nächsten Wochen arbeitest.\n\nSo geht die Übung: Schreibe deine Fassung allein. Bitte drei Leute aus dem Team, dasselbe zu tun, ohne deine zu kennen. Dann legt ihr alles nebeneinander.\n\nSpätestens dann wird es interessant.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-06",
   "kennzahlen": [],
   "bild": "rp24",
   "termin": "Fr 06.11.",
   "format": "Zum Mitnehmen · Gedankenexperiment",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7524361292741181440"
  },
  {
   "id": 89,
