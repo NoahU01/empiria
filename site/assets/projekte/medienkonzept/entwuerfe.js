@@ -1163,6 +1163,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 584,
     "reaktionen": 4,
     "kommentare": 7
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 817,
+    "reichweite": 589,
+    "reaktionen": 4,
+    "kommentare": 7
    }
   ],
   "bild": "rp29",
@@ -1222,6 +1229,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1096,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 1439,
+    "reichweite": 1101,
+    "reaktionen": 10,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1274,6 +1288,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 189,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 268,
+    "reichweite": 192,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1319,6 +1340,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 399,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 561,
+    "reichweite": 407,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1357,6 +1385,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 131,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 183,
+    "reichweite": 135,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1386,6 +1421,13 @@ window.MK_ENTWUERFE = [
     "stunden": 28.3,
     "impressionen": 254,
     "reichweite": 162,
+    "reaktionen": 3,
+    "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 267,
+    "reichweite": 171,
     "reaktionen": 3,
     "kommentare": 2
    }
@@ -1420,6 +1462,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 60,
     "reaktionen": 3,
     "kommentare": 1
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 381,
+    "reichweite": 286,
+    "reaktionen": 14,
+    "kommentare": 2
    }
   ],
   "bild": "rp23",
@@ -1437,7 +1486,15 @@ window.MK_ENTWUERFE = [
   "text": "Ob dein Bereich ein Zielbild hat, erkennst du an einer Homepage, die es gar nicht gibt.\n\nDeine Abteilung wird morgen ausgegründet. Eigene GmbH. Sie verkauft ihre Leistung an deinen bisherigen Arbeitgeber.\n\nWas steht auf eurer Homepage?\n\n• Wofür seid ihr da?\n• Welches Problem löst ihr für wen?\n• Warum sollte das Haus euch beauftragen und es nicht selbst machen?\n\nJetzt die eigentliche Probe: Würde jeder in deinem Team dasselbe hineinschreiben?\n\nWenn ja, habt ihr ein Zielbild. Wenn nicht, weißt du, woran du die nächsten Wochen arbeitest.\n\nSo geht die Übung: Schreibe deine Fassung allein. Bitte drei Leute aus dem Team, dasselbe zu tun, ohne deine zu kennen. Dann legt ihr alles nebeneinander.\n\nSpätestens dann wird es interessant.",
   "status": "veroeffentlicht",
   "datum": "2026-11-06",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 86,
+    "reichweite": 56,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp24",
   "termin": "Fr 06.11.",
   "format": "Zum Mitnehmen · Gedankenexperiment",
