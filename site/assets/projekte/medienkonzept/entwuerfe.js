@@ -1508,14 +1508,14 @@ window.MK_ENTWUERFE = [
   "art": "Weitergedacht · Foto",
   "kern": "Themenliste 32: „Das war schon immer so.“ – drei Sätze, die Neudenken verhindern. Und was, wenn nicht?",
   "text": "Drei Sätze verhindern mehr Neues als jedes fehlende Budget.\n\n„Das war schon immer so.“\n„Das ist bei uns gesetzt.“\n„Das macht man in unserer Branche nicht.“\n\nDrei Sätze, die ich höre, sobald es um das Geschäftsmodell von morgen geht.\n\nJeder ist verständlich. Und jeder nimmt eine Möglichkeit vom Tisch, bevor jemand darüber nachgedacht hat.\n\nEin kleiner Test fürs Wochenende:\n\n1. Nimm eine Sache aus deinem Bereich, die als gesetzt gilt.\n2. Stelle dir vor, es gäbe sie ab morgen nicht mehr.\n3. Frage dich: Wer würde es merken? Was würde wirklich fehlen?\n\nBei manchen Dingen ist die ehrliche Antwort: niemand. Nichts.\n\nGenau dort fängt Neudenken an.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-07",
   "kennzahlen": [],
   "bild": "rp25",
   "termin": "Sa 07.11.",
   "format": "Weitergedacht · Foto",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7524723673379803136"
  },
  {
   "id": 90,
