@@ -1236,6 +1236,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1101,
     "reaktionen": 10,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 1452,
+    "reichweite": 1113,
+    "reaktionen": 11,
+    "kommentare": 2
    }
   ],
   "bild": "rp18",
@@ -1295,6 +1302,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 192,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 283,
+    "reichweite": 199,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1347,6 +1361,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 407,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 574,
+    "reichweite": 416,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1392,6 +1413,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 135,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 185,
+    "reichweite": 137,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1428,6 +1456,13 @@ window.MK_ENTWUERFE = [
     "stunden": 52.3,
     "impressionen": 267,
     "reichweite": 171,
+    "reaktionen": 3,
+    "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 278,
+    "reichweite": 180,
     "reaktionen": 3,
     "kommentare": 2
    }
@@ -1469,6 +1504,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 286,
     "reaktionen": 14,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 477,
+    "reichweite": 358,
+    "reaktionen": 15,
+    "kommentare": 2
    }
   ],
   "bild": "rp23",
@@ -1493,6 +1535,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 56,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 136,
+    "reichweite": 96,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1510,7 +1559,15 @@ window.MK_ENTWUERFE = [
   "text": "Drei Sätze verhindern mehr Neues als jedes fehlende Budget.\n\n„Das war schon immer so.“\n„Das ist bei uns gesetzt.“\n„Das macht man in unserer Branche nicht.“\n\nDrei Sätze, die ich höre, sobald es um das Geschäftsmodell von morgen geht.\n\nJeder ist verständlich. Und jeder nimmt eine Möglichkeit vom Tisch, bevor jemand darüber nachgedacht hat.\n\nEin kleiner Test fürs Wochenende:\n\n1. Nimm eine Sache aus deinem Bereich, die als gesetzt gilt.\n2. Stelle dir vor, es gäbe sie ab morgen nicht mehr.\n3. Frage dich: Wer würde es merken? Was würde wirklich fehlen?\n\nBei manchen Dingen ist die ehrliche Antwort: niemand. Nichts.\n\nGenau dort fängt Neudenken an.",
   "status": "veroeffentlicht",
   "datum": "2026-11-07",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 127,
+    "reichweite": 88,
+    "reaktionen": 2,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp25",
   "termin": "Sa 07.11.",
   "format": "Weitergedacht · Foto",
