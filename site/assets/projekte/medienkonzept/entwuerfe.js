@@ -1581,14 +1581,14 @@ window.MK_ENTWUERFE = [
   "art": "Aufgegriffen · Zitatkarte",
   "kern": "Stockhorst (Zurich): Es fehlt an Mut, Führung und Tempo – woran Umsetzung im Alltag konkret scheitert.",
   "text": "Mut, Führung, Tempo. Steht in jeder Strategie. Und scheitert im Alltag an drei banalen Stellen.\n\nPeter Stockhorst, Digitalvorstand der Zurich Gruppe Deutschland, hat im Frühjahr genau das gefordert. Sein Satz steht im Bild. Ich unterschreibe ihn.\n\nDie drei Stellen:\n\n• Es gibt kein klares Bild, wo es hingehen soll. Dann ist jede Initiative gleich wichtig.\n• Keiner entscheidet, was wegfällt. Also läuft alles parallel.\n• Zwischen den Terminen passiert nichts. Das Thema wartet auf den nächsten Jour fixe.\n\nIn den Vorstandsklausuren, die ich vorbereitet habe, kam Bewegung immer dann, wenn einer in den Lead ging. Bedeutung klar, Richtung gesagt, los.\n\nDeine Aufgabe für Montag: Schreibe deine laufenden Initiativen auf. Streiche drei. Und sage laut, wer die übrigen treibt.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-08",
   "kennzahlen": [],
   "bild": "rp26",
   "termin": "So 08.11.",
   "format": "Aufgegriffen · Zitatkarte",
   "offen": "Zitat vom April 2026 (im Original geprüft) – kommt in KW 45 eine frische Stimme der Woche, tauschen wir.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7525086049006452736"
  },
  {
   "id": 55,
@@ -1816,5 +1816,5 @@ window.MK_ENTWUERFE = [
  }
 ];
 window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};
-window.MK_WOCHEN = [{"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}, {"kw": "KW 46", "spanne": "09.11.–15.11.", "tage": [{"tag": "Mo 09.11.", "i": 26}, {"tag": "Di 10.11.", "i": 27}, {"tag": "Mi 11.11.", "i": 28}, {"tag": "Do 12.11.", "i": 29}, {"tag": "Fr 13.11.", "i": 30}, {"tag": "Sa 14.11.", "i": 31}, {"tag": "So 15.11.", "i": 32}]}, {"kw": "KW 47", "spanne": "16.11.–22.11.", "tage": [{"tag": "Mo 16.11.", "i": 33}, {"tag": "Di 17.11.", "i": 34}, {"tag": "Mi 18.11.", "i": 35}, {"tag": "Do 19.11.", "i": 36}, {"tag": "Fr 20.11.", "i": 37}, {"tag": "Sa 21.11.", "i": 38}, {"tag": "So 22.11.", "i": 39}]}];
-window.MK_ARCHIV = [{"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];
+window.MK_WOCHEN = [{"kw": "KW 46", "spanne": "09.11.–15.11.", "tage": [{"tag": "Mo 09.11.", "i": 26}, {"tag": "Di 10.11.", "i": 27}, {"tag": "Mi 11.11.", "i": 28}, {"tag": "Do 12.11.", "i": 29}, {"tag": "Fr 13.11.", "i": 30}, {"tag": "Sa 14.11.", "i": 31}, {"tag": "So 15.11.", "i": 32}]}, {"kw": "KW 47", "spanne": "16.11.–22.11.", "tage": [{"tag": "Mo 16.11.", "i": 33}, {"tag": "Di 17.11.", "i": 34}, {"tag": "Mi 18.11.", "i": 35}, {"tag": "Do 19.11.", "i": 36}, {"tag": "Fr 20.11.", "i": 37}, {"tag": "Sa 21.11.", "i": 38}, {"tag": "So 22.11.", "i": 39}]}];
+window.MK_ARCHIV = [{"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}, {"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];
