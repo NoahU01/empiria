@@ -121,7 +121,7 @@ def sektionen(NAME, vb, SYS):
 
     return [
         foto("rp30", "foto-seminar-selfie.jpg", "32% 50%", "„Welches Seminar leiten Sie <span class=\"hl\" style=\"color:#1a1817\">heute?</span>“",
-             "Ein Vorstand, mit dem wir seit Jahren an Strategie arbeiten", 96),
+             "", 96),
         rp31, rp32,
         foto("rp33", "foto-skizze.jpg", "50% 35%", "„Hat dein Papa wieder einen <span class=\"hl\" style=\"color:#1a1817\">coolen&nbsp;Trick?</span>“",
              "Die Freundinnen meiner Tochter", 90),
