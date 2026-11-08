@@ -1309,6 +1309,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 199,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 289,
+    "reichweite": 205,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp19",
@@ -1368,6 +1375,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 416,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 587,
+    "reichweite": 424,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp27",
@@ -1420,6 +1434,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 137,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 186,
+    "reichweite": 138,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1463,6 +1484,13 @@ window.MK_ENTWUERFE = [
     "stunden": 76.3,
     "impressionen": 278,
     "reichweite": 180,
+    "reaktionen": 3,
+    "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 290,
+    "reichweite": 192,
     "reaktionen": 3,
     "kommentare": 2
    }
@@ -1511,6 +1539,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 358,
     "reaktionen": 15,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 541,
+    "reichweite": 407,
+    "reaktionen": 16,
+    "kommentare": 2
    }
   ],
   "bild": "rp23",
@@ -1542,6 +1577,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 96,
     "reaktionen": 4,
     "kommentare": 1
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 143,
+    "reichweite": 102,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1566,6 +1608,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 88,
     "reaktionen": 2,
     "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 222,
+    "reichweite": 151,
+    "reaktionen": 5,
+    "kommentare": 4
    }
   ],
   "bild": "rp25",
@@ -1583,7 +1632,15 @@ window.MK_ENTWUERFE = [
   "text": "Mut, Führung, Tempo. Steht in jeder Strategie. Und scheitert im Alltag an drei banalen Stellen.\n\nPeter Stockhorst, Digitalvorstand der Zurich Gruppe Deutschland, hat im Frühjahr genau das gefordert. Sein Satz steht im Bild. Ich unterschreibe ihn.\n\nDie drei Stellen:\n\n• Es gibt kein klares Bild, wo es hingehen soll. Dann ist jede Initiative gleich wichtig.\n• Keiner entscheidet, was wegfällt. Also läuft alles parallel.\n• Zwischen den Terminen passiert nichts. Das Thema wartet auf den nächsten Jour fixe.\n\nIn den Vorstandsklausuren, die ich vorbereitet habe, kam Bewegung immer dann, wenn einer in den Lead ging. Bedeutung klar, Richtung gesagt, los.\n\nDeine Aufgabe für Montag: Schreibe deine laufenden Initiativen auf. Streiche drei. Und sage laut, wer die übrigen treibt.",
   "status": "veroeffentlicht",
   "datum": "2026-11-08",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 109,
+    "reichweite": 62,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp26",
   "termin": "So 08.11.",
   "format": "Aufgegriffen · Zitatkarte",
