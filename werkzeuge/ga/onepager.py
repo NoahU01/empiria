@@ -296,8 +296,7 @@ CSS_INHALT_HOCH = masse("""
 # Nur Weiß, keine schwarzen Flächen, kein Foto. Struktur über feine Rahmen, das Ergebnis in einem schwarz gerahmten Kasten.
 def druck_fuss(d):
     return (f'<section class="dr-ergebnis">{k("Das Ergebnis")}<p>{d["ergebnis"]}</p></section>'
-            f'<footer class="dr-fuss">{logo(cls="dr-logo")}'
-            f'<span>{FIRMA["name"]} · {FIRMA["strasse"]} · {FIRMA["ort"]}</span><span>{FIRMA["web"]}</span></footer>')
+            f'<footer class="dr-fuss"><span>{FIRMA["web"]}</span></footer>')
 
 
 def druck(d, fmt, png=None):
@@ -327,9 +326,7 @@ def css_druck(w, rand):
   display: grid; grid-template-columns: [44] 1fr; align-items: center; column-gap: [6]; }}
 {s} > .dr-ergebnis .op-k {{ margin: 0; }}
 {s} > .dr-ergebnis p:last-child {{ margin: 0; font: 700 [{15 if w == 297 else 14}pt]/1.35 'Lora', serif; }}
-{s} > .dr-fuss {{ display: flex; align-items: center; gap: [8]; margin: [7] [{rand}] [12]; padding-left: 0; padding-right: 0; padding-top: [5];
-  border-top: [0.3] solid #d9d5cf; font: 400 [8pt]/1.3 'Poppins', sans-serif; color: #6b6762; white-space: nowrap; }}
-{s} > .dr-fuss .dr-logo {{ display: block; height: [5.5]; width: auto; margin-left: [-1.2]; margin-right: auto; }}
+{s} > .dr-fuss {{ display: flex; justify-content: flex-end; margin: [6] [{rand}] [12]; padding-left: 0; padding-right: 0; font: 400 [8pt]/1.3 'Poppins', sans-serif; color: #6b6762; white-space: nowrap; }}
 """, w)
 
 
