@@ -208,7 +208,7 @@ CSS_INHALT = masse("""
 .op--inhalt h1 { font-size: [38pt]; line-height: 1.2; white-space: nowrap; }
 .op--inhalt .op-lead { margin-top: [5]; font-size: [12pt]; max-width: [230]; }
 .oi-logo { position: absolute; right: [22]; top: [16]; display: block; height: [8]; width: auto; margin: 0; }
-.oi-pfeil { flex: 0 0 [30]; margin-bottom: [2]; }
+.oi-pfeil { flex: 0 0 [24]; margin-bottom: [1.45]; }
 .oi-pfeil svg { display: block; width: 100%; height: auto; }
 .op--inhalt .op-k { font-size: [8pt]; margin-bottom: [4]; }
 .oi-spalten { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: [14]; margin-top: [16]; }
@@ -257,7 +257,7 @@ CSS_INHALT_HOCH = masse("""
 .op--inhalt-hoch .oi-titel { margin-top: 0; gap: [12]; }
 .op--inhalt-hoch h1 { font-size: [40pt]; line-height: 1.3; white-space: normal; }
 .op--inhalt-hoch .op-lead { margin-top: [7]; font-size: [12pt]; max-width: [170]; }
-.op--inhalt-hoch .oi-pfeil { flex-basis: [42]; }
+.op--inhalt-hoch .oi-pfeil { flex-basis: [34]; margin-bottom: [1.45]; }
 .op--inhalt-hoch .op-k { font-size: [8pt]; margin-bottom: [4]; }
 .op--inhalt-hoch .oi-spalten { grid-template-columns: repeat(2, 1fr); column-gap: [14]; margin-top: [18]; }
 .op--inhalt-hoch h2 { font-size: [16pt]; }
@@ -331,9 +331,6 @@ def css_druck(w, rand):
 
 
 CSS_DRUCK = css_druck(297, 20) + css_druck(420, 22) + masse("""
-.op--druck:not(.op--inhalt-hoch) .oi-pfeil { flex-basis: [24]; margin-bottom: [1.45]; }
-""", 420) + masse("""
-.op--inhalt-hoch.op--druck .oi-pfeil { flex-basis: [34]; margin-bottom: [1.2]; }
 .op--inhalt-hoch.op--druck > .oi-spalten { flex: none; }
 .op--inhalt-hoch.op--druck > .oi-zus, .op--inhalt-hoch.op--druck > .oi-fragen, .op--inhalt-hoch.op--druck > .dr-ergebnis { margin-top: auto; }
 .op--inhalt-hoch.op--druck > .oi-zus { margin-bottom: [4]; }
