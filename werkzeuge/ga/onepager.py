@@ -3,13 +3,11 @@
 
 Prinzip: wenige große Flächen übereinander (Weiß · Gelb · Weiß · Schwarz), viel Luft, große Lora-Überschriften,
 pro Fläche genau eine Aussage. Nie Gelb auf Hellgrau.
-  A3 hoch · A  Leistung mit Ansprechpartner  (Beispiel „Strategie in den Alltag überführen“)
-  A3 hoch · B  Leistung ohne Person           (z. B. als Handout im Workshop)
-  A3 hoch · C  Grundraster                    (leeres Raster zum Aufbereiten eigener Themen)
-  A3 quer · A  Inhalt mit Ansprechpartner (Bild) – Kopf über volle Breite, drei Spalten, Fragenleiste, schwarzes Band
-  A3 quer · B  Inhalt ohne Bild
-  A3 quer · C  Kurzfassung mit schwarzer Titelspalte
-  A3 quer · D  Grundraster mit schwarzer Titelspalte
+  Arbeitsblatt hoch und quer – druckerfreundlich, nur Weiß (steht seit 09.11.2026 ganz oben)
+  A3 hoch · Inhalt mit / ohne Ansprechpartner
+  A3 quer · Inhalt mit / ohne Ansprechpartner
+  Die Kurzfassungen (hoch mit gelbem Balken, quer mit schwarzer Titelspalte) hat Daniel am 09.11.2026 entfernt;
+  ihre Bausteine (hoch(), quer()) bleiben im Code für spätere Verwendung.
 PNG-Export (150 dpi) nach site/projekte/ga/onepager/.
 
 Aufruf: python3 werkzeuge/ga/onepager.py [--ohne-png]
@@ -427,41 +425,31 @@ def inhalt(mit_png):
     H, Q = "1754 × 2480", "2480 × 1754"
     hi = [f(lambda n: hoch_inhalt(INHALT, True, n), "a3-hoch-inhalt-person", "A · mit Ansprechpartner", H),
           f(lambda n: hoch_inhalt(INHALT, False, n), "a3-hoch-inhalt", "B · ohne Bild", H)]
-    hk = [f(lambda n: hoch(LEISTUNG, "person", n), "a3-hoch-leistung-person", "C · mit Ansprechpartner", H),
-          f(lambda n: hoch(LEISTUNG, "marke", n), "a3-hoch-leistung", "D · ohne Bild", H),
-          f(lambda n: hoch(RASTER, "raster", n), "a3-hoch-raster", "E · Grundraster", H)]
     qi = [f(lambda n: quer_inhalt(INHALT, True, n), "a3-quer-inhalt-person", "A · mit Ansprechpartner", Q),
           f(lambda n: quer_inhalt(INHALT, False, n), "a3-quer-inhalt", "B · ohne Bild", Q)]
-    qk = [f(lambda n: quer(LEISTUNG, "person", n), "a3-quer-leistung", "C · mit Ansprechpartner", Q),
-          f(lambda n: quer(RASTER, "raster", n), "a3-quer-raster", "D · Grundraster", Q)]
     ab = [f(lambda n: arbeitsblatt(BLATT, "hoch", n), "a3-hoch-arbeitsblatt", "Arbeitsblatt hoch", H),
           f(lambda n: arbeitsblatt(BLATT, "quer", n), "a3-quer-arbeitsblatt", "Arbeitsblatt quer", Q)]
-    return (abschnitt("A3 hoch · Inhalt",
-                      "Das Arbeitsformat für echte Inhalte: Überschrift über die volle Breite, darunter Problem und Lösung nebeneinander, "
-                      "die Zusammenarbeit in drei Schritten, fünf Fragen und unten ein schwarzes Band mit dem Ergebnis.",
-                      f'<div class="op-reihe op-reihe--quer">{"".join(hi)}</div>')
-            + abschnitt("A3 hoch · Kurzfassung",
-                        "Wenig Text, große Flächen wie auf der Volksfest-Seite: Thema, Problem, Lösung, Ergebnis – je Fläche eine Aussage.",
-                        f'<div class="op-reihe">{"".join(hk)}</div>')
+    # Reihenfolge und Auswahl (Daniel, 09.11.2026): Arbeitsblatt zuerst; die Kurzfassungen hoch (gelber Balken)
+    # und quer (schwarze Titelspalte) sind entfernt.
+    return (abschnitt("Arbeitsblatt · hoch und quer",
+                      "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Logo, Überschrift und ein Satz, "
+                      "darunter die freie Fläche für den Inhalt (gestrichelt angedeutet, wird nicht gedruckt).",
+                      f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>')
+            + abschnitt("A3 hoch · Inhalt",
+                        "Das Arbeitsformat für echte Inhalte: Überschrift über die volle Breite, darunter Problem und Lösung nebeneinander, "
+                        "die Zusammenarbeit in drei Schritten, fünf Fragen und unten ein schwarzes Band mit dem Ergebnis.",
+                        f'<div class="op-reihe op-reihe--quer">{"".join(hi)}</div>')
             + abschnitt("A3 quer · Inhalt",
                         "Überschrift über die volle Breite, darunter drei gleich breite Spalten (Problem, Lösung, Zusammenarbeit), "
                         "fünf Fragen und unten ein schwarzes Band mit dem Ergebnis.",
-                        f'<div class="op-reihe op-reihe--quer">{"".join(qi)}</div>')
-            + abschnitt("A3 quer · Kurzfassung",
-                        "Wenig Text: schwarze Titelspalte links, rechts eine offene weiße Fläche mit Problem, Lösung und Ergebnis.",
-                        f'<div class="op-reihe op-reihe--quer">{"".join(qk)}</div>')
-            + abschnitt("Arbeitsblatt · hoch und quer",
-                        "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Logo, Überschrift und ein Satz, "
-                        "darunter die freie Fläche für den Inhalt (gestrichelt angedeutet, wird nicht gedruckt).",
-                        f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>'))
-
+                        f'<div class="op-reihe op-reihe--quer">{"".join(qi)}</div>'))
 
 def main():
     mit_png = "--ohne-png" not in sys.argv
     seite_schreiben(DATEI, "One-Pager", 'One-<span class="hl">Pager</span>',
-                    "Ein Blatt für eine Leistung oder ein Thema, in A3 hoch und quer. Die Inhaltsfassung trägt echte Inhalte über die volle Breite, "
-                    "die Kurzfassung arbeitet mit wenig Text und großen Flächen. Jeweils mit Ansprechpartner oder ohne Bild.",
-                    ["Entwurf 3", "A3 hoch & quer", "Inhalt & Kurzfassung", "mit / ohne Bild"],
+                    "Ein Blatt für ein Thema, in A3 hoch und quer: das Arbeitsblatt zum Ausdrucken und die Inhaltsfassung mit echten Inhalten "
+                    "über die volle Breite – mit Ansprechpartner oder ohne Bild.",
+                    ["Entwurf 3", "A3 hoch & quer", "Arbeitsblatt & Inhalt", "mit / ohne Bild"],
                     inhalt(mit_png), CSS_HOCH + CSS_QUER + CSS_INHALT + CSS_INHALT_HOCH + CSS_BLATT + SEITE_CSS)
     if mit_png:
         png_export(DATEI, "onepager")
