@@ -292,6 +292,58 @@ CSS_INHALT_HOCH = masse("""
 """, 297)
 
 
+# ---------- Druckfassung (Daniel, 09.11.2026): Inhalte wie A3 Inhalt, aber zum Selbstdrucken ----------
+# Nur Weiß, keine schwarzen Flächen, kein Foto. Struktur über feine Rahmen, das Ergebnis in einem schwarz gerahmten Kasten.
+def druck_fuss(d):
+    return (f'<section class="dr-ergebnis">{k("Das Ergebnis")}<p>{d["ergebnis"]}</p></section>'
+            f'<footer class="dr-fuss">{logo(cls="dr-logo")}'
+            f'<span>{FIRMA["name"]} · {FIRMA["strasse"]} · {FIRMA["ort"]}</span><span>{FIRMA["web"]}</span></footer>')
+
+
+def druck(d, fmt, png=None):
+    attr = f' data-png="ga/onepager/{png}.png" data-pw="{PX[fmt][0]}"' if png else ""
+    spalten = d["spalten"] if fmt == "quer" else d["spalten"][:2]
+    zus = ""
+    if fmt == "hoch":
+        zk, zh, _, zl = d["spalten"][2]
+        zus = (f'<section class="oi-zus dr-karte"><div>{k(zk)}<h2>{zh}</h2></div>'
+               f'<ul class="oi-liste oi-liste--quer">{"".join(oi_zeile(*z) for z in zl)}</ul></section>')
+    hoch_cls = " op--inhalt-hoch" if fmt == "hoch" else ""
+    return (f'<div class="op op--inhalt{hoch_cls} op--druck"{attr}>{oi_kopf(d)}'
+            f'<section class="oi-spalten">{"".join(oi_spalte(*sp) for sp in spalten)}</section>'
+            f'{zus}{oi_fragen(d)}{druck_fuss(d)}</div>')
+
+
+def css_druck(w, rand):
+    s = '.op--inhalt-hoch.op--druck' if w == 297 else '.op--druck:not(.op--inhalt-hoch)'
+    return masse(f"""
+{s} > .oi-spalten {{ flex: 1; grid-template-rows: auto auto auto 1fr; column-gap: [6]; margin-top: [12]; }}
+{s} .oi-spalte {{ border: [0.4] solid #1a1817; border-radius: [2.5]; padding: [7] [7] [6]; }}
+{s} .oi-spalte .oi-liste li:last-child {{ border-bottom: 0; }}
+{s} > .oi-zus {{ margin: [6] [{rand}] 0; padding: [7] [7] [6]; border: [0.4] solid #1a1817; border-radius: [2.5]; }}
+{s} > .oi-zus .oi-liste--quer li {{ border-top: [0.3] solid #d9d5cf; }}
+{s} > .oi-fragen {{ margin-top: [10]; padding-top: 0; padding-bottom: 0; }}
+{s} > .dr-ergebnis {{ margin: [10] [{rand}] 0; padding: [6] [8]; border: [0.6] solid #1a1817; border-radius: [2.5];
+  display: grid; grid-template-columns: [44] 1fr; align-items: center; column-gap: [6]; }}
+{s} > .dr-ergebnis .op-k {{ margin: 0; }}
+{s} > .dr-ergebnis p:last-child {{ margin: 0; font: 700 [{15 if w == 297 else 14}pt]/1.35 'Lora', serif; }}
+{s} > .dr-fuss {{ display: flex; align-items: center; gap: [8]; margin: [7] [{rand}] [12]; padding-left: 0; padding-right: 0; padding-top: [5];
+  border-top: [0.3] solid #d9d5cf; font: 400 [8pt]/1.3 'Poppins', sans-serif; color: #6b6762; white-space: nowrap; }}
+{s} > .dr-fuss .dr-logo {{ display: block; height: [5.5]; width: auto; margin-left: [-1.2]; margin-right: auto; }}
+""", w)
+
+
+CSS_DRUCK = css_druck(297, 20) + css_druck(420, 22) + masse("""
+.op--inhalt-hoch.op--druck > .oi-spalten { flex: none; }
+.op--inhalt-hoch.op--druck > .oi-zus, .op--inhalt-hoch.op--druck > .oi-fragen, .op--inhalt-hoch.op--druck > .dr-ergebnis { margin-top: auto; }
+.op--inhalt-hoch.op--druck > .oi-zus { margin-bottom: [4]; }
+.op--inhalt-hoch.op--druck > .oi-fragen { margin-bottom: [4]; }
+.op--inhalt-hoch.op--druck h2 { font-size: [17pt]; }
+.op--inhalt-hoch.op--druck .oi-liste b { font-size: [12pt]; }
+.op--inhalt-hoch.op--druck .oi-liste p { font-size: [9.5pt]; }
+""", 297)
+
+
 # ---------- Arbeitsblatt: druckerfreundlich, nur Weiß – Kopf und eine angedeutete Inhaltsfläche ----------
 BLATT = dict(
     kicker="Workshop",
@@ -429,12 +481,18 @@ def inhalt(mit_png):
           f(lambda n: quer_inhalt(INHALT, False, n), "a3-quer-inhalt", "B · ohne Bild", Q)]
     ab = [f(lambda n: arbeitsblatt(BLATT, "hoch", n), "a3-hoch-arbeitsblatt", "Arbeitsblatt hoch", H),
           f(lambda n: arbeitsblatt(BLATT, "quer", n), "a3-quer-arbeitsblatt", "Arbeitsblatt quer", Q)]
+    dr = [f(lambda n: druck(INHALT, "hoch", n), "a3-hoch-druck", "Druckfassung hoch", H),
+          f(lambda n: druck(INHALT, "quer", n), "a3-quer-druck", "Druckfassung quer", Q)]
     # Reihenfolge und Auswahl (Daniel, 09.11.2026): Arbeitsblatt zuerst; die Kurzfassungen hoch (gelber Balken)
     # und quer (schwarze Titelspalte) sind entfernt.
     return (abschnitt("Arbeitsblatt · hoch und quer",
                       "Für Workshops und zum Ausdrucken: fast nur Weiß, keine schwarzen oder gelben Flächen. Oben Logo, Überschrift und ein Satz, "
                       "darunter die freie Fläche für den Inhalt (gestrichelt angedeutet, wird nicht gedruckt).",
                       f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>')
+            + abschnitt("Druckfassung · hoch und quer",
+                        "Die Inhalte der A3-Inhaltsfassung zum Selbstdrucken: nur Weiß, keine schwarzen Flächen, kein Foto. "
+                        "Feine Rahmen ordnen die Blöcke, das Ergebnis steht in einem schwarz gerahmten Kasten.",
+                        f'<div class="op-reihe op-reihe--blatt">{"".join(dr)}</div>')
             + abschnitt("A3 hoch · Inhalt",
                         "Das Arbeitsformat für echte Inhalte: Überschrift über die volle Breite, darunter Problem und Lösung nebeneinander, "
                         "die Zusammenarbeit in drei Schritten, fünf Fragen und unten ein schwarzes Band mit dem Ergebnis.",
@@ -450,7 +508,7 @@ def main():
                     "Ein Blatt für ein Thema, in A3 hoch und quer: das Arbeitsblatt zum Ausdrucken und die Inhaltsfassung mit echten Inhalten "
                     "über die volle Breite – mit Ansprechpartner oder ohne Bild.",
                     ["Entwurf 3", "A3 hoch & quer", "Arbeitsblatt & Inhalt", "mit / ohne Bild"],
-                    inhalt(mit_png), CSS_HOCH + CSS_QUER + CSS_INHALT + CSS_INHALT_HOCH + CSS_BLATT + SEITE_CSS)
+                    inhalt(mit_png), CSS_HOCH + CSS_QUER + CSS_INHALT + CSS_INHALT_HOCH + CSS_DRUCK + CSS_BLATT + SEITE_CSS)
     if mit_png:
         png_export(DATEI, "onepager")
 
