@@ -293,9 +293,11 @@ CSS_INHALT_HOCH = masse("""
 
 
 # ---------- Druckfassung (Daniel, 09.11.2026): Inhalte wie A3 Inhalt, aber zum Selbstdrucken ----------
-# Nur Weiß, keine schwarzen Flächen, kein Foto. Struktur über feine Rahmen, das Ergebnis in einem schwarz gerahmten Kasten.
+# Nur Weiß, keine schwarzen Flächen, kein Foto, keine Kästen (Daniel, 09.11.2026). Das Ergebnis steht unter einer kräftigen Linie.
 def druck_fuss(d):
-    return (f'<section class="dr-ergebnis">{k("Das Ergebnis")}<p>{d["ergebnis"]}</p></section>'
+    # Passt der Satz nicht in eine Zeile, bricht er nach dem Gedankenstrich um statt mitten im Satzteil.
+    satz = d["ergebnis"].replace(" – ", ' – <span class="dr-teil">', 1) + "</span>" if " – " in d["ergebnis"] else d["ergebnis"]
+    return (f'<section class="dr-ergebnis">{k("Das Ergebnis")}<p>{satz}</p></section>'
             f'<footer class="dr-fuss"><span>{FIRMA["web"]}</span></footer>')
 
 
@@ -305,7 +307,7 @@ def druck(d, fmt, png=None):
     zus = ""
     if fmt == "hoch":
         zk, zh, _, zl = d["spalten"][2]
-        zus = (f'<section class="oi-zus dr-karte"><div>{k(zk)}<h2>{zh}</h2></div>'
+        zus = (f'<section class="oi-zus"><div>{k(zk)}<h2>{zh}</h2></div>'
                f'<ul class="oi-liste oi-liste--quer">{"".join(oi_zeile(*z) for z in zl)}</ul></section>')
     hoch_cls = " op--inhalt-hoch" if fmt == "hoch" else ""
     return (f'<div class="op op--inhalt{hoch_cls} op--druck"{attr}>{oi_kopf(d)}'
@@ -314,31 +316,23 @@ def druck(d, fmt, png=None):
 
 
 def css_druck(w, rand):
+    """Offen wie A3 Inhalt, keine Kästen. Jeder Block gleich gebaut: Kicker, darunter Überschrift, darunter Inhalt.
+    Getrennt wird nur über Linien und Luft; die Blöcke verteilen den freien Raum gleichmäßig (margin-top: auto)."""
     s = '.op--inhalt-hoch.op--druck' if w == 297 else '.op--druck:not(.op--inhalt-hoch)'
     return masse(f"""
-{s} > .oi-spalten {{ flex: 1; grid-template-rows: auto auto auto 1fr; column-gap: [6]; margin-top: [12]; }}
-{s} .oi-spalte {{ border: [0.4] solid #1a1817; border-radius: [2.5]; padding: [7] [7] [6]; }}
-{s} .oi-spalte .oi-liste li:last-child {{ border-bottom: 0; }}
-{s} > .oi-zus {{ margin: [6] [{rand}] 0; padding: [7] [7] [6]; border: [0.4] solid #1a1817; border-radius: [2.5]; }}
-{s} > .oi-zus .oi-liste--quer li {{ border-top: [0.3] solid #d9d5cf; }}
-{s} > .oi-fragen {{ margin-top: [10]; padding-top: 0; padding-bottom: 0; }}
-{s} > .dr-ergebnis {{ margin: [10] [{rand}] 0; padding: [6] [8]; border: [0.6] solid #1a1817; border-radius: [2.5];
-  display: grid; grid-template-columns: [44] 1fr; align-items: center; column-gap: [6]; }}
-{s} > .dr-ergebnis .op-k {{ margin: 0; }}
-{s} > .dr-ergebnis p:last-child {{ margin: 0; font: 700 [{15 if w == 297 else 14}pt]/1.35 'Lora', serif; }}
-{s} > .dr-fuss {{ display: flex; justify-content: flex-end; margin: [6] [{rand}] [12]; padding-left: 0; padding-right: 0; font: 400 [8pt]/1.3 'Poppins', sans-serif; color: #6b6762; white-space: nowrap; }}
+{s} > .oi-spalten {{ flex: none; }}
+{s} > .oi-zus, {s} > .oi-fragen, {s} > .dr-ergebnis {{ margin-top: auto; }}
+{s} > .oi-fragen {{ padding-top: 0; padding-bottom: 0; }}
+{s} .oi-fragen__in {{ display: block; }}
+{s} .oi-fragen h3 {{ margin-bottom: [6]; }}
+{s} > .dr-ergebnis {{ border-top: [1] solid #1a1817; margin-left: [{rand}]; margin-right: [{rand}]; padding: [5] 0 0; }}
+{s} > .dr-ergebnis p:last-child {{ margin: 0; font: 700 [{17 if w == 297 else 16}pt]/1.35 'Lora', serif; letter-spacing: -.01em; }}
+{s} .dr-teil {{ display: inline-block; }}
+{s} > .dr-fuss {{ display: flex; justify-content: flex-end; margin: [8] [{rand}] [12]; padding-left: 0; padding-right: 0; font: 400 [8pt]/1.3 'Poppins', sans-serif; color: #6b6762; white-space: nowrap; }}
 """, w)
 
 
-CSS_DRUCK = css_druck(297, 20) + css_druck(420, 22) + masse("""
-.op--inhalt-hoch.op--druck > .oi-spalten { flex: none; }
-.op--inhalt-hoch.op--druck > .oi-zus, .op--inhalt-hoch.op--druck > .oi-fragen, .op--inhalt-hoch.op--druck > .dr-ergebnis { margin-top: auto; }
-.op--inhalt-hoch.op--druck > .oi-zus { margin-bottom: [4]; }
-.op--inhalt-hoch.op--druck > .oi-fragen { margin-bottom: [4]; }
-.op--inhalt-hoch.op--druck h2 { font-size: [17pt]; }
-.op--inhalt-hoch.op--druck .oi-liste b { font-size: [12pt]; }
-.op--inhalt-hoch.op--druck .oi-liste p { font-size: [9.5pt]; }
-""", 297)
+CSS_DRUCK = css_druck(297, 20) + css_druck(420, 22)
 
 
 # ---------- Arbeitsblatt: druckerfreundlich, nur Weiß – Kopf und eine angedeutete Inhaltsfläche ----------
@@ -488,7 +482,7 @@ def inhalt(mit_png):
                       f'<div class="op-reihe op-reihe--blatt">{"".join(ab)}</div>')
             + abschnitt("Druckfassung · hoch und quer",
                         "Die Inhalte der A3-Inhaltsfassung zum Selbstdrucken: nur Weiß, keine schwarzen Flächen, kein Foto. "
-                        "Feine Rahmen ordnen die Blöcke, das Ergebnis steht in einem schwarz gerahmten Kasten.",
+                        "Offen gesetzt wie die Inhaltsfassung, ohne Kästen; jeder Block mit Kicker, Überschrift und Inhalt untereinander, das Ergebnis unter einer kräftigen Linie.",
                         f'<div class="op-reihe op-reihe--blatt">{"".join(dr)}</div>')
             + abschnitt("A3 hoch · Inhalt",
                         "Das Arbeitsformat für echte Inhalte: Überschrift über die volle Breite, darunter Problem und Lösung nebeneinander, "
