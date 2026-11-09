@@ -331,6 +331,9 @@ def css_druck(w, rand):
 
 
 CSS_DRUCK = css_druck(297, 20) + css_druck(420, 22) + masse("""
+.op--druck:not(.op--inhalt-hoch) .oi-pfeil { flex-basis: [24]; margin-bottom: [1.45]; }
+""", 420) + masse("""
+.op--inhalt-hoch.op--druck .oi-pfeil { flex-basis: [34]; margin-bottom: [1.2]; }
 .op--inhalt-hoch.op--druck > .oi-spalten { flex: none; }
 .op--inhalt-hoch.op--druck > .oi-zus, .op--inhalt-hoch.op--druck > .oi-fragen, .op--inhalt-hoch.op--druck > .dr-ergebnis { margin-top: auto; }
 .op--inhalt-hoch.op--druck > .oi-zus { margin-bottom: [4]; }
