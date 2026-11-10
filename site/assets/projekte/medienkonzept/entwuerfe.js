@@ -1654,14 +1654,14 @@ window.MK_ENTWUERFE = [
   "art": "Frage · Foto",
   "kern": "Das erste Projekt bei einem Kunden bestimmt, in welcher Schublade du dort für Jahre steckst.",
   "text": "Das erste Projekt bei einem Kunden bestimmt, in welcher Schublade du dort für Jahre steckst.\n\nBei einem Kunden habe ich vor Ewigkeiten ein Seminar gehalten.\n\nDaraus wurden viele Themen, die wir ganz neu aufgesetzt haben. Heute machen wir dort vor allem Strategieprojekte.\n\nEin Vorstand dort fragt mich trotzdem jedes Mal, welches Seminar ich heute leite.\n\nBei einem anderen Kunden ging es im ersten Projekt um Prozesse. Seitdem sind wir dort die Prozessoptimierer.\n\nIch finde das eher lustig. Und es ist zutiefst menschlich.\n\nIm eigenen Haus geht es dir nicht anders. Mit dem Thema, mit dem du in deiner Rolle gestartet bist, verbinden dich viele bis heute.\n\nIn welcher Schublade steckst du gerade? Und welche wäre die richtige?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-09",
   "kennzahlen": [],
   "bild": "rp30",
   "format": "Frage · Foto",
   "offen": "",
   "termin": "Mo 09.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7525448467666845697"
  },
  {
   "id": 99,
@@ -1670,14 +1670,14 @@ window.MK_ENTWUERFE = [
   "art": "Szene · Zitatkarte (Film)",
   "kern": "Vertrieb und Beratung: „Der Spion“ – „Ich höre einfach zu. Wenn ich eine Lösung habe, reden wir. Wenn nicht, trinken wir weiter.“ Überzeugung vom Angebot, Fokus aufs Kundenproblem, verkaufen nur, wenn es passt.",
   "text": "In einer Minute dieses Spionagefilms lernst du mehr über Vertrieb als in jedem Vertriebsseminar.\n\nIn „Der Spion“ sitzt Benedict Cumberbatch in seiner Rolle als Geschäftsmann mit potenziellen Kunden am Tisch und sagt sinngemäß:\n\n„Ich vertrete die besten Hersteller. Ihr kennt euer Geschäft. Also spare ich mir die übliche Show und höre zu. Habe ich eine Lösung, reden wir. Wenn nicht, trinken wir weiter.“\n\nSensationell.\n\nJetzt vergleiche das mit dem typischen Vertriebstermin: zwanzig Minuten Produkt, dann Konditionen, dann „Noch Fragen?“.\n\nEr macht drei Dinge anders:\n\n• Er ist so überzeugt von seinem Angebot, dass er es nicht erklären muss.\n• Ihn interessiert nur das Problem des Kunden.\n• Er verkauft nur, wenn es wirklich passt – und sagt das offen.\n\nDas spürt jeder Kunde: Hier will mir keiner etwas andrehen.\n\nFür deinen nächsten Termin:\n\n1. Die ersten zehn Minuten kein Wort über dein Produkt.\n2. Eine Frage: Was beschäftigt euch gerade?\n3. Und den Mut zu sagen: Dafür habe ich nichts.\n\nAb diesem Satz glaubt man dir den Rest.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-10",
   "kennzahlen": [],
   "bild": "rp28",
   "format": "Szene · Zitatkarte (Film)",
   "offen": "",
   "termin": "Di 10.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7525810862125690880"
  },
  {
   "id": 60,
