@@ -1441,6 +1441,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 138,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 190,
+    "reichweite": 141,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp21",
@@ -1491,6 +1498,13 @@ window.MK_ENTWUERFE = [
     "stunden": 100.3,
     "impressionen": 290,
     "reichweite": 192,
+    "reaktionen": 3,
+    "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 300,
+    "reichweite": 201,
     "reaktionen": 3,
     "kommentare": 2
    }
@@ -1546,6 +1560,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 407,
     "reaktionen": 16,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 622,
+    "reichweite": 474,
+    "reaktionen": 17,
+    "kommentare": 4
    }
   ],
   "bild": "rp23",
@@ -1584,6 +1605,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 102,
     "reaktionen": 4,
     "kommentare": 1
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 167,
+    "reichweite": 122,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1615,6 +1643,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 151,
     "reaktionen": 5,
     "kommentare": 4
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 278,
+    "reichweite": 192,
+    "reaktionen": 7,
+    "kommentare": 4
    }
   ],
   "bild": "rp25",
@@ -1639,6 +1674,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 62,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 181,
+    "reichweite": 111,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp26",
@@ -1656,7 +1698,15 @@ window.MK_ENTWUERFE = [
   "text": "Das erste Projekt bei einem Kunden bestimmt, in welcher Schublade du dort für Jahre steckst.\n\nBei einem Kunden habe ich vor Ewigkeiten ein Seminar gehalten.\n\nDaraus wurden viele Themen, die wir ganz neu aufgesetzt haben. Heute machen wir dort vor allem Strategieprojekte.\n\nEin Vorstand dort fragt mich trotzdem jedes Mal, welches Seminar ich heute leite.\n\nBei einem anderen Kunden ging es im ersten Projekt um Prozesse. Seitdem sind wir dort die Prozessoptimierer.\n\nIch finde das eher lustig. Und es ist zutiefst menschlich.\n\nIm eigenen Haus geht es dir nicht anders. Mit dem Thema, mit dem du in deiner Rolle gestartet bist, verbinden dich viele bis heute.\n\nIn welcher Schublade steckst du gerade? Und welche wäre die richtige?",
   "status": "veroeffentlicht",
   "datum": "2026-11-09",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 28.3,
+    "impressionen": 138,
+    "reichweite": 93,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp30",
   "format": "Frage · Foto",
   "offen": "",
@@ -1672,7 +1722,15 @@ window.MK_ENTWUERFE = [
   "text": "In einer Minute dieses Spionagefilms lernst du mehr über Vertrieb als in jedem Vertriebsseminar.\n\nIn „Der Spion“ sitzt Benedict Cumberbatch in seiner Rolle als Geschäftsmann mit potenziellen Kunden am Tisch und sagt sinngemäß:\n\n„Ich vertrete die besten Hersteller. Ihr kennt euer Geschäft. Also spare ich mir die übliche Show und höre zu. Habe ich eine Lösung, reden wir. Wenn nicht, trinken wir weiter.“\n\nSensationell.\n\nJetzt vergleiche das mit dem typischen Vertriebstermin: zwanzig Minuten Produkt, dann Konditionen, dann „Noch Fragen?“.\n\nEr macht drei Dinge anders:\n\n• Er ist so überzeugt von seinem Angebot, dass er es nicht erklären muss.\n• Ihn interessiert nur das Problem des Kunden.\n• Er verkauft nur, wenn es wirklich passt – und sagt das offen.\n\nDas spürt jeder Kunde: Hier will mir keiner etwas andrehen.\n\nFür deinen nächsten Termin:\n\n1. Die ersten zehn Minuten kein Wort über dein Produkt.\n2. Eine Frage: Was beschäftigt euch gerade?\n3. Und den Mut zu sagen: Dafür habe ich nichts.\n\nAb diesem Satz glaubt man dir den Rest.",
   "status": "veroeffentlicht",
   "datum": "2026-11-10",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 106,
+    "reichweite": 65,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp28",
   "format": "Szene · Zitatkarte (Film)",
   "offen": "",
