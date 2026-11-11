@@ -125,8 +125,13 @@ def sektionen(NAME, vb, SYS):
         rp31, rp32,
         foto("rp33", "foto-skizze.jpg", "50% 35%", "„Hat dein Papa wieder einen <span class=\"hl\" style=\"color:#1a1817\">coolen&nbsp;Trick?</span>“",
              "Die Freundinnen meiner Tochter", 90),
-        rp34, rp35, rp36, rp37,
+        # Grundform-Prüfung 11.11.2026: echte Fotos statt Grafiken, höchstens eine Grafik pro Woche (rp36)
+        foto("rp34", "foto-anzug-fenster.jpg", "50% 30%", "Daraus wurden <span class=\"hl\" style=\"color:#1a1817\">18&nbsp;Monate.</span>", "", 100, "40%"),
+        foto("rp35", "foto-videoraum.jpg", "40% 50%", "Und dann: <span class=\"hl\" style=\"color:#1a1817\">Stille.</span>", "", 110, "40%"),
+        rp36,
+        foto("rp37", "foto-konferenztisch.jpg", "30% 50%", "Ein Satz. <span class=\"hl\" style=\"color:#1a1817\">Die&nbsp;Richtung.</span>", "", 110, "40%"),
         """<section class="p vollbild" id="rp38">%s<div class="verlauf" style="height:14%%"></div>%s</section>""" % (vb("foto-nein.jpg", "12% 50%"), weiss_name),
         foto("rp39", "foto-saal.jpg", "46% 50%", "Die besten fünf Minuten <span class=\"hl\" style=\"color:#1a1817\">hatten&nbsp;keine&nbsp;Folie.</span>", "", 92),
-        rp40, rp41,
+        foto("rp40", "foto-zeigt.jpg", "62% 50%", "Nächstes Jahr? <span class=\"hl\" style=\"color:#1a1817\">Drei&nbsp;Wochen.</span>", "", 110, "40%"),
+        foto("rp41", "foto-sw-nachdenklich.jpg", "50% 30%", "Seit Jahren bekannt.<br><span class=\"hl\" style=\"color:#1a1817\">Seit Jahren geduldet.</span>", "", 92, "45%"),
     ]

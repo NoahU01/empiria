@@ -79,15 +79,15 @@ Am Montag im Besprechungsraum mache ich übrigens genau dasselbe.
 
 Gut erklärt hast du, wenn andere nachfragen, wie das geht.""",
      "Rohantworten 14.10. (Mathe mit der Tochter) – keine Kinderfotos, Tochter ohne Namen"),
-    (56, "2026-11-15", "rp34", """Zwei Abteilungen zusammenzulegen ist schnell entschieden. Dass der neue Zuschnitt gelebt wird, dauert deutlich länger.
+    (56, "2026-11-15", "rp34", """„Daniel, ich brauche dich mal nur ganz kurz.“
 
-Wenn ein Vorstand anruft und sagt „Daniel, ich brauche dich mal nur ganz kurz“, weiß ich: Gleich kommt eine Lage, die jemand sortieren muss.
+Wenn ein Vorstand so anruft, weiß ich: Gleich kommt eine Lage, die jemand sortieren muss.
 
-In diesem Fall ging es um eine Zusammenlegung zu einer neuen Hauptabteilung.
+In diesem Fall ging es um die Zusammenlegung zweier Abteilungen zu einer neuen Hauptabteilung.
 
 Aus dem kurzen Andiskutieren wurde eine Stunde Sparring. Danach war klar: Hier bleiben wir dran.
 
-Es wurden 18 Monate. Die Struktur war dabei der kleinere Teil.
+Zusammenlegen ist schnell entschieden. Dass der neue Zuschnitt gelebt wird, dauert deutlich länger.
 
 Die eigentliche Arbeit war, dass der neue Bereich funktioniert, intern und an jeder Schnittstelle im Haus.
 
@@ -100,17 +100,15 @@ Wenn du gerade zusammenlegst, kläre vier Dinge, bevor Rollen auf Papier stehen:
 
 Sonst arbeiten zwei Abteilungen unter neuem Namen weiter wie bisher.""",
      "Rohantworten 13.10. („Daniel, ich brauche dich mal nur ganz kurz“ – 18 Monate, Zusammenlegung)"),
-    (None, "2026-11-16", "rp35", """Wenn in den ersten fünf Minuten keiner sagen kann, mit welchem Ergebnis wir rausgehen, brauchen wir den Termin nicht.
+    (None, "2026-11-16", "rp35", """„Kann mir einer kurz einordnen, mit welchem Ergebnis wir heute rausgehen wollen?“
 
-Das sage ich in Videokonferenzen tatsächlich so.
-
-Meine erste Frage ist fast immer: Kann mir einer kurz das Thema einordnen und sagen, welches Ergebnis wir heute wollen?
+Mit dieser Frage beginne ich fast jede Videokonferenz.
 
 Kommt ein kurzes Gesamtbild und ein klares Ergebnis, ist alles gut.
 
 Kommen vorbereitete Einzelpunkte oder die Agenda, weiß ich: Hier klammert sich jemand an sein Thema.
 
-Am Ende gibt es Entscheidungen im Detail, und das große Ganze funktioniert nicht.
+Dann sage ich: Wenn das nicht klar ist, brauchen wir über das hier heute gar nicht zu sprechen.
 
 Danach folgt meistens eine muntere Diskussion, was eigentlich das Ziel ist. Das ist für alle okay. Sie wollen ja etwas erreichen.
 
@@ -118,9 +116,7 @@ Dein Test für diese Woche:
 
 1. Stelle die Frage zu Beginn jedes Termins.
 2. Achte darauf, wer sie in zwei Sätzen beantworten kann.
-3. Kann es keiner, klärt ihr zuerst das Ziel und dann das Thema.
-
-Die Frage kostet dich zehn Sekunden.""",
+3. Kann es keiner, klärt ihr zuerst das Ziel und dann das Thema.""",
      "Rohantworten 12.10. (Runde 1b: Einordnungsfrage) und Runde 3 (was passiert, wenn niemand sie beantworten kann)"),
     (98, "2026-11-17", "rp36", """Erst verbieten Vorstände fast jede KI im Haus. Dann fordern sie von ihren Leuten KI-Schnellboote.
 
@@ -142,15 +138,13 @@ Wenn du Schnellboote willst, brauchst du drei Dinge:
 
 Wer Ausprobieren fordert, muss Ausprobieren erlauben.""",
      "Daniel, Diktat 27.10.2026 · Rohantworten 12.10. (KI im eigenen Haus)"),
-    (None, "2026-11-18", "rp37", """Ein klarer Satz als Grundrichtung bringt einen Vorstand weiter als jedes Management Summary.
+    (None, "2026-11-18", "rp37", """Sechs Vorstände, sechs Charaktere, eine mehrtägige Klausur.
 
-Das habe ich gelernt, als ich in der Konzernstrategie mehrtägige Vorstandsklausuren vorbereitet habe.
+Bei jedem wichtigen Thema kam irgendwann ein einziger Satz, der die Richtung vorgab.
 
-Sechs Vorstände, sechs Charaktere, alle hochintelligent und erfahren.
+Ich habe solche Klausuren in der Konzernstrategie vorbereitet. Alle sechs waren hochintelligent und erfahren.
 
-Bei wichtigen Themen fiel irgendwann ein Satz, der die Richtung vorgab.
-
-Daraus konnte jeder ableiten. Und jeder konnte später sein Thema daran messen.
+Aus diesem einen Satz konnte jeder ableiten. Und jeder konnte später sein Thema daran messen. Das war mehr wert als jedes Management Summary.
 
 Gekippt sind Diskussionen immer dann, wenn nicht klar war, was ein Thema für das Unternehmen bedeutet.
 
@@ -212,19 +206,19 @@ Für deine nächste Tagung:
 2. Prüfe jede Folie: Was macht der Zuhörer morgen anders?
 3. Plane Zeit für Fragen aus dem Saal ein.""",
      "Rohantworten 13.10. (Vertriebstagung – die besten fünf Minuten) · Abstand zu 40 (16.10.)"),
-    (57, "2026-11-21", "rp40", """Viele Führungskräfte fragen gar nicht mehr nach der richtigen Lösung. Sie haben gelernt, dass sie sie sowieso nicht bekommen.
+    (57, "2026-11-21", "rp40", """Drei Wochen nach unserem Termin war die Landingpage eines Vorstands live. Er selbst hatte mit nächstem Jahr gerechnet.
 
-Mit einem Vorstand hatte ich in kleiner Runde sein wichtigstes Thema durchstrukturiert: Business Story, Zielgruppen, Aufbau des Pitches.
+Wir hatten in kleiner Runde sein wichtigstes Thema durchstrukturiert: Business Story, Zielgruppen, Aufbau des Pitches.
 
-Ich sagte: Daraus machen wir sofort eine Landingpage.
+Am Ende schlug ich vor, daraus sofort eine Landingpage zu machen. Seine Sorge: Fragt er sie jetzt an, hat er sie vielleicht nächstes Jahr.
 
-Er: „Wenn ich jetzt eine Landingpage anfrage, kann ich froh sein, wenn ich sie nächstes Jahr habe.“
+Meine Antwort: So weit, wie wir sind, brauche ich keinen Input mehr. Gib mir das Go, dann ist sie in drei Wochen live.
 
-Ich: „So weit, wie wir jetzt sind, brauche ich keinen Input mehr von dir. Gib mir das Go, dann ist sie in drei Wochen live.“
+Er hat das Go gegeben.
 
-Er hat das Go gegeben. Nach drei Wochen war sie live.
+Viele Führungskräfte fragen gar nicht mehr nach der richtigen Lösung. Sie haben gelernt, dass sie sie sowieso nicht bekommen.
 
-Der Grund für das Tempo: Die Story stand, bevor die erste Zeile geschrieben war.
+Der Grund für unser Tempo: Die Story stand, bevor die erste Zeile geschrieben war.
 
 Wenn du etwas schneller willst:
 
@@ -232,13 +226,11 @@ Wenn du etwas schneller willst:
 2. Gib denen freie Hand, die das ganze Bild kennen.
 3. Lege den Termin fest, bevor die Arbeit beginnt.""",
      "Rohantworten 13.10. (Landingpage in drei Wochen) – Vorstand entscheidet klug, kein Seitenhieb aufs Marketing"),
-    (None, "2026-11-22", "rp41", """Nichts demotiviert deine besten Führungskräfte so sehr wie eine schlechte, die du gewähren lässt.
+    (None, "2026-11-22", "rp41", """Sobald kein Vorstand mehr im Raum ist, reden Führungskräfte mit mir fast immer über dasselbe: eine Führungskraft, die man seit Jahren gewähren lässt.
 
-Wenn ich mit Führungskräften ohne Vorstand im Raum spreche, kommt das fast immer.
+Probleme, die sie geschaffen hat, bestehen seit Jahren. Und alle wissen es.
 
-Probleme, die eine Führungskraft geschaffen hat, bestehen seit Jahren. Und alle wissen es.
-
-Am härtesten trifft das die Engagierten. Sie halten sich an die Regeln und sehen jeden Tag, dass es für andere keine gibt.
+Nichts demotiviert die Besten so sehr. Sie halten sich an die Regeln und sehen jeden Tag, dass es für andere keine gibt.
 
 Im selben Gespräch höre ich mit glänzenden Augen von Kleinigkeiten, die plötzlich laufen.
 
