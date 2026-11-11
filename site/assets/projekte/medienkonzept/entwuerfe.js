@@ -1744,14 +1744,14 @@ window.MK_ENTWUERFE = [
   "art": "Werkzeug · Bildschirm",
   "kern": "Wenn ein Kunde mir seine fertigen Folien zeigt, wandern sie bei mir erst einmal alle ins Backup.",
   "text": "Wenn ein Kunde mir seine fertigen Folien zeigt, wandern sie bei mir erst einmal alle ins Backup.\n\nDie Fakten darauf stimmen meistens.\n\nNur sprechen die Folien über das eigene Thema, mit allen Details. Was der Adressat davon hat, steht nirgends.\n\nFür mich selbst baue ich übrigens gar keine PowerPoints. Für Kunden baue ich sehr viele.\n\nIch arbeite mit einem Gesamtbild: handgezeichnet in OneNote oder als One-Pager, durch den ich strukturiert durchgehe.\n\nErst das Ganze, dann die Details.\n\nSo gehst du vor, bevor die erste Folie entsteht:\n\n1. Bringe das Gesamtbild auf eine Seite.\n2. Schreibe darunter, was der Adressat danach entscheiden soll.\n3. Prüfe jede alte Folie: Hilft sie genau dabei?\n\nWas nicht hilft, bleibt im Backup. Meistens ist das der größte Teil.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-11",
   "kennzahlen": [],
   "bild": "rp31",
   "format": "Werkzeug · Bildschirm",
   "offen": "",
   "termin": "Mi 11.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7526173226520002560"
  },
  {
   "id": 4,
