@@ -1507,6 +1507,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 201,
     "reaktionen": 3,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 307,
+    "reichweite": 205,
+    "reaktionen": 3,
+    "kommentare": 2
    }
   ],
   "bild": "ka1",
@@ -1567,6 +1574,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 474,
     "reaktionen": 17,
     "kommentare": 4
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 660,
+    "reichweite": 503,
+    "reaktionen": 18,
+    "kommentare": 4
    }
   ],
   "bild": "rp23",
@@ -1612,6 +1626,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 122,
     "reaktionen": 4,
     "kommentare": 1
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 176,
+    "reichweite": 130,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1650,6 +1671,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 192,
     "reaktionen": 7,
     "kommentare": 4
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 290,
+    "reichweite": 203,
+    "reaktionen": 7,
+    "kommentare": 4
    }
   ],
   "bild": "rp25",
@@ -1681,6 +1709,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 111,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 183,
+    "reichweite": 112,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp26",
@@ -1703,6 +1738,13 @@ window.MK_ENTWUERFE = [
     "stunden": 28.3,
     "impressionen": 138,
     "reichweite": 93,
+    "reaktionen": 3,
+    "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 144,
+    "reichweite": 97,
     "reaktionen": 3,
     "kommentare": 0
    }
@@ -1729,6 +1771,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 65,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 148,
+    "reichweite": 91,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1746,7 +1795,15 @@ window.MK_ENTWUERFE = [
   "text": "Wenn ein Kunde mir seine fertigen Folien zeigt, wandern sie bei mir erst einmal alle ins Backup.\n\nDie Fakten darauf stimmen meistens.\n\nNur sprechen die Folien über das eigene Thema, mit allen Details. Was der Adressat davon hat, steht nirgends.\n\nFür mich selbst baue ich übrigens gar keine PowerPoints. Für Kunden baue ich sehr viele.\n\nIch arbeite mit einem Gesamtbild: handgezeichnet in OneNote oder als One-Pager, durch den ich strukturiert durchgehe.\n\nErst das Ganze, dann die Details.\n\nSo gehst du vor, bevor die erste Folie entsteht:\n\n1. Bringe das Gesamtbild auf eine Seite.\n2. Schreibe darunter, was der Adressat danach entscheiden soll.\n3. Prüfe jede alte Folie: Hilft sie genau dabei?\n\nWas nicht hilft, bleibt im Backup. Meistens ist das der größte Teil.",
   "status": "veroeffentlicht",
   "datum": "2026-11-11",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 64,
+    "reichweite": 42,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp31",
   "format": "Werkzeug · Bildschirm",
   "offen": "",
