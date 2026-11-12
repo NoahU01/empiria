@@ -135,5 +135,7 @@ def sektionen(NAME, vb, SYS):
         foto("rp40", "foto-zeigt.jpg", "62% 50%", "Nächstes Jahr? <span class=\"hl\" style=\"color:#1a1817\">Drei&nbsp;Wochen.</span>", "", 110, "40%"),
         # 23.11. Strategisches Kaffeetrinken – Platzhalterfoto, bis Daniel ein Foto mit Kaffeetasse liefert
         foto("rp42", "foto-buero-polo.jpg", "22% 35%", "Entschieden wird <span class=\"hl\" style=\"color:#1a1817\">vor&nbsp;dem&nbsp;Gremium.</span>", "", 96, "40%"),
+        # 26.11. Probleme wegnehmen statt machen (Satz eines Bereichsleiters, Daniel 12.11.2026)
+        foto("rp43", "foto-brille-buero.jpg", "50% 30%", "Nimmst du Probleme weg – <span class=\"hl\" style=\"color:#1a1817\">oder machst du welche?</span>", "", 92, "45%"),
         foto("rp41", "foto-sw-nachdenklich.jpg", "50% 30%", "Seit Jahren bekannt.<br><span class=\"hl\" style=\"color:#1a1817\">Seit Jahren geduldet.</span>", "", 92, "45%"),
     ]
