@@ -1817,14 +1817,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Satzpaar",
   "kern": "Drei Führungskräfte wollten von mir ein Konfliktseminar. Ich habe ihnen kein Angebot geschrieben.",
   "text": "Drei Führungskräfte wollten von mir ein Konfliktseminar. Ich habe ihnen kein Angebot geschrieben.\n\nErst wollte ich verstehen, woher die Konflikte kommen. Nach ein paar Fragen war es klar: Keiner wusste, wo der Bereich hinsoll.\n\nOhne Zielbild legt jeder den Alltag anders aus. Und es gibt keinen Maßstab, an dem man sagen kann: Das ist die Richtung.\n\nDann streitet man eben. Ein Seminar ändert daran nichts.\n\nAlso haben wir an Zielbild und Rollen gearbeitet. Die drei hatten schnell Handlungssicherheit, und die Konflikte wurden weniger.\n\nMein schönster Moment: Im ersten Termin hörte ich „Ich bin Projektleiter, keine Führungskraft.“\n\nIm vierten Termin sagte dieselbe Person ganz selbstverständlich: „In meiner Rolle als Führungskraft …“\n\nWenn bei dir ständig Konflikte hochkommen, prüfe zuerst:\n\n1. Kann jeder sagen, wo der Bereich hinsoll?\n2. Ist klar, wer was entscheidet?\n3. Gibt es einen Maßstab, wer im Streit recht hat?\n\nFehlt das, hilft dir kein Seminar.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-12",
   "kennzahlen": [],
   "bild": "rp32",
   "format": "Geschichte · Satzpaar",
   "offen": "",
   "termin": "Do 12.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7526535639383670784"
  },
  {
   "id": 81,
