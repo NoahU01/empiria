@@ -2001,8 +2001,24 @@ window.MK_ENTWUERFE = [
   "offen": "",
   "termin": "Mo 23.11.",
   "url": ""
+ },
+ {
+  "id": 120,
+  "kanal": "daniel",
+  "feld": "01 Strategie im Alltag",
+  "art": "Satz · Foto",
+  "kern": "Ich stelle nur noch Leute ein, die mir mehr Probleme wegnehmen, als sie mir machen – so ticken alle Entscheider.",
+  "text": "„Ich stelle nur noch Leute ein, bei denen ich im ersten Gespräch merke: Die nehmen mir mehr Probleme weg, als sie mir machen.“\n\nDas sagte mir letzte Woche ein Bereichsleiter, der gerade die zentralen Themen seines Hauses nach vorne bringt.\n\nWas für ein Satz. Genau so ticken alle Entscheider, die ich kenne.\n\nUnd das gilt weit über das Einstellen hinaus. Es gilt für jedes Thema, das du voranbringen willst.\n\nEgal, ob du Projektleiter bist, Abteilungsleiter oder wie ich von außen kommst: Dein Thema interessiert erst einmal niemanden.\n\nInteressant wird es in dem Moment, in dem es jemandem ein Problem löst, den du brauchst.\n\nDie meisten machen es umgekehrt. Sie erklären ihr Thema, sammeln Zustimmung ein und wundern sich, warum nichts passiert.\n\nSo drehst du es:\n\n1. Schreibe auf, wen du brauchst, damit dein Thema durchkommt.\n2. Frage dich bei jedem: Welches Problem hat er gerade?\n3. Baue dein Thema so, dass es genau dieses Problem kleiner macht.\n\nWer seine Stakeholder nicht erfolgreich macht, bleibt mit seinem Thema allein.",
+  "status": "entwurf",
+  "datum": "2026-11-26",
+  "kennzahlen": [],
+  "bild": "rp43",
+  "format": "Satz · Foto",
+  "offen": "",
+  "termin": "Do 26.11.",
+  "url": ""
  }
 ];
 window.MK_FELDER = {"01 Strategie im Alltag": "01 Strategie im Alltag", "02 Komplexe Themen": "02 Komplexe Themen", "Branche eingeordnet": "Branche eingeordnet"};
-window.MK_WOCHEN = [{"kw": "KW 46", "spanne": "09.11.–15.11.", "tage": [{"tag": "Mo 09.11.", "i": 26}, {"tag": "Di 10.11.", "i": 27}, {"tag": "Mi 11.11.", "i": 28}, {"tag": "Do 12.11.", "i": 29}, {"tag": "Fr 13.11.", "i": 30}, {"tag": "Sa 14.11.", "i": 31}, {"tag": "So 15.11.", "i": 32}]}, {"kw": "KW 47", "spanne": "16.11.–22.11.", "tage": [{"tag": "Mo 16.11.", "i": 33}, {"tag": "Di 17.11.", "i": 34}, {"tag": "Mi 18.11.", "i": 35}, {"tag": "Do 19.11.", "i": 36}, {"tag": "Fr 20.11.", "i": 37}, {"tag": "Sa 21.11.", "i": 38}, {"tag": "So 22.11.", "i": 39}]}, {"kw": "KW 48", "spanne": "23.11.–29.11.", "tage": [{"tag": "Mo 23.11.", "i": 40}, {"tag": "Di 24.11."}, {"tag": "Mi 25.11."}, {"tag": "Do 26.11."}, {"tag": "Fr 27.11."}, {"tag": "Sa 28.11."}, {"tag": "So 29.11."}]}];
+window.MK_WOCHEN = [{"kw": "KW 46", "spanne": "09.11.–15.11.", "tage": [{"tag": "Mo 09.11.", "i": 26}, {"tag": "Di 10.11.", "i": 27}, {"tag": "Mi 11.11.", "i": 28}, {"tag": "Do 12.11.", "i": 29}, {"tag": "Fr 13.11.", "i": 30}, {"tag": "Sa 14.11.", "i": 31}, {"tag": "So 15.11.", "i": 32}]}, {"kw": "KW 47", "spanne": "16.11.–22.11.", "tage": [{"tag": "Mo 16.11.", "i": 33}, {"tag": "Di 17.11.", "i": 34}, {"tag": "Mi 18.11.", "i": 35}, {"tag": "Do 19.11.", "i": 36}, {"tag": "Fr 20.11.", "i": 37}, {"tag": "Sa 21.11.", "i": 38}, {"tag": "So 22.11.", "i": 39}]}, {"kw": "KW 48", "spanne": "23.11.–29.11.", "tage": [{"tag": "Mo 23.11.", "i": 40}, {"tag": "Di 24.11."}, {"tag": "Mi 25.11."}, {"tag": "Do 26.11.", "i": 41}, {"tag": "Fr 27.11."}, {"tag": "Sa 28.11."}, {"tag": "So 29.11."}]}];
 window.MK_ARCHIV = [{"kw": "KW 45", "spanne": "02.11.–08.11.", "tage": [{"tag": "Mo 02.11.", "i": 19}, {"tag": "Di 03.11.", "i": 20}, {"tag": "Mi 04.11.", "i": 21}, {"tag": "Do 05.11.", "i": 22}, {"tag": "Fr 06.11.", "i": 23}, {"tag": "Sa 07.11.", "i": 24}, {"tag": "So 08.11.", "i": 25}]}, {"kw": "KW 44", "spanne": "26.10.–01.11.", "tage": [{"tag": "Mo 26.10.", "i": 12}, {"tag": "Di 27.10.", "i": 13}, {"tag": "Mi 28.10.", "i": 14}, {"tag": "Do 29.10.", "i": 15}, {"tag": "Fr 30.10.", "i": 16}, {"tag": "Sa 31.10.", "i": 17}, {"tag": "So 01.11.", "i": 18}]}, {"kw": "KW 43", "spanne": "19.10.–25.10.", "tage": [{"tag": "Mo 19.10.", "i": 5}, {"tag": "Di 20.10.", "i": 6}, {"tag": "Mi 21.10.", "i": 7}, {"tag": "Do 22.10.", "i": 8}, {"tag": "Fr 23.10.", "i": 9}, {"tag": "Sa 24.10.", "i": 10}, {"tag": "So 25.10.", "i": 11}]}, {"kw": "KW 42", "spanne": "12.10.–18.10.", "tage": [{"tag": "Mo 12.10."}, {"tag": "Di 13.10."}, {"tag": "Mi 14.10.", "i": 0}, {"tag": "Do 15.10.", "i": 1}, {"tag": "Fr 16.10.", "i": 2}, {"tag": "Sa 17.10.", "i": 3}, {"tag": "So 18.10.", "i": 4}]}];
