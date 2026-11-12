@@ -1581,6 +1581,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 503,
     "reaktionen": 18,
     "kommentare": 4
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 672,
+    "reichweite": 514,
+    "reaktionen": 18,
+    "kommentare": 4
    }
   ],
   "bild": "rp23",
@@ -1633,6 +1640,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 130,
     "reaktionen": 4,
     "kommentare": 1
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 180,
+    "reichweite": 133,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1678,6 +1692,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 203,
     "reaktionen": 7,
     "kommentare": 4
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 301,
+    "reichweite": 213,
+    "reaktionen": 7,
+    "kommentare": 4
    }
   ],
   "bild": "rp25",
@@ -1716,6 +1737,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 112,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 187,
+    "reichweite": 114,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp26",
@@ -1745,6 +1773,13 @@ window.MK_ENTWUERFE = [
     "stunden": 52.3,
     "impressionen": 144,
     "reichweite": 97,
+    "reaktionen": 3,
+    "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 148,
+    "reichweite": 98,
     "reaktionen": 3,
     "kommentare": 0
    }
@@ -1778,6 +1813,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 91,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 163,
+    "reichweite": 100,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1802,6 +1844,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 42,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 125,
+    "reichweite": 84,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -1819,7 +1868,15 @@ window.MK_ENTWUERFE = [
   "text": "Drei Führungskräfte wollten von mir ein Konfliktseminar. Ich habe ihnen kein Angebot geschrieben.\n\nErst wollte ich verstehen, woher die Konflikte kommen. Nach ein paar Fragen war es klar: Keiner wusste, wo der Bereich hinsoll.\n\nOhne Zielbild legt jeder den Alltag anders aus. Und es gibt keinen Maßstab, an dem man sagen kann: Das ist die Richtung.\n\nDann streitet man eben. Ein Seminar ändert daran nichts.\n\nAlso haben wir an Zielbild und Rollen gearbeitet. Die drei hatten schnell Handlungssicherheit, und die Konflikte wurden weniger.\n\nMein schönster Moment: Im ersten Termin hörte ich „Ich bin Projektleiter, keine Führungskraft.“\n\nIm vierten Termin sagte dieselbe Person ganz selbstverständlich: „In meiner Rolle als Führungskraft …“\n\nWenn bei dir ständig Konflikte hochkommen, prüfe zuerst:\n\n1. Kann jeder sagen, wo der Bereich hinsoll?\n2. Ist klar, wer was entscheidet?\n3. Gibt es einen Maßstab, wer im Streit recht hat?\n\nFehlt das, hilft dir kein Seminar.",
   "status": "veroeffentlicht",
   "datum": "2026-11-12",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 83,
+    "reichweite": 58,
+    "reaktionen": 2,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp32",
   "format": "Geschichte · Satzpaar",
   "offen": "",
