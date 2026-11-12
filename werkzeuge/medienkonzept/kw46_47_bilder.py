@@ -133,5 +133,7 @@ def sektionen(NAME, vb, SYS):
         """<section class="p vollbild" id="rp38">%s<div class="verlauf" style="height:14%%"></div>%s</section>""" % (vb("foto-nein.jpg", "12% 50%"), weiss_name),
         foto("rp39", "foto-saal.jpg", "46% 50%", "Die besten fünf Minuten <span class=\"hl\" style=\"color:#1a1817\">hatten&nbsp;keine&nbsp;Folie.</span>", "", 92),
         foto("rp40", "foto-zeigt.jpg", "62% 50%", "Nächstes Jahr? <span class=\"hl\" style=\"color:#1a1817\">Drei&nbsp;Wochen.</span>", "", 110, "40%"),
+        # 23.11. Strategisches Kaffeetrinken – Platzhalterfoto, bis Daniel ein Foto mit Kaffeetasse liefert
+        foto("rp42", "foto-buero-polo.jpg", "22% 35%", "Entschieden wird <span class=\"hl\" style=\"color:#1a1817\">vor&nbsp;dem&nbsp;Gremium.</span>", "", 96, "40%"),
         foto("rp41", "foto-sw-nachdenklich.jpg", "50% 30%", "Seit Jahren bekannt.<br><span class=\"hl\" style=\"color:#1a1817\">Seit Jahren geduldet.</span>", "", 92, "45%"),
     ]
