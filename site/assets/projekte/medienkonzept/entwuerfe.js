@@ -1890,14 +1890,14 @@ window.MK_ENTWUERFE = [
   "art": "Werkstatt · Foto",
   "kern": "Ich habe in diesem Jahr die KI angeschrien. Mehrfach.",
   "text": "Ich habe in diesem Jahr die KI angeschrien. Mehrfach.\n\nSeit über einem Jahr bringe ich mir nun bei, wie Agenten und Automatisierungen wirklich funktionieren. Das hat mich schon Nächte gekostet und Nerven wie selten etwas.\n\nImmer wenn ich dachte, jetzt habe ich es raus, kam wieder nur Mist.\n\nEs gab keinen Aha-Moment, nach dem alles lief. Es ging Stufe für Stufe. Ausprobieren, scheitern, neu ansetzen.\n\nDass mich die KI nervt, geht bis heute nicht ganz weg.\n\nMindestens genauso nervt mich inzwischen etwas anderes.\n\nRunden zum Thema „Wie setzen wir KI ein?“, in denen Leute sitzen, die ganz offensichtlich keinerlei Erfahrung damit haben.\n\nDas ist, als würde der Blinde von der Farbe sprechen. Nur geht es hier um die Zukunft des Unternehmens.\n\nWenn du mitreden willst:\n\n1. Fange klein an, mit einem Tool, das ihr nutzen dürft.\n2. Nimm jede Woche eine echte Aufgabe dazu.\n3. Rechne damit, dass es oft nicht klappt. Und bleibe dran.\n\nGanz verstanden hast du es nie. Aber du weißt, worüber du redest.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-13",
   "kennzahlen": [],
   "bild": "rp17",
   "termin": "Fr 13.11.",
   "format": "Werkstatt · Foto",
   "offen": "",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7526897995007594496"
  },
  {
   "id": 59,
