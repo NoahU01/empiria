@@ -1647,6 +1647,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 133,
     "reaktionen": 4,
     "kommentare": 1
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 184,
+    "reichweite": 137,
+    "reaktionen": 4,
+    "kommentare": 1
    }
   ],
   "bild": "rp24",
@@ -1699,6 +1706,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 213,
     "reaktionen": 7,
     "kommentare": 4
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 309,
+    "reichweite": 221,
+    "reaktionen": 7,
+    "kommentare": 4
    }
   ],
   "bild": "rp25",
@@ -1744,6 +1758,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 114,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 194,
+    "reichweite": 119,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp26",
@@ -1780,6 +1801,13 @@ window.MK_ENTWUERFE = [
     "stunden": 76.3,
     "impressionen": 148,
     "reichweite": 98,
+    "reaktionen": 3,
+    "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 149,
+    "reichweite": 99,
     "reaktionen": 3,
     "kommentare": 0
    }
@@ -1820,6 +1848,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 100,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 168,
+    "reichweite": 105,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1851,6 +1886,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 84,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 143,
+    "reichweite": 94,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -1875,6 +1917,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 58,
     "reaktionen": 2,
     "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 306,
+    "reichweite": 212,
+    "reaktionen": 7,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -1892,7 +1941,15 @@ window.MK_ENTWUERFE = [
   "text": "Ich habe in diesem Jahr die KI angeschrien. Mehrfach.\n\nSeit über einem Jahr bringe ich mir nun bei, wie Agenten und Automatisierungen wirklich funktionieren. Das hat mich schon Nächte gekostet und Nerven wie selten etwas.\n\nImmer wenn ich dachte, jetzt habe ich es raus, kam wieder nur Mist.\n\nEs gab keinen Aha-Moment, nach dem alles lief. Es ging Stufe für Stufe. Ausprobieren, scheitern, neu ansetzen.\n\nDass mich die KI nervt, geht bis heute nicht ganz weg.\n\nMindestens genauso nervt mich inzwischen etwas anderes.\n\nRunden zum Thema „Wie setzen wir KI ein?“, in denen Leute sitzen, die ganz offensichtlich keinerlei Erfahrung damit haben.\n\nDas ist, als würde der Blinde von der Farbe sprechen. Nur geht es hier um die Zukunft des Unternehmens.\n\nWenn du mitreden willst:\n\n1. Fange klein an, mit einem Tool, das ihr nutzen dürft.\n2. Nimm jede Woche eine echte Aufgabe dazu.\n3. Rechne damit, dass es oft nicht klappt. Und bleibe dran.\n\nGanz verstanden hast du es nie. Aber du weißt, worüber du redest.",
   "status": "veroeffentlicht",
   "datum": "2026-11-13",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 158,
+    "reichweite": 101,
+    "reaktionen": 4,
+    "kommentare": 3
+   }
+  ],
   "bild": "rp17",
   "termin": "Fr 13.11.",
   "format": "Werkstatt · Foto",
