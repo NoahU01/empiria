@@ -22,6 +22,11 @@ def sektionen(NAME, vb, SYS):
     <path d="M760 400 C 820 560, 860 760, 880 1010"/><path d="M846 972 L 882 1020 L 912 966"/></svg>
 </section>""" % (pid, vb(bild, pos), text)
 
+    def satz_oben(pid, bild, pos, satz):
+        # Satz oben in Poppins auf dunklem Verlauf – ohne Markierung, ohne Balken
+        return """<section class="p vollbild" id="%s">%s<div style="position:absolute;inset:0 0 auto 0;height:46%%;background:linear-gradient(180deg,rgba(26,24,23,.82),rgba(26,24,23,0))"></div>
+  <p style="position:absolute;left:80px;right:80px;top:60px;font:700 58px/1.12 Poppins,sans-serif;letter-spacing:-.01em;color:#fff">%s</p></section>""" % (pid, vb(bild, pos), satz)
+
     def pur(pid, bild, pos):
         return '<section class="p vollbild" id="%s">%s</section>' % (pid, vb(bild, pos))
 
@@ -151,7 +156,7 @@ def sektionen(NAME, vb, SYS):
         rp36,
         kritzel("rp37", "foto-konferenztisch.jpg", "30% 50%", "Wo ist der eine Satz?"),  # Kritzelei auf Foto
         """<section class="p vollbild" id="rp38">%s<div class="verlauf" style="height:14%%"></div>%s</section>""" % (vb("foto-nein.jpg", "12% 50%"), weiss_name),
-        balken("rp39", "foto-saal.jpg", "46% 50%", "Die besten fünf Minuten hatten keine Folie."),  # Foto mit gelbem Balken
+        satz_oben("rp39", "foto-saal.jpg", "46% 60%", "Die besten fünf Minuten<br>hatten keine Folie."),  # Satz oben, ohne gelben Balken (Daniel 15.11.2026)
         satz_schlicht("rp40", "foto-zeigt.jpg", "62% 50%", "Drei Wochen."),  # Foto mit Satz, ohne Markierung
         # 23.11. Strategisches Kaffeetrinken – Platzhalterfoto, bis Daniel ein Foto mit Kaffeetasse liefert
         foto("rp42", "foto-buero-polo.jpg", "22% 35%", "Entschieden wird <span class=\"hl\" style=\"color:#1a1817\">vor&nbsp;dem&nbsp;Gremium.</span>", "", 96, "40%"),
