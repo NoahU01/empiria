@@ -2158,7 +2158,7 @@ window.MK_ENTWUERFE = [
   "art": "Szene · Browser",
   "kern": "„Wenn ich das jetzt anfrage, habe ich die Landingpage vielleicht nächstes Jahr.“",
   "text": "„Wenn ich das jetzt anfrage, habe ich die Landingpage vielleicht nächstes Jahr.“\n\nDen Satz hat ein Vorstand gesagt, der bei uns im Büro saß. Wir hatten gerade zusammen sein Thema durchgearbeitet. Story, Zielgruppen, Pitch, alles stand.\n\nIch habe nur gesagt: Gib mir das Go, in drei Wochen ist die Landingpage live.\n\nEr hat Ja gesagt. Und nach drei Wochen war sie online.\n\nSpannend: Er wollte es gar nicht erst versuchen, obwohl er überzeugt war, dass die Landingpage im Vertrieb genau das richtige Instrument war. Er wusste, wie lange so etwas bei ihm im Haus dauert.\n\nUnd das erlebe ich ständig. Gute Leute, die gute Ideen gar nicht mehr anfragen.\n\nSchade drum.",
-  "status": "entwurf",
+  "status": "geplant",
   "datum": "2026-11-21",
   "kennzahlen": [],
   "bild": "rp40",
