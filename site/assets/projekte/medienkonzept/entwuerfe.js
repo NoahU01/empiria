@@ -1779,6 +1779,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 121,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 197,
+    "reichweite": 122,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp26",
@@ -1829,6 +1836,13 @@ window.MK_ENTWUERFE = [
     "stunden": 124.3,
     "impressionen": 152,
     "reichweite": 102,
+    "reaktionen": 3,
+    "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 156,
+    "reichweite": 103,
     "reaktionen": 3,
     "kommentare": 0
    }
@@ -1883,6 +1897,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 110,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 176,
+    "reichweite": 112,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1928,6 +1949,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 104,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 187,
+    "reichweite": 130,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -1966,6 +1994,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 317,
     "reaktionen": 7,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 492,
+    "reichweite": 365,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -1997,6 +2032,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 208,
     "reaktionen": 12,
     "kommentare": 3
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 375,
+    "reichweite": 262,
+    "reaktionen": 12,
+    "kommentare": 3
    }
   ],
   "bild": "rp17",
@@ -2014,7 +2056,15 @@ window.MK_ENTWUERFE = [
   "text": "„Daniel, ich brauche dich mal nur ganz kurz.“\n\nWenn ein Vorstand so anruft, weiß ich: Gleich kommt eine Lage, die jemand sortieren muss.\n\nIn diesem Fall ging es um die Zusammenlegung zweier Abteilungen zu einer neuen Hauptabteilung.\n\nAus dem kurzen Andiskutieren wurde eine Stunde Sparring. Danach war klar: Hier bleiben wir dran.\n\nZusammenlegen ist schnell entschieden. Dass der neue Zuschnitt gelebt wird, dauert deutlich länger.\n\nDie eigentliche Arbeit war, dass der neue Bereich funktioniert, intern und an jeder Schnittstelle im Haus.\n\nWenn du gerade zusammenlegst, kläre drei Fragen, bevor Rollen auf Papier stehen:\n\n1. Wofür steht der Bereich? Das ist sein Selbstbild.\n2. Wie soll er im Haus wahrgenommen werden? Welches Problem löst er, welchen Mehrwert schafft er, warum gibt es ihn überhaupt? Das ist die wichtigste Frage.\n3. Wie kommt ihr dorthin? Das sind die grundlegenden Stoßrichtungen. Die Details erarbeitet der Bereich danach selbst.\n\nKannst du das nicht beantworten, wird es ein schwerer Start. Und du läufst den Erwartungen immer hinterher.",
   "status": "veroeffentlicht",
   "datum": "2026-11-15",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 400,
+    "reichweite": 303,
+    "reaktionen": 2,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp34",
   "format": "Szene · Anruf",
   "offen": "",
