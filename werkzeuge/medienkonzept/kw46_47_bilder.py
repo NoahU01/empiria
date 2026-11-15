@@ -5,6 +5,26 @@ LORA = "font:700 %dpx/1.1 Lora,Georgia,serif;letter-spacing:-.015em"
 def sektionen(NAME, vb, SYS):
     weiss_name = '<p class="namezeile" style="color:#d9d5cf">Daniel Ströbel</p>'
 
+    def uhr(pid, bild, pos, chip):
+        return '<section class="p foto-voll" id="%s">%s<span class="chip">%s</span></section>' % (pid, vb(bild, pos), chip)
+
+    def balken(pid, bild, pos, satz):
+        return '<section class="p foto-voll" id="%s">%s<p class="gelbbalken">%s</p></section>' % (pid, vb(bild, pos), satz)
+
+    def satz_schlicht(pid, bild, pos, satz):
+        return """<section class="p vollbild" id="%s">%s<div class="verlauf" style="height:38%%"></div><div class="unten"><p class="satz" style="font-size:78px">%s</p></div></section>""" % (pid, vb(bild, pos), satz)
+
+    def kritzel(pid, bild, pos, text):
+        # Handschrift (Caveat) und Handstrich direkt aufs Foto, dunkle Tinte auf heller Wand
+        return """<section class="p vollbild" id="%s">%s
+  <p style="position:absolute;left:520px;top:150px;width:500px;transform:rotate(-4deg);font:700 92px/1.02 Caveat,cursive;color:#1a1817">%s</p>
+  <svg viewBox="0 0 1080 1350" style="position:absolute;inset:0" fill="none" stroke="#1a1817" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M760 400 C 820 560, 860 760, 880 1010"/><path d="M846 972 L 882 1020 L 912 966"/></svg>
+</section>""" % (pid, vb(bild, pos), text)
+
+    def pur(pid, bild, pos):
+        return '<section class="p vollbild" id="%s">%s</section>' % (pid, vb(bild, pos))
+
     def foto(pid, bild, pos, satz, wer="", groesse=88, verlauf="52%"):
         w = '<p class="wer">%s</p>' % wer if wer else ""
         return """<section class="p vollbild" id="%s">%s<div class="verlauf" style="height:%s"></div><div class="unten"><p class="satz" style="font-size:%dpx">%s</p>%s</div></section>""" % (pid, vb(bild, pos), verlauf, groesse, satz, w)
@@ -127,15 +147,15 @@ def sektionen(NAME, vb, SYS):
              "Die Freundinnen meiner Tochter", 90),
         # Grundform-Prüfung 11.11.2026: echte Fotos statt Grafiken, höchstens eine Grafik pro Woche (rp36)
         foto("rp34", "foto-anzug-fenster.jpg", "50% 30%", "Daraus wurden <span class=\"hl\" style=\"color:#1a1817\">18&nbsp;Monate.</span>", "", 100, "40%"),
-        foto("rp35", "foto-videoraum.jpg", "40% 50%", "Und dann: <span class=\"hl\" style=\"color:#1a1817\">Stille.</span>", "", 110, "40%"),
+        uhr("rp35", "foto-videoraum.jpg", "40% 50%", "Montag, 9:02 · Videokonferenz"),  # Foto mit Uhrzeit
         rp36,
-        foto("rp37", "foto-konferenztisch.jpg", "30% 50%", "Ein Satz. <span class=\"hl\" style=\"color:#1a1817\">Die&nbsp;Richtung.</span>", "", 110, "40%"),
+        kritzel("rp37", "foto-konferenztisch.jpg", "30% 50%", "Wo ist der eine Satz?"),  # Kritzelei auf Foto
         """<section class="p vollbild" id="rp38">%s<div class="verlauf" style="height:14%%"></div>%s</section>""" % (vb("foto-nein.jpg", "12% 50%"), weiss_name),
-        foto("rp39", "foto-saal.jpg", "46% 50%", "Die besten fünf Minuten <span class=\"hl\" style=\"color:#1a1817\">hatten&nbsp;keine&nbsp;Folie.</span>", "", 92),
-        foto("rp40", "foto-zeigt.jpg", "62% 50%", "Nächstes Jahr? <span class=\"hl\" style=\"color:#1a1817\">Drei&nbsp;Wochen.</span>", "", 110, "40%"),
+        balken("rp39", "foto-saal.jpg", "46% 50%", "Die besten fünf Minuten hatten keine Folie."),  # Foto mit gelbem Balken
+        satz_schlicht("rp40", "foto-zeigt.jpg", "62% 50%", "Drei Wochen."),  # Foto mit Satz, ohne Markierung
         # 23.11. Strategisches Kaffeetrinken – Platzhalterfoto, bis Daniel ein Foto mit Kaffeetasse liefert
         foto("rp42", "foto-buero-polo.jpg", "22% 35%", "Entschieden wird <span class=\"hl\" style=\"color:#1a1817\">vor&nbsp;dem&nbsp;Gremium.</span>", "", 96, "40%"),
         # 26.11. Probleme wegnehmen statt machen (Satz eines Bereichsleiters, Daniel 12.11.2026)
-        foto("rp43", "foto-brille-buero.jpg", "50% 30%", "Nimmst du Probleme weg – <span class=\"hl\" style=\"color:#1a1817\">oder machst du welche?</span>", "", 92, "45%"),
-        foto("rp41", "foto-sw-nachdenklich.jpg", "50% 30%", "Seit Jahren bekannt.<br><span class=\"hl\" style=\"color:#1a1817\">Seit Jahren geduldet.</span>", "", 92, "45%"),
+        pur("rp43", "foto-brille-buero.jpg", "50% 30%"),  # reines Foto ohne Text (Daniel 15.11.2026: nicht alle Creatives gleich, kein CD-Look)
+        rp41,  # einzige gestaltete Karte der Woche
     ]
