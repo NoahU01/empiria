@@ -157,9 +157,9 @@ def sektionen(NAME, vb, SYS):
         kritzel("rp37", "foto-konferenztisch.jpg", "30% 50%", "Wo ist der eine Satz?"),  # Kritzelei auf Foto
         """<section class="p vollbild" id="rp38">%s<div class="verlauf" style="height:14%%"></div>%s</section>""" % (vb("foto-nein.jpg", "12% 50%"), weiss_name),
         satz_oben("rp39", "foto-saal.jpg", "46% 60%", "Die besten fünf Minuten<br>hatten keine Folie."),  # Satz oben, ohne gelben Balken (Daniel 15.11.2026)
-        satz_schlicht("rp40", "foto-zeigt.jpg", "62% 50%", "Drei Wochen."),  # Foto mit Satz, ohne Markierung
+        satz_schlicht("rp40", "foto-strick-buero.jpg", "18% 40%", "Welche Idee hast du schon aufgegeben, bevor du gefragt hast?"),  # neues Foto, foto-zeigt lief schon am 07.11.
         # 23.11. Strategisches Kaffeetrinken – Platzhalterfoto, bis Daniel ein Foto mit Kaffeetasse liefert
-        foto("rp42", "foto-buero-polo.jpg", "22% 35%", "Entschieden wird <span class=\"hl\" style=\"color:#1a1817\">vor&nbsp;dem&nbsp;Gremium.</span>", "", 96, "40%"),
+        pur("rp42", "foto-kaffeetasse.jpg", "45% 50%"),  # Foto mit Kaffeetasse, ohne Spruch (Daniel 15.11.2026)
         # 26.11. Probleme wegnehmen statt machen (Satz eines Bereichsleiters, Daniel 12.11.2026)
         pur("rp43", "foto-brille-buero.jpg", "50% 30%"),  # reines Foto ohne Text (Daniel 15.11.2026: nicht alle Creatives gleich, kein CD-Look)
         rp41,  # einzige gestaltete Karte der Woche
