@@ -43,9 +43,6 @@
 .vz-deko .versatz { fill: none; stroke: var(--hl); stroke-width: 7; stroke-linejoin: round;
                     transform: translate(4px, 4px); }
 .vz-deko .kappe { fill: #6e6b66; }
-/* Vergleich: rechte beiden Anhaenger in waermerem Grau */
-.vz-deko .teil--warm .kontur { stroke: #8a7f70; }
-.vz-deko .teil--warm .kappe { fill: #8a7f70; }
 
 .vz-kopf { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
            padding: clamp(18px,2.6vw,40px) var(--pad-x) 0; }
@@ -164,11 +161,11 @@
       <g transform="translate(140 222) rotate(45)">
         <path class="versatz" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z" transform="rotate(-45) translate(4 4) rotate(45)"/>
         <path class="kontur kontur--voll" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z"/></g></g>
-    <g class="teil teil--warm">
+    <g class="teil">
       <line class="faden" x1="262" y1="0" x2="262" y2="62"/><rect class="kappe" x="255" y="60" width="14" height="8" rx="2"/>
       <path class="versatz" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/>
       <path class="kontur" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/></g>
-    <g class="teil teil--warm">
+    <g class="teil">
       <line class="faden" x1="360" y1="0" x2="360" y2="132"/><rect class="kappe" x="353" y="130" width="14" height="8" rx="2"/>
       <circle class="versatz" cx="360" cy="162" r="21"/><circle class="kontur kontur--voll" cx="360" cy="162" r="21"/></g>
   </svg>
