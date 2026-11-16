@@ -66,20 +66,34 @@
    ist bewusst die einzige Schrift ausserhalb von Lora/Poppins - nur fuer diese Notiz. */
 @font-face { font-family: "Caveat"; font-weight: 500; font-display: swap;
              src: url("/assets/fonts/caveat-500-latin.woff2") format("woff2"); }
-.vz-notiz { display: flex; align-items: flex-end; gap: 12px; margin: 2rem 0 0;
+.vz-notiz { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 14px;
             font-family: "Caveat", var(--font-serif); font-weight: 500;
             font-size: calc(var(--t-zettel) * 1.75); line-height: 1.12; color: rgba(255,255,255,.92);
             transform: rotate(-2deg); transform-origin: left center; }
+/* Gestapelt und auf mittleren Breiten: Notiz ueber dem Zettel, Pfeil nach unten.
+   Breiter Desktop: Notiz links neben dem Zettel, Pfeil zeigt hinueber. */
+.zettel-platz { position: relative; width: 100%; max-width: 560px; justify-self: center; }
 .vz-pfeil { flex: 0 0 auto; max-width: none; overflow: visible; fill: none;
             stroke: rgba(255,255,255,.92); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.vz-pfeil--rechts { width: clamp(140px, 13vw, 250px); margin-bottom: .35em; }
-.vz-pfeil--unten { display: none; width: 34px; }
+.vz-pfeil--rechts { display: none; width: clamp(80px, 6.5vw, 130px); margin-top: .5em; }
+.vz-pfeil--unten { width: 34px; margin-top: .2em; }
+/* Mittlere Breite quer (z. B. iPad 13" quer): Notiz ueber dem Zettel - die Anhaenger
+   werden kuerzer, damit sie nicht in die Notiz haengen */
+@media (min-width: 961px) and (max-width: 1439px) and (orientation: landscape) {
+  .vz-deko { height: clamp(130px, 16vh, 170px); }
+}
+@media (min-width: 1440px) and (orientation: landscape) {
+  .vz-notiz { position: absolute; right: calc(100% + 6px); top: 52%; margin: 0;
+              width: max-content; }
+  .vz-pfeil--rechts { display: block; }
+  .vz-pfeil--unten { display: none; }
+}
 
 /* ---- Der Zettel --------------------------------------------------------- */
 .zettel { position: relative; background: #faf8f4; color: var(--ink); border-radius: 3px;
           padding: clamp(20px,2vw,36px) clamp(22px,2.2vw,40px) clamp(16px,1.6vw,28px);
           box-shadow: 0 34px 80px rgba(0,0,0,.55); transform: rotate(-.9deg);
-          max-width: 560px; width: 100%; justify-self: center; }
+          width: 100%; }
 
 /* Die Jahreszeile: zweimal durchgestrichen, einmal frisch */
 .jahre { font-family: var(--font-serif); font-weight: 700; font-size: var(--t-zettel);
@@ -129,12 +143,12 @@
                      color: var(--grey-70); margin-top: 3px; }
 
 .zettel-fuss { margin-top: clamp(12px,1.2vw,20px); padding-top: clamp(10px,1vw,16px);
-               border-top: 1px dashed #cfc7b8; display: flex; justify-content: flex-end;
+               display: flex; justify-content: flex-end;
                align-items: flex-end; gap: 10px 18px; flex-wrap: wrap; }
 .zettel-fuss p { margin: 0; font-size: var(--t-klein); line-height: 1.5; color: var(--grey-70);
                  max-width: 40ch; }
-.zettel-sig { font-family: var(--font-serif); font-style: italic; font-weight: 500;
-              font-size: var(--t-zettel); white-space: nowrap; }
+.zettel-sig { font-family: "Caveat", var(--font-serif); font-weight: 500;
+              font-size: calc(var(--t-zettel) * 1.5); line-height: 1; white-space: nowrap; }
 
 /* Dialog: Kicker wie auf der Homepage, nicht in Versalien (nur auf dieser Seite) */
 .lead-kicker { font-size: .88rem; letter-spacing: 0; text-transform: none; font-weight: 500; }
@@ -143,12 +157,9 @@
   .vz-raum { grid-template-columns: minmax(0,1fr); align-content: center; gap: 34px;
              padding-top: clamp(36px,7vw,64px); }
   .vz-raum > div:first-child { max-width: 560px; justify-self: center; width: 100%; }
-  .zettel { transform: none; max-width: 560px; }
+  .zettel { transform: none; }
   .vz-lead { max-width: none; }
   .vz-deko { left: auto; right: clamp(12px, 5vw, 60px); height: clamp(110px, 15vh, 180px); }
-  .vz-notiz { align-items: flex-start; }
-  .vz-pfeil--rechts { display: none; }
-  .vz-pfeil--unten { display: block; margin-top: .2em; }
 }
 @media (max-width: 520px) {
   .vz { --t-h1: 8.4vw; }
@@ -156,7 +167,7 @@
   /* Platz fuer die Anhaenger, damit sie nicht in Kicker und Headline haengen */
   .vz-raum { padding-top: 88px; }
   .vz-deko { height: 104px; right: 14px; }
-  .zettel { margin: 0 -6px; width: calc(100% + 12px); }
+  .zettel-platz .zettel { margin: 0 -6px; width: calc(100% + 12px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .jahr--weg::after, .jahr--jetzt { animation: none; }
@@ -199,13 +210,14 @@
         die wirklich etwas bewegt haben.</p>
       <p class="vz-lead"><b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
         für die Menschen, die zählen.</b> Und 2027 haken wir das hier gemeinsam ab.</p>
-      <p class="vz-notiz"><span>Hake ab, was für Dich dran&nbsp;ist&nbsp;–<br>das PDF kommt per Mail.</span>
-        <svg class="vz-pfeil vz-pfeil--rechts" viewBox="0 0 180 60" aria-hidden="true">
-          <path d="M4 44c18 9 47 12 74 6 30-7 54-22 82-38"/><path d="M143 6.5c6.5 1 12.5 1.5 18.5 1.2-2.5 5-4.6 10.6-6 16.4"/></svg>
-        <svg class="vz-pfeil vz-pfeil--unten" viewBox="0 0 60 90" aria-hidden="true">
-          <path d="M14 4c-8 20-7 46 10 74"/><path d="M8 66c5 4.6 10.5 9.2 16.5 13.4 2.6-6.4 6-12 10.4-16.6"/></svg></p>
     </div>
 
+    <div class="zettel-platz">
+      <p class="vz-notiz"><span>Einfach anklicken –<br>das PDF kommt per Mail.</span>
+        <svg class="vz-pfeil vz-pfeil--rechts" viewBox="0 0 120 50" aria-hidden="true">
+          <path d="M4 38c14 6 36 8 56 2 20-6 36-18 54-32"/><path d="M98 6c5.5.6 11 .9 16.5.6-1.9 4.6-3.5 9.6-4.6 14.8"/></svg>
+        <svg class="vz-pfeil vz-pfeil--unten" viewBox="0 0 60 90" aria-hidden="true">
+          <path d="M14 4c-8 20-7 46 10 74"/><path d="M8 66c5 4.6 10.5 9.2 16.5 13.4 2.6-6.4 6-12 10.4-16.6"/></svg></p>
     <div class="zettel">
       <p class="jahre"><span class="jahre-was">Gute Vorsätze für</span>
         <span class="jahr jahr--weg">2025</span>
@@ -269,6 +281,7 @@
       <div class="zettel-fuss">
         <span class="zettel-sig">Dein empiria-Team</span>
       </div>
+    </div>
     </div>
   </div>
 </main>
