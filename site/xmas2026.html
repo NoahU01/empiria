@@ -29,8 +29,24 @@
       position: relative; min-height: 100svh; overflow: hidden; background: var(--black);
       color: #fff; display: flex; flex-direction: column; }
 .vz a { border-bottom: 0; }
-.vz-wm { position: absolute; color: #121212; width: 64vmin; height: 64vmin;
-         right: -20vmin; top: -20vmin; pointer-events: none; z-index: 0; }
+/* Anhaenger aus der Weihnachtskarte 2026: an Faeden von oben, Kontur mit gelbem
+   Versatz. Auf Schwarz wird die schwarze Kontur der Karte weiss. */
+/* Desktop: ueber der Headline, rechts in der linken Spalte - dort ist Luft,
+   und der Zettel bleibt frei. Gestapelt (Tablet hochkant, Handy): oben rechts. */
+.vz-deko { position: absolute; top: 0; left: calc(50% - clamp(260px, 22vw, 470px)); z-index: 1;
+           height: clamp(170px, 27vh, 380px); width: auto; max-width: none;
+           pointer-events: none; overflow: visible; }
+.vz-deko .faden { stroke: rgba(255,255,255,.6); stroke-width: 2; }
+.vz-deko .kontur { fill: none; stroke: #fff; stroke-width: 7; stroke-linejoin: round; }
+.vz-deko .kontur--voll { fill: var(--hl); }
+.vz-deko .versatz { fill: none; stroke: var(--hl); stroke-width: 7; stroke-linejoin: round;
+                    transform: translate(4px, 4px); }
+.vz-deko .kappe { fill: #fff; }
+.vz-deko .teil { transform-box: view-box; animation: pendel 6s ease-in-out infinite alternate; }
+.vz-deko .teil:nth-child(2) { animation-duration: 7.4s; animation-delay: -2s; }
+.vz-deko .teil:nth-child(3) { animation-duration: 6.6s; animation-delay: -4s; }
+.vz-deko .teil:nth-child(4) { animation-duration: 8s; animation-delay: -1s; }
+@keyframes pendel { from { transform: rotate(-1.6deg); } to { transform: rotate(1.6deg); } }
 
 .vz-kopf { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
            padding: clamp(18px,2.6vw,40px) var(--pad-x) 0; }
@@ -85,10 +101,15 @@
 .vorsatz:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
 .vorsatz-box { flex: 0 0 auto; width: 1.15em; height: 1.15em; margin-top: .12em; position: relative;
                border: 2px solid var(--ink); border-radius: 3px; font-size: var(--t-zettel); }
-.vorsatz-box svg { position: absolute; left: -.25em; top: -.42em; width: 1.5em; height: 1.5em;
-                   stroke: var(--ink); stroke-width: 3.2; fill: none; stroke-linecap: round;
+/* Der Haken sitzt unten im Kasten und schiesst oben rechts hinaus - von Hand
+   gesetzt, mit dem gelben Versatz der Weihnachtskarte */
+.vorsatz-box svg { position: absolute; left: -.26em; top: -.62em; width: 1.95em; height: 1.95em;
+                   max-width: none; overflow: visible; fill: none; stroke-linecap: round;
                    stroke-linejoin: round; stroke-dasharray: 34; stroke-dashoffset: 34;
                    transition: stroke-dashoffset .3s cubic-bezier(.2,.8,.3,1), opacity .2s ease; }
+.vorsatz-box path { stroke: var(--ink); stroke-width: 2.8; }
+.vorsatz-box path.gelb { stroke: var(--hl); stroke-width: 2.8; transform: translate(1.1px, 1.1px); }
+.vorsatz:hover .vorsatz-box path.gelb { stroke: none; }
 .vorsatz:hover .vorsatz-box svg, .vorsatz:focus-visible .vorsatz-box svg { stroke-dashoffset: 0; opacity: .3; }
 .vorsatz.ist-dran .vorsatz-box svg { stroke-dashoffset: 0; opacity: 1; }
 .vorsatz-txt { min-width: 0; }
@@ -114,24 +135,43 @@
   .vz-raum > div:first-child { max-width: 560px; justify-self: center; width: 100%; }
   .zettel { transform: none; max-width: 560px; }
   .vz-lead { max-width: none; }
+  .vz-deko { left: auto; right: clamp(12px, 5vw, 60px); height: clamp(110px, 15vh, 180px); }
 }
 @media (max-width: 520px) {
   .vz { --t-h1: 8.4vw; }
+  /* Platz fuer die Anhaenger, damit sie nicht in Kicker und Headline haengen */
+  .vz-raum { padding-top: 88px; }
+  .vz-deko { height: 104px; right: 14px; }
   .zettel { margin: 0 -6px; width: calc(100% + 12px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .jahr--weg::after, .jahr--jetzt { animation: none; }
+  .jahr--weg::after, .jahr--jetzt, .vz-deko .teil { animation: none; }
 }
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="ic-kreuz" viewBox="0 0 232.44 232.44"><path fill="currentColor" d="M145.04,2.83h-57.63v84.58H2.83v57.63h84.58v84.58h57.63v-84.58h84.58v-57.63h-84.58V2.83ZM209.61,124.61h-84.58v84.58h-17.63v-84.58H22.83v-17.63h84.58V22.83h17.63v84.15h84.58v17.63Z"/></symbol>
 </defs></svg>
 
 <main class="vz">
-  <svg class="vz-wm" aria-hidden="true"><use href="#ic-kreuz"/></svg>
+  <svg class="vz-deko" viewBox="0 0 400 262" aria-hidden="true">
+    <g class="teil" style="transform-origin:40px 0">
+      <line class="faden" x1="40" y1="0" x2="40" y2="113"/><rect class="kappe" x="33" y="111" width="14" height="8" rx="2"/>
+      <circle class="versatz" cx="40" cy="150" r="26"/><circle class="kontur" cx="40" cy="150" r="26"/></g>
+    <g class="teil" style="transform-origin:140px 0">
+      <line class="faden" x1="140" y1="0" x2="140" y2="183"/><rect class="kappe" x="133" y="181" width="14" height="8" rx="2"/>
+      <g transform="translate(140 222) rotate(45)">
+        <path class="versatz" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z" transform="rotate(-45) translate(4 4) rotate(45)"/>
+        <path class="kontur kontur--voll" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z"/></g></g>
+    <g class="teil" style="transform-origin:262px 0">
+      <line class="faden" x1="262" y1="0" x2="262" y2="62"/><rect class="kappe" x="255" y="60" width="14" height="8" rx="2"/>
+      <path class="versatz" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/>
+      <path class="kontur" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/></g>
+    <g class="teil" style="transform-origin:360px 0">
+      <line class="faden" x1="360" y1="0" x2="360" y2="132"/><rect class="kappe" x="353" y="130" width="14" height="8" rx="2"/>
+      <circle class="versatz" cx="360" cy="162" r="21"/><circle class="kontur kontur--voll" cx="360" cy="162" r="21"/></g>
+  </svg>
 
   <header class="vz-kopf">
     <img src="/assets/empiria-logo-white.svg" alt="empiria">
@@ -157,7 +197,7 @@
         data-text="Wie Du Dein Geschäftsmodell ohne Altlasten auf den Prüfstand stellst – und was davon in zehn Jahren noch trägt."
         data-datei="innovation"
         data-bild="/assets/downloads/2.0/empiria-innovation-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Das Geschäftsmodell einmal ganz neu denken.</b>
           <small>Ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small></span></button>
 
@@ -166,7 +206,7 @@
         data-text="Wie aus der Strategie ein Zielbild wird, mit dem Dein Bereich wirklich arbeiten kann."
         data-datei="strategie"
         data-bild="/assets/downloads/2.0/empiria-strategie-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Ein klares Zielbild für mein Team.</b>
           <small>Damit jeder weiß, worauf er hinarbeitet – und der Bereich spürbar nach vorne kommt.</small></span></button>
 
@@ -175,7 +215,7 @@
         data-text="Ein Workshop, in dem Dein Team mit echten Tools arbeitet – und danach weiß, wo KI im Alltag hilft."
         data-datei="ki-zum-anfassen"
         data-bild="/assets/downloads/2.0/empiria-ki-zum-anfassen-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>KI im Team wirklich verstehen.</b>
           <small>Selbst ausprobieren, wo sie im Alltag trägt – und wo nicht.</small></span></button>
 
@@ -184,7 +224,7 @@
         data-text="In zwei Tagen von der Idee zur fertigen Seite – gemeinsam im Workshop gebaut."
         data-datei="sprint-landingpage"
         data-bild="/assets/downloads/2.0/empiria-sprint-landingpage-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>In Tagen sichtbar werden statt in Monaten.</b>
           <small>Eine Landingpage, die steht, bevor die nächste Abstimmungsrunde beginnt.</small></span></button>
 
@@ -193,7 +233,7 @@
         data-text="Homepage, Kanäle und Zahlen an einem Ort – laufend bewertet statt einmal im Jahr."
         data-datei="dashboard-digitales-marketing"
         data-bild="/assets/downloads/2.0/empiria-dashboard-digitales-marketing-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Sehen, was das Marketing bringt.</b>
           <small>Alle Kanäle und Zahlen an einem Ort – laufend bewertet statt einmal im Jahr.</small></span></button>
 
@@ -202,7 +242,7 @@
         data-text="Ein vertrauliches Gegenüber für die Themen, für die es intern keine Distanz gibt."
         data-datei="sparring"
         data-bild="/assets/downloads/2.0/empiria-sparring-1.png">
-        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
+        <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path class="gelb" d="M7 16.5 12.5 22 24 8.5"/><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Jemanden zum Mitdenken haben.</b>
           <small>Offen sprechen über das, wofür es intern nicht die passende Distanz gibt.</small></span></button>
 
