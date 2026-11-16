@@ -8,103 +8,120 @@
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/lead/lead.css">
 <style>
-/* ===== Xmas 11 · "Der Vorsatz-Zettel" ========================================
+/* ===== Xmas · "Der Vorsatz-Zettel" ===========================================
    Wie der Wunschzettel, aber auf gute Vorsaetze gedreht. Die Jahreszahl steht
-   dreimal im Kopf: 2025 und 2026 durchgestrichen, 2027 frisch - der Zettel
-   liegt also schon eine Weile herum. Ein Klick auf einen Vorsatz oeffnet den
-   Lead-Dialog statt der Unterseite. */
-.vz { position: relative; height: 100svh; overflow: hidden; background: var(--black);
+   dreimal im Kopf: 2025 und 2026 werden beim Laden durchgestrichen, 2027 bekommt
+   den Marker - der Zettel liegt also schon eine Weile herum. Ein Klick auf einen
+   Vorsatz hakt ihn ab und oeffnet den Lead-Dialog.
+
+   Schriftsystem (wie Homepage):
+     Lora 500/700  - h1 (eine Groesse, gelber Marker)
+                   - Zettel-Groesse: Jahreszeile, Vorsatz-Titel, Gruss
+     Poppins       - Text-Groesse: Kicker (Medium, Grau), Einleitung
+                   - kleine Groesse: Unterzeilen und Fusszeile
+   Farben: Weiss/Tinte, ein Grau je Grund, Gelb nur als Marker (h1, 2027).
+   Durchgestrichen heisst ueberall "vergangen" - die Vorsaetze werden darum
+   abgehakt, nie durchgestrichen. */
+.vz { --t-h1: clamp(2.3rem, 3.5vw, 4.6rem);
+      --t-zettel: clamp(1.02rem, 1.08vw, 1.42rem);
+      --t-text: clamp(1rem, 1.02vw, 1.32rem);
+      --t-klein: clamp(.84rem, .84vw, 1.08rem);
+      position: relative; min-height: 100svh; overflow: hidden; background: var(--black);
       color: #fff; display: flex; flex-direction: column; }
 .vz a { border-bottom: 0; }
-.vz-wm { position: fixed; color: #171717; width: 58vmin; height: 58vmin;
-         left: -17vmin; bottom: -17vmin; pointer-events: none; z-index: 0; }
+.vz-wm { position: absolute; color: #121212; width: 64vmin; height: 64vmin;
+         right: -20vmin; top: -20vmin; pointer-events: none; z-index: 0; }
 
-.vz-kopf { position: relative; z-index: 3; padding: clamp(18px,2.6vw,32px) var(--pad-x) 0;
-           display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-.vz-kopf img { height: 26px; }
-.vz-jahr { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-50); }
+.vz-kopf { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
+           padding: clamp(18px,2.6vw,40px) var(--pad-x) 0; }
+.vz-kopf img { height: clamp(24px, 1.5vw, 32px); display: block; }
 
-.vz-raum { position: relative; z-index: 3; flex: 1 1 auto; display: grid;
-           grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr);
-           align-items: center; gap: clamp(24px,4vw,60px);
-           padding: clamp(14px,2.2vh,28px) var(--pad-x) clamp(18px,3vh,38px); }
-.vz-kicker { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
-             color: var(--hl); font-weight: 500; margin: 0 0 .8rem; }
-.vz-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.05;
-         font-size: clamp(1.9rem,3.9vw,3.2rem); margin: 0 0 .9rem; }
+.vz-raum { position: relative; z-index: 3; flex: 1 1 auto; width: 100%; max-width: 1840px;
+           margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+           align-items: center; gap: clamp(32px,5vw,110px);
+           padding: clamp(28px,4vh,60px) var(--pad-x) clamp(36px,6vh,80px); }
+.vz-kicker { font-size: var(--t-text); font-weight: 500; color: var(--grey-50); margin: 0 0 1rem; }
+.vz-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.18;
+         letter-spacing: -.01em; font-size: var(--t-h1); margin: 0 0 1.4rem; }
 .vz-h1 .hl { color: var(--ink); }
-.vz-lead { font-size: clamp(.92rem,1.1vw,1.04rem); line-height: 1.66; font-weight: 300;
-           color: rgba(255,255,255,.74); margin: 0; max-width: 36ch; }
+.vz-zeile { white-space: nowrap; }
+.vz-lead { font-size: var(--t-text); line-height: 1.66; font-weight: 300;
+           color: rgba(255,255,255,.72); margin: 0; max-width: 34ch; }
 .vz-lead b { color: #fff; font-weight: 600; }
 
 /* ---- Der Zettel --------------------------------------------------------- */
 .zettel { position: relative; background: #faf8f4; color: var(--ink); border-radius: 3px;
-          padding: clamp(20px,2.4vw,34px) clamp(22px,2.8vw,40px) clamp(18px,2.2vw,30px);
+          padding: clamp(22px,2.4vw,44px) clamp(22px,2.6vw,48px) clamp(18px,2vw,36px);
           box-shadow: 0 34px 80px rgba(0,0,0,.55); transform: rotate(-.9deg);
-          max-width: 640px; justify-self: center; width: 100%; }
-.zettel::before { content: ""; position: absolute; inset: 0; border-radius: 3px; opacity: .45;
-  background: repeating-linear-gradient(#faf8f4 0 29px, #e4ded2 29px 30px); pointer-events: none; }
+          max-width: 800px; width: 100%; justify-self: center; }
 
-/* Die Jahre: zweimal durchgestrichen, einmal frisch */
-.jahre { position: relative; z-index: 1; margin-bottom: clamp(10px,1.4vw,16px);
-         padding-bottom: clamp(8px,1.1vw,14px); border-bottom: 2px solid var(--ink); }
-.jahre p { margin: 0 0 2px; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-           font-weight: 600; color: var(--grey-50); }
-.jahre-reihe { display: flex; align-items: baseline; gap: clamp(8px,1.2vw,16px); flex-wrap: wrap; }
-.jahr { position: relative; font-family: var(--font-serif); font-weight: 700;
-        font-size: clamp(1.25rem,2.1vw,1.75rem); line-height: 1.1; }
-.jahr--weg { color: #b6aea1; }
+/* Die Jahreszeile: zweimal durchgestrichen, einmal frisch */
+.jahre { font-family: var(--font-serif); font-weight: 700; font-size: var(--t-zettel);
+         line-height: 1.3; display: flex; align-items: baseline; flex-wrap: wrap;
+         gap: .2em .55em; margin: 0 0 clamp(10px,1vw,16px);
+         padding-bottom: clamp(10px,1vw,16px); border-bottom: 2px solid var(--ink); }
+.jahre-was { font-weight: 500; }
+.jahr { position: relative; }
+.jahr--weg { color: #9a9286; }
 /* Der Strich ist leicht schief - von Hand gezogen, nicht gesetzt */
-.jahr--weg::after { content: ""; position: absolute; left: -6%; right: -6%; top: 52%;
-                    height: 3px; background: #8f8a80;
-                    transform: rotate(-2.4deg); border-radius: 2px; }
-.jahr--weg:nth-of-type(2)::after { transform: rotate(1.8deg); }
-.jahr--jetzt { color: var(--ink); }
-.jahr--jetzt::before { content: ""; position: absolute; left: -7%; right: -7%; top: 4%;
-                       bottom: 6%; background: var(--hl); z-index: -1; border-radius: 3px;
-                       transform: rotate(-.8deg); }
+.jahr--weg::after { content: ""; position: absolute; left: -8%; right: -8%; top: 50%;
+                    height: 2.5px; background: var(--grey-70); border-radius: 2px;
+                    transform: rotate(-4deg) scaleX(1); transform-origin: left center;
+                    animation: strich .45s cubic-bezier(.6,0,.3,1) .5s both; }
+.jahr--weg + .jahr--weg::after { --dreh: 3deg; transform: rotate(3deg); animation-delay: 1s; }
+.jahr--jetzt { padding: 0 .12em; margin: 0 -.12em; border-radius: .14em;
+               background: linear-gradient(var(--hl), var(--hl)) no-repeat left / 100% 100%;
+               animation: marker .5s cubic-bezier(.6,0,.3,1) 1.5s both; }
+@keyframes strich { from { transform: rotate(var(--dreh,-4deg)) scaleX(0); }
+                    to   { transform: rotate(var(--dreh,-4deg)) scaleX(1); } }
+@keyframes marker { from { background-size: 0 100%; } to { background-size: 100% 100%; } }
 
 /* ---- Die Vorsaetze ------------------------------------------------------ */
-.vorsatz { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 13px;
-           width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
-           font: inherit; color: var(--ink); padding: clamp(5px,.7vw,9px) 6px;
-           border-radius: 7px; transition: background .18s ease; }
-.vorsatz:hover, .vorsatz:focus-visible { background: rgba(255,244,0,.3); }
-.vorsatz-box { flex: 0 0 auto; width: 21px; height: 21px; margin-top: 2px; position: relative;
-               border: 2px solid var(--ink); border-radius: 3px; }
-.vorsatz-box svg { position: absolute; left: -5px; top: -8px; width: 30px; height: 30px;
-                   stroke: #b8a400; stroke-width: 3.4; fill: none; stroke-linecap: round;
+.vorsatz { display: flex; align-items: flex-start; gap: 14px; width: 100%; text-align: left;
+           background: none; border: 0; cursor: pointer; font: inherit; color: var(--ink);
+           padding: clamp(7px,.7vw,12px) 8px; margin: 0 -8px; width: calc(100% + 16px);
+           border-radius: 8px; transition: background .18s ease; }
+.vorsatz:hover, .vorsatz:focus-visible { background: #efebe3; }
+.vorsatz:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.vorsatz-box { flex: 0 0 auto; width: 1.15em; height: 1.15em; margin-top: .12em; position: relative;
+               border: 2px solid var(--ink); border-radius: 3px; font-size: var(--t-zettel); }
+.vorsatz-box svg { position: absolute; left: -.25em; top: -.42em; width: 1.5em; height: 1.5em;
+                   stroke: var(--ink); stroke-width: 3.2; fill: none; stroke-linecap: round;
                    stroke-linejoin: round; stroke-dasharray: 34; stroke-dashoffset: 34;
-                   transition: stroke-dashoffset .3s cubic-bezier(.2,.8,.3,1); }
-.vorsatz:hover .vorsatz-box svg, .vorsatz:focus-visible .vorsatz-box svg { stroke-dashoffset: 0; }
+                   transition: stroke-dashoffset .3s cubic-bezier(.2,.8,.3,1), opacity .2s ease; }
+.vorsatz:hover .vorsatz-box svg, .vorsatz:focus-visible .vorsatz-box svg { stroke-dashoffset: 0; opacity: .3; }
+.vorsatz.ist-dran .vorsatz-box svg { stroke-dashoffset: 0; opacity: 1; }
 .vorsatz-txt { min-width: 0; }
 .vorsatz-txt b { display: block; font-family: var(--font-serif); font-weight: 700;
-                 font-size: clamp(.92rem,1.2vw,1.06rem); line-height: 1.26;
-                 position: relative; width: fit-content; }
-.vorsatz-txt b::after { content: ""; position: absolute; left: 0; top: 54%; height: 2px;
-                        width: 100%; background: var(--ink); transform: scaleX(0);
-                        transform-origin: left center; transition: transform .32s ease .06s; }
-.vorsatz:hover .vorsatz-txt b::after, .vorsatz:focus-visible .vorsatz-txt b::after { transform: scaleX(1); }
-.vorsatz-txt small { display: block; font-size: .78rem; line-height: 1.45; color: var(--grey-70);
-                     margin-top: 2px; }
-.vorsatz-pdf { margin-left: auto; align-self: center; flex: 0 0 auto; font-size: .68rem;
-               letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
-               color: var(--grey-50); white-space: nowrap; opacity: 0; transition: opacity .2s ease; }
-.vorsatz:hover .vorsatz-pdf, .vorsatz:focus-visible .vorsatz-pdf { opacity: 1; }
+                 font-size: var(--t-zettel); line-height: 1.3; }
+.vorsatz-txt small { display: block; font-size: var(--t-klein); line-height: 1.5;
+                     color: var(--grey-70); margin-top: 3px; }
 
-.zettel-fuss { position: relative; z-index: 1; margin-top: clamp(10px,1.4vw,18px);
-               padding-top: clamp(8px,1.1vw,14px); border-top: 1px dashed #cfc7b8;
-               display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; }
-.zettel-fuss p { margin: 0; font-size: .8rem; line-height: 1.5; color: var(--grey-70); max-width: 36ch; }
+.zettel-fuss { margin-top: clamp(12px,1.2vw,20px); padding-top: clamp(12px,1.1vw,18px);
+               border-top: 1px dashed #cfc7b8; display: flex; justify-content: space-between;
+               align-items: flex-end; gap: 10px 18px; flex-wrap: wrap; }
+.zettel-fuss p { margin: 0; font-size: var(--t-klein); line-height: 1.5; color: var(--grey-70);
+                 max-width: 40ch; }
 .zettel-sig { font-family: var(--font-serif); font-style: italic; font-weight: 500;
-              font-size: 1rem; white-space: nowrap; }
+              font-size: var(--t-zettel); white-space: nowrap; }
 
-@media (max-width: 960px) {
-  .vz-raum { grid-template-columns: 1fr; align-content: center; gap: 18px; }
-  .zettel { transform: none; max-width: 540px; }
-  .vz-lead { display: none; }
+/* Dialog: Kicker wie auf der Homepage, nicht in Versalien (nur auf dieser Seite) */
+.lead-kicker { font-size: .88rem; letter-spacing: 0; text-transform: none; font-weight: 500; }
+
+@media (max-width: 960px), (max-width: 1180px) and (orientation: portrait) {
+  .vz-raum { grid-template-columns: minmax(0,1fr); align-content: center; gap: 34px;
+             padding-top: clamp(36px,7vw,64px); }
+  .vz-raum > div:first-child { max-width: 600px; justify-self: center; width: 100%; }
+  .zettel { transform: none; max-width: 600px; }
+  .vz-lead { max-width: none; }
 }
-@media (max-height: 760px) { .vorsatz-txt small { display: none; } .vz-lead { display: none; } }
+@media (max-width: 520px) {
+  .vz { --t-h1: 8.4vw; }
+  .zettel { margin: 0 -6px; width: calc(100% + 12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jahr--weg::after, .jahr--jetzt { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -118,37 +135,31 @@
 
   <header class="vz-kopf">
     <img src="/assets/empiria-logo-white.svg" alt="empiria">
-    <span class="vz-jahr">Weihnachten 2026</span>
   </header>
 
   <div class="vz-raum">
     <div>
       <p class="vz-kicker">Weihnachten 2026</p>
-      <h1 class="vz-h1">Der Zettel liegt schon<br>ein <span class="hl">Weilchen da.</span></h1>
+      <h1 class="vz-h1"><span class="vz-zeile">Der Zettel liegt schon</span><br><span class="vz-zeile">ein <span class="hl">Weilchen da.</span></span></h1>
       <p class="vz-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
         die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
         für die Menschen, die zählen.</b> Und 2027 haken wir das hier gemeinsam ab.</p>
     </div>
 
     <div class="zettel">
-      <div class="jahre">
-        <p>Gute Vorsätze für</p>
-        <div class="jahre-reihe">
-          <span class="jahr jahr--weg">2025</span>
-          <span class="jahr jahr--weg">2026</span>
-          <span class="jahr jahr--jetzt">2027</span>
-        </div>
-      </div>
+      <p class="jahre"><span class="jahre-was">Gute Vorsätze für</span>
+        <span class="jahr jahr--weg">2025</span>
+        <span class="jahr jahr--weg">2026</span>
+        <span class="jahr jahr--jetzt">2027</span></p>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="Innovation &amp; Geschäftsmodell neu denken"
-        data-text="Wie Ihr Euer Geschäftsmodell ohne Altlasten auf den Prüfstand stellt – und was davon in zehn Jahren noch trägt."
+        data-text="Wie Du Dein Geschäftsmodell ohne Altlasten auf den Prüfstand stellst – und was davon in zehn Jahren noch trägt."
         data-pdf="/assets/downloads/empiria-innovation.pdf"
         data-bild="/assets/downloads/empiria-innovation-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich alles einmal neu denken.</b>
-          <small>Das Geschäftsmodell ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Das Geschäftsmodell ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="Strategie in den Alltag überführen"
@@ -157,8 +168,7 @@
         data-bild="/assets/downloads/empiria-strategie-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich ein klares Zielbild für mein Team.</b>
-          <small>Damit jeder weiß, worauf er hinarbeitet – und der Bereich spürbar nach vorne kommt.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Damit jeder weiß, worauf er hinarbeitet – und der Bereich spürbar nach vorne kommt.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="KI zum Anfassen"
@@ -167,8 +177,7 @@
         data-bild="/assets/downloads/empiria-ki-zum-anfassen-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich KI im Team verstehen.</b>
-          <small>Nicht darüber reden, sondern anfassen: wo sie im Alltag trägt – und wo nicht.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Selbst ausprobieren, wo sie im Alltag trägt – und wo nicht.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="Sprint Landingpage"
@@ -177,8 +186,7 @@
         data-bild="/assets/downloads/empiria-sprint-landingpage-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich in Tagen sichtbar werden statt in Monaten.</b>
-          <small>Eine Landingpage, die steht, bevor die nächste Abstimmungsrunde beginnt.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Eine Landingpage, die steht, bevor die nächste Abstimmungsrunde beginnt.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="MarketingEcoSystem (MES)"
@@ -187,8 +195,7 @@
         data-bild="/assets/downloads/empiria-dashboard-digitales-marketing-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich sehen, was das Marketing bringt.</b>
-          <small>Alle Kanäle und Zahlen an einem Ort – und die Empfehlungen fließen zurück.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Alle Kanäle und Zahlen an einem Ort – laufend bewertet statt einmal im Jahr.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="1:1 Sparring"
@@ -197,11 +204,10 @@
         data-bild="/assets/downloads/empiria-sparring-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
         <span class="vorsatz-txt"><b>Endlich jemanden zum Mitdenken haben.</b>
-          <small>Offen sprechen über das, wofür es intern nicht die passende Distanz gibt.</small></span>
-        <span class="vorsatz-pdf">PDF</span></button>
+          <small>Offen sprechen über das, wofür es intern nicht die passende Distanz gibt.</small></span></button>
 
       <div class="zettel-fuss">
-        <p>Suche Dir etwas aus – wir schicken Dir das Passende zum Nachlesen.</p>
+        <p>Hake ab, was 2027 dran ist – zu jedem Vorsatz gibt es ein PDF zum Nachlesen.</p>
         <span class="zettel-sig">Dein empiria-Team</span>
       </div>
     </div>
@@ -209,5 +215,11 @@
 </main>
 
 <script src="/assets/lead/lead.js"></script>
+<script>
+/* Abgehakt bleibt abgehakt - der Haken ist die Antwort auf den Zettel */
+document.querySelectorAll('.vorsatz').forEach(function (v) {
+  v.addEventListener('click', function () { v.classList.add('ist-dran'); });
+});
+</script>
 </body>
 </html>
