@@ -23,9 +23,9 @@
    Durchgestrichen heisst ueberall "vergangen" - die Vorsaetze werden darum
    abgehakt, nie durchgestrichen. */
 .vz { --t-h1: clamp(2.3rem, 3.5vw, 4.6rem);
-      --t-zettel: clamp(1.02rem, 1.08vw, 1.42rem);
+      --t-zettel: clamp(.98rem, .92vw, 1.22rem);
       --t-text: clamp(1rem, 1.02vw, 1.32rem);
-      --t-klein: clamp(.84rem, .84vw, 1.08rem);
+      --t-klein: clamp(.82rem, .76vw, 1rem);
       position: relative; min-height: 100svh; overflow: hidden; background: var(--black);
       color: #fff; display: flex; flex-direction: column; }
 .vz a { border-bottom: 0; }
@@ -41,7 +41,7 @@
            align-items: center; gap: clamp(32px,5vw,110px);
            padding: clamp(28px,4vh,60px) var(--pad-x) clamp(36px,6vh,80px); }
 .vz-kicker { font-size: var(--t-text); font-weight: 500; color: var(--grey-50); margin: 0 0 1rem; }
-.vz-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.18;
+.vz-h1 { font-family: var(--font-serif); font-weight: 500; line-height: 1.34;
          letter-spacing: -.01em; font-size: var(--t-h1); margin: 0 0 1.4rem; }
 .vz-h1 .hl { color: var(--ink); }
 .vz-zeile { white-space: nowrap; }
@@ -51,9 +51,9 @@
 
 /* ---- Der Zettel --------------------------------------------------------- */
 .zettel { position: relative; background: #faf8f4; color: var(--ink); border-radius: 3px;
-          padding: clamp(22px,2.4vw,44px) clamp(22px,2.6vw,48px) clamp(18px,2vw,36px);
+          padding: clamp(20px,2vw,36px) clamp(22px,2.2vw,40px) clamp(16px,1.6vw,28px);
           box-shadow: 0 34px 80px rgba(0,0,0,.55); transform: rotate(-.9deg);
-          max-width: 800px; width: 100%; justify-self: center; }
+          max-width: 560px; width: 100%; justify-self: center; }
 
 /* Die Jahreszeile: zweimal durchgestrichen, einmal frisch */
 .jahre { font-family: var(--font-serif); font-weight: 700; font-size: var(--t-zettel);
@@ -111,8 +111,8 @@
 @media (max-width: 960px), (max-width: 1180px) and (orientation: portrait) {
   .vz-raum { grid-template-columns: minmax(0,1fr); align-content: center; gap: 34px;
              padding-top: clamp(36px,7vw,64px); }
-  .vz-raum > div:first-child { max-width: 600px; justify-self: center; width: 100%; }
-  .zettel { transform: none; max-width: 600px; }
+  .vz-raum > div:first-child { max-width: 560px; justify-self: center; width: 100%; }
+  .zettel { transform: none; max-width: 560px; }
   .vz-lead { max-width: none; }
 }
 @media (max-width: 520px) {
@@ -158,8 +158,8 @@
         data-pdf="/assets/downloads/empiria-innovation.pdf"
         data-bild="/assets/downloads/empiria-innovation-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich alles einmal neu denken.</b>
-          <small>Das Geschäftsmodell ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small></span></button>
+        <span class="vorsatz-txt"><b>Das Geschäftsmodell einmal ganz neu denken.</b>
+          <small>Ohne Altlasten auf den Prüfstand – und sauber neu aufsetzen.</small></span></button>
 
       <button class="vorsatz" type="button"
         data-kicker="Dein Vorsatz für 2027" data-lead="Strategie in den Alltag überführen"
@@ -167,7 +167,7 @@
         data-pdf="/assets/downloads/empiria-strategie.pdf"
         data-bild="/assets/downloads/empiria-strategie-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich ein klares Zielbild für mein Team.</b>
+        <span class="vorsatz-txt"><b>Ein klares Zielbild für mein Team.</b>
           <small>Damit jeder weiß, worauf er hinarbeitet – und der Bereich spürbar nach vorne kommt.</small></span></button>
 
       <button class="vorsatz" type="button"
@@ -176,7 +176,7 @@
         data-pdf="/assets/downloads/empiria-ki-zum-anfassen.pdf"
         data-bild="/assets/downloads/empiria-ki-zum-anfassen-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich KI im Team verstehen.</b>
+        <span class="vorsatz-txt"><b>KI im Team wirklich verstehen.</b>
           <small>Selbst ausprobieren, wo sie im Alltag trägt – und wo nicht.</small></span></button>
 
       <button class="vorsatz" type="button"
@@ -185,7 +185,7 @@
         data-pdf="/assets/downloads/empiria-sprint-landingpage.pdf"
         data-bild="/assets/downloads/empiria-sprint-landingpage-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich in Tagen sichtbar werden statt in Monaten.</b>
+        <span class="vorsatz-txt"><b>In Tagen sichtbar werden statt in Monaten.</b>
           <small>Eine Landingpage, die steht, bevor die nächste Abstimmungsrunde beginnt.</small></span></button>
 
       <button class="vorsatz" type="button"
@@ -194,7 +194,7 @@
         data-pdf="/assets/downloads/empiria-dashboard-digitales-marketing.pdf"
         data-bild="/assets/downloads/empiria-dashboard-digitales-marketing-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich sehen, was das Marketing bringt.</b>
+        <span class="vorsatz-txt"><b>Sehen, was das Marketing bringt.</b>
           <small>Alle Kanäle und Zahlen an einem Ort – laufend bewertet statt einmal im Jahr.</small></span></button>
 
       <button class="vorsatz" type="button"
@@ -203,7 +203,7 @@
         data-pdf="/assets/downloads/empiria-sparring.pdf"
         data-bild="/assets/downloads/empiria-sparring-1.webp">
         <span class="vorsatz-box"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 16.5 12.5 22 24 8.5"/></svg></span>
-        <span class="vorsatz-txt"><b>Endlich jemanden zum Mitdenken haben.</b>
+        <span class="vorsatz-txt"><b>Jemanden zum Mitdenken haben.</b>
           <small>Offen sprechen über das, wofür es intern nicht die passende Distanz gibt.</small></span></button>
 
       <div class="zettel-fuss">
