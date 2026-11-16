@@ -47,6 +47,12 @@
 .vz-kopf { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
            padding: clamp(18px,2.6vw,40px) var(--pad-x) 0; }
 .vz-kopf img { height: clamp(24px, 1.5vw, 32px); display: block; }
+/* Pflichtangaben unten wie auf der Homepage: Impressum | Datenschutz */
+.vz-fuss { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
+           padding: 0 var(--pad-x) clamp(18px,2.4vw,32px); display: flex; gap: 10px;
+           font-size: var(--t-klein); color: var(--grey-50); }
+.vz-fuss a { color: var(--grey-50); text-decoration: none; }
+.vz-fuss a:hover, .vz-fuss a:focus-visible { color: #fff; }
 
 .vz-raum { position: relative; z-index: 3; flex: 1 1 auto; width: 100%; max-width: 1840px;
            margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
@@ -286,6 +292,9 @@
     </div>
     </div>
   </div>
+  <footer class="vz-fuss">
+    <a href="/impressum.html">Impressum</a><span aria-hidden="true">|</span><a href="/datenschutz.html">Datenschutz</a>
+  </footer>
 </main>
 
 <script src="/assets/lead/lead.js"></script>
