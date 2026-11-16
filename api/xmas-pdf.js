@@ -18,7 +18,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PDF_ORDNER = path.join(process.cwd(), 'site', 'assets', 'downloads', '2.0');
+const PDF_ORDNER = path.join(__dirname, '..', 'site', 'assets', 'downloads', '2.0');
 const DATEIEN = {
   'innovation':                    { titel: 'Innovation & Geschäftsmodell neu denken', datei: 'empiria-innovation.pdf' },
   'strategie':                     { titel: 'Strategie in den Alltag überführen',       datei: 'empiria-strategie.pdf' },

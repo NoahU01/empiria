@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/xmas-pdf.js": {
-      "includeFiles": "{site/assets/downloads/2.0/empiria-*.pdf,api/_xmas/**}"
-    }
-  },
   "redirects": [
     {
       "source": "/impressum",
