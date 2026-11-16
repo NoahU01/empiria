@@ -76,7 +76,8 @@
 .vz-pfeil { flex: 0 0 auto; max-width: none; overflow: visible; fill: none;
             stroke: rgba(255,255,255,.92); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .vz-pfeil--rechts { display: none; width: clamp(80px, 6.5vw, 130px); margin-top: .5em; }
-.vz-pfeil--unten { width: 34px; margin-top: .2em; }
+/* Pfeil startet am Ende der Notiz, laeuft nach rechts und biegt nach unten in den Zettel */
+.vz-pfeil--unten { width: 58px; align-self: flex-end; margin-bottom: -22px; }
 /* Mittlere Breite quer (z. B. iPad 13" quer): Notiz ueber dem Zettel - die Anhaenger
    werden kuerzer, damit sie nicht in die Notiz haengen */
 @media (min-width: 961px) and (max-width: 1439px) and (orientation: landscape) {
@@ -217,8 +218,8 @@
       <p class="vz-notiz"><span>Einfach anklicken –<br>das PDF kommt per Mail.</span>
         <svg class="vz-pfeil vz-pfeil--rechts" viewBox="0 0 120 50" aria-hidden="true">
           <path d="M4 38c14 6 36 8 56 2 20-6 36-18 54-32"/><path d="M98 6c5.5.6 11 .9 16.5.6-1.9 4.6-3.5 9.6-4.6 14.8"/></svg>
-        <svg class="vz-pfeil vz-pfeil--unten" viewBox="0 0 60 90" aria-hidden="true">
-          <path d="M14 4c-8 20-7 46 10 74"/><path d="M8 66c5 4.6 10.5 9.2 16.5 13.4 2.6-6.4 6-12 10.4-16.6"/></svg></p>
+        <svg class="vz-pfeil vz-pfeil--unten" viewBox="0 0 80 70" aria-hidden="true">
+          <path d="M3 22c18-10 42-11 54 2 9 10 9 24 6 40"/><path d="M52 54c3.4 3.6 7 7 10.8 10.2 3.3-4.3 6.2-8.8 8.4-13.6"/></svg></p>
     <div class="zettel">
       <p class="jahre"><span class="jahre-was">Gute Vorsätze für</span>
         <span class="jahr jahr--weg">2025</span>
