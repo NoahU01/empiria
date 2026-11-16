@@ -1845,6 +1845,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 103,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 161,
+    "reichweite": 107,
+    "reaktionen": 3,
+    "kommentare": 0
    }
   ],
   "bild": "rp30",
@@ -1904,6 +1911,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 112,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 186,
+    "reichweite": 119,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1956,6 +1970,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 130,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 232,
+    "reichweite": 166,
+    "reaktionen": 6,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -2001,6 +2022,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 365,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 582,
+    "reichweite": 443,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -2039,6 +2067,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 262,
     "reaktionen": 12,
     "kommentare": 3
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 429,
+    "reichweite": 301,
+    "reaktionen": 13,
+    "kommentare": 4
    }
   ],
   "bild": "rp17",
@@ -2063,6 +2098,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 303,
     "reaktionen": 2,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 1865,
+    "reichweite": 1467,
+    "reaktionen": 7,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2080,7 +2122,15 @@ window.MK_ENTWUERFE = [
   "text": "Ich habe schon Videokonferenzen nach fünf Minuten gesprengt. Mit einer einzigen Frage.\n\n„Kann mir einer kurz einordnen, mit welchem Ergebnis wir heute rausgehen wollen?“\n\nKlingt harmlos. Ist es nicht.\n\nViel zu oft kommt dann die Agenda. Punkt 1, Punkt 2, Punkt 3. Jeder hat seine Folien vorbereitet, keiner weiß, wofür.\n\nDann sage ich: Wenn das nicht klar ist, brauchen wir heute über gar nichts zu reden.\n\nJa, da wird es kurz still. Und dann kommt meistens die erste ehrliche Diskussion des Tages: Was wollen wir eigentlich?\n\nIch habe keine Lust mehr auf Termine, in denen lauter kluge Leute eine Stunde aneinander vorbeireden.\n\nDu?",
   "status": "veroeffentlicht",
   "datum": "2026-11-16",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 233,
+    "reichweite": 173,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp35",
   "format": "Werkzeug · Videokonferenz",
   "offen": "",
