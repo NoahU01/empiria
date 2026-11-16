@@ -270,6 +270,10 @@
       "destination": "/site/xmas2026.html"
     },
     {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/site/$1"
     }

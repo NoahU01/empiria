@@ -48,6 +48,11 @@
 .lead-klein { margin: 12px 0 0; font-size: .74rem; line-height: 1.5; color: var(--grey-50); }
 .lead-klein a { color: var(--grey-70); }
 
+/* Honigtopf: fuer Menschen unsichtbar, Bots fuellen es aus */
+.lead-honig { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; }
+.lead-fehler { margin: 12px 0 0; font-size: .82rem; line-height: 1.5; color: #a3261b; }
+.lead-fehler a { color: inherit; }
+
 /* Zustand nach dem Absenden */
 .lead-fertig { display: none; text-align: center; padding: 6px 0 2px; }
 .lead-karte.fertig .lead-form, .lead-karte.fertig .lead-kopf { display: none; }

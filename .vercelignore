@@ -15,6 +15,8 @@
 # 2. Nur das wieder reinholen, was die Seite braucht
 !/site
 !/vercel.json
+# Server-Funktion der X-Mas-Seite (PDF per Mail)
+!/api
 
 # 3. Innerhalb von site/: Build-/Arbeitskram, der nicht ausgeliefert wird
 #    (greift beim CLI-Deploy; ueber Git sind die ohnehin per .gitignore raus)
