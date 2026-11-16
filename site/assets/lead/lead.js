@@ -6,6 +6,11 @@
      data-pdf         Pfad zum PDF
      data-bild        Vorschaubild des PDF (optional)
      data-kicker      Zeile ueber dem Titel (optional, Standard unten)
+     data-datei       Kennung fuer den Mailversand (optional, siehe unten)
+
+   Mailversand (X-Mas-Seite): Hat das Element data-datei, wird das PDF nicht
+   heruntergeladen, sondern von /api/xmas-pdf per Mail an die Adresse geschickt.
+   Die Mail liegt danach in Daniels Outlook unter "Gesendet".
 
    WICHTIG, damit hier keine falsche Sicherheit entsteht:
    Es gibt noch KEINE Anbindung. Die Adresse wird nur dann verschickt, wenn
@@ -15,7 +20,7 @@
    laufen, der die Adresse vorher entgegennimmt.
 */
 (function () {
-  var karte, bg, form, feld, knopf, dl, aktuell = null, letzterAusloeser = null;
+  var karte, bg, form, feld, knopf, dl, klein, fehler, aktuell = null, letzterAusloeser = null;
 
   function bauen() {
     bg = document.createElement('div');
@@ -35,9 +40,11 @@
           '<label class="lead-feld"><span>Deine E-Mail-Adresse</span>' +
             '<input type="email" name="email" required placeholder="name@unternehmen.de" ' +
             'autocomplete="email" inputmode="email"></label>' +
+          '<input class="lead-honig" type="text" name="firma" tabindex="-1" autocomplete="off" aria-hidden="true">' +
           '<button class="lead-knopf" type="submit">PDF anfordern</button>' +
-          '<p class="lead-klein">Wir schicken Dir das PDF und melden uns nur zu diesem Thema. ' +
-            'Mehr dazu in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>' +
+          '<p class="lead-fehler" role="alert" hidden>Das hat leider nicht geklappt. Schreibe uns kurz an ' +
+            '<a href="mailto:daniel.stroebel@empiria.de">daniel.stroebel@empiria.de</a>, dann kommt das PDF direkt.</p>' +
+          '<p class="lead-klein"></p>' +
         '</form>' +
         '<div class="lead-fertig">' +
           '<span class="lead-haken"><svg viewBox="0 0 24 24" aria-hidden="true">' +
@@ -54,6 +61,8 @@
     feld = bg.querySelector('input[name=email]');
     knopf = bg.querySelector('.lead-knopf');
     dl = bg.querySelector('.lead-dl');
+    klein = bg.querySelector('.lead-klein');
+    fehler = bg.querySelector('.lead-fehler');
 
     bg.querySelector('.lead-zu').addEventListener('click', zu);
     bg.addEventListener('mousedown', function (e) { if (e.target === bg) zu(); });
@@ -68,7 +77,12 @@
     karte.classList.remove('fertig');
     form.reset();
     knopf.disabled = false;
-    knopf.textContent = 'PDF anfordern';
+    knopf.textContent = daten.datei ? 'PDF per Mail anfordern' : 'PDF anfordern';
+    fehler.hidden = true;
+    klein.innerHTML = (daten.datei
+      ? 'Das PDF kommt per Mail an diese Adresse. '
+      : 'Wir schicken Dir das PDF und melden uns nur zu diesem Thema. ') +
+      'Mehr dazu in der <a href="/datenschutz.html">Datenschutzerklärung</a>.';
     bg.querySelector('.lead-kicker').textContent = daten.kicker || 'Zum Download';
     bg.querySelector('.lead-h').textContent = daten.titel;
     bg.querySelector('.lead-txt').textContent = daten.text;
@@ -94,6 +108,8 @@
     knopf.disabled = true;
     knopf.textContent = 'Einen Moment …';
 
+    if (aktuell.datei) return perMail();
+
     var nutzlast = { email: feld.value.trim(), thema: aktuell.titel, pdf: aktuell.pdf };
     var fertig = function () {
       karte.classList.add('fertig');
@@ -115,6 +131,26 @@
     }
   }
 
+  function perMail() {
+    var adresse = feld.value.trim();
+    fetch('/api/xmas-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: adresse, datei: aktuell.datei, firma: form.firma.value })
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      var fertig = karte.querySelector('.lead-fertig');
+      fertig.querySelector('h4').textContent = 'Ist unterwegs.';
+      fertig.querySelector('p').textContent = 'Das PDF kommt in den nächsten Minuten an ' + adresse + '.';
+      dl.style.display = 'none';
+      karte.classList.add('fertig');
+    }).catch(function () {
+      knopf.disabled = false;
+      knopf.textContent = 'PDF per Mail anfordern';
+      fehler.hidden = false;
+    });
+  }
+
   function start() {
     document.querySelectorAll('[data-lead]').forEach(function (el) {
       el.addEventListener('click', function (e) {
@@ -124,7 +160,8 @@
           text: el.getAttribute('data-text') || '',
           pdf: el.getAttribute('data-pdf'),
           bild: el.getAttribute('data-bild'),
-          kicker: el.getAttribute('data-kicker')
+          kicker: el.getAttribute('data-kicker'),
+          datei: el.getAttribute('data-datei')
         }, el);
       });
     });
