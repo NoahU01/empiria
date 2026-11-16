@@ -2078,14 +2078,14 @@ window.MK_ENTWUERFE = [
   "art": "Werkzeug · Videokonferenz",
   "kern": "Ich habe schon Videokonferenzen nach fünf Minuten gesprengt. Mit einer einzigen Frage.",
   "text": "Ich habe schon Videokonferenzen nach fünf Minuten gesprengt. Mit einer einzigen Frage.\n\n„Kann mir einer kurz einordnen, mit welchem Ergebnis wir heute rausgehen wollen?“\n\nKlingt harmlos. Ist es nicht.\n\nViel zu oft kommt dann die Agenda. Punkt 1, Punkt 2, Punkt 3. Jeder hat seine Folien vorbereitet, keiner weiß, wofür.\n\nDann sage ich: Wenn das nicht klar ist, brauchen wir heute über gar nichts zu reden.\n\nJa, da wird es kurz still. Und dann kommt meistens die erste ehrliche Diskussion des Tages: Was wollen wir eigentlich?\n\nIch habe keine Lust mehr auf Termine, in denen lauter kluge Leute eine Stunde aneinander vorbeireden.\n\nDu?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-16",
   "kennzahlen": [],
   "bild": "rp35",
   "format": "Werkzeug · Videokonferenz",
   "offen": "",
   "termin": "Mo 16.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7527985159766392832"
  },
  {
   "id": 120,
