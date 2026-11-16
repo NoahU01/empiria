@@ -50,8 +50,7 @@ function mailText(titel) {
   const p = 'margin:0 0 14px;font-family:Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.5;color:#1a1817';
   const signatur = fs.readFileSync(path.join(__dirname, '_xmas', 'signatur.html'), 'utf8');
   return `<div>
-<p style="${p}">Hallo,</p>
-<p style="${p}">anbei das PDF zu Deinem Vorsatz „${html(titel)}“.</p>
+<p style="${p}">Ein Klick – und schon liegt es unterm Baum. Beziehungsweise in Deinem Postfach: das PDF zu Deinem Vorsatz „${html(titel)}“.</p>
 <p style="${p}">Wenn Du darüber sprechen möchtest, antworte einfach auf diese Mail.</p>
 <p style="${p}">Frohe Weihnachten und einen guten Start in 2027</p>
 ${signatur}
