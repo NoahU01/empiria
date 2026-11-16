@@ -30,23 +30,19 @@
       color: #fff; display: flex; flex-direction: column; }
 .vz a { border-bottom: 0; }
 /* Anhaenger aus der Weihnachtskarte 2026: an Faeden von oben, Kontur mit gelbem
-   Versatz. Auf Schwarz wird die schwarze Kontur der Karte weiss. */
+   Versatz. Auf Schwarz wird die schwarze Kontur der Karte ein gedecktes Grau -
+   Weiss leuchtet zu stark. Die Anhaenger stehen still. */
 /* Desktop: ueber der Headline, rechts in der linken Spalte - dort ist Luft,
    und der Zettel bleibt frei. Gestapelt (Tablet hochkant, Handy): oben rechts. */
 .vz-deko { position: absolute; top: 0; left: calc(50% - clamp(260px, 22vw, 470px)); z-index: 1;
            height: clamp(170px, 27vh, 380px); width: auto; max-width: none;
            pointer-events: none; overflow: visible; }
-.vz-deko .faden { stroke: rgba(255,255,255,.6); stroke-width: 2; }
-.vz-deko .kontur { fill: none; stroke: #fff; stroke-width: 7; stroke-linejoin: round; }
+.vz-deko .faden { stroke: #4a4844; stroke-width: 2; }
+.vz-deko .kontur { fill: none; stroke: #6e6b66; stroke-width: 7; stroke-linejoin: round; }
 .vz-deko .kontur--voll { fill: var(--hl); }
 .vz-deko .versatz { fill: none; stroke: var(--hl); stroke-width: 7; stroke-linejoin: round;
                     transform: translate(4px, 4px); }
-.vz-deko .kappe { fill: #fff; }
-.vz-deko .teil { transform-box: view-box; animation: pendel 6s ease-in-out infinite alternate; }
-.vz-deko .teil:nth-child(2) { animation-duration: 7.4s; animation-delay: -2s; }
-.vz-deko .teil:nth-child(3) { animation-duration: 6.6s; animation-delay: -4s; }
-.vz-deko .teil:nth-child(4) { animation-duration: 8s; animation-delay: -1s; }
-@keyframes pendel { from { transform: rotate(-1.6deg); } to { transform: rotate(1.6deg); } }
+.vz-deko .kappe { fill: #6e6b66; }
 
 .vz-kopf { position: relative; z-index: 3; width: 100%; max-width: 1840px; margin: 0 auto;
            padding: clamp(18px,2.6vw,40px) var(--pad-x) 0; }
@@ -64,6 +60,7 @@
 .vz-lead { font-size: var(--t-text); line-height: 1.66; font-weight: 300;
            color: rgba(255,255,255,.72); margin: 0; max-width: 34ch; }
 .vz-lead b { color: #fff; font-weight: 600; }
+.vz-lead + .vz-lead { margin-top: 1.66em; }
 
 /* ---- Der Zettel --------------------------------------------------------- */
 .zettel { position: relative; background: #faf8f4; color: var(--ink); border-radius: 3px;
@@ -145,7 +142,7 @@
   .zettel { margin: 0 -6px; width: calc(100% + 12px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .jahr--weg::after, .jahr--jetzt, .vz-deko .teil { animation: none; }
+  .jahr--weg::after, .jahr--jetzt { animation: none; }
 }
 </style>
 </head>
@@ -156,19 +153,19 @@
 
 <main class="vz">
   <svg class="vz-deko" viewBox="0 0 400 262" aria-hidden="true">
-    <g class="teil" style="transform-origin:40px 0">
+    <g class="teil">
       <line class="faden" x1="40" y1="0" x2="40" y2="113"/><rect class="kappe" x="33" y="111" width="14" height="8" rx="2"/>
       <circle class="versatz" cx="40" cy="150" r="26"/><circle class="kontur" cx="40" cy="150" r="26"/></g>
-    <g class="teil" style="transform-origin:140px 0">
+    <g class="teil">
       <line class="faden" x1="140" y1="0" x2="140" y2="183"/><rect class="kappe" x="133" y="181" width="14" height="8" rx="2"/>
       <g transform="translate(140 222) rotate(45)">
         <path class="versatz" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z" transform="rotate(-45) translate(4 4) rotate(45)"/>
         <path class="kontur kontur--voll" d="M-8-24H8V-8H24V8H8V24H-8V8H-24V-8H-8Z"/></g></g>
-    <g class="teil" style="transform-origin:262px 0">
+    <g class="teil">
       <line class="faden" x1="262" y1="0" x2="262" y2="62"/><rect class="kappe" x="255" y="60" width="14" height="8" rx="2"/>
       <path class="versatz" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/>
       <path class="kontur" d="M232 80h13l16 22-16 22h-13l16-22Zm26 0h13l16 22-16 22h-13l16-22Z"/></g>
-    <g class="teil" style="transform-origin:360px 0">
+    <g class="teil">
       <line class="faden" x1="360" y1="0" x2="360" y2="132"/><rect class="kappe" x="353" y="130" width="14" height="8" rx="2"/>
       <circle class="versatz" cx="360" cy="162" r="21"/><circle class="kontur kontur--voll" cx="360" cy="162" r="21"/></g>
   </svg>
@@ -182,7 +179,8 @@
       <p class="vz-kicker">Weihnachten 2026</p>
       <h1 class="vz-h1"><span class="vz-zeile">Der Zettel liegt schon</span><br><span class="vz-zeile">ein <span class="hl">Weilchen da.</span></span></h1>
       <p class="vz-lead">Danke für ein Jahr mit klaren Fragen, ehrlichen Gesprächen und Themen,
-        die wirklich etwas bewegt haben. <b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
+        die wirklich etwas bewegt haben.</p>
+      <p class="vz-lead"><b>Wir wünschen Dir ruhige Tage, gutes Essen und Zeit
         für die Menschen, die zählen.</b> Und 2027 haken wir das hier gemeinsam ab.</p>
     </div>
 
