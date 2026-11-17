@@ -782,3 +782,8 @@ a.mke-platz{text-decoration:none}
 .mke-k { position: relative; }
 .mke-k__seiten { position: absolute; right: 6px; bottom: 6px; padding: 3px 7px; border-radius: 10px; background: #1a1817; color: #fff400; font: 600 .68rem/1 'Poppins', sans-serif; }
 .mke-blaettern { width: 34px; height: 34px; margin: 0 10px; border: 0; border-radius: 50%; background: #fff400; color: #1a1817; font: 700 1.2rem/1 'Poppins', sans-serif; cursor: pointer; vertical-align: middle; }
+
+/* Redaktionsplan: Entwurf ohne Bild zeigt die Bildidee (Daniel, 17.11.2026) */
+.mke-bildidee{display:flex;align-items:flex-start;justify-content:flex-start;aspect-ratio:4/5;width:100%;padding:14px;background:#f2f1ee;border:1px dashed #b9b4ad;color:#3d3a37;font-size:.78rem;line-height:1.4;text-align:left;overflow:hidden;hyphens:auto;overflow-wrap:break-word}
+.mke-bildidee--gross{flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;font-size:.95rem;padding:28px}
+.mke-bildidee--gross b{font-weight:600;color:#1a1817}

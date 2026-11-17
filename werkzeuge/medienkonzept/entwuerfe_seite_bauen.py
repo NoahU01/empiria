@@ -16,7 +16,7 @@ import datetime, json, os, sys, zipfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HIER, "..", "..", "site"))
 MK = os.path.join(SITE, "assets", "projekte", "medienkonzept")
-V = "81"  # Versionsnummer für CSS/JS
+V = "82"  # Versionsnummer für CSS/JS
 
 # Ergänzungen je Beitrag (Supabase-ID → Darstellung)
 EXTRA = {
@@ -64,6 +64,10 @@ def main(pfad):
         b = (e.get("bild") or "")
         if b.endswith(".jpg") and " " not in b:   # Bild aus Supabase gilt immer (Daniel, 28.10.2026: Plan zeigte altes Bild)
             x["bild"] = b[:-4]
+        # Kein Bild vorhanden (nur Bildidee als Text): Platzhalter mit der Bildidee statt Abbruch (Daniel, 17.11.2026 – Ticket 273)
+        if not x.get("seiten") and not os.path.exists(os.path.join(MK, "postings", (x.get("bild") or "-") + ".jpg")):
+            x["bildidee"] = b if (b and not b.endswith(".jpg")) else ("Bild fehlt: " + b if b else "Noch kein Bild")
+            x["bild"] = ""
         x["termin"] = "%s %s." % (["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"][datetime.date.fromisoformat(datum).weekday()], datum[8:10] + "." + datum[5:7])
         x["url"] = e.get("linkedin_url") or ""
         posts.append(dict(id=e["id"], kanal="firma" if "Firmenprofil" in e["kanal"] else "daniel",
@@ -109,12 +113,13 @@ def main(pfad):
     # Paket: alle Bilder, Dokument-PDF und Texte
     md = ["# Postings Daniel Ströbel – LinkedIn (Entwürfe, Stand 12.10.2026)", ""]
     for i, p in enumerate(posts):
-        md += ["## %02d · %s · %s · %s" % (i + 1, p["termin"], p["feld"], p["art"]), "", "Bild: %s.jpg · %s" % (p["bild"], p["format"]), "", p["text"], ""]
+        md += ["## %02d · %s · %s · %s" % (i + 1, p["termin"], p["feld"], p["art"]), "", ("Bild: %s.jpg · %s" % (p["bild"], p["format"]) if p["bild"] else "Bildidee: %s · %s" % (p.get("bildidee", ""), p["format"])), "", p["text"], ""]
     with zipfile.ZipFile(os.path.join(MK, "postings", "Postings-Daniel.zip"), "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("Texte.md", "\n".join(md))
         for p in posts:
             for s in p.get("seiten", [p["bild"]] + ([p["alt"]] if p.get("alt") else [])):
-                z.write(os.path.join(MK, "postings", s + ".jpg"), s + ".jpg")
+                if s and os.path.exists(os.path.join(MK, "postings", s + ".jpg")):
+                    z.write(os.path.join(MK, "postings", s + ".jpg"), s + ".jpg")
             if p.get("pdf"):
                 z.write(os.path.join(MK, "postings", p["pdf"]), p["pdf"])
     # Seite aus der Beitragsarten-Seite ableiten (Kopf, Menü, Fuß bleiben identisch)

@@ -28,7 +28,7 @@
       var p = P[t.i], st = status(p);
       return '<div class="mke-tag">' + '<div class="mke-tag__kopf">' + kopf + '<span class="mke-status mke-status--' + st[0] + '">' + st[1] + '</span></div>' +
         '<button type="button" class="ig-kachel mke-k" data-i="' + t.i + '" aria-label="' + t.tag + ' öffnen">' +
-        '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy">' + (p.seiten ? '<span class="mke-k__seiten">' + p.seiten.length + ' Seiten</span>' : '') + '</button>' +
+        (p.bild ? '<img src="' + PFAD + p.bild + '.jpg' + BV + '" alt="" loading="lazy">' : '<span class="mke-bildidee">' + esc(p.bildidee || 'Noch kein Bild') + '</span>') + (p.seiten ? '<span class="mke-k__seiten">' + p.seiten.length + ' Seiten</span>' : '') + '</button>' +
         zahlen(p) + '<p class="mke-tag__typ">' + (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">auf LinkedIn ↗</a> · ' : '') + esc(p.format) + '</p></div>';
     }
     if (t.plan) {
@@ -53,7 +53,8 @@
   }
   function bildZeigen() {
     var p = P[jetzt], b = (variante === 'alt' && p.alt) ? p.alt : p.bild;
-    if (!p.seiten) $('#mke-bild').innerHTML = '<img src="' + PFAD + b + '.jpg' + BV + '" alt="">';
+    if (!p.seiten) $('#mke-bild').innerHTML = b ? '<img src="' + PFAD + b + '.jpg' + BV + '" alt="">' : '<div class="mke-bildidee mke-bildidee--gross"><b>Bildentwurf fehlt noch</b>' + esc(p.bildidee || '') + '</div>';
+    $('#mke-laden').hidden = !b;
     $('#mke-laden').href = PFAD + b + '.jpg';
     $$('#mke-variante button').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === variante ? 'true' : 'false'); });
   }
@@ -66,7 +67,7 @@
     $('#mke-variante').hidden = !p.alt;
     $('#mke-bild').innerHTML = p.seiten
       ? '<div class="mke-seiten">' + p.seiten.map(function (s, n) { return '<img src="' + PFAD + s + '.jpg' + BV + '" alt="Seite ' + (n + 1) + '">'; }).join('') + '</div><p class="mke-hinweis"><button type="button" class="mke-blaettern" data-richtung="-1" aria-label="Seite zurück">‹</button> Blättern · ' + p.seiten.length + ' Seiten <button type="button" class="mke-blaettern" data-richtung="1" aria-label="Seite weiter">›</button></p>'
-      : '<img src="' + PFAD + p.bild + '.jpg" alt="">';
+      : (p.bild ? '<img src="' + PFAD + p.bild + '.jpg" alt="">' : '');
     $('#mke-format').textContent = firma ? 'Firmenprofil · ' + p.termin + ' · 9:00 Uhr' : p.termin + ' · ' + '7:45' + ' Uhr · ' + status(p)[1];
     $('#mke-text').textContent = p.text;
     $('#mke-meta').innerHTML = '<dt>Themenfeld</dt><dd>' + p.feld + ' · ' + p.art + '</dd><dt>Format</dt><dd>' + p.format + '</dd>' +
