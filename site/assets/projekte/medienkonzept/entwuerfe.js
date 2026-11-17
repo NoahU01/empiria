@@ -2144,14 +2144,14 @@ window.MK_ENTWUERFE = [
   "art": "Satz · Foto",
   "kern": "„Ich stelle nur noch Leute ein, die mir mehr Probleme wegnehmen, als sie mir machen.“",
   "text": "„Ich stelle nur noch Leute ein, die mir mehr Probleme wegnehmen, als sie mir machen.“\n\nDas ist der O-Ton eines Bereichsleiters aus einem meiner Meetings der vergangenen Woche.\n\nUnd genau so denkt jeder, den du für dein Thema brauchst. Dein Vorstand. Der Kollege aus dem Nachbarbereich. Die IT.\n\nUnd dann kommst du mit deinem Projekt. Mit noch einer Abstimmung, noch einem Workshop, noch einer Vorlage. Und wunderst dich, dass keiner springt.\n\nGanz ehrlich: Dein Thema interessiert niemanden. Solange es keinem ein Problem abnimmt.\n\nIch sehe das ständig. Fachlich brillante Leute, die mit ihren Themen gegen die Wand laufen. Weil sie nie gefragt haben, was ihr Gegenüber davon hat.\n\nAlso: Nimmst du Probleme weg? Oder machst du welche?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-17",
   "kennzahlen": [],
   "bild": "rp43",
   "format": "Satz · Foto",
   "offen": "",
   "termin": "Di 17.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7528347586152333313"
  },
  {
   "id": 108,
