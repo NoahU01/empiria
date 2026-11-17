@@ -1918,6 +1918,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 119,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 192,
+    "reichweite": 125,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp28",
@@ -1977,6 +1984,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 166,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 244,
+    "reichweite": 175,
+    "reaktionen": 6,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -2029,6 +2043,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 443,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 626,
+    "reichweite": 479,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -2074,6 +2095,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 301,
     "reaktionen": 13,
     "kommentare": 4
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 466,
+    "reichweite": 330,
+    "reaktionen": 13,
+    "kommentare": 4
    }
   ],
   "bild": "rp17",
@@ -2105,6 +2133,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1467,
     "reaktionen": 7,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 2252,
+    "reichweite": 1756,
+    "reaktionen": 10,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2129,6 +2164,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 173,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 802,
+    "reichweite": 596,
+    "reaktionen": 12,
+    "kommentare": 7
    }
   ],
   "bild": "rp35",
@@ -2146,7 +2188,15 @@ window.MK_ENTWUERFE = [
   "text": "„Ich stelle nur noch Leute ein, die mir mehr Probleme wegnehmen, als sie mir machen.“\n\nDas ist der O-Ton eines Bereichsleiters aus einem meiner Meetings der vergangenen Woche.\n\nUnd genau so denkt jeder, den du für dein Thema brauchst. Dein Vorstand. Der Kollege aus dem Nachbarbereich. Die IT.\n\nUnd dann kommst du mit deinem Projekt. Mit noch einer Abstimmung, noch einem Workshop, noch einer Vorlage. Und wunderst dich, dass keiner springt.\n\nGanz ehrlich: Dein Thema interessiert niemanden. Solange es keinem ein Problem abnimmt.\n\nIch sehe das ständig. Fachlich brillante Leute, die mit ihren Themen gegen die Wand laufen. Weil sie nie gefragt haben, was ihr Gegenüber davon hat.\n\nAlso: Nimmst du Probleme weg? Oder machst du welche?",
   "status": "veroeffentlicht",
   "datum": "2026-11-17",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 68,
+    "reichweite": 43,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp43",
   "format": "Satz · Foto",
   "offen": "",
