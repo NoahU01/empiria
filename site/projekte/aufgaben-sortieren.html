@@ -1,0 +1,1846 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aufgaben sortieren – empiria (intern)</title>
+<meta name="description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch. Schreibe uns oder rufe direkt an.">
+<link rel="canonical" href="https://www.empiria.de/kontakt">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- OpenGraph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="empiria">
+<meta property="og:url" content="https://www.empiria.de/kontakt">
+<meta property="og:title" content="Kontakt – empiria">
+<meta property="og:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta property="og:image" content="https://www.empiria.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="empiria – Strategie, die wirkt.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kontakt – empiria">
+<meta name="twitter:description" content="Sprich mit empiria: kein Pitch, sondern ein offenes Gespräch.">
+<meta name="twitter:image" content="https://www.empiria.de/assets/og-image.png">
+
+<!-- ===== Consent Mode v2 + CMP + GA4 (identisch zu index.html) ===== -->
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+        data-cbid="54835321-3fa6-4427-b388-4f8b99bebd98"
+        data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<!-- ===== Interner Traffic am Browser markieren (statt per IP) =====
+     Einmal je Browser/Geraet ?internal=1 aufrufen (Rueckgaengig: ?internal=0).
+     Setzt traffic_type=internal fuer ALLE folgenden Events; GA4-Datenfilter
+     "Internal Traffic" muss auf AKTIV stehen. Baustein aus dem AdMemory-Skill
+     tracking-seo-setup/interner-traffic.html, hier mit Key empiria_internal. -->
+<script data-cookieconsent="ignore">
+  (function () {
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('empiria_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('empiria_internal'); schalter = 'aus'; }
+    } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+    var intern = false;
+    try { intern = localStorage.getItem('empiria_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an'
+          ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+          : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;'
+          + 'background:#1a1817;color:#fff;border-radius:14px;padding:10px 18px;'
+          + 'font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;'
+          + 'box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3VJ6JRK18C" data-cookieconsent="ignore"></script>
+<script data-cookieconsent="ignore">
+  gtag('js', new Date());
+  if (/^(www\.)?empiria\.de$/.test(location.hostname)) {
+    gtag('config', 'G-3VJ6JRK18C');
+  }
+</script>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/assets/e2/kontakt.css">
+</head>
+<body class="kontakt-page">
+
+<!-- ===== SVG icon symbols ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-forward" viewBox="0 0 232.44 232.44">
+      <path fill="currentColor" d="M124.63,201.36c-7.96-.02-14.41-6.49-14.39-14.43,0-2.73.78-5.38,2.24-7.69l40.09-63.07-40.08-63c-4.25-6.77-2.2-15.67,4.52-19.89,2.28-1.43,4.91-2.19,7.59-2.2h43.03c7.41.02,14.18,3.76,18.12,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.92,6.22-10.69,9.97-18.08,9.99h-43.01ZM125.11,45.72l42.32,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.54c2.33,0,4.48-1.2,5.73-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21h-42.51Z"/>
+      <path fill="currentColor" d="M60.23,201.36H17.22c-7.96-.02-14.41-6.49-14.39-14.43,0-2.72.78-5.38,2.24-7.68l40.09-63.08L5.08,53.2c-4.26-6.72-2.26-15.63,4.45-19.88,2.31-1.46,4.97-2.23,7.69-2.24h43c7.41.01,14.18,3.76,18.13,10.02l40.52,63.6c4.45,7.01,4.45,16.05,0,23.04l-40.54,63.64c-3.93,6.23-10.7,9.97-18.1,9.99ZM17.68,45.72l42.34,66.52c1.52,2.4,1.53,5.46,0,7.86l-42.34,66.62h42.53c2.34,0,4.49-1.2,5.74-3.18l40.55-63.66c1.41-2.22,1.41-5.09,0-7.31l-40.53-63.62c-1.27-2.02-3.42-3.21-5.77-3.21H17.68Z"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="28"/>
+        <path d="M28,41l9,9,17-19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-layout" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="5"/>
+        <path d="M10,30h60"/>
+        <path d="M30,30v36"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mobile" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="8" width="32" height="64" rx="6"/>
+        <path d="M36,62h8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-speed" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,52a26,26 0 1 1 52,0"/>
+        <path d="M40,52l14-16"/>
+        <circle cx="40" cy="52" r="3" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-rocket" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10c10,8,14,20,14,32c0,8-4,16-14,22c-10-6-14-14-14-22c0-12,4-24,14-32z"/>
+        <circle cx="40" cy="34" r="6"/>
+        <path d="M26,48l-8,14"/>
+        <path d="M54,48l8,14"/>
+        <path d="M34,64c0,6,3,10,6,12c3-2,6-6,6-12"/>
+      </g>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="40" r="26"/>
+        <path d="M40,24v16l12,8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-seo" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="34" cy="34" r="18"/>
+        <path d="M47,47l19,19"/>
+      </g>
+    </symbol>
+    <symbol id="ic-grow" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12,58l18-18,12,12,26-26"/>
+        <path d="M52,26h16v16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-control" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18,20h44"/>
+        <path d="M18,40h44"/>
+        <path d="M18,60h44"/>
+        <circle cx="30" cy="20" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="52" cy="40" r="4" fill="currentColor" stroke="none"/>
+        <circle cx="34" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="ic-audience" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="30" r="10"/>
+        <circle cx="54" cy="34" r="8"/>
+        <path d="M12,64c0-11,7-18,16-18s16,7,16,18"/>
+        <path d="M46,64c0-8,5-14,12-14s14,6,14,14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,10l24,10v18c0,18-12,28-24,32-12-4-24-14-24-32V20Z"/>
+        <path d="M30,40l8,8,14-16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="18" width="60" height="44" rx="6"/>
+        <path d="M12,22l28,22,28-22"/>
+      </g>
+    </symbol>
+    <symbol id="ic-posts" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="40" height="40" rx="5"/>
+        <rect x="30" y="30" width="40" height="40" rx="5"/>
+        <path d="M18,22h24"/>
+        <path d="M18,30h16"/>
+      </g>
+    </symbol>
+    <symbol id="ic-phone" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34.67,62h10.67"/>
+        <path d="M22,18c0-4.42,3.58-8,8-8h20c4.42,0,8,3.58,8,8v44c0,4.42-3.58,8-8,8h-20c-4.42,0-8-3.58-8-8V18Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-in" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="12.3" ry="12.3"/>
+        <path d="M29.93,56.86h-7.71v-22.11h7.71v22.11ZM45.94,41.96c-1.88,0-3.4,1.52-3.4,3.4v11.51h-8.11v-22.11h8.11v2.52c1.9-1.61,4.3-2.51,6.79-2.54,5.03,0,8.52,3.73,8.52,10.81v11.32h-8.52v-11.51c0-1.88-1.5-3.4-3.38-3.41,0,0-.01,0-.02,0v.02ZM30.07,27.1c0,2.19-1.78,3.97-3.97,3.97s-3.97-1.78-3.97-3.97,1.78-3.97,3.97-3.97c2.18.02,3.94,1.79,3.94,3.97h.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="ic-toolbox" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="60" height="36" rx="6"/>
+        <path d="M28,30v-8c0-4,3-7,7-7h10c4,0,7,3,7,7v8"/>
+        <path d="M10,46h60"/>
+        <path d="M36,46v8"/>
+        <path d="M44,46v8"/>
+      </g>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="60" height="60" rx="6"/>
+        <path d="M22,50v10"/>
+        <path d="M36,38v22"/>
+        <path d="M50,44v16"/>
+        <path d="M64,30v30"/>
+      </g>
+    </symbol>
+    <symbol id="ic-refresh" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,33A22,22,0,0,0,20,25"/>
+        <path d="M20,13v14h14"/>
+        <path d="M20,47A22,22,0,0,0,60,55"/>
+        <path d="M60,67v-14h-14"/>
+      </g>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,10h28l12,12v48a4,4 0 0 1-4,4H20a4,4 0 0 1-4-4V14a4,4 0 0 1 4-4Z"/>
+        <path d="M48,10v12h12"/>
+        <path d="M26,42h28"/>
+        <path d="M26,52h28"/>
+        <path d="M26,62h18"/>
+      </g>
+    </symbol>
+    <symbol id="ic-text" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14,20h52"/>
+        <path d="M14,38h52"/>
+        <path d="M14,56h34"/>
+      </g>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 80 80">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="14" width="60" height="52" rx="6"/>
+        <circle cx="28" cy="32" r="6"/>
+        <path d="M14,58l18-18,12,12,10-10,12,12"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="empiria Startseite">
+      <img src="/assets/empiria-logo.svg" alt="empiria">
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="/index.html#problem">Problem</a>
+      <a href="/index.html#loesung">Lösung</a>
+      <div class="nav-item nav-item--dropdown">
+        <a href="/index.html#leistungen">Leistungen</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-panel">
+            <div class="nav-item--subdropdown">
+              <a href="/index.html#leistungen" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Strategiehandwerk</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/leistungen/strategie">Strategie in den Alltag überführen</a>
+                  <a href="/leistungen/komplexe-themen">Komplexe Themen strukturieren &amp; kommunizieren</a>
+                  <a href="/leistungen/innovation">Innovation &amp; Geschäftsmodell neu denken</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/workshops" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Workshops</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/ki-zum-anfassen">KI zum Anfassen</a>
+                  <a href="/sprint-landingpage">Sprint Landingpage</a>
+                  <a href="/workshop-moderation">Moderation deines Workshops</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/marketing" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Marketing 2.0</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/dashboard-digitales-marketing">MarketingEcoSystem (MES)</a>
+                  <a href="/sofort-sichtbar"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+                  <a href="/paid-ads">Paid Ads</a>
+                  <a href="/medien">Medien, die Ergebnisse liefern</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-item--subdropdown">
+              <a href="/training-sparring" class="nav-dropdown-sub-trigger nav-dropdown-sub-trigger--link">Training & Sparring</a>
+              <div class="nav-dropdown-sub">
+                <div class="nav-dropdown-panel">
+                  <a href="/praesentationsseminar">Teams befähigen, professionell zu kommunizieren</a>
+                  <a href="/sparring">1:1 Sparring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--desktop" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<a href="aufgaben-sortieren.html" class="dev-dd-link"><span class="dev-dd-tag">AS</span><span class="dev-dd-txt"><b>Aufgaben sortieren</b><small>Vorübergehend · Vorschläge je Projekt</small></span></a>
+<a href="../werkzeugkasten.html" class="dev-dd-link"><span class="dev-dd-tag">WK</span><span class="dev-dd-txt"><b>Werkzeugkasten</b><small>Methoden und Grundstrukturen</small></span></a>
+<div class="dev-dd-sub">
+<a href="../impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="../vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="../vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="../vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="../budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="../budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="../visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="../visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="../strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<a href="../xmas2026.html" class="dev-dd-link"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas · Vorsätze · Der Zettel</b><small>Live unter /xmas2026 · nur Direktlink</small></span></a>
+<a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="avrg.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">AV</span><span class="dev-dd-txt"><b>AVRG</b><small>Neue Altersvorsorge 2027 &middot; sofortsichtbar</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="avrg-landingpage-1.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Landingpage AVRG</b><small>Drei Varianten &middot; mit Rechner</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="avrg-landingpage-1.html" class="dev-dd-link"><span class="dev-dd-tag">L1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Nah an der Vorlage SV Owen</small></span></a>
+<a href="avrg-landingpage-2.html" class="dev-dd-link"><span class="dev-dd-tag">L2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Einstieg &bdquo;Was trifft auf dich zu?&ldquo;</small></span></a>
+<a href="avrg-landingpage-3.html" class="dev-dd-link"><span class="dev-dd-tag">L3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Das Klarheits-Ticket &middot; Ma&szlig;stab Volksfest</small></span></a>
+</div></div>
+</div>
+<a href="avrg-medienkonzept.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Claim, Mailings, Postings, Webinar, Print</small></span></a>
+</div></div>
+</div>
+<a href="schadenmanagement.html" class="dev-dd-link"><span class="dev-dd-tag">SM</span><span class="dev-dd-txt"><b>Schadenmanagement</b><small>Projektseite</small></span></a>
+<a href="vvde.html" class="dev-dd-link"><span class="dev-dd-tag">VV</span><span class="dev-dd-txt"><b>VVDE</b><small>Projektseite</small></span></a>
+<div class="dev-dd-sub">
+<a href="darstellungsideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3.0</span><span class="dev-dd-txt"><b>empiria 3.0</b><small>Konzipiert, noch nicht umgesetzt</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Ideen &amp; Konzepte</p>
+<a href="darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<a href="header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<p class="dev-dd-group">Frühere Fassungen von 2.0</p>
+<a href="empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Marketing</p>
+<div class="dev-dd-sub">
+<a href="corporate-design.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">CD</span><span class="dev-dd-txt"><b>Corporate Design</b><small>PDF-Varianten &middot; Designideen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Vorlagen</p>
+<a href="geschaeftsausstattung.html" class="dev-dd-link"><span class="dev-dd-tag">GA</span><span class="dev-dd-txt"><b>Geschäftsausstattung</b><small>Präsentation, Dokumente, Print, LinkedIn, Hintergründe</small></span></a>
+<a href="powerpoint-master.html" class="dev-dd-link"><span class="dev-dd-tag">PPT</span><span class="dev-dd-txt"><b>PowerPoint-Master</b><small>Stufe 2 · Folientypen</small></span></a>
+<a href="ga-visitenkarten.html" class="dev-dd-link"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Entwurf</small></span></a>
+<a href="ga-rollup.html" class="dev-dd-link"><span class="dev-dd-tag">RU</span><span class="dev-dd-txt"><b>Roll-up</b><small>Entwurf</small></span></a>
+<a href="ga-word.html" class="dev-dd-link"><span class="dev-dd-tag">DOC</span><span class="dev-dd-txt"><b>Word-Vorlagen</b><small>Entwurf</small></span></a>
+<a href="ga-onepager.html" class="dev-dd-link"><span class="dev-dd-tag">A3</span><span class="dev-dd-txt"><b>One-Pager</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin.html" class="dev-dd-link"><span class="dev-dd-tag">IN</span><span class="dev-dd-txt"><b>LinkedIn-Banner</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin-fokus.html" class="dev-dd-link"><span class="dev-dd-tag">IF</span><span class="dev-dd-txt"><b>LinkedIn im Fokus</b><small>Sechs Themen als quadratische PDFs</small></span></a>
+<a href="ga-hintergruende.html" class="dev-dd-link"><span class="dev-dd-tag">HG</span><span class="dev-dd-txt"><b>Hintergrundbilder</b><small>Entwurf</small></span></a>
+<a href="ga-weihnachtskarten.html" class="dev-dd-link"><span class="dev-dd-tag">WK</span><span class="dev-dd-txt"><b>Weihnachtskarten</b><small>DIN lang quer · drei Varianten</small></span></a>
+<a href="merch.html" class="dev-dd-link"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Merch</b><small>Die Marke zum Anfassen</small></span></a>
+<a href="pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<p class="dev-dd-group">Designideen</p>
+<a href="../designideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<a href="../designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="../designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="business-story.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BS</span><span class="dev-dd-txt"><b>Business Story</b><small>Storyboard &middot; Elevator Pitch</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="methoden-storyboard.html" class="dev-dd-link"><span class="dev-dd-tag">SB</span><span class="dev-dd-txt"><b>Storyboard Landing Page</b><small>Antworten &middot; Fragen &middot; Skizze &middot; Final</small></span></a>
+<a href="methoden-elevator-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Unsere Story in 30/10 Sekunden</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="medienkonzept.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">MK</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>empiria &middot; Beiträge, Kontakt, Wirkung</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="medienkonzept-postingformate.html" class="dev-dd-link"><span class="dev-dd-tag">PF</span><span class="dev-dd-txt"><b>Postingformate</b><small>Themen × Postingtypen · zur Entscheidung</small></span></a>
+<a href="medienkonzept-zuordnung.html" class="dev-dd-link"><span class="dev-dd-tag">LO</span><span class="dev-dd-txt"><b>Logik</b><small>Drei Töpfe → Positionierung → Themen → Postings</small></span></a>
+<a href="medienkonzept-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">PI</span><span class="dev-dd-txt"><b>Pitch</b><small>Business Story in 30 und 10 Sekunden</small></span></a>
+<a href="medienkonzept-themenliste.html" class="dev-dd-link"><span class="dev-dd-tag">TL</span><span class="dev-dd-txt"><b>Themenliste</b><small>Aussagen zur Freigabe</small></span></a>
+<a href="medienkonzept-entwuerfe.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Entwürfe</b><small>Die ersten Postings zur Freigabe</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="../leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="../der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="../archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="../archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="../archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-flex;align-items:center;margin-left:auto}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:inherit;font-size:.95rem;font-weight:400;line-height:1.4;color:var(--grey-50);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap;transition:color .18s ease}
+.dev-dd-toggle:hover,.dev-dd.is-open .dev-dd-toggle{color:var(--ink)}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s ease}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{position:absolute;top:calc(100% + 18px);right:-14px;width:390px;max-height:calc(100vh - 120px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:12px;background:#fff;border:1px solid var(--grey-bg);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;z-index:80;text-align:left}
+.dev-dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:none}
+.dev-dd-note{margin:0 0 14px;padding:11px 13px;background:#fff400;color:#1a1817;border-radius:10px;font-size:12px;line-height:1.45}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.dev-dd-group{margin:4px 8px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-50);font-weight:600}
+.dev-dd-group--sub{margin-top:14px;padding-top:12px;border-top:1px solid var(--grey-bg)}
+a.dev-dd-link{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:var(--ink);text-decoration:none;border-bottom:0;font-size:inherit;min-height:0;white-space:normal}
+a.dev-dd-link:hover,a.dev-dd-link.is-current{background:var(--grey-bg);color:var(--ink)}
+a.dev-dd-link--indent{padding-left:30px}
+.dev-dd-tag{flex:0 0 32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12px}
+.dev-dd-link--muted .dev-dd-tag{background:var(--grey-bg);color:var(--grey-70)}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.dev-dd-txt b{font-weight:500;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:var(--grey-50);margin-top:1px}
+/* ---- Zweite Ebene: oeffnet nach rechts, wie im Leistungen-Menue -----------
+   Das Panel sitzt am rechten Rand; gemessen bleiben dort auch bei 1280 px
+   Fensterbreite noch 277 px frei, das reicht fuer das Flyout. */
+.dev-dd-sub{position:relative}
+a.dev-dd-link--parent::after{content:"";width:6px;height:6px;margin-left:auto;flex:0 0 auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.45}
+.dev-dd-sub:hover>a.dev-dd-link--parent,.dev-dd-sub:focus-within>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout{position:absolute;left:100%;top:-10px;padding-left:10px;opacity:0;visibility:hidden;transition:opacity .16s ease,visibility .16s ease;z-index:81}
+.dev-dd-sub:hover>.dev-dd-flyout,.dev-dd-sub:focus-within>.dev-dd-flyout,.dev-dd-flyout.is-auf{opacity:1;visibility:visible}
+.dev-dd-sub.is-auf>a.dev-dd-link--parent{background:var(--grey-bg)}
+.dev-dd-flyout-panel{width:262px;padding:10px;background:#fff;border:1px solid var(--grey-bg);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.14);max-height:calc(100vh - 24px);overflow-y:auto;overscroll-behavior:contain}
+.dev-dd-flyout-panel .dev-dd-group{margin:2px 8px 6px}
+.dev-dd--mobile{display:none}
+.dev-dd-short{display:none}
+@media (min-width:901px) and (max-width:1140px){
+.dev-dd--desktop .dev-dd-long{display:none}
+.dev-dd--desktop .dev-dd-short{display:inline}
+.dev-dd--desktop ~ .nav-cta{margin-left:1.1rem;padding-left:1.6rem;padding-right:1.6rem}
+}
+@media (max-width:900px){
+.nav .dev-dd--desktop{display:none}
+.mobile-menu .dev-dd--mobile{display:block;margin:0}
+.mobile-menu .dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 0;font-size:1.15rem;border-bottom:1px solid #f2f2f2}
+.mobile-menu .dev-dd-panel{position:static;width:auto;max-height:none;overflow:visible;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;margin:10px 0 6px;padding:0 0 0 12px}
+.mobile-menu .dev-dd-panel::before{display:none}
+.mobile-menu .dev-dd.is-open .dev-dd-panel{display:block}
+.mobile-menu a.dev-dd-link{padding:9px 8px;font-size:inherit;border-bottom:0}
+.mobile-menu a.dev-dd-link--indent{padding-left:30px}
+.mobile-menu .dev-dd-panel{overflow:auto}
+.mobile-menu .dev-dd-flyout{position:static;opacity:1;visibility:visible;padding-left:0}
+.mobile-menu .dev-dd-flyout-panel{max-height:none;overflow:visible;width:auto;padding:0 0 0 12px;margin:2px 0 6px 20px;background:none;border:0;border-left:2px solid var(--grey-bg);border-radius:0;box-shadow:none}
+.mobile-menu a.dev-dd-link--parent::after{display:none}
+}
+</style>
+<script>
+(function(){
+function init(){
+var here=location.href.split('#')[0].split('?')[0];
+document.querySelectorAll('[data-dev-dd]').forEach(function(d){
+var b=d.querySelector('.dev-dd-toggle'),t;
+function desk(){return window.innerWidth>900;}
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));
+if(!o)d.querySelectorAll('.is-auf').forEach(function(x){x.classList.remove('is-auf');});}
+b.addEventListener('click',function(e){e.stopPropagation();set(desk()&&d.matches(':hover')?true:!d.classList.contains('is-open'));});
+d.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.href&&a.href.split('#')[0]===here)a.classList.add('is-current');});
+
+var panel=d.querySelector('.dev-dd-panel');
+
+// ---- Antippen statt Hover (iPad quer, Touch-Laptops) ---------------------
+// Ohne Maus gibt es kein Hover: der Tipp auf eine Zeile mit Unterseiten
+// sprang sofort auf deren Seite, die Unterseiten waren nie zu sehen.
+// Jetzt klappt der erste Tipp die naechste Ebene auf, erst der zweite Tipp
+// auf dieselbe Zeile oeffnet die Seite. Ob die Ebene schon offen war, wird
+// beim pointerdown gemerkt - das kommt vor dem simulierten mouseenter.
+function antippen(a,offen,oeffnen){
+var tipp=false,war=false;
+a.addEventListener('pointerdown',function(e){tipp=e.pointerType!=='mouse';war=offen();});
+a.addEventListener('click',function(e){
+if(!tipp||!desk()||war)return;
+e.preventDefault();oeffnen();
+});
+}
+
+// ---- Zweite Ebene -------------------------------------------------------
+// Das Panel muss scrollen, seit es vier Kategorien hat (gemessen: 834px
+// Inhalt bei 680px Platz auf einem 900er Bildschirm). Ein Flyout darin wuerde
+// mitgeschnitten. position:fixed hilft nicht - die Kopfzeile hat einen
+// backdrop-filter und wird dadurch zum Bezugsrahmen fuer fixed. Das Flyout
+// haengt sich beim Oeffnen deshalb unter .dev-dd um: dort ist es absolut
+// positioniert, aber ausserhalb des scrollenden Panels.
+// Weil :hover dort nicht mehr traegt, steuert eine Klasse die Sichtbarkeit.
+panel&&panel.querySelectorAll(':scope>.dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+var heim=f.parentNode,nachbar=f.nextSibling,t2;
+f._kinder=[];
+function kinderZu(){f._kinder.forEach(function(k){k();});}
+function heimholen(){
+clearTimeout(t2);f.classList.remove('is-auf');s.classList.remove('is-auf');kinderZu();
+if(f.parentNode!==heim){heim.insertBefore(f,nachbar);f.removeAttribute('style');}
+}
+function auf(){
+if(!desk()){heimholen();return;}
+clearTimeout(t2);
+if(f.parentNode!==d)d.appendChild(f);
+var z=s.getBoundingClientRect(),dr=d.getBoundingClientRect(),
+    k=f.firstElementChild.getBoundingClientRect();
+// Rechts daneben, wenn Platz ist - sonst nach links gekippt.
+if(z.right+10+k.width>window.innerWidth-12){
+f.style.left=(z.left-dr.left-10-k.width)+'px';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}else{
+f.style.left=(z.right-dr.left)+'px';
+f.style.paddingLeft='';f.style.paddingRight='';
+}
+// Senkrecht an der Zeile, aber nie unter den Fensterrand.
+var oben=z.top-dr.top-10,grenze=window.innerHeight-12-k.height-dr.top;
+f.style.top=Math.max(-dr.top+12,Math.min(oben,grenze))+'px';
+f.classList.add('is-auf');s.classList.add('is-auf');
+}
+function zu(){t2=setTimeout(function(){f.classList.remove('is-auf');s.classList.remove('is-auf');kinderZu();},180);}
+f._halten=function(){clearTimeout(t2);};f._zu=zu;
+s.addEventListener('mouseenter',auf);
+s.addEventListener('focusin',auf);
+s.addEventListener('mouseleave',zu);
+f.addEventListener('mouseenter',function(){clearTimeout(t2);});
+f.addEventListener('mouseleave',zu);
+panel.addEventListener('scroll',function(){if(f.classList.contains('is-auf'))auf();});
+antippen(s.querySelector(':scope>a.dev-dd-link--parent'),
+function(){return f.classList.contains('is-auf');},
+function(){d.querySelectorAll(':scope>.dev-dd-flyout.is-auf').forEach(function(x){if(x!==f)x.classList.remove('is-auf');});
+panel.querySelectorAll(':scope>.dev-dd-sub.is-auf').forEach(function(x){if(x!==s)x.classList.remove('is-auf');});
+auf();});
+window.addEventListener('resize',heimholen);
+});
+
+// ---- Dritte Ebene -------------------------------------------------------
+// Die zweite Ebene scrollt jetzt selbst, wenn sie hoeher ist als das Fenster
+// (Daniel, 24.10.2026). Eine dritte Ebene darin wuerde mitgeschnitten - sie
+// haengt sich deshalb wie die zweite beim Oeffnen unter .dev-dd um.
+d.querySelectorAll('.dev-dd-flyout .dev-dd-sub').forEach(function(s){
+var f=s.querySelector(':scope>.dev-dd-flyout');if(!f)return;
+var heim=f.parentNode,nachbar=f.nextSibling,eltern=s.closest('.dev-dd-flyout'),t3;
+function heimholen(){
+clearTimeout(t3);f.classList.remove('is-auf');s.classList.remove('is-auf');
+if(f.parentNode!==heim){heim.insertBefore(f,nachbar);f.removeAttribute('style');}
+}
+if(eltern&&eltern._kinder)eltern._kinder.push(heimholen);
+function auf(){
+if(!desk()){heimholen();return;}
+clearTimeout(t3);
+if(eltern&&eltern._kinder)eltern._kinder.forEach(function(k){if(k!==heimholen)k();});
+if(f.parentNode!==d)d.appendChild(f);
+var z=s.getBoundingClientRect(),dr=d.getBoundingClientRect(),
+    k=f.firstElementChild.getBoundingClientRect();
+if(z.right+10+k.width>window.innerWidth-12){
+f.style.left=(z.left-dr.left-10-k.width)+'px';
+f.style.paddingLeft='0';f.style.paddingRight='10px';
+}else{
+f.style.left=(z.right-dr.left)+'px';
+f.style.paddingLeft='';f.style.paddingRight='';
+}
+var oben=z.top-dr.top-10,grenze=window.innerHeight-12-k.height-dr.top;
+f.style.top=Math.max(-dr.top+12,Math.min(oben,grenze))+'px';
+f.classList.add('is-auf');s.classList.add('is-auf');
+}
+function zu(){t3=setTimeout(heimholen,180);}
+s.addEventListener('mouseenter',auf);
+s.addEventListener('focusin',auf);
+s.addEventListener('mouseleave',zu);
+f.addEventListener('mouseenter',function(){clearTimeout(t3);if(eltern&&eltern._halten)eltern._halten();});
+f.addEventListener('mouseleave',function(){zu();if(eltern&&eltern._zu)eltern._zu();});
+if(eltern)eltern.firstElementChild.addEventListener('scroll',heimholen);
+antippen(s.querySelector(':scope>a.dev-dd-link--parent'),
+function(){return f.classList.contains('is-auf');},auf);
+window.addEventListener('resize',heimholen);
+});
+});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark btn--sm nav-cta" href="/kontakt.html">Kontakt</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="/index.html#problem">Problem</a>
+    <a href="/index.html#loesung">Lösung</a>
+    <a href="/index.html#leistungen">Leistungen</a>
+    <div class="mobile-submenu">
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/index.html#leistungen">Strategiehandwerk</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Strategiehandwerk anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/leistungen/strategie" class="mobile-submenu-link">Strategie in den Alltag überführen</a>
+      <a href="/leistungen/komplexe-themen" class="mobile-submenu-link">Komplexe Themen strukturieren &amp; kommunizieren</a>
+      <a href="/leistungen/innovation" class="mobile-submenu-link">Innovation &amp; Geschäftsmodell neu denken</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/workshops">Workshops</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Workshops anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/ki-zum-anfassen" class="mobile-submenu-link">KI zum Anfassen</a>
+      <a href="/sprint-landingpage" class="mobile-submenu-link">Sprint Landingpage</a>
+      <a href="/workshop-moderation" class="mobile-submenu-link">Moderation deines Workshops</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/marketing">Marketing 2.0</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Marketing 2.0 anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/dashboard-digitales-marketing" class="mobile-submenu-link">MarketingEcoSystem (MES)</a>
+      <a href="/sofort-sichtbar" class="mobile-submenu-link"><img src="/assets/sofort-sichtbar-logo-ink.svg" alt="sofort sichtbar" class="nav-sofort-logo"></a>
+      <a href="/paid-ads" class="mobile-submenu-link">Paid Ads</a>
+      <a href="/medien" class="mobile-submenu-link">Medien, die Ergebnisse liefern</a>
+        </div>
+      </div>
+      <div class="mobile-submenu-divider"></div>
+      <div class="mobile-submenu-group">
+        <div class="mobile-submenu-row">
+          <a class="mobile-submenu-label mobile-submenu-label--link" href="/training-sparring">Training & Sparring</a>
+          <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Unterpunkte zu Training & Sparring anzeigen">
+            <svg class="mobile-submenu-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="mobile-submenu-panel">
+      <a href="/praesentationsseminar" class="mobile-submenu-link">Teams befähigen, professionell zu kommunizieren</a>
+      <a href="/sparring" class="mobile-submenu-link">1:1 Sparring</a>
+        </div>
+      </div>
+    </div>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird beim Push automatisch entfernt) -->
+<div class="dev-dd dev-dd--mobile" data-dev-dd>
+<button class="dev-dd-toggle" type="button" aria-expanded="false"><span class="dev-dd-long">/ Entwicklung /</span><span class="dev-dd-short" aria-hidden="true">/ Entw. /</span><svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Unterseiten</p>
+<a href="aufgaben-sortieren.html" class="dev-dd-link"><span class="dev-dd-tag">AS</span><span class="dev-dd-txt"><b>Aufgaben sortieren</b><small>Vorübergehend · Vorschläge je Projekt</small></span></a>
+<a href="../werkzeugkasten.html" class="dev-dd-link"><span class="dev-dd-tag">WK</span><span class="dev-dd-txt"><b>Werkzeugkasten</b><small>Methoden und Grundstrukturen</small></span></a>
+<div class="dev-dd-sub">
+<a href="../impulsvortraege.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">IV</span><span class="dev-dd-txt"><b>Impulsvorträge</b><small>Übersicht aller Vorträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Vorträge</p>
+<a href="../vortrag-1.html" class="dev-dd-link"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Warum sich niemand für Dein Produkt interessiert.</b><small>Relevanz</small></span></a>
+<a href="../vortrag-2.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Strategie, die endlich ankommt.</b><small>Strategie im Alltag</small></span></a>
+<a href="../vortrag-3.html" class="dev-dd-link"><span class="dev-dd-tag">3</span><span class="dev-dd-txt"><b>Gründe Deinen stärksten Konkurrenten!</b><small>Perspektivwechsel</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../budget-retter.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BR</span><span class="dev-dd-txt"><b>Budget-Retter</b><small>Landingpage · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../budget-retter-1.html" class="dev-dd-link"><span class="dev-dd-tag">B1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Der gemeinsame Stand</small></span></a>
+<a href="../budget-retter-2.html" class="dev-dd-link"><span class="dev-dd-tag">B2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Nach der Kritik umgebaut</small></span></a>
+<a href="../budget-retter-3.html" class="dev-dd-link"><span class="dev-dd-tag">B3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Mit dem Zeichen im Aufmacher</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="../visitenkarte.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Digitale Visitenkarte · Varianten</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="../visitenkarte-1.html" class="dev-dd-link"><span class="dev-dd-tag">V1</span><span class="dev-dd-txt"><b>Die Bühne</b><small>Wie die Startseite · auch Breitbild</small></span></a>
+<a href="../visitenkarte-4.html" class="dev-dd-link"><span class="dev-dd-tag">V4</span><span class="dev-dd-txt"><b>Gesprächsstart</b><small>Speichern, vernetzen, Termin</small></span></a>
+<a href="../visitenkarte-5.html" class="dev-dd-link"><span class="dev-dd-tag">V5</span><span class="dev-dd-txt"><b>Zeigen &amp; Teilen</b><small>App · Sperrbildschirm · QR-Code</small></span></a>
+</div></div>
+</div>
+<a href="../strategie-aufsichtsrat.html" class="dev-dd-link"><span class="dev-dd-tag">AR</span><span class="dev-dd-txt"><b>Strategie für Aufsichtsräte</b><small>Impulsvortrag &amp; Schulung</small></span></a>
+<a href="../xmas2026.html" class="dev-dd-link"><span class="dev-dd-tag">XM</span><span class="dev-dd-txt"><b>X-Mas · Vorsätze · Der Zettel</b><small>Live unter /xmas2026 · nur Direktlink</small></span></a>
+<a href="../capiamo.html" class="dev-dd-link"><span class="dev-dd-tag">ca</span><span class="dev-dd-txt"><b>capiamo</b><small>Fachbereich trifft IT</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Projekte</p>
+<div class="dev-dd-sub">
+<a href="avrg.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">AV</span><span class="dev-dd-txt"><b>AVRG</b><small>Neue Altersvorsorge 2027 &middot; sofortsichtbar</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<div class="dev-dd-sub">
+<a href="avrg-landingpage-1.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">1</span><span class="dev-dd-txt"><b>Landingpage AVRG</b><small>Drei Varianten &middot; mit Rechner</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Varianten</p>
+<a href="avrg-landingpage-1.html" class="dev-dd-link"><span class="dev-dd-tag">L1</span><span class="dev-dd-txt"><b>Variante 1</b><small>Nah an der Vorlage SV Owen</small></span></a>
+<a href="avrg-landingpage-2.html" class="dev-dd-link"><span class="dev-dd-tag">L2</span><span class="dev-dd-txt"><b>Variante 2</b><small>Einstieg &bdquo;Was trifft auf dich zu?&ldquo;</small></span></a>
+<a href="avrg-landingpage-3.html" class="dev-dd-link"><span class="dev-dd-tag">L3</span><span class="dev-dd-txt"><b>Variante 3</b><small>Das Klarheits-Ticket &middot; Ma&szlig;stab Volksfest</small></span></a>
+</div></div>
+</div>
+<a href="avrg-medienkonzept.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Claim, Mailings, Postings, Webinar, Print</small></span></a>
+</div></div>
+</div>
+<a href="schadenmanagement.html" class="dev-dd-link"><span class="dev-dd-tag">SM</span><span class="dev-dd-txt"><b>Schadenmanagement</b><small>Projektseite</small></span></a>
+<a href="vvde.html" class="dev-dd-link"><span class="dev-dd-tag">VV</span><span class="dev-dd-txt"><b>VVDE</b><small>Projektseite</small></span></a>
+<div class="dev-dd-sub">
+<a href="darstellungsideen.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">3.0</span><span class="dev-dd-txt"><b>empiria 3.0</b><small>Konzipiert, noch nicht umgesetzt</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Ideen &amp; Konzepte</p>
+<a href="darstellungsideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Darstellungsideen</b><small>Gute Darstellungen f&uuml;r einzelne Stellen</small></span></a>
+<a href="header.html" class="dev-dd-link"><span class="dev-dd-tag">HV</span><span class="dev-dd-txt"><b>Header</b><small>Darstellungsarten f&uuml;r die Kopfbilder</small></span></a>
+<p class="dev-dd-group">Frühere Fassungen von 2.0</p>
+<a href="empiria-2/startseite-alt.html" class="dev-dd-link"><span class="dev-dd-tag">S1</span><span class="dev-dd-txt"><b>Startseite alt</b><small>Fassung vor dem Volksfest-Aufbau</small></span></a>
+<a href="empiria-2/startseite-alt-2.html" class="dev-dd-link"><span class="dev-dd-tag">S2</span><span class="dev-dd-txt"><b>Startseite alt 2</b><small>Variationen A und B</small></span></a>
+<a href="empiria-2/strategie-alt.html" class="dev-dd-link"><span class="dev-dd-tag">1a</span><span class="dev-dd-txt"><b>Strategie alt</b><small>frühere Fassung</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Marketing</p>
+<div class="dev-dd-sub">
+<a href="corporate-design.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">CD</span><span class="dev-dd-txt"><b>Corporate Design</b><small>PDF-Varianten &middot; Designideen</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Vorlagen</p>
+<a href="geschaeftsausstattung.html" class="dev-dd-link"><span class="dev-dd-tag">GA</span><span class="dev-dd-txt"><b>Geschäftsausstattung</b><small>Präsentation, Dokumente, Print, LinkedIn, Hintergründe</small></span></a>
+<a href="powerpoint-master.html" class="dev-dd-link"><span class="dev-dd-tag">PPT</span><span class="dev-dd-txt"><b>PowerPoint-Master</b><small>Stufe 2 · Folientypen</small></span></a>
+<a href="ga-visitenkarten.html" class="dev-dd-link"><span class="dev-dd-tag">VK</span><span class="dev-dd-txt"><b>Visitenkarten</b><small>Entwurf</small></span></a>
+<a href="ga-rollup.html" class="dev-dd-link"><span class="dev-dd-tag">RU</span><span class="dev-dd-txt"><b>Roll-up</b><small>Entwurf</small></span></a>
+<a href="ga-word.html" class="dev-dd-link"><span class="dev-dd-tag">DOC</span><span class="dev-dd-txt"><b>Word-Vorlagen</b><small>Entwurf</small></span></a>
+<a href="ga-onepager.html" class="dev-dd-link"><span class="dev-dd-tag">A3</span><span class="dev-dd-txt"><b>One-Pager</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin.html" class="dev-dd-link"><span class="dev-dd-tag">IN</span><span class="dev-dd-txt"><b>LinkedIn-Banner</b><small>Entwurf</small></span></a>
+<a href="ga-linkedin-fokus.html" class="dev-dd-link"><span class="dev-dd-tag">IF</span><span class="dev-dd-txt"><b>LinkedIn im Fokus</b><small>Sechs Themen als quadratische PDFs</small></span></a>
+<a href="ga-hintergruende.html" class="dev-dd-link"><span class="dev-dd-tag">HG</span><span class="dev-dd-txt"><b>Hintergrundbilder</b><small>Entwurf</small></span></a>
+<a href="ga-weihnachtskarten.html" class="dev-dd-link"><span class="dev-dd-tag">WK</span><span class="dev-dd-txt"><b>Weihnachtskarten</b><small>DIN lang quer · drei Varianten</small></span></a>
+<a href="merch.html" class="dev-dd-link"><span class="dev-dd-tag">ME</span><span class="dev-dd-txt"><b>Merch</b><small>Die Marke zum Anfassen</small></span></a>
+<a href="pdf-varianten.html" class="dev-dd-link"><span class="dev-dd-tag">PDF</span><span class="dev-dd-txt"><b>PDF-Varianten</b><small>Muster KI zum Anfassen &middot; A/B im Vergleich</small></span></a>
+<p class="dev-dd-group">Designideen</p>
+<a href="../designideen.html" class="dev-dd-link"><span class="dev-dd-tag">DI</span><span class="dev-dd-txt"><b>Designideen</b><small>Gestaltungen f&uuml;r Seiten, die wirken m&uuml;ssen</small></span></a>
+<a href="../designideen/spektrum.html" class="dev-dd-link"><span class="dev-dd-tag">SP</span><span class="dev-dd-txt"><b>Spektrum</b><small>Vollfl&auml;chige Farbb&auml;nder</small></span></a>
+<a href="../designideen/buehne.html" class="dev-dd-link"><span class="dev-dd-tag">B&Uuml;</span><span class="dev-dd-txt"><b>B&uuml;hne</b><small>Vollbildstufen mit Kapitelmarken</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="business-story.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">BS</span><span class="dev-dd-txt"><b>Business Story</b><small>Storyboard &middot; Elevator Pitch</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="methoden-storyboard.html" class="dev-dd-link"><span class="dev-dd-tag">SB</span><span class="dev-dd-txt"><b>Storyboard Landing Page</b><small>Antworten &middot; Fragen &middot; Skizze &middot; Final</small></span></a>
+<a href="methoden-elevator-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Unsere Story in 30/10 Sekunden</small></span></a>
+</div></div>
+</div>
+<div class="dev-dd-sub">
+<a href="medienkonzept.html" class="dev-dd-link dev-dd-link--parent"><span class="dev-dd-tag">MK</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>empiria &middot; Beiträge, Kontakt, Wirkung</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Unterseiten</p>
+<a href="medienkonzept-postingformate.html" class="dev-dd-link"><span class="dev-dd-tag">PF</span><span class="dev-dd-txt"><b>Postingformate</b><small>Themen × Postingtypen · zur Entscheidung</small></span></a>
+<a href="medienkonzept-zuordnung.html" class="dev-dd-link"><span class="dev-dd-tag">LO</span><span class="dev-dd-txt"><b>Logik</b><small>Drei Töpfe → Positionierung → Themen → Postings</small></span></a>
+<a href="medienkonzept-pitch.html" class="dev-dd-link"><span class="dev-dd-tag">PI</span><span class="dev-dd-txt"><b>Pitch</b><small>Business Story in 30 und 10 Sekunden</small></span></a>
+<a href="medienkonzept-themenliste.html" class="dev-dd-link"><span class="dev-dd-tag">TL</span><span class="dev-dd-txt"><b>Themenliste</b><small>Aussagen zur Freigabe</small></span></a>
+<a href="medienkonzept-entwuerfe.html" class="dev-dd-link"><span class="dev-dd-tag">2</span><span class="dev-dd-txt"><b>Entwürfe</b><small>Die ersten Postings zur Freigabe</small></span></a>
+</div></div>
+</div>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<div class="dev-dd-sub">
+<a class="dev-dd-link dev-dd-link--muted dev-dd-link--parent" tabindex="0" role="button" aria-label="Archiv aufklappen"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Frühere Stände</b><small>Acht Einträge</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Seiten</p>
+<a href="../leistungen/teams.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Teams befähigen, professionell zu kommunizieren</b><small>Früherer Stand der Seite</small></span></a>
+<a href="../der-beste-workshop.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Der beste Workshop</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/startseite-v1.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite Version 1.0</b><small>Früherer Stand der Startseite</small></span></a>
+<a href="../archiv/sofort-sichtbar-problem.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>sofort sichtbar + Problem</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/digitale-tools-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Digitale Tools 1.0</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/marketing-1-0.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Marketing 1.0</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-sub">
+<a href="../archiv/medien.html" class="dev-dd-link dev-dd-link--muted dev-dd-link--parent"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Medien, die Ergebnisse liefern</b><small>Früherer Stand</small></span></a>
+<div class="dev-dd-flyout"><div class="dev-dd-flyout-panel">
+<p class="dev-dd-group">Die Medien</p>
+<a href="../archiv/powerpoint.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>PowerPoint</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/landingpage.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Landingpage</b><small>Früherer Stand</small></span></a>
+<a href="../archiv/rollup.html" class="dev-dd-link dev-dd-link--muted"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Roll-up</b><small>Früherer Stand</small></span></a>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<!-- ENTWICKLUNG:END -->
+    <a class="btn btn--dark" href="/kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+<main class="as">
+<!--
+  Schriftsystem (vor dem Bauen festgelegt, wie die empiria-Homepage):
+  Lora 600 – Hauptüberschrift (eine Größe, gelber Marker) und eine Größe für die Reiter-Überschrift
+  Poppins – Text in einer Größe (Regular/SemiBold), Zwischenzeilen Medium in Grau, eine kleine Größe für Nebeninfos
+  Farben – Tinte, ein Grau, Gelb nur als Marker der Hauptüberschrift und als Fläche „Ticket für Claude“
+-->
+<style>
+  .as { --as-linie: #e4e1dd; --as-grau: #6f6c68; --as-klein: .82rem; --as-text: .98rem;
+        max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 40px) 140px; color: #1a1817; }
+  .as-kicker { font: 500 var(--as-text)/1.4 var(--font-sans, Poppins, sans-serif); color: var(--as-grau); margin: 0 0 .6rem; }
+  .as h1 { font: 600 clamp(1.9rem, 3.4vw, 2.6rem)/1.2 var(--font-serif, Lora, serif); margin: 0; }
+  .as h1 mark { background: linear-gradient(transparent 58%, #fff400 58%); color: inherit; padding: 0 .1em; }
+  .as-intro { font: 400 var(--as-text)/1.6 var(--font-sans, Poppins, sans-serif); max-width: 68ch; margin: 1rem 0 0; text-wrap: pretty; }
+  .as-legende { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 8px;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); font: 400 var(--as-klein)/1.45 var(--font-sans, Poppins, sans-serif); color: var(--as-grau); }
+  .as-art { display: inline-block; font: 600 var(--as-klein)/1.3 var(--font-sans, Poppins, sans-serif); color: #1a1817;
+            border: 1.5px solid #1a1817; border-radius: 999px; padding: 2px 10px; margin-right: 4px; white-space: nowrap; }
+  .as-art--ticket { background: #fff400; }
+  .as-art--erledigt, .as-art--entfaellt { border-color: var(--as-linie); color: var(--as-grau); }
+  .as-art--erledigt-q { border-style: dashed; }
+
+  .as-reiterleiste { position: sticky; top: 0; z-index: 5; background: #fff; margin: 2rem 0 0; padding: 10px 0;
+                     display: flex; gap: 6px; overflow-x: auto; border-bottom: 1px solid var(--as-linie); scrollbar-width: thin; }
+  .as-reiter { flex: none; display: grid; gap: 1px; text-align: left; cursor: pointer; padding: 7px 12px; border-radius: 10px;
+               border: 1px solid var(--as-linie); background: #faf9f7; font: 600 var(--as-klein)/1.25 var(--font-sans, Poppins, sans-serif); color: #1a1817; }
+  .as-reiter small { font-weight: 400; color: var(--as-grau); }
+  .as-reiter[aria-selected="true"] { background: #1a1817; color: #fff; border-color: #1a1817; }
+  .as-reiter[aria-selected="true"] small { color: rgba(255,255,255,.7); }
+  .as-reiter.is-fertig small::after { content: " ✓"; }
+
+  .as-tafel { padding-top: 1.6rem; }
+  .as-marke { font: 500 var(--as-text)/1.4 var(--font-sans, Poppins, sans-serif); color: var(--as-grau); margin: 0; }
+  .as h2 { font: 600 clamp(1.35rem, 2.2vw, 1.65rem)/1.25 var(--font-serif, Lora, serif); margin: .2rem 0 0; }
+  .as-satz { font: 400 var(--as-text)/1.55 var(--font-sans, Poppins, sans-serif); margin: .4rem 0 0; }
+  .as-alle { margin: 1rem 0 .4rem; }
+  .as-alle button { font: 500 var(--as-klein)/1.3 var(--font-sans, Poppins, sans-serif); background: none; border: 0; padding: 0;
+                    color: #1a1817; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  .as-karte { border: 1px solid var(--as-linie); border-radius: 16px; padding: 16px 18px; margin-top: 12px; background: #fff; }
+  .as-karte.is-passt { border-color: #1a1817; }
+  .as-karte h3 { font: 600 var(--as-text)/1.4 var(--font-sans, Poppins, sans-serif); margin: 0; display: flex; gap: 12px;
+                 justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  .as-frist { font: 400 var(--as-klein)/1.3 var(--font-sans, Poppins, sans-serif); color: var(--as-grau); white-space: nowrap; }
+  .as-karte dl { margin: 10px 0 0; display: grid; gap: 8px; }
+  .as-karte dl > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 12px; }
+  .as-karte dt { font: 500 var(--as-klein)/1.55 var(--font-sans, Poppins, sans-serif); color: var(--as-grau); }
+  .as-karte dd { margin: 0; font: 400 var(--as-text)/1.55 var(--font-sans, Poppins, sans-serif); text-wrap: pretty; }
+  .as-link { font-weight: 600; color: #1a1817; white-space: nowrap; }
+  .as-wahl { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .as-wahl button { font: 600 var(--as-klein)/1 var(--font-sans, Poppins, sans-serif); padding: 9px 16px; border-radius: 999px; cursor: pointer;
+                    border: 1.5px solid #1a1817; background: #fff; color: #1a1817; }
+  .as-wahl button[aria-pressed="true"] { background: #1a1817; color: #fff; }
+  .as-notiz { display: block; width: 100%; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--as-linie); border-radius: 10px;
+              font: 400 var(--as-text)/1.5 var(--font-sans, Poppins, sans-serif); resize: vertical; }
+
+  .as-leiste { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: #1a1817; color: #fff; }
+  .as-leiste > div { max-width: 1080px; margin: 0 auto; padding: 12px clamp(16px, 4vw, 40px); display: flex; gap: 16px;
+                     align-items: center; justify-content: space-between; flex-wrap: wrap; font: 400 var(--as-klein)/1.4 var(--font-sans, Poppins, sans-serif); }
+  .as-leiste b { font-weight: 600; }
+  .as-leiste button { font: 600 var(--as-klein)/1 var(--font-sans, Poppins, sans-serif); padding: 10px 18px; border-radius: 999px; border: 0;
+                      background: #fff400; color: #1a1817; cursor: pointer; }
+  @media (max-width: 640px) { .as-karte dl > div { grid-template-columns: 1fr; gap: 0; } }
+</style>
+
+  <p class="as-kicker">Entwicklung · vorübergehende Arbeitsseite, wird danach gelöscht</p>
+  <h1>Aufgaben <mark>sortieren</mark></h1>
+  <p class="as-intro">Hier stehen die 56 Aufgaben, die bisher bei dir lagen und die wir noch nicht durchgegangen sind, ein Reiter je Projekt. Zu jeder Aufgabe steht, was heute der Stand ist, was ich vorschlage und was danach passiert. Klicke „Passt“, „Anders“ oder „Frage“. Bei „Anders“ und „Frage“ schreibst du kurz dazu, was du meinst. Deine Auswahl bleibt in diesem Browser gespeichert. Am Ende kopierst du das Ergebnis und gibst es mir im Chat, dann setze ich alles um.</p>
+  <ul class="as-legende"><li><span class="as-art as-art--ticket">Ticket für Claude</span> Ich setze um, du nimmst ab.</li><li><span class="as-art as-art--abnahme">Entwurf liegt vor</span> Du siehst ihn an und entscheidest.</li><li><span class="as-art as-art--daniel">Bleibt bei dir</span> Nicht automatisierbar oder Claude ist hier nicht sinnvoll.</li><li><span class="as-art as-art--dritte">Liegt bei Dritten</span> Wir verfolgen den Stand.</li><li><span class="as-art as-art--erledigt">Erledigt</span> Belegt, wird abgehakt.</li><li><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Bitte bestätigen.</li><li><span class="as-art as-art--entfaellt">Entfällt</span> Wird verworfen, nicht gelöscht.</li></ul>
+
+  <nav class="as-reiterleiste" role="tablist" aria-label="Projekte"><button type="button" class="as-reiter" role="tab" aria-selected="true" aria-controls="p13" data-reiter="p13"><span>Baden-Baden</span><small data-zaehler="p13">0/8</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p12" data-reiter="p12"><span>Pilotkunden</span><small data-zaehler="p12">0/3</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p9" data-reiter="p9"><span>Vertriebsstrategie sofortsichtbar</span><small data-zaehler="p9">0/6</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p11" data-reiter="p11"><span>Business Story sofortsichtbar</span><small data-zaehler="p11">0/1</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p14" data-reiter="p14"><span>Konzept AVRG</span><small data-zaehler="p14">0/1</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p17" data-reiter="p17"><span>SV Owen</span><small data-zaehler="p17">0/3</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p2" data-reiter="p2"><span>SV Schadenmanagement</span><small data-zaehler="p2">0/4</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p32" data-reiter="p32"><span>MSP Workshop</span><small data-zaehler="p32">0/1</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p19" data-reiter="p19"><span>Corporate Design empiria</span><small data-zaehler="p19">0/3</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p18" data-reiter="p18"><span>Homepage empiria</span><small data-zaehler="p18">0/5</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p15" data-reiter="p15"><span>Homepage VoFe</span><small data-zaehler="p15">0/1</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p27" data-reiter="p27"><span>Operative Aufgaben</span><small data-zaehler="p27">0/5</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p23" data-reiter="p23"><span>Postings optimieren</span><small data-zaehler="p23">0/3</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p22" data-reiter="p22"><span>Zielgruppen und Kontakthalten</span><small data-zaehler="p22">0/6</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p26" data-reiter="p26"><span>Medienkonzept Müller&amp;Ströbel.</span><small data-zaehler="p26">0/5</small></button><button type="button" class="as-reiter" role="tab" aria-selected="false" aria-controls="p24" data-reiter="p24"><span>Vertriebsstrategie Müller&amp;Ströbel.</span><small data-zaehler="p24">0/1</small></button></nav>
+  
+      <section class="as-tafel" role="tabpanel" id="p13">
+        <p class="as-marke">Müller&amp;Ströbel.</p>
+        <h2>Baden-Baden</h2>
+        <p class="as-satz">Nachfassen aus den Gesprächen in Baden-Baden.</p>
+        <div class="as-alle"><button type="button" data-alle="p13">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="189" data-titel="Howden Re nachfassen und Treffen in Hamburg vereinbaren" data-projekt="Baden-Baden" data-vorschlag="Ticket für Claude">
+          <h3>Howden Re nachfassen und Treffen in Hamburg vereinbaren</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Björn Hagendorff will mit uns arbeiten und muss es intern verkaufen. Ein Treffen in Hamburg ist offen, wenn Tobias dort ist. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe die Mail mit Terminvorschlag für Hamburg als Entwurf, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="190" data-titel="Christine Kaaz (NÜRNBERGER) nachfassen" data-projekt="Baden-Baden" data-vorschlag="Ticket für Claude">
+          <h3>Christine Kaaz (NÜRNBERGER) nachfassen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Sie hat Tobias beim E+S-Cocktail angesprochen, das Gespräch wurde unterbrochen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe eine Mail, die an das Gespräch anknüpft, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="191" data-titel="Videokonferenz mit Caren Büning vereinbaren" data-projekt="Baden-Baden" data-vorschlag="Ticket für Claude">
+          <h3>Videokonferenz mit Caren Büning vereinbaren</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Caren Büning hat eine Videokonferenz angeboten. Thema: Sparring für neue Führungskräfte und Vorstände. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe die Mail mit drei Terminvorschlägen, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="192" data-titel="Wolfgang Riecke (SIGNAL IDUNA) ansprechen" data-projekt="Baden-Baden" data-vorschlag="Ticket für Claude">
+          <h3>Wolfgang Riecke (SIGNAL IDUNA) ansprechen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Hinweis von Michael Pickel: Das Bäckergeschäft muss bei der SIGNAL IDUNA operativ integriert werden. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich entwerfe die Ansprache an Wolfgang Riecke, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="193" data-titel="Specialty MGA: Angebot für den deutschen Markt ausarbeiten" data-projekt="Baden-Baden" data-vorschlag="Ticket für Claude">
+          <h3>Specialty MGA: Angebot für den deutschen Markt ausarbeiten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Idee: ein fertiges Angebot statt einer Gesprächsfolge. Zielkunden, Landingpage, Leadgenerierung. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich entwerfe das Angebot. Das Vergütungsmodell (Honorar, Provision, Beteiligung) entscheidest du.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="194" data-titel="Guy Carpenter: Einladung zur Strategieklausur abwarten" data-projekt="Baden-Baden" data-vorschlag="Liegt bei Dritten: Axel Flöring">
+          <h3>Guy Carpenter: Einladung zur Strategieklausur abwarten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Axel Flöring schlägt der Geschäftsführung zwei Stunden plus Abendessen auf der Strategieklausur 1. bis 3. Februar vor. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--dritte">Liegt bei Dritten: Axel Flöring</span> Wir warten auf die Einladung. Ich melde mich, wenn bis Mitte Dezember nichts kommt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="195" data-titel="Neuem Leiter Rückversicherung der RheinLand Sparring anbieten" data-projekt="Baden-Baden" data-vorschlag="Liegt bei Dritten: Tobias">
+          <h3>Neuem Leiter Rückversicherung der RheinLand Sparring anbieten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Johann, der neue Leiter Rückversicherung der RheinLand, ist ein früherer Kollege von Tobias. Der Nachname fehlt noch. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--dritte">Liegt bei Dritten: Tobias</span> Tobias spricht ihn an, wir verfolgen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="196" data-titel="Andreas Kelb: Exklusivität für die Rückversicherungs-Abrechnungssoftware klären" data-projekt="Baden-Baden" data-vorschlag="Bleibt bei dir">
+          <h3>Andreas Kelb: Exklusivität für die Rückversicherungs-Abrechnungssoftware klären</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Idee: die Abrechnungssoftware bei IT-Projekten gegen Provision platzieren. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir. Die Exklusivität klärst du im Gespräch mit Andreas Kelb.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p12" hidden>
+        <p class="as-marke">sofortsichtbar</p>
+        <h2>Pilotkunden</h2>
+        <p class="as-satz">Gespräche mit möglichen Pilotkunden für sofortsichtbar.</p>
+        <div class="as-alle"><button type="button" data-alle="p12">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="31" data-titel="Kontaktaufnahme mit Antonietta Kohlhammer" data-projekt="Pilotkunden" data-vorschlag="Ticket für Claude">
+          <h3>Kontaktaufnahme mit Antonietta Kohlhammer</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Der Termin bei ihr im April wurde verschoben. Du wolltest dich mit einem neuen Termin melden, sie hat im August nachgefragt. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe die Mail im Ton eurer bisherigen Mails, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="32" data-titel="Kontaktaufnahme mit Jochen Rist" data-projekt="Pilotkunden" data-vorschlag="Ticket für Claude">
+          <h3>Kontaktaufnahme mit Jochen Rist</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Jochen weiß, dass du dich melden willst. Per Du, sehr locker. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe die Mail als Entwurf, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="33" data-titel="Kontaktaufnahme mit Joachim Lebherz" data-projekt="Pilotkunden" data-vorschlag="Ticket für Claude">
+          <h3>Kontaktaufnahme mit Joachim Lebherz</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Ihr habt über die strategische Planung seiner Kanäle gesprochen, genau das steckt in der Software. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schreibe die Mail mit Bezug auf euer Gespräch, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p9" hidden>
+        <p class="as-marke">sofortsichtbar</p>
+        <h2>Vertriebsstrategie sofortsichtbar</h2>
+        <p class="as-satz">Wie sofortsichtbar an Kunden kommt.</p>
+        <div class="as-alle"><button type="button" data-alle="p9">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="91" data-titel="Empfehlungen bei der ersten Pilotgeschäftsstelle konsequent einfordern" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Bleibt bei dir">
+          <h3>Empfehlungen bei der ersten Pilotgeschäftsstelle konsequent einfordern<span class="as-frist">fällig 16.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Erste Empfehlungen aus der Pilotgeschäftsstelle laufen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir. Empfehlungen fordert man persönlich ein.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="92" data-titel="Weitere Pilotgeschäftsstellen ansprechen und gewinnen" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Bleibt bei dir">
+          <h3>Weitere Pilotgeschäftsstellen ansprechen und gewinnen<span class="as-frist">fällig 06.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Ideen für weitere Pilotgeschäftsstellen sind da. Sinnvoll erst, wenn Homepage und Tool stehen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir und wartet auf die neue Homepage.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="93" data-titel="Begleitprogramm für die SV Akademie skizzieren (drei bis sechs Monate)" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Ticket für Claude">
+          <h3>Begleitprogramm für die SV Akademie skizzieren (drei bis sechs Monate)<span class="as-frist">fällig 13.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Idee: Begleitprogramm über drei bis sechs Monate für die SV Akademie, mit mehreren Geschäftsstellen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich skizziere das Programm, du nimmst ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="94" data-titel="Merkmale für datenbasierte Vertriebsansprache festlegen" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Ticket für Claude">
+          <h3>Merkmale für datenbasierte Vertriebsansprache festlegen<span class="as-frist">fällig 13.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Öffentlich sichtbare Merkmale, die auf Bedarf schließen lassen, zum Beispiel Google-Pixel, Vereinssponsoring, offene Stellen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schlage die Merkmale vor und stimme sie mit Noah ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="95" data-titel="LinkedIn-Follower von sofortsichtbar reaktivieren und regelmäßig posten" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Ticket für Claude">
+          <h3>LinkedIn-Follower von sofortsichtbar reaktivieren und regelmäßig posten<span class="as-frist">fällig 06.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Follower von sofortsichtbar auf LinkedIn sind kaum aktiv, es fehlt ein Rhythmus. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schlage Rhythmus und erste Beiträge vor, du gibst frei.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="197" data-titel="Verkaufsplattformen als Zugangskanal prüfen und in der Vertriebsstrategie diskutieren" data-projekt="Vertriebsstrategie sofortsichtbar" data-vorschlag="Ticket für Claude">
+          <h3>Verkaufsplattformen als Zugangskanal prüfen und in der Vertriebsstrategie diskutieren</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Frage: Taugen Marktplätze wie Kleinanzeigen oder Amazon als Zugangskanal? </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich recherchiere Plattformen, Gebühren und Regeln mit Quellen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p11" hidden>
+        <p class="as-marke">sofortsichtbar</p>
+        <h2>Business Story sofortsichtbar</h2>
+        <p class="as-satz">Neue Positionierung und Homepage von sofortsichtbar.</p>
+        <div class="as-alle"><button type="button" data-alle="p11">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="86" data-titel="Strategietool bauen: Kompass und ausführliches Tool" data-projekt="Business Story sofortsichtbar" data-vorschlag="Ticket für Claude">
+          <h3>Strategietool bauen: Kompass und ausführliches Tool<span class="as-frist">fällig 28.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Kompass mit wenigen Eingaben und ausführliches Tool für Kunden. Auf der Homepage gibt es noch kein Tool. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich baue Kompass und Tool im Stil von Storyboard 7 „Die digitale Maschine“, du nimmst ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p14" hidden>
+        <p class="as-marke">Kundenprojekt</p>
+        <h2>Konzept AVRG</h2>
+        <p class="as-satz">AVRG-Material für Sandra Hild, SV Owen.</p>
+        <div class="as-alle"><button type="button" data-alle="p14">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="248" data-titel="540-Euro-Flyer bauen" data-projekt="Konzept AVRG" data-vorschlag="Vermutlich erledigt">
+          <h3>540-Euro-Flyer bauen<span class="as-frist">fällig 09.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Flyer zum 540-Euro-Schein, Termin dazu mit Sandra Hild war am 09.11. In den Repos finde ich keinen Flyer. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn erledigt: abgehakt. Wenn nicht: Bitte unter „Anders“ sagen, dann baue ich ihn.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p17" hidden>
+        <p class="as-marke">Kundenprojekt</p>
+        <h2>SV Owen</h2>
+        <p class="as-satz">Zielbild und Zielsteuerung mit Sibylle und Thorsten.</p>
+        <div class="as-alle"><button type="button" data-alle="p17">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="253" data-titel="Faktenklare Zusammenfassung und Definition für Sibylle und Thorsten" data-projekt="SV Owen" data-vorschlag="Vermutlich erledigt">
+          <h3>Faktenklare Zusammenfassung und Definition für Sibylle und Thorsten<span class="as-frist">fällig 11.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Zusammenfassung des Besprochenen, faktenklar, fällig war der 11.11. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn erledigt: abgehakt. Wenn nicht, schreibe ich die Zusammenfassung als Entwurf.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="254" data-titel="Mail an Sibylle und Thorsten senden" data-projekt="SV Owen" data-vorschlag="Vermutlich erledigt">
+          <h3>Mail an Sibylle und Thorsten senden</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Der Entwurf lag in Outlook, die Signatur fehlte noch. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn die Mail raus ist: abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="255" data-titel="Ziele auf die Mitarbeiter herunterbrechen und an Daniel schicken" data-projekt="SV Owen" data-vorschlag="Liegt bei Dritten: Thorsten und Sibylle">
+          <h3>Ziele auf die Mitarbeiter herunterbrechen und an Daniel schicken<span class="as-frist">fällig 19.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Thorsten bricht die Ziele mit Sibylle auf die Mitarbeiter herunter und schickt sie dir, bis 19.11. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--dritte">Liegt bei Dritten: Thorsten und Sibylle</span> Wir warten. Ich melde mich, wenn am 20.11. nichts da ist.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p2" hidden>
+        <p class="as-marke">Kundenprojekt</p>
+        <h2>SV Schadenmanagement</h2>
+        <p class="as-satz">Leitbild und Business Story mit Matthias Schwenk bis zum Führungskreis am 24./25.11.</p>
+        <div class="as-alle"><button type="button" data-alle="p2">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="10" data-titel="Leitbild und Business Story mit Matthias Schwenk entwickeln" data-projekt="SV Schadenmanagement" data-vorschlag="Bleibt bei dir">
+          <h3>Leitbild und Business Story mit Matthias Schwenk entwickeln<span class="as-frist">fällig 24.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Aufeinander aufbauende Interviews mit Matthias Schwenk bis zum Führungskreis. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir. Die Interviews führst du.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="241" data-titel="Unterlagen für Matthias Schwenk zum Führungskreis erstellen" data-projekt="SV Schadenmanagement" data-vorschlag="Erledigt">
+          <h3>Unterlagen für Matthias Schwenk zum Führungskreis erstellen<span class="as-frist">fällig 11.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>One-Pager, PDF und Bedienungsanleitung für den Führungskreis sind am 10. und 11.11. entstanden. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt">Erledigt</span> Wird abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="242" data-titel="Hintergrundinformationen an Daniel schicken" data-projekt="SV Schadenmanagement" data-vorschlag="Liegt bei Dritten: Matthias Schwenk">
+          <h3>Hintergrundinformationen an Daniel schicken</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Matthias Schwenk schickt Folien zur Taskforce Personal und die Übersicht zur Zielvereinbarung. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--dritte">Liegt bei Dritten: Matthias Schwenk</span> Wir warten auf seine Unterlagen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="243" data-titel="Feedback an Matthias Schwenk zu seinen Unterlagen" data-projekt="SV Schadenmanagement" data-vorschlag="Ticket für Claude">
+          <h3>Feedback an Matthias Schwenk zu seinen Unterlagen<span class="as-frist">fällig 18.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Feedback bis zum Termin am 18.11.: Fragen, Ideen für den Führungsalltag, Hinweise zur Zielvereinbarung. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Sobald seine Unterlagen da sind, bereite ich das Feedback vor, du gehst es vor dem Termin durch.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p32" hidden>
+        <p class="as-marke">Kundenprojekt</p>
+        <h2>MSP Workshop</h2>
+        <p class="as-satz">Workshop Zukunftsmodell Qualitätsmanagement.</p>
+        <div class="as-alle"><button type="button" data-alle="p32">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="257" data-titel="Vorbesprechung mit den QMBs mit Mark klären" data-projekt="MSP Workshop" data-vorschlag="Vermutlich erledigt">
+          <h3>Vorbesprechung mit den QMBs mit Mark klären<span class="as-frist">fällig 10.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Du hast Mark Schweitzer-Pullar am 10.11. zum Workshop-Konzept geschrieben. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn die Vorbesprechung mit den QMBs damit geklärt ist: abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p19" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Corporate Design empiria</h2>
+        <p class="as-satz">Vorlagen der Geschäftsausstattung.</p>
+        <div class="as-alle"><button type="button" data-alle="p19">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="112" data-titel="Word-Vorlagen bauen" data-projekt="Corporate Design empiria" data-vorschlag="Entwurf liegt vor">
+          <h3>Word-Vorlagen bauen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Entwurf der Word-Vorlagen liegt seit 10.10. vor. <a class="as-link" href="https://empiria-git-daniel-empiria-gmb-h.vercel.app/projekte/ga-word.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--abnahme">Entwurf liegt vor</span> Du siehst den Entwurf an. Passt er, mache ich die Vorlagen fertig und lege sie ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="115" data-titel="Vorlage Roll-Up" data-projekt="Corporate Design empiria" data-vorschlag="Entwurf liegt vor">
+          <h3>Vorlage Roll-Up</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Entwurf des Roll-Ups liegt seit 10.10. vor. <a class="as-link" href="https://empiria-git-daniel-empiria-gmb-h.vercel.app/projekte/ga-rollup.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--abnahme">Entwurf liegt vor</span> Du siehst den Entwurf an. Passt er, kläre ich die Weiterbearbeitung in Illustrator und lege ihn ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="116" data-titel="Visitenkarten gestalten" data-projekt="Corporate Design empiria" data-vorschlag="Entwurf liegt vor">
+          <h3>Visitenkarten gestalten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Entwürfe der Visitenkarten liegen seit 10.10. vor. <a class="as-link" href="https://empiria-git-daniel-empiria-gmb-h.vercel.app/projekte/ga-visitenkarten.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--abnahme">Entwurf liegt vor</span> Du wählst eine Variante, ich mache sie druckfertig.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p18" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Homepage empiria</h2>
+        <p class="as-satz">Ausbau der empiria-Homepage.</p>
+        <div class="as-alle"><button type="button" data-alle="p18">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="102" data-titel="One-Pager Business Story" data-projekt="Homepage empiria" data-vorschlag="Vermutlich erledigt">
+          <h3>One-Pager Business Story</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Der One-Pager zur Business Story steht in der Geschäftsausstattung, zuletzt am 09.11. überarbeitet. <a class="as-link" href="https://empiria-git-daniel-empiria-gmb-h.vercel.app/projekte/ga-onepager.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn das der gemeinte One-Pager ist: abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="106" data-titel="Anwendungsfälle für echte Zielgruppen konzipieren und darstellen" data-projekt="Homepage empiria" data-vorschlag="Ticket für Claude">
+          <h3>Anwendungsfälle für echte Zielgruppen konzipieren und darstellen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Anwendungsfälle entlang echter Zielgruppen, zum Beispiel Hauptabteilungsleiter Schadenmanagement. Noch nicht begonnen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich entwerfe je Zielgruppe ein Zielbild, du nimmst ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="107" data-titel="Erklärvideos bauen" data-projekt="Homepage empiria" data-vorschlag="Ticket für Claude">
+          <h3>Erklärvideos bauen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Erklärvideos im Stil der Homepage, mit KI erstellt. Für sofortsichtbar gibt es seit 17.11. ein Erklärvideo als Muster. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich erstelle ein Probevideo, du entscheidest, ob es so weitergeht.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="108" data-titel="Startseite gegen die Business Story prüfen" data-projekt="Homepage empiria" data-vorschlag="Ticket für Claude">
+          <h3>Startseite gegen die Business Story prüfen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Startseite soll gegen die Business Story geprüft werden. Noch nicht begonnen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich prüfe und lege dir die Änderungen vor.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="153" data-titel="Eigene Download-Seite" data-projekt="Homepage empiria" data-vorschlag="Ticket für Claude">
+          <h3>Eigene Download-Seite</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Alle Downloads auf einer eigenen Seite. Noch nicht begonnen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich baue die Seite, du nimmst ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p15" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Homepage VoFe</h2>
+        <p class="as-satz">Sponsoring-Homepage für den Festzug.</p>
+        <div class="as-alle"><button type="button" data-alle="p15">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="84" data-titel="Entwurf der Sponsoring-Homepage bauen" data-projekt="Homepage VoFe" data-vorschlag="Vermutlich erledigt">
+          <h3>Entwurf der Sponsoring-Homepage bauen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Wagenpaten-Seite ist seit 31.10. im eigenen Repo live: Start, Festzug, Über uns. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn das die gemeinte Sponsoring-Homepage ist: abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p27" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Operative Aufgaben</h2>
+        <p class="as-satz">Laufendes, das keinem anderen Projekt zugehört.</p>
+        <div class="as-alle"><button type="button" data-alle="p27">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="28" data-titel="Jahresabschluss 2025 empiria GmbH: Rückfragen der Steuerberaterin beantworten" data-projekt="Operative Aufgaben" data-vorschlag="Bleibt bei dir">
+          <h3>Jahresabschluss 2025 empiria GmbH: Rückfragen der Steuerberaterin beantworten<span class="as-frist">fällig 16.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Rückfragen der Steuerberaterin zum Jahresabschluss 2025. Überfällig seit 16.10. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir. Ich stelle dir die offenen Rückfragen als Liste zusammen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="30" data-titel="SV Informatik: Logo-Nutzungsvereinbarung prüfen und Lukas Raschdorf antworten" data-projekt="Operative Aufgaben" data-vorschlag="Ticket für Claude">
+          <h3>SV Informatik: Logo-Nutzungsvereinbarung prüfen und Lukas Raschdorf antworten<span class="as-frist">fällig 09.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Logo-Nutzungsvereinbarung der SV Informatik liegt seit 08.09. vor, Lukas Raschdorf hat nachgefragt. Überfällig seit 09.10. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich prüfe die Vereinbarung und schreibe den Antwortentwurf, du sendest.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="47" data-titel="Prämienregulierungsbogen ausfüllen – Verlängerung PL-PSC000312812 (Finanzlounge)" data-projekt="Operative Aufgaben" data-vorschlag="Bleibt bei dir">
+          <h3>Prämienregulierungsbogen ausfüllen – Verlängerung PL-PSC000312812 (Finanzlounge)<span class="as-frist">fällig 13.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Prämienregulierungsbogen für die Verlängerung, online auszufüllen. Überfällig seit 13.10. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir, das Formular braucht deine Angaben. Ich lege dir Mail und Bogen bereit.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="78" data-titel="Einkommensteuererklärungen der letzten Jahre: Vorgehen festlegen und Termine blocken" data-projekt="Operative Aufgaben" data-vorschlag="Ticket für Claude">
+          <h3>Einkommensteuererklärungen der letzten Jahre: Vorgehen festlegen und Termine blocken<span class="as-frist">fällig 12.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Einkommensteuer: Vorgehen festlegen und Termine blocken. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich stelle die Lage zusammen. Danach entscheidest du das Vorgehen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="80" data-titel="Einkommensteuer: Brainstorming mit Claude" data-projekt="Operative Aufgaben" data-vorschlag="Entfällt">
+          <h3>Einkommensteuer: Brainstorming mit Claude<span class="as-frist">fällig 10.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Das Brainstorming war für den 10.10. geplant. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--entfaellt">Entfällt</span> Geht in der Aufgabe „Vorgehen festlegen“ auf.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p23" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Postings optimieren</h2>
+        <p class="as-satz">Wirkung der LinkedIn-Beiträge.</p>
+        <div class="as-alle"><button type="button" data-alle="p23">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="66" data-titel="Marketing-Seite inhaltlich neu bauen" data-projekt="Postings optimieren" data-vorschlag="Ticket für Claude">
+          <h3>Marketing-Seite inhaltlich neu bauen<span class="as-frist">fällig 27.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Marketing-Seite mit Kennzahlen im Verlauf, Zielen und Prüfterminen. Hängt am Deep Dive Marketing. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich baue die Seite neu, nach dem Deep Dive.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="67" data-titel="LinkedIn-Verlauf des letzten Jahres nachholen" data-projekt="Postings optimieren" data-vorschlag="Ticket für Claude">
+          <h3>LinkedIn-Verlauf des letzten Jahres nachholen<span class="as-frist">fällig 06.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Der Verlauf des letzten Jahres soll aus den LinkedIn-Grafiken gelesen werden. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich lese ihn nach und trage ihn ein.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="69" data-titel="Branchen- und Trendanalyse auf LinkedIn" data-projekt="Postings optimieren" data-vorschlag="Ticket für Claude">
+          <h3>Branchen- und Trendanalyse auf LinkedIn<span class="as-frist">fällig 28.11.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Was kommt bei Zielkunden an, welche Formate funktionieren. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich erstelle die Analyse mit Belegen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p22" hidden>
+        <p class="as-marke">empiria</p>
+        <h2>Zielgruppen und Kontakthalten</h2>
+        <p class="as-satz">Kontaktdatenbank, Zielgruppen und Regelkontakt.</p>
+        <div class="as-alle"><button type="button" data-alle="p22">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="26" data-titel="Kontaktdatenbank um Leads aus LinkedIn erweitern" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Ticket für Claude">
+          <h3>Kontaktdatenbank um Leads aus LinkedIn erweitern</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Leads aus dem Sales Navigator in die Kontaktdatenbank. Wartet auf den LinkedIn-Export. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich ziehe die Leads und gleiche sie ab.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="40" data-titel="LinkedIn-Profile der bestehenden Kontakte ergänzen" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Ticket für Claude">
+          <h3>LinkedIn-Profile der bestehenden Kontakte ergänzen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Nur wenige Kontakte haben ein LinkedIn-Profil hinterlegt. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schlage Profile vor, du bestätigst.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="41" data-titel="Zielgruppen als gespeicherte Filter anlegen" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Ticket für Claude">
+          <h3>Zielgruppen als gespeicherte Filter anlegen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Zielgruppen sollen gespeicherte Filter werden statt Listen. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich lege die Filter an.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="71" data-titel="Zielkunden über Sales Navigator festlegen und monitoren" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Ticket für Claude">
+          <h3>Zielkunden über Sales Navigator festlegen und monitoren</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Zielkunden gemeinsam festlegen und ihre Beiträge beobachten. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich schlage Zielkunden vor, du wählst aus.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="127" data-titel="Regelkontakt in der Steuerung: wer ist dran" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Ticket für Claude">
+          <h3>Regelkontakt in der Steuerung: wer ist dran</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Der Regelkontakt ist im Medienkonzept beschrieben, in der Steuerung fehlt er noch. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich baue die Anzeige „wer ist dran“ in die Steuerung.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="128" data-titel="Zielgruppen und Rhythmus im Regelkontakt bestätigen" data-projekt="Zielgruppen und Kontakthalten" data-vorschlag="Vermutlich erledigt">
+          <h3>Zielgruppen und Rhythmus im Regelkontakt bestätigen<span class="as-frist">fällig 12.10.2026</span></h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Zielgruppen und Rhythmus sollten im Termin am 12.10. bestätigt werden. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt-q">Vermutlich erledigt</span> Wenn bestätigt: abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p26" hidden>
+        <p class="as-marke">Müller&amp;Ströbel.</p>
+        <h2>Medienkonzept Müller&amp;Ströbel.</h2>
+        <p class="as-satz">Auftritt von Müller&amp;Ströbel.</p>
+        <div class="as-alle"><button type="button" data-alle="p26">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="144" data-titel="Medienkonzept-Seite als Unterseite bei Müller&amp;Ströbel. anlegen" data-projekt="Medienkonzept Müller&amp;Ströbel." data-vorschlag="Erledigt">
+          <h3>Medienkonzept-Seite als Unterseite bei Müller&amp;Ströbel. anlegen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Medienkonzept-Seite steht seit 11.10. im Repo Müller&amp;Ströbel. <a class="as-link" href="https://muellerundstroebel-git-daniel-empiria-gmb-h.vercel.app/entwicklung/medienkonzept.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt">Erledigt</span> Wird abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="145" data-titel="Postings schnell einrichten" data-projekt="Medienkonzept Müller&amp;Ströbel." data-vorschlag="Ticket für Claude">
+          <h3>Postings schnell einrichten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Für Müller&amp;Ströbel. gibt es noch keine Beiträge im Dashboard. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich bereite erste Beiträge und den Redaktionsplan zur Freigabe vor.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="146" data-titel="Folienmaster bauen" data-projekt="Medienkonzept Müller&amp;Ströbel." data-vorschlag="Ticket für Claude">
+          <h3>Folienmaster bauen</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Es gibt noch keinen Folienmaster. Vorbild ist der PowerPoint-Master von empiria. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--ticket">Ticket für Claude</span> Ich baue den Master für PowerPoint und Keynote.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="147" data-titel="LinkedIn-Banner gestalten" data-projekt="Medienkonzept Müller&amp;Ströbel." data-vorschlag="Entwurf liegt vor">
+          <h3>LinkedIn-Banner gestalten</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Banner liegen seit 12.10. in drei Varianten vor. <a class="as-link" href="https://muellerundstroebel-git-daniel-empiria-gmb-h.vercel.app/entwicklung/geschaeftsausstattung.html" target="_blank" rel="noopener">Entwurf ansehen ↗</a></dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--abnahme">Entwurf liegt vor</span> Du wählst eine Variante. Das Hochladen bei LinkedIn kann ich über Chrome übernehmen.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+        <article class="as-karte" data-id="148" data-titel="Mail-Signatur Müller&amp;Ströbel." data-projekt="Medienkonzept Müller&amp;Ströbel." data-vorschlag="Erledigt">
+          <h3>Mail-Signatur Müller&amp;Ströbel.</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Die Signatur ist seit 07.10. nachgebaut. </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--erledigt">Erledigt</span> Wird abgehakt.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+      <section class="as-tafel" role="tabpanel" id="p24" hidden>
+        <p class="as-marke">Müller&amp;Ströbel.</p>
+        <h2>Vertriebsstrategie Müller&amp;Ströbel.</h2>
+        <p class="as-satz">Geschäftsmodell und Vertrieb mit Tobias.</p>
+        <div class="as-alle"><button type="button" data-alle="p24">Alle Vorschläge in diesem Reiter: Passt</button></div>
+        
+        <article class="as-karte" data-id="132" data-titel="Auftakt mit Tobias" data-projekt="Vertriebsstrategie Müller&amp;Ströbel." data-vorschlag="Bleibt bei dir">
+          <h3>Auftakt mit Tobias</h3>
+          <dl>
+            <div><dt>Stand heute</dt><dd>Auftakt mit Tobias: Wie gehen wir vertriebsstrategisch vor, welches Geschäftsmodell betreiben wir wirklich? </dd></div>
+            <div><dt>Mein Vorschlag</dt><dd><span class="as-art as-art--daniel">Bleibt bei dir</span> Bleibt bei dir. Ich bereite die Fragen vor.</dd></div>
+          </dl>
+          <div class="as-wahl" role="group" aria-label="Deine Entscheidung">
+            <button type="button" data-wahl="passt">Passt</button>
+            <button type="button" data-wahl="anders">Anders</button>
+            <button type="button" data-wahl="frage">Frage</button>
+          </div>
+          <textarea class="as-notiz" rows="2" placeholder="Was soll anders laufen? Oder deine Frage." hidden></textarea>
+        </article>
+      </section>
+
+  <div class="as-leiste" aria-live="polite"><div>
+    <span><b data-gesamt>0</b> von 56 entschieden</span>
+    <button type="button" data-kopieren>Ergebnis kopieren</button>
+  </div></div>
+
+<script>
+(function () {
+  var KEY = "aufgaben-sortieren-2026-11";
+  var stand = {};
+  try { stand = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (x) {}
+  function sichern() { try { localStorage.setItem(KEY, JSON.stringify(stand)); } catch (x) {} }
+  var karten = [].slice.call(document.querySelectorAll(".as-karte"));
+  function zeigen(k) {
+    var s = stand[k.dataset.id] || {};
+    k.querySelectorAll("[data-wahl]").forEach(function (b) { b.setAttribute("aria-pressed", String(s.wahl === b.dataset.wahl)); });
+    var n = k.querySelector(".as-notiz"); n.hidden = !(s.wahl === "anders" || s.wahl === "frage"); n.value = s.notiz || "";
+    k.classList.toggle("is-passt", s.wahl === "passt");
+  }
+  function zaehlen() {
+    var g = 0;
+    document.querySelectorAll(".as-tafel").forEach(function (t) {
+      var ks = t.querySelectorAll(".as-karte"), n = 0;
+      ks.forEach(function (k) { if ((stand[k.dataset.id] || {}).wahl) n++; });
+      g += n;
+      var z = document.querySelector('[data-zaehler="' + t.id + '"]'); z.textContent = n + "/" + ks.length;
+      z.parentNode.classList.toggle("is-fertig", n === ks.length);
+    });
+    document.querySelector("[data-gesamt]").textContent = g;
+  }
+  karten.forEach(function (k) {
+    zeigen(k);
+    k.querySelectorAll("[data-wahl]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var s = stand[k.dataset.id] || {};
+        s.wahl = s.wahl === b.dataset.wahl ? undefined : b.dataset.wahl;
+        stand[k.dataset.id] = s; sichern(); zeigen(k); zaehlen();
+        if (s.wahl === "anders" || s.wahl === "frage") k.querySelector(".as-notiz").focus();
+      });
+    });
+    k.querySelector(".as-notiz").addEventListener("input", function (ev) {
+      var s = stand[k.dataset.id] || {}; s.notiz = ev.target.value; stand[k.dataset.id] = s; sichern();
+    });
+  });
+  document.querySelectorAll("[data-alle]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.getElementById(b.dataset.alle).querySelectorAll(".as-karte").forEach(function (k) {
+        var s = stand[k.dataset.id] || {}; if (!s.wahl) { s.wahl = "passt"; stand[k.dataset.id] = s; } zeigen(k);
+      });
+      sichern(); zaehlen();
+    });
+  });
+  document.querySelectorAll(".as-reiter").forEach(function (r) {
+    r.addEventListener("click", function () {
+      document.querySelectorAll(".as-reiter").forEach(function (x) { x.setAttribute("aria-selected", String(x === r)); });
+      document.querySelectorAll(".as-tafel").forEach(function (t) { t.hidden = t.id !== r.dataset.reiter; });
+      window.scrollTo({ top: document.querySelector(".as-reiterleiste").offsetTop - 4, behavior: "smooth" });
+    });
+  });
+  document.querySelector("[data-kopieren]").addEventListener("click", function () {
+    var z = ["Aufgaben sortieren – mein Ergebnis"];
+    karten.forEach(function (k) {
+      var s = stand[k.dataset.id] || {}, w = { passt: "Passt", anders: "Anders", frage: "Frage" }[s.wahl] || "Offen";
+      z.push("#" + k.dataset.id + " " + k.dataset.projekt + " · " + k.dataset.titel + " – " + w +
+             (s.wahl === "passt" ? " (" + k.dataset.vorschlag + ")" : "") + (s.notiz ? ": " + s.notiz : ""));
+    });
+    var text = z.join("\n"), b = this;
+    function ok() { b.textContent = "Kopiert – jetzt im Chat einfügen"; setTimeout(function () { b.textContent = "Ergebnis kopieren"; }, 3000); }
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(ok, function () { window.prompt("Bitte kopieren:", text); });
+    else window.prompt("Bitte kopieren:", text);
+  });
+  zaehlen();
+})();
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>empiria GmbH 2026</span>
+    <span class="footer-links"><a href="/impressum.html">Impressum</a> <span>|</span> <a href="/datenschutz.html">Datenschutz</a> <span>|</span> <button type="button" data-cookie-settings>Cookie-Einstellungen</button></span>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+<script src="/tracking.js"></script>
+</body>
+</html>
