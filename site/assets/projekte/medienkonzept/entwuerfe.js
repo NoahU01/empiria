@@ -1991,6 +1991,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 175,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 253,
+    "reichweite": 182,
+    "reaktionen": 6,
+    "kommentare": 0
    }
   ],
   "bild": "rp31",
@@ -2050,6 +2057,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 479,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 646,
+    "reichweite": 496,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -2102,6 +2116,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 330,
     "reaktionen": 13,
     "kommentare": 4
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 497,
+    "reichweite": 352,
+    "reaktionen": 16,
+    "kommentare": 5
    }
   ],
   "bild": "rp17",
@@ -2140,6 +2161,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1756,
     "reaktionen": 10,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 2450,
+    "reichweite": 1910,
+    "reaktionen": 12,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2171,6 +2199,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 596,
     "reaktionen": 12,
     "kommentare": 7
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 912,
+    "reichweite": 677,
+    "reaktionen": 14,
+    "kommentare": 8
    }
   ],
   "bild": "rp35",
@@ -2195,6 +2230,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 43,
     "reaktionen": 1,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 167,
+    "reichweite": 110,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2212,7 +2254,15 @@ window.MK_ENTWUERFE = [
   "text": "Ich habe früher Vorstandsklausuren vorbereitet. Mehrere Tage, sechs Vorstände, alle richtig gut und mit viel Erfahrung.\n\nDie sechs haben sehr schnell verstanden, worum es bei einem Thema eigentlich geht.\n\nBei den wichtigen Themen lief es dann fast immer gleich. Sobald allen klar war, was das Thema für das Unternehmen bedeutet, hat einer die Richtung in einem Satz auf den Punkt gebracht. Und die anderen waren dabei.\n\nDieser eine Satz hat mehr gebracht als jedes Management Summary. Weil man danach alles daran messen konnte.\n\nGekippt ist es immer dann, wenn genau diese Bedeutung gefehlt hat. Dann hieß es schnell: Auf der Ebene brauchen wir nicht weiterzudiskutieren.\n\nUnd je mehr Details der vorbereitende Bereich auf den Tisch gelegt hat, desto zäher wurde es.\n\nSeitdem schaue ich bei jeder Vorlage zuerst auf eine Frage: Wird klar, was das Thema für das Unternehmen bedeutet?\n\nWenn ja, findet sich der Satz meistens von selbst.",
   "status": "veroeffentlicht",
   "datum": "2026-11-18",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 162,
+    "reichweite": 107,
+    "reaktionen": 2,
+    "kommentare": 1
+   }
+  ],
   "bild": "rp37",
   "format": "Modell · Dokument",
   "offen": "",
