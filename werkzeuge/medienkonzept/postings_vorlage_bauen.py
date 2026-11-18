@@ -989,6 +989,9 @@ teile += [
 # KW 46/47 (Daniel, 04.11.2026): Bilder in kw46_47_bilder.py
 from kw46_47_bilder import sektionen as _kw4647
 teile += _kw4647(NAME, vb, SYS)
+# KW 48/49 (Daniel, 18.11.2026): Bilder in kw48_49_bilder.py
+from kw48_49_bilder import sektionen as _kw4849
+teile += _kw4849(NAME, vb, SYS)
 
 html = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><title>Postings empiria – Vorlage</title>
