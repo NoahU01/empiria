@@ -2210,14 +2210,14 @@ window.MK_ENTWUERFE = [
   "art": "Modell · Dokument",
   "kern": "Ich habe früher Vorstandsklausuren vorbereitet.",
   "text": "Ich habe früher Vorstandsklausuren vorbereitet. Mehrere Tage, sechs Vorstände, alle richtig gut und mit viel Erfahrung.\n\nDie sechs haben sehr schnell verstanden, worum es bei einem Thema eigentlich geht.\n\nBei den wichtigen Themen lief es dann fast immer gleich. Sobald allen klar war, was das Thema für das Unternehmen bedeutet, hat einer die Richtung in einem Satz auf den Punkt gebracht. Und die anderen waren dabei.\n\nDieser eine Satz hat mehr gebracht als jedes Management Summary. Weil man danach alles daran messen konnte.\n\nGekippt ist es immer dann, wenn genau diese Bedeutung gefehlt hat. Dann hieß es schnell: Auf der Ebene brauchen wir nicht weiterzudiskutieren.\n\nUnd je mehr Details der vorbereitende Bereich auf den Tisch gelegt hat, desto zäher wurde es.\n\nSeitdem schaue ich bei jeder Vorlage zuerst auf eine Frage: Wird klar, was das Thema für das Unternehmen bedeutet?\n\nWenn ja, findet sich der Satz meistens von selbst.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-18",
   "kennzahlen": [],
   "bild": "rp37",
   "format": "Modell · Dokument",
   "offen": "",
   "termin": "Mi 18.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7528709938760724480"
  },
  {
   "id": 64,
