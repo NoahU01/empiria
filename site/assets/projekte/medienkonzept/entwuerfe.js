@@ -2064,6 +2064,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 496,
     "reaktionen": 9,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 658,
+    "reichweite": 507,
+    "reaktionen": 9,
+    "kommentare": 2
    }
   ],
   "bild": "rp32",
@@ -2123,6 +2130,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 352,
     "reaktionen": 16,
     "kommentare": 5
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 519,
+    "reichweite": 370,
+    "reaktionen": 16,
+    "kommentare": 5
    }
   ],
   "bild": "rp17",
@@ -2168,6 +2182,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1910,
     "reaktionen": 12,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 2542,
+    "reichweite": 1991,
+    "reaktionen": 13,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2206,6 +2227,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 677,
     "reaktionen": 14,
     "kommentare": 8
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 965,
+    "reichweite": 715,
+    "reaktionen": 16,
+    "kommentare": 9
    }
   ],
   "bild": "rp35",
@@ -2237,6 +2265,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 110,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 192,
+    "reichweite": 130,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2261,6 +2296,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 107,
     "reaktionen": 2,
     "kommentare": 1
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 813,
+    "reichweite": 636,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2278,7 +2320,15 @@ window.MK_ENTWUERFE = [
   "text": "Mir wurde zweimal gedroht: Wenn ich den Auftrag nicht annehme, bekomme ich in diesem Konzern nie wieder einen.\n\nIch habe beide Male Nein gesagt.\n\nDas waren keine Fremden. Mit beiden hatte ich vorher richtig gut gearbeitet. Sie standen unter Druck und wollten, dass ich es mache.\n\nNur: Von dem Weg, den sie gehen wollten, war ich nicht überzeugt. Und für diesen Weg war ich schlicht die falsche Person.\n\nIch weiß ziemlich genau, wo ich einen echten Mehrwert liefere und wo nicht. Ich übernehme Themen, bei denen ich weiß, wie wir zum Ergebnis kommen.\n\nBei allen anderen sage ich das offen und nenne, wer es besser kann.\n\nJa sagen wäre einfacher gewesen. Aber ein Auftrag, hinter dem ich nicht stehe, hilft am Ende niemandem.\n\nWann hast du zuletzt Ja gesagt, obwohl du wusstest, dass du nicht der Richtige bist?",
   "status": "veroeffentlicht",
   "datum": "2026-11-19",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 212,
+    "reichweite": 155,
+    "reaktionen": 5,
+    "kommentare": 2
+   }
+  ],
   "bild": "rp38",
   "format": "Geschichte · Foto",
   "offen": "",
