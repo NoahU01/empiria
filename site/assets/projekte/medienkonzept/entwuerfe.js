@@ -2276,14 +2276,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Foto",
   "kern": "Mir wurde zweimal gedroht – ich habe beide Male Nein gesagt.",
   "text": "Mir wurde zweimal gedroht: Wenn ich den Auftrag nicht annehme, bekomme ich in diesem Konzern nie wieder einen.\n\nIch habe beide Male Nein gesagt.\n\nDas waren keine Fremden. Mit beiden hatte ich vorher richtig gut gearbeitet. Sie standen unter Druck und wollten, dass ich es mache.\n\nNur: Von dem Weg, den sie gehen wollten, war ich nicht überzeugt. Und für diesen Weg war ich schlicht die falsche Person.\n\nIch weiß ziemlich genau, wo ich einen echten Mehrwert liefere und wo nicht. Ich übernehme Themen, bei denen ich weiß, wie wir zum Ergebnis kommen.\n\nBei allen anderen sage ich das offen und nenne, wer es besser kann.\n\nJa sagen wäre einfacher gewesen. Aber ein Auftrag, hinter dem ich nicht stehe, hilft am Ende niemandem.\n\nWann hast du zuletzt Ja gesagt, obwohl du wusstest, dass du nicht der Richtige bist?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-19",
   "kennzahlen": [],
   "bild": "rp38",
   "format": "Geschichte · Foto",
   "offen": "",
   "termin": "Do 19.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7529072354447212544"
  },
  {
   "id": 52,
