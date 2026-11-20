@@ -2342,14 +2342,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Foto",
   "kern": "Die besten fünf Minuten einer Vertriebstagung hatten keine Folie und keinen Platz auf der Agenda.",
   "text": "Die besten fünf Minuten einer Vertriebstagung hatten keine Folie und keinen Platz auf der Agenda.\n\nWir hatten die Tagung mit vorbereitet und vorher gepredigt: Bringt die Themen an den Alltag der Agenturleiter.\n\n• Was bringt mir das?\n• Was mache ich morgen damit?\n\nAntwort jedes Mal: Die fachlichen Neuerungen sind wichtiger.\n\nAlso gab es Fachliches. Viel Fachliches.\n\nBis jemand im Saal eine Frage stellte. Der Referent gab sie an eine Person im Publikum weiter, die genau das jeden Tag in ihrer Agentur macht.\n\nDie ging nach vorne und erzählte fünf Minuten aus ihrem Alltag. Die besten fünf Minuten der ganzen Veranstaltung, sagten hinterher alle.\n\nDa plant man so eine Tagung monatelang und überlässt das Beste dem Zufall.",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-20",
   "kennzahlen": [],
   "bild": "rp39",
   "format": "Geschichte · Foto",
   "offen": "",
   "termin": "Fr 20.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7529434721827807233"
  },
  {
   "id": 57,
