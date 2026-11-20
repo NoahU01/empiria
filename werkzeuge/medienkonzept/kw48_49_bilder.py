@@ -39,7 +39,7 @@ def sektionen(NAME, vb, SYS):
   %s</section>""" % (pid, LORA % groesse, satz, NAME)
 
     return [
-        satz_unten("rp44", "foto-hotel-besprechung.jpg", "88% 50%", "„Wenn zwei Folien reichen,<br>machen wir zwei.“"),  # 24.11. (145) echtes Foto statt weißer Satzkarte
+        satz_unten("rp44", "foto-themenwand.jpg", "35% 50%", "Folien haben keinen Selbstzweck."),  # 24.11. (145) Themenwand, noch nie genutzt
         wort("rp45", "foto-fenster-anzug.jpg", "40% 40%", "Danach."),                        # 25.11. (146) Strategie in der Schublade
         kritzel("rp46", "foto-flipcharts.jpg", "30% 50%", "Wie fahren wir es<br>gegen die Wand?", 430, 40, 620, groesse=80),  # 26.11. (147)
         wort("rp47", "foto-schreiben.jpg", "50% 40%", "Vorsprung."),                         # 27.11. (148) drei Abende
