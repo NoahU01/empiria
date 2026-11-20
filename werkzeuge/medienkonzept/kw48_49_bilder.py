@@ -42,7 +42,7 @@ def sektionen(NAME, vb, SYS):
         satz_unten("rp44", "foto-themenwand.jpg", "35% 50%", "Folien haben keinen Selbstzweck."),  # 24.11. (145) Themenwand, noch nie genutzt
         wort("rp45", "foto-fenster-anzug.jpg", "40% 40%", "Danach."),                        # 25.11. (146) Strategie in der Schublade
         kritzel("rp46", "foto-flipcharts.jpg", "30% 50%", "Wie fahren wir es<br>gegen die Wand?", 430, 40, 620, groesse=80),  # 26.11. (147)
-        wort("rp47", "foto-schreiben.jpg", "50% 40%", "Vorsprung."),                         # 27.11. (148) drei Abende
+        pur("rp47", "foto-buero-flagge.jpg", "75% 40%"),  # foto-schreiben lief schon am 27.10.                         # 27.11. (148) drei Abende
         pur("rp48", "foto-sw-hoodie.jpg", "50% 30%"),                                        # 28.11. (149) bis Daniels Foto der gelben E-Gitarre kommt
         satz_oben("rp49", "foto-gold.jpg", "50% 30%", "Regeln biegen,<br>ohne sie zu brechen."),  # 29.11. (150) Monopoly – Porträt statt Spielbrett
         wort("rp50", "foto-arena.jpg", "40% 50%", "Vollgas."),                               # 30.11. (151) Mannschaft, die gewinnt
