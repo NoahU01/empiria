@@ -28,6 +28,10 @@ def sektionen(NAME, vb, SYS):
         return """<section class="p vollbild" id="%s">%s<div style="position:absolute;inset:0 0 auto 0;height:46%%;background:linear-gradient(180deg,rgba(26,24,23,.82),rgba(26,24,23,0))"></div>
   <p style="position:absolute;left:80px;right:80px;top:60px;font:700 58px/1.12 Poppins,sans-serif;letter-spacing:-.01em;color:#fff">%s</p></section>""" % (pid, vb(bild, pos), satz)
 
+    def satz_unten(pid, bild, pos, satz):
+        # Foto mit einem Satz unten, ohne Markierung (Daniel 20.11.2026: weiße Satzkarte „sieht nach nichts aus“)
+        return """<section class="p vollbild" id="%s">%s<div class="verlauf" style="height:42%%"></div><div class="unten"><p class="satz" style="font-size:66px">%s</p></div></section>""" % (pid, vb(bild, pos), satz)
+
     def satzkarte(pid, satz, groesse=104):
         # Satzkarte der Woche: Schwarz auf Weiß, ohne Markierung
         return """<section class="p" id="%s" style="padding:84px;background:#fff">
@@ -35,7 +39,7 @@ def sektionen(NAME, vb, SYS):
   %s</section>""" % (pid, LORA % groesse, satz, NAME)
 
     return [
-        satzkarte("rp44", "„Wenn dafür zwei Folien nötig sind, machen wir zwei.“"),          # 24.11. (145)
+        satz_unten("rp44", "foto-hotel-besprechung.jpg", "88% 50%", "„Wenn zwei Folien reichen,<br>machen wir zwei.“"),  # 24.11. (145) echtes Foto statt weißer Satzkarte
         wort("rp45", "foto-fenster-anzug.jpg", "40% 40%", "Danach."),                        # 25.11. (146) Strategie in der Schublade
         kritzel("rp46", "foto-flipcharts.jpg", "30% 50%", "Wie fahren wir es<br>gegen die Wand?", 430, 40, 620, groesse=80),  # 26.11. (147)
         wort("rp47", "foto-schreiben.jpg", "50% 40%", "Vorsprung."),                         # 27.11. (148) drei Abende
