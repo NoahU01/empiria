@@ -2137,6 +2137,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 370,
     "reaktionen": 16,
     "kommentare": 5
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 536,
+    "reichweite": 383,
+    "reaktionen": 16,
+    "kommentare": 5
    }
   ],
   "bild": "rp17",
@@ -2189,6 +2196,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1991,
     "reaktionen": 13,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 2582,
+    "reichweite": 2020,
+    "reaktionen": 13,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2234,6 +2248,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 715,
     "reaktionen": 16,
     "kommentare": 9
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 1007,
+    "reichweite": 746,
+    "reaktionen": 17,
+    "kommentare": 9
    }
   ],
   "bild": "rp35",
@@ -2272,6 +2293,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 130,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 211,
+    "reichweite": 140,
+    "reaktionen": 4,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2303,6 +2331,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 636,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 897,
+    "reichweite": 701,
+    "reaktionen": 8,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2327,6 +2362,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 155,
     "reaktionen": 5,
     "kommentare": 2
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 1141,
+    "reichweite": 893,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2344,7 +2386,15 @@ window.MK_ENTWUERFE = [
   "text": "Die besten fünf Minuten einer Vertriebstagung hatten keine Folie und keinen Platz auf der Agenda.\n\nWir hatten die Tagung mit vorbereitet und vorher gepredigt: Bringt die Themen an den Alltag der Agenturleiter.\n\n• Was bringt mir das?\n• Was mache ich morgen damit?\n\nAntwort jedes Mal: Die fachlichen Neuerungen sind wichtiger.\n\nAlso gab es Fachliches. Viel Fachliches.\n\nBis jemand im Saal eine Frage stellte. Der Referent gab sie an eine Person im Publikum weiter, die genau das jeden Tag in ihrer Agentur macht.\n\nDie ging nach vorne und erzählte fünf Minuten aus ihrem Alltag. Die besten fünf Minuten der ganzen Veranstaltung, sagten hinterher alle.\n\nDa plant man so eine Tagung monatelang und überlässt das Beste dem Zufall.",
   "status": "veroeffentlicht",
   "datum": "2026-11-20",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 147,
+    "reichweite": 96,
+    "reaktionen": 6,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp39",
   "format": "Geschichte · Foto",
   "offen": "",
