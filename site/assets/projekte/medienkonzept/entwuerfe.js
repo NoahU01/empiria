@@ -2503,7 +2503,7 @@ window.MK_ENTWUERFE = [
   "feld": "Werkstatt",
   "art": "Werkstatt · Foto mit Wort",
   "kern": "Drei Abende YouTube statt Netflix, und du bist deinen Kollegen drei Schritte voraus.",
-  "text": "Drei Abende YouTube statt Netflix, und du bist deinen Kollegen drei Schritte voraus.\n\nDas sage ich, wenn mich jemand fragt, ob KI mich bald überflüssig macht.\n\nIch bin kein Genie. Ich wende an, was da ist. Da ist inzwischen eine Menge, frei verfügbar für jeden.\n\nMit Google und KI gibt es keine Ausreden mehr. Wer wissen will, wie etwas geht, findet es an einem Abend.\n\nNur macht das kaum jemand.\n\nBei mir entscheidet das Interesse. Was mich interessiert, mache ich mit Vollgas. KI hat mich interessiert, also habe ich abends angefangen, Stück für Stück.\n\nWelches Thema schiebst du gerade vor dir her, obwohl die Antwort nur drei Abende entfernt ist?",
+  "text": "Drei Abende YouTube statt Netflix, und du bist deinen Kollegen drei Schritte voraus.\n\nIch bin kein Genie. Ich wende an, was da ist. Da ist inzwischen eine Menge, frei verfügbar für jeden.\n\nMit Google und KI gibt es keine Ausreden mehr. Wer wissen will, wie etwas geht, findet es an einem Abend.\n\nNur macht das kaum jemand.\n\nBei mir entscheidet das Interesse. Was mich interessiert, mache ich mit Vollgas. KI hat mich interessiert, also habe ich abends angefangen, Stück für Stück.\n\nWelches Thema schiebst du gerade vor dir her, obwohl die Antwort nur drei Abende entfernt ist?",
   "status": "entwurf",
   "datum": "2026-11-27",
   "kennzahlen": [],
