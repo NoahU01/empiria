@@ -2455,7 +2455,7 @@ window.MK_ENTWUERFE = [
   "feld": "02 Komplexe Themen",
   "art": "Szene · Satzkarte",
   "kern": "„Wir brauchen keinen Strategieberater.“",
-  "text": "„Wir brauchen keinen Strategieberater.“\n\nDen Satz höre ich öfter. Verständlich, auf monatelange Analysen und teure Folien hat niemand Lust.\n\nDas eigentliche Problem liegt woanders. Auf dich prasseln jeden Tag unzählige Themen ein. Wer da nicht sortiert, arbeitet am Ende alles ab und bewegt nichts.\n\nDrei Fragen helfen beim Sortieren:\n\n• Wo gehört das Thema in unserem Geschäftsmodell hin?\n• Wie wichtig ist es im Vergleich zu allem anderen?\n• Was ist der nächste Schritt, und wer muss dafür entscheiden?\n\nFür die Themen, die übrig bleiben, nimmst du genau das, was die Entscheidung bringt. Manchmal sind das zwei gezielte Folien. Einen Selbstzweck haben Folien nie.\n\nGemessen wird am Ende nur, ob die Entscheidung gefallen ist.",
+  "text": "„Wir brauchen keinen Strategieberater.“\n\nDen Satz höre ich öfter. Oft stimmt er sogar. Wer einen Berater für monatelange Analysen und dicke Folien holt, bekommt genau das.\n\nWas die meisten Vorstände und Führungskräfte wirklich brauchen, ist Ordnung in der Flut an Themen, die jeden Tag auf sie einprasselt. Dazu jemanden, der dafür sorgt, dass entschieden wird.\n\nVieles davon kannst du selbst. Drei Fragen helfen beim Sortieren:\n\n• Wo gehört das Thema in unserem Geschäftsmodell hin?\n• Wie wichtig ist es im Vergleich zu allem anderen?\n• Was ist der nächste Schritt, und wer muss dafür entscheiden?\n\nFolien sind dabei nur Mittel zum Zweck. Manchmal reichen zwei.\n\nOb du Hilfe von außen brauchst, merkst du an einer einzigen Sache. Fallen die Entscheidungen oder nicht?",
   "status": "entwurf",
   "datum": "2026-11-24",
   "kennzahlen": [],
