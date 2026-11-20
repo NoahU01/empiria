@@ -2450,17 +2450,17 @@ window.MK_ENTWUERFE = [
   "url": ""
  },
  {
-  "id": 145,
+  "id": 162,
   "kanal": "daniel",
-  "feld": "02 Komplexe Themen",
-  "art": "Szene · Satzkarte",
-  "kern": "„Wir brauchen keinen Strategieberater.“",
-  "text": "„Wir brauchen keinen Strategieberater.“\n\nDen Satz höre ich öfter. Oft stimmt er sogar. Wer einen Berater für monatelange Analysen und dicke Folien holt, bekommt genau das.\n\nWas die meisten Vorstände und Führungskräfte wirklich brauchen, ist Ordnung in der Flut an Themen, die jeden Tag auf sie einprasselt. Dazu jemanden, der dafür sorgt, dass entschieden wird.\n\nVieles davon kannst du selbst. Drei Fragen helfen beim Sortieren:\n\n• Wo gehört das Thema in unserem Geschäftsmodell hin?\n• Wie wichtig ist es im Vergleich zu allem anderen?\n• Was ist der nächste Schritt, und wer muss dafür entscheiden?\n\nFolien sind dabei nur Mittel zum Zweck. Manchmal reichen zwei.\n\nOb du Hilfe von außen brauchst, merkst du an einer einzigen Sache. Fallen die Entscheidungen oder nicht?",
+  "feld": "01 Strategie im Alltag",
+  "art": "Satz · Foto mit Satz",
+  "kern": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.",
+  "text": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.\n\nIch finde es völlig okay, wenn jemand bewusst nur 80 Prozent gibt. Entscheidend ist, dass er vorher festlegt, welches Ergebnis er braucht. Dann sind diese 80 eben seine 100.\n\nBei mir sieht das so aus. Ein Pitch oder eine Aufsichtsratsvorlage bekommt die volle Energie. Ein Protokoll sind fünf saubere Stichpunkte. Fertig.\n\nMittelmaß ist für mich etwas anderes. Mittelmaß heißt, das Ziel zu verfehlen, das man sich selbst gesetzt hat.\n\nSchau dir mal deine Woche an. Wo steckst du gerade 100 Prozent in etwas, das mit 80 völlig reichen würde?",
   "status": "entwurf",
   "datum": "2026-11-24",
   "kennzahlen": [],
   "bild": "rp44",
-  "format": "Szene · Satzkarte",
+  "format": "Satz · Foto mit Satz",
   "offen": "",
   "termin": "Di 24.11.",
   "url": ""
