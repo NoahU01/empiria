@@ -2203,6 +2203,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 2020,
     "reaktionen": 13,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 2594,
+    "reichweite": 2031,
+    "reaktionen": 13,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2255,6 +2262,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 746,
     "reaktionen": 17,
     "kommentare": 9
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 1044,
+    "reichweite": 769,
+    "reaktionen": 18,
+    "kommentare": 9
    }
   ],
   "bild": "rp35",
@@ -2300,6 +2314,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 140,
     "reaktionen": 4,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 226,
+    "reichweite": 153,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2338,6 +2359,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 701,
     "reaktionen": 8,
     "kommentare": 4
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 966,
+    "reichweite": 755,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2369,6 +2397,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 893,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 1421,
+    "reichweite": 1112,
+    "reaktionen": 14,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2393,6 +2428,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 96,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 286,
+    "reichweite": 205,
+    "reaktionen": 8,
+    "kommentare": 0
    }
   ],
   "bild": "rp39",
@@ -2410,7 +2452,15 @@ window.MK_ENTWUERFE = [
   "text": "„Wenn ich das jetzt anfrage, habe ich die Landingpage vielleicht nächstes Jahr.“\n\nDen Satz hat ein Vorstand gesagt, der bei uns im Büro saß. Wir hatten gerade zusammen sein Thema durchgearbeitet. Story, Zielgruppen, Pitch, alles stand.\n\nIch habe nur gesagt: Gib mir das Go, in drei Wochen ist die Landingpage live.\n\nEr hat Ja gesagt. Und nach drei Wochen war sie online.\n\nSpannend: Er wollte es gar nicht erst versuchen, obwohl er überzeugt war, dass die Landingpage im Vertrieb genau das richtige Instrument war. Er wusste, wie lange so etwas bei ihm im Haus dauert.\n\nUnd das erlebe ich ständig. Gute Leute, die gute Ideen gar nicht mehr anfragen.\n\nSchade drum.",
   "status": "veroeffentlicht",
   "datum": "2026-11-21",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 134,
+    "reichweite": 94,
+    "reaktionen": 3,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp40",
   "format": "Szene · Browser",
   "offen": "",
