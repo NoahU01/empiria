@@ -2578,7 +2578,7 @@ window.MK_ENTWUERFE = [
   "feld": "01 Strategie im Alltag",
   "art": "Werkzeug · Foto mit Verlauf und Wort",
   "kern": "Die meisten Strategien sterben am Tag nach dem Beschluss.",
-  "text": "Die meisten Strategien sterben am Tag nach dem Beschluss.\n\nAlle sind erleichtert, dass das Ding endlich durch ist. Am Montag läuft wieder das Tagesgeschäft. Ein halbes Jahr später fragt keiner mehr danach.\n\nJa, auch bei mir ist schon eine Strategie in der Schublade gelandet.\n\nSeitdem gilt eine klare Regel. Bevor wir mit einer Strategie überhaupt anfangen, klären wir, wie es danach weitergeht. Feste, kurze Termine für die Zeit nach dem Beschluss. Notfalls per Sprachnachricht.\n\nWer das nicht will, braucht auch keine Strategie. Dann reicht ein schönes Dokument.\n\nIch sorge dafür, dass das System funktionieren kann. Leben muss es die Führungskraft. Das nimmt ihr keiner ab.\n\nWie viele Strategien liegen bei euch gerade in der Schublade?",
+  "text": "Die meisten Strategien sterben am Tag nach dem Beschluss.\n\nAlle sind froh, dass das Ding durch ist. Am Montag läuft wieder das Tagesgeschäft. Danach fragt keiner mehr.\n\nDas ist mir auch schon passiert.\n\nSeitdem gilt eine klare Regel. Bevor wir mit einer Strategie anfangen, muss feststehen, wie es danach weitergeht. Strategie muss zum Alltag werden. Sonst funktioniert sie nie.\n\nWer das nicht will, braucht auch keine Strategie. Dann reicht ein schönes Dokument.\n\nIch sorge dafür, dass das System funktionieren kann. Leben musst du es in deiner Rolle als Führungskraft. Das nimmt dir keiner ab.\n\nWie viele Strategien liegen bei dir gerade in der Schublade?",
   "status": "entwurf",
   "datum": "2026-11-25",
   "kennzahlen": [],
