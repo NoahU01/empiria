@@ -2210,6 +2210,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 2031,
     "reaktionen": 13,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 2614,
+    "reichweite": 2046,
+    "reaktionen": 13,
+    "kommentare": 0
    }
   ],
   "bild": "rp34",
@@ -2269,6 +2276,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 769,
     "reaktionen": 18,
     "kommentare": 9
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 1053,
+    "reichweite": 777,
+    "reaktionen": 18,
+    "kommentare": 9
    }
   ],
   "bild": "rp35",
@@ -2321,6 +2335,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 153,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 242,
+    "reichweite": 167,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2366,6 +2387,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 755,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 1044,
+    "reichweite": 814,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2404,6 +2432,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1112,
     "reaktionen": 14,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 1634,
+    "reichweite": 1292,
+    "reaktionen": 18,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2435,6 +2470,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 205,
     "reaktionen": 8,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 340,
+    "reichweite": 245,
+    "reaktionen": 8,
+    "kommentare": 0
    }
   ],
   "bild": "rp39",
@@ -2459,6 +2501,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 94,
     "reaktionen": 3,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 235,
+    "reichweite": 163,
+    "reaktionen": 8,
+    "kommentare": 0
    }
   ],
   "bild": "rp40",
@@ -2476,7 +2525,15 @@ window.MK_ENTWUERFE = [
   "text": "Sobald der Vorstand aus dem Raum ist, reden Führungskräfte mit mir Klartext.\n\nDa gibt es diese eine Führungskraft, die seit Jahren Mist baut. Jeder weiß, wer gemeint ist. Keiner unternimmt was.\n\nWeißt du, wer mir das erzählt? Die Guten. Die, die sich richtig reinhängen und sich an jede Regel halten.\n\nDie sind sauer. Vor allem darauf, dass man den anderen einfach machen lässt.\n\nIm selben Gespräch strahlen sie dann, wenn sie erzählen, dass endlich mal jemand da ist, auf den man sich verlassen kann.\n\nMehr braucht es oft gar nicht.\n\nWenn du einen Bereich führst: Hand aufs Herz, wen lässt du gerade machen?",
   "status": "veroeffentlicht",
   "datum": "2026-11-22",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 181,
+    "reichweite": 121,
+    "reaktionen": 2,
+    "kommentare": 1
+   }
+  ],
   "bild": "rp41",
   "format": "Satz · Satzkarte",
   "offen": "",
