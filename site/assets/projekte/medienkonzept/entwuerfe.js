@@ -2562,7 +2562,7 @@ window.MK_ENTWUERFE = [
   "feld": "01 Strategie im Alltag",
   "art": "Satz · Foto mit Satz",
   "kern": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.",
-  "text": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.\n\nIch finde es völlig okay, wenn jemand bewusst nur 80 Prozent gibt. Entscheidend ist, dass er vorher festlegt, welches Ergebnis er braucht. Dann sind diese 80 eben seine 100.\n\nBei mir sieht das so aus. Ein Pitch oder eine Aufsichtsratsvorlage bekommt die volle Energie. Ein Protokoll sind fünf saubere Stichpunkte. Fertig.\n\nMittelmaß ist für mich etwas anderes. Mittelmaß heißt, das Ziel zu verfehlen, das man sich selbst gesetzt hat.\n\nSchau dir mal deine Woche an. Wo steckst du gerade 100 Prozent in etwas, das mit 80 völlig reichen würde?",
+  "text": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.\n\nIch finde es völlig okay, wenn du bewusst nur 70 Prozent gibst. Entscheidend ist, dass dabei das Ergebnis herauskommt, das du brauchst. Dann sind 70 Prozent genau richtig.\n\nBei mir sieht das so aus. Ein Pitch oder eine Aufsichtsratsvorlage bekommt die volle Energie. Ein Protokoll, das mit fünf sauberen Stichpunkten aussagekräftig ist, reicht in diesem Fall vollkommen aus. Fertig.\n\nMittelmaß ist für mich etwas anderes. Mittelmaß heißt, du gibst dich bewusst mit weniger zufrieden, als nötig gewesen wäre.\n\nSchau dir mal deine Woche an. Wo steckst du gerade 100 Prozent in etwas, wo bewusste 70 Prozent völlig ausreichen würden?",
   "status": "entwurf",
   "datum": "2026-11-24",
   "kennzahlen": [],
