@@ -2594,7 +2594,7 @@ window.MK_ENTWUERFE = [
   "feld": "Geschichten aus der Praxis",
   "art": "Geschichte · Kritzelei auf dem Foto",
   "kern": "Einen vermasselten Marktstart holst du nie wieder auf.",
-  "text": "Einen vermasselten Marktstart holst du nie wieder auf.\n\nIch habe das bei einem Produkt-Relaunch erlebt. Ein Teil des Projekts lief hinterher, der Termin stand trotzdem. Also ging es mit dem los, was da war. Mittelmaß.\n\nDabei gibt es eine ganz pragmatische Methode, die du von Anfang an einsetzen kannst. Plane das Scheitern. Bewusst.\n\nSetze dich zum Start mit deinem Team hin und stelle eine einzige Frage: Wie fahren wir das Projekt bewusst gegen die Wand?\n\nDie Antworten kommen schnell. Jeder im Raum weiß, wo es haken wird. Normalerweise sagt es nur keiner.\n\nAus jeder Antwort machst du eine Stoßrichtung mit einem klaren Verantwortlichen. So wird aus der Liste der Risiken dein Plan.\n\nWann hast du diese Frage zuletzt gestellt?",
+  "text": "Einen vermasselten Marktstart holst du nie wieder auf.\n\nIch habe das bei einem Produkt-Relaunch erlebt. Ein Teil des Projekts lief hinterher, der Termin stand trotzdem. Also ging es mit dem los, was da war. Mittelmaß.\n\nDabei gibt es eine ganz pragmatische Methode, die du von Anfang an einsetzen kannst. Plane das Scheitern. Bewusst.\n\nSetze dich zum Start mit deinem Team hin und stelle eine einzige Frage: Wie fahren wir das Projekt bewusst gegen die Wand?\n\nDie Antworten kommen schnell. Jeder im Raum weiß, wo es haken wird. Normalerweise sagt es nur keiner.\n\nFasse die Antworten zu klaren Stoßrichtungen zusammen und gib jeder einen klaren Verantwortlichen.\n\nWann hast du diese Frage zuletzt gestellt?",
   "status": "entwurf",
   "datum": "2026-11-26",
   "kennzahlen": [],
