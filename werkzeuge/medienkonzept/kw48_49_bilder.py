@@ -32,6 +32,11 @@ def sektionen(NAME, vb, SYS):
         # Foto mit einem Satz unten, ohne Markierung (Daniel 20.11.2026: weiße Satzkarte „sieht nach nichts aus“)
         return """<section class="p vollbild" id="%s">%s<div class="verlauf" style="height:42%%"></div><div class="unten"><p class="satz" style="font-size:66px">%s</p></div></section>""" % (pid, vb(bild, pos), satz)
 
+    def frage_gross(pid, bild, pos, satz):
+        # große Frage in Poppins unten auf dunklem Verlauf, ohne Markierung (Daniel 22.11.2026: stärker als Handschrift)
+        return """<section class="p vollbild" id="%s">%s<div class="verlauf" style="height:50%%"></div>
+  <p style="position:absolute;left:72px;right:72px;bottom:96px;font:800 84px/1.06 Poppins,sans-serif;letter-spacing:-.02em;color:#fff">%s</p></section>""" % (pid, vb(bild, pos), satz)
+
     def satzkarte(pid, satz, groesse=104):
         # Satzkarte der Woche: Schwarz auf Weiß, ohne Markierung
         return """<section class="p" id="%s" style="padding:84px;background:#fff">
@@ -41,7 +46,7 @@ def sektionen(NAME, vb, SYS):
     return [
         satz_unten("rp44", "foto-seminarraum-hemd.jpg", "20% 50%", "Manchmal sind 70 Prozent genau richtig."),  # 24.11. neues Thema (Daniel 20.11.2026: Strategieberater-Thema raus)
         uhr("rp45", "foto-fenster-anzug.jpg", "40% 40%", "Tag 1 nach dem Strategiebeschluss"),  # Daniel 22.11.2026: „Danach.“ sinnbefreit                        # 25.11. (146) Strategie in der Schublade
-        kritzel("rp46", "foto-flipcharts.jpg", "30% 50%", "Wie fahren wir es<br>gegen die Wand?", 430, 40, 620, groesse=80),  # 26.11. (147)
+        frage_gross("rp46", "foto-vorschlaghammer.jpg", "50% 30%", "Wie fahren wir das Projekt bewusst gegen die Wand?"),  # 26.11. (147) Daniel 22.11.2026: Foto mit kaputtem Vorschlaghammer
         pur("rp47", "foto-buero-flagge.jpg", "75% 40%"),  # foto-schreiben lief schon am 27.10.                         # 27.11. (148) drei Abende
         pur("rp48", "foto-sw-hoodie.jpg", "50% 30%"),                                        # 28.11. (149) bis Daniels Foto der gelben E-Gitarre kommt
         satz_oben("rp49", "foto-gold.jpg", "50% 30%", "Regeln biegen,<br>ohne sie zu brechen."),  # 29.11. (150) Monopoly – Porträt statt Spielbrett
