@@ -2283,6 +2283,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 777,
     "reaktionen": 18,
     "kommentare": 9
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 1066,
+    "reichweite": 789,
+    "reaktionen": 18,
+    "kommentare": 9
    }
   ],
   "bild": "rp35",
@@ -2342,6 +2349,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 167,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 252,
+    "reichweite": 177,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2394,6 +2408,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 814,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 1093,
+    "reichweite": 855,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2439,6 +2460,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1292,
     "reaktionen": 18,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 1814,
+    "reichweite": 1445,
+    "reaktionen": 21,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2477,6 +2505,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 245,
     "reaktionen": 8,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 370,
+    "reichweite": 266,
+    "reaktionen": 8,
+    "kommentare": 2
    }
   ],
   "bild": "rp39",
@@ -2508,6 +2543,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 163,
     "reaktionen": 8,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 261,
+    "reichweite": 185,
+    "reaktionen": 11,
+    "kommentare": 0
    }
   ],
   "bild": "rp40",
@@ -2532,6 +2574,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 121,
     "reaktionen": 2,
     "kommentare": 1
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 897,
+    "reichweite": 682,
+    "reaktionen": 5,
+    "kommentare": 2
    }
   ],
   "bild": "rp41",
@@ -2549,7 +2598,15 @@ window.MK_ENTWUERFE = [
   "text": "Mein wichtigstes Strategiewerkzeug ist eine Kaffeetasse. Klingt komisch, ist aber so.\n\nIch war früher Strategiereferent in einer Konzernstrategie. Da hattest du nur Themen, die mehrere Bereiche betroffen haben. Alle glücklich machen? Keine Chance.\n\nMein Chef wollte irgendwann wissen, wie ich trotzdem so schnell vorankomme.\n\nGanz einfach: Ich habe mir vorher überlegt, welche zwei, drei Leute ich wirklich brauche. Mit denen bin ich Kaffee trinken gegangen. Früh, lange bevor irgendwas offiziell war.\n\nDanach habe ich sie immer wieder auf dem Laufenden gehalten.\n\nIch habe das strategisches Kaffeetrinken genannt. Ich mache das bis heute so. Wenn es nicht anders geht, per Video. Aber Kaffee ist besser.\n\nMit Fachlichkeit allein bringst du kein Thema durch. Jeder, der mitentscheidet, fragt sich still, was er davon hat.\n\nMit wem solltest du diese Woche mal einen Kaffee trinken?",
   "status": "veroeffentlicht",
   "datum": "2026-11-23",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 192,
+    "reichweite": 132,
+    "reaktionen": 6,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp42",
   "format": "Geschichte · Foto",
   "offen": "",
