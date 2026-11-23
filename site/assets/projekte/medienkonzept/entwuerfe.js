@@ -2547,14 +2547,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Foto",
   "kern": "Mein wichtigstes Strategiewerkzeug ist eine Kaffeetasse. Klingt komisch, ist aber so.",
   "text": "Mein wichtigstes Strategiewerkzeug ist eine Kaffeetasse. Klingt komisch, ist aber so.\n\nIch war früher Strategiereferent in einer Konzernstrategie. Da hattest du nur Themen, die mehrere Bereiche betroffen haben. Alle glücklich machen? Keine Chance.\n\nMein Chef wollte irgendwann wissen, wie ich trotzdem so schnell vorankomme.\n\nGanz einfach: Ich habe mir vorher überlegt, welche zwei, drei Leute ich wirklich brauche. Mit denen bin ich Kaffee trinken gegangen. Früh, lange bevor irgendwas offiziell war.\n\nDanach habe ich sie immer wieder auf dem Laufenden gehalten.\n\nIch habe das strategisches Kaffeetrinken genannt. Ich mache das bis heute so. Wenn es nicht anders geht, per Video. Aber Kaffee ist besser.\n\nMit Fachlichkeit allein bringst du kein Thema durch. Jeder, der mitentscheidet, fragt sich still, was er davon hat.\n\nMit wem solltest du diese Woche mal einen Kaffee trinken?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-23",
   "kennzahlen": [],
   "bild": "rp42",
   "format": "Geschichte · Foto",
   "offen": "",
   "termin": "Mo 23.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7530521884770103296"
  },
  {
   "id": 162,
