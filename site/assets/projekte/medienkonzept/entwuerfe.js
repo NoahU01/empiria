@@ -2356,6 +2356,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 177,
     "reaktionen": 5,
     "kommentare": 0
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 257,
+    "reichweite": 181,
+    "reaktionen": 5,
+    "kommentare": 0
    }
   ],
   "bild": "rp43",
@@ -2415,6 +2422,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 855,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 1119,
+    "reichweite": 877,
+    "reaktionen": 9,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2467,6 +2481,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1445,
     "reaktionen": 21,
     "kommentare": 2
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 2040,
+    "reichweite": 1626,
+    "reaktionen": 23,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2512,6 +2533,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 266,
     "reaktionen": 8,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 390,
+    "reichweite": 282,
+    "reaktionen": 8,
+    "kommentare": 3
    }
   ],
   "bild": "rp39",
@@ -2550,6 +2578,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 185,
     "reaktionen": 11,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 275,
+    "reichweite": 197,
+    "reaktionen": 11,
+    "kommentare": 0
    }
   ],
   "bild": "rp40",
@@ -2581,6 +2616,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 682,
     "reaktionen": 5,
     "kommentare": 2
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 1047,
+    "reichweite": 799,
+    "reaktionen": 5,
+    "kommentare": 2
    }
   ],
   "bild": "rp41",
@@ -2605,6 +2647,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 132,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 391,
+    "reichweite": 274,
+    "reaktionen": 12,
+    "kommentare": 0
    }
   ],
   "bild": "rp42",
@@ -2622,7 +2671,15 @@ window.MK_ENTWUERFE = [
   "text": "Wer bei allem 100 Prozent gibt, macht am Ende vieles mittelmäßig.\n\nIch finde es völlig okay, wenn du bewusst nur 70 Prozent gibst. Entscheidend ist, dass dabei das Ergebnis herauskommt, das du brauchst. Dann sind 70 Prozent genau richtig.\n\nBei mir sieht das so aus. Ein Pitch oder eine Aufsichtsratsvorlage bekommt die volle Energie. Ein Protokoll, das mit fünf sauberen Stichpunkten aussagekräftig ist, reicht in diesem Fall vollkommen aus. Fertig.\n\nMittelmaß ist für mich etwas anderes. Mittelmaß heißt, du gibst dich bewusst mit weniger zufrieden, als nötig gewesen wäre.\n\nSchau dir mal deine Woche an. Wo steckst du gerade 100 Prozent in etwas, wo bewusste 70 Prozent völlig ausreichen würden?",
   "status": "veroeffentlicht",
   "datum": "2026-11-24",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 69,
+    "reichweite": 51,
+    "reaktionen": 6,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp44",
   "format": "Satz · Foto mit Satz",
   "offen": "",
