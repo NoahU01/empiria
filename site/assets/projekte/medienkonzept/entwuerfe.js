@@ -2693,14 +2693,14 @@ window.MK_ENTWUERFE = [
   "art": "Werkzeug · Foto mit Verlauf und Wort",
   "kern": "Die meisten Strategien sterben am Tag nach dem Beschluss.",
   "text": "Die meisten Strategien sterben am Tag nach dem Beschluss.\n\nAlle sind froh, dass das Ding durch ist. Am Montag läuft wieder das Tagesgeschäft. Danach fragt keiner mehr.\n\nDas ist mir auch schon passiert.\n\nSeitdem gilt eine klare Regel. Bevor wir mit einer Strategie anfangen, muss feststehen, wie es danach weitergeht. Strategie muss zum Alltag werden. Sonst funktioniert sie nie.\n\nWer das nicht will, braucht auch keine Strategie. Dann reicht ein schönes Dokument.\n\nIch sorge dafür, dass das System funktionieren kann. Leben musst du es in deiner Rolle als Führungskraft. Das nimmt dir keiner ab.\n\nWie viele Strategien liegen bei dir gerade in der Schublade?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-25",
   "kennzahlen": [],
   "bild": "rp45",
   "format": "Werkzeug · Foto mit Verlauf und Wort",
   "offen": "",
   "termin": "Mi 25.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7531246647360651264"
  },
  {
   "id": 147,
