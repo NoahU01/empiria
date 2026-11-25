@@ -2429,6 +2429,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 877,
     "reaktionen": 9,
     "kommentare": 4
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 1133,
+    "reichweite": 890,
+    "reaktionen": 10,
+    "kommentare": 4
    }
   ],
   "bild": "rp37",
@@ -2488,6 +2495,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1626,
     "reaktionen": 23,
     "kommentare": 2
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 2110,
+    "reichweite": 1686,
+    "reaktionen": 24,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2540,6 +2554,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 282,
     "reaktionen": 8,
     "kommentare": 3
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 396,
+    "reichweite": 288,
+    "reaktionen": 9,
+    "kommentare": 3
    }
   ],
   "bild": "rp39",
@@ -2585,6 +2606,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 197,
     "reaktionen": 11,
     "kommentare": 0
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 289,
+    "reichweite": 211,
+    "reaktionen": 11,
+    "kommentare": 0
    }
   ],
   "bild": "rp40",
@@ -2623,6 +2651,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 799,
     "reaktionen": 5,
     "kommentare": 2
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 1092,
+    "reichweite": 834,
+    "reaktionen": 6,
+    "kommentare": 2
    }
   ],
   "bild": "rp41",
@@ -2654,6 +2689,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 274,
     "reaktionen": 12,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 504,
+    "reichweite": 363,
+    "reaktionen": 15,
+    "kommentare": 0
    }
   ],
   "bild": "rp42",
@@ -2678,6 +2720,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 51,
     "reaktionen": 6,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 187,
+    "reichweite": 131,
+    "reaktionen": 7,
+    "kommentare": 0
    }
   ],
   "bild": "rp44",
@@ -2695,7 +2744,15 @@ window.MK_ENTWUERFE = [
   "text": "Die meisten Strategien sterben am Tag nach dem Beschluss.\n\nAlle sind froh, dass das Ding durch ist. Am Montag läuft wieder das Tagesgeschäft. Danach fragt keiner mehr.\n\nDas ist mir auch schon passiert.\n\nSeitdem gilt eine klare Regel. Bevor wir mit einer Strategie anfangen, muss feststehen, wie es danach weitergeht. Strategie muss zum Alltag werden. Sonst funktioniert sie nie.\n\nWer das nicht will, braucht auch keine Strategie. Dann reicht ein schönes Dokument.\n\nIch sorge dafür, dass das System funktionieren kann. Leben musst du es in deiner Rolle als Führungskraft. Das nimmt dir keiner ab.\n\nWie viele Strategien liegen bei dir gerade in der Schublade?",
   "status": "veroeffentlicht",
   "datum": "2026-11-25",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 67,
+    "reichweite": 49,
+    "reaktionen": 2,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp45",
   "format": "Werkzeug · Foto mit Verlauf und Wort",
   "offen": "",
