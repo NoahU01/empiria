@@ -2502,6 +2502,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 1686,
     "reaktionen": 24,
     "kommentare": 2
+   },
+   {
+    "stunden": 172.3,
+    "impressionen": 2181,
+    "reichweite": 1740,
+    "reaktionen": 24,
+    "kommentare": 2
    }
   ],
   "bild": "rp38",
@@ -2561,6 +2568,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 288,
     "reaktionen": 9,
     "kommentare": 3
+   },
+   {
+    "stunden": 148.3,
+    "impressionen": 397,
+    "reichweite": 289,
+    "reaktionen": 9,
+    "kommentare": 3
    }
   ],
   "bild": "rp39",
@@ -2613,6 +2627,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 211,
     "reaktionen": 11,
     "kommentare": 0
+   },
+   {
+    "stunden": 124.3,
+    "impressionen": 296,
+    "reichweite": 218,
+    "reaktionen": 11,
+    "kommentare": 0
    }
   ],
   "bild": "rp40",
@@ -2658,6 +2679,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 834,
     "reaktionen": 6,
     "kommentare": 2
+   },
+   {
+    "stunden": 100.3,
+    "impressionen": 1121,
+    "reichweite": 860,
+    "reaktionen": 6,
+    "kommentare": 2
    }
   ],
   "bild": "rp41",
@@ -2696,6 +2724,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 363,
     "reaktionen": 15,
     "kommentare": 0
+   },
+   {
+    "stunden": 76.3,
+    "impressionen": 547,
+    "reichweite": 397,
+    "reaktionen": 15,
+    "kommentare": 0
    }
   ],
   "bild": "rp42",
@@ -2727,6 +2762,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 131,
     "reaktionen": 7,
     "kommentare": 0
+   },
+   {
+    "stunden": 52.3,
+    "impressionen": 215,
+    "reichweite": 154,
+    "reaktionen": 7,
+    "kommentare": 0
    }
   ],
   "bild": "rp44",
@@ -2751,6 +2793,13 @@ window.MK_ENTWUERFE = [
     "reichweite": 49,
     "reaktionen": 2,
     "kommentare": 0
+   },
+   {
+    "stunden": 28.3,
+    "impressionen": 133,
+    "reichweite": 102,
+    "reaktionen": 7,
+    "kommentare": 0
    }
   ],
   "bild": "rp45",
@@ -2768,7 +2817,15 @@ window.MK_ENTWUERFE = [
   "text": "Einen vermasselten Marktstart holst du nie wieder auf.\n\nIch habe das bei einem Produkt-Relaunch erlebt. Ein Teil des Projekts lief hinterher, der Termin stand trotzdem. Also ging es mit dem los, was da war. Mittelmaß.\n\nDabei gibt es eine ganz pragmatische Methode, die du von Anfang an einsetzen kannst. Plane das Scheitern. Bewusst.\n\nSetze dich zum Start mit deinem Team hin und stelle eine einzige Frage: Wie fahren wir das Projekt bewusst gegen die Wand?\n\nDie Antworten kommen schnell. Jeder im Raum weiß, wo es haken wird. Normalerweise sagt es nur keiner.\n\nFasse die Antworten zu klaren Stoßrichtungen mit einem eindeutigen Verantwortlichen zusammen. So wird aus der Liste der Risiken dein Erfolgsplan.\n\nWann hast du diese Frage zuletzt gestellt?",
   "status": "veroeffentlicht",
   "datum": "2026-11-26",
-  "kennzahlen": [],
+  "kennzahlen": [
+   {
+    "stunden": 4.3,
+    "impressionen": 66,
+    "reichweite": 48,
+    "reaktionen": 1,
+    "kommentare": 0
+   }
+  ],
   "bild": "rp46",
   "format": "Geschichte · Kritzelei auf dem Foto",
   "offen": "",
