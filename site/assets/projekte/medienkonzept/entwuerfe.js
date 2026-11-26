@@ -2766,14 +2766,14 @@ window.MK_ENTWUERFE = [
   "art": "Geschichte · Kritzelei auf dem Foto",
   "kern": "Einen vermasselten Marktstart holst du nie wieder auf.",
   "text": "Einen vermasselten Marktstart holst du nie wieder auf.\n\nIch habe das bei einem Produkt-Relaunch erlebt. Ein Teil des Projekts lief hinterher, der Termin stand trotzdem. Also ging es mit dem los, was da war. Mittelmaß.\n\nDabei gibt es eine ganz pragmatische Methode, die du von Anfang an einsetzen kannst. Plane das Scheitern. Bewusst.\n\nSetze dich zum Start mit deinem Team hin und stelle eine einzige Frage: Wie fahren wir das Projekt bewusst gegen die Wand?\n\nDie Antworten kommen schnell. Jeder im Raum weiß, wo es haken wird. Normalerweise sagt es nur keiner.\n\nFasse die Antworten zu klaren Stoßrichtungen mit einem eindeutigen Verantwortlichen zusammen. So wird aus der Liste der Risiken dein Erfolgsplan.\n\nWann hast du diese Frage zuletzt gestellt?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-26",
   "kennzahlen": [],
   "bild": "rp46",
   "format": "Geschichte · Kritzelei auf dem Foto",
   "offen": "",
   "termin": "Do 26.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7531609034626617345"
  },
  {
   "id": 148,
