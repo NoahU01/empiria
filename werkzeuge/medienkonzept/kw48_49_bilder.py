@@ -48,12 +48,12 @@ def sektionen(NAME, vb, SYS):
         uhr("rp45", "foto-fenster-anzug.jpg", "40% 40%", "Tag 1 nach dem Strategiebeschluss"),  # Daniel 22.11.2026: „Danach.“ sinnbefreit                        # 25.11. (146) Strategie in der Schublade
         frage_gross("rp46", "foto-vorschlaghammer.jpg", "50% 30%", "Wie fahren wir unsere Strategie bewusst gegen die Wand?"),  # 26.11. (147) Daniel 26.11.2026: Text dreht sich um Strategie, nicht Projekt; Daniel 22.11.2026: Foto mit kaputtem Vorschlaghammer
         pur("rp47", "foto-buero-flagge.jpg", "75% 40%"),  # foto-schreiben lief schon am 27.10.                         # 27.11. (148) drei Abende
-        pur("rp48", "foto-sw-hoodie.jpg", "50% 30%"),                                        # 29.11. (149) bis Daniels Foto der gelben E-Gitarre kommt
+        pur("rp48", "foto-sw-hoodie.jpg", "50% 30%"),                                        # 03.12. (149) bis Daniels Foto der gelben E-Gitarre kommt
         satz_oben("rp49", "foto-gold.jpg", "50% 30%", "Regeln biegen,<br>ohne sie zu brechen."),  # 28.11. (150) Monopoly – Porträt statt Spielbrett
         wort("rp50", "foto-arena.jpg", "40% 50%", "Vollgas."),                               # 30.11. (151) Mannschaft, die gewinnt
         kritzel("rp51", "foto-konferenz-lang.jpg", "35% 50%", "Kickoff", 580, 220, 420, True, 120),  # 01.12. (152) gestrichener Kickoff
         pur("rp52", "foto-unterwegs-laptop.jpg", "45% 50%"),                                 # 02.12. (153) Entwurf zum Anfassen
-        pur("rp53", "foto-praesentation.jpg", "35% 50%"),                                    # 03.12. (154) „sehr anstrengend“ – Satz bleibt im Text
+        pur("rp53", "foto-praesentation.jpg", "35% 50%"),                                    # 29.11. (154) „sehr anstrengend“ – Satz bleibt im Text
         uhr("rp54", "foto-tagungsort.jpg", "45% 50%", "Mittwoch, 14:21 · nach der Mittagspause"),  # 04.12. (155) echte Aufnahmezeit
         pur("rp55", "foto-buero-stehend.jpg", "55% 50%"),                                    # 05.12. (156) Selbstständigkeit
         satzkarte("rp56", "„Da geht mir das Herz auf.“", 112),                              # 06.12. (157)
