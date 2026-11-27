@@ -2839,14 +2839,14 @@ window.MK_ENTWUERFE = [
   "art": "Werkstatt · Foto mit Wort",
   "kern": "Wenn du nicht bereit bist, drei Abende Netflix gegen YouTube zu tauschen …",
   "text": "Wenn du nicht bereit bist, drei Abende Netflix gegen YouTube zu tauschen, brauchst du dich nicht zu wundern, dass deine Kollegen dir voraus sind.\n\nIch bin kein Genie. Ich wende an, was da ist. Da ist inzwischen eine Menge, frei verfügbar für jeden.\n\nMit Google und KI gibt es keine Ausreden mehr. Wer wissen will, wie etwas geht, findet es an einem Abend.\n\nNur macht das kaum jemand. Lieber noch eine Folge.\n\nWas mich interessiert, mache ich mit Vollgas. KI hat mich interessiert. Also habe ich abends angefangen, statt die nächste Serie zu starten.\n\nWelche Serie hast du zuletzt durchgeschaut, und was hättest du in der Zeit lernen können?",
-  "status": "geplant",
+  "status": "veroeffentlicht",
   "datum": "2026-11-27",
   "kennzahlen": [],
   "bild": "rp47",
   "format": "Werkstatt · Foto mit Wort",
   "offen": "",
   "termin": "Fr 27.11.",
-  "url": ""
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7531971422131515392"
  },
  {
   "id": 149,
